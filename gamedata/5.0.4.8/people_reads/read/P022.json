@@ -1,0 +1,1542 @@
+[
+ {
+  "id": "Skyrim.esm:013358",
+  "name": "Esbern",
+  "race": "Elder",
+  "sex": "male",
+  "firstMeet": "Hiding behind a locked door in the Ratway Warrens under Riften (Esbern's Vault), found during A Cornered Rat.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "until A Cornered Rat moves on",
+    "where": "his room in the Ratway Warrens, Riften",
+    "doing": "staying shut in his room"
+   },
+   {
+    "from": "4 am",
+    "for": "6 hours",
+    "where": "Sky Haven Temple, the Reach",
+    "doing": "sleeping (once he's moved to the temple)"
+   },
+   {
+    "from": "10 am",
+    "for": "1 hour",
+    "where": "just outside Sky Haven Temple",
+    "doing": "reading"
+   },
+   {
+    "from": "11 am",
+    "for": "3 hours",
+    "where": "just outside Sky Haven Temple",
+    "doing": "wandering the grounds"
+   },
+   {
+    "from": "2 pm",
+    "for": "4 hours",
+    "where": "just outside Sky Haven Temple",
+    "doing": "reading"
+   },
+   {
+    "from": "6 pm",
+    "for": "2 hours",
+    "where": "the training spot outside Sky Haven Temple",
+    "doing": "weapon practice"
+   },
+   {
+    "from": "8 pm",
+    "for": "2 hours",
+    "where": "inside Sky Haven Temple",
+    "doing": "wandering the temple"
+   },
+   {
+    "from": "10 pm",
+    "for": "6 hours",
+    "where": "inside Sky Haven Temple",
+    "doing": "reading"
+   }
+  ],
+  "changes": [
+   "Stays in his Ratway hideout until A Cornered Rat is well along; then you escort him to Riverwood in Alduin's Wall.",
+   "Once the Blades are at Sky Haven Temple (from The Throat of the World on) he lives there; in rain or snow his outdoor hours are spent inside the temple instead.",
+   "In Paarthurnax he and Delphine refuse to help you further until Paarthurnax is dead."
+  ],
+  "role": "the Blades' loremaster; main-quest character and giver of Blades side jobs",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Cornered Rat",
+    "how": "its target: find him in the Ratway Warrens and talk him into opening up"
+   },
+   {
+    "quest": "Alduin's Wall",
+    "how": "a step in it: escort him to Riverwood, talk to him, go with him to Sky Haven Temple"
+   },
+   {
+    "quest": "Elder Knowledge",
+    "how": "a step in it (optional): he suggests asking at the College of Winterhold about the Elder Scroll"
+   },
+   {
+    "quest": "The Fallen",
+    "how": "a step in it: talk to Esbern about luring a dragon into the trap"
+   },
+   {
+    "quest": "Paarthurnax",
+    "how": "a step in it: he and Delphine demand Paarthurnax's death; talk to Esbern"
+   },
+   {
+    "quest": "Season Unending",
+    "how": "a step in it: he helps at the peace council"
+   },
+   {
+    "quest": "Rebuilding the Blades",
+    "how": "a step in it: ask Esbern about dragon lairs"
+   },
+   {
+    "quest": "Dragon Hunting",
+    "how": "gives it: kill the dragon at the lair he names, then return to Esbern"
+   },
+   {
+    "quest": "Dragon Research",
+    "how": "gives it: bring him 3 Dragon Blood, 3 Dragon Bile and 3 Dragon Rheum"
+   },
+   {
+    "quest": "Destroy the Dragon Cult",
+    "how": "gives it: he has noted where the Dragon Priests are"
+   },
+   {
+    "quest": "A Forgotten Blade",
+    "how": "a step in it (optional): speak to Esbern about Fultheim"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "day",
+    "why": "His Sky Haven outdoor packages carry no quest condition of their own (only that the spot isn't disabled, and no rain or snow); I've assumed they only matter once he is at the temple. Packages the quests give him while he travels aren't in the extract."
+   },
+   {
+    "field": "race",
+    "why": "The record's race is the elderly race the extracts call 'Elder', not a people such as Nord or Breton."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013358",
+   "MQEsbernStayInRoomIgnoreCombat Skyrim.esm:0A0E43 (A Cornered Rat Skyrim.esm:036191 stage < 160)",
+   "MQSkyHavenEsbernSleep4x6 Skyrim.esm:108DA5",
+   "MQSkyHavenEsbernReadOutside10x1 Skyrim.esm:108DB4",
+   "MQEsbernSandboxSkyHavenTempleExterior10x4 Skyrim.esm:108DAF",
+   "MQSkyHavenEsbernReadOutside14x4 Skyrim.esm:108DAC",
+   "MQSkyHavenTempleMeleePracticeA18x2 Skyrim.esm:108DBD",
+   "MQEsbernSandboxSkyHavenTemple Skyrim.esm:0428DE (MQ204 Skyrim.esm:02D515 > 0)",
+   "MQSkyHavenEsbernRead22x6 Skyrim.esm:108DA6",
+   "quest_givers: placed ref Skyrim.esm:019DFD in The Ratway Warrens, Esbern's Vault",
+   "MQ202, MQ203, MQ205, MQ301, MQ302, MQPaarthurnax, FreeformSkyhavenTempleA/B/D, DCQuest, madFultheimQuest aliases",
+   "essential flag"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01996C",
+  "name": "Perth",
+  "race": "Breton",
+  "sex": "male",
+  "firstMeet": "Standing outside at Soljund's Sinkhole, the mining village on the eastern edge of the Reach.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "until you take on Soljund's Sinkhole",
+    "where": "outside at Soljund's Sinkhole",
+    "doing": "standing at his spot"
+   },
+   {
+    "from": "7 am",
+    "for": "12 hours",
+    "where": "outside at Soljund's Sinkhole",
+    "doing": "standing around (while the draugr job is open; breaks off at noon and 5 pm to eat; goes in during storms)"
+   },
+   {
+    "from": "7 pm",
+    "for": "5 hours",
+    "where": "the Miner's House, Soljund's Sinkhole",
+    "doing": "at home (while the draugr job is open)"
+   },
+   {
+    "from": "midnight",
+    "for": "7 hours",
+    "where": "the Miner's House, Soljund's Sinkhole",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "12 hours",
+    "where": "the mine, Soljund's Sinkhole",
+    "doing": "mining, once the draugr are cleared (eats 12 noon to 1 pm and 5 to 6 pm)"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "near the Miner's House, Soljund's Sinkhole",
+    "doing": "around home, once the mine is cleared"
+   }
+  ],
+  "changes": [
+   "Once you've cleared the draugr and told him (Soljund's Sinkhole done), he goes back to working the mine 8 am to 8 pm."
+  ],
+  "role": "miner; quest giver (Soljund's Sinkhole); marriage candidate",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "yes (he's in the marriage pool); the extracts don't show what he asks first",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Soljund's Sinkhole",
+    "how": "gives it: clear the mine of draugr, then tell Perth they're dead (gold reward)"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "day",
+    "why": "His 7 am to 7 pm 'stand outside' hours are skipped in two kinds of storm weather; I've read the weather ids from the condition values, which the extract doesn't name."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01996C",
+   "FreeformSoljundsPerthStandOutsidePackage Skyrim.esm:06136C (stage < 5)",
+   "FreeformSoljundsPerthStandOutsidePackage2 TheChoiceIsYours.esp:00EA5A (stage < 100)",
+   "DefaultEatEditorLoc12x1/17x1/7x1",
+   "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+   "SoljundsSinkholeWorkMinerPackage8x12 Skyrim.esm:05E9B3 (stage == 100)",
+   "SoljundsSinkholeNoWorkPackage8x12 Skyrim.esm:09976D",
+   "FreeformSoljundsSinkholeA Skyrim.esm:06136B giver",
+   "PotentialMarriageFaction",
+   "JobMinerFaction",
+   "placed ref Skyrim.esm:019970 in Miner's House"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013605",
+  "name": "Pactur",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "In Stonehills, the mining village in Hjaalmarch; he lives in Sorli's House.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "7 hours",
+    "where": "Sorli's House, Stonehills",
+    "doing": "sleeping"
+   },
+   {
+    "from": "9 am",
+    "for": "2 hours",
+    "where": "outside in Stonehills",
+    "doing": "working"
+   },
+   {
+    "from": "1 pm",
+    "for": "3 hours",
+    "where": "Rockwallow Mine, Stonehills",
+    "doing": "visiting the mine"
+   },
+   {
+    "from": "the rest of the day",
+    "for": "",
+    "where": "Sorli's House, Stonehills",
+    "doing": "at home"
+   }
+  ],
+  "changes": [
+   "If he's made a steward (added to the steward faction) he moves to Highmoon Hall in Morthal: 8 am to noon by the fire, sleeps midnight to 7 am there, otherwise about the hall. What makes him steward isn't in the extracts; his Sons of Skyrim faction suggests it follows the civil war in Hjaalmarch."
+  ],
+  "role": "quest giver (Payment Delivery); may become a steward",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Payment Delivery",
+    "how": "gives it: take a payment to Bryling in Solitude"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "day",
+    "why": "His home sleep and home hours carry an unnamed condition on a civil-war quest value; I've assumed it holds in a normal game."
+   },
+   {
+    "field": "changes",
+    "why": "What puts him in the steward faction isn't in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013605",
+   "BYOHPacturStewardStandFire8x4 HearthFires.esm:000BD5",
+   "BYOHPacturStewardSleep0x7 HearthFires.esm:000BD6",
+   "BYOHPacturStewardDefaultSandboxMorthal HearthFires.esm:000BD4 (GetInFaction JobStewardFaction Skyrim.esm:050922)",
+   "StonehillsPacturVisitMine1x3 Skyrim.esm:064961",
+   "StonehillsPacturWorkOutside9x2 Skyrim.esm:069F8C",
+   "StonehillsPacturSleepHome0x7 Skyrim.esm:02EA4B",
+   "StonehillsPacturSandboxHome Skyrim.esm:02EA4A (fn79 Skyrim.esm:019E53 != 2)",
+   "FreeformStonehillsA Skyrim.esm:064958 giver",
+   "GovSons faction",
+   "essential flag"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013265",
+  "name": "Bryling",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "In the Blue Palace, Solitude, during the day; at night in her own house, Bryling's House, in Solitude.",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "12 hours",
+    "where": "the court in the Blue Palace, Solitude",
+    "doing": "attending court (eats there 1 to 3 pm)"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "Bryling's House, Solitude",
+    "doing": "around home"
+   },
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "Bryling's House, Solitude",
+    "doing": "sleeping, except 2 to 4 am when she's up for a late meeting at home"
+   }
+  ],
+  "changes": [
+   "In rain or storms between 8 am and 8 pm she stays put wherever she is instead of going to court."
+  ],
+  "role": "member of the Solitude court; quest character",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Payment Delivery",
+    "how": "a step in it: the payment from Pactur is delivered to her"
+   },
+   {
+    "quest": "A Healing Wedding",
+    "how": "a step in it: one of the guests at Vittoria's wedding you can talk to"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "quests",
+    "why": "She also fills a part in The Man Who Cried Wolf and Bound Until Death, but their objectives and journal don't say what she does in them."
+   },
+   {
+    "field": "day",
+    "why": "The 2 to 4 am package at her house is shared with one other person (by its name, Falk Firebeard); who visits whom isn't spelled out in the extract."
+   },
+   {
+    "field": "role",
+    "why": "Her record lists the jarl's faction at rank -1 (inactive); I haven't called her a jarl."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013265",
+   "SolitudeCourtEat13x2 Skyrim.esm:0ABE12",
+   "FalkBrylingSecretMeeting2x2 Skyrim.esm:034BEE",
+   "AIOStayPutRaining8x12 AI Overhaul.esp:11EC63",
+   "SolitudePalaceCourtSandbox8x12 Skyrim.esm:034BE1",
+   "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+   "placed ref Skyrim.esm:0198BF in Bryling's House",
+   "FreeformStonehillsA Skyrim.esm:064958",
+   "DB05Alt Vittorias Alternate Wedding.esp:000800",
+   "MS06Start Skyrim.esm:093807",
+   "DB05 Skyrim.esm:01EA54",
+   "essential flag"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:072B04",
+  "name": "Vald",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Outdoors in Riften; in The Pursuit he's the man in your way at Mercer's House.",
+  "day": [],
+  "changes": [
+   "You can deal with him in The Pursuit; Vex can tell you about him, and the quest can give you his debt note to buy him off."
+  ],
+  "role": "guard at Mercer's House; quest giver (Vald's Debt)",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Vald's Debt",
+    "how": "gives it: talk to Maven about his debt, find the Quill of Gemination under Lake Honrich and bring it to her"
+   },
+   {
+    "quest": "The Pursuit",
+    "how": "a step in it (optional): speak to Vex about Vald while getting into Mercer's House"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "day",
+    "why": "He has no AI packages, no factions and no placed cell in the extracts; his quest alias points to a spot in Riften's exterior. Where exactly he stands isn't settled here."
+   },
+   {
+    "field": "firstMeet",
+    "why": "That he guards Mercer's House is read from The Pursuit's objectives (infiltrate Mercer's House; speak to Vex about Vald), not from a package or a named cell."
+   },
+   {
+    "field": "changes",
+    "why": "Whether he's killed, bribed or sent away isn't shown; the quest only hands out a book called Vald's Debt."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:072B04",
+   "no packages, no factions in people_schedules_raw",
+   "quest_givers: ref Skyrim.esm:072B09 in Riften world, cell Skyrim.esm:016BE0",
+   "FreeformValdDebt Skyrim.esm:0C04BA (named giver, objectives 10-30)",
+   "TG07 Skyrim.esm:021553 objective 42, reward Vald's Debt Skyrim.esm:072B13"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014146",
+  "name": "Wuunferth the Unliving",
+  "race": "Elder",
+  "sex": "male",
+  "firstMeet": "Upstairs in the Palace of the Kings, Windhelm, in his lab.",
+  "day": [
+   {
+    "from": "noon",
+    "for": "4 hours",
+    "where": "his quarters upstairs, Palace of the Kings, Windhelm",
+    "doing": "sleeping"
+   },
+   {
+    "from": "5 pm",
+    "for": "3 hours",
+    "where": "the Palace of the Kings, Windhelm",
+    "doing": "eating dinner"
+   },
+   {
+    "from": "8 pm",
+    "for": "16 hours",
+    "where": "his lab upstairs, Palace of the Kings, Windhelm",
+    "doing": "working in his lab (also 4 to 5 pm)"
+   }
+  ],
+  "changes": [
+   "In Blood on the Ice he's a suspect: one way it ends, the journal says you found him to be the Butcher of Windhelm and brought him to justice."
+  ],
+  "role": "court wizard of Windhelm; merchant; Destruction trainer",
+  "sells": "trades as the court wizard, 8 am to 8 pm; his stock list isn't resolved in the extracts",
+  "trains": "Destruction to 75 (journeyman)",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Delivery",
+    "how": "its target: an item is delivered to him (gold reward)"
+   },
+   {
+    "quest": "Blood on the Ice",
+    "how": "a suspect; one ending names him the Butcher"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "sells",
+    "why": "His vendor list and chest are only raw ids in the extract; what he sells isn't resolved."
+   },
+   {
+    "field": "changes",
+    "why": "Where he goes after the ending that names him the Butcher isn't in the extracts."
+   },
+   {
+    "field": "race",
+    "why": "The record's race is the elderly race the extracts call 'Elder'."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:014146",
+   "USKPWuunferthSleep12x4 Unofficial Skyrim Special Edition Patch.esp:02F6AA",
+   "AIOWHWuunferthEatDinner AI Overhaul.esp:174F34",
+   "WuunferthPuttersAboutInLabAllDay Skyrim.esm:035EA6",
+   "trainer Destruction Journeyman cap 75",
+   "vendor hours 8-20",
+   "JobCourtWizardFaction, JobMerchantFaction, ServicesWindhelmWuunferth, JobTrainerDestructionFaction",
+   "FreeformWindhelmA Skyrim.esm:0CD882 alias Target",
+   "MS11 Skyrim.esm:01F7A3 stage 100 log"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:039840",
+  "name": "Isabelle Rolaine",
+  "race": "Breton",
+  "sex": "female",
+  "firstMeet": "Dead in Hob's Fall Cave, Winterhold hold (near Dawnstar), found during Drowned Sorrows.",
+  "day": [],
+  "changes": [],
+  "role": "quest target (her body carries a letter to Ranmir)",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Drowned Sorrows",
+    "how": "its target: find out what became of her; her body in Hob's Fall Cave has a letter for Ranmir"
+   }
+  ],
+  "canDie": "can die (found already dead)",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:039840",
+   "no packages",
+   "placed ref Skyrim.esm:064EAF in Hob's Fall Cave",
+   "FreeformWinterholdC Skyrim.esm:064EA8 stage 30 log: 'Isabelle Rolaine is dead'"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01CD90",
+  "name": "Vex",
+  "race": "Imperial",
+  "sex": "female",
+  "firstMeet": "In the Ragged Flagon, the Thieves Guild's tavern in the Ratway under Riften.",
+  "day": [
+   {
+    "from": "6 am",
+    "for": "18 hours",
+    "where": "the Ragged Flagon, Riften",
+    "doing": "about the Flagon"
+   },
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "the Ragged Flagon, Riften",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "If you're banned from the Thieves Guild, she's who you pay to get back in (Reparations)."
+  ],
+  "role": "Thieves Guild member; gives Guild jobs; Lockpicking trainer",
+  "sells": "",
+  "trains": "Lockpicking (master tier)",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Meet the Family",
+    "how": "a step in it: learn more about the Guild from Vex"
+   },
+   {
+    "quest": "Loud and Clear",
+    "how": "a step in it (optional): ask her about Goldenglow Estate"
+   },
+   {
+    "quest": "The Pursuit",
+    "how": "a step in it (optional): ask her about Vald"
+   },
+   {
+    "quest": "No Stone Unturned",
+    "how": "gives it: bring her the Unusual Gem once you're a full member; she restores the Crown of Barenziah"
+   },
+   {
+    "quest": "Reparations",
+    "how": "gives it: bring her gold to be let back into the Guild"
+   },
+   {
+    "quest": "The Shill Job",
+    "how": "gives it: plant evidence, return to Vex"
+   },
+   {
+    "quest": "The Heist Job",
+    "how": "gives it: retrieve an item, return it to Vex"
+   },
+   {
+    "quest": "The Burglary Job",
+    "how": "gives it: retrieve an item from a wealthy home, return it to Vex"
+   },
+   {
+    "quest": "The Sweep Job",
+    "how": "gives it: clear a wealthy home of valuables, return them to Vex"
+   },
+   {
+    "quest": "Drowned Sorrows",
+    "how": "a step in it: she tells you Isabelle went to Hob's Fall Cave"
+   },
+   {
+    "quest": "Under New Management",
+    "how": "a step in it: she's among the Guild members at the ceremony in the Cistern"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "trains",
+    "why": "Her trainer record gives the master tier but no level cap in the extract."
+   },
+   {
+    "field": "day",
+    "why": "Between her two-hour Flagon windows (10 am to noon, 2 to 4 pm, 6 to 8 pm) she runs a package with no place given; I've assumed she stays in the Flagon."
+   },
+   {
+    "field": "quests",
+    "why": "She also fills a part in The Litany of Larceny, but its objectives only name Delvin."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01CD90",
+   "ThievesGuildVexSandbox 6/8/12/16/20/22 x2 Skyrim.esm:10F11A-10F11F",
+   "USKPThievesGuildVexSleep Unofficial Skyrim Special Edition Patch.esp:041302",
+   "ThievesGuildVexPackage0x0 Skyrim.esm:0E3F8F",
+   "trainer Lockpick Master",
+   "TG02B, TG02, TG07, TGCrown, TGBan, TGRDU, TGRSL, TGRBE, TGRHC, TGLeadership, FreeformWinterholdC, TGLarceny aliases",
+   "placed ref Skyrim.esm:028938 in The Ragged Flagon",
+   "essential flag"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C19B",
+  "name": "Nirya",
+  "race": "Altmer",
+  "sex": "female",
+  "firstMeet": "At the College of Winterhold; she lives in the Hall of Attainment.",
+  "day": [
+   {
+    "from": "9 am",
+    "for": "2 hours",
+    "where": "the College courtyard, Winterhold",
+    "doing": "outside"
+   },
+   {
+    "from": "11 am",
+    "for": "6 hours",
+    "where": "the Arcanaeum, College of Winterhold",
+    "doing": "reading"
+   },
+   {
+    "from": "5 pm",
+    "for": "2 hours",
+    "where": "the Hall of Attainment, College of Winterhold",
+    "doing": "eating"
+   },
+   {
+    "from": "7 pm",
+    "for": "4 hours",
+    "where": "her room, Hall of Attainment",
+    "doing": "in her room"
+   },
+   {
+    "from": "11 pm",
+    "for": "3 hours",
+    "where": "the Hall of Countenance, College of Winterhold",
+    "doing": "visiting Sergius"
+   },
+   {
+    "from": "2 am",
+    "for": "7 hours",
+    "where": "her room, Hall of Attainment",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "College of Winterhold mage; quest giver (Research Thief)",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Research Thief",
+    "how": "gives it: help her steal Faralda's notes, or tell Faralda the plot"
+   },
+   {
+    "quest": "The Black Star",
+    "how": "a step in it: one of the College's elven mages you may ask while hunting for the mage from Aranea's vision"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "day",
+    "why": "Her 11 am to 5 pm Arcanaeum hours carry a long list of conditions the extract only shows as an unnamed function; if they fail she spends those hours in her room."
+   },
+   {
+    "field": "quests",
+    "why": "She also fills parts in First Lessons, Hitting the Books and Containment, but their objectives don't say what she does; in The Black Star her part is my reading of the alias, not stated."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01C19B",
+   "AIOWinterholdNiryaOutside AI Overhaul.esp:174F2C",
+   "WCollegeNiryaSandboxArcanaeum11x6 Skyrim.esm:036E9B (fn612 conditions)",
+   "AIOWinterholdNiryaEat AI Overhaul.esp:22B49F",
+   "WCollegeNiryaVisitSergius23x3 Skyrim.esm:036E99",
+   "WCollegeNiryaSleep2x7 Skyrim.esm:036E98",
+   "WCollegeNiryaSandboxRoom Skyrim.esm:036E9A",
+   "FreeformWinterholdCollegeA Skyrim.esm:05D2E9 giver",
+   "DA01 Skyrim.esm:028AD6 alias Nirya",
+   "protected flag"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C1A0",
+  "name": "Mirabelle Ervine",
+  "race": "Breton",
+  "sex": "female",
+  "firstMeet": "At the College of Winterhold: mornings in the Hall of the Elements, midday in the courtyard; she gives new members the tour in First Lessons.",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "1 hour",
+    "where": "near her quarters, Hall of Attainment",
+    "doing": "breakfast"
+   },
+   {
+    "from": "9 am",
+    "for": "2 hours",
+    "where": "the Hall of the Elements, College of Winterhold",
+    "doing": "about the hall"
+   },
+   {
+    "from": "11 am",
+    "for": "1 hour",
+    "where": "the College courtyard",
+    "doing": "outside"
+   },
+   {
+    "from": "noon",
+    "for": "1 hour",
+    "where": "near her quarters, Hall of Attainment",
+    "doing": "lunch"
+   },
+   {
+    "from": "1 pm",
+    "for": "3 hours",
+    "where": "the College courtyard (Tuesdays and Thursdays 1 to 3 pm in the Hall of Countenance)",
+    "doing": "outside"
+   },
+   {
+    "from": "4 pm",
+    "for": "2 hours",
+    "where": "her quarters, Hall of Attainment",
+    "doing": "about her quarters"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "the Hall of Countenance",
+    "doing": "dinner"
+   },
+   {
+    "from": "7 pm",
+    "for": "8 hours",
+    "where": "her quarters, Hall of Attainment",
+    "doing": "about her quarters"
+   },
+   {
+    "from": "3 am",
+    "for": "5 hours",
+    "where": "her quarters, Hall of Attainment",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Her morning hours in the Hall of the Elements stop when a College quest flag is set (by its owner, likely when the hall is shut during the Eye of Magnus trouble)."
+  ],
+  "role": "Master Wizard of the College; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "First Lessons",
+    "how": "a step in it: report to her for the tour of the College"
+   },
+   {
+    "quest": "Hitting the Books",
+    "how": "gives it: speak with Mirabelle Ervine about researching the Saarthal find"
+   },
+   {
+    "quest": "Revealing the Unseen",
+    "how": "gives it: she sends you to Mzulft after the Synod"
+   },
+   {
+    "quest": "Containment",
+    "how": "gives it: report to her once Winterhold is safe"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "changes",
+    "why": "What sets the College quest flag that ends her Hall of the Elements hours isn't in the extracts."
+   },
+   {
+    "field": "quests",
+    "why": "She also fills parts in Good Intentions, The Staff of Magnus and Rogue Wizard, but their objectives don't name her."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01C1A0",
+   "WCollegeMirabelleBreakfast8x1 Skyrim.esm:05DD6C",
+   "WCollegeMirabelleSandboxGreatHall9x2 Skyrim.esm:05DD6D (GetVMQuestVariable Skyrim.esm:03618F == 0)",
+   "WCollegeMirabelleSandboxOutside11x5 Skyrim.esm:05DD6F",
+   "WCollegeMirabelleLunch12x1 Skyrim.esm:05DD71",
+   "WCollegeMirabelleSandboxDorm13x2 Skyrim.esm:05DD70 (day of week 10)",
+   "WCollegeMirabelleDinner18x1 Skyrim.esm:05DD72",
+   "WCollegeMirabelleSleep3x5 Skyrim.esm:05DD6B",
+   "DefaultSandboxEditorLocation512",
+   "placed ref Skyrim.esm:01C1B9 in Hall of Attainment",
+   "MG01, MG03, mg06, MG05 objectives",
+   "essential flag"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C19F",
+  "name": "Savos Aren",
+  "race": "Dunmer",
+  "sex": "male",
+  "firstMeet": "At the College of Winterhold: mornings in the Hall of the Elements, otherwise about the Arch-Mage's Quarters.",
+  "day": [
+   {
+    "from": "7 am",
+    "for": "1 hour",
+    "where": "the Arch-Mage's Quarters, College of Winterhold",
+    "doing": "breakfast"
+   },
+   {
+    "from": "8 am",
+    "for": "3 hours",
+    "where": "the Hall of the Elements, College of Winterhold",
+    "doing": "about the hall"
+   },
+   {
+    "from": "noon",
+    "for": "1 hour",
+    "where": "the Arch-Mage's Quarters",
+    "doing": "lunch"
+   },
+   {
+    "from": "2 pm",
+    "for": "4 hours",
+    "where": "outside, around the College (weekdays)",
+    "doing": "touring the grounds"
+   },
+   {
+    "from": "the rest of the day",
+    "for": "",
+    "where": "the Arch-Mage's Quarters",
+    "doing": "about his quarters"
+   },
+   {
+    "from": "1 am",
+    "for": "6 hours",
+    "where": "the Arch-Mage's Quarters",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Killed in Containment when Ancano's work with the Eye of Magnus goes wrong."
+  ],
+  "role": "Arch-Mage of the College of Winterhold; quest character",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Under Saarthal",
+    "how": "a step in it: talk to the Arch-Mage at the end"
+   },
+   {
+    "quest": "Hitting the Books",
+    "how": "a step in it: he sends you to Urag gro-Shub"
+   },
+   {
+    "quest": "Good Intentions",
+    "how": "a step in it: report to Savos Aren"
+   },
+   {
+    "quest": "Revealing the Unseen",
+    "how": "a step in it: report to him, then help him reach Ancano"
+   },
+   {
+    "quest": "Containment",
+    "how": "changed by it: you're sent to find him and he's been killed"
+   }
+  ],
+  "canDie": "essential (but killed by the story in Containment)",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "day",
+    "why": "His weekday 2 to 6 pm package has no place in the extract; 'touring the grounds' is from the package's name only."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills a part in Rogue Wizard, but its objectives don't name him."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01C19F",
+   "WCollegeSavosTourExterior14x4 Skyrim.esm:05DD67 (day of week 7)",
+   "WCollegeSavosSandboxGreatHall8x3 Skyrim.esm:05DD68",
+   "WCollegeSavosLunch12x1 Skyrim.esm:05DD6A",
+   "WCollegeSavosBreakfast7x1 Skyrim.esm:05DD69",
+   "WCollegeSavosSleep1x6 Skyrim.esm:05DD62",
+   "placed ref Skyrim.esm:01C1B8 in Arch-Mage's Quarters",
+   "MG05 Skyrim.esm:01F255 stage 30 log: 'killing the Arch-Mage'",
+   "MG02, MG03, MG04, mg06 objectives",
+   "essential flag"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01E7D7",
+  "name": "Ancano",
+  "race": "Altmer",
+  "sex": "male",
+  "firstMeet": "In the Hall of the Elements, College of Winterhold.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "the Hall of the Elements, College of Winterhold",
+    "doing": "about the hall"
+   },
+   {
+    "from": "midnight",
+    "for": "4 hours",
+    "where": "the Hall of Attainment",
+    "doing": "sleeping (once you're past the start of First Lessons)"
+   }
+  ],
+  "changes": [
+   "Turns on the College: in Containment he unleashes the Eye of Magnus and in The Eye of Magnus you must defeat him."
+  ],
+  "role": "Thalmor adviser at the College; the College questline's enemy",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Good Intentions",
+    "how": "a step in it: follow Ancano to the Psijic monk"
+   },
+   {
+    "quest": "Containment",
+    "how": "changed by it: he's done something to the Eye of Magnus"
+   },
+   {
+    "quest": "Revealing the Unseen",
+    "how": "a step in it: reach Ancano, who has locked himself in with the Eye"
+   },
+   {
+    "quest": "The Eye of Magnus",
+    "how": "its target: defeat Ancano"
+   }
+  ],
+  "canDie": "essential until The Eye of Magnus, where he's defeated",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills parts in First Lessons, Hitting the Books and The Staff of Magnus, but their objectives don't say what he does."
+   },
+   {
+    "field": "canDie",
+    "why": "His record is flagged essential; that the quest lets him die is from the journal ('Ancano has been defeated'), not a flag change seen in the extract."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01E7D7",
+   "WCollegeAncanoSleepPackage Skyrim.esm:0FBFD7 (MG01 stage >= 40)",
+   "DefaultSandboxEditorLocation512",
+   "placed ref Skyrim.esm:01E7D8 in Hall of the Elements",
+   "MG04, MG05, mg06, MG08 logs and objectives",
+   "MGThalmorFaction",
+   "essential flag"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:02BA3C",
+  "name": "Quaranir",
+  "race": "Altmer",
+  "sex": "male",
+  "firstMeet": "In the Arch-Mage's Quarters at the College of Winterhold, when Ancano takes you to him in Good Intentions.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "the Arch-Mage's Quarters, College of Winterhold",
+    "doing": "staying where he's placed"
+   }
+  ],
+  "changes": [],
+  "role": "Psijic monk; quest character",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Good Intentions",
+    "how": "a step in it: speak with Quaranir, who warns you about the Eye of Magnus"
+   },
+   {
+    "quest": "The Eye of Magnus",
+    "how": "a step in it: speak with Quaranir at the end"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "day",
+    "why": "He has no AI packages in the extract; whether he's there before Good Intentions (his enable state) isn't recorded."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:02BA3C",
+   "no packages",
+   "placed ref Skyrim.esm:02BA3D in Arch-Mage's Quarters",
+   "MG04 Skyrim.esm:01F254 objective 30 and stage 40 log",
+   "MG08 Skyrim.esm:01F258 objective 50",
+   "essential flag"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:034CBA",
+  "name": "Paratus Decimius",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "Deep in Mzulft (the Aedrome), the Dwemer ruin near Windhelm in Eastmarch, during Revealing the Unseen.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "Mzulft Aedrome",
+    "doing": "staying where he's placed"
+   }
+  ],
+  "changes": [],
+  "role": "the surviving Synod researcher; quest character",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Revealing the Unseen",
+    "how": "a step in it: return the Focusing Crystal to him, follow him to the Oculory, talk to him"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "day",
+    "why": "He has no AI packages and no quest aliases in his own record; his place and part come from his placed cell and from Revealing the Unseen's objectives and journal."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:034CBA",
+   "no packages",
+   "people_raw cell Mzulft Aedrome",
+   "mg06 Skyrim.esm:01F256 objectives 35/37/55 and stage 32 log",
+   "quest_givers mg06 others list",
+   "essential flag"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:034D97",
+  "name": "Estormo",
+  "race": "Altmer",
+  "sex": "male",
+  "firstMeet": "At Labyrinthian in Hjaalmarch, during The Staff of Magnus, where the Thalmor try to stop you.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "his spot at Labyrinthian",
+    "doing": "waiting"
+   }
+  ],
+  "changes": [],
+  "role": "Thalmor agent; enemy in The Staff of Magnus",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Staff of Magnus",
+    "how": "its target: he's the Thalmor you must escape at Labyrinthian"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "firstMeet",
+    "why": "He has no placed cell; his quest alias points to Labyrinthian in the open world, and his only package holds a marker the extract doesn't place. That he's the Thalmor of 'Escape the Thalmor' is my reading of his Thalmor faction and the objective."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:034D97",
+   "MG07BasePackage Skyrim.esm:035558 (marker Skyrim.esm:054797)",
+   "MG07 Skyrim.esm:01F257 alias MG07EstormoAlias, ref Skyrim.esm:034D98 at Labyrinthian, objective 60",
+   "MGThalmorFaction"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C196",
+  "name": "Brelyna Maryon",
+  "race": "Dunmer",
+  "sex": "female",
+  "firstMeet": "At the College of Winterhold; she's one of the new apprentices, at Tolfdir's first lesson in the Hall of the Elements, and lives in the Hall of Attainment.",
+  "day": [
+   {
+    "from": "2 pm",
+    "for": "3 hours",
+    "where": "the College courtyard",
+    "doing": "outside"
+   },
+   {
+    "from": "5 pm",
+    "for": "2 hours",
+    "where": "the Hall of Attainment",
+    "doing": "eating (weekends 5 to 8 pm at the Frozen Hearth in Winterhold instead)"
+   },
+   {
+    "from": "10 pm",
+    "for": "8 hours",
+    "where": "her room, Hall of Attainment",
+    "doing": "sleeping"
+   },
+   {
+    "from": "the rest of the day",
+    "for": "",
+    "where": "her room, Hall of Attainment",
+    "doing": "in her room"
+   }
+  ],
+  "changes": [
+   "While First Lessons is under way she stands at her place in the Hall of the Elements for the lesson, all day."
+  ],
+  "role": "College apprentice; quest giver (Brelyna's Practice); can follow you; marriage candidate",
+  "sells": "",
+  "trains": "",
+  "joins": "yes, she can become a follower; what unlocks it isn't in the extracts",
+  "marries": "yes (she's in the marriage pool); the extracts don't show what she asks first",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Brelyna's Practice",
+    "how": "gives it: be the test subject for her new spells"
+   },
+   {
+    "quest": "First Lessons",
+    "how": "a step in it: she's at Tolfdir's first lesson in the Hall of the Elements"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "joins",
+    "why": "She's a potential follower, but the dialogue that recruits her isn't in the extracts."
+   },
+   {
+    "field": "sells",
+    "why": "Her record carries a vendor list with no chest and no merchant faction; that looks like follower trading, not a shop."
+   },
+   {
+    "field": "quests",
+    "why": "She also fills a part in Under Saarthal, but its objectives don't name her."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01C196",
+   "MG01BrelynaHoldAtClassMarker Skyrim.esm:020039 (MG01 stage 10-199)",
+   "AIOWinterholdBrelynaWeekends AI Overhaul.esp:22B49C (day of week 8)",
+   "AIOWinterholdBrelynaOutside AI Overhaul.esp:22B49D",
+   "AIOWinterholdNiryaEat AI Overhaul.esp:22B49F",
+   "WCollegeBrelynaSleep22x8 Skyrim.esm:036E92",
+   "WCollegeBrelynaSandboxRoom Skyrim.esm:036E93",
+   "PotentialFollowerFaction",
+   "PotentialMarriageFaction",
+   "MGRAppBrelyna01 Skyrim.esm:0C0416 giver"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C195",
+  "name": "J'zargo",
+  "race": "Khajiit (Dagi-Raht)",
+  "sex": "male",
+  "firstMeet": "At the College of Winterhold; one of the new apprentices, living in the Hall of Attainment.",
+  "day": [
+   {
+    "from": "10 am",
+    "for": "4 hours",
+    "where": "the Hall of the Elements, College of Winterhold",
+    "doing": "practising magic"
+   },
+   {
+    "from": "5 pm",
+    "for": "2 hours",
+    "where": "the Hall of Attainment",
+    "doing": "eating"
+   },
+   {
+    "from": "10 pm",
+    "for": "8 hours",
+    "where": "his room, Hall of Attainment",
+    "doing": "sleeping"
+   },
+   {
+    "from": "the rest of the day",
+    "for": "",
+    "where": "his room, Hall of Attainment",
+    "doing": "in his room"
+   }
+  ],
+  "changes": [
+   "His practice hours stop when the same College quest flag that closes the Hall of the Elements to the others is set."
+  ],
+  "role": "College apprentice; quest giver (J'zargo's Experiment); can follow you",
+  "sells": "",
+  "trains": "",
+  "joins": "yes, he can become a follower; what unlocks it isn't in the extracts",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "J'zargo's Experiment",
+    "how": "gives it: test his Flame Cloak scrolls on the undead, then speak to J'zargo"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "day",
+    "why": "His 10 am to 2 pm practice also needs him to be in the hall already or near the player or certain College people; otherwise he stays in his room."
+   },
+   {
+    "field": "joins",
+    "why": "He's a potential follower, but the dialogue that recruits him isn't in the extracts."
+   },
+   {
+    "field": "sells",
+    "why": "His record carries a vendor list with no chest and no merchant faction; that looks like follower trading, not a shop."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills parts in First Lessons, Under Saarthal and Hitting the Books, but their objectives don't name him."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01C195",
+   "WCollegeJzargoSleep22x8 Skyrim.esm:036A71",
+   "WCollegeJzargoPracticeMagic10x4 Skyrim.esm:098B99",
+   "AIOWinterholdNiryaEat AI Overhaul.esp:22B49F",
+   "WCollegeJzargoSandboxRoom Skyrim.esm:036E90",
+   "PotentialFollowerFaction",
+   "MGRAppJzargo01 Skyrim.esm:0958B3 giver"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C194",
+  "name": "Onmund",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "At the College of Winterhold; one of the new apprentices, living in the Hall of Attainment.",
+  "day": [
+   {
+    "from": "noon",
+    "for": "4 hours",
+    "where": "the Hall of the Elements, College of Winterhold",
+    "doing": "practising spells (flames, sparks, frost or turn undead)"
+   },
+   {
+    "from": "5 pm",
+    "for": "2 hours",
+    "where": "the Hall of Attainment",
+    "doing": "eating (weekends 5 to 8 pm at the Frozen Hearth in Winterhold instead)"
+   },
+   {
+    "from": "10 pm",
+    "for": "8 hours",
+    "where": "his room, Hall of Attainment",
+    "doing": "sleeping"
+   },
+   {
+    "from": "the rest of the day",
+    "for": "",
+    "where": "his room, Hall of Attainment",
+    "doing": "in his room"
+   }
+  ],
+  "changes": [],
+  "role": "College apprentice; quest giver (Onmund's Request); can follow you; marriage candidate",
+  "sells": "",
+  "trains": "",
+  "joins": "yes, he can become a follower; what unlocks it isn't in the extracts",
+  "marries": "yes (he's in the marriage pool); the extracts don't show what he asks first",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Onmund's Request",
+    "how": "gives it: get his amulet back from Enthir"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "joins",
+    "why": "He's a potential follower, but the dialogue that recruits him isn't in the extracts."
+   },
+   {
+    "field": "sells",
+    "why": "His record carries a vendor list with no chest and no merchant faction; that looks like follower trading, not a shop."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills parts in First Lessons and Under Saarthal, but their objectives don't name him."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01C194",
+   "AIOWinterholdOnmundMagicAlt AI Overhaul.esp:531E14",
+   "WCollegeOnmundPracticeFlames/Shock/Frost/TurnUndead12x4 Skyrim.esm:098B9B/098B9A/098B9C/098B9D",
+   "AIOWinterholdOnmundWeekends AI Overhaul.esp:22B49B (day of week 8)",
+   "AIOWinterholdNiryaEat AI Overhaul.esp:22B49F",
+   "WCollegeOnmundSleep22x8 Skyrim.esm:036E95",
+   "WCollegeOnmundSandboxRoom Skyrim.esm:036E96",
+   "PotentialFollowerFaction",
+   "PotentialMarriageFaction",
+   "MGRAppOnmund01 Skyrim.esm:06BC33 giver"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C19C",
+  "name": "Enthir",
+  "race": "Bosmer",
+  "sex": "male",
+  "firstMeet": "At the College of Winterhold; his room is in the Hall of Attainment.",
+  "day": [
+   {
+    "from": "3 pm",
+    "for": "2 hours",
+    "where": "the Hall of the Elements, College of Winterhold",
+    "doing": "about the hall"
+   },
+   {
+    "from": "5 pm",
+    "for": "2 hours",
+    "where": "the Hall of Attainment",
+    "doing": "eating"
+   },
+   {
+    "from": "10 pm",
+    "for": "2 hours",
+    "where": "Birna's Oddments, Winterhold (Tuesdays and Thursdays)",
+    "doing": "visiting"
+   },
+   {
+    "from": "11 pm",
+    "for": "3 hours",
+    "where": "the Frozen Hearth, Winterhold (Fridays)",
+    "doing": "at the inn"
+   },
+   {
+    "from": "3 am",
+    "for": "6 hours",
+    "where": "his room, Hall of Attainment",
+    "doing": "sleeping"
+   },
+   {
+    "from": "the rest of the day",
+    "for": "",
+    "where": "his room, Hall of Attainment",
+    "doing": "in his room"
+   }
+  ],
+  "changes": [
+   "When a College quest flag is set (the one that closes the Hall of the Elements), he goes straight to his room."
+  ],
+  "role": "College mage; fence; quest giver",
+  "sells": "a fence: trades in stolen goods, any hour; his stock list isn't resolved in the extracts",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Onmund's Request",
+    "how": "a step in it: he has Onmund's amulet and wants a staff for it"
+   },
+   {
+    "quest": "Arniel's Endeavor",
+    "how": "gives one part (fetch him a staff to settle a trade with Arniel); another part sends you to him about a lost courier"
+   },
+   {
+    "quest": "Hard Answers",
+    "how": "gives it: he reads Gallus' journal as Falmer and sends you to Calcelmo, then translates it"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "sells",
+    "why": "His fence faction is listed at rank -1 in his record, which may mean he only fences once something switches it on; the extracts don't say what."
+   },
+   {
+    "field": "changes",
+    "why": "What sets the College quest flag isn't in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01C19C",
+   "WCollegeEnthirTraveltoRoom Skyrim.esm:0E953B (GetVMQuestVariable Skyrim.esm:03618F == 1)",
+   "AIOWinterholdEnthirVisitInn AI Overhaul.esp:22B499 (day of week 5)",
+   "WCollegeEnthirVisitBirna22x2 Skyrim.esm:036A6F (day of week 10)",
+   "WCollegeEnthirSandboxHallofElements15x2 Skyrim.esm:036A6E",
+   "AIOWinterholdNiryaEat AI Overhaul.esp:22B49F",
+   "WCollegeEnthirSleep3x6 Skyrim.esm:036A6C",
+   "WCollegeEnthirSandboxRoom Skyrim.esm:036A6D",
+   "JobFenceFaction, ServicesWinterholdCollegeEnthir, vendor 0-24 with chest",
+   "MGRAppOnmund01, MGRArniel02, MGRArniel04, TG06 Skyrim.esm:021552",
+   "essential flag"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:000007",
+  "name": "Prisoner",
+  "race": "",
+  "sex": "",
+  "firstMeet": "",
+  "day": [],
+  "changes": [],
+  "role": "this is the player's own record (you), not someone to find",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [],
+  "canDie": "",
+  "unsure": [
+   {
+    "field": "role",
+    "why": "The record is the player character; it fills the player slot in hundreds of quests, which aren't listed here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:000007",
+   "PlayerFaction",
+   "no entry in people_raw"
+  ]
+ }
+]
