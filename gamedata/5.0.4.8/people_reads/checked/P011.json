@@ -1,0 +1,2439 @@
+{
+ "checks": [
+  {
+   "id": "Journey to Baan Malur.esp:350429",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "package DresSlaverSoldierOutsidePKG sits on a marker whose nearest named place is Dres Slaver's Camp (0 km); quest alias puts her ref in the Morrowind exterior; stage 50 journal 'the door guard let me right in'"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "single unconditional package, no hours (schedule raw ffff00ff..., duration 0), so she's at that spot outside the camp around the clock"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no package is quest-gated; only The Struggle for Justice (other giver below stage 40) touches her"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "BanditFaction + DresSlaversFaction, no job factions; alias DresSoldier in The Struggle for Justice"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no follower factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:10B1D8 and outfit appear in no other extract, so nothing resolves to skills or a weapon; unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers lists her as other giver of The Struggle for Justice below stage 40 (stage 20 'investigate the camp', 50 'door guard let me right in'); the reader's 'a step in it' fits"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Journey to Baan Malur.esp:44F882",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in the Dres Slaver's Camp cell (people_raw) and alias DresCaptainAlly sits there"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "DresSlaverCaptainPKG, no hours, location the Dres Slaver's Camp cell, unconditional"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "stage 60 'I killed the Dres Captain there'; stage 120 'sell-out the Saxhleel to the Dres Captain at the camp'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "Bandit/DresSlavers factions only; quest target"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:10B1D8 and outfit appear in no other extract, so nothing resolves to skills or a weapon; unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "other giver below stage 120 and alias DresCaptainAlly; stages 60-80 kill him, 120 sell out to him. The raid's 'Dres Captain' is a different record (44A747)"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Katana.esp:8E6C1E",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in The Drunken Huntsman, Whiterun (people_raw); Chasing the Current stage 20 sends you to sit there and 'someone's supposed to come find me' and she's its other giver below stage 21"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "AK69MegaraDefaultPackage, no hours, near editor location 800; needs DismissedFollowerFaction, which she starts in (rank 0); the wait-at-home package above needs three globals set by script"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "dismissal reading is right (both packages need DismissedFollowerFaction). But Serenata's 'about a day' is stage 40: Katana and Megara leave for about a day to arrange the wedding, before it; the honeymoon (stages 140-150) has no length in the records"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "PotentialFollowerFaction + follower flag; givers of Serenata, The Sweetest Carrot, The Khat's Eye (named), Ravens' Lament (stage below 11)"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 48cb0600, no container, no merchant faction: follower trade set-up, not a shop"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "Chasing the Current stage 270 'Maybe she'd even like to join us'; Megara Companion Quest exists but its recruiting dialogue isn't in the extracts"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false; Serenata is her wedding to Katana"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Katana.esp:C53869 and outfit appear in no other extract, so nothing resolves to skills or a weapon; unsure is right"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "Chasing the Current: she's its other giver below stage 21, so she's the one who finds you at the Drunken Huntsman (stage 20), and objective 130 'Head to the Frozen Hearth' then stage 160 'Megara has finally given me the location of the thief'; the reader only named the Silver-Blood Inn and Bee and Barb. Others check out"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Katana.esp:005900",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in The Winking Skeever, Solitude; Meeting Katana and Chasing the Current giver refs are there"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "AK69KatanaDefaultPackage, no hours, near editor location 800, needs DismissedFollowerFaction (starts in it, rank 0)"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "dismissal part right; the Serenata line has the same slip as Megara's: 'about a day' (stage 40) is the wedding arrangements before the ceremony, not the honeymoon (stages 140-150, no length given)"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "PotentialFollowerFaction + follower flag; giver of Chasing the Current, Sugar and Spice, Meeting Katana"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 48cb0600, no container: follower trade, not a shop"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "Meeting Katana stage 15 'Katana recruited'; Chasing the Current needs that stage >= 15 (quest_starts)"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Katana.esp:C5386A and outfit appear in no other extract, so nothing resolves to skills or a weapon; unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Chasing the Current giver below 10, Sugar and Spice giver, Ravens' Lament other giver below 11 with Megara, Serenata other giver below 131; seven alias quests (10E543, 2159C2, 44A0AE, 611E36, F13CD8, FEC756, 26F79E) aren't in quests_raw"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Katana.esp:B37E04",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Marker Storage Unit (holding cell); Serenata stage 120 'Chadryn, huh?' at the ceremony is the first time the records put him in front of you"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no packages at all"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "nothing in the records moves him beyond the two quests"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "no factions; giver of Honey Nuts and the Chin of Fate (named, stage below 1)"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:013180 and outfit appear in no other extract, so nothing resolves to skills or a weapon; unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Serenata other giver below 131 (stage 120-130 'Even Chadryn couldn't ruin...'); Honey Nuts giver, stage 10 'After dealing with Chadryn', objectives Solitude, Honningbrew Meadery, Riften, Riverwood"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Katana.esp:92DA3A",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in The Frozen Hearth, Winterhold; Chasing the Current objective 130 'Head to the Frozen Hearth'"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no packages: stays where placed"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no packages or stage text move her"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "only AK69ChasingCurrentFaction; part of Katana's quest"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:01CE15 and outfit appear in no other extract, so nothing resolves to skills or a weapon; unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "other giver of Chasing the Current below stage 161; journal never names her, so leaving her part unsure is right"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Katana.esp:8FB025",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Kilerth's Rest; Chasing the Current stage 180 'a house near Fort Fellhammer', objective 190 'Confront River'"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no packages"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Chasing the Current stage 270 'River got away'; Ravens' Lament stage 310 'River's gone'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "AK69ChasingCurrentFaction, AK69ThroneFaction; target of both quests"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:01317A and outfit appear in no other extract, so nothing resolves to skills or a weapon; unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "other giver below 221 (Chasing the Current) and 231 (Ravens' Lament); Fallowstone Cave stage 100, 'Hagravens?' stage 230, objective 'Defeat River and her friends'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true; reader rightly flags the essential vs 'River's gone' question as unsure"
+    }
+   }
+  },
+  {
+   "id": "Katana.esp:8283EB",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Marker Storage Unit; Ravens' Lament stage 140 'Megara thinks she knows where Shale is', 170 'Follow Shale', 290 'introduce myself to Shale' at the Bee and Barb"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "AK69ShaleDefaultPackage, Bee and Barb 800, no hours, needs DismissedFollowerFaction and global 0A5EEC == 1"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "same packages: nothing places him in the world before the global is set; wait-at-home above needs another global"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "PotentialFollowerFaction + follower flag"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 48cb0600, no container"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "Ravens' Lament stage 310 'maybe Shale wouldn't mind facing it with us'; Shale Companion Quest exists, no recruiting dialogue in extracts"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Katana.esp:9D1DFB and outfit appear in no other extract, so nothing resolves to skills or a weapon; unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Ravens' Lament other giver below 231; Serenata other giver below 41 (stage 40 'leaving Shale in my hands'); three alias quests (2159C2, 611E38, CC4B3C) not in quests_raw"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Katana.esp:B0F5BE",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Marker Storage Unit; only package AK69AlTharoDefaultPackage is in the Moorside Inn cell; Khat's Eye objective 5 'Relax at Moorside Inn'"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "one unconditional package in Moorside Inn, no hours"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "stage 80 'Megara will miss him' is the only hint; unsure is right"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "AK69KatanaFriendsFaction only; giver of The Khat's Eye (stage below 10)"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:01E7D0 and outfit appear in no other extract, so nothing resolves to skills or a weapon; unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "stages 40 spectacles by Movarth's Lair, 50 Thalmor spies, 60 return them"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "ksws04_quest.esp:000800",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "main quest stage 100 'mysterious note requesting a secret meeting at the Bannered Mare'; her ref is in ksws04UtilWorld until then"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "ksws04WaifuDefaultPackage in The Bannered Mare, no hours, needs main quest > 100; home package above needs global 000BDD == 1 too"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "stage 600 'before the Thalmor takes her across the border', 9000 'reported her to the Thalmor', 9100 failed rescue; packages need stage > 100"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "only ksws04WaifuFaction; giver of all four quests"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no follower faction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:07289D and outfit appear in no other extract, so nothing resolves to skills or a weapon; unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "main quest giver below 101; A Welkynar Legend book 'Skies of the North' from Urag; Drinking with Nirenoore; artifact quest titled by the item alias"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "ksws04_quest.esp:000801",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "ref in ksws04UtilWorld, no packages"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no packages"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "nothing in the records moves him"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "ThalmorFaction, TownSolitudeFaction, CrimeFactionHaafingar"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:072887 and outfit appear in no other extract, so nothing resolves to skills or a weapon; unsure is right"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "his lines run below stage 501, i.e. up to stage 500 (the drugged mead); stage 510 is when you wake in the cell. So he's someone you talk to before you and Nirenoore are captured, not 'up to your escape from the cell'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "ksws07_quest.esm:002039",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "fix",
+     "note": "mirror from Belethor's is right (stage 100), and it leads through the Labyrinthine Passages (stage 200) to the Crag Spire Wastes (300). But Seeking Out Shards ends 'This mirror leads to the Gallery of Mirrors', not to her; that clause is unsupported"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "cabin routine read right: farm 8-12, forge 12-16, house 16-20, bedroom 20-24, sleep 0-8, all near Othriel's Cabin; the top two fn310 packages are left unsure"
+    },
+    "changes": {
+     "verdict": "unsure",
+     "note": "the top two packages carry fn310 == 0 on form 0x05000E7A; if fn310 is GetInWorldspace and that form is the Crag Spire Wastes, they run whenever she's outside her realm. A decoded condition would settle it; kept as the reader's unsure. Refuse (stage 10000) and kill (20000-20100) endings are right"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "PotentialFollowerFaction + follower flag; giver of three quests; Another Book for Othriel stage 500 she crafts Rimeweld Armor"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 48cb0600, no container"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "PotentialFollowerFaction, no recruit dialogue in extracts"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:013177 and outfit appear in no other extract, so nothing resolves to skills or a weapon; unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Frozen Heart giver below 301 (Frostskarn Vault, Whispering Walls Catacombs, Cursed Shadow); Feyfolken III; The Armorer's Challenge + 5 Stalhrim Ores"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01BDB2",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in the Dark Brotherhood Sanctuary, inTown Falkreath"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "DefaultSleepEditorLoc24x8 midnight 8h first, then DefaultSandboxEditorLocation512 all day; both near his placed spot"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "DBDestroy alias FestusKrexAlias, objective 'Kill the Dark Brotherhood assassins!'; Death Incarnate has no Festus alias, unsure is right"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DarkBrotherhoodFaction; Recipe for Disaster giver below 3"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:01E7D0 and outfit appear in no other extract, so nothing resolves to skills or a weapon; unsure is right"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "missed: quest_givers names him (with Babette and the two initiates as others) on all five Listen contracts 'Contract: Kill' below stage 11; stage 40 'I have tasked another Dark Brotherhood member with killing the target'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01D4B7",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in the Dark Brotherhood Sanctuary, inTown Falkreath"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "all quest packages gated; bottom DefaultSandboxCurrentLocation256 has no hours and there's no sleep package"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "DB10 stand (stages 10-60), follow (60-70, in Sanctuary cell), by Astrid's end spot (== 80); USLEEP quarters 7 am 10h in Dawnstar Sanctuary once Hail Sithis! stage 60 is done; DBDestroy alias"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobApothecaryFaction, JobMerchantFaction, ServicesDBBabette, JobTrainerAlchemyFaction"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 4f244405 with chest 9fbd0a00, lists don't resolve; unsure is right"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer Alchemy, tier Master, levelCap null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:0E3A67 and outfit appear in no other extract, so nothing resolves to skills or a weapon; unsure is right"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "Death Incarnate other giver below 61, Hail Sithis! below 200, Unfinished Business stages 5/13 right. Missed: other giver on all five Listen 'Contract: Kill' quests below stage 11"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:015CFA",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Dawnstar Sanctuary"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "wait/follow/sanctuary packages need quest var on 01EA5C = 3/2/1; DBInitiate1SanctuaryPackageDefault, no hours, Dawnstar Sanctuary 512, catches everything else; no sleep package"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "var 3 wait in place, 2 follow, 1 go to / stay in the Sanctuary"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DarkBrotherhoodFaction; follow/wait packages"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false; follow state set by a quest variable on 01EA5C, not in quests_raw"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:01317F and outfit appear in no other extract, so nothing resolves to skills or a weapon; unsure is right"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "reader gave none; quest_givers lists him as other giver on all five Listen 'Contract: Kill' quests below stage 11"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:015CFE",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Dawnstar Sanctuary"
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "read in order: DBInitiate2StateSanctuaryPackageThere (in cell 0193EE, var == 1, no hours) sits above USLEEPDBInitiate2SleepDawnstarSanc, which has the same two conditions plus 9 pm 8h, so the sleep package never wins; with var not 1 the sleep package fails too and the no-hours default runs. She's about the Dawnstar Sanctuary all day, no bedtime"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "var 3 wait, 2 follow, 1 go to / stay in the Sanctuary"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DarkBrotherhoodFaction; follow/wait packages"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false; state from quest var on 01EA5C"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:01317F and outfit appear in no other extract, so nothing resolves to skills or a weapon; unsure is right"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "reader gave none; other giver on all five Listen 'Contract: Kill' quests below stage 11"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Lucien.esp:005900",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Dead Man's Drink, Falkreath; Lucien Map Marker objective 'Find Lucien Flavius'"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "all three packages need The Oblivion Engine >= 800, so before that he has none and stays where placed"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "home travel/sandbox in Dumzbthar Core while not CurrentFollowerFaction and stage >= 800 (stage 800 'He stayed behind to set up a laboratory'); Intruders stage 200 horse Clive"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "follower flag, DismissedFollowerFaction; giver of The Oblivion Engine and Intruders"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 48cb0600, no container"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "quest_starts gates his line on an unnamed quest's stage 15 (00591E); no recruit dialogue in extracts"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Lucien.esp:2BB7B9 and outfit appear in no other extract, so nothing resolves to skills or a weapon; unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Oblivion Engine giver below 1, Intruders giver below 1, Lucien Main Quest objective 45 'Bring Lucien a Dragon Bone', Map Marker"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected true"
+    }
+   }
+  },
+  {
+   "id": "Lucien.esp:62424D",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Dumzbthar (cell 17C68A); Intruders stage 20 'I have encountered a reactivated Dumzbthar'"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "JRLucienDumzbtharNPCSandbox, Dumzbthar Core, no hours, needs Intruders >= 200"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "the records don't show he can't be talked to before Intruders: he's placed in Dumzbthar and simply has no package until Intruders reaches stage 200, so he stays where placed; whether that ref starts disabled isn't in the extracts"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "no factions; Intruders named giver"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:017008 and outfit appear in no other extract, so nothing resolves to skills or a weapon; unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Intruders other giver below 21, objectives 20/50 'Talk to Dumzbthar', stage 60 called back by him; alias in unnamed 13FA47"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Meridia.esp:000D6C",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "NMeridia01MarithForcegreet01: Break of Dawn == 500, Meridia's Order == 0, not in the Sanctum, LocationHasKeyword 013168; stage 10 'approached by Paladin Marith'"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "bottom three packages (guard 5:00 12h, sandbox 17:00 3h in the Sanctum, sleep 20:00 9h) all need Infiltration < 30; everything above is quest-stage gated"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "follow packages in Meridia's Order 20-40, Prisoner 25-100, The Way In 30-70, The Ritual 20; Fort Justice routine at The Ritual >= 80 (0:00, 6:00, 10:00, 18:00 blocks)"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "PotentialFollowerFaction, NMeridiasOrderFaction rank 2; Meridia's Order giver"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 48cb0600, no container"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "PotentialFollowerFaction + follower flag; no recruit dialogue in extracts"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:013177 and outfit appear in no other extract, so nothing resolves to skills or a weapon; unsure is right"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "the eight listed check out (Prisoner stage 25 'Marith has suggested I speak with his mother'; Dark Dawn stage 35 names her). Missed: A New Day lists her as other giver below stage 61, and NMeridia06MarithGuard01 keeps her on guard from its stage 20 until The Way In 30"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Meridia.esp:000D6F",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Meridia's Sanctum; Meridia's Order objective 10 'Speak with High Priestess Alara at Meridia's Sanctum'"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "bottom two unconditional packages: rest 0:00 6h, prayer 6:00 18h, no place (so where she is, the Sanctum at first); the all-day sit packages above only run in Meridia's Order 30 to Our Lady 20 and Prisoner 80 to Infiltration 30"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Our Lady shrine forcegreet (== 20), A New Day follow (20-40), Fort Ruins stand (50-70), Fort Justice stands across Fort Justice/The Way In/The Pocket Realm; Fort Justice routine at The Ritual >= 80"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "PotentialFollowerFaction, NMeridiasOrderFaction rank 4; giver of six Order quests"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 48cb0600, no container"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "PotentialFollowerFaction + follower flag; no recruit dialogue in extracts"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:01E7D0 and outfit appear in no other extract, so nothing resolves to skills or a weapon; unsure is right"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "the eleven listed check out (Prisoner/Fort Justice/A New Day/The Way In/The Ritual giver below 11, Our Lady below 11, Pocket Realm below 31, Finding Yourself below 21). Missed: Stendarr's Mercy (Laracin's quest against the Vigilants of Stendarr) lists her as other giver below stage 21"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  }
+ ],
+ "people": [
+  {
+   "id": "Journey to Baan Malur.esp:350429",
+   "name": "Dres Soldier",
+   "race": "Dunmer",
+   "sex": "female",
+   "firstMeet": "Outside the Dres Slaver's Camp in the Craglands south of Baan Malur (Morrowind), west of the nearby Daedric ruin; she keeps the camp's door.",
+   "day": [
+    {
+     "from": "all day",
+     "for": "24 hours",
+     "where": "outside the Dres Slaver's Camp, south of Baan Malur",
+     "doing": "standing guard at the camp"
+    }
+   ],
+   "changes": [
+    "Only matters during The Struggle for Justice; the journal notes \"the door guard let me right in\"."
+   ],
+   "role": "slaver guard at the Dres Slaver's Camp; part of a quest",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Struggle for Justice",
+     "how": "a step in it: she's the slaver at the camp you deal with to get in (Kar-Jei sends you to free the Argonian slaves)"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "Her placed reference has no named cell in the extracts; the camp comes from her package's nearest named place and the quest's journal."
+    },
+    {
+     "field": "quests",
+     "why": "That she is the door guard the journal mentions is read from her quest alias and package; the records don't name her in the text."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "Journey to Baan Malur.esp:350429",
+    "DresSlaverSoldierOutsidePKG Journey to Baan Malur.esp:35043D (near ref 35043A, nearest Dres Slaver's Camp)",
+    "SOMRSaxhleelQuestMain Journey to Baan Malur.esp:3179BE alias DresSoldier (stage 20-50)",
+    "BanditFaction, SOMRBanditDialogueFaction, DresSlaversFaction",
+    "class Skyrim.esm:10B1D8"
+   ]
+  },
+  {
+   "id": "Journey to Baan Malur.esp:44F882",
+   "name": "Dres Captain",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "Inside the Dres Slaver's Camp, south of Baan Malur in the Craglands (Morrowind).",
+   "day": [
+    {
+     "from": "all day",
+     "for": "24 hours",
+     "where": "Dres Slaver's Camp, Morrowind",
+     "doing": "keeping to the camp"
+    }
+   ],
+   "changes": [
+    "The Struggle for Justice: you can kill him to free the slaves, or sell the Saxhleel out to him."
+   ],
+   "role": "leader of the slavers at the Dres Slaver's Camp; a quest target",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Struggle for Justice",
+     "how": "its target: kill him and free the slaves, or sell out the Saxhleel camp to him instead"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "Journey to Baan Malur.esp:44F882",
+    "DresSlaverCaptainPKG Journey to Baan Malur.esp:3555A7 (Dres Slaver's Camp, shared by 3)",
+    "SOMRSaxhleelQuestMain Journey to Baan Malur.esp:3179BE alias DresCaptainAlly (stages 60, 120)",
+    "BanditFaction, SOMRBanditDialogueFaction, DresSlaversFaction",
+    "class Skyrim.esm:10B1D8"
+   ]
+  },
+  {
+   "id": "Katana.esp:8E6C1E",
+   "name": "Megara",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "The Drunken Huntsman, Whiterun.",
+   "day": [
+    {
+     "from": "all day",
+     "for": "24 hours",
+     "where": "in and around the Drunken Huntsman, Whiterun",
+     "doing": "going about the inn (when she isn't travelling with you)"
+    }
+   ],
+   "changes": [
+    "Once she has joined you and you dismiss her, she goes back to the Drunken Huntsman, or to a home you've set for her if you have.",
+    "Serenata: before the wedding she and Katana go off for about a day to make arrangements, leaving you with Shale; after the ceremony they leave on their honeymoon and then rejoin you."
+   ],
+   "role": "follower; quest giver (Katana's partner)",
+   "sells": "",
+   "trains": "",
+   "joins": "She's a follower in Katana's group; Chasing the Current closes with the hope she'll join you. The exact recruiting condition isn't in the extracts.",
+   "marries": "no (she marries Katana in Serenata)",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Chasing the Current",
+     "how": "a step in it: she's the one who finds you at the Drunken Huntsman, then meets you at the Silver-Blood Inn, the Bee and Barb and the Frozen Hearth with bounty notes, and finally gives you the thief's location"
+    },
+    {
+     "quest": "The Ravens' Lament",
+     "how": "a step in it: she comes with you and Katana after River"
+    },
+    {
+     "quest": "Serenata",
+     "how": "gives it: talk to her in a city during the day with Katana and Shale; it's her wedding to Katana"
+    },
+    {
+     "quest": "The Sweetest Carrot",
+     "how": "gives it: steal a carrot from Chillfurrow Farm with her"
+    },
+    {
+     "quest": "Megara's Radiant Quests",
+     "how": "gives it: kill a bandit leader, then collect your reward from her"
+    },
+    {
+     "quest": "The Khat's Eye",
+     "how": "gives it: take her and Katana to Moorside Inn in Morthal"
+    },
+    {
+     "quest": "Sugar and Spice",
+     "how": "a step in it"
+    },
+    {
+     "quest": "Honey Nuts and the Chin of Fate",
+     "how": "a step in it: you take her and Katana around Skyrim"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "The wait-at-home package points at a marker in a holding cell, moved by script; read as a home you choose for her, which the extracts don't confirm."
+    },
+    {
+     "field": "joins",
+     "why": "Her follower quest exists but the dialogue that recruits her and its conditions aren't in the extracts."
+    },
+    {
+     "field": "sells",
+     "why": "Her only vendor data is the follower trade set-up with no stock container, so she isn't a shop."
+    },
+    {
+     "field": "quests",
+     "why": "She fills aliases in three more quests that have no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "Katana.esp:8E6C1E",
+    "AK69MegaraWaitAtHome Katana.esp:1CD736",
+    "AK69MegaraDefaultPackage Katana.esp:A9FDB4 (near editor location, 800)",
+    "DismissedFollowerFaction, PotentialFollowerFaction, AK69KatanaFaction",
+    "vendor 0-24 vendRaw 48cb0600, no container",
+    "AK69MegaraFollowQuest Katana.esp:1AF0EA",
+    "AK69KatanaPersonalQuest Katana.esp:8E1B19",
+    "AK69TheRavensLamentQuest Katana.esp:8BB420",
+    "AK69SerenataQuest Katana.esp:8BB421",
+    "AK69CarrotQuest Katana.esp:E02209",
+    "AK69MegaraBanditQuest Katana.esp:BEE373",
+    "AK69TheKhatsEyeQuest Katana.esp:C5896B",
+    "AK69SugarandSpiceQuest Katana.esp:E39DE4",
+    "AK69EasterEggsQuest Katana.esp:B74A58",
+    "unnamed Katana.esp:2159C2, 492468, 611E37",
+    "class Katana.esp:C53869"
+   ]
+  },
+  {
+   "id": "Katana.esp:005900",
+   "name": "Katana",
+   "race": "Katana Race (her own custom race)",
+   "sex": "female",
+   "firstMeet": "The Winking Skeever, Solitude.",
+   "day": [
+    {
+     "from": "all day",
+     "for": "24 hours",
+     "where": "in and around the Winking Skeever, Solitude",
+     "doing": "going about the inn (when she isn't travelling with you)"
+    }
+   ],
+   "changes": [
+    "Once she has joined you and you dismiss her, she goes back to the Winking Skeever, or to a home you've set for her if you have.",
+    "Serenata: before the wedding she and Megara go off for about a day to make arrangements, leaving you with Shale; after the ceremony they leave on their honeymoon and then rejoin you."
+   ],
+   "role": "follower; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "Talk to her at the Winking Skeever (Meeting Katana ends with \"Katana recruited\"); the conditions on that talk aren't in the extracts.",
+   "marries": "no (she marries Megara in Serenata)",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Meeting Katana",
+     "how": "gives it: recruiting her"
+    },
+    {
+     "quest": "Chasing the Current",
+     "how": "gives it: her personal quest, tracking a thief through bounties to River near Fort Fellhammer"
+    },
+    {
+     "quest": "The Ravens' Lament",
+     "how": "gives it: she wants to end things with River, starting at the Bee and Barb"
+    },
+    {
+     "quest": "Sugar and Spice",
+     "how": "gives it: head to Kilerth's Rest with her, then the coast by Katla's Farm"
+    },
+    {
+     "quest": "Serenata",
+     "how": "a step in it: her wedding to Megara"
+    },
+    {
+     "quest": "The Sweetest Carrot",
+     "how": "a step in it"
+    },
+    {
+     "quest": "The Khat's Eye",
+     "how": "a step in it"
+    },
+    {
+     "quest": "Honey Nuts and the Chin of Fate",
+     "how": "a step in it"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "The wait-at-home package points at a marker in a holding cell, moved by script; read as a home you choose for her, which the extracts don't confirm."
+    },
+    {
+     "field": "sells",
+     "why": "Her only vendor data is the follower trade set-up with no stock container, so she isn't a shop."
+    },
+    {
+     "field": "quests",
+     "why": "She fills aliases in seven more quests that have no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "Katana.esp:005900",
+    "AK69KatanaWaitAtHome Katana.esp:03D7B5",
+    "AK69KatanaDefaultPackage Katana.esp:A9ACB1 (near editor location, 800)",
+    "placed in The Winking Skeever (Katana.esp:005902)",
+    "AK69KatanaIntro Katana.esp:617D75 stage 15",
+    "AK69KatanaFollowQuest Katana.esp:00AA04",
+    "AK69KatanaPersonalQuest Katana.esp:8E1B19",
+    "AK69TheRavensLamentQuest Katana.esp:8BB420",
+    "AK69SugarandSpiceQuest Katana.esp:E39DE4",
+    "AK69SerenataQuest Katana.esp:8BB421",
+    "vendor 0-24 vendRaw 48cb0600, no container",
+    "class Katana.esp:C5386A"
+   ]
+  },
+  {
+   "id": "Katana.esp:B37E04",
+   "name": "Chadryn",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "At Katana and Megara's wedding in Serenata; he isn't placed anywhere in the world before that.",
+   "day": [],
+   "changes": [],
+   "role": "part of Katana's story; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Serenata",
+     "how": "a step in it: he turns up at the wedding ceremony"
+    },
+    {
+     "quest": "Honey Nuts and the Chin of Fate",
+     "how": "gives it: after dealing with him, you take Katana and Megara to Solitude, Riften and Riverwood"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "He is kept in a holding cell and has no AI packages, so where the ceremony puts him isn't in the extracts."
+    },
+    {
+     "field": "day",
+     "why": "He has no AI packages."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "Katana.esp:B37E04",
+    "placed in Marker Storage Unit (Katana.esp:B3CF24)",
+    "no packages, no factions",
+    "AK69SerenataQuest Katana.esp:8BB421 alias Chadryn (stage 120)",
+    "AK69EasterEggsQuest Katana.esp:B74A58 giver",
+    "class Skyrim.esm:013180"
+   ]
+  },
+  {
+   "id": "Katana.esp:92DA3A",
+   "name": "Elli",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "The Frozen Hearth, Winterhold, during Chasing the Current.",
+   "day": [
+    {
+     "from": "all day",
+     "for": "24 hours",
+     "where": "The Frozen Hearth, Winterhold",
+     "doing": "where she's placed (no schedule of her own)"
+    }
+   ],
+   "changes": [],
+   "role": "part of Katana's personal quest",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Chasing the Current",
+     "how": "a step in it: the contact at the Frozen Hearth"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "quests",
+     "why": "Her alias is in Chasing the Current near the Frozen Hearth stages, but the journal doesn't name her, so what she does there isn't stated."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "Katana.esp:92DA3A",
+    "placed in The Frozen Hearth (Katana.esp:AB89DE)",
+    "no packages",
+    "AK69ChasingCurrentFaction",
+    "AK69KatanaPersonalQuest Katana.esp:8E1B19 alias Elli (talk below stage 161)",
+    "class Skyrim.esm:01CE15"
+   ]
+  },
+  {
+   "id": "Katana.esp:8FB025",
+   "name": "River",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "Kilerth's Rest, a house near Fort Fellhammer, when you confront her in Chasing the Current.",
+   "day": [
+    {
+     "from": "all day",
+     "for": "24 hours",
+     "where": "Kilerth's Rest, near Fort Fellhammer",
+     "doing": "where she's placed (no schedule of her own)"
+    }
+   ],
+   "changes": [
+    "Chasing the Current: she gets away.",
+    "The Ravens' Lament: you defeat her and her friends; the journal ends \"River's gone\"."
+   ],
+   "role": "Katana's enemy; quest target",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Chasing the Current",
+     "how": "its target: the thief you confront at the house near Fort Fellhammer"
+    },
+    {
+     "quest": "The Ravens' Lament",
+     "how": "its target: chase her through Fallowstone Cave and defeat her and her hagravens"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "She's flagged essential, yet the journal says she's gone after The Ravens' Lament; whether she dies or just leaves isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "Katana.esp:8FB025",
+    "placed in Kilerth's Rest (Katana.esp:AE14A6)",
+    "no packages",
+    "AK69ChasingCurrentFaction, AK69ThroneFaction",
+    "AK69KatanaPersonalQuest Katana.esp:8E1B19 stages 180-270",
+    "AK69TheRavensLamentQuest Katana.esp:8BB420 stages 230, 310",
+    "class Skyrim.esm:01317A"
+   ]
+  },
+  {
+   "id": "Katana.esp:8283EB",
+   "name": "Shale",
+   "race": "Redguard",
+   "sex": "male",
+   "firstMeet": "During The Ravens' Lament, when you and Katana's group rescue him from River; you meet him properly afterwards at the Bee and Barb, Riften.",
+   "day": [
+    {
+     "from": "all day",
+     "for": "24 hours",
+     "where": "in and around the Bee and Barb, Riften",
+     "doing": "going about the inn when dismissed (after The Ravens' Lament)"
+    }
+   ],
+   "changes": [
+    "Before The Ravens' Lament he isn't anywhere in the world.",
+    "After it, when dismissed he goes to the Bee and Barb, or to a home you've set for him."
+   ],
+   "role": "follower",
+   "sells": "",
+   "trains": "",
+   "joins": "After The Ravens' Lament (the journal ends hoping he'll travel with you); the exact recruiting condition isn't in the extracts.",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Ravens' Lament",
+     "how": "a step in it: you find and save him from River"
+    },
+    {
+     "quest": "Serenata",
+     "how": "a step in it: you travel with him while Katana and Megara plan their wedding"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "joins",
+     "why": "His follower quest exists but the recruiting dialogue and its conditions aren't in the extracts."
+    },
+    {
+     "field": "day",
+     "why": "His Bee and Barb package depends on a story flag the extracts don't name; it's read as set after The Ravens' Lament."
+    },
+    {
+     "field": "sells",
+     "why": "His only vendor data is the follower trade set-up with no stock container, so he isn't a shop."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in three more quests with no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "Katana.esp:8283EB",
+    "placed in Marker Storage Unit (Katana.esp:8376F9)",
+    "AK69ShaleWaitAtHome Katana.esp:0A5EEA",
+    "AK69ShaleDefaultPackage Katana.esp:0A5EE9 (The Bee and Barb, 800; global Katana.esp:0A5EEC == 1)",
+    "AK69ShaleFollowQuest Katana.esp:A883AD",
+    "AK69TheRavensLamentQuest Katana.esp:8BB420 stages 110-320",
+    "AK69SerenataQuest Katana.esp:8BB421",
+    "unnamed Katana.esp:2159C2, 611E38, CC4B3C",
+    "vendor vendRaw 48cb0600, no container",
+    "class Katana.esp:9D1DFB"
+   ]
+  },
+  {
+   "id": "Katana.esp:B0F5BE",
+   "name": "Al'Tharo",
+   "race": "Khajiit",
+   "sex": "male",
+   "firstMeet": "Moorside Inn, Morthal, during The Khat's Eye.",
+   "day": [
+    {
+     "from": "all day",
+     "for": "24 hours",
+     "where": "Moorside Inn, Morthal",
+     "doing": "staying in the inn"
+    }
+   ],
+   "changes": [
+    "The Khat's Eye: you recover his spectacles from near Movarth's Lair; the journal says Megara will miss him, which suggests he leaves after."
+   ],
+   "role": "quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Khat's Eye",
+     "how": "gives it: find his spectacles by Movarth's Lair and beat the Thalmor spies waiting for him"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "He's kept in a holding cell; his only package puts him in Moorside Inn, but when he's moved there isn't in the extracts (read as during The Khat's Eye)."
+    },
+    {
+     "field": "changes",
+     "why": "Whether he leaves Moorside Inn after the quest isn't in the records."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "Katana.esp:B0F5BE",
+    "placed in Marker Storage Unit (Katana.esp:B239F4)",
+    "AK69AlTharoDefaultPackage Katana.esp:D32535 (in Moorside Inn cell)",
+    "AK69TheKhatsEyeQuest Katana.esp:C5896B giver, stages 40-80",
+    "AK69KatanaFriendsFaction",
+    "class Skyrim.esm:01E7D0"
+   ]
+  },
+  {
+   "id": "ksws04_quest.esp:000800",
+   "name": "Nirenoore",
+   "race": "Altmer",
+   "sex": "female",
+   "firstMeet": "The Bannered Mare, Whiterun, after a mysterious note asks you to a secret meeting there.",
+   "day": [
+    {
+     "from": "all day",
+     "for": "24 hours",
+     "where": "The Bannered Mare, Whiterun",
+     "doing": "staying in the inn"
+    }
+   ],
+   "changes": [
+    "She isn't anywhere you can reach until The Welkynar Knight's note arrives.",
+    "The Welkynar Knight: she's captured by the Thalmor; if you don't rescue her, the Thalmor take her across the border.",
+    "You can instead report her to the Thalmor for gold.",
+    "A later story flag can send her to a home of her own instead of the Bannered Mare."
+   ],
+   "role": "quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Welkynar Knight",
+     "how": "gives it: steal her painting back from the Thalmor Headquarters in Solitude; later rescue her"
+    },
+    {
+     "quest": "A Welkynar Legend",
+     "how": "gives it: find a book on Siralys Featherwing (from Urag gro-Shub at the College)"
+    },
+    {
+     "quest": "Drinking with Nirenoore",
+     "how": "gives it: buy wine from the innkeeper and drink with her"
+    },
+    {
+     "quest": "her artifact hunts",
+     "how": "gives them: retrieve an artifact from a dungeon she names (the quest's title is the item's name)"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "Her home package's place is a marker the extracts don't resolve, and the flag that switches it on isn't named."
+    },
+    {
+     "field": "changes",
+     "why": "Whether she still appears after a failed rescue or a report to the Thalmor isn't in the records."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "ksws04_quest.esp:000800",
+    "held in ksws04UtilWorld (ksws04_quest.esp:000807)",
+    "ksws04WaifuHomePackage ksws04_quest.esp:000BDE (global 000BDD == 1, main quest > 100)",
+    "ksws04WaifuDefaultPackage ksws04_quest.esp:000AA9 (in The Bannered Mare; main quest > 100)",
+    "ksws04MainQuest ksws04_quest.esp:000A43 stages 100-9250",
+    "ksws04LibraryQuest ksws04_quest.esp:000B6C",
+    "ksws04DrinkQuest ksws04_quest.esp:000B88",
+    "ksws04ArtifactQuest ksws04_quest.esp:000B86",
+    "ksws04WaifuFaction",
+    "class Skyrim.esm:07289D"
+   ]
+  },
+  {
+   "id": "ksws04_quest.esp:000801",
+   "name": "Kelkemmeriil",
+   "race": "Altmer",
+   "sex": "male",
+   "firstMeet": "During The Welkynar Knight; he isn't placed anywhere in the world before that.",
+   "day": [],
+   "changes": [],
+   "role": "Thalmor; part of a quest",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Welkynar Knight",
+     "how": "a step in it: a Thalmor you can talk to any time before you and Nirenoore are drugged and captured"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "He's kept in a holding world with no AI packages; where the quest puts him isn't in the extracts."
+    },
+    {
+     "field": "quests",
+     "why": "The journal never names him; whether he's the agent you can sell Nirenoore to, or her captor, isn't shown."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "ksws04_quest.esp:000801",
+    "held in ksws04UtilWorld (ksws04_quest.esp:000808)",
+    "no packages",
+    "TownSolitudeFaction, CrimeFactionHaafingar, ThalmorFaction",
+    "ksws04MainQuest ksws04_quest.esp:000A43 alias Thalmor (talk below stage 501)",
+    "class Skyrim.esm:072887"
+   ]
+  },
+  {
+   "id": "ksws07_quest.esm:002039",
+   "name": "Othriel",
+   "race": "Snow Elf",
+   "sex": "female",
+   "firstMeet": "Othriel's Cabin in the Crag Spire Wastes, a realm you reach through a Snow Elf mirror bought from Belethor's General Goods, Whiterun: the mirror takes you to the Labyrinthine Passages, and they lead to the Wastes.",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "Othriel's Cabin, Crag Spire Wastes",
+     "doing": "sleeping"
+    },
+    {
+     "from": "8 am",
+     "for": "4 hours",
+     "where": "Othriel's Cabin, Crag Spire Wastes",
+     "doing": "farming"
+    },
+    {
+     "from": "noon",
+     "for": "4 hours",
+     "where": "Othriel's Cabin, Crag Spire Wastes",
+     "doing": "at the forge"
+    },
+    {
+     "from": "4 pm",
+     "for": "4 hours",
+     "where": "Othriel's Cabin, Crag Spire Wastes",
+     "doing": "in the house"
+    },
+    {
+     "from": "8 pm",
+     "for": "4 hours",
+     "where": "Othriel's Cabin, Crag Spire Wastes",
+     "doing": "in her bedroom"
+    }
+   ],
+   "changes": [
+    "Two packages above her cabin routine (8 am to midnight up and about, midnight to 8 am asleep, both at a marker that isn't resolved) take over under a condition the extracts don't decode, likely once she lives elsewhere.",
+    "The Frozen Heart: you can refuse to help her or choose to kill her."
+   ],
+   "role": "follower; quest giver; smith (crafts Rimeweld Armor for you)",
+   "sells": "",
+   "trains": "",
+   "joins": "She's a potential follower; what she asks before joining isn't in the extracts.",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Frozen Heart",
+     "how": "gives it: lift her curse (Frostskarn Vault, the Whispering Walls Catacombs, the Cursed Shadow); one ending has you kill her"
+    },
+    {
+     "quest": "A Book for Othriel",
+     "how": "gives it: bring her Feyfolken III"
+    },
+    {
+     "quest": "Another Book for Othriel",
+     "how": "gives it: bring her The Armorer's Challenge and 5 Stalhrim Ores, and she makes you Rimeweld Armor"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "The top two packages are gated by a condition the extracts leave undecoded and point at an unresolved marker, so when they replace her cabin routine isn't certain."
+    },
+    {
+     "field": "joins",
+     "why": "Her recruiting dialogue isn't in the extracts."
+    },
+    {
+     "field": "sells",
+     "why": "Her only vendor data is the follower trade set-up with no stock container, so she isn't a shop."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "ksws07_quest.esm:002039",
+    "ksws07WaifuHomeDayPackage ksws07_quest.esm:00249E (8:00 16h; fn310 undecoded)",
+    "ksws07WaifuHomeSleepPackage ksws07_quest.esm:00249F (0:00 8h; fn310)",
+    "ksws07WaifuBedroomPackage ksws07_quest.esm:0015E4 (20:00 4h)",
+    "ksws07WaifuFarmPackage ksws07_quest.esm:0015DA (8:00 4h)",
+    "ksws07WaifuForgePackage ksws07_quest.esm:0015E3 (12:00 4h)",
+    "ksws07WaifuHousePackage ksws07_quest.esm:0015AE (16:00 4h)",
+    "ksws07WaifuSleepPackage ksws07_quest.esm:0015E5 (0:00 8h)",
+    "ksws07MainQuest ksws07_quest.esm:002086",
+    "ksws07BookQuest ksws07_quest.esm:000BBA",
+    "ksws07ArmorQuest ksws07_quest.esm:002444",
+    "ksws07ShardsQuest ksws07_quest.esm:0024EF",
+    "PotentialFollowerFaction, ksws07HouseOwnerFaction",
+    "race 0Asy1um_OthrielSnowElfRace",
+    "vendor vendRaw 48cb0600, no container",
+    "class Skyrim.esm:013177"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01BDB2",
+   "name": "Festus Krex",
+   "race": "Elder",
+   "sex": "male",
+   "firstMeet": "The Dark Brotherhood Sanctuary, near Falkreath.",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "Dark Brotherhood Sanctuary, Falkreath",
+     "doing": "sleeping"
+    },
+    {
+     "from": "8 am",
+     "for": "16 hours",
+     "where": "Dark Brotherhood Sanctuary, Falkreath",
+     "doing": "going about the Sanctuary"
+    }
+   ],
+   "changes": [
+    "Destroy the Dark Brotherhood!: if you take Commander Maro's side, he's one of the assassins you kill.",
+    "Death Incarnate: the journal says the Penitus Oculatus killed most of the Family when they burned the Sanctuary."
+   ],
+   "role": "Dark Brotherhood assassin; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Recipe for Disaster",
+     "how": "gives it: kill the Gourmet"
+    },
+    {
+     "quest": "Destroy the Dark Brotherhood!",
+     "how": "its target"
+    },
+    {
+     "quest": "Breaching Security",
+     "how": "a step in it (one of the Family at the Sanctuary)"
+    },
+    {
+     "quest": "The Cure for Madness",
+     "how": "a step in it (one of the Family at the Sanctuary)"
+    },
+    {
+     "quest": "Contract: Kill (the Night Mother's contracts in Markarth, Riften, Solitude, Whiterun and Windhelm)",
+     "how": "a step in it: while a contract is open you can talk to him about it; one way a contract ends is handing the kill to another Brotherhood member, who collects the payment from the dead drop"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "Death Incarnate doesn't name him among its aliases, so whether he dies in the attack isn't shown by the records."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in two more quests from another plugin with no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    },
+    {
+     "field": "quests",
+     "why": "He has lines in every one of the Night Mother's kill contracts while one is open, and one ending of those contracts has another Brotherhood member take the kill; the records don't say outright that talking to him is that hand-off."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01BDB2",
+    "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+    "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+    "DB08 Skyrim.esm:01EA57 giver",
+    "DBDestroy Skyrim.esm:0934FB alias FestusKrexAlias",
+    "DB06 Skyrim.esm:01EA55, DB07 Skyrim.esm:01EA56 alias FestusAlias",
+    "DB10 Skyrim.esm:03CEDA stage 200",
+    "Extended Encounters.esp:00014D, 000155 (unnamed)",
+    "DarkBrotherhoodFaction",
+    "class Skyrim.esm:01E7D0",
+    "Listen.esp contracts LTNQuestMarkarth 000828, LTNQuestRiften 00081A, LTNQuestSolitude 000820, LTNQuestWhiterun 000802, LTNQuestWindhelm 000819 (other giver below stage 11; stage 40 = contract handed to another member)"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01D4B7",
+   "name": "Babette",
+   "race": "Breton",
+   "sex": "female",
+   "firstMeet": "The Dark Brotherhood Sanctuary, near Falkreath.",
+   "day": [
+    {
+     "from": "all day",
+     "for": "24 hours",
+     "where": "Dark Brotherhood Sanctuary, Falkreath",
+     "doing": "going about wherever she is (she has no sleep schedule)"
+    }
+   ],
+   "changes": [
+    "Death Incarnate: she waits at one spot in the Sanctuary during the attack, then follows you and Nazir out; at its end she's by where Astrid is.",
+    "After Hail Sithis! (once the Emperor is dead): 7 am to 5 pm in her quarters at the Dawnstar Sanctuary; otherwise going about the Dawnstar Sanctuary.",
+    "Destroy the Dark Brotherhood!: if you take Commander Maro's side, she's one of the assassins you kill."
+   ],
+   "role": "alchemist and Alchemy trainer of the Dark Brotherhood",
+   "sells": "apothecary's stock (her item lists don't resolve in the extracts)",
+   "trains": "Alchemy, master level",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Death Incarnate",
+     "how": "a step in it: survivor of the attack who escapes with you"
+    },
+    {
+     "quest": "Hail Sithis!",
+     "how": "a step in it"
+    },
+    {
+     "quest": "Destroy the Dark Brotherhood!",
+     "how": "its target"
+    },
+    {
+     "quest": "Breaching Security",
+     "how": "a step in it (one of the Family at the Sanctuary)"
+    },
+    {
+     "quest": "The Cure for Madness",
+     "how": "a step in it (one of the Family at the Sanctuary)"
+    },
+    {
+     "quest": "Unfinished Business",
+     "how": "the defector's note gives her whereabouts to the Penitus Oculatus"
+    },
+    {
+     "quest": "Contract: Kill (the Night Mother's contracts in Markarth, Riften, Solitude, Whiterun and Windhelm)",
+     "how": "a step in it: while a contract is open you can talk to her about it; one way a contract ends is handing the kill to another Brotherhood member, who collects the payment from the dead drop"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "trains",
+     "why": "The trainer record says master tier; the exact level cap isn't in the extracts."
+    },
+    {
+     "field": "sells",
+     "why": "She's in the apothecary and merchant groups with a merchant chest, but its lists don't resolve to items."
+    },
+    {
+     "field": "quests",
+     "why": "She fills aliases in three more quests from another plugin with no name in the extracts; Unfinished Business names her only in its journal."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    },
+    {
+     "field": "quests",
+     "why": "She has lines in every one of the Night Mother's kill contracts while one is open, and one ending of those contracts has another Brotherhood member take the kill; the records don't say outright that talking to her is that hand-off."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01D4B7",
+    "DB10BabetteStandPackage Skyrim.esm:04016C (DB10 stage 10-60)",
+    "DB10NazirBabetteFollowPlayer Skyrim.esm:0481AB (DB10 60-70, in Sanctuary cell)",
+    "DB10NazirBabetteAstridEndPackage Skyrim.esm:077372 (DB10 == 80)",
+    "USLEEPBabetteSandboxQuarters Unofficial Skyrim Special Edition Patch.esp:037D95 (7:00 10h, Dawnstar Sanctuary; DB11 stage 60 done)",
+    "DefaultSandboxCurrentLocation256 Skyrim.esm:0956B8",
+    "trainer Alchemy Master",
+    "vendor 0-24 vendRaw 4f244405 vencRaw 9fbd0a00",
+    "JobApothecaryFaction, JobMerchantFaction, ServicesDBBabette, JobTrainerAlchemyFaction",
+    "DB06, DB07, DB10, DB11, DBDestroy aliases BabetteAlias",
+    "zzzPO01Informant Penitus_Oculatus.esp:00A9C4 stage 5, 13",
+    "Extended Encounters.esp:000088, 000120, 0004E0 (unnamed)",
+    "class Skyrim.esm:0E3A67",
+    "Listen.esp contracts LTNQuestMarkarth 000828, LTNQuestRiften 00081A, LTNQuestSolitude 000820, LTNQuestWhiterun 000802, LTNQuestWindhelm 000819 (other giver below stage 11; stage 40 = contract handed to another member)"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:015CFA",
+   "name": "Dark Brotherhood Initiate",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "The Dawnstar Sanctuary.",
+   "day": [
+    {
+     "from": "all day",
+     "for": "24 hours",
+     "where": "Dawnstar Sanctuary",
+     "doing": "going about the Sanctuary"
+    }
+   ],
+   "changes": [
+    "He can be set to follow you or to wait where you leave him, and sent back to the Dawnstar Sanctuary."
+   ],
+   "role": "Dark Brotherhood initiate; can travel with you",
+   "sells": "",
+   "trains": "",
+   "joins": "He has follow and wait orders run by the Dark Brotherhood's initiate set-up; how you ask him isn't in the extracts.",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Contract: Kill (the Night Mother's contracts in Markarth, Riften, Solitude, Whiterun and Windhelm)",
+     "how": "a step in it: while a contract is open you can talk to him about it; one way a contract ends is handing the kill to another Brotherhood member, who collects the payment from the dead drop"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "When he first appears in the Dawnstar Sanctuary isn't in the records I can read."
+    },
+    {
+     "field": "joins",
+     "why": "His follow, wait and sanctuary states come from a script variable on a quest the extracts don't name."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    },
+    {
+     "field": "quests",
+     "why": "He has lines in every one of the Night Mother's kill contracts while one is open, and one ending of those contracts has another Brotherhood member take the kill; the records don't say outright that talking to him is that hand-off."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:015CFA",
+    "DBInitiate1StateWaitPackage Skyrim.esm:037B73 (state 3)",
+    "DBInitiate1StateFollowPackage Skyrim.esm:037C09 (state 2)",
+    "DBInitiate1StateSanctuaryPackage Skyrim.esm:037CBA / ...There Skyrim.esm:037D02 (state 1)",
+    "DBInitiate1SanctuaryPackageDefault Skyrim.esm:015CFC (Dawnstar Sanctuary)",
+    "quest var on Skyrim.esm:01EA5C (not in quests_raw)",
+    "DarkBrotherhoodFaction",
+    "class Skyrim.esm:01317F",
+    "Listen.esp contracts LTNQuestMarkarth 000828, LTNQuestRiften 00081A, LTNQuestSolitude 000820, LTNQuestWhiterun 000802, LTNQuestWindhelm 000819 (other giver below stage 11; stage 40 = contract handed to another member)"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:015CFE",
+   "name": "Adelinda",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "The Dawnstar Sanctuary.",
+   "day": [
+    {
+     "from": "all day",
+     "for": "24 hours",
+     "where": "Dawnstar Sanctuary",
+     "doing": "going about the Sanctuary (her sleep package sits below an all-day one with the same conditions, so it never runs)"
+    }
+   ],
+   "changes": [
+    "She can be set to follow you or to wait where you leave her, and sent back to the Dawnstar Sanctuary."
+   ],
+   "role": "Dark Brotherhood initiate; can travel with you",
+   "sells": "",
+   "trains": "",
+   "joins": "She has follow and wait orders run by the Dark Brotherhood's initiate set-up; how you ask her isn't in the extracts.",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Contract: Kill (the Night Mother's contracts in Markarth, Riften, Solitude, Whiterun and Windhelm)",
+     "how": "a step in it: while a contract is open you can talk to her about it; one way a contract ends is handing the kill to another Brotherhood member, who collects the payment from the dead drop"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "When she first appears in the Dawnstar Sanctuary isn't in the records I can read."
+    },
+    {
+     "field": "joins",
+     "why": "Her follow, wait and sanctuary states come from a script variable on a quest the extracts don't name."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    },
+    {
+     "field": "quests",
+     "why": "She has lines in every one of the Night Mother's kill contracts while one is open, and one ending of those contracts has another Brotherhood member take the kill; the records don't say outright that talking to her is that hand-off."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:015CFE",
+    "DBInitiate2StateWaitPackage Skyrim.esm:037D0F (state 3)",
+    "DBInitiate2StateFollowPackage Skyrim.esm:037D11 (state 2)",
+    "DBInitiate1StateSanctuaryPackage Skyrim.esm:037CBA",
+    "DBInitiate2StateSanctuaryPackageThere Skyrim.esm:037D97",
+    "USLEEPDBInitiate2SleepDawnstarSanc Unofficial Skyrim Special Edition Patch.esp:037D99 (21:00 8h)",
+    "DBInitiate2SanctuaryPackageDefault Skyrim.esm:015D0A",
+    "quest var on Skyrim.esm:01EA5C (not in quests_raw)",
+    "DarkBrotherhoodFaction",
+    "class Skyrim.esm:01317F",
+    "Listen.esp contracts LTNQuestMarkarth 000828, LTNQuestRiften 00081A, LTNQuestSolitude 000820, LTNQuestWhiterun 000802, LTNQuestWindhelm 000819 (other giver below stage 11; stage 40 = contract handed to another member)"
+   ]
+  },
+  {
+   "id": "Lucien.esp:005900",
+   "name": "Lucien Flavius",
+   "race": "Imperial",
+   "sex": "male",
+   "firstMeet": "Dead Man's Drink, Falkreath (a quest marks him on your map: \"Find Lucien Flavius\").",
+   "day": [
+    {
+     "from": "all day",
+     "for": "24 hours",
+     "where": "Dead Man's Drink, Falkreath",
+     "doing": "where he's placed, until he joins you"
+    }
+   ],
+   "changes": [
+    "After The Oblivion Engine he sets up a laboratory in Dumzbthar, a Dwemer ruin on Solstheim; when he isn't travelling with you, he goes there and stays in its core.",
+    "Intruders: his resonant sphere calls you both back to defend Dumzbthar; afterwards his horse Clive travels with you."
+   ],
+   "role": "follower; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "He's a follower; the conversation that recruits him at Dead Man's Drink and its conditions aren't in the extracts.",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Oblivion Engine",
+     "how": "gives it: take him to Dumzbthar on Solstheim and shut down the ruin's Daedric intelligence"
+    },
+    {
+     "quest": "Intruders",
+     "how": "gives it: return to Dumzbthar and drive off the Daedra"
+    },
+    {
+     "quest": "Lucien Main Quest",
+     "how": "his comments through the main quest; asks you to bring him a Dragon Bone"
+    },
+    {
+     "quest": "Lucien Map Marker",
+     "how": "its target: find him"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "joins",
+     "why": "His recruiting dialogue isn't in the extracts."
+    },
+    {
+     "field": "sells",
+     "why": "His only vendor data is the follower trade set-up with no stock container, so he isn't a shop."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in twelve more quests with no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "Lucien.esp:005900",
+    "placed in Dead Man's Drink (Lucien.esp:00591F)",
+    "JRLucienDumzbtharHomeTravel Lucien.esp:387015",
+    "JRLucienDumzbtharHomeTravel2 Lucien.esp:3AA7B9",
+    "JRLucienDumzbtharHomeSandbox Lucien.esp:387016 (Dumzbthar Core; not current follower; JRLucienPersonal1 >= 800)",
+    "JRLucienPersonal1 Lucien.esp:2B13ED stage 800",
+    "JRLucienGetHorseQuest Lucien.esp:62424C stage 200",
+    "JRLucienMQ Lucien.esp:00AA3A",
+    "JRLucienMapMarker Lucien.esp:4E9CB9",
+    "DismissedFollowerFaction, PotentialFollowerFaction rank 255",
+    "vendor vendRaw 48cb0600, no container",
+    "class Lucien.esp:2BB7B9"
+   ]
+  },
+  {
+   "id": "Lucien.esp:62424D",
+   "name": "Dumzbthar",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "Dumzbthar, a Dwemer ruin on Solstheim, when Lucien calls you back there in Intruders.",
+   "day": [
+    {
+     "from": "all day",
+     "for": "24 hours",
+     "where": "Dumzbthar's core, Solstheim",
+     "doing": "going about the ruin (after Intruders)"
+    }
+   ],
+   "changes": [
+    "Until Intruders is finished he has no routine and stays where he's placed in Dumzbthar; from then on he keeps to the ruin's core."
+   ],
+   "role": "part of Lucien's quests (the ruin's reactivated intelligence)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Intruders",
+     "how": "a step in it: talk to him; he calls you back to defend the facility from Daedra"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "quests",
+     "why": "He fills an alias in one more quest with no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    },
+    {
+     "field": "changes",
+     "why": "He's placed in Dumzbthar from the start; whether he's there to meet before Intruders (or only appears when Lucien reactivates him) isn't in the extracts."
+    }
+   ],
+   "evidence": [
+    "Lucien.esp:62424D",
+    "placed in Dumzbthar (Lucien.esp:62424E)",
+    "JRLucienDumzbtharNPCSandbox Lucien.esp:65BEAB (Dumzbthar Core; JRLucienGetHorseQuest >= 200)",
+    "JRLucienGetHorseQuest Lucien.esp:62424C stages 20-60",
+    "Lucien.esp:13FA47 (unnamed)",
+    "class Skyrim.esm:017008"
+   ]
+  },
+  {
+   "id": "Meridia.esp:000D6C",
+   "name": "Paladin Marith",
+   "race": "Imperial",
+   "sex": "female",
+   "firstMeet": "She comes to you in a town or city once you've finished The Break of Dawn (recovered Dawnbreaker), and sends you to Meridia's Sanctum.",
+   "day": [
+    {
+     "from": "5 am",
+     "for": "12 hours",
+     "where": "Meridia's Sanctum",
+     "doing": "on guard"
+    },
+    {
+     "from": "5 pm",
+     "for": "3 hours",
+     "where": "Meridia's Sanctum",
+     "doing": "going about the Sanctum"
+    },
+    {
+     "from": "8 pm",
+     "for": "9 hours",
+     "where": "Meridia's Sanctum",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "From Infiltration on, the Order's story moves her: she travels with you in parts of Meridia's Order, Prisoner, The Way In and The Ritual, and the Order moves to Fort Justice in the Rift.",
+    "After The Ritual she lives at Fort Justice: 6 to 10 am about the fort, 10 am to 6 pm at one spot in the fort, 6 pm to midnight elsewhere about it, midnight to 6 am at another spot (likely her bed)."
+   ],
+   "role": "paladin of Meridia's Order; quest giver; follower",
+   "sells": "",
+   "trains": "",
+   "joins": "She's a potential follower; when she agrees isn't in the extracts (she travels with you during the Order's quests).",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Meridia's Order",
+     "how": "gives it: she approaches you and sends you to High Priestess Alara"
+    },
+    {
+     "quest": "Prisoner",
+     "how": "a step in it: ask her about Findar; she points you to Findar's mother"
+    },
+    {
+     "quest": "The Way In",
+     "how": "a step in it: recruit her to find one of Fiya's commanders"
+    },
+    {
+     "quest": "Fort Justice",
+     "how": "a step in it"
+    },
+    {
+     "quest": "The Ritual",
+     "how": "a step in it: she comes with you to stop Fiya's ritual"
+    },
+    {
+     "quest": "The Dark Dawn",
+     "how": "a step in it: she asks to speak with you while you're with the Dark Dawn"
+    },
+    {
+     "quest": "A Fate Worse Than Death",
+     "how": "in Fiya's realm you're told to kill Marith or Alara"
+    },
+    {
+     "quest": "Infiltration",
+     "how": "a step in it"
+    },
+    {
+     "quest": "A New Day",
+     "how": "a step in it: she has her own lines up to the confrontation with Garin and Velteth, and stands guard from early in it until The Way In"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "Her guard and sleep packages have no place decoded; read as the Sanctum, where she's placed. They stop once Infiltration reaches its middle."
+    },
+    {
+     "field": "changes",
+     "why": "Fort Justice is named as an abandoned outpost in the Rift in the journal; the exact spots her packages use there aren't named."
+    },
+    {
+     "field": "quests",
+     "why": "A Fate Worse Than Death uses a separate copy named \"Marith\"; whether choosing her there kills the real paladin isn't shown."
+    },
+    {
+     "field": "firstMeet",
+     "why": "Her greeting package checks a location type the extracts give only as an id; read as a town or city."
+    },
+    {
+     "field": "sells",
+     "why": "Her only vendor data is the follower trade set-up with no stock container, so she isn't a shop."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "Meridia.esp:000D6C",
+    "placed in Meridia's Sanctum (Meridia.esp:0014CD)",
+    "NMeridia01MarithForcegreet01 Meridia.esp:001F81 (DA09 == 500, NMeridia01 == 0, not in Sanctum, LocationHasKeyword Skyrim.esm:013168)",
+    "NMeridiaMarithGuard01 Meridia.esp:0014F3 (5:00 12h), NMeridiaMarithSandbox01 Meridia.esp:001539 (17:00 3h), NMeridiaMarithSleep01 Meridia.esp:00153A (20:00 9h): all NMeridia04 < 30",
+    "NMeridiaMarithFortJustice01-04 Meridia.esp:02FE46-02FE49 (NMeridia09 >= 80)",
+    "NMeridia01 Meridia.esp:00154A giver",
+    "NMeridia03 Meridia.esp:0046DA stage 25",
+    "NMeridia07 Meridia.esp:0103B4 stage 30",
+    "NMeridia09 Meridia.esp:01F41F",
+    "NMeridia04ReeshiMisc Meridia.esp:0092EE stage 35",
+    "NMeridia08MiscFiya Meridia.esp:019A82 stage 30",
+    "PotentialFollowerFaction, NMeridiasOrderFaction rank 2",
+    "vendor vendRaw 48cb0600, no container",
+    "class Skyrim.esm:013177",
+    "NMeridia06 Meridia.esp:007CFC (other giver below 61); NMeridia06MarithGuard01 Meridia.esp:008F5C (NMeridia06 >= 20, NMeridia07 < 30)"
+   ]
+  },
+  {
+   "id": "Meridia.esp:000D6F",
+   "name": "High Priestess Alara",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "Meridia's Sanctum, where Paladin Marith sends you.",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "Meridia's Sanctum",
+     "doing": "resting"
+    },
+    {
+     "from": "6 am",
+     "for": "18 hours",
+     "where": "Meridia's Sanctum",
+     "doing": "praying"
+    }
+   ],
+   "changes": [
+    "Through the Order's quests she travels with you (to Meridia's Shrine in Our Lady, to Old Hroldan Inn in A New Day) and the Order moves to Fort Justice in the Rift.",
+    "After The Ritual she lives at Fort Justice: 6 to 10 am at one spot, 10 am to 5 pm about the fort, 5 to 10 pm around the fort, 10 pm to 6 am at another spot (likely her bed)."
+   ],
+   "role": "leader of Meridia's Order; quest giver; follower",
+   "sells": "",
+   "trains": "",
+   "joins": "She's a potential follower; when she agrees isn't in the extracts.",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Meridia's Order",
+     "how": "a step in it: she asks you to kill a necromancer in Solitude"
+    },
+    {
+     "quest": "Our Lady",
+     "how": "gives it: follow her to Meridia's Shrine"
+    },
+    {
+     "quest": "Prisoner",
+     "how": "gives it: find the staff Summoner's Demise"
+    },
+    {
+     "quest": "Fort Justice",
+     "how": "gives it"
+    },
+    {
+     "quest": "A New Day",
+     "how": "gives it: the letter that leads to Old Hroldan Inn"
+    },
+    {
+     "quest": "The Ritual",
+     "how": "gives it: stop Fiya's ritual to raise the First Vampire"
+    },
+    {
+     "quest": "Infiltration",
+     "how": "a step in it: report the necromancers' plans to her"
+    },
+    {
+     "quest": "The Way In",
+     "how": "a step in it"
+    },
+    {
+     "quest": "The Pocket Realm",
+     "how": "a step in it: report back to her"
+    },
+    {
+     "quest": "Finding Yourself",
+     "how": "a step in it: accompany Acolyte Una to her"
+    },
+    {
+     "quest": "A Fate Worse Than Death",
+     "how": "in Fiya's realm you're told to kill Marith or Alara"
+    },
+    {
+     "quest": "Stendarr's Mercy",
+     "how": "a step in it: she has her own lines while Arch-Paladin Laracin's job against Stendarr's Beacon is under way"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "Her rest and prayer packages have no place decoded; read as the Sanctum, where she's placed."
+    },
+    {
+     "field": "changes",
+     "why": "The exact spots at Fort Justice aren't named in the extracts."
+    },
+    {
+     "field": "quests",
+     "why": "A Fate Worse Than Death uses a separate copy named \"Alara\"; whether choosing her there kills the real priestess isn't shown. She also fills an alias in one quest with no name in the extracts."
+    },
+    {
+     "field": "sells",
+     "why": "Her only vendor data is the follower trade set-up with no stock container, so she isn't a shop."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "Meridia.esp:000D6F",
+    "placed in Meridia's Sanctum (Meridia.esp:0014C9)",
+    "NMeridiaAlaraRest01 Meridia.esp:00153E (0:00 6h)",
+    "NMeridiasAlaraPrayer01 Meridia.esp:0014E6 (6:00 18h)",
+    "NMeridiaFortJusticeAlara01-04 Meridia.esp:028611-028614 (NMeridia09 >= 80)",
+    "NMeridia02 Meridia.esp:003B23",
+    "NMeridia03 Meridia.esp:0046DA",
+    "NMeridia05 Meridia.esp:00BC5D",
+    "NMeridia06 Meridia.esp:007CFC",
+    "NMeridia09 Meridia.esp:01F41F",
+    "NMeridia04 Meridia.esp:00816C",
+    "NMeridia07 Meridia.esp:0103B4",
+    "NMeridia08 Meridia.esp:019A81",
+    "NMeridiaUna01 Meridia.esp:02C7C9",
+    "NMeridia08MiscFiya Meridia.esp:019A82",
+    "Meridia.esp:000D70 (unnamed)",
+    "PotentialFollowerFaction, NMeridiasOrderFaction rank 4",
+    "vendor vendRaw 48cb0600, no container",
+    "class Skyrim.esm:01E7D0",
+    "NMeridiaLaracin01 Meridia.esp:02A15E (other giver below 21)"
+   ]
+  }
+ ]
+}
