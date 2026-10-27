@@ -5022,6 +5022,38 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-163  Quest categories as tables (Mac, 27 Oct 2026)
+Status: queued (Mac; after WO-162)
+
+**Why.** `docs/page-templates.md` rows 11 and 12: a category is up to 73 framed cards with a journal quote and Tell me more each, 10,000 px to scroll and nothing to compare. Dave: Wowhead is great. Board: `QuestCategoryTable` (canvas row 36).
+- [ ] Every category page (`/quests/c/<slug>`) other than Main stories (WO-160) is the board: a short scene banner with the title over it; search; Hold, Level and From filters that apply as you pick; pills for All, Base game, Creation Club, Mods, and Lines of several quests, with real counts; then one table, one row per quest or line: icon (a line's icon differs from a single quest's), name, who starts it, where (blue), level (red, "Any" muted), length, from (base game plain, a mod as a tag with its link), quest XP in the pixel face (gold; "None" muted). Every column sorts; the header row sticks while you scroll.
+- [ ] On a phone each row is two lines: the name and its XP; then who, where and the level.
+- [ ] **Quests home, "Everything else, by place"**: the framed wall of 150 links becomes the same table across every category, sorted by place, with the category as a column. Keep the five category cards above it as they are.
+- [ ] A row's hover preview (WO-157 Part 5) works in the table.
+- [ ] Check: some quests show "None" for quest XP (A Scroll For Anska, Ancestral Worship, Forbidden Legend). Confirm from `xp.json` and the quest's type that LoreRim pays nothing for them; if it's a gap in the data, say so in the order and show "Not known yet" instead.
+- [ ] Checks, screenshots of Side stories, Guilds and factions and the Quests home at 1440 and 390, then `for Bob`.
+
+## WO-162  A place's page fits what the place is (Mac, 27 Oct 2026)
+Status: queued (Mac; after WO-161)
+
+**Why.** `docs/page-templates.md` row 18: every place uses the dungeon template. Riverwood "Its boss is Camilla Valerius" with a danger chart and 100 XP "for clearing it"; the Bee and Barb shows Danger ("Nobody here is hostile") and "Comes back in 30 days, or 300 once cleared"; neither shows who lives there, shops, trainers or beds. Board: `PlaceTown` (canvas row 36).
+
+### Part 1. Two kinds of place page
+- [ ] **A place people live** (towns, settlements, stables, inns, temples, guild halls, palaces and any place whose actors aren't hostile): the board. Title, tags, a one-line summary built from the data (hold, distance, how many people, the shops, inn and trainers); **At a glance** (where, people, shops and beds, trainers and followers, the discovery XP; no danger, no boss, no clear XP, no "comes back"); **Who lives here**, grouped by the home or building they sleep in (from `cell`), each person linked with their role from the people reads and chips: Sells (gold), Trains <skill> (green), Follower (orange), Rents rooms (blue), Gives quests (purple); animals and generic soldiers left out; **Quests that bring you here**; **Close by** (the dangerous places whose nearest town is this one, each with its level range in red); **Crafting and shrines**; **What people say about it**.
+- [ ] An inn, temple or guild hall inside a town is the same page, smaller: its keeper first (and whether they rent rooms), who else is there, what you can make there, its quests, and a link up to its town.
+- [ ] **A dangerous place** keeps today's page (danger chart, boss, rewards for finding and clearing, comes back), with the colours from WO-160 and the At a glance band: danger, the boss, rewards, comes back, nearest town.
+- [ ] Which kind a place is comes from the data (its actors hostile or not, then its type), written in one function with a test; Riverwood, the Bee and Barb, the Sleeping Giant Inn, Dragonsreach and Bleak Falls Barrow each in the test.
+
+### Part 2. What people say about it
+- [ ] Show only the lines tied to a quest, and books and notes (the speaker linked, "in <quest>"), at most five; the rest, greetings included, behind "All N lines". Today's pages show dozens of "Welcome to the Bee and Barb".
+
+### Part 3. Data slips the walk found
+- [ ] A place's quest list shows editor ids ("ANDR_AJO_VendorQuest", "BCSLL Vendor Quest" on Riverwood): leave out any quest with no player-facing name.
+- [ ] Helgen is listed twice near Riverwood; High Hrothgar is typed Fort with levels 14 to 150. Check both against `places_raw.json` and say what the records show.
+
+### Part 4. Checks
+- [ ] Typecheck, lint, tests, build, e2e; screenshots of Riverwood, the Sleeping Giant Inn, the Bee and Barb and Bleak Falls Barrow at 1440 and 390, then `for Bob`.
+
 ## WO-161  Small fixes from Bob's walk of every page (Mac, 27 Oct 2026)
 Status: queued (Mac; after WO-160)
 
