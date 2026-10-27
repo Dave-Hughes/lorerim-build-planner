@@ -5131,6 +5131,13 @@ Checked on the preview at 1440 and 390: home, the World panel, Characters, `/pla
 - [ ] Your question about the door's `checked: "a player's report, not the game files"`: keep it. It tells the assistant where a way came from, and an assistant should know that. It's only out of the pages.
 - [ ] Screenshots of each fix at 1440 and 390, then `for Bob`.
 
+### Part 9. Signed in, home is the same home (Dave, 27 Oct, 13:15)
+Dave: being signed in doesn't mean he doesn't want Recent characters and New in the world, and he doesn't want his own builds leading the page. This replaces the signed-in home in Part 2 (`HomeYou`).
+- [ ] Signed in, `/` shows the same page a visitor gets: the hero (keep it the shorter height), Recent characters, New in the world.
+- [ ] Then **Your characters**, last and small: one row of your characters as small covers with the name, linking to each; "All my characters ›" to My characters. No objectives, no act, no drafts, no Your Claude on home; all of that stays on My characters.
+- [ ] **Three ways to use it** shows only to a visitor.
+- [ ] Screenshots signed in at 1440 and 390, then `for Bob`.
+
 ## WO-156  Dump every person's daily schedule and roles, raw: no reading (PC, 23 Oct 2026; before anything else on the PC)
 Status: done
 
