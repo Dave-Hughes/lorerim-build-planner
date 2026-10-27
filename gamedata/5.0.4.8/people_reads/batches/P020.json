@@ -1,0 +1,190 @@
+[
+ {
+  "id": "Skyrim.esm:0133A5",
+  "edid": "Lisbet",
+  "name": "Lisbet",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133AD",
+  "edid": "Ogmund",
+  "name": "Ogmund",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133AF",
+  "edid": "Ondolemar",
+  "name": "Ondolemar",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013353",
+  "edid": "Dravin",
+  "name": "Dravin Llanith",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0135EB",
+  "edid": "IdgrodRavencrone",
+  "name": "Idgrod Ravencrone",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0135EA",
+  "edid": "Gorm",
+  "name": "Gorm",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013B77",
+  "edid": "Eydis",
+  "name": "Eydis",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0681A2",
+  "edid": "FreeformOldHroldanBGhost",
+  "name": "Ghost of Old Hroldan",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013366",
+  "edid": "Laila",
+  "name": "Laila Law-Giver",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01336A",
+  "edid": "Maven",
+  "name": "Maven Black-Briar",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01336E",
+  "edid": "Niluva",
+  "name": "Niluva Hlaalu",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013382",
+  "edid": "Wujeeta",
+  "name": "Wujeeta",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01337B",
+  "edid": "Sibbi",
+  "name": "Sibbi Black-Briar",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0136BC",
+  "edid": "Lynly",
+  "name": "Lynly Star-Sung",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013377",
+  "edid": "Romlyn",
+  "name": "Romlyn Dreth",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013370",
+  "edid": "Indaryn",
+  "name": "Indaryn",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013364",
+  "edid": "Ingun",
+  "name": "Ingun Black-Briar",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013352",
+  "edid": "Dinya",
+  "name": "Dinya Balu",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013373",
+  "edid": "TalenJei",
+  "name": "Talen-Jei",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013369",
+  "edid": "Marise",
+  "name": "Marise Aravel",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ }
+]

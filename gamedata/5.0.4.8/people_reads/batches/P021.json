@@ -1,0 +1,193 @@
+[
+ {
+  "id": "Skyrim.esm:01334F",
+  "edid": "BrandShei",
+  "name": "Brand-Shei",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01334C",
+  "edid": "Balimund",
+  "name": "Balimund",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01335F",
+  "edid": "Haelga",
+  "name": "Haelga",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013347",
+  "edid": "Alessandra",
+  "name": "Alessandra",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BA8",
+  "edid": "Andurs",
+  "name": "Andurs",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133A3",
+  "edid": "Kleppr",
+  "name": "Kleppr",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013361",
+  "edid": "Harrald",
+  "name": "Harrald",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013360",
+  "edid": "Hafjorg",
+  "name": "Hafjorg",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0136C3",
+  "edid": "Filnjar",
+  "name": "Filnjar",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01B072",
+  "edid": "Madesi",
+  "name": "Madesi",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013351",
+  "edid": "Hofgrir",
+  "name": "Hofgrir Horse-Crusher",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01A6B7",
+  "edid": "BrinaMerilis",
+  "name": "Brina Merilis",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013371",
+  "edid": "Shadr",
+  "name": "Shadr",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0C19A3",
+  "edid": "Sapphire",
+  "name": "Sapphire",
+  "plugin": "LoreRim - NPCs and Races Overwrite.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019BFE",
+  "edid": "AvrusaSarethi",
+  "name": "Avrusa Sarethi",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013296",
+  "edid": "LeifWayfinder",
+  "name": "Captain Wayfinder",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013293",
+  "edid": "Kjar",
+  "name": "Kjar",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0136C6",
+  "edid": "GrogmarGroBurzag",
+  "name": "Grogmar gro-Burzag",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0C3A3F",
+  "edid": "Sylgja",
+  "name": "Sylgja",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013665",
+  "edid": "Verner",
+  "name": "Verner Rock-Chucker",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ }
+]

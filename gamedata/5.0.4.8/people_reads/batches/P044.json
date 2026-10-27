@@ -1,0 +1,182 @@
+[
+ {
+  "id": "Skyrim.esm:014141",
+  "edid": "Ulundil",
+  "name": "Ulundil",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:2ACA0D",
+  "edid": "BaanEDBonesmith",
+  "name": "Gareyn Morvyth",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Wintersun - Faiths of Skyrim.esp:1F12B6",
+  "edid": "WSN_Misc_Totems_Boon1_Actor",
+  "name": "Sacrifice an Item",
+  "plugin": "Wintersun - Reqtificated.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:244B93",
+  "edid": "zzzCHEpiscopusArasil",
+  "name": "Bishop Arasil",
+  "plugin": "Synthesis - World.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "The Great City of Dawnstar.esp:0231BF",
+  "edid": "Ulrik",
+  "name": "Ulrik",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Arena - Markarth Side.esp:150E51",
+  "edid": "MarkarthSideGeneralStore4",
+  "name": "Loros",
+  "plugin": "Arena - Markarth Side.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:04E169",
+  "edid": "BaanEDBrothelWorker01",
+  "name": "Worker",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "SnozzResources.esp:283CED",
+  "edid": "FortDunstadTraderEvelynnSnowborne",
+  "name": "Evelynn",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013B97",
+  "edid": "Anoriath",
+  "name": "Anoriath",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:12965D",
+  "edid": "BaanWDCDInnkeep",
+  "name": "Trucken",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:34E996",
+  "edid": "BaanWDCrabSeller",
+  "name": "Bothris",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Evolving Locations - Lucky Shack.esp:0000FF",
+  "edid": "ELDezirri",
+  "name": "Dezirri",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "SnozzResources.esp:283CF2",
+  "edid": "FortDunstadHunter",
+  "name": "Hunter",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01361F",
+  "edid": "Seren",
+  "name": "Seren",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "SurWR.esp:2ECDB0",
+  "edid": "WRQuestGiantEncGiant03Diplomatic",
+  "name": "Hrungnir",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "SurWR.esp:14C7FF",
+  "edid": "0WRExtRoadhouseOwner",
+  "name": "Keld",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "aaaGraniteHill.esp:18E8B6",
+  "edid": "GraniteHillBard",
+  "name": "Lova",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Fists of Fury - Skyrim.esp:019E5E",
+  "edid": "FOFRiftenArenaBarkeep",
+  "name": "Verel Doran",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:000978",
+  "edid": "BaanHSBookMerchant",
+  "name": "Thuryenis",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:01829F",
+  "edid": "DLC2RRGarynIenth",
+  "name": "Garyn Ienth",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ }
+]

@@ -1,0 +1,191 @@
+[
+ {
+  "id": "Dawnguard.esm:011E5D",
+  "edid": "DLC1Namasur",
+  "name": "Namasur",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01B1CF",
+  "edid": "Dromarash",
+  "name": "Dro'marash",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "trainer"
+  ]
+ },
+ {
+  "id": "FDE Faralda.esp:000A5B",
+  "edid": "aaFaraldaEilonwy",
+  "name": "Eilonwy",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "trainer"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:003367",
+  "edid": "DLC1Ronthil",
+  "name": "Ronthil",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:0A490E",
+  "edid": "0GQStreetSeller",
+  "name": "Tinos Drothan",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "ccBGSSSE001-Fish.esm:000C63",
+  "edid": "ccBGSSSE001_MiscMarkarthFishingStudent",
+  "name": "Lynea",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "trainer"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:0DC68D",
+  "edid": "zzzCHEnchanter",
+  "name": "Hilda the Witch",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:1014F7",
+  "edid": "0DockArgonianHears",
+  "name": "Hears-The-Hist",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "trainer"
+  ]
+ },
+ {
+  "id": "ForgottenCity.esp:079982",
+  "edid": "000FCTheArbiter",
+  "name": "The Arbiter",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "trainer"
+  ]
+ },
+ {
+  "id": "Hendraheim - Tweaks and Enhancements.esp:000C21",
+  "edid": "HendraheimTnE_Servant03_ArgonianMale",
+  "name": "Okan-Zei",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01B1D9",
+  "edid": "Khayla",
+  "name": "Khayla",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "trainer"
+  ]
+ },
+ {
+  "id": "ForgottenCity.esp:02CC62",
+  "edid": "000FCLuki",
+  "name": "Luki",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "cckrtsse001_altar.esl:000EAA",
+  "edid": "ccKRTSSE001_ArgonianAcolyte",
+  "name": "Fisherman",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "trainer"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:1014DC",
+  "edid": "0DockArgonianNoAlms",
+  "name": "Accepts-No-Alms",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "trainer"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:0C1A23",
+  "edid": "zzzCHPlagueDoctor",
+  "name": "Sabrina",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "CC Farming - Tweaks and Enhancements.esp:000A15",
+  "edid": "ccVSVSSE004_Jonquil_PreQuest",
+  "name": "Jonquil",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01B1D5",
+  "edid": "Majhad",
+  "name": "Ma'jhad",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013643",
+  "edid": "GunnarStoneEye",
+  "name": "Gunnar Stone-Eye",
+  "plugin": "Alternative Perspective - Reqtificated.esp",
+  "roles": [
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "aaaGraniteHill.esp:005C0C",
+  "edid": "GraniteHillBlacksmithTolvier",
+  "name": "Tolvier",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "aaaGraniteHill.esp:005D15",
+  "edid": "GraniteHillPrivious",
+  "name": "Privious",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor",
+   "trainer"
+  ]
+ }
+]

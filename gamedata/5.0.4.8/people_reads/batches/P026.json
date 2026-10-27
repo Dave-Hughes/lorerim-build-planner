@@ -1,0 +1,188 @@
+[
+ {
+  "id": "Skyrim.esm:01B07F",
+  "edid": "Karliah",
+  "name": "Karliah",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01A2CF",
+  "edid": "Nocturnal",
+  "name": "Nocturnal",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01BB5D",
+  "edid": "Gallus",
+  "name": "Nightingale Sentinel",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01CD91",
+  "edid": "Niruin",
+  "name": "Niruin",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013395",
+  "edid": "Endon",
+  "name": "Endon",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0799E4",
+  "edid": "Rhorlak",
+  "name": "Rhorlak",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0132A3",
+  "edid": "SabineNytte",
+  "name": "Sabine Nytte",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "SurWR.esp:10F897",
+  "edid": "0WRMerchantNord",
+  "name": "Urik",
+  "plugin": "LoreRim - Economy Overhaul.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "SurWR.esp:02952F",
+  "edid": "0WRWitchQueen",
+  "name": "Jaeshe",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "SurWR.esp:0BE23B",
+  "edid": "0WRHorseGirl",
+  "name": "Joslin",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "marry"
+  ]
+ },
+ {
+  "id": "SurWR.esp:086319",
+  "edid": "0WRExtraCompanion",
+  "name": "Erland the Stablemaster",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "SurWR.esp:0295A7",
+  "edid": "0WRSurWidow",
+  "name": "Igna",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "marry"
+  ]
+ },
+ {
+  "id": "SurWR.esp:3436A2",
+  "edid": "0WRCustomCourierNPC",
+  "name": "Courier",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "SurWR.esp:0BE279",
+  "edid": "0WRYoungThane",
+  "name": "Thane Hroa Hearth-Healer",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "SurWR.esp:02E6A0",
+  "edid": "0SurWRNobleOldMan",
+  "name": "Thane Valdemaar Steel-Arm",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "SurWR.esp:0337AD",
+  "edid": "0SurWRNobleOldManSon",
+  "name": "Vilde Steel-Arm",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133BB",
+  "edid": "Thongvor",
+  "name": "Thongvor Silver-Blood",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014134",
+  "edid": "CaptainLonelyGale",
+  "name": "Captain Lonely-Gale",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "TheGiftofSaturalia.esp:00097C",
+  "edid": "Sat_Lucas",
+  "name": "Lucas",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "TheGiftofSaturalia.esp:00083C",
+  "edid": "Sat_Santus",
+  "name": "Santus",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ }
+]

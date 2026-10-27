@@ -1,0 +1,196 @@
+[
+ {
+  "id": "Skyrim.esm:01C199",
+  "edid": "PhinisGestor",
+  "name": "Phinis Gestor",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C23E",
+  "edid": "SergiusTurrianus",
+  "name": "Sergius Turrianus",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "trainer"
+  ]
+ },
+ {
+  "id": "College Of Winterhold - Quest Expansion.esp:00090F",
+  "edid": "Cow_Gretolde",
+  "name": "Gretolde",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "College Of Winterhold - Quest Expansion.esp:000910",
+  "edid": "Cow_Adara",
+  "name": "Adara",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C198",
+  "edid": "DrevisNeloren",
+  "name": "Drevis Neloren",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:002B0D",
+  "edid": "DLC01SoulCairnSoulHorseRider",
+  "name": "Soul",
+  "plugin": "NPC Appearances Merged.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:00336A",
+  "edid": "DLC1Isran",
+  "name": "Isran",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:00336C",
+  "edid": "DLC1Gunmar",
+  "name": "Gunmar",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:00336B",
+  "edid": "DLC1SorineJurard",
+  "name": "Sorine Jurard",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:00352D",
+  "edid": "REQ_Vigilant_Unique_Tolan",
+  "name": "Vigilant Tolan",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:004D0C",
+  "edid": "DLC1LD_Katria",
+  "name": "Katria",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:003363",
+  "edid": "DLC1FuraBloodmouth",
+  "name": "Fura Bloodmouth",
+  "plugin": "LoreRim - NPCs and Races Overwrite.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:003364",
+  "edid": "DLC1GaranMarethi",
+  "name": "Garan Marethi",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0135E9",
+  "edid": "Falion",
+  "name": "Falion",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:01541D",
+  "edid": "DLC1Durak",
+  "name": "Durak",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "quests",
+   "follower"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:01541E",
+  "edid": "DLC1Celann",
+  "name": "Celann",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "quests",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019A2E",
+  "edid": "MichelLylvieve",
+  "name": "Michel Lylvieve",
+  "plugin": "LoreRim - Skyrim Revoiced Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019A22",
+  "edid": "Lodvar",
+  "name": "Lodvar",
+  "plugin": "LoreRim - Skyrim Revoiced Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019A2A",
+  "edid": "AzzadaLylvieve",
+  "name": "Azzada Lylvieve",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019A1D",
+  "edid": "Horgeir",
+  "name": "Horgeir",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ }
+]

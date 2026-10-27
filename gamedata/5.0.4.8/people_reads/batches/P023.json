@@ -1,0 +1,185 @@
+[
+ {
+  "id": "Skyrim.esm:013BB8",
+  "edid": "Irileth",
+  "name": "Irileth",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BBB",
+  "edid": "FarengarSecretFire",
+  "name": "Farengar Secret-Fire",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:02C6C7",
+  "edid": "Arngeir",
+  "name": "Arngeir",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:036194",
+  "edid": "Malborn",
+  "name": "Malborn",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:021207",
+  "edid": "MQ201PartyCarriageSolitudeDriver",
+  "name": "Carriage Driver",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01336D",
+  "edid": "Dirge",
+  "name": "Dirge",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:03C57C",
+  "edid": "Paarthurnax",
+  "name": "Paarthurnax",
+  "plugin": "Skyrim.esm",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:045920",
+  "edid": "Odahviing",
+  "name": "Odahviing",
+  "plugin": "Skyrim.esm",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:04F828",
+  "edid": "Tsun",
+  "name": "Tsun",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:044236",
+  "edid": "GormlaithGoldenHilt",
+  "name": "Gormlaith Golden-Hilt",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013394",
+  "edid": "Eltrys",
+  "name": "Eltrys",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133BD",
+  "edid": "Uraccen",
+  "name": "Uraccen",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133A7",
+  "edid": "Madanach",
+  "name": "Madanach",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01338A",
+  "edid": "Borkul",
+  "name": "Borkul the Beast",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013368",
+  "edid": "LouisLetrush",
+  "name": "Louis Letrush",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01335A",
+  "edid": "FromDeepestFathoms",
+  "name": "From-Deepest-Fathoms",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013365",
+  "edid": "Keerava",
+  "name": "Keerava",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0132AD",
+  "edid": "Viarmo",
+  "name": "Viarmo",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01328F",
+  "edid": "Jorn",
+  "name": "Jorn",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0132A8",
+  "edid": "Styrr",
+  "name": "Styrr",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ }
+]

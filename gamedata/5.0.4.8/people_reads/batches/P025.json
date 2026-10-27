@@ -1,0 +1,187 @@
+[
+ {
+  "id": "Skyrim.esm:035533",
+  "edid": "Hilde",
+  "name": "Hilde",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01347E",
+  "edid": "Frodnar",
+  "name": "Frodnar",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0135E6",
+  "edid": "Alva",
+  "name": "Alva",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0274A5",
+  "edid": "MS14Helgi",
+  "name": "Helgi's Ghost",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0135F0",
+  "edid": "Hroggar",
+  "name": "Hroggar",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01335B",
+  "edid": "Maramal",
+  "name": "Maramal",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0132A9",
+  "edid": "Svari",
+  "name": "Svari",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013283",
+  "edid": "Greta",
+  "name": "Greta",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013273",
+  "edid": "EvetteSan",
+  "name": "Evette San",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013398",
+  "edid": "Frabbi",
+  "name": "Frabbi",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0136BF",
+  "edid": "Fastred",
+  "name": "Fastred",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0136C1",
+  "edid": "BassianusAxius",
+  "name": "Bassianus Axius",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C605",
+  "edid": "T03Maurice",
+  "name": "Maurice Jondrelle",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01B07D",
+  "edid": "Brynjolf",
+  "name": "Brynjolf",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01334D",
+  "edid": "Bersi",
+  "name": "Bersi Honey-Hand",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01B07C",
+  "edid": "MercerFrey",
+  "name": "Mercer Frey",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:02BA8E",
+  "edid": "MallusMaccius",
+  "name": "Mallus Maccius",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:02BA8C",
+  "edid": "Sabjorn",
+  "name": "Sabjorn",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013284",
+  "edid": "GulumEi",
+  "name": "Gulum-Ei",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0B8827",
+  "edid": "Tonilia",
+  "name": "Tonilia",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ }
+]

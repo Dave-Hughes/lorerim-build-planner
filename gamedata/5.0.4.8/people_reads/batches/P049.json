@@ -1,0 +1,182 @@
+[
+ {
+  "id": "Skyrim.esm:013299",
+  "edid": "Melaran",
+  "name": "Melaran",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:000969",
+  "edid": "BaanHSClothierMerchant",
+  "name": "Indres Sendra",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "aaaGraniteHill.esp:007E59",
+  "edid": "GraniteHillSheepsheadInnKeeper2",
+  "name": "Laila",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:008FA4",
+  "edid": "WTHulgard",
+  "name": "Hulgard",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:03AE15",
+  "edid": "zzzBMVampireMerchant",
+  "name": "Facis",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Kidmer - Adoptable Elf Children 1_2.esp:0048F7",
+  "edid": "urshug_DunmerOrphanGirl",
+  "name": "Felana",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Arena - Markarth Side.esp:146C13",
+  "edid": "MarkarthSideGeneralStore2",
+  "name": "Judith",
+  "plugin": "Arena - Markarth Side.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Gray Fox Cowl.esm:03CFE2",
+  "edid": "manny_GF_Gordon",
+  "name": "Gordon",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:031862",
+  "edid": "DLC2MerchMerchant",
+  "name": "Falas Selvayn",
+  "plugin": "LoreRim - Economy Overhaul.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "The Great Village of Kynesgrove.esp:0E0069",
+  "edid": "HerleifKnotBeardTGCoKG",
+  "name": "Herleif Knot-Beard",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133A1",
+  "edid": "Imedhnain",
+  "name": "Imedhnain",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:03DD7C",
+  "edid": "BaanWDBantamSeller",
+  "name": "Groning",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Arena - Markarth Side.esp:13C004",
+  "edid": "MarkarthSideBlacksmith2",
+  "name": "Hild",
+  "plugin": "Arena - Markarth Side.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:01A35F",
+  "edid": "BaanSDBubblingPotServer",
+  "name": "Mirelyn",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "ccasvsse001-almsivi.esm:001175",
+  "edid": "ccASVSSE001_Blacksmith",
+  "name": "Blacksmith",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:51FD5F",
+  "edid": "zzzCHImgaOwled",
+  "name": "Saklas the Man-Ape",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:10682D",
+  "edid": "0WHIronTavernWench",
+  "name": "Hellte",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Arena - Markarth Side.esp:150E62",
+  "edid": "MarkarthSideAlchemy2",
+  "name": "Seb",
+  "plugin": "Arena - Markarth Side.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:04E16A",
+  "edid": "BaanEDBrothelWorker02",
+  "name": "Worker",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:00096C",
+  "edid": "BaanHSAlchemist",
+  "name": "Niren",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ }
+]

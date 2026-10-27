@@ -1,0 +1,202 @@
+[
+ {
+  "id": "Skyrim.esm:01A670",
+  "edid": "Mikael",
+  "name": "Mikael",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01412E",
+  "edid": "ScoutsManyMarshes",
+  "name": "Scouts-Many-Marshes",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "trainer",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01413F",
+  "edid": "Torbjorn",
+  "name": "Torbjorn Shatter-Shield",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C184",
+  "edid": "Haran",
+  "name": "Haran",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C186",
+  "edid": "Ranmir",
+  "name": "Ranmir",
+  "plugin": "LoreRim - NPCs and Races Overwrite.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01365A",
+  "edid": "Dengeir",
+  "name": "Dengeir of Stuhn",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014130",
+  "edid": "StandsInShallows",
+  "name": "Stands-In-Shallows",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C182",
+  "edid": "MalurSeloth",
+  "name": "Malur Seloth",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013666",
+  "edid": "Annekke",
+  "name": "Annekke Crag-Jumper",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01325F",
+  "edid": "Ahtar",
+  "name": "Ahtar",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014149",
+  "edid": "Brunwulf",
+  "name": "Brunwulf Free-Winter",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01361E",
+  "edid": "Rustleif",
+  "name": "Rustleif",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013653",
+  "edid": "Siddgeir",
+  "name": "Siddgeir",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0135EF",
+  "edid": "Lami",
+  "name": "Lami",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BAA",
+  "edid": "Amren",
+  "name": "Amren",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013614",
+  "edid": "Frida",
+  "name": "Frida",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01329C",
+  "edid": "NosterOneEye",
+  "name": "Noster Eagle-Eye",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014142",
+  "edid": "Oengul",
+  "name": "Oengul War-Anvil",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01A696",
+  "edid": "AelaTheHuntress",
+  "name": "Aela the Huntress",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:065657",
+  "edid": "HirelingErikTheSlayer",
+  "name": "Erik the Slayer",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ }
+]

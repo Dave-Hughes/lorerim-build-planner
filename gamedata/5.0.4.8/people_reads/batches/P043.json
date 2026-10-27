@@ -1,0 +1,182 @@
+[
+ {
+  "id": "Fort Greymoor.esp:0008F1",
+  "edid": "GreymoorQuartermasterSons",
+  "name": "Stormcloak Quartermaster",
+  "plugin": "Fort Greymoor.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0136B6",
+  "edid": "Mralki",
+  "name": "Mralki",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "AnimatedShips.esl:000875",
+  "edid": "zxShWinterholdTrader",
+  "name": "Trader",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "AnimatedShips.esl:000878",
+  "edid": "zxShRiftenCourierHonnigbrew",
+  "name": "Mead Merchant",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01413E",
+  "edid": "AmbarysRendar",
+  "name": "Ambarys Rendar",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Arena - Markarth Side.esp:127BB4",
+  "edid": "MarkarthSideInnMaid1",
+  "name": "Vixi",
+  "plugin": "Arena - Markarth Side.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013266",
+  "edid": "CorpulusVinius",
+  "name": "Corpulus Vinius",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:247246",
+  "edid": "zzzChStableOwner",
+  "name": "Ogra the Stablemaster",
+  "plugin": "Synthesis - World.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:04894F",
+  "edid": "BaanABLightArmourer",
+  "name": "Gors Vylnli",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019953",
+  "edid": "Sharamph",
+  "name": "Sharamph",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013652",
+  "edid": "Solaf",
+  "name": "Solaf",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013640",
+  "edid": "Matlara",
+  "name": "Matlara",
+  "plugin": "Alternative Perspective - Reqtificated.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019E1C",
+  "edid": "Garakh",
+  "name": "Garakh",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "FalkreathShades.esp:54C746",
+  "edid": "GRVETrueMerchantAlch",
+  "name": "Shadow Merchant",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:016ACE",
+  "edid": "CWQuartermasterSons",
+  "name": "Stormcloak Quartermaster",
+  "plugin": "Synthesis - World.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:04E177",
+  "edid": "BaanEDBrothelServer02",
+  "name": "Misilia",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "ccvsvsse001-winter.esl:00080B",
+  "edid": "ccVSVSSE001_Merchant",
+  "name": "Niklas Peryval",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Kidmer - Adoptable Elf Children 1_2.esp:000D69",
+  "edid": "urshug_OrcOrphan",
+  "name": "Urshug",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "CC Farming - Tweaks and Enhancements.esp:000A18",
+  "edid": "ccVSVSSE004_Greorg_Corpse",
+  "name": "Greorg",
+  "plugin": "CC Farming - Tweaks and Enhancements.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Arena - Markarth Side.esp:0B8195",
+  "edid": "MarkarthSideClothing1",
+  "name": "Olivia",
+  "plugin": "Arena - Markarth Side.esp",
+  "roles": [
+   "vendor"
+  ]
+ }
+]

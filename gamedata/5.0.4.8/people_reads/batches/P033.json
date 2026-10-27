@@ -1,0 +1,202 @@
+[
+ {
+  "id": "Dawnguard.esm:01541C",
+  "edid": "DLC1Beleval",
+  "name": "Beleval",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "follower"
+  ]
+ },
+ {
+  "id": "ccasvsse001-almsivi.esm:00083F",
+  "edid": "ccASVSSE001_HandMavandes",
+  "name": "Hand Ethra Mavandas",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01E956",
+  "edid": "Liesl",
+  "name": "Liesl",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Stendarr Rising.esp:1AFCED",
+  "edid": "XJKVigilantPietro",
+  "name": "Vigilant Pietro",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "00Taliesin.esp:005905",
+  "edid": "00Taliesin_Follower",
+  "name": "Taliesin",
+  "plugin": "Taliesin Patches.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:000808",
+  "edid": "HABLJali",
+  "name": "Jali",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:000803",
+  "edid": "DDBInitiate04",
+  "name": "Dark Brotherhood Initiate",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01B1D2",
+  "edid": "Kharjo",
+  "name": "Kharjo",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "follower"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:01AA76",
+  "edid": "DLC1HireableHunterDog2",
+  "name": "Sceolang",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0B9980",
+  "edid": "HirelingMarcurio",
+  "name": "Marcurio",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "HearthFires.esm:00521E",
+  "edid": "BYOHHousecarlPale",
+  "name": "Gregor",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01A6DB",
+  "edid": "Torvar",
+  "name": "Torvar",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019E1A",
+  "edid": "Ugor",
+  "name": "Ugor",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01A6D5",
+  "edid": "Athis",
+  "name": "Athis",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:01AA77",
+  "edid": "DLC1HireableVampireDeathhound1",
+  "name": "Garmr",
+  "plugin": "Unofficial Skyrim Modders Patch.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0A2C8F",
+  "edid": "HousecarlSolitude",
+  "name": "Jordis the Sword-Maiden",
+  "plugin": "LoreRim - NPCs and Races Overwrite.esp",
+  "roles": [
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:01541B",
+  "edid": "DLC1Ingjard",
+  "name": "Ingjard",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "follower"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:000E65",
+  "edid": "DDBInitiate03",
+  "name": "Dark Brotherhood Initiate",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Stendarr Rising.esp:1967DE",
+  "edid": "XJKVigilantBrigid",
+  "name": "Vigilant Brigid",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:01AA78",
+  "edid": "DLC1HireableVampireDeathhound2",
+  "name": "CuSith",
+  "plugin": "Unofficial Skyrim Modders Patch.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ }
+]

@@ -1,0 +1,189 @@
+[
+ {
+  "id": "WindhelmSSE.esp:1B106B",
+  "edid": "0WHSonsBjorn",
+  "name": "Beorn",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:16857E",
+  "edid": "0WHSonsFundraiser",
+  "name": "Hverung",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:172CA3",
+  "edid": "0WHExtGrayDepressedElf",
+  "name": "Taluri Moren",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:18312F",
+  "edid": "0WHExtGraySmugVoiceElf",
+  "name": "Gilas",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:172CA6",
+  "edid": "0WHExtGrayColdRedeemedElf",
+  "name": "Delmon",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:172CB4",
+  "edid": "0WHExtGrayCommonerVoiceElf",
+  "name": "Tevyn Athin",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:367FA4",
+  "edid": "0WHVampireSceneGuard",
+  "name": "Windhelm Guard",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:367FC6",
+  "edid": "0WHVampireSceneGuardNord",
+  "name": "Windhelm Guard",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:1066C1",
+  "edid": "GuardWindhelmNeutral",
+  "name": "Windhelm Guard",
+  "plugin": "WindhelmSSE.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:020C4C",
+  "edid": "WTFollowerAthir",
+  "name": "Athir",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:00BF55",
+  "edid": "WTLuriusLiore",
+  "name": "Lurius Liore",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:07B242",
+  "edid": "WTAlberthor",
+  "name": "Alberthor",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:020C4F",
+  "edid": "WTFollowerElmera",
+  "name": "Elmera",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:38FE08",
+  "edid": "WTAlberthorFalmer",
+  "name": "Alberthor",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:46DA2B",
+  "edid": "WTRolgarCorpse",
+  "name": "Rolgar",
+  "plugin": "Requiem - Wyrmstooth.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:023A8C",
+  "edid": "EncBearSnow",
+  "name": "Bear",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:BE56DF",
+  "edid": "WTLvlCragwaterMarauderBoss",
+  "name": "Marauder",
+  "plugin": "Requiem - Wyrmstooth.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:020C4E",
+  "edid": "WTFollowerDaenlit",
+  "name": "Daenlit",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:0218B6",
+  "edid": "WTTheodynBienne",
+  "name": "Theodyn Bienne",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:028275",
+  "edid": "WTVulthurkrah01",
+  "name": "Vulthurkrah",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "quests"
+  ]
+ }
+]

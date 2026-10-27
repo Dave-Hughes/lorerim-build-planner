@@ -1,0 +1,182 @@
+[
+ {
+  "id": "Dragonborn.esm:01DC67",
+  "edid": "DLC2dunFrostmoonMajni",
+  "name": "Majni",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:0534D9",
+  "edid": "BaanEDNoble01",
+  "name": "Silmen Dreth",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "FalkreathShades.esp:560BE2",
+  "edid": "GRVETrueMerchantMisc",
+  "name": "Shadow Merchant",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013275",
+  "edid": "Fihada",
+  "name": "Fihada",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013663",
+  "edid": "Kjeld",
+  "name": "Kjeld",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "HearthFires.esm:003F5F",
+  "edid": "BYOHUrchin_Lucia",
+  "name": "Lucia",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:208165",
+  "edid": "BaanHSFletcher",
+  "name": "Gerith",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Gray Fox Cowl.esm:03D5A5",
+  "edid": "manny_GF_MalpenixAerius",
+  "name": "Malpenix Aerius",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "aaaGraniteHill.esp:00E6DB",
+  "edid": "GraniteHillBlacksmithAisha",
+  "name": "Aisha",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Riften Docks Overhaul.esp:001EC1",
+  "edid": "MVFMKlara",
+  "name": "Klara Soderberg",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Evolving Locations - Cliffside Retreat.esp:00008C",
+  "edid": "ELCliffsideWoan",
+  "name": "Woan",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01412B",
+  "edid": "Susanna",
+  "name": "Susanna the Wicked",
+  "plugin": "LoreRim - NPCs and Races Overwrite.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:01EEB1",
+  "edid": "DLC2DremoraMerchant",
+  "name": "Dremora Merchant",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "The Great Town of Ivarstead.esp:000104",
+  "edid": "UlrenKynehearthTGCoI",
+  "name": "Ulren",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "aaaGraniteHill.esp:044DD5",
+  "edid": "GraniteHillJohn",
+  "name": "John",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:31C40C",
+  "edid": "zzzAoMVigilantLibrarianDead",
+  "name": "Gwyneth",
+  "plugin": "Vigilant.esm",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01329A",
+  "edid": "Sayma",
+  "name": "Sayma",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:0EDBF5",
+  "edid": "BaanSDUnderootAlchemist",
+  "name": "Graunein Polonius",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Arena - Markarth Side.esp:13BFFB",
+  "edid": "MarkarthSideBlacksmith1",
+  "name": "Gunnr",
+  "plugin": "Arena - Markarth Side.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:008F8C",
+  "edid": "WTSigur",
+  "name": "Sigur",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ }
+]

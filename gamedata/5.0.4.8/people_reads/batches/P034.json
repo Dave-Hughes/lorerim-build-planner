@@ -1,0 +1,206 @@
+[
+ {
+  "id": "GG's Thieves Guild Headquarters.esp:000FCB",
+  "edid": "FishSmell",
+  "name": "Fish-Smell",
+  "plugin": "GG's Thieves Guild - Patches.esp",
+  "roles": [
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013291",
+  "edid": "KharagGroShurkul",
+  "name": "Kharag gro-Shurkul",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0B9983",
+  "edid": "HirelingStenvar",
+  "name": "Stenvar",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:000804",
+  "edid": "HABLHainin",
+  "name": "Hainin",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019959",
+  "edid": "Borgakh",
+  "name": "Borgakh the Steel Heart",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019E22",
+  "edid": "Ogol",
+  "name": "Ogol",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01A6D7",
+  "edid": "Ria",
+  "name": "Ria",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0B997F",
+  "edid": "HirelingVorstag",
+  "name": "Vorstag",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Shroom Beetles.esp:000855",
+  "edid": "EncShroomBeetleRedPet",
+  "name": "Friendly Shroom Beetle",
+  "plugin": "LoreRim - Food Tweaks.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:000809",
+  "edid": "HABLJawalar",
+  "name": "Jawalar",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:09A7AA",
+  "edid": "TrainedDog",
+  "name": "Vigilance",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:109487",
+  "edid": "WEFollowerDog",
+  "name": "Stray Dog",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "GORE.esp:E0657E",
+  "edid": "HD1CampGore",
+  "name": "Gore",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Shroom Beetles.esp:000857",
+  "edid": "EncShroomBeetleBluePet",
+  "name": "Friendly Shroom Beetle",
+  "plugin": "LoreRim - Food Tweaks.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "ccasvsse001-almsivi.esm:000841",
+  "edid": "ccASVSSE001_HandVesparth",
+  "name": "Vesparth the Toe",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Shroom Beetles.esp:000858",
+  "edid": "EncShroomBeetleBlackreachPet",
+  "name": "Friendly Blackreach Shroom Beetle",
+  "plugin": "LoreRim - Food Tweaks.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:000806",
+  "edid": "DDBInitiate02",
+  "name": "Dark Brotherhood Initiate",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0199B7",
+  "edid": "GatgroShargakh",
+  "name": "Gat gro-Shargakh",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "marry"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:018FA9",
+  "edid": "DLC2SVMorwen",
+  "name": "Morwen",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "marry"
+  ]
+ },
+ {
+  "id": "ccpewsse002-armsofchaos.esl:00081D",
+  "edid": "ccPEWSSE002_HynerilNPC",
+  "name": "Hyenril",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor",
+   "trainer",
+   "marry"
+  ]
+ }
+]

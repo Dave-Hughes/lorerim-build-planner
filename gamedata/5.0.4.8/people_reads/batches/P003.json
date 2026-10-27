@@ -1,0 +1,194 @@
+[
+ {
+  "id": "Skyrim.esm:01337C",
+  "edid": "Svana",
+  "name": "Svana Far-Shield",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01337D",
+  "edid": "Tythis",
+  "name": "Tythis Ulen",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BBD",
+  "edid": "BalgruuftheGreater",
+  "name": "Balgruuf the Greater",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BB5",
+  "edid": "VignarGrayMane",
+  "name": "Vignar Gray-Mane",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "ccBGSSSE001-Fish.esm:0008F6",
+  "edid": "ccBGSSSE001_Viriya",
+  "name": "Viriya",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "quests",
+   "follower"
+  ]
+ },
+ {
+  "id": "ccBGSSSE001-Fish.esm:0008F8",
+  "edid": "ccBGSSSE001_SwimsInDeepWaters",
+  "name": "Swims-In-Deep-Water",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01338E",
+  "edid": "Calcelmo",
+  "name": "Calcelmo",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:03A19A",
+  "edid": "Zaria",
+  "name": "Zaria",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01B1DB",
+  "edid": "Risaad",
+  "name": "Ri'saad",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013282",
+  "edid": "Gisli",
+  "name": "Gisli",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BAD",
+  "edid": "MilaValentia",
+  "name": "Mila Valentia",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133B3",
+  "edid": "Reburrus",
+  "name": "Reburrus Quintilius",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133B2",
+  "edid": "Raerek",
+  "name": "Raerek",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BBA",
+  "edid": "ProventusAvenicci",
+  "name": "Proventus Avenicci",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01A6A2",
+  "edid": "Brill",
+  "name": "Brill",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C19D",
+  "edid": "ArnielGane",
+  "name": "Arniel Gane",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C19E",
+  "edid": "Tolfdir",
+  "name": "Tolfdir",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C19A",
+  "edid": "ColetteMarence",
+  "name": "Colette Marence",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C197",
+  "edid": "Faralda",
+  "name": "Faralda",
+  "plugin": "LoreRim - NPCs and Races Overwrite.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C193",
+  "edid": "UraggroShub",
+  "name": "Urag gro-Shub",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ }
+]

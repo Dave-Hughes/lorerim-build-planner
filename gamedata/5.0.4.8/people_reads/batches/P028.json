@@ -1,0 +1,182 @@
+[
+ {
+  "id": "Vigilant.esm:51EAA8",
+  "edid": "zzzCHMntrFollower",
+  "name": "Mordog the Man-Bull",
+  "plugin": "Synthesis - World.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:51D895",
+  "edid": "zzzCHMntrLeader",
+  "name": "Horbahha the Chief",
+  "plugin": "Synthesis - World.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:4B2C91",
+  "edid": "zzzBMM01Steward",
+  "name": "Steward",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:032894",
+  "edid": "zzzBMCorruptVigilant02",
+  "name": "Paulo",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:03167C",
+  "edid": "zzzBMCorruptVigilant01",
+  "name": "Gwaji gro-Agnam",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:033043",
+  "edid": "zzzBMCorruptVigilant03",
+  "name": "Thingol",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:035D7D",
+  "edid": "zzzBMLamaeBeolfag",
+  "name": "Lamae Beolfag",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:037468",
+  "edid": "zzzBMLamaeBal",
+  "name": "Lamae Bal",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:0368E0",
+  "edid": "zzzBMMolagBalHuman",
+  "name": "Molag Bal",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:137126",
+  "edid": "zzzCHDrozelMemory",
+  "name": "Dro'Zel",
+  "plugin": "Vigilant.esm",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:137E63",
+  "edid": "zzzCHBelharzaMemory",
+  "name": "Emperor Belharza",
+  "plugin": "Synthesis - World.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:23611E",
+  "edid": "zzzCHRithoMemory",
+  "name": "Ritho",
+  "plugin": "Synthesis - World.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:137E65",
+  "edid": "zzzCHEnolaMemory",
+  "name": "Enola",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:140211",
+  "edid": "zzzCHBigBrother01Memory",
+  "name": "Simon",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:140212",
+  "edid": "zzzCHBigBrother02Memory",
+  "name": "Tlass",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:05ADEF",
+  "edid": "zzzCHMarukhMemory",
+  "name": "Marukh",
+  "plugin": "Synthesis - World.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:05ADFD",
+  "edid": "zzzCHInquisitorPepeMemory2",
+  "name": null,
+  "plugin": "Synthesis - World.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:06A230",
+  "edid": "zzzCHInquisitorPepeMemory3",
+  "name": null,
+  "plugin": "Vigilant.esm",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:0708BE",
+  "edid": "zzzCHStAlessiaMemoryGhost",
+  "name": "Alessia",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:0708BB",
+  "edid": "zzzCHMolagBalInMemoryTail",
+  "name": null,
+  "plugin": "Vigilant.esm",
+  "roles": [
+   "quests"
+  ]
+ }
+]

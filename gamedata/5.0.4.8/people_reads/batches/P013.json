@@ -1,0 +1,192 @@
+[
+ {
+  "id": "Meridia.esp:000D69",
+  "edid": "NMeridiaUna",
+  "name": "Acolyte Una",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Meridia.esp:000D6A",
+  "edid": "NMeridiaValrar",
+  "name": "Initiate Valrar",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Meridia.esp:030947",
+  "edid": "NMeridiaValrar01Dario",
+  "name": "Dario",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Miasma.esp:000D96",
+  "edid": "RE01Haj",
+  "name": "Haj-Xul",
+  "plugin": "LoreRim - Miasma Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Miasma.esp:001E54",
+  "edid": "RE01ArgonianSlave",
+  "name": "Catches-Many-Fish",
+  "plugin": "LoreRim - Miasma Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Miasma.esp:001E20",
+  "edid": "RE01ZirathRyon",
+  "name": "Zirath Ryon",
+  "plugin": "LoreRim - Miasma Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019FE8",
+  "edid": "Golldir",
+  "name": "Golldir",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013480",
+  "edid": "Faendal",
+  "name": "Faendal",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0411BA",
+  "edid": "Valdr",
+  "name": "Valdr",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C187",
+  "edid": "Birna",
+  "name": "Birna",
+  "plugin": "LoreRim - NPCs and Races Overwrite.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "MoreToDoSoulCairn.esp:000801",
+  "edid": "MDSCAngariontheBold",
+  "name": "Angarion the Bold",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "MoreToDoSoulCairn.esp:00093B",
+  "edid": "MDSCGlendoraMessenia",
+  "name": "Glendora Messenia",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "MoreToDoSoulCairn.esp:00093A",
+  "edid": "MDSCGavoAntonius",
+  "name": "Gavo Antonius",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "NightmarePlane.esp:0348E1",
+  "edid": "aaaMBRalforn",
+  "name": "Ralforn",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01D4B5",
+  "edid": "CommanderMaro",
+  "name": "Commander Maro",
+  "plugin": "Heavy Legion - Reqtificated.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Penitus_Oculatus.esp:00A9C2",
+  "edid": "zzzPOInformant",
+  "name": "Dark Brotherhood Defector",
+  "plugin": "Penitus_Oculatus.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013478",
+  "edid": "Delphine",
+  "name": "Delphine",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0D4FDE",
+  "edid": "Rune",
+  "name": "Rune",
+  "plugin": "LoreRim - Skyrim Revoiced Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01326A",
+  "edid": "ElisifTheFair",
+  "name": "Elisif the Fair",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "SeranaDialogueExpansion - Romance.esp:0000A2",
+  "edid": "SDE_BanditGuard",
+  "name": "Solitude Guard",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ }
+]

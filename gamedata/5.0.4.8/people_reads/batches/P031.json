@@ -1,0 +1,200 @@
+[
+ {
+  "id": "Wyrmstooth.esp:489147",
+  "edid": "WTBolmar",
+  "name": "Bolmar",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:489128",
+  "edid": "WTSprigganMatriarch",
+  "name": "Spriggan Matriarch",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:020C4D",
+  "edid": "WTFollowerShargam",
+  "name": "Shargam",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:3B936D",
+  "edid": "WTUlfgar",
+  "name": "Ulfgar",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:009530",
+  "edid": "WTSigny",
+  "name": "Signy",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:BCCBEE",
+  "edid": "WTGjalrunn",
+  "name": "Gjalrunn",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:BCCBF0",
+  "edid": "WTGlendora",
+  "name": "Glendora",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:C6946F",
+  "edid": "WTWarlockPantsRitual",
+  "name": "Ritual Master",
+  "plugin": "Wyrmstooth.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:2F1A75",
+  "edid": "WTVulom",
+  "name": "Vulom",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:2E6C88",
+  "edid": "WTDunyick",
+  "name": "Dunyick",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:2E8F53",
+  "edid": "WTFaelor",
+  "name": "Faelor",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0A2C91",
+  "edid": "HousecarlRiften",
+  "name": "Iona",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "HearthFires.esm:005215",
+  "edid": "BYOHHousecarlFalkreath",
+  "name": "Rayya",
+  "plugin": "LoreRim - NPCs and Races Overwrite.esp",
+  "roles": [
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01A6D9",
+  "edid": "NjadaStonearm",
+  "name": "Njada Stonearm",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013390",
+  "edid": "Cosnach",
+  "name": "Cosnach",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Morrowind Creatures Merge.esp:000A13",
+  "edid": "og_EncTrollFrostGrahlRieklingFollower",
+  "name": "Armored Grahl",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0A2C90",
+  "edid": "HousecarlWindhelm",
+  "name": "Calder",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:01AA74",
+  "edid": "DLC1HireableHunterDog1",
+  "name": "Bran",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "ccasvsse001-almsivi.esm:00083E",
+  "edid": "ccASVSSE001_HandIndobar",
+  "name": "Hand Kydren Indobar",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01347F",
+  "edid": "Sven",
+  "name": "Sven",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ }
+]

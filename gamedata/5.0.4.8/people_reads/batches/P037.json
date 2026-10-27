@@ -1,0 +1,182 @@
+[
+ {
+  "id": "ForgottenCity.esp:031ACF",
+  "edid": "000FCGaia",
+  "name": "Gaia",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01CD8F",
+  "edid": "VipirtheFleet",
+  "name": "Vipir the Fleet",
+  "plugin": "LoreRim - Skyrim Revoiced Patch.esp",
+  "roles": [
+   "trainer"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:220685",
+  "edid": "WTGashnag",
+  "name": "Gashnag",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0D6703",
+  "edid": "Garvey",
+  "name": "Garvey",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "trainer"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:0CA4A9",
+  "edid": "zzzCHBourlorSkeleton",
+  "name": "Bourlor",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01B1D3",
+  "edid": "Razhinda",
+  "name": "Ra'zhinda",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "trainer"
+  ]
+ },
+ {
+  "id": "Stendarr Rising.esp:1916DC",
+  "edid": "XJKVigilantClaren",
+  "name": "Vigilant Claren",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "trainer"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:35DCCF",
+  "edid": "BaanWDHerbSeller",
+  "name": "Teranye",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "ccasvsse001-almsivi.esm:001017",
+  "edid": "ccASVSSE001_CaretakerIneril",
+  "name": "Caretaker Ineril",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:BE98DE",
+  "edid": "WTLvlCragwaterMarauderBlacksmith",
+  "name": "Marauder",
+  "plugin": "Requiem - Wyrmstooth.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0284AC",
+  "edid": "HogniRedArm",
+  "name": "Hogni Red-Arm",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "SurWR.esp:18986C",
+  "edid": "0WRSewerLizard",
+  "name": "Swims-Below-Stone",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:16D74F",
+  "edid": "0WHIronSoupNazi",
+  "name": "Brurid",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:03DDE3",
+  "edid": "BaanWDGemSeller",
+  "name": "Mosmilan",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:2310DB",
+  "edid": "BaanSSCCBarkeep",
+  "name": "Toldris",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:03DE03",
+  "edid": "BaanWDCobbler",
+  "name": "Martheas",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:018FBD",
+  "edid": "DLC2SVEdla",
+  "name": "Edla",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "SnozzResources.esp:283CF1",
+  "edid": "FortDunstadHillericaSecretStone",
+  "name": "Hillerica",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "The Great City of Solitude.esp:008C55",
+  "edid": "AkselTrodirsonTGCoS",
+  "name": "Aksel Trodirson",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:001851",
+  "edid": "HABLMajya",
+  "name": "Majya",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "vendor"
+  ]
+ }
+]

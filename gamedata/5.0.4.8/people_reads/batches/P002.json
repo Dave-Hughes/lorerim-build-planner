@@ -1,0 +1,185 @@
+[
+ {
+  "id": "Skyrim.esm:01B1D1",
+  "edid": "Madran",
+  "name": "Ma'dran",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BA3",
+  "edid": "Hulda",
+  "name": "Hulda",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:00174D",
+  "edid": "ASHGAshabahMan",
+  "name": "Honai",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:00175E",
+  "edid": "ASHGNecromancerBoss",
+  "name": "Andyn Pamarc",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:001743",
+  "edid": "ASHGWizardWH",
+  "name": "Dorian Masterhart",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:001640",
+  "edid": "ASHGOldManCitizen01",
+  "name": "Thaik",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:001607",
+  "edid": "ASHGPoetryCitizen01",
+  "name": "Sharza",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:001747",
+  "edid": "ASHGDarkElfBusinessMan",
+  "name": "Lloros Reynel",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:001167",
+  "edid": "CYCOJukka",
+  "name": "Jukka",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:000EC5",
+  "edid": "DDBUnknownInitiate",
+  "name": "Unknown Initiate",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:000805",
+  "edid": "DDBTenerio",
+  "name": "Tenerio",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:001072",
+  "edid": "DDBLeollus",
+  "name": "Leollus",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:000EC4",
+  "edid": "DDBTarget05",
+  "name": "Laurentina",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:000FD1",
+  "edid": "DDBLucyaGhost",
+  "name": "Lucya",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:001855",
+  "edid": "HABLAzita",
+  "name": "Azita",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:001856",
+  "edid": "HABLZakirLoremaster",
+  "name": "Loremaster Za'kir",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:001852",
+  "edid": "HABLDuarelm",
+  "name": "Duraelm",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:0011F5",
+  "edid": "LAMIOziriana",
+  "name": "Oziriana",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "BoethiahCalling_AlternativeQuest.esp:00081B",
+  "edid": "madManInBlack_Inn",
+  "name": "Rudin Filaro",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "BoethiahCalling_AlternativeQuest.esp:000821",
+  "edid": "madNort_Shrine",
+  "name": "Nort",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ }
+]

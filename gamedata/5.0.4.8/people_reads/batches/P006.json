@@ -1,0 +1,195 @@
+[
+ {
+  "id": "Dragonborn.esm:018280",
+  "edid": "DLC2RRAdrilArano",
+  "name": "Adril Arano",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:018290",
+  "edid": "DLC2RRGeldisSadri",
+  "name": "Geldis Sadri",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:018286",
+  "edid": "DLC2RRTilisuSeverin",
+  "name": "Tilisu Severin",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:018278",
+  "edid": "DLC2RRCresciusCaerellius",
+  "name": "Crescius Caerellius",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:01827C",
+  "edid": "DLC2RRAphiaVelothi",
+  "name": "Aphia Velothi",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:01828E",
+  "edid": "DLC2RRGloverMallory",
+  "name": "Glover Mallory",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:0182A1",
+  "edid": "DLC2RRMiloreIenth",
+  "name": "Milore Ienth",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:01828A",
+  "edid": "DLC2RRElderOthreloth",
+  "name": "Elder Othreloth",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:01827E",
+  "edid": "DLC2RRLlerilMorvayn",
+  "name": "Lleril Morvayn",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:018282",
+  "edid": "DLC2RRCindiriArano",
+  "name": "Cindiri Arano",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:018292",
+  "edid": "DLC2RRFethisAlor",
+  "name": "Fethis Alor",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:018F15",
+  "edid": "DLC2RRBralsaDrel",
+  "name": "Bralsa Drel",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01364D",
+  "edid": "Runil",
+  "name": "Runil",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:018FC8",
+  "edid": "DLC2SVTharstan",
+  "name": "Tharstan",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:018FB5",
+  "edid": "DLC2SVBaldorIronShaper",
+  "name": "Baldor Iron-Shaper",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:01A515",
+  "edid": "DLC2Hilund",
+  "name": "Hilund",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "marry"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:017777",
+  "edid": "DLC2Talvas",
+  "name": "Talvas Fathryon",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer",
+   "follower"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:01777D",
+  "edid": "DLC2Ulves",
+  "name": "Ulves Romoran",
+  "plugin": "LoreRim - JK's Tel Mithryn.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:017778",
+  "edid": "DLC2Elynea",
+  "name": "Elynea Mothren",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:019596",
+  "edid": "DLC2MogrulThugTT1b",
+  "name": "Slitter",
+  "plugin": "NPC Appearances Merged.esp",
+  "roles": [
+   "quests"
+  ]
+ }
+]

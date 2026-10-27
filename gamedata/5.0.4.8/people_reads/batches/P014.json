@@ -1,0 +1,196 @@
+[
+ {
+  "id": "Skyrim.esm:013BA4",
+  "edid": "Arcadia",
+  "name": "Arcadia",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013B9C",
+  "edid": "FraliaGrayMane",
+  "name": "Fralia Gray-Mane",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0D95E9",
+  "edid": "dunPOITundraMarshDog",
+  "name": "Meeko",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0136BA",
+  "edid": "Sissel",
+  "name": "Sissel",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim Extended Cut - Saints and Seducers.esp:033AF4",
+  "edid": "EC_SS_LizardMan",
+  "name": "Sees-the-Moon",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "ccbgssse025-advdsgs.esm:198273",
+  "edid": "EC_SS_Staada",
+  "name": "Staada",
+  "plugin": "Skyrim Extended Cut - Saints and Seducers.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "ccbgssse025-advdsgs.esm:000A84",
+  "edid": "EC_SS_Thoron",
+  "name": "Thoron",
+  "plugin": "Skyrim Extended Cut - Saints and Seducers.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim Extended Cut - Saints and Seducers.esp:099D1D",
+  "edid": "EC_SS_Dylora",
+  "name": "Dylora",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "ccBGSSSE025-AdvDSGS.esm:198273",
+  "edid": "EC_SS_Staada",
+  "name": "Staada",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim Extended Cut - Saints and Seducers.esp:02E879",
+  "edid": "EC_SS_TheodorGorlash",
+  "name": "Theodor Gorlash",
+  "plugin": "Skyrim Extended Cut - Saints and Seducers.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01329F",
+  "edid": "PanteaAteia",
+  "name": "Pantea Ateia",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01328A",
+  "edid": "IngeSixFingers",
+  "name": "Inge Six Fingers",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01A68E",
+  "edid": "KodlakWhitemane",
+  "name": "Kodlak Whitemane",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01A692",
+  "edid": "Farkas",
+  "name": "Farkas",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01A690",
+  "edid": "Skjor",
+  "name": "Skjor",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01A694",
+  "edid": "Vilkas",
+  "name": "Vilkas",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013B9D",
+  "edid": "EorlundGrayMane",
+  "name": "Eorlund Gray-Mane",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0132A1",
+  "edid": "Rikke",
+  "name": "Legate Rikke",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013261",
+  "edid": "Beirand",
+  "name": "Beirand",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014128",
+  "edid": "Galmar",
+  "name": "Galmar Stone-Fist",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ }
+]

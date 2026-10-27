@@ -1,0 +1,185 @@
+[
+ {
+  "id": "Skyrim.esm:013363",
+  "edid": "Hroar",
+  "name": "Hroar",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013359",
+  "edid": "Francois",
+  "name": "Francois Beaufort",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01A6B1",
+  "edid": "VantusLoreius",
+  "name": "Vantus Loreius",
+  "plugin": "LoreRim - Skyrim Revoiced Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0550F0",
+  "edid": "CiceroRoad",
+  "name": "Cicero",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01BDB1",
+  "edid": "Cicero",
+  "name": "Cicero",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:043D21",
+  "edid": "GuardLoreiusFarmImperial",
+  "name": "Imperial Soldier",
+  "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:02E3EF",
+  "edid": "DB02Captive2",
+  "name": "Alea Quintus",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01BDB4",
+  "edid": "Astrid",
+  "name": "Astrid",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:02E3E8",
+  "edid": "DB02Captive1",
+  "name": "Fultheim the Fearless",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01406B",
+  "edid": "Muiri",
+  "name": "Muiri",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01B074",
+  "edid": "AlainDufont",
+  "name": "Alain Dufont",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01412C",
+  "edid": "Nilsine",
+  "name": "Nilsine Shatter-Shield",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:05BF2B",
+  "edid": "Rexus",
+  "name": "Rexus",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:03B43A",
+  "edid": "AmaundMotierre",
+  "name": "Amaund Motierre",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01334B",
+  "edid": "Asgeir",
+  "name": "Asgeir Snow-Shod",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C3AA",
+  "edid": "Veezara",
+  "name": "Veezara",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013292",
+  "edid": "Kayd",
+  "name": "Kayd",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01BDB8",
+  "edid": "Gabriella",
+  "name": "Gabriella",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01BDB0",
+  "edid": "Arnbjorn",
+  "name": "Arnbjorn",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013387",
+  "edid": "Anton",
+  "name": "Anton Virane",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ }
+]

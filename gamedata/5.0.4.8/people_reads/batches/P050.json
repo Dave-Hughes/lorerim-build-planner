@@ -1,0 +1,182 @@
+[
+ {
+  "id": "Skyrim.esm:013B78",
+  "edid": "Skuli",
+  "name": "Skuli",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01328C",
+  "edid": "Jala",
+  "name": "Jala",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01B076",
+  "edid": "Bolar",
+  "name": "Bolar",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01414E",
+  "edid": "MalthyrElenil",
+  "name": "Malthyr Elenil",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:029DAA",
+  "edid": "Syndus",
+  "name": "Syndus",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019957",
+  "edid": "Shuftharz",
+  "name": "Shuftharz",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01414B",
+  "edid": "Nils",
+  "name": "Nils",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "The Great Town of Karthwasten.esp:005B75",
+  "edid": "BryanTGCoKW",
+  "name": "Bryan",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013621",
+  "edid": "Thoring",
+  "name": "Thoring",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:01A361",
+  "edid": "BaanSDBubblingPotChef",
+  "name": "Draz Muluk",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Evolving Locations - Cliffside Retreat.esp:00003B",
+  "edid": "ELCliffsideBlandus",
+  "name": "Blandus",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "AnimatedShips.esl:000A75",
+  "edid": "zxShDawnstarTrader",
+  "name": "Trader",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "The Great City of Morthal.esp:0041F2",
+  "edid": "Erika",
+  "name": "Erika",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01412A",
+  "edid": "Elda",
+  "name": "Elda Early-Dawn",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013627",
+  "edid": "Hadring",
+  "name": "Hadring",
+  "plugin": "LoreRim - Skyrim Revoiced Patch.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013255",
+  "edid": "Addvar",
+  "name": "Addvar",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "GG's Thieves Guild Headquarters.esp:000FBC",
+  "edid": "PlantsDreams",
+  "name": "Plants-Dreams",
+  "plugin": "GG's Thieves Guild - Patches.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:001739",
+  "edid": "ASHGDarkElfVendor01",
+  "name": "Naris Reynel",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "The Great City of Solitude.esp:00800A",
+  "edid": "TildaTGCoS",
+  "name": "Tilda",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "SurWR.esp:10F86D",
+  "edid": "0WRRedguardTrader",
+  "name": "Yaeli",
+  "plugin": "LoreRim Bard Cloth Vendors.esp",
+  "roles": [
+   "vendor"
+  ]
+ }
+]

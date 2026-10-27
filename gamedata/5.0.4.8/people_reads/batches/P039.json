@@ -1,0 +1,182 @@
+[
+ {
+  "id": "Skyrim.esm:013354",
+  "edid": "Drifa",
+  "name": "Drifa",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:016973",
+  "edid": "CWQuartermasterImperial",
+  "name": "Imperial Quartermaster",
+  "plugin": "LoreRim - Dialogue Patch.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:080C77",
+  "edid": "0WHBridgeVendorMorrowing",
+  "name": "Llathise",
+  "plugin": "LoreRim - Economy Overhaul.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:230F67",
+  "edid": "BaanEDTino",
+  "name": "Tino",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "aaaGraniteHill.esp:5F3A5B",
+  "edid": "GraniteHillRhoda",
+  "name": "Rhoda",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "AnimatedShips.esl:000881",
+  "edid": "zxShSolitudeTrader",
+  "name": "Trader",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014140",
+  "edid": "AvalAtheron",
+  "name": "Aval Atheron",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:029DAF",
+  "edid": "VanrythGatharian",
+  "name": "Vanryth Gatharian",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:272108",
+  "edid": "zzzCHMeridianFollowerMemory",
+  "name": "Gloriel the Valkyrie",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:20D3FE",
+  "edid": "BaanHSBaker",
+  "name": "Sadeth Bevolni",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:06C72F",
+  "edid": "0GQShopkeeper",
+  "name": "Mathendis",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:362E41",
+  "edid": "BaanWDBlacksmith",
+  "name": "Drosatt",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "AnimatedShips.esl:00087D",
+  "edid": "zxShWindhelmTrader",
+  "name": "Trader",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Evolving Locations - Riverside Shack.esp:0000D4",
+  "edid": "ELRiversideAseis",
+  "name": "Aseis",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Arena - Markarth Side.esp:109AA3",
+  "edid": "MarkarthSideGeneralStore1",
+  "name": "Nix Silverspoon",
+  "plugin": "Arena - Markarth Side.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "HearthFires.esm:00403C",
+  "edid": "BYOHUrchin_Alesan",
+  "name": "Alesan",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013B7A",
+  "edid": "Murbul",
+  "name": "Murbul",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Arena - Markarth Side.esp:150E3F",
+  "edid": "MarkarthSideGeneralStore3",
+  "name": "Lianna",
+  "plugin": "Arena - Markarth Side.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:1295AC",
+  "edid": "BaanABBantamSeller",
+  "name": "Msenni",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:04D58F",
+  "edid": "0WHShopBSSalt",
+  "name": "Old Hjolf",
+  "plugin": "Synthesis - World.esp",
+  "roles": [
+   "vendor"
+  ]
+ }
+]

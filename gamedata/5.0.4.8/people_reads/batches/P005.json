@@ -1,0 +1,192 @@
+[
+ {
+  "id": "Dawnguard.esm:003BA7",
+  "edid": "DLC1Harkon",
+  "name": "Lord Harkon",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019A2C",
+  "edid": "ClintonLylvieve",
+  "name": "Clinton Lylvieve",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:003B8B",
+  "edid": "DLC1Valerica",
+  "name": "Valerica",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:00A877",
+  "edid": "DLC1Gelebor",
+  "name": "Knight-Paladin Gelebor",
+  "plugin": "Gelebor & Vyrthur - Reqtificated.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:00336D",
+  "edid": "DLC1FlorentiusBaenius",
+  "name": "Florentius Baenius",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:0058B0",
+  "edid": "DLC1Dexion",
+  "name": "Dexion Evicus",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:0093A1",
+  "edid": "DLC01SoulCairnJiub",
+  "name": "Jiub",
+  "plugin": "NPCs Pre-Synthesis Reqtificated.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:04D6E7",
+  "edid": "dunValthumeHevnoraak",
+  "name": "Hevnoraak",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:0248E9",
+  "edid": "DLC2AcolyteAhzidal",
+  "name": "Ahzidal",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:0179C7",
+  "edid": "DLC2dunKolbjornRalis",
+  "name": "Ralis Sedarys",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:0285C3",
+  "edid": "DLC2EbonyWarrior",
+  "name": "Ebony Warrior",
+  "plugin": "Ryn's Mods - Reqtificated.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:01A51C",
+  "edid": "DLC2Halbarn",
+  "name": "Halbarn Iron-Fur",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "marry"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:01A518",
+  "edid": "DLC2Kuvar",
+  "name": "Kuvar",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:01A51A",
+  "edid": "DLC2Elmus",
+  "name": "Elmus",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:01A508",
+  "edid": "DLC2ThirskRieklingChief",
+  "name": "Riekling",
+  "plugin": "Big Tweaks.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:01773A",
+  "edid": "DLC2Neloth",
+  "name": "Neloth",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:017934",
+  "edid": "DLC2Frea",
+  "name": "Frea",
+  "plugin": "LoreRim - NPCs and Races Overwrite.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:017935",
+  "edid": "DLC2Storn",
+  "name": "Storn Crag-Strider",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:01FB98",
+  "edid": "DLC2MiraakMQ06",
+  "name": "Miraak",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:0182AC",
+  "edid": "DLC2RRModynVeleth",
+  "name": "Captain Veleth",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ }
+]

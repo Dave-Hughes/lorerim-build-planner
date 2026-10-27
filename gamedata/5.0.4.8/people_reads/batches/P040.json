@@ -1,0 +1,182 @@
+[
+ {
+  "id": "Vigilant.esm:0AEFE3",
+  "edid": "zzzCHBlackWorm",
+  "name": "Black Worm",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01361D",
+  "edid": "Madena",
+  "name": "Madena",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "AnimatedShips.esl:000862",
+  "edid": "zxShSolitudeAngler",
+  "name": "Angler",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0D6AD8",
+  "edid": "AquilliusAeresius",
+  "name": "Aquillius Aeresius",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "ForgottenCity.esp:0272B3",
+  "edid": "000FCVernon",
+  "name": "Vernon",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "aaaGraniteHill.esp:0068AF",
+  "edid": "GraniteHillSheepsheadInnKeeper1",
+  "name": "Helana",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0135ED",
+  "edid": "Jonna",
+  "name": "Jonna",
+  "plugin": "LoreRim - Skyrim Revoiced Patch.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Riften Docks Overhaul.esp:002F06",
+  "edid": "MVRFThedSoderberg",
+  "name": "Thed Soderberg",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "SkaalFishingCamp.esp:000842",
+  "edid": "FS_SkaalFisherF",
+  "name": "Asa Sea-Mist",
+  "plugin": "SkaalFishingCamp.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "HearthFires.esm:003F56",
+  "edid": "BYOHUrchin_Blaise",
+  "name": "Blaise",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:34987A",
+  "edid": "BaanWDYamSeller",
+  "name": "Velisa",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:052E80",
+  "edid": "0WHThiefSoot",
+  "name": "Olfand the World-Weary",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01411F",
+  "edid": "Hillevi",
+  "name": "Hillevi Cruel-Sea",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "AnimatedShips.esl:00087A",
+  "edid": "zxShSkaalHorkerMerchant",
+  "name": "Horker Dealer",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "FalkreathShades.esp:55BA60",
+  "edid": "GRVETrueMerchantMagic",
+  "name": "Shadow Merchant",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "AnimatedShips.esl:000885",
+  "edid": "zxShRRDunmerMerchant",
+  "name": "Dunmer Merchant",
+  "plugin": "AnimatedShips.esl",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "The Great Town of Shor's Stone.esp:066887",
+  "edid": "EwaldTGCoSS",
+  "name": "Ewald",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "The Great City of Solitude.esp:00D586",
+  "edid": "DraKaleejaTGCoS",
+  "name": "Dra'kaleeja",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01402D",
+  "edid": "TacitusSallustius",
+  "name": "Tacitus Sallustius",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "AnimatedShips.esl:000965",
+  "edid": "zxShRiftenFencer",
+  "name": "Fencer",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ }
+]

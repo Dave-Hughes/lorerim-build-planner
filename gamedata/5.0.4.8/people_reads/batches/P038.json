@@ -1,0 +1,182 @@
+[
+ {
+  "id": "aaaGraniteHill.esp:5F3A62",
+  "edid": "GraniteHillValdr",
+  "name": "Valdr",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "SurWR.esp:11499B",
+  "edid": "0WRImperialMerchant",
+  "name": "Vinopola Vlanarus",
+  "plugin": "LoreRim - Economy Overhaul.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01411B",
+  "edid": "IdesaSadri",
+  "name": "Idesa Sadri",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:0FED32",
+  "edid": "zzzCHJazhan",
+  "name": "Ja'zhan",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:04DF74",
+  "edid": "BaanEDBreadSeller",
+  "name": "Seresha Daar",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "TheGiftofSaturalia.esp:000838",
+  "edid": "Sat_Niklas_Fake",
+  "name": "Niklas",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013385",
+  "edid": "Adara",
+  "name": "Adara",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "aaaGraniteHill.esp:021611",
+  "edid": "GraniteHillSigrid",
+  "name": "Sigrid",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Apocalypse - Magic of Skyrim.esp:0698FA",
+  "edid": "WB_Kyrgar_Actor",
+  "name": "Kyrgar the Hidden",
+  "plugin": "Apocalypse - Magic of Skyrim.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Lux Via - Markarth Entrance and Farm Overhaul.esp:000B8D",
+  "edid": "Savantus",
+  "name": "Savantus Ingenius",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:15CFCC",
+  "edid": "0WHBookshopTormund",
+  "name": "Tormund Tall-Tale",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "AnimatedShips.esl:000961",
+  "edid": "zxShRiftenCourierBlackBriar",
+  "name": "Mead Merchant",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "The Great City of Dragon Bridge.esp:002035",
+  "edid": "Bjorn",
+  "name": "Bjorn",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:2214DD",
+  "edid": "0WHBakerValand",
+  "name": "Vanadis",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:029DAD",
+  "edid": "Arnskar",
+  "name": "Arnskar Ember-Master",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:08688F",
+  "edid": "CormarisFarmerChild",
+  "name": "Fyra Llefta",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013655",
+  "edid": "ValgaVinicia",
+  "name": "Valga Vinicia",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:135226",
+  "edid": "0WHIronAxeman",
+  "name": "Audmund",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01412D",
+  "edid": "Hermir",
+  "name": "Hermir Strong-Heart",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "AnimatedShips.esl:000A5A",
+  "edid": "zxShLakeFishermanMerchant",
+  "name": "Fisherman",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ }
+]

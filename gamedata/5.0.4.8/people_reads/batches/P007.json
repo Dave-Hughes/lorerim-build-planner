@@ -1,0 +1,194 @@
+[
+ {
+  "id": "Dragonborn.esm:01959A",
+  "edid": "DLC2Mogrul",
+  "name": "Mogrul",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:017779",
+  "edid": "DLC2Drovas",
+  "name": "Drovas Relvi",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:018FAE",
+  "edid": "DLC2SVWulfWildblood",
+  "name": "Wulf Wild-Blood",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01334E",
+  "edid": "Bolli",
+  "name": "Bolli",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "evgSIRENROOT.esm:0A25D4",
+  "edid": "BlackBriarNPC",
+  "name": "Frissa Black-Briar",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01336F",
+  "edid": "Nivenor",
+  "name": "Nivenor",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01337F",
+  "edid": "Valindor",
+  "name": "Valindor",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019DEF",
+  "edid": "Wylandriah",
+  "name": "Wylandriah",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013620",
+  "edid": "SkaldtheElder",
+  "name": "Skald the Elder",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01414C",
+  "edid": "QuintusNavale",
+  "name": "Quintus Navale",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133C0",
+  "edid": "Voada",
+  "name": "Voada",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BA5",
+  "edid": "DanicaPureSpring",
+  "name": "Danica Pure-Spring",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013281",
+  "edid": "GiraudGemane",
+  "name": "Giraud Gemane",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013662",
+  "edid": "Iddra",
+  "name": "Iddra",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01403F",
+  "edid": "Roggi",
+  "name": "Roggi Knot-Beard",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133AE",
+  "edid": "Omluag",
+  "name": "Omluag",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133A9",
+  "edid": "MulushGroShugurz",
+  "name": "Mulush gro-Shugurz",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01329D",
+  "edid": "OctieveSan",
+  "name": "Octieve San",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01328B",
+  "edid": "IrnskarIronhand",
+  "name": "Irnskar Ironhand",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013B99",
+  "edid": "CarlottaValentia",
+  "name": "Carlotta Valentia",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ }
+]

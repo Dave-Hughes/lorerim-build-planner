@@ -1,0 +1,184 @@
+[
+ {
+  "id": "Skyrim.esm:013BAE",
+  "edid": "OlavatheFeeble",
+  "name": "Olava the Feeble",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "TheGiftofSaturalia.esp:00083A",
+  "edid": "Sat_Diane",
+  "name": "Diane",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "TheGiftofSaturalia.esp:0009D3",
+  "edid": "Sat_DianeRedone",
+  "name": "Diane",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Tools of Kagrenac.esp:00AA08",
+  "edid": "TOK_NPC_VonosDreloth",
+  "name": "Vonos Dreloth",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Tools of Kagrenac.esp:00AA09",
+  "edid": "TOK_NPC_YassourTansumiran",
+  "name": "Yassour Tansumiran",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Tools of Kagrenac.esp:00AA07",
+  "edid": "TOK_NPC_MathisValen",
+  "name": "Mathis Valen",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Undeath.esp:18DF35",
+  "edid": "NecroAntioch",
+  "name": "Antioch",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:000D62",
+  "edid": "zzzAoMVigilantTraitor",
+  "name": "Altano",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:02748B",
+  "edid": "zzzAoMVigilantKeeper",
+  "name": "Thorondir",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:0012D7",
+  "edid": "zzzAoMm01Whore",
+  "name": "Lusine",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:00183B",
+  "edid": "zzzAoMBossDremora01",
+  "name": "Vernaccus",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:0012D5",
+  "edid": "zzzAoMm04Thief",
+  "name": "Balor",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:4CA976",
+  "edid": "zzzAoMm04MeridiaCultist",
+  "name": "Anton the Brilliant",
+  "plugin": "Synthesis - World.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:000D66",
+  "edid": "zzzAoMVigilantElder",
+  "name": "Jacob",
+  "plugin": "Synthesis - World.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:001841",
+  "edid": "zzzAoMCatMale01",
+  "name": "Jo'vanni",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:001844",
+  "edid": "zzzAoMCatFemale01",
+  "name": "Campaner'Ra",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:0012CD",
+  "edid": "zzzAoMm07CursedKnight",
+  "name": "Taranis",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:0012D0",
+  "edid": "zzzAoMm08Mother",
+  "name": "Carene",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:02749A",
+  "edid": "zzzAoMVigilantLibrarian",
+  "name": "Gwyneth",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:4D3A1A",
+  "edid": "zzzAoMSq02Anatomancer",
+  "name": "Pale Feet",
+  "plugin": "Synthesis - World.esp",
+  "roles": [
+   "quests"
+  ]
+ }
+]

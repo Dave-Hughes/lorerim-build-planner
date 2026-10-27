@@ -1,0 +1,192 @@
+[
+ {
+  "id": "Skyrim.esm:013B69",
+  "edid": "Ainethach",
+  "name": "Ainethach",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01367A",
+  "edid": "Gilfre",
+  "name": "Gilfre",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01360B",
+  "edid": "Aeri",
+  "name": "Aeri",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "marry"
+  ]
+ },
+ {
+  "id": "Stave Church (Bronze Water) - Enhancements.esp:00003C",
+  "edid": "Priest_STAVE",
+  "name": "Norra",
+  "plugin": "Laintar Dale Church.esp",
+  "roles": [
+   "marry"
+  ]
+ },
+ {
+  "id": "SurWR.esp:076F5A",
+  "edid": "0WRBaker",
+  "name": "Scylla",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014129",
+  "edid": "ViolaGiordano",
+  "name": "Viola Giordano",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "marry"
+  ]
+ },
+ {
+  "id": "SurWR.esp:067ACB",
+  "edid": "0WRTheArcher",
+  "name": "Ronja",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01347B",
+  "edid": "CamillaValerius",
+  "name": "Camilla Valerius",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01339A",
+  "edid": "GhorzaGraBagol",
+  "name": "Ghorza gra-Bagol",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "trainer",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0136C4",
+  "edid": "Odfel",
+  "name": "Odfel",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0132A7",
+  "edid": "SorexVinius",
+  "name": "Sorex Vinius",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01411A",
+  "edid": "Shahvee",
+  "name": "Shahvee",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:055A5E",
+  "edid": "MothgroBagol",
+  "name": "Moth gro-Bagol",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0136C5",
+  "edid": "Grelka",
+  "name": "Grelka",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "trainer",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01366B",
+  "edid": "SondasDrenim",
+  "name": "Sondas Drenim",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "marry"
+  ]
+ },
+ {
+  "id": "Sky City.esp:006BE8",
+  "edid": "SKYCITYVendorSillia",
+  "name": "Sillia",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014137",
+  "edid": "Angrenor",
+  "name": "Angrenor Once-Honored",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "marry"
+  ]
+ },
+ {
+  "id": "ccasvsse001-almsivi.esm:001153",
+  "edid": "ccASVSSE001_CurateMelita",
+  "name": "Curate Melita",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "trainer"
+  ]
+ },
+ {
+  "id": "CC Farming - Tweaks and Enhancements.esp:000BCF",
+  "edid": "ccVSVSSE004_Jonquil_Corpse",
+  "name": "Jonquil",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "trainer"
+  ]
+ },
+ {
+  "id": "Arena - Markarth Side.esp:136ED8",
+  "edid": "MarkarthSideAlchemy1",
+  "name": "Lilja",
+  "plugin": "Arena - Markarth Side.esp",
+  "roles": [
+   "vendor",
+   "trainer"
+  ]
+ }
+]

@@ -1,0 +1,182 @@
+[
+ {
+  "id": "AnimatedShips.esl:000945",
+  "edid": "zxShWindhelmFencer",
+  "name": "Fencer",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "HearthFires.esm:00403B",
+  "edid": "BYOHUrchin_Sofie",
+  "name": "Sofie",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:0FFB6B",
+  "edid": "BaanSailorCaptain",
+  "name": "Captain Remyris",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013286",
+  "edid": "Heimvar",
+  "name": "Heimvar",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:20D3F6",
+  "edid": "BaanHSBakerWife",
+  "name": "Resla Bevolni",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "SurWR.esp:09054C",
+  "edid": "0WRWEMerchantMiscMaleCommoner",
+  "name": "Quintus",
+  "plugin": "LoreRim - Economy Overhaul.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "AnimatedShips.esl:000A68",
+  "edid": "zxShLakeTreasureHunterMerchant",
+  "name": "Treasure Hunter",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Kidmer - Adoptable Elf Children 1_2.esp:00435B",
+  "edid": "urshug_DunmerOrphan",
+  "name": "Terlan",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "aaaGraniteHill.esp:00E164",
+  "edid": "GraniteHillTulia",
+  "name": "Tulia",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:003365",
+  "edid": "DLC1Hestla",
+  "name": "Hestla",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013B9F",
+  "edid": "Ulfberth",
+  "name": "Ulfberth War-Bear",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Evolving Locations - Riverside Shack.esp:0000D3",
+  "edid": "ELRiversideGrish",
+  "name": "Grish",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Fort Greymoor.esp:0008F0",
+  "edid": "GreymoorQuartermasterImperial",
+  "name": "Imperial Quartermaster",
+  "plugin": "Fort Greymoor.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:B67F04",
+  "edid": "WTHuntersShackHunter1",
+  "name": "Hunter",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:080C60",
+  "edid": "0WHBridgeVendorFisherman",
+  "name": "Sten Stone-Fish",
+  "plugin": "LoreRim - Economy Overhaul.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Evolving Locations - Lucky Shack.esp:000031",
+  "edid": "ELLuckyLorenze",
+  "name": "Lucky Lorenz",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:04DF7D",
+  "edid": "BaanEDFarmer01",
+  "name": "Llethia Dares",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "SkaalFishingCamp.esp:000841",
+  "edid": "FS_SkaalFisherM",
+  "name": "Haki Sea-Mist",
+  "plugin": "SkaalFishingCamp.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:221B01",
+  "edid": "BaanHSGeneralMerchant",
+  "name": "Gretian",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Arena - Markarth Side.esp:052308",
+  "edid": "MarkarthSideClothing2",
+  "name": "Jaeger",
+  "plugin": "Arena - Markarth Side.esp",
+  "roles": [
+   "vendor"
+  ]
+ }
+]

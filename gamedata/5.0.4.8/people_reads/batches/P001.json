@@ -1,0 +1,193 @@
+[
+ {
+  "id": "018Auri.esp:000D63",
+  "edid": "018Auri",
+  "name": "Auri",
+  "plugin": "Auri Patch.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BA9",
+  "edid": "Braith",
+  "name": "Braith",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C3AB",
+  "edid": "Nazir",
+  "name": "Nazir",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013269",
+  "edid": "Elenwen",
+  "name": "Elenwen",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013272",
+  "edid": "Erikur",
+  "name": "Erikur",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0136B8",
+  "edid": "Lemkil",
+  "name": "Lemkil",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BBF",
+  "edid": "Nazeem",
+  "name": "Nazeem",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:03EFE9",
+  "edid": "Rolff",
+  "name": "Rolff Stone-Fist",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:002B6C",
+  "edid": "DLC1Serana",
+  "name": "Serana",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0132AB",
+  "edid": "Taarie",
+  "name": "Taarie",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01326F",
+  "edid": "Endarie",
+  "name": "Endarie",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133BA",
+  "edid": "Thonar",
+  "name": "Thonar Silver-Blood",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0CAB2F",
+  "edid": "dunAngiREF",
+  "name": "Angi",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Arena - Markarth Side.esp:146383",
+  "edid": "MarkarthSideGritDar",
+  "name": "Grit-dar",
+  "plugin": "Arena - Markarth Side.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Arena - Markarth Side.esp:0C7595",
+  "edid": "MarkarthSideMagicShop1",
+  "name": "Varimo",
+  "plugin": "Arena - Markarth Side.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "BardExcavation.esp:000801",
+  "edid": "DMBardRothen",
+  "name": "Rothen Adlvel",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "BardExcavation.esp:000802",
+  "edid": "DMBardBirinna",
+  "name": "Birinna",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BA1",
+  "edid": "Belethor",
+  "name": "Belethor",
+  "plugin": "LoreRim - NPCs and Races Overwrite.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Belethor's Sister.esp:000803",
+  "edid": "belethorSisterWaifu",
+  "name": "Lelaegh",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BAB",
+  "edid": "Ysolda",
+  "name": "Ysolda",
+  "plugin": "LoreRim - NPCs and Races Overwrite.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "marry"
+  ]
+ }
+]

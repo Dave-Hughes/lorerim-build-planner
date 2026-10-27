@@ -1,0 +1,197 @@
+[
+ {
+  "id": "Skyrim.esm:02C18D",
+  "edid": "DunValthumeGhostValdar",
+  "name": "Valdar",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01413A",
+  "edid": "RevynSadri",
+  "name": "Revyn Sadri",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0132AA",
+  "edid": "SybilleStentor",
+  "name": "Sybille Stentor",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01339F",
+  "edid": "Igmund",
+  "name": "Igmund",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C188",
+  "edid": "Korir",
+  "name": "Korir",
+  "plugin": "LoreRim - Skyrim Revoiced Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013606",
+  "edid": "Sorli",
+  "name": "Sorli the Builder",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013B6E",
+  "edid": "LashGraDushnikh",
+  "name": "Lash gra-Dushnikh",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013B7C",
+  "edid": "Gharol",
+  "name": "Gharol",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013650",
+  "edid": "Lod",
+  "name": "Lod",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01364C",
+  "edid": "Kust",
+  "name": "Kust",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019C00",
+  "edid": "Grosta",
+  "name": "Grosta",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0E3EAD",
+  "edid": "FFHM01LeifnarrTreasCorpse",
+  "name": "Leifnarr",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0136BB",
+  "edid": "Wilhelm",
+  "name": "Wilhelm",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0136C0",
+  "edid": "Narfi",
+  "name": "Narfi",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0658D2",
+  "edid": "TembaWideArm",
+  "name": "Temba Wide-Arm",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0136C2",
+  "edid": "Klimmek",
+  "name": "Klimmek",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0622E5",
+  "edid": "Atar",
+  "name": "Atar",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013B6A",
+  "edid": "Ragnar",
+  "name": "Ragnar",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133B1",
+  "edid": "PavoAttius",
+  "name": "Pavo Attius",
+  "plugin": "LoreRim - Skyrim Revoiced Patch.esp",
+  "roles": [
+   "quests",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01365F",
+  "edid": "Dravynea",
+  "name": "Dravynea the Stoneweaver",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer",
+   "marry"
+  ]
+ }
+]

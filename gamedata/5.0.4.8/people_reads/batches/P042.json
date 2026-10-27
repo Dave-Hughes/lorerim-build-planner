@@ -1,0 +1,182 @@
+[
+ {
+  "id": "Wintersun - Faiths of Skyrim.esp:03820D",
+  "edid": "WSN_Divine_Zenithar_Boon2_Actor",
+  "name": "Zenithar",
+  "plugin": "Wintersun - Reqtificated.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:312F18",
+  "edid": "LlethrinFelBarkeep",
+  "name": "Davril",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01327D",
+  "edid": "Geimund",
+  "name": "Geimund",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01B079",
+  "edid": "Dushnamub",
+  "name": "Dushnamub",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BBE",
+  "edid": "Ahlam",
+  "name": "Ahlam",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Kidmer - Adoptable Elf Children 1_2.esp:004904",
+  "edid": "urshug_AltmerOrphanGirl",
+  "name": "Elandra",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:BE98DD",
+  "edid": "WTLvlCragwaterMarauderWizardMerchant",
+  "name": "Marauder",
+  "plugin": "Requiem - Wyrmstooth.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:1243DA",
+  "edid": "BaanABYamSeller",
+  "name": "Duvylni",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0CDD72",
+  "edid": "Sigurd",
+  "name": "Sigurd",
+  "plugin": "LoreRim - NPCs and Races Overwrite.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "AlternatePerspective.esp:1CEAF7",
+  "edid": "AP_Skalei",
+  "name": "Skalei",
+  "plugin": "Alternative Perspective - Reqtificated.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:04DF7B",
+  "edid": "BaanEDEggSeller",
+  "name": "Hiven Dares",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "SnozzResources.esp:283CEE",
+  "edid": "FortDunstadIsgjaarnSilverTorn",
+  "name": "Isgjaarn",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013B76",
+  "edid": "LeontiusSalvius",
+  "name": "Leontius Salvius",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:361821",
+  "edid": "zzzAoMOwlBlack",
+  "name": "Black Owl",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:04DF71",
+  "edid": "BaanEDBaker",
+  "name": "Jilaan Daar",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "SurWR.esp:0C8849",
+  "edid": "0WRBuildShopGuy",
+  "name": "Elam",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Arena - Markarth Side.esp:0A3D21",
+  "edid": "MarkarthsideInnMaid2",
+  "name": "Brandi",
+  "plugin": "Arena - Markarth Side.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Arena - Markarth Side.esp:0A8E2C",
+  "edid": "MarkarthSideClothingStore3",
+  "name": "Azira",
+  "plugin": "Arena - Markarth Side.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:052E7E",
+  "edid": "0WHThiefSnowberry",
+  "name": "Snowberry",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "CC Farming - Tweaks and Enhancements.esp:000A14",
+  "edid": "ccVSVSSE004_Urval_PreQuest",
+  "name": "Urval",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ }
+]

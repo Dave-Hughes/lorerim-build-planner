@@ -1,0 +1,185 @@
+[
+ {
+  "id": "Skyrim.esm:04BCC3",
+  "edid": "Gianna",
+  "name": "Gianna",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:04D6D0",
+  "edid": "AstridEnd",
+  "name": "Astrid",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:04E64F",
+  "edid": "AmaundMotierreEnd",
+  "name": "Amaund Motierre",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Destroy the Dark Brotherhood - Quest Expansion.esp:000D64",
+  "edid": "DBDestroyGaston",
+  "name": "Gaston Bellefort",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:087B8B",
+  "edid": "DBRecurringContact1Dawnstar",
+  "name": "Nervous Patron",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:087B8D",
+  "edid": "DBRecurringContact2Riften",
+  "name": "Wary Outlaw",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:087B8C",
+  "edid": "DBRecurringContact3DragonBridge",
+  "name": "Corrupt Agent",
+  "plugin": "Heavy Legion - Reqtificated.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:087B8F",
+  "edid": "DBRecurringContact4Markarth",
+  "name": "Scheming Servant",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0F684E",
+  "edid": "GuardSolitudeImperialDayMaleGuard",
+  "name": null,
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:039B3E",
+  "edid": "dunBlindcliffHagraven",
+  "name": "Melka",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:048C2F",
+  "edid": "dunDarklightIllia",
+  "name": "Illia",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0D001A",
+  "edid": "dunFrostmereCryptEisa",
+  "name": "Eisa Blackthorn",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0443F3",
+  "edid": "Anska",
+  "name": "Anska",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019FE6",
+  "edid": "ValsVeran",
+  "name": "Vals Veran",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0185F6",
+  "edid": "dunHunterFroki",
+  "name": "Froki Whetted-Blade",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01BA08",
+  "edid": "REQ_Bandit_Loc_Nilheim_Telrav",
+  "name": "Telrav",
+  "plugin": "Requiem.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Infiltration - Quest Expansion.esp:000D62",
+  "edid": "dunTrevasWatchBrurid",
+  "name": "Brurid",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:04B4AF",
+  "edid": "stalleo",
+  "name": "Stalleo",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:04B4B1",
+  "edid": "dunTrevasWatchStalleosVanguardMale",
+  "name": "Stalleo's Bodyguard",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:093A76",
+  "edid": "dunTrevasWatchStalleosVanguardFemale",
+  "name": "Stalleo's Bodyguard",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ }
+]

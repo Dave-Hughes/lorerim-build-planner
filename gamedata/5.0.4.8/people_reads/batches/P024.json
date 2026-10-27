@@ -1,0 +1,186 @@
+[
+ {
+  "id": "Skyrim.esm:013264",
+  "edid": "BolgeirBearclaw",
+  "name": "Bolgeir Bearclaw",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01328D",
+  "edid": "JareeRa",
+  "name": "Jaree-Ra",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Andrealphus Jobs Overhaul - MASTER.esp:000B74",
+  "edid": "GuardCaptain_SonsHaafingar",
+  "name": "Captain Istar Cairn-Breaker",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013268",
+  "edid": "Deeja",
+  "name": "Deeja",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:055FB2",
+  "edid": "MS08AlikrWarriorWhiterun",
+  "name": "Alik'r Warrior",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:108CF5",
+  "edid": "MS08AlikrWarriorWhiterun02",
+  "name": "Alik'r Warrior",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0215D5",
+  "edid": "MS08WhiterunGuard",
+  "name": "Whiterun Guard",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013B9A",
+  "edid": "AvulsteinGrayMane",
+  "name": "Avulstein Gray-Mane",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BB4",
+  "edid": "OlfridBattleBorn",
+  "name": "Olfrid Battle-Born",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BB2",
+  "edid": "IdolafBattleBorn",
+  "name": "Idolaf Battle-Born",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01413B",
+  "edid": "OrthusEndario",
+  "name": "Orthus Endario",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01DC00",
+  "edid": "MS10Stig",
+  "name": "Stig Salt-Plank",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01411D",
+  "edid": "Adelaisa",
+  "name": "Adelaisa Vendicci",
+  "plugin": "Heavy Legion - Reqtificated.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:056AFD",
+  "edid": "LvlEastEmpireMercenary",
+  "name": "East Empire Mercenary",
+  "plugin": "Requiem.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014124",
+  "edid": "Helgird",
+  "name": "Helgird",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01414A",
+  "edid": "Calixto",
+  "name": "Calixto Corrium",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014125",
+  "edid": "Tova",
+  "name": "Tova Shatter-Shield",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014148",
+  "edid": "Nurelion",
+  "name": "Nurelion",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01347C",
+  "edid": "Gerdur",
+  "name": "Gerdur",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01347A",
+  "edid": "LucanValerius",
+  "name": "Lucan Valerius",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ }
+]

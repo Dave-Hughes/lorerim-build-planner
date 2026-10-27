@@ -1,0 +1,182 @@
+[
+ {
+  "id": "aaaGraniteHill.esp:03FCCD",
+  "edid": "GraniteHillJennifer",
+  "name": "Jennifer",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:08774F",
+  "edid": "Abelone",
+  "name": "Abelone",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Kidmer - Adoptable Elf Children 1_2.esp:0048FF",
+  "edid": "urshug_BosmerOrphanBoy",
+  "name": "Brundil",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Armors of the Velothi Pt2.esl:0008A1",
+  "edid": "STMMerchant",
+  "name": "Travelling Merchant",
+  "plugin": "Armors of the Velothi Pt2 - Travelling Merchant Travels.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "SurWR.esp:10F872",
+  "edid": "0WRRedguardTraderFather",
+  "name": "Basil",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Environs - Greenwood Shack.esp:000828",
+  "edid": "ENVFaraelyn",
+  "name": "Faraelyn",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:0D91AC",
+  "edid": "BaanEDBrothelWorker04",
+  "name": "Worker",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BA2",
+  "edid": "Saadia",
+  "name": "Saadia",
+  "plugin": "LoreRim - NPCs and Races Overwrite.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:03DA7C",
+  "edid": "CormarisSmith",
+  "name": "Dolmen Urvylthi",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Gonz - Stonehills ReRe-imagined.esp:000088",
+  "edid": "StonehillsBarkeaper",
+  "name": "Betsa",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:52105F",
+  "edid": "WTAnkeEbonhand",
+  "name": "Anke Ebonhand",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:085DA5",
+  "edid": "0WHBridgeVendorGenericPeddler",
+  "name": "Pelena",
+  "plugin": "LoreRim - Economy Overhaul.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "AnimatedShips.esl:000879",
+  "edid": "zxShDawnstarFishermanMerchant",
+  "name": "Fishmonger",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:22069B",
+  "edid": "WTGhorlag",
+  "name": "Ghorlag",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:0BF513",
+  "edid": "BaanSDTelvTearoomSeller",
+  "name": "Raynas",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "SnozzResources.esp:283CF0",
+  "edid": "FortDunstadRolfkurSecretStone",
+  "name": "Rolfkur",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:00173B",
+  "edid": "ASHGDarkElfVendor02",
+  "name": "Eris Reynel",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "AnimatedShips.esl:00086B",
+  "edid": "zxShWindhelmFisherman01",
+  "name": "Fisherman",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:04E176",
+  "edid": "BaanEDBrothelOwner",
+  "name": "Plasa Attynia",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:1776F2",
+  "edid": "PryaiInnkeep",
+  "name": "Lenaris Braveth",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ }
+]

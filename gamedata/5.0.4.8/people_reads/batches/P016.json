@@ -1,0 +1,194 @@
+[
+ {
+  "id": "Skyrim.esm:0A733B",
+  "edid": "Tyranus",
+  "name": "Vigilant Tyranus",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:089986",
+  "edid": "DA13PeryiteMonk",
+  "name": "Kesh the Clean",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01990F",
+  "edid": "Eola",
+  "name": "Eola",
+  "plugin": "LoreRim - NPCs and Races Overwrite.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01338C",
+  "edid": "BrotherVerulus",
+  "name": "Brother Verulus",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133B7",
+  "edid": "Senna",
+  "name": "Senna",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01BB9C",
+  "edid": "DA14Samwell",
+  "name": "Sam Guevenne",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133B0",
+  "edid": "Orla",
+  "name": "Orla",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01E765",
+  "edid": "Hamal",
+  "name": "Hamal",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013386",
+  "edid": "Anwen",
+  "name": "Anwen",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01327C",
+  "edid": "Dervenin",
+  "name": "Dervenin",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013274",
+  "edid": "FalkFirebeard",
+  "name": "Falk Firebeard",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0132AC",
+  "edid": "Una",
+  "name": "Una",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013271",
+  "edid": "Erdi",
+  "name": "Erdi",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:02427D",
+  "edid": "Erandur",
+  "name": "Erandur",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:02427C",
+  "edid": "VerenDuleri",
+  "name": "Veren Duleri",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:024278",
+  "edid": "Thorek",
+  "name": "Thorek",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01CB78",
+  "edid": "DelvinMallory",
+  "name": "Delvin Mallory",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01403E",
+  "edid": "Derkeethus",
+  "name": "Derkeethus",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014132",
+  "edid": "AventusAretino",
+  "name": "Aventus Aretino",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01335E",
+  "edid": "Grelod",
+  "name": "Grelod the Kind",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ }
+]

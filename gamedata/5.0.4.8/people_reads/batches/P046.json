@@ -1,0 +1,182 @@
+[
+ {
+  "id": "Skyrim.esm:013479",
+  "edid": "Orgnar",
+  "name": "Orgnar",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Lux Via - Markarth Entrance and Farm Overhaul.esp:0E14C1",
+  "edid": "GrealdIngenius",
+  "name": "Greald Ingenius",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:BEB9CD",
+  "edid": "WTLvlCragwaterMarauderEnchanterMerchant",
+  "name": "Marauder",
+  "plugin": "Requiem - Wyrmstooth.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Kidmer - Adoptable Elf Children 1_2.esp:004902",
+  "edid": "urshug_BosmerOrphanGirl",
+  "name": "Lorwen",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Environs - Riften Warehouse.esp:000804",
+  "edid": "ENVRiftenWarehouseGelmir",
+  "name": "Gelmir",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Undeath.esp:0BB03A",
+  "edid": "NecroMerchantBroker",
+  "name": "The Broker",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:29C5D5",
+  "edid": "WTFortValusSkonjar",
+  "name": "Skonjar",
+  "plugin": "Synthesis - World.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:29C6A6",
+  "edid": "WTFortValusSitsWithBeetles",
+  "name": "Sits-With-Beetles",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:36181F",
+  "edid": "zzzAoMOwlWhite",
+  "name": "White Owl",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:270DDB",
+  "edid": "zzzCHMeridianFollower",
+  "name": "Gloriel the Valkyrie",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BB9",
+  "edid": "AdrianneAvenicci",
+  "name": "Adrianne Avenicci",
+  "plugin": "LoreRim - NPCs and Races Overwrite.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:0390FF",
+  "edid": "BaanEDBreweryOwner",
+  "name": "Drovithen",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133A2",
+  "edid": "Kerah",
+  "name": "Kerah",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:0B57D9",
+  "edid": "zzzCHTubal",
+  "name": "Blacksmith Tubal",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Arena - Markarth Side.esp:150E5F",
+  "edid": "MarkarthSideMagicShop22",
+  "name": "Beebee",
+  "plugin": "Arena - Markarth Side.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:04D592",
+  "edid": "0WHShopBSBread",
+  "name": "Hildevi",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013357",
+  "edid": "Elgrim",
+  "name": "Elgrim",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "SnozzResources.esp:283CEF",
+  "edid": "FortDunstadJolgvarrSilverTorn",
+  "name": "Jolgvarr",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:085388",
+  "edid": "CormarisKhajiitTrader",
+  "name": "Stro'jarri",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "GG's Thieves Guild Headquarters.esp:000FC1",
+  "edid": "SmellsLikeGuar",
+  "name": "Smells-like-Guar",
+  "plugin": "GG's Thieves Guild - Patches.esp",
+  "roles": [
+   "vendor"
+  ]
+ }
+]

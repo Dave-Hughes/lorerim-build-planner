@@ -1,0 +1,206 @@
+[
+ {
+  "id": "aaaGraniteHill.esp:19DBEA",
+  "edid": "GranitehillBjornTheStoic",
+  "name": "Bjorn The Stoic",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "ccbgssse040-advobgobs.esl:000815",
+  "edid": "ccBGSSSE040_EncGoblinFollower",
+  "name": "Gogh",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0B9981",
+  "edid": "HirelingBelrand",
+  "name": "Belrand",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0135E8",
+  "edid": "Benor",
+  "name": "Benor",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:00336E",
+  "edid": "DLC1Agmaer",
+  "name": "Agmaer",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013B81",
+  "edid": "Ghorbash",
+  "name": "Ghorbash the Iron Hand",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0A2C8C",
+  "edid": "HousecarlMarkarth",
+  "name": "Argis the Bulwark",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "HearthFires.esm:00521B",
+  "edid": "BYOHHousecarlHjaalmarch",
+  "name": "Valdimar",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:4F73A7",
+  "edid": "WTTestNPC",
+  "name": "Fester McTester",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019E1E",
+  "edid": "Lob",
+  "name": "Lob",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "follower"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:000807",
+  "edid": "HABLFalama",
+  "name": "Falama",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:038560",
+  "edid": "DLC2RRTeldrynSero",
+  "name": "Teldryn Sero",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0918E2",
+  "edid": "Uthgerd",
+  "name": "Uthgerd the Unbroken",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Zeus.esp:000801",
+  "edid": "ZeusTheCat",
+  "name": "Zeus",
+  "plugin": "Zeus.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Environs - Hroggars House.esp:000805",
+  "edid": "ENVHroggarsHouseEisaNPC",
+  "name": "Eisa Blackthorn",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "ccasvsse001-almsivi.esm:00083D",
+  "edid": "ccASVSSE001_HandTherethi",
+  "name": "Watchman Sindras",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:000802",
+  "edid": "DDBInitiate01",
+  "name": "Dark Brotherhood Initiate",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Destroy the Dark Brotherhood - Quest Expansion.esp:00086B",
+  "edid": "DBDestroyFultheim",
+  "name": null,
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:0D5FF4",
+  "edid": "zzzCHHoundCompanion",
+  "name": "Al",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Shroom Beetles.esp:000856",
+  "edid": "EncShroomBeetleYellowPet",
+  "name": "Friendly Shroom Beetle",
+  "plugin": "LoreRim - Food Tweaks.esp",
+  "roles": [
+   "vendor",
+   "follower"
+  ]
+ }
+]

@@ -1,0 +1,195 @@
+[
+ {
+  "id": "Skyrim.esm:013358",
+  "edid": "Esbern",
+  "name": "Esbern",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01996C",
+  "edid": "Perth",
+  "name": "Perth",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013605",
+  "edid": "Pactur",
+  "name": "Pactur",
+  "plugin": "LoreRim - Skyrim Revoiced Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013265",
+  "edid": "Bryling",
+  "name": "Bryling",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:072B04",
+  "edid": "Vald",
+  "name": "Vald",
+  "plugin": "NPC Appearances Merged.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014146",
+  "edid": "Wuunferth",
+  "name": "Wuunferth the Unliving",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:039840",
+  "edid": "IsabelleRolaine",
+  "name": "Isabelle Rolaine",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01CD90",
+  "edid": "Vex",
+  "name": "Vex",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C19B",
+  "edid": "Nirya",
+  "name": "Nirya",
+  "plugin": "LoreRim - NPCs and Races Overwrite.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C1A0",
+  "edid": "MirabelleErvine",
+  "name": "Mirabelle Ervine",
+  "plugin": "LoreRim - NPCs and Races Overwrite.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C19F",
+  "edid": "SavosAren",
+  "name": "Savos Aren",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01E7D7",
+  "edid": "Ancano",
+  "name": "Ancano",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:02BA3C",
+  "edid": "Quaranir",
+  "name": "Quaranir",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:034CBA",
+  "edid": "ParatusDecimius",
+  "name": "Paratus Decimius",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:034D97",
+  "edid": "Estormo",
+  "name": "Estormo",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C196",
+  "edid": "BrelynaMaryon",
+  "name": "Brelyna Maryon",
+  "plugin": "LoreRim - NPCs and Races Overwrite.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C195",
+  "edid": "Jzargo",
+  "name": "J'zargo",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C194",
+  "edid": "Onmund",
+  "name": "Onmund",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C19C",
+  "edid": "Enthir",
+  "name": "Enthir",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:000007",
+  "edid": "Player",
+  "name": "Prisoner",
+  "plugin": "Big Tweaks.esp",
+  "roles": [
+   "quests"
+  ]
+ }
+]

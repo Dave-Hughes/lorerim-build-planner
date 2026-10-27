@@ -1,0 +1,198 @@
+[
+ {
+  "id": "Journey to Baan Malur.esp:350429",
+  "edid": "DresSlaverSoldierOutside",
+  "name": "Dres Soldier",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:44F882",
+  "edid": "DresSlaverCaptainAlly",
+  "name": "Dres Captain",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Katana.esp:8E6C1E",
+  "edid": "AK69Megara",
+  "name": "Megara",
+  "plugin": "Katana Raven LoreCut - Reqtificated.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Katana.esp:005900",
+  "edid": "AK69Katana",
+  "name": "Katana",
+  "plugin": "Katana Raven LoreCut - Reqtificated.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Katana.esp:B37E04",
+  "edid": "AK69Chadryn",
+  "name": "Chadryn",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Katana.esp:92DA3A",
+  "edid": "AK69Elli",
+  "name": "Elli",
+  "plugin": "Katana Raven LoreCut - Reqtificated.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Katana.esp:8FB025",
+  "edid": "AK69River",
+  "name": "River",
+  "plugin": "Katana Raven LoreCut - Reqtificated.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Katana.esp:8283EB",
+  "edid": "AK69Shale",
+  "name": "Shale",
+  "plugin": "Katana Raven LoreCut - Reqtificated.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Katana.esp:B0F5BE",
+  "edid": "AK69AlTharo",
+  "name": "Al'Tharo",
+  "plugin": "Katana Raven LoreCut - Reqtificated.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "ksws04_quest.esp:000800",
+  "edid": "ksws04Waifu",
+  "name": "Nirenoore",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "ksws04_quest.esp:000801",
+  "edid": "ksws04Thalmor",
+  "name": "Kelkemmeriil",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "ksws07_quest.esm:002039",
+  "edid": "ksws07Waifu",
+  "name": "Othriel",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01BDB2",
+  "edid": "FestusKrex",
+  "name": "Festus Krex",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01D4B7",
+  "edid": "Babette",
+  "name": "Babette",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:015CFA",
+  "edid": "DBInitiate1",
+  "name": "Dark Brotherhood Initiate",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:015CFE",
+  "edid": "DBInitiate2",
+  "name": "Adelinda",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Lucien.esp:005900",
+  "edid": "JRLucien",
+  "name": "Lucien Flavius",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Lucien.esp:62424D",
+  "edid": "JRDumzbtharNPC",
+  "name": "Dumzbthar",
+  "plugin": "LoreRim - Lucien Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Meridia.esp:000D6C",
+  "edid": "NMeridiaMarith",
+  "name": "Paladin Marith",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Meridia.esp:000D6F",
+  "edid": "NMeridiaAlara",
+  "name": "High Priestess Alara",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ }
+]

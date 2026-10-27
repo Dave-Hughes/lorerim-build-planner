@@ -1,0 +1,182 @@
+[
+ {
+  "id": "Vigilant.esm:25B23C",
+  "edid": "zzzCHJhunalOwl",
+  "name": "Jhunal the Owl",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "aaaGraniteHill.esp:008471",
+  "edid": "GraniteHillAlex",
+  "name": "Alex",
+  "plugin": "Synthesis - World.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "ForgottenCity.esp:02622D",
+  "edid": "000FCHabiq",
+  "name": "Habiq",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Lux Via - Markarth Entrance and Farm Overhaul.esp:0E1481",
+  "edid": "DandantoranYviald",
+  "name": "Dandantoran Yviald",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "The Great Town of Karthwasten.esp:004F3D",
+  "edid": "GrokmarTGCoKW",
+  "name": "Grokmar",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "AnimatedShips.esl:00087B",
+  "edid": "zxShWindhelmFisherman02",
+  "name": "Fisherman",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "aaaGraniteHill.esp:02B82D",
+  "edid": "GraniteHillRoar",
+  "name": "Roar",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:029DAE",
+  "edid": "HerluinLothaire",
+  "name": "Herluin Lothaire",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "AnimatedShips.esl:000AA7",
+  "edid": "zxShRiftenTrader",
+  "name": "Trader",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013641",
+  "edid": "Torolf",
+  "name": "Torolf",
+  "plugin": "Alternative Perspective - Reqtificated.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01B1D6",
+  "edid": "Ahkari",
+  "name": "Ahkari",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "SurWR.esp:1423B9",
+  "edid": "0WROrcMerchant",
+  "name": "Honditar",
+  "plugin": "LoreRim - Economy Overhaul.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Lux Via - Markarth Entrance and Farm Overhaul.esp:0E14C6",
+  "edid": "BrangartheRaven",
+  "name": "Brangar the Raven",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:003366",
+  "edid": "DLC1FeranSadri",
+  "name": "Feran Sadri",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:0016C8",
+  "edid": "ASHGInnkeeper",
+  "name": "Daliah",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:075E2C",
+  "edid": "CormarisBakerWife",
+  "name": "Avulnas Sadothren",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:04CF20",
+  "edid": "CormarisBarkeep",
+  "name": "Llevys Marein",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:042E09",
+  "edid": "CormarCrossingBarkeep",
+  "name": "Breien Valner",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Kidmer - Adoptable Elf Children 1_2.esp:0048CD",
+  "edid": "urshug_OrcOrphanBoy",
+  "name": "Borgrob",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Orc Strongholds - All In One.esp:000572",
+  "edid": "00_OrcMerchant",
+  "name": "Gurzak",
+  "plugin": "Orc Exiles - Patches.esp",
+  "roles": [
+   "vendor"
+  ]
+ }
+]

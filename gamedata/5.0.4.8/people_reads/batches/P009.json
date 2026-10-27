@@ -1,0 +1,192 @@
+[
+ {
+  "id": "Skyrim.esm:013380",
+  "edid": "Vekel",
+  "name": "Vekel the Man",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "FDE Faralda.esp:00096B",
+  "edid": "aaFaraldaBrother",
+  "name": "Thalmor Commander",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013260",
+  "edid": "AngelineMorrard",
+  "name": "Angeline Morrard",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0844D1",
+  "edid": "CWFieldCOImperialWhiterun",
+  "name": "Legate Quentin Cipius",
+  "plugin": "NPC Appearances Merged.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0B9982",
+  "edid": "HirelingJenassa",
+  "name": "Jenassa",
+  "plugin": "LoreRim - NPCs and Races Overwrite.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013346",
+  "edid": "Aerin",
+  "name": "Aerin",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Fists of Fury - Skyrim.esp:11C37A",
+  "edid": "FOFMorthalGhost01",
+  "name": "Erel Pure-Heart",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Fists of Fury - Skyrim.esp:11C382",
+  "edid": "FOFMorthalGhost02",
+  "name": "Forgotten Commander",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Fists of Fury - Skyrim.esp:11C378",
+  "edid": "FOFMorthalGhost03",
+  "name": "Lost Blade",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0371D6",
+  "edid": "Maul",
+  "name": "Maul",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Fists of Fury - Skyrim.esp:019E6A",
+  "edid": "FOFRiftenOrganizer",
+  "name": "The Organizer",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Fists of Fury - Skyrim.esp:01EF7F",
+  "edid": "FOFRiftenArenaFighter02",
+  "name": "Drackis",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Fists of Fury - Skyrim.esp:01EF80",
+  "edid": "FOFRiftenArenaFighter03",
+  "name": "Fights-With-Fists",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014123",
+  "edid": "Niranye",
+  "name": "Niranye",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Fists of Fury - Skyrim.esp:1D7963",
+  "edid": "FOFWindhelmGuard",
+  "name": "Reggr",
+  "plugin": "Synthesis - World.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Fists of Fury - Skyrim.esp:1D7967",
+  "edid": "FOFWindhelmChampion",
+  "name": "Erdith The Bear",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Fists of Fury - Skyrim.esp:1D7964",
+  "edid": "FOFWindhelmFighter01",
+  "name": "Kjer",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "ForgottenCity.esp:01096E",
+  "edid": "000FCCassia",
+  "name": "Cassia",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "ForgottenCity.esp:0A2EB3",
+  "edid": "000FCAltriusYoung",
+  "name": "Altrius",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "GORE.esp:000D63",
+  "edid": "HD1Gore",
+  "name": "Gore",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ }
+]

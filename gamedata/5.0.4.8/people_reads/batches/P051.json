@@ -1,0 +1,182 @@
+[
+ {
+  "id": "The Great City of Winterhold v4.esp:00F5A3",
+  "edid": "MagnarTGCoWH",
+  "name": "Magnar Frost-Vein",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Kidmer - Adoptable Elf Children 1_2.esp:004903",
+  "edid": "urshug_AltmerOrphanBoy",
+  "name": "Arthano",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:00A049",
+  "edid": "WTJashavidar",
+  "name": "Ja'Shavi-Dar",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Andrealphus Jobs Overhaul - MASTER.esp:000BB9",
+  "edid": "ANDR_AJO_QuartermasterGuardHjaalmarch",
+  "name": "Hjaalmarch Guard Quartermaster",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:1F8CA1",
+  "edid": "BaanABSpicedYamServer",
+  "name": "Brelyna",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "AnimatedShips.esl:000894",
+  "edid": "zxShRiftenAngler",
+  "name": "Angler",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Lux Via - Markarth Entrance and Farm Overhaul.esp:0E14B6",
+  "edid": "SiltyeminweAnaediuth",
+  "name": "Siltyeminwe Anaediuth",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:5CBFFB",
+  "edid": "WTMudcrabMerchant",
+  "name": "Mudcrab Merchant",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Lux Via - Markarth Entrance and Farm Overhaul.esp:0E1486",
+  "edid": "FjorreirtheSmiler",
+  "name": "Fjorreir the Smiler",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Lux Via - Markarth Entrance and Farm Overhaul.esp:0E1482",
+  "edid": "HjrrmtheNose",
+  "name": "Hjrrm the Nose",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:220693",
+  "edid": "WTBulak",
+  "name": "Bulak",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:23B778",
+  "edid": "BaanRPBlacksmith",
+  "name": "Draaman Indel",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:039105",
+  "edid": "BaanEDBreweryWorker",
+  "name": "Verag",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:0E04E2",
+  "edid": "zzzCHMagicBroom",
+  "name": "Sebastian",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "ForgottenCity.esp:029586",
+  "edid": "000FCRastasia",
+  "name": "Rastasia",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:04E173",
+  "edid": "BaanEDBrothelServer01",
+  "name": "Eira",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:0F818A",
+  "edid": "BaanABEnchanter",
+  "name": "Llaani",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Meridia.esp:0787C9",
+  "edid": "NMeridiaUna01Lucetta",
+  "name": "Acolyte Lucetta",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01361A",
+  "edid": "Karita",
+  "name": "Karita",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "The Great City of Solitude.esp:01AA31",
+  "edid": "JytteTGCoS",
+  "name": "Jytte",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ }
+]

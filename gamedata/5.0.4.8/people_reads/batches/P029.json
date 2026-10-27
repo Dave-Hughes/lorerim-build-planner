@@ -1,0 +1,187 @@
+[
+ {
+  "id": "Vigilant.esm:080E93",
+  "edid": "zzzCHLamaeMemory",
+  "name": "Lamae Beolfag",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:080E96",
+  "edid": "zzzCHMolagBalInMemoryTE",
+  "name": null,
+  "plugin": "Vigilant.esm",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:0875EF",
+  "edid": "zzzCHMolagBalInMemoryBE",
+  "name": null,
+  "plugin": "Vigilant.esm",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:088BC8",
+  "edid": "zzzCHDeathBringerMemory",
+  "name": null,
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:2C8797",
+  "edid": "zzzCHSheogorathMemoryMad",
+  "name": null,
+  "plugin": "Vigilant.esm",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:51D61C",
+  "edid": "zzzCHBelharzaBull",
+  "name": "Belharza the Bull",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:04F78D",
+  "edid": "zzzCOMolagBal",
+  "name": null,
+  "plugin": "Vigilant.esm",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:3822C8",
+  "edid": "zzzCOVigilantForCarrage02",
+  "name": null,
+  "plugin": "Vigilant.esm",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:048B6D",
+  "edid": "zzzCOVigilantForCarrage01",
+  "name": "M'que",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0132AE",
+  "edid": "VivienneOnis",
+  "name": "Vivienne Onis",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014143",
+  "edid": "Huki",
+  "name": "Huki Seven-Swords",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:04D53D",
+  "edid": "0WHShopWilhelm",
+  "name": "Wilhelm",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:157B1B",
+  "edid": "0TQBroHigil",
+  "name": "Higil Hammer-Shield",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:0622F9",
+  "edid": "0WHTsunDaughter",
+  "name": "Frida the Younger",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:296CD7",
+  "edid": "0WHTsunDaughterForQuest",
+  "name": "Frida the Younger",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:149AB9",
+  "edid": "0WHIronMeaderyMan",
+  "name": "Manheim",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:14D885",
+  "edid": "0WHThanePlatearmor",
+  "name": "Thane Alarik",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:254479",
+  "edid": "0WHThanePlatearmorImperialReplacement",
+  "name": "Thane-Legate Torbis",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:14EBF8",
+  "edid": "0WHIronBardMale",
+  "name": "Jorn Scarred-Skald",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:101500",
+  "edid": "0WHDockmastersWife",
+  "name": "Signy",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ }
+]

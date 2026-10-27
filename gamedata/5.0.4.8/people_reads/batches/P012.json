@@ -1,0 +1,190 @@
+[
+ {
+  "id": "Meridia.esp:000D6E",
+  "edid": "NMeridiaLaracin",
+  "name": "Arch-Paladin Laracin",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Meridia.esp:000D6D",
+  "edid": "NMeridiaAsger",
+  "name": "Paladin Asger",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer",
+   "follower"
+  ]
+ },
+ {
+  "id": "Meridia.esp:006459",
+  "edid": "NMeridia04Dralos",
+  "name": "Dralos",
+  "plugin": "Synthesis - World.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Meridia.esp:0081BC",
+  "edid": "NMeridia04Adelaide",
+  "name": "Adelaide",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Meridia.esp:00645A",
+  "edid": "NMeridia04Reeshi",
+  "name": "Reeshi",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Meridia.esp:0092EF",
+  "edid": "NMeridia04Idina",
+  "name": "Idina",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Meridia.esp:009313",
+  "edid": "NMeridia04Crenstian",
+  "name": "Crenstian",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Meridia.esp:000D62",
+  "edid": "NMeridiaKariss",
+  "name": "Acolyte Kariss",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Meridia.esp:000D6B",
+  "edid": "NMeridiaVelteth",
+  "name": "Initiate Velteth",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Meridia.esp:00DDBD",
+  "edid": "NMeridia06Vaegra",
+  "name": "Vaegra",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Meridia.esp:001F7B",
+  "edid": "NMeridiaGarin",
+  "name": "Initiate Garin",
+  "plugin": "Synthesis - NPC.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower"
+  ]
+ },
+ {
+  "id": "Meridia.esp:019A80",
+  "edid": "NMeridia08Alzacar",
+  "name": "Alzacar",
+  "plugin": "Synthesis - World.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Meridia.esp:019A8D",
+  "edid": "NMeridia08Fiya01",
+  "name": null,
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Meridia.esp:01A19A",
+  "edid": "NMeridia08Kelrog",
+  "name": "Kelrog Mashul",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Meridia.esp:01A1C3",
+  "edid": "NMeridia08Alara",
+  "name": "Alara",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Meridia.esp:019A95",
+  "edid": "NMeridia08Jester",
+  "name": "The Jester",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Meridia.esp:00B1F0",
+  "edid": "NMeridiaFiya",
+  "name": "Fiya",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Meridia.esp:02B75A",
+  "edid": "NMeridiaAsger01Arandar",
+  "name": "Arandar",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Meridia.esp:02B759",
+  "edid": "NMeridiaAsger01Orfoljt",
+  "name": "Orfoljt",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Meridia.esp:02A140",
+  "edid": "NMeridiaVigilantArcheus",
+  "name": "Vigilant Archeus",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ }
+]

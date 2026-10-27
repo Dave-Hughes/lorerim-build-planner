@@ -1,0 +1,189 @@
+[
+ {
+  "id": "Skyrim.esm:02BF9F",
+  "edid": "Hadvar",
+  "name": "Hadvar",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:02BF9D",
+  "edid": "Ralof",
+  "name": "Ralof",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01327E",
+  "edid": "GeneralTullius",
+  "name": "General Tullius",
+  "plugin": "Heavy Legion - Reqtificated.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01414D",
+  "edid": "Ulfric",
+  "name": "Ulfric Stormcloak",
+  "plugin": "LoreRim - NPCs and Races Overwrite.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:028AD0",
+  "edid": "DA01Aranea",
+  "name": "Aranea Ienith",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01BFC5",
+  "edid": "DA03Barbas",
+  "name": "Barbas",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:02D514",
+  "edid": "DA04Septimus",
+  "name": "Septimus Signus",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:06C1B7",
+  "edid": "DA05SindingHuman",
+  "name": "Sinding",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01364E",
+  "edid": "Mathies",
+  "name": "Mathies",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:02ABBE",
+  "edid": "DA05Lucerne",
+  "name": "Lucerne",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:02ABC4",
+  "edid": "DA05Hunter03_Eriana",
+  "name": "Eriana",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019951",
+  "edid": "Larak",
+  "name": "Chief Larak",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013B79",
+  "edid": "Burguk",
+  "name": "Chief Burguk",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01B075",
+  "edid": "Mauhulakh",
+  "name": "Chief Mauhulakh",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019E18",
+  "edid": "Atub",
+  "name": "Atub",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "trainer"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0240CC",
+  "edid": "SilusVesuius",
+  "name": "Silus Vesuius",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01434D",
+  "edid": "Nelkir",
+  "name": "Nelkir",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01434C",
+  "edid": "Frothar",
+  "name": "Frothar",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01434B",
+  "edid": "Dagny",
+  "name": "Dagny",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:04E4DF",
+  "edid": "DA09Meridia",
+  "name": "Meridia",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ }
+]

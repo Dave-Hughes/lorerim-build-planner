@@ -1,0 +1,192 @@
+[
+ {
+  "id": "GORE.esp:6CCAA9",
+  "edid": "HD1PrisonGuard",
+  "name": "Jailer",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Gray Fox Cowl.esm:002FCF",
+  "edid": "manny_GF_ValenDrethDead",
+  "name": "Valen Dreth",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Gray Fox Cowl.esm:001F36",
+  "edid": "manny_GF_Luvien",
+  "name": "Luvien",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Gray Fox Cowl.esm:0167FE",
+  "edid": "manny_GF_IrlavBaenius",
+  "name": "Ilrav Baenius",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Gray Fox Cowl.esm:0097A5",
+  "edid": "manny_GF_BenEraiFortress_Crassius",
+  "name": "Crassius",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "HeartOfTheReach.esp:0C9186",
+  "edid": "aaaHOTRPriest",
+  "name": "Gwilym",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "HLIORemi.esp:005900",
+  "edid": "HLIORemi",
+  "name": "Remiel",
+  "plugin": "LoreRim - Remi Patch.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "HLIORemi.esp:46FB2C",
+  "edid": "HLIOSailor01",
+  "name": "Breton Sailor",
+  "plugin": "LoreRim - Remi Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "HLIORemi.esp:4841C0",
+  "edid": "HLIOSmuggler",
+  "name": "Suspicious Merchant",
+  "plugin": "LoreRim - Remi Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Inigo.esp:000D62",
+  "edid": "Inigounique",
+  "name": "Inigo",
+  "plugin": "Lulu's Inigo - Reqtificated.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Inigo.esp:056C01",
+  "edid": "Langleyunique",
+  "name": "Langley",
+  "plugin": "Lulu's Inigo - Reqtificated.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0A2C8E",
+  "edid": "HousecarlWhiterun",
+  "name": "Lydia",
+  "plugin": "LoreRim - NPCs and Races Overwrite.esp",
+  "roles": [
+   "quests",
+   "vendor",
+   "follower",
+   "marry"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:03DD7E",
+  "edid": "BaanWDDrinksSeller",
+  "name": "Adimmisaru",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:03DD92",
+  "edid": "BaanWDJeweller",
+  "name": "Varanie",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests",
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:20149D",
+  "edid": "SOMRLlynelis",
+  "name": "Llynelis",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:28C924",
+  "edid": "SOMRSadrenSolis01",
+  "name": "Sadren Solis",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:29BCE6",
+  "edid": "SOMRFeldrin",
+  "name": "Feldrin",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:0D3FE8",
+  "edid": "BaanTDElder02",
+  "name": "Elder Fothryn",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:0D3FE6",
+  "edid": "BaanTDElder01",
+  "name": "Elder Tymen",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:3126A7",
+  "edid": "SOMRSaxhleelKarJei",
+  "name": "Kar-Jei",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "quests"
+  ]
+ }
+]

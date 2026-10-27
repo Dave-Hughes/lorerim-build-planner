@@ -1,0 +1,173 @@
+[
+ {
+  "id": "Skyrim.esm:01363E",
+  "edid": "Vilod",
+  "name": "Vilod",
+  "plugin": "Alternative Perspective - Reqtificated.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:4FE926",
+  "edid": "zzzAoMOwlGray",
+  "name": "Gray Owl",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:000A50",
+  "edid": "BaanABStreetFooder",
+  "name": "R'Karo",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013475",
+  "edid": "Alvor",
+  "name": "Alvor",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01E7D5",
+  "edid": "Nelacar",
+  "name": "Nelacar",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:02C1EB",
+  "edid": "DLC2SiltStriderMerchant",
+  "name": "Revus Sarvani",
+  "plugin": "LoreRim - Economy Overhaul.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:05743F",
+  "edid": "CormarisBaker",
+  "name": "Selmsu Sadothren",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "ForgottenCity.esp:0278E8",
+  "edid": "000FCDeglund",
+  "name": "Deglund",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013B9E",
+  "edid": "Elrindir",
+  "name": "Elrindir",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "The Great Town of Karthwasten.esp:0059DF",
+  "edid": "GwynithTGCoKW",
+  "name": "Gwynith",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Wyrmstooth.esp:29C5D9",
+  "edid": "WTFortValusYnglodIronbender",
+  "name": "Ynglod Ironbender",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "The Great City of Winterhold v4.esp:4E767A",
+  "edid": "SkadiTGCoWH",
+  "name": "Skadi Frost-Vein",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:0F476C",
+  "edid": "zzzCHCadwell",
+  "name": "Sir Cadwell",
+  "plugin": "Synthesis - World.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "WindhelmSSE.esp:0A4983",
+  "edid": "0WHExtInkeep",
+  "name": "Ingjar",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Hendraheim - Tweaks and Enhancements.esp:000C22",
+  "edid": "HendraheimTnE_Servant04_RedguardMale",
+  "name": "Kemaal",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:097976",
+  "edid": "LvlFisherman",
+  "name": "Fisherman",
+  "plugin": "LoreRim - Economy Overhaul.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Journey to Baan Malur.esp:06BACC",
+  "edid": "CormarisFarmerwife",
+  "name": "Zevren Llefta",
+  "plugin": "Synthesis - Requiem Patcher.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "The Great Town of Karthwasten.esp:004F29",
+  "edid": "MaddockTGCoKW",
+  "name": "Maddock",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Gray Fox Cowl.esm:03CFD2",
+  "edid": "manny_GF_TelravBaenius",
+  "name": "Telrav Baenius",
+  "plugin": "The Gray Cowl - Betalilles LoreRim Patch.esp",
+  "roles": [
+   "vendor"
+  ]
+ }
+]
