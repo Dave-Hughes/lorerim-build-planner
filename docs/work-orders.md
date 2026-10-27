@@ -5022,6 +5022,39 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-157  The site's structure and its global patterns (Mac, 27 Oct 2026)
+Status: queued (Mac; Dave approved the boards, 27 Oct, 12:04)
+
+**Why.** The planner grew from a build planner into characters plus a world of game data (quests, people, places), and the menu and pages show it: Builds, Quests, People, Places and Playthroughs side by side, two public lists for one character, and a framed box around every section. Dave (27 Oct): everything should revolve around characters, the world data feeds them, and the app has too many boxes. Boards: canvas rows 34 and 35, https://claude.ai/artifact/48H6v9Q6wFuwhzRqE31uD1 (`IASiteMap`, `IAMenus` option A, `HomeVisitor`, `HomeYou`, `QuestPageOpen`). This order takes over WO-154 Part 5.
+
+### Part 1. The menu and the header
+- [ ] The header reads **LoreRim Planner**. Menu option A: **Characters**, **World**, **Guide**. World opens a panel with an icon on each item: Quests (`quest-side-stories`), People (`quest-people`), Places (`quest-travel`), Gear (`slot-main-hand`; the item shows only when `FEATURE_GEAR` is on), Help fill the gaps (`quest-sure`; shows only when that page exists). Right side: the search button with its Ctrl/Cmd K hint, New character, and your name.
+- [ ] Your name opens a menu: My characters, your profile, sign out. My characters leaves the top menu.
+- [ ] **Characters** is one public list in place of Builds and Playthroughs: each card is the build's card and, with a listed run, its acts the way My characters shows them; Browse's search and filters stay, plus "has a playthrough". `/playthroughs` redirects to it with that filter on. Build and run pages (`/b/…`, `/p/…`) stay where they are.
+
+### Part 2. Home
+- [ ] `/` becomes the home page; the character browse moves to its own address under Characters (redirect the old browse links).
+- [ ] **A new visitor** (`HomeVisitor`): the hero is the coming-soon night scene, full width and animated (the same `public/coming-soon/px` layers: aurora, stars, Tapps by the fire), with "LoreRim Planner" in the pixel face, one plain line, a large search box that opens the command palette, and Make a character and Browse characters. Then **Recent characters** (latest published, cover images edge to edge with the name over a fade, no boxes), **New in the world**, and **Three ways to use it** last.
+- [ ] **New in the world** lists real changes only, newest first, each with its icon, its name linked, what changed in a few words, and the date: a quest's ways or line read added, a person's schedule read, a place added, a player report approved. Build it from the data builds and the approved reports; never write an entry by hand or invent one.
+- [ ] **You, signed in** (`HomeYou`, in the new style): the same hero, shorter, then your characters (each with where they stand from the save, the act, and the next few objectives), drafts, your Claude, and Help fill the gaps. No framed boxes.
+
+### Part 3. Fewer boxes (a new design rule)
+- [ ] Add to `docs/design-rules.md`: sections are separated by space and a thin rule under their heading, not drawn in boxes. A box is for something special: the gold Rewards box, a modal, a card you click. The brass corner marks go only on those.
+- [ ] Pass over the quest page, line page, person page, place page and the Quests, People and Places landing pages with that rule, as `QuestPageOpen` shows for Lights Out!: the title plain and large with no frame, the right column and the bottom sections without panels.
+- [ ] Three title patterns, written into the design rules: home has the night scene; a character has their cover image full width; every quest, person and place page has a large plain title with its tags under it.
+
+### Part 4. One way to say "not known yet"
+- [ ] Where one fact is unknown: one muted line in the place the fact would go ("Not known yet"). Where nothing in a section is known, the section or the column is left out. A table where every row says "Not known yet" (danger on Lights Out!) drops that column and says once what isn't known. Same component everywhere: quest, person and place pages and the door's answers.
+
+### Part 5. A preview on every link to a person, place or quest
+- [ ] Hovering (or focusing) a link to a person, place or quest shows a small preview after a short delay: the icon, the name, a line of who or what it is ("Solitude | Guard captain"), and one useful fact (where to find them now, the danger, how the quest starts). As `QuestPageOpen` shows on Captain Aldis. On a phone a tap follows the link; no preview.
+
+### Part 6. The phone
+- [ ] At 390: a menu button opens the menu with the same items and icons; search opens full screen; the home hero keeps the scene and the title, smaller. Screenshots at 390 of the home, the menu open, search open, a quest page and a person page.
+
+### Part 7. Checks
+- [ ] Typecheck, lint, tests, build and e2e pass; screenshots at 1440 and 390 of every page touched, compared with the boards.
+
 ## WO-156  Dump every person's daily schedule and roles, raw: no reading (PC, 23 Oct 2026; before anything else on the PC)
 Status: done
 
@@ -5065,7 +5098,7 @@ The same method as WO-153, for people, against `docs/data/people.md`.
 - [ ] Mac wires them in as WO-154 does for quests (a Part on this order, when the reads land).
 
 ## WO-154  Quest pages, line pages and the connector, from the quest reads (Mac, 23 Oct 2026)
-Status: held (Dave, 27 Oct, 09:13: stepping back to rethink the site's information architecture first; Part 5 waits on that. Parts 1c to 4 are built and await Dave's review)
+Status: for Bob (Parts 1c to 4 built, await Dave's review; Part 5 moved to WO-157)
 
 ### Part 1c. Every batch checked: the rebuild breaks six tests (Bob, 26 Oct)
 All 85 batches are checked now (see `docs/pause-2026-10-23.md`). A cloud session ran `python3 scripts/gamedata/build.py` on staging at `3ba16cd`: typecheck and lint pass, `npm test` fails 6, so the regenerated `quests.json` was **not** committed. Fix the code, not the tests, unless a test asserts something the checked reads now settle differently (say which, and why):
@@ -5173,7 +5206,7 @@ People and Places landing pages (today a long list):
 - **People and Places landing pages.** People: groups from the records (Followers 103, Spouses 80, Merchants 501, Trainers 74, Innkeepers, Quest givers), each a few names and "All N", a town filter, search at the top. Places: each hold as a compact card with four notable places (those quests go to, then the biggest to clear) and "All N"; chips for every location type the records have ("Inn 27", "Cave 105"...), and "All inns" is its own view. Dave to judge the people grouping from the screenshots.
 - **E2E assertions changed:** `wo121a` and `wo146` (the report is a modal; no names), `wo154` (search goes to /search; the person page), `wo18` (its Search field is looked for in the page's main, since the header has a Search button too), `wo96-soon` (the header's name). The whole suite: 402 tests; two failed once for those last two reasons and pass now.
 
-### Part 5. One Characters page in place of Builds and Playthroughs (Dave, 27 Oct)
+### Part 5. One Characters page in place of Builds and Playthroughs (Dave, 27 Oct) (moved to WO-157 Part 1)
 A character is a build and, if it has one, a run (WO-114). Your own are already one list on `/me`; the public side is still two menu items (Builds, the home page's browse; Playthroughs, a bare list), so a player looks in two places for one person's character.
 - [ ] One menu item, **Characters**, in place of Builds and Playthroughs. One page of public characters: each card is the build's card and, if the character has a listed run, its acts on the card the way My characters shows them. Keep Browse's search and filters (tags, race, version) and add a filter for "has a playthrough".
 - [ ] `/playthroughs` redirects to the Characters page with that filter on; build and run pages (`/b/…`, `/p/…`) stay where they are.

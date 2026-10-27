@@ -1,6 +1,6 @@
 # The pipeline: how work moves between Dave, Bob and the two Jeffs
 
-> **Resumed for Mac, 26 Oct 2026, 20:25.** Dave restarted Jeff on Mac with WO-154 (Part 1c first). Every other order stays `held` until Dave says otherwise; where each stopped: `docs/pause-2026-10-23.md`.
+> **Resumed for Mac, 26 and 27 Oct 2026.** Jeff on Mac takes WO-157 (the site's structure). Every other held order stays `held` until Dave says otherwise; where each stopped: `docs/pause-2026-10-23.md`.
 
 
 Written 23 Oct 2026, after the quest work ran this way for a day. Read this before taking an order.
