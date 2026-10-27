@@ -10,6 +10,7 @@ Reads only. Writes planner_data.json next to this script.
 import os, sys, struct, json, re
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from esp import ROOT, active_profile, plugin_paths, load_order, rec_data, subrecs, header, iter_group, resolve, localized_strings
+import textdecode  # noqa: F401  registers the "game" error handler (WO-157 Part 8)
 
 SKILL_AVIF = {
     'AVOneHanded': 'One-Handed', 'AVTwoHanded': 'Two-Handed', 'AVMarksman': 'Marksman', 'AVBlock': 'Block',
@@ -24,7 +25,7 @@ AV_INDEX = {6: 'One-Handed', 7: 'Two-Handed', 8: 'Marksman', 9: 'Block', 10: 'Sm
 CMP = {0: '==', 1: '!=', 2: '>', 3: '>=', 4: '<', 5: '<='}
 
 def text(v):
-    return v.rstrip(b'\0').decode('utf-8', 'replace')
+    return v.rstrip(b'\0').decode('utf-8', 'game')
 
 def ctda(v, masters, name):
     op = v[0]

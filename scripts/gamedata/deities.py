@@ -16,6 +16,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from esp import header, iter_group, load_order, localized_strings, plugin_paths, rec_data, resolve, subrecs  # noqa: E402
+import textdecode  # noqa: F401  registers the "game" error handler (WO-157 Part 8)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
@@ -26,7 +27,7 @@ PART = {"Tenets": "tenets", "Boon1": "follower", "Boon2": "devotee"}
 def text(raw, strings):
     if strings is not None and len(raw) == 4:
         return strings.get(struct.unpack("<I", raw)[0], "")
-    return raw.rstrip(b"\0").decode("utf-8", "replace")
+    return raw.rstrip(b"\0").decode("utf-8", "game")
 
 
 def main(version):

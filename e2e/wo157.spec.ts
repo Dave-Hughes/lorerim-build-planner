@@ -84,9 +84,46 @@ test.describe("at 1440", () => {
     const mine = page.getByRole("region", { name: "Your characters" });
     await expect(mine.getByRole("heading", { level: 3 }).first()).toBeVisible();
     await expect(page.getByRole("link", { name: "Make a character", exact: true })).toHaveCount(0);
-    expect((await page.locator("section[aria-label='LoreRim Planner']").boundingBox())!.height).toBeLessThan(500);
+    expect((await page.locator("section[aria-label='LoreRim Planner']").boundingBox())!.height).toBeLessThan(700);
     await page.getByRole("banner").getByRole("button", { name: /account menu/ }).click();
     await expect(page.getByRole("menuitem", { name: "My characters" })).toBeVisible();
+  });
+
+  test("Part 8: the place page's grammar, one Level, the respawn words, quotes without boxes, no broken characters", async ({ page }) => {
+    await page.goto("/places/bleak-falls-barrow");
+    const main = page.locator("main");
+    await expect(main).toContainText("A Nordic ruin next to Riverwood.");
+    await expect(page.getByText("Next to Riverwood", { exact: true })).toBeVisible();
+    await expect(main).toContainText("Level 40");
+    await expect(main).not.toContainText(/level level/i);
+    await expect(main).toContainText("In 30 days, or 300 once cleared");
+    expect(await main.innerText()).not.toContain("\ufffd");
+    const hear = page.getByRole("region", { name: "What points here" });
+    await expect(hear).toContainText("What’s this about his court wizards");
+    await expect(hear).toContainText("Arvel");
+    await expect(hear.getByText(/^The other \d+ lines$/)).toBeVisible();
+    // The Arvel journal ends on a sentence, not in the middle of "keep th".
+    await expect(hear).not.toContainText(/keep th\b/);
+  });
+
+  test("Part 8: a place is said once, a person's offers don't repeat their quests, rewards start with a capital", async ({ page }) => {
+    await page.goto("/quests/q/the-golden-claw");
+    await expect(page.getByRole("region", { name: "How to start it" })).not.toContainText("in Bleak Falls Barrow in Bleak Falls Barrow");
+    await page.goto("/quests/q/lights-out");
+    await expect(page.getByRole("region", { name: "Rewards" })).toContainText("The loot from the Icerunner");
+    await page.goto("/people/captain-aldis");
+    await expect(page.getByRole("region", { name: "His quests" })).toBeVisible();
+    await expect(page.getByRole("region", { name: /What he offers/ })).toHaveCount(0);
+    await page.goto("/people/lucan-valerius");
+    await expect(page.getByRole("region", { name: "What he offers" })).not.toContainText("Quests");
+    await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("From the game files. A second reader hasn't checked this page yet.");
+  });
+
+  test("Part 8: the home buttons sit clear of the fire scene", async ({ page }) => {
+    await page.goto("/");
+    const hero = await page.locator("section[aria-label='LoreRim Planner']").boundingBox();
+    const button = await page.getByRole("link", { name: "Browse characters" }).boundingBox();
+    expect(hero!.y + hero!.height - (button!.y + button!.height)).toBeGreaterThan(180);
   });
 
   test("a person with no hours known has no Where to find section", async ({ page }) => {
@@ -107,6 +144,11 @@ test.describe("at 390", () => {
     await expect(menu.getByRole("link")).toHaveText(["Characters", /^Quests/, /^People/, /^Places/, /^Gear/, "Guide"]);
     await expect(menu.locator("img")).toHaveCount(4);
     await header.getByRole("button", { name: "Menu" }).click();
+    {
+      const hero = await page.locator("section[aria-label='LoreRim Planner']").boundingBox();
+      const button = await page.getByRole("link", { name: "Browse characters" }).boundingBox();
+      expect(hero!.y + hero!.height - (button!.y + button!.height)).toBeGreaterThan(150);
+    }
     await header.getByRole("button", { name: "Search the site" }).click();
     const box = await page.getByRole("dialog", { name: "Search the site" }).boundingBox();
     expect(box!.width).toBe(390);

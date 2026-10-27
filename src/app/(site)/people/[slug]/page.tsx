@@ -82,7 +82,7 @@ export default async function PersonPage({ params }: { params: Params }) {
           )}
         </div>
 
-        {(role || person.follower || person.marriage || person.sells || person.trainer || person.essential || gives.length > 0) && (
+        {(role || person.follower || person.marriage || person.sells || person.trainer || person.essential) && (
           <aside className={styles.side}>
             <Panel id="offers" icon="quest-people" title={they === "them" ? "What they offer" : `What ${they === "her" ? "she" : "he"} offers`}>
               <div style={{ display: "flex", flexDirection: "column" }}>
@@ -130,12 +130,6 @@ export default async function PersonPage({ params }: { params: Params }) {
                     <span>{can} is essential: {can.toLowerCase()} goes down in a fight but gets back up.</span>
                   </span>
                 )}
-                {gives.length > 0 && (
-                  <span className={styles.offer}>
-                    <b>Quests</b>
-                    <span>{gives.map((q) => q.name).join(", ")}</span>
-                  </span>
-                )}
               </div>
             </Panel>
           </aside>
@@ -144,7 +138,7 @@ export default async function PersonPage({ params }: { params: Params }) {
 
       <InformationConfidence
         id="sure"
-        line="Read from the game files. Not read by a reader yet."
+        line="From the game files. A second reader hasn't checked this page yet."
         sources={[
           { mark: "yes", name: "LoreRim's game files", note: "Their race, where they are placed and their quests, from the records" },
           { mark: "no", name: "Second reader", note: "Not yet" },

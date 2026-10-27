@@ -5,6 +5,7 @@ so only uncompressed entries (the string tables are stored uncompressed).
 """
 import os
 import struct
+import textdecode  # noqa: F401  registers the "game" error handler (WO-157 Part 8)
 
 
 def read_bsa(path, want):
@@ -52,7 +53,7 @@ def parse_strings(b, kind):
         else:
             ln = struct.unpack_from("<I", b, o)[0]
             s = b[o + 4:o + 4 + ln].rstrip(b"\0")
-        out[sid] = s.decode("utf-8", "replace")
+        out[sid] = s.decode("utf-8", "game")
     return out
 
 

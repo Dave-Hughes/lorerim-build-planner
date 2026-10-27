@@ -8,14 +8,11 @@
   z-index: 5;
   border-bottom-color: transparent;
 }
+/* The hero is as tall as its words plus room under them for the fire, so the buttons never sit on Tapps (WO-157 Part 8). */
 .hero {
   position: relative;
-  height: clamp(600px, 58vw, 820px);
   overflow: hidden;
   background: #0b0f14;
-}
-.hero.compact {
-  height: clamp(420px, 34vw, 480px);
 }
 .layer {
   position: absolute;
@@ -83,20 +80,19 @@
   background: linear-gradient(to bottom, rgba(11, 15, 20, 0.55) 0%, rgba(11, 15, 20, 0) 22%, rgba(11, 15, 20, 0) 62%, rgba(11, 15, 20, 0.92) 100%);
 }
 .big {
-  position: absolute;
-  inset: 0;
-  top: clamp(96px, 10vw, 150px);
+  position: relative;
   z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 22px;
-  padding: 0 24px;
+  padding: clamp(96px, 10vw, 150px) 24px max(230px, 18vw);
   text-align: center;
 }
 .compact .big {
-  top: 100px;
   gap: 18px;
+  padding-top: 100px;
+  padding-bottom: max(190px, 15vw);
 }
 .title {
   margin: 0;

@@ -1,4 +1,5 @@
 import os,struct,zlib,sys
+import textdecode  # noqa: F401  registers the "game" error handler (WO-157 Part 8)
 ROOT=os.environ.get('LORERIM_ROOT') or os.path.expanduser('~/mnt/LoreRim')
 def active_profile():
     """MO2's own selected profile (`ModOrganizer.ini`'s `[General] selected_profile`), not a hardcoded one -- every
@@ -101,7 +102,7 @@ def localized_strings_kinds(plugin_path, name):
                     e = b.index(b'\0', o); s = b[o:e]
                 else:
                     ln = struct.unpack_from('<I', b, o)[0]; s = b[o + 4:o + 4 + ln].rstrip(b'\0')
-                out[kind][sid] = s.decode('utf-8', 'replace')
+                out[kind][sid] = s.decode('utf-8', 'game')
     return out
 
 def localized_strings(plugin_path, name):
@@ -122,5 +123,5 @@ def localized_strings(plugin_path, name):
                     e = b.index(b'\0', o); s = b[o:e]
                 else:
                     ln = struct.unpack_from('<I', b, o)[0]; s = b[o + 4:o + 4 + ln].rstrip(b'\0')
-                out[sid] = s.decode('utf-8', 'replace')
+                out[sid] = s.decode('utf-8', 'game')
     return out

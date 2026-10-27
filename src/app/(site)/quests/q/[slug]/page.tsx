@@ -248,7 +248,9 @@ export default async function QuestPage({
               page.starts.map((w, i) => {
                 // The place the read names, not its hours (WO-154 Part 4): where they are through the day is on their own page.
                 const unknown = vaguePlace(w.where);
-                const where = unknown ? undefined : placeOnly(w.where);
+                const placeName = unknown ? undefined : placeOnly(w.where);
+                // "bandits in Bleak Falls Barrow" already says where: the place isn't said twice.
+                const where = placeName && w.who?.toLowerCase().includes(placeName.toLowerCase()) ? undefined : placeName;
                 return (
                   <div key={i} className={styles.way}>
                     {/* Who, then where, then how (WO-154 Part 1b): the older rules' ways already say both in the how. */}
@@ -560,7 +562,7 @@ export default async function QuestPage({
               )}
               {page.gets.rewards.map((r, i) => (
                 <span key={i} className={styles.rw}>
-                  <span>{r.what}</span>
+                  <span>{r.what.charAt(0).toUpperCase() + r.what.slice(1)}</span>
                   {r.when ? (
                     <small>
                       {r.when.charAt(0).toUpperCase() + r.when.slice(1)}

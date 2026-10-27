@@ -568,6 +568,13 @@ def main():
 
         raw = load("places_raw.json")
         rows = build_site(raw["places"])
+        # WO-157 Part 8: a quote ends on a whole sentence, and a byte the extraction lost is put back from the letters around it, until the
+        # PC runs the extraction again with the "game" decoder (textdecode.py).
+        from textdecode import repair_lost, tidy_excerpt
+
+        for r in rows:
+            for ptr in r.get("pointers", []):
+                ptr["words"] = tidy_excerpt(repair_lost(ptr["words"]), window=ptr["kind"] == "book")
         with open(os.path.join(OUT, "places.json"), "w", encoding="utf-8") as f:
             json.dump({"places": rows, "roads": raw.get("roads", [])}, f, separators=(",", ":"), ensure_ascii=False)
             f.write("\n")

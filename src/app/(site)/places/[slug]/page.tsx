@@ -22,6 +22,16 @@ type Params = Promise<{ slug: string }>;
 const PLURAL: Record<string, string> = { Bandit: "Bandits", Draugr: "Draugr", Skeleton: "Skeletons", Falmer: "Falmer", Forsworn: "Forsworn", Giant: "Giants", Warlock: "Warlocks", Spider: "Spiders", Wolf: "Wolves", Vampire: "Vampires", Troll: "Trolls" };
 
 /** The levels a boss's words give: "leveled 19-24" is 19 to 24; "45" is 45 to 45. */
+/** Where it is from the town: "next to Riverwood", "a short walk from Whiterun", else "near Riverwood". */
+const nearWords = (t: { town: string; walk?: string }) => (t.walk === "next to it" ? `next to ${t.town}` : t.walk ? `${t.walk} from ${t.town}` : `near ${t.town}`);
+
+/** "after 300 days once cleared, 30 ordinarily" as "In 30 days, or 300 once cleared". */
+function respawnWords(r: string): string {
+  if (r === "never") return "Never. Once cleared, it stays cleared.";
+  const m = /^after (\d+) days once cleared, (\d+) ordinarily$/.exec(r);
+  return m ? `In ${m[2]} days, or ${m[1]} once cleared` : r.charAt(0).toUpperCase() + r.slice(1);
+}
+
 const bossRange = (level: string | undefined): [number, number] | null => {
   const m = /(\d+)(?:\s*-\s*(\d+))?/.exec(level ?? "");
   return m ? [Number(m[1]), Number(m[2] ?? m[1])] : null;
@@ -67,7 +77,21 @@ export default async function PlacePage({ params }: { params: Params }) {
     const says = pageOf(q).takesYou.find((t) => t.place.toLowerCase() === place.name.toLowerCase())?.why;
     return [{ name, href, says }];
   });
-  const lede = `${/^[AEIOU]/i.test(placeType(place.type)) ? "An" : "A"} ${placeType(place.type).toLowerCase()}${town ? ` ${town.walk ?? "near"} ${town.walk ? "from" : ""} ${town.town}` : place.hold ? ` in ${place.hold}` : ""}.${boss ? ` Its boss is ${boss.name}.` : ""}`.replace(/\s+/g, " ");
+  // "A Nordic ruin next to Riverwood": the type's own capital stays for a people or a land (Nordic, Dwemer), a common noun starts small.
+  const type = placeType(place.type);
+  const kind = /^(Nordic|Dwemer|Imperial|Daedric|Orc|Orsimer)\b/.test(type) ? type : `${type.charAt(0).toLowerCase()}${type.slice(1)}`;
+  const near = town ? nearWords(town) : null;
+  const lede = `${/^[AEIOU]/i.test(type) ? "An" : "A"} ${kind}${near ? ` ${near}` : place.hold ? ` in ${place.hold}` : ""}.${boss ? ` Its boss is ${boss.name}.` : ""}`.replace(/\s+/g, " ");
+  // What points here: the people who name it and the notes and books first, one line each; the lines no one is named for fold away.
+  const seenQuote = new Set<string>();
+  const pointing = { named: [] as NonNullable<typeof place.pointers>, rest: [] as NonNullable<typeof place.pointers> };
+  for (const p of place.pointers ?? []) {
+    const key = `${p.speaker ?? p.book ?? ""}|${p.words}`;
+    if (seenQuote.has(key)) continue;
+    seenQuote.add(key);
+    (p.kind === "book" || p.speaker ? pointing.named : pointing.rest).push(p);
+  }
+  pointing.named.sort((x, y) => Number(x.kind === "book") - Number(y.kind === "book"));
   const tick = (n: number) => (n === 1 ? "Level 1" : String(n));
 
   return (
@@ -81,7 +105,7 @@ export default async function PlacePage({ params }: { params: Params }) {
             <span className={styles.tag}>{placeType(place.type)}</span>
             {place.hold && <span className={styles.tag}>{place.hold}</span>}
             {origin && <span className={styles.tag}>{origin}</span>}
-            {town && <span className={styles.tagText}>{town.walk ? `${town.walk.charAt(0).toUpperCase()}${town.walk.slice(1)} from ${town.town}` : `Near ${town.town}`}</span>}
+            {near && <span className={styles.tagText}>{near.charAt(0).toUpperCase()}{near.slice(1)}</span>}
           </>
         }
       />
@@ -185,12 +209,22 @@ export default async function PlacePage({ params }: { params: Params }) {
 
           {place.pointers?.length ? (
             <Section id="hear" icon="speech" title="What points here">
-              {place.pointers.map((p, i) => (
-                <div key={i} style={{ display: "flex", flexDirection: "column", gap: 10, paddingTop: 16 }}>
-                  <span style={{ fontSize: 17, fontWeight: 600 }}>{p.kind === "book" ? p.book : p.speaker ? `${p.speaker} says` : "Someone says"}</span>
+              {pointing.named.map((p, i) => (
+                <div key={`n${i}`} className={styles.pointer}>
+                  <span className={styles.pointerWho}>{p.kind === "book" ? p.book : `${p.speaker} says`}</span>
                   <p className={styles.note}>{p.words.replace(/\r\n?/g, "\n")}</p>
                 </div>
               ))}
+              {pointing.rest.length > 0 && (
+                <details className={styles.folded}>
+                  <summary>The other {pointing.rest.length} {pointing.rest.length === 1 ? "line" : "lines"}</summary>
+                  {pointing.rest.map((p, i) => (
+                    <p key={i} className={styles.note}>
+                      {p.words.replace(/\r\n?/g, "\n")}
+                    </p>
+                  ))}
+                </details>
+              )}
             </Section>
           ) : null}
         </div>
@@ -232,7 +266,7 @@ export default async function PlacePage({ params }: { params: Params }) {
               {place.respawns && (
                 <span>
                   <b>Comes back</b>
-                  {place.respawns === "never" ? "Never. Once cleared, it stays cleared." : place.respawns.charAt(0).toUpperCase() + place.respawns.slice(1)}
+                  {respawnWords(place.respawns)}
                 </span>
               )}
             </div>

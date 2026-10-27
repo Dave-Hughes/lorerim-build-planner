@@ -855,17 +855,39 @@ a.tag:hover {
   font-size: 14px;
   color: var(--muted);
 }
+/* A quote (WO-157 Part 8): italic text with a rule on its left, no box. */
 .note {
   margin: 0;
-  padding: 18px 22px;
-  border-left: 2px solid var(--brass);
-  background: var(--panel);
+  padding: 2px 0 2px 16px;
+  border-left: 2px solid var(--rule-strong);
   font-family: var(--font-flavor);
   font-style: italic;
-  font-size: 19px;
+  font-size: 18px;
   line-height: 1.5;
   color: #ddd5c6;
   white-space: pre-line;
+}
+.pointer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 16px;
+}
+.pointerWho {
+  font-size: 17px;
+  font-weight: 600;
+}
+.folded {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 18px;
+}
+.folded summary {
+  cursor: pointer;
+  color: var(--ember);
+  font-size: 15px;
+  margin-bottom: 14px;
 }
 .facts {
   display: flex;

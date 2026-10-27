@@ -3,6 +3,7 @@ Scans winning BOOK records for VMAD property references to the perk. Reads only;
 import os, sys, struct, json
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from esp import ROOT, plugin_paths, load_order, rec_data, subrecs, header, iter_group, resolve
+import textdecode  # noqa: F401  registers the "game" error handler (WO-157 Part 8)
 
 data = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'planner_data.json'), encoding='utf-8'))
 want = {}
@@ -28,7 +29,7 @@ for n in lo:
             rec = {'plugin': n, 'edid': '', 'full': '', 'refs': set()}
             for s, v in subrecs(d):
                 if s == 'EDID': rec['edid'] = v.rstrip(b'\0').decode('latin1')
-                elif s == 'FULL' and not loc: rec['full'] = v.rstrip(b'\0').decode('utf-8', 'replace')
+                elif s == 'FULL' and not loc: rec['full'] = v.rstrip(b'\0').decode('utf-8', 'game')
                 elif s == 'VMAD':
                     for i in range(0, len(v) - 3):
                         fidv = struct.unpack_from('<I', v, i)[0]

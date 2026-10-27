@@ -28,6 +28,7 @@ import time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from esp import header, iter_group, rec_data, resolve, subrecs  # noqa: E402
+import textdecode  # noqa: F401  registers the "game" error handler (WO-157 Part 8)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
@@ -117,7 +118,7 @@ def read_plugin(buf, name, strings):
     def txt(v):
         if loc and len(v) == 4:
             return strings.get(struct.unpack_from("<I", v)[0], "")
-        return v.rstrip(b"\0").decode("utf-8", "replace")
+        return v.rstrip(b"\0").decode("utf-8", "game")
 
     def form(v, at=0):
         fid = struct.unpack_from("<I", v, at)[0]

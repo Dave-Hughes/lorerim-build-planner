@@ -23,6 +23,7 @@ from pex import Scripts, functions  # noqa: E402
 from places import MARKER  # noqa: E402
 from readables import near_doors, near_place, place_of  # noqa: E402
 from story_check import name_strings  # noqa: E402
+import textdecode  # noqa: F401  registers the "game" error handler (WO-157 Part 8)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
@@ -100,7 +101,7 @@ def scan():
                 key = form_id(resolve(fid, masters, n))
                 subs = subrecs(d)
                 edid = next((v.rstrip(b"\0").decode("latin1") for s, v in subs if s == "EDID"), "")
-                full = next((strings.get(struct.unpack_from("<I", v)[0], "") if loc and len(v) == 4 else v.rstrip(b"\0").decode("utf-8", "replace")
+                full = next((strings.get(struct.unpack_from("<I", v)[0], "") if loc and len(v) == 4 else v.rstrip(b"\0").decode("utf-8", "game")
                              for s, v in subs if s == "FULL"), "")
                 names[key] = {"edid": edid, "name": full.strip(), "type": grp}
                 if grp == "QUST":
@@ -172,7 +173,7 @@ def scan():
                     c["world"] = world if top == "WRLD" else None
                     for s, v in subs:
                         if s == "FULL":
-                            c["name"] = (strings.get(struct.unpack_from("<I", v)[0], "") if loc and len(v) == 4 else v.rstrip(b"\0").decode("utf-8", "replace")).strip()
+                            c["name"] = (strings.get(struct.unpack_from("<I", v)[0], "") if loc and len(v) == 4 else v.rstrip(b"\0").decode("utf-8", "game")).strip()
                         elif s == "XLCN" and len(v) >= 4:
                             c["location"] = form_id(resolve(struct.unpack_from("<I", v)[0], masters, n))
                     continue
@@ -185,7 +186,7 @@ def scan():
                     full = next((v for s, v in subs if s == "FULL"), b"")
                     markers[key] = {"cell": cell, "pos": pos, "type": MARKER.get(next((v[0] for s, v in subs if s == "TNAM" and v), None)),
                                     "deleted": bool(flags & DELETED),
-                                    "name": (strings.get(struct.unpack_from("<I", full)[0], "") if loc and len(full) == 4 else full.rstrip(b"\0").decode("utf-8", "replace")).strip()}
+                                    "name": (strings.get(struct.unpack_from("<I", full)[0], "") if loc and len(full) == 4 else full.rstrip(b"\0").decode("utf-8", "game")).strip()}
                 vm = next((v for s, v in subs if s == "VMAD"), None)
                 own = None
                 if vm is not None:

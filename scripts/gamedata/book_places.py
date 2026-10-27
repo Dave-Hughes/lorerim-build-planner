@@ -34,6 +34,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from esp import ROOT, header, iter_group, load_order, plugin_paths, rec_data, resolve, subrecs  # noqa: E402
 from story_check import name_strings  # noqa: E402
 import readables  # noqa: E402
+import textdecode  # noqa: F401  registers the "game" error handler (WO-157 Part 8)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
@@ -77,7 +78,7 @@ def smithing_books(version):
                 continue
             subs = subrecs(d)
             edid = next((v.rstrip(b"\0").decode("latin1") for s, v in subs if s == "EDID"), "")
-            full = next((strings.get(struct.unpack_from("<I", v)[0], "") if loc and len(v) == 4 else v.rstrip(b"\0").decode("utf-8", "replace")
+            full = next((strings.get(struct.unpack_from("<I", v)[0], "") if loc and len(v) == 4 else v.rstrip(b"\0").decode("utf-8", "game")
                          for s, v in subs if s == "FULL"), "")
             key = resolve(fid, masters, n)
             for s, v in subs:
@@ -154,7 +155,7 @@ def reading_rooms(version):
                     continue
                 subs = subrecs(d)
                 key = readables.form_id(resolve(fid, masters, n))
-                full = next((strings.get(struct.unpack_from("<I", v)[0], "") if loc and len(v) == 4 else v.rstrip(b"\0").decode("utf-8", "replace")
+                full = next((strings.get(struct.unpack_from("<I", v)[0], "") if loc and len(v) == 4 else v.rstrip(b"\0").decode("utf-8", "game")
                              for s, v in subs if s == "FULL"), "")
                 names[key] = {"name": full.strip()}
     placed_at = {}
@@ -195,7 +196,7 @@ def reading_rooms(version):
                 c["world"] = world if top == "WRLD" else None
                 for s, v in subs:
                     if s == "FULL":
-                        c["name"] = (strings.get(struct.unpack_from("<I", v)[0], "") if loc and len(v) == 4 else v.rstrip(b"\0").decode("utf-8", "replace")).strip()
+                        c["name"] = (strings.get(struct.unpack_from("<I", v)[0], "") if loc and len(v) == 4 else v.rstrip(b"\0").decode("utf-8", "game")).strip()
                     elif s == "XLCN" and len(v) >= 4:
                         c["location"] = readables.form_id(resolve(struct.unpack_from("<I", v)[0], masters, n))
     counts = {}

@@ -130,7 +130,7 @@ export function dangerOf(place: Place | null | undefined): string | undefined {
 }
 
 /** A level the index gives as "leveled 19-24" or "45", in words: "19 to 24", "45". */
-export const levelWords = (level: string | undefined) => (level ? level.replace(/^leveled\s*/i, "").replace(/\s*-\s*/g, " to ") : "");
+export const levelWords = (level: string | undefined) => (level ? level.replace(/^(leveled|levels?)\s*/i, "").replace(/\s*-\s*/g, " to ") : "");
 
 /**
  * What a place page and a quest's "Where it takes you" say about danger, as parts: the foes with their level range, whether it has traps,
