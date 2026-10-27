@@ -34,6 +34,7 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 **4. "How do I start Caught Red Handed?"**
 - Calls: `get_quest({ name: "Caught Red Handed" })`.
 - Must: Svana Far-Shield, Haelga's Bunkhouse, and that a condition isn't named yet; then "Obtain a Mark of Dibella from Bolli".
+- Fails today: **WO-154** (Bob's word): Caught Red Handed is read now. Its read gives Svana as the starter and needs nothing; it doesn't carry the condition on her line (`fn230 == 0`) that the planner couldn't put in words, and its unsure notes don't mention it.
 
 **5. "How do I start The Blessings of Nature?"**
 - Calls: `get_quest({ name: "The Blessings of Nature" })`.
@@ -95,7 +96,7 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 - Passes since WO-137 item 5.
 
 **16. A line whose quest is checked.** Asking for one quest in a line that hasn't passed the line's start check (Whiterun, expanded; Odd jobs in the Rift; Deathbrand) must give that quest's own checked start, and say plainly what's unchecked about the line, once. Not "no instructions are given" over a checked answer.
-- Passes since WO-137 item 3.
+- Passes since WO-137 item 3. Since WO-154 the three quests are read, and a read says it is checked in its "how sure" line ("Read from the game files and checked by a second reader"), not with `"checked":"files"`.
 
 **17. "How do I start the quest to get the paraglider? I'm level 12."**
 - Calls: `search_facts({ query: "paraglider" })`, `get_quest({ name: "Paragliding in Skyrim", level: 12 })`.
@@ -106,6 +107,7 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 - Calls: `get_quest({ name: "Thane of Whiterun" })`.
 - Must: the jarl by name (Balgruuf the Greater) in Dragonsreach, with "Vignar Gray-Mane if the Stormcloaks hold Whiterun"; the need "once you've helped people of the hold"; never "It starts by itself when you enter Whiterun" as a way in; never a way with no place.
 - Passes since WO-138 Part 4b (fix 2: the sitting jarl in their keep, the other side's jarl named, the hidden start a gate).
+- Fails today: **WO-154** (Bob's word): Thane of Whiterun is read now. Its read names "Balgruuf the Greater or Vignar Gray-Mane" as one jarl and doesn't say Vignar is the one if the Stormcloaks hold Whiterun, which WO-138 ruled in. Its need is worded "once you have helped enough people of the hold" (the test asks for that wording now).
 
 **19. "Design me a new character."**
 - Calls: `get_style_guide()`; the descriptions of `create_build` and `create_playthrough`.

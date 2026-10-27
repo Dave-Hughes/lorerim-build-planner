@@ -318,7 +318,7 @@ function startOf(
  * item 3): its own checked start is the answer, and what the line still lacks is said once, in a sentence. Only when the
  * quest itself isn't checked does it give no instructions.
  */
-function questStart(line: QuestLine, story: Story | undefined, quest?: Quest) {
+export function questStart(line: QuestLine, story: Story | undefined, quest?: Quest) {
   const category = homeName(line.category);
   if (!story) {
     const head = { kind: "quest line" as const, id: line.id, name: line.name, category };

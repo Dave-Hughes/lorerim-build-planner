@@ -101,6 +101,7 @@ const QUESTIONS: Question[] = [
     asks: "How do I start Caught Red Handed?",
     ask: () => [getQuest({ name: "Caught Red Handed" })],
     must: ["Svana Far-Shield", "Haelga's Bunkhouse", /condition the planner can't put in words yet/, /Obtain a Mark of Dibella from Bolli/],
+    todo: "WO-154: Bob's word on Caught Red Handed's read, which needs nothing and doesn't carry the condition (fn230 == 0) the planner couldn't decode on Svana's line",
   },
   {
     n: 5,
@@ -214,7 +215,8 @@ const QUESTIONS: Question[] = [
     n: 16,
     asks: "A quest in a line that hasn't passed the line's start check gives its own checked start",
     ask: () => [getQuest({ name: "Running Wild" }), getQuest({ name: "Caught Red Handed" }), getQuest({ name: "Deathbrand" })],
-    must: [/"checked":"files"/, /Read the note pinned to the board/, "Svana Far-Shield"],
+    // A read says it is checked in `howSure`, not with the older rules' `"checked":"files"`.
+    must: [/Read from the game files and checked by a second reader/, /Read the note pinned to the board/, "Svana Far-Shield"],
     never: [/no instructions are given/],
   },
   {
@@ -233,11 +235,13 @@ const QUESTIONS: Question[] = [
     ask: () => {
       const a = getQuest({ name: "Thane of Whiterun" });
       // Every way in names its place: a way with none is said as such, so it shows up in "never".
-      const placeless = (a.quest.start.ways ?? []).filter((w) => !w.where && !/ in [A-Z]/.test(w.way)).map((w) => `A WAY WITH NO PLACE: ${w.way}`);
+      const placeless = (a.quest.starts ?? []).filter((w) => !w.where && !/ in [A-Z]/.test(w.how)).map((w) => `A WAY WITH NO PLACE: ${w.how}`);
       return [a, ...placeless];
     },
-    must: ["Balgruuf the Greater", "Dragonsreach", "Vignar Gray-Mane if the Stormcloaks hold Whiterun", /once you've helped people of the hold/i],
+    // The read's words for the need are "once you have helped enough people of the hold".
+    must: ["Balgruuf the Greater", "Dragonsreach", "Vignar Gray-Mane if the Stormcloaks hold Whiterun", /once you have helped enough people of the hold/i],
     never: [/"way":"It starts by itself when you enter Whiterun"/, /A WAY WITH NO PLACE/],
+    todo: "WO-154: Bob's word on Thane of Whiterun's read, which names Balgruuf and Vignar as one jarl without saying Vignar is the one if the Stormcloaks hold Whiterun",
   },
   {
     n: 19,

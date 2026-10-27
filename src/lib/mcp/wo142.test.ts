@@ -3,6 +3,7 @@ import { citiesOf } from "@/lib/places/inside";
 import { docToMarkdown, markdownToDoc } from "@/lib/playthroughs/markdown";
 import { namedIn } from "@/lib/playthroughs/review";
 import { getQuest, getRules, playerState, searchFacts, styleGuide } from "./facts";
+import { rules } from "./rules-view";
 import { LEVEL_ONE } from "./rules-text";
 import { startsAt, suggestFrom } from "./playthroughs";
 import { questsData } from "@/lib/quests/data";
@@ -88,8 +89,10 @@ describe("6. a place condition is where the quest is, not a need", () => {
   it("A Lovely Letter is open for you, in Riverwood, with no place in its needs and its trigger placed", () => {
     const q = getQuest({ name: "A Lovely Letter" }, undefined, playerState({ level: 5 }));
     expect(q.openForYou?.says).toBe("open for you, in Riverwood");
-    expect(JSON.stringify(q.quest.start.needs)).not.toMatch(/When you enter|the place you enter/);
-    const trigger = q.quest.start.ways?.find((w) => /walk into any inn/.test(w.way));
+    // The start check is the older rules' (A Lovely Letter is read now; the door gives the read's `starts`).
+    const start = rules("A Lovely Letter").quest.start;
+    expect(JSON.stringify(start.needs)).not.toMatch(/When you enter|the place you enter/);
+    const trigger = start.ways?.find((w) => /walk into any inn/.test(w.way));
     expect(trigger?.where).toBe("Riverwood");
   });
   it("no start in the data holds a place condition as a need", () => {

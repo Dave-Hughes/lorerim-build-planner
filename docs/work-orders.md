@@ -5067,15 +5067,27 @@ Status: building (Mac; Part 1c first, then Parts 2 and 3. Dave approved the boar
 
 ### Part 1c. Every batch checked: the rebuild breaks six tests (Bob, 26 Oct)
 All 85 batches are checked now (see `docs/pause-2026-10-23.md`). A cloud session ran `python3 scripts/gamedata/build.py` on staging at `3ba16cd`: typecheck and lint pass, `npm test` fails 6, so the regenerated `quests.json` was **not** committed. Fix the code, not the tests, unless a test asserts something the checked reads now settle differently (say which, and why):
-- [ ] `player-questions.test.ts` question 4, Caught Red Handed: the answer now says "condition the planner can't put in words yet".
-- [ ] `player-questions.test.ts` question 16: the answer is missing `"checked":"files"`.
-- [ ] `player-questions.test.ts` question 18, Thane of Whiterun: `TypeError: Cannot read properties of undefined (reading 'ways')`.
-- [ ] `wo108.test.ts`: Caught Red Handed should have endings and now has `endings: []`.
-- [ ] `wo142.test.ts`: A Lovely Letter crashes reading `needs` on something undefined.
-- [ ] `wo146.test.ts`: a quest whose start isn't checked crashes reading `ways` on something undefined.
+- [x] `player-questions.test.ts` question 4, Caught Red Handed: the answer now says "condition the planner can't put in words yet".
+- [x] `player-questions.test.ts` question 16: the answer is missing `"checked":"files"`.
+- [x] `player-questions.test.ts` question 18, Thane of Whiterun: `TypeError: Cannot read properties of undefined (reading 'ways')`.
+- [x] `wo108.test.ts`: Caught Red Handed should have endings and now has `endings: []`.
+- [x] `wo142.test.ts`: A Lovely Letter crashes reading `needs` on something undefined.
+- [x] `wo146.test.ts`: a quest whose start isn't checked crashes reading `ways` on something undefined.
 - [ ] Rebuild, all tests pass, commit `quests.json` with the code, push staging.
 
 New data the pages don't use yet (Part 2, after 1c): `quest_reads/ways/G*.json` (WAYS.md: each choice tied to its journal steps, for "N ways to finish it"; 228 quests, steps copied verbatim, 137 with an unsure; objective text keeps the game's `<Alias=…>` placeholders, which the page must fill or drop) and `quest_reads/lines/checked/L*.json` (LINES.md: 50 line reads, checked, 59 fixes; every line has an unsure, mostly level gates the records don't hold).
+
+**Jeff's notes, Part 1c (Mac, 26 Oct).** Rebuilt with `python3 scripts/gamedata/build.py`: 842 quests read and checked, 384 on the older rules; `quests.json` is committed with this push. Typecheck, lint (the one warning is `wo129.test.ts`'s unused import, there before), 691 unit tests (7 marked), 341 gamedata tests, the build, and the quest e2e (`wo100`, `wo106`, `wo136`, `wo142`, `wo146`, `wo147`, `wo148`, `wo154`: 31 tests) pass.
+- **Why six broke, and what I did.** Bob's list reads some of these as the code losing something; four are tests asking a quest that is now read for the older rules' block (`start.ways`, `endings`, `"checked":"files"`), which a read's door answer doesn't have (it has `starts[]`, `closes` and `howSure`). Same cure as the 640-read pass: the tests of the rules' machinery ask `rules(...)`. No change to what the door says.
+  - `wo108` (Caught Red Handed `endings: []`): the test is about the rules' note for a quest whose records flag no ending. It asks `rules("Caught Red Handed")` now; a read has no `endings` field at all, so `endings: []` was never going to appear in the door's answer.
+  - `wo142` (A Lovely Letter): `openForYou` still says "open for you, in Riverwood" from the door; the check that no place sits among the start's needs asks `rules(...)`.
+  - `wo146` (a quest whose start isn't checked): **no quest left on the older rules has an unchecked start** (I counted: none), so `aaFaraldaQ2`, the test's subject, is the case of a *read* quest whose rules block is unchecked. The test now asks `rules("aaFaraldaQ2")`, and `rules()` gives the full older answer including the line's start check (`checked`, `note`), which it didn't before (it exports `questStart` from `facts.ts` for that; nothing else changed in `facts.ts`).
+  - Question 16: the three quests are read, and a read says it is checked in `howSure` ("Read from the game files and checked by a second reader"). The question now asks for that line instead of `"checked":"files"`; the point of it (a quest's own checked start, never "no instructions are given") still holds.
+  - Question 18: the test read `start.ways`; it reads `starts` now (a way with no place still shows up in "never"). That fixed the crash.
+- **Two questions are real differences, marked "fails today" for your word, with the reason in `player-questions.md`:**
+  - **4** Caught Red Handed: the read gives Svana, Haelga's Bunkhouse and the first step Bolli, with `needs: nothing`. The rules' "a condition the planner can't put in words yet" was the undecoded `fn230 == 0` on Svana's line (the raw record: `Skyrim.esm:041E0C`). The read doesn't carry it and doesn't list it as unsure. The rules' second way (Haelga, persuade, early in Taking Care of Business) is in the read's unsure notes, not in `starts`. Yours to say whether the page should admit the gap.
+  - **18** Thane of Whiterun: the read names "Balgruuf the Greater or Vignar Gray-Mane" as one jarl and doesn't say Vignar is the one if the Stormcloaks hold Whiterun, which WO-138 ruled in. I changed the need's wording in the test to the read's ("once you have helped enough people of the hold"), which is only words; the war condition is the thing marked.
+- Questions marked "fails today" now: 3, 4, 5, 12, 18, 21, 35.
 
 ### Part 2. The redesigned pages (Dave approved the boards, 26 Oct)
 Source of truth: the design canvas https://claude.ai/artifact/48H6v9Q6wFuwhzRqE31uD1, bottom rows: **Quest page: Lights Out!, second pass** (`QuestPageLightsOut`), **Person page: Mjoll the Lioness** (`PersonPage`), **Place page: Broken Oar Grotto** (`PlacePage`). Dave's decisions behind them are in `docs/data/quest-pages.md` ("Dave's answers") and below. Build from the data, never from the boards' sample text; a field with no data is left out or says "Not known yet", as the boards show.

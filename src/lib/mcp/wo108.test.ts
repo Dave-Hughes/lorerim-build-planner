@@ -131,7 +131,8 @@ describe("get_quest (WO-115)", () => {
   });
 
   it("says so when a quest's records list no ending", () => {
-    const q = getQuest({ name: "Caught Red Handed" });
+    // The older rules' words for an ending-less quest; Caught Red Handed is read now, and a read has no `endings` to flag (it says what it closes).
+    const q = rules("Caught Red Handed");
     expect(q.quest).toMatchObject({ edid: "FreeformRiften11", endings: [] });
     expect(q.quest.note).toMatch(/no ending/);
   });

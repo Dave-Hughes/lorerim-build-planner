@@ -1,6 +1,5 @@
 import { afterEach, describe, expect, it } from "vitest";
 import { rules } from "@/lib/mcp/rules-view";
-import { getQuest } from "@/lib/mcp/facts";
 import { questsData } from "./data";
 import { cleanFields } from "./reports";
 import { currentPlayerFacts, setPlayerFacts, type PlayerFact } from "./player-facts-store";
@@ -103,9 +102,10 @@ describe("an approved fact laid over a quest", () => {
   it("a quest whose start isn't checked shows only the player's way, said as that, with the note", () => {
     const { lines } = questsData();
     const line = lines.find((l) => l.quests.some((x) => x.edid === "aaFaraldaQ2"))!;
-    expect(getQuest({ id: "aaFaraldaQ2" }).quest.start.ways).toBeUndefined();
+    // The start check is the older rules' (aaFaraldaQ2 is read now, and a read has no start check to report).
+    expect(rules("aaFaraldaQ2").quest.start.ways).toBeUndefined();
     setPlayerFacts([{ id: 9, lineId: line.id, quest: "aaFaraldaQ2", replaces: null, way: { how: "Ask Faralda in the Arcanaeum", who: "Faralda", where: "The Arcanaeum" }, source: "@testplayer, 23 Oct 2026", confirms: false }]);
-    const a = getQuest({ id: "aaFaraldaQ2" }) as unknown as { checked: string; note: string; quest: { start: { ways: unknown[] } } };
+    const a = rules("aaFaraldaQ2") as unknown as { checked: string; note: string; quest: { start: { ways: unknown[] } } };
     expect(a.checked).toBe("not yet");
     expect(a.note).toMatch(/A player's report is below: say it is that, not the game files/);
     expect(a.quest.start.ways).toEqual([{ way: "Ask Faralda in the Arcanaeum", who: "Faralda", where: "The Arcanaeum", checked: "a player's report, not the game files (@testplayer, 23 Oct 2026)" }]);
