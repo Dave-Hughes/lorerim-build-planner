@@ -1,0 +1,12 @@
+; Captain Aldis
+prid LucanValeriusREF
+disable
+prid JareeRaREF
+disable
+prid MjollRef
+disable
+prid DelphineREF
+disable
+prid CaptainAldisREF
+enable
+moveto player

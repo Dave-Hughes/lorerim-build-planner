@@ -1,0 +1,12 @@
+; Delphine
+prid LucanValeriusREF
+disable
+prid JareeRaREF
+disable
+prid MjollRef
+disable
+prid CaptainAldisREF
+disable
+prid DelphineREF
+enable
+moveto player

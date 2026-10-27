@@ -1,0 +1,4 @@
+; Bleak Falls Barrow
+fw SClearSkySN
+set gamehour to 12
+player.moveto BleakFallsBarrowMapMarkerREF

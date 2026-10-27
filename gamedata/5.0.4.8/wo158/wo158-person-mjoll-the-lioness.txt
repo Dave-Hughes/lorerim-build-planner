@@ -1,0 +1,12 @@
+; Mjoll the Lioness
+prid LucanValeriusREF
+disable
+prid JareeRaREF
+disable
+prid CaptainAldisREF
+disable
+prid DelphineREF
+disable
+prid MjollRef
+enable
+moveto player

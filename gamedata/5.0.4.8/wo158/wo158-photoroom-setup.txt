@@ -1,0 +1,4 @@
+; QASmoke, the photo room
+coc QASmoke
+fw SClearSkySN
+set gamehour to 12

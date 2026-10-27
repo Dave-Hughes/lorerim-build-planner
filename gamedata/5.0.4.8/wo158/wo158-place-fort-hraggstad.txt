@@ -1,0 +1,4 @@
+; Fort Hraggstad
+fw SClearSkySN
+set gamehour to 12
+player.moveto FortHraggstadMapMarker

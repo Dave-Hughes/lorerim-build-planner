@@ -1,0 +1,12 @@
+; Jaree-Ra
+prid LucanValeriusREF
+disable
+prid MjollRef
+disable
+prid CaptainAldisREF
+disable
+prid DelphineREF
+disable
+prid JareeRaREF
+enable
+moveto player

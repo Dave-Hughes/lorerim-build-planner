@@ -1,0 +1,6 @@
+tm
+tfc 1
+tai
+fw SClearSkySN
+set gamehour to 12
+sgtm 1

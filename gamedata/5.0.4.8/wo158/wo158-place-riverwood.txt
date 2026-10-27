@@ -1,0 +1,4 @@
+; Riverwood
+fw SClearSkySN
+set gamehour to 12
+player.moveto RiverwoodLocationCenterMarker

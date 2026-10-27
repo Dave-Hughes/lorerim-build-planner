@@ -1,0 +1,4 @@
+; The Winking Skeever (outside) -- Solitude's own street door; walk in by hand afterwards for the inside comparison shot
+fw SClearSkySN
+set gamehour to 12
+player.moveto SolitudeWinkingSkeeverDoorRef
