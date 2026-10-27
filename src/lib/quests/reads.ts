@@ -5,7 +5,7 @@ import { questHref } from "./slugs";
 import { questsData } from "./data";
 import { doorSources, pageSources } from "./player-source";
 import { checkedLabel } from "./story";
-import type { Quest, QuestRead } from "./types";
+import type { Quest, QuestRead, QuestWays } from "./types";
 
 /**
  * What a quest page and the door say about a quest (WO-154, docs/data/quest-pages.md), in one shape. A quest with a read (an agent
@@ -41,6 +41,12 @@ export interface QuestPage {
   closes: string[];
   /** Section 9: the journal's objectives, by branch when it branches. */
   steps: { branch?: string; objectives: string[] }[];
+  /** The choices tied to their steps ("N ways to finish it"), for a read quest that has them. */
+  ways?: QuestWays;
+  /** The mods that changed it, beyond its own. */
+  changedBy: { name: string; modid?: string }[];
+  /** The people the read names (role in the quest), in its order. */
+  people: { name: string; role?: string }[];
   /** Section 10: one line. */
   sure: string;
   /** What the reader couldn't settle, field by field, with why: under the line, folded. */
@@ -109,7 +115,26 @@ export function dangerOf(place: Place | null | undefined): string | undefined {
   return `${who} from level ${lo}${hi > lo ? `, up to ${hi}` : ""}${boss}`;
 }
 
-function placeNamed(name: string): Place | null {
+/** A level the index gives as "leveled 19-24" or "45", in words: "19 to 24", "45". */
+export const levelWords = (level: string | undefined) => (level ? level.replace(/^leveled\s*/i, "").replace(/\s*-\s*/g, " to ") : "");
+
+/**
+ * What a place page and a quest's "Where it takes you" say about danger, as parts: the foes with their level range, whether it has traps,
+ * and the boss on its own line. `"none"` for a place whose people aren't hostile, null for one the index doesn't have or has no levels for
+ * (said "Not known yet", never a made-up level).
+ */
+export function dangerParts(place: Place | null | undefined): { foes: string; traps: boolean; boss?: string } | "none" | null {
+  const a = place?.actors;
+  if (!place) return null;
+  if (a && a.hostile === false) return "none";
+  if (!a || !hasLevels(a)) return null;
+  const [lo, hi] = rangeOf(a);
+  const who = a.livesHere ? (PLURAL[a.livesHere] ?? a.livesHere.toLowerCase()) : "enemies";
+  const boss = a.boss?.name ? `The boss, ${a.boss.name}${a.boss.level ? `, is level ${levelWords(a.boss.level)}` : ""}` : undefined;
+  return { foes: `${who.charAt(0).toUpperCase()}${who.slice(1)} from level ${lo}${hi > lo ? ` to ${hi}` : ""}`, traps: !!place.danger?.traps, ...(boss ? { boss } : {}) };
+}
+
+export function placeNamed(name: string): Place | null {
   const cleaned = name.replace(/^the /i, "").trim();
   return placeByName(name) ?? placeByName(cleaned);
 }
@@ -158,6 +183,9 @@ function viaReads(q: Quest, r: QuestRead): QuestPage {
     opens: (r.opens ?? []).map(linkFor),
     closes: r.closes ?? [],
     steps: (r.steps ?? []).map((s) => ({ ...(s.branch && s.branch !== "main" ? { branch: s.branch } : {}), objectives: s.objectives ?? [] })).filter((s) => s.objectives.length),
+    ...(r.ways?.ways?.length ? { ways: r.ways } : {}),
+    changedBy: q.changedBy ?? [],
+    people: (r.people ?? []).filter((p) => !blank(p.name)),
     sure,
     unsure,
   };
@@ -190,6 +218,8 @@ function viaRules(q: Quest): QuestPage {
     opens: [],
     closes: [],
     steps: q.objectives.length ? [{ objectives: q.objectives }] : [],
+    changedBy: q.changedBy ?? [],
+    people: (q.people ?? []).map((name) => ({ name })),
     sure: `Not read yet: this page is from the planner's older rules, and ${st && st.checked !== "not yet" ? `its start is checked (${checkedLabel(st.checked, st.source)})` : "its start isn't checked yet"}`,
     unsure: [],
   };
@@ -227,6 +257,9 @@ export function doorPage(q: Quest) {
     opens: p.opens.map((o) => o.text),
     closes: p.closes,
     steps: p.steps,
+    // The choices tied to the steps each takes, when the quest has them: the page's "N ways to finish it".
+    ...(p.ways ? { ways: p.ways.ways.map((w) => ({ way: w.title, ...(w.ends ? { ends: w.ends } : {}), steps: w.steps })), ...(p.ways.shape === "endings" ? { stepsEveryWayTakes: p.ways.shared } : {}) } : {}),
+    ...(p.changedBy.length ? { changedBy: p.changedBy.map((m) => m.name) } : {}),
     howSure: p.sure,
     ...(p.unsure.length ? { unsure: p.unsure } : {}),
   };

@@ -12,10 +12,11 @@ for (const width of [1440, 390]) {
     await page.goto("/quests/q/lights-out");
     await expect(page.getByRole("heading", { level: 1, name: "Lights Out!" })).toBeVisible();
     const order = await page.locator("main h2").allInnerTexts();
-    const wanted = ["What you need first", "How to start it", "What you get", "The steps"];
+    const wanted = ["How to start it", "5 ways to finish it", "Where it takes you", "Rewards", "People", "What it closes", "How sure we are"];
     expect(order.map((t) => t.toLowerCase())).toEqual(expect.arrayContaining(wanted.map((t) => t.toLowerCase())));
     expect(wanted.map((t) => order.findIndex((o) => o.toLowerCase() === t.toLowerCase()))).toEqual([...wanted.map((t) => order.findIndex((o) => o.toLowerCase() === t.toLowerCase()))].sort((a, b) => a - b));
     await expect(page.getByRole("region", { name: "How to start it" })).toContainText("Talk to Jaree-Ra in Solitude, by the Winking Skeever");
+    await expect(page.getByRole("link", { name: "Broken Oar Grotto" }).first()).toHaveAttribute("href", /\/places\/broken-oar-grotto$/);
     await expect(page.locator("main")).not.toContainText(/Red Wave|stage \d+/i);
     await expect(page.getByText("game files", { exact: true })).toHaveCount(0);
     expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
@@ -26,12 +27,9 @@ for (const width of [1440, 390]) {
 test("Mourning Never Comes (a read quest): nothing from the rules, its own mod, who and where first", async ({ page }) => {
   await page.goto("/quests/q/mourning-never-comes");
   await expect(page.locator("main")).not.toContainText(/Abandoned Shack Key|The door from/);
-  const tags = page.locator("main").first().locator('[class*="coverMeta"] [class*="tag"]');
-  await expect(tags).toHaveText(["Base game"]);
+  await expect(page.locator("main").getByText("Vanilla", { exact: true })).toBeVisible();
   await page.goto("/quests/q/speaking-with-silence");
-  const way = page.getByRole("region", { name: "How to start it" }).getByRole("listitem").first();
-  await expect(way.locator("b")).toHaveText("Mercer Frey");
-  expect((await way.innerText()).startsWith("Mercer Frey, in ")).toBe(true);
+  await expect(page.getByRole("region", { name: "How to start it" })).toContainText(/Mercer Frey\s+in /);
 });
 
 test("a line of one quest isn't a line: its category card opens the quest, and its line address goes there", async ({ page }) => {

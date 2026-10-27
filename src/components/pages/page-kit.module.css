@@ -1,0 +1,670 @@
+/*
+ * The quest, line, person and place pages (WO-154 Part 2), from the design canvas boards QuestPageLightsOut, QuestLine, PersonPage and
+ * PlacePage. One frame, one section head, one gold rewards box and one "How sure we are" panel for all four; the rest is each page's own.
+ */
+.main {
+  padding-top: 24px;
+  padding-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.back {
+  font-size: 15px;
+  text-decoration: none;
+}
+.px {
+  image-rendering: pixelated;
+  flex: none;
+  display: block;
+}
+.muted {
+  color: var(--muted);
+}
+
+/* The search box at the top of every page. */
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  width: 320px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  border: 1px solid var(--rule-strong);
+  background: #121922;
+}
+.search input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+  outline: none;
+}
+.search input::placeholder {
+  color: var(--muted);
+}
+
+/* The title box. */
+.titleBox {
+  border: 1px solid var(--rule);
+  background: #121922;
+}
+.titleIn {
+  padding: 40px 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.h1 {
+  font-size: calc(56px * var(--title-scale));
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--line-bright);
+  color: var(--text);
+  font-size: 14px;
+  text-decoration: none;
+}
+a.tag:hover {
+  border-color: var(--ember);
+}
+.role {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--ember);
+  color: var(--ember-text);
+  font-size: 14px;
+  font-weight: 600;
+}
+.tagText {
+  font-size: 15px;
+  color: var(--soft);
+}
+.lede {
+  margin: 0;
+  max-width: 900px;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* Two columns: the page's body and a 380 px side. */
+.cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 40px;
+  align-items: start;
+}
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+  min-width: 0;
+}
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.foot {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 24px;
+  align-items: start;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule);
+}
+.foot.alone {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* A section: its icon, its heading, a rule under it. */
+.sec {
+  display: flex;
+  flex-direction: column;
+}
+.shead {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule-strong);
+}
+.shead .cnt {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 15px;
+}
+.h2 {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--text);
+}
+.h2s {
+  font-size: 22px;
+}
+.h3 {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 26px;
+  border: 1px solid var(--rule);
+  background: #121922;
+}
+.panelHead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* The gold box. */
+.rewards {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 24px 26px;
+  border: 1px solid var(--brass);
+  background: #1a1912;
+}
+.rewards .h2 {
+  color: #e8d3a4;
+}
+.rw {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 0;
+  border-bottom: 1px solid #3a3426;
+}
+.rw:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.rw > span {
+  font-size: 19px;
+  color: #f3e6c4;
+  font-weight: 600;
+}
+.rw small {
+  font-size: 14px;
+  color: #b5a782;
+}
+.info {
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin-left: 8px;
+  border: 1px solid #6b5f45;
+  background: transparent;
+  color: #c9b88f;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  vertical-align: 2px;
+  cursor: help;
+}
+
+/* How to start it. */
+.way {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 0 0;
+}
+.who {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--text);
+}
+.at {
+  font-weight: 400;
+  color: var(--soft);
+}
+.way p,
+.plain {
+  margin: 0;
+  font-size: 16px;
+  color: var(--soft);
+}
+.needs {
+  margin: 0;
+  padding: 16px 0 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 16px;
+  color: var(--soft);
+}
+.needsHead {
+  padding-top: 18px;
+  font-family: var(--font-title);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+.src {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* N ways to finish it. */
+.wt {
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 16px;
+  padding: 18px 0 4px;
+}
+.wtTitle {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 17px;
+  color: var(--text);
+  font-weight: 600;
+  line-height: 1.35;
+}
+.opt {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  box-sizing: border-box;
+  border: 1px solid var(--ember);
+  color: var(--ember);
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: -3px;
+}
+.wtBody {
+  display: flex;
+  flex-direction: column;
+}
+.wtBody p {
+  margin: 0;
+  font-size: 16px;
+  color: var(--soft);
+}
+.or {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--brass);
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  font-size: 14px;
+}
+.or::before,
+.or::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule-strong);
+}
+.path {
+  margin: 0;
+  padding: 14px 0 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.path li {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 4px 14px;
+  position: relative;
+  padding-bottom: 12px;
+}
+.path li::before {
+  content: "";
+  position: absolute;
+  left: 11px;
+  top: 26px;
+  bottom: 2px;
+  width: 1px;
+  background: var(--rule);
+}
+.path li:last-child::before {
+  display: none;
+}
+.num {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  box-sizing: border-box;
+  border: 1px solid var(--rule);
+  background: var(--panel);
+  color: var(--muted);
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 14px;
+}
+.txt {
+  font-size: 16px;
+  color: var(--text);
+  padding-top: 1px;
+}
+.gap {
+  grid-column: 2;
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  padding: 10px 12px;
+  border: 1px dashed #6b5f45;
+  background: rgba(185, 161, 115, 0.06);
+  font-size: 15px;
+  color: var(--soft);
+}
+.gap b {
+  color: #e8d3a4;
+}
+.more {
+  align-self: flex-start;
+  margin: 2px 0 0 38px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ember);
+  font: inherit;
+  font-size: 15px;
+  cursor: pointer;
+}
+.more:hover {
+  color: var(--ember-hover);
+}
+.sharedNote {
+  font-size: 15px;
+  color: var(--muted);
+}
+
+/* Where it takes you. */
+.place {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 6px 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.placeMain {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.nm {
+  font-size: 18px;
+  font-weight: 600;
+}
+.hold {
+  color: var(--muted);
+  font-size: 14px;
+  margin-left: 10px;
+  font-weight: 400;
+}
+.place p {
+  margin: 0;
+  font-size: 16px;
+  color: var(--soft);
+}
+.danger {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding-left: 14px;
+  border-left: 1px solid var(--rule);
+  font-size: 15px;
+  color: var(--text);
+}
+.danger > span {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.boss {
+  color: #e3a093;
+}
+
+/* The people on a quest. */
+.ppl {
+  display: flex;
+  flex-direction: column;
+}
+.ppl > span {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.ppl > span:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.ppl a,
+.ppl b {
+  font-size: 17px;
+  font-weight: 600;
+}
+.ppl b {
+  color: var(--text);
+}
+.ppl small {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* What it closes, what it opens. */
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.list li {
+  font-size: 16px;
+  color: var(--soft);
+}
+
+/* How sure we are. */
+.sure {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+}
+.sureGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+}
+.sureCol {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.source {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 2px 12px;
+  align-items: start;
+}
+.mark {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  box-sizing: border-box;
+  font-size: 13px;
+  font-weight: 700;
+}
+.markYes {
+  background: var(--stamina);
+  color: var(--on-ember);
+}
+.markPart {
+  border: 1px solid var(--stamina);
+  color: var(--stamina);
+}
+.markNo {
+  border: 1px solid var(--rule-strong);
+  color: var(--muted);
+}
+.source b {
+  font-size: 16px;
+  color: var(--text);
+  font-weight: 600;
+}
+.source small {
+  grid-column: 2;
+  font-size: 14px;
+  color: var(--muted);
+}
+.names {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 4px;
+}
+.names a,
+.names span {
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 9px;
+  border: 1px solid var(--rule-strong);
+  font-size: 14px;
+  color: var(--text);
+  text-decoration: none;
+}
+.unsure {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.unsure li {
+  font-size: 15px;
+  color: var(--soft);
+  padding-left: 16px;
+  position: relative;
+}
+.unsure li::before {
+  content: "?";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--ember);
+  font-weight: 700;
+}
+.why {
+  font-size: 14px;
+  color: var(--muted);
+}
+.why summary {
+  cursor: pointer;
+  color: var(--soft);
+}
+.why ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* A way in, for the Can I do it box. */
+.canDo {
+  margin: 0;
+  font-size: 18px;
+  color: var(--text);
+}
+
+@media (max-width: 1000px) {
+  .cols,
+  .foot {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .search {
+    width: 100%;
+  }
+  .wt {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+  }
+  .place {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .danger {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .sureGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .titleIn {
+    padding: 28px 18px 22px;
+  }
+  .h1 {
+    font-size: 38px;
+  }
+  .more {
+    margin-left: 38px;
+  }
+}

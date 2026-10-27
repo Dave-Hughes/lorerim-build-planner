@@ -88,6 +88,12 @@ export interface Place {
   pointers?: PlacePointer[];
   /** Named quests that go there. */
   quests?: string[];
+  /** XP for finding it, and the number of times it comes back (WO-144). */
+  discoveryXp?: number;
+  respawns?: string;
+  /** What a visitor may want it for (WO-144 Part 3): skill books, a boss chest, crafting stations. */
+  worthGoingFor?: { skillBooks?: string[]; bossChest?: boolean; crafting?: string[] };
+  danger?: { traps?: boolean };
 }
 
 let cached: { places: Place[]; byName: Map<string, Place> } | null = null;
@@ -108,6 +114,38 @@ export function placesData() {
 
 /** A place by its name, case and spacing aside; null when the index has none. */
 export const placeByName = (name: string) => placesData().byName.get(key(name)) ?? null;
+
+const slugOf = (s: string) =>
+  s
+    .toLowerCase()
+    .replace(/['’`]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+
+let slugs: { bySlug: Map<string, Place>; byId: Map<string, string> } | null = null;
+function slugged() {
+  if (slugs) return slugs;
+  const bySlug = new Map<string, Place>();
+  const byId = new Map<string, string>();
+  // The name alone; two places that share a name (or make one slug) take a number, in the index's order.
+  for (const p of placesData().places) {
+    const base = slugOf(p.name) || "place";
+    let slug = base;
+    for (let n = 2; bySlug.has(slug); n++) slug = `${base}-${n}`;
+    bySlug.set(slug, p);
+    byId.set(p.id, slug);
+  }
+  slugs = { bySlug, byId };
+  return slugs;
+}
+
+/** A place's page address (WO-154), or null for a place the index doesn't have (a town's interior). */
+export const placeHref = (name: string): string | null => {
+  const p = placeByName(name);
+  const slug = p ? slugged().byId.get(p.id) : null;
+  return slug ? `/places/${slug}` : null;
+};
+export const placeBySlug = (slug: string): Place | null => slugged().bySlug.get(slug) ?? null;
 
 /** "Nordic ruin", "Dragon lair", "Cave": a place's type in words. */
 export function placeType(type: string): string {

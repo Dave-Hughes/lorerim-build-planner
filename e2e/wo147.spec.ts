@@ -13,10 +13,11 @@ for (const width of [1440, 390]) {
     await expect(page.getByRole("heading", { level: 1, name: "Running Wild" })).toBeVisible();
     const start = page.getByRole("region", { name: "How to start it" });
     await expect(start).toContainText("Read the note pinned to the board outside Joslin's house");
-    await expect(start).toContainText("First step: Catch the white, or palonimo, horse roaming the fields of Whiterun");
+    // Its first step is the first of its steps, under "ways to finish it" (WO-154 Part 2).
+    await expect(page.locator("main")).toContainText("Catch the white, or palonimo, horse roaming the fields of Whiterun");
     await expect(page.getByText("game files", { exact: true })).toHaveCount(0);
-    await expect(page.getByRole("region", { name: "The steps" })).toContainText("Bring the Horse back to the main gate of Whiterun");
-    await expect(page.getByRole("region", { name: "What you get" })).toContainText(/saddle|horse/i);
+    await expect(page.locator("main")).toContainText("Bring the Horse back to the main gate of Whiterun");
+    await expect(page.getByRole("region", { name: "Rewards" })).toContainText(/saddle|horse/i);
     // On a shelf, a quest stands alone: it goes back to the shelf, and no quest comes before or after it.
     await expect(page.getByRole("link", { name: /More to do in Whiterun/ }).first()).toHaveAttribute("href", "/quests/capital-whiterun");
     await expect(page.getByText("Before it")).toHaveCount(0);
@@ -29,10 +30,10 @@ for (const width of [1440, 390]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/quests/q/bleak-falls-barrow");
     await expect(page.getByRole("heading", { level: 1, name: "Bleak Falls Barrow" })).toBeVisible();
-    await expect(page.getByRole("link", { name: "The Dragonborn" }).first()).toHaveAttribute("href", "/quests/main-quest");
+    await expect(page.getByRole("link", { name: "The main quest" }).first()).toHaveAttribute("href", "/quests/main-quest");
     // Read from its records (WO-154): what it needs is Before the Storm, what it opens is Dragon Rising, each a link to its page.
-    await expect(page.getByRole("region", { name: "What you need first" }).getByRole("link", { name: /Before the Storm/ })).toHaveAttribute("href", "/quests/q/before-the-storm");
-    await expect(page.getByRole("region", { name: "What it opens and closes" }).getByRole("link", { name: "Dragon Rising" })).toHaveAttribute("href", "/quests/q/dragon-rising");
+    await expect(page.getByRole("region", { name: "How to start it" }).getByRole("link", { name: /Before the Storm/ })).toHaveAttribute("href", "/quests/q/before-the-storm");
+    await expect(page.getByRole("region", { name: /What it (opens|closes)/ }).getByRole("link", { name: "Dragon Rising" })).toHaveAttribute("href", "/quests/q/dragon-rising");
     await page.screenshot({ path: `test-results/wo147-bleak-falls-barrow-${width}.png`, fullPage: true });
   });
 }

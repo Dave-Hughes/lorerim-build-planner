@@ -52,7 +52,7 @@ Six categories, each line in one (its home) and maybe others (also). Repeatable 
 
 Also here: Destroy the Acolyte Priests, A Forgotten Blade, Destroy the Dragon Cult, Serana.
 
-### The Dragonborn
+### The main quest
 
 23 quests | Skyrim
 
@@ -80,7 +80,7 @@ Also here: Destroy the Acolyte Priests, A Forgotten Blade, Destroy the Dragon Cu
 
 - Start: Miraak's cultists find you once you're level 25 and past The Way of the Voice. You can sail to Raven Rock from Windhelm's docks earlier. *(files)*
 - Gate: Level 25 and The Way of the Voice, for the cultists. *(files)*
-- After: The Dragonborn
+- After: The main quest
 - Quests: Dragonborn; The Temple of Miraak; The Fate of the Skaal; Cleansing the Stones; The Path of Knowledge; The Gardener of Men; At the Summit of Apocrypha; Cultists vs Player
 
 ## Guilds and factions
@@ -364,7 +364,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 - Level: 20–40 on the island *(players)*
 - Length: 6–10 hours *(players)*
 - Note: Wyrmstooth - Settings Loader sets the start level to 10 in a new game; Requiem - Wyrmstooth.esp's 20 only holds on saves from before the loader. *(files)*
-- After: Rise in the East, The Dragonborn
+- After: Rise in the East, The main quest
 - Quests: Retrieving Embersunder; Barrow of the Wyrm; Blind Robber's Cache; Animal Bounty; Bandit Bounty; Vampire Bounty; Warlock Bounty; Robbed Blind; Wyrmstooth; Stickler in the Mud; Unwanted Guests; Reclaiming the Past; A Priceless Commodity; Repaying a Debt; A Debt Unpaid; The Naked Nord; Someone with Backbone; A Howl Load of Trouble; Wrap Me Up
 
 ### Journey to Baan Malur
@@ -855,7 +855,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 > I've come across Fultheim, an old man who I believe may have been a member of the Blades in the past. However, he does seem to want to talk about it. I should ask Delphine about him.
 
-- After: The Dragonborn
+- After: The main quest
 - Quests: A Forgotten Blade
 
 ### Destroy the Dragon Cult
@@ -864,7 +864,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 > Esbern has noted the location of several Dragon Priests, whose loyalty to Alduin means they must be killed before I face Alduin, less they join their strength with his.
 
-- After: The Dragonborn
+- After: The main quest
 - Quests: Destroy the Dragon Cult
 
 ### Undeath
@@ -889,7 +889,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 - Gate: Dragon Rising. *(files)*
 - Level: The dungeon under the shop holds a level 50 boss and two at 34 *(files)*
 - Length: 1 hour *(mod page)*
-- After: The Dragonborn
+- After: The main quest
 - Quests: A Plea From Granite Hill
 
 ### Legends of Aetherium

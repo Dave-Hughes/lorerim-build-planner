@@ -65,6 +65,6 @@ test("The Book of Love: Ask Dinya Balu in the Temple of Mara, then Talk to Fastr
   await expect(start).not.toContainText("Fastred");
   // Its quest's page has the way in and the first step (WO-154).
   await page.locator("li", { hasText: "Starts here" }).getByRole("link").first().click();
-  await expect(page.getByRole("region", { name: "How to start it" })).toContainText("Dinya Balu, in Temple of Mara, Riften");
-  await expect(page.getByRole("region", { name: "How to start it" })).toContainText("First step: Talk to Fastred");
+  await expect(page.getByRole("region", { name: "How to start it" })).toContainText(/Dinya Balu\s+in Temple of Mara, Riften/);
+  await expect(page.locator("main")).toContainText("Talk to Fastred");
 });

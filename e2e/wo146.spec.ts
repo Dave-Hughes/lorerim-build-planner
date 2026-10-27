@@ -88,7 +88,7 @@ test("an admin has the agent propose, approves it, and the page shows a player's
   // Under How to start it: marked as a player's report, with who and when, and where the note is.
   const opened = page.getByRole("region", { name: "How to start it" });
   await expect(opened.getByText(`${NOTE}, on the board by Joslin's house`)).toBeVisible();
-  await expect(opened.getByText(/player report, @e2e-reporter-1, \d{1,2} \w{3} \d{4}/)).toBeVisible();
+  await expect(opened.getByText(/player report, @e2e-reporter-1, \d{1,2} \w{3} \d{4}/i)).toBeVisible();
   await expect(opened.getByText("(Whiterun, the board right outside Joslin's house)")).toBeVisible();
   await page.screenshot({ path: "test-results/wo146-quest-page-1440.png" });
 });

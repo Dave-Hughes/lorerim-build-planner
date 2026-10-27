@@ -496,6 +496,23 @@ def main():
         reads = load_reads(os.path.join(RAW, "quest_reads", "checked"))
         with_read, without_read, unmatched = attach_reads(pages, reads)
         print(f"{with_read} quests read and checked, {without_read} on the older rules" + (f"; {len(unmatched)} reads match no quest on the pages: {', '.join(unmatched[:8])}" if unmatched else ""))
+        # WO-154 Part 2: the ways through a quest, the line reads, and the mods that changed each quest.
+        from quest_pages import quest_mod, source_name
+        from quest_reads import attach_extras, changed_by_of, load_line_reads, load_ways
+
+        # A step is copied from the quest's objectives, so it gets the tags filled the way those are (a counter's total, an alias in plain words).
+        from quest_pages import fill_all
+
+        fills = {q["edid"]: q.get("fills", {}) for q in quests_raw}
+        ways = {e: fill_all(w, fills.get(e, {}), raw_file.get("globals", {})) for e, w in load_ways(os.path.join(RAW, "quest_reads", "ways")).items()}
+        line_reads = load_line_reads(os.path.join(RAW, "quest_reads", "lines", "checked"))
+        plugin_map = load("plugins_raw.json")["plugins"] if os.path.exists(os.path.join(RAW, "plugins_raw.json")) else {}
+        unmapped = set()
+        changed = {q["edid"]: changed_by_of(q, plugin_map, quest_mod(q), source_name, unmapped) for q in quests_raw}
+        tied, read_lines, no_line = attach_extras(pages, ways, line_reads, changed)
+        print(f"{tied} quests with their ways, {read_lines} lines with a read" + (f"; {len(no_line)} line reads match no line: {', '.join(no_line[:8])}" if no_line else ""))
+        if unmapped:
+            print(f"note: {len(unmapped)} plugins that change quests aren't in plugins_raw.json; named from their file, unlinked (for the PC): {', '.join(sorted(unmapped)[:12])}{' ...' if len(unmapped) > 12 else ''}")
         cur = load("questlines.json")
         with open(os.path.join(RAW, "questlines_report.md"), "w", encoding="utf-8") as f:
             f.write(questlines_report(lines, cur, cur.get("notInRecords", []), start_disagreements(pages)))

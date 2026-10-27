@@ -55,6 +55,27 @@ export interface QuestRead {
   unsure?: { field: string; why?: string }[];
   /** The fields the checker fixed. */
   fixed?: string[];
+  /** The choices tied to the journal steps each takes (WO-154 Part 2, quest_reads/ways): "N ways to finish it". */
+  ways?: QuestWays;
+}
+
+/** "paths": the choices split the steps; "endings": everyone takes `shared` and the choice decides the ending. */
+export interface QuestWays {
+  shape: "paths" | "endings";
+  shared: string[];
+  ways: { title: string; ends?: string; steps: string[] }[];
+  unsure?: { field: string; why?: string }[];
+}
+
+/** What a line's read says (WO-154 Part 2, quest_reads/lines), in the reader's words: the line page's sections. */
+export interface LineRead {
+  about?: string;
+  getIn?: { quest?: string; who?: string; where?: string; how?: string; needs?: string[] };
+  order?: { quest: string; what?: string; where?: string; needs?: string }[];
+  branches?: { at: string; options: string[] }[];
+  gives?: string[];
+  closes?: string[];
+  unsure?: { field: string; why?: string }[];
 }
 
 export interface Quest {
@@ -78,6 +99,8 @@ export interface Quest {
   calledBy?: string[];
   /** The mod the quest itself is from (WO-154 Part 1b): "Base game", an expansion's name, or a mod with its Nexus id. */
   mod?: { name: string; modid?: string; base?: true };
+  /** The mods that changed the quest, beyond its own (WO-154 Part 2): named, with a Nexus id when the plugin map has one. */
+  changedBy?: { name: string; modid?: string }[];
   /** The quest's read (WO-154), and which made the page: "reads", or the older rules where it has none yet. */
   read?: QuestRead;
   source?: "reads" | "rules";
@@ -165,6 +188,8 @@ export interface QuestLine {
   radiant?: { name: string; says: string; checked: "files"; jobs: number };
   /** false for a family of radiant jobs whose quest names and objectives never say where the job goes (WO-129: Missives). */
   destinationInName?: false;
+  /** The line's read, when it has one (WO-154 Part 2). */
+  read?: LineRead;
   quests: Quest[];
   xpTotal: number;
 }

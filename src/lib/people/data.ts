@@ -1,0 +1,100 @@
+import "server-only";
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import { currentVersion } from "@/lib/rules/server";
+
+/**
+ * The people index (WO-144 Part 2), as scripts/gamedata/people.py and build.py write people.json: every named person a design touches,
+ * with the race, sex, the cell they are placed in and the town it is in, and a Job* role for a few. Read once per server from disk.
+ * A person's page is by name (WO-154): rows that share a name are one person's placements (Ulfric Stormcloak is placed in more than one
+ * cell), and the page is built on the best placed of them.
+ */
+
+export interface PersonRow {
+  name: string;
+  race?: string;
+  sex?: string;
+  cell?: string;
+  inTown?: string;
+  role?: string;
+}
+
+export interface Person extends PersonRow {
+  slug: string;
+  /** Every cell the name is placed in, the base row's first. */
+  cells: string[];
+}
+
+/** A role's words, for the Job* keyword the records carry. */
+const ROLE_WORDS: Record<string, string> = {
+  JobInnkeeper: "Innkeeper",
+  JobPriest: "Priest",
+  JobJarl: "Jarl",
+  JobSteward: "Steward",
+  JobHousecarl: "Housecarl",
+  JobMerchant: "Sells goods",
+  JobBlacksmith: "Blacksmith",
+  JobApothecary: "Apothecary",
+  JobCourtWizard: "Court wizard",
+  JobOrcChief: "Orc chief",
+  JobOrcWiseWoman: "Orc wise woman",
+  JobHostler: "Hostler",
+  JobSpellVendor: "Sells spells",
+  JobFletcher: "Fletcher",
+  JobMiner: "Miner",
+  JobMinstrel: "Bard",
+  JobHireling: "Hireling",
+  JobHunter: "Hunter",
+  JobLumberjack: "Lumberjack",
+  JobFarmer: "Farmer",
+};
+export const roleWords = (role: string | undefined) => (role ? (ROLE_WORDS[role] ?? null) : null);
+
+export const slugOf = (s: string) =>
+  s
+    .toLowerCase()
+    .replace(/['’`]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+
+export const nameKey = (s: string) => s.toLowerCase().replace(/[’']/g, "'").replace(/\s+/g, " ").trim();
+
+/** Which of two placements of one name is the better base: one with a town and a cell and a race says most. */
+const score = (r: PersonRow) => (r.inTown ? 4 : 0) + (r.cell ? 2 : 0) + (r.race ? 1 : 0);
+
+let cached: { all: Person[]; byName: Map<string, Person>; bySlug: Map<string, Person> } | null = null;
+
+export function peopleData() {
+  if (cached) return cached;
+  let rows: PersonRow[] = [];
+  try {
+    rows = (JSON.parse(readFileSync(path.join(process.cwd(), "src", "data", `lorerim-${currentVersion().id}`, "people.json"), "utf8")) as { people: PersonRow[] }).people;
+  } catch {
+    // Not built yet.
+  }
+  const grouped = new Map<string, PersonRow[]>();
+  for (const r of rows) if (r.name?.trim()) grouped.set(nameKey(r.name), [...(grouped.get(nameKey(r.name)) ?? []), r]);
+  const all: Person[] = [];
+  const bySlug = new Map<string, Person>();
+  const byName = new Map<string, Person>();
+  for (const [key, group] of grouped) {
+    const base = [...group].sort((a, b) => score(b) - score(a))[0];
+    let slug = slugOf(base.name) || "person";
+    // A different name that makes the same slug ("Tolfdir" and "Tolfdir!"): the later one takes a number.
+    for (let n = 2; bySlug.has(slug); n++) slug = `${slugOf(base.name) || "person"}-${n}`;
+    const person: Person = { ...base, slug, cells: [...new Set([base.cell, ...group.map((g) => g.cell)].filter((c): c is string => !!c))] };
+    all.push(person);
+    bySlug.set(slug, person);
+    byName.set(key, person);
+  }
+  cached = { all, byName, bySlug };
+  return cached;
+}
+
+/** A person by their name, case and spacing aside; null when the index has none. */
+export const personByName = (name: string) => peopleData().byName.get(nameKey(name)) ?? null;
+export const personBySlug = (slug: string) => peopleData().bySlug.get(slug) ?? null;
+export const personHref = (name: string): string | null => {
+  const p = personByName(name);
+  return p ? `/people/${p.slug}` : null;
+};

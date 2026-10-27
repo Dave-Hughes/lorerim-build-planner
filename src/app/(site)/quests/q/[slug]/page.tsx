@@ -3,20 +3,24 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { auth } from "@/auth";
+import { Linked } from "@/components/pages/linked";
+import { Gold, HowSure, PageTop, Panel, Section, TitleBox, type SureSource } from "@/components/pages/page-kit";
+import { Steps } from "@/components/pages/steps";
 import { QuestReport } from "@/components/quests/quest-report";
 import { SignInButton } from "@/components/site-header";
 import { openForYou, playerState } from "@/lib/mcp/facts";
 import { toldOf } from "@/lib/mcp/playthroughs";
-import { categories, categorySlug, homeName, questsData } from "@/lib/quests/data";
+import { personNames, placeNames } from "@/lib/pages/names";
+import { categories, homeName, questsData } from "@/lib/quests/data";
 import { loadPlayerFacts } from "@/lib/quests/player-facts";
 import { pageSources } from "@/lib/quests/player-source";
-import { pageOf } from "@/lib/quests/reads";
+import { dangerParts, pageOf, placeNamed } from "@/lib/quests/reads";
 import { questBySlug, questHref } from "@/lib/quests/slugs";
-import { startChecked } from "@/lib/quests/types";
 import { listMyPlaythroughs } from "@/lib/playthroughs/queries";
 import { playthroughsOn } from "@/lib/features";
+import { placeHref } from "@/lib/places/data";
 import { siteMetadata } from "@/lib/og/metadata";
-import styles from "@/components/quests/quests.module.css";
+import styles from "@/components/pages/page-kit.module.css";
 
 export const dynamic = "force-dynamic";
 
@@ -30,10 +34,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return { title: `${quest.name || quest.edid} | ${line.name}`, ...siteMetadata(questHref(quest.edid) ?? "/quests", quest.name || quest.edid, quest.start?.then ?? line.begins ?? homeName(line.category)) };
 }
 
+const nexus = (id: string) => `https://www.nexusmods.com/skyrimspecialedition/mods/${id}`;
+
+/** A player's source ("@testplayer, 23 Oct 2026") as the name to show. */
+const handleOf = (source: string) => source.split(",")[0].trim();
+
 /**
- * A quest's own page (WO-147 Part 1): how it starts, the first step, its objectives, how it can end and what changes a run, what it
- * is part of, where it was checked, and the report forms for that quest. A shelf's quest stands alone; a story's names the
- * quests before and after it. With a playthrough, whether it is open for the player.
+ * A quest's own page (WO-154 Part 2), from the canvas board "Quest page: Lights Out!, second pass": the title box with where it is and
+ * what changed it, how to start it, N ways to finish it, where it takes you; rewards and people at the side; what it closes and how sure
+ * we are at the foot. A story's page keeps the quest line it is part of in its back link; a lone quest's goes to its category.
  */
 export default async function QuestPage({ params, searchParams }: { params: Params; searchParams: Promise<{ report?: string }> }) {
   await loadPlayerFacts();
@@ -46,262 +55,345 @@ export default async function QuestPage({ params, searchParams }: { params: Para
   const name = quest.name || quest.edid;
   const start = quest.start;
   const home = questsData().categories[line.category] ? categories().find((c) => c.key === line.category)! : null;
-  const shelf = line.category === "work";
   // A line of one quest isn't a line (WO-154): the quest sits in its category.
   const lone = line.quests.length === 1;
-  const art = home?.slug ?? "side-stories";
-  const here = line.quests.findIndex((q) => q.edid === quest.edid);
-  const before = !shelf && here > 0 ? line.quests[here - 1] : null;
-  const after = !shelf && here < line.quests.length - 1 ? line.quests[here + 1] : null;
   const page = pageOf(quest);
+  const reads = page.source === "reads";
+  const town = line.where ?? start?.towns?.[0] ?? null;
+  const mod = quest.mod ?? line.sources[0];
+  const changed = quest.changedBy ?? [];
 
   // Open for the player (WO-147): through their most recent run with a save, when they have one.
   let forYou: { run: string; says: string } | null = null;
   if (userId && playthroughsOn()) {
-    const runs = await listMyPlaythroughs(userId);
-    const run = runs[0];
-    if (run) {
-      const state = playerState(await toldOf({ playthrough: run.id }, userId));
-      forYou = { run: run.name, says: openForYou(line, quest, state).says };
-    }
+    const run = (await listMyPlaythroughs(userId))[0];
+    if (run) forYou = { run: run.name, says: openForYou(line, quest, playerState(await toldOf({ playthrough: run.id }, userId))).says };
   }
 
+  // The people and places the page names, as links.
+  const people = [...page.people, ...page.starts.filter((s) => s.who).map((s) => ({ name: s.who!, role: undefined as string | undefined }))];
+  const names = [...personNames(people.map((p) => p.name)), ...placeNames()];
+
+  const ways = page.ways;
+  const stepsHere = page.steps.filter((s) => s.objectives.length);
+  const askedCanDo = page.canDo && page.canDo.label !== "Talk to someone to start it" ? page.canDo : null;
+
+  // How sure we are: a tick per source.
+  const reported = (start?.ways ?? []).filter((w) => w.checked === "players");
+  const reporters = [...new Set(reported.flatMap((w) => [w.source, ...(w.also ?? [])]).filter((x): x is string => !!x).map(handleOf))];
+  const sources: SureSource[] = [
+    reads ? { mark: "yes", name: "LoreRim's game files", note: "Read, then checked by a second reader" } : { mark: "part", name: "LoreRim's game files", note: "From the planner's older rules. Not read by a reader yet" },
+    start?.checked === "uesp" ? { mark: "part", name: "UESP", note: `Confirms who starts it${start.url ? "" : ""}` } : { mark: "no", name: "UESP", note: "Not compared yet" },
+    reporters.length
+      ? { mark: "yes", name: "Players", note: `${reported.length} report${reported.length === 1 ? "" : "s"}. ${pageSources(reported[0].source ?? "", reported[0].also)}`, names: reporters.map((r) => <span key={r}>{r}</span>) }
+      : { mark: "no", name: "Players", note: "No reports. No one has confirmed this page yet." },
+  ];
+  const sureLine = page.sure.replace(/\.?\s*Unsure: .*$/, "");
+
   return (
-    <main className={`page ${styles.main} ${styles.inner}`}>
-      <Link href={lone && home ? `/quests/c/${home.slug}` : `/quests/${line.id}`} className={styles.back}>
-        ‹ {lone && home ? homeName(line.category) : line.name}
-      </Link>
-      <div className={`frame ${styles.cover}`}>
-        <img src={`/quests/${art}.png`} alt="" className={styles.coverArt} />
-        <span className={styles.coverFade} aria-hidden="true" />
-        <div className={styles.coverWords}>
-          <span className={styles.coverName}>
-            <img className={styles.px} src={`/icons/quest-${home ? home.slug : categorySlug(questsData().shelves[line.category]?.name ?? "jobs-and-errands")}.svg`} alt="" width={48} height={48} />
-            <h1 className={`title ${styles.coverTitle}`}>{name}</h1>
-          </span>
-          <span className={styles.coverMeta}>
-            {lone ? <span>{homeName(line.category)}</span> : <Link href={`/quests/${line.id}`}>{line.name}</Link>}
-            {line.where && <span>{line.where}</span>}
-            {[quest.mod ?? line.sources[0]].filter(Boolean).map((s) =>
-              s!.modid ? (
-                <a key={s!.name} href={`https://www.nexusmods.com/skyrimspecialedition/mods/${s!.modid}`} target="_blank" rel="noreferrer" className={`${styles.tag} ${styles.mod}`}>
-                  {s!.name} <span aria-hidden="true">↗</span>
-                </a>
-              ) : (
-                <span key={s!.name} className={styles.tag}>
-                  {s!.name}
-                </span>
-              ),
+    <main className={`page ${styles.main}`}>
+      <PageTop back={lone && home ? { href: `/quests/c/${home.slug}`, label: homeName(line.category) } : { href: `/quests/${line.id}`, label: line.name }} />
+
+      <TitleBox
+        title={name}
+        tags={
+          <>
+            {town && <span className={styles.tag}>{town}</span>}
+            {mod?.base ? (
+              <span className={styles.tag}>Vanilla</span>
+            ) : mod?.modid ? (
+              <a href={nexus(mod.modid)} target="_blank" rel="noreferrer" className={styles.tag}>
+                {mod.name} <span aria-hidden="true">&nbsp;↗</span>
+              </a>
+            ) : mod ? (
+              <span className={styles.tag}>{mod.name}</span>
+            ) : null}
+            {changed.length > 0 && (
+              <span className={styles.tagText}>
+                Changed by{" "}
+                {changed.map((m, i) => (
+                  <span key={m.name}>
+                    {i > 0 ? ", " : ""}
+                    {m.modid ? (
+                      <a href={nexus(m.modid)} target="_blank" rel="noreferrer">
+                        {m.name} ↗
+                      </a>
+                    ) : (
+                      m.name
+                    )}
+                  </span>
+                ))}
+              </span>
             )}
-          </span>
-        </div>
-      </div>
+          </>
+        }
+      />
 
-      <div className={styles.lineGrid}>
-        <div className={styles.lineMain}>
-          {page.canDo && (
-            <section className={`frame ${styles.panel}`} aria-labelledby="can-title">
-              <h2 id="can-title" className={styles.h2}>
-                Can I do it?
-              </h2>
-              <p>
-                {page.canDo.label}
-                {page.canDo.why ? `. ${page.canDo.why}` : ""}
-              </p>
-            </section>
-          )}
+      {askedCanDo && (
+        <Panel id="can-title" title="Can I do it?">
+          <p className={styles.canDo}>
+            {askedCanDo.label}
+            {askedCanDo.why ? `: ${askedCanDo.why}` : ""}
+          </p>
+        </Panel>
+      )}
 
-          {(page.source === "reads" || startChecked(start)) && (
-            <section className={styles.panel} aria-labelledby="needs-title">
-              <h2 id="needs-title" className={styles.h2}>
-                What you need first
-              </h2>
-              {page.needs.length ? (
-                <ul className={styles.waysList}>
+      <div className={styles.cols}>
+        <div className={styles.body}>
+          <Section id="start" icon="speech" title="How to start it">
+            {page.needs.length > 0 && (
+              <>
+                <h3 className={`${styles.needsHead}`}>What you need first</h3>
+                <ul className={styles.needs} style={{ paddingTop: 8 }}>
                   {page.needs.map((n, i) => (
-                    <li key={i}>{n.href ? <Link href={n.href}>{n.text}</Link> : n.text}</li>
+                    <li key={i}>{n.href ? <Link href={n.href}>{n.text}</Link> : <Linked names={names} text={n.text} />}</li>
                   ))}
                 </ul>
-              ) : (
-                <p>Nothing: any level</p>
-              )}
-            </section>
-          )}
-
-          <section className={styles.panel} aria-labelledby="start-title">
-            <h2 id="start-title" className={styles.h2}>
-              How to start it
-            </h2>
+              </>
+            )}
             {page.starts.length ? (
-              <ul className={styles.waysList}>
-                {page.starts.map((w, i) => (
-                  <li key={i}>
-                    {/* Who in bold, then where, then how (WO-154 Part 1b), for a read: the older rules' ways already say both in the how. */}
-                    {page.source === "reads" && (w.who || w.where) && !(w.who && w.how.includes(w.who) && (!w.where || w.how.includes(w.where.split(",")[0]))) ? (
-                      <>
-                        {w.who ? <b>{w.who}</b> : null}
-                        {w.who && w.where ? ", " : null}
-                        {w.where ? (w.who ? `in ${w.where}` : `In ${w.where}`) : null}
-                        {". "}
-                      </>
-                    ) : null}
-                    {w.how}
+              page.starts.map((w, i) => (
+                <div key={i} className={styles.way}>
+                  {/* Who, then where, then how (WO-154 Part 1b): the older rules' ways already say both in the how. */}
+                  {reads && (w.who || w.where) && !(w.who && w.how.includes(w.who) && (!w.where || w.how.includes(w.where.split(",")[0]))) ? (
+                    <span className={styles.who}>
+                      {w.who ? <Linked names={names} text={w.who} /> : null}
+                      {w.where ? (
+                        <span className={styles.at}>
+                          {w.who ? " " : ""}
+                          <Linked names={names} text={w.who ? `in ${w.where}` : `In ${w.where}`} />
+                        </span>
+                      ) : null}
+                    </span>
+                  ) : null}
+                  <p>
+                    <Linked names={names} text={w.how} />
                     {w.whereIs?.length ? <span className="muted"> ({w.whereIs.join("; ")})</span> : null}
                     {w.unplaced ? <span className="muted"> ({w.unplaced})</span> : null}
-                    {w.reportedBy ? <span className={styles.src}>{w.reportedBy.also?.length ? pageSources(w.reportedBy.source, w.reportedBy.also) : `player report${w.reportedBy.source ? `, ${w.reportedBy.source}` : ""}`}</span> : null}
-                  </li>
-                ))}
-              </ul>
+                  </p>
+                  {w.reportedBy ? <span className={styles.src}>{w.reportedBy.also?.length ? pageSources(w.reportedBy.source, w.reportedBy.also) : `Player report${w.reportedBy.source ? `, ${w.reportedBy.source}` : ""}`}</span> : null}
+                </div>
+              ))
             ) : (
-              <p className="muted">Its start isn&apos;t read yet.</p>
+              <p className={styles.way}>
+                <span className="muted">Its start isn&apos;t read yet.</span>
+              </p>
             )}
-            {page.firstStep && (
-              <p>
-                <b>First step:</b> {page.firstStep}
-                {page.source === "rules" && start?.doors?.map((d) => (
-                  <span key={d} className="muted"> ({d.replace(/\.$/, "")})</span>
+            {!ways && page.firstStep && (
+              <p className={styles.way}>
+                <b>First step:</b> <Linked names={names} text={page.firstStep} />
+                {!reads && start?.doors?.map((d) => (
+                  <span key={d} className="muted">
+                    {" "}
+                    ({d.replace(/\.$/, "")})
+                  </span>
                 ))}
               </p>
             )}
             {forYou && (
-              <p>
+              <p className={styles.way}>
                 <b>For {forYou.run}:</b> {forYou.says}
               </p>
             )}
-          </section>
+          </Section>
 
-          {page.takesYou.length > 0 && (
-            <section className={styles.panel} aria-labelledby="takes-title">
-              <h2 id="takes-title" className={styles.h2}>
-                Where it takes you
-              </h2>
-              <ol className={styles.waysList}>
-                {page.takesYou.map((t, i) => (
-                  <li key={i}>
-                    <b>{t.place}</b>
-                    {t.hold ? <span className="muted">, {t.hold}</span> : null}
-                    {t.why ? <> | {t.why}</> : null}
-                    {t.danger ? <span className="muted"> | {t.danger}</span> : null}
-                  </li>
-                ))}
-              </ol>
-            </section>
-          )}
-
-          {page.choices.length > 0 && (
-            <section className={styles.panel} aria-labelledby="choices-title">
-              <h2 id="choices-title" className={styles.h2}>
-                Choices that matter
-              </h2>
-              <ul className={styles.waysList}>
-                {page.choices.map((c, i) => (
-                  <li key={i}>
-                    {c.choice}
-                    {c.leadsTo ? <span className="muted"> | {c.leadsTo}</span> : null}
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-
-          <section className={styles.panel} aria-labelledby="gets-title">
-            <h2 id="gets-title" className={styles.h2}>
-              What you get
-            </h2>
-            <ul className={styles.rewards}>
-              <li>
-                <b>XP</b>: {page.gets.xp ? `${page.gets.xp}${page.gets.type ? ` (${page.gets.type})` : ""}` : "none"}
-              </li>
-              {page.gets.rewards.map((r, i) => (
-                <li key={i}>
-                  {r.what}
-                  {r.when ? <span className="muted"> | {r.when}</span> : null}
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          {(page.opens.length > 0 || page.closes.length > 0 || (page.source === "rules" && (before || after))) && (
-            <section className={styles.panel} aria-labelledby="opens-title">
-              <h2 id="opens-title" className={styles.h2}>
-                What it opens and closes
-              </h2>
-              {page.opens.length > 0 && (
-                <p>
-                  <b>Opens</b>:{" "}
-                  {page.opens.map((o, i) => (
-                    <span key={i}>
-                      {i > 0 ? ", " : ""}
-                      {o.href ? <Link href={o.href}>{o.text}</Link> : o.text}
-                    </span>
-                  ))}
-                </p>
+          {ways ? (
+            <Section id="ways" icon="quest-ways" title={`${ways.ways.length} way${ways.ways.length === 1 ? "" : "s"} to finish it`} count="Steps from the journal">
+              {ways.shape === "endings" && ways.shared.length > 0 && (
+                <>
+                  <div className={styles.wt}>
+                    <span className={styles.wtTitle}>Every way takes these steps</span>
+                    <div className={styles.wtBody}>
+                      <Steps items={ways.shared.map((t) => <Linked key={t} names={names} text={t} />)} />
+                    </div>
+                  </div>
+                  <div className={styles.or} aria-hidden="true">
+                    <span>then</span>
+                  </div>
+                </>
               )}
-              {page.closes.length > 0 && (
-                <p>
-                  <b>Closes</b>: {page.closes.join("; ")}
-                </p>
-              )}
-              {page.source === "rules" && (before || after) && (
-                <p>
-                  {before && (
-                    <>
-                      Before it: <Link href={questHref(before.edid) ?? `/quests/${line.id}`}>{before.name || before.edid}</Link>
-                    </>
-                  )}
-                  {before && after && <span className="muted"> | </span>}
-                  {after && (
-                    <>
-                      After it: <Link href={questHref(after.edid) ?? `/quests/${line.id}`}>{after.name || after.edid}</Link>
-                    </>
-                  )}
-                </p>
-              )}
-            </section>
-          )}
-
-          {page.steps.length > 0 && (
-            <section className={styles.panel} aria-labelledby="steps-title">
-              <h2 id="steps-title" className={styles.h2}>
-                The steps
-              </h2>
-              {page.steps.map((st, i) => (
+              {ways.ways.map((w, i) => (
                 <div key={i}>
-                  {st.branch && <h3 className={styles.h3}>{st.branch}</h3>}
-                  <ul className={styles.waysList}>
-                    {st.objectives.map((o, j) => (
-                      <li key={j}>{o}</li>
-                    ))}
-                  </ul>
+                  {i > 0 && (
+                    <div className={styles.or} aria-hidden="true">
+                      <span>or</span>
+                    </div>
+                  )}
+                  <div className={styles.wt}>
+                    <span className={styles.wtTitle}>
+                      <span className={styles.opt}>{i + 1}</span>
+                      <Linked names={names} text={w.title} />
+                    </span>
+                    <div className={styles.wtBody}>
+                      {w.ends ? (
+                        <p>
+                          <Linked names={names} text={w.ends} />
+                        </p>
+                      ) : null}
+                      {w.steps.length > 0 && <Steps items={w.steps.map((t, j) => <Linked key={j} names={names} text={t} />)} />}
+                    </div>
+                  </div>
                 </div>
               ))}
-            </section>
+            </Section>
+          ) : (
+            stepsHere.length > 0 && (
+              <Section id="steps" icon="quest-ways" title="The steps" count="From the journal">
+                {stepsHere.map((st, i) => (
+                  <div key={i} className={styles.wt}>
+                    <span className={styles.wtTitle}>{st.branch ?? (stepsHere.length > 1 ? "The rest" : "In order")}</span>
+                    <div className={styles.wtBody}>
+                      <Steps items={st.objectives.map((t, j) => <Linked key={j} names={names} text={t} />)} />
+                    </div>
+                  </div>
+                ))}
+              </Section>
+            )
           )}
 
-          <p className={styles.sure}>{page.sure}</p>
-          {page.unsure.some((u) => u.why) && (
-            <details className={styles.ends}>
-              <summary>Why we&apos;re unsure</summary>
-              <ul className={styles.waysList}>
-                {page.unsure.filter((u) => u.why).map((u, i) => (
+          {page.takesYou.length > 0 && (
+            <Section id="takes" icon="quest-travel" title="Where it takes you">
+              {page.takesYou.map((t, i) => {
+                const place = placeNamed(t.place);
+                const href = place ? placeHref(place.name) : null;
+                const danger = dangerParts(place);
+                return (
+                  <div key={i} className={styles.place}>
+                    <div className={styles.placeMain}>
+                      <span className={styles.nm}>
+                        {href ? <Link href={href}>{t.place}</Link> : t.place}
+                        {t.hold ? <span className={styles.hold}>{t.hold}</span> : null}
+                      </span>
+                      {t.why ? (
+                        <p>
+                          <Linked names={names} text={t.why.charAt(0).toUpperCase() + t.why.slice(1)} />
+                          {t.why.endsWith(".") ? "" : "."}
+                        </p>
+                      ) : null}
+                    </div>
+                    <span className={styles.danger}>
+                      <img className={styles.px} src="/icons/chapter-death.svg" alt="Danger" width={16} height={16} style={{ marginTop: 3 }} />
+                      {danger === null ? (
+                        <span className={styles.muted}>Not known yet</span>
+                      ) : danger === "none" ? (
+                        <span>None</span>
+                      ) : (
+                        <span>
+                          <span>
+                            {danger.foes}
+                            {danger.traps ? ", and traps" : ""}
+                          </span>
+                          {danger.boss ? <span className={styles.boss}>{danger.boss}</span> : null}
+                        </span>
+                      )}
+                    </span>
+                  </div>
+                );
+              })}
+            </Section>
+          )}
+
+          {page.choices.length > 0 && !ways && (
+            <Section id="choices" icon="quest-ways" title="Choices that matter">
+              {page.choices.map((c, i) => (
+                <div key={i} className={styles.way}>
+                  <span className={styles.who}>{c.choice}</span>
+                  {c.leadsTo ? (
+                    <p>
+                      <Linked names={names} text={c.leadsTo} />
+                    </p>
+                  ) : null}
+                </div>
+              ))}
+            </Section>
+          )}
+        </div>
+
+        <aside className={styles.side}>
+          {(page.gets.xp > 0 || page.gets.rewards.length > 0) && (
+            <Gold id="get">
+              {page.gets.xp > 0 && (
+                <span className={styles.rw}>
+                  <span>
+                    {page.gets.xp} XP
+                    <button type="button" className={styles.info} aria-label="About quest XP" title={`LoreRim's XP for ${page.gets.type ? `a ${page.gets.type.toLowerCase()}` : "a quest"}, from Experience.ini`}>
+                      i
+                    </button>
+                  </span>
+                  <small>When the quest is done</small>
+                </span>
+              )}
+              {page.gets.rewards.map((r, i) => (
+                <span key={i} className={styles.rw}>
+                  <span>{r.what}</span>
+                  {r.when ? <small>{r.when.charAt(0).toUpperCase() + r.when.slice(1)}</small> : null}
+                </span>
+              ))}
+            </Gold>
+          )}
+
+          {people.length > 0 && (
+            <Panel id="ppl" icon="quest-people" title="People">
+              <div className={styles.ppl}>
+                {[...new Map(people.map((p) => [p.name, p])).values()].map((p) => {
+                  const href = names.find((n) => n.text === p.name)?.href;
+                  return (
+                    <span key={p.name}>
+                      {href ? <Link href={href}>{p.name}</Link> : <b>{p.name}</b>}
+                      {p.role ? <small>{p.role}</small> : null}
+                    </span>
+                  );
+                })}
+              </div>
+            </Panel>
+          )}
+        </aside>
+      </div>
+
+      <div className={`${styles.foot} ${page.closes.length || page.opens.length ? "" : styles.alone}`}>
+        {(page.closes.length > 0 || page.opens.length > 0) && (
+          <Panel id="closes" icon="mark-lock" title={page.closes.length ? "What it closes" : "What it opens"}>
+            {page.closes.length > 0 && (
+              <ul className={styles.list}>
+                {page.closes.map((c, i) => (
                   <li key={i}>
-                    <b>{u.field}</b>: {u.why}
+                    <Linked names={names} text={c} />
                   </li>
                 ))}
               </ul>
-            </details>
-          )}
-
-          <QuestReport
-            lineId={line.id}
-            quests={[{ edid: quest.edid, name }]}
-            signedIn={!!userId}
-            open={reporting}
-            signIn={<SignInButton redirectTo={`${questHref(quest.edid)}?report=1#report`} className="btn btn-sm btn-primary" label="Sign in with Discord" />}
-          />
-        </div>
-        <aside className={styles.side} />
+            )}
+            {page.opens.length > 0 && (
+              <>
+                {page.closes.length > 0 && <h3 className={styles.h3}>What it opens</h3>}
+                <ul className={styles.list}>
+                  {page.opens.map((o, i) => (
+                    <li key={i}>{o.href ? <Link href={o.href}>{o.text}</Link> : <Linked names={names} text={o.text} />}</li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </Panel>
+        )}
+        <HowSure
+          id="sure"
+          line={sureLine}
+          sources={sources}
+          unsure={page.unsure}
+          actions={
+            <Link href={`${questHref(quest.edid)}?report=1#report`} className="btn">
+              Report a mistake
+            </Link>
+          }
+        />
       </div>
+
+      <QuestReport
+        lineId={line.id}
+        quests={[{ edid: quest.edid, name }]}
+        signedIn={!!userId}
+        open={reporting}
+        signIn={<SignInButton redirectTo={`${questHref(quest.edid)}?report=1#report`} className="btn btn-sm btn-primary" label="Sign in with Discord" />}
+      />
     </main>
   );
 }
