@@ -1,0 +1,1623 @@
+[
+ {
+  "id": "Skyrim.esm:0133A5",
+  "name": "Lisbet",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Behind the counter at Arnleif and Sons Trading Company in Markarth.",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "16 hours",
+    "where": "Arnleif and Sons Trading Company, Markarth",
+    "doing": "minding the shop and trading (8 am to midnight)"
+   },
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "Arnleif and Sons Trading Company, Markarth (where she's placed)",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Until her opening scene at the shop has played she stays put inside Arnleif and Sons.",
+   "While she is inside Reachcliff Cave she joins the feast there: she is one of the cannibals in The Taste of Death.",
+   "In A Bitter Aftertaste you confront her as one of Namira's cannibals hiding in Markarth; the quest also has a jailed Lisbet in Cidhna Mine, so she can end up imprisoned there.",
+   "Lisbet's Missing Shipment fails if she dies."
+  ],
+  "role": "merchant (general goods) at Arnleif and Sons Trading Company; quest giver",
+  "sells": "general goods at Arnleif and Sons, 8 am to midnight; her buy list is the one general-goods traders use. The shop's stock list isn't resolved in the extracts.",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Lisbet's Missing Shipment",
+    "how": "gives it: retrieve her shipment (a Dibella statue) from a Forsworn camp and bring it back"
+   },
+   {
+    "quest": "The Taste of Death",
+    "how": "a step in it: one of the Namira cultists at the feast in Reachcliff Cave"
+   },
+   {
+    "quest": "A Bitter Aftertaste",
+    "how": "its target: \"Confront Lisbet\", one of the cannibals the Jarl lets you bring to justice"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "She also has an 8 pm to 11 pm Silver-Blood Inn visit (half the time), but it sits below her 8 am-to-midnight shop package, so as the records read it never runs."
+   },
+   {
+    "field": "changes",
+    "why": "The jailed Lisbet in Cidhna Mine is a separate record from the addon; which confrontation outcome puts her there isn't in the extracts."
+   },
+   {
+    "field": "quests",
+    "why": "She fills aliases in eight more quests with no name in the extracts (two are the addon's jail quests)."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; the class doesn't resolve to a name or skills here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0133A5",
+   "DA11LisbetEatPackage Skyrim.esm:09BB4C (GetInCell Reachcliff Cave)",
+   "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+   "MarkarthArnleifIntroSceneLisbetPackage Skyrim.esm:0AEC16 (Skyrim.esm:0CD15A stage 100 not done)",
+   "MarkarthGeneralStoreVendor8x16xPackage Skyrim.esm:0354EC",
+   "AIOMaLisbetTavern AI Overhaul.esp:123D67",
+   "vendor buy list 0x06CB48, container 0x094377, hours 8-24",
+   "JobMerchantFaction",
+   "ServicesMarkarthArnleifandSons",
+   "FreeformMarkarthE Skyrim.esm:0753A1",
+   "DA11 Skyrim.esm:02C358",
+   "madNamiraAddonQuest TasteOfDeath_Addon_Dialogue.esp:000050 (alias Jai lLisbet, NPC TasteOfDeath_Addon_Dialogue.esp:000009 in Cidhna Mine)",
+   "class Skyrim.esm:013256"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133AD",
+  "name": "Ogmund",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Singing at the Silver-Blood Inn in Markarth in the morning; at home in Ogmund's House at night.",
+  "day": [
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "Ogmund's House, Markarth",
+    "doing": "breakfast"
+   },
+   {
+    "from": "8 am",
+    "for": "4 hours",
+    "where": "Silver-Blood Inn, Markarth",
+    "doing": "performing as the inn's bard"
+   },
+   {
+    "from": "noon",
+    "for": "1 hour",
+    "where": "Ogmund's House, Markarth",
+    "doing": "lunch"
+   },
+   {
+    "from": "1 pm",
+    "for": "3 hours",
+    "where": "out around Markarth",
+    "doing": "taking a break, when it isn't raining (in rain he stays at the inn)"
+   },
+   {
+    "from": "4 pm",
+    "for": "2 hours",
+    "where": "Silver-Blood Inn, Markarth",
+    "doing": "performing"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "Ogmund's House, Markarth",
+    "doing": "supper"
+   },
+   {
+    "from": "7 pm",
+    "for": "1 hour",
+    "where": "Silver-Blood Inn, Markarth",
+    "doing": "performing"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "Ogmund's House, Markarth",
+    "doing": "at home"
+   },
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "Ogmund's House, Markarth",
+    "doing": "sleeping (up for breakfast at 6)"
+   }
+  ],
+  "changes": [
+   "Search and Seizure: Ondolemar wants proof he worships Talos; you can find his Talos amulet, warn him, or lie for him."
+  ],
+  "role": "bard at the Silver-Blood Inn; Speech trainer",
+  "sells": "",
+  "trains": "Speech, up to 100 (expert trainer)",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Search and Seizure",
+    "how": "its target: Ondolemar sends you to find proof of his Talos worship; you can instead warn him (\"(Optional) Warn Ogmund about Ondolemar\") and he rewards you"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "quests",
+    "why": "He fills aliases in three more quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; the class doesn't resolve to a name or skills here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0133AD",
+   "DefaultEatEditorLoc18x1 Skyrim.esm:01E61A",
+   "AIOMaOgmundBreak13x3 AI Overhaul.esp:1056A8 (IsRaining == 0)",
+   "DefaultEatEditorLoc12x1 Skyrim.esm:01E619",
+   "DefaultEatEditorLoc6x1 Skyrim.esm:01E618",
+   "MarkarthOgmundBardInnPackage8x12 Skyrim.esm:0354F3",
+   "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+   "DefaultSandboxHomeowner Skyrim.esm:031730",
+   "trainer Speechcraft Expert cap 100",
+   "JobBardFaction",
+   "JobTrainerSpeechcraftFaction",
+   "FreeformMarkarthM Skyrim.esm:064798",
+   "placed in Ogmund's House",
+   "class Skyrim.esm:0E3A70"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133AF",
+  "name": "Ondolemar",
+  "race": "Altmer",
+  "sex": "male",
+  "firstMeet": "In Understone Keep, Markarth.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Understone Keep, Markarth",
+    "doing": "his midnight-to-6 am package in the keep"
+   },
+   {
+    "from": "6 am",
+    "for": "18 hours",
+    "where": "Understone Keep, Markarth",
+    "doing": "patrolling the keep"
+   },
+   {
+    "from": "9 am",
+    "for": "6 hours",
+    "where": "Markarth's streets, around the Silver-Blood Inn",
+    "doing": "weekdays only, and only under conditions the extracts don't fully decode: patrolling the city instead of the keep"
+   }
+  ],
+  "changes": [
+   "If he's moved into the faction used for exiles after the Civil War, he goes to the Blue Palace in Solitude."
+  ],
+  "role": "Thalmor Justiciar in Markarth; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Search and Seizure",
+    "how": "gives it: find evidence of Ogmund's Talos worship and report back to him"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "His weekday city patrol needs him to be in Markarth's outdoor space, a weather check and several conditions the extracts leave undecoded, so how often it runs is unclear. His midnight-to-6 package is named for eating, not sleeping."
+   },
+   {
+    "field": "changes",
+    "why": "The exile package's name says it disables him; whether he is removed or shows up at the Blue Palace isn't settled by the extracts."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in five more quests with no name in the extracts (four from a Thalmor add-on)."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; the class doesn't resolve to a name or skills here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0133AF",
+   "CWExiledThalmorSandboxBluePalaceDisable Skyrim.esm:10F67B (GetInFaction Skyrim.esm:036629)",
+   "MarkarthOndolemarEat24x6Package Skyrim.esm:0647A5",
+   "AIOOndolemarPatrolCity AI Overhaul.esp:1056A7 (weekdays, fn310/fn149/fn612)",
+   "MarkarthOndolemarPatrolMarkarthKeepPackage Skyrim.esm:060ACE",
+   "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+   "ThalmorFaction",
+   "JobJusticiar",
+   "FreeformMarkarthM Skyrim.esm:064798",
+   "class Skyrim.esm:01E7D0"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013353",
+  "name": "Dravin Llanith",
+  "race": "Dunmer",
+  "sex": "male",
+  "firstMeet": "Working the fields at Merryfair Farm, just outside Riften.",
+  "day": [
+   {
+    "from": "5 am",
+    "for": "1 hour",
+    "where": "Merryfair Farm, near Riften",
+    "doing": "breakfast"
+   },
+   {
+    "from": "6 am",
+    "for": "12 hours",
+    "where": "the fields of Merryfair Farm",
+    "doing": "farming"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "Merryfair Farm",
+    "doing": "supper"
+   },
+   {
+    "from": "7 pm",
+    "for": "4 hours",
+    "where": "the fields of Merryfair Farm",
+    "doing": "farming"
+   },
+   {
+    "from": "11 pm",
+    "for": "6 hours",
+    "where": "Merryfair Farm",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "farmer at Merryfair Farm; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Bow to the Master",
+    "how": "gives it: retrieve Dravin's bow and return it to him"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "quests",
+    "why": "He fills aliases in three more quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; the class doesn't resolve to a name or skills here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013353",
+   "MerryfairFarmDravinSleep Skyrim.esm:06B9A7",
+   "MerryfairFarmDravinEatDinner Skyrim.esm:06B9A3",
+   "MerryfairFarmDravinEatBreakfast Skyrim.esm:06B9A1",
+   "MerryfairFarmDravinFarmingPackage Skyrim.esm:030276",
+   "JobFarmerFaction",
+   "FreeformMerryfairFarm Skyrim.esm:0E3E9B",
+   "class Skyrim.esm:01326C"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0135EB",
+  "name": "Idgrod Ravencrone",
+  "race": "Elder",
+  "sex": "female",
+  "firstMeet": "In Highmoon Hall, Morthal, as Jarl of Hjaalmarch.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Highmoon Hall, Morthal",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "18 hours",
+    "where": "Highmoon Hall, Morthal",
+    "doing": "holding court and going about the hall"
+   }
+  ],
+  "changes": [
+   "If she is exiled after the Civil War (she sides with the Empire), she moves to the Blue Palace in Solitude."
+  ],
+  "role": "Jarl of Morthal (Hjaalmarch); quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Laid to Rest",
+    "how": "gives the task: as Morthal's Jarl she pays you to investigate the burned house and later to destroy Movarth"
+   },
+   {
+    "quest": "Falion's Secret",
+    "how": "a step in it: you can tell her what Falion does in the marsh, and she makes him stop"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "quests",
+    "why": "She fills aliases in nine more quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; the class doesn't resolve to a name or skills here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0135EB",
+   "CWExiledImperialSandboxBluePalace Skyrim.esm:0A926E (GetInFaction Skyrim.esm:036629)",
+   "MorthalIdgrodSleep0x6 Skyrim.esm:044397",
+   "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+   "JobJarlFaction",
+   "GovImperial",
+   "MarriageExcludedFaction",
+   "MS14 Skyrim.esm:025F3E (alias JarlImperial)",
+   "FreeformMorthalA Skyrim.esm:021891",
+   "class Skyrim.esm:01317B"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0135EA",
+  "name": "Gorm",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Standing in Highmoon Hall, Morthal, as the Jarl's housecarl.",
+  "day": [
+   {
+    "from": "6 am",
+    "for": "14 hours",
+    "where": "Highmoon Hall, Morthal",
+    "doing": "standing guard"
+   },
+   {
+    "from": "8 pm",
+    "for": "3 hours",
+    "where": "Moorside Inn, Morthal",
+    "doing": "eating and drinking"
+   },
+   {
+    "from": "11 pm",
+    "for": "7 hours",
+    "where": "Highmoon Hall, Morthal",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "If Morthal's ruling side is exiled after the Civil War, he moves to the Blue Palace in Solitude."
+  ],
+  "role": "housecarl to the Jarl of Morthal; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "For the Good of Morthal",
+    "how": "gives it: deliver Gorm's letter to Captain Aldis (Castle Dour, Solitude)"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "quests",
+    "why": "He fills aliases in five more quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; the class doesn't resolve to a name or skills here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0135EA",
+   "CWExiledImperialSandboxBluePalace Skyrim.esm:0A926E",
+   "MorthalGormEatMoorside18x3 Skyrim.esm:04439B",
+   "MorthalGormSleep23x7 Skyrim.esm:044399",
+   "MorthalGormStandHighMoonHall Skyrim.esm:0AD8D4",
+   "JobHousecarlFaction",
+   "FreeformMorthalB Skyrim.esm:021896",
+   "class Skyrim.esm:013176"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013B77",
+  "name": "Eydis",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Running the Old Hroldan Inn, on the road in the Reach.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "in and around the Old Hroldan Inn, the Reach",
+    "doing": "keeping the inn; she has no sleep or meal package, only a stay-near-home one"
+   }
+  ],
+  "changes": [],
+  "role": "innkeeper of the Old Hroldan Inn; rents a room; quest giver",
+  "sells": "inn goods, at any hour (its buy list is the one innkeepers and food sellers use). The exact stock isn't resolved in the extracts.",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Ghost of Old Hroldan",
+    "how": "gives it: she points you to the inn's ghost, who wants Hjalti's Sword"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "quests",
+    "why": "She fills aliases in two more quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; the class doesn't resolve to a name or skills here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013B77",
+   "DefaultSandboxHomeowner Skyrim.esm:031730",
+   "vendor buy list 0x0914F0, container 0x09E460, hours 0-24",
+   "JobInnkeeperFaction",
+   "JobRentRoomFaction",
+   "ServicesOldHroldanHangedManInn",
+   "FreeformOldHroldanB Skyrim.esm:06819A",
+   "class Skyrim.esm:013256"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0681A2",
+  "name": "Ghost of Old Hroldan",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "In the Old Hroldan Inn, the Reach, during The Ghost of Old Hroldan.",
+  "day": [],
+  "changes": [],
+  "role": "quest ghost",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Ghost of Old Hroldan",
+    "how": "its end: \"Bring Hjalti's Sword to the Ghost of Old Hroldan\""
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "He has no AI packages and no factions; when and where in the inn he appears is set by the quest, which the extracts don't spell out."
+   },
+   {
+    "field": "canDie",
+    "why": "Neither essential nor protected, but as a ghost made for one quest he may not be killable in practice."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; the class doesn't resolve to a name or skills here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0681A2",
+   "no packages",
+   "placed ref Skyrim.esm:0681A3 in Old Hroldan Inn",
+   "FreeformOldHroldanB Skyrim.esm:06819A (alias Ghost, quest starts on change location)",
+   "class Skyrim.esm:01CE15"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013366",
+  "name": "Laila Law-Giver",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "In Mistveil Keep, Riften, as Jarl of the Rift.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "Mistveil Keep, Riften",
+    "doing": "going about the keep; she has no sleep package of her own"
+   }
+  ],
+  "changes": [
+   "If the Empire takes the Rift in the Civil War she is exiled to the Palace of the Kings in Windhelm, and Maven Black-Briar becomes Jarl in her place (the Riften jarl quests name either of them)."
+  ],
+  "role": "Jarl of Riften (the Rift), Stormcloak side; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Supply and Demand",
+    "how": "gives it: report the skooma source to her; she sends you to Cragslane Cavern"
+   },
+   {
+    "quest": "I Done Got Thaned!",
+    "how": "gives it: she lets you buy Honeyside and makes you Thane of the Rift"
+   },
+   {
+    "quest": "The Raid",
+    "how": "a step in it: \"Report Sarthis Idren to the Jarl of Riften\""
+   },
+   {
+    "quest": "Compelling Tribute",
+    "how": "named in it as the Jarl whose steward you blackmail in that Civil War mission"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "quests",
+    "why": "She fills aliases in eight more quests with no name in the extracts."
+   },
+   {
+    "field": "changes",
+    "why": "The exile packages hang on a faction and, for one, a quest the extracts don't name; the Civil War stage that moves her isn't spelled out."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; the class doesn't resolve to a name or skills here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013366",
+   "CWFinaleHidePackageWindhelmActorBasePackage Skyrim.esm:10FE78",
+   "CWExiledSonsSandboxPalace Skyrim.esm:0A9272 (GetInFaction Skyrim.esm:036629)",
+   "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+   "JobJarlFaction",
+   "GovSons",
+   "MarriageExcludedFaction",
+   "FreeformRiften01 Skyrim.esm:053305",
+   "FreeformRiftenThane Skyrim.esm:065BDF",
+   "FreeformRiften20 Skyrim.esm:085D40",
+   "CWMission07 Skyrim.esm:0504F0 (alias JarlImperial)",
+   "class Skyrim.esm:01326B"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01336A",
+  "name": "Maven Black-Briar",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "At Black-Briar Manor in Riften; by day she does the rounds of the Black-Briar Meadery, the Bee and Barb, Mistveil Keep and the market.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "Black-Briar Manor, Riften",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "2 hours",
+    "where": "Black-Briar Manor, Riften",
+    "doing": "breakfast"
+   },
+   {
+    "from": "10 am",
+    "for": "2 hours",
+    "where": "Black-Briar Meadery, Riften",
+    "doing": "visiting the meadery"
+   },
+   {
+    "from": "noon",
+    "for": "2 hours",
+    "where": "the Bee and Barb, Riften",
+    "doing": "at the inn"
+   },
+   {
+    "from": "2 pm",
+    "for": "2 hours",
+    "where": "Mistveil Keep, Riften",
+    "doing": "visiting the keep"
+   },
+   {
+    "from": "4 pm",
+    "for": "2 hours",
+    "where": "the market, Riften",
+    "doing": "in the market square"
+   },
+   {
+    "from": "6 pm",
+    "for": "2 hours",
+    "where": "Black-Briar Manor, Riften",
+    "doing": "supper"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "the Bee and Barb, Riften",
+    "doing": "at the inn"
+   }
+  ],
+  "changes": [
+   "Weekends, 10 am to midnight: she stays around Black-Briar Manor instead of doing her rounds (on dry days, and under further conditions the extracts don't decode).",
+   "When it rains she skips the meadery, the Bee and Barb, the keep and the market and stays at the manor.",
+   "While Dampened Spirits is running she keeps to the manor apart from the 4 pm market visit and the evening at the Bee and Barb.",
+   "During A Chance Arrangement's market job she stays out of the market.",
+   "If the Empire takes the Rift in the Civil War she becomes Jarl of Riften."
+  ],
+  "role": "head of the Black-Briar family; Thieves Guild patron; quest giver; can sell you Black-Briar Lodge",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Dampened Spirits",
+    "how": "gives the job: Brynjolf sends you to her and she sends you to Honningbrew Meadery"
+   },
+   {
+    "quest": "Vald's Debt",
+    "how": "gives the task: talk to her about Vald's debt, then bring her the Quill of Gemination"
+   },
+   {
+    "quest": "Promises to Keep",
+    "how": "a step in it: you can speak to her before returning to Louis Letrush"
+   },
+   {
+    "quest": "The Pursuit",
+    "how": "named in it"
+   },
+   {
+    "quest": "Under New Management",
+    "how": "named in it"
+   },
+   {
+    "quest": "Scoundrel's Folly",
+    "how": "you can speak to her about it before returning to Mercer Frey"
+   },
+   {
+    "quest": "Supply and Demand",
+    "how": "gives it instead of Laila when she is Jarl"
+   },
+   {
+    "quest": "I Done Got Thaned!",
+    "how": "gives it instead of Laila when she is Jarl"
+   },
+   {
+    "quest": "The Raid",
+    "how": "a step in it when she is Jarl: you report Sarthis Idren to her"
+   },
+   {
+    "quest": "buying Black-Briar Lodge (a house quest with no name)",
+    "how": "gives it: you can buy the lodge from her"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "quests",
+    "why": "She fills aliases in 18 more quests with no name in the extracts; her part in The Pursuit and Under New Management isn't in their journal text."
+   },
+   {
+    "field": "changes",
+    "why": "Her schedule has no package that moves her into Mistveil Keep as Jarl; where she lives after the Empire takes Riften isn't in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; the class doesn't resolve to a name or skills here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01336A",
+   "AIORiftMavenWeekends AI Overhaul.esp:049ECB (weekends, IsRaining == 0, fn612)",
+   "RiftenMavenBeeandBarb20x4 Skyrim.esm:0446B6",
+   "RiftenMavenEatDinner18x2 Skyrim.esm:0446B7 (TG03 not running)",
+   "RiftenMavenMarket16x2 Skyrim.esm:05EF17 (TG00 stage not 10/20)",
+   "RiftenMavenVisitKeep14x2 Skyrim.esm:0446B5",
+   "RiftenMavenBeeandBarb12x2 Skyrim.esm:0446B4",
+   "RiftenMavenVisitMeadery10x2 Skyrim.esm:0446B3",
+   "RiftenMavenEatBreakfast8x2 Skyrim.esm:0446B2",
+   "RiftenMavenSleep0x8 Skyrim.esm:0446B1",
+   "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+   "TG03 Skyrim.esm:02154F",
+   "FreeformValdDebt Skyrim.esm:0C04BA",
+   "MS03 Skyrim.esm:01DA3C",
+   "TG07 Skyrim.esm:021553",
+   "TGLeadership Skyrim.esm:0D7D69",
+   "TG04 Skyrim.esm:021550",
+   "RiftenEmpireJarl alias Skyrim.esm:0A7B33",
+   "GM_BBLPHQuest01 Snazzy Black Briar Lodge.esp:00076C",
+   "class Skyrim.esm:01317C"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01336E",
+  "name": "Niluva Hlaalu",
+  "race": "Dunmer",
+  "sex": "female",
+  "firstMeet": "Working at the Black-Briar Meadery in Riften by day; at Haelga's Bunkhouse in the evening.",
+  "day": [
+   {
+    "from": "4 am",
+    "for": "1 hour",
+    "where": "Haelga's Bunkhouse, Riften",
+    "doing": "breakfast"
+   },
+   {
+    "from": "5 am",
+    "for": "7 hours",
+    "where": "Black-Briar Meadery, Riften",
+    "doing": "working"
+   },
+   {
+    "from": "noon",
+    "for": "1 hour",
+    "where": "Black-Briar Meadery, Riften",
+    "doing": "lunch"
+   },
+   {
+    "from": "1 pm",
+    "for": "5 hours",
+    "where": "Black-Briar Meadery, Riften",
+    "doing": "working"
+   },
+   {
+    "from": "6 pm",
+    "for": "3 hours",
+    "where": "Haelga's Bunkhouse, Riften",
+    "doing": "relaxing"
+   },
+   {
+    "from": "9 pm",
+    "for": "1 hour",
+    "where": "wherever she is (the bunkhouse)",
+    "doing": "taking skooma"
+   },
+   {
+    "from": "10 pm",
+    "for": "6 hours",
+    "where": "Haelga's Bunkhouse, Riften",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "meadery worker",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Supply and Demand",
+    "how": "a lead: you can learn about the skooma from her before reporting to the Jarl"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "quests",
+    "why": "She fills aliases in two more quests with no name in the extracts; her part in Supply and Demand comes from dialogue conditions only."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; the class doesn't resolve to a name or skills here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01336E",
+   "RiftenNiluvaSleeps22x6 Skyrim.esm:044650",
+   "AIORiftNiluvaDoSkooma AI Overhaul.esp:10A7F3",
+   "RiftenNiluvaBunkhouse18x4 Skyrim.esm:044D29",
+   "RiftenBBMeaderyWorkerLunch12x1 Skyrim.esm:0445C3",
+   "RiftenNiluvaEatBreakfast4x1 Skyrim.esm:044651",
+   "RiftenNiluvaWorkMeadery0x0 Skyrim.esm:044652",
+   "RiftenBlackBriarMeaderyFaction",
+   "FreeformRiften01 Skyrim.esm:053305 (dialogue below stage 21)",
+   "class Skyrim.esm:01326B"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013382",
+  "name": "Wujeeta",
+  "race": "Argonian",
+  "sex": "female",
+  "firstMeet": "Working at the Riften Fishery and its docks on Lake Honrich by day; at Haelga's Bunkhouse from 6 pm.",
+  "day": [
+   {
+    "from": "6 am",
+    "for": "3 hours",
+    "where": "the Riften Fishery docks, Riften",
+    "doing": "working"
+   },
+   {
+    "from": "9 am",
+    "for": "6 hours",
+    "where": "inside the Riften Fishery",
+    "doing": "working"
+   },
+   {
+    "from": "3 pm",
+    "for": "3 hours",
+    "where": "the Riften Fishery docks, Riften",
+    "doing": "working"
+   },
+   {
+    "from": "6 pm",
+    "for": "5 hours",
+    "where": "Haelga's Bunkhouse, Riften",
+    "doing": "relaxing"
+   },
+   {
+    "from": "11 pm",
+    "for": "1 hour",
+    "where": "Haelga's Bunkhouse, Riften",
+    "doing": "taking skooma (until Helping Hand is done)"
+   },
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Haelga's Bunkhouse, Riften",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Once Helping Hand is completed she stops her late-night skooma."
+  ],
+  "role": "fishery worker; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Helping Hand",
+    "how": "gives it: give Wujeeta a healing potion"
+   },
+   {
+    "quest": "The Raid",
+    "how": "gives it: she leads you to identify Riften's skooma dealer"
+   },
+   {
+    "quest": "Supply and Demand",
+    "how": "a lead: you can learn about the skooma source from her before reporting to the Jarl"
+   },
+   {
+    "quest": "Deluge of Deceit",
+    "how": "named in it"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "Her skooma package also carries conditions the extracts don't decode."
+   },
+   {
+    "field": "quests",
+    "why": "She fills aliases in five more quests with no name in the extracts; her part in Deluge of Deceit isn't in its journal text."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; the class doesn't resolve to a name or skills here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013382",
+   "AIORiftWujeetaDoSkooma AI Overhaul.esp:10A7F7 (FreeformRiften12 not completed)",
+   "RiftenWujeetaBunkhouse18x6 Skyrim.esm:044A13",
+   "RiftenWujeetaWorkFisheryDocks15x3 Skyrim.esm:10CD42",
+   "RiftenWujeetaWorkFisheryInside9x6 Skyrim.esm:06D63C",
+   "RiftenWujeetaWorkFisheryDocks6x3 Skyrim.esm:10CD41",
+   "RiftenWujeetaSleep0x6 Skyrim.esm:044A11",
+   "RiftenFisheryFaction",
+   "FreeformRiften12 Skyrim.esm:041FD2",
+   "FreeformRiften20 Skyrim.esm:085D40",
+   "FreeformRiften01 Skyrim.esm:053305",
+   "EVGSirenrootQuest evgSIRENROOT.esm:026BC5",
+   "class Skyrim.esm:01326B"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01337B",
+  "name": "Sibbi Black-Briar",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Locked up in Riften Jail, in Mistveil Keep.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "his cell in Riften Jail",
+    "doing": "a prisoner; sleeps 9 am to 5 pm"
+   }
+  ],
+  "changes": [
+   "While Promises to Keep is running he stays in his cell."
+  ],
+  "role": "prisoner in Riften Jail; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Lover's Requital",
+    "how": "gives it: find out where Svidi (Lynly) went, then tell him the truth or lie"
+   },
+   {
+    "quest": "Promises to Keep",
+    "how": "a step in it: Louis Letrush's message goes to him, and he asks you to steal Frost"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "quests",
+    "why": "He fills an alias in one more quest with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; the class doesn't resolve to a name or skills here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01337B",
+   "MS03JailSibbiPackage0x24 Skyrim.esm:074A17 (MS03 running)",
+   "RiftenSibbiSleep9x8 Skyrim.esm:0447AF",
+   "RiftenSibbiPrisoner0x0 Skyrim.esm:054CBC",
+   "FreeformRiften02 Skyrim.esm:053306",
+   "MS03 Skyrim.esm:01DA3C",
+   "class Skyrim.esm:01317E"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0136BC",
+  "name": "Lynly Star-Sung",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Serving at the Vilemyr Inn in Ivarstead.",
+  "day": [
+   {
+    "from": "5 am",
+    "for": "19 hours",
+    "where": "Vilemyr Inn, Ivarstead",
+    "doing": "serving as barmaid"
+   },
+   {
+    "from": "midnight",
+    "for": "5 hours",
+    "where": "Vilemyr Inn, Ivarstead",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Her top package makes her the innkeeper of the Vilemyr Inn once a particular person is dead (the records don't say who)."
+  ],
+  "role": "barmaid at the Vilemyr Inn; sells inn goods and rents a room; quest giver",
+  "sells": "inn goods, at any hour (its buy list is the one innkeepers and food sellers use). The exact stock isn't resolved in the extracts.",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Lover's Requital",
+    "how": "its target: she is the woman Sibbi is looking for; you tell him about her or lie"
+   },
+   {
+    "quest": "More to Say Find Golldir",
+    "how": "gives it: find Golldir for her"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "The innkeeper package checks that someone is dead, but the extracts don't say who the check runs on."
+   },
+   {
+    "field": "quests",
+    "why": "She fills aliases in five more quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; the class doesn't resolve to a name or skills here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0136BC",
+   "IvarsteadLynlyInkeeper0x0 Skyrim.esm:0EA15A (GetDead == 1)",
+   "IvarsteadLynlySleepPackage Skyrim.esm:0658A8",
+   "IvarsteadLynlyBarmaidenPackage Skyrim.esm:0658A4",
+   "vendor buy list 0x0914F0, container 0x0A0707, hours 0-24",
+   "JobInnkeeperFaction",
+   "JobRentRoomFaction",
+   "ServicesIvarsteadVilemyrInn",
+   "FreeformRiften02 Skyrim.esm:053306",
+   "ACFFindGolldirQuest moretodo.esp:000815",
+   "class Skyrim.esm:01326C"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013377",
+  "name": "Romlyn Dreth",
+  "race": "Dunmer",
+  "sex": "male",
+  "firstMeet": "Hauling for the Black-Briar Meadery in Riften by day; at the Bee and Barb in the evening.",
+  "day": [
+   {
+    "from": "4 am",
+    "for": "1 hour",
+    "where": "Romlyn Dreth's House, Riften",
+    "doing": "breakfast"
+   },
+   {
+    "from": "5 am",
+    "for": "7 hours",
+    "where": "Black-Briar Meadery, Riften",
+    "doing": "carrying for the meadery"
+   },
+   {
+    "from": "noon",
+    "for": "1 hour",
+    "where": "Black-Briar Meadery, Riften",
+    "doing": "lunch"
+   },
+   {
+    "from": "1 pm",
+    "for": "5 hours",
+    "where": "Black-Briar Meadery, Riften",
+    "doing": "carrying for the meadery"
+   },
+   {
+    "from": "6 pm",
+    "for": "4 hours",
+    "where": "the Bee and Barb, Riften",
+    "doing": "drinking (skipped in one kind of weather)"
+   },
+   {
+    "from": "10 pm",
+    "for": "6 hours",
+    "where": "Romlyn Dreth's House, Riften",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "After Under the Table he can end up in Riften Jail (sleeping 9 pm to 5 am there and staying in the jail), when a patch quest reaches its stage."
+  ],
+  "role": "meadery worker; quest giver; can marry",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "yes (he's a potential spouse); what it takes isn't in the extracts",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Under the Table",
+    "how": "gives it: deliver his mead to Wilhelm (or show it to Indaryn)"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "The jail packages need a global and a patch quest's stage; which ending of Under the Table sets them isn't in the extracts."
+   },
+   {
+    "field": "day",
+    "why": "His work packages carry no place; the meadery is read from their names."
+   },
+   {
+    "field": "marries",
+    "why": "Marriage conditions aren't in the extracts."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in five more quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; the class doesn't resolve to a name or skills here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013377",
+   "USKPRomlynSleepJail Unofficial Skyrim Special Edition Patch.esp:058EE1",
+   "USKPRomlynSandboxJail Unofficial Skyrim Special Edition Patch.esp:058EE2 (global Skyrim.esm:041FDF == 1, quest Unofficial Skyrim Special Edition Patch.esp:16008A stage 10)",
+   "RiftenRomlynSleep22x6 Skyrim.esm:044654",
+   "RiftenRomlynBeeandBarb18x4 Skyrim.esm:044657",
+   "RiftenBBMeaderyWorkerLunch12x1 Skyrim.esm:0445C3",
+   "RiftenRomlynEatBreakfast4x1 Skyrim.esm:044655",
+   "RiftenRomlynWorkCarryAMeadery0x0 Skyrim.esm:044656",
+   "RiftenRomlynWorkCarryBMeadery0x0 Skyrim.esm:10CC25",
+   "PotentialMarriageFaction",
+   "FreeformRiften03 Skyrim.esm:053307",
+   "class Skyrim.esm:01317E"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013370",
+  "name": "Indaryn",
+  "race": "Dunmer",
+  "sex": "male",
+  "firstMeet": "At the Black-Briar Meadery in Riften, which he runs; at the Bee and Barb in the evening.",
+  "day": [
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "the Bee and Barb, Riften",
+    "doing": "breakfast"
+   },
+   {
+    "from": "7 am",
+    "for": "12 hours",
+    "where": "Black-Briar Meadery, Riften",
+    "doing": "running the meadery"
+   },
+   {
+    "from": "7 pm",
+    "for": "5 hours",
+    "where": "the Bee and Barb, Riften",
+    "doing": "drinking (skipped in one kind of weather)"
+   },
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Black-Briar Meadery, Riften",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "runs the Black-Briar Meadery; merchant",
+  "sells": "trades at any hour; its buy list is the one innkeepers and food sellers use. The exact stock isn't resolved in the extracts.",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Under the Table",
+    "how": "a step in it: \"Show Mead to Indaryn\" instead of delivering it"
+   },
+   {
+    "quest": "Caught Red Handed",
+    "how": "its target: obtain a Mark of Dibella from him"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "He has a vendor set-up and the meadery's services faction but no merchant faction; what he stocks isn't resolved."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in four more quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; the class doesn't resolve to a name or skills here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013370",
+   "RiftenIndarynBeeandBarb19x5 Skyrim.esm:0445C6",
+   "RiftenIndarynEatBreakfast6x1 Skyrim.esm:06D63A",
+   "RiftenIndarynSleeps0x6 Skyrim.esm:0445BF",
+   "RiftenIndarynMeaderyWork0x0 Skyrim.esm:06D639",
+   "vendor buy list 0x0914F0, container 0x0A31BC, hours 0-24",
+   "ServicesRiftenBlackBriarMeadery",
+   "FreeformRiften03 Skyrim.esm:053307",
+   "FreeformRiften11 Skyrim.esm:041F91",
+   "class Skyrim.esm:013176"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013364",
+  "name": "Ingun Black-Briar",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Working at Elgrim's Elixirs in Riften by day; at Black-Briar Manor otherwise.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "Black-Briar Manor, Riften",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "1 hour",
+    "where": "Black-Briar Manor, Riften",
+    "doing": "breakfast"
+   },
+   {
+    "from": "9 am",
+    "for": "8 hours",
+    "where": "Elgrim's Elixirs, Riften",
+    "doing": "working on alchemy (dry days)"
+   },
+   {
+    "from": "5 pm",
+    "for": "1 hour",
+    "where": "Black-Briar Manor, Riften",
+    "doing": "at home"
+   },
+   {
+    "from": "6 pm",
+    "for": "2 hours",
+    "where": "Black-Briar Manor, Riften",
+    "doing": "supper"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "Black-Briar Manor, Riften",
+    "doing": "tinkering at home"
+   }
+  ],
+  "changes": [
+   "When it rains (or in one kind of weather) between 8 am and 8 pm and she's indoors, she stays where she is instead of walking to Elgrim's Elixirs."
+  ],
+  "role": "alchemist's apprentice at Elgrim's Elixirs; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Few and Far Between",
+    "how": "gives it: bring her 20 nirnroot, then 20 nightshade, then 20 deathbell"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "quests",
+    "why": "She fills aliases in three more quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; the class doesn't resolve to a name or skills here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013364",
+   "RiftenIngunTinkeratHome20x4 Skyrim.esm:0449AE",
+   "RiftenIngunEatDinner18x2 Skyrim.esm:0449AD",
+   "AIOStayPutRaining8x12 AI Overhaul.esp:11EC63",
+   "RiftenIngunTinkerAtElgrimsElixirs9x8 Skyrim.esm:0449AC (IsRaining == 0)",
+   "RiftenIngunEatBreakfast8x1 Skyrim.esm:0449AB",
+   "RiftenIngunSleeps0x8 Skyrim.esm:0449AA",
+   "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+   "RiftenElgrimsElixirsFaction",
+   "FreeformRiften04 Skyrim.esm:053308",
+   "class Skyrim.esm:01317F"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013352",
+  "name": "Dinya Balu",
+  "race": "Dunmer",
+  "sex": "female",
+  "firstMeet": "In the Temple of Mara, Riften.",
+  "day": [
+   {
+    "from": "5 am",
+    "for": "2 hours",
+    "where": "Temple of Mara, Riften",
+    "doing": "cleaning the temple"
+   },
+   {
+    "from": "7 am",
+    "for": "1 hour",
+    "where": "Temple of Mara, Riften",
+    "doing": "breakfast"
+   },
+   {
+    "from": "8 am",
+    "for": "3 hours",
+    "where": "Temple of Mara, Riften",
+    "doing": "tending the temple"
+   },
+   {
+    "from": "11 am",
+    "for": "1 hour",
+    "where": "Temple of Mara, Riften",
+    "doing": "lunch"
+   },
+   {
+    "from": "noon",
+    "for": "3 hours",
+    "where": "the market, Riften",
+    "doing": "in the market square (dry days)"
+   },
+   {
+    "from": "3 pm",
+    "for": "1 hour",
+    "where": "Temple of Mara, Riften",
+    "doing": "supper"
+   },
+   {
+    "from": "4 pm",
+    "for": "7 hours",
+    "where": "Temple of Mara, Riften",
+    "doing": "tending the temple"
+   },
+   {
+    "from": "11 pm",
+    "for": "6 hours",
+    "where": "Temple of Mara, Riften",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "In rain, and during A Chance Arrangement's market job, she skips the market and stays at the temple."
+  ],
+  "role": "priestess of Mara; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Book of Love",
+    "how": "gives it: you help the Temple of Mara promote love, returning to her between tasks"
+   },
+   {
+    "quest": "Spread the Love",
+    "how": "gives it: distribute the Warmth of Mara within Riften and return to her"
+   },
+   {
+    "quest": "The Book of Love - Fastred's Choice",
+    "how": "a step in it: you return to her at the Temple of Mara after Fastred decides"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "quests",
+    "why": "She fills aliases in eight more quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; the class doesn't resolve to a name or skills here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013352",
+   "RiftenDinyaSleep23x6 Skyrim.esm:0449BC",
+   "RiftenDinyaEatDinner15x1 Skyrim.esm:0449C1",
+   "RiftenDinyaMarket12x3 Skyrim.esm:05EF07 (TG00 stage not 10/20, IsRaining == 0)",
+   "RiftenDinyaEatLunch11x1 Skyrim.esm:06D62E",
+   "RiftenDinyaEatBreakfast7x1 Skyrim.esm:0449BE",
+   "RiftenDinyaCleanTemple5x2 Skyrim.esm:0449BD",
+   "RiftenDinyaTempleAttendant0x0 Skyrim.esm:0449BF",
+   "JobPriestFaction",
+   "t02 Skyrim.esm:0211D5",
+   "FreeformRiften05 Skyrim.esm:053309",
+   "TTFA_JourneyQuest TT_FastredsAwakening.esp:000009",
+   "class Skyrim.esm:013276"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013373",
+  "name": "Talen-Jei",
+  "race": "Argonian",
+  "sex": "male",
+  "firstMeet": "Behind the bar at the Bee and Barb in Riften.",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "4 hours",
+    "where": "the Bee and Barb, Riften",
+    "doing": "helping run the inn"
+   },
+   {
+    "from": "noon",
+    "for": "1 hour",
+    "where": "the Bee and Barb, Riften",
+    "doing": "lunch"
+   },
+   {
+    "from": "1 pm",
+    "for": "5 hours",
+    "where": "the Bee and Barb, Riften",
+    "doing": "helping run the inn"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "the Bee and Barb, Riften",
+    "doing": "supper"
+   },
+   {
+    "from": "7 pm",
+    "for": "5 hours",
+    "where": "the Bee and Barb, Riften",
+    "doing": "helping run the inn"
+   },
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "the Bee and Barb, Riften",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Until an opening scene of his has played, he stays put in the Bee and Barb.",
+   "His whole routine depends on him not carrying a particular keyword the extracts don't name."
+  ],
+  "role": "assistant innkeeper at the Bee and Barb; sells inn goods and rents a room; quest giver",
+  "sells": "inn goods, at any hour (its buy list is the one innkeepers and food sellers use). The exact stock isn't resolved in the extracts.",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Sealing the Deal",
+    "how": "gives it: get 3 flawless amethysts for Talen-Jei"
+   },
+   {
+    "quest": "Taking Care of Business",
+    "how": "a step in it: \"(Optional) Use Talen-Jei to get to Keerava\""
+   },
+   {
+    "quest": "Three Wise Men",
+    "how": "a step in it: get food from Talen-Jei for the orphanage"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "quests",
+    "why": "He fills aliases in eight more quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; the class doesn't resolve to a name or skills here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013373",
+   "RDSScene05TalenJeiStart Skyrim.esm:05CE2E (Skyrim.esm:05CE25 not completed)",
+   "RiftenTalenEatDinner18x1 Skyrim.esm:0443B2",
+   "RiftenTalenEatLunch12x1 Skyrim.esm:0443B1",
+   "RiftenTalenSleep0x8 Skyrim.esm:0443B5",
+   "RiftenTalenAssistantInnkeeper0x0 Skyrim.esm:06D642 (HasKeyword Skyrim.esm:013F09 == 0)",
+   "vendor buy list 0x0914F0, container 0x065C3A, hours 0-24",
+   "JobInnkeeperFaction",
+   "JobRentRoomFaction",
+   "ServicesRiftenBeeandBarbTalenJeiExtra",
+   "FreeformRiften06 Skyrim.esm:053318",
+   "TG01 Skyrim.esm:01F326",
+   "Sat_Orphanage TheGiftofSaturalia.esp:0008AA",
+   "class Skyrim.esm:013256"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013369",
+  "name": "Marise Aravel",
+  "race": "Dunmer",
+  "sex": "female",
+  "firstMeet": "At her stall in the Riften market.",
+  "day": [
+   {
+    "from": "5 am",
+    "for": "1 hour",
+    "where": "Marise Aravel's House, Riften",
+    "doing": "breakfast"
+   },
+   {
+    "from": "8 am",
+    "for": "12 hours",
+    "where": "her stall in the market, Riften",
+    "doing": "selling (she trades 7 am to 8 pm)"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "Marise Aravel's House, Riften",
+    "doing": "supper"
+   },
+   {
+    "from": "8 pm",
+    "for": "3 hours",
+    "where": "near her house, Riften",
+    "doing": "after hours"
+   },
+   {
+    "from": "11 pm",
+    "for": "6 hours",
+    "where": "Marise Aravel's House, Riften",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "street vendor in the Riften market; quest giver",
+  "sells": "market-stall goods, 7 am to 8 pm, within reach of her stall; its buy list is the one innkeepers and food sellers use. The exact stock isn't resolved in the extracts.",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Ice Cold",
+    "how": "gives it: find 5 ice wraith teeth for Marise"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "Her stall package sits below supper and carries a rain check and conditions the extracts don't decode; as read, it may only run in some weather. Her 8 pm after-hours package is also gated on undecoded conditions."
+   },
+   {
+    "field": "quests",
+    "why": "She fills aliases in eight more quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; the class doesn't resolve to a name or skills here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013369",
+   "RiftenMariseSleep23x6 Skyrim.esm:06B9A8",
+   "AIORiftMariseAfterHours AI Overhaul.esp:119B5B",
+   "RiftenMariseEatDinner18x1 Skyrim.esm:06B9A5",
+   "RiftenMariseEatBreakfast5x1 Skyrim.esm:06B9A6",
+   "RiftenMariseVendorPackage Skyrim.esm:030277 (IsRaining == 1, fn612)",
+   "vendor buy list 0x0914F0, container 0x0A31BA, hours 7-20, radius 512",
+   "JobStreetVendorFaction",
+   "ServicesRiftenPlazaMarise",
+   "FreeformRiften07 Skyrim.esm:05331A",
+   "class Skyrim.esm:013256"
+  ]
+ }
+]
