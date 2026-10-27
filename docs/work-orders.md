@@ -5065,7 +5065,7 @@ Dave: "For followers, we have no information on how any of them join you." The r
 - **Screenshots** (in `test-results/`): `wo159-home-1440.png`, `wo159-home-390.png`, `wo159-palette-searching-1440.png`, `wo159-back-1440.png`, `wo159-playthrough-empty-1440.png`, `wo159-lydia-1440.png`, `wo159-lydia-390.png`, `wo159-jaree-ra-1440.png`, `wo159-lucan-1440.png`.
 
 ## WO-158  Pictures from the game: a test of 5 places and 5 people (PC, 27 Oct 2026)
-Status: blocked (PC; Part 1k: travel and frame are two files now, the teleport was overwriting the framing; needs Dave's run again -- see "How Dave runs it" below)
+Status: blocked (PC; Part 1l: the numbers read off Dave's own framing, 2,500 back and 390 up, tilt derived; needs his look at the result, then the other four -- see "How Dave runs it" below)
 
 **Why.** Quest, person and place pages have a plain title because there's no picture of most places and people. Dave wants a systematic way to get in-game pictures of every location and person (backlog, "Pictures of every place and person"). This order is only a test: 10 pictures, to judge whether it works and how they look, before anything runs at scale or reaches the site.
 
@@ -5172,6 +5172,14 @@ Part 1j's `-142.5` changed nothing either -- "literally nothing changed." Three 
 - **Checks.** `test_a_teleport_never_shares_a_file_with_the_framing`: a travel file has exactly one `moveto`, as its last line, and nothing positional; a frame file is positional only, no `moveto` or `coc`; the photo room's setup ends on its `coc`. 377 gamedata tests pass.
 - **Still open, and now actually testable:** `HEIGHT`/`DISTANCE`/`TILT_DOWN` have never been seen on screen -- every shot so far was from the marker, on the ground. Dave's first framed look at Broken Oar Grotto is the first real data for Bob's "pick the numbers" box.
 
+### Part 1l. The first framed shot, and Dave's own framing read off the console (Dave, 27 Oct)
+The two-step worked: floating, facing the grotto. But 300 up and 700 back from the door put the camera *inside* the cave mouth -- the door this reader aims from is the load door, inside the tunnel, 235 units downhill from the marker, so "above the door" was barely above the beach. Dave then framed it by hand (his second screenshot: high over the beach on the sea side, the mouth mid-frame, boats and the camp around it -- exactly the order's own "above and behind the entrance, so the place sits in the middle with a little ground round it") and read his spot off the console: `getpos` x -66239.31, y 142940.16, z -13256.03; `getangle` x 17.86, z 218.02.
+- [x] **The numbers, measured, not guessed (Bob's Part 1b item 2, done the way it asked -- picked on Broken Oar Grotto):** his spot is within 120 units of the marker-to-door line, **2,493 back from the door** along it, **387 above the marker** (622 above the door), facing **218.02** -- half a degree off the computed bearing, which settles the direction maths for good. `DISTANCE = 2500`, `HEIGHT = 390`, and `HEIGHT` is now measured above the *higher* of the marker's and the door's own ground, so a door inside a hill can't pull the camera down with it.
+- [x] **The tilt is derived, not a number.** `pitch_to` aims the camera at the door from wherever it lands (14 degrees here; Dave's own 17.9 looked a touch below, at the mouth), so the entrance sits mid-frame by construction. The fixed 35 degrees is gone -- it only ever suited one height.
+- [x] **Riverwood gets its own height** (`VILLAGE_HEIGHT = 1500`, 60 degrees down, from above its centre marker), since 390 up is a cave's framing, not a village's. Not yet seen live.
+- **Checks.** The Broken Oar Grotto test now pins the computed camera to within 120 units of Dave's own spot, 5 units of his height, half a degree of 14 down; a test for height-from-the-higher-ground, a test for `pitch_to` (1000 up, 1000 back = 45 degrees). 379 gamedata tests pass.
+- **`getangle z` reports 218.02** -- the engine reads angles back in 0..360 even though (Part 1k's best explanation) `setangle z` only took them in -180..180. Noted; the normalisation stays.
+
 ### How Dave runs it
 0. **Switch to first-person view** (Part 1f) and stay there until the shoot is done -- there's no console command to force it, so this one's by hand.
 1. Load (or make) the throwaway save -- never Kyria's, Azrem's or any save he plays ("Before the run" item 1, still his own to do).
@@ -5190,6 +5198,7 @@ Part 1j's `-142.5` changed nothing either -- "literally nothing changed." Three 
 - [ ] The 10 pictures, staged for Bob to send to Dave.
 - [ ] How long each took (travel, load, shot), what failed (a person who wouldn't come, a place that loaded dark, an NPC walking into frame, the HUD showing), and what the program needed by hand from Dave.
 - [ ] An estimate for the full run (566 places, about 1,000 people) from the test's times.
+  - **Dave, 27 Oct, mid-test: "It would take me 100s of hours to do this for every location and every character."** Right, by hand -- and by hand was never the plan past this test. What the test has been doing is calibrating one place so every other place frames itself from its own records (marker, door, ground); nothing is typed per place. The manual steps left (two `bat` files, close the console, Print Screen) exist only because a bat file can't wait for a load or press a key. That's the helper "Before the run" item 2 already names (AutoHotkey or Python on the PC): it types each command into the console, waits for the load, presses Print Screen, moves on. At 10 to 15 seconds a place, 566 places is two to three hours of the PC running by itself; the people about the same. What it can't do is fix a place whose automatic framing is bad (a door inside a hill, as this grotto's is; a village with no door): this test's job is to find out what fraction that is, and those get a hand retake. First estimate, to be replaced by the test's own timings: a few hours unattended, plus hand retakes for the fraction the five-place test shows. The driver itself is this reader's next build once the five places are confirmed.
 - [ ] A note of the credit line the pages would carry ("Pictures from LoreRim 5.0.4.8"), for Dave to confirm with the LoreRim team's wording.
 
 ## WO-157  The site's structure and its global patterns (Mac, 27 Oct 2026)

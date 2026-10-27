@@ -1,6 +1,6 @@
 ; Bleak Falls Barrow -- of four doors, the one nearest the marker; the other three are side/interior exits (frame; run after the place has loaded)
-player.setpos x -2412.4
-player.setpos y -43034.9
-player.setpos z 6380.6
-player.setangle x 35.0
+player.setpos x -790.2
+player.setpos y -42254.9
+player.setpos z 6470.6
+player.setangle x 8.9
 player.setangle z -115.7

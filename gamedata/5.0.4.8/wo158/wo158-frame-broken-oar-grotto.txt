@@ -1,6 +1,6 @@
 ; Broken Oar Grotto -- Skyrim.esm's own map marker, no EditorID of its own (frame; run after the place has loaded)
-player.setpos x -67242.0
-player.setpos y 141448.6
-player.setpos z -13578.0
-player.setangle x 35.0
+player.setpos x -66145.6
+player.setpos y 142876.1
+player.setpos z -13253.3
+player.setangle x 14.0
 player.setangle z -142.5

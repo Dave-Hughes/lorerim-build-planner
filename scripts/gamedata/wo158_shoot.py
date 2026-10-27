@@ -61,9 +61,13 @@ before it: Part 1i added 180 on a misreading (that faced Dave out to sea), and b
 (217.5) seems never to have been applied at all. `yaw_to` now gives the plain bearing in the -180..180 range the
 console takes; see its own docstring for what's confirmed and what's still this reader's best explanation.
 
-**Height, distance and field of view: the three numbers Bob asked for, here at the top, tune after Dave's first
-look at Broken Oar Grotto.** `HEIGHT`/`DISTANCE`/`TILT_DOWN` for the five places; `PEOPLE_DISTANCE`/`PEOPLE_HEIGHT`
-for the photo room. `FOV` for both (`fov <n>`, which the console does take as a plain command).
+**Height, distance and field of view: the numbers Bob asked for, here at the top, set from Dave's own hand-framed
+shot of Broken Oar Grotto (Part 1l).** `HEIGHT`/`DISTANCE` for the five places (the tilt is derived from them by
+`pitch_to`, so the entrance sits mid-frame by construction rather than by a fixed 35 degrees that only suited
+one height); `PEOPLE_DISTANCE`/`PEOPLE_HEIGHT` for the photo room. `FOV` for both (`fov <n>`, which the console
+does take as a plain command). `HEIGHT` is measured above the higher of the marker's and the door's own ground:
+Broken Oar Grotto's door is 235 units downhill from its marker, inside the hill, and "300 above the door" was
+the first framed shot's whole problem -- barely above the beach, inside the mouth.
 
 **The photo room has no entrance to measure from, so it's built the other way round:** the player goes to a
 fixed, round-number spot in the room first (`player.setpos 0 0 0`, right after `coc`, not trusted to wherever the
@@ -106,11 +110,17 @@ LORERIM = os.environ.get("LORERIM_ROOT") or r"C:\LoreRim"
 CLEAR_WEATHER = "SClearSkySN"  # NAT-ENB.esp, the winning "clear" weather in this load order; see module docstring
 TIME_FROZEN = "0.0001"  # never "0" -- a true zero can hang a heavily scripted install; see module docstring
 
-# Bob's own three numbers (Part 1b item 2), in one place to change after Dave's first look at Broken Oar Grotto.
-HEIGHT = 300.0       # units above the entrance door the camera sits at
-DISTANCE = 700.0     # units back from the entrance door, along the line from the map marker through the door
-TILT_DOWN = 35.0     # degrees, pitch (positive pitches the camera down, Skyrim's own `setangle x` convention)
+# Bob's own numbers (Part 1b item 2), in one place to change. Part 1l: read off Dave's own hand-framed shot of
+# Broken Oar Grotto, from the console (`player.getpos`/`getangle`: x -66239.31, y 142940.16, z -13256.03, pitch
+# 17.86, yaw 218.02). That spot is within 120 units of the marker-to-door line, 2,493 units back from the door
+# along it, 387 above the marker (622 above the door, which sits downhill inside the hill), facing 218 -- half a
+# degree off the computed bearing. The first guess (300 up, 700 back) had put the camera inside the cave mouth.
+HEIGHT = 390.0       # units above the higher of the marker's and the door's own ground
+DISTANCE = 2500.0    # units back from the entrance door, along the line from the map marker through the door
+VILLAGE_HEIGHT = 1500.0  # a village (Riverwood) is shot from above its own centre: this far up, 60 degrees down. Not yet seen live.
 FOV = 70.0           # degrees, `fov <n>`
+# No fixed tilt: the pitch is derived so the door sits in the middle of the frame (14 degrees here; Dave's own
+# 17.9 looked a touch below it, at the mouth) -- see pitch_to.
 
 PEOPLE_DISTANCE = 150.0  # units the camera stands back from the person's own mark in the photo room
 PEOPLE_HEIGHT = 65.0     # units up from the floor -- roughly head height on a standing adult race
@@ -184,20 +194,30 @@ def entrance_camera(marker, entrance):
     d = math.hypot(dx, dy) or 1.0
     ux, uy = dx / d, dy / d  # unit vector, marker -> entrance (the approach direction)
     cx, cy = entrance[0] - ux * DISTANCE, entrance[1] - uy * DISTANCE
-    cz = entrance[2] + HEIGHT
+    # Part 1l: the door can sit downhill, inside the hill (Broken Oar Grotto's is 235 units below its own
+    # marker), so "HEIGHT above the door" was barely above the beach. Measure from the higher of the two.
+    cz = max(marker[2], entrance[2]) + HEIGHT
     yaw = yaw_to((cx, cy), (entrance[0], entrance[1]))
-    return cx, cy, cz, yaw
+    return cx, cy, cz, yaw, pitch_to((cx, cy, cz), entrance)
+
+
+def pitch_to(camera, target):
+    """The `player.setangle x` value (degrees down from level) that puts `target` in the middle of the frame
+    from `camera` -- derived from the geometry, so HEIGHT and DISTANCE are the only numbers to tune (Part 1l;
+    the fixed 35 degrees before it was a guess that only ever happened to suit one height)."""
+    horizontal = math.hypot(target[0] - camera[0], target[1] - camera[1]) or 1.0
+    return math.degrees(math.atan2(camera[2] - target[2], horizontal))
 
 
 def door_camera(door_pos, door_yaw):
-    """Camera (x, y, z, yaw): back from a door along its own facing (not a marker-to-door vector -- there's no
-    marker to measure from), raised, facing back at the door."""
+    """Camera (x, y, z, yaw, pitch): back from a door along its own facing (not a marker-to-door vector --
+    there's no marker to measure from), raised, facing back and down at the door."""
     rad = math.radians(door_yaw)
     ux, uy = math.sin(rad), math.cos(rad)  # the direction the door's own rotation points, same convention as yaw_to
     cx, cy = door_pos[0] + ux * DISTANCE, door_pos[1] + uy * DISTANCE
     cz = door_pos[2] + HEIGHT
     yaw = yaw_to((cx, cy), (door_pos[0], door_pos[1]))
-    return cx, cy, cz, yaw
+    return cx, cy, cz, yaw, pitch_to((cx, cy, cz), door_pos)
 
 
 def start_lines():
@@ -216,9 +236,9 @@ def hud_toggle_lines():
     return ["tm"]
 
 
-def camera_setpos_lines(cx, cy, cz, yaw):
+def camera_setpos_lines(cx, cy, cz, yaw, pitch):
     return [f"player.setpos x {cx:.1f}", f"player.setpos y {cy:.1f}", f"player.setpos z {cz:.1f}",
-            f"player.setangle x {TILT_DOWN}", f"player.setangle z {yaw:.1f}"]
+            f"player.setangle x {pitch:.1f}", f"player.setangle z {yaw:.1f}"]
 
 
 def travel_lines(target):
@@ -238,10 +258,10 @@ def frame_lines(marker=None, entrance=None):
     if marker and entrance:
         return camera_setpos_lines(*entrance_camera(marker, entrance))
     if marker:
-        # Riverwood: no single entrance to aim at -- well above its own centre marker, tilted further down. The
-        # player is already standing on the marker after the travel step, so only z and the tilt change.
+        # Riverwood: no single entrance to aim at -- VILLAGE_HEIGHT above its own centre marker, 60 degrees down.
+        # The player is already standing on the marker after the travel step, so only z and the tilt change.
         # `setpos` takes an absolute coordinate, so the marker's own z plus the offset is computed here.
-        return [f"player.setpos z {marker[2] + HEIGHT * 2:.1f}", "player.setangle x 60"]
+        return [f"player.setpos z {marker[2] + VILLAGE_HEIGHT:.1f}", "player.setangle x 60"]
     return []
 
 

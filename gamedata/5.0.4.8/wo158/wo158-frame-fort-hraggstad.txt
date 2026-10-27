@@ -1,6 +1,6 @@
 ; Fort Hraggstad -- of three gates, the one nearest the marker (frame; run after the place has loaded)
-player.setpos x -112376.2
-player.setpos y 114139.6
-player.setpos z -5038.6
-player.setangle x 35.0
+player.setpos x -110879.2
+player.setpos y 113140.2
+player.setpos z -4948.6
+player.setangle x 8.9
 player.setangle z -56.3

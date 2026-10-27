@@ -137,24 +137,43 @@ class ShapeTest(unittest.TestCase):
         # never past the entrance itself -- raised, facing north (plain bearing 0) back at the entrance.
         marker = (0.0, 0.0, 0.0)
         entrance = (0.0, 100.0, 0.0)
-        cx, cy, cz, yaw = wo.entrance_camera(marker, entrance)
+        cx, cy, cz, yaw, pitch = wo.entrance_camera(marker, entrance)
         self.assertAlmostEqual(cx, 0.0, places=3)
         self.assertLess(cy, 100.0)  # south of the entrance, i.e. on the approach side, not past it
         self.assertAlmostEqual(cz, wo.HEIGHT, places=3)
         self.assertAlmostEqual(yaw, 0.0)  # facing north, at the entrance
+        self.assertGreater(pitch, 0.0)  # looking down at it, never up or level
+        self.assertLess(pitch, 90.0)
+
+    def test_height_is_measured_from_the_higher_of_marker_and_door(self):
+        # Part 1l: Broken Oar Grotto's door is 235 units downhill from its marker, inside the hill -- HEIGHT
+        # above the door put the camera inside the mouth. Above the higher ground point, or it isn't "above".
+        cx, cy, cz, yaw, pitch = wo.entrance_camera((0.0, 0.0, 500.0), (0.0, 100.0, 200.0))
+        self.assertAlmostEqual(cz, 500.0 + wo.HEIGHT, places=3)
+        cx, cy, cz, yaw, pitch = wo.entrance_camera((0.0, 0.0, 200.0), (0.0, 100.0, 500.0))
+        self.assertAlmostEqual(cz, 500.0 + wo.HEIGHT, places=3)
+
+    def test_pitch_puts_the_target_mid_frame(self):
+        # A camera 1000 up and 1000 back from a target on the ground must look down exactly 45 degrees.
+        self.assertAlmostEqual(wo.pitch_to((0.0, 0.0, 1000.0), (0.0, 1000.0, 0.0)), 45.0, places=3)
+        self.assertAlmostEqual(wo.pitch_to((0.0, 0.0, 0.0), (0.0, 1000.0, 0.0)), 0.0, places=3)
 
     def test_broken_oar_grotto_faces_south_west_as_the_screenshots_own_compass_showed(self):
         # The one shot checked live against a real compass (Part 1j): the camera stands NE of the entrance;
         # facing it is SSW, a plain bearing of 217.5, which the console must be handed as -142.5.
         name, slug, target, note, marker, entrance = next(p for p in wo.PLACES if p[1] == "broken-oar-grotto")
-        cx, cy, cz, yaw = wo.entrance_camera(marker, entrance)
+        cx, cy, cz, yaw, pitch = wo.entrance_camera(marker, entrance)
         self.assertAlmostEqual(yaw, -142.5, places=1)
         self.assertNotAlmostEqual(yaw, 37.5, places=1)  # Part 1i's value: the sea, not the grotto
+        # Part 1l: Dave's own hand-framed spot, read off the console -- the camera lands within 120 units of it.
+        self.assertLess(math.hypot(cx - (-66239.31), cy - 142940.16), 120.0)
+        self.assertAlmostEqual(cz, -13256.03, delta=5.0)
+        self.assertAlmostEqual(pitch, 14.0, delta=0.5)
 
     def test_entrance_camera_never_divides_by_zero_when_marker_and_entrance_coincide(self):
         p = (10.0, 20.0, 30.0)
-        cx, cy, cz, yaw = wo.entrance_camera(p, p)
-        self.assertTrue(all(isinstance(v, float) for v in (cx, cy, cz, yaw)))
+        cx, cy, cz, yaw, pitch = wo.entrance_camera(p, p)
+        self.assertTrue(all(isinstance(v, float) for v in (cx, cy, cz, yaw, pitch)))
 
 
 if __name__ == "__main__":
