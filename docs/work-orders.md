@@ -5063,7 +5063,7 @@ The same method as WO-153, for people, against `docs/data/people.md`.
 - [ ] Mac wires them in as WO-154 does for quests (a Part on this order, when the reads land).
 
 ## WO-154  Quest pages, line pages and the connector, from the quest reads (Mac, 23 Oct 2026)
-Status: for Bob
+Status: queued (Mac; Part 4 first: Dave's review, 27 Oct)
 
 ### Part 1c. Every batch checked: the rebuild breaks six tests (Bob, 26 Oct)
 All 85 batches are checked now (see `docs/pause-2026-10-23.md`). A cloud session ran `python3 scripts/gamedata/build.py` on staging at `3ba16cd`: typecheck and lint pass, `npm test` fails 6, so the regenerated `quests.json` was **not** committed. Fix the code, not the tests, unless a test asserts something the checked reads now settle differently (say which, and why):
@@ -5120,11 +5120,38 @@ Nav and search:
 ### Part 3. "I can confirm this is accurate" (after Part 2)
 - [x] Signed-in (Discord) players can confirm a quest, person or place page. A modal says it's recorded, with Close and Undo (board `QuestConfirm`). The page shows how many confirmed and their names. Signed out, the button reads "Sign in to confirm". New table through `npm run db:generate` and committed SQL; nothing destructive.
 
-### Part 4. Dave's review of Parts 2 and 3 (collecting, 27 Oct; not queued yet)
-Bob's notes so far; Dave is adding his. Don't take this part until its Status says so.
+### Part 4. Dave's review of Parts 2 and 3 (27 Oct)
+Dave's notes from reviewing staging, and Bob's. Feedback part: take it first.
 - [ ] **A link inside a place name.** Lucan's start reads "in the **Riverwood** Trader, Riverwood" with "Riverwood" linked to the town: the linker matched the part of "Riverwood Trader" it knew. Link whole names only; a place the index doesn't have (town interiors) is plain text, never a link on part of its name.
 - [ ] **The person summary reads like a template.** "An Imperial in Riverwood placed in Riverwood Trader. They give 2 quests." No "placed in" (that's the editor's cell, not where you meet him), and "he"/"she" from the record's sex, never "they" for one person. Until the people reads land, say only what's known: "An Imperial in Riverwood. He gives two quests."
 - [ ] **Hours on the quest page.** How to start still carries the read's hours ("he runs the counter from 7 am for 13 hours ... from 8 pm until midnight he's at the Sleeping Giant Inn"). Dave's rule: the quest page names the person and the one place to meet them for this quest; the hours go on the person page. Until the people reads land, show the place the read names and leave the hours out; the person page keeps "Not known yet" (WO-155 fills it).
+
+Privacy and voice:
+- [ ] **No player's name or notes on a page, ever.** Lights Out! says "Dave reviewed"; some pages carry notes written for Kyria. A player report in `overrides.json` keeps its `_source` for the record, but a page and the door show only "a player's report" (or the confirmations, which use the Discord names people chose to show). Remove every Kyria-specific note from the data the pages and the door use. Grep the built data and the rendered pages for "Dave" and "Kyria" and list what you removed.
+
+Search:
+- [ ] **Results as you type.** The quest search shows suggested results under the box while you type, before Enter.
+- [ ] **A real results page.** Today it's the results stacked above the normal Quests page. Give it its own page: results grouped (quests, people, places), each with its one-line why-it-matched.
+- [ ] **A command palette for the whole site** (Cmd/Ctrl+K, and a search button in the header): one box that finds anything, quests, people, places, builds, guide sections, with keyboard navigation. Within the design rules (square corners, no glows).
+
+Header:
+- [ ] The app's name in the header is **LoreRim Planner** (it plans more than characters now), which frees room for the menu.
+
+Quests page:
+- [ ] **A huge box breaks "Everything else, by place".** Fix the layout; screenshot at 1440 and 390.
+
+Quest page:
+- [ ] **The Book of Love: "Every way takes these steps" then two more steps.** The shared steps look complete, then two more appear under them that read as unfinished. Check the ways data against the render: shared steps once, each ending's own steps under it, and nothing that looks like a stray list.
+- [ ] **Vague places in step or place text** ("wherever the long-dead lovers are"). Where a read doesn't know a place, the page says "Where: not known yet" plainly. (The PC's item-location lookup fills many of these later.)
+- [ ] **A mod named anywhere links to its Nexus page in a new tab** (What it opens names "Fastred's Choice" with no link). Same rule as the title box.
+- [ ] **UESP explained.** In How sure we are, "UESP" links to the quest's UESP page (the `url` in `quest_truth.json`) and reads "UESP (the Elder Scrolls wiki)" the first time.
+- [ ] **Where it takes you: say what the danger column is.** A visible "Danger" label on the column. When no place on the quest has danger data, drop the column and say once "How dangerous these places are isn't known yet."
+- [ ] **"This was wrong" opens a modal**, not an inline form on the page.
+
+People and Places landing pages (today a long list):
+- [ ] **Places:** keep the grouping by hold, but as compact sections (the hold, how many places, a few notable ones, "all N"), not a long list under each. Filter by type from the records' location types (Inns, Caves, Forts, Ruins, Mines and so on), with "all inns" etc. as its own view. Search at the top.
+- [ ] **People:** group by what they are to a player, from the game's factions, not categories we invent (design rule 10): Followers, Spouses, Merchants, Trainers, Innkeepers, Quest givers; filter by town or hold; search at the top. Bob's suggestion; Dave isn't sure how people should be organised, so show it with screenshots and he'll judge.
+- [ ] Screenshots of every page touched, 1440 and 390.
 
 **Jeff's notes, Part 2 and 3 (Mac, 26 Oct).** Built on a shared kit (`src/components/pages/`: title box, section head, gold rewards, "How sure we are", the 1440/390 layout from the boards). Screenshots: `npx playwright test e2e/wo154.spec.ts` writes `test-results/wo154-<page>-1440.png` and `-390.png` for Lights Out!, The Golden Claw, the Thieves Guild line, the main quest's line, Mjoll the Lioness and Broken Oar Grotto, with the older ones. Typecheck, lint (the one warning, `wo129.test.ts`, was there before), unit tests, 348 gamedata tests, the build and the whole e2e suite pass; one new table, `page_confirmation` (`drizzle/0029_*.sql`, additive only), applied to the dev database.
 - **Data (Python, `scripts/gamedata/quest_reads.py`, wired in `build.py`):** each read quest carries its ways (`read.ways`, 228 quests; the game's `<Alias>` and `<Global>` tags filled the way objectives are), each of the 50 read lines its line read (`line.read`), each quest the mods that changed it (`changedBy`). `get_quest` returns `ways` (and `stepsEveryWayTakes` for an "endings" quest) and `changedBy`; nothing generated was renamed. The main quest's line is "The main quest" (in `questlines.json`, not in the generated file).
