@@ -7,7 +7,8 @@ import { ConfirmButton } from "@/components/pages/confirm-button";
 import { SignInButton } from "@/components/site-header";
 import { confirmationsOf } from "@/lib/quests/confirmations";
 import { PreviewLink } from "@/components/pages/preview-link";
-import { Gold, InformationConfidence, Icon, PageTop, Panel, Section, TitleBox } from "@/components/pages/page-kit";
+import { InformationConfidence, Icon, PageTop, Section, TitleBox } from "@/components/pages/page-kit";
+import { LineToc } from "@/components/quests/line-parts";
 import { personHref } from "@/lib/people/data";
 import { questsData } from "@/lib/quests/data";
 import { hasLevels, placeBySlug, placeHref, placeType, rangeOf } from "@/lib/places/data";
@@ -87,12 +88,13 @@ export default async function PlacePage({ params }: { params: Params }) {
   const kind = /^(Nordic|Dwemer|Imperial|Daedric|Orc|Orsimer)\b/.test(type) ? type : `${type.charAt(0).toLowerCase()}${type.slice(1)}`;
   const near = town ? nearWords(town) : null;
   const lede = `${/^[AEIOU]/i.test(type) ? "An" : "A"} ${kind}${near ? ` ${near}` : place.hold ? ` in ${place.hold}` : ""}.${boss ? ` Its boss is ${boss.name}.` : ""}`.replace(/\s+/g, " ");
+  const lived = placeKind(place) !== "dangerous";
   const ic = (
     <InformationConfidence
       id="sure"
       line="Counted from the game files."
       sources={[
-        { mark: "yes", name: "LoreRim's game files", note: "Who lives here, the boss, books, crafting and XP, read from the records" },
+        { mark: "yes", name: "LoreRim's game files", note: lived ? "Who lives here, what they sell and teach, books, crafting and XP, read from the records" : "Who lives here, the boss, books, crafting and XP, read from the records" },
         confirmed.names.length
           ? { mark: "yes", name: "Players", note: `Confirmed by ${confirmed.names.length} ${confirmed.names.length === 1 ? "player" : "players"}`, names: confirmed.names.map((n) => <span key={n}>{n}</span>) }
           : { mark: "no", name: "Players", note: "No reports. No one has confirmed this page yet." },
@@ -165,7 +167,7 @@ export default async function PlacePage({ params }: { params: Params }) {
 
       <div className={`page ${styles.cols}`} style={{ paddingTop: 52 }}>
         <div className={styles.body}>
-          <Section id="danger" icon="chapter-death" title="Danger">
+          <section id="danger" className={styles.sec} aria-label="Danger">
             {levels ? (
               <>
                 <div className={styles.gauge} role="img" aria-label={`${foes} from level ${levels[0]} to ${levels[1]}${boss?.range ? `; the boss from level ${boss.range[0]} to ${boss.range[1]}` : ""}, on a scale of 1 to 50`}>
@@ -220,7 +222,7 @@ export default async function PlacePage({ params }: { params: Params }) {
                 <span>Traps</span>
               </div>
             )}
-          </Section>
+          </section>
 
           {hasWorth && (
             <Section id="worth" icon="mark-skill-book" title="Worth going for">
@@ -228,7 +230,7 @@ export default async function PlacePage({ params }: { params: Params }) {
                 <div key={b} className={styles.worth}>
                   <Icon name="mark-skill-book" />
                   <b>{b.includes(": ") ? b.split(": ")[1] : b}</b>
-                  <small>{b.includes(": ") ? `A ${b.split(": ")[0]} skill book` : "A skill book"}</small>
+                  <small>{b.includes(": ") ? `${/^[aeiou]/i.test(b) ? "An" : "A"} ${b.split(": ")[0]} skill book` : "A skill book"}</small>
                 </div>
               ))}
               {worth?.bossChest && (
@@ -262,47 +264,14 @@ export default async function PlacePage({ params }: { params: Params }) {
         </div>
 
         <aside className={styles.side}>
-          {(place.discoveryXp || place.clearXp) && (
-            <Gold id="xp">
-              {place.discoveryXp ? (
-                <span className={styles.rw}>
-                  <span>{place.discoveryXp} XP</span>
-                  <small>For finding it</small>
-                </span>
-              ) : null}
-              {place.clearXp ? (
-                <span className={styles.rw}>
-                  <span>{place.clearXp} XP</span>
-                  <small>For clearing it</small>
-                </span>
-              ) : null}
-            </Gold>
-          )}
-          <Panel id="facts" title="Good to know">
-            <div className={styles.facts}>
-              {place.hold && (
-                <span>
-                  <b>Hold</b>
-                  {place.hold}
-                </span>
-              )}
-              {town && (
-                <span>
-                  <b>Nearest town</b>
-                  <span>
-                    {town.town}
-                    {town.walk ? `, ${town.walk}` : ""}
-                  </span>
-                </span>
-              )}
-              {place.respawns && (
-                <span>
-                  <b>Comes back</b>
-                  {respawnWords(place.respawns)}
-                </span>
-              )}
-            </div>
-          </Panel>
+          <LineToc
+            items={[
+              ...(hasWorth ? [{ id: "worth", label: "Worth going for", icon: "mark-skill-book" }] : []),
+              ...(quests.length ? [{ id: "quests", label: "Quests that bring you here", icon: "tab-play" }] : []),
+              ...(place.pointers?.length ? [{ id: "said", label: "What people say about it", icon: "speech" }] : []),
+              { id: "sure", label: "Information Confidence", icon: "quest-sure" },
+            ]}
+          />
         </aside>
       </div>
 

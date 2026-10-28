@@ -6,7 +6,7 @@ import { PageTop, TitleBox } from "@/components/pages/page-kit";
 import { LineToc } from "@/components/quests/line-parts";
 import { linkable } from "@/lib/pages/names";
 import { personHref } from "@/lib/people/data";
-import { placeHref, placeType, type Place } from "@/lib/places/data";
+import { placeHref, placeType, rangeOf, type Place } from "@/lib/places/data";
 import { closeBy, peopleAt, type PlacePerson } from "@/lib/places/people";
 import type { PlaceKind } from "@/lib/places/kind";
 import { saidAbout } from "@/lib/places/said";
@@ -21,6 +21,8 @@ const ICON = { sells: "quest-rewards", trains: "tab-levels", follower: "quest-pe
 
 /** "Level 6 to 20", or "Level 14 and up" when the records give no top (a leveled creature with no ceiling). */
 export const levelRange = ([lo, hi]: [number, number]) => (hi >= 100 ? `Level ${lo} and up` : lo === hi ? `Level ${lo}` : `Level ${lo} to ${hi}`);
+
+const PLURAL: Record<string, string> = { Bandit: "Bandits", Draugr: "Draugr", Skeleton: "Skeletons", Falmer: "Falmer", Forsworn: "Forsworn", Giant: "Giants", Warlock: "Warlocks", Spider: "Spiders", Wolf: "Wolves", Vampire: "Vampires", Troll: "Trolls" };
 
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -100,7 +102,7 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
   const inside = kind === "inside";
   const { houses, total } = peopleAt(place);
   const everyone = houses.flatMap((h) => h.people);
-  const keepers = everyone.filter((p) => p.keeper);
+  const keepers = everyone.filter((p) => p.keeper).sort((a, b) => b.keeperRank - a.keeperRank);
   const sellers = everyone.filter((p) => p.sells);
   const trainers = everyone.filter((p) => p.trains);
   const followers = everyone.filter((p) => p.follower);
@@ -164,8 +166,13 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
             "quest-rewards",
             l.cGold,
             "Shops and beds",
-            list([...new Set(sellers.map((s) => cap(s.sells!)).filter((x) => x !== "Goods"))].slice(0, 2).concat(keepers.length ? ["an inn with rooms"] : [])) || "A shop",
-            nameLinks([...keepers, ...sellers.filter((s) => !s.keeper)]),
+            list(
+              (() => {
+                const kinds = [...new Set(sellers.map((s) => cap(s.sells!)))];
+                return (kinds.length > 1 ? kinds.filter((x) => x !== "Goods") : kinds).concat(keepers.length ? ["an inn with rooms"] : []);
+              })(),
+            ) || "A shop",
+            nameLinks([...keepers, ...sellers.filter((s) => !s.keeper)], 5),
             true,
           ),
         ]
@@ -184,6 +191,9 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
             true,
           ),
         ]
+      : []),
+    ...(!inside && place.actors?.livesHere && place.actors.hostile !== false
+      ? [cell("path", "tab-levels", l.cRed, "On the way up", `${PLURAL[place.actors.livesHere] ?? `${place.actors.livesHere}s`} on the path up`, place.actors.floor !== undefined || place.actors.atLevel?.length ? levelRange(rangeOf(place.actors)).toLowerCase() : null, true)]
       : []),
     ...(crafting.length && inside ? [cell("make", "smithing", l.cGold, "What you can make", cap(crafting.join(", ").replace(/, ([^,]*)$/, " and $1").replace(/\ban? /g, "")), null, true)] : []),
     ...(place.discoveryXp ? [cell("xp", "quest-rewards", l.cGold, "Finding it", `${place.discoveryXp} XP`, "For finding it")] : []),

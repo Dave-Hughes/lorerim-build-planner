@@ -6,7 +6,7 @@ import { questHref } from "./slugs";
 import { storyOfLine } from "./stories-data";
 import type { Story } from "./story";
 import { linkNames, type Piece } from "@/lib/pages/link-names";
-import { linkable } from "@/lib/pages/names";
+import { linkable, placeNames } from "@/lib/pages/names";
 import type { Quest, QuestLine } from "./types";
 import { startChecked } from "./types";
 import { andList } from "./words";
@@ -102,23 +102,28 @@ function jobsPay(jobs: LineQuest[]): string | null {
   return lo === hi ? `${lo.toLocaleString("en-US")} each` : `${lo.toLocaleString("en-US")} to ${hi.toLocaleString("en-US")} each`;
 }
 
-/** The paying quests that are in the story's run (not the jobs along the way). */
-const storyOnly = (payers: Quest[], run: LineQuest[]) => payers.filter((q) => run.some((r) => r.name === q.name));
 
 /** A quest's words with the people and places they name as links (WO-160 Part 5), so the page links them where they are written. */
 const withParts = (q: LineQuest): LineQuest => ({ ...q, ...(q.task ? { taskParts: linkNames(q.task, linkable()) } : {}), ...(q.note ? { noteParts: linkNames(q.note, linkable()) } : {}) });
 
+/** Where a line takes you: each place once, by its name ("Raven Rock and the Temple of Miraak" is two; "the stones around Raven Rock" is Raven Rock). */
 function uniquePlaces(places: (string | null | undefined)[], limit = 6): string | null {
-  const seen = new Set<string>();
+  const seen = new Map<string, string>();
   for (const p of places) {
-    const first = p?.split(",")[0].trim();
-    if (first && short(first)) seen.add(first);
+    const text = p?.trim();
+    if (!text) continue;
+    const named = linkNames(text, placeNames()).filter((x) => x.href);
+    const found = named.length ? named.map((x) => x.text) : short(text.split(",")[0].trim()) ? [text.split(",")[0].trim()] : [];
+    for (const f of found) {
+      // A place's other name (Volkihar Keep) and its own (Castle Volkihar) are one place.
+      const key = linkNames(f, placeNames())[0]?.href ?? f.toLowerCase();
+      if (!seen.has(key)) seen.set(key, f);
+    }
   }
-  const list = [...seen];
+  const list = [...seen.values()];
   if (!list.length) return null;
   return list.slice(0, limit).join(", ") + (list.length > limit ? ` and ${list.length - limit} more` : "");
 }
-
 
 /**
  * The two sides of a story that splits (WO-160): the read's order entries that say they are for the Dawnguard (or "refusing Harkon") and those
@@ -307,7 +312,7 @@ export function lineView(line: QuestLine): LineView {
         sub: chapterCount ? `In ${chapterCount} chapters${jobs.length ? `, plus ${jobs.length} jobs along the way` : ""}` : (line.size ?? (jobs.length ? `Plus ${jobs.length} jobs along the way` : null)),
       },
       // The story's own quests, and under it what the jobs along the way pay when they pay (one number for the line, Along the way says the same).
-      xp: xpTotal > 0 ? { value: xpTotal.toLocaleString("en-US"), sub: jobsPay(jobs) ? `Jobs along the way pay ${jobsPay(jobs)}` : story ? (story.reward ? story.reward.text.split(": ")[1]?.replace(/\.$/, "") ?? null : null) ?? xpSub(storyOnly(payers, storyQuests)) : xpSub(payers) } : null,
+      xp: xpTotal > 0 ? { value: xpTotal.toLocaleString("en-US"), sub: jobsPay(jobs) ? `Jobs along the way pay ${jobsPay(jobs)}` : story ? null : xpSub(payers) } : null,
       where: uniquePlaces(storyQuests.flatMap((q) => q.places ?? []).concat(line.where ? [line.where] : [])),
     },
     questCount: storyQuests.length || quests.filter((q) => !skipped.has(q.name)).length,

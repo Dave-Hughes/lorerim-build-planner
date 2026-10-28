@@ -130,3 +130,17 @@ test("the Quests home: the five category cards stay, and Everything else, by pla
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
   await page.screenshot({ path: "test-results/wo163-quests-home-390.png" });
 });
+
+test("review: a phrase is not a place in Where, and a long mod name ends in an ellipsis with the whole name in its title", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/quests/c/side-stories");
+  await expect(page.locator("main table tbody tr").first()).toBeVisible();
+  const wheres = await page.locator("main table tbody tr td:nth-child(3)").allInnerTexts();
+  expect(wheres.filter((w) => /^on arrival/i.test(w.trim()))).toEqual([]);
+  const cut = page.locator("main table tbody a[title], main table tbody span[title]").filter({ hasText: /Redeeming Fultheim/ }).first();
+  await cut.scrollIntoViewIfNeeded();
+  await expect(cut).toHaveAttribute("title", /Redeeming Fultheim - A Blades Quest/);
+  const name = cut.locator("span").first();
+  expect(await name.evaluate((el) => getComputedStyle(el).textOverflow)).toBe("ellipsis");
+  await page.screenshot({ path: "test-results/wo163-side-stories-1440.png" });
+});

@@ -6,7 +6,7 @@ import { expect, test } from "@playwright/test";
 
 const ROWS = [
   { id: "main-quest", name: "Become the Dragonborn", colour: "rgb(240, 145, 63)", layers: ["sky", "far", "dragon", "near"] },
-  { id: "dragonborn", name: "Dragonborn", colour: "rgb(143, 192, 124)", layers: ["sky", "far", "near", "tent"] },
+  { id: "dragonborn", name: "Dragonborn", colour: "rgb(143, 192, 124)", layers: ["sky", "far", "near", "tentacles"] },
   { id: "dawnguard", name: "Join the Dawnguard", colour: "rgb(214, 69, 63)", layers: ["sky", "far", "bats", "near"] },
 ] as const;
 
@@ -19,6 +19,8 @@ test("each row is its own world: the scene's layers, its colour on the edge, the
     const link = row(page, r.name);
     await expect(link).toHaveAttribute("href", `/quests/${r.id}`);
     expect(await link.locator("img").evaluateAll((els) => els.map((e) => (e as HTMLImageElement).getAttribute("src")))).toEqual(r.layers.map((l) => `/quests/stories/${r.id}/${l}.png`));
+    // Every layer's image loads (a layer that points at a missing file is a broken image with a natural width of 0).
+    await expect.poll(() => link.locator("img").evaluateAll((els) => els.map((e) => (e as HTMLImageElement).naturalWidth))).toEqual(r.layers.map(() => 320));
     expect(await link.evaluate((el) => getComputedStyle(el).borderLeftColor)).toBe(r.colour);
     expect(Math.round((await link.boundingBox())!.height)).toBe(280);
     await expect(link).toContainText(String(i + 1));

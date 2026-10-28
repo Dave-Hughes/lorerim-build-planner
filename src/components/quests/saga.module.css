@@ -357,7 +357,7 @@
 }
 
 /* Dragonborn: Apocrypha reaches up, the ash falls faster. */
-.tent {
+.tentacles {
   transform-origin: 50% 100%;
   animation: sway 4s ease-in-out infinite;
 }
@@ -371,8 +371,8 @@
   }
 }
 @media (hover: hover) {
-  .saga:hover .tent,
-  .saga:focus-visible .tent {
+  .saga:hover .tentacles,
+  .saga:focus-visible .tentacles {
     animation: sway 1.6s ease-in-out infinite;
     transform: translateY(-20px);
   }
@@ -407,18 +407,18 @@
 @media (prefers-reduced-motion: reduce) {
   .dragon,
   .bats,
-  .tent,
+  .tentacles,
   .ash,
   .emb i,
   .corona,
   .saga:hover .dragon,
   .saga:hover .bats,
-  .saga:hover .tent,
+  .saga:hover .tentacles,
   .saga:hover .ash,
   .saga:hover .corona,
   .saga:focus-visible .dragon,
   .saga:focus-visible .bats,
-  .saga:focus-visible .tent,
+  .saga:focus-visible .tentacles,
   .saga:focus-visible .ash,
   .saga:focus-visible .corona {
     animation: none;

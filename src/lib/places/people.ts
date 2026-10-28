@@ -23,7 +23,10 @@ export interface PlacePerson {
   trains: string | null;
   follower: boolean;
   keeper: boolean;
+  /** 2 when the read names them the keeper, 1 when only the record does, so the keeper the read gives comes first. */
+  keeperRank: number;
   gives: number;
+  read: boolean;
 }
 export interface House {
   name: string;
@@ -36,12 +39,24 @@ const ANIMAL = /\b(cat|chick|chicken|dog|horse|goat|cow|rabbit|deer|fox|skeever|
 
 const notable = (p: Person) => !!(p.read || p.follower || p.marriage || p.sells || p.trainer || p.innkeeper || questsOf(p.name).length > 0);
 
+const PEOPLE = /^(Nord|Imperial|Breton|Redguard|Dunmer|Altmer|Bosmer|Orsimer|Khajiit|Argonian|Elder)$/;
+const TITLED = /^(dead|ghostly|wounded|visiting|sickly|blasphemous|hired|imperial|stormcloak|subjugated|alik'r|silver hand|housecarl|commander|acolyte|dragonsreach)\b/i;
+
+/** Anyone with a person page who sleeps here: someone a player asks about, or a person with a name of their own (Hod, Embry, Dorthe), not a type of soldier or a creature. */
+const lives = (p: Person) => notable(p) || (p.rows.length === 1 && !!p.race && PEOPLE.test(p.race) && !TITLED.test(p.name));
+
 /** "general goods, 7 am to 8 pm" is "general goods": what is sold, without the hours or the aside. */
 const shortSells = (s: string) => s.split(/[;(]|,\s*\d/)[0].trim().replace(/\.$/, "");
 
+/** What a seller sells, in a few words: the read's, else the job the record gives, else what the building's name says, else just goods. */
+const SHOP: Record<string, string> = { JobBlacksmith: "blacksmith", JobApothecary: "apothecary", JobMerchant: "general goods", JobSpellVendor: "spells", JobFletcher: "fletcher's goods" };
+const shopOf = (p: Person) => (p.read ? shortSells(p.read.sells) : p.sells ? (SHOP[p.role ?? ""] ?? (/trader|general/i.test(p.cell ?? "") ? "general goods" : /smith|forge/i.test(p.cell ?? "") ? "blacksmith" : "goods")) : "");
+
 function personOf(p: Person): PlacePerson {
   const read = p.read;
-  const sells = read ? shortSells(read.sells) : p.sells ? "goods" : "";
+  const sells = shopOf(p);
+  const readKeeper = !!read && /\binnkeeper\b|rents rooms/i.test(read.role ?? "");
+  const keeper = !!p.innkeeper || readKeeper;
   const trainsSkill = read ? (read.trains ? (p.trainer?.skill ?? read.trains.split(/[\s(,]/)[0]) : null) : (p.trainer?.skill ?? null);
   const gives = questsOf(p.name).filter((q) => q.gives).length;
   const role = (read?.role ? read.role.split(";")[0].trim() : roleWords(p.role)) || null;
@@ -49,17 +64,20 @@ function personOf(p: Person): PlacePerson {
   if (sells) chips.push({ kind: "sells", text: "Sells" });
   if (trainsSkill) chips.push({ kind: "trains", text: `Trains ${trainsSkill}` });
   if (p.follower) chips.push({ kind: "follower", text: "Follower" });
-  if (p.innkeeper) chips.push({ kind: "rents", text: "Rents rooms" });
+  if (keeper) chips.push({ kind: "rents", text: "Rents rooms" });
   if (gives > 0) chips.push({ kind: "quests", text: gives === 1 ? "Gives a quest" : "Gives quests" });
-  return { name: p.name, href: `/people/${p.slug}`, role, chips, sells: sells || null, trains: trainsSkill, follower: !!p.follower, keeper: !!p.innkeeper, gives };
+  return { name: p.name, href: `/people/${p.slug}`, role, chips, sells: sells || null, trains: trainsSkill, follower: !!p.follower, keeper, keeperRank: readKeeper ? 2 : p.innkeeper ? 1 : 0, gives, read: !!read };
 }
 
 /** The people at a place, grouped by the building they sleep in; a town's, or an inn's, temple's or hall's. */
 export function peopleAt(place: Place): { houses: House[]; total: number } {
-  const here = peopleData().all.filter((p) => !(p.race && ANIMAL.test(p.race)) && notable(p) && (placeKind(place) === "inside" ? p.cell === place.name : p.inTown === place.name));
+  const inside = placeKind(place) === "inside";
+  const placed = (r: Person["rows"][number]) => (inside ? r.cell === place.name : r.inTown === place.name || r.cell === place.name);
+  const here = peopleData().all.filter((p) => !(p.race && ANIMAL.test(p.race)) && lives(p) && p.rows.some(placed));
   const groups = new Map<string, PlacePerson[]>();
   for (const p of here) {
-    const home = p.cell && p.cell !== place.name ? p.cell : place.name;
+    const row = p.rows.find(placed)!;
+    const home = row.cell && row.cell !== place.name ? row.cell : place.name;
     groups.set(home, [...(groups.get(home) ?? []), personOf(p)]);
   }
   const houses: House[] = [...groups]
@@ -67,7 +85,7 @@ export function peopleAt(place: Place): { houses: House[]; total: number } {
       name,
       href: name === place.name ? null : placeHref(name),
       // The keeper first, then the ones with something for a player, then the rest.
-      people: people.sort((a, b) => Number(b.keeper) - Number(a.keeper) || b.chips.length - a.chips.length || a.name.localeCompare(b.name)),
+      people: people.sort((a, b) => b.keeperRank - a.keeperRank || b.chips.length - a.chips.length || Number(b.read) - Number(a.read) || a.name.localeCompare(b.name)),
     }))
     .sort((a, b) => b.people.length - a.people.length || a.name.localeCompare(b.name));
   return { houses, total: here.length };

@@ -86,6 +86,8 @@ export interface Person extends PersonRow {
   slug: string;
   /** Every cell the name is placed in, the base row's first. */
   cells: string[];
+  /** Every placement of the name (a person can be placed in more than one town, or twice in one). */
+  rows: PersonRow[];
 }
 
 /** A role's words, for the Job* keyword the records carry. */
@@ -145,7 +147,15 @@ export function peopleData() {
     let slug = slugOf(base.name) || "person";
     // A different name that makes the same slug ("Tolfdir" and "Tolfdir!"): the later one takes a number.
     for (let n = 2; bySlug.has(slug); n++) slug = `${slugOf(base.name) || "person"}-${n}`;
-    const person: Person = { ...base, slug, cells: [...new Set([base.cell, ...group.map((g) => g.cell)].filter((c): c is string => !!c))] };
+    // What a name is to a player is true wherever it is placed: Sven follows you from either of his two placements.
+    const flags = {
+      ...(group.some((g) => g.follower) ? { follower: true as const } : {}),
+      ...(group.some((g) => g.marriage) ? { marriage: true as const } : {}),
+      ...(group.some((g) => g.sells) ? { sells: true as const } : {}),
+      ...(group.some((g) => g.innkeeper) ? { innkeeper: true as const } : {}),
+      ...(!base.trainer && group.some((g) => g.trainer) ? { trainer: group.find((g) => g.trainer)!.trainer } : {}),
+    };
+    const person: Person = { ...base, ...flags, slug, rows: group, cells: [...new Set([base.cell, ...group.map((g) => g.cell)].filter((c): c is string => !!c))] };
     all.push(person);
     bySlug.set(slug, person);
     byName.set(key, person);

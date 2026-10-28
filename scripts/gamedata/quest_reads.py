@@ -100,10 +100,14 @@ def load_line_reads(folder):
     for path in sorted(glob.glob(os.path.join(folder, "L*.json"))):
         with open(path, encoding="utf-8") as f:
             batch = json.load(f)
+        # The second reader's verdict on each field (agree, fix or unsure), so a page lists as unsure only what was not settled (WO-160 Part 6).
+        verdicts = {c["id"]: {f: v.get("verdict") for f, v in (c.get("verdicts") or {}).items() if isinstance(v, dict) and v.get("verdict")} for c in batch.get("checks", []) if c.get("id")}
         for line in batch.get("lines", []):
             if not line.get("id"):
                 continue
             read = {k: line[k] for k in LINE_FIELDS if k in line}
+            if verdicts.get(line["id"]):
+                read["verdicts"] = verdicts[line["id"]]
             if "unsure" in read:
                 read["unsure"] = player_unsure(read["unsure"])
             out[line["id"]] = read

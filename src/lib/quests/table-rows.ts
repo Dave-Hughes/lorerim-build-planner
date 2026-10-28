@@ -42,7 +42,9 @@ function whereOf(text: string | null | undefined): { where: string | null; hold:
   const first = text.split(/[,;(]/)[0].trim();
   if (/^(anywhere|everywhere|elsewhere|somewhere)\b/i.test(first)) return { where: null, hold: null };
   const town = townsIn(first)[0] ?? townsIn(text)[0] ?? null;
-  const name = town ?? (first.length <= 48 ? first : null);
+  // A phrase ("on arrival in a major hold", "Any hold") is not a place: a place is written as a name.
+  const named = /^[A-Z]/.test(first) && !/^(Any|All|Every|Each|Various|Several|Multiple)\b/.test(first) && first.length <= 48;
+  const name = town ?? (named ? first : null);
   if (!name) return { where: null, hold: null };
   return { where: name, hold: HOLD_OF_CITY[name] ?? placeByName(name)?.hold ?? placeByName(first)?.hold ?? null };
 }

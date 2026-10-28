@@ -568,6 +568,11 @@ def main():
 
         raw = load("places_raw.json")
         rows = build_site(raw["places"])
+        # WO-162 Part 5: a ruling on what a place is (High Hrothgar is the Greybeards' home, not a fort) replaces its type in the index.
+        for r in rows:
+            for k, v in (overrides.get("places", {}).get(r["name"]) or {}).items():
+                if not k.startswith("_"):
+                    r[k] = v
         # WO-157 Part 8: a quote ends on a whole sentence, and a byte the extraction lost is put back from the letters around it, until the
         # PC runs the extraction again with the "game" decoder (textdecode.py).
         from textdecode import repair_lost, tidy_excerpt

@@ -648,8 +648,36 @@
       ]
     }
   },
+  "places": {
+    "_note": "WO-162 Part 5: a ruling on a place replaces that field of the place in the index, keyed by the place's name. The generated file is never edited by hand.",
+    "Castle Volkihar": {
+      "_source": "Bob, 27 Oct 2026 (WO-160 Part 6)",
+      "_why": "Quest words call it Volkihar Keep; its page is Castle Volkihar.",
+      "aliases": ["Volkihar Keep"]
+    },
+    "Dimhollow Crypt": {
+      "_source": "Bob, 27 Oct 2026 (WO-160 Part 6)",
+      "_why": "Quest words call it Dimhollow Cavern; its page is Dimhollow Crypt.",
+      "aliases": ["Dimhollow Cavern"]
+    },
+    "Driftshade Sanctuary": {
+      "_source": "Bob, 27 Oct 2026 (WO-160 Part 6)",
+      "_why": "Quest words call it Driftshade Refuge; its page is Driftshade Sanctuary.",
+      "aliases": ["Driftshade Refuge"]
+    },
+    "High Hrothgar": {
+      "_source": "Bob, 27 Oct 2026",
+      "_why": "The records type High Hrothgar a Fort, with trolls on the path up. It is the Greybeards' home, where people live, so it gets the lived-in page.",
+      "type": "Monastery"
+    }
+  },
   "people": {
     "_note": "WO-159: a fact a player found in game replaces the read's field for that person, the way questStarts does for a quest start. The build marks the replaced fields as from players, drops the read's doubts about them, and counts one approved report. Keyed by the person's name.",
+    "Alvor": {
+      "_source": "Bob, 27 Oct 2026 (WO-162 Part 5)",
+      "_why": "The records give Alvor no job keyword; he is the smith in Riverwood, so a place page can say what he sells.",
+      "jobs": "JobBlacksmith"
+    },
     "Jaree-Ra": {
       "_checked": "players",
       "_source": "Dave, watched in game for a day, 23 Oct 2026",

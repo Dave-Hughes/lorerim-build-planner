@@ -259,6 +259,10 @@ def build_site(rows, facts=None, reads=None, rulings=None):
     for p in rows:
         r = {k: p[k] for k in ("name", "race", "sex", "cell", "inTown", "role") if p.get(k) is not None}
         r.update((facts or {}).get(p.get("id"), {}))
+        # A job the records don't carry (Alvor is Riverwood's smith: WO-162 Part 5) comes from the overrides' `jobs`.
+        jobs = ((rulings or {}).get(p.get("name")) or {}).get("jobs")
+        if jobs and not r.get("role"):
+            r["role"] = jobs
         read = (reads or {}).get(p.get("id"))
         if read:
             read = json.loads(json.dumps(read))

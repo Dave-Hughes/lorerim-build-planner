@@ -5062,7 +5062,7 @@ Status: queued (Mac; after WO-167, which brings the map tiles and the pin compon
 - [ ] Checks; screenshots at 1440 and 390 of: the whole map, a search open, a quest's route, a place's drawer, signed in with a character; then `for Bob`.
 
 ## WO-168  The three main stories, each its own world (Mac, 27 Oct 2026)
-Status: building (Mac; Bob's review)
+Status: for Bob (Bob's review: review done; typecheck, lint, tests, the build and the full e2e pass, 486 of 486)
 
 **Why.** Dave, 27 Oct: the Main stories rows "look badass, would be awesome to go SUPER hard on those rows". Board `MainStoriesHard` (canvas row 37); Dave: "Looks great." The art is in the repo: `public/quests/stories/<line>/*.png`, 320 by 80 layers drawn by `scripts/art/main_stories.py`; shown at 4x, pixel-sharp.
 - [x] On `/quests/c/main-stories`, each of the three rows is the board's banner: the scene's layers stacked full width (sky, far, the moving layer, near), a dark fade from the left under the text, the story's own colour on the left edge (main quest orange `#f0913f`, Dragonborn green `#8fc07c`, Dawnguard crimson `#d6453f`), the big pixel number in that colour, the name, its tags, one line of what it's about, quest XP and Open the story on the right. Order: Become the Dragonborn, Dragonborn, Dawnguard.
@@ -5081,9 +5081,14 @@ Status: building (Mac; Bob's review)
 
 ### Bob's review (27 Oct, 21:45)
 Read on the preview at 1440 with each row under the pointer, and at 390. The three rows look like the board and grow 280 to 360; Alduin flies, the eclipse burns, the bats scatter. One fault:
-- [ ] **Dragonborn's tentacles never show.** The row asks for `public/quests/stories/dragonborn/tent.png`; the file is `tentacles.png`, so the layer is a broken image (its natural width is 0) and the sway runs on nothing. Point it at the right file, and make the test check that every layer's image loads, not only that it animates.
-- [ ] The page's line reads "the main quest, Dawnguard and Dragonborn" over rows in the order main quest, Dragonborn, Dawnguard. Match the rows.
-- [ ] Screenshot of Dragonborn under the pointer, then `for Bob`.
+- [x] **Dragonborn's tentacles never show.** The row asks for `public/quests/stories/dragonborn/tent.png`; the file is `tentacles.png`, so the layer is a broken image (its natural width is 0) and the sway runs on nothing. Point it at the right file, and make the test check that every layer's image loads, not only that it animates.
+- [x] The page's line reads "the main quest, Dawnguard and Dragonborn" over rows in the order main quest, Dragonborn, Dawnguard. Match the rows.
+- [x] Screenshot of Dragonborn under the pointer, then `for Bob`.
+
+Jeff's notes on the review (Mac, 27 Oct):
+- **The tentacles** were a wrong file name in the row (`tent`, the file is `tentacles`). The layer, its CSS and the test now say `tentacles`, and the test waits for every layer's image to load (natural width 320) before it checks the animation.
+- **The page's line** now reads "the main quest, Dragonborn and Dawnguard" (`questlines.json`, data rebuilt), and the more-line under it in the same order.
+- Screenshot of Dragonborn under the pointer: `test-results/wo168-dragonborn-hover-1440.png`.
 
 ## WO-167  The map on place pages and on Places (Mac, 27 Oct 2026)
 Status: queued (Mac; waits on WO-166 Part 2's map files on staging, then after WO-164. Dave, 27 Oct 18:46: the map's mod author said go for it, with a credit and link on every instance)
@@ -5153,7 +5158,7 @@ Read on the preview: The Golden Claw, Aela at 1440 and 390, Lydia. The band, the
 - [ ] Screenshots of Aela and The Golden Claw, then `for Bob`.
 
 ## WO-163  Quest categories as tables (Mac, 27 Oct 2026)
-Status: building (Mac; Bob's review)
+Status: for Bob (Bob's review: review done; typecheck, lint, tests, the build and the full e2e pass, 486 of 486)
 
 **Why.** `docs/page-templates.md` rows 11 and 12: a category is up to 73 framed cards with a journal quote and Tell me more each, 10,000 px to scroll and nothing to compare. Dave: Wowhead is great. Board: `QuestCategoryTable` (canvas row 36).
 - [x] Every category page (`/quests/c/<slug>`) other than Main stories (WO-160) is the board: a short scene banner with the title over it; search; Hold, Level and From filters that apply as you pick; pills for All, Base game, Creation Club, Mods, and Lines of several quests, with real counts; then one table, one row per quest or line: icon (a line's icon differs from a single quest's), name, who starts it, where (blue), level (red, "Any" muted), length, from (base game plain, a mod as a tag with its link), quest XP in the pixel face (gold; "None" muted). Every column sorts; the header row sticks while you scroll.
@@ -5175,12 +5180,16 @@ Status: building (Mac; Bob's review)
 
 ### Bob's review (27 Oct, 21:45)
 Read on the preview: Side stories at 1440 and 390, the Quests home. The table is what the board asked for; the XP check is right (no quest type, so nothing paid). Two small things:
-- [ ] **"on arrival in a major hold"** shows in Where, in blue, as if it were a place (Guests for Dinner, Hendraheim, and on the Quests home). A start with no place is "Not known yet", muted.
-- [ ] **A long mod name is cut off with no ellipsis** ("Redeeming Fultheim - A Blades Quest A"). End it with "…" and put the whole name in the title.
-- [ ] Screenshot of Side stories, then `for Bob`.
+- [x] **"on arrival in a major hold"** shows in Where, in blue, as if it were a place (Guests for Dinner, Hendraheim, and on the Quests home). A start with no place is "Not known yet", muted.
+- [x] **A long mod name is cut off with no ellipsis** ("Redeeming Fultheim - A Blades Quest A"). End it with "…" and put the whole name in the title.
+- [x] Screenshot of Side stories, then `for Bob`.
+
+Jeff's notes on the review (Mac, 27 Oct):
+- **Where** takes only what is written as a name (a capital first, not "Any hold"), or a town it finds in the words. "on arrival in a major hold" is now "Not known yet", muted.
+- **A long mod name** ends in an ellipsis inside its tag, the arrow stays, and the whole name is the tag's title. Test in `e2e/wo163.spec.ts`. Screenshot: `test-results/wo163-side-stories-1440.png`.
 
 ## WO-162  A place's page fits what the place is (Mac, 27 Oct 2026)
-Status: building (Mac; Bob's review)
+Status: for Bob (Bob's review: Part 5 done; typecheck, lint, tests, the build and the full e2e pass, 486 of 486)
 
 **Why.** `docs/page-templates.md` row 18: every place uses the dungeon template. Riverwood "Its boss is Camilla Valerius" with a danger chart and 100 XP "for clearing it"; the Bee and Barb shows Danger ("Nobody here is hostile") and "Comes back in 30 days, or 300 once cleared"; neither shows who lives there, shops, trainers or beds. Board: `PlaceTown` (canvas row 36).
 
@@ -5212,15 +5221,24 @@ Status: building (Mac; Bob's review)
 
 ### Part 5. Bob's review (27 Oct, 21:45)
 Read on the preview: Riverwood, the Sleeping Giant Inn, Dragonsreach, Bleak Falls Barrow, High Hrothgar and the Bee and Barb. The two kinds work, What people say is down to five, and the editor ids are gone. What's wrong:
-- [ ] **Riverwood leaves out half its people.** Sven, Hod, Sigrid, Embry and Dorthe all have person pages and sleep in Riverwood; "Sven and Hilde's House" shows Hilde alone, though Sven's record says he sells. Anyone with a person page who sleeps here is listed. A test: Riverwood lists Sven and Hod.
-- [ ] **Shops and beds** names general goods and an inn but not Alvor, who sells and is the smith. Each seller's kind (smith, general goods, inn, and so on), every seller.
-- [ ] **Delphine** reads "innkeeper of the Sleeping Giant Inn (rents rooms)" but has no Rents rooms chip, and Orgnar is listed as the keeper. The chip follows the role the read gives as well as the record.
-- [ ] **High Hrothgar: Bob's ruling.** It's the Greybeards' home, not a fort. In `overrides.json` give it the type Monastery and the lived-in page (the Greybeards, Arngeir first), and say the trolls under its At a glance as "Trolls on the path up, level 14 and up". Its boss ("The Beast") and "comes back" go.
-- [ ] **A dangerous place says each thing twice.** Bleak Falls Barrow's band has Danger, Rewards, Comes back and Nearest town; the rail's Good to know and a second Rewards box repeat them, and the danger chart has its own DANGER heading under the band's. Say each once: the band, then the chart without the repeated heading; the rail is contents only, as on the line pages.
-- [ ] **"A Alchemy skill book"**, "A Enchanting skill book": "An" before a vowel.
-- [ ] **The same quote twice.** Dragonsreach's What people say shows "They build a huge stone holding cell…" from two books. One line per text.
-- [ ] **Information Confidence on a lived-in page** says "Who lives here, the boss, books…". No boss there.
-- [ ] Screenshots of Riverwood, High Hrothgar and Bleak Falls Barrow at 1440 and 390, then `for Bob`.
+- [x] **Riverwood leaves out half its people.** Sven, Hod, Sigrid, Embry and Dorthe all have person pages and sleep in Riverwood; "Sven and Hilde's House" shows Hilde alone, though Sven's record says he sells. Anyone with a person page who sleeps here is listed. A test: Riverwood lists Sven and Hod.
+- [x] **Shops and beds** names general goods and an inn but not Alvor, who sells and is the smith. Each seller's kind (smith, general goods, inn, and so on), every seller.
+- [x] **Delphine** reads "innkeeper of the Sleeping Giant Inn (rents rooms)" but has no Rents rooms chip, and Orgnar is listed as the keeper. The chip follows the role the read gives as well as the record.
+- [x] **High Hrothgar: Bob's ruling.** It's the Greybeards' home, not a fort. In `overrides.json` give it the type Monastery and the lived-in page (the Greybeards, Arngeir first), and say the trolls under its At a glance as "Trolls on the path up, level 14 and up". Its boss ("The Beast") and "comes back" go.
+- [x] **A dangerous place says each thing twice.** Bleak Falls Barrow's band has Danger, Rewards, Comes back and Nearest town; the rail's Good to know and a second Rewards box repeat them, and the danger chart has its own DANGER heading under the band's. Say each once: the band, then the chart without the repeated heading; the rail is contents only, as on the line pages.
+- [x] **"A Alchemy skill book"**, "A Enchanting skill book": "An" before a vowel.
+- [x] **The same quote twice.** Dragonsreach's What people say shows "They build a huge stone holding cell…" from two books. One line per text.
+- [x] **Information Confidence on a lived-in page** says "Who lives here, the boss, books…". No boss there.
+- [x] Screenshots of Riverwood, High Hrothgar and Bleak Falls Barrow at 1440 and 390, then `for Bob`.
+
+Jeff's notes on Part 5 (Mac, 27 Oct):
+- **Who lives here.** A name the records place twice (Sven, in Kynesgrove and Riverwood) is one person with what either placement says, so Sven sells and follows you from both. Anyone with a page of their own who sleeps in the town is listed, unless the name is a type of soldier or creature (Hod, Embry, Dorthe, Sigrid now show). Unit test: Riverwood lists Sven and Hod.
+- **Shops and beds** names every kind of seller: the read's, else the job in the record, else the building's name. Alvor is the smith through a ruling in `overrides.json` (`people.Alvor.jobs`), since the records carry no job for him.
+- **Keepers.** The Rents rooms chip follows the read as well as the record; the keeper the read names (Delphine) comes first, then the record's (Orgnar).
+- **High Hrothgar** is typed Monastery through a new `places` section in `overrides.json`, gets the lived-in page with the Greybeards (Arngeir first) and says "Trolls on the path up, level 14 and up" in its band; no boss, no comes-back.
+- **A dangerous place says each thing once**: the band, then the chart without its own heading; the rail is the contents only (no Good to know, no Rewards box).
+- "An Alchemy skill book"; one line per text in What people say; Information Confidence on a lived-in page no longer says boss.
+- Screenshots: `test-results/wo162-riverwood-1440.png`, `wo162-high-hrothgar-1440.png`, `wo162-bleak-falls-1440.png` and the 390 ones.
 
 ## WO-161  Small fixes from Bob's walk of every page (Mac, 27 Oct 2026)
 Status: done (Bob, 27 Oct 20:10: checked on the preview: Guide out of the menu, tab titles, Tapps's characters, My characters, search reasons, the changes page by day and kind, one character card. The featured card's shape moves to WO-164)
@@ -5253,7 +5271,7 @@ Status: done (Bob, 27 Oct 20:10: checked on the preview: Guide out of the menu, 
 - **Screenshots** (in `test-results/`): `wo161-characters-1440.png`, `wo161-characters-390.png`, `wo161-player-1440.png`, `wo161-search-1440.png`, `wo161-changes-1440.png`, `wo161-phone-390.png`.
 
 ## WO-160  One page per quest line (Mac, 27 Oct 2026)
-Status: building (Mac; Bob's review)
+Status: for Bob (Bob's review: Part 6 done; typecheck, lint, tests, the build and the full e2e pass, 486 of 486)
 
 **Why.** The big quest lines each have two pages built by two different orders and never merged: a line page (`/quests/main-quest`, `/quests/dawnguard`, `/quests/companions`, `/quests/dragonborn`, from WO-100) and a story page with chapters (`/quests/s/become-the-dragonborn`, `/quests/s/join-the-dawnguard`, `/quests/s/join-the-companions`, from WO-104/106). They look nothing alike, and the Main stories category lists both kinds side by side. Dave, 27 Oct: "Why are there multiple layouts?" There should be one. Boards: canvas row 36, `MainStoriesPage` and `LinePage`, https://claude.ai/artifact/48H6v9Q6wFuwhzRqE31uD1.
 
@@ -5307,18 +5325,26 @@ Jeff's notes on Part 5 and the Quest XP box (Mac, 27 Oct):
 
 ### Part 6. Bob's review of Part 5 (27 Oct, 21:45)
 Read on the preview: the main quest, Dragonborn, Dawnguard and the Companions at 1440, the main quest at 390. The chips are gone, names link in their sentences, the rail is contents only, and Opens other stories sits in the column. Good. What's still wrong:
-- [ ] **Short names aren't linked.** "Talk to Farengar", "Talk to Jarl Balgruuf", "bring Storn what he asks", "Refuse Harkon's gift", "Kodlak's funeral": each has a page (Farengar Secret-Fire, Balgruuf the Greater, Storn Crag-Strider, Lord Harkon, Kodlak Whitemane). A quest's own people (its giver, its aliases, the people its read names) link by the name the text uses: first name, or title and first name.
-- [ ] **"The" stops a match.** "the Winking Skeever" isn't linked; its page is The Winking Skeever. Match a place with or without its leading "The".
-- [ ] **A quest's name in brackets links to the wrong thing.** What it closes: "Paarthurnax dies if you kill him (Paarthurnax)" links the second one to the dragon, not the quest; "(The Throat of the World)" links the mountain; "(The Horn of Jurgen Windcaller)" and "Retrieve the Horn of Jurgen Windcaller" link the man inside the horn's name. A quest name in brackets links to the quest; a name inside a quest's or an item's name is never linked as a person or place.
-- [ ] **Opens other stories isn't linked.** "Or sail to Raven Rock from Windhelm's docks" (Raven Rock has a page); "The Way of the Voice" and "Rise in the East" as needs are plain text. Link them.
-- [ ] **A place with another name.** The words say Volkihar Keep, Dimhollow Cavern, Driftshade Refuge; the pages are Castle Volkihar, Dimhollow Crypt, Driftshade Sanctuary. An alias list on places (in `overrides.json`), and the linker uses it.
-- [ ] **The Silver Hand links to a person page.** It's a faction; `/people/silver-hand` is a generic record with that name. A name that is a faction or a group (the Silver Hand, the Greybeards, the Blades) isn't linked to a person.
-- [ ] **Dragonborn's Where it takes you** reads "Raven Rock and the Temple of Miraak, Temple of Miraak, Skaal Village, the stones around Raven Rock and Skaal Village, Tel Mithryn and Nchardak, Nchardak and 1 more". Each place once, by its name, as the main quest's cell does.
-- [ ] **Dragonborn contradicts itself.** The summary ends "the records set no level for it"; At a glance and the tags say Level 25. One answer, from the start check.
-- [ ] **The main quest's Quest XP cell** says "the last quest gives no item" under 3,800. That line means nothing there; show the jobs line when jobs pay, otherwise nothing.
-- [ ] **Not sure yet** on a line page lists five things (what it is, how to get in, the order, what it gives, what it closes) on a line its own box says was read and checked. WO-165's rule applies here too: only what is actually unsure.
-- [ ] **The test** (`wo160-names.test.ts`) passed with every one of these. Add them to it: a short name, a leading "The", a bracketed quest name, Opens other stories, an alias.
-- [ ] Screenshots of the four pages, then `for Bob`.
+- [x] **Short names aren't linked.** "Talk to Farengar", "Talk to Jarl Balgruuf", "bring Storn what he asks", "Refuse Harkon's gift", "Kodlak's funeral": each has a page (Farengar Secret-Fire, Balgruuf the Greater, Storn Crag-Strider, Lord Harkon, Kodlak Whitemane). A quest's own people (its giver, its aliases, the people its read names) link by the name the text uses: first name, or title and first name.
+- [x] **"The" stops a match.** "the Winking Skeever" isn't linked; its page is The Winking Skeever. Match a place with or without its leading "The".
+- [x] **A quest's name in brackets links to the wrong thing.** What it closes: "Paarthurnax dies if you kill him (Paarthurnax)" links the second one to the dragon, not the quest; "(The Throat of the World)" links the mountain; "(The Horn of Jurgen Windcaller)" and "Retrieve the Horn of Jurgen Windcaller" link the man inside the horn's name. A quest name in brackets links to the quest; a name inside a quest's or an item's name is never linked as a person or place.
+- [x] **Opens other stories isn't linked.** "Or sail to Raven Rock from Windhelm's docks" (Raven Rock has a page); "The Way of the Voice" and "Rise in the East" as needs are plain text. Link them.
+- [x] **A place with another name.** The words say Volkihar Keep, Dimhollow Cavern, Driftshade Refuge; the pages are Castle Volkihar, Dimhollow Crypt, Driftshade Sanctuary. An alias list on places (in `overrides.json`), and the linker uses it.
+- [x] **The Silver Hand links to a person page.** It's a faction; `/people/silver-hand` is a generic record with that name. A name that is a faction or a group (the Silver Hand, the Greybeards, the Blades) isn't linked to a person.
+- [x] **Dragonborn's Where it takes you** reads "Raven Rock and the Temple of Miraak, Temple of Miraak, Skaal Village, the stones around Raven Rock and Skaal Village, Tel Mithryn and Nchardak, Nchardak and 1 more". Each place once, by its name, as the main quest's cell does.
+- [x] **Dragonborn contradicts itself.** The summary ends "the records set no level for it"; At a glance and the tags say Level 25. One answer, from the start check.
+- [x] **The main quest's Quest XP cell** says "the last quest gives no item" under 3,800. That line means nothing there; show the jobs line when jobs pay, otherwise nothing.
+- [x] **Not sure yet** on a line page lists five things (what it is, how to get in, the order, what it gives, what it closes) on a line its own box says was read and checked. WO-165's rule applies here too: only what is actually unsure.
+- [x] **The test** (`wo160-names.test.ts`) passed with every one of these. Add them to it: a short name, a leading "The", a bracketed quest name, Opens other stories, an alias.
+- [x] Screenshots of the four pages, then `for Bob`.
+
+Jeff's notes on Part 6 (Mac, 27 Oct):
+- **Short names** (`shortNames()` in `src/lib/pages/names.ts`): the first name of someone a player asks about, when it is four letters or more, nobody else's first word, not a place and not a title or common word; with a title in front ("Jarl Balgruuf") it is part of the link. A whole name still wins.
+- **"The"**: a place of two words or more after "The" also matches without it. **Aliases**: a `places` section in `overrides.json` (Castle Volkihar / Volkihar Keep, Dimhollow Crypt / Dimhollow Cavern, Driftshade Sanctuary / Driftshade Refuge), carried into `places.json`.
+- **Quest and item names**: a quest's name in brackets, alone or in a list, links to the quest; a name inside a quest's or an item's name that holds a person or place is plain text. Opens other stories links its places and the quests it waits for.
+- **Groups** (the Silver Hand, the Greybeards, any name the records place three times with nothing to say who it is) are not people.
+- **Where it takes you** names each place once. **Dragonborn** loses "the records set no level for it" when the start check has a level. **The main quest's XP cell** shows the jobs line or nothing. **Not sure yet** lists only the fields the second reader marked unsure (the line reads now carry the checker's verdicts); these four lines have none.
+- **The test** (`wo160-names.test.ts`) has all of these and ignores names inside quest and item names. Screenshots: `test-results/wo160-main-quest-1440.png`, `wo160-dragonborn-1440.png`, `wo160-dawnguard-1440.png`, `wo160-companions-1440.png`.
 
 ## WO-159  Dave's testing, 27 Oct afternoon: home, search, back links, a playthrough from the start, and the people reads on person pages (Mac, 27 Oct 2026)
 Status: done (Bob, 27 Oct 17:55: home, back buttons and the people reads checked on the preview (Lydia joins as housecarl when made Thane; Jaree-Ra by the Winking Skeever); the Playthrough tab is signed-in only, for Dave to see)

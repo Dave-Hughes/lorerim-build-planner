@@ -11,7 +11,7 @@ import c from "./saga.module.css";
  */
 const STORIES: Record<string, { cls: string; layers: string[]; extra: "embers" | "ash" | "corona" | null; accent: string | null }> = {
   "main-quest": { cls: c.mq, layers: ["sky", "far", "dragon", "near"], extra: "embers", accent: null },
-  dragonborn: { cls: c.dbn, layers: ["sky", "far", "near", "tent"], extra: "ash", accent: "Solstheim and Apocrypha" },
+  dragonborn: { cls: c.dbn, layers: ["sky", "far", "near", "tentacles"], extra: "ash", accent: "Solstheim and Apocrypha" },
   dawnguard: { cls: c.dg, layers: ["sky", "far", "bats", "near"], extra: "corona", accent: "Two sides" },
 };
 

@@ -29,6 +29,13 @@ export function questsData() {
   return overlaid.data;
 }
 
+/**
+ * A line's read says "the records set no level for it" when its opening has no level check; when the start check has found one, the page has
+ * one answer (WO-160 Part 6): the clause goes and the level shows.
+ */
+const NO_LEVEL = /(?:[;,]\s*(?:and\s+)?|\s+and\s+)the records set no level(?: gate)?(?: for it)?(?=\.\s*$)/i;
+const tidyRead = (l: QuestLine): QuestLine => (l.minLevel && l.read?.about && NO_LEVEL.test(l.read.about) ? { ...l, read: { ...l.read, about: l.read.about.replace(NO_LEVEL, "") } } : l);
+
 function baseQuestsData() {
   if (cached) return cached;
   const file = path.join(process.cwd(), "src", "data", `lorerim-${currentVersion().id}`, "quests.json");
@@ -40,7 +47,8 @@ function baseQuestsData() {
   }
   // Placeholder objectives are hidden here (WO-147 Part 2), so no page and no tool ever reads one.
   const lines = data.lines.map((l) => (l.quests.some((q) => q.objectives?.some(isPlaceholder)) ? { ...l, quests: l.quests.map((q) => (q.objectives?.some(isPlaceholder) ? { ...q, objectives: q.objectives.filter((o) => !isPlaceholder(o)) } : q)) } : l));
-  cached = { ...data, lines, byId: new Map(lines.map((l) => [l.id, l])) };
+  const tidied = lines.map(tidyRead);
+  cached = { ...data, lines: tidied, byId: new Map(tidied.map((l) => [l.id, l])) };
   return cached;
 }
 

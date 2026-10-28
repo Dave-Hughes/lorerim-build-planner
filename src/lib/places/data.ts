@@ -76,6 +76,8 @@ export interface Place {
   name: string;
   /** The map marker's kind, else the location's: Cave, Mine, Fort, NordicRuin... */
   type: string;
+  /** Other names the words of a quest call it by (Volkihar Keep for Castle Volkihar), from overrides.json. */
+  aliases?: string[];
   hold?: string;
   nearestTown?: { town: string; km: number; walk?: string };
   nearestCity?: { town: string; km: number; walk?: string };

@@ -22,4 +22,9 @@ describe("which kind of page a place gets (WO-162)", () => {
   it("an inn that isn't inside a town (a roadside one) is a town-style page, not a dungeon", () => {
     expect(placeKind({ type: "Inn", actors: { count: 3, hostile: false } })).toBe("town");
   });
+  it("High Hrothgar is the Greybeards' home, not a fort, though trolls walk the path up (a ruling in overrides.json)", () => {
+    const hh = placeByName("High Hrothgar");
+    expect(hh?.type).toBe("Monastery");
+    expect(placeKind(hh!)).toBe("town");
+  });
 });

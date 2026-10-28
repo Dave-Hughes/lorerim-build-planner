@@ -159,10 +159,13 @@ export function QuestTable({ rows, across = false, defaultSort = "name", q = "",
                   <span className={c.base}>Base game</span>
                 ) : r.from.href ? (
                   <a className={c.mod} href={r.from.href} target="_blank" rel="noreferrer" title={r.from.name}>
-                    {r.from.name} <span aria-hidden="true">↗</span>
+                    <span className={c.modName}>{r.from.name}</span>
+                    <span aria-hidden="true">↗</span>
                   </a>
                 ) : (
-                  <span className={c.mod}>{r.from.name}</span>
+                  <span className={c.mod} title={r.from.name}>
+                    <span className={c.modName}>{r.from.name}</span>
+                  </span>
                 )}
               </td>
               {across && <td className={c.cat}>{r.category}</td>}

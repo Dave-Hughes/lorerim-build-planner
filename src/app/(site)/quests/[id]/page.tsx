@@ -7,7 +7,7 @@ import { auth } from "@/auth";
 import { SignInButton } from "@/components/site-header";
 import { Linked } from "@/components/pages/linked";
 import { InformationConfidence, PageTop, TitleBox } from "@/components/pages/page-kit";
-import { linkable } from "@/lib/pages/names";
+import { linkable, opensNames } from "@/lib/pages/names";
 import k from "@/components/pages/page-kit.module.css";
 import { QuestReport } from "@/components/quests/quest-report";
 import { LineJobs, LineStory, LineToc } from "@/components/quests/line-parts";
@@ -75,6 +75,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
   const told = storyOfLine(line.id);
   const lr = line.read;
   const names = linkable();
+  const opensWords = opensNames();
   const shelf = view.shelf;
   const read = line.quests.filter((q) => q.source === "reads").length;
   const sibs = siblings(line);
@@ -302,7 +303,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                           <li key={i} className={`${l.need} ${n.tone === "done" ? l.needDone : n.tone === "danger" ? l.needDanger : l.needOther}`}>
                             <i />
                             <span>
-                              {n.text}
+                              <Linked text={n.text} names={opensWords} />
                               {n.note && <small>{n.note}</small>}
                             </span>
                           </li>
@@ -347,7 +348,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
             { mark: "no", name: "UESP", note: "Not compared yet" },
             { mark: "no", name: "Players", note: "No one has confirmed this page yet." },
           ]}
-          unsure={(lr?.unsure ?? []).map((u) => ({ ...u, field: LINE_FIELD_WORDS[u.field] ?? u.field }))}
+          unsure={(lr?.unsure ?? []).filter((u) => !lr?.verdicts || lr.verdicts[u.field] === "unsure").map((u) => ({ ...u, field: LINE_FIELD_WORDS[u.field] ?? u.field }))}
           actions={
             <QuestReport
               lineId={line.id}

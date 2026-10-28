@@ -158,3 +158,37 @@ test("Part 5: less on the page, names linked in their sentence, the rail is the 
   await expect(page.getByRole("region", { name: "Along the way" })).toContainText("They pay 100 each");
   await expect(page.getByRole("region", { name: "Along the way" })).not.toContainText("no quest XP");
 });
+
+test("Part 6: short names, a leading The, bracketed quests, Opens other stories, and one answer for each fact", async ({ page }) => {
+  await page.goto("/quests/main-quest");
+  const story = page.getByRole("region", { name: "The story" });
+  await expect(story.getByRole("link", { name: "Farengar", exact: true }).first()).toHaveAttribute("href", "/people/farengar-secret-fire");
+  await expect(story.getByRole("link", { name: /^(Jarl )?Balgruuf/ }).first()).toHaveAttribute("href", "/people/balgruuf-the-greater");
+  const gives = page.getByRole("region", { name: "What the whole line gives" });
+  await expect(gives.getByRole("link", { name: "The Throat of the World" })).toHaveAttribute("href", /\/quests\/q\//);
+  await expect(gives.getByRole("link", { name: "A Blade in the Dark" })).toHaveAttribute("href", /\/quests\/q\//);
+  await expect(gives.getByRole("link", { name: "Jurgen Windcaller", exact: true })).toHaveCount(0);
+  const closes = page.getByRole("region", { name: "What it closes" });
+  await expect(closes.getByRole("link", { name: "Paarthurnax" })).toHaveCount(2);
+  await expect(closes.getByRole("link", { name: "Paarthurnax" }).last()).toHaveAttribute("href", /\/quests\/q\//);
+  await expect(page.getByRole("region", { name: "At a glance" })).not.toContainText("gives no item");
+  // Not sure yet lists only what the second reader could not settle; this line was read and checked.
+  await expect(page.getByRole("region", { name: "Information Confidence" })).not.toContainText(/the order of its quests/);
+  await page.goto("/quests/dragonborn");
+  const glance = page.getByRole("region", { name: "At a glance" });
+  await expect(glance).toContainText("Level 25");
+  await expect(page.locator("main")).not.toContainText("no level for it");
+  const where = (await glance.getByText("Where it takes you").locator("xpath=following-sibling::span[1]").innerText()).split(/,\s*|\s+and\s+/);
+  const names = where.map((w) => w.replace(/\d+ more$/, "").trim()).filter(Boolean);
+  expect(new Set(names).size).toBe(names.length);
+  const opens = page.getByRole("region", { name: "Opens other stories" });
+  if (await opens.count()) await expect(opens.getByRole("link").first()).toBeVisible();
+  await page.goto("/quests/dawnguard");
+  await expect(page.locator('main a[href="/people/silver-hand"]')).toHaveCount(0);
+  const volk = page.locator("main").getByRole("link", { name: /Volkihar/ });
+  if (await volk.count()) await expect(volk.first()).toHaveAttribute("href", /\/places\/castle-volkihar/);
+  for (const p of ["main-quest", "dragonborn", "dawnguard", "companions"]) {
+    await page.goto(`/quests/${p}`);
+    await page.screenshot({ path: `test-results/wo160-${p}-1440.png`, fullPage: true });
+  }
+});

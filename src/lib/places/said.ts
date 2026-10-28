@@ -8,7 +8,8 @@ export function saidAbout(pointers: PlacePointer[] | undefined): { shown: PlaceP
   const seen = new Set<string>();
   const all: PlacePointer[] = [];
   for (const p of pointers ?? []) {
-    const key = `${p.speaker ?? p.book ?? ""}|${p.words}`;
+    // One line per text: the same words from two books, or said twice, are shown once.
+    const key = p.words.replace(/\s+/g, " ").trim().toLowerCase();
     if (seen.has(key)) continue;
     seen.add(key);
     all.push(p);

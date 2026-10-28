@@ -76,6 +76,8 @@ export interface LineRead {
   gives?: string[];
   closes?: string[];
   unsure?: { field: string; why?: string }[];
+  /** The second reader's verdict on each field: agree, fix or unsure (WO-160 Part 6). */
+  verdicts?: Record<string, "agree" | "fix" | "unsure">;
 }
 
 export interface Quest {

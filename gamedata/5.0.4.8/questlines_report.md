@@ -6,7 +6,7 @@ Six categories, each line in one (its home) and maybe others (also). Repeatable 
 
 | Category | Subtitle | Lines (home) | Also here |
 |---|---|---|---|
-| Main stories | The game's three long stories: the main quest, Dawnguard and Dragonborn | 3 | 4 |
+| Main stories | The game's three long stories: the main quest, Dragonborn and Dawnguard | 3 | 4 |
 | Guilds and factions | Join a guild or a side and work your way up | 9 | 3 |
 | Daedric Princes | Quests for the Daedric Princes, most ending in an artifact | 17 | 3 |
 | New lands | Quests that take you to places outside Skyrim | 18 | 4 |
@@ -14,7 +14,7 @@ Six categories, each line in one (its home) and maybe others (also). Repeatable 
 | Followers | Quests that come from your followers | 12 | 2 |
 | Jobs and errands | Notice boards, bounties and favours for townsfolk | 19 | 0 |
 
-- **Main stories**: Each runs for many hours. In LoreRim, Dawnguard waits for level 30, and Miraak's cultists come at 25 once you've finished The Way of the Voice.
+- **Main stories**: Each runs for many hours. In LoreRim, Miraak's cultists come at level 25 once you've finished The Way of the Voice, and Dawnguard waits for level 30.
 - **Guilds and factions**: The Companions, the College, the Thieves Guild, the Dark Brotherhood, the Bards College and the Civil War, plus orders that mods add, like the Vigilants of Stendarr.
 - **Daedric Princes**: LoreRim holds almost all of them back until level 20, and Hircine until 25. Lines that mods add, like Saints and Seducers, are here too.
 - **New lands**: Solstheim, Wyrmstooth, Hammerfell, Morrowind's border, realms of the dead and more. Most are made for level 20 and up.
@@ -48,7 +48,7 @@ Six categories, each line in one (its home) and maybe others (also). Repeatable 
 
 ## Main stories
 
-*The game's three long stories: the main quest, Dawnguard and Dragonborn*
+*The game's three long stories: the main quest, Dragonborn and Dawnguard*
 
 Also here: Destroy the Acolyte Priests, A Forgotten Blade, Destroy the Dragon Cult, Serana.
 
