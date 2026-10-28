@@ -5184,13 +5184,8 @@ Status: queued (Mac; Bob's second review, one box)
 - [x] A contents rail on any of these pages taller than two screens.
 - [x] Checks, screenshots of The Golden Claw, Lights Out!, Aela the Huntress and Lydia at 1440 and 390, then `for Bob`.
 
-#
 
-### Bob's second review (27 Oct, 23:20)
-Places link on Aela's and Lydia's pages, the counts agree ("Gives 9 quests, and is in 3 more"; Lydia "In 2 quests"), Follows you says the how isn't sure, her quest links are orange, and The Golden Claw lists each person once. One left:
-- [ ] **The Riverwood Trader still shows "Danger: Not known yet"** on The Golden Claw. It has no place row under that name (the record calls it Lucan's Dry Goods; WO-171 adds the alias), so the page doesn't know its kind and falls back to the danger cell. A place the index doesn't know as dangerous shows no danger cell at all; only a place known to be a fight does. Screenshot of The Golden Claw, then `for Bob`.
-
-## Jeff's notes (Mac, 27 Oct)
+### Jeff's notes (Mac, 27 Oct)
 - **The band** is one component (`src/components/pages/glance.tsx`, the line page's styles): a quest and a person page now have At a glance under the title in the same full-width tinted band, each cell in its colour (rule 34).
 - **A quest:** How it starts (green: who, then the place or how), Level and danger (red: the level a need names, else "Any level", and the first place's danger in the places index's words), Where it takes you (teal: the first two places, "and N more"), Rewards (gold: the quest's XP, else "No XP", and its first reward), and the ways to finish it (violet: "3 ways", or "N choices" when the choices add no steps). A cell with nothing is left out. The Rewards box in the side column stays. **Chips:** WO-160 Part 5 took the person and place chips out of a line page's steps for names linked in the sentence; I followed that here, not the chips this order asked for. A place named in a step is teal (a link on a place), a person orange.
 - **A person:** Where to find them (teal), What they are (orange), Trains (green) or Sells (gold), Follows you (orange, with how they join), Quests (violet, the count and the first two). **"At the current hour":** the planner has no game clock, so the cell says where they are most of the day (the place with the most hours in the read's day) and "First met: ..."; "at the hour" is for the PC's save to answer. **The day strip:** the read's day rows laid out as 24 hours (`src/lib/people/day.ts`, with a test), a colour for each place with the key under it (Aela: living quarters, Jorrvaskr, outside Jorrvaskr), and the rows under it as before; a person with one place all day gets no strip.
@@ -5217,6 +5212,10 @@ Jeff's notes on the review (Mac, 27 Oct):
 - **Quest links** are all links in the same orange: a quest the read names that the quest pages don't list the person in is found by its name.
 - **The Golden Claw.** A place that isn't a dangerous place (a shop, inn, house, town; WO-162's kind) has no danger cell. A giver written as a list ("Gerdur, Hilde, Frodnar or Delphine") is split into people, each with a person page and listed once; "bandits in Bleak Falls Barrow" is a group and is dropped.
 - Tests: the review test in `e2e/wo165.spec.ts`; `wo154.spec.ts` follows the new wording ("She gives 2 quests."). Screenshots: `test-results/wo165-aela-1440.png`, `wo165-golden-claw-1440.png`.
+
+### Bob's second review (27 Oct, 23:20)
+Places link on Aela's and Lydia's pages, the counts agree ("Gives 9 quests, and is in 3 more"; Lydia "In 2 quests"), Follows you says the how isn't sure, her quest links are orange, and The Golden Claw lists each person once. One left:
+- [ ] **The Riverwood Trader still shows "Danger: Not known yet"** on The Golden Claw. It has no place row under that name (the record calls it Lucan's Dry Goods; WO-171 adds the alias), so the page doesn't know its kind and falls back to the danger cell. A place the index doesn't know as dangerous shows no danger cell at all; only a place known to be a fight does. Screenshot of The Golden Claw, then `for Bob`.
 
 ## WO-163  Quest categories as tables (Mac, 27 Oct 2026)
 Status: done
