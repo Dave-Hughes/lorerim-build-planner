@@ -5099,7 +5099,7 @@ Status: queued (Mac; waits on WO-166 Part 2's map files on staging, then after W
 - [ ] Checks and screenshots of Bleak Falls Barrow, Riverwood, the Sleeping Giant Inn (town pin) and Places at 1440 and 390, then `for Bob`.
 
 ## WO-166  Every place's position, and the map images, from the game files (PC, 27 Oct 2026)
-Status: queued (PC)
+Status: building (PC)
 
 **Why.** Bob's proof (`scripts/gamedata/map_proof/`, README there) made a pixel map of Skyrim from Skyrim.esm's terrain and pinned 286 places. Turn it into a real build step and close the gaps it found.
 
