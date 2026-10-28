@@ -2,7 +2,7 @@ import { questHref } from "@/lib/quests/slugs";
 import "server-only";
 import { gearData } from "@/lib/gear/data";
 import { itemSlug } from "@/lib/gear/query";
-import { placesData, placeType, type Place } from "@/lib/places/data";
+import { placeLabel, placesData, placeType, type Place } from "@/lib/places/data";
 import { questsData } from "@/lib/quests/data";
 import type { GameData } from "@/lib/rules/data";
 import type { LinkKind, ObjectiveLink } from "./types";
@@ -30,7 +30,7 @@ const placeLinkWhere = (p: Place) => [placeType(p.type), p.nearestTown ? `by ${p
 let placeIndex: Linkable[] | null = null;
 /** Every place in the places index (WO-128), once per server. */
 export function placeLinkables(): Linkable[] {
-  placeIndex ??= placesData().places.map((p) => ({ kind: "place" as const, id: p.id, name: p.name, where: placeLinkWhere(p), href: null }));
+  placeIndex ??= placesData().places.map((p) => ({ kind: "place" as const, id: p.id, name: placeLabel(p), where: placeLinkWhere(p), href: null }));
   return placeIndex;
 }
 
@@ -68,7 +68,7 @@ export function resolveLink(d: GameData, link: ObjectiveLink | null | undefined)
   }
   if (link.kind === "place") {
     const p = placesData().places.find((x) => x.id === link.id);
-    return p ? { ...link, name: p.name, where: placeLinkWhere(p), href: null, tag } : null;
+    return p ? { ...link, name: placeLabel(p), where: placeLinkWhere(p), href: null, tag } : null;
   }
   const hit = questLinkables().find((x) => x.kind === link.kind && x.id === link.id);
   return hit ? { ...hit, tag } : null;

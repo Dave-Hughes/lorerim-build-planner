@@ -6,7 +6,7 @@ import { db, schema } from "@/db";
 import { gearData } from "@/lib/gear/data";
 import { ipCall } from "@/lib/moderation/limits";
 import { lineOfQuest, placeLinkables, questLinkables, type Linkable } from "@/lib/playthroughs/links";
-import { placeByName, placesData, placeType } from "@/lib/places/data";
+import { placeByName, placeLabel, placesData, placesNamed, placeType } from "@/lib/places/data";
 import { holdNamed, whereTerms } from "@/lib/places/holds";
 import { citiesOf } from "@/lib/places/inside";
 import { actTowns, placesNear, townsIn, unmeasured } from "@/lib/places/suggest";
@@ -133,7 +133,9 @@ export function resolveLinkName(version: string, input: { kind: LinkKind; name: 
   }
   if (input.kind === "place") {
     const pl = placeByName(want);
-    if (pl) return { link: { kind: "place", id: pl.id }, name: pl.name };
+    if (pl) return { link: { kind: "place", id: pl.id }, name: placeLabel(pl) };
+    const several = placesNamed(want);
+    if (several.length > 1) throw new FactsError(`More than one place is called ${want}. Say which one: ${several.map(placeLabel).join("; ")}.`);
     throw new FactsError(`No place called ${want} in the planner's places index. The closest: ${names.closest(want, placeLinkables().map((x) => x.name)).join(", ")}. suggest_places lists the places near an act's towns; never invent one.`);
   }
   const pool: Linkable[] = questLinkables().filter((x) => x.kind === input.kind);

@@ -12,7 +12,7 @@ import { LineToc } from "@/components/quests/line-parts";
 import { PlaceMapBand } from "@/components/places/place-map";
 import { personHref } from "@/lib/people/data";
 import { questsData } from "@/lib/quests/data";
-import { hasLevels, placeBySlug, placeHref, placeType, rangeOf } from "@/lib/places/data";
+import { afterWar, hasLevels, isGarrison, placeBySlug, placeHrefOf, placeLabel, placesSharingSlug, placeType, rangeOf, type Place } from "@/lib/places/data";
 import { PlaceSaid, PlaceTown, levelRange } from "@/components/places/place-town";
 import { placeKind } from "@/lib/places/kind";
 import { playerFacing } from "@/lib/places/said";
@@ -44,10 +44,42 @@ const bossRange = (level: string | undefined): [number, number] | null => {
   return m ? [Number(m[1]), Number(m[2] ?? m[1])] : null;
 };
 
+/** A name more than one place has ("Imperial Military Camp" is eight): the address of the name alone lists them, each with its own page (WO-172). */
+function WhichOne({ places }: { places: Place[] }) {
+  const name = places[0].name;
+  return (
+    <main className={l.root}>
+      <div className={`page ${l.top}`}>
+        <PageTop back={{ href: "/places", label: "Places" }} />
+        <TitleBox title={name} tags={<span className={styles.tag}>{places.length} places</span>} />
+        <p className={styles.lede}>{places.length} places in Skyrim are called {name}. Which one?</p>
+      </div>
+      <div className="page" style={{ paddingTop: 16, width: "100%" }}>
+        <div style={{ maxWidth: 760 }}>
+          <section className={styles.sec} aria-label={`The places called ${name}`}>
+            {[...places]
+              .sort((a, b) => placeLabel(a).localeCompare(placeLabel(b)))
+              .map((p) => (
+                <div key={p.id} className={styles.qrow}>
+                  <Link href={placeHrefOf(p)}>{placeLabel(p)}</Link>
+                  <span>{[placeType(p.type), p.hold, p.nearestTown ? `near ${p.nearestTown.town}` : p.inTown ? `in ${p.inTown}` : ""].filter(Boolean).join(", ")}</span>
+                </div>
+              ))}
+          </section>
+        </div>
+      </div>
+    </main>
+  );
+}
+
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-  const p = placeBySlug((await params).slug);
-  if (!p) return {};
-  return { title: p.name, ...siteMetadata(`${placeHref(p.name)}`, p.name, [placeType(p.type), p.hold].filter(Boolean).join(" in ")) };
+  const slug = (await params).slug;
+  const p = placeBySlug(slug);
+  if (!p) {
+    const several = placesSharingSlug(slug);
+    return several ? { title: several[0].name, ...siteMetadata(`/places/${slug}`, several[0].name, `${several.length} places share this name`) } : {};
+  }
+  return { title: placeLabel(p), ...siteMetadata(placeHrefOf(p), placeLabel(p), [placeType(p.type), p.hold].filter(Boolean).join(" in ")) };
 }
 
 /** Which expansion or mod a place's record is from, by its form id's plugin: "Vanilla" for the base game. */
@@ -61,15 +93,26 @@ const originOf = (id: string) => {
  * strong, what is worth going for, the quests that bring you here, what points here in the game's own words, and what finding and clearing it pay.
  */
 export default async function PlacePage({ params }: { params: Params }) {
-  const place = placeBySlug((await params).slug);
-  if (!place) notFound();
   const slug = (await params).slug;
+  const place = placeBySlug(slug);
+  if (!place) {
+    const several = placesSharingSlug(slug);
+    if (!several) notFound();
+    return <WhichOne places={several} />;
+  }
   const userId = (await auth())?.user?.id ?? null;
   const confirmed = await confirmationsOf("place", slug, userId);
   const a = place.actors;
-  const levels = hasLevels(a) && a.hostile !== false ? rangeOf(a!) : null;
-  const boss = a?.boss?.name ? { name: a.boss.name, range: bossRange(a.boss.level), words: levelWords(a.boss.level) } : null;
-  const foes = a?.livesHere ? (PLURAL[a.livesHere] ?? `${a.livesHere}s`) : "Enemies";
+  // A camp with a guard or two before the war and a garrison after it (WO-172): the page gives the garrison's levels and says so, not the guard's.
+  const war = a?.hostile === false ? null : afterWar(a);
+  const garrison = isGarrison(a) && !!war;
+  const levels = garrison ? war!.range : hasLevels(a) && a.hostile !== false ? rangeOf(a!) : null;
+  const bossFrom = garrison ? war!.boss : a?.boss;
+  const boss = bossFrom?.name ? { name: bossFrom.name, range: bossRange(bossFrom.level), words: levelWords(bossFrom.level) } : null;
+  const livesHere = garrison ? war!.livesHere : a?.livesHere;
+  const foes = garrison ? "After the war" : livesHere ? (PLURAL[livesHere] ?? `${livesHere}s`) : "Enemies";
+  const alsoHere = garrison ? war!.alsoHere : a?.alsoHere;
+  const inAll = garrison ? war!.count : a?.count;
   const town = place.nearestTown;
   const origin = originOf(place.id);
   const worth = place.worthGoingFor;
@@ -103,7 +146,7 @@ export default async function PlacePage({ params }: { params: Params }) {
       unsure={worth?.bossChest ? [{ field: "what's in the boss chest" }] : []}
       actions={
         <>
-          <ConfirmButton kind="place" id={slug} path={`/places/${slug}`} title={place.name} signedIn={!!userId} mine={confirmed.mine} signIn={<SignInButton redirectTo={`/places/${slug}`} className="btn btn-primary" label="Sign in to confirm" />} />
+          <ConfirmButton kind="place" id={slug} path={`/places/${slug}`} title={placeLabel(place)} signedIn={!!userId} mine={confirmed.mine} signIn={<SignInButton redirectTo={`/places/${slug}`} className="btn btn-primary" label="Sign in to confirm" />} />
           <Link href="/quests" className="btn">
             Report a mistake
           </Link>
@@ -124,7 +167,7 @@ export default async function PlacePage({ params }: { params: Params }) {
 
   // At a glance (WO-162, the colours of rule 34): danger in red, the boss and people in orange, what it pays in gold, when it comes back, and the nearest town in teal.
   const glance: { key: string; icon: string; tone: string; label: string; value: React.ReactNode; sub?: React.ReactNode }[] = [
-    ...(levels ? [{ key: "danger", icon: "tab-levels", tone: l.cRed, label: "Danger", value: levelRange(levels), sub: `${foes}${a?.alsoHere?.length ? `, ${a.alsoHere.map((x) => PLURAL[x] ?? `${x}s`).join(", ")} too` : ""}` }] : a?.hostile === false ? [{ key: "danger", icon: "tab-levels", tone: l.cRed, label: "Danger", value: "None", sub: "Nobody here is hostile" }] : []),
+    ...(levels ? [{ key: "danger", icon: "tab-levels", tone: l.cRed, label: "Danger", value: levelRange(levels), sub: `${foes}${alsoHere?.length ? `, ${alsoHere.map((x) => PLURAL[x] ?? `${x}s`).join(", ")} too` : ""}` }] : a?.hostile === false ? [{ key: "danger", icon: "tab-levels", tone: l.cRed, label: "Danger", value: "None", sub: "Nobody here is hostile" }] : []),
     ...(boss ? [{ key: "boss", icon: "quest-people", tone: l.cOrange, label: "The boss", value: personHref(boss.name) ? <PreviewLink href={personHref(boss.name)!}>{boss.name}</PreviewLink> : boss.name, sub: boss.words ? `Level ${boss.words}` : undefined }] : []),
     ...(place.clearXp || place.discoveryXp ? [{ key: "xp", icon: "quest-rewards", tone: l.cGold, label: "Rewards", value: `${place.clearXp || place.discoveryXp} XP`, sub: [place.clearXp ? "For clearing it" : "", place.discoveryXp && place.clearXp ? `${place.discoveryXp} XP for finding it` : place.discoveryXp ? "For finding it" : ""].filter(Boolean).join("; ") }] : []),
     ...(place.respawns ? [{ key: "back", icon: "tab-set-up", tone: l.cOrange, label: "Comes back", value: respawnWords(place.respawns), sub: undefined }] : []),
@@ -137,7 +180,7 @@ export default async function PlacePage({ params }: { params: Params }) {
       <PageTop back={{ href: "/places", label: "Places" }} />
 
       <TitleBox
-        title={place.name}
+        title={placeLabel(place)}
         tags={
           <>
             <span className={styles.tag}>{placeType(place.type)}</span>
@@ -195,13 +238,20 @@ export default async function PlacePage({ params }: { params: Params }) {
                   <div className={styles.foe}>
                     <b>{foes}</b>
                     <span className={styles.lv}>{levels[0] === levels[1] ? `Level ${levels[0]}` : `Level ${levels[0]} to ${levels[1]}`}</span>
-                    {(a?.alsoHere?.length || a?.count) && (
+                    {(alsoHere?.length || inAll) && (
                       <small>
-                        {a?.alsoHere?.length ? `${a.alsoHere.map((x) => PLURAL[x] ?? `${x}s`).join(", ")} too. ` : ""}
-                        {a?.count ? `${a.count} in all.` : ""}
+                        {alsoHere?.length ? `${alsoHere.map((x) => PLURAL[x] ?? `${x}s`).join(", ")} too. ` : ""}
+                        {inAll ? `${inAll} in all.` : ""}
                       </small>
                     )}
                   </div>
+                  {war && !garrison && (
+                    <div className={styles.foe}>
+                      <b>After the war</b>
+                      <span className={styles.lv}>{war.range[0] === war.range[1] ? `Level ${war.range[0]}` : `Level ${war.range[0]} to ${war.range[1]}`}</span>
+                      <small>{war.count} in all.</small>
+                    </div>
+                  )}
                   {boss && (
                     <div className={`${styles.foe} ${styles.foeBoss}`}>
                       <b>

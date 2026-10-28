@@ -1,7 +1,7 @@
 import { MapView } from "./map-view";
 import { placeMap } from "@/lib/places/map";
 import Link from "next/link";
-import { placeHref, type Place } from "@/lib/places/data";
+import { placeSlug, type Place } from "@/lib/places/data";
 import s from "./place-map.module.css";
 
 /**
@@ -23,7 +23,7 @@ export function PlaceMapBand({ place }: { place: Place }) {
           </>
         )}
         {/* The whole map, opened on this place (WO-169). */}
-        <Link href={`/map?place=${(placeHref(place.name) ?? "").replace("/places/", "")}`} className={s.onMap}>
+        <Link href={`/map?place=${placeSlug(place)}`} className={s.onMap}>
           Open on the map ›
         </Link>
       </div>

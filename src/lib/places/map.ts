@@ -2,7 +2,7 @@ import "server-only";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { currentVersion } from "@/lib/rules/server";
-import { placeByName, placeHref, placesData, type Place } from "./data";
+import { placeByName, placeHrefOf, placeLabel, placesData, type Place } from "./data";
 import { placeKind } from "./kind";
 
 /**
@@ -48,6 +48,9 @@ export function mapEntry(world = "Tamriel"): MapEntry | null {
 /** A game position as a pixel of the 8192 texture: x grows east and y grows north in the game, and the picture's y grows down. */
 export const toTexture = (m: MapEntry, x: number, y: number) => ({ px: m.texture.origin[0] + x / m.texture.unitsPerPixel, py: m.texture.origin[1] - y / m.texture.unitsPerPixel });
 
+/** Whether a pixel of the texture is inside the paper map's frame: a place beyond it (a stray "Campsite") has no spot on the map. */
+export const inFrame = (m: MapEntry, px: number, py: number) => px >= m.border[0] && px <= m.border[2] && py >= m.border[1] && py <= m.border[3];
+
 const kindOf = (p: Place): PinKind => {
   const k = placeKind(p);
   return k === "town" ? "town" : k === "dangerous" ? "danger" : "other";
@@ -63,13 +66,14 @@ export function mapPins(): Pin[] {
   if (m)
     for (const p of placesData().places) {
       if (p.world !== "Tamriel" || !p.pos) continue;
-      const href = placeHref(p.name);
-      if (!href) continue;
+      const href = placeHrefOf(p);
       const { px, py } = toTexture(m, p.pos[0], p.pos[1]);
-      const key = `${p.name}|${Math.round(px / 4)}|${Math.round(py / 4)}`;
+      if (!inFrame(m, px, py)) continue;
+      // A place once: its own address and spot (the same name and spot listed twice is one pin, and two places of one name are two).
+      const key = `${href}|${Math.round(px / 4)}|${Math.round(py / 4)}`;
       if (seen.has(key)) continue;
       seen.add(key);
-      out.push({ name: p.name, href, kind: kindOf(p), px, py, type: p.type, ...(p.hold ? { hold: p.hold } : {}) });
+      out.push({ name: placeLabel(p), href, kind: kindOf(p), px, py, type: p.type, ...(p.hold ? { hold: p.hold } : {}) });
     }
   pinned = out;
   return out;
@@ -110,10 +114,10 @@ export function placeMap(place: Place): PlaceMap | null {
   const at = place.pos && place.world === "Tamriel" ? place : inTown?.pos && inTown.world === "Tamriel" ? inTown : null;
   if (!at?.pos) return null;
   const { px, py } = toTexture(entry, at.pos[0], at.pos[1]);
-  const href = placeHref(at.name) ?? "";
-  const here: Pin = { name: at.name, href, kind: kindOf(at), px, py, type: at.type };
+  const href = placeHrefOf(at);
+  const here: Pin = { name: placeLabel(at), href, kind: kindOf(at), px, py, type: at.type };
   const around = mapPins()
-    .filter((p) => p.name !== at.name)
+    .filter((p) => p.href !== href)
     .map((p) => ({ p, d: Math.hypot(p.px - px, p.py - py) }))
     .filter((x) => x.d < 1100)
     .sort((a, b) => a.d - b.d)

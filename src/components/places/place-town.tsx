@@ -7,7 +7,7 @@ import { LineToc } from "@/components/quests/line-parts";
 import { PlaceMapBand } from "./place-map";
 import { linkable } from "@/lib/pages/names";
 import { personHref } from "@/lib/people/data";
-import { placeHref, placeType, rangeOf, type Place } from "@/lib/places/data";
+import { placeHref, placeHrefOf, placeLabel, placeType, rangeOf, type Place } from "@/lib/places/data";
 import { closeBy, peopleAt, type PlacePerson } from "@/lib/places/people";
 import type { PlaceKind } from "@/lib/places/kind";
 import { saidAbout } from "@/lib/places/said";
@@ -214,7 +214,7 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
       <div className={`page ${l.top}`}>
         <PageTop back={inside && upHref && place.inTown ? { href: upHref, label: place.inTown } : { href: "/places", label: "Places" }} />
         <TitleBox
-          title={place.name}
+          title={placeLabel(place)}
           tags={
             <>
               <span className={l.tagPlain}>{placeType(place.type)}</span>
@@ -308,7 +308,7 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
                   <div key={p.id} className={t.row}>
                     <img className={t.px} src="/icons/quest-travel.svg" alt="" width={22} height={22} />
                     <span>
-                      <Link href={placeHref(p.name) ?? "/places"}>{p.name}</Link>
+                      <Link href={placeHrefOf(p)}>{placeLabel(p)}</Link>
                       <span className={t.w}>
                         {placeType(p.type)}, {words}
                       </span>

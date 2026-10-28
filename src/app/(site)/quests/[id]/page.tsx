@@ -7,7 +7,7 @@ import { auth } from "@/auth";
 import { SignInButton } from "@/components/site-header";
 import { Linked } from "@/components/pages/linked";
 import { InformationConfidence, PageTop, TitleBox } from "@/components/pages/page-kit";
-import { linkable, opensNames } from "@/lib/pages/names";
+import { linkable, opensNames, ownPlaceNames } from "@/lib/pages/names";
 import k from "@/components/pages/page-kit.module.css";
 import { QuestReport } from "@/components/quests/quest-report";
 import { LineJobs, LineStory, LineToc } from "@/components/quests/line-parts";
@@ -74,7 +74,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
   const view = lineView(line);
   const told = storyOfLine(line.id);
   const lr = line.read;
-  const names = linkable();
+  const names = [...linkable(), ...ownPlaceNames(line.quests.map((q) => q.name))];
   const opensWords = opensNames();
   const shelf = view.shelf;
   const read = line.quests.filter((q) => q.source === "reads").length;

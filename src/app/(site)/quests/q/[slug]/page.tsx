@@ -20,7 +20,7 @@ import {
 import { Steps } from "@/components/pages/steps";
 import { QuestReport } from "@/components/quests/quest-report";
 import { SignInButton } from "@/components/site-header";
-import { linkable, modNames, personNames } from "@/lib/pages/names";
+import { linkable, modNames, ownPlaceNames, personNames } from "@/lib/pages/names";
 import { GlanceBand, type GlanceCell } from "@/components/pages/glance";
 import { AutoToc } from "@/components/pages/auto-toc";
 import l from "@/components/quests/line-page.module.css";
@@ -29,7 +29,7 @@ import { categories, homeName, questsData } from "@/lib/quests/data";
 import { loadPlayerFacts } from "@/lib/quests/player-facts";
 import { dangerParts, pageOf, placeNamed, playersWords } from "@/lib/quests/reads";
 import { questBySlug, questHref } from "@/lib/quests/slugs";
-import { placeHref, type Place } from "@/lib/places/data";
+import { placeHref, placeHrefOf, type Place } from "@/lib/places/data";
 import { placeKind } from "@/lib/places/kind";
 import { personHref } from "@/lib/people/data";
 import { siteMetadata } from "@/lib/og/metadata";
@@ -112,6 +112,7 @@ export default async function QuestPage({
   const names = [
     ...modNames(),
     ...linkable(),
+    ...ownPlaceNames([quest.name]),
     ...personNames(people.map((p) => p.name)),
   ];
 
@@ -477,7 +478,7 @@ export default async function QuestPage({
             (() => {
               const rows = page.takesYou.map((t) => ({
                 t,
-                place: vaguePlace(t.place) ? null : placeNamed(t.place),
+                place: vaguePlace(t.place) ? null : placeNamed(t.place, quest.name),
               }));
               // When no place on the quest has danger data the column goes, and the page says so once (WO-154 Part 4).
               // Only a place the index knows is a fight has a danger cell (WO-162's kind decides): a shop, inn, house or town, and a place
@@ -491,7 +492,7 @@ export default async function QuestPage({
                   title="Where it takes you"
                 >
                   {rows.map(({ t, place }, i) => {
-                    const href = place ? placeHref(place.name) : null;
+                    const href = place ? placeHrefOf(place) : placeHref(t.place);
                     const danger = dangerParts(place);
                     const unknown = vaguePlace(t.place);
                     const shownDanger = anyDanger && hasDanger(place);

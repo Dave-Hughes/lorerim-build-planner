@@ -42,8 +42,8 @@ export interface Actors {
   /** What mainly lives there, and what else ("Bandit", ["Skeleton"]). */
   livesHere?: string;
   alsoHere?: string[];
-  /** Who the war's garrisons put here later, in this same shape (WO-144 Part 1e-4); the door doesn't read it yet. */
-  afterTheWar?: unknown;
+  /** Who the war's garrisons put here later, in this same shape (WO-144 Part 1e-4). A camp with one guard before the war has a dozen after it (WO-172). */
+  afterTheWar?: Omit<Actors, "afterTheWar">;
   boss?: { name?: string; level?: string };
 }
 
@@ -58,6 +58,31 @@ export function rangeOf(a: Actors): [number, number] {
   const lo = a.floor ?? a.levels?.[0] ?? a.atLevel?.[0]?.level?.[0] ?? a.atLevel?.[0]?.meets?.[0] ?? 1;
   const hi = a.ceiling ?? a.levels?.[1] ?? a.atLevel?.at(-1)?.level?.[1] ?? a.atLevel?.at(-1)?.meets?.[1] ?? lo;
   return [lo, hi];
+}
+
+/** What the war's garrisons put at a place, as its levels: null when the place has no "after the war" set with levels. */
+export function afterWar(a: Actors | undefined): { range: [number, number]; count: number; livesHere?: string; alsoHere?: string[]; boss?: Actors["boss"] } | null {
+  const w = a?.afterTheWar;
+  if (!w || !hasLevels(w as Actors)) return null;
+  return { range: rangeOf(w as Actors), count: w.count, livesHere: w.livesHere, alsoHere: w.alsoHere, boss: w.boss };
+}
+
+/**
+ * Whether the garrison the war brings is what a place is, and the one or two actors there before it are a guard (WO-172): a camp. Its pages
+ * and hovers give the garrison's levels and say "after the war".
+ */
+export const isGarrison = (a: Actors | undefined): boolean => !!afterWar(a) && !(hasLevels(a) && a!.count > 2);
+
+/**
+ * The levels a player can meet at a place, from the one guard who is there before the war to the garrison after it: the whole span, for a
+ * filter. Null when nothing hostile is known there.
+ */
+export function levelSpan(a: Actors | undefined): [number, number] | null {
+  if (!a || a.hostile === false) return null;
+  const now = hasLevels(a) ? rangeOf(a) : null;
+  const war = afterWar(a)?.range ?? null;
+  if (now && war) return [Math.min(now[0], war[0]), Math.max(now[1], war[1])];
+  return now ?? war;
 }
 
 /** What a player at level n meets: the row of the highest gate at or below n; null when no row is open to her yet. */
@@ -105,11 +130,18 @@ export interface Place {
   danger?: { traps?: boolean };
 }
 
-let cached: { places: Place[]; byName: Map<string, Place> } | null = null;
+interface Index {
+  places: Place[];
+  /** Places whose name no other place has, by name. */
+  byName: Map<string, Place>;
+  /** Every place by name, so a name two places share lists both (WO-172). */
+  named: Map<string, Place[]>;
+}
+let cached: Index | null = null;
 
 const key = (s: string) => s.toLowerCase().replace(/[’']/g, "'").replace(/\s+/g, " ").trim();
 
-export function placesData() {
+export function placesData(): Index {
   if (cached) return cached;
   let places: Place[] = [];
   try {
@@ -117,12 +149,71 @@ export function placesData() {
   } catch {
     // Not built yet.
   }
-  cached = { places, byName: new Map(places.map((p) => [key(p.name), p])) };
+  const named = new Map<string, Place[]>();
+  for (const p of places) named.set(key(p.name), [...(named.get(key(p.name)) ?? []), p]);
+  const byName = new Map<string, Place>();
+  for (const [k, ps] of named) if (ps.length === 1) byName.set(k, ps[0]);
+  cached = { places, byName, named };
   return cached;
 }
 
-/** A place by its name, case and spacing aside; null when the index has none. */
-export const placeByName = (name: string) => placesData().byName.get(key(name)) ?? null;
+/** Every place with this name, case and spacing aside: more than one where eight camps share a name. */
+export const placesNamed = (name: string): Place[] => placesData().named.get(key(name)) ?? [];
+
+/**
+ * A place by its name, case and spacing aside; null when the index has none, and null when more than one place has that name (the
+ * Imperial Military Camp is eight places). A name that says which ("Imperial Military Camp, the Reach") finds that one.
+ */
+export function placeByName(name: string): Place | null {
+  const { byName, named } = placesData();
+  const hit = byName.get(key(name));
+  if (hit) return hit;
+  if (named.has(key(name))) return null;
+  const labelled = labels().get(key(name));
+  return labelled ?? null;
+}
+
+/** What tells places that share a name apart: the town a building stands in, else its hold, else what kind of place it is. */
+const SEPARATORS: ((p: Place) => string | undefined)[] = [(p) => p.inTown ?? p.hold, (p) => (p.inTown ? p.hold : undefined), (p) => placeType(p.type).toLowerCase()];
+
+let qualified: { qualifier: Map<string, string>; labels: Map<string, Place> } | null = null;
+function shared() {
+  if (qualified) return qualified;
+  const qualifier = new Map<string, string>();
+  const labels = new Map<string, Place>();
+  for (const group of placesData().named.values()) {
+    if (group.length < 2) continue;
+    // The first way of telling them apart that gives each its own word; if none does, they are told apart by a number.
+    const way = SEPARATORS.find((f) => new Set(group.map((p) => key(f(p) ?? ""))).size === group.length && group.every((p) => f(p)));
+    group.forEach((p, i) => {
+      const q = way ? way(p)! : String(i + 1);
+      qualifier.set(p.id, q);
+      const word = /^the\s/i.test(q) ? `the ${q.slice(4)}` : q;
+      labels.set(key(`${p.name}, ${word}`), p);
+    });
+  }
+  qualified = { qualifier, labels };
+  return qualified;
+}
+const labels = () => shared().labels;
+
+/** Whether a name belongs to more than one place. */
+export const isSharedName = (name: string) => placesNamed(name).length > 1;
+
+/**
+ * The word that says which of several places of one name this is: "the Reach" for an Imperial Military Camp, "Whiterun" for a Hall of the
+ * Dead; null when the name is the place's alone.
+ */
+export function placeQualifier(p: Place): string | null {
+  const q = shared().qualifier.get(p.id);
+  return q ? (/^the\s/i.test(q) ? `the ${q.slice(4)}` : q) : null;
+}
+
+/** The name a player sees: with its qualifier where the name is shared ("Imperial Military Camp, the Reach"), else the name. */
+export const placeLabel = (p: Place): string => {
+  const q = placeQualifier(p);
+  return q ? `${p.name}, ${q}` : p.name;
+};
 
 const slugOf = (s: string) =>
   s
@@ -131,30 +222,45 @@ const slugOf = (s: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 
-let slugs: { bySlug: Map<string, Place>; byId: Map<string, string> } | null = null;
+let slugs: { bySlug: Map<string, Place>; byId: Map<string, string>; sharedSlugs: Map<string, Place[]> } | null = null;
 function slugged() {
   if (slugs) return slugs;
   const bySlug = new Map<string, Place>();
   const byId = new Map<string, string>();
-  // The name alone; two places that share a name (or make one slug) take a number, in the index's order.
+  const sharedSlugs = new Map<string, Place[]>();
+  // The name alone; a name two places share takes its qualifier (the hold, the town or the kind), and the name alone lists them (WO-172).
+  // Two names that make one slug take a number, in the index's order.
+  for (const group of placesData().named.values()) if (group.length > 1) sharedSlugs.set(slugOf(group[0].name) || "place", group);
   for (const p of placesData().places) {
     const base = slugOf(p.name) || "place";
-    let slug = base;
-    for (let n = 2; bySlug.has(slug); n++) slug = `${base}-${n}`;
+    const q = shared().qualifier.get(p.id);
+    const wanted = q ? `${base}-${slugOf(q)}` : base;
+    let slug = wanted;
+    for (let n = 2; bySlug.has(slug) || (!q && sharedSlugs.has(slug)); n++) slug = `${wanted}-${n}`;
     bySlug.set(slug, p);
     byId.set(p.id, slug);
   }
-  slugs = { bySlug, byId };
+  slugs = { bySlug, byId, sharedSlugs };
   return slugs;
 }
 
-/** A place's page address (WO-154), or null for a place the index doesn't have (a town's interior). */
+/** A place's own address (WO-172): its slug is unique even where its name is not. */
+export const placeSlug = (p: Place): string => slugged().byId.get(p.id) ?? slugOf(p.name);
+export const placeHrefOf = (p: Place): string => `/places/${placeSlug(p)}`;
+
+/**
+ * A place's page address (WO-154) by its name, or null for a place the index doesn't have (a town's interior). A name that says which
+ * ("Hall of the Dead, Whiterun") goes to that place; a shared name goes to the page that lists the places with it.
+ */
 export const placeHref = (name: string): string | null => {
   const p = placeByName(name);
-  const slug = p ? slugged().byId.get(p.id) : null;
-  return slug ? `/places/${slug}` : null;
+  if (p) return placeHrefOf(p);
+  const group = placesNamed(name);
+  return group.length > 1 ? `/places/${slugOf(group[0].name)}` : null;
 };
 export const placeBySlug = (slug: string): Place | null => slugged().bySlug.get(slug) ?? null;
+/** The places a shared address lists ("/places/imperial-military-camp"): null when the slug is not a shared name's. */
+export const placesSharingSlug = (slug: string): Place[] | null => slugged().sharedSlugs.get(slug) ?? null;
 
 /** "Nordic ruin", "Dragon lair", "Cave": a place's type in words. */
 export function placeType(type: string): string {

@@ -5,7 +5,7 @@ import { SearchBox } from "@/components/search/search-box";
 import { MapView } from "@/components/places/map-view";
 import { mapEntry, mapPins } from "@/lib/places/map";
 import { PLACE_GROUPS, groupFrom, groupOf } from "@/lib/places/groups";
-import { placeHref, placesData, placeType, type Place } from "@/lib/places/data";
+import { placeHrefOf, placeLabel, placesData, placeType, type Place } from "@/lib/places/data";
 import { siteMetadata } from "@/lib/og/metadata";
 import styles from "@/components/pages/page-kit.module.css";
 
@@ -80,7 +80,7 @@ export default async function PlacesPage({ searchParams }: { searchParams: Promi
             .sort((a, b) => a.name.localeCompare(b.name))
             .map((p) => (
               <div key={p.id} className={styles.qrow}>
-                <Link href={placeHref(p.name) ?? "/places"}>{p.name}</Link>
+                <Link href={placeHrefOf(p)}>{placeLabel(p)}</Link>
                 <span>{[placeType(p.type), p.hold].filter(Boolean).join(", ")}</span>
               </div>
             ))}
@@ -96,7 +96,7 @@ export default async function PlacesPage({ searchParams }: { searchParams: Promi
               <div className={styles.few}>
                 {notable(ps).map((p) => (
                   <span key={p.id}>
-                    <Link href={placeHref(p.name) ?? "/places"}>{p.name}</Link>
+                    <Link href={placeHrefOf(p)}>{placeLabel(p)}</Link>
                     <small>{placeType(p.type)}</small>
                   </span>
                 ))}

@@ -4,8 +4,8 @@ import { placeNames } from "@/lib/pages/names";
 import { dayHours, mainPlace } from "@/lib/people/day";
 import { personBySlug } from "@/lib/people/data";
 import { peopleAt } from "@/lib/places/people";
-import { hasLevels, placeByName, placeBySlug, placeHref, placeType, placesData, rangeOf, type Place } from "@/lib/places/data";
-import { gettingThere, mapEntry, toTexture } from "@/lib/places/map";
+import { afterWar, hasLevels, isGarrison, levelSpan, rangeOf, placeByName, placeBySlug, placeLabel, placeSlug, placeType, placesData, placesNamed, type Place } from "@/lib/places/data";
+import { gettingThere, inFrame, mapEntry, toTexture } from "@/lib/places/map";
 import { placeKind } from "@/lib/places/kind";
 import { playerFacing } from "@/lib/places/said";
 import { questsData } from "@/lib/quests/data";
@@ -32,8 +32,6 @@ export interface MapPlace {
   quests: number;
 }
 
-const slugOf = (name: string) => placeHref(name)?.replace(/^\/places\//, "") ?? null;
-
 let all: MapPlace[] | null = null;
 export function mapPlaces(): MapPlace[] {
   if (all) return all;
@@ -43,22 +41,22 @@ export function mapPlaces(): MapPlace[] {
   if (m)
     for (const p of placesData().places) {
       if (p.world !== "Tamriel" || !p.pos) continue;
-      const slug = slugOf(p.name);
-      if (!slug) continue;
+      const slug = placeSlug(p);
       const { px, py } = toTexture(m, p.pos[0], p.pos[1]);
-      const key = `${p.name}|${Math.round(px / 4)}|${Math.round(py / 4)}`;
+      if (!inFrame(m, px, py)) continue;
+      const key = `${slug}|${Math.round(px / 4)}|${Math.round(py / 4)}`;
       if (seen.has(key)) continue;
       seen.add(key);
       const k = placeKind(p);
       out.push({
         slug,
-        name: p.name,
+        name: placeLabel(p),
         kind: p.type === "City" ? "city" : k === "town" ? "town" : k === "dangerous" ? "danger" : "other",
         type: p.type,
         hold: p.hold ?? null,
         px: Math.round(px * 10) / 10,
         py: Math.round(py * 10) / 10,
-        range: p.actors && p.actors.hostile !== false && hasLevels(p.actors) ? rangeOf(p.actors) : null,
+        range: levelSpan(p.actors),
         quests: (p.quests ?? []).length,
       });
     }
@@ -67,9 +65,13 @@ export function mapPlaces(): MapPlace[] {
 }
 
 const bySlug = () => new Map(mapPlaces().map((p) => [p.slug, p]));
-const mapPlaceNamed = (name: string): MapPlace | null => {
-  const slug = placeByName(name) ? slugOf(placeByName(name)!.name) : null;
-  return slug ? (bySlug().get(slug) ?? null) : null;
+/**
+ * A place on the map by the name the words use. A name more than one place has (the Imperial Military Camp) is the one the quest goes to,
+ * when `quest` says which quest and only one of them is its place; otherwise none.
+ */
+const mapPlaceNamed = (name: string, quest?: string): MapPlace | null => {
+  const named = placeByName(name) ?? (quest ? (placesNamed(name).filter((p) => p.quests?.includes(quest)).length === 1 ? placesNamed(name).find((p) => p.quests?.includes(quest)) : null) : null);
+  return named ? (bySlug().get(placeSlug(named)) ?? null) : null;
 };
 
 /** The words a result says about a place: its kind and, when something there fights, its levels. */
@@ -111,7 +113,7 @@ export function questRoute(slug: string): { name: string; href: string; stops: {
   const seen = new Set<string>();
   const stops: { slug: string; name: string; why: string | null }[] = [];
   for (const t of page.takesYou) {
-    const p = mapPlaceNamed(t.place.replace(/^the /i, "")) ?? mapPlaceNamed(t.place);
+    const p = mapPlaceNamed(t.place.replace(/^the /i, ""), hit.quest.name) ?? mapPlaceNamed(t.place, hit.quest.name);
     if (!p || seen.has(p.slug)) continue;
     seen.add(p.slug);
     stops.push({ slug: p.slug, name: p.name, why: t.why ? t.why.charAt(0).toUpperCase() + t.why.slice(1) : null });
@@ -141,6 +143,8 @@ export interface Drawer {
   tags: string[];
   gettingThere: string | null;
   boss: { name: string; level: string } | null;
+  /** The levels of what is there, in words ("Level 1 to 27, after the war"); null when nothing hostile or not known. */
+  danger: string | null;
   inside: { name: string; href: string; role: string | null }[];
   rewards: string[];
   worth: string[];
@@ -163,7 +167,12 @@ export function placeDrawer(slug: string): Drawer | null {
         .slice(0, 6)
         .map((x) => ({ name: x.name, href: x.href, role: x.role }))
     : [];
-  const boss = p.actors?.boss?.name ? { name: p.actors.boss.name, level: p.actors.boss.level ? levelWords(p.actors.boss.level) : "" } : null;
+  const war = afterWar(p.actors);
+  const garrison = isGarrison(p.actors);
+  const lv = ([lo, hi]: [number, number]) => (hi > lo ? `Level ${lo} to ${hi}` : `Level ${lo}`);
+  const danger = p.actors?.hostile === false ? null : garrison && war ? `${lv(war.range)}, after the war` : hasLevels(p.actors) ? `${lv(rangeOf(p.actors!))}${war ? `; ${lv(war.range).toLowerCase()} after the war` : ""}` : null;
+  const bossFrom = (garrison ? afterWar(p.actors)?.boss : p.actors?.boss) ?? undefined;
+  const boss = bossFrom?.name ? { name: bossFrom.name, level: bossFrom.level ? levelWords(bossFrom.level) : "" } : null;
   const worth = [
     ...(p.worthGoingFor?.skillBooks ?? []).map((b) => (b.includes(": ") ? `${b.split(": ")[1]} (${b.split(": ")[0]} skill book)` : b)),
     ...(p.worthGoingFor?.bossChest ? ["A boss chest"] : []),
@@ -173,11 +182,12 @@ export function placeDrawer(slug: string): Drawer | null {
   const rewards = [p.discoveryXp ? `${p.discoveryXp} XP for finding it` : "", !lived && p.clearXp ? `${p.clearXp} XP for clearing it` : ""].filter(Boolean);
   return {
     slug,
-    name: p.name,
+    name: placeLabel(p),
     href: `/places/${slug}`,
     tags: [placeType(p.type), p.hold ? `${p.hold} hold` : ""].filter(Boolean),
     gettingThere: gettingThere(p),
     boss: lived ? null : boss,
+    danger: lived ? null : danger,
     inside,
     rewards,
     worth,

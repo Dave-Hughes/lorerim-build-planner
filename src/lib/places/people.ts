@@ -1,7 +1,7 @@
 import "server-only";
 import { peopleData, roleWords, type Person } from "@/lib/people/data";
 import { questsOf } from "@/lib/people/quests";
-import { placeHref, placesData, rangeOf, type Place } from "./data";
+import { placeHref, placeHrefOf, placesData, placesNamed, rangeOf, type Place } from "./data";
 import { placeKind } from "./kind";
 
 /**
@@ -72,7 +72,9 @@ function personOf(p: Person): PlacePerson {
 /** The people at a place, grouped by the building they sleep in; a town's, or an inn's, temple's or hall's. */
 export function peopleAt(place: Place): { houses: House[]; total: number } {
   const inside = placeKind(place) === "inside";
-  const placed = (r: Person["rows"][number]) => (inside ? r.cell === place.name : r.inTown === place.name || r.cell === place.name);
+  // A hall or temple in a town: the name can be in four towns (Hall of the Dead), so a row has to be in this one's town too.
+  const sameName = placesNamed(place.name).length > 1;
+  const placed = (r: Person["rows"][number]) => (inside ? r.cell === place.name && (!sameName || !place.inTown || !r.inTown || r.inTown === place.inTown) : r.inTown === place.name || r.cell === place.name);
   const here = peopleData().all.filter((p) => !(p.race && ANIMAL.test(p.race)) && lives(p) && p.rows.some(placed));
   const groups = new Map<string, PlacePerson[]>();
   for (const p of here) {
@@ -80,10 +82,16 @@ export function peopleAt(place: Place): { houses: House[]; total: number } {
     const home = row.cell && row.cell !== place.name ? row.cell : place.name;
     groups.set(home, [...(groups.get(home) ?? []), personOf(p)]);
   }
+  // A building whose name is in more than one town (a Hall of the Dead) is the one in this town.
+  const town = inside ? place.inTown : place.name;
+  const homeHref = (name: string) => {
+    const mine = placesNamed(name).length > 1 ? placesNamed(name).find((x) => x.inTown === town) : null;
+    return mine ? placeHrefOf(mine) : placeHref(name);
+  };
   const houses: House[] = [...groups]
     .map(([name, people]) => ({
       name,
-      href: name === place.name ? null : placeHref(name),
+      href: name === place.name ? null : homeHref(name),
       // The keeper first, then the ones with something for a player, then the rest.
       people: people.sort((a, b) => b.keeperRank - a.keeperRank || b.chips.length - a.chips.length || Number(b.read) - Number(a.read) || a.name.localeCompare(b.name)),
     }))
@@ -96,8 +104,10 @@ export function closeBy(town: Place): { place: Place; range: [number, number] | 
   const seen = new Map<string, Place>();
   for (const p of placesData().places) {
     if (p.nearestTown?.town !== town.name || p === town || placeKind(p) !== "dangerous") continue;
-    const had = seen.get(p.name);
-    if (!had || (p.actors?.count ?? 0) > (had.actors?.count ?? 0)) seen.set(p.name, p);
+    // Two places of one name in different holds (the Imperial camps) are two places.
+    const k = `${p.name}|${p.hold ?? ""}`;
+    const had = seen.get(k);
+    if (!had || (p.actors?.count ?? 0) > (had.actors?.count ?? 0)) seen.set(k, p);
   }
   return [...seen.values()]
     .sort((a, b) => (a.nearestTown!.km ?? 0) - (b.nearestTown!.km ?? 0) || a.name.localeCompare(b.name))

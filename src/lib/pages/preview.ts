@@ -2,7 +2,7 @@ import "server-only";
 import { loadPlayerFacts } from "@/lib/quests/player-facts";
 import { personBySlug, roleWords } from "@/lib/people/data";
 import { questsOf } from "@/lib/people/quests";
-import { placeBySlug, placeType } from "@/lib/places/data";
+import { placeBySlug, placeLabel, placeType } from "@/lib/places/data";
 import { dangerOf, pageOf } from "@/lib/quests/reads";
 import { questBySlug } from "@/lib/quests/slugs";
 
@@ -40,7 +40,7 @@ export async function previewOf(href: string): Promise<Preview | null> {
     if (!p) return null;
     const danger = dangerOf(p);
     const fact = danger ?? (p.quests?.length ? `${p.quests.length} quest${p.quests.length === 1 ? "" : "s"} go here` : undefined);
-    return { icon: "quest-travel", name: p.name, line: join([p.hold, placeType(p.type)]), ...(fact ? { fact } : {}) };
+    return { icon: "quest-travel", name: placeLabel(p), line: join([p.hold, placeType(p.type)]), ...(fact ? { fact } : {}) };
   }
   const quest = /^\/quests\/q\/([a-z0-9-]+)$/.exec(href);
   if (quest) {

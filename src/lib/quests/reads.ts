@@ -1,5 +1,5 @@
 import "server-only";
-import { placeByName, rangeOf, hasLevels, type Place } from "@/lib/places/data";
+import { afterWar, isGarrison, placeByName, placesNamed, rangeOf, hasLevels, type Place } from "@/lib/places/data";
 import { GOLD, RUN_CHANGE } from "./run-change";
 import { questHref } from "./slugs";
 import { questsData } from "./data";
@@ -116,17 +116,24 @@ const PLURAL: Record<string, string> = {
   Chaurus: "chaurus",
 };
 
+/** "after the war: level 1 to 27" (WO-172): what a camp's garrison is, not the one guard who is there before it. */
+const warWords = ([lo, hi]: [number, number]) => `after the war: level ${hi > lo ? `${lo} to ${hi}` : lo}`;
+
 /**
  * How dangerous a place is, in the places index's words: "bandits from level 6; the boss Chief Yamarz, level 45". Nothing for a place the
  * index doesn't know, one whose people aren't hostile, or one with no levels checked: never a made-up one.
  */
 export function dangerOf(place: Place | null | undefined): string | undefined {
   const a = place?.actors;
-  if (!place || !a || a.hostile === false || !hasLevels(a)) return undefined;
-  const [lo, hi] = rangeOf(a);
+  if (!place || !a || a.hostile === false) return undefined;
+  const war = afterWar(a);
+  const [lo, hi] = hasLevels(a) ? rangeOf(a) : [0, 0];
   const who = a.livesHere ? (PLURAL[a.livesHere] ?? a.livesHere.toLowerCase()) : "enemies";
-  const boss = a.boss ? `; the boss ${[a.boss.name, a.boss.level].filter(Boolean).join(", ")}` : "";
-  return `${who} from level ${lo}${hi > lo ? `, up to ${hi}` : ""}${boss}`;
+  const boss = (b: typeof a.boss) => (b ? `; the boss ${[b.name, b.level].filter(Boolean).join(", ")}` : "");
+  // A camp with a guard or two before the war and a garrison after it says the garrison's levels as well, and where there is nobody before it, only those (WO-172).
+  if (war && isGarrison(a)) return `${warWords(war.range)}${boss(war.boss)}`;
+  if (!hasLevels(a)) return undefined;
+  return `${who} from level ${lo}${hi > lo ? `, up to ${hi}` : ""}${boss(a.boss)}${war ? `; ${warWords(war.range)}` : ""}`;
 }
 
 /** A level the index gives as "leveled 19-24" or "45", in words: "19 to 24", "45". */
@@ -141,16 +148,30 @@ export function dangerParts(place: Place | null | undefined): { foes: string; tr
   const a = place?.actors;
   if (!place) return null;
   if (a && a.hostile === false) return "none";
+  const war = afterWar(a);
+    const traps = !!place.danger?.traps;
+  const bossOf = (b: NonNullable<typeof a>["boss"]) => (b?.name ? `The boss, ${b.name}${b.level ? `, is level ${levelWords(b.level)}` : ""}` : undefined);
+  if (war && isGarrison(a)) {
+    const boss = bossOf(war.boss);
+    return { foes: `${warWords(war.range).charAt(0).toUpperCase()}${warWords(war.range).slice(1)}`, traps, ...(boss ? { boss } : {}) };
+  }
   if (!a || !hasLevels(a)) return null;
   const [lo, hi] = rangeOf(a);
   const who = a.livesHere ? (PLURAL[a.livesHere] ?? a.livesHere.toLowerCase()) : "enemies";
-  const boss = a.boss?.name ? `The boss, ${a.boss.name}${a.boss.level ? `, is level ${levelWords(a.boss.level)}` : ""}` : undefined;
-  return { foes: `${who.charAt(0).toUpperCase()}${who.slice(1)} from level ${lo}${hi > lo ? ` to ${hi}` : ""}`, traps: !!place.danger?.traps, ...(boss ? { boss } : {}) };
+  const boss = bossOf(a.boss);
+  return { foes: `${who.charAt(0).toUpperCase()}${who.slice(1)} from level ${lo}${hi > lo ? ` to ${hi}` : ""}${war ? `; ${warWords(war.range)}` : ""}`, traps, ...(boss ? { boss } : {}) };
 }
 
-export function placeNamed(name: string): Place | null {
+/**
+ * A place by the name a quest's words give. A name more than one place has (eight Imperial camps) is the quest's own when exactly one of them
+ * lists that quest as going there (`quest`), and no place when that can't say (WO-172).
+ */
+export function placeNamed(name: string, quest?: string): Place | null {
   const cleaned = name.replace(/^the /i, "").trim();
-  return placeByName(name) ?? placeByName(cleaned);
+  const unique = placeByName(name) ?? placeByName(cleaned);
+  if (unique || !quest) return unique;
+  const own = [...placesNamed(name), ...(cleaned === name ? [] : placesNamed(cleaned))].filter((p) => p.quests?.includes(quest));
+  return own.length === 1 ? own[0] : null;
 }
 
 /** The ways a player found in game (WO-131, WO-146), which override what the records place (Dave's in-game checks win). */
@@ -191,7 +212,7 @@ function viaReads(q: Quest, r: QuestRead): QuestPage {
     starts,
     ...(r.firstStep ? { firstStep: r.firstStep } : {}),
     takesYou: (r.takesYou ?? []).map((t) => {
-      const danger = dangerOf(placeNamed(t.place));
+      const danger = dangerOf(placeNamed(t.place, q.name));
       return { place: t.place, ...(!blank(t.hold) ? { hold: t.hold } : {}), ...(t.why ? { why: t.why } : {}), ...(danger ? { danger } : {}) };
     }),
     choices: r.choices ?? [],

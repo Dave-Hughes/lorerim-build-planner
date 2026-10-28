@@ -322,7 +322,8 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
       const on = shows(p);
       const picked = selected === p.slug || inRoute.has(p.slug) || lit.has(p.slug);
       const w = p.name.length * 7.4 + 22;
-      const side = x + 14 + w > size.w - 6 && x - 14 - w > 6 ? "left" : "right";
+      // A name that would run under the open drawer (352 px of the right edge on a wide window) goes on the pin's left.
+      const side = x + 14 + w > size.w - (selected && size.w >= 700 ? 352 : 6) && x - 14 - w > 6 ? "left" : "right";
       out.push({ p, x, y, on, named: picked || p.kind === "city" || (p.kind === "town" && k >= 0.28) || k >= 0.85, side });
     }
     const rank = (it: (typeof out)[number]) => (selected === it.p.slug || inRoute.has(it.p.slug) || lit.has(it.p.slug) ? 0 : it.p.kind === "city" ? 1 : it.p.kind === "town" ? 2 : 3);
@@ -574,6 +575,11 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
           <h2 className={s.dTitle}>{openedDrawer.name}</h2>
           <p className={s.tags}>{openedDrawer.tags.join(" | ")}</p>
           {openedDrawer.gettingThere && <p className={s.line}>{openedDrawer.gettingThere}</p>}
+          {openedDrawer.danger && (
+            <p className={s.line}>
+              <b>Danger:</b> {openedDrawer.danger}
+            </p>
+          )}
           {openedDrawer.boss && (
             <p className={s.line}>
               <b>The boss:</b> {openedDrawer.boss.name}

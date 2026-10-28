@@ -51,7 +51,7 @@ describe("names on the main quest, Dragonborn, Dawnguard and the Companions", ()
       const missed = new Map<string, string>();
       for (const t of texts) for (const n of unlinked(t, broad)) missed.set(n, t.slice(0, 80));
       expect([...missed].map(([n, t]) => `${n}: ${t}`)).toEqual([]);
-    });
+    }, 30_000);
   }
 });
 

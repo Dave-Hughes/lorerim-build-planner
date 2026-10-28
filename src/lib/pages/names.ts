@@ -6,7 +6,7 @@ import { currentVersion } from "@/lib/rules/server";
 import { questHref } from "@/lib/quests/slugs";
 import { linkNames } from "./link-names";
 import { questsOf } from "@/lib/people/quests";
-import { placeHref, placesData } from "@/lib/places/data";
+import { isSharedName, placeHrefOf, placeQualifier, placesData, placesNamed } from "@/lib/places/data";
 import type { NameLink } from "./link-names";
 
 import { questsData } from "@/lib/quests/data";
@@ -29,18 +29,49 @@ export function modNames(): NameLink[] {
   return modLinks;
 }
 
-/** Every place the index has, as links: a place's name is proper enough to link wherever it stands in a page's words. */
+/**
+ * How a sentence says which of several places of one name it means (WO-172): "Hall of the Dead in Whiterun", "Imperial Military Camp, the
+ * Reach", "Whiterun's Hall of the Dead". A kind (camp, landmark) is no way to say it in a sentence, so those names get no qualified form.
+ */
+function qualifiedForms(name: string, q: string): string[] {
+  const ways = [q, q.replace(/^the /, "The ")];
+  return [...new Set(ways)].flatMap((w) => [`${name} in ${w}`, `${name}, ${w}`, `${name} of ${w}`, `${w}'s ${name}`]);
+}
+
+/**
+ * Every place the index has, as links: a place's name is proper enough to link wherever it stands in a page's words. A name more than one
+ * place has (the Imperial Military Camp is eight) is a link only where the words say which ("in the Reach"), or where the page is about
+ * one of them (`ownPlaceNames`); bare, it is plain text and not a guess.
+ */
 export function placeNames(): NameLink[] {
   placeLinks ??= placesData()
     .places.filter((p) => p.name.length > 3)
     .flatMap((p) => {
-      const href = placeHref(p.name);
-      if (!href) return [];
+      const href = placeHrefOf(p);
+      if (isSharedName(p.name)) {
+        const q = placeQualifier(p);
+        // A hold or a town starts with a capital ("the Reach" is The Reach); a kind or a number is no way to say which in a sentence.
+        return q && /^(the )?[A-Z]/.test(q) ? qualifiedForms(p.name, q).map((text) => ({ text, href })) : [];
+      }
       // The words say "the Winking Skeever" for The Winking Skeever, and a quest may call a place by another name (Volkihar Keep): all go to the one page.
       const bare = /^The\s+\S+\s+\S+/.test(p.name) ? [p.name.replace(/^The\s+/, "")] : [];
       return [p.name, ...bare, ...(p.aliases ?? [])].map((text) => ({ text, href }));
     });
   return placeLinks;
+}
+
+/**
+ * The places of a shared name that a quest goes to: on that quest's page the bare name is the quest's own place, as long as exactly one of the
+ * places with that name lists it (WO-172). Add these to the page's names.
+ */
+export function ownPlaceNames(quests: string[]): NameLink[] {
+  const wanted = new Set(quests);
+  const byName = new Map<string, NameLink[]>();
+  for (const p of placesData().places) {
+    if (!isSharedName(p.name) || !p.quests?.some((q) => wanted.has(q))) continue;
+    byName.set(p.name, [...(byName.get(p.name) ?? []), { text: p.name, href: placeHrefOf(p) }]);
+  }
+  return [...byName.values()].filter((xs) => xs.length === 1 && placesNamed(xs[0].text).length > 1).map((xs) => xs[0]);
 }
 
 /** The people a page names, as links: only those the index has, by the exact name the read gives. */
