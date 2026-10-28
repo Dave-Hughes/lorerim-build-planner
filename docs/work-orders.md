@@ -5022,6 +5022,14 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-171  Farms are on the map, not inside a city (PC, 28 Oct 2026)
+Status: queued (PC)
+
+**Why.** WO-166's notes: Battle-Born, Pelagia and Chillfurrow farms (and Rorikstead's and Falkreath's) are parented to the city's location in the records, so they read `inTown` and get no pin, though they stand in the fields outside the walls.
+- [ ] A place with `LocTypeFarm` (or a Farm or Mill kind) and exterior cells of its own gets a position from those cells and its own `nearestTown`, not `inTown`. Its town stays as a tag ("near Whiterun").
+- [ ] The report lists the farms moved.
+- [ ] Tests, then `for Bob`.
+
 ## WO-170  The home page comes alive (Mac, 27 Oct 2026)
 Status: queued (Mac; after WO-169, since it reuses WO-168's scenes and WO-166's map tiles)
 
@@ -5062,7 +5070,7 @@ Status: queued (Mac; after WO-167, which brings the map tiles and the pin compon
 - [ ] Checks; screenshots at 1440 and 390 of: the whole map, a search open, a quest's route, a place's drawer, signed in with a character; then `for Bob`.
 
 ## WO-168  The three main stories, each its own world (Mac, 27 Oct 2026)
-Status: for Bob (Bob's review: review done; typecheck, lint, tests, the build and the full e2e pass, 488 of 488)
+Status: done
 
 **Why.** Dave, 27 Oct: the Main stories rows "look badass, would be awesome to go SUPER hard on those rows". Board `MainStoriesHard` (canvas row 37); Dave: "Looks great." The art is in the repo: `public/quests/stories/<line>/*.png`, 320 by 80 layers drawn by `scripts/art/main_stories.py`; shown at 4x, pixel-sharp.
 - [x] On `/quests/c/main-stories`, each of the three rows is the board's banner: the scene's layers stacked full width (sky, far, the moving layer, near), a dark fade from the left under the text, the story's own colour on the left edge (main quest orange `#f0913f`, Dragonborn green `#8fc07c`, Dawnguard crimson `#d6453f`), the big pixel number in that colour, the name, its tags, one line of what it's about, quest XP and Open the story on the right. Order: Become the Dragonborn, Dragonborn, Dawnguard.
@@ -5090,6 +5098,8 @@ Jeff's notes on the review (Mac, 27 Oct):
 - **The page's line** now reads "the main quest, Dragonborn and Dawnguard" (`questlines.json`, data rebuilt), and the more-line under it in the same order.
 - Screenshot of Dragonborn under the pointer: `test-results/wo168-dragonborn-hover-1440.png`.
 
+- Bob, 28 Oct, 23:05: tentacles load and sway under the pointer; the line reads the rows' order. Done.
+
 ## WO-167  The map on place pages and on Places (Mac, 27 Oct 2026)
 Status: queued (Mac; waits on WO-166 Part 2's map files on staging, then after WO-164. Dave, 27 Oct 18:46: the map's mod author said go for it, with a credit and link on every instance)
 
@@ -5104,7 +5114,7 @@ Status: queued (Mac; waits on WO-166 Part 2's map files on staging, then after W
 - [ ] Checks and screenshots of Bleak Falls Barrow, Riverwood, the Sleeping Giant Inn (town pin) and Places at 1440 and 390, then `for Bob`.
 
 ## WO-166  Every place's position, and the map images, from the game files (PC, 27 Oct 2026)
-Status: for Bob (all three parts built: 998 places, 660 with a position, 328 inside a town, 10 unplaced; the paper map's 202 tiles, whole picture and `maps.json`; Mac suite green on the merged tree -- see "Jeff's notes (PC)" below)
+Status: done
 
 **Why.** Bob's proof (`scripts/gamedata/map_proof/`, README there) made a pixel map of Skyrim from Skyrim.esm's terrain and pinned 286 places. Turn it into a real build step and close the gaps it found.
 
@@ -5161,6 +5171,8 @@ Dave, 27 Oct 18:46: the map's mod author OK'd its use on the site, with a credit
 - Dead Drop Falls shares Dayspring Canyon's and Fort Dawnguard's pin (the one door out of the Dawnguard yard): the shortest way out of its own interior leads through the fort. A place found by a door has the entrance's position, not always its own.
 - `people_raw.json` is not regenerated (WO-155's reads resume first); homes are read from the file as it is. When it is, `places.py` should be run again.
 
+- Bob, 28 Oct, 23:10: read the notes and the report, and pinned the nine cities, Riverwood, Bleak Falls Barrow, Embershard Mine, High Hrothgar, Ivarstead, Kynesgrove, Morvunskar Crypts, Nightgate Inn, Green-Tip Cabin and Fort Dawnguard on `tamriel.webp` with `maps.json`'s rule: every one lands where it belongs (Nightgate on Lake Yorgrim, Morvunskar Crypts by Kynesgrove, Fort Dawnguard at the canyon east of Riften, at the map's eastern edge). Done. Rulings on the four questions: Vigilant's realm stays in the data (the map shows Tamriel only); farms in a field get a position (WO-171); the 83 unplaceable are fine as they are; Dead Drop Falls on the fort's door is fine. Embershard Mine is south-west of Riverwood, not south: noted, the data is right.
+
 ## WO-165  The quest and person pages get the same at-a-glance and colours (Mac, 27 Oct 2026)
 Status: for Bob (Bob's review done; typecheck, lint, tests, the build and the full e2e pass, 489 of 489)
 
@@ -5200,7 +5212,7 @@ Jeff's notes on the review (Mac, 27 Oct):
 - Tests: the review test in `e2e/wo165.spec.ts`; `wo154.spec.ts` follows the new wording ("She gives 2 quests."). Screenshots: `test-results/wo165-aela-1440.png`, `wo165-golden-claw-1440.png`.
 
 ## WO-163  Quest categories as tables (Mac, 27 Oct 2026)
-Status: for Bob (Bob's review: review done; typecheck, lint, tests, the build and the full e2e pass, 488 of 488)
+Status: done
 
 **Why.** `docs/page-templates.md` rows 11 and 12: a category is up to 73 framed cards with a journal quote and Tell me more each, 10,000 px to scroll and nothing to compare. Dave: Wowhead is great. Board: `QuestCategoryTable` (canvas row 36).
 - [x] Every category page (`/quests/c/<slug>`) other than Main stories (WO-160) is the board: a short scene banner with the title over it; search; Hold, Level and From filters that apply as you pick; pills for All, Base game, Creation Club, Mods, and Lines of several quests, with real counts; then one table, one row per quest or line: icon (a line's icon differs from a single quest's), name, who starts it, where (blue), level (red, "Any" muted), length, from (base game plain, a mod as a tag with its link), quest XP in the pixel face (gold; "None" muted). Every column sorts; the header row sticks while you scroll.
@@ -5230,8 +5242,10 @@ Jeff's notes on the review (Mac, 27 Oct):
 - **Where** takes only what is written as a name (a capital first, not "Any hold"), or a town it finds in the words. "on arrival in a major hold" is now "Not known yet", muted.
 - **A long mod name** ends in an ellipsis inside its tag, the arrow stays, and the whole name is the tag's title. Test in `e2e/wo163.spec.ts`. Screenshot: `test-results/wo163-side-stories-1440.png`.
 
+- Bob, 28 Oct, 23:05: Guests for Dinner reads "Not known yet", muted; the long mod name ends in "…". Done.
+
 ## WO-162  A place's page fits what the place is (Mac, 27 Oct 2026)
-Status: for Bob (Bob's review: Part 5 done; typecheck, lint, tests, the build and the full e2e pass, 488 of 488)
+Status: done
 
 **Why.** `docs/page-templates.md` row 18: every place uses the dungeon template. Riverwood "Its boss is Camilla Valerius" with a danger chart and 100 XP "for clearing it"; the Bee and Barb shows Danger ("Nobody here is hostile") and "Comes back in 30 days, or 300 once cleared"; neither shows who lives there, shops, trainers or beds. Board: `PlaceTown` (canvas row 36).
 
@@ -5282,6 +5296,8 @@ Jeff's notes on Part 5 (Mac, 27 Oct):
 - "An Alchemy skill book"; one line per text in What people say; Information Confidence on a lived-in page no longer says boss.
 - Screenshots: `test-results/wo162-riverwood-1440.png`, `wo162-high-hrothgar-1440.png`, `wo162-bleak-falls-1440.png` and the 390 ones.
 
+- Bob, 28 Oct, 23:05: Riverwood lists Sven, Hod, Sigrid, Embry and Dorthe, and its shops name the blacksmith; Delphine is first at the inn; High Hrothgar is the Greybeards' monastery with the trolls on the way up; Bleak Falls Barrow says each thing once; Dragonsreach's quote shows once; "a/an" follows the skill. Done.
+
 ## WO-161  Small fixes from Bob's walk of every page (Mac, 27 Oct 2026)
 Status: done (Bob, 27 Oct 20:10: checked on the preview: Guide out of the menu, tab titles, Tapps's characters, My characters, search reasons, the changes page by day and kind, one character card. The featured card's shape moves to WO-164)
 
@@ -5313,7 +5329,7 @@ Status: done (Bob, 27 Oct 20:10: checked on the preview: Guide out of the menu, 
 - **Screenshots** (in `test-results/`): `wo161-characters-1440.png`, `wo161-characters-390.png`, `wo161-player-1440.png`, `wo161-search-1440.png`, `wo161-changes-1440.png`, `wo161-phone-390.png`.
 
 ## WO-160  One page per quest line (Mac, 27 Oct 2026)
-Status: for Bob (Bob's review: Part 6 done; typecheck, lint, tests, the build and the full e2e pass, 488 of 488)
+Status: done
 
 **Why.** The big quest lines each have two pages built by two different orders and never merged: a line page (`/quests/main-quest`, `/quests/dawnguard`, `/quests/companions`, `/quests/dragonborn`, from WO-100) and a story page with chapters (`/quests/s/become-the-dragonborn`, `/quests/s/join-the-dawnguard`, `/quests/s/join-the-companions`, from WO-104/106). They look nothing alike, and the Main stories category lists both kinds side by side. Dave, 27 Oct: "Why are there multiple layouts?" There should be one. Boards: canvas row 36, `MainStoriesPage` and `LinePage`, https://claude.ai/artifact/48H6v9Q6wFuwhzRqE31uD1.
 
@@ -5387,6 +5403,8 @@ Jeff's notes on Part 6 (Mac, 27 Oct):
 - **Groups** (the Silver Hand, the Greybeards, any name the records place three times with nothing to say who it is) are not people.
 - **Where it takes you** names each place once. **Dragonborn** loses "the records set no level for it" when the start check has a level. **The main quest's XP cell** shows the jobs line or nothing. **Not sure yet** lists only the fields the second reader marked unsure (the line reads now carry the checker's verdicts); these four lines have none.
 - **The test** (`wo160-names.test.ts`) has all of these and ignores names inside quest and item names. Screenshots: `test-results/wo160-main-quest-1440.png`, `wo160-dragonborn-1440.png`, `wo160-dawnguard-1440.png`, `wo160-companions-1440.png`.
+
+- Bob, 28 Oct, 23:05: on the four pages Farengar, Balgruuf, Storn, Harkon, Kodlak, the Winking Skeever, Raven Rock, the aliases (Volkihar Keep, Dimhollow Cavern, Driftshade Refuge) and the cities now link; bracketed quest names go to the quest; the Silver Hand is no person; Dragonborn's Where it takes you lists each place once and its summary no longer contradicts its level; the main quest's XP cell and Not sure yet are clean. Done.
 
 ## WO-159  Dave's testing, 27 Oct afternoon: home, search, back links, a playthrough from the start, and the people reads on person pages (Mac, 27 Oct 2026)
 Status: done (Bob, 27 Oct 17:55: home, back buttons and the people reads checked on the preview (Lydia joins as housecarl when made Thane; Jaree-Ra by the Winking Skeever); the Playthrough tab is signed-in only, for Dave to see)
