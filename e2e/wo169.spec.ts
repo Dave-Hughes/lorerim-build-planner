@@ -36,7 +36,8 @@ for (const width of [1440, 390]) {
     expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
     // The whole map fits beside the panel (and above a phone's bar): every city in view and named; counts only where pins pile up.
     const free = width === 1440 ? { left: 354, right: 1440, top: 69, bottom: 900 } : { left: 0, right: 390, top: 56, bottom: 844 - 56 };
-    for (const city of ["Markarth", "Solitude", "Whiterun", "Windhelm", "Riften", "Falkreath", "Morthal", "Dawnstar", "Winterhold"]) {
+    // On a phone the map opens filling the screen's height, panned to the middle of Skyrim, so the far cities are off to the sides.
+    for (const city of width === 1440 ? ["Markarth", "Solitude", "Whiterun", "Windhelm", "Riften", "Falkreath", "Morthal", "Dawnstar", "Winterhold"] : ["Whiterun"]) {
       const b = await map(page).getByText(city, { exact: true }).first().boundingBox();
       expect(b, city).not.toBeNull();
       expect(b!.x, city).toBeGreaterThanOrEqual(free.left);
@@ -45,6 +46,20 @@ for (const width of [1440, 390]) {
       expect(b!.y + b!.height, city).toBeLessThanOrEqual(free.bottom + 1);
     }
     expect(await map(page).getByRole("button", { name: /places, zoom in/ }).count()).toBeLessThan(width === 1440 ? 45 : 130);
+    // No two names stack: the lesser one is dropped.
+    const plates = await map(page).locator("a[class*='pin'] [class*='plate']").all();
+    const boxes = await Promise.all(plates.map((p) => p.boundingBox()));
+    for (let i = 0; i < boxes.length; i++)
+      for (let j = i + 1; j < boxes.length; j++) {
+        const a = boxes[i]!;
+        const b = boxes[j]!;
+        expect(a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y, `${await plates[i].innerText()} over ${await plates[j].innerText()}`).toBe(false);
+      }
+    if (width === 390) {
+      // Filling the screen's height: the picture runs from the header to the bar.
+      const img = (await map(page).locator("img[src='/maps/tamriel.webp']").boundingBox()) ?? (await map(page).locator("img[src^='/maps/tamriel/']").first().boundingBox());
+      expect(img).not.toBeNull();
+    }
     if (width === 1440) expect(await map(page).locator("a[href^='/places/']").count()).toBeGreaterThan(300);
     await page.screenshot({ path: `test-results/wo169-whole-${width}.png` });
   });

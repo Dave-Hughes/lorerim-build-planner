@@ -34,7 +34,9 @@ export function MapStrip() {
       <div className={c.fade} />
       <div className={`page ${c.text}`}>
         <h2 id="map-strip" className={c.h2}>
-          Every place, on the game&apos;s own map
+          Every place,{" "}
+          <br />
+          on the game&apos;s own map
         </h2>
         <p className={c.p}>
           {places.length} places are pinned on it, from {towns} towns and cities to {danger} that are worth a fight. Search them, filter them by danger, and follow a quest from one to the next.

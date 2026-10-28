@@ -73,7 +73,8 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
       // On a phone the drawer is a sheet over the lower part of the map: the place goes in the upper part.
       return { cx: at.px - (beside / 2) / kk, cy: at.py + (phone ? (size.h * 0.2) / kk : 0), k: kk };
     }
-    const kk = Math.min((size.w - beside - 24) / (x1 - x0), (size.h - (phone ? 56 : 24)) / (y1 - y0));
+    // On a phone the map opens filling the screen's height, panned to the middle of Skyrim; beside a panel it is fitted whole.
+    const kk = phone ? (size.h - 56) / (y1 - y0) : Math.min((size.w - beside - 24) / (x1 - x0), (size.h - 24) / (y1 - y0));
     return { cx: (x0 + x1) / 2 - beside / 2 / kk, cy: (y0 + y1) / 2 - (phone ? 28 / kk : 0), k: kk };
   })();
   const k = Math.min(K_MAX, Math.max(kMin, view.k));
@@ -311,15 +312,27 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
   }, [places]);
   const shownCount = places.filter(shows).length;
 
-  // What to draw: clusters at a distance, names as you come in.
+  // What to draw: names as you come in, and never two plates on top of each other (WO-169 review): the more important name stays (the picked
+  // place, a route's stops, the cities, then the towns) and the lesser one is dropped.
   const items = useMemo(() => {
-    const out: { p: MapPlace; x: number; y: number; on: boolean; named: boolean }[] = [];
+    const out: { p: MapPlace; x: number; y: number; on: boolean; named: boolean; side: "right" | "left" }[] = [];
     for (const p of places) {
       const { x, y } = toScreen(p.px, p.py);
       if (x < -60 || y < -40 || x > size.w + 60 || y > size.h + 40) continue;
       const on = shows(p);
       const picked = selected === p.slug || inRoute.has(p.slug) || lit.has(p.slug);
-      out.push({ p, x, y, on, named: picked || p.kind === "city" || (p.kind === "town" && k >= 0.28) || k >= 0.85 });
+      const w = p.name.length * 7.4 + 22;
+      const side = x + 14 + w > size.w - 6 && x - 14 - w > 6 ? "left" : "right";
+      out.push({ p, x, y, on, named: picked || p.kind === "city" || (p.kind === "town" && k >= 0.28) || k >= 0.85, side });
+    }
+    const rank = (it: (typeof out)[number]) => (selected === it.p.slug || inRoute.has(it.p.slug) || lit.has(it.p.slug) ? 0 : it.p.kind === "city" ? 1 : it.p.kind === "town" ? 2 : 3);
+    const taken: [number, number, number, number][] = [];
+    for (const it of [...out].sort((a, b) => rank(a) - rank(b))) {
+      if (!it.named) continue;
+      const w = it.p.name.length * 7.4 + 22;
+      const box: [number, number, number, number] = it.side === "right" ? [it.x + 8, it.y - 12, it.x + 14 + w, it.y + 12] : [it.x - 14 - w, it.y - 12, it.x - 8, it.y + 12];
+      if (taken.some((t) => box[0] < t[2] && box[2] > t[0] && box[1] < t[3] && box[3] > t[1])) it.named = false;
+      else taken.push(box);
     }
     return out;
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -374,7 +387,7 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
   const charAt = charPlace ? toScreen(charPlace.px, charPlace.py) : null;
 
   const resetNorth = () => {
-    const kk = Math.min((size.w - beside - 24) / (x1 - x0), (size.h - (phone ? 56 : 24)) / (y1 - y0));
+    const kk = phone ? (size.h - 56) / (y1 - y0) : Math.min((size.w - beside - 24) / (x1 - x0), (size.h - 24) / (y1 - y0));
     fly({ cx: (x0 + x1) / 2 - beside / 2 / kk, cy: (y0 + y1) / 2 - (phone ? 28 / kk : 0), k: kk });
   };
   const openedDrawer = selected && drawer?.slug === selected ? drawer : null;
@@ -421,9 +434,9 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
             {c.n}
           </button>
         ))}
-        {singles.map(({ p, x, y, on, named }) => {
+        {singles.map(({ p, x, y, on, named, side }) => {
           // A name near the window's right edge goes on the pin's left, so it is never cut off.
-          const flip = named && x + 14 + (p.name.length * 7.4 + 22) > size.w - 6 && x - 14 - (p.name.length * 7.4 + 22) > 6;
+          const flip = named && side === "left";
           return (
           <div
             key={p.slug}

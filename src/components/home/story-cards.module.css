@@ -47,7 +47,8 @@
   width: calc(100% + 40px);
   height: 100%;
   object-fit: cover;
-  object-position: 50% 100%;
+  /* Framed on the story's landmark (--pos, set on the card). */
+  object-position: var(--pos, 50%) 100%;
   image-rendering: pixelated;
   transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -89,14 +90,12 @@
   color: #f4ead2;
   text-shadow: 0 2px 0 rgba(0, 0, 0, 0.6);
 }
+/* One short line that fits whole: never cut with an ellipsis. */
 .p {
   font-size: 15px;
   line-height: 1.4;
   color: #dfe6ec;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  text-wrap: balance;
 }
 .figs {
   display: flex;
@@ -317,7 +316,7 @@
   .card:focus-visible .l {
     animation: none;
     transform: none;
-    object-position: 70% 100%;
+    object-position: var(--posPhone, 70%) 100%;
   }
   .emb,
   .ash {
@@ -330,7 +329,6 @@
     font-size: 28px;
   }
   .p {
-    -webkit-line-clamp: 1;
     font-size: 14px;
   }
 }

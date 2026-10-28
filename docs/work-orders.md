@@ -5032,7 +5032,7 @@ Status: queued (PC)
 - [ ] Tests, then `for Bob`.
 
 ## WO-170  The home page comes alive (Mac, 27 Oct 2026)
-Status: building (Mac; Bob's second review)
+Status: for Bob (Bob's second review done; typecheck, lint, tests, the build and the full e2e pass, 522 of 522; one flaky spec passed alone)
 
 **Why.** Dave, 27 Oct, after WO-168's rows: "bring some of that same wow factor to the home screen". Board `HomeWow` (canvas row 37); Dave: "Love it, lets keep the other secitons too. New in the world and your characters, can come after the map."
 - [x] **The order of the page**, signed in or out: the hero; Recent characters (as built, WO-157 Part 10); **Three stories to live through** (new); **the map strip** (new); New in the world (as built); then Your characters signed in (as built, WO-157 Part 9) or Three ways to use it signed out (as built). Signed in keeps the shorter hero, with the motion below.
@@ -5065,12 +5065,20 @@ Jeff's notes on the review (Mac, 28 Oct):
 
 ### Bob's second review (28 Oct, 03:45)
 The home page loads again (the 500 found and fixed: good catch on the tooltips). Read at 1440 and 390, a card hovered: the hero moves, the cards lift with Alduin flying, the map strip drifts with its credit, and the sections come in the order Dave asked. Fix:
-- [ ] **Each card is framed on the wrong part of its scene.** The main quest shows the mountain as a sliver at the right edge; Dragonborn's card is mostly empty sky with half a tower; Dawnguard's eclipse sits under the big "3". Frame each card on its landmark as the board does (the board's per-card offsets: mountain, Miraak's temple, the eclipse), and the number never on top of it.
-- [ ] **The cards' lines are cut mid-sentence** ("learn its…", "the Black…", "a fort south-…"). One short line that fits whole, as the board's: the story's one-line pitch from the data, or its first clause.
-- [ ] **"Every place, on the game's own / map":** the last word falls alone onto the second line at 1440 and 390. Break after "Every place," as the board does (Dave hates a word left alone on a line).
-- [ ] **New in the world quotes old counts:** "The main quest, 7 chapters and 23 quests" beside a card saying 19 quests; "Dragonborn, its 8 quests" though it's 7 since WO-160. A change row shows what changed, not a count that goes stale; drop the counts or read them from today's data.
-- [ ] Screenshots of the home at 1440 and 390, then `for Bob`.
+- [x] **Each card is framed on the wrong part of its scene.** The main quest shows the mountain as a sliver at the right edge; Dragonborn's card is mostly empty sky with half a tower; Dawnguard's eclipse sits under the big "3". Frame each card on its landmark as the board does (the board's per-card offsets: mountain, Miraak's temple, the eclipse), and the number never on top of it.
+- [x] **The cards' lines are cut mid-sentence** ("learn its…", "the Black…", "a fort south-…"). One short line that fits whole, as the board's: the story's one-line pitch from the data, or its first clause.
+- [x] **"Every place, on the game's own / map":** the last word falls alone onto the second line at 1440 and 390. Break after "Every place," as the board does (Dave hates a word left alone on a line).
+- [x] **New in the world quotes old counts:** "The main quest, 7 chapters and 23 quests" beside a card saying 19 quests; "Dragonborn, its 8 quests" though it's 7 since WO-160. A change row shows what changed, not a count that goes stale; drop the counts or read them from today's data.
+- [x] Screenshots of the home at 1440 and 390, then `for Bob`.
 
+
+Jeff's notes on the second review (Mac, 28 Oct):
+- **Each card is framed on its landmark** (`story-cards.tsx`: `pos`, a window offset for a card and for a phone, as `--pos` and `--posPhone` on the card): the main quest on the mountain, Dragonborn on Miraak's temple and its stepped tower, Dawnguard on the eclipse with the castle at the right edge. The number sits top right, over sky, on all three. I read the landmarks' places off the layer art (`public/quests/stories/*`), not the board, so the offsets are mine to be judged.
+- **One short line, whole:** the pitch's first clause ("Dragons have come back to Skyrim.", "A story on the island of Solstheim.", "Vampires are stirring in Skyrim."), no line clamp, no ellipsis; a test checks none is cut and each ends in a full stop.
+- **The map strip's title** breaks after "Every place," (an explicit break, tested) so no word falls alone, at 1440 and 390.
+- **New in the world** says what changed, not a count (`src/lib/changes.ts`): "Its story and its quests, read from the game files", "Its steps, read from the game files", "Its ways to finish it, each with its steps". A test fails if a row has a number of quests, chapters, steps or ways in it.
+- Screenshots: `test-results/wo170-*` (the stories hovered at 1440, the stories and the strip at 390, the home at 1440 signed in).
+- After the push I read the staging preview again: the home page and the pages WO-169 touched answer 200.
 ## WO-164  A character is one page, with or without a playthrough (Mac, 27 Oct 2026)
 Status: for Bob (all eight boxes built; typecheck, lint, tests, the build and the full e2e pass, 493 of 495, the two that failed in the full run pass alone)
 
@@ -5099,7 +5107,7 @@ Status: for Bob (all eight boxes built; typecheck, lint, tests, the build and th
 - Bob, 28 Oct, 00:45: signed out on the preview, the Featured character is the wide card across two columns. The rest needs signing in (Kyria's run, `/me`, What next, the empty Playthrough tab); Bob checks those in Dave's Chrome in the morning. Jeff on Mac: go on to WO-167; this stays `for Bob`.
 
 ## WO-169  The Map page (Mac, 27 Oct 2026)
-Status: building (Mac; Bob's second review)
+Status: for Bob (Bob's second review done; typecheck, lint, tests, the build and the full e2e pass, 522 of 522; one flaky spec passed alone)
 
 **Why.** Dave, 27 Oct: a dedicated map page with quick search and filters, "a unique experience". Board `MapPage` (canvas row 37); Dave: "that map view is incredible". Uses LoreRim's paper map from WO-166, credited on every view.
 - [x] `/map`, and **Map** in the World panel (with `quest-travel` as its icon) and the phone menu. The map fills the window under the header; drag to pan, scroll or pinch to zoom, + / − / N (back to north and the whole map) bottom right. At a distance pins cluster into counts; closer in, the cities' and towns' names show on dark plates; closest, every place's name.
@@ -5144,8 +5152,14 @@ Jeff's notes on the review (Mac, 28 Oct):
 
 ### Bob's second review (28 Oct, 03:45)
 At 1440 the whole map now fits beside the panel with every city named, diamonds everywhere and counts only where places pile up: right. On a phone a picked place sits in view with its plate. One left:
-- [ ] **The phone's opening view** is a small map in the middle of an empty screen, crowded with counts, and the city plates overlap (Winterhold's covers Solitude's). On a phone the map opens filling the screen's height, panned to the middle of Skyrim, and no two plates overlap (drop the lesser name, never stack them). Screenshot at 390, then `for Bob`.
+- [x] **The phone's opening view** is a small map in the middle of an empty screen, crowded with counts, and the city plates overlap (Winterhold's covers Solitude's). On a phone the map opens filling the screen's height, panned to the middle of Skyrim, and no two plates overlap (drop the lesser name, never stack them). Screenshot at 390, then `for Bob`.
 
+
+Jeff's notes on the second review (Mac, 28 Oct):
+- **The phone opens filling the screen's height,** panned to the middle of Skyrim (the whole map is wider than a phone, so Markarth and Riften are off to the sides, and the N button does the same). It is the opening view and the N button's view.
+- **No two plates overlap, at any width:** names are placed by weight (the picked place, a route's stops and a character's act, then the cities, then the towns, then the rest), and a name whose plate would cover one already placed is not drawn (the pin's name is still its accessible name); `wo169.spec.ts` checks every pair of plates on the whole map at 1440 and 390.
+- Screenshot: the whole map at 390 in `test-results/wo169-whole-390.png`.
+- After the push I read the staging preview again: `/map` and its address variants answer 200.
 ## WO-168  The three main stories, each its own world (Mac, 27 Oct 2026)
 Status: done
 

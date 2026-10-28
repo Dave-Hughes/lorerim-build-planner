@@ -11,14 +11,22 @@ import c from "./story-cards.module.css";
  * line, and its figures from the data. Under the pointer or focus a card lifts with a glow in its colour and the layers slide apart; the main
  * quest's Alduin flies, Dragonborn's tentacles sway faster, Dawnguard's bats scatter. Each card is one link to its story.
  */
+// `pos` frames the card on its landmark (WO-170 review): where in the art's width the card's window sits, on a card and on a phone. The main
+// quest on the mountain, Dragonborn on Miraak's temple, Dawnguard on the eclipse with the castle beside it.
 const STORIES = [
-  { id: "main-quest", cls: c.mq, layers: ["sky", "far", "dragon", "near"], extra: "embers" },
-  { id: "dragonborn", cls: c.dbn, layers: ["sky", "far", "near", "tentacles"], extra: "ash" },
-  { id: "dawnguard", cls: c.dg, layers: ["sky", "far", "bats", "near"], extra: null },
+  { id: "main-quest", cls: c.mq, layers: ["sky", "far", "dragon", "near"], extra: "embers", pos: ["74%", "83%"] },
+  { id: "dragonborn", cls: c.dbn, layers: ["sky", "far", "near", "tentacles"], extra: "ash", pos: ["74%", "81%"] },
+  { id: "dawnguard", cls: c.dg, layers: ["sky", "far", "bats", "near"], extra: null, pos: ["69%", "71%"] },
 ] as const;
 
-/** The first sentence of the pitch: a card has room for one line of what it is about. */
-const firstSentence = (t: string) => t.match(/^.*?[.!?](?=\s|$)/)?.[0] ?? t;
+/** One short line that fits whole: the pitch's first clause (up to its first comma, colon or semicolon, or its first sentence if that is short). */
+const clause = (t: string) => {
+  const sentence = t.match(/^.*?[.!?](?=\s|$)/)?.[0] ?? t;
+  const whole = sentence.replace(/[.!?]$/, "");
+  if (whole.length <= 64) return `${whole}.`;
+  const cut = whole.split(/,\s|:\s|;\s|\s[-–—]\s/)[0];
+  return `${cut.length >= 16 ? cut : whole.slice(0, 64).replace(/\s\S*$/, "")}.`;
+};
 
 export function ThreeStories() {
   const lines = questsData().byId;
@@ -38,7 +46,7 @@ export function ThreeStories() {
       </span>
       <div className={c.row}>
         {cards.map(({ s, n, r }) => (
-          <Link key={s.id} href={r.href} className={`${c.card} ${s.cls}`} aria-labelledby={`story-${s.id}`}>
+          <Link key={s.id} href={r.href} className={`${c.card} ${s.cls}`} aria-labelledby={`story-${s.id}`} style={{ "--pos": s.pos[0], "--posPhone": s.pos[1] } as React.CSSProperties}>
             {s.layers.map((name) => (
               <span key={name} className={c.layer}>
                 <img className={`${c.l} ${c[name]}`} src={`/quests/stories/${s.id}/${name}.png`} alt="" />
@@ -60,7 +68,7 @@ export function ThreeStories() {
               <h3 id={`story-${s.id}`} className={c.h3}>
                 {r.name}
               </h3>
-              {r.pitch && <span className={c.p}>{firstSentence(r.pitch)}</span>}
+              {r.pitch && <span className={c.p}>{clause(r.pitch)}</span>}
               <span className={c.figs}>
                 <span>{r.size.split(" in ")[0]}</span>
                 {r.xp && (

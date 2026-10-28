@@ -54,10 +54,9 @@ export async function allChanges(): Promise<Change[]> {
     if (g.kind === "line") {
       const line = g.id ? data.byId.get(g.id) : undefined;
       if (line) {
-        // What is new in this line, said for this line: its chapters and quests, or just its quests (WO-161). Its icon is its category's.
+        // What is new in this line, said for this line, with no count in it: a count goes stale when the line is read again (WO-170 review).
         const story = storyOfLine(line.id);
-        const n = line.quests.length;
-        const what = story ? `Its ${story.chapters.length} chapters and ${n} quests, read from the game files` : `Its ${n} quest${n === 1 ? "" : "s"}, read from the game files`;
+        const what = story ? "Its story and its quests, read from the game files" : "Its quests, read from the game files";
         const slug = categories().find((c) => c.key === line.category)?.slug;
         out.push({ kind: "line", icon: slug ? `quest-${slug}` : "quest-side-stories", name: line.name, href: `/quests/${line.id}`, what, date: g.date });
       }
@@ -67,7 +66,7 @@ export async function allChanges(): Promise<Change[]> {
     const href = g.edid ? questHref(g.edid) : null;
     if (!q?.name || !href) continue;
     const steps = pageOf(q).steps.reduce((n, st) => n + st.objectives.length, 0);
-    out.push({ kind: "quest", icon: "quest-side-stories", name: q.name, href, what: (g.ways ?? 0) > 1 ? `${g.ways} ways to finish it, each with its steps` : steps > 0 ? `Its ${steps} step${steps === 1 ? "" : "s"}, read from the game files` : "Read from the game files", date: g.date });
+    out.push({ kind: "quest", icon: "quest-side-stories", name: q.name, href, what: (g.ways ?? 0) > 1 ? "Its ways to finish it, each with its steps" : steps > 0 ? "Its steps, read from the game files" : "Read from the game files", date: g.date });
   }
   // A player's report an admin approved: the quest it is about, the day it was approved.
   const facts = await db()

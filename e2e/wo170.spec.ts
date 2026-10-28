@@ -60,6 +60,14 @@ test.describe("signed out", () => {
     await expect(cards.nth(2)).toContainText("Join the Dawnguard");
     await expect(cards.nth(0)).toHaveAttribute("href", "/quests/main-quest");
     for (const i of [0, 1, 2]) await expect(cards.nth(i)).toContainText(/\d+ quests?/);
+    // One short line that fits whole (WO-170 review): never cut with an ellipsis, and the framing is set on each card.
+    for (const i of [0, 1, 2]) {
+      const line = await cards.nth(i).locator("[class*='__p'], span[class*='p_']").first().innerText().catch(() => "");
+      expect(line).not.toContain("…");
+      expect(await cards.nth(i).evaluate((el) => (el as HTMLElement).style.getPropertyValue("--pos"))).toMatch(/%$/);
+    }
+    const lines = await Promise.all([0, 1, 2].map((i) => cards.nth(i).evaluate((el) => (el.querySelector("[class*='_p__'], [class*='story-cards-module'][class*='__p']") as HTMLElement | null)?.innerText ?? "")));
+    expect(lines.every((l) => l.length > 10 && l.length <= 70 && l.endsWith("."))).toBe(true);
     await expect(cards.nth(0)).toContainText("3,800");
     await expect(cards.nth(1)).toContainText("Level 25");
     await expect(cards.nth(2)).toContainText(/Level \d+/);
@@ -88,6 +96,9 @@ test.describe("signed out", () => {
     await strip.scrollIntoViewIfNeeded();
     const b = (await strip.boundingBox())!;
     expect(Math.abs(b.height - 420)).toBeLessThan(2);
+    // The title breaks after "Every place," and the last word never falls alone onto a line.
+    const title = (await strip.getByRole("heading", { level: 2 }).innerText()).split("\n").map((l) => l.toLowerCase());
+    expect(title).toEqual(["every place,", "on the game's own map"]);
     expect(b.width).toBeGreaterThanOrEqual(1438);
     await expect(strip).toContainText(/\d+ places are pinned on it, from \d+ towns and cities to \d+ that are worth a fight/);
     await expect(strip.getByRole("link", { name: "Open the map" })).toHaveAttribute("href", "/map");
@@ -98,6 +109,14 @@ test.describe("signed out", () => {
     expect(await strip.locator("[class*='picture']").evaluate((el) => getComputedStyle(el.parentElement!).animationName)).toContain("drift");
     await page.waitForTimeout(500);
     await page.screenshot({ path: "test-results/wo170-map-strip-1440.png" });
+  });
+
+  test("New in the world quotes no counts that go stale", async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto("/");
+    const rows = await page.getByRole("region", { name: "New in the world" }).locator("[class*='what']").allInnerTexts();
+    expect(rows.length).toBeGreaterThan(0);
+    for (const r of rows) expect(r).not.toMatch(/\d+ (quests?|chapters?|steps?|ways)/);
   });
 
   test("reduced motion: nothing flies, drifts or pulses; the cards still lift and show their colour", async ({ page }) => {
