@@ -124,7 +124,9 @@ function placeList(places: (string | null | undefined)[], limit = 6): { names: s
   }
   const list = [...seen.values()];
   if (!list.length) return null;
-  return { names: list.slice(0, limit), more: Math.max(0, list.length - limit) };
+  // "and 1 more" is a name, not a count: say it (WO-177 Part 5).
+  const shown = list.length - limit === 1 ? limit + 1 : limit;
+  return { names: list.slice(0, shown), more: Math.max(0, list.length - shown) };
 }
 function uniquePlaces(places: (string | null | undefined)[], limit = 6): string | null {
   const l = placeList(places, limit);
@@ -186,12 +188,12 @@ export function lineView(line: QuestLine): LineView {
         name: o.name,
         needs: [
           ...o.needs.map((n) => {
-            if (n.checked === "not yet") unsure.push({ field: `What ${o.name} needs: ${n.text}`, ...(n.why ? { why: n.why } : {}) });
+            if (n.checked === "not yet") unsure.push({ field: `What ${o.name} needs: ${n.text}`, why: `We haven't checked this against the game files yet${n.why ? `: ${n.why}` : ""}.` });
             return { text: n.text, tone: n.kind === "level" ? ("danger" as const) : ("done" as const) };
           }),
           ...(o.or
             ? (() => {
-                if (o.or.checked === "not yet") unsure.push({ field: `What ${o.name} needs: ${o.or.text}` });
+                if (o.or.checked === "not yet") unsure.push({ field: `What ${o.name} needs: ${o.or.text}`, why: "We haven't checked this against the game files yet." });
                 return [{ text: o.or.text, tone: "other" as const }];
               })()
             : []),
@@ -295,7 +297,7 @@ export function lineView(line: QuestLine): LineView {
   const waysIn = line.ways ?? (startChecked(opening?.start) ? opening!.start!.ways : undefined);
   const startLines: string[] = story
     ? story.start.map((t) => {
-        if (t.checked === "not yet") unsure.push({ field: "How it starts", why: t.text });
+        if (t.checked === "not yet") unsure.push({ field: "How it starts", why: "We haven't checked this way of starting it against the game files yet." });
         return t.text;
       })
     : lr?.getIn

@@ -33,7 +33,7 @@ for (const width of [1440, 390]) {
     for (const n of ["Zoom in", "Zoom out", "North, and the whole map"]) await expect(page.getByRole("button", { name: n, exact: true })).toBeVisible();
     // On a phone the panel is a bar at the foot until it is opened.
     if (width === 390) await expect(page.getByRole("button", { name: "Search and filters" })).toBeVisible();
-    else await expect(page.getByRole("complementary", { name: "Map controls" }).getByText(/^\d+ places$/)).toBeVisible();
+    else await expect(page.getByRole("complementary", { name: "Map controls" }).getByText(/^\d+ places on the map$/)).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
     // The whole map fits beside the panel (and above a phone's bar): every city in view and named; counts only where pins pile up.
     const free = width === 1440 ? { left: 354, right: 1440, top: 69, bottom: 900 } : { left: 0, right: 390, top: 56, bottom: 844 - 56 };
@@ -81,7 +81,7 @@ for (const width of [1440, 390]) {
     const drawer = page.getByRole("complementary", { name: "Bleak Falls Barrow" });
     await expect(drawer).toBeVisible();
     await expect(drawer.getByRole("link", { name: "Open the page" })).toHaveAttribute("href", "/places/bleak-falls-barrow");
-    await expect(drawer).toContainText("West of Riverwood");
+    await expect(drawer).toContainText(/west of Riverwood/i);
     await expect(drawer).toContainText(/The boss/);
     await expect(page).toHaveURL(/place=bleak-falls-barrow/);
     await page.waitForTimeout(900);
@@ -124,13 +124,13 @@ test("the filters leave out what does not match: a kind, with a quest; no danger
   await open(page, "/map?z=0.9&x=2400&y=2400");
   const panel = page.getByRole("complementary", { name: "Map controls" });
   await expect(panel.getByRole("slider")).toHaveCount(0);
-  await expect(panel.getByText("On the map")).toHaveCount(0);
-  const total = Number((await panel.getByText(/^\d+ places$/).innerText()).split(" ")[0]);
+  await expect(panel.getByText("On the map", { exact: true })).toHaveCount(0);
+  const total = Number((await panel.getByText(/^\d+ places on the map$/).innerText()).split(" ")[0]);
   const pins = () => map(page).locator("a[href^='/places/']").count();
   const before = await pins();
   await panel.getByRole("button", { name: /^Ruins/ }).click();
-  await expect(panel.getByText(/^\d+ of \d+ places$/)).toBeVisible();
-  const ruins = Number((await panel.getByText(/of \d+ places$/).innerText()).split(" ")[0]);
+  await expect(panel.getByText(/^\d+ of \d+ places on the map$/)).toBeVisible();
+  const ruins = Number((await panel.getByText(/of \d+ places on the map$/).innerText()).split(" ")[0]);
   expect(ruins).toBeLessThan(total);
   // Only what matches is drawn: nothing faint is left, and fewer pins than before.
   expect(await pins()).toBeLessThan(before);
@@ -139,7 +139,7 @@ test("the filters leave out what does not match: a kind, with a quest; no danger
   await panel.getByRole("button", { name: "All", exact: true }).click();
   await panel.getByRole("button", { name: "With a quest" }).click();
   await expect(panel.getByRole("button", { name: "With a quest" })).toHaveAttribute("aria-pressed", "true");
-  await expect(panel.getByText(/^\d+ of \d+ places$/)).toBeVisible();
+  await expect(panel.getByText(/^\d+ of \d+ places on the map$/)).toBeVisible();
   await expect(page).toHaveURL(/quests=1/);
 });
 

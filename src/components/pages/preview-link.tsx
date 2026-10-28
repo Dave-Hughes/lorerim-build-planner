@@ -79,7 +79,7 @@ export function PreviewLink({ href, children, className }: { href: string; child
       onBlur={hide}
       onKeyDown={(e) => e.key === "Escape" && hide()}
     >
-      <Link href={href} className={className} aria-describedby={open ? id : undefined}>
+      <Link href={href} className={`${className ?? ""} ${href.startsWith("/places/") ? styles.place : ""}`.trim() || undefined} aria-describedby={open ? id : undefined}>
         {children}
       </Link>
       {open && data && (

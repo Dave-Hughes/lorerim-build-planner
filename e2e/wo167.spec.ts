@@ -35,7 +35,7 @@ for (const width of [1440, 390]) {
     expect(await plates.count()).toBeGreaterThan(4);
     await creditOk(page, map);
     await expect(page.getByText("Getting there", { exact: true })).toBeVisible();
-    await expect(page.getByText(/West of Riverwood/)).toBeVisible();
+    await expect(page.getByText(/west of Riverwood/i).first()).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
     await page.waitForTimeout(600);
     await page.screenshot({ path: `test-results/wo167-bleak-falls-barrow-${width}.png`, fullPage: false });

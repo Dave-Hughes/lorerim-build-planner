@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import type { ReactNode } from "react";
+import { playerField, playerReason } from "@/lib/pages/player-words";
 import { BackButton } from "./back-button";
 import { PageSearch } from "./page-search";
 import styles from "./page-kit.module.css";
@@ -98,8 +99,10 @@ export interface SureSource {
  */
 export function InformationConfidence({ id, line, sources, unsure, actions }: { id: string; line: string; sources: SureSource[]; unsure: { field: string; why?: string }[]; actions: ReactNode }) {
   const mark = { yes: styles.markYes, part: styles.markPart, no: styles.markNo };
-  const fields = [...new Set(unsure.map((u) => u.field))];
-  const reasons = unsure.filter((u) => u.why);
+  // A reason is a whole sentence in a player's words, and no field or reason names a record or a file (WO-177 Part 5).
+  const clean = unsure.map((u) => ({ field: playerField(u.field), ...(u.why ? { why: playerReason(u.why) } : {}) }));
+  const fields = [...new Set(clean.map((u) => u.field))];
+  const reasons = clean.filter((u) => u.why);
   return (
     <section className={`frame ${styles.confidence}`} aria-labelledby={id}>
       <span className={styles.panelHead}>

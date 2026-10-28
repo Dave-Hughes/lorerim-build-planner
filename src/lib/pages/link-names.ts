@@ -49,7 +49,8 @@ function compile(names: NameLink[]) {
       // In order: a bracketed quest's name, a whole name, a short name (with a title before it, when it has one).
       // A quest's name in brackets, or after "in the quest" (WO-177: "Paarthurnax dies if you kill him in the quest Paarthurnax").
       ...(bracketed.m.size ? [`(?:(?<=\\((?:[^()]*[,;]\\s+)?)|(?<=\\bin the quest\\s+))(?<br>${bracketed.alt})(?=\\s*[,;)]|\\s*\\.?$)`] : []),
-      ...(normal.m.size ? [`${edge}(?<n>${normal.alt})(?![\\p{L}\\p{N}])(?!\\s+\\p{Lu})`] : []),
+      // A place named after a title and "of" is a role ("Jarl of Whiterun", "Steward of Solitude"), not a place to go to (WO-177 Part 5).
+      ...(normal.m.size ? [`(?<!\\b(?:${TITLES}|Guard|Captain|Court Wizard) of\\s)${edge}(?<n>${normal.alt})(?![\\p{L}\\p{N}])(?!\\s+\\p{Lu})`] : []),
       ...(short.m.size ? [`${edge}(?:(?:${TITLES})\\s+)?(?<s>${short.alt})(?![\\p{L}\\p{N}])(?!\\s+\\p{Lu})(?!\\s+(?:the|of)\\s+\\p{Lu})`] : []),
     ];
     out = { normal: normal.m, short: short.m, bracketed: bracketed.m, re: new RegExp(parts.join("|"), "gu") };
@@ -69,7 +70,7 @@ function endsAnotherName(before: string): boolean {
   return !starts && !new RegExp(`^(?:${TITLES})$`).test(m[2]);
 }
 
-export function linkNames(text: string, names: NameLink[]): Piece[] {
+export function linkNames(text: string, names: NameLink[], skip?: string): Piece[] {
   const c = compile(names);
   if (!text || !c) return [{ text }];
   const out: Piece[] = [];
@@ -78,7 +79,7 @@ export function linkNames(text: string, names: NameLink[]): Piece[] {
     if (m.index > last) out.push({ text: text.slice(last, m.index) });
     const g = m.groups ?? {};
     const hit = (g.br !== undefined ? c.bracketed.get(g.br) : g.n !== undefined ? c.normal.get(g.n) : c.short.get(g.s))!;
-    out.push(hit.plain || (g.s !== undefined && m[0] === g.s && endsAnotherName(text.slice(0, m.index))) ? { text: m[0] } : { text: m[0], href: hit.href, ...(hit.external ? { external: true } : {}) });
+    out.push(hit.plain || (skip !== undefined && hit.href === skip) || (g.s !== undefined && m[0] === g.s && endsAnotherName(text.slice(0, m.index))) ? { text: m[0] } : { text: m[0], href: hit.href, ...(hit.external ? { external: true } : {}) });
     last = m.index + m[0].length;
   }
   if (last < text.length) out.push({ text: text.slice(last) });

@@ -1,6 +1,7 @@
 import "server-only";
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import { mapStrings, mend, REASON_KEYS, SAID_NAMES } from "@/lib/pages/player-words";
 import { currentVersion } from "@/lib/rules/server";
 import { MAIN } from "./open";
 import { currentPlayerFacts } from "./player-facts-store";
@@ -42,10 +43,14 @@ function baseQuestsData() {
   let data: QuestsFile = { categories: {}, shelves: {}, lines: [] };
   try {
     data = JSON.parse(readFileSync(file, "utf8")) as QuestsFile;
+    // The reads' assembled wording ("in her own house, Bryling's House") is said once, here (WO-177 Part 5).
+    data = { ...data, lines: mapStrings(data.lines, mend, REASON_KEYS) };
   } catch {
     // Not built yet.
   }
   // Placeholder objectives are hidden here (WO-147 Part 2), so no page and no tool ever reads one.
+  const SAID = SAID_NAMES;
+  data = { ...data, lines: data.lines.map((l) => (l.quests.some((q) => SAID[q.name]) ? { ...l, quests: l.quests.map((q) => (SAID[q.name] ? { ...q, name: SAID[q.name] } : q)) } : l)) };
   const lines = data.lines.map((l) => (l.quests.some((q) => q.objectives?.some(isPlaceholder)) ? { ...l, quests: l.quests.map((q) => (q.objectives?.some(isPlaceholder) ? { ...q, objectives: q.objectives.filter((o) => !isPlaceholder(o)) } : q)) } : l));
   const tidied = lines.map(tidyRead);
   cached = { ...data, lines: tidied, byId: new Map(tidied.map((l) => [l.id, l])) };

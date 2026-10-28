@@ -30,6 +30,8 @@ export interface MapPlace {
   /** The levels of what is there, for the Danger range; null when nothing hostile or not known. */
   range: [number, number] | null;
   quests: number;
+  /** A place inside a town (WO-178 `pinAt`): it has no spot of its own and is drawn at its town's pin, when its group is picked. */
+  inTown?: { name: string; slug: string };
 }
 
 let all: MapPlace[] | null = null;
@@ -40,9 +42,11 @@ export function mapPlaces(): MapPlace[] {
   const out: MapPlace[] = [];
   if (m)
     for (const p of placesData().places) {
-      if (p.world !== "Tamriel" || !p.pos) continue;
+      const at = p.pos ? { world: p.world, pos: p.pos } : p.pinAt;
+      if (!at || at.world !== "Tamriel") continue;
       const slug = placeSlug(p);
-      const { px, py } = toTexture(m, p.pos[0], p.pos[1]);
+      const { px, py } = toTexture(m, at.pos[0], at.pos[1]);
+      const town = !p.pos && p.inTown ? placeByName(p.inTown) : null;
       if (!inFrame(m, px, py)) continue;
       const key = `${slug}|${Math.round(px / 4)}|${Math.round(py / 4)}`;
       if (seen.has(key)) continue;
@@ -58,6 +62,7 @@ export function mapPlaces(): MapPlace[] {
         py: Math.round(py * 10) / 10,
         range: levelSpan(p.actors),
         quests: (p.quests ?? []).length,
+        ...(!p.pos && p.pinAt ? { inTown: { name: p.inTown ?? "", slug: town ? placeSlug(town) : slug } } : {}),
       });
     }
   all = out;

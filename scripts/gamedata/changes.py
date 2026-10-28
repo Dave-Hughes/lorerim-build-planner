@@ -8,7 +8,8 @@ import json
 import os
 import subprocess
 
-KEEP = 400
+# Everything the data has: the page folds it by day (WO-177 Part 5: it stopped at 400, back to 23 Oct).
+KEEP = None
 
 
 def added_on(root, path):
@@ -64,4 +65,4 @@ def build_changes(pages, raw_dir, root):
                 out.append({"kind": "quest", "edid": q["edid"], "ways": n, "date": day})
     # Newest first; a line before a quest, a quest with several ways before one with a single path, on the same day.
     out.sort(key=lambda c: (c["date"], c["kind"] == "line", c.get("ways", 0)), reverse=True)
-    return out[:KEEP]
+    return out if KEEP is None else out[:KEEP]

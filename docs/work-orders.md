@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-177  A cold review of staging: what's broken, what's off the grid, what reads wrong (Mac, 28 Oct 2026)
-Status: building (Mac; Part 5)
+Status: for Bob
 
 **Why.** Dave, 28 Oct 10:06: "I've already spotted lots of things that are broken, or weird UI issues." Bob's reviews had checked each order's boxes and not the whole page. A reviewer who hadn't seen the orders walked 25 pages signed out at 1440 and 390, scrolling with the wheel and hovering: no console errors, no broken links, nothing scrolls sideways; and the list below (screenshots in Bob's scratch folder, `rex/shots/`). Bob confirmed the first ones by hand. Dave's own list joins this order when he sends it. Do the parts in order; each box is a fault seen, not a guess.
 
@@ -5084,26 +5084,41 @@ Decisions and reasons:
 
 ### Part 5. The second cold review (28 Oct, 12:20)
 The same reviewer, every box again, at 1440 and 390, scrolling and hovering, plus the text of 2,511 pages searched for the copy patterns. Fixed: the wheel on Places, the Blood link, Lydia's sentence, the featured card, Dungeon Delving's grid, Where it takes you, line-page colours and headings, `/quests` at 390, home at 390, the place people, the inn's "In Riverwood", `/changes`, search, Aela, place tags, The Golden Claw, the `/quests` heading, the respawn days. Still wrong or new:
-- [ ] **The `/quests` table moved its squeeze**: Level and places hold, but now the quest and the giver break ("Song of the / Green", "The / Forgemaster's / Fingers", "Froki Whetted- / Blade"). Give Quest and Starts with the room; shrink From. And some From short names name the wrong mod ("More to do in Whiterun: Rob's Bug Fixes", "Profane Divinity: Trad", "On Hogithum: Requiem", "Saints and Seducers: Skyrim Extended Cut"): the short name is the mod that adds the quest, nothing appended.
-- [ ] **Map labels and badges still draw under the panel, the drawer and the header** (High Hrothgar's under Riverwood's drawer; a "2" poking out of the panel's top). A label or badge whose pin is under a panel isn't drawn.
-- [ ] **A tag the page isn't sure of**: Aela's "Follower" tag beside "She's a potential follower. (not sure)". Same rule as Lydia's: a tag only for what's sure. On a phone, Lydia's one At a glance cell, "Nord in Whiterun", repeats the lede "A Nord in Whiterun."
-- [ ] **Editors' words left**: "Why we're unsure" names records and files ("'Cultists vs Player' (DLC2WE09)", plugin `.esp` names on 23 quest pages); "(not sure)" in brackets on 35 pages; Lydia's "What changes it (not sure)" and "(presumably once you own Breezehome)". Not sure yet says what is unsure and why in a player's words; a file or record id never shows; no bracket hedges in the body. A test over every page's text for `.esp`, an editor-id pattern and "(not sure)".
-- [ ] **Not sure yet's reasons are fragments** on the main quest ("What it closes: The records don't show when", "LoreRim's files set their chance to 0", How it starts' reason repeats its sentence). Each reason is a whole sentence about the thing ("We can't tell from the files when Helgen's shops close.").
-- [ ] **"Dawnguard | Dawnguard"**: two identical tags on the Dawnguard line. And the hold is named three ways ("Whiterun hold", "Whiterun", "Whiterun, Town" in search): "Whiterun hold" for the hold everywhere, "Whiterun" for the city.
-- [ ] **"can be shut away(Unbound)"**: a missing space. Check every "(Quest)" join.
-- [ ] **Assembled wording on more pages**: Bryling's "in her own house, Bryling's House". The fix goes in the sentence builder, not page by page; a test over the people reads.
-- [ ] **"Where they are through the day isn't known yet"** on Alvor's At a glance: "Where he is…" (the person's pronoun).
-- [ ] **The same story, two sets of numbers**: Dawnguard is 12 quests and 2,000 XP on home and its page, 39 and 6,800 in the `/quests` table; the main quest 19 against 23. The table counts the story's quests and XP the same way the line page does (jobs apart).
-- [ ] **Record ids as quest names**: the Hall of the Dead (Riften) says "Brother Verulus in DA11FIN". A line credited to a quest uses its name; no editor id on any page (the same test).
-- [ ] **"1 ways"** on 21 quest pages: "1 way".
-- [ ] **Place links orange outside line pages**: The Golden Claw's Where it takes you, the inn's "In Riverwood", High Hrothgar's "Jarl of Whiterun" (a role, not a place: no link). A place link is teal on every page.
-- [ ] **On a phone**: the small character cards cut the maker ("Ta…") and the tagline; a quest route on `/map` shows only stop 1; Lydia's "What she offers" heading is smaller than the others.
-- [ ] **`/changes` stops at exactly 400** (350 quests, 50 lines), back to 23 Oct: a query limit. Show all, folded by day, or say "and N older".
-- [ ] **"More to Say Find Angi"** on Faendal's page (a quest name glued to an objective?) and "and 1 more" as a link for one name: say the name.
-- [ ] Walk every page above at both widths, scrolling and hovering, before `for Bob`; Bob sends the reviewer again.
+- [x] **The `/quests` table moved its squeeze**: Level and places hold, but now the quest and the giver break ("Song of the / Green", "The / Forgemaster's / Fingers", "Froki Whetted- / Blade"). Give Quest and Starts with the room; shrink From. And some From short names name the wrong mod ("More to do in Whiterun: Rob's Bug Fixes", "Profane Divinity: Trad", "On Hogithum: Requiem", "Saints and Seducers: Skyrim Extended Cut"): the short name is the mod that adds the quest, nothing appended.
+- [x] **Map labels and badges still draw under the panel, the drawer and the header** (High Hrothgar's under Riverwood's drawer; a "2" poking out of the panel's top). A label or badge whose pin is under a panel isn't drawn.
+- [x] **A tag the page isn't sure of**: Aela's "Follower" tag beside "She's a potential follower. (not sure)". Same rule as Lydia's: a tag only for what's sure. On a phone, Lydia's one At a glance cell, "Nord in Whiterun", repeats the lede "A Nord in Whiterun."
+- [x] **Editors' words left**: "Why we're unsure" names records and files ("'Cultists vs Player' (DLC2WE09)", plugin `.esp` names on 23 quest pages); "(not sure)" in brackets on 35 pages; Lydia's "What changes it (not sure)" and "(presumably once you own Breezehome)". Not sure yet says what is unsure and why in a player's words; a file or record id never shows; no bracket hedges in the body. A test over every page's text for `.esp`, an editor-id pattern and "(not sure)".
+- [x] **Not sure yet's reasons are fragments** on the main quest ("What it closes: The records don't show when", "LoreRim's files set their chance to 0", How it starts' reason repeats its sentence). Each reason is a whole sentence about the thing ("We can't tell from the files when Helgen's shops close.").
+- [x] **"Dawnguard | Dawnguard"**: two identical tags on the Dawnguard line. And the hold is named three ways ("Whiterun hold", "Whiterun", "Whiterun, Town" in search): "Whiterun hold" for the hold everywhere, "Whiterun" for the city.
+- [x] **"can be shut away(Unbound)"**: a missing space. Check every "(Quest)" join.
+- [x] **Assembled wording on more pages**: Bryling's "in her own house, Bryling's House". The fix goes in the sentence builder, not page by page; a test over the people reads.
+- [x] **"Where they are through the day isn't known yet"** on Alvor's At a glance: "Where he is…" (the person's pronoun).
+- [x] **The same story, two sets of numbers**: Dawnguard is 12 quests and 2,000 XP on home and its page, 39 and 6,800 in the `/quests` table; the main quest 19 against 23. The table counts the story's quests and XP the same way the line page does (jobs apart).
+- [x] **Record ids as quest names**: the Hall of the Dead (Riften) says "Brother Verulus in DA11FIN". A line credited to a quest uses its name; no editor id on any page (the same test).
+- [x] **"1 ways"** on 21 quest pages: "1 way".
+- [x] **Place links orange outside line pages**: The Golden Claw's Where it takes you, the inn's "In Riverwood", High Hrothgar's "Jarl of Whiterun" (a role, not a place: no link). A place link is teal on every page.
+- [x] **On a phone**: the small character cards cut the maker ("Ta…") and the tagline; a quest route on `/map` shows only stop 1; Lydia's "What she offers" heading is smaller than the others.
+- [x] **`/changes` stops at exactly 400** (350 quests, 50 lines), back to 23 Oct: a query limit. Show all, folded by day, or say "and N older".
+- [x] **"More to Say Find Angi"** on Faendal's page (a quest name glued to an objective?) and "and 1 more" as a link for one name: say the name.
+- [x] Walk every page above at both widths, scrolling and hovering, before `for Bob`; Bob sends the reviewer again.
+
+### Mac's notes on Part 5 (28 Oct)
+Checks: typecheck, lint, `npm test` (777), `npm run build`, full `npm run test:e2e` (556 passed; the Ctrl+K palette spec failed once in the full run and passes alone, as before; two wo167 assertions needed the PC's new "Up the mountain west of Riverwood" wording), and `e2e/wo177.spec.ts` (16 tests). New: a test that loads about 1,500 pages (every line, every quest, 400 people, 300 places) and fails on a plugin file name, an editor-id pattern, "(not sure)", "1 ways", or a hedge in a page's body; `src/lib/people/wo177.test.ts` over the people and quest reads for repeated places. Regenerated: `changes.json` only.
+
+Decisions and reasons:
+- **From short names:** the mod that adds the quest, nothing appended. A trailing patch or add-on note is dropped, and when the folder is a bundle or fixes mod named first (Rob's Bug Fixes, Skyrim Extended Cut, Betalille's bundle) the second name is the mod. "On Hogithum" stays "Requiem" (its edid is REQ_HOGITHUM, a Requiem quest). "Profane Divinity" shows "Trad": I don't know the collection's real title; Bob or Dave can give one.
+- **The `/quests` table** uses fixed column shares (Quest 23%, giver 14%, place 16%, From 16%); a giver or place too long for its share is cut with an ellipsis and its full text is the cell's title. Nothing wraps inside a level, place or giver.
+- **Map:** a pin under the panel or the drawer (or above the top edge) is not drawn at all, with its name or its badge. A place inside a town is drawn at its town's pin only when its group is picked, as one pin with "Whiterun, 5 places". The panel says "N places on the map"; both pages read `placeCounts()` (on /places, `all`). On a phone the map zooms out further (0.5 of the fit), because Forbidden Legend's stops are the width of Skyrim; the route also loads once the window is measured (it used a stale size before, which is why only stop 1 showed).
+- **Lydia and cities (WO-178 Part 2, Mac):** a person goes to the building they are in (Dragonsreach has the town's pin now); a city's drawer lists its jarl and steward, then who keeps an inn, sells or trains, then the rest, eight at most.
+- **Hedges:** removed at load from every read's sentences (a clause, or a whole "The records don't show…" sentence); the reads' own `why` and `unsure` are left for Information Confidence, which now cleans them: a reason with a record id or a plugin file becomes "We couldn't confirm this from the game files.", and the planner's own reasons are whole sentences ("About “Helgen as a living town”: we can't tell from the game files when."). "(not sure)" on person pages is a muted "Not sure yet." line; Lydia's "(presumably once you own Breezehome)" went to Not sure yet as "This is a guess from the game files: ...".
+- **Record ids as names:** three quests are named by an id in the records ("DA02 Hook", "DB01_Opt", "TG00 Maul Handler"); they read "Boethiah's Calling: the hook", "Delayed Burial: optional objectives", "Maul's handler" (my wording; change it if you know them). A line credited to a quest on a place page shows the quest only if it is a known quest name. "More to Say Find Angi" is the quest's own name in its plugin, so it stays. Unfilled `<Alias=Victim01>` tags read "the victim". The page test allows "VOLUNR5D": it is in a book the game has.
+- **Assembled wording:** one rule where the reads load ("in her own house, Bryling's House" becomes "in Bryling's House"); "1 way"; "and 1 more" says the name.
+- **Hold names:** "Whiterun hold" everywhere for the hold (search, places lists, drawers, previews, the hold sections of /places); "Whiterun" stays the city.
+- **A memory fault found by the page test:** the people pages kept a compiled name pattern per person (the server ran out of memory over a few hundred pages). They now share one and skip the person's own link at the match.
+- **Not changed:** the person pages' "Not sure yet" field names still say "them" (they are field names).
 
 ## WO-178  Data a player would call wrong (PC, 28 Oct 2026)
-Status: queued (Mac: Part 2, boxes 1, 2 and the last; the PC's are done)
+Status: for Bob (the PC's boxes and the Mac's are done)
 
 From the same cold review (WO-177). Each is what the page shows; find why in the records and fix it in the build, or say why it's right.
 - [x] **Only one temple or guild on the map** ("Temples and guilds 1": High Hrothgar). The Temple of Kynareth, the Temple of Mara, Jorrvaskr and the College are inside their cities, so they have no position (WO-166's rule). Give the Mac what it needs to show a place inside a town at its town's pin on the map when its group is picked (the town's position on each such row as `pinAt`), so the groups aren't empty.
@@ -5138,11 +5153,11 @@ Every box is ticked. Checks: Python 440 OK, `tsc` clean, eslint clean on the fil
 
 ### Part 2. The second cold review (28 Oct, 12:20)
 Fixed: Castle Volkihar is a castle, the Soul Cairn is off the map, High Hrothgar is up the 7,000 Steps, Riverwood's crafting and quests. Not fixed or new:
-- [ ] **(Mac) Temples and guilds on the map**: still "Temples and guilds 1". The PC added each in-town place's `pinAt`; the map doesn't use it. Draw an in-town place at its town's pin when its group is picked (one pin, a count on the town's plate).
-- [ ] **(Mac) One count per kind**: `/map` and `/places` still disagree (towns 21 against 29, homes 73 against 283, temples 1 against 28, landmarks 83 against 177). Both read the build's counts; the map's label says "on the map" when it shows fewer.
+- [x] **(Mac) Temples and guilds on the map**: still "Temples and guilds 1". The PC added each in-town place's `pinAt`; the map doesn't use it. Draw an in-town place at its town's pin when its group is picked (one pin, a count on the town's plate).
+- [x] **(Mac) One count per kind**: `/map` and `/places` still disagree (towns 21 against 29, homes 73 against 283, temples 1 against 28, landmarks 83 against 177). Both read the build's counts; the map's label says "on the map" when it shows fewer.
 - [x] **(PC) "Up the mountain" is wrong on 192 pages**: Riverwood "Up the mountain south of Whiterun", Blackreach "Up the mountain southeast of Stonehills", Nightgate Inn, Frostflow Lighthouse. `gettingThere()` (`src/lib/places/map.ts`) calls any place 2,000 units above its town a climb. A climb is said only for places marked as on a mountain (an override list, Bleak Falls Barrow and High Hrothgar first), never from height alone; an interior or underground world never.
 - [x] **(PC) Bleak Falls Barrow's lede and Nearest town** still say "next to Riverwood" and "Next to it" beside the new climb line. One answer from the same rule.
-- [ ] **(PC and Mac) Lydia on the map** still flies to Whiterun, not Dragonsreach, and Whiterun's Who is inside lists only Companions. A person goes to the building they're in; a city's drawer lists its jarl, steward, merchants and trainers.
+- [x] **(PC and Mac) Lydia on the map** still flies to Whiterun, not Dragonsreach, and Whiterun's Who is inside lists only Companions. A person goes to the building they're in; a city's drawer lists its jarl, steward, merchants and trainers.
 - [x] **(PC) Castle Volkihar** lists no people, has no hold and sits under "Elsewhere" on `/places`; its page map has a black strip left of the picture. **The Soul Cairn**'s lede is "A landmark." with a "Level 13 to 150" bar on a 1 to 50 scale: a realm with no map says what it is and how you get there (through Castle Volkihar's portal).
 - [ ] Then `for Bob`; Bob sends the reviewer again.
 

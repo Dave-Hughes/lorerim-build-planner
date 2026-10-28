@@ -62,7 +62,7 @@ function WhichOne({ places }: { places: Place[] }) {
               .map((p) => (
                 <div key={p.id} className={styles.qrow}>
                   <Link href={placeHrefOf(p)}>{placeLabel(p)}</Link>
-                  <span>{[placeType(p.type), p.hold, p.nearestTown ? `near ${p.nearestTown.town}` : p.inTown ? `in ${p.inTown}` : ""].filter(Boolean).join(", ")}</span>
+                  <span>{[placeType(p.type), p.hold ? `${p.hold} hold` : null, p.nearestTown ? `near ${p.nearestTown.town}` : p.inTown ? `in ${p.inTown}` : ""].filter(Boolean).join(", ")}</span>
                 </div>
               ))}
           </section>
@@ -79,7 +79,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     const several = placesSharingSlug(slug);
     return several ? { title: several[0].name, ...siteMetadata(`/places/${slug}`, several[0].name, `${several.length} places share this name`) } : {};
   }
-  return { title: placeLabel(p), ...siteMetadata(placeHrefOf(p), placeLabel(p), [placeType(p.type), p.hold].filter(Boolean).join(" in ")) };
+  return { title: placeLabel(p), ...siteMetadata(placeHrefOf(p), placeLabel(p), [placeType(p.type), p.hold ? `${p.hold} hold` : null].filter(Boolean).join(", ")) };
 }
 
 /** Which expansion or mod a place's record is from, by its form id's plugin: "Base game". */
@@ -133,7 +133,7 @@ export default async function PlacePage({ params }: { params: Params }) {
   const near = town ? nearWords(town) : null;
   // A realm with no place on Tamriel's map (the Soul Cairn) says what it is and how you get there (WO-178), and has no levels gauge: its scale is not the land's.
   const realm = !place.pos && !place.inTown && !!place.gettingThere;
-  const lede = `${/^[AEIOU]/i.test(type) ? "An" : "A"} ${kind}${near ? ` ${near}` : place.hold ? ` in ${place.hold}` : ""}.${realm ? ` ${place.gettingThere}.` : ""}${boss ? ` Its boss is ${boss.name}.` : ""}`.replace(/\s+/g, " ");
+  const lede = `${/^[AEIOU]/i.test(type) ? "An" : "A"} ${kind}${near ? ` ${near}` : place.hold ? ` in ${place.hold} hold` : ""}.${realm ? ` ${place.gettingThere}.` : ""}${boss ? ` Its boss is ${boss.name}.` : ""}`.replace(/\s+/g, " ");
   const lived = placeKind(place) !== "dangerous";
   const ic = (
     <InformationConfidence
@@ -160,7 +160,7 @@ export default async function PlacePage({ params }: { params: Params }) {
   if (pkind !== "dangerous") {
     const goodToKnow: [string, string][] = [
       ...(place.inTown ? ([["In", place.inTown]] as [string, string][]) : []),
-      ...(place.hold ? ([["Hold", place.hold]] as [string, string][]) : []),
+      ...(place.hold ? ([["Hold", `${place.hold} hold`]] as [string, string][]) : []),
       ...(town ? ([["Nearest town", `${town.town}${town.walk ? `, ${town.walk}` : ""}`]] as [string, string][]) : []),
     ];
     return <PlaceTown place={place} kind={pkind} origin={origin} near={near} ic={ic} goodToKnow={goodToKnow} />;

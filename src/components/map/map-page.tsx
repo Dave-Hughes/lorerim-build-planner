@@ -40,18 +40,21 @@ const KIND_COLOUR = { city: "city", town: "town", danger: "danger", other: "othe
 export function MapPage({ entry, places, initial }: { entry: MapEntry; places: MapPlace[]; initial: MapInitial }) {
   const box = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ w: 1440, h: 800 });
+  const [measured, setMeasured] = useState(false);
   useLayoutEffect(() => {
     const el = box.current;
     if (!el) return;
     const measure = () => setSize({ w: el.clientWidth, h: el.clientHeight });
     measure();
+    setMeasured(true);
     const ro = new ResizeObserver(measure);
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
   const [x0, y0, x1, y1] = entry.border;
   // A little further out than the window fits, so the whole map can sit beside the panel.
-  const kMin = Math.min(size.w / (x1 - x0), size.h / (y1 - y0)) * 0.8;
+  // On a phone it goes further out, so a quest whose stops are the width of Skyrim (Forbidden Legend) shows every one (WO-177 Part 5: only stop 1 did).
+  const kMin = Math.min(size.w / (x1 - x0), size.h / (y1 - y0)) * (size.w < 700 ? 0.5 : 0.8);
   const bySlug = useMemo(() => new Map(places.map((p) => [p.slug, p])), [places]);
 
   // The view: the texture pixel at the middle of the window, and css pixels per texture pixel. Until you move it, it is worked out from the
@@ -208,20 +211,26 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
         const ys = stops.map((p) => p.py);
         const dx = Math.max(...xs) - Math.min(...xs) + 1;
         const dy = Math.max(...ys) - Math.min(...ys) + 1;
-        fly({ cx: (Math.min(...xs) + Math.max(...xs)) / 2, cy: (Math.min(...ys) + Math.max(...ys)) / 2, k: Math.min(0.9, (size.w * 0.55) / dx, (size.h * 0.55) / dy) });
+        // The box as it is now (a route in the address loads before the first measure settles), and on a phone the part above the sheet's bar (WO-177: only stop 1 showed).
+        const w = box.current?.clientWidth || size.w;
+        const h = box.current?.clientHeight || size.h;
+        const small = w < 700;
+        const usableW = small ? w * 0.8 : w - (panelOpen ? 354 : 0) - 120;
+        const usableH = small ? (h - 70) * 0.8 : h * 0.7;
+        const kk = Math.min(0.9, usableW / dx, usableH / dy);
+        fly({ cx: (Math.min(...xs) + Math.max(...xs)) / 2 - (small ? 0 : panelOpen ? 177 / kk : 0), cy: (Math.min(...ys) + Math.max(...ys)) / 2 + (small ? 28 / kk : 0), k: kk });
       }
     },
-    [bySlug, fly, size.w, size.h],
+    [bySlug, fly, size.w, size.h, panelOpen],
   );
   const firstRoute = useRef(initial.quest);
+  // Once, from the address, and once the box is measured: the fit and the furthest zoom-out are worked out from the real window (WO-177 Part 5).
   useEffect(() => {
-    if (firstRoute.current) {
+    if (firstRoute.current && measured) {
       void loadRoute(firstRoute.current);
       firstRoute.current = null;
     }
-    // Once, from the address.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [measured, loadRoute]);
 
   useEffect(() => {
     if (!characterId) return;
@@ -290,6 +299,8 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
   const lit = useMemo(() => new Set((characterId && character?.id === characterId ? character.lit : []).map((x) => x.slug)), [character, characterId]);
   const shows = (p: MapPlace) => {
     if (selected === p.slug || inRoute.has(p.slug) || lit.has(p.slug)) return true;
+    // A place inside a town has the town's pin: drawn only when its kind is picked (WO-178).
+    if (p.inTown && !types.includes(groupOf(p.type))) return false;
     if (types.length && !types.includes(groupOf(p.type))) return false;
     if (onlyQuests && !p.quests) return false;
     if (inRoute.size && route && showRoute) return false;
@@ -300,39 +311,40 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
     const m = places.reduce((acc, p) => acc.set(groupOf(p.type), (acc.get(groupOf(p.type)) ?? 0) + 1), new Map<string, number>());
     return PLACE_GROUPS.map((g) => ({ ...g, n: m.get(g.key) ?? 0 })).filter((g) => g.n > 0);
   }, [places]);
-  const shownCount = places.filter(shows).length;
+  // A place inside a town counts as shown whenever the filters let it through, though with no kind picked it is folded into its town's pin.
+  const shownCount = places.filter((p) => (p.inTown && selected !== p.slug ? (!types.length || types.includes(groupOf(p.type))) && (!onlyQuests || !!p.quests) && !(inRoute.size && route && showRoute) : shows(p))).length;
 
+  // What sits over the map, in its own pixels: the panel, the drawer, the zoom buttons and the credit (WO-177). A pin under the panel or the drawer
+  // is not drawn at all, with its name or its badge; a name is never drawn under any of them.
+  type Box = [number, number, number, number];
+  const covered = useMemo<{ over: Box[]; sheet: Box[] }>(() => {
+    const wide = size.w >= 700;
+    const shift = selected && wide ? 352 : 0;
+    const sheet: Box[] = wide
+      ? [panelOpen ? [12, 12, 342, size.h - 12] : [12, 12, 342, 64], ...(selected ? ([[size.w - 352, 12, size.w - 12, size.h - 12]] as Box[]) : [])]
+      : [[0, size.h - (selected ? size.h * 0.58 : panelOpen ? size.h * 0.52 : 56), size.w, size.h]];
+    const over: Box[] = wide
+      ? [[size.w - 12 - 36 - shift - 6, size.h - 52 - 120 - 6, size.w - 12 - shift + 6, size.h - 52 + 6], [size.w - 12 - 290 - shift, size.h - 12 - 34, size.w - 12 - shift, size.h - 12]]
+      : [[size.w - 12 - 36 - 6, 12 - 6, size.w - 6, 12 + 120 + 6], [8, 8, size.w - 84, 40]];
+    return { over, sheet };
+  }, [size.w, size.h, selected, panelOpen]);
+  const underSheet = useCallback((x: number, y: number) => y < 10 || covered.sheet.some((o) => x > o[0] - 6 && x < o[2] + 6 && y > o[1] - 6 && y < o[3] + 6), [covered]);
   // What to draw: names as you come in, and never two plates on top of each other (WO-169 review): the more important name stays (the picked
   // place, a route's stops, the cities, then the towns) and the lesser one is dropped.
   const items = useMemo(() => {
-    // What sits over the map, in its own pixels: the panel, the drawer, the zoom buttons and the credit (WO-177).
-    type Box = [number, number, number, number];
-    const wide = size.w >= 700;
-    const shift = selected && wide ? 352 : 0;
-    const covered: Box[] = wide
-      ? [
-          panelOpen ? [12, 12, 342, size.h - 12] : [12, 12, 342, 64],
-          ...(selected ? ([[size.w - 352, 12, size.w - 12, size.h - 12]] as Box[]) : []),
-          [size.w - 12 - 36 - shift - 6, size.h - 52 - 120 - 6, size.w - 12 - shift + 6, size.h - 52 + 6],
-          [size.w - 12 - 290 - shift, size.h - 12 - 34, size.w - 12 - shift, size.h - 12],
-        ]
-      : [
-          [0, size.h - (selected ? size.h * 0.58 : panelOpen ? size.h * 0.52 : 56), size.w, size.h],
-          [size.w - 12 - 36 - 6, 12 - 6, size.w - 6, 12 + 120 + 6],
-          [8, 8, size.w - 84, 40],
-        ];
     const out: { p: MapPlace; x: number; y: number; named: boolean; side: "right" | "left" }[] = [];
     for (const p of places) {
       const { x, y } = toScreen(p.px, p.py);
       if (x < -60 || y < -40 || x > size.w + 60 || y > size.h + 40) continue;
       if (!shows(p)) continue;
       const picked = selected === p.slug || inRoute.has(p.slug) || lit.has(p.slug);
+      if (!picked && underSheet(x, y)) continue;
       const w = p.name.length * 7.4 + 22;
       // A name goes on the pin's right, or its left when the right is under a control, the panel or the drawer, or off the edge; with neither
       // side clear it is not drawn (WO-177). The picked place is always named.
       const rightBox: Box = [x + 8, y - 12, x + 14 + w, y + 12];
       const leftBox: Box = [x - 14 - w, y - 12, x - 8, y + 12];
-      const blocked = (b: Box) => b[0] < 6 || b[2] > size.w - 6 || covered.some((o) => b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1]);
+      const blocked = (b: Box) => b[0] < 6 || b[2] > size.w - 6 || [...covered.sheet, ...covered.over].some((o) => b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1]);
       const side = !blocked(rightBox) ? "right" : !blocked(leftBox) ? "left" : "right";
       const clear = side === "left" || !blocked(rightBox);
       out.push({ p, x, y, named: (picked || clear) && (picked || p.kind === "city" || (p.kind === "town" && k >= 0.28) || k >= 0.85), side });
@@ -346,9 +358,20 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
       if (taken.some((t) => box[0] < t[2] && box[2] > t[0] && box[1] < t[3] && box[3] > t[1])) it.named = false;
       else taken.push(box);
     }
-    return out;
+    // Places inside one town are one pin, a count on the town's plate (WO-178): "Whiterun, 5 places".
+    const folded = new Map<string, number>();
+    for (const it of out) if (it.p.inTown && selected !== it.p.slug) folded.set(it.p.inTown.slug, (folded.get(it.p.inTown.slug) ?? 0) + 1);
+    const seenTown = new Set<string>();
+    return out.flatMap((it) => {
+      const t = it.p.inTown;
+      if (!t || selected === it.p.slug) return [it];
+      const n = folded.get(t.slug) ?? 1;
+      if (seenTown.has(t.slug)) return [];
+      seenTown.add(t.slug);
+      return n > 1 ? [{ ...it, p: { ...it.p, slug: t.slug, name: `${t.name}, ${n} places` } }] : [it];
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [places, toScreen, size.w, size.h, k, selected, types, onlyQuests, inRoute, lit, panelOpen]);
+  }, [places, toScreen, size.w, size.h, k, selected, types, onlyQuests, inRoute, lit, covered]);
   // Counts only where pins really pile up (WO-169 review): places less than about 14 px apart (their diamonds touch) are one count, so the opening view is diamonds with
   // the cities named. What a filter took out is not counted, and the picked place, a route's stops and a character's act never are.
   const { singles, clusters } = useMemo(() => {
@@ -372,8 +395,8 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
       if (g.members.length === 1) singles.push(g.members[0]);
       else clusters.push({ x: g.x, y: g.y, n: g.members.length, px: g.members.reduce((a, m) => a + m.p.px, 0) / g.members.length, py: g.members.reduce((a, m) => a + m.p.py, 0) / g.members.length });
     }
-    return { singles, clusters };
-  }, [items, k, selected, inRoute, lit, size.w]);
+    return { singles, clusters: clusters.filter((c) => !underSheet(c.x, c.y)) };
+  }, [items, k, selected, inRoute, lit, size.w, underSheet]);
 
   // The tiles in view: the half-size ones from afar, the full-size ones close in; the whole picture is under them while they load.
   const tileZoom = k < 0.5 ? 0 : 1;
@@ -491,7 +514,7 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
           <div className={s.panelBody} data-scroll="">
             <div className={s.head}>
               <h1 className={s.title}>Map</h1>
-              <span className={s.count}>{shownCount === places.length ? `${places.length} places` : `${shownCount} of ${places.length} places`}</span>
+              <span className={s.count}>{shownCount === places.length ? `${places.length} places on the map` : `${shownCount} of ${places.length} places on the map`}</span>
             </div>
             <div className={s.searchBox}>
               <input ref={search} type="search" role="combobox" aria-expanded={!!shownResults} aria-controls="map-results" aria-label="Search the map" placeholder="Search places, people, quests  /" value={q} onChange={(e) => setQ(e.target.value)} autoComplete="off" />

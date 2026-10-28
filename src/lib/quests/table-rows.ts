@@ -4,6 +4,7 @@ import { placeByName, placeHref } from "@/lib/places/data";
 import { townsIn } from "@/lib/places/suggest";
 import { shortModName } from "@/lib/mods";
 import { dlcOf, homeName } from "./data";
+import { lineView } from "./line-view";
 import { pageOf } from "./reads";
 import { questHref } from "./slugs";
 import type { QuestLine } from "./types";
@@ -61,6 +62,9 @@ export function tableRow(line: QuestLine): TableRow {
   const whereText = line.where ?? (solo ? page?.starts.find((s) => s.where)?.where : (line.read?.getIn?.where ?? page?.starts.find((s) => s.where)?.where)) ?? quest?.start?.towns?.[0] ?? null;
   const { where, hold } = whereOf(whereText);
   const mod = solo ? (quest.mod ?? line.sources[0]) : line.sources[0];
+  // The same numbers as the line's own page: its story's quests and what they pay, the jobs along the way apart (WO-177 Part 5).
+  const view = solo ? null : lineView(line);
+  const counts = solo ? { length: 1, xp: quest.xp } : { length: view!.questCount, xp: Number((view!.glance.xp?.value ?? "0").replace(/,/g, "")) || 0 };
   const dlc = solo ? null : dlcOf(line);
   const from: TableRow["from"] = dlc ? { kind: "mod", name: dlc, short: dlc } : !mod || mod.base ? { kind: "base", name: "Base game", short: "Base game" } : /^Creation Club/i.test(mod.name) ? { kind: "cc", name: "Creation Club", short: "Creation Club" } : { kind: "mod", name: mod.name, short: shortModName(mod.name), ...(mod.modid ? { href: `https://www.nexusmods.com/skyrimspecialedition/mods/${mod.modid}` } : {}) };
   return {
@@ -74,9 +78,9 @@ export function tableRow(line: QuestLine): TableRow {
     whereHref: where ? placeHref(where) : null,
     hold,
     level: line.minLevel ?? 0,
-    length: line.quests.length,
+    length: counts.length,
     from,
-    xp: solo ? quest.xp : line.xpTotal,
+    xp: counts.xp,
     category: homeName(line.category),
   };
 }

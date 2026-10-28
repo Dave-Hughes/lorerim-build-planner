@@ -25,7 +25,7 @@ export interface Linkable {
 }
 
 /** "Mine, by Riverwood": a place's second column in the @ menu. */
-const placeLinkWhere = (p: Place) => [placeType(p.type), p.nearestTown ? `by ${p.nearestTown.town}` : p.hold].filter(Boolean).join(", ");
+const placeLinkWhere = (p: Place) => [placeType(p.type), p.nearestTown ? `by ${p.nearestTown.town}` : p.hold ? `${p.hold} hold` : null].filter(Boolean).join(", ");
 
 let placeIndex: Linkable[] | null = null;
 /** Every place in the places index (WO-128), once per server. */

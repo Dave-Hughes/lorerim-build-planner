@@ -42,10 +42,17 @@ export function modsInOrder(...lists: (readonly Mod[] | null | undefined)[]): { 
 }
 
 /**
- * A mod's own short name for a table cell (WO-177): the folder names the load order uses carry a subtitle after " - " ("The Gray Cowl of
- * Nocturnal - 10th anniversary", "Follower Dialogue Expansion - Faralda"), which the full name in the cell's title still has.
+ * A mod's own short name for a table cell (WO-177): the load order's folder names carry more than the mod's name. A trailing patch or add-on
+ * note is dropped ("Trad - AE - CC - Collection - Requiem Patch"); when the folder is a bundle or a fixes mod named first and the mod that
+ * adds the quest second ("Rob's Bug Fixes - Capital Whiterun Expansion", "Skyrim Extended Cut - Saints and Seducers"), the second is the name.
+ * Otherwise the name is what comes before the first " - ". The full folder name stays in the cell's title.
  */
+const NOTE = /(?:patch|add-?on|alternative|reduced cut|romance|voiced|quest expansion|tweaks and enhancements|esl|10th anniversary)$/i;
+const BUNDLES = new Set(["Rob's Bug Fixes", "Skyrim Extended Cut", "Betalille's Hammerfell Quests Bundle"]);
+
 export function shortModName(name: string): string {
-  const head = name.split(/\s+[-–—]\s+/)[0].trim();
-  return head.length >= 4 ? head : name;
+  const parts = name.split(/\s+[-–—]\s+/).map((p) => p.trim()).filter(Boolean);
+  while (parts.length > 1 && NOTE.test(parts[parts.length - 1])) parts.pop();
+  const pick = parts.length > 1 && BUNDLES.has(parts[0]) ? parts[1] : parts[0];
+  return pick && pick.length >= 4 ? pick : name;
 }

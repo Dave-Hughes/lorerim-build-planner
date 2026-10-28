@@ -13,7 +13,8 @@ import c from "./map-strip.module.css";
 export function MapStrip() {
   const entry = mapEntry();
   if (!entry) return null;
-  const places = mapPlaces();
+  // The places with a spot of their own: one inside a town is not a pin of its own.
+  const places = mapPlaces().filter((p) => !p.inTown);
   const [x0, y0, x1, y1] = entry.border;
   // The towns and cities the build counts (WO-178), the same number the Map and Places pages give for the group, not every lived-in place on the map.
   const towns = placeCounts().groups.cities.onMap;

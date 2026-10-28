@@ -1,6 +1,7 @@
 import "server-only";
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import { mapStrings, mend, REASON_KEYS } from "@/lib/pages/player-words";
 import { currentVersion } from "@/lib/rules/server";
 
 /**
@@ -134,6 +135,8 @@ export function peopleData() {
   let rows: PersonRow[] = [];
   try {
     rows = (JSON.parse(readFileSync(path.join(process.cwd(), "src", "data", `lorerim-${currentVersion().id}`, "people.json"), "utf8")) as { people: PersonRow[] }).people;
+    // The reads' assembled wording ("in her own house, Bryling's House") is said once, here (WO-177 Part 5).
+    rows = rows.map((r) => (r.read ? { ...r, read: mapStrings(r.read, mend, REASON_KEYS) } : r));
   } catch {
     // Not built yet.
   }

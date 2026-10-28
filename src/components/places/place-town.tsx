@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { Linked } from "@/components/pages/linked";
 import { PageTop, TitleBox } from "@/components/pages/page-kit";
+import { PreviewLink } from "@/components/pages/preview-link";
 import { LineToc } from "@/components/quests/line-parts";
 import { PlaceMapBand } from "./place-map";
 import { linkable } from "@/lib/pages/names";
@@ -10,6 +11,7 @@ import { personHref } from "@/lib/people/data";
 import { placeHref, placeHrefOf, placeLabel, placeType, rangeOf, type Place } from "@/lib/places/data";
 import { closeBy, peopleAt, type PlacePerson } from "@/lib/places/people";
 import type { PlaceKind } from "@/lib/places/kind";
+import { RECORD } from "@/lib/pages/player-words";
 import { saidAbout } from "@/lib/places/said";
 import { questHref } from "@/lib/quests/slugs";
 import { questsData } from "@/lib/quests/data";
@@ -35,17 +37,19 @@ export function PlaceSaid({ place }: { place: Place }) {
   const who = (p: (typeof all)[number]) => (p.kind === "book" ? p.book : p.speaker);
   const line = (p: (typeof all)[number], i: number) => {
     const q = p.quest ? byName.get(p.quest) : null;
+    // A line credited to a quest uses its name; a record's id is never shown (WO-177 Part 5).
+    const questWords = p.quest && (q || !RECORD.test(p.quest)) ? p.quest : null;
     const qhref = q ? questHref(q.edid) : null;
     const href = p.speaker ? personHref(p.speaker) : null;
     return (
       <div key={i} className={t.said}>
-        {(who(p) || p.quest) && (
+        {(who(p) || questWords) && (
           <b>
             {who(p) ? href ? <Link href={href}>{who(p)}</Link> : who(p) : null}
-            {p.quest && p.kind !== "book" ? (
+            {questWords && p.kind !== "book" ? (
               <small>
                 {" "}
-                in {qhref && playerFacing(p.quest) ? <Link href={qhref}>{p.quest}</Link> : p.quest}
+                in {qhref && playerFacing(questWords) ? <Link href={qhref}>{questWords}</Link> : questWords}
               </small>
             ) : null}
           </b>
@@ -158,7 +162,7 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
       </span>
     ));
   const cells: ReactNode[] = [
-    cell("where", "quest-travel", l.cTeal, "Where", inside ? (place.inTown ?? place.hold ?? "In a town") : place.hold ? `${place.hold} hold` : placeType(place.type), inside ? (upHref && place.inTown ? <Link href={upHref}>{`In ${place.inTown}`}</Link> : place.hold ? `${place.hold} hold` : null) : near ? cap(near) : null),
+    cell("where", "quest-travel", l.cTeal, "Where", inside ? (place.inTown ?? place.hold ?? "In a town") : place.hold ? `${place.hold} hold` : placeType(place.type), inside ? (upHref && place.inTown ? <PreviewLink href={upHref}>{`In ${place.inTown}`}</PreviewLink> : place.hold ? `${place.hold} hold` : null) : near ? cap(near) : null),
     ...(total ? [cell("people", "quest-people", l.cOrange, "People", String(total), houses.length === 1 ? undefined : `in ${houses.filter((h) => h.name !== place.name).length || houses.length} homes and buildings`)] : []),
     ...(sellers.length || keepers.length
       ? [
@@ -319,7 +323,7 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
                   <div key={p.id} className={t.row}>
                     <img className={t.px} src="/icons/quest-travel.svg" alt="" width={22} height={22} />
                     <span>
-                      <Link href={placeHrefOf(p)}>{placeLabel(p)}</Link>
+                      <PreviewLink href={placeHrefOf(p)}>{placeLabel(p)}</PreviewLink>
                       <span className={t.w}>
                         {placeType(p.type)}, {words}
                       </span>

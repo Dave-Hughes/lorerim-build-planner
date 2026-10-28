@@ -118,3 +118,10 @@ describe("WO-177: a quest named after 'in the quest' is that quest, not the pers
     expect(got[1][1]).toMatch(/^\/quests\/q\//);
   });
 });
+
+describe("WO-177 Part 5: a place after a title is a role", () => {
+  it("does not link Whiterun in 'Jarl of Whiterun', and links it elsewhere", () => {
+    expect(links("Jarl of Whiterun").filter((l) => l[1]?.startsWith("/places/"))).toEqual([]);
+    expect(links("Go to Whiterun").map((l) => l[1])).toEqual(expect.arrayContaining([expect.stringMatching(/^\/places\//)]));
+  });
+});

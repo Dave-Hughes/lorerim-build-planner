@@ -127,7 +127,7 @@ export function QuestTable({ rows, across = false, defaultSort = "name", q = "",
         {pill(from === "mod" && !lines, "Mods", counts.mod, () => (setFrom("mod"), setLines(false)))}
         {pill(lines, "Lines of several quests", counts.lines, () => (setLines((v) => !v), setFrom("")))}
       </div>
-      <table className={c.table}>
+      <table className={c.table} data-across={across ? "" : undefined}>
         <caption className="sr-only">{label}</caption>
         <thead>
           <tr>
@@ -150,8 +150,8 @@ export function QuestTable({ rows, across = false, defaultSort = "name", q = "",
                   <PreviewLink href={r.href}>{r.name}</PreviewLink>
                 </span>
               </td>
-              <td className={c.who}>{r.who ? r.whoHref ? <PreviewLink href={r.whoHref}>{r.who}</PreviewLink> : r.who : <span className={c.mut}>Not known yet</span>}</td>
-              <td className={c.where}>{r.where ? <span className={c.pl}>{r.whereHref ? <PreviewLink href={r.whereHref}>{r.where}</PreviewLink> : r.where}</span> : <span className={c.mut}>Not known yet</span>}</td>
+              <td className={c.who} title={r.who ?? undefined}>{r.who ? r.whoHref ? <PreviewLink href={r.whoHref}>{r.who}</PreviewLink> : r.who : <span className={c.mut}>Not known yet</span>}</td>
+              <td className={c.where} title={r.where ?? undefined}>{r.where ? <span className={c.pl}>{r.whereHref ? <PreviewLink href={r.whereHref}>{r.where}</PreviewLink> : r.where}</span> : <span className={c.mut}>Not known yet</span>}</td>
               <td className={c.level}>{r.level ? <span className={c.lv}>Level {r.level}</span> : <span className={c.mut}>Any</span>}</td>
               <td className={c.length}>{r.length === 1 ? "1 quest" : `${r.length} quests`}</td>
               <td className={c.from}>

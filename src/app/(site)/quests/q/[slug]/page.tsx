@@ -209,10 +209,10 @@ export default async function QuestPage({
     }),
     cell({ key: "level", icon: "tab-levels", tone: "red", label: "Level and danger", value: levelNeed ? `Level ${levelNeed}` : "Any level", sub: danger ? `${danger.place}: ${danger.danger}` : undefined }),
     page.takesYou.length
-      ? cell({ key: "where", icon: "quest-travel", tone: "teal", label: "Where it takes you", value: <Linked names={names} text={page.takesYou.slice(0, 2).map((t) => t.place).join(", ")} />, sub: page.takesYou.length > 2 ? `and ${page.takesYou.length - 2} more` : undefined, small: true })
+      ? cell({ key: "where", icon: "quest-travel", tone: "teal", label: "Where it takes you", value: <Linked names={names} text={page.takesYou.slice(0, page.takesYou.length === 3 ? 3 : 2).map((t) => t.place).join(", ")} />, sub: page.takesYou.length > 3 ? `and ${page.takesYou.length - 2} more` : undefined, small: true })
       : null,
     cell({ key: "xp", icon: "quest-rewards", tone: "gold", label: "Rewards", value: page.gets.xp > 0 ? `${page.gets.xp.toLocaleString("en-US")} XP` : "No XP", sub: page.gets.rewards[0] ? page.gets.rewards[0].what.charAt(0).toUpperCase() + page.gets.rewards[0].what.slice(1) : undefined }),
-    wayCount > 0 ? cell({ key: "ways", icon: "quest-ways", tone: "violet", label: "Ways to finish it", value: `${wayCount} ways`, sub: page.choices[0]?.choice }) : page.choices.length > 0 ? cell({ key: "ways", icon: "quest-ways", tone: "violet", label: "Choices", value: `${page.choices.length} ${page.choices.length === 1 ? "choice" : "choices"}`, sub: page.choices[0]?.choice }) : null,
+    wayCount > 0 ? cell({ key: "ways", icon: "quest-ways", tone: "violet", label: "Ways to finish it", value: `${wayCount} way${wayCount === 1 ? "" : "s"}`, sub: page.choices[0]?.choice }) : page.choices.length > 0 ? cell({ key: "ways", icon: "quest-ways", tone: "violet", label: "Choices", value: `${page.choices.length} ${page.choices.length === 1 ? "choice" : "choices"}`, sub: page.choices[0]?.choice }) : null,
   ].filter((c): c is GlanceCell => !!c);
 
   return (
@@ -562,7 +562,7 @@ export default async function QuestPage({
                               t.place
                             )}
                             {t.hold ? (
-                              <span className={styles.hold}>{t.hold}</span>
+                              <span className={styles.hold}>{t.hold} hold</span>
                             ) : null}
                           </span>
                           {t.why ? (

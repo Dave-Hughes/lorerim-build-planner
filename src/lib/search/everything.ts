@@ -72,6 +72,6 @@ export function searchEverything(query: string, limit = 20): { quests: Found[]; 
       .sort((a, b) => a.s - b.s || b.mine.length - a.mine.length)
       .slice(0, limit)
       .map(({ p, mine }) => ({ kind: "Person" as const, name: p.name, href: `/people/${p.slug}`, note: [p.race, p.inTown].filter(Boolean).join(", "), why: mine.length ? `Matches the name. Is in ${mine.length} quest${mine.length === 1 ? "" : "s"}` : "Matches the name" })),
-    places: places.map(({ p }) => ({ kind: "Place" as const, name: placeLabel(p), href: placeHrefOf(p), note: [p.hold, p.type].filter(Boolean).join(", "), why: "Matches the name" })),
+    places: places.map(({ p }) => ({ kind: "Place" as const, name: placeLabel(p), href: placeHrefOf(p), note: [p.type, p.hold ? `${p.hold} hold` : null].filter(Boolean).join(", "), why: "Matches the name" })),
   };
 }

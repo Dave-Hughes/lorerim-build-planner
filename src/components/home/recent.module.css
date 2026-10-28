@@ -536,8 +536,20 @@
   .grid .card:not(.wide) .name {
     font-size: 20px;
   }
+  /* The tagline keeps two lines and the maker keeps a name: the likes go on a phone's small card, and the level is smaller (WO-177 Part 5). */
   .grid .card:not(.wide) .tagline {
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
+    font-size: 14px;
+  }
+  .grid .card:not(.wide) .likes {
+    display: none;
+  }
+  .grid .card:not(.wide) .foot {
+    gap: 6px;
+    font-size: 12.5px;
+  }
+  .grid .card:not(.wide) .level {
+    font-size: 19px;
   }
   .grid .card:not(.wide) .plain {
     padding-top: 42px;

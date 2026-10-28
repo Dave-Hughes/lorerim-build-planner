@@ -1,27 +1,40 @@
 /**
  * A line a player reads never names a record and never hedges in the middle of a sentence (WO-177): "…can be shut away; the records don't show
  * when" and "(not checked yet)" are the editors' words. What is unsure comes out of the sentence and goes to Information Confidence's Not sure
- * yet, with its reason. Pure.
+ * yet, with its reason as a whole sentence about the thing, in a player's words. Pure.
  */
 const HEDGES: RegExp[] = [
   // "; the records don't show when", ", and the records don't show which one you get"
   /\s*[;,]?\s*(?:and\s+)?the records (?:don't|do not|doesn't|does not) (?:show|say|have|give|tell)\b[^;.()]*/gi,
-  // "(not checked yet)", "(not checked yet: LoreRim's files set their chance to 0)", "(the records don't show when)"
-  /\s*\((?:not checked yet|isn't checked yet|the records [^)]*)\)/gi,
+  // "(not checked yet)", "(not checked yet: LoreRim's files set their chance to 0)", "(the records don't show when)", "(presumably once you own it)"
+  /\s*\((?:not checked yet|isn't checked yet|the records [^)]*|presumably [^)]*|probably [^)]*)\)/gi,
   /\s*[;,]?\s*not checked yet\b[^;.()]*/gi,
 ];
 
+/** What a hedge clause says, as one whole sentence about the sentence it was in. */
+export function reasonOf(clause: string, about: string): string {
+  const subject = about.split(/[:;]/)[0].trim();
+  const named = subject.length > 0 && subject.length <= 80 ? `About “${subject}”: ` : "";
+  const c = clause.trim().replace(/[.]+$/, "");
+  const m = /^the records (?:don't|do not|doesn't|does not) (?:show|say|have|give|tell)\s*(.*)$/i.exec(c);
+  if (m) return `${named}we can't tell from the game files ${m[1] || "more than this"}.`.replace(/^(.)/, (x) => x.toUpperCase());
+  if (/^(?:presumably|probably)\b/i.test(c)) return `${named}this is a guess from the game files: ${c.charAt(0).toLowerCase()}${c.slice(1)}.`.replace(/^(.)/, (x) => x.toUpperCase());
+  if (/^(?:not checked yet|isn't checked yet)/i.test(c)) return `${named}we haven't checked this against the game files yet.`.replace(/^(.)/, (x) => x.toUpperCase());
+  return `${named}${c.charAt(0).toLowerCase()}${c.slice(1)}.`.replace(/^(.)/, (x) => x.toUpperCase());
+}
+
 export function playerWords(text: string): { text: string; unsure: string[] } {
-  const unsure: string[] = [];
+  const clauses: string[] = [];
   let out = text;
   for (const re of HEDGES) {
     out = out.replace(re, (m) => {
       const clause = m.replace(/^[\s;,]+|\s*[()]\s*/g, " ").replace(/^\s*and\s+/i, "").trim();
-      if (clause) unsure.push(clause.charAt(0).toUpperCase() + clause.slice(1));
-      return "";
+      if (clause) clauses.push(clause.charAt(0).toUpperCase() + clause.slice(1));
+      return " ";
     });
   }
-  return { text: out.replace(/\s+([,;.])/g, "$1").replace(/[;,]\s*$/, "").trim(), unsure };
+  const cleaned = out.replace(/\s+/g, " ").replace(/\s+([,;.])/g, "$1").replace(/[;,]\s*$/, "").replace(/(\S)\(/g, "$1 (").trim();
+  return { text: cleaned, unsure: clauses.map((c) => reasonOf(c, cleaned)) };
 }
 
 /**
@@ -33,8 +46,64 @@ export function quoteQuest(text: string): string {
 }
 
 /**
- * A sentence the reads assembled with a bracketed aside: "same job (Windhelm's own copy of it)" is said as a clause (WO-177).
+ * A sentence the reads assembled with a bracketed aside or a repeated place: "same job (Windhelm's own copy of it)" is said as a clause, and
+ * "in her own house, Bryling's House" is "in Bryling's House" (WO-177). Done once, where the reads are loaded, so no page has to.
  */
 export function assembled(text: string): string {
-  return text.replace(/\bsame job \(([^()]+?)'s own copy of it\)/gi, "it is the same job, $1's own copy");
+  return text
+    .replace(/\bsame job \(([^()]+?)'s own copy of it\)/gi, "it is the same job, $1's own copy")
+    .replace(/\b(?:his|her|their)(?: own)? (\w+), (?=[A-Z][^,.;]*\b\1\b)/gi, (all, noun: string, offset: number, whole: string) => (new RegExp(`^[A-Z][^,.;]*\\b${noun}\\b`, "i").test(whole.slice(offset + all.length)) ? "" : all));
 }
+
+/** A record's editor id (DLC2WE09, MQ102A, REQ_HOGITHUM) or a plugin file (Name.esp): never shown to a player. */
+export const RECORD = /\b[A-Za-z][A-Za-z_]*\d[A-Za-z0-9_]*\b|\b[A-Z]{2,}_[A-Za-z0-9_]+\b|\.(?:esp|esm|esl)\b/;
+
+/** An unsure reason for the page: whole, with a capital, and with no record or file in it (the reader's own words may have named one). */
+export function playerReason(why: string): string {
+  if (RECORD.test(why)) return "We couldn't confirm this from the game files.";
+  const t = why.trim().replace(/\s+/g, " ");
+  return `${t.charAt(0).toUpperCase()}${t.slice(1)}${/[.!?]$/.test(t) ? "" : "."}`;
+}
+
+/** A field name for Not sure yet without a record id in brackets after it. */
+export const playerField = (field: string) => field.replace(/\s*\([A-Za-z][A-Za-z_]*\d[A-Za-z0-9_]*\)/g, "").replace(/\s*\S+\.(?:esp|esm|esl)\b/gi, "").trim();
+
+/**
+ * Every string in a parsed read through `fn`: the reads are mended once, where they are loaded, so no page has to. A key in `skip` (the reads'
+ * own reasons for a doubt) is left as it is: those are what Not sure yet says, in words the box cleans itself.
+ */
+export function mapStrings<T>(o: T, fn: (s: string) => string, skip: ReadonlySet<string> = new Set()): T {
+  if (typeof o === "string") return fn(o) as T;
+  if (Array.isArray(o)) return o.map((x) => mapStrings(x, fn, skip)) as T;
+  if (o && typeof o === "object") return Object.fromEntries(Object.entries(o).map(([k, v]) => [k, skip.has(k) ? v : mapStrings(v, fn, skip)])) as T;
+  return o;
+}
+
+/** An alias the records left unfilled ("<Alias=Victim01> has been dazzled"): the words of its name, "the victim". */
+const ALIAS = /<Alias=([A-Za-z0-9_]+)>/g;
+const aliasWords = (name: string) => `the ${name.replace(/\d+$/, "").replace(/([a-z])([A-Z])/g, "$1 $2").replace(/_/g, " ").toLowerCase().trim()}`;
+/** A bracket that holds a plugin file ("(cceejsse005-cave.esm; its start checks that…)"): a file is never shown to a player. */
+const FILE_BRACKET = /\s*\([^()]*\.(?:esp|esm|esl)\b[^()]*\)/gi;
+const ANY_HEDGE = /the records (?:don't|do not|doesn't|does not) (?:show|say|have|give|tell)|not checked yet|\((?:presumably|probably) /i;
+const SENTENCE_HEDGE = /(?<=[.!?]\s)The records (?:don't|do not|doesn't|does not) (?:show|say|have|give|tell)\b[^.]*\.\s*/g;
+
+/**
+ * What a read's sentence needs before a page shows it (WO-177 Part 5): its assembled wording said once, an unfilled alias said as words, a
+ * plugin file out of its brackets, and the editors' hedge taken out (a whole sentence of it, or a clause). A string that is only a hedge is kept.
+ */
+export function mend(text: string): string {
+  if (SAID_NAMES[text]) return SAID_NAMES[text];
+  let out = assembled(text).replace(ALIAS, (_m, n: string) => aliasWords(n)).replace(FILE_BRACKET, "");
+  if (ANY_HEDGE.test(out)) {
+    const noSentence = out.replace(SENTENCE_HEDGE, "").trimEnd();
+    const r = playerWords(noSentence);
+    out = r.text.length ? r.text : out;
+  }
+  return out;
+}
+
+/** Keys whose subtree is a reason for a doubt: not mended, the Information Confidence box says them itself. (A quest's canDoWhy is body text and is mended.) */
+export const REASON_KEYS: ReadonlySet<string> = new Set(["why", "unsure"]);
+
+/** Three quests the records name with an editor id, said as what they are (WO-177 Part 5: no record id on any page). */
+export const SAID_NAMES: Record<string, string> = { "DA02 Hook": "Boethiah's Calling: the hook", DB01_Opt: "Delayed Burial: optional objectives", "TG00 Maul Handler": "Maul's handler" };

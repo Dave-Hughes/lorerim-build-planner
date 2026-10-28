@@ -1,6 +1,10 @@
 .wrap {
   position: relative;
 }
+/* A place's link is teal wherever it stands (rule 34, WO-177 Part 5). */
+.wrap > a.place {
+  color: #9fd3e1 !important;
+}
 .card {
   position: absolute;
   z-index: 40;

@@ -5,7 +5,7 @@ import { SearchBox } from "@/components/search/search-box";
 import { MapView } from "@/components/places/map-view";
 import { mapEntry, mapPins } from "@/lib/places/map";
 import { PLACE_GROUPS, groupFrom, groupOf } from "@/lib/places/groups";
-import { placeHrefOf, placeLabel, placesData, placeType, type Place } from "@/lib/places/data";
+import { placeCounts, placeHrefOf, placeLabel, placesData, placeType, type Place } from "@/lib/places/data";
 import { siteMetadata } from "@/lib/og/metadata";
 import styles from "@/components/pages/page-kit.module.css";
 
@@ -23,8 +23,9 @@ export default async function PlacesPage({ searchParams }: { searchParams: Promi
   if (q) redirect(`/search?q=${encodeURIComponent(q)}`);
   const places = placesData().places;
   // About ten kinds a player would pick, not the records' thirty-eight types (WO-167 review); an old ?type=Cave link lands on its group.
-  const counts = places.reduce((m, p) => m.set(groupOf(p.type), (m.get(groupOf(p.type)) ?? 0) + 1), new Map<string, number>());
-  const groups = PLACE_GROUPS.map((g) => ({ ...g, n: counts.get(g.key) ?? 0 })).filter((g) => g.n > 0);
+  // One count per kind, the build's own (WO-178): every place of the kind; the Map page says "on the map" for the ones it can pin.
+  const counts = placeCounts().groups;
+  const groups = PLACE_GROUPS.map((g) => ({ ...g, n: counts[g.key]?.all ?? 0 })).filter((g) => g.n > 0);
   const group = groupFrom(sp.type);
   const type = group?.key;
   const holdsAll = [...places.reduce((m, p) => m.set(p.hold ?? "Elsewhere", [...(m.get(p.hold ?? "Elsewhere") ?? []), p]), new Map<string, Place[]>())].sort(([a], [b]) => (a === "Elsewhere" ? 1 : b === "Elsewhere" ? -1 : a.localeCompare(b)));
@@ -81,7 +82,7 @@ export default async function PlacesPage({ searchParams }: { searchParams: Promi
             .map((p) => (
               <div key={p.id} className={styles.qrow}>
                 <Link href={placeHrefOf(p)}>{placeLabel(p)}</Link>
-                <span>{[placeType(p.type), p.hold].filter(Boolean).join(", ")}</span>
+                <span>{[placeType(p.type), p.hold ? `${p.hold} hold` : null].filter(Boolean).join(", ")}</span>
               </div>
             ))}
         </section>
@@ -90,7 +91,7 @@ export default async function PlacesPage({ searchParams }: { searchParams: Promi
           {holdsAll.map(([h, ps]) => (
             <section key={h} className={styles.group} aria-labelledby={`h-${h}`}>
               <div className={styles.groupHead}>
-                <h2 id={`h-${h}`}>{h}</h2>
+                <h2 id={`h-${h}`}>{h === "Elsewhere" ? h : `${h} hold`}</h2>
                 <span>{ps.length} places</span>
               </div>
               <div className={styles.few}>

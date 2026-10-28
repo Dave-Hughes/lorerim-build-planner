@@ -13,13 +13,13 @@ import { GlanceBand, type GlanceCell } from "@/components/pages/glance";
 import { AutoToc } from "@/components/pages/auto-toc";
 import { Linked } from "@/components/pages/linked";
 import { linkable } from "@/lib/pages/names";
-import type { NameLink } from "@/lib/pages/link-names";
 import { questsData } from "@/lib/quests/data";
 import { questHref } from "@/lib/quests/slugs";
 import { dayHours, mainPlace } from "@/lib/people/day";
 import l from "@/components/quests/line-page.module.css";
 import { questsOf } from "@/lib/people/quests";
 import { questCountSentence } from "@/lib/people/quest-count";
+import { playerWords } from "@/lib/pages/player-words";
 import { siteMetadata } from "@/lib/og/metadata";
 import styles from "@/components/pages/page-kit.module.css";
 
@@ -35,12 +35,6 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 
 /** One colour for each place on the day strip. */
 const STRIP = ["#74bfd2", "#f0913f", "#8fc07c", "#b7a2e6", "#e8c987", "#e07a6c"];
-/** The names a person's words may link, without the person themself, built once for each. */
-const linksFor = new Map<string, NameLink[]>();
-const namesFor = (slug: string) => {
-  if (!linksFor.has(slug)) linksFor.set(slug, linkable().filter((n) => n.href !== `/people/${slug}`));
-  return linksFor.get(slug)!;
-};
 const cap = (t: string) => (t ? t.charAt(0).toUpperCase() + t.slice(1) : t);
 /** Where a read's "from" and "for" fall in a day, as a player says it. */
 const whenWords = (from: string, span: string) => (/^any hour$/i.test(from) ? { head: "Any hour", small: "" } : { head: cap(from), small: span });
@@ -63,7 +57,15 @@ export default async function PersonPage({ params }: { params: Params }) {
   const sells = read ? !!read.sells : !!person.sells;
   const trainer = read ? (read.trains ? person.trainer : undefined) : person.trainer;
   const notSure = read ? unsureFields(read) : new Set<string>();
-  const sure = (f: string) => (notSure.has(f) ? <em className={styles.nk}> (not sure)</em> : null);
+  // What the read is not sure of is said as a plain muted sentence, never as a bracket in the body; Not sure yet has the reason (WO-177 Part 5).
+  const sure = (f: string) => (notSure.has(f) ? <em className={styles.nk}> Not sure yet.</em> : null);
+  // The read's own hedges ("(presumably once you own Breezehome)") come out of its sentences and go to Not sure yet.
+  const hedged: { field: string; why: string }[] = [];
+  const changes = (read?.changes ?? []).map((c) => {
+    const r = playerWords(c);
+    for (const u of r.unsure) hedged.push({ field: "What changes where they are", why: u });
+    return r.text;
+  });
   // The quests the read lists with how each touches them, linked where the planner has the quest; those only the quest pages name follow.
   const byName = new Map(found.map((q) => [q.name.toLowerCase(), q]));
   // A quest the read names that the quest pages don't list this person in still has a page by its name.
@@ -216,8 +218,8 @@ export default async function PersonPage({ params }: { params: Params }) {
   const hours = read ? dayHours(read.day) : null;
   const mostly = hours ? mainPlace(hours) : null;
   const short = (t: string, n = 100) => (t.length > n ? `${t.slice(0, n - 1).trimEnd()}…` : t);
-  const nm = namesFor(person.slug);
-  const L = (t: string) => <Linked text={t} names={nm} />;
+  // The person themself is not linked in their own words: skipped at the match, so one compiled pattern serves every page (a pattern for each person leaked memory, WO-177 Part 5).
+  const L = (t: string) => <Linked text={t} names={linkable()} skip={`/people/${person.slug}`} />;
   const roleText = read?.role ? cap(read.role.split(";")[0].trim()) : (role ?? person.race ?? null);
   const sellsText = read?.sells ? cap(read.sells.split(/[;(]|,\s*\d/)[0].trim().replace(/\.$/, "")) : sells ? "Goods" : null;
   // At a glance (WO-165, rule 34): where to find them (teal), what they are (orange), what they sell (gold) or train (green), that they follow you (orange), and their quests (violet).
@@ -228,10 +230,10 @@ export default async function PersonPage({ params }: { params: Params }) {
       tone: "teal" as const,
       label: `Where to find ${they}`,
       value: L(mostly?.main ?? person.inTown ?? person.cell ?? "Not known yet"),
-      sub: L(read?.firstMeet ? `First met: ${short(read.firstMeet.replace(/\.$/, ""), 90)}` : mostly && mostly.places.length > 1 ? `Also ${mostly.places.slice(1, 3).join(", ")}` : "Where they are through the day isn't known yet"),
+      sub: L(read?.firstMeet ? `First met: ${short(read.firstMeet.replace(/\.$/, ""), 90)}` : mostly && mostly.places.length > 1 ? `Also ${mostly.places.slice(1, 3).join(", ")}` : `Where ${subject} ${subject === "they" ? "are" : "is"} through the day isn't known yet`),
       small: true,
     },
-    ...(roleText ? [{ key: "role", icon: "quest-people", tone: "orange" as const, label: `What ${subject} ${subject === "they" ? "are" : "is"}`, value: L(roleText ?? ""), sub: L([person.race, person.inTown].filter(Boolean).join(" in ")), small: roleText.length > 22 }] : []),
+    ...(roleText ? [{ key: "role", icon: "quest-people", tone: "orange" as const, label: `What ${subject} ${subject === "they" ? "are" : "is"}`, value: L(roleText ?? ""), small: roleText.length > 22 }] : []),
     ...(trainer ? [{ key: "trains", icon: "tab-levels", tone: "green" as const, label: "Trains", value: trainer.skill, sub: trainer.cap ? `Up to ${trainer.cap}` : undefined }] : sellsText ? [{ key: "sells", icon: "quest-rewards", tone: "gold" as const, label: "Sells", value: sellsText, sub: read?.sells ? short(read.sells.replace(/^[^,;(]*[,;(]\s*/, ""), 70) || undefined : undefined, small: sellsText.length > 20 }] : []),
     ...(person.follower ? [{ key: "follows", icon: "quest-followers", tone: "orange" as const, label: "Follows you", value: "Yes", sub: notSure.has("joins") ? "How isn't sure yet" : L(read?.joins ? short(read.joins, 110) : "How to recruit isn't known yet") }] : []),
     ...(quests.length ? [{ key: "quests", icon: "quest-side-stories", tone: "violet" as const, label: "Quests", value: gives.length ? `Gives ${plural(gives.length)}` : `In ${plural(quests.length)}`, sub: [alsoIn && gives.length ? `and is in ${alsoIn} more` : "", (gives.length ? gives : quests).slice(0, 2).map((q) => q.name).join("; ")].filter(Boolean).join(". ") }] : []),
@@ -251,7 +253,7 @@ export default async function PersonPage({ params }: { params: Params }) {
             {person.race && <span className={styles.tag}>{person.race}</span>}
             {person.inTown && <span className={styles.tag}>{person.inTown}</span>}
             {role && <span className={styles.role}>{role}</span>}
-            {person.follower && <span className={styles.role}>Follower</span>}
+            {person.follower && !notSure.has("joins") && <span className={styles.role}>Follower</span>}
             {/* A tag says only what the page is sure of (WO-177): a marriage the read is not sure of is in Not sure yet, not in a tag. */}
             {person.marriage && !notSure.has("marries") && <span className={styles.role}>Can marry</span>}
             {gives.length > 0 && <span className={styles.role}>Gives quests</span>}
@@ -321,17 +323,15 @@ export default async function PersonPage({ params }: { params: Params }) {
                   {sure("day") && <p className={styles.dayNote}>Where {subject} {subject === "they" ? "are" : "is"} through the day: not sure.</p>}
                 </div>
               )}
-              {read.changes.length > 0 && (
+              {changes.length > 0 && (
                 <div className={styles.changes}>
-                  <h3 className={styles.h3}>
-                    What changes it
-                    {sure("changes")}
-                  </h3>
+                  <h3 className={styles.h3}>What changes it</h3>
                   <ul>
-                    {read.changes.map((c) => (
+                    {changes.map((c) => (
                       <li key={c}>{L(c)}</li>
                     ))}
                   </ul>
+                  {sure("changes") && <p className={styles.dayNote}>What changes it: not sure yet.</p>}
                 </div>
               )}
             </Section>
@@ -385,7 +385,7 @@ export default async function PersonPage({ params }: { params: Params }) {
               }
             : { mark: "no", name: "Players", note: "No reports. No one has confirmed this page yet." },
         ]}
-        unsure={read ? notSureOf(read) : [{ field: "where they are through the day and night" }, { field: "what changes where they are" }, ...(person.follower || person.marriage ? [{ field: "how to recruit or marry them" }] : [])]}
+        unsure={read ? [...notSureOf(read), ...hedged] : [{ field: "where they are through the day and night" }, { field: "what changes where they are" }, ...(person.follower || person.marriage ? [{ field: "how to recruit or marry them" }] : [])]}
         actions={
           <>
             <ConfirmButton kind="person" id={person.slug} path={`/people/${person.slug}`} title={person.name} signedIn={!!userId} mine={confirmed.mine} signIn={<SignInButton redirectTo={`/people/${person.slug}`} className="btn btn-primary" label="Sign in to confirm" />} />

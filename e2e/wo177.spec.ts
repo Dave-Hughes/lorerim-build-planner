@@ -305,3 +305,86 @@ test("Part 3: the same thing has the same name, and an assembled sentence reads"
   await page.goto("/places/riverwood");
   await expect(page.locator("main")).toContainText("Faendal trains Marksman");
 });
+
+/** The visible text of a page's HTML: no scripts, styles or tags. */
+const textOf = (html: string) =>
+  html
+    .replace(/<script[\s\S]*?<\/script>/g, " ")
+    .replace(/<style[\s\S]*?<\/style>/g, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&#x27;|&apos;/g, "'")
+    .replace(/\s+/g, " ");
+
+test("Part 5: no page shows a plugin file, a record id or a bracket hedge, and no quest says '1 ways'", async ({ request }) => {
+  test.setTimeout(420_000);
+  const get = async (url: string) => {
+    for (let tries = 0; tries < 3; tries++) {
+      try {
+        const r = await request.get(url);
+        return r.ok() ? await r.text() : "";
+      } catch {
+        await new Promise((ok) => setTimeout(ok, 300));
+      }
+    }
+    return "";
+  };
+  const hrefs = (html: string, re: RegExp) => [...new Set([...html.matchAll(re)].map((m) => m[1]))];
+  const home = await get("/quests");
+  const lines = hrefs(home, /href="(\/quests\/(?!c\/|q\/|s\/)[a-z0-9-]+)"/g);
+  expect(lines.length).toBeGreaterThan(50);
+  const pages = new Set<string>(lines);
+  const people = new Set<string>();
+  const places = new Set<string>(["/places"]);
+  const batch = async (urls: string[], fn: (u: string, html: string) => void) => {
+    for (let i = 0; i < urls.length; i += 6) await Promise.all(urls.slice(i, i + 6).map(async (u) => fn(u, await get(u))));
+  };
+  const texts = new Map<string, string>();
+  await batch(lines, (u, html) => {
+    texts.set(u, textOf(html));
+    for (const q of hrefs(html, /href="(\/quests\/q\/[a-z0-9-]+)"/g)) pages.add(q);
+    for (const p of hrefs(html, /href="(\/people\/[a-z0-9-]+)"/g)) people.add(p);
+    for (const p of hrefs(html, /href="(\/places\/[a-z0-9-]+)"/g)) places.add(p);
+  });
+  const quests = [...pages].filter((u) => u.startsWith("/quests/q/"));
+  await batch(quests, (u, html) => {
+    texts.set(u, textOf(html));
+    for (const p of hrefs(html, /href="(\/people\/[a-z0-9-]+)"/g)) people.add(p);
+    for (const p of hrefs(html, /href="(\/places\/[a-z0-9-]+)"/g)) places.add(p);
+  });
+  await batch([...people].slice(0, 400), (u, html) => texts.set(u, textOf(html)));
+  await batch([...places].slice(0, 300), (u, html) => texts.set(u, textOf(html)));
+  expect(texts.size).toBeGreaterThan(800);
+  const bad: string[] = [];
+  for (const [u, t] of texts) {
+    const file = /\S+\.(?:esp|esm|esl)\b/i.exec(t)?.[0];
+    if (file) bad.push(`${u}: file ${file}`);
+    const id = /\b[A-Za-z][A-Za-z_]*\d[A-Za-z0-9_]*\b/.exec(t.replace(/\b(?:LoreRim|Mk|[A-Z]\d|VOLUNR5D)\b/g, "") /* VOLUNR5D is in a book the game has: Holdings of Jarl Gjalund */)?.[0];
+    if (id && !/^(?:ps\d|[a-z]\d)$/i.test(id)) bad.push(`${u}: id ${id} … ${t.slice(Math.max(0, t.indexOf(id) - 40), t.indexOf(id) + 40)}`);
+    if (/\(not sure\)/i.test(t)) bad.push(`${u}: (not sure)`);
+    if (/\b1 ways\b/.test(t)) bad.push(`${u}: 1 ways`);
+    if (/\(presumably\b|\(not checked yet\)|the records don't show/i.test(t.replace(/Information Confidence[\s\S]*$/, ""))) bad.push(`${u}: a hedge in the body`);
+  }
+  expect(bad.slice(0, 40)).toEqual([]);
+});
+
+test("Part 5: on a phone a quest's whole route shows, every stop above the sheet's bar; temples are drawn at their towns", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/map?quest=forbidden-legend");
+  await expect(page.getByRole("group", { name: "Map of Skyrim" })).toBeVisible();
+  await page.waitForTimeout(1600);
+  for (const n of ["1", "2", "3", "4"]) {
+    const b = await page.getByRole("group", { name: "Map of Skyrim" }).locator("a[class*='pin'] i", { hasText: new RegExp(`^${n}$`) }).first().boundingBox();
+    expect(b, `stop ${n}`).not.toBeNull();
+    expect(b!.x).toBeGreaterThan(0);
+    expect(b!.x + b!.width).toBeLessThan(390);
+    expect(b!.y).toBeGreaterThan(56);
+    expect(b!.y + b!.height).toBeLessThan(844 - 50);
+  }
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/map?types=temples");
+  const panel = page.getByRole("complementary", { name: "Map controls" });
+  await expect(panel.getByRole("button", { name: /^Temples and guilds/ })).toContainText(/2\d/);
+  await expect(panel.getByText(/^2\d of \d+ places on the map$/)).toBeVisible();
+  await expect(page.getByRole("group", { name: "Map of Skyrim" }).locator("a[href^='/places/']").first()).toBeVisible();
+});

@@ -207,10 +207,38 @@ form.inp,
   color: #c3cdd6;
   white-space: nowrap;
 }
-/* A level and a place are never broken over two lines (WO-177). */
+/* A level, a place and a giver are never broken over two lines: the columns have their shares, and a name too long for its share is cut with an ellipsis
+   and its full text in the cell's title; the quest's name has the most room (WO-177). */
+.table {
+  table-layout: fixed;
+}
+.table th:nth-child(1) { width: 23%; }
+.table th:nth-child(2) { width: 16%; }
+.table th:nth-child(3) { width: 18%; }
+.table th:nth-child(4) { width: 8%; }
+.table th:nth-child(5) { width: 9%; }
+.table th:nth-child(6) { width: 16%; }
+.table th:nth-child(7) { width: 9%; }
+.table[data-across] th:nth-child(1) { width: 23%; }
+.table[data-across] th:nth-child(2) { width: 14%; }
+.table[data-across] th:nth-child(3) { width: 16%; }
+.table[data-across] th:nth-child(4) { width: 6%; }
+.table[data-across] th:nth-child(5) { width: 8%; }
+.table[data-across] th:nth-child(6) { width: 16%; }
+.table[data-across] th:nth-child(7) { width: 10%; }
+.table[data-across] th:nth-child(8) { width: 7%; }
 .table tbody td.level,
-.table tbody td.where {
+.table tbody td.where,
+.table tbody td.who {
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.table tbody td.from {
+  overflow: hidden;
+}
+.table tbody td.from .mod {
+  max-width: 100%;
 }
 .cap {
   font-size: 14px;

@@ -1033,6 +1033,10 @@ a.tag:hover {
   .sideToc {
     display: none;
   }
+  /* Stacked under the sections, a side panel's heading is the size of theirs (WO-177 Part 5: "What she offers" was smaller than "Her quests"). */
+  .panel > .panelHead .h2s {
+    font-size: 26px;
+  }
   .dayRow,
   .qrowRead {
     grid-template-columns: minmax(0, 1fr);
