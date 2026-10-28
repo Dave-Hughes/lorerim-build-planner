@@ -5034,6 +5034,17 @@ Status: queued (Mac; after WO-165)
 - [ ] **Your characters** on home and the cards on `/me`: a character with no cover gets a fallback, not a blank tile: its race's pixel icon large on the night-scene colours, the name over it. `/me` uses the one character card (WO-161) with its Edit and Delete under it; "Start a run" becomes "Plan a playthrough" everywhere.
 - [ ] Checks, screenshots signed in (Kyria's page on each tab, a character with no cover on home and `/me`, the What next step) at 1440 and 390, then `for Bob`.
 
+## WO-168  The three main stories, each its own world (Mac, 27 Oct 2026)
+Status: queued (Mac; after WO-160 Parts 4 and 5)
+
+**Why.** Dave, 27 Oct: the Main stories rows "look badass, would be awesome to go SUPER hard on those rows". Board `MainStoriesHard` (canvas row 37); Dave: "Looks great." The art is in the repo: `public/quests/stories/<line>/*.png`, 320 by 80 layers drawn by `scripts/art/main_stories.py`; shown at 4x, pixel-sharp.
+- [ ] On `/quests/c/main-stories`, each of the three rows is the board's banner: the scene's layers stacked full width (sky, far, the moving layer, near), a dark fade from the left under the text, the story's own colour on the left edge (main quest orange `#f0913f`, Dragonborn green `#8fc07c`, Dawnguard crimson `#d6453f`), the big pixel number in that colour, the name, its tags, one line of what it's about, quest XP and Open the story on the right. Order: Become the Dragonborn, Dragonborn, Dawnguard.
+- [ ] **Under the pointer or keyboard focus** the row grows from 280 to 360 px, the layers part (the sky scales a little, the far layer and the near layer slide at different speeds), the number lights up in its colour, the button fills, the first chapters slide in as small tags, and each row does its own thing: **the main quest** — Alduin, who bobs at rest, flies across the sky and embers rise; **Dragonborn** — the tentacles sway faster and reach up, and the ash falls faster; **Dawnguard** — the eclipse's corona burns and pulses, the bats flap and scatter. All as the board's CSS.
+- [ ] Reduced motion: no flight, sway, scatter or falling ash; the row still opens and the colour still shows.
+- [ ] Phone: each row is 220 px, the scene behind the text with a stronger fade, tap opens the story (no hover); the layers stay still.
+- [ ] "Tied to these stories" stays under the three as it is.
+- [ ] Screenshots at 1440 (each row hovered) and 390, then `for Bob`.
+
 ## WO-167  The map on place pages and on Places (Mac, 27 Oct 2026)
 Status: queued (Mac; waits on WO-166 Part 2's map files on staging, then after WO-164. Dave, 27 Oct 18:46: the map's mod author said go for it, with a credit and link on every instance)
 
