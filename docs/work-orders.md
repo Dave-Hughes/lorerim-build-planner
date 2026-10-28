@@ -5022,6 +5022,17 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-164  A character is one page, with or without a playthrough (Mac, 27 Oct 2026)
+Status: queued (Mac; after WO-165)
+
+**Why.** Bob, signed in through Dave's Chrome (27 Oct, 18:05): Kyria's playthrough page (`/p/4et99tk25s`) still has the old framed title and none of her cover, though `/me` shows her golden-armour cover; "‹ My characters" is the old text link; `/p/<id>/build` redirects to `?tab=levels` and shows the same Play view, so a playthrough's build can't be reached from it. The character page (`/b/<id>`) has the full-width cover and a Build | Guide tab row; the two don't look like one character. The agreed pattern (canvas row 25, WO-114a): one hero, one row of tabs.
+- [ ] `/p/<id>` uses the character page's hero (cover full width, name, tagline, maker, likes, Copy link, Edit) and one tab row: **Playthrough** (today's Play view: where she stands, the acts, objectives), **Build**, **Guide**, **Story** (when there is one). `?tab=levels` opens Build; `/p/<id>/build` lands there. `/b/<id>` of a character with a listed playthrough shows the same tabs with Build open.
+- [ ] The left rail (Her story card, the acts) and the objectives keep their content; the framed boxes go under the fewer-boxes rule; the back link is the WO-159 button.
+- [ ] **Making a character**: after Details, a last step, "What next": Plan a playthrough (makes the run and opens it) or Finish. Dave couldn't see how to add one while making a character.
+- [ ] The Playthrough tab with no run yet (WO-159 Part 4) shows what one looks like, not just a sentence: a sample act card (name, levels, place, three objectives) faded under "Plan a playthrough".
+- [ ] **Your characters** on home and the cards on `/me`: a character with no cover gets a fallback, not a blank tile: its race's pixel icon large on the night-scene colours, the name over it. `/me` uses the one character card (WO-161) with its Edit and Delete under it; "Start a run" becomes "Plan a playthrough" everywhere.
+- [ ] Checks, screenshots signed in (Kyria's page on each tab, a character with no cover on home and `/me`, the What next step) at 1440 and 390, then `for Bob`.
+
 ## WO-165  The quest and person pages get the same at-a-glance and colours (Mac, 27 Oct 2026)
 Status: queued (Mac; after WO-163)
 

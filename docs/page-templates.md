@@ -1,6 +1,6 @@
 # Every page template, and how good it is
 
-Bob walked staging page by page on 27 Oct 2026 (17:40), at 1440 and 390, signed out. Dave: "Some of the pages are fine, some are trash, all could be better." The goal is polished and fun; Wowhead is the reference for how a game database breaks up a long page (a summary up top, a contents rail, tables you can sort, colour by kind of thing).
+Bob walked staging page by page on 27 Oct 2026 (17:40), at 1440 and 390, signed out, then signed in through Dave's Chrome (18:05). Dave: "Some of the pages are fine, some are trash, all could be better." The goal is polished and fun; Wowhead is the reference for how a game database breaks up a long page (a summary up top, a contents rail, tables you can sort, colour by kind of thing).
 
 Verdicts: **good** (polish only), **needs work** (works, but plain or inconsistent), **trash** (wrong for what's on it). Each row names the order that fixes it.
 
@@ -9,7 +9,7 @@ Verdicts: **good** (polish only), **needs work** (works, but plain or inconsiste
 | 1 | Home | `/` | good | New in the world: every row has the same book icon and the same words ("The whole line, read from the game files"). Signed-in version not checked (no login here). | WO-161 |
 | 2 | Characters | `/characters` | needs work | The grid cards are the old style; the home page's new cards (race icon, badges, level, hover) should be the one card everywhere. | WO-161 |
 | 3 | A character's build | `/b/<id>` | good | The core page and it holds up. The hero picture is very dark under its fade. The tour pops up on the first visit to any build. | later |
-| 4 | A character's playthrough | `/p/<id>` | needs work | Still the old boxed title, no cover picture: it doesn't look like the same character as `/b/<id>`. Breaks the "a character has their cover full width" title rule. | WO-164 (Bob designs it next, with the character page's hero) |
+| 4 | A character's playthrough | `/p/<id>` | needs work | Still the old boxed title, no cover picture: it doesn't look like the same character as `/b/<id>`. Breaks the "a character has their cover full width" title rule. | WO-164 |
 | 5 | A player's page | `/u/<handle>` | needs work | Says "Builds by Tapps", tabs "Builds" and "Liked": the site calls them characters now. Old cards. | WO-161 |
 | 6 | My characters | `/me` | needs work | Signed out it's titled "My builds". Signed in not checked. | WO-161 |
 | 7 | New playthrough | `/playthroughs/new` | needs work | Signed out: a title and a sign-in button, nothing saying what a playthrough is. | WO-161 |
@@ -25,7 +25,10 @@ Verdicts: **good** (polish only), **needs work** (works, but plain or inconsiste
 | 17 | Places | `/places` | good | | |
 | 18 | A place | `/places/<slug>` | trash | One dungeon template for every place. Riverwood "Its boss is Camilla Valerius", a danger chart, 100 XP "for clearing it"; the Bee and Barb has Danger ("Nobody here is hostile") and "Comes back in 30 days, or 300 once cleared". No innkeeper, shops, trainers or homes. "What points here" is dozens of greetings. | WO-162 |
 | 19 | Not found | any bad address | good | | |
-| — | Signed-in pages (edit, my characters, new character) | | not checked | No login in Bob's browser; Dave's testing covers them. | |
+| 20 | My characters | `/me` (signed in) | needs work | Old framed cards with a box inside each; blank hatched tiles for characters with no cover; "Start a run" where the rest says playthrough. | WO-164 |
+| 21 | Home, signed in | `/` | needs work | Your characters shows five blank tiles of six (no covers). Otherwise right. | WO-164 |
+| 22 | Edit a character | `/b/<id>/edit`, `/setup` | good | The Playthrough tab is there now; with no run it's one sentence and a button. | WO-164 |
+| 23 | New character | `/new` | needs work | Works; no step for a playthrough at the end. Race cards are plain boxes (later: race art). | WO-164 |
 
 ## Across every page
 - The browser tab says "LoreRim **Build** Planner"; the header says "LoreRim Planner". (WO-161)
