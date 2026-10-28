@@ -5173,6 +5173,14 @@ One page per line works: `/quests/s/...` redirects, the main quest, Dragonborn, 
 - [ ] **Main stories buttons** say "Open the story ›" on two rows and "Open ›" on Dragonborn. One label.
 - [ ] Screenshots of Dragonborn and Main stories, then `for Bob`.
 
+### Part 5. Less on the page (Dave, 27 Oct, 19:20)
+Dave: "a bit too much fluff on the quest line pages."
+- [ ] Drop the **Starts here** and **A choice** chips. The first quest is first; At a glance says how the line starts; a quest's choices are on its own page.
+- [ ] **Link in the sentence, not under it.** "Talk to Alvor or Gerdur in Riverwood" links Alvor, Gerdur and Riverwood where they're written; the person and place chips under each quest go. Same on the quest pages' steps, the category rows and anywhere else a sentence names a person or place.
+- [ ] **Link every name.** Every person and place named in any text on a line page (the summary, At a glance, each quest's line, Along the way, What the whole line gives, What it closes) is linked when it has a page. Dave found many that aren't. A test lists the names on the main quest, Dragonborn, Dawnguard and the Companions pages that have a page but no link, and fails if any.
+- [ ] **The right rail is the contents only.** How it starts is already in At a glance; take it out of the rail. Opens other stories moves into the main column as its own section after What it closes (it isn't anywhere else today), in the same style as the others.
+- [ ] Screenshots of the main quest and Dragonborn at 1440 and 390, then `for Bob`.
+
 ## WO-159  Dave's testing, 27 Oct afternoon: home, search, back links, a playthrough from the start, and the people reads on person pages (Mac, 27 Oct 2026)
 Status: done (Bob, 27 Oct 17:55: home, back buttons and the people reads checked on the preview (Lydia joins as housecarl when made Thane; Jaree-Ra by the Winking Skeever); the Playthrough tab is signed-in only, for Dave to see)
 
