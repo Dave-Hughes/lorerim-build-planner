@@ -5103,8 +5103,8 @@ The same reviewer, every box again, at 1440 and 390, scrolling and hovering, plu
 - [ ] Walk every page above at both widths, scrolling and hovering, before `for Bob`; Bob sends the reviewer again.
 
 ## WO-178  Data a player would call wrong (PC, 28 Oct 2026)
-Status: queued (PC for the data, Mac for the map: Part 2)
 Status: building (PC; Part 2)
+
 From the same cold review (WO-177). Each is what the page shows; find why in the records and fix it in the build, or say why it's right.
 - [x] **Only one temple or guild on the map** ("Temples and guilds 1": High Hrothgar). The Temple of Kynareth, the Temple of Mara, Jorrvaskr and the College are inside their cities, so they have no position (WO-166's rule). Give the Mac what it needs to show a place inside a town at its town's pin on the map when its group is picked (the town's position on each such row as `pinAt`), so the groups aren't empty.
 - [x] **Counts disagree across pages**: the home strip says 75 towns and cities, `/map` 21, `/places` 29; Homes 73 against 283; Landmarks 84 against 177. One count per kind, written by the build into `places.json`'s summary, that every page reads (on the map, those it can pin; say which in the label).
