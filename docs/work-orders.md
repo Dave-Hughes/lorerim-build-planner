@@ -5028,6 +5028,7 @@ Status: queued (PC)
 **Why.** WO-166's notes: Battle-Born, Pelagia and Chillfurrow farms (and Rorikstead's and Falkreath's) are parented to the city's location in the records, so they read `inTown` and get no pin, though they stand in the fields outside the walls.
 - [ ] A place with `LocTypeFarm` (or a Farm or Mill kind) and exterior cells of its own gets a position from those cells and its own `nearestTown`, not `inTown`. Its town stays as a tag ("near Whiterun").
 - [ ] The report lists the farms moved.
+- [ ] **The name on the door.** Some location records carry a different name from the cell the player walks into and the dialogue uses: "Lucan's Dry Goods" is the Riverwood Trader, "Sven's House" is Sven and Hilde's House. Where the record's name differs from its main cell's full name, the place takes the cell's name (what the game shows on the door) and keeps the record's as an alias. Report how many changed.
 - [ ] Tests, then `for Bob`.
 
 ## WO-170  The home page comes alive (Mac, 27 Oct 2026)
@@ -5174,7 +5175,7 @@ Dave, 27 Oct 18:46: the map's mod author OK'd its use on the site, with a credit
 - Bob, 28 Oct, 23:10: read the notes and the report, and pinned the nine cities, Riverwood, Bleak Falls Barrow, Embershard Mine, High Hrothgar, Ivarstead, Kynesgrove, Morvunskar Crypts, Nightgate Inn, Green-Tip Cabin and Fort Dawnguard on `tamriel.webp` with `maps.json`'s rule: every one lands where it belongs (Nightgate on Lake Yorgrim, Morvunskar Crypts by Kynesgrove, Fort Dawnguard at the canyon east of Riften, at the map's eastern edge). Done. Rulings on the four questions: Vigilant's realm stays in the data (the map shows Tamriel only); farms in a field get a position (WO-171); the 83 unplaceable are fine as they are; Dead Drop Falls on the fort's door is fine. Embershard Mine is south-west of Riverwood, not south: noted, the data is right.
 
 ## WO-165  The quest and person pages get the same at-a-glance and colours (Mac, 27 Oct 2026)
-Status: for Bob (Bob's review done; typecheck, lint, tests, the build and the full e2e pass, 489 of 489)
+Status: queued (Mac; Bob's second review, one box)
 
 **Why.** `docs/page-templates.md` rows 14 and 16: the quest and person pages read well but are one grey. WO-160 (`LinePage`) and WO-162 (`PlaceTown`) set the pattern: an At a glance band under the title, colour that means one thing, a contents rail on long pages. Same pattern here, so every World page feels like one site.
 - [x] **A quest**: At a glance under the title: how it starts (green: who and where), level and danger (red), where it takes you (blue), rewards and XP (gold), and the number of ways to finish it (purple). People and places in the steps as the coloured chips; XP in the pixel face. The Rewards box stays.
@@ -5183,7 +5184,13 @@ Status: for Bob (Bob's review done; typecheck, lint, tests, the build and the fu
 - [x] A contents rail on any of these pages taller than two screens.
 - [x] Checks, screenshots of The Golden Claw, Lights Out!, Aela the Huntress and Lydia at 1440 and 390, then `for Bob`.
 
-### Jeff's notes (Mac, 27 Oct)
+#
+
+### Bob's second review (27 Oct, 23:20)
+Places link on Aela's and Lydia's pages, the counts agree ("Gives 9 quests, and is in 3 more"; Lydia "In 2 quests"), Follows you says the how isn't sure, her quest links are orange, and The Golden Claw lists each person once. One left:
+- [ ] **The Riverwood Trader still shows "Danger: Not known yet"** on The Golden Claw. It has no place row under that name (the record calls it Lucan's Dry Goods; WO-171 adds the alias), so the page doesn't know its kind and falls back to the danger cell. A place the index doesn't know as dangerous shows no danger cell at all; only a place known to be a fight does. Screenshot of The Golden Claw, then `for Bob`.
+
+## Jeff's notes (Mac, 27 Oct)
 - **The band** is one component (`src/components/pages/glance.tsx`, the line page's styles): a quest and a person page now have At a glance under the title in the same full-width tinted band, each cell in its colour (rule 34).
 - **A quest:** How it starts (green: who, then the place or how), Level and danger (red: the level a need names, else "Any level", and the first place's danger in the places index's words), Where it takes you (teal: the first two places, "and N more"), Rewards (gold: the quest's XP, else "No XP", and its first reward), and the ways to finish it (violet: "3 ways", or "N choices" when the choices add no steps). A cell with nothing is left out. The Rewards box in the side column stays. **Chips:** WO-160 Part 5 took the person and place chips out of a line page's steps for names linked in the sentence; I followed that here, not the chips this order asked for. A place named in a step is teal (a link on a place), a person orange.
 - **A person:** Where to find them (teal), What they are (orange), Trains (green) or Sells (gold), Follows you (orange, with how they join), Quests (violet, the count and the first two). **"At the current hour":** the planner has no game clock, so the cell says where they are most of the day (the place with the most hours in the read's day) and "First met: ..."; "at the hour" is for the PC's save to answer. **The day strip:** the read's day rows laid out as 24 hours (`src/lib/people/day.ts`, with a test), a colour for each place with the key under it (Aela: living quarters, Jorrvaskr, outside Jorrvaskr), and the rows under it as before; a person with one place all day gets no strip.
