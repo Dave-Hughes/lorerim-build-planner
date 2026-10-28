@@ -5022,6 +5022,17 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-170  The home page comes alive (Mac, 27 Oct 2026)
+Status: queued (Mac; after WO-169, since it reuses WO-168's scenes and WO-166's map tiles)
+
+**Why.** Dave, 27 Oct, after WO-168's rows: "bring some of that same wow factor to the home screen". Board `HomeWow` (canvas row 37); Dave: "Love it, lets keep the other secitons too. New in the world and your characters, can come after the map."
+- [ ] **The order of the page**, signed in or out: the hero; Recent characters (as built, WO-157 Part 10); **Three stories to live through** (new); **the map strip** (new); New in the world (as built); then Your characters signed in (as built, WO-157 Part 9) or Three ways to use it signed out (as built). Signed in keeps the shorter hero, with the motion below.
+- [ ] **The hero moves**, on CSS and a few lines of script, as the board: Alduin (`public/quests/stories/main-quest/` moving layer) crosses the aurora about every 22 s and fades out; a shooting star every 9 s or so; embers rise from Tapps's fire; the layers drift a few pixels with the pointer and as you scroll (far layers least, the fire most). Text and the search box stay put.
+- [ ] **Three stories to live through**: three tall cards (300 px) in a row, each WO-168's scene for that story cut to the card (sky, far, moving layer, near), its colour on the top edge, the big pixel number top right, the name, one line, and its figures from the data, not the board's (quests and quest XP; Dragonborn and Dawnguard their level). "Every quest line ›" goes to `/quests/c/main-stories`. **Under the pointer or focus** a card lifts 8 px with a glow in its colour, the number lights up, the far and near layers slide apart; the main quest's Alduin flies across, Dragonborn's tentacles sway faster, Dawnguard's bats scatter (the same CSS as WO-168). Each card is one link to its story.
+- [ ] **The map strip**, full width, 420 px: the paper map (WO-166's tiles) drifting slowly behind, a few city and town pins pulsing, a dark fade from the left under "Every place, on the game's own map", one line with the counts from `places` (not typed), and **Open the map** to `/map`. The credit in the corner, as on every map (WO-167's test covers this one too).
+- [ ] Reduced motion: no flight, star, embers, drift or pulse; the cards still lift and colour. Phone: the cards stack, 220 px each, the layers still; the map strip 300 px with the text over a stronger fade; no pointer drift.
+- [ ] Checks; screenshots at 1440 (signed out, a card hovered) and 390, signed in at 1440; then `for Bob`.
+
 ## WO-164  A character is one page, with or without a playthrough (Mac, 27 Oct 2026)
 Status: queued (Mac; after WO-165)
 
