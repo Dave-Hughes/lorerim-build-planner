@@ -5035,6 +5035,21 @@ Status: queued (Mac; after WO-165)
 - [ ] The Featured character on `/characters` is a tall card two rows high beside small ones; make it a wide card across two columns, one row high, cover on the left half, text on the right.
 - [ ] Checks, screenshots signed in (Kyria's page on each tab, a character with no cover on home and `/me`, the What next step) at 1440 and 390, then `for Bob`.
 
+## WO-169  The Map page (Mac, 27 Oct 2026)
+Status: queued (Mac; after WO-167, which brings the map tiles and the pin component)
+
+**Why.** Dave, 27 Oct: a dedicated map page with quick search and filters, "a unique experience". Board `MapPage` (canvas row 37); Dave: "that map view is incredible". Uses LoreRim's paper map from WO-166, credited on every view.
+- [ ] `/map`, and **Map** in the World panel (with `quest-travel` as its icon) and the phone menu. The map fills the window under the header; drag to pan, scroll or pinch to zoom, + / − / N (back to north and the whole map) bottom right. At a distance pins cluster into counts; closer in, the cities' and towns' names show on dark plates; closest, every place's name.
+- [ ] **Pins** as the board: cities larger, blue, always named; towns blue; dangerous places red; the rest grey; the picked place orange with the pulse. Hover shows the WO-157 preview.
+- [ ] **The left panel**: the title and the count; a search box ("/" focuses it) that finds places, people and quests as you type, each result with its kind and, for a place, its level range. Picking a place flies to it and opens the drawer; a person flies to where they are at this hour (people reads) and opens their place; a quest lights up its places in order, numbered, with a dashed route between them. Then **Show**: a chip per kind with its count (the commonest first, "+ N more" for the rest); **Danger**: a two-handled level range; **On the map**: a quest's route (the one picked), where my character is, only places with a quest. Anything filtered out fades, it doesn't vanish. The panel folds to a bar.
+- [ ] **The drawer** for the picked place: name, tags, getting there, the boss, who's inside, rewards, worth it, quests that bring you here, Open the page. Esc or × closes it.
+- [ ] **Where my character is**, signed in: pick one of your characters with a listed playthrough; their pin (their avatar) sits on the place their latest snapshot names ("Kyria, save 7: Ivarstead"); the current act's objectives' places light up. Hide the toggle when signed out.
+- [ ] **The address keeps the view**: `/map?place=bleak-falls-barrow`, `?quest=the-golden-claw`, `?character=<id>`, the filters and the zoom, so a link shares exactly what you see. Every place page's map band links to `/map?place=<slug>`.
+- [ ] **The credit** in the corner, on every view and zoom, from `maps.json` (WO-167's test covers this page too).
+- [ ] Phone: the map full screen; the panel is a sheet from the bottom with search first; the drawer a second sheet.
+- [ ] Not this order: other lands' maps (until their authors say yes), and places you've discovered (the save connector reads where you are, not what you've found; a separate order if wanted).
+- [ ] Checks; screenshots at 1440 and 390 of: the whole map, a search open, a quest's route, a place's drawer, signed in with a character; then `for Bob`.
+
 ## WO-168  The three main stories, each its own world (Mac, 27 Oct 2026)
 Status: for Bob (all six boxes built; typecheck, 710 unit tests, the build and the full e2e pass, 458 of 458)
 
