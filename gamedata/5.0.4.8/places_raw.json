@@ -21396,13 +21396,13 @@
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "The city gradually grew to extend across the entire length of the arch. This growth culminated in the building of the Blue Palace, home of the High Kings and Queens of Skyrim. We will visit the palace later.\r\n\r\nThe Gates of Solitude\r\n\r\nEntrance to Solitude is guarded by two gat",
+     "words": ".\r\n\r\nContinue up the road from the college and you'll reach the courtyard of the Blue Palace, our final destination.\r\n\r\nThe Blue Palace\r\n\r\nThe Blue Palace is home to the Jarls of Solitude, who for centuries have also served as the High Kings and High Queens of Skyrim. The northea",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": ".\r\n\r\nContinue up the road from the college and you'll reach the courtyard of the Blue Palace, our final destination.\r\n\r\nThe Blue Palace\r\n\r\nThe Blue Palace is home to the Jarls of Solitude, who for centuries have also served as the High Kings and High Queens of Skyrim. The northea",
+     "words": "The city gradually grew to extend across the entire length of the arch. This growth culminated in the building of the Blue Palace, home of the High Kings and Queens of Skyrim. We will visit the palace later.\r\n\r\nThe Gates of Solitude\r\n\r\nEntrance to Solitude is guarded by two gat",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
@@ -53938,13 +53938,13 @@
     {
      "kind": "book",
      "book": "Uncovering the Aetherium Forge",
-     "words": "[pagebreak]\r\n\r\n\r\n\r\nUncovering the Aetherium Forge\r\n\r\n\r\nby Katria\r\n\r\n\r\n\r\n\r\nThe real mind behind \r\nThe Aetherium Wars\r\n\r\n[pagebreak]\r\n17th of Sun's Height \r\nDamn that sc",
+     "words": "to step foot here in thousands of years. More Resonators, easy enough. But the air... it feels different.\r\n[pagebreak]\r\nThe Aetherium Forge. We actually found it! The whole area is surrounded by a pool of magma. We'll have to shut off the steam so my friend can breathe down here.",
      "record": "BOOK katriaslegacy.esp:000800 (katriaslegacy.esp)"
     },
     {
      "kind": "book",
      "book": "Uncovering the Aetherium Forge",
-     "words": "to step foot here in thousands of years. More Resonators, easy enough. But the air... it feels different.\r\n[pagebreak]\r\nThe Aetherium Forge. We actually found it! The whole area is surrounded by a pool of magma. We'll have to shut off the steam so my friend can breathe down here.",
+     "words": "[pagebreak]\r\n\r\n\r\n\r\nUncovering the Aetherium Forge\r\n\r\n\r\nby Katria\r\n\r\n\r\n\r\n\r\nThe real mind behind \r\nThe Aetherium Wars\r\n\r\n[pagebreak]\r\n17th of Sun's Height \r\nDamn that sc",
      "record": "BOOK katriaslegacy.esp:000800 (katriaslegacy.esp)"
     }
    ],
@@ -54315,14 +54315,14 @@
    },
    "inTown": null,
    "plugin": "Ryn's Standing Stones.esp",
-   "marker": null,
+   "marker": "Skyrim.esm:0D3935",
    "world": "Tamriel",
    "pos": [
-    169984.0,
-    -108544.0,
-    null
+    171146.2,
+    -110243.1,
+    12722.6
    ],
-   "posFrom": "cells",
+   "posFrom": "marker",
    "actors": {
     "count": 4,
     "livesHere": "Warlock",

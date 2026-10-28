@@ -119,7 +119,9 @@ describe("pointers with no speaker", () => {
 
 describe("levels not checked yet", () => {
   it("a place with no levels in the data says so in those words, in its levels and its fit", () => {
-    for (const name of ["Fallowstone Cave", "Sanctum of Malacath", "The Thief Doomstone"]) {
+    // The Thief Doomstone was only "near Riften" because its record borrowed the Shadow Stone's map marker (WO-166): it has no position of its own,
+    // so Nightingale Hall (its only occupants are display mannequins) stands in: a place near Riften that really has no levels.
+    for (const name of ["Fallowstone Cave", "Sanctum of Malacath", "Nightingale Hall"]) {
       const p = riften().find((x) => x.place === name);
       // WO-166 left the Sanctum of Malacath with no nearest town (its record has no position), so it is not near Riften until the PC places it.
       if (!p && name === "Sanctum of Malacath") continue;

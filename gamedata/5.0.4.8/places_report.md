@@ -77,9 +77,9 @@ All nine found with an exterior position.
 
 | Found from | Places |
 |---|---|
-| marker | 468 |
+| marker | 469 |
 | door | 147 |
-| cells | 45 |
+| cells | 44 |
 
 | World | Places | On a map |
 |---|---|---|
@@ -415,7 +415,7 @@ Not places: their interiors reach no map by any door (holding cells, storage and
 | Warehouse Prefabs | Skyrim.esm | no position |
 | aaaMB Holding Cell | NightmarePlane.esp | no position |
 
-### A map marker two places claimed (25)
+### A map marker two places claimed (24)
 
 A record that names another place's map marker as its own (Morvunskar Crypts and Bleak Falls Barrow's) does not get its position: the marker goes to the place it is named for, and the other is placed from its own cells or doors.
 
@@ -440,8 +440,7 @@ A record that names another place's map marker as its own (Morvunskar Crypts and
 | Sanctum of Malacath | Fallowstone Cave | Fallowstone Cave |
 | Shadowgreen Cavern | Shimmermist Cave | Shimmermist Cave |
 | The Aetherium Forge | Ruins of Bthalft | Ruins of Bthalft |
-| The Shadow Doomstone | The Shadow Stone | nobody: the names tie |
-| The Thief Doomstone | The Shadow Stone | nobody: the names tie |
+| The Thief Doomstone | The Shadow Stone | The Shadow Doomstone |
 | Ven Fillaan Miin | Shrine of Azura | Shrine of Azura |
 | Warehouses | Alchemist's Shack | Alchemist's Shack |
 | Western Watchtower | Fort Greymoor | Fort Greymoor |

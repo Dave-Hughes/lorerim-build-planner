@@ -741,9 +741,19 @@ def build(version):
     # ---- WO-166 Part 1: where each place is, the cities, the places quests name, and the places listed twice ----
     # A marker two places claim goes to the one it is named for: Morvunskar Crypts' own record points at Bleak Falls Barrow's marker,
     # which put it "next to Riverwood". The other looks for a position of its own below.
-    def fit(place_name, marker_name):  # 0 the same name, 1 the marker's name holds the place's, 2 the reverse, 3 neither
+    def fit(place_name, marker_name):
+        """How well a marker's name fits a place's: 0 the same name, 1 the marker's name holds the place's, 2 the reverse, 3 they share a
+        distinctive word ("The Shadow Stone" and "The Shadow Doomstone"; the Thief Doomstone's record borrows that marker and shares none),
+        4 nothing in common."""
         a, b = place_name.lower(), (marker_name or "").lower()
-        return 0 if a == b else 1 if a in b else 2 if b and b in a else 3
+        if a == b:
+            return 0
+        if a in b:
+            return 1
+        if b and b in a:
+            return 2
+        sig = lambda s: {w for w in re.findall(r"[a-z']+", s) if w not in ("the", "of", "and", "a", "stone", "stones", "doomstone")}  # noqa: E731
+        return 3 if sig(a) & sig(b) else 4
 
     def resolve_claims():
         """A marker several places name goes to the one it is named for. Those that fit it worse lose it; so do all of a tie between
