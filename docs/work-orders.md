@@ -5022,6 +5022,31 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-174  Dave's test, 28 Oct morning: the quest page's side column, its first step, and the Map page made simpler (Mac, 28 Oct 2026)
+Status: queued (Mac; after WO-173)
+
+**Why.** Dave, 28 Oct 07:04, testing staging. Bob missed the first one: his full-page screenshots never scroll, so a sticky column overlapping can't show in them; from now on Bob scrolls each long page in a real window.
+### Part 1. A quest's page
+- [ ] **The side column runs over itself while you scroll** (Dave's screenshot of Dungeon Delving: the sticky contents slide over People, "PEOPLE" printed on "Where it takes you"). As on the line and place pages, the side column is the contents only (WO-160 Part 5); Rewards and People move into the main column, Rewards first after At a glance, People after Where it takes you. A test scrolls the page and checks the contents never overlap another box.
+- [ ] **The first step under How to start it** breaks into pieces: Song of the Green reads "First step: / Take / Auri / to …" one word per line, Dungeon Delving "Find the item inside the dungeon / Amren / names". Two faults: a sentence with links is laid out as blocks instead of running text (check every place that renders linked words), and the first step repeats The steps right under it. Drop "First step" from How to start it.
+- [ ] **A quest's address is its name, never its editor id.** `/quests/q/favor204` is Dungeon Delving (Bandits), a favour from Amren in Whiterun (and Shahvee's copy in Windhelm). Its address is `/quests/q/dungeon-delving-bandits` (with the town when two copies share a name); the old address redirects. A test: no quest slug is an editor id.
+### Part 2. The Map page, simpler (Dave's map feedback)
+- [ ] **Drop the Danger sliders.** Set to 50 to 50 they still showed places outside it; Dave would rather not have them for now.
+- [ ] **Drop "On the map"**: Where my character is belongs with playthroughs later (Dave loves it; it comes back there). "Only places with a quest" moves up as a chip under Show ("With a quest").
+- [ ] **Filtered-out places disappear.** Today they fade to 16% (Bob's spec in WO-169, wrong): with Ruins picked, faint pins and names of everything else still show. Only what matches is drawn.
+- [ ] **"Fold" goes.** A small collapse control in the panel's corner (a chevron, with its name for screen readers), the same as the phone sheet's handle.
+- [ ] **Hover previews stay on screen**: near an edge the preview opens to the other side (left of a pin near the right edge, below one near the top), on the Map page and the place bands.
+- [ ] Bob checks in Dave's Chrome, scrolling and hovering at the edges. Screenshots of Song of the Green scrolled half way, `/map` with Ruins picked, a hover near the right edge; then `for Bob`.
+
+## WO-175  Maps for the other lands: what LoreRim already has (PC, 28 Oct 2026)
+Status: queued (PC; after WO-171's two boxes)
+
+**Why.** Dave, 28 Oct: "we only have the core map for Skyrim … not the other locations you can travel to." The Map page shows Tamriel only. Solstheim (71 places), Vigilant's realm (58), Gray Fox Cowl's Hammerfell (32), Wyrmstooth (25), Hyorker Isle (10), the Shivering Isles mod (8) and a few small worlds have positions but no map. Find out what exists before anyone draws anything. Nothing is built from this order.
+- [ ] **What the load order ships:** for each worldspace with places, is there a map texture in the winning files (Flat World Map Framework's `textures/terrain/<world>/`, a mod's own map, or the game's LOD), its size, which mod provides it, and its author and Nexus page.
+- [ ] **For each one with a picture,** the position-to-pixel rule checked on two places, as for Tamriel.
+- [ ] **For each with none,** say so; the fallback would be drawn from its own terrain like Bob's proof, which Dave didn't like for Skyrim, so it's only a note.
+- [ ] A table in the log: world, places, map found (mod, author, link), size, rule checked. Then `for Bob`; Bob takes the list to Dave, who asks each author, as he did Caro Tuts.
+
 ## WO-173  The home page as the board: the full sky signed in, and a map strip that moves (Mac, 28 Oct 2026)
 Status: for Bob
 
