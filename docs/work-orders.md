@@ -5022,7 +5022,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
-## WO-171  Farms are on the map, not inside a city (PC, 28 Oct 2026)
+## WO-171  Farms are on the map, not inside a city (PC, 27 Oct 2026)
 Status: queued (PC)
 
 **Why.** WO-166's notes: Battle-Born, Pelagia and Chillfurrow farms (and Rorikstead's and Falkreath's) are parented to the city's location in the records, so they read `inTown` and get no pin, though they stand in the fields outside the walls.
@@ -5098,7 +5098,7 @@ Jeff's notes on the review (Mac, 27 Oct):
 - **The page's line** now reads "the main quest, Dragonborn and Dawnguard" (`questlines.json`, data rebuilt), and the more-line under it in the same order.
 - Screenshot of Dragonborn under the pointer: `test-results/wo168-dragonborn-hover-1440.png`.
 
-- Bob, 28 Oct, 23:05: tentacles load and sway under the pointer; the line reads the rows' order. Done.
+- Bob, 27 Oct, 23:05: tentacles load and sway under the pointer; the line reads the rows' order. Done.
 
 ## WO-167  The map on place pages and on Places (Mac, 27 Oct 2026)
 Status: queued (Mac; waits on WO-166 Part 2's map files on staging, then after WO-164. Dave, 27 Oct 18:46: the map's mod author said go for it, with a credit and link on every instance)
@@ -5242,7 +5242,7 @@ Jeff's notes on the review (Mac, 27 Oct):
 - **Where** takes only what is written as a name (a capital first, not "Any hold"), or a town it finds in the words. "on arrival in a major hold" is now "Not known yet", muted.
 - **A long mod name** ends in an ellipsis inside its tag, the arrow stays, and the whole name is the tag's title. Test in `e2e/wo163.spec.ts`. Screenshot: `test-results/wo163-side-stories-1440.png`.
 
-- Bob, 28 Oct, 23:05: Guests for Dinner reads "Not known yet", muted; the long mod name ends in "…". Done.
+- Bob, 27 Oct, 23:05: Guests for Dinner reads "Not known yet", muted; the long mod name ends in "…". Done.
 
 ## WO-162  A place's page fits what the place is (Mac, 27 Oct 2026)
 Status: done
@@ -5296,7 +5296,7 @@ Jeff's notes on Part 5 (Mac, 27 Oct):
 - "An Alchemy skill book"; one line per text in What people say; Information Confidence on a lived-in page no longer says boss.
 - Screenshots: `test-results/wo162-riverwood-1440.png`, `wo162-high-hrothgar-1440.png`, `wo162-bleak-falls-1440.png` and the 390 ones.
 
-- Bob, 28 Oct, 23:05: Riverwood lists Sven, Hod, Sigrid, Embry and Dorthe, and its shops name the blacksmith; Delphine is first at the inn; High Hrothgar is the Greybeards' monastery with the trolls on the way up; Bleak Falls Barrow says each thing once; Dragonsreach's quote shows once; "a/an" follows the skill. Done.
+- Bob, 27 Oct, 23:05: Riverwood lists Sven, Hod, Sigrid, Embry and Dorthe, and its shops name the blacksmith; Delphine is first at the inn; High Hrothgar is the Greybeards' monastery with the trolls on the way up; Bleak Falls Barrow says each thing once; Dragonsreach's quote shows once; "a/an" follows the skill. Done.
 
 ## WO-161  Small fixes from Bob's walk of every page (Mac, 27 Oct 2026)
 Status: done (Bob, 27 Oct 20:10: checked on the preview: Guide out of the menu, tab titles, Tapps's characters, My characters, search reasons, the changes page by day and kind, one character card. The featured card's shape moves to WO-164)
@@ -5404,7 +5404,7 @@ Jeff's notes on Part 6 (Mac, 27 Oct):
 - **Where it takes you** names each place once. **Dragonborn** loses "the records set no level for it" when the start check has a level. **The main quest's XP cell** shows the jobs line or nothing. **Not sure yet** lists only the fields the second reader marked unsure (the line reads now carry the checker's verdicts); these four lines have none.
 - **The test** (`wo160-names.test.ts`) has all of these and ignores names inside quest and item names. Screenshots: `test-results/wo160-main-quest-1440.png`, `wo160-dragonborn-1440.png`, `wo160-dawnguard-1440.png`, `wo160-companions-1440.png`.
 
-- Bob, 28 Oct, 23:05: on the four pages Farengar, Balgruuf, Storn, Harkon, Kodlak, the Winking Skeever, Raven Rock, the aliases (Volkihar Keep, Dimhollow Cavern, Driftshade Refuge) and the cities now link; bracketed quest names go to the quest; the Silver Hand is no person; Dragonborn's Where it takes you lists each place once and its summary no longer contradicts its level; the main quest's XP cell and Not sure yet are clean. Done.
+- Bob, 27 Oct, 23:05: on the four pages Farengar, Balgruuf, Storn, Harkon, Kodlak, the Winking Skeever, Raven Rock, the aliases (Volkihar Keep, Dimhollow Cavern, Driftshade Refuge) and the cities now link; bracketed quest names go to the quest; the Silver Hand is no person; Dragonborn's Where it takes you lists each place once and its summary no longer contradicts its level; the main quest's XP cell and Not sure yet are clean. Done.
 
 ## WO-159  Dave's testing, 27 Oct afternoon: home, search, back links, a playthrough from the start, and the people reads on person pages (Mac, 27 Oct 2026)
 Status: done (Bob, 27 Oct 17:55: home, back buttons and the people reads checked on the preview (Lydia joins as housecarl when made Thane; Jaree-Ra by the Winking Skeever); the Playthrough tab is signed-in only, for Dave to see)
