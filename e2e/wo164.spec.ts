@@ -88,7 +88,8 @@ test("My characters: one character card each with Edit and Delete under it, and 
   for (const width of [1440, 390]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/me");
-    const fresh = page.getByRole("article").filter({ has: page.getByRole("link", { name: /Jo.Vashar/ }) }).first();
+    // Any of the author's cards: other specs make and delete builds, so none is named here.
+    const fresh = page.getByRole("article").first();
     await expect(fresh).toBeVisible();
     await expect(fresh.getByRole("link", { name: "Edit" })).toHaveAttribute("href", /\/b\/[a-z0-9]+\/edit$/);
     await expect(fresh.getByRole("button", { name: /^Delete/ })).toBeVisible();

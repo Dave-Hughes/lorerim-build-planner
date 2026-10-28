@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { Linked } from "@/components/pages/linked";
 import { PageTop, TitleBox } from "@/components/pages/page-kit";
 import { LineToc } from "@/components/quests/line-parts";
+import { PlaceMapBand } from "./place-map";
 import { linkable } from "@/lib/pages/names";
 import { personHref } from "@/lib/people/data";
 import { placeHref, placeType, rangeOf, type Place } from "@/lib/places/data";
@@ -224,6 +225,8 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
         />
         <p className={l.pitch}>{pitch}</p>
       </div>
+
+      <PlaceMapBand place={place} />
 
       <section className={l.band} aria-label="At a glance">
         <div className={`page ${l.glance}`} style={{ "--cols": cells.length } as React.CSSProperties}>

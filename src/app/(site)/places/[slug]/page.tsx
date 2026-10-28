@@ -9,6 +9,7 @@ import { confirmationsOf } from "@/lib/quests/confirmations";
 import { PreviewLink } from "@/components/pages/preview-link";
 import { InformationConfidence, Icon, PageTop, Section, TitleBox } from "@/components/pages/page-kit";
 import { LineToc } from "@/components/quests/line-parts";
+import { PlaceMapBand } from "@/components/places/place-map";
 import { personHref } from "@/lib/people/data";
 import { questsData } from "@/lib/quests/data";
 import { hasLevels, placeBySlug, placeHref, placeType, rangeOf } from "@/lib/places/data";
@@ -149,6 +150,8 @@ export default async function PlacePage({ params }: { params: Params }) {
 
       <p className={styles.lede}>{lede}</p>
       </div>
+
+      <PlaceMapBand place={place} />
 
       <section className={l.band} aria-label="At a glance">
         <div className={`page ${l.glance}`} style={{ "--cols": glance.length } as React.CSSProperties}>

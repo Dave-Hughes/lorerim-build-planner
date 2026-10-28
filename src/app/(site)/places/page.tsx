@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { SearchBox } from "@/components/search/search-box";
+import { MapView } from "@/components/places/map-view";
+import { mapEntry, mapPins } from "@/lib/places/map";
 import { placeHref, placesData, placeType, type Place } from "@/lib/places/data";
 import { siteMetadata } from "@/lib/og/metadata";
 import styles from "@/components/pages/page-kit.module.css";
@@ -51,6 +53,21 @@ export default async function PlacesPage({ searchParams }: { searchParams: Promi
           </Link>
         ))}
       </div>
+
+      {/* The whole map with every pinned place, narrowed by the same kind and hold (WO-167); hover a pin for the place. */}
+      {(() => {
+        const entry = mapEntry();
+        if (!entry) return null;
+        const shown = mapPins().filter((p) => (!type || p.type === type) && (!hold || p.hold === hold));
+        return (
+          <section aria-label="Map of Skyrim" className="map-section">
+            <MapView entry={entry} pins={shown} mode="whole" />
+            <p className="muted" style={{ margin: "8px 0 0", fontSize: 14 }}>
+              {shown.length} {shown.length === 1 ? "place" : "places"} on the map. Skyrim only: Solstheim and the mods&apos; lands have no map here yet.
+            </p>
+          </section>
+        );
+      })()}
 
       {listing ? (
         <section className={styles.sec} aria-labelledby="list">
