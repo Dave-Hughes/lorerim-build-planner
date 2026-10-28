@@ -5022,6 +5022,29 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-180  Junk text out of the pages, and the last map faults (Mac and PC, 28 Oct 2026)
+Status: queued (Mac and PC; first, before WO-179)
+
+**Why.** The fourth cold review (Bob's reviewer, 3,721 pages crawled, 51 walked at both widths) passed WO-176 to WO-178, and named what would still hit Dave in his first ten minutes: old text from the game files that was never cleaned. Bob confirmed the holes and Web Mother by hand. No order is done until a page-text test fails on each of these.
+### Part 1. Quotes (PC writes the cleaner; Mac's test fails on any page)
+- [ ] **Holes where alias tags were**: "Charter … Jarl of , to , in recognition of service" (Lakeview and Windstad Manors), "Jarl of Whiterun, to , grant of the steading" (Rorikstead, Hendraheim). A line that had any tag other than `<Alias=Player>` isn't quoted (WO-177 Part 6 said so; the line was kept with holes).
+- [ ] **Book markup**: "[pagebreak]" 179 times on 40 place pages; `size="18">`, `face="$HandwrittenFont"`, `WIDTH='33' HEIGHT='64'>Aringoth`, `<font color='#440000'`, `<img src='img://…'` on 6 (Rorikstead, Rebel's Cairn, the Bannered Mare, Goldenglow Estate, Oblivion). Strip the game's book markup to text before a quote is cut.
+- [ ] **A line's source is a game file's name**: 618 on 125 pages: "in Whiterun City Dialogue", "in Additional Riverwood Dialogue", "in CH Generic", "in Beyond Death Post Quest Handler"; plugin ids "Joslin in 0WRDialogue", "Taliesin in 0TallyFollower". A line names a quest only when it's a player's quest with a name; otherwise just the speaker. 52 quotes have no speaker (" in Unbound: …"): no speaker, no quote. Othriel's header reads "A 0Asy1um_OthrielSnowElfRace.": a race with no player-facing name says "Snow Elf" from its record's full name, or nothing.
+### Part 2. People and words (PC data, Mac words)
+- [ ] **(PC) Whiterun lists 133 people** including Web Mother and Arvel (Bleak Falls Temple), Jon the Mad and The Beast (Jon's Cave), Sild the Warlock, the Greybeards. A city's people are those whose home cell is inside the city's worldspace or its buildings; outlying dungeons' residents belong to their dungeons.
+- [ ] **(Mac) Hedges left in the body**: 32 on 23 pages: 11 bounty quests' "(likely one of: Angarvunde, Geirmund's Hall, Shroud Hearth Barrow)" twice each (say "One of: …"), "(likely her bed)", "(likely next from Jukka)", "Windhelm (probably, for Gabriella)", and a broken "Finish The Endless Fall (likely )". The test fails on "(likely", "(probably".
+- [ ] **(PC and Mac) Editor words in the body**: "package" 136 times on 113 people pages ("her sandbox package sits above her … sleep package"), "Named in its aliases" (Frea), "(he's in the follower and marriage factions)" (Extracting an Argonian), "Trains OneHanded" / "onehanded trainers" 67 times (One-handed). The people reads' schedule notes go through the same editor-terms filter as Not sure yet; skill names print as the game shows them.
+- [ ] **(Mac) Not sure yet's labels**: Lost to the Ages lists "Where it takes you." and "Where it takes you (hold)."; reasons start lower case ("what you get: …"). One item per field; reasons start with a capital and drop the field label.
+- [ ] **(Mac) `/places` group headings**: "Winterhold hold", "Morrowind hold", "Solstheim hold", "Alik'r Desert hold". A heading is the hold's own name ("Winterhold"), and a land that isn't a hold isn't called one ("Solstheim", "Alik'r Desert").
+### Part 3. The map
+- [ ] **A label over the side panel again** with Temples picked and zoomed in ("arkarth, 3"): a regression of WO-177 Part 6. The test from that box covers grouped town labels too.
+- [ ] **A town's count changes with zoom** (Falkreath 4 at 1440, 6 at 390): the number is the nearby cluster. With a group picked it's that group's count at the town; with none, no number on a city's label.
+- [ ] **Per-kind counts differ between `/places` and `/map`** with nothing saying why (Cities and towns 29 against 21, Homes 283 against 238, Landmarks 176 against 92). On `/map` each chip says "on the map" in its title, or both pages count the same way.
+- [ ] **At 390**: Saarthal's label covers Folgunthur's on the Forbidden Legend route after zooming out; The Golden Claw's Riverwood Trader stop has no number. Every route stop numbered; route labels never overlap (shorten to the number when they would).
+- [ ] **`/changes` and pages for job templates**: "Hunter Marks Animal Den" and "Delivery for the npc" (a placeholder title with its own quest page). A job template with a placeholder name isn't a quest page or a change.
+- [ ] **Moss Mother Cavern's body** is empty but for a one-link menu; Northwind Mine shows a lone "! Traps". A place with little known says what is known in one short block, not an empty page.
+- [ ] Then `for Bob`; Bob sends the reviewer again.
+
 ## WO-179  A character is one shell: its build, its guide and its playthrough (Mac, 28 Oct 2026)
 Status: queued (Mac; after WO-176 to WO-178 pass the reviewer)
 
@@ -5041,7 +5064,7 @@ Status: queued (Mac; after WO-176 to WO-178 pass the reviewer)
 - [ ] Bob walks it again signed in (make a character, plan a playthrough, edit, the story, the redirects from Kyria's old `/p/` links); screenshots of each step at 1440 and 390; then `for Bob`.
 
 ## WO-177  A cold review of staging: what's broken, what's off the grid, what reads wrong (Mac, 28 Oct 2026)
-Status: for Bob
+Status: done
 
 **Why.** Dave, 28 Oct 10:06: "I've already spotted lots of things that are broken, or weird UI issues." Bob's reviews had checked each order's boxes and not the whole page. A reviewer who hadn't seen the orders walked 25 pages signed out at 1440 and 390, scrolling with the wheel and hovering: no console errors, no broken links, nothing scrolls sideways; and the list below (screenshots in Bob's scratch folder, `rex/shots/`). Bob confirmed the first ones by hand. Dave's own list joins this order when he sends it. Do the parts in order; each box is a fault seen, not a guess.
 
@@ -5171,8 +5194,10 @@ Decisions and reasons:
 - **`/changes`:** a quest whose name three or more quests share, one ending in a two-digit number, or one that isn't player-facing is a job template and has no row.
 - **Small cards on a phone:** two lines of tagline, then the cut; likes are hidden there so the maker keeps its name.
 
+- Bob, 28 Oct, 16:00: the fourth cold review passed Part 6 bar what moves to WO-180 (the quotes with holes, the bracket hedges left, a label over the panel). Done.
+
 ## WO-178  Data a player would call wrong (PC, 28 Oct 2026)
-Status: for Bob
+Status: done
 
 From the same cold review (WO-177). Each is what the page shows; find why in the records and fix it in the build, or say why it's right.
 - [x] **Only one temple or guild on the map** ("Temples and guilds 1": High Hrothgar). The Temple of Kynareth, the Temple of Mara, Jorrvaskr and the College are inside their cities, so they have no position (WO-166's rule). Give the Mac what it needs to show a place inside a town at its town's pin on the map when its group is picked (the town's position on each such row as `pinAt`), so the groups aren't empty.
@@ -5246,8 +5271,10 @@ Mac's notes on Part 3 (28 Oct):
 - **The "on the map" total** is one number, `mapPlaces().length`: every place the build can pin, a place inside a town counted once at its town's pin. The Map says it, `/places` says it with "those inside a town counted once at the town's pin", and the home strip's count is the same. (The pins drawn with no group picked are the places with a spot of their own; the inside ones appear when their kind is picked.)
 - **Dragonsreach's drawer** adds the people a read puts there most of the day (Lydia is Housecarl; rulers and followers first), at most two, so a city's own six keep their places. Test: `e2e/wo177.spec.ts`.
 
+- Bob, 28 Oct, 16:00: the fourth review passed Part 3 (temples at their towns, one on-the-map total, Lydia in Dragonsreach's drawer, the Soul Cairn, Castle Volkihar, `/places/dungeon` gone). What's left moves to WO-180. Done.
+
 ## WO-176  Two small things from Bob's read of WO-174 (Mac, then PC, 28 Oct 2026)
-Status: for Bob
+Status: done
 
 - [x] **Rewards is said twice in a row on a quest's page.** Song of the Green: At a glance's Rewards cell ("100 XP, You can make Auri's Bow…"), then straight under it the Rewards section with the same two lines. Now that Rewards sits in the main column, show the section only when it adds something the cell doesn't (more than one reward, or when and from whom); otherwise the cell is enough.
 - [x] **(PC) Danger that reads like one stray actor:** "Moss Mother Cavern: enemies from level 1, up to 2", "Sons of Skyrim Military Camp: level 1 to 2" (WO-172). Check where a place's range comes from one placed creature or guard while the place's real fight is a leveled list or a quest's spawn; when the records only show one low actor, say "Not known yet" rather than 1 to 2. Mac: then `for Bob`.
@@ -5271,6 +5298,8 @@ Jeff's note (Mac, 28 Oct): **Rewards.** The section under At a glance shows only
 ### Mac's notes on Part 2 (28 Oct)
 - **Rewards said once:** the section shows when there is a second reward, or when the reward's "when" is something a player can use: a time or a person ("when you return the claw", "from Lucan or Camilla", "depending on your path", "once..."). A note for editors ("Handled by the quest's script", "Inside Kagrumez", a hedge), a generic "at the end", or a plain "if you keep it" / "taken from your defeated shadow" says nothing the cell has not. Extracting an Argonian, The Bonds of Matrimony, Through a Glass, Darkly, Return Aegisbane and The Kagrumez Gauntlet have it in At a glance only; Lights Out! keeps its section (two paths).
 - **Moss Mother Cavern:** an unknown danger is a Danger cell reading "Not known yet", the lone line is gone (a section with nothing known is left out), and Not sure yet lists "How dangerous it is". Test in `e2e/wo177.spec.ts`.
+
+- Bob, 28 Oct, 16:00: the fourth cold review passed both: no doubled Rewards; Darkwater Pass, Northwind Mine and Harstrad say "Not known yet". Done.
 
 ## WO-174  Dave's test, 28 Oct morning: the quest page's side column, its first step, and the Map page made simpler (Mac, 28 Oct 2026)
 Status: done
