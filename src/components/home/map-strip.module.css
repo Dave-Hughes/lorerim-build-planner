@@ -1,4 +1,4 @@
-/* The map strip (WO-170): the paper map drifts slowly behind, a dark fade from the left carries the words. Reduced motion: no drift or pulse. A phone: 300 px, a stronger fade. */
+/* The map strip (WO-170, WO-173): the paper map pans slowly behind, a dark fade from the left carries the words. Reduced motion: no drift or pulse. A phone: 300 px, a stronger fade. */
 .strip {
   position: relative;
   width: 100%;
@@ -13,22 +13,24 @@
   position: absolute;
   left: 0;
   top: 50%;
-  width: 100%;
+  /* Larger than the strip, so the land's detail shows and there is a map to pan across (WO-173). */
+  width: 150%;
   aspect-ratio: 2000 / 1414;
   translate: 0 -50%;
-  animation: drift 70s ease-in-out infinite alternate;
+  animation: pan 60s ease-in-out infinite alternate;
 }
 .picture {
   display: block;
   width: 100%;
   height: auto;
 }
-@keyframes drift {
+/* About 400 px across a 1440 px strip in a minute, then back; 18% of the picture is 27% of the strip, so the frame's edge never shows. */
+@keyframes pan {
   from {
-    transform: scale(1.06) translate(0, 0);
+    transform: translateX(0);
   }
   to {
-    transform: scale(1.14) translate(-3%, 2%);
+    transform: translateX(-18%);
   }
 }
 .pin {
@@ -39,7 +41,16 @@
   background: #6fb0e8;
   border: 2px solid #0d1219;
   transform: rotate(45deg);
-  animation: pulse 2.8s ease-in-out infinite;
+}
+/* The ring: it grows from the pin and fades, every 2.4 s, so the pins are plainly alive. */
+.pin::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 2px solid #8cc6f4;
+  opacity: 0;
+  animation: ring 2.4s ease-out infinite;
+  animation-delay: inherit;
 }
 .city {
   width: 19px;
@@ -47,13 +58,21 @@
   margin: -10px 0 0 -10px;
   background: #4f9be0;
 }
-@keyframes pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgba(111, 176, 232, 0.6);
+/* Red for a place that is a fight (rule 34). */
+.danger {
+  background: #e4584b;
+}
+.danger::after {
+  border-color: #f08a80;
+}
+@keyframes ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.95;
   }
-  50% {
-    box-shadow: 0 0 0 12px rgba(111, 176, 232, 0);
+  100% {
+    transform: scale(3.4);
+    opacity: 0;
   }
 }
 .fade {
@@ -110,21 +129,23 @@
   border-color: #e3c382;
 }
 @media (prefers-reduced-motion: reduce) {
-  .map,
-  .pin {
-    animation: none;
-  }
   .map {
-    transform: scale(1.08);
+    animation: none;
+    transform: translateX(-9%);
+  }
+  .pin::after {
+    animation: none;
+    opacity: 0;
   }
 }
 @media (max-width: 699px) {
   .strip {
     height: 300px;
   }
+  /* It pans on a phone too, slower, across a picture 2.6 times the strip's width. */
   .map {
-    animation: none;
-    transform: scale(1.3);
+    width: 260%;
+    animation-duration: 110s;
   }
   .fade {
     background: linear-gradient(90deg, rgba(11, 15, 20, 0.96) 0%, rgba(11, 15, 20, 0.9) 60%, rgba(11, 15, 20, 0.6) 100%);

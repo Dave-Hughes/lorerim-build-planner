@@ -45,7 +45,7 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
     <>
       {/* A first visit: Tapps offers the sample build (WO-80). */}
       <TourOffer href={`/b/${tourSampleId()}`} />
-      <HomeHero compact={!!userId} line={userId ? undefined : "Plan a LoreRim character from the first perk to the last quest, checked against the game's own files."}>
+      <HomeHero line="Plan a LoreRim character from the first perk to the last quest, checked against the game's own files.">
         {userId ? null : (
           <span className={styles.cta}>
             <Link href="/new" className="btn btn-primary btn-lg">

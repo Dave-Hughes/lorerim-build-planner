@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { ReadTheStory } from "@/components/reader/reader";
 import { CopyLinkButton } from "@/components/ui/copy-link-button";
@@ -5,11 +6,14 @@ import { drawnTheme, themeStyle } from "@/lib/themes";
 import type { PlaythroughRecord } from "@/lib/playthroughs/queries";
 import { Byline } from "./tabs";
 import styles from "@/components/build/build-view.module.css";
+import r from "./run-cover.module.css";
+
+const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
 /**
  * A character's hero when its run has no build to open (WO-164): the build page's own, so the two read as one character. The cover full
- * width with the name, the line and who made it over its dark fade, Copy link, and Edit for the owner. No cover is the plain band the
- * build page has. The tab row is only there when there is more than one tab (a run alone has the one).
+ * width with the name, the line and who made it over its dark fade, Copy link, and Edit for the owner. No cover is the character cards'
+ * fallback: the race's pixel icon large on the night scene's blues (a run with no build has no race, and gets the people mark). The tab row is only there when there is more than one tab (a run alone has the one).
  */
 export function RunCover({ p, isOwner }: { p: PlaythroughRecord; isOwner: boolean }) {
   const cover = p.build?.coverImageUrl ?? null;
@@ -17,7 +21,13 @@ export function RunCover({ p, isOwner }: { p: PlaythroughRecord; isOwner: boolea
   const theme = drawnTheme(undefined);
   return (
     <div className={styles.themed} data-theme={theme} style={themeStyle(theme)}>
-      <section aria-label="Playthrough" className={`${styles.cover} ${cover ? "" : styles.coverPlain}`}>
+      <section aria-label="Playthrough" className={`${styles.cover} ${cover ? "" : `${styles.coverPlain} ${r.tall}`}`}>
+        {!cover && (
+          <div className={styles.coverLayer} aria-hidden="true">
+            <div className={r.night} />
+            <img className={r.icon} src={`/icons/${p.build?.race ? `race-${slug(p.build.race)}` : "quest-people"}.svg`} alt="" />
+          </div>
+        )}
         {cover && (
           <div className={styles.coverLayer} aria-hidden="true">
             <div className={styles.coverImage} style={{ backgroundImage: `url("${cover}")`, backgroundPosition: focus ? `${focus.x}% ${focus.y}%` : undefined }} />

@@ -77,11 +77,13 @@ test.describe("at 1440", () => {
     await expect(tip).toContainText("Solitude");
   });
 
-  test("home signed in is the visitor's home: the shorter hero, Recent characters, New in the world, then Your characters small and last (Part 9)", async ({ page, context }) => {
+  test("home signed in is the visitor's home: the same hero without the buttons, Recent characters, New in the world, then Your characters small and last (Part 9)", async ({ page, context }) => {
     await signIn(context);
     await page.goto("/");
     await expect(page.getByRole("heading", { level: 1, name: "LoreRim Planner" })).toBeVisible();
-    expect((await page.locator("section[aria-label='LoreRim Planner']").boundingBox())!.height).toBeLessThan(700);
+    // The same hero as signed out (WO-173): the whole sky, the line and the search box; only the buttons go.
+    expect((await page.locator("section[aria-label='LoreRim Planner']").boundingBox())!.height).toBeGreaterThan(700);
+    await expect(page.getByRole("link", { name: "Browse characters" })).toHaveCount(0);
     await expect(page.getByRole("link", { name: "Make a character", exact: true })).toHaveCount(0);
     await expect(page.getByRole("region", { name: "New in the world" })).toBeVisible();
     await expect(page.getByRole("region", { name: "Three ways to use it" })).toHaveCount(0);

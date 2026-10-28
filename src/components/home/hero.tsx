@@ -6,15 +6,16 @@ import styles from "./home.module.css";
 /* eslint-disable @next/next/no-img-element */
 /**
  * The home page's hero (WO-157): the coming soon night scene, full width, moving on CSS alone (stars, aurora, the fire's six frames), with
- * the site's name in the pixel face, one line, and the search box that opens the palette. The header sits over it. `compact` is the
- * signed-in version, shorter and without the line.
+ * the site's name in the pixel face, one line, and the search box that opens the palette. The header sits over it. Signed in it is the same
+ * hero, the whole sky and all, without the buttons (WO-173).
  */
-export function HomeHero({ compact, line, children }: { compact?: boolean; line?: string; children?: React.ReactNode }) {
+export function HomeHero({ line, children }: { line?: string; children?: React.ReactNode }) {
+  const bare = !children;
   // `depth` is how far a layer drifts with the pointer and the scroll (WO-170): the far ones least, the fire most.
   const layer = (src: string, className = "", depth = 0.1, style?: React.CSSProperties, key?: string) => <img key={key ?? src} className={`${styles.layer} ${styles.drift} ${className}`} src={src} alt="" style={{ ...style, "--d": depth } as React.CSSProperties} />;
   const embers = [-14, -9, -4, 0, 5, 10, 15, 20];
   return (
-    <section className={`${styles.hero} ${compact ? styles.compact : ""}`} aria-label="LoreRim Planner">
+    <section className={styles.hero} aria-label="LoreRim Planner">
       {layer(HERO.sky, "", 0.1)}
       {layer(HERO.stars[0], "", 0.15)}
       {layer(HERO.stars[1], styles.starsB, 0.15)}
@@ -36,11 +37,11 @@ export function HomeHero({ compact, line, children }: { compact?: boolean; line?
       </span>
       <HeroMotion />
       <span className={styles.shade} />
-      <div className={styles.big}>
+      <div className={`${styles.big} ${bare ? styles.bare : ""}`}>
         <h1 className={styles.title}>
           LoreRim Planner
         </h1>
-        {line && !compact ? <p className={styles.line}>{line}</p> : null}
+        {line ? <p className={styles.line}>{line}</p> : null}
         <SearchLauncher />
         {children}
       </div>

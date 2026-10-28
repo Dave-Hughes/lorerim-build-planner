@@ -106,7 +106,7 @@ test.describe("signed out", () => {
     await expect(credit).toHaveAttribute("href", "https://www.nexusmods.com/skyrimspecialedition/mods/62705");
     await expect(credit).toHaveAttribute("target", "_blank");
     expect(await strip.locator("[class*='pin']").count()).toBeGreaterThan(2);
-    expect(await strip.locator("[class*='picture']").evaluate((el) => getComputedStyle(el.parentElement!).animationName)).toContain("drift");
+    expect(await strip.locator("[class*='picture']").evaluate((el) => getComputedStyle(el.parentElement!).animationName)).toContain("pan");
     await page.waitForTimeout(500);
     await page.screenshot({ path: "test-results/wo170-map-strip-1440.png" });
   });

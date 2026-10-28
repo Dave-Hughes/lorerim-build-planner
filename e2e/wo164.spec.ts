@@ -43,6 +43,11 @@ test("a run with no build has the same hero: the full-width band, the name and l
   await expect(hero.getByRole("button", { name: "Copy link" })).toBeVisible();
   await expect(hero.getByRole("link", { name: "Edit" })).toBeVisible();
   await expect(page.locator(".frame").filter({ has: page.getByRole("heading", { level: 1 }) })).toHaveCount(0);
+  // No cover: the cards' fallback, a large pixel icon on the night scene's blues, not an empty hatched band.
+  const icon = hero.locator("img[src$='.svg']").first();
+  await expect(icon).toBeVisible();
+  expect((await icon.boundingBox())!.width).toBeGreaterThan(100);
+  expect(await hero.locator("[class*='night']").evaluate((el) => getComputedStyle(el).backgroundImage)).toContain("linear-gradient");
   await expect(page.getByRole("heading", { name: "Objectives" })).toBeVisible();
   // The hero's words rise in over half a second.
   await page.waitForTimeout(1000);

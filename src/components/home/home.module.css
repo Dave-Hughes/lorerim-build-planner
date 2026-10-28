@@ -226,10 +226,14 @@
   padding: clamp(96px, 10vw, 150px) 24px max(230px, 18vw);
   text-align: center;
 }
-.compact .big {
-  gap: 18px;
-  padding-top: 100px;
-  padding-bottom: max(190px, 15vw);
+/* Signed in there are no buttons, and the scene is as tall as it is with them: the buttons' room (their height and the gap above them) stays (WO-173). */
+.bare {
+  padding-bottom: calc(max(230px, 18vw) + 74px);
+}
+@media (max-width: 699px) {
+  .bare {
+    padding-bottom: calc(max(230px, 18vw) + 140px);
+  }
 }
 .title {
   margin: 0;
@@ -239,10 +243,6 @@
   line-height: 0.82;
   color: #f4ead2;
   text-shadow: 6px 6px 0 #0b0f14;
-}
-.compact .title {
-  font-size: clamp(56px, 7vw, 96px);
-  text-shadow: 4px 4px 0 #0b0f14;
 }
 .line {
   margin: 0;
@@ -267,9 +267,6 @@
   font-size: 19px;
   text-align: left;
   cursor: pointer;
-}
-.compact .find {
-  height: 56px;
 }
 .find:hover {
   color: var(--text);

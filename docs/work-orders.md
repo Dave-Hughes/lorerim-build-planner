@@ -5023,12 +5023,21 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-173  The home page as the board: the full sky signed in, and a map strip that moves (Mac, 28 Oct 2026)
-Status: building (Mac)
+Status: for Bob
 
 **Why.** Dave, 28 Oct 06:03, signed in on his Mac: "the hero area isn't the same as you designed" and "the map on home screen also isn't animated or anything". Bob read it in his Chrome (1512 wide): signed in, the hero is the 480 px compact one, cut from the bottom of the scene, so the sky (aurora, moon, stars) and Alduin's flight across it are mostly gone; the board `HomeWow` shows the whole night sky. The map strip's drift runs, but it moves the map 3% over 70 seconds (`scale(1.06)` to `scale(1.14) translate(-3%, 2%)`), which no one can see; the board pans the paper map about 400 px over a minute.
-- [ ] **Signed in gets the same hero as signed out**: full height, the whole sky with the aurora, the moon and Alduin crossing it, the stars, the embers and the drift with the pointer. Only the buttons go (Make a character, Browse characters); the search box stays. The title stays one line (Dave, WO-159). WO-170's "signed in keeps the shorter hero" was Bob's mistake in the order; this replaces it.
-- [ ] **The map strip moves so you can see it:** the paper map larger than the strip (about 1.5 times its width, so the land's detail shows) and panning slowly across Skyrim, as the board: about 400 px over a minute, then back, never showing past the map's frame. The pins ride with it and pulse plainly (the board's ring). Reduced motion keeps it still; on a phone it pans too, slower.
-- [ ] Bob checks both in Dave's Chrome signed in and signed out (two screenshots a few seconds apart to show the strip has moved). Screenshots at 1440 signed in and out, then `for Bob`.
+- [x] **Signed in gets the same hero as signed out**: full height, the whole sky with the aurora, the moon and Alduin crossing it, the stars, the embers and the drift with the pointer. Only the buttons go (Make a character, Browse characters); the search box stays. The title stays one line (Dave, WO-159). WO-170's "signed in keeps the shorter hero" was Bob's mistake in the order; this replaces it.
+- [x] **The map strip moves so you can see it:** the paper map larger than the strip (about 1.5 times its width, so the land's detail shows) and panning slowly across Skyrim, as the board: about 400 px over a minute, then back, never showing past the map's frame. The pins ride with it and pulse plainly (the board's ring). Reduced motion keeps it still; on a phone it pans too, slower.
+- [x] Bob checks both in Dave's Chrome signed in and signed out (two screenshots a few seconds apart to show the strip has moved). Screenshots at 1440 signed in and out, then `for Bob`.
+
+
+### Jeff's notes (Mac, 28 Oct)
+- **The hero** (`hero.tsx`, `home.module.css`): there is no compact hero any more. Signed in is the same scene, signed out: full height, the whole sky, the aurora and moon, Alduin crossing, the stars, the embers and the pointer drift, the title on one line, the line under it and the search box; only the two buttons go. The scene stays as tall as it is with the buttons (`.bare` keeps their room: 74 px on a desktop, 140 px on a phone where they stack), so the sky is not cut: tested, signed in against signed out at 1440 and 390 (within 2 px). `wo157`'s signed-in test no longer expects the shorter hero.
+- **The map strip** (`map-strip.tsx`, `map-strip.module.css`): the picture is 150% of the strip's width (260% on a phone) and pans left, 60 s each way and back, about 400 px at 1440 (18% of the picture, 110 s on a phone, slower), always covering the strip on every side (tested: the picture's box contains the strip at the start and five seconds on). The pins are inside the picture, so they ride with it. Each rings: a square ring grows from the pin to 3.4 times and fades every 2.4 s (the board's ring); red for a place that is a fight (rule 34), though none with a quest falls in the window now. The pins are the cities and towns in the part of the map the strip passes over, up to 11 at least 3% of the picture apart (a few of them are under the dark fade at the left). Reduced motion: still, panned a little, no ring.
+- Tests: `e2e/wo173.spec.ts` (4): the signed-in hero's height, title, line, search, no buttons and the sky's parts, at 1440 and 390; the strip at 1440 and 390 (wider than the strip, moved 5 s apart, covers the strip, the pins and their ring, the credit); reduced motion. `wo170`'s strip test looks for `pan`. Screenshots in `test-results/`: `wo173-home-signed-in-1440.png`, `-390.png`, and the strip five seconds apart, `wo173-strip-a-1440.png` and `-b-1440.png` (and 390).
+- Full e2e: 534 of 536; the two that failed (wo123's Play tab, a busy-run flake) pass alone, and wo169's whole-map test counted 47 clusters against its 45, because WO-171 put the farms on the map, so its bound is 55.
+- **Not seen:** the board `HomeWow` itself; the ring's size and speed are mine to be judged.
+
 
 ## WO-172  Places that share a name are still separate places (Mac, 28 Oct 2026)
 Status: done
@@ -5135,7 +5144,7 @@ Jeff's notes on the second review (Mac, 28 Oct):
 - Bob, 28 Oct, 04:40: read on the preview: the cards are framed on the mountain, Miraak's temple and the eclipse, each with one whole line; the map strip's title breaks after "Every place,"; New in the world quotes no counts. Done; for Dave to look at on staging.
 
 ## WO-164  A character is one page, with or without a playthrough (Mac, 27 Oct 2026)
-Status: queued (Mac; Bob's review, after WO-173)
+Status: for Bob
 
 **Why.** Bob, signed in through Dave's Chrome (27 Oct, 18:05): Kyria's playthrough page (`/p/4et99tk25s`) still has the old framed title and none of her cover, though `/me` shows her golden-armour cover; "‹ My characters" is the old text link; `/p/<id>/build` redirects to `?tab=levels` and shows the same Play view, so a playthrough's build can't be reached from it. The character page (`/b/<id>`) has the full-width cover and a Build | Guide tab row; the two don't look like one character. The agreed pattern (canvas row 25, WO-114a): one hero, one row of tabs.
 - [x] **The build page (`/b/<id>`) does not change.** Dave, 27 Oct: "please do not redesign the character build pages, those are the best on the site." It's the reference the playthrough page copies, not something this order touches.
@@ -5163,7 +5172,9 @@ Status: queued (Mac; Bob's review, after WO-173)
 
 ### Bob's review, signed in (28 Oct, 06:15, in Dave's Chrome on his Mac)
 Kyria's run (`/p/4et99tk25s`) has the build page's hero (her name, line, Made by, Read the story, Copy link, Edit) and the WO-159 back button; `/me` uses the one character card, with race-icon covers for the ones with none and "Plan a playthrough" in place of "Start a run". Fix:
-- [ ] **A run with no cover** shows the hero as an empty hatched band (Kyria's run). Use the same fallback as the cards: the race's pixel icon large on the night-scene colours.
+- [x] **A run with no cover** shows the hero as an empty hatched band (Kyria's run). Use the same fallback as the cards: the race's pixel icon large on the night-scene colours.
+
+Jeff's note on the review (Mac, 28 Oct): a run with no cover has the night scene's blues with the race's pixel icon large on the right (`run-cover.tsx`, `run-cover.module.css`); a run with no build has no race, so it gets the people mark. Tested in `wo164` (the icon is shown, over 100 px wide, on the gradient); screenshots `wo164-nobuild-1440.png` and `-390.png`. The cover's height is 300 px (260 on a phone).
 - [ ] **On a fallback card the icon runs into the name**: the head sits behind "TEST: ISOLDE MARCHAND" and the tagline. The icon sits above the words with room, or smaller.
 - [ ] **What's under each card on `/me` doesn't line up**: "Plan a playthrough ›" on some, "Only you" and "AI assisted" on a line that wraps on others, so Delete and Edit sit at three different heights across one row. One fixed layout under every card: who can see it and AI assisted on one line, then Plan a playthrough when there's no run, then Delete and Edit at the same place.
 - [ ] Screenshots of Kyria's run and `/me` signed in, then `for Bob`.

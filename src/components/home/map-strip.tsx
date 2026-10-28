@@ -5,7 +5,7 @@ import { mapEntry } from "@/lib/places/map";
 import c from "./map-strip.module.css";
 
 /**
- * The map strip (WO-170): full width, the paper map drifting slowly behind, a few city and town pins pulsing, a dark fade from the left under
+ * The map strip (WO-170, WO-173): full width, the paper map, larger than the strip, panning slowly across Skyrim with its city and town pins riding on it and pulsing, a dark fade from the left under
  * "Every place, on the game's own map", one line with the counts from the places index (never typed), and Open the map. It is an instance of
  * the map, so it carries the credit and link its author asked for, in the corner, as every map does.
  */
@@ -16,19 +16,24 @@ export function MapStrip() {
   const [x0, y0, x1, y1] = entry.border;
   const towns = places.filter((p) => p.kind === "city" || p.kind === "town").length;
   const danger = places.filter((p) => p.kind === "danger").length;
-  // A few capitals and towns in the middle band of the map, where the strip looks: as a share of the picture.
-  const pins = places
-    .filter((p) => p.kind === "city" || p.kind === "town")
+  // The places in the band of the map the strip looks at as it pans (WO-173: the picture is 1.5 times the strip's width and goes about 400 px
+  // across, so a window of it is ever in view), as a share of the picture: the cities, the towns, then places worth a fight, a few apart so the
+  // rings don't pile up.
+  const rank = (k: string) => (k === "city" ? 0 : k === "town" ? 1 : 2);
+  const inBand = places
+    .filter((p) => p.kind === "city" || p.kind === "town" || (p.kind === "danger" && p.quests > 0))
     .map((p) => ({ p, left: ((p.px - x0) / (x1 - x0)) * 100, top: ((p.py - y0) / (y1 - y0)) * 100 }))
-    .filter((x) => x.top > 30 && x.top < 72 && x.left > 22 && x.left < 96)
-    .sort((a, b) => (a.p.kind === "city" ? 0 : 1) - (b.p.kind === "city" ? 0 : 1) || a.left - b.left)
-    .slice(0, 7);
+    .filter((x) => x.top > 36 && x.top < 64 && x.left > 12 && x.left < 86)
+    .sort((a, b) => rank(a.p.kind) - rank(b.p.kind) || b.p.quests - a.p.quests);
+  const pins: typeof inBand = [];
+  // 3% of the picture's width apart (about 65 px at the strip's size), and 11 at most.
+  for (const x of inBand) if (pins.length < 11 && pins.every((q) => Math.hypot(q.left - x.left, (q.top - x.top) * 0.707) > 3)) pins.push(x);
   return (
     <section className={c.strip} aria-labelledby="map-strip">
       <div className={c.map} aria-hidden="true">
         <img className={c.picture} src={entry.image.url} alt="" width={entry.image.width} height={entry.image.height} />
         {pins.map(({ p, left, top }, i) => (
-          <i key={p.slug} className={`${c.pin} ${p.kind === "city" ? c.city : ""}`} style={{ left: `${left}%`, top: `${top}%`, animationDelay: `${-i * 0.7}s` }} />
+          <i key={p.slug} className={`${c.pin} ${p.kind === "city" ? c.city : ""} ${p.kind === "danger" ? c.danger : ""}`} style={{ left: `${left}%`, top: `${top}%`, animationDelay: `${-i * 0.7}s` }} />
         ))}
       </div>
       <div className={c.fade} />

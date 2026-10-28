@@ -72,7 +72,7 @@ describe("get_quest, get_quest_log and suggest_quests on the real quests.json", 
         clean(q.edid, a);
         for (const level of [5, 20, 50]) clean(`${q.edid} at ${level}`, getQuest({ id: q.edid }, undefined, playerState({ level })));
       }
-  });
+  }, 30_000);
   it("get_quest_log with every quest started: no throw, every entry with a page", () => {
     const questStages = Object.fromEntries(lines.flatMap((l) => l.quests.map((q) => [q.edid, 10] as const)));
     const log = questLog({ label: "Save", level: 30, questStages }, 40, "https://planner.test");

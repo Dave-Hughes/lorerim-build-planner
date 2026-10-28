@@ -1,0 +1,29 @@
+/* A run with no cover (WO-164 review): the same fallback as the character cards, the race's pixel icon large on the night scene's blues. */
+.night {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(170deg, #1b2a44 0%, #14213a 45%, #0d1524 100%);
+}
+.icon {
+  position: absolute;
+  right: max(var(--gutter), calc((100% - var(--page-max)) / 2 + var(--gutter)));
+  top: 50%;
+  width: clamp(120px, 18vw, 220px);
+  aspect-ratio: 1;
+  translate: 0 -62%;
+  image-rendering: pixelated;
+  opacity: 0.92;
+}
+.tall {
+  min-height: 300px;
+}
+@media (max-width: 699px) {
+  .tall {
+    min-height: 260px;
+  }
+  .icon {
+    width: 64px;
+    top: 14px;
+    translate: 0 0;
+  }
+}

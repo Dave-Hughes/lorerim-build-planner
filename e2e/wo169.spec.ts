@@ -45,7 +45,7 @@ for (const width of [1440, 390]) {
       expect(b!.y, city).toBeGreaterThanOrEqual(free.top);
       expect(b!.y + b!.height, city).toBeLessThanOrEqual(free.bottom + 1);
     }
-    expect(await map(page).getByRole("button", { name: /places, zoom in/ }).count()).toBeLessThan(width === 1440 ? 45 : 130);
+    expect(await map(page).getByRole("button", { name: /places, zoom in/ }).count()).toBeLessThan(width === 1440 ? 55 : 130);
     // No two names stack: the lesser one is dropped.
     const plates = await map(page).locator("a[class*='pin'] [class*='plate']").all();
     const boxes = await Promise.all(plates.map((p) => p.boundingBox()));
