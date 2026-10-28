@@ -5117,7 +5117,7 @@ Status: queued (Mac; after WO-163)
 - [ ] Checks, screenshots of The Golden Claw, Lights Out!, Aela the Huntress and Lydia at 1440 and 390, then `for Bob`.
 
 ## WO-163  Quest categories as tables (Mac, 27 Oct 2026)
-Status: queued (Mac; after WO-162)
+Status: building (Mac)
 
 **Why.** `docs/page-templates.md` rows 11 and 12: a category is up to 73 framed cards with a journal quote and Tell me more each, 10,000 px to scroll and nothing to compare. Dave: Wowhead is great. Board: `QuestCategoryTable` (canvas row 36).
 - [ ] Every category page (`/quests/c/<slug>`) other than Main stories (WO-160) is the board: a short scene banner with the title over it; search; Hold, Level and From filters that apply as you pick; pills for All, Base game, Creation Club, Mods, and Lines of several quests, with real counts; then one table, one row per quest or line: icon (a line's icon differs from a single quest's), name, who starts it, where (blue), level (red, "Any" muted), length, from (base game plain, a mod as a tag with its link), quest XP in the pixel face (gold; "None" muted). Every column sorts; the header row sticks while you scroll.
