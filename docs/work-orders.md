@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-174  Dave's test, 28 Oct morning: the quest page's side column, its first step, and the Map page made simpler (Mac, 28 Oct 2026)
-Status: queued (Mac; after WO-173)
+Status: building (Mac)
 
 **Why.** Dave, 28 Oct 07:04, testing staging. Bob missed the first one: his full-page screenshots never scroll, so a sticky column overlapping can't show in them; from now on Bob scrolls each long page in a real window.
 ### Part 1. A quest's page
