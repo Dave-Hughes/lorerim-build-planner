@@ -885,7 +885,7 @@ export function suggestFrom(origin: string, input: { level: number; where?: stri
       checked: "files",
       firstQuest: first.name,
       openForYou: open.says,
-      link: s ? `${origin}/quests/s/${s.id}` : `${origin}/quests/${line.id}`,
+      link: `${origin}/quests/${line.id}`,
     }));
   const left = leftOutLine(leftOut.length, leftOut);
   return {

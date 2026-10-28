@@ -11,18 +11,20 @@ import { InformationConfidence, PageTop, TitleBox } from "@/components/pages/pag
 import { placeNames } from "@/lib/pages/names";
 import k from "@/components/pages/page-kit.module.css";
 import { QuestReport } from "@/components/quests/quest-report";
-import { QuestRow } from "@/components/quests/journal";
-import { rowOf } from "@/lib/quests/reads";
-import { townsIn } from "@/lib/places/suggest";
+import { LineJobs, LineStory, LineToc } from "@/components/quests/line-parts";
 import { LineNeeds, type AfterLine } from "@/components/quests/line-start";
-import { categories, categorySlug, gateOf, homeName, mainOrder, questsData } from "@/lib/quests/data";
+import { categories, homeName, mainOrder, questsData } from "@/lib/quests/data";
+import { lineView } from "@/lib/quests/line-view";
 import { MAIN } from "@/lib/quests/open";
-import { storyOfLine } from "@/lib/quests/stories-data";
+import { rowOf } from "@/lib/quests/reads";
 import { siteMetadata } from "@/lib/og/metadata";
 import { questHref } from "@/lib/quests/slugs";
+import { checkedLabel } from "@/lib/quests/story";
+import { storyOfLine } from "@/lib/quests/stories-data";
 import type { Quest, QuestLine } from "@/lib/quests/types";
 import { startChecked } from "@/lib/quests/types";
 import styles from "@/components/quests/quests.module.css";
+import l from "@/components/quests/line-page.module.css";
 
 export const dynamic = "force-dynamic";
 
@@ -31,22 +33,14 @@ type Params = Promise<{ id: string }>;
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { id } = await params;
   await loadPlayerFacts();
-  const l = questsData().byId.get(id);
-  return l ? { title: l.name, ...siteMetadata(`/quests/${l.id}`, l.name, l.begins ?? homeName(l.category)) } : {};
+  const line = questsData().byId.get(id);
+  if (!line) return {};
+  const story = storyOfLine(line.id);
+  return { title: story?.name ?? line.name, ...siteMetadata(`/quests/${line.id}`, story?.name ?? line.name, story?.pitch ?? line.read?.about ?? line.begins ?? homeName(line.category)) };
 }
-
 
 /** A line read's field names as a player says them. */
 const LINE_FIELD_WORDS: Record<string, string> = { about: "what it is", getIn: "how to get in", order: "the order of its quests", branches: "the choices", gives: "what it gives", closes: "what it closes" };
-
-/** "14 quests pay 100; the rest pay none" */
-function xpNote(quests: Quest[]): string {
-  const paying = quests.filter((q) => q.xp > 0);
-  if (!paying.length) return "None of its quests pay XP";
-  const same = paying.every((q) => q.xp === paying[0].xp);
-  const head = `${paying.length} quest${paying.length === 1 ? "" : "s"} pay${paying.length === 1 ? "s" : ""} ${same ? paying[0].xp : "XP"}`;
-  return paying.length < quests.length ? `${head}; the rest pay none` : head;
-}
 
 /** Jobs and errands lines that share a mod with this one (Missives' Wyrmstooth board). */
 function siblings(line: QuestLine): QuestLine[] {
@@ -56,7 +50,11 @@ function siblings(line: QuestLine): QuestLine[] {
   return questsData().lines.filter((l) => l.category === "work" && l.sources.some((s) => mods.some((m) => s.name.toLowerCase().includes(m))));
 }
 
-/** A quest line (WO-100, QuestLine): how to start it, what it gives, and its quests with their journals. */
+/**
+ * A quest line (WO-160, LinePage): the one page for every line, told as a story or as its quests in order. The pitch, At a glance, the story,
+ * Along the way, what the line gives and closes, and a rail with the contents, what it opens and how it starts in full; Information
+ * Confidence last. A line with a story (stories.json) takes the story's name as its title; the line's own name is a tag under it.
+ */
 export default async function QuestLinePage({ params, searchParams }: { params: Params; searchParams: Promise<{ report?: string }> }) {
   const { id } = await params;
   // The approved player facts, laid over the quest data (WO-146).
@@ -70,430 +68,321 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
   // A line of one quest isn't a line (WO-154): its quest's page is the page.
   if (line.quests.length === 1 && line.category !== "work" && questHref(line.quests[0].edid)) redirect(questHref(line.quests[0].edid)!);
   const home = cats[line.category] ? categories().find((c) => c.key === line.category)! : null;
-  const slug = home?.slug ?? "side-stories";
   const main = mainOrder();
   const after: AfterLine[] = line.after
     .filter((a) => a !== MAIN)
     .map((a) => byId.get(a))
-    .filter((l): l is QuestLine => !!l)
-    .map((l) => ({ id: l.id, name: l.name, home: homeName(l.category), where: l.where, source: l.sources.map((s) => s.name).join(", "), begins: l.begins, quoted: l.beginsFrom === "opening" }));
+    .filter((x): x is QuestLine => !!x)
+    .map((x) => ({ id: x.id, name: x.name, home: homeName(x.category), where: x.where, source: x.sources.map((s) => s.name).join(", "), begins: x.begins, quoted: x.beginsFrom === "opening" }));
   const opening = line.quests.find((q) => q.edid === line.opening);
-  // A line of jobs from a board lists them once, as the class, not one by one (WO-136 ruling 3): no story rows, no job rows.
-  const story = line.board ? [] : [...(opening && opening.xp > 0 ? [opening] : []), ...line.quests.filter((q) => q.xp > 0 && q !== opening)];
-  // A quest the read already lists in order isn't a job again.
-  const ordered = new Set((line.read?.order ?? []).map((o) => o.quest));
-  const jobs = line.board ? [] : line.quests.filter((q) => q.xp === 0 && !ordered.has(q.name));
-  const shelf0 = line.category === "work";
-  const rows = new Map(line.quests.map((q, i) => [q.edid, rowOf(q, i > 0 ? line.quests[i - 1] : undefined)]));
-  const gives = line.quests.map((q) => ({ edid: q.edid, name: q.name, what: rows.get(q.edid)!.rewards.filter((r) => !/^Gold\b/i.test(r.what)) })).filter((g) => g.what.length > 0);
-  const closes = line.quests.flatMap((q) => rows.get(q.edid)!.closes.map((text) => ({ edid: q.edid, name: q.name, text })));
-  const read = line.quests.filter((q) => q.source === "reads").length;
-  // A shelf of jobs is grouped by where you pick them up (WO-154): the town its start names, else where it is, else "Elsewhere".
-  const pickUp = (q: Quest) => {
-    const { where, town } = rows.get(q.edid)!;
-    return town ?? (where ? (townsIn(where)[0] ?? where) : "Where to pick it up isn't read yet");
-  };
-  const groups = shelf0 && !line.board ? [...new Set(line.quests.map(pickUp))].map((place) => ({ place, quests: line.quests.filter((q) => pickUp(q) === place) })) : [];
-  const sibs = siblings(line);
-  // The line's read (WO-154 Part 2): what it is, how to get in, the quests in order with the branches, what it gives and closes.
+  const view = lineView(line);
+  const told = storyOfLine(line.id);
   const lr = line.read;
   const names = placeNames();
-  const hrefOf = (name: string) => {
-    const q = line.quests.find((x) => x.name === name);
-    return q ? questHref(q.edid) : null;
-  };
+  const shelf = view.shelf;
+  const read = line.quests.filter((q) => q.source === "reads").length;
   const waysIn = line.ways ?? (startChecked(opening?.start) ? opening!.start!.ways : undefined);
-  const told = storyOfLine(line.id);
-  // A shelf is separate jobs, not a story (WO-147 Part 2): no giver, ways in or first step taken from one of them for the whole.
-  const shelf = line.category === "work";
-  return (
-    <main className={`page ${styles.main} ${styles.inner}`}>
-      <PageTop back={{ href: home ? `/quests/c/${home.slug}` : "/quests", label: home?.name ?? shelves[line.category]?.name ?? "Quests" }} />
-      {told && (
-        <Link href={`/quests/s/${told.id}`} className={styles.storyLink}>
-          Read it as a story ›
-        </Link>
-      )}
-      <TitleBox
-        title={line.name}
-        tags={
-          <>
-            {line.prince && <span className={k.tag}>{line.prince}</span>}
-            {line.where && <span className={k.tag}>{line.where}</span>}
-            {line.sources.map((s) =>
-              s.modid ? (
-                <a key={s.name} href={`https://www.nexusmods.com/skyrimspecialedition/mods/${s.modid}`} target="_blank" rel="noreferrer" className={k.tag}>
-                  {s.name} <span aria-hidden="true">↗</span>
-                </a>
-              ) : (
-                <span key={s.name} className={k.tag}>
-                  {s.name}
-                </span>
-              ),
-            )}
-            <span className={k.tagText}>
-              {line.quests.length} quest{line.quests.length === 1 ? "" : "s"}
-            </span>
-          </>
-        }
-      />
+  const sibs = siblings(line);
+  const rows = new Map(line.quests.map((q: Quest, i) => [q.edid, rowOf(q, i > 0 ? line.quests[i - 1] : undefined)]));
+  const gives = line.quests.map((q) => ({ edid: q.edid, name: q.name, what: rows.get(q.edid)!.rewards.filter((r) => !/^Gold\b/i.test(r.what)) })).filter((g) => g.what.length > 0);
+  const closes = line.quests.flatMap((q) => rows.get(q.edid)!.closes.map((text) => ({ edid: q.edid, name: q.name, text })));
+  const pitch = told?.pitch ?? lr?.about ?? null;
+  const g = view.glance;
+  const cells = [
+    { key: "start", icon: "quest-sure", tone: l.cGreen, label: "How it starts", ...g.start, vSmall: g.start.value.length > 30 },
+    { key: "level", icon: "tab-levels", tone: l.cRed, label: "Level", ...g.level, vSmall: false },
+    { key: "length", icon: "tab-play", tone: l.cOrange, label: "Length", ...g.length, vSmall: false },
+    ...(g.xp ? [{ key: "xp", icon: "quest-rewards", tone: l.cGold, label: "Quest XP", ...g.xp, vSmall: false }] : []),
+    ...(g.where ? [{ key: "where", icon: "quest-travel", tone: l.cTeal, label: "Where it takes you", value: g.where, sub: null, vSmall: true }] : []),
+  ];
+  const hasStory = view.chapters.length > 0;
+  const toc = [
+    ...(hasStory ? [{ id: "story", label: shelf ? "Jobs" : "The story", icon: "tab-play" }] : []),
+    ...(view.jobs.length ? [{ id: "along", label: "Along the way", icon: "quest-jobs-and-errands" }] : []),
+    ...(lr?.gives?.length || (!lr?.gives && gives.length) ? [{ id: "gives", label: "What the whole line gives", icon: "quest-rewards" }] : []),
+    ...(lr?.closes?.length || (!lr?.closes && closes.length) ? [{ id: "closes", label: "What it closes", icon: "quest-changes" }] : []),
+    ...(view.opens.length ? [{ id: "opens", label: "Opens other stories", icon: "quest-ways" }] : []),
+    { id: "sure-line", label: "Information Confidence", icon: "quest-sure" },
+  ];
 
-      <div className={styles.lineGrid}>
-        <div className={styles.lineMain}>
-          {lr?.about ? (
-            <p className={k.lede}>{lr.about}</p>
-          ) : (
-            line.begins && (line.beginsFrom === "opening" ? <p className={styles.quote}>“{line.begins}”</p> : <p className={styles.plainBig}>{line.begins}</p>)
+  return (
+    <main className={l.root}>
+      <div className={`page ${l.top}`}>
+        <PageTop back={{ href: home ? `/quests/c/${home.slug}` : "/quests", label: home?.name ?? shelves[line.category]?.name ?? "Quests" }} />
+        <TitleBox
+          title={view.title}
+          tags={
+            <>
+              {view.lineTag && <span className={k.role}>{view.lineTag}</span>}
+              {line.prince && <span className={k.tag}>{line.prince}</span>}
+              {line.where && <span className={k.tag}>{line.where}</span>}
+              {line.sources.map((s) =>
+                s.modid ? (
+                  <a key={s.name} href={`https://www.nexusmods.com/skyrimspecialedition/mods/${s.modid}`} target="_blank" rel="noreferrer" className={k.tag}>
+                    {s.name} <span aria-hidden="true">↗</span>
+                  </a>
+                ) : (
+                  <span key={s.name} className={k.tag}>
+                    {s.name}
+                  </span>
+                ),
+              )}
+              {view.chapterCount > 0 && <span className={k.tag}>{view.chapterCount} chapters</span>}
+              <span className={k.tag}>
+                {view.questCount} quest{view.questCount === 1 ? "" : "s"}
+              </span>
+            </>
+          }
+        />
+        {pitch ? <p className={l.pitch}>{pitch}</p> : line.begins ? line.beginsFrom === "opening" ? <p className={styles.quote}>“{line.begins}”</p> : <p className={l.pitch}>{line.begins}</p> : null}
+      </div>
+
+      <section className={l.band} aria-label="At a glance">
+        <div className={`page ${l.glance}`} style={{ "--cols": cells.length } as React.CSSProperties}>
+          {cells.map((c) => (
+            <div key={c.key} className={l.gl}>
+              <span className={`${l.k} ${c.tone}`}>
+                <img className={l.px} src={`/icons/${c.icon}.svg`} alt="" width={18} height={18} />
+                {c.label}
+              </span>
+              <span className={`${l.v} ${c.key === "xp" ? l.cGold : ""} ${c.vSmall ? l.vSmall : ""}`}>{c.value}</span>
+              {c.sub && <span className={l.s}>{c.sub}</span>}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <div className={`page ${l.cols}`}>
+        <div className={l.main}>
+          {hasStory && <LineStory chapters={view.chapters} numbered={view.numbered} hideable={view.numbered && view.chapters.length > 1} id="story" title={shelf ? "Jobs" : "The story"} icon="tab-play" />}
+
+          {line.board && (
+            <section className={l.sec} aria-labelledby="board-h">
+              <div className={l.sechd}>
+                <h2 id="board-h" className={l.h2}>
+                  {line.board.name}
+                </h2>
+                <span className={l.cap}>{line.quests.length} jobs</span>
+              </div>
+              <p className={l.body}>{line.board.says}</p>
+              <p className={l.cap}>{line.board.boards?.length ? `Where the boards are: ${line.board.boards.join("; ")}.` : "Where the boards are isn't checked yet."}</p>
+            </section>
+          )}
+          {line.radiant && (
+            <section className={l.sec} aria-labelledby="radiant-h">
+              <div className={l.sechd}>
+                <h2 id="radiant-h" className={l.h2}>
+                  {line.radiant.name}
+                </h2>
+                <span className={l.cap}>{line.radiant.jobs} kinds</span>
+              </div>
+              <p className={l.body}>{line.radiant.says}</p>
+            </section>
           )}
 
-          <section className={`${styles.panel}`} aria-labelledby="start-title">
-            <h2 id="start-title" className={styles.h2}>
-              {shelf ? "How to start them" : "How to start it"}
-            </h2>
-            {shelf && <p className={styles.soft}>Separate jobs, each with its own start. Open one for how it starts.</p>}
-            <dl className={styles.who}>
-              {!shelf && lr?.getIn?.who && (
+          <LineJobs jobs={view.jobs} note={view.jobsNote} id="along" />
+
+          {lr?.gives?.length ? (
+            <section className={l.sec} id="gives" aria-labelledby="gives-h">
+              <div className={l.sechd}>
+                <h2 id="gives-h" className={l.h2}>
+                  What the whole line gives
+                </h2>
+              </div>
+              <ul className={`${l.list} ${l.gives}`}>
+                {lr.gives.map((x, i) => (
+                  <li key={i}>
+                    <Linked text={x} names={names} />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : !lr?.gives && gives.length > 0 ? (
+            <section className={l.sec} id="gives" aria-labelledby="gives-h">
+              <div className={l.sechd}>
+                <h2 id="gives-h" className={l.h2}>
+                  What the whole line gives
+                </h2>
+              </div>
+              <ul className={`${l.list} ${l.gives}`}>
+                {gives.map((x) => (
+                  <li key={x.edid}>
+                    <b>{x.name}</b>: {x.what.map((r) => r.what + (r.when ? ` (${r.when})` : "")).join("; ")}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+
+          {lr?.closes?.length ? (
+            <section className={l.sec} id="closes" aria-labelledby="closes-h">
+              <div className={l.sechd}>
+                <h2 id="closes-h" className={l.h2}>
+                  What it closes
+                </h2>
+              </div>
+              <ul className={`${l.list} ${l.closes}`}>
+                {lr.closes.map((x, i) => (
+                  <li key={i}>
+                    <Linked text={x} names={names} />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : !lr?.closes && closes.length > 0 ? (
+            <section className={l.sec} id="closes" aria-labelledby="closes-h">
+              <div className={l.sechd}>
+                <h2 id="closes-h" className={l.h2}>
+                  What it closes
+                </h2>
+              </div>
+              <ul className={`${l.list} ${l.closes}`}>
+                {closes.map((x) => (
+                  <li key={x.edid}>
+                    {x.text} <span className="muted">| {x.name}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+        </div>
+
+        <aside className={l.rail}>
+          <LineToc items={toc} />
+
+          {view.opens.length > 0 && (
+            <div id="opens" style={{ scrollMarginTop: 90 }}>
+              <h3 className={l.rh}>Opens other stories</h3>
+              {view.opens.map((o) => (
+                <div key={o.id} className={l.op}>
+                  <Link href={`/quests/${o.id}`}>{o.name}</Link>
+                  <ul className={l.needs} aria-label={`Needs for ${o.name}`}>
+                    {o.needs.map((n, i) => (
+                      <li key={i} className={`${l.need} ${n.tone === "done" ? l.needDone : n.tone === "danger" ? l.needDanger : l.needOther}`}>
+                        <i />
+                        <span>
+                          {n.text}
+                          {n.note && <small>{n.note}</small>}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <section aria-labelledby="how-h">
+            <h3 id="how-h" className={l.rh}>
+              {shelf ? "How to start them" : "How it starts"}
+            </h3>
+            <div className={l.how}>
+              {told ? (
+                told.start.map((s, i) => (
+                  <p key={i}>
+                    {s.text}
+                    <span className={`${l.src} ${s.checked === "not yet" ? l.srcNo : ""}`}>{checkedLabel(s.checked)}</span>
+                  </p>
+                ))
+              ) : (
                 <>
-                  <dt>Who</dt>
-                  <dd>
-                    <Linked text={lr.getIn.who} names={names} />
-                  </dd>
-                </>
-              )}
-              {!shelf && lr?.getIn?.where && (
-                <>
-                  <dt>Where</dt>
-                  <dd>
-                    <Linked text={lr.getIn.where} names={names} />
-                  </dd>
-                </>
-              )}
-              {!shelf && lr?.getIn?.how && (
-                <>
-                  <dt>How</dt>
-                  <dd>
-                    <Linked text={lr.getIn.how} names={names} />
-                  </dd>
-                </>
-              )}
-              {!shelf && !lr?.getIn && line.giver && (
-                <>
-                  <dt>Who</dt>
-                  <dd>
-                    {line.giver.name}
-                  </dd>
-                </>
-              )}
-              {!shelf && !lr?.getIn && line.giver?.place && (
-                <>
-                  <dt>Where</dt>
-                  <dd>
-                    {line.giver.place}
-                  </dd>
-                </>
-              )}
-              {/* No one giver (WO-121): the opening quest's ways in, as the start check words them; every opening's, when the line has more than one (WO-121b). */}
-              {!shelf && !lr?.getIn && !line.giver && !!waysIn?.length && (
-                <>
-                  <dt>Ways in</dt>
-                  <dd>
+                  {shelf && <p>Separate jobs, each with its own start. Open one for how it starts.</p>}
+                  {!shelf && lr?.getIn?.who && (
+                    <p>
+                      <b>Who.</b> <Linked text={lr.getIn.who} names={names} />
+                    </p>
+                  )}
+                  {!shelf && lr?.getIn?.where && (
+                    <p>
+                      <b>Where.</b> <Linked text={lr.getIn.where} names={names} />
+                    </p>
+                  )}
+                  {!shelf && lr?.getIn?.how && (
+                    <p>
+                      <Linked text={lr.getIn.how} names={names} />
+                    </p>
+                  )}
+                  {!shelf && !lr?.getIn && line.giver && (
+                    <p>
+                      <b>Who.</b> {line.giver.name}
+                      {line.giver.place ? ` in ${line.giver.place}` : ""}
+                    </p>
+                  )}
+                  {/* No one giver (WO-121): the opening quest's ways in, as the start check words them (WO-121b). */}
+                  {!shelf && !lr?.getIn && !line.giver && !!waysIn?.length && (
                     <ul className={styles.waysList}>
                       {waysIn.map((w, i) => (
                         <li key={i}>
                           {w.how}
-                          {w.checked === "players" ? <span className={styles.src}>{pageSources(w.source ?? "", w.also)}</span> : null}
+                          {w.checked === "players" ? <span className={l.src}>{pageSources(w.source ?? "", w.also)}</span> : null}
                           {"whereIs" in w && w.whereIs?.length ? <span className="muted"> ({w.whereIs.join("; ")})</span> : null}
                           {"unplaced" in w && w.unplaced ? <span className="muted"> ({w.unplaced})</span> : null}
                         </li>
                       ))}
                     </ul>
-                  </dd>
+                  )}
+                  {!shelf && !lr?.getIn && !line.giver && line.firstObjective && (
+                    <p>
+                      <b>First step.</b> {line.firstObjective}
+                    </p>
+                  )}
+                  {!lr?.getIn?.how && line.start && <p>{line.start}</p>}
+                  {!!lr?.getIn?.needs?.length && (
+                    <ul className={k.needs}>
+                      {lr.getIn.needs.map((n, i) => (
+                        <li key={i}>
+                          <Linked text={n} names={names} />
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </>
               )}
-              {!shelf && !lr?.getIn && !line.giver && line.firstObjective && (
-                <>
-                  <dt>First step</dt>
-                  <dd>
-                    {line.firstObjective}
-                  </dd>
-                </>
-              )}
-              {!lr?.getIn?.how && line.start && (
-                <>
-                  <dt>How</dt>
-                  <dd>
-                    {line.start}
-                  </dd>
-                </>
-              )}
-            </dl>
-            {!!lr?.getIn?.needs?.length && (
-              <ul className={k.needs}>
-                {lr.getIn.needs.map((n, i) => (
-                  <li key={i}>
-                    <Linked text={n} names={names} />
-                  </li>
-                ))}
-              </ul>
-            )}
-            <div className={styles.needsBlock}>
-              <LineNeeds gate={gateOf(line)} after={after} main={main} />
+              <LineNeeds gate={{ id: line.id, minLevel: line.minLevel, after: line.after, mainQuestAt: line.mainQuestAt }} after={after} main={main} />
+              <Link href={`/quests/${line.id}?report=1#report`} className={l.wrong}>
+                This was wrong ›
+              </Link>
             </div>
           </section>
 
-          {(line.size || line.level || line.xpTotal > 0) && (
-            <div className={styles.factRow}>
-              {line.size && (
-                <span className={styles.fact}>
-                  <b>Length</b>
-                  <span>{line.size}</span>
-                </span>
-              )}
-              {line.level && (
-                <span className={styles.fact}>
-                  <b>Enemies</b>
-                  <span>{line.level}</span>
-                </span>
-              )}
-              {line.xpTotal > 0 && (
-                <span className={styles.fact}>
-                  <b>Quest XP</b>
-                  <span>{line.xpTotal.toLocaleString("en-US")}</span>
-                  <small>{xpNote(line.quests)}</small>
-                </span>
-              )}
-            </div>
-          )}
-
-          {lr?.gives?.length ? (
-            <section className={styles.panel} aria-labelledby="rewards-title">
-              <h2 id="rewards-title" className={styles.h2}>
-                What the whole line gives
-              </h2>
-              <ul className={k.list}>
-                {lr.gives.map((g, i) => (
-                  <li key={i}>
-                    <Linked text={g} names={names} />
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ) : null}
-
-          {!lr?.gives && gives.length > 0 && (
-            <section className={styles.panel} aria-labelledby="rewards-title">
-              <h2 id="rewards-title" className={styles.h2}>
-                What the whole line gives
-              </h2>
-              <ul className={styles.rewards}>
-                {gives.map((g) => (
-                  <li key={g.edid}>
-                    <b>{g.name}</b>: {g.what.map((r) => r.what + (r.when ? ` (${r.when})` : "")).join("; ")}
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-
-          {lr?.closes?.length ? (
-            <section className={styles.panel} aria-labelledby="closes-title">
-              <h2 id="closes-title" className={styles.h2}>
-                What it closes
-              </h2>
-              <ul className={k.list}>
-                {lr.closes.map((c, i) => (
-                  <li key={i}>
-                    <Linked text={c} names={names} />
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ) : null}
-
-          {!lr?.closes && closes.length > 0 && (
-            <section className={styles.panel} aria-labelledby="closes-title">
-              <h2 id="closes-title" className={styles.h2}>
-                What it closes
-              </h2>
-              <ul className={styles.rewards}>
-                {closes.map((c) => (
-                  <li key={c.edid}>
-                    {c.text} <span className="muted">| {c.name}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-
-          <section aria-labelledby="quests-title" className={styles.questsSection}>
-            <span className={styles.questsHead}>
-              <h2 id="quests-title" className={styles.h2}>
-                {shelf ? "Jobs" : "The quests in order"}
-              </h2>
-            </span>
-            {groups.length > 0 &&
-              groups.map((g) => (
-                <div className={styles.group} key={g.place}>
-                  <div className={styles.ghead}>
-                    <h3>{g.place}</h3>
-                    <span>
-                      {g.quests.length} job{g.quests.length === 1 ? "" : "s"}
-                    </span>
-                  </div>
-                  <ul className={styles.qlist}>
-                    {g.quests.map((q) => (
-                      <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={false} href={questHref(q.edid)} summary={rows.get(q.edid)!.summary} places={rows.get(q.edid)!.places} needs={rows.get(q.edid)!.needs} />
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            {!shelf0 && lr?.order?.length ? (
-              <div className={styles.group}>
-                <div className={styles.ghead}>
-                  <h3>In order</h3>
-                  <span>
-                    {lr.order.length} quest{lr.order.length === 1 ? "" : "s"}
-                  </span>
-                </div>
-                <ol className={styles.qlist} style={{ listStyle: "none", padding: 0 }}>
-                  {lr.order.map((o, i) => {
-                    const href = hrefOf(o.quest);
-                    const branch = lr.branches?.find((b) => b.at === o.quest);
-                    return (
-                      <li key={i} style={{ display: "flex", flexDirection: "column", gap: 4, padding: "14px 0", borderBottom: "1px solid var(--rule-soft)" }}>
-                        <span style={{ fontSize: 18, fontWeight: 600 }}>
-                          <span className="muted" style={{ marginRight: 10, fontWeight: 400 }}>
-                            {i + 1}
-                          </span>
-                          {href ? <Link href={href}>{o.quest}</Link> : o.quest}
-                          {o.quest === opening?.name && line.category !== "work" ? <span className={styles.first}>Starts here</span> : null}
-                        </span>
-                        {o.what ? (
-                          <span style={{ color: "var(--soft)" }}>
-                            <Linked text={o.what} names={names} />
-                          </span>
-                        ) : null}
-                        {o.where ? (
-                          <span className="muted">
-                            <Linked text={o.where} names={names} />
-                          </span>
-                        ) : null}
-                        {o.needs ? <span className="muted">Needs: {o.needs}</span> : null}
-                        {branch && (
-                          <span className={k.sharedNote}>
-                            You choose:
-                            <ul style={{ margin: "4px 0 0", paddingLeft: 18 }}>
-                              {branch.options.map((opt, j) => (
-                                <li key={j}>
-                                  <Linked text={opt} names={names} />
-                                </li>
-                              ))}
-                            </ul>
-                          </span>
-                        )}
-                      </li>
-                    );
-                  })}
-                </ol>
-              </div>
-            ) : null}
-            {!shelf0 && !lr?.order?.length && story.length > 0 && (
-              <div className={styles.group}>
-                <div className={styles.ghead}>
-                  <h3>{shelf ? "Each one on its own" : "In order"}</h3>
-                  <span>
-                    {story.length} quest{story.length === 1 ? "" : "s"}
-                  </span>
-                </div>
-                <ul className={styles.qlist}>
-                  {story.map((q) => (
-                    <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={q === opening && line.category !== "work"} href={questHref(q.edid)} summary={rows.get(q.edid)!.summary} places={rows.get(q.edid)!.places} needs={rows.get(q.edid)!.needs} />
-                  ))}
-                </ul>
-              </div>
-            )}
-            {line.board && (
-              <div className={styles.group}>
-                <div className={styles.ghead}>
-                  <h3>{line.board.name}</h3>
-                  <span>{line.quests.length} jobs</span>
-                </div>
-                <p>{line.board.says}</p>
-                <p className="muted">{line.board.boards?.length ? `Where the boards are: ${line.board.boards.join("; ")}.` : "Where the boards are isn't checked yet."}</p>
-              </div>
-            )}
-            {line.radiant && (
-              <div className={styles.group}>
-                <div className={styles.ghead}>
-                  <h3>{line.radiant.name}</h3>
-                  <span>{line.radiant.jobs} kinds</span>
-                </div>
-                <p>{line.radiant.says}</p>
-              </div>
-            )}
-            {!shelf0 && jobs.length > 0 && (
-              <div className={styles.group}>
-                <div className={styles.ghead}>
-                  <h3>Jobs and bounties</h3>
-                  <span>
-                    {jobs.length} job{jobs.length === 1 ? "" : "s"}
-                  </span>
-                </div>
-                <ul className={styles.qlist}>
-                  {jobs.map((q) => (
-                    <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={q === opening && line.category !== "work"} href={questHref(q.edid)} summary={rows.get(q.edid)!.summary} places={rows.get(q.edid)!.places} needs={rows.get(q.edid)!.needs} />
-                  ))}
-                </ul>
-              </div>
-            )}
-          </section>
-          {!lr && (
-          <p className={styles.sure}>
-            {read === line.quests.length ? "Read from the game files and checked by a second reader" : `${read} of ${line.quests.length} quests are read from the game files and checked by a second reader; the rest are from the planner's older rules`}
-          </p>
-          )}
-          {!lr && <QuestReport lineId={line.id} quests={line.quests.map((q) => ({ edid: q.edid, name: q.name }))} signedIn={signedIn} open={reporting} signIn={<SignInButton redirectTo={`/quests/${line.id}?report=1#report`} className="btn btn-sm btn-primary" label="Sign in with Discord" />} />}
-        </div>
-
-        <aside className={styles.side}>
           {sibs.length > 0 && (
-            <section className={`${styles.panel} ${styles.sidePanel}`} aria-labelledby="jobs-side">
-              <h2 id="jobs-side" className={styles.sideTitle}>
-                {shelves.work?.name ?? "Jobs and errands"}
-              </h2>
-              {sibs.map((s) => (
-                <Link key={s.id} href={`/quests/${s.id}`}>
-                  {s.name} ({s.quests.length}) ›
-                </Link>
-              ))}
-            </section>
+            <div>
+              <h3 className={l.rh}>{shelves.work?.name ?? "Jobs and errands"}</h3>
+              <div className={l.how}>
+                {sibs.map((s) => (
+                  <Link key={s.id} href={`/quests/${s.id}`}>
+                    {s.name} ({s.quests.length}) ›
+                  </Link>
+                ))}
+              </div>
+            </div>
           )}
         </aside>
       </div>
 
-      {lr && (
-            <InformationConfidence
-              id="sure-line"
-              line={`Read from the game files and checked by a second reader${read === line.quests.length ? "" : `; ${line.quests.length - read} of its ${line.quests.length} quests are from the planner's older rules`}`}
-              sources={[
-                { mark: "yes", name: "LoreRim's game files", note: "The line and its quests, read, then checked by a second reader" },
-                { mark: "no", name: "UESP", note: "Not compared yet" },
-                { mark: "no", name: "Players", note: "No one has confirmed this page yet." },
-              ]}
-              unsure={(lr.unsure ?? []).map((u) => ({ ...u, field: LINE_FIELD_WORDS[u.field] ?? u.field }))}
-              actions={
-                <QuestReport
-                  lineId={line.id}
-                  quests={line.quests.map((q) => ({ edid: q.edid, name: q.name }))}
-                  signedIn={signedIn}
-                  open={reporting}
-                  label="Report a mistake"
-                  buttonClass="btn"
-                  signIn={<SignInButton redirectTo={`/quests/${line.id}?report=1`} className="btn btn-sm btn-primary" label="Sign in with Discord" />}
-                />
-              }
+      <div className={`page ${l.foot}`}>
+        <InformationConfidence
+          id="sure-line"
+          line={`Read from the game files and checked by a second reader${read === line.quests.length ? "" : `; ${line.quests.length - read} of its ${line.quests.length} quests are from the planner's older rules`}`}
+          sources={[
+            { mark: "yes", name: "LoreRim's game files", note: "The line and its quests, read, then checked by a second reader" },
+            { mark: "no", name: "UESP", note: "Not compared yet" },
+            { mark: "no", name: "Players", note: "No one has confirmed this page yet." },
+          ]}
+          unsure={(lr?.unsure ?? []).map((u) => ({ ...u, field: LINE_FIELD_WORDS[u.field] ?? u.field }))}
+          actions={
+            <QuestReport
+              lineId={line.id}
+              quests={line.quests.map((q) => ({ edid: q.edid, name: q.name }))}
+              signedIn={signedIn}
+              open={reporting}
+              label="Report a mistake"
+              buttonClass="btn"
+              signIn={<SignInButton redirectTo={`/quests/${line.id}?report=1`} className="btn btn-sm btn-primary" label="Sign in with Discord" />}
             />
-      )}
+          }
+        />
+      </div>
     </main>
   );
 }

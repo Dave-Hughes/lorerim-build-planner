@@ -133,16 +133,16 @@ export function searchFacts(query: string, kinds: FactKind[] = [...FACT_KINDS], 
     }
   if (version === currentVersion().id) {
     const { lines } = questsData();
-    if (want.has("quest line"))
+    // One record per line (WO-160): a line told as a story is the same page, so its story's name and pitch are found on the line's record
+    // and no second "story" record is made. Asking for stories alone finds the lines that have one.
+    if (want.has("quest line") || want.has("story"))
       for (const l of lines) {
+        const s = storyOfLine(l.id);
+        if (!want.has("quest line") && !s) continue;
         // A follower's line is also found by how players talk about getting them (WO-137 item 5): "free Inigo", "Inigo jail".
         const follower = l.category === "followers" ? ` ${FOLLOWER_WORDS} ${followerPlaces(l)}` : "";
-        all.push({ kind: "quest line", id: l.id, name: l.name, line: [homeName(l.category), l.where, l.prince].filter(Boolean).join(" | "), text: l.quests.map((q) => q.name).join(" ") + follower });
+        all.push({ kind: "quest line", id: l.id, name: l.name, line: [s?.name, homeName(l.category), l.where, l.prince].filter(Boolean).join(" | "), text: [s ? `${s.name} ${s.pitch}` : "", l.quests.map((q) => q.name).join(" "), follower].join(" ") });
       }
-    if (want.has("story")) for (const l of lines) {
-      const s = storyOfLine(l.id);
-      if (s) all.push({ kind: "story", id: s.id, name: s.name, line: firstSentence(s.pitch), text: s.pitch });
-    }
   }
   const has = (t: string) => words.every((w) => norm(t).includes(w));
   const ranked: { h: Hit; rank: number }[] = all

@@ -1,0 +1,595 @@
+/*
+ * A quest line's page (WO-160), from the design canvas board LinePage (row 36). One page for every line: the pitch, the at-a-glance band,
+ * the story or the quests in order, Along the way, what the line gives and closes, and a sticky rail. The colours mean one thing each
+ * (docs/design-rules.md, rule 34): green how to start and what's done, red levels and danger, teal places, orange people and links,
+ * gold XP and rewards, violet choices and what a quest opens.
+ */
+.root {
+  --green: #8fc07c;
+  --red: #e07a6c;
+  --teal: #74bfd2;
+  --violet: #b7a2e6;
+  --orange: #f6b27a;
+  --gold: #e8c987;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 90px;
+}
+.px {
+  image-rendering: pixelated;
+  flex: none;
+}
+.top,
+.cols,
+.glance,
+.foot {
+  width: 100%;
+  box-sizing: border-box;
+}
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  padding-top: 24px;
+  padding-bottom: 40px;
+}
+.pitch {
+  margin: 0;
+  font-size: 21px;
+  line-height: 1.5;
+  color: #dfe6ec;
+}
+
+/* At a glance: a full-width tinted band. */
+.band {
+  background: #111921;
+  border-top: 1px solid #243041;
+  border-bottom: 1px solid #243041;
+}
+.glance {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 5), minmax(0, 1fr));
+}
+.gl {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 26px 26px 26px 0;
+  min-width: 0;
+}
+.gl + .gl {
+  padding-left: 26px;
+  border-left: 1px solid #243041;
+}
+.k {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  font-size: 13px;
+}
+.v {
+  font-size: 24px;
+  font-weight: 600;
+  color: #f4ead2;
+  line-height: 1.15;
+}
+.vSmall {
+  font-size: 19px;
+}
+.s {
+  font-size: 14px;
+  color: #9fadbc;
+  line-height: 1.4;
+}
+.cGreen {
+  color: var(--green);
+}
+.cRed {
+  color: var(--red);
+}
+.cGold {
+  color: var(--gold);
+}
+.cTeal {
+  color: var(--teal);
+}
+.cOrange {
+  color: var(--orange);
+}
+
+/* The two columns. */
+.cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 64px;
+  align-items: start;
+  padding-top: 56px;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  min-width: 0;
+}
+.sec {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  scroll-margin-top: 90px;
+}
+.sechd {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #2a3442;
+}
+.h2 {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1;
+  color: #e4ebf0;
+}
+.cap {
+  font-size: 14px;
+  color: #8e9bab;
+}
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  color: #c3cdd6;
+  cursor: pointer;
+}
+.sw {
+  position: relative;
+  width: 34px;
+  height: 18px;
+  border: 1px solid #3a4658;
+  background: #10161d;
+}
+.sw i {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  background: #6f7c8c;
+}
+.swOn {
+  border-color: #f0913f;
+}
+.swOn i {
+  left: 18px;
+  background: #f0913f;
+}
+
+/* Chapters and their quests. */
+.ch {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 0 18px;
+  padding: 22px 0 8px;
+}
+.ch + .ch {
+  border-top: 1px solid #1c2430;
+}
+.chPlain {
+  grid-template-columns: minmax(0, 1fr);
+}
+.n {
+  font-family: var(--font-pixel), monospace;
+  font-size: 64px;
+  line-height: 0.78;
+  color: #f0913f;
+  text-align: right;
+}
+.n small {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 11px;
+  color: #8e9bab;
+}
+.chh {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+  margin-bottom: 10px;
+}
+.chh b {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  font-size: 26px;
+  color: #f4ead2;
+}
+.chh b.chLong {
+  font-size: 20px;
+  line-height: 1.15;
+}
+.chh span {
+  font-size: 14px;
+  color: #9fadbc;
+}
+.chh em {
+  font-style: normal;
+  color: var(--gold);
+}
+.qs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.q {
+  position: relative;
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr) auto;
+  gap: 0 14px;
+  padding: 12px 0 14px;
+}
+.q::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #243041;
+}
+.qFirst::before {
+  top: 22px;
+}
+.qLast::before {
+  bottom: calc(100% - 22px);
+}
+.qFirst.qLast::before {
+  display: none;
+}
+.node {
+  position: relative;
+  z-index: 1;
+  width: 12px;
+  height: 12px;
+  margin: 8px 0 0 5px;
+  background: #0b0f14;
+  border: 2px solid #f0913f;
+  transform: rotate(45deg);
+}
+.nodeStart {
+  background: var(--green);
+  border-color: var(--green);
+}
+.qn {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.qn a {
+  font-size: 21px;
+  font-weight: 600;
+  color: #f0913f;
+  text-decoration: underline;
+  text-decoration-color: rgba(240, 145, 63, 0.35);
+  text-underline-offset: 4px;
+}
+.qname {
+  font-size: 21px;
+  font-weight: 600;
+  color: #e4ebf0;
+}
+.obj {
+  font-size: 16px;
+  color: #c3cdd6;
+}
+.note {
+  font-size: 14px;
+  color: #8e9bab;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 26px;
+  padding: 2px 9px 2px 6px;
+  font-size: 13.5px;
+  line-height: 1.25;
+  border: 1px solid;
+  text-decoration: none;
+}
+.chip img {
+  width: 16px;
+  height: 16px;
+}
+.place {
+  color: #9fd3e1;
+  border-color: rgba(116, 191, 210, 0.4);
+  background: rgba(116, 191, 210, 0.07);
+}
+.who {
+  color: var(--orange);
+  border-color: rgba(240, 145, 63, 0.38);
+  background: rgba(240, 145, 63, 0.06);
+}
+.start {
+  color: #a9d69a;
+  border-color: rgba(143, 192, 124, 0.45);
+  background: rgba(143, 192, 124, 0.08);
+}
+.danger {
+  color: #eca69b;
+  border-color: rgba(224, 122, 108, 0.5);
+  background: rgba(224, 122, 108, 0.07);
+}
+.pick {
+  color: #cbbcf0;
+  border-color: rgba(183, 162, 230, 0.45);
+  background: rgba(183, 162, 230, 0.08);
+}
+a.chip:hover {
+  border-color: #f0913f;
+}
+.xp {
+  padding-top: 4px;
+  font-family: var(--font-pixel), monospace;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--gold);
+  white-space: nowrap;
+}
+.xp small {
+  margin-left: 2px;
+  font-size: 15px;
+  color: #c9a25a;
+}
+
+/* Along the way. */
+.jobs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 40px;
+}
+.job {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid #1c2430;
+}
+.job a {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f0913f;
+}
+.job p {
+  margin: 2px 0 6px;
+  font-size: 15px;
+  color: #c3cdd6;
+}
+
+/* What the line gives and closes, and the board's and radiant notes. */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding-left: 20px;
+  font-size: 17px;
+  line-height: 1.5;
+  color: #dfe6ec;
+}
+.gives li::marker {
+  color: var(--gold);
+}
+.closes li::marker {
+  color: var(--violet);
+}
+.body {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.5;
+  color: #dfe6ec;
+}
+
+/* The rail. */
+.rail {
+  position: sticky;
+  top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+.toc {
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid #243041;
+}
+.toc a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: -2px;
+  padding: 7px 0 7px 14px;
+  border-left: 2px solid transparent;
+  color: #c3cdd6;
+  font-size: 15px;
+  text-decoration: none;
+}
+.toc a.tocOn {
+  border-left-color: #f0913f;
+  color: #f4ead2;
+}
+.rh {
+  margin: 0 0 6px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #2a3442;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  font-size: 18px;
+  color: #e4ebf0;
+}
+.op {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 0;
+  border-bottom: 1px solid #1c2430;
+}
+.op > a {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f0913f;
+}
+.needs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.need {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 14.5px;
+  color: #c3cdd6;
+}
+.need i {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin-top: 6px;
+  transform: rotate(45deg);
+}
+.needDone i {
+  background: var(--green);
+}
+.needDanger i {
+  background: var(--red);
+}
+.needOther i {
+  border: 1px solid #6f7c8c;
+}
+.need small {
+  display: block;
+  font-size: 12.5px;
+  color: #8e9bab;
+}
+.how {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 15px;
+  color: #dfe6ec;
+}
+.how p {
+  margin: 0;
+}
+.src {
+  display: inline-flex;
+  margin-left: 6px;
+  padding: 1px 6px;
+  border: 1px solid #3a4658;
+  font-size: 12px;
+  color: #9fadbc;
+  vertical-align: 1px;
+}
+.srcNo {
+  border-color: rgba(224, 122, 108, 0.5);
+  color: #e3a197;
+}
+.wrong {
+  font-size: 14px;
+}
+.foot {
+  padding-top: 72px;
+}
+
+@media (max-width: 1100px) {
+  .cols {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
+  }
+  .rail {
+    position: static;
+  }
+  .toc {
+    display: none;
+  }
+  .glance {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .gl,
+  .gl + .gl {
+    padding: 20px 20px 20px 0;
+    border-left: 0;
+    border-top: 1px solid #243041;
+  }
+  .gl:nth-child(-n + 2) {
+    border-top: 0;
+  }
+}
+@media (max-width: 700px) {
+  .glance {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .gl:nth-child(2) {
+    border-top: 1px solid #243041;
+  }
+  .ch {
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 0 12px;
+  }
+  .chPlain {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .n {
+    font-size: 44px;
+  }
+  .chh b {
+    font-size: 22px;
+  }
+  .jobs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .qn a,
+  .qname {
+    font-size: 19px;
+  }
+  .cols {
+    padding-top: 36px;
+  }
+}

@@ -33,9 +33,10 @@ test("Daedric Princes shows Ill Met By Moonlight at level 25, a fact, with no le
   // Its level is a fact; with no player level, nothing says above or below it.
   await expect(card.getByText("Level 25", { exact: true })).toBeVisible();
   await expect(card.getByText("Hircine")).toBeVisible();
-  await card.getByRole("button", { name: "Tell me more" }).click();
-  await expect(card.getByRole("term").filter({ hasText: "Needs" })).toBeVisible();
-  await expect(card.getByText("Level 25.", { exact: true })).toBeVisible();
+  // The rows have no Tell me more (WO-160); a line of one quest opens the quest's own page.
+  await expect(card.getByRole("button", { name: "Tell me more" })).toHaveCount(0);
+  await card.getByRole("link", { name: "Ill Met By Moonlight" }).first().click();
+  await expect(page).toHaveURL(/\/quests\/q\/ill-met-by-moonlight$/);
 });
 
 test("Wyrmstooth: its needs as facts, no marks, and journals hidden until opened", async ({ page }) => {
@@ -52,7 +53,7 @@ test("Wyrmstooth: its needs as facts, no marks, and journals hidden until opened
   await expect(page.getByRole("heading", { name: "Do this first" })).toHaveCount(0);
 
   // Each quest is a row that links to its own page (WO-154): no journal to open, and what it needs beyond the quest before it.
-  const quests = page.getByRole("region", { name: "The quests in order" });
+  const quests = page.getByRole("region", { name: "The story" });
   const opening = quests.getByRole("listitem").filter({ hasText: "Starts here" });
   await expect(opening).toHaveCount(1);
   await expect(opening.getByRole("link").first()).toHaveAttribute("href", /\/quests\/q\//);
@@ -62,7 +63,7 @@ test("Wyrmstooth: its needs as facts, no marks, and journals hidden until opened
 
 test("The Book of Love: Ask Dinya Balu in the Temple of Mara, then Talk to Fastred at Fellstar Farm (WO-121)", async ({ page }) => {
   await page.goto("/quests/the-book-of-love");
-  const start = page.getByRole("region", { name: "How to start it" });
+  const start = page.getByRole("region", { name: "How it starts" });
   await expect(start).toContainText("Dinya Balu");
   // The line's read words how to get in as the read does, with where she sends you first (WO-154 Part 2).
   await expect(start).toContainText("Fastred");

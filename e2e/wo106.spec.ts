@@ -8,6 +8,7 @@ test.use({ viewport: { width: 1440, height: 900 } });
 
 async function open(page: Page) {
   await page.goto("/quests/s/become-the-dragonborn");
+  await expect(page).toHaveURL(/\/quests\/main-quest$/);
   await expect(page.getByRole("heading", { level: 1, name: "Become the Dragonborn" })).toBeVisible();
 }
 
@@ -16,7 +17,7 @@ test("the story page is facts: how it starts, its chapters and what it opens, wi
   await expect(page.getByRole("region", { name: "Your next step" })).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Mark done" })).toHaveCount(0);
   await expect(page.getByRole("region", { name: "How it starts" })).toContainText("Take a Dragonborn start");
-  await expect(page.getByRole("region", { name: "The story" })).toContainText("19 quests");
+  await expect(page.locator("main")).toContainText("19 quests");
   await expect(page.getByRole("region", { name: "The story" })).not.toContainText("quests done");
 
   const dragonborn = page.getByRole("list", { name: "Needs for Dragonborn" }).getByRole("listitem");
@@ -28,18 +29,12 @@ test("the story page is facts: how it starts, its chapters and what it opens, wi
   await expect(page.getByRole("list", { name: "Needs for Wyrmstooth" }).getByRole("listitem").filter({ hasText: "Level 10" })).toBeVisible();
 });
 
-test("later chapters stay hidden until Show the rest; the main stories card and line page link to the story", async ({ page }) => {
+test("the story is the line's page: the main stories card links to it, and the old story and Read it as a story addresses land there (WO-160)", async ({ page }) => {
   await open(page);
   const story = page.getByRole("region", { name: "The story" });
-  await expect(story.getByRole("heading", { name: "Chapter 7" })).toBeVisible();
-  await expect(story.getByText("Defeat Alduin")).toHaveCount(0);
-  await story.getByRole("button", { name: "Show the rest" }).click();
-  await expect(story.getByText("Defeat Alduin")).toBeVisible();
-
+  await expect(story.getByText("Defeat Alduin", { exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Read it as a story ›" })).toHaveCount(0);
   await page.goto("/quests/c/main-stories");
-  await page.getByRole("link", { name: "Become the Dragonborn" }).click();
-  await expect(page).toHaveURL(/\/quests\/s\/become-the-dragonborn$/);
-  await page.goto("/quests/main-quest");
-  await page.getByRole("link", { name: "Read it as a story ›" }).click();
-  await expect(page).toHaveURL(/\/quests\/s\/become-the-dragonborn$/);
+  await page.getByRole("link", { name: "Become the Dragonborn" }).first().click();
+  await expect(page).toHaveURL(/\/quests\/main-quest$/);
 });

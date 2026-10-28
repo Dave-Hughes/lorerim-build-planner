@@ -6,8 +6,8 @@ const SAYS = "Missives: take a missive from the notice board in any hold's capit
 test("the Missives page says the class once, and lists no job one by one", async ({ page }) => {
   await page.goto("/quests/missives");
   await expect(page.getByRole("heading", { name: "Jobs from a board" })).toBeVisible();
-  // Once in the quests, and once as the way in under How to start it.
-  await expect(page.locator("#quests-title").locator("..").locator("..").getByText(SAYS, { exact: true })).toHaveCount(1);
+  // Said once (WO-160: the page's Jobs from a board section).
+  await expect(page.getByText(SAYS, { exact: true })).toHaveCount(1);
   // The 12 boards the records place (23c2d9d's board reader).
   await expect(page.getByText(/^Where the boards are: Ben Erai; .*Winterhold\.$/)).toBeVisible();
   await expect(page.getByRole("button", { name: "Journal ›" })).toHaveCount(0);

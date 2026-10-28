@@ -95,9 +95,9 @@ test("a place's page: the danger gauge, the boss, what points here, what it pays
 
 test("a line with a read: its own words for what it is, how to get in, the quests in order, what it gives, and how sure", async ({ page }) => {
   await page.goto("/quests/main-quest");
-  await expect(page.getByRole("heading", { level: 1, name: "The main quest" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "Become the Dragonborn" })).toBeVisible();
   await expect(page.locator("main")).toContainText("Dragons have come back to Skyrim");
-  await expect(page.getByRole("region", { name: "How to start it" })).toContainText("Helgen");
+  await expect(page.getByRole("region", { name: "How it starts" })).toContainText("Helgen");
   await expect(page.getByRole("link", { name: "Bleak Falls Barrow" }).first()).toHaveAttribute("href", "/quests/q/bleak-falls-barrow");
   await expect(page.getByRole("region", { name: "What the whole line gives" })).toContainText("Thane of Whiterun");
   await expect(page.getByRole("region", { name: "Information Confidence" })).toBeVisible();
