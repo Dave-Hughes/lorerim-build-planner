@@ -1,9 +1,10 @@
 /**
- * WO-169: the Map page. LoreRim's paper map under the header with every place on it; search for places, people and quests; filters that fade
- * what is out; a quest's route; a place's drawer; where a signed-in player's character stands; the address keeps the view; the credit on every view.
+ * WO-169: the Map page. LoreRim's paper map under the header with every place on it; search for places, people and quests; filters that leave
+ * out what does not match; a quest's route; a place's drawer; where a signed-in player's character stands; the address keeps the view; the credit on every view.
  */
 import { expect, test, type Page } from "@playwright/test";
 import { signIn } from "./helpers";
+import { KYRIA_PLAYTHROUGH_ID } from "./seed";
 
 const CREDIT = "https://www.nexusmods.com/skyrimspecialedition/mods/62705";
 
@@ -118,21 +119,26 @@ test("a person flies to where they are and opens their place", async ({ page }) 
   await expect(page).toHaveURL(/place=/);
 });
 
-test("the filters fade what is out: a kind, a danger range, only places with a quest", async ({ page }) => {
+test("the filters leave out what does not match: a kind, with a quest; no danger sliders, no fade (WO-174)", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
-  await open(page);
+  await open(page, "/map?z=0.9&x=2400&y=2400");
   const panel = page.getByRole("complementary", { name: "Map controls" });
+  await expect(panel.getByRole("slider")).toHaveCount(0);
+  await expect(panel.getByText("On the map")).toHaveCount(0);
   const total = Number((await panel.getByText(/^\d+ places$/).innerText()).split(" ")[0]);
-  await panel.getByRole("button", { name: /^Caves and mines/ }).click();
+  const pins = () => map(page).locator("a[href^='/places/']").count();
+  const before = await pins();
+  await panel.getByRole("button", { name: /^Ruins/ }).click();
   await expect(panel.getByText(/^\d+ of \d+ places$/)).toBeVisible();
-  const caves = Number((await panel.getByText(/of \d+ places$/).innerText()).split(" ")[0]);
-  expect(caves).toBeLessThan(total);
+  const ruins = Number((await panel.getByText(/of \d+ places$/).innerText()).split(" ")[0]);
+  expect(ruins).toBeLessThan(total);
+  // Only what matches is drawn: nothing faint is left, and fewer pins than before.
+  expect(await pins()).toBeLessThan(before);
+  expect(await map(page).locator("[class*='dim']").count()).toBe(0);
+  await page.screenshot({ path: "test-results/wo174-map-ruins-1440.png" });
   await panel.getByRole("button", { name: "All", exact: true }).click();
-  await panel.getByRole("slider", { name: "Lowest level" }).fill("20");
-  await expect(panel.getByText("level 20 to 50 and up")).toBeVisible();
-  await expect(page).toHaveURL(/danger=20-50/);
-  await panel.getByRole("slider", { name: "Lowest level" }).fill("1");
-  await panel.getByLabel("Only places with a quest").check();
+  await panel.getByRole("button", { name: "With a quest" }).click();
+  await expect(panel.getByRole("button", { name: "With a quest" })).toHaveAttribute("aria-pressed", "true");
   await expect(panel.getByText(/^\d+ of \d+ places$/)).toBeVisible();
   await expect(page).toHaveURL(/quests=1/);
 });
@@ -152,17 +158,13 @@ test("a place page's map band links to the map opened on that place", async ({ p
   await expect(page.getByRole("link", { name: "Open on the map ›" })).toHaveAttribute("href", "/map?place=bleak-falls-barrow");
 });
 
-test("signed out there is no character toggle; signed in, the character's pin sits where its latest save puts it", async ({ page, context }) => {
+test("a character's pin sits where its latest save puts it, from the address; the panel no longer offers it (WO-174)", async ({ page, context }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
-  await open(page);
-  await expect(page.getByLabel("Where my character is")).toHaveCount(0);
   await signIn(context);
   await open(page);
-  const pick = page.getByLabel("Where my character is");
-  await expect(pick).toBeVisible();
-  await pick.selectOption({ label: "Kyria Severa" });
+  await expect(page.getByLabel("Where my character is")).toHaveCount(0);
+  await open(page, `/map?character=${KYRIA_PLAYTHROUGH_ID}`);
   await expect(page.getByTestId("my-character")).toContainText("Kyria Severa");
-  await expect(page).toHaveURL(/character=/);
   await page.waitForTimeout(900);
   await page.screenshot({ path: "test-results/wo169-character-1440.png" });
 });

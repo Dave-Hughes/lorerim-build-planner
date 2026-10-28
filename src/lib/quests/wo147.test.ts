@@ -3,7 +3,7 @@ import { getQuest, searchFacts, withQuestLink } from "@/lib/mcp/facts";
 import { questLog } from "@/lib/mcp/quest-log";
 import { questsData } from "./data";
 import { isPlaceholder } from "./placeholder";
-import { questBySlug, questHref } from "./slugs";
+import { legacyQuestHref, questBySlug, questHref } from "./slugs";
 import { placesData } from "@/lib/places/data";
 import { placesNear } from "@/lib/places/suggest";
 
@@ -22,15 +22,26 @@ describe("Part 1: a page for every quest", () => {
       expect(found?.line.id).toBe(line.id);
     }
   });
-  it("the name makes the address, the EDID two quests of one name", () => {
+  it("the name makes the address; two quests of one name tell themselves apart by town or by the word their editor ids differ in (WO-174)", () => {
     expect(questHref("0WRHorseQ")).toBe("/quests/q/running-wild");
     expect(questHref("0WRRatQuest")).toBe("/quests/q/a-rat-problem");
-    // Two quests are called Animal Extermination: each has its EDID's address.
     const twins = all.filter(({ quest }) => quest.name === "Animal Extermination");
     expect(twins.length).toBeGreaterThan(1);
     expect(new Set(twins.map(({ quest }) => questHref(quest.edid))).size).toBe(twins.length);
-    expect(twins.every(({ quest }) => questHref(quest.edid)!.endsWith(quest.edid.toLowerCase().replace(/[^a-z0-9]+/g, "-")))).toBe(true);
+    // Dungeon Delving (Bandits): the favour for Whiterun and Windhelm keeps the name, each town's copy takes its town.
+    expect(questHref("Favor204")).toBe("/quests/q/dungeon-delving-bandits");
+    expect(questHref("Favor204Whiterun")).toBe("/quests/q/dungeon-delving-bandits-whiterun");
+    expect(questHref("Favor204Windhelm")).toBe("/quests/q/dungeon-delving-bandits-windhelm");
+    expect(questHref("DLC1VQ03Hunter")).toBe("/quests/q/prophet-hunter");
     expect(questBySlug("no-such-quest")).toBeNull();
+  });
+  it("no address is an editor id, and the old ones go to the new (WO-174)", () => {
+    const edidSlugs = new Set(all.map(({ quest }) => quest.edid.toLowerCase().replace(/['’`]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")));
+    const clash = all.filter(({ quest }) => edidSlugs.has(questHref(quest.edid)!.slice("/quests/q/".length))).map(({ quest }) => quest.edid);
+    expect(clash).toEqual([]);
+    expect(legacyQuestHref("favor204")).toBe("/quests/q/dungeon-delving-bandits");
+    expect(legacyQuestHref("favor204whiterun")).toBe("/quests/q/dungeon-delving-bandits-whiterun");
+    expect(legacyQuestHref("running-wild")).toBeNull();
   });
   it("get_quest, search_facts and the quest log give the quest's page", () => {
     expect(withQuestLink(getQuest({ name: "Running Wild" }), "https://planner.test").link).toBe("https://planner.test/quests/q/running-wild");

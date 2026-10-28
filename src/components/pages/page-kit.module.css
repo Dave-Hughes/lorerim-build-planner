@@ -150,6 +150,10 @@ a.tag:hover {
   flex-direction: column;
   gap: 44px;
 }
+.sideToc {
+  position: sticky;
+  top: 24px;
+}
 .foot {
   display: block;
 }
@@ -1018,6 +1022,9 @@ a.tag:hover {
   .cols,
   .foot {
     grid-template-columns: minmax(0, 1fr);
+  }
+  .sideToc {
+    display: none;
   }
   .dayRow,
   .qrowRead {

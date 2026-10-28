@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { auth } from "@/auth";
 import { ConfirmButton } from "@/components/pages/confirm-button";
 import { Linked } from "@/components/pages/linked";
@@ -28,7 +28,7 @@ import { placeOnly, vaguePlace } from "@/lib/pages/where";
 import { categories, homeName, questsData } from "@/lib/quests/data";
 import { loadPlayerFacts } from "@/lib/quests/player-facts";
 import { dangerParts, pageOf, placeNamed, playersWords } from "@/lib/quests/reads";
-import { questBySlug, questHref } from "@/lib/quests/slugs";
+import { legacyQuestHref, questBySlug, questHref } from "@/lib/quests/slugs";
 import { placeHref, placeHrefOf, type Place } from "@/lib/places/data";
 import { placeKind } from "@/lib/places/kind";
 import { personHref } from "@/lib/people/data";
@@ -78,7 +78,12 @@ export default async function QuestPage({
   await loadPlayerFacts();
   const slug = (await params).slug;
   const found = questBySlug(slug);
-  if (!found) notFound();
+  if (!found) {
+    // An address made before WO-174 (an editor id) goes to the quest's address now.
+    const now = legacyQuestHref(slug);
+    if (now) permanentRedirect(now);
+    notFound();
+  }
   const { line, quest } = found;
   const reporting = (await searchParams).report === "1";
   const userId = (await auth())?.user?.id ?? null;
@@ -274,6 +279,38 @@ export default async function QuestPage({
 
       <div className={styles.cols}>
         <div className={styles.body}>
+          {/* Rewards and People are in the main column (WO-174): the side column is the contents only, as on the line and place pages. */}
+          {(page.gets.xp > 0 || page.gets.rewards.length > 0) && (
+            <Gold id="get">
+              {page.gets.xp > 0 && (
+                <span className={styles.rw}>
+                  <span>
+                    {page.gets.xp} XP
+                    <button
+                      type="button"
+                      className={styles.info}
+                      aria-label="About quest XP"
+                      title={`LoreRim's XP for ${page.gets.type ? `a ${page.gets.type.toLowerCase()}` : "a quest"}, from Experience.ini`}
+                    >
+                      i
+                    </button>
+                  </span>
+                  <small>When the quest is done</small>
+                </span>
+              )}
+              {page.gets.rewards.map((r, i) => (
+                <span key={i} className={styles.rw}>
+                  <span>{r.what.charAt(0).toUpperCase() + r.what.slice(1)}</span>
+                  {r.when ? (
+                    <small>
+                      {r.when.charAt(0).toUpperCase() + r.when.slice(1)}
+                    </small>
+                  ) : null}
+                </span>
+              ))}
+            </Gold>
+          )}
+
           <Section id="start" icon="speech" title="How to start it">
             {page.needs.length > 0 && (
               <>
@@ -341,18 +378,20 @@ export default async function QuestPage({
                 <span className="muted">Its start isn&apos;t read yet.</span>
               </p>
             )}
-            {!ways && page.firstStep && (
-              <p className={styles.way}>
-                <b>First step:</b>{" "}
-                <Linked names={names} text={page.firstStep} />
-                {!reads &&
-                  start?.doors?.map((d) => (
-                    <span key={d} className="muted">
-                      {" "}
-                      ({d.replace(/\.$/, "")})
-                    </span>
-                  ))}
-              </p>
+            {/* The first step is the first of The steps just below (WO-174): said here only when the page has no steps or ways of its own. */}
+            {!ways && stepsHere.length === 0 && page.firstStep && (
+              <div className={styles.way}>
+                <p>
+                  <Linked names={names} text={page.firstStep} />
+                  {!reads &&
+                    start?.doors?.map((d) => (
+                      <span key={d} className="muted">
+                        {" "}
+                        ({d.replace(/\.$/, "")})
+                      </span>
+                    ))}
+                </p>
+              </div>
             )}
           </Section>
 
@@ -427,7 +466,9 @@ export default async function QuestPage({
                   <div className={styles.wt}>
                     <span className={styles.wtTitle}>
                       <span className={styles.opt}>{i + 1}</span>
-                      <Linked names={names} text={w.title} />
+                      <span>
+                        <Linked names={names} text={w.title} />
+                      </span>
                     </span>
                     <div className={styles.wtBody}>
                       {w.ends ? (
@@ -576,55 +617,6 @@ export default async function QuestPage({
               );
             })()}
 
-          {page.choices.length > 0 && !ways && (
-            <Section id="choices" icon="quest-ways" title="Choices that matter">
-              {page.choices.map((c, i) => (
-                <div key={i} className={styles.way}>
-                  <span className={styles.who}>{c.choice}</span>
-                  {c.leadsTo ? (
-                    <p>
-                      <Linked names={names} text={c.leadsTo} />
-                    </p>
-                  ) : null}
-                </div>
-              ))}
-            </Section>
-          )}
-        </div>
-
-        <aside className={styles.side}>
-          <AutoToc />
-          {(page.gets.xp > 0 || page.gets.rewards.length > 0) && (
-            <Gold id="get">
-              {page.gets.xp > 0 && (
-                <span className={styles.rw}>
-                  <span>
-                    {page.gets.xp} XP
-                    <button
-                      type="button"
-                      className={styles.info}
-                      aria-label="About quest XP"
-                      title={`LoreRim's XP for ${page.gets.type ? `a ${page.gets.type.toLowerCase()}` : "a quest"}, from Experience.ini`}
-                    >
-                      i
-                    </button>
-                  </span>
-                  <small>When the quest is done</small>
-                </span>
-              )}
-              {page.gets.rewards.map((r, i) => (
-                <span key={i} className={styles.rw}>
-                  <span>{r.what.charAt(0).toUpperCase() + r.what.slice(1)}</span>
-                  {r.when ? (
-                    <small>
-                      {r.when.charAt(0).toUpperCase() + r.when.slice(1)}
-                    </small>
-                  ) : null}
-                </span>
-              ))}
-            </Gold>
-          )}
-
           {people.length > 0 && (
             <Panel id="ppl" icon="quest-people" title="People">
               <div className={styles.ppl}>
@@ -646,6 +638,25 @@ export default async function QuestPage({
               </div>
             </Panel>
           )}
+
+          {page.choices.length > 0 && !ways && (
+            <Section id="choices" icon="quest-ways" title="Choices that matter">
+              {page.choices.map((c, i) => (
+                <div key={i} className={styles.way}>
+                  <span className={styles.who}>{c.choice}</span>
+                  {c.leadsTo ? (
+                    <p>
+                      <Linked names={names} text={c.leadsTo} />
+                    </p>
+                  ) : null}
+                </div>
+              ))}
+            </Section>
+          )}
+        </div>
+
+        <aside className={styles.sideToc}>
+          <AutoToc />
         </aside>
       </div>
 

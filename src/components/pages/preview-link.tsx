@@ -17,6 +17,17 @@ const DELAY = 350;
 const PAGE = /^\/(people\/[a-z0-9-]+|places\/[a-z0-9-]+|quests\/q\/[a-z0-9-]+)$/;
 
 /**
+ * Near a window edge the card opens to the other side (WO-174): left of its link near the right edge, above it near the bottom. Measured when
+ * the card mounts, where it opens by default.
+ */
+function keepOnScreen(el: HTMLSpanElement | null) {
+  if (!el) return;
+  const r = el.getBoundingClientRect();
+  if (r.right > window.innerWidth - 8) el.dataset.x = "left";
+  if (r.bottom > window.innerHeight - 8) el.dataset.y = "above";
+}
+
+/**
  * A link to a person, place or quest (WO-157 Part 5): hovering or focusing it for a moment shows a small card with the icon, the name, who or what
  * it is and one useful fact. A touch screen just follows the link. Other addresses are plain links.
  */
@@ -72,7 +83,7 @@ export function PreviewLink({ href, children, className }: { href: string; child
         {children}
       </Link>
       {open && data && (
-        <span id={id} role="tooltip" className={styles.card}>
+        <span id={id} ref={keepOnScreen} role="tooltip" className={styles.card}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={`/icons/${data.icon}.svg`} alt="" width={32} height={32} className={styles.icon} />
           <span className={styles.text}>

@@ -44,7 +44,7 @@ export function MapStrip() {
           on the game&apos;s own map
         </h2>
         <p className={c.p}>
-          {places.length} places are pinned on it, from {towns} towns and cities to {danger} that are worth a fight. Search them, filter them by danger, and follow a quest from one to the next.
+          {places.length} places are pinned on it, from {towns} towns and cities to {danger} that are worth a fight. Search them, filter them by kind, and follow a quest from one place to the next.
         </p>
         <Link href="/map" className="btn btn-primary btn-lg">
           Open the map

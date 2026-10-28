@@ -10,7 +10,7 @@ import s from "./map-page.module.css";
 
 /**
  * The Map page (WO-169). The paper map fills the window; drag to pan, wheel or pinch to zoom. Pins cluster into counts at a distance and show
- * their names as you come in. The left panel searches places, people and quests and filters what shows (what is filtered out fades); a
+ * their names as you come in. The left panel searches places, people and quests and filters what shows (what is filtered out is not drawn); a
  * place opens a drawer. The address keeps the view. The credit and link the map's author asked for are in the corner on every view.
  */
 export interface MapInitial {
@@ -18,7 +18,6 @@ export interface MapInitial {
   quest: string | null;
   character: string | null;
   types: string[];
-  danger: [number, number];
   onlyQuests: boolean;
   zoom: number | null;
   x: number | null;
@@ -38,7 +37,7 @@ interface Route {
 const K_MAX = 1.6;
 const KIND_COLOUR = { city: "city", town: "town", danger: "danger", other: "other" } as const;
 
-export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry; places: MapPlace[]; initial: MapInitial; signedIn: boolean }) {
+export function MapPage({ entry, places, initial }: { entry: MapEntry; places: MapPlace[]; initial: MapInitial }) {
   const box = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ w: 1440, h: 800 });
   useLayoutEffect(() => {
@@ -165,10 +164,9 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
   const [route, setRoute] = useState<Route | null>(null);
   const [showRoute, setShowRoute] = useState(true);
   const [types, setTypes] = useState<string[]>(initial.types);
-  const [danger, setDanger] = useState<[number, number]>(initial.danger);
   const [onlyQuests, setOnlyQuests] = useState(initial.onlyQuests);
-  const [characters, setCharacters] = useState<{ id: string; name: string }[]>([]);
-  const [characterId, setCharacterId] = useState<string | null>(initial.character);
+  // Where a character is stays in the address (?character=) for the playthrough pages to use; the panel no longer offers it (WO-174).
+  const characterId = initial.character;
   const [character, setCharacter] = useState<MapCharacter | null>(null);
   // On a phone the panel starts folded to its bar, so the map is what you see first.
   useEffect(() => {
@@ -225,11 +223,6 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Characters, signed in.
-  useEffect(() => {
-    if (!signedIn) return;
-    fetch("/api/map/characters").then((r) => r.json()).then(setCharacters);
-  }, [signedIn]);
   useEffect(() => {
     if (!characterId) return;
     let live = true;
@@ -283,7 +276,6 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
       set("quest", route ? (route.href.split("/").pop() ?? null) : null);
       set("character", characterId);
       set("types", types.join(","));
-      set("danger", danger[0] > 1 || danger[1] < 50 ? `${danger[0]}-${danger[1]}` : null);
       set("quests", onlyQuests ? "1" : null);
       set("z", k.toFixed(3));
       set("x", String(Math.round(view.cx)));
@@ -291,17 +283,15 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
       window.history.replaceState(null, "", u);
     }, 250);
     return () => clearTimeout(t);
-  }, [selected, route, characterId, types, danger, onlyQuests, k, view.cx, view.cy]);
+  }, [selected, route, characterId, types, onlyQuests, k, view.cx, view.cy]);
 
-  // Filters: what is out fades.
-  const dangerOn = danger[0] > 1 || danger[1] < 50;
+  // Filters: what is out is not drawn.
   const inRoute = useMemo(() => new Map((showRoute && route ? route.stops : []).map((x, i) => [x.slug, i + 1])), [route, showRoute]);
   const lit = useMemo(() => new Set((characterId && character?.id === characterId ? character.lit : []).map((x) => x.slug)), [character, characterId]);
   const shows = (p: MapPlace) => {
     if (selected === p.slug || inRoute.has(p.slug) || lit.has(p.slug)) return true;
     if (types.length && !types.includes(groupOf(p.type))) return false;
     if (onlyQuests && !p.quests) return false;
-    if (dangerOn && !(p.kind === "danger" && p.range && p.range[0] <= danger[1] && p.range[1] >= danger[0])) return false;
     if (inRoute.size && route && showRoute) return false;
     return true;
   };
@@ -315,16 +305,16 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
   // What to draw: names as you come in, and never two plates on top of each other (WO-169 review): the more important name stays (the picked
   // place, a route's stops, the cities, then the towns) and the lesser one is dropped.
   const items = useMemo(() => {
-    const out: { p: MapPlace; x: number; y: number; on: boolean; named: boolean; side: "right" | "left" }[] = [];
+    const out: { p: MapPlace; x: number; y: number; named: boolean; side: "right" | "left" }[] = [];
     for (const p of places) {
       const { x, y } = toScreen(p.px, p.py);
       if (x < -60 || y < -40 || x > size.w + 60 || y > size.h + 40) continue;
-      const on = shows(p);
+      if (!shows(p)) continue;
       const picked = selected === p.slug || inRoute.has(p.slug) || lit.has(p.slug);
       const w = p.name.length * 7.4 + 22;
       // A name that would run under the open drawer (352 px of the right edge on a wide window) goes on the pin's left.
       const side = x + 14 + w > size.w - (selected && size.w >= 700 ? 352 : 6) && x - 14 - w > 6 ? "left" : "right";
-      out.push({ p, x, y, on, named: picked || p.kind === "city" || (p.kind === "town" && k >= 0.28) || k >= 0.85, side });
+      out.push({ p, x, y, named: picked || p.kind === "city" || (p.kind === "town" && k >= 0.28) || k >= 0.85, side });
     }
     const rank = (it: (typeof out)[number]) => (selected === it.p.slug || inRoute.has(it.p.slug) || lit.has(it.p.slug) ? 0 : it.p.kind === "city" ? 1 : it.p.kind === "town" ? 2 : 3);
     const taken: [number, number, number, number][] = [];
@@ -337,7 +327,7 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
     }
     return out;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [places, toScreen, size.w, size.h, k, selected, types, onlyQuests, danger, inRoute, lit]);
+  }, [places, toScreen, size.w, size.h, k, selected, types, onlyQuests, inRoute, lit]);
   // Counts only where pins really pile up (WO-169 review): places less than about 14 px apart (their diamonds touch) are one count, so the opening view is diamonds with
   // the cities named. What a filter took out is not counted, and the picked place, a route's stops and a character's act never are.
   const { singles, clusters } = useMemo(() => {
@@ -345,7 +335,7 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
     const singles: typeof items = [];
     const groups: { x: number; y: number; members: typeof items }[] = [];
     for (const it of items) {
-      if (!it.on || it.p.kind === "city" || selected === it.p.slug || inRoute.has(it.p.slug) || lit.has(it.p.slug)) {
+      if (it.p.kind === "city" || selected === it.p.slug || inRoute.has(it.p.slug) || lit.has(it.p.slug)) {
         singles.push(it);
         continue;
       }
@@ -435,13 +425,13 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
             {c.n}
           </button>
         ))}
-        {singles.map(({ p, x, y, on, named, side }) => {
+        {singles.map(({ p, x, y, named, side }) => {
           // A name near the window's right edge goes on the pin's left, so it is never cut off.
           const flip = named && side === "left";
           return (
           <div
             key={p.slug}
-            className={`${s.pinBox} ${on ? "" : s.dim} ${selected === p.slug ? s.pickedBox : ""}`}
+            className={`${s.pinBox} ${selected === p.slug ? s.pickedBox : ""}`}
             style={{ left: x, top: y }}
             onClickCapture={(e) => {
               if (gesture.current && gesture.current.moved > 5) return;
@@ -469,8 +459,12 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
 
       {/* The left panel (a sheet from the bottom on a phone): search first. */}
       <aside className={`${s.panel} ${panelOpen ? "" : s.panelFolded}`} aria-label="Map controls" data-nodrag="">
-        <button type="button" className={s.fold} aria-expanded={panelOpen} onClick={() => setPanelOpen((o) => !o)}>
-          <span>{panelOpen ? "Fold" : "Search and filters"}</span>
+        {/* A chevron in the corner folds the panel; folded, it is a bar that says what it opens. */}
+        <button type="button" className={s.fold} aria-expanded={panelOpen} aria-label={panelOpen ? "Fold the panel" : "Open search and filters"} onClick={() => setPanelOpen((o) => !o)}>
+          {!panelOpen && <span>Search and filters</span>}
+          <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+            <path d="M2 9l5-5 5 5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </button>
         {panelOpen && (
           <div className={s.panelBody} data-scroll="">
@@ -519,22 +513,14 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
                     {g.label} <small>{g.n}</small>
                   </button>
                 ))}
+                <button type="button" aria-pressed={onlyQuests} className={`${s.chip} ${onlyQuests ? s.chipOn : ""}`} onClick={() => setOnlyQuests((o) => !o)}>
+                  With a quest
+                </button>
               </div>
             </section>
 
-            <section aria-label="Danger" className={s.group}>
-              <h2 className={s.h2}>
-                Danger <small>{danger[0] === 1 && danger[1] === 50 ? "any level" : `level ${danger[0]} to ${danger[1] === 50 ? "50 and up" : danger[1]}`}</small>
-              </h2>
-              <div className={s.range}>
-                <input type="range" min={1} max={50} value={danger[0]} aria-label="Lowest level" onChange={(e) => setDanger(([, h]) => [Math.min(Number(e.target.value), h), h])} />
-                <input type="range" min={1} max={50} value={danger[1]} aria-label="Highest level" onChange={(e) => setDanger(([l]) => [l, Math.max(Number(e.target.value), l)])} />
-              </div>
-            </section>
-
-            <section aria-label="On the map" className={s.group}>
-              <h2 className={s.h2}>On the map</h2>
-              {route && (
+            {route && (
+              <section aria-label="Route" className={s.group}>
                 <label className={s.check}>
                   <input type="checkbox" checked={showRoute} onChange={(e) => setShowRoute(e.target.checked)} />
                   <span>
@@ -544,25 +530,8 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
                     ×
                   </button>
                 </label>
-              )}
-              {signedIn && characters.length > 0 && (
-                <label className={s.check}>
-                  <span>Where my character is</span>
-                  <select value={characterId ?? ""} onChange={(e) => setCharacterId(e.target.value || null)} aria-label="Where my character is">
-                    <option value="">None</option>
-                    {characters.map((c) => (
-                      <option key={c.id} value={c.id}>
-                        {c.name}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-              )}
-              <label className={s.check}>
-                <input type="checkbox" checked={onlyQuests} onChange={(e) => setOnlyQuests(e.target.checked)} />
-                <span>Only places with a quest</span>
-              </label>
-            </section>
+              </section>
+            )}
           </div>
         )}
       </aside>

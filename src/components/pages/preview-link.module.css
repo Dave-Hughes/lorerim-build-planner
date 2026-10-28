@@ -19,6 +19,14 @@
   white-space: normal;
   cursor: default;
 }
+.card[data-x="left"] {
+  left: auto;
+  right: 0;
+}
+.card[data-y="above"] {
+  top: auto;
+  bottom: calc(100% + 4px);
+}
 .icon {
   image-rendering: pixelated;
   flex: none;

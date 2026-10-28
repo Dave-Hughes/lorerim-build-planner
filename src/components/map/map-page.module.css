@@ -64,10 +64,6 @@ a.plate:hover {
   height: 0;
   transition: opacity 0.3s;
 }
-.dim {
-  opacity: 0.16;
-  pointer-events: none;
-}
 .pin {
   position: absolute;
   left: 0;
@@ -243,9 +239,15 @@ a.pin:hover i:not(:empty) {
   width: auto;
 }
 .fold {
-  align-self: flex-end;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   margin: 0;
-  padding: 6px 12px;
+  padding: 6px;
   background: transparent;
   color: #c9b58a;
   border: 0;
@@ -253,15 +255,29 @@ a.pin:hover i:not(:empty) {
   font-size: 13px;
   cursor: pointer;
 }
-.panelFolded .fold {
-  align-self: stretch;
+.fold:hover,
+.fold:focus-visible {
   color: #f1e6cf;
+}
+.fold svg {
+  display: block;
+}
+.panelFolded .fold {
+  position: static;
+  align-self: stretch;
+  justify-content: space-between;
+  padding: 8px 12px;
+  color: #f1e6cf;
+}
+/* Folded, the chevron points down: it opens. */
+.panelFolded .fold svg {
+  transform: rotate(180deg);
 }
 .panelBody {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  padding: 0 16px 18px;
+  padding: 14px 16px 18px;
   overflow-y: auto;
   min-height: 0;
 }
@@ -270,6 +286,8 @@ a.pin:hover i:not(:empty) {
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
+  /* Clear of the fold chevron in the corner. */
+  padding-right: 30px;
 }
 .title {
   margin: 0;
@@ -546,6 +564,13 @@ a.pin:hover i:not(:empty) {
   }
   .panelFolded {
     max-height: none;
+  }
+  /* A sheet from the bottom folds down: the chevron points down while it is open, up when folded. */
+  .fold svg {
+    transform: rotate(180deg);
+  }
+  .panelFolded .fold svg {
+    transform: none;
   }
   .drawer {
     left: 0;
