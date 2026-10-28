@@ -114,3 +114,11 @@ test("the home page's map strip says what the Map page does now", async ({ page 
   await expect(page.getByText(/Search them, filter them by kind, and follow a quest from one place to the next\./)).toBeVisible();
   await expect(page.getByText(/filter them by danger/)).toHaveCount(0);
 });
+
+test("WO-176: Rewards is not said twice: Song of the Green has it in At a glance only, a quest with more to say keeps the section", async ({ page }) => {
+  await page.goto("/quests/q/song-of-the-green");
+  await expect(page.getByRole("region", { name: "At a glance" })).toContainText("Rewards");
+  await expect(page.getByRole("heading", { level: 2, name: "Rewards", exact: true })).toHaveCount(0);
+  await page.goto("/quests/q/lights-out");
+  await expect(page.getByRole("heading", { level: 2, name: "Rewards", exact: true })).toBeVisible();
+});

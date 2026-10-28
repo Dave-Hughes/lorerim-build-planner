@@ -60,6 +60,9 @@ export async function generateMetadata({
   };
 }
 
+/** A reward's timing that only says it comes with the quest: not worth a section of its own beside At a glance. */
+const GENERIC_WHEN = /^(at the end|at the start|once the quest is done|when the quest is done|on completion)$/i;
+
 const nexus = (id: string) =>
   `https://www.nexusmods.com/skyrimspecialedition/mods/${id}`;
 
@@ -280,7 +283,9 @@ export default async function QuestPage({
       <div className={styles.cols}>
         <div className={styles.body}>
           {/* Rewards and People are in the main column (WO-174): the side column is the contents only, as on the line and place pages. */}
-          {(page.gets.xp > 0 || page.gets.rewards.length > 0) && (
+          {/* Said once (WO-176): At a glance already has the XP and the first reward, so the section is only for a page that has more to say
+              (a second reward, or a when that says more than "at the end"). */}
+          {(page.gets.rewards.length > 1 || (!!page.gets.rewards[0]?.when && !GENERIC_WHEN.test(page.gets.rewards[0].when))) && (
             <Gold id="get">
               {page.gets.xp > 0 && (
                 <span className={styles.rw}>

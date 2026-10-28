@@ -5023,9 +5023,9 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-176  Two small things from Bob's read of WO-174 (Mac, then PC, 28 Oct 2026)
-Status: building (Mac)
+Status: queued (PC; Mac's box is done, the second box is the PC's, then Mac sets for Bob)
 
-- [ ] **Rewards is said twice in a row on a quest's page.** Song of the Green: At a glance's Rewards cell ("100 XP, You can make Auri's Bow…"), then straight under it the Rewards section with the same two lines. Now that Rewards sits in the main column, show the section only when it adds something the cell doesn't (more than one reward, or when and from whom); otherwise the cell is enough.
+- [x] **Rewards is said twice in a row on a quest's page.** Song of the Green: At a glance's Rewards cell ("100 XP, You can make Auri's Bow…"), then straight under it the Rewards section with the same two lines. Now that Rewards sits in the main column, show the section only when it adds something the cell doesn't (more than one reward, or when and from whom); otherwise the cell is enough.
 - [x] **(PC) Danger that reads like one stray actor:** "Moss Mother Cavern: enemies from level 1, up to 2", "Sons of Skyrim Military Camp: level 1 to 2" (WO-172). Check where a place's range comes from one placed creature or guard while the place's real fight is a leveled list or a quest's spawn; when the records only show one low actor, say "Not known yet" rather than 1 to 2. Mac: then `for Bob`.
 
 ### Jeff's notes (PC, 28 Oct; the PC box only, the status line is the Mac's)
@@ -5035,6 +5035,9 @@ Status: building (Mac)
 - **Left alone on purpose:** a level 1 or 2 actor where nothing says the place is meant for more: Septimus Signus' Outpost (the man himself, Bob's WO-144 reading, zone 2), the Abandoned Fishing Hut, Green-Tip Cabin, Sees-the-Moon's Shack, Windmill, Guard Tower, Whispering Walls Catacombs, Shrine of Azura and four chambers. Their "1 to 1" or "1 to 2" is what the records show and is honest.
 - **A contract change, said here:** `contract.test.ts`'s "every place with hostile actors has a floor, a ceiling and a table" now also accepts none of the three when the place has at most two actors. Nothing in `src` read those fields without `hasLevels` first (checked: the place page, the cell on a town page, suggest_places, the quest reads and the map's hover each guard it).
 - **Checks:** Python 435 (1 new), `tsc` clean, vitest 746 pass (7 expected fail, 1 skipped). e2e not run on this PC; the Mac's `for Bob` check should look at Moss Mother Cavern's page and the Reach's Sons of Skyrim camp.
+
+Jeff's note (Mac, 28 Oct): **Rewards.** The section under At a glance shows only when it has more than the cell: a second reward, or a "when" that says more than "at the end" / "once the quest is done" / "at the start" (`GENERIC_WHEN` in the quest page; the data's one-reward timings are mostly "at the end" (72), then who or what hands it over: "when you report back to Nazir"). Song of the Green now has it in At a glance only; Lights Out! (several rewards) keeps the section; when it is hidden the contents drop its entry too. Test in `e2e/wo174.spec.ts`. Checks: typecheck, lint, `npm test` 746, full e2e 542 passed and one failure, the Ctrl+K palette in `wo154p4` (the keypress came before the page was ready in a loaded run; it passes alone, and nothing here touches it). The PC box (the danger that reads like one stray actor) is not started; Mac's part after it is a rebuild of the generated data and `for Bob`.
+
 
 ## WO-174  Dave's test, 28 Oct morning: the quest page's side column, its first step, and the Map page made simpler (Mac, 28 Oct 2026)
 Status: done
