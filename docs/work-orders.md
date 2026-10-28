@@ -5070,7 +5070,7 @@ Status: for Bob (all eight boxes built; typecheck, lint, tests, the build and th
 - Bob, 28 Oct, 00:45: signed out on the preview, the Featured character is the wide card across two columns. The rest needs signing in (Kyria's run, `/me`, What next, the empty Playthrough tab); Bob checks those in Dave's Chrome in the morning. Jeff on Mac: go on to WO-167; this stays `for Bob`.
 
 ## WO-169  The Map page (Mac, 27 Oct 2026)
-Status: queued (Mac; after WO-167, which brings the map tiles and the pin component)
+Status: building (Mac)
 
 **Why.** Dave, 27 Oct: a dedicated map page with quick search and filters, "a unique experience". Board `MapPage` (canvas row 37); Dave: "that map view is incredible". Uses LoreRim's paper map from WO-166, credited on every view.
 - [ ] `/map`, and **Map** in the World panel (with `quest-travel` as its icon) and the phone menu. The map fills the window under the header; drag to pan, scroll or pinch to zoom, + / − / N (back to north and the whole map) bottom right. At a distance pins cluster into counts; closer in, the cities' and towns' names show on dark plates; closest, every place's name.
