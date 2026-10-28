@@ -5118,12 +5118,10 @@ Dave, 27 Oct 18:46: the map's mod author OK'd its use on the site, with a credit
 - [ ] The credit text and link in `maps.json` beside the map, so the Mac side never types it: "Skyrim Paper Map by Caro Tuts", https://www.nexusmods.com/skyrimspecialedition/mods/62705.
 - [ ] The pixel-map scripts in `scripts/gamedata/map_proof/` stay as they are (possible background art later); nothing builds from them.
 
-## Part 2. The map images (held, Bob 27 Oct 18:55: don't build until Dave picks the pixel map or the in-game paper map; Part 1 goes ahead either way, since both need every place's position)
-- [ ] A map for each worldspace with places in it, the way the proof does Tamriel: heights (LAND `VHGT`), water (`XCLW`, else the world's default), ground colour from each cell's base textures (LAND `BTXT` → LTEX editor id, the table in `render.py`), cells with no base texture filled from their neighbours, relief shading, reduced to pixels. Tamriel first, Solstheim (Dragonborn.esm) second, then each mod world with places. Read terrain from the winning record in the load order, not only Skyrim.esm.
-- [ ] Crop Tamriel to the playable land with a margin (the proof's crop: the pins' bounds plus 40).
-- [ ] Output `public/maps/<world>.png` (one pixel per 4 game units of a cell's 8, as the proof) and `src/data/lorerim-5.0.4.8/maps.json`: per world the image size, the cell bounds and scale, so a position becomes a pixel on the Mac side without the PC.
-- [ ] Two numbers to check by hand in the log: Bleak Falls Barrow is west-north-west of Riverwood and higher; Embershard Mine is just south of Riverwood.
-- [ ] Tests, then `for Bob` with the coverage: how many places have a position, by world.
+### Part 3. Checks
+(Bob, 27 Oct 22:35: the old held "Part 2" for a pixel map is gone. Dave chose the paper map, which is Part 2 above; the pixel-map scripts stay in `map_proof/` and nothing builds from them.)
+- [ ] Two positions to check by hand in the log: Bleak Falls Barrow is west-north-west of Riverwood and higher; Embershard Mine is just south of Riverwood.
+- [ ] Tests, then `for Bob` with the coverage: how many places have a position, by world and by kind.
 
 ## WO-165  The quest and person pages get the same at-a-glance and colours (Mac, 27 Oct 2026)
 Status: queued (Mac; Bob's review)
