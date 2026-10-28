@@ -18,8 +18,8 @@ export function saidAbout(pointers: PlacePointer[] | undefined): { shown: PlaceP
   const all: PlacePointer[] = [];
   for (const raw of pointers ?? []) {
     const p = quotable(raw);
-    // A line with an alias tag other than the player is not fit to quote (WO-177 Part 6).
-    if (!p) continue;
+    // A line with an alias tag other than the player is not fit to quote (WO-177 Part 6), and a line nobody says is no quote (WO-180).
+    if (!p || (p.kind === "dialogue" && !p.speaker)) continue;
     // One line per text: the same words from two books, or said twice, are shown once.
     const key = p.words.replace(/\s+/g, " ").trim().toLowerCase();
     if (seen.has(key)) continue;

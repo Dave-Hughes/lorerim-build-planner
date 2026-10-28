@@ -575,6 +575,14 @@ def main():
                     continue
                 # `aliases` add to the ones places.py found in the game's own words (WO-166), never replace them; any other field is replaced.
                 r[k] = sorted(set(r.get(k, [])) | set(v)) if k == "aliases" else v
+        # WO-180 Part 1: a quote says "in <quest>" only when that is a quest a player has on the Quests pages, by its name there; a game file's
+        # name ("Whiterun City Dialogue", "0WRDialogue", "CH Generic") is nothing a player knows, and the line is just its speaker's.
+        player_quests = {q["name"] for l in (locals().get("pages") or []) for q in l["quests"]}
+        if player_quests:
+            for r in rows:
+                for x in r.get("pointers", []):
+                    if x.get("quest") and x["quest"] not in player_quests:
+                        x["dialogue"] = x.pop("quest")  # kept for the assistant's town gossip ("Riften Dialogue"); no page names it
         # WO-178: a place inside a town has no position of its own, so the map could show nothing of the Temple of Kynareth, Jorrvaskr or the
         # College. `pinAt` is its town's position: the pin it is shown at. (A town of one name: the one in the place's hold, else the only one.)
         towns = {}

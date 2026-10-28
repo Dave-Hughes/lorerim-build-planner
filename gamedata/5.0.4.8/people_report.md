@@ -1,12 +1,12 @@
 # The people index (WO-144 Part 2)
 
-**4666 people.** One placement each -- their first found cell, their home.
+**4667 people.** One placement each -- their first found cell, their home.
 
 ## By role
 
 | Role | People |
 |---|---|
-| (none) | 4599 |
+| (none) | 4600 |
 | JobFarmer | 24 |
 | JobMerchant | 13 |
 | JobInnkeeper | 6 |
@@ -24,17 +24,17 @@
 
 | Town | People |
 |---|---|
-| (none) | 3079 |
-| Whiterun | 206 |
-| Solitude | 187 |
-| Falkreath | 174 |
-| Winterhold | 164 |
-| Riften | 163 |
-| Windhelm | 150 |
-| Markarth | 140 |
-| Dawnstar | 55 |
+| (none) | 3412 |
+| Solitude | 176 |
+| Riften | 161 |
+| Windhelm | 144 |
+| Markarth | 135 |
+| Whiterun | 120 |
+| Winterhold | 94 |
 | Helgen | 50 |
+| Dawnstar | 44 |
 | Raven Rock | 38 |
+| Falkreath | 36 |
 | Morthal | 29 |
 | Riverwood | 23 |
 | Kynesgrove | 23 |

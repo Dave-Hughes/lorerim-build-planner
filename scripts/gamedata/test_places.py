@@ -67,7 +67,7 @@ class BuiltIndex(unittest.TestCase):
     def test_embershard_mine_by_riverwood_with_its_pointer(self):
         mine = self.by["Embershard Mine"]
         self.assertEqual((mine["type"], mine["nearestTown"]["town"]), ("Mine", "Riverwood"))
-        self.assertTrue(any("Embershard Mine" in p["words"] and "criminals" in p["words"] for p in mine["pointers"]))
+        self.assertTrue(any("Embershard Mine" in p["words"] and "criminals" in p["words"] for p in mine["pointers"]))  # no speaker: the pages leave it out (WO-180), the assistant keeps it
 
     def test_bleak_falls_barrow_is_the_golden_claws(self):
         barrow = self.by["Bleak Falls Barrow"]

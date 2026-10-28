@@ -1419,20 +1419,30 @@ def build(version):
             return c.get("name") or loc or None
 
         for iid, inf in infos.items():
-            text = " ".join(inf["lines"])
+            # WO-180 Part 1: a line with a name the game fills in ("<Alias=Rival>") is not fit to quote, and the game's own markup is never in the
+            # words. (A line with no speaker stays: the planner's assistant reads a town's gossip from it. The pages quote only a line someone says.)
+            lines = [game_text(l) for l in inf["lines"]]
+            text = " ".join(lines)
             for nm in set(pat.findall(text)):
                 for k in named[nm]:
+                    said = next((l for l in lines if nm in l), text)[:300].strip()
+                    if HOLE in said:
+                        continue
                     places[k].setdefault("pointers", []).append({
                         "kind": "dialogue", "speaker": (npcs.get(inf["speaker"]) or {}).get("name") if inf["speaker"] else None,
                         "speakerPlace": where_npc(inf["speaker"]) if inf["speaker"] else None,
                         "quest": (quests.get(inf["quest"]) or {}).get("name") if inf["quest"] else None,
-                        "words": next((l for l in inf["lines"] if nm in l), text)[:300], "record": f"INFO {iid} ({inf['plugin']})"})
+                        "words": said, "record": f"INFO {iid} ({inf['plugin']})"})
         for bid, b in books.items():
-            for nm in set(pat.findall(b["text"] or "")):
+            text = game_text(b["text"] or "")
+            for nm in set(pat.findall(text)):
                 for k in named[nm]:
-                    i = b["text"].find(nm)
-                    places[k].setdefault("pointers", []).append({"kind": "book", "book": b["name"], "words": re.sub(r"<[^>]+>", "", b["text"][max(0, i - 120):i + 160]).strip(),
-                                                                 "record": f"BOOK {bid} ({b['plugin']})"})
+                    # The first mention with no hole in what is cut around it.
+                    for m in re.finditer(re.escape(nm), text):
+                        said = text[max(0, m.start() - 120):m.start() + 160].strip()
+                        if HOLE not in said:
+                            places[k].setdefault("pointers", []).append({"kind": "book", "book": b["name"], "words": said, "record": f"BOOK {bid} ({b['plugin']})"})
+                            break
     # Quests that already go there: a location alias that is it (or inside it), or a forced reference standing in it.
     for qid, q in quests.items():
         hit = set()
@@ -1611,6 +1621,21 @@ def report(places, xp_from, cities=()):
         for n, v in sorted(kept_same.items()):
             out.append(f"| {v[0]['name']} | {len(v)} | {'; '.join(sorted(str(p.get('inTown') or p.get('hold') or p.get('world') or '?') for p in v))} |")
     return "\n".join(out) + "\n"
+
+
+PLAYER_TAG = re.compile(r"(?i)<\s*Alias\s*=\s*Player\s*>")
+FILL_TAG = re.compile(r"(?i)<\s*(?:Alias|Global|Token)\b[^<>]*>")  # a name or number the game puts in when it speaks the line: the planner can't
+HOLE = "\x00"  # where such a tag was; a quote that has one in it is left out
+
+
+def game_text(text):
+    """WO-180 Part 1: the game's words without the game's markup. "<Alias=Player>" is "you"; any other name the game fills in leaves a HOLE (the
+    quote is dropped, never kept with a gap: "Jarl of , to ,"); the book markup (<font ...>, <img ...>, [pagebreak]) goes, whole, before a quote is cut."""
+    t = PLAYER_TAG.sub("you", text)
+    t = FILL_TAG.sub(HOLE, t)
+    t = re.sub(r"<[^<>]*>", "", t)
+    t = re.sub(r"(?i)\[\s*pagebreak\s*\]", " ", t)
+    return re.sub(r"[ \t]{2,}", " ", t)
 
 
 RECORD_NAME = re.compile(r"_|^[A-Za-z]+[a-z][A-Z]\w*$")  # an editor id, not a name ("EGD_DialogueGuardsGeneral", "dunGeirmundQST")

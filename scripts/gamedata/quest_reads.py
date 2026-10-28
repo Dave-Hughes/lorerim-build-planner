@@ -9,6 +9,8 @@ import json
 import os
 import re
 
+from editor_words import without_editor_words
+
 # What a page and the door use, in BRIEF.md's words. `evidence` (record ids) and `plugin` stay in the batch files, not the data.
 FIELDS = ("canDo", "canDoWhy", "needs", "starts", "firstStep", "takesYou", "choices", "steps", "rewards", "type", "opens", "closes", "people", "unsure")
 CAN_DO = ("talk", "by itself", "radiant", "cut", "background")
@@ -42,6 +44,12 @@ def load_reads(folder):
                 read.pop("canDo", None)
             if "unsure" in read:
                 read["unsure"] = player_unsure(read["unsure"])
+            # WO-180 Part 2: the only rewording: an editor's word out of a person's role and a reward's name ("Named in its aliases" is no role; "Derkeethus as
+            # a follower (he's in the follower and marriage factions)" is "Derkeethus as a follower"); a reward that is only such words is left out.
+            if read.get("people"):
+                read["people"] = [{**{k: v for k, v in p.items() if k != "role"}, **({"role": r} if (r := without_editor_words(p.get("role"))) else {})} for p in read["people"]]
+            if read.get("rewards"):
+                read["rewards"] = [{**w, **({"what": s} if "what" in w else {})} for w in read["rewards"] if "what" not in w or (s := without_editor_words(w["what"]))]
             out[edid] = {**read, "fixed": fixed.get(edid, [])}
     return out
 

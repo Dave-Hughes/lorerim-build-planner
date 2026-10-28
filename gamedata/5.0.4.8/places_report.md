@@ -2,7 +2,7 @@
 
 Written by `scripts/gamedata/places.py` from the winning records across the load order (with the Creation Club plugins). Clear and discovery XP from `LoreRim - MCM and INI Settings`'s Experience.ini.
 
-**997 places.** 422 have a pointer (a line or a book that names them), 384 have a quest that goes there, and 434 have neither.
+**997 places.** 420 have a pointer (a line or a book that names them), 384 have a quest that goes there, and 435 have neither.
 
 ## The nine capitals
 
@@ -15,7 +15,7 @@ All nine found with an exterior position.
 |---|---|---|---|
 | House | 180 | 9 | 24 |
 | Landmark | 154 | 43 | 79 |
-| Cave | 107 | 61 | 48 |
+| Cave | 107 | 60 | 48 |
 | NordicRuin | 54 | 42 | 34 |
 | Store | 51 | 23 | 20 |
 | Fort | 45 | 38 | 28 |
@@ -34,7 +34,7 @@ All nine found with an exterior position.
 | Guild | 13 | 8 | 8 |
 | NordicDwelling | 12 | 4 | 1 |
 | NordicTower | 12 | 6 | 3 |
-| PlayerHouse | 12 | 11 | 5 |
+| PlayerHouse | 12 | 10 | 5 |
 | Doomstone | 11 | 0 | 1 |
 | City | 10 | 0 | 10 |
 | Altar | 10 | 4 | 4 |
@@ -62,10 +62,10 @@ All nine found with an exterior position.
 | Eastmarch | 96 | 40 | 32 |
 | Whiterun | 95 | 45 | 35 |
 | The Reach | 94 | 43 | 40 |
-| Haafingar | 86 | 29 | 26 |
+| Haafingar | 86 | 28 | 26 |
 | Falkreath | 65 | 36 | 28 |
 | Solstheim | 64 | 25 | 36 |
-| The Pale | 55 | 27 | 23 |
+| The Pale | 55 | 26 | 23 |
 | Winterhold | 52 | 26 | 27 |
 | Hjaalmarch | 44 | 19 | 14 |
 | Wyrmstooth | 30 | 16 | 8 |
@@ -372,7 +372,7 @@ The places that are not a house, shop, barracks, jail or building (those are onl
 | Honrich Lake Cave | Cave | Tamriel | evgSIRENROOT.esm | Deluge of Deceit |
 | Gomgralmaulgr Cave | Cave | Tamriel | mihailseagiants.esp | Grahl, Grahl Matron, Half-Giant Frostcaller |
 
-### Named by a quest, a home or a book, and found on no map and in no town (83)
+### Named by a quest, a home or a book, and found on no map and in no town (84)
 
 Not places: their interiors reach no map by any door (holding cells, storage and test cells, Apocrypha, Sovngarde, Meridia's realm, Vigilant's rooms). The quest data still names them.
 
@@ -444,6 +444,7 @@ Not places: their interiors reach no map by any door (holding cells, storage and
 | Piper Temple | Vigilant.esm | no position |
 | Pryai | Journey to Baan Malur.esp | no position |
 | Raven Rock Holding Cell | Dragonborn.esm | no position |
+| SBSoapContainerCell | Keep It Clean.esp | no position |
 | Sancremor Angasel | Vigilant.esm | no position |
 | Service Room - Get off from here! | Gray Fox Cowl.esm | no position |
 | Skyrim | evgSIRENROOT.esm | no position |

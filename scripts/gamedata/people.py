@@ -34,6 +34,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from esp import header, iter_group, load_order, plugin_paths, rec_data, resolve, subrecs  # noqa: E402
 import places as pl  # noqa: E402
+from editor_words import EDITOR  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
@@ -44,6 +45,20 @@ JOBS = {"JobInnkeeper", "JobPriest", "JobJarl", "JobSteward", "JobHousecarl", "J
 
 def form_id(key):
     return f"{key[0]}:{key[1]:06X}"
+
+
+# WO-180 Part 1: a race a mod named with an editor id ("0Asy1um_OthrielSnowElfRace" for a Snow Elf) is said in words: the id's last part without "Race",
+# split at its capitals ("MudCrab" is a Mud Crab). The one the id's words can't give is ruled here.
+RACE_RULED = {"0Asy1um_OthrielSnowElfRace": "Snow Elf"}
+
+
+def race_words(full):
+    if full in RACE_RULED:
+        return RACE_RULED[full]
+    if " " in full or not re.search(r"_|[a-z][A-Z]", full):
+        return full
+    part = re.sub(r"Race$", "", full.rsplit("_", 1)[-1])
+    return re.sub(r"(?<=[a-z])(?=[A-Z])", " ", part).strip() or full
 
 
 def scan_races():
@@ -67,7 +82,7 @@ def scan_races():
             key = form_id(resolve(fid, masters, n))
             full = next((v.rstrip(b"\0").decode("utf-8", "replace") for s, v in subs if s == "FULL" and len(v) != 4), "")
             if full:
-                races[key] = full
+                races[key] = race_words(full)
     return races
 
 
@@ -95,9 +110,20 @@ def build(version):
             k = locs[k]["parent"]
         return out
 
+    # WO-180 Part 2: the places index's own decision on what is inside a town. A place with no `inTown` (a dungeon, a mine, a fort, a monastery, a
+    # farm out in its fields) is a place of its own, so the people who live there are its, never the town whose location it is parented to
+    # (Whiterun listed 133 people: Web Mother, Jon the Mad, the Greybeards, all of Fort Greymoor).
+    placed_file = os.path.join(REPO, "gamedata", version, "places_raw.json")
+    own_place = {p["id"] for p in json.load(open(placed_file, encoding="utf-8"))["places"] if not p.get("inTown")} if os.path.exists(placed_file) else set()
+
     def in_town(loc_key):
         # Bob, 23 Oct: Borgakh had no town -- she's at Mor Khazgur, a stronghold, which this left out.
-        return next((locs[x]["name"] for x in chain(loc_key) if locs[x].get("name") in (pl.CAPITALS | pl.SETTLEMENTS | pl.STRONGHOLDS)), None)
+        up = chain(loc_key)
+        i = next((i for i, x in enumerate(up) if locs[x].get("name") in (pl.CAPITALS | pl.SETTLEMENTS | pl.STRONGHOLDS)), None)
+        # (A demo's or cut content's leftover location, "E3 Bleak Falls Barrow", is no place in the index and no part of Falkreath either.)
+        if i is None or any(x in own_place or pl.LEFTOVER.search(locs[x].get("edid") or "") for x in up[:i]):
+            return None
+        return locs[up[i]]["name"]
 
     people = {}
     for a in actors.values():
@@ -132,6 +158,10 @@ def report(people):
     return "\n".join(out) + "\n"
 
 
+# WO-180 Part 2: a skill as the game shows it ("One-Handed"), never the record's name for it ("OneHanded"); the names are the planner's own (skills.json).
+SKILL_SHOWN = {"OneHanded": "One-Handed", "TwoHanded": "Two-Handed", "HeavyArmor": "Heavy Armor", "LightArmor": "Light Armor", "Speechcraft": "Speech", "Lockpick": "Lockpicking"}
+
+
 def person_facts(dump):
     """
     What a person is to a player, from the WO-156 dump's record fields (not their AI packages): `essential`, `follower`, `marriage`,
@@ -152,7 +182,7 @@ def person_facts(dump):
             f["innkeeper"] = True
         t = d.get("trainer")
         if t and t.get("skill"):
-            f["trainer"] = {"skill": t["skill"], **({"cap": t["levelCap"]} if t.get("levelCap") else {})}
+            f["trainer"] = {"skill": SKILL_SHOWN.get(t["skill"], t["skill"]), **({"cap": t["levelCap"]} if t.get("levelCap") else {})}
         if f:
             out[pid] = f
     return out
@@ -160,7 +190,9 @@ def person_facts(dump):
 
 # A reader's own aside about what it could read ("the extracts don't say which city", "the records I can read don't show what unlocks it").
 # It is not something a player should be told; what it points at is in the read's `unsure` list with its reason.
-META = re.compile(r"\bextracts?\b|\brecords I can read\b|\bthese records\b|\bin the records\b|\bthe records (?:don't|do not|give no|say no|show no)\b", re.I)
+# WO-180 Part 2: and the words an editor writes (package, alias, script, property, faction, keyword, stage, placed): "her sandbox package sits above her
+# sleep package" is the game's building, not her day. The Mac's Not sure yet filter has the same list (player-words.ts).
+META = re.compile(r"\bextracts?\b|\brecords I can read\b|\bthese records\b|\bin the records\b|\bthe records (?:don't|do not|give no|say no|show no)\b|" + EDITOR, re.I)
 
 
 def tidy_read(text):

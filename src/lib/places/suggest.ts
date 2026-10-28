@@ -190,7 +190,7 @@ export function placesNear(townList: readonly string[], levelFrom: number, level
         if (x.speaker) return [x];
         // A line with no speaker is the town's gossip only when it belongs to that town's dialogue quest ("Riften Dialogue"); the records
         // name no alias or follower for any other, so it's left out (WO-151).
-        const gossip = gossipTown(x.quest);
+        const gossip = gossipTown(x.dialogue ?? x.quest);
         return gossip ? [{ ...x, speaker: `people in ${gossip}`, quest: undefined }] : [];
       })
       // A line someone in a town says first, then other lines, then books; four at most.

@@ -19,8 +19,10 @@ export interface PlacePointer {
   speakerPlace?: string;
   /** The book that names it. */
   book?: string;
-  /** The quest the line belongs to, by its name. */
+  /** The quest the line belongs to, by its name: only a quest a player has on the Quests pages (WO-180). */
   quest?: string;
+  /** The game's own dialogue quest it belongs to when that is no quest a player has ("Riften Dialogue"): the assistant's gossip lookup reads it; no page shows it. */
+  dialogue?: string;
   /** The plugin the record comes from. */
   from: string;
 }
