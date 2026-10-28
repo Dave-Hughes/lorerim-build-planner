@@ -5034,6 +5034,34 @@ Status: queued (Mac; after WO-165)
 - [ ] **Your characters** on home and the cards on `/me`: a character with no cover gets a fallback, not a blank tile: its race's pixel icon large on the night-scene colours, the name over it. `/me` uses the one character card (WO-161) with its Edit and Delete under it; "Start a run" becomes "Plan a playthrough" everywhere.
 - [ ] Checks, screenshots signed in (Kyria's page on each tab, a character with no cover on home and `/me`, the What next step) at 1440 and 390, then `for Bob`.
 
+## WO-167  The map on place pages and on Places (Mac, 27 Oct 2026)
+Status: queued (Mac; waits on WO-166's files on staging, then after WO-164)
+
+**Why.** In-game pictures are parked (WO-158). Dave picked a map instead, and Bob proved it on 27 Oct: a pixel map of Skyrim built from the game's own terrain, every place pinned where the records allow. Board: `PlaceMap` (canvas row 36).
+- [ ] **A place's page**: under the title and tags, a full-width map band (400 px tall at 1440), the map cut around the place, the place's pin large and orange with a slow pulse, the places around it as small diamonds coloured by kind (blue towns, red dangerous places, grey the rest), names on the nearest few, every pin a link with the WO-157 hover preview; a compass N, a scale bar, a small legend. Under it, **Getting there**: the direction and distance from the nearest town and whether it's above or below it ("West of Riverwood, a short walk, and well above it"), computed from the positions.
+- [ ] A place inside a town uses its town's pin and says so ("In Riverwood"). A place with no position gets no map band and no empty box.
+- [ ] **Places** (`/places`): the whole map at the top, every pinned place on it, filterable by kind with the existing chips; hovering a pin previews the place.
+- [ ] On a phone the band is 240 px tall and drags sideways; the whole map pinches to zoom.
+- [ ] Pixel-sharp at every size (nearest-neighbour scaling, never smoothed).
+- [ ] Checks and screenshots of Bleak Falls Barrow, Riverwood, the Sleeping Giant Inn (town pin) and Places at 1440 and 390, then `for Bob`.
+
+## WO-166  Every place's position, and the map images, from the game files (PC, 27 Oct 2026)
+Status: queued (PC)
+
+**Why.** Bob's proof (`scripts/gamedata/map_proof/`, README there) made a pixel map of Skyrim from Skyrim.esm's terrain and pinned 286 places. Turn it into a real build step and close the gaps it found.
+
+### Part 1. Positions
+- [ ] `places_raw.json` gains each place's `world` (the worldspace's editor id) and `pos` (x, y, z), from its map marker, else its location's marker (LCTN `MNAM`), reading the winning record in the active profile's load order (`esp.active_profile()`), as `places.py` already reads markers. A place in a town gets `inTown` and no position of its own.
+- [ ] The 210 the proof couldn't place: for each, try the cells whose location (`XLCN`) is it (an exterior cell's centre), then an interior's door out to the world (`XTEL` back to an exterior door). Report what's left by plugin and type, and why each kind failed.
+- [ ] The 34 places listed twice and the leftovers ("E3 Bleak Falls Barrow", "Sewers", "Unknown Gate"): find why each is there, merge or drop them in the build with a test, and say which in the log.
+
+### Part 2. The map images
+- [ ] A map for each worldspace with places in it, the way the proof does Tamriel: heights (LAND `VHGT`), water (`XCLW`, else the world's default), ground colour from each cell's base textures (LAND `BTXT` → LTEX editor id, the table in `render.py`), cells with no base texture filled from their neighbours, relief shading, reduced to pixels. Tamriel first, Solstheim (Dragonborn.esm) second, then each mod world with places. Read terrain from the winning record in the load order, not only Skyrim.esm.
+- [ ] Crop Tamriel to the playable land with a margin (the proof's crop: the pins' bounds plus 40).
+- [ ] Output `public/maps/<world>.png` (one pixel per 4 game units of a cell's 8, as the proof) and `src/data/lorerim-5.0.4.8/maps.json`: per world the image size, the cell bounds and scale, so a position becomes a pixel on the Mac side without the PC.
+- [ ] Two numbers to check by hand in the log: Bleak Falls Barrow is west-north-west of Riverwood and higher; Embershard Mine is just south of Riverwood.
+- [ ] Tests, then `for Bob` with the coverage: how many places have a position, by world.
+
 ## WO-165  The quest and person pages get the same at-a-glance and colours (Mac, 27 Oct 2026)
 Status: queued (Mac; after WO-163)
 
