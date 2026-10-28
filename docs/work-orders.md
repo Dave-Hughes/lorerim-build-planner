@@ -5154,7 +5154,7 @@ Decisions and reasons:
 - **Small cards on a phone:** two lines of tagline, then the cut; likes are hidden there so the maker keeps its name.
 
 ## WO-178  Data a player would call wrong (PC, 28 Oct 2026)
-Status: building (Mac; Part 3)
+Status: for Bob
 
 From the same cold review (WO-177). Each is what the page shows; find why in the records and fix it in the build, or say why it's right.
 - [x] **Only one temple or guild on the map** ("Temples and guilds 1": High Hrothgar). The Temple of Kynareth, the Temple of Mara, Jorrvaskr and the College are inside their cities, so they have no position (WO-166's rule). Give the Mac what it needs to show a place inside a town at its town's pin on the map when its group is picked (the town's position on each such row as `pinAt`), so the groups aren't empty.
@@ -5207,12 +5207,12 @@ Checks: Python 440 OK, `tsc` and eslint clean, vitest 775 pass / 7 expected fail
 
 ### Part 3. The third cold review (28 Oct, 14:50)
 Fixed: the climb only on Bleak Falls Barrow; Bleak Falls Barrow's one answer; Lydia flies to Dragonsreach and Whiterun's drawer lists its notable people; Castle Volkihar's hold and people; the Soul Cairn as a realm. Still:
-- [ ] **(Mac) Temples at their town's pin** show only zoomed right in; at the opening zoom the pin has no label and hovering shows the town's own card ("1 quest go here"), nothing about its 4 temples. With a group picked, the town's pin carries the count at every zoom ("Whiterun, 4") and its hover lists the places of that group.
-- [ ] **(Mac) "on the map" total**: `/map` says 750, `/places` and home 457. One number from the build, the same rule everywhere (what the map draws, in-town places counted once at their town or not at all: say which).
-- [ ] **(Mac) Dragonsreach's drawer** doesn't list Lydia, the person you just picked to fly there.
+- [x] **(Mac) Temples at their town's pin** show only zoomed right in; at the opening zoom the pin has no label and hovering shows the town's own card ("1 quest go here"), nothing about its 4 temples. With a group picked, the town's pin carries the count at every zoom ("Whiterun, 4") and its hover lists the places of that group.
+- [x] **(Mac) "on the map" total**: `/map` says 750, `/places` and home 457. One number from the build, the same rule everywhere (what the map draws, in-town places counted once at their town or not at all: say which).
+- [x] **(Mac) Dragonsreach's drawer** doesn't list Lydia, the person you just picked to fly there.
 - [x] **(PC) The Soul Cairn**: Danger "Level 13 and up" and under it "How dangerous it is isn't known yet". One answer. **Castle Volkihar's** page map is half frame, the pin in sea away from the drawn island: check its position (the castle's exterior is its own worldspace; use the boat dock on Tamriel the player uses, or the island's marker).
 - [x] **(PC) `/places/dungeon`** is a placeholder from the courier-job mod ("Dungeon", "A landmark next to Dawnstar", quotes like "guarded by a ."). Placeholder locations of a radiant system aren't places: drop them, with a test listing the rule.
-- [ ] Then `for Bob`.
+- [x] Then `for Bob`.
 
 
 Jeff's notes on Part 3 (PC, 28 Oct):
@@ -5223,8 +5223,13 @@ Jeff's notes on Part 3 (PC, 28 Oct):
 - **Checks**: Python 442 OK; `tsc` and eslint clean; vitest 785 pass / 7 expected fail / 1 skipped. Not run: e2e, and nothing seen in a browser.
 - **For the Mac**: the first three boxes and the last (Temples at the town's pin and its count at every zoom, the "on the map" total, Dragonsreach's drawer with Lydia).
 
+Mac's notes on Part 3 (28 Oct):
+- **Temples at their town's pin:** with a group picked, the town's pin is always named with its count ("Whiterun, 4") at every zoom; hovering it lists the places of the group (a plain link, so the town's own card does not cover the list). One place is just its own name.
+- **The "on the map" total** is one number, `mapPlaces().length`: every place the build can pin, a place inside a town counted once at its town's pin. The Map says it, `/places` says it with "those inside a town counted once at the town's pin", and the home strip's count is the same. (The pins drawn with no group picked are the places with a spot of their own; the inside ones appear when their kind is picked.)
+- **Dragonsreach's drawer** adds the people a read puts there most of the day (Lydia is Housecarl; rulers and followers first), at most two, so a city's own six keep their places. Test: `e2e/wo177.spec.ts`.
+
 ## WO-176  Two small things from Bob's read of WO-174 (Mac, then PC, 28 Oct 2026)
-Status: queued (Mac: Part 2's other two boxes; the PC's is done, see the notes on WO-178 Part 3)
+Status: for Bob
 
 - [x] **Rewards is said twice in a row on a quest's page.** Song of the Green: At a glance's Rewards cell ("100 XP, You can make Auri's Bow…"), then straight under it the Rewards section with the same two lines. Now that Rewards sits in the main column, show the section only when it adds something the cell doesn't (more than one reward, or when and from whom); otherwise the cell is enough.
 - [x] **(PC) Danger that reads like one stray actor:** "Moss Mother Cavern: enemies from level 1, up to 2", "Sons of Skyrim Military Camp: level 1 to 2" (WO-172). Check where a place's range comes from one placed creature or guard while the place's real fight is a leveled list or a quest's spawn; when the records only show one low actor, say "Not known yet" rather than 1 to 2. Mac: then `for Bob`.
@@ -5240,10 +5245,14 @@ Status: queued (Mac: Part 2's other two boxes; the PC's is done, see the notes o
 Jeff's note (Mac, 28 Oct): **Rewards.** The section under At a glance shows only when it has more than the cell: a second reward, or a "when" that says more than "at the end" / "once the quest is done" / "at the start" (`GENERIC_WHEN` in the quest page; the data's one-reward timings are mostly "at the end" (72), then who or what hands it over: "when you report back to Nazir"). Song of the Green now has it in At a glance only; Lights Out! (several rewards) keeps the section; when it is hidden the contents drop its entry too. Test in `e2e/wo174.spec.ts`. Checks: typecheck, lint, `npm test` 746, full e2e 542 passed and one failure, the Ctrl+K palette in `wo154p4` (the keypress came before the page was ready in a loaded run; it passes alone, and nothing here touches it). The PC's box landed while this was building (rebased onto it): with its data in, `npm test` 746 and a build pass; read on a local server, Moss Mother Cavern's page says "How dangerous it is isn't known yet" (its map range is none) and the Sons of Skyrim camp in the Reach reads Level 4 to 27, 22 to 27 after the war.
 
 ### Part 2. The third cold review (28 Oct, 14:50)
-- [ ] **(Mac) Rewards still said twice** on Extracting an Argonian (the cell's two lines repeated below), The Bonds of Matrimony ("Amulet of Mara / Handled by the quest's script"), Through a Glass, Darkly, Return Aegisbane, The Kagrumez Gauntlet. An editor's note ("Handled by the quest's script", "Inside Kagrumez") doesn't count as more; the section shows only when it adds a reward or a when/from-whom a player can use.
+- [x] **(Mac) Rewards still said twice** on Extracting an Argonian (the cell's two lines repeated below), The Bonds of Matrimony ("Amulet of Mara / Handled by the quest's script"), Through a Glass, Darkly, Return Aegisbane, The Kagrumez Gauntlet. An editor's note ("Handled by the quest's script", "Inside Kagrumez") doesn't count as more; the section shows only when it adds a reward or a when/from-whom a player can use.
 - [x] **(PC) Danger from stray low actors** remains where there are three or more: Darkwater Pass "Level 1 to 2, 3 in all" (a Falmer cave), Northwind Mine "Level 1 to 2, boss Skeleton level 1", Headwaters of Harstrad "boss Skeleton, level 1", Ivarstead "up to 3". The rule is about what kind of actor (placed non-leveled creatures and a town's guards aren't the place's fight), not how many.
-- [ ] **(Mac) Moss Mother Cavern** lost its Danger cell and shows a lone centred "How dangerous it is isn't known yet." in an empty column while Not sure yet says "Nothing is flagged". An unknown danger is a Danger cell saying "Not known yet", and Not sure yet lists it.
-- [ ] Then `for Bob`.
+- [x] **(Mac) Moss Mother Cavern** lost its Danger cell and shows a lone centred "How dangerous it is isn't known yet." in an empty column while Not sure yet says "Nothing is flagged". An unknown danger is a Danger cell saying "Not known yet", and Not sure yet lists it.
+- [x] Then `for Bob`.
+
+### Mac's notes on Part 2 (28 Oct)
+- **Rewards said once:** the section shows when there is a second reward, or when the reward's "when" is something a player can use: a time or a person ("when you return the claw", "from Lucan or Camilla", "depending on your path", "once..."). A note for editors ("Handled by the quest's script", "Inside Kagrumez", a hedge), a generic "at the end", or a plain "if you keep it" / "taken from your defeated shadow" says nothing the cell has not. Extracting an Argonian, The Bonds of Matrimony, Through a Glass, Darkly, Return Aegisbane and The Kagrumez Gauntlet have it in At a glance only; Lights Out! keeps its section (two paths).
+- **Moss Mother Cavern:** an unknown danger is a Danger cell reading "Not known yet", the lone line is gone (a section with nothing known is left out), and Not sure yet lists "How dangerous it is". Test in `e2e/wo177.spec.ts`.
 
 ## WO-174  Dave's test, 28 Oct morning: the quest page's side column, its first step, and the Map page made simpler (Mac, 28 Oct 2026)
 Status: done

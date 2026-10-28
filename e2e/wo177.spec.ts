@@ -418,3 +418,41 @@ test("Part 6: every kind of page lines its body up with its title (50 places, 50
   }
   expect(off).toEqual([]);
 });
+
+test("WO-178 Part 3 (Mac): one 'on the map' number, temples at their town's pin with a count, Lydia in Dragonsreach's drawer", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/map");
+  const n = async (text: string) => Number((await page.locator("main, body").first().innerText()).match(new RegExp(`(\\d[\\d,]*) ${text}`))?.[1]?.replace(/,/g, ""));
+  const onMap = Number((await page.getByRole("complementary", { name: "Map controls" }).getByText(/^\d+ places on the map$/).innerText()).split(" ")[0]);
+  expect(onMap).toBeGreaterThan(600);
+  await page.goto("/places");
+  expect(await n("places on the map")).toBe(onMap);
+  await page.goto("/");
+  expect(await n("places are pinned")).toBe(onMap);
+
+  // A group picked: the town's pin says how many, at the opening zoom, and hovering lists them.
+  await page.goto("/map?types=temples");
+  const pin = page.getByRole("group", { name: "Map of Skyrim" }).locator("a[class*='pin']").filter({ hasText: /^[A-Z][\w' -]+, \d+$/ }).first();
+  await expect(pin).toBeVisible();
+  await pin.hover();
+  await expect(page.getByRole("group", { name: "Map of Skyrim" }).locator("[role='tooltip']").first()).toBeVisible();
+
+  // The person you pick to fly there is in the drawer of the place.
+  await page.goto("/map?place=dragonsreach");
+  await expect(page.getByRole("complementary", { name: "Dragonsreach" })).toContainText("Lydia");
+});
+
+test("WO-176 Part 2 (Mac): a reward is said once, and an unknown danger is a cell and a Not sure yet item", async ({ page }) => {
+  for (const slug of ["extracting-an-argonian", "the-bonds-of-matrimony", "through-a-glass-darkly", "return-aegisbane", "the-kagrumez-gauntlet"]) {
+    const res = await page.goto(`/quests/q/${slug}`);
+    if (res?.status() !== 200) continue;
+    await expect(page.getByRole("region", { name: "At a glance" })).toContainText("Rewards");
+    await expect(page.getByRole("region", { name: "Rewards", exact: true })).toHaveCount(0);
+  }
+  await page.goto("/places/moss-mother-cavern");
+  await expect(page.getByRole("region", { name: "At a glance" })).toContainText("Danger");
+  await expect(page.getByRole("region", { name: "At a glance" })).toContainText("Not known yet");
+  await expect(page.locator("main")).not.toContainText("How dangerous it is isn't known yet");
+  await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("How dangerous it is");
+  await expect(page.getByRole("region", { name: "Information Confidence" })).not.toContainText("Nothing is flagged");
+});

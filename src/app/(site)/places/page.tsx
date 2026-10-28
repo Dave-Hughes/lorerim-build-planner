@@ -3,6 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { SearchBox } from "@/components/search/search-box";
 import { MapView } from "@/components/places/map-view";
+import { mapPlaces } from "@/lib/map/data";
 import { mapEntry, mapPins } from "@/lib/places/map";
 import { PLACE_GROUPS, groupFrom, groupOf } from "@/lib/places/groups";
 import { placeCounts, placeHrefOf, placeLabel, placesData, placeType, type Place } from "@/lib/places/data";
@@ -58,11 +59,13 @@ export default async function PlacesPage({ searchParams }: { searchParams: Promi
         const entry = mapEntry();
         if (!entry) return null;
         const shown = mapPins().filter((p) => (!type || groupOf(p.type) === type) && (!hold || p.hold === hold));
+        // The same number the Map page gives: every place it can pin, a place inside a town once at its town's pin.
+        const onMap = mapPlaces().filter((p) => (!type || groupOf(p.type) === type) && (!hold || p.hold === hold)).length;
         return (
           <section aria-label="Map of Skyrim" className="map-section">
             <MapView entry={entry} pins={shown} mode="whole" />
             <p className="muted" style={{ margin: "8px 0 0", fontSize: 14 }}>
-              {shown.length} {shown.length === 1 ? "place" : "places"} on the map. Skyrim only: Solstheim and the mods&apos; lands have no map here yet.
+              {onMap} {onMap === 1 ? "place" : "places"} on the map, those inside a town counted once at the town&apos;s pin. Skyrim only: Solstheim and the mods&apos; lands have no map here yet.
             </p>
           </section>
         );

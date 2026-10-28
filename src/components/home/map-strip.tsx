@@ -13,8 +13,9 @@ import c from "./map-strip.module.css";
 export function MapStrip() {
   const entry = mapEntry();
   if (!entry) return null;
-  // The places with a spot of their own: one inside a town is not a pin of its own.
-  const places = mapPlaces().filter((p) => !p.inTown);
+  // Every place the map can pin, one inside a town counted once at its town's pin (WO-178 Part 3): the number the Map and Places pages give.
+  const everyPlace = mapPlaces();
+  const places = everyPlace.filter((p) => !p.inTown);
   const [x0, y0, x1, y1] = entry.border;
   // The towns and cities the build counts (WO-178), the same number the Map and Places pages give for the group, not every lived-in place on the map.
   const towns = placeCounts().groups.cities.onMap;
@@ -47,7 +48,7 @@ export function MapStrip() {
           on the game&apos;s own map
         </h2>
         <p className={c.p}>
-          {places.length} places are pinned on it, from {towns} towns and cities to {danger} that are worth a fight. Search them, filter them by kind, and follow a quest from one place to the next.
+          {everyPlace.length} places are pinned on it, from {towns} towns and cities to {danger} that are worth a fight. Search them, filter them by kind, and follow a quest from one place to the next.
         </p>
         <Link href="/map" className="btn btn-primary btn-lg">
           Open the map

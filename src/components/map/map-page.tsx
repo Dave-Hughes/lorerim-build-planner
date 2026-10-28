@@ -332,7 +332,7 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
   // What to draw: names as you come in, and never two plates on top of each other (WO-169 review): the more important name stays (the picked
   // place, a route's stops, the cities, then the towns) and the lesser one is dropped.
   const items = useMemo(() => {
-    const out: { p: MapPlace; x: number; y: number; named: boolean; side: "right" | "left" }[] = [];
+    const out: { p: MapPlace; x: number; y: number; named: boolean; side: "right" | "left"; members?: string[] }[] = [];
     for (const p of places) {
       const { x, y } = toScreen(p.px, p.py);
       if (x < -60 || y < -40 || x > size.w + 60 || y > size.h + 40) continue;
@@ -360,16 +360,17 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
       else taken.push(box);
     }
     // Places inside one town are one pin, a count on the town's plate (WO-178): "Whiterun, 5 places".
-    const folded = new Map<string, number>();
-    for (const it of out) if (it.p.inTown && selected !== it.p.slug) folded.set(it.p.inTown.slug, (folded.get(it.p.inTown.slug) ?? 0) + 1);
+    const folded = new Map<string, string[]>();
+    for (const it of out) if (it.p.inTown && selected !== it.p.slug) folded.set(it.p.inTown.slug, [...(folded.get(it.p.inTown.slug) ?? []), it.p.name]);
     const seenTown = new Set<string>();
     return out.flatMap((it) => {
       const t = it.p.inTown;
       if (!t || selected === it.p.slug) return [it];
-      const n = folded.get(t.slug) ?? 1;
+      const names = folded.get(t.slug) ?? [it.p.name];
       if (seenTown.has(t.slug)) return [];
       seenTown.add(t.slug);
-      return n > 1 ? [{ ...it, p: { ...it.p, slug: t.slug, name: `${t.name}, ${n} places` } }] : [it];
+      // At every zoom the town's pin carries its count, and hovering it lists the places of the picked kind (WO-178 Part 3).
+      return [{ ...it, named: true, members: names, p: { ...it.p, slug: t.slug, name: names.length > 1 ? `${t.name}, ${names.length}` : names[0] } }];
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [places, toScreen, size.w, size.h, k, selected, types, onlyQuests, inRoute, lit, covered]);
@@ -483,6 +484,9 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
         ))}
         {singles.map(({ p, x, y, named, side, ...rest }) => {
           const extra = (rest as { extra?: number }).extra;
+          const members = (rest as { members?: string[] }).members;
+          // A pin that holds several places of one kind lists them itself; the town's own card would cover the list.
+          const PinLink = members && members.length > 1 ? Link : PreviewLink;
           // A name near the window's right edge goes on the pin's left, so it is never cut off.
           const flip = named && side === "left";
           return (
@@ -497,7 +501,15 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
               select(p.slug === selected ? null : p.slug, false);
             }}
           >
-            <PreviewLink href={`/places/${p.slug}`} className={`${s.pin} ${s[KIND_COLOUR[p.kind]]} ${selected === p.slug ? s.picked : ""} ${flip ? s.flip : ""}`}>
+            {members && members.length > 1 && (
+              <span className={s.members} role="tooltip">
+                {members.slice(0, 12).map((m) => (
+                  <span key={m}>{m}</span>
+                ))}
+                {members.length > 12 ? <span>and {members.length - 12} more</span> : null}
+              </span>
+            )}
+            <PinLink href={`/places/${p.slug}`} className={`${s.pin} ${s[KIND_COLOUR[p.kind]]} ${selected === p.slug ? s.picked : ""} ${flip ? s.flip : ""}`}>
               <i aria-hidden="true">{inRoute.get(p.slug) ?? ""}</i>
               {named ? (
                 <span className={s.plate}>
@@ -507,7 +519,7 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
               ) : (
                 <span className={s.sr}>{p.name}</span>
               )}
-            </PreviewLink>
+            </PinLink>
           </div>
           );
         })}

@@ -63,6 +63,11 @@ export async function generateMetadata({
 
 /** A reward's timing that only says it comes with the quest: not worth a section of its own beside At a glance. */
 const GENERIC_WHEN = /^(at the end|at the start|once the quest is done|when the quest is done|on completion)$/i;
+/**
+ * A reward's when is worth a section of its own only when a player can use it: a time or a person (when, once, after, from Someone). An editor's note
+ * ("Handled by the quest's script", "Inside Kagrumez", "the records don't show...") or a plain "if you keep it" is not more than the cell said (WO-176 Part 2).
+ */
+const usableWhen = (w: string | undefined) => !!w && !GENERIC_WHEN.test(w) && (/\bfrom [A-Z]/.test(w) || /\b(?:when|once|after|depending)\b/i.test(w)) && !/\b(?:script|handled|inside|records?)\b/i.test(w);
 
 const nexus = (id: string) =>
   `https://www.nexusmods.com/skyrimspecialedition/mods/${id}`;
@@ -286,7 +291,7 @@ export default async function QuestPage({
           {/* Rewards and People are in the main column (WO-174): the side column is the contents only, as on the line and place pages. */}
           {/* Said once (WO-176): At a glance already has the XP and the first reward, so the section is only for a page that has more to say
               (a second reward, or a when that says more than "at the end"). */}
-          {(page.gets.rewards.length > 1 || (!!page.gets.rewards[0]?.when && !GENERIC_WHEN.test(page.gets.rewards[0].when))) && (
+          {(page.gets.rewards.length > 1 || usableWhen(page.gets.rewards[0]?.when)) && (
             <Gold id="get">
               {page.gets.xp > 0 && (
                 <span className={styles.rw}>

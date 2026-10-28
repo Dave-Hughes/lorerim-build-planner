@@ -2,7 +2,7 @@ import "server-only";
 import { linkNames } from "@/lib/pages/link-names";
 import { placeNames } from "@/lib/pages/names";
 import { dayHours, mainPlace } from "@/lib/people/day";
-import { personBySlug } from "@/lib/people/data";
+import { peopleData, personBySlug, roleOfName } from "@/lib/people/data";
 import { peopleAt, type House, type PlacePerson } from "@/lib/places/people";
 import { afterWar, hasLevels, isGarrison, levelSpan, rangeOf, placeByName, placeBySlug, placeLabel, placeSlug, placeType, placesData, placesNamed, type Place } from "@/lib/places/data";
 import { gettingThere, inFrame, mapEntry, toTexture } from "@/lib/places/map";
@@ -175,6 +175,26 @@ export function drawerPeople(houses: House[], max = 6): PlacePerson[] {
   return out;
 }
 
+let byMainPlace: Map<string, { name: string; href: string; role: string | null }[]> | null = null;
+/** The people a read puts in a place most of the day, by the place's slug: Lydia is at Dragonsreach, though her bed is in Breezehome (WO-178 Part 3). */
+function peopleMostlyAt(): Map<string, { name: string; href: string; role: string | null }[]> {
+  if (byMainPlace) return byMainPlace;
+  const out = new Map<string, { name: string; href: string; role: string | null }[]>();
+  for (const person of peopleData().all) {
+    if (!person.read) continue;
+    const hours = dayHours(person.read.day);
+    const main = hours ? mainPlace(hours)?.main : null;
+    if (!main) continue;
+    const hit = linkNames(main, placeNames()).find((x) => x.href);
+    const place = (hit ? mapPlaceNamed(hit.text) : null) ?? mapPlaceNamed(main);
+    if (!place) continue;
+    const role = roleOfName(person.name);
+    out.set(place.slug, [...(out.get(place.slug) ?? []), { name: person.name, href: `/people/${person.slug}`, role: role ? `${role.charAt(0).toUpperCase()}${role.slice(1)}` : null }]);
+  }
+  byMainPlace = out;
+  return out;
+}
+
 export function placeDrawer(slug: string): Drawer | null {
   const p: Place | null = placeBySlug(slug);
   if (!p) return null;
@@ -186,7 +206,16 @@ export function placeDrawer(slug: string): Drawer | null {
   });
   const lived = placeKind(p) !== "dangerous";
   const inside = lived
-    ? drawerPeople(peopleAt(p).houses).map((x) => ({ name: x.name, href: x.href, role: x.role }))
+    ? (() => {
+        const here = drawerPeople(peopleAt(p).houses).map((x) => ({ name: x.name, href: x.href, role: x.role }));
+        // Who a read puts here most of the day comes too, so the person you picked to fly here is in the drawer.
+        const extra = (peopleMostlyAt().get(slug) ?? [])
+          .filter((x) => !here.some((h) => h.name === x.name))
+          .sort((a, b) => Number(RULING.test(b.role ?? "")) - Number(RULING.test(a.role ?? "")));
+        // At most two of them, so a city's own people keep their places in the six.
+        const keep = Math.min(extra.length, 2);
+        return [...here.slice(0, 6 - keep), ...extra.slice(0, keep)];
+      })()
     : [];
   const war = afterWar(p.actors);
   const garrison = isGarrison(p.actors);
