@@ -85,17 +85,19 @@ export default async function MyBuilds() {
                 run={typeof r === "object" ? r : undefined}
                 under={
                   <>
+                    <span className={recent.underMeta}>
+                      <span className="tag tag-sm">{b.visibility === "public" ? "Listed" : b.visibility === "unlisted" ? "Link only" : "Only you"}</span>
+                      {b.hasStory && <span className="tag tag-sm">Story</span>}
+                      {b.draftedBy && (
+                        <span className="muted">
+                          <AiAssisted author={b.author.name} />
+                        </span>
+                      )}
+                    </span>
                     {runs && !r && (
                       <Link href={`/b/${b.id}/run`} className={recent.planLink}>
                         Plan a playthrough ›
                       </Link>
-                    )}
-                    <span className="tag tag-sm">{b.visibility === "public" ? "Listed" : b.visibility === "unlisted" ? "Link only" : "Only you"}</span>
-                    {b.hasStory && <span className="tag tag-sm">Story</span>}
-                    {b.draftedBy && (
-                      <span className="muted">
-                        <AiAssisted author={b.author.name} />
-                      </span>
                     )}
                     <span className={recent.underActions}>
                       <DeleteBuildButton id={b.id} name={b.name} />

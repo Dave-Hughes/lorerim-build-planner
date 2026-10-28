@@ -5173,7 +5173,7 @@ Jeff's notes on the second review (Mac, 28 Oct):
 - Bob, 28 Oct, 04:40: read on the preview: the cards are framed on the mountain, Miraak's temple and the eclipse, each with one whole line; the map strip's title breaks after "Every place,"; New in the world quotes no counts. Done; for Dave to look at on staging.
 
 ## WO-164  A character is one page, with or without a playthrough (Mac, 27 Oct 2026)
-Status: building (Mac)
+Status: for Bob
 
 **Why.** Bob, signed in through Dave's Chrome (27 Oct, 18:05): Kyria's playthrough page (`/p/4et99tk25s`) still has the old framed title and none of her cover, though `/me` shows her golden-armour cover; "‹ My characters" is the old text link; `/p/<id>/build` redirects to `?tab=levels` and shows the same Play view, so a playthrough's build can't be reached from it. The character page (`/b/<id>`) has the full-width cover and a Build | Guide tab row; the two don't look like one character. The agreed pattern (canvas row 25, WO-114a): one hero, one row of tabs.
 - [x] **The build page (`/b/<id>`) does not change.** Dave, 27 Oct: "please do not redesign the character build pages, those are the best on the site." It's the reference the playthrough page copies, not something this order touches.
@@ -5204,13 +5204,15 @@ Kyria's run (`/p/4et99tk25s`) has the build page's hero (her name, line, Made by
 - [x] **A run with no cover** shows the hero as an empty hatched band (Kyria's run). Use the same fallback as the cards: the race's pixel icon large on the night-scene colours.
 
 Jeff's note on the review (Mac, 28 Oct): a run with no cover has the night scene's blues with the race's pixel icon large on the right (`run-cover.tsx`, `run-cover.module.css`); a run with no build has no race, so it gets the people mark. Tested in `wo164` (the icon is shown, over 100 px wide, on the gradient); screenshots `wo164-nobuild-1440.png` and `-390.png`. The cover's height is 300 px (260 on a phone).
-- [ ] **On a fallback card the icon runs into the name**: the head sits behind "TEST: ISOLDE MARCHAND" and the tagline. The icon sits above the words with room, or smaller.
-- [ ] **What's under each card on `/me` doesn't line up**: "Plan a playthrough ›" on some, "Only you" and "AI assisted" on a line that wraps on others, so Delete and Edit sit at three different heights across one row. One fixed layout under every card: who can see it and AI assisted on one line, then Plan a playthrough when there's no run, then Delete and Edit at the same place.
-- [ ] Screenshots of Kyria's run and `/me` signed in, then `for Bob`.
+- [x] **On a fallback card the icon runs into the name**: the head sits behind "TEST: ISOLDE MARCHAND" and the tagline. The icon sits above the words with room, or smaller.
+- [x] **What's under each card on `/me` doesn't line up**: "Plan a playthrough ›" on some, "Only you" and "AI assisted" on a line that wraps on others, so Delete and Edit sit at three different heights across one row. One fixed layout under every card: who can see it and AI assisted on one line, then Plan a playthrough when there's no run, then Delete and Edit at the same place.
+- [x] Screenshots of Kyria's run and `/me` signed in, then `for Bob`.
 
-- [ ] **From Jeff on PC (WO-171's notes):** `src/lib/places/map-credit.test.ts` compares paths written with `/` against what Windows returns (`src\components\...`), so it fails on the PC's checkout. Normalise the separators in the test.
+- [x] **From Jeff on PC (WO-171's notes):** `src/lib/places/map-credit.test.ts` compares paths written with `/` against what Windows returns (`src\components\...`), so it fails on the PC's checkout. Normalise the separators in the test.
 
 - Bob, 28 Oct, 07:10, in Dave's Chrome: Kyria's run now has the race icon large on the night blues: right. On `/me` the icon still runs into the names and the controls under the cards still sit at three heights; those two boxes and the Windows path box are still open, so this goes back.
+
+Jeff's note on the second review (Mac, 28 Oct): **The icon** on a card with no cover now sits in the top of the card, under the race and marks row, 72 px at most (34 px on a phone's two-across grid, where the name is 20 px and the tagline one line), so it ends above the name whatever the name's length; the test measures the icon's foot against the name's top on every fallback card at 1440 and 390. **Under each card on `/me`** is one layout (`recent.module.css`, `.under`): who can see it, Story and AI assisted on one line that doesn't wrap; Plan a playthrough on its own line when there is no run; Delete and Edit at the foot of the cell, so they sit at one height across a row whatever is above them (the test checks every row). **The credit test** turns `path.relative`'s separators into `/` before comparing (`map-credit.test.ts`). Checks: typecheck, lint (two old warnings), `npm test` 745 passed, `npm run test:e2e` 536 passed. Screenshots in `test-results/`: `wo164-me-1440.png`, `wo164-me-390.png`. **Not checked:** Kyria's run signed in as Dave (the seeded author's screenshots only; her run's cover is the same component the test covers).
 
 ## WO-169  The Map page (Mac, 27 Oct 2026)
 Status: done

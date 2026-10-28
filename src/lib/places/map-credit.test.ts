@@ -19,7 +19,7 @@ describe("the map's credit", () => {
   });
 
   it("is drawn by every component that loads the map's pictures: the band and whole map, the Map page and the home page's map strip", () => {
-    const users = src.filter((f) => /entry\.(tiles|image)\b|\/maps\/tamriel/.test(readFileSync(f, "utf8"))).map((f) => path.relative(process.cwd(), f));
+    const users = src.filter((f) => /entry\.(tiles|image)\b|\/maps\/tamriel/.test(readFileSync(f, "utf8"))).map((f) => path.relative(process.cwd(), f).split(path.sep).join("/"));
     expect(users.sort()).toEqual(["src/components/home/map-strip.tsx", "src/components/map/map-page.tsx", "src/components/places/map-view.tsx"]);
     for (const f of users) {
       const text = readFileSync(path.join(process.cwd(), f), "utf8");

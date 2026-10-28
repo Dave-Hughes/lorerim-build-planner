@@ -103,6 +103,18 @@ test("My characters: one character card each with Edit and Delete under it, and 
     const icon = page.locator("main article img[src*='/icons/race-']").first();
     await expect(icon).toBeVisible();
     await page.screenshot({ path: `test-results/wo164-me-${width}.png`, fullPage: true });
+    // One layout under every card: Delete sits at the same height under every card in a row, and on a fallback card the icon ends above the name.
+    const cells = page.locator("main article").filter({ has: page.getByRole("button", { name: /^Delete/ }) });
+    const tops = await cells.evaluateAll((els) => els.map((el) => ({ row: Math.round(el.getBoundingClientRect().top), del: Math.round(Array.from(el.querySelectorAll("button")).find((b) => /^Delete/.test(b.textContent ?? b.getAttribute("aria-label") ?? ""))?.getBoundingClientRect().top ?? -1) })));
+    for (const row of new Set(tops.map((t) => t.row))) {
+      const dels = tops.filter((t) => t.row === row).map((t) => t.del);
+      expect(new Set(dels).size, `Delete at ${dels.join(", ")} in the row at ${row}`).toBe(1);
+    }
+    const plain = page.locator("main article").filter({ has: page.locator("img[class*='plainIcon']") });
+    for (let i = 0; i < Math.min(await plain.count(), 3); i++) {
+      const [img, name] = [await plain.nth(i).locator("img[class*='plainIcon']").boundingBox(), await plain.nth(i).getByRole("heading").boundingBox()];
+      expect(img!.y + img!.height, "the icon ends above the name").toBeLessThanOrEqual(name!.y);
+    }
   }
   await page.goto(`/b/${FRESH_BUILD_ID}`);
   await expect(page.getByRole("link", { name: "Plan a playthrough" })).toBeVisible();

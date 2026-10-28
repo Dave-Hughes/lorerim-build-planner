@@ -152,15 +152,17 @@
 .plain {
   position: absolute;
   inset: 0;
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  /* Below the race and marks row, above the name: the words sit at the foot of the card and grow upward, so the icon stays in the top. */
+  padding-top: 52px;
   background: linear-gradient(170deg, #1b2a44 0%, #14213a 45%, #0d1524 100%);
 }
 .plainIcon {
-  width: 46%;
-  max-width: 120px;
+  width: 34%;
+  max-width: 72px;
   aspect-ratio: 1;
-  margin-top: -14%;
   image-rendering: pixelated;
   opacity: 0.92;
 }
@@ -510,24 +512,52 @@
   }
 }
 
-/* Under a card on My characters (WO-164): who can see it, then Delete and Edit. */
-.under {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding-top: 10px;
+/* Two across on a phone (about 170 px a card): the words take less room, so a card with no cover keeps its icon clear of the name. */
+@media (max-width: 700px) {
+  .grid .card:not(.wide) .name {
+    font-size: 20px;
+  }
+  .grid .card:not(.wide) .tagline {
+    -webkit-line-clamp: 1;
+  }
+  .grid .card:not(.wide) .plain {
+    padding-top: 42px;
+  }
+  .grid .card:not(.wide) .plainIcon {
+    width: 34px;
+  }
 }
-.underActions {
-  display: inline-flex;
-  gap: 8px;
-}
+
+/* Under a card on My characters (WO-164): one layout under every card. Who can see it and AI assisted on one line, Plan a playthrough when there is no run, then
+   Delete and Edit, which sit at the foot of the cell so they line up across a row whatever is above them. */
 .cell:has(> .under) {
   display: flex;
   flex-direction: column;
 }
+.under {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 10px;
+}
+.underMeta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.underMeta > * {
+  flex-shrink: 0;
+}
+.underActions {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
 .planLink {
-  flex: 1 0 100%;
   font-size: 15px;
 }
