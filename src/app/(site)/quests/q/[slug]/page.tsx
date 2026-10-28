@@ -29,7 +29,9 @@ import { categories, homeName, questsData } from "@/lib/quests/data";
 import { loadPlayerFacts } from "@/lib/quests/player-facts";
 import { dangerParts, pageOf, placeNamed, playersWords } from "@/lib/quests/reads";
 import { questBySlug, questHref } from "@/lib/quests/slugs";
-import { placeHref } from "@/lib/places/data";
+import { placeHref, type Place } from "@/lib/places/data";
+import { placeKind } from "@/lib/places/kind";
+import { personHref } from "@/lib/people/data";
 import { siteMetadata } from "@/lib/og/metadata";
 import styles from "@/components/pages/page-kit.module.css";
 
@@ -92,11 +94,19 @@ export default async function QuestPage({
   const changed = quest.changedBy ?? [];
 
   // The people and places the page names, as links.
+  // A giver written as "Gerdur, Hilde, Frodnar or Delphine" is four people; one written as "bandits in Bleak Falls Barrow" is a group, not a person
+  // (WO-165 review): split it, keep the parts that have a person page, and list each person once.
   const people = [
-    ...page.people,
-    ...page.starts
-      .filter((s) => s.who)
-      .map((s) => ({ name: s.who!, role: undefined as string | undefined })),
+    ...new Map(
+      [
+        ...page.people,
+        ...page.starts
+          .filter((s) => s.who)
+          .flatMap((s) => s.who!.split(/\s*,\s*|\s+(?:or|and)\s+/).map((w) => w.replace(/^the\s+/i, "").trim()))
+          .filter((w) => w && personHref(w))
+          .map((name) => ({ name, role: undefined as string | undefined })),
+      ].map((p) => [p.name.toLowerCase(), p] as const),
+    ).values(),
   ];
   // Mods first, so a place or a person of the same name wins the link.
   const names = [
@@ -470,7 +480,9 @@ export default async function QuestPage({
                 place: vaguePlace(t.place) ? null : placeNamed(t.place),
               }));
               // When no place on the quest has danger data the column goes, and the page says so once (WO-154 Part 4).
-              const anyDanger = rows.some((r) => dangerParts(r.place) !== null);
+              // A shop, inn, house or town has no danger (WO-162's kind decides): a row there has no danger cell.
+              const hasDanger = (place: Place | null) => !place || placeKind(place) === "dangerous";
+              const anyDanger = rows.some((r) => hasDanger(r.place) && dangerParts(r.place) !== null);
               return (
                 <Section
                   id="takes"
@@ -481,11 +493,12 @@ export default async function QuestPage({
                     const href = place ? placeHref(place.name) : null;
                     const danger = dangerParts(place);
                     const unknown = vaguePlace(t.place);
+                    const shownDanger = anyDanger && hasDanger(place);
                     return (
                       <div
                         key={i}
                         className={
-                          anyDanger
+                          shownDanger
                             ? styles.place
                             : `${styles.place} ${styles.placeAlone}`
                         }
@@ -515,7 +528,7 @@ export default async function QuestPage({
                             </p>
                           ) : null}
                         </div>
-                        {anyDanger && (
+                        {shownDanger && (
                           <span className={styles.danger}>
                             <img
                               className={styles.px}

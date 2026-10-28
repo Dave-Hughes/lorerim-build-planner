@@ -72,3 +72,32 @@ test("a contents rail on a page taller than two screens, and none on a short one
   await page.reload();
   await expect(page.getByRole("navigation", { name: "On this page" })).toHaveCount(0);
 });
+
+test("review: places on a person page are links, one quest count, Follows you says when the how is unsure, quest links are links", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/people/aela-the-huntress");
+  const main = page.locator("main");
+  await expect(main.getByRole("link", { name: "Jorrvaskr" }).first()).toHaveAttribute("href", /\/places\/jorrvaskr/);
+  const plain = await main.locator("text=/Jorrvaskr(?! Living Quarters)/").evaluateAll((els) => els.filter((e) => !e.closest("a") && !e.closest("[role=img]") && e.children.length === 0 && e.tagName !== "TITLE").map((e) => `${e.tagName}.${e.className}: ${(e.parentElement?.textContent ?? "").slice(0, 80)}`));
+  expect(plain).toEqual([]);
+  const glance = page.getByRole("region", { name: "At a glance" });
+  await expect(glance).toContainText("Gives 9 quests");
+  await expect(glance).toContainText("in 3 more");
+  await expect(main).toContainText("She gives 9 quests, and is in 3 more");
+  await expect(page.getByRole("region", { name: /quests/i }).filter({ hasText: "Gives 9 quests, and is in 3 more" })).toHaveCount(1);
+  await expect(glance).toContainText("Yes, how isn't sure yet");
+  for (const q of ["Brotherhood", "Blood's Honor", "Glory of the Dead"]) await expect(main.getByRole("link", { name: q, exact: true })).toHaveAttribute("href", /\/quests\//);
+  await page.screenshot({ path: "test-results/wo165-aela-1440.png", fullPage: true });
+  await page.goto("/people/lydia");
+  await expect(page.getByRole("region", { name: "At a glance" })).toContainText("In 2 quests");
+  await expect(page.locator("main").getByRole("link", { name: "Dragonsreach" }).first()).toHaveAttribute("href", /\/places\/dragonsreach/);
+  await page.goto("/quests/q/the-golden-claw");
+  const takes = page.getByRole("region", { name: "Where it takes you" });
+  const trader = takes.locator("div", { hasText: "Riverwood Trader" }).last();
+  await expect(trader).not.toContainText("Danger");
+  const ppl = page.getByRole("complementary").getByRole("region", { name: "People" });
+  const names = await ppl.getByRole("link").allInnerTexts();
+  expect(new Set(names).size).toBe(names.length);
+  await expect(ppl).not.toContainText(/bandits|Gerdur, Hilde/i);
+  await page.screenshot({ path: "test-results/wo165-golden-claw-1440.png", fullPage: true });
+});

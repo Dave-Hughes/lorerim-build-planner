@@ -5162,7 +5162,7 @@ Dave, 27 Oct 18:46: the map's mod author OK'd its use on the site, with a credit
 - `people_raw.json` is not regenerated (WO-155's reads resume first); homes are read from the file as it is. When it is, `places.py` should be run again.
 
 ## WO-165  The quest and person pages get the same at-a-glance and colours (Mac, 27 Oct 2026)
-Status: building (Mac; Bob's review)
+Status: for Bob (Bob's review done; typecheck, lint, tests, the build and the full e2e pass, 489 of 489)
 
 **Why.** `docs/page-templates.md` rows 14 and 16: the quest and person pages read well but are one grey. WO-160 (`LinePage`) and WO-162 (`PlaceTown`) set the pattern: an At a glance band under the title, colour that means one thing, a contents rail on long pages. Same pattern here, so every World page feels like one site.
 - [x] **A quest**: At a glance under the title: how it starts (green: who and where), level and danger (red), where it takes you (blue), rewards and XP (gold), and the number of ways to finish it (purple). People and places in the steps as the coloured chips; XP in the pixel face. The Rewards box stays.
@@ -5182,13 +5182,22 @@ Status: building (Mac; Bob's review)
 
 ### Bob's review (27 Oct, 22:30)
 Read on the preview: The Golden Claw, Aela at 1440 and 390, Lydia. The band, the day strip and the shorter Not sure yet on person pages are right; following WO-160 on chips was right. What's wrong:
-- [ ] **Places on a person page aren't linked at all.** Aela's page says Jorrvaskr twelve times (At a glance, the strip's key, every row) and links none; Lydia's says Dragonsreach. Both have pages. The person page's words go through the same linker as the line pages (with WO-160 Part 6's fixes), and the test covers a person page.
-- [ ] **Aela's numbers disagree.** The summary says "She gives six quests", At a glance says 12, and the list shows nine she gives and three she's a step in. One count, said the same way in all three: "Gives 9 quests, and is in 3 more". Lydia's "Quests 2" is two quests that change her, not two she gives; say so ("In 2 quests").
-- [ ] **Follows you: Yes** on Aela while What she offers says "(not sure)" and Not sure yet lists how she joins. When the how is unsure, the cell says "Yes, how isn't sure yet", not a bare Yes.
-- [ ] **A link that doesn't look like one.** Aela's Brotherhood, Blood's Honor and Glory of the Dead are links but drawn white like plain text. Every quest link the same orange.
-- [ ] **The Golden Claw, Where it takes you:** the Riverwood Trader has "Danger: Not known yet". A shop, inn, house or town has no danger cell (WO-162's kind decides).
-- [ ] **The Golden Claw, People:** "Gerdur, Hilde, Frodnar or Delphine" is listed as one person after Gerdur is already listed, and "bandits in Bleak Falls Barrow" as another. Each person once, linked; a group isn't a person.
-- [ ] Screenshots of Aela and The Golden Claw, then `for Bob`.
+- [x] **Places on a person page aren't linked at all.** Aela's page says Jorrvaskr twelve times (At a glance, the strip's key, every row) and links none; Lydia's says Dragonsreach. Both have pages. The person page's words go through the same linker as the line pages (with WO-160 Part 6's fixes), and the test covers a person page.
+- [x] **Aela's numbers disagree.** The summary says "She gives six quests", At a glance says 12, and the list shows nine she gives and three she's a step in. One count, said the same way in all three: "Gives 9 quests, and is in 3 more". Lydia's "Quests 2" is two quests that change her, not two she gives; say so ("In 2 quests").
+- [x] **Follows you: Yes** on Aela while What she offers says "(not sure)" and Not sure yet lists how she joins. When the how is unsure, the cell says "Yes, how isn't sure yet", not a bare Yes.
+- [x] **A link that doesn't look like one.** Aela's Brotherhood, Blood's Honor and Glory of the Dead are links but drawn white like plain text. Every quest link the same orange.
+- [x] **The Golden Claw, Where it takes you:** the Riverwood Trader has "Danger: Not known yet". A shop, inn, house or town has no danger cell (WO-162's kind decides).
+- [x] **The Golden Claw, People:** "Gerdur, Hilde, Frodnar or Delphine" is listed as one person after Gerdur is already listed, and "bandits in Bleak Falls Barrow" as another. Each person once, linked; a group isn't a person.
+- [x] Screenshots of Aela and The Golden Claw, then `for Bob`.
+
+
+Jeff's notes on the review (Mac, 27 Oct):
+- **Places link on a person page.** The person page's words (At a glance, First meeting, the strip's key, every day row, What changes it, the quest rows) go through the same linker as the line pages, without the person themself. Aela's Jorrvaskr and Whiterun, Lydia's Dragonsreach and Ysgramor's Tomb now link. "Jorrvaskr Living Quarters" stays plain: it is a room with no page of its own, and a name followed by a capital word is left whole or not at all.
+- **One count.** "Gives 9 quests, and is in 3 more" in the summary, At a glance and the list's heading; a person who gives none is "In 2 quests" (Lydia). A quest counts as given when the quest pages say so or the read says "gives it" or "can start it", which is why Aela's six became nine.
+- **Follows you** says "Yes, how isn't sure yet" when the checker was unsure of how they join.
+- **Quest links** are all links in the same orange: a quest the read names that the quest pages don't list the person in is found by its name.
+- **The Golden Claw.** A place that isn't a dangerous place (a shop, inn, house, town; WO-162's kind) has no danger cell. A giver written as a list ("Gerdur, Hilde, Frodnar or Delphine") is split into people, each with a person page and listed once; "bandits in Bleak Falls Barrow" is a group and is dropped.
+- Tests: the review test in `e2e/wo165.spec.ts`; `wo154.spec.ts` follows the new wording ("She gives 2 quests."). Screenshots: `test-results/wo165-aela-1440.png`, `wo165-golden-claw-1440.png`.
 
 ## WO-163  Quest categories as tables (Mac, 27 Oct 2026)
 Status: for Bob (Bob's review: review done; typecheck, lint, tests, the build and the full e2e pass, 488 of 488)

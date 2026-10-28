@@ -74,7 +74,7 @@ test("a person's page: race, town, the cell they are placed in, their quests, an
   await expect(page.getByRole("heading", { level: 1, name: "Mjoll the Lioness" })).toBeVisible();
   await expect(page.locator("main")).toContainText("Nord");
   // What she is, from the records' own fields (WO-154 Part 4); and no "placed in": the editor's cell isn't where you meet her.
-  await expect(page.locator("main")).toContainText("A Nord in Riften. She gives two quests.");
+  await expect(page.locator("main")).toContainText("A Nord in Riften. She gives 2 quests.");
   await expect(page.locator("main")).not.toContainText("placed in");
   for (const chip of ["Follower", "Can marry", "Gives quests", "Can't be killed"]) await expect(page.locator("main").getByText(chip, { exact: true }).first()).toBeVisible();
   // Nothing about the hours is known, so there is no section for them (WO-157); Information Confidence says what isn't sure.

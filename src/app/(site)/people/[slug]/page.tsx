@@ -11,6 +11,11 @@ import { notSureOf, personBySlug, roleWords, unsureFields } from "@/lib/people/d
 import { playersWords } from "@/lib/quests/reads";
 import { GlanceBand, type GlanceCell } from "@/components/pages/glance";
 import { AutoToc } from "@/components/pages/auto-toc";
+import { Linked } from "@/components/pages/linked";
+import { linkable } from "@/lib/pages/names";
+import type { NameLink } from "@/lib/pages/link-names";
+import { questsData } from "@/lib/quests/data";
+import { questHref } from "@/lib/quests/slugs";
 import { dayHours, mainPlace } from "@/lib/people/day";
 import l from "@/components/quests/line-page.module.css";
 import { questsOf } from "@/lib/people/quests";
@@ -29,6 +34,12 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 
 /** One colour for each place on the day strip. */
 const STRIP = ["#74bfd2", "#f0913f", "#8fc07c", "#b7a2e6", "#e8c987", "#e07a6c"];
+/** The names a person's words may link, without the person themself, built once for each. */
+const linksFor = new Map<string, NameLink[]>();
+const namesFor = (slug: string) => {
+  if (!linksFor.has(slug)) linksFor.set(slug, linkable().filter((n) => n.href !== `/people/${slug}`));
+  return linksFor.get(slug)!;
+};
 const cap = (t: string) => (t ? t.charAt(0).toUpperCase() + t.slice(1) : t);
 /** Where a read's "from" and "for" fall in a day, as a player says it. */
 const whenWords = (from: string, span: string) => (/^any hour$/i.test(from) ? { head: "Any hour", small: "" } : { head: cap(from), small: span });
@@ -54,25 +65,31 @@ export default async function PersonPage({ params }: { params: Params }) {
   const sure = (f: string) => (notSure.has(f) ? <em className={styles.nk}> (not sure)</em> : null);
   // The quests the read lists with how each touches them, linked where the planner has the quest; those only the quest pages name follow.
   const byName = new Map(found.map((q) => [q.name.toLowerCase(), q]));
+  // A quest the read names that the quest pages don't list this person in still has a page by its name.
+  const pageOfName = new Map(questsData().lines.flatMap((x) => x.quests.map((q) => [q.name.toLowerCase(), questHref(q.edid)] as const)).filter(([, h]) => !!h));
+  const givesIt = (how: string) => /^(gives it|can start it)\b/i.test(how);
   const quests: { name: string; href: string | null; gives: boolean; how: string }[] = read
     ? [
         ...read.quests.map((q) => {
           const hit = byName.get(q.quest.toLowerCase());
-          return { name: q.quest, href: hit?.href ?? null, gives: !!hit?.gives, how: cap(q.how) };
+          return { name: q.quest, href: hit?.href ?? pageOfName.get(q.quest.toLowerCase()) ?? null, gives: !!hit?.gives || givesIt(q.how), how: cap(q.how) };
         }),
         ...found.filter((q) => !read.quests.some((r) => r.quest.toLowerCase() === q.name.toLowerCase())).map((q) => ({ name: q.name, href: q.href, gives: q.gives, how: q.gives ? "Gives it" : (q.role ?? "Has a part in it") })),
       ]
     : found.map((q) => ({ name: q.name, href: q.href, gives: q.gives, how: q.gives ? "Gives it" : (q.role ?? "Has a part in it") }));
   const gives = quests.filter((q) => q.gives);
+  // One count, said the same way in the summary, At a glance and the list: "Gives 9 quests, and is in 3 more"; a person who gives none is "In 2 quests".
+  const plural = (n: number) => `${n} quest${n === 1 ? "" : "s"}`;
+  const alsoIn = quests.length - gives.length;
+  const countWords = gives.length ? `Gives ${plural(gives.length)}${alsoIn ? `, and is in ${alsoIn} more` : ""}` : quests.length ? `In ${plural(quests.length)}` : "";
   // A merchant is "Sells goods" once, whether the records say so by a role or by a vendor list.
   const role = person.sells && /^Sells/.test(roleWords(person.role) ?? "") ? null : roleWords(person.role);
   const they = person.sex === "female" ? "her" : person.sex === "male" ? "him" : "them";
   const can = person.sex === "female" ? "She" : person.sex === "male" ? "He" : "They";
   // One person is he or she by the record's sex, never "they"; and only what is known: race, town, and the quests (WO-154 Part 4).
   const he = person.sex === "female" ? "She" : person.sex === "male" ? "He" : null;
-  const count = (n: number) => ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"][n] ?? String(n);
   const what = person.race ? `A${/^[AEIOU]/i.test(person.race) ? "n" : ""} ${person.race}${person.inTown ? ` in ${person.inTown}` : ""}.` : person.inTown ? `Lives in ${person.inTown}.` : "";
-  const gave = gives.length ? `${he ?? person.name} gives ${count(gives.length)} quest${gives.length === 1 ? "" : "s"}.` : "";
+  const gave = countWords ? `${he ?? person.name} ${countWords.charAt(0).toLowerCase()}${countWords.slice(1)}.` : "";
   const lede = [what, gave].filter(Boolean).join(" ");
 
   const subject = they === "her" ? "she" : they === "him" ? "he" : "they";
@@ -198,6 +215,8 @@ export default async function PersonPage({ params }: { params: Params }) {
   const hours = read ? dayHours(read.day) : null;
   const mostly = hours ? mainPlace(hours) : null;
   const short = (t: string, n = 100) => (t.length > n ? `${t.slice(0, n - 1).trimEnd()}…` : t);
+  const nm = namesFor(person.slug);
+  const L = (t: string) => <Linked text={t} names={nm} />;
   const roleText = read?.role ? cap(read.role.split(";")[0].trim()) : (role ?? person.race ?? null);
   const sellsText = read?.sells ? cap(read.sells.split(/[;(]|,\s*\d/)[0].trim().replace(/\.$/, "")) : sells ? "Goods" : null;
   // At a glance (WO-165, rule 34): where to find them (teal), what they are (orange), what they sell (gold) or train (green), that they follow you (orange), and their quests (violet).
@@ -207,14 +226,14 @@ export default async function PersonPage({ params }: { params: Params }) {
       icon: "quest-travel",
       tone: "teal" as const,
       label: "Where to find them",
-      value: mostly?.main ?? person.inTown ?? person.cell ?? "Not known yet",
-      sub: read?.firstMeet ? `First met: ${short(read.firstMeet.replace(/\.$/, ""), 90)}` : mostly && mostly.places.length > 1 ? `Also ${mostly.places.slice(1, 3).join(", ")}` : "Where they are through the day isn't known yet",
+      value: L(mostly?.main ?? person.inTown ?? person.cell ?? "Not known yet"),
+      sub: L(read?.firstMeet ? `First met: ${short(read.firstMeet.replace(/\.$/, ""), 90)}` : mostly && mostly.places.length > 1 ? `Also ${mostly.places.slice(1, 3).join(", ")}` : "Where they are through the day isn't known yet"),
       small: true,
     },
-    ...(roleText ? [{ key: "role", icon: "quest-people", tone: "orange" as const, label: "What they are", value: roleText, sub: [person.race, person.inTown].filter(Boolean).join(" in "), small: roleText.length > 22 }] : []),
+    ...(roleText ? [{ key: "role", icon: "quest-people", tone: "orange" as const, label: "What they are", value: L(roleText ?? ""), sub: L([person.race, person.inTown].filter(Boolean).join(" in ")), small: roleText.length > 22 }] : []),
     ...(trainer ? [{ key: "trains", icon: "tab-levels", tone: "green" as const, label: "Trains", value: trainer.skill, sub: trainer.cap ? `Up to ${trainer.cap}` : undefined }] : sellsText ? [{ key: "sells", icon: "quest-rewards", tone: "gold" as const, label: "Sells", value: sellsText, sub: read?.sells ? short(read.sells.replace(/^[^,;(]*[,;(]\s*/, ""), 70) || undefined : undefined, small: sellsText.length > 20 }] : []),
-    ...(person.follower ? [{ key: "follows", icon: "quest-followers", tone: "orange" as const, label: "Follows you", value: "Yes", sub: read?.joins ? short(read.joins, 110) : "How to recruit isn't known yet" }] : []),
-    ...(quests.length ? [{ key: "quests", icon: "quest-side-stories", tone: "violet" as const, label: "Quests", value: String(quests.length), sub: quests.slice(0, 2).map((q) => q.name).join("; ") }] : []),
+    ...(person.follower ? [{ key: "follows", icon: "quest-followers", tone: "orange" as const, label: "Follows you", value: notSure.has("joins") ? "Yes, how isn't sure yet" : "Yes", small: notSure.has("joins"), sub: L(read?.joins ? short(read.joins, 110) : "How to recruit isn't known yet") }] : []),
+    ...(quests.length ? [{ key: "quests", icon: "quest-side-stories", tone: "violet" as const, label: "Quests", value: gives.length ? `Gives ${plural(gives.length)}` : `In ${plural(quests.length)}`, sub: [alsoIn && gives.length ? `and is in ${alsoIn} more` : "", quests.slice(0, 2).map((q) => q.name).join("; ")].filter(Boolean).join(". ") }] : []),
   ].slice(0, 5);
 
   return (
@@ -251,7 +270,7 @@ export default async function PersonPage({ params }: { params: Params }) {
             <Section id="where" icon="quest-travel" title="Where to find them">
               {read.firstMeet && (
                 <p className={styles.firstMeet}>
-                  <b>First meeting.</b> {cap(read.firstMeet)}
+                  <b>First meeting.</b> {L(cap(read.firstMeet))}
                   {sure("firstMeet")}
                 </p>
               )}
@@ -272,7 +291,7 @@ export default async function PersonPage({ params }: { params: Params }) {
                     {[...new Set(hours.filter(Boolean))].map((h, i) => (
                       <span key={h}>
                         <i style={{ background: STRIP[i % STRIP.length] }} />
-                        {h}
+                        {L(h ?? "")}
                       </span>
                     ))}
                   </div>
@@ -289,8 +308,8 @@ export default async function PersonPage({ params }: { params: Params }) {
                           {w.small && <small>{w.small}</small>}
                         </span>
                         <span className={styles.where}>
-                          <b>{cap(d.where)}</b>
-                          {d.doing && <span>{cap(d.doing)}</span>}
+                          <b>{L(cap(d.where))}</b>
+                          {d.doing && <span>{L(cap(d.doing))}</span>}
                         </span>
                       </div>
                     );
@@ -306,7 +325,7 @@ export default async function PersonPage({ params }: { params: Params }) {
                   </h3>
                   <ul>
                     {read.changes.map((c) => (
-                      <li key={c}>{c}</li>
+                      <li key={c}>{L(c)}</li>
                     ))}
                   </ul>
                 </div>
@@ -314,11 +333,11 @@ export default async function PersonPage({ params }: { params: Params }) {
             </Section>
           )}
           {quests.length > 0 && (
-            <Section id="quests" icon="tab-play" title={person.sex === "female" ? "Her quests" : person.sex === "male" ? "His quests" : "Their quests"}>
+            <Section id="quests" icon="tab-play" title={person.sex === "female" ? "Her quests" : person.sex === "male" ? "His quests" : "Their quests"} count={countWords}>
               {quests.map((q) => (
                 <div key={q.name} className={`${styles.qrow} ${read ? styles.qrowRead : ""}`}>
                   {q.href ? <PreviewLink href={q.href}>{q.name}</PreviewLink> : <b className={styles.qname}>{q.name}</b>}
-                  <span>{q.how}</span>
+                  <span>{L(q.how)}</span>
                 </div>
               ))}
               {sure("quests") && <p className={styles.dayNote}>Which quests {they === "them" ? "they are" : they === "her" ? "she is" : "he is"} in: not sure.</p>}
