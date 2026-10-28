@@ -56,8 +56,13 @@ let peopleLinks: NameLink[] | null = null;
  * a common word). The many with one word for a name and nothing else (a guard, a bandit, a creature) are left out: a link on one would be wrong.
  */
 export function peopleNames(): NameLink[] {
+  const worthy = (p: ReturnType<typeof peopleData>["all"][number]) => !!(p.read || p.follower || p.marriage || p.trainer || p.innkeeper || questsOf(p.name).length > 0);
   peopleLinks ??= peopleData()
-    .all.filter((p) => p.name.length > 3 && (/^\p{Lu}\S*(?:\s+\S+)+$/u.test(p.name.trim()) || p.read || p.follower || p.marriage || p.sells || p.trainer || p.innkeeper || questsOf(p.name).length > 0))
+    .all.filter((p) => {
+      if (p.name.length <= 3) return false;
+      // A whole name is not a common word; a one-word name needs more than a shop to be someone ("Trader" is a job).
+      return /^\p{Lu}\S*(?:\s+\S+)+$/u.test(p.name.trim()) ? true : worthy(p);
+    })
     .map((p) => ({ text: p.name, href: `/people/${p.slug}` }));
   return peopleLinks;
 }

@@ -1209,3 +1209,48 @@ a.tag:hover {
   border-bottom: 0;
   padding-bottom: 0;
 }
+
+/* A place named in a sentence is teal and a person orange (rule 34: places are teal, people and links orange). */
+.placeLink {
+  color: #9fd3e1;
+}
+
+/* A person's day as a 24-hour strip, a colour for each place (WO-165). */
+.strip {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 4px 0 10px;
+}
+.stripBar {
+  display: grid;
+  grid-template-columns: repeat(24, minmax(0, 1fr));
+  height: 22px;
+  border: 1px solid var(--rule);
+}
+.stripBar i {
+  display: block;
+  border-right: 1px solid rgba(11, 15, 20, 0.55);
+}
+.stripTicks {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.stripKey {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  font-size: 14px;
+  color: var(--soft);
+}
+.stripKey span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.stripKey i {
+  width: 12px;
+  height: 12px;
+}

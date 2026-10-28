@@ -9,6 +9,10 @@ import { PreviewLink } from "@/components/pages/preview-link";
 import { InformationConfidence, PageTop, Panel, Section, TitleBox } from "@/components/pages/page-kit";
 import { notSureOf, personBySlug, roleWords, unsureFields } from "@/lib/people/data";
 import { playersWords } from "@/lib/quests/reads";
+import { GlanceBand, type GlanceCell } from "@/components/pages/glance";
+import { AutoToc } from "@/components/pages/auto-toc";
+import { dayHours, mainPlace } from "@/lib/people/day";
+import l from "@/components/quests/line-page.module.css";
 import { questsOf } from "@/lib/people/quests";
 import { siteMetadata } from "@/lib/og/metadata";
 import styles from "@/components/pages/page-kit.module.css";
@@ -23,6 +27,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return { title: p.name, ...siteMetadata(`/people/${p.slug}`, p.name, [p.race, p.inTown].filter(Boolean).join(" in ")) };
 }
 
+/** One colour for each place on the day strip. */
+const STRIP = ["#74bfd2", "#f0913f", "#8fc07c", "#b7a2e6", "#e8c987", "#e07a6c"];
 const cap = (t: string) => (t ? t.charAt(0).toUpperCase() + t.slice(1) : t);
 /** Where a read's "from" and "for" fall in a day, as a player says it. */
 const whenWords = (from: string, span: string) => (/^any hour$/i.test(from) ? { head: "Any hour", small: "" } : { head: cap(from), small: span });
@@ -188,8 +194,32 @@ export default async function PersonPage({ params }: { params: Params }) {
       });
   }
 
+  // The day as 24 hours, for the strip and for where they are most of it.
+  const hours = read ? dayHours(read.day) : null;
+  const mostly = hours ? mainPlace(hours) : null;
+  const short = (t: string, n = 100) => (t.length > n ? `${t.slice(0, n - 1).trimEnd()}…` : t);
+  const roleText = read?.role ? cap(read.role.split(";")[0].trim()) : (role ?? person.race ?? null);
+  const sellsText = read?.sells ? cap(read.sells.split(/[;(]|,\s*\d/)[0].trim().replace(/\.$/, "")) : sells ? "Goods" : null;
+  // At a glance (WO-165, rule 34): where to find them (teal), what they are (orange), what they sell (gold) or train (green), that they follow you (orange), and their quests (violet).
+  const cells: GlanceCell[] = [
+    {
+      key: "where",
+      icon: "quest-travel",
+      tone: "teal" as const,
+      label: "Where to find them",
+      value: mostly?.main ?? person.inTown ?? person.cell ?? "Not known yet",
+      sub: read?.firstMeet ? `First met: ${short(read.firstMeet.replace(/\.$/, ""), 90)}` : mostly && mostly.places.length > 1 ? `Also ${mostly.places.slice(1, 3).join(", ")}` : "Where they are through the day isn't known yet",
+      small: true,
+    },
+    ...(roleText ? [{ key: "role", icon: "quest-people", tone: "orange" as const, label: "What they are", value: roleText, sub: [person.race, person.inTown].filter(Boolean).join(" in "), small: roleText.length > 22 }] : []),
+    ...(trainer ? [{ key: "trains", icon: "tab-levels", tone: "green" as const, label: "Trains", value: trainer.skill, sub: trainer.cap ? `Up to ${trainer.cap}` : undefined }] : sellsText ? [{ key: "sells", icon: "quest-rewards", tone: "gold" as const, label: "Sells", value: sellsText, sub: read?.sells ? short(read.sells.replace(/^[^,;(]*[,;(]\s*/, ""), 70) || undefined : undefined, small: sellsText.length > 20 }] : []),
+    ...(person.follower ? [{ key: "follows", icon: "quest-followers", tone: "orange" as const, label: "Follows you", value: "Yes", sub: read?.joins ? short(read.joins, 110) : "How to recruit isn't known yet" }] : []),
+    ...(quests.length ? [{ key: "quests", icon: "quest-side-stories", tone: "violet" as const, label: "Quests", value: String(quests.length), sub: quests.slice(0, 2).map((q) => q.name).join("; ") }] : []),
+  ].slice(0, 5);
+
   return (
-    <main className={`page ${styles.main}`}>
+    <main className={l.root}>
+      <div className={`page ${l.top}`}>
       <PageTop back={{ href: "/people", label: "People" }} />
 
       <TitleBox
@@ -210,7 +240,11 @@ export default async function PersonPage({ params }: { params: Params }) {
       />
 
       {lede && <p className={styles.lede}>{lede}</p>}
+      </div>
 
+      <GlanceBand cells={cells} />
+
+      <div className={`page ${styles.main}`} style={{ paddingTop: 44 }}>
       <div className={styles.cols}>
         <div className={styles.body}>
           {read && (read.firstMeet || read.day.length > 0) && (
@@ -220,6 +254,29 @@ export default async function PersonPage({ params }: { params: Params }) {
                   <b>First meeting.</b> {cap(read.firstMeet)}
                   {sure("firstMeet")}
                 </p>
+              )}
+              {hours && read.day.length > 1 && (
+                <div className={styles.strip} role="img" aria-label={`Through the day: ${[...new Set(hours.filter(Boolean))].join(", ")}`}>
+                  <div className={styles.stripBar}>
+                    {hours.map((h, i) => (
+                      <i key={i} title={`${i === 0 ? "12 am" : i < 12 ? `${i} am` : i === 12 ? "noon" : `${i - 12} pm`}: ${h ?? "not said"}`} style={{ background: h ? STRIP[[...new Set(hours.filter(Boolean))].indexOf(h) % STRIP.length] : "transparent" }} />
+                    ))}
+                  </div>
+                  <div className={styles.stripTicks} aria-hidden="true">
+                    <span>12 am</span>
+                    <span>6 am</span>
+                    <span>noon</span>
+                    <span>6 pm</span>
+                  </div>
+                  <div className={styles.stripKey}>
+                    {[...new Set(hours.filter(Boolean))].map((h, i) => (
+                      <span key={h}>
+                        <i style={{ background: STRIP[i % STRIP.length] }} />
+                        {h}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               )}
               {read.day.length > 0 && (
                 <div className={styles.dayList} role="list" aria-label="Through the day">
@@ -269,20 +326,23 @@ export default async function PersonPage({ params }: { params: Params }) {
           )}
         </div>
 
-        {offers.length > 0 && (
-          <aside className={styles.side}>
-            <Panel id="offers" icon="quest-people" title={they === "them" ? "What they offer" : `What ${they === "her" ? "she" : "he"} offers`}>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                {offers.map((o) => (
-                  <span key={o.title} className={styles.offer}>
-                    <b>{o.title}</b>
-                    <span>{o.body}</span>
-                  </span>
-                ))}
-              </div>
-            </Panel>
-          </aside>
-        )}
+        <aside className={styles.side}>
+          <AutoToc />
+          {offers.length > 0 && (
+            <>
+              <Panel id="offers" icon="quest-people" title={they === "them" ? "What they offer" : `What ${they === "her" ? "she" : "he"} offers`}>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  {offers.map((o) => (
+                    <span key={o.title} className={styles.offer}>
+                      <b>{o.title}</b>
+                      <span>{o.body}</span>
+                    </span>
+                  ))}
+                </div>
+              </Panel>
+            </>
+          )}
+        </aside>
       </div>
 
       <InformationConfidence
@@ -312,6 +372,7 @@ export default async function PersonPage({ params }: { params: Params }) {
           </>
         }
       />
+      </div>
     </main>
   );
 }

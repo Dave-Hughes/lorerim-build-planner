@@ -21,6 +21,9 @@ import { Steps } from "@/components/pages/steps";
 import { QuestReport } from "@/components/quests/quest-report";
 import { SignInButton } from "@/components/site-header";
 import { linkable, modNames, personNames } from "@/lib/pages/names";
+import { GlanceBand, type GlanceCell } from "@/components/pages/glance";
+import { AutoToc } from "@/components/pages/auto-toc";
+import l from "@/components/quests/line-page.module.css";
 import { placeOnly, vaguePlace } from "@/lib/pages/where";
 import { categories, homeName, questsData } from "@/lib/quests/data";
 import { loadPlayerFacts } from "@/lib/quests/player-facts";
@@ -166,8 +169,35 @@ export default async function QuestPage({
   ];
   const sureLine = page.sure.replace(/\.?\s*Unsure: .*$/, "");
 
+  // At a glance (WO-165, the colours of rule 34): how it starts (green), level and danger (red), where it takes you (teal), what it pays (gold), and the ways to finish it (violet).
+  const first = page.starts[0];
+  const startWho = first?.who;
+  const startPlace = first && !vaguePlace(first.where) ? placeOnly(first.where) : undefined;
+  const levelNeed = page.needs.map((n) => /\bLevel (\d+)/i.exec(n.text)?.[1]).find(Boolean);
+  const danger = page.takesYou.find((t) => t.danger);
+  const wayCount = ways && !choicesOnly ? ways.ways.length : 0;
+  const cell = (c: GlanceCell | null) => c;
+  const cells = [
+    cell({
+      key: "start",
+      icon: "quest-sure",
+      tone: "green",
+      label: "How it starts",
+      value: startWho ? <Linked names={names} text={startWho} /> : (page.canDo?.label ?? "Not known yet"),
+      sub: startPlace ? <Linked names={names} text={startPlace} /> : first?.how && first.how.length <= 110 ? <Linked names={names} text={first.how} /> : undefined,
+      small: !startWho,
+    }),
+    cell({ key: "level", icon: "tab-levels", tone: "red", label: "Level and danger", value: levelNeed ? `Level ${levelNeed}` : "Any level", sub: danger ? `${danger.place}: ${danger.danger}` : undefined }),
+    page.takesYou.length
+      ? cell({ key: "where", icon: "quest-travel", tone: "teal", label: "Where it takes you", value: <Linked names={names} text={page.takesYou.slice(0, 2).map((t) => t.place).join(", ")} />, sub: page.takesYou.length > 2 ? `and ${page.takesYou.length - 2} more` : undefined, small: true })
+      : null,
+    cell({ key: "xp", icon: "quest-rewards", tone: "gold", label: "Rewards", value: page.gets.xp > 0 ? `${page.gets.xp.toLocaleString("en-US")} XP` : "No XP", sub: page.gets.rewards[0] ? page.gets.rewards[0].what.charAt(0).toUpperCase() + page.gets.rewards[0].what.slice(1) : undefined }),
+    wayCount > 0 ? cell({ key: "ways", icon: "quest-ways", tone: "violet", label: "Ways to finish it", value: `${wayCount} ways`, sub: page.choices[0]?.choice }) : page.choices.length > 0 ? cell({ key: "ways", icon: "quest-ways", tone: "violet", label: "Choices", value: `${page.choices.length} ${page.choices.length === 1 ? "choice" : "choices"}`, sub: page.choices[0]?.choice }) : null,
+  ].filter((c): c is GlanceCell => !!c);
+
   return (
-    <main className={`page ${styles.main}`}>
+    <main className={l.root}>
+      <div className={`page ${l.top}`}>
       <PageTop
         back={home ? { href: `/quests/c/${home.slug}`, label: homeName(line.category) } : { href: `/quests/${line.id}`, label: line.name }}
       />
@@ -217,6 +247,11 @@ export default async function QuestPage({
         }
       />
 
+      </div>
+
+      <GlanceBand cells={cells} />
+
+      <div className={`page ${styles.main}`} style={{ paddingTop: 44 }}>
       {askedCanDo && (
         <Panel id="can-title" title="Can I do it?">
           <p className={styles.canDo}>
@@ -543,6 +578,7 @@ export default async function QuestPage({
         </div>
 
         <aside className={styles.side}>
+          <AutoToc />
           {(page.gets.xp > 0 || page.gets.rewards.length > 0) && (
             <Gold id="get">
               {page.gets.xp > 0 && (
@@ -688,6 +724,7 @@ export default async function QuestPage({
             </>
           }
         />
+      </div>
     </main>
   );
 }

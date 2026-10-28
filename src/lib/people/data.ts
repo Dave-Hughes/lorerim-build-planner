@@ -47,13 +47,17 @@ export const READ_FIELD_WORDS: Record<string, string> = {
 };
 
 /**
- * What a read is not sure of: every doubt the reader and the checker left, each with its reason, and a field the checker marked unsure
- * with no reason given. In a player's words.
+ * What a read is not sure of (WO-165): only the fields the checker marked unsure, each with the reasons the read gives for it, in a player's
+ * words. A doubt the reader noted on a field the checker settled (agreed or corrected) isn't listed: the checker's word is the page's.
  */
 export function notSureOf(read: PersonRead): { field: string; why?: string }[] {
-  const out: { field: string; why?: string }[] = read.unsure.map((u) => ({ field: READ_FIELD_WORDS[u.field] ?? u.field, why: u.why }));
-  const said = new Set(read.unsure.map((u) => u.field));
-  for (const [f, v] of Object.entries(read.verdicts)) if (v === "unsure" && !said.has(f)) out.push({ field: READ_FIELD_WORDS[f] ?? f });
+  const out: { field: string; why?: string }[] = [];
+  for (const [f, v] of Object.entries(read.verdicts)) {
+    if (v !== "unsure") continue;
+    const reasons = read.unsure.filter((u) => u.field === f);
+    if (!reasons.length) out.push({ field: READ_FIELD_WORDS[f] ?? f });
+    for (const r of reasons) out.push({ field: READ_FIELD_WORDS[f] ?? f, why: r.why });
+  }
   return out;
 }
 

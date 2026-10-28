@@ -5126,14 +5126,23 @@ Dave, 27 Oct 18:46: the map's mod author OK'd its use on the site, with a credit
 - [ ] Tests, then `for Bob` with the coverage: how many places have a position, by world.
 
 ## WO-165  The quest and person pages get the same at-a-glance and colours (Mac, 27 Oct 2026)
-Status: building (Mac)
+Status: for Bob (all five boxes built; typecheck, lint, 717 unit tests, the build and the full e2e pass, 482 of 482)
 
 **Why.** `docs/page-templates.md` rows 14 and 16: the quest and person pages read well but are one grey. WO-160 (`LinePage`) and WO-162 (`PlaceTown`) set the pattern: an At a glance band under the title, colour that means one thing, a contents rail on long pages. Same pattern here, so every World page feels like one site.
-- [ ] **A quest**: At a glance under the title: how it starts (green: who and where), level and danger (red), where it takes you (blue), rewards and XP (gold), and the number of ways to finish it (purple). People and places in the steps as the coloured chips; XP in the pixel face. The Rewards box stays.
-- [ ] **A person**: At a glance: where to find them now (blue, from the day schedule at the current hour of day if known, else first meeting), what they are (role), sells or trains (gold, green), follows you and how (orange), quests (purple, the count). "Where to find them" as a day strip: the 24 hours as a bar coloured by place, the rows under it.
-- [ ] **Information Confidence's Not sure yet** lists only fields the checker marked unsure, each with its reason, not every field the template has (Aela's lists seven on a page checked by a second reader).
-- [ ] A contents rail on any of these pages taller than two screens.
-- [ ] Checks, screenshots of The Golden Claw, Lights Out!, Aela the Huntress and Lydia at 1440 and 390, then `for Bob`.
+- [x] **A quest**: At a glance under the title: how it starts (green: who and where), level and danger (red), where it takes you (blue), rewards and XP (gold), and the number of ways to finish it (purple). People and places in the steps as the coloured chips; XP in the pixel face. The Rewards box stays.
+- [x] **A person**: At a glance: where to find them now (blue, from the day schedule at the current hour of day if known, else first meeting), what they are (role), sells or trains (gold, green), follows you and how (orange), quests (purple, the count). "Where to find them" as a day strip: the 24 hours as a bar coloured by place, the rows under it.
+- [x] **Information Confidence's Not sure yet** lists only fields the checker marked unsure, each with its reason, not every field the template has (Aela's lists seven on a page checked by a second reader).
+- [x] A contents rail on any of these pages taller than two screens.
+- [x] Checks, screenshots of The Golden Claw, Lights Out!, Aela the Huntress and Lydia at 1440 and 390, then `for Bob`.
+
+### Jeff's notes (Mac, 27 Oct)
+- **The band** is one component (`src/components/pages/glance.tsx`, the line page's styles): a quest and a person page now have At a glance under the title in the same full-width tinted band, each cell in its colour (rule 34).
+- **A quest:** How it starts (green: who, then the place or how), Level and danger (red: the level a need names, else "Any level", and the first place's danger in the places index's words), Where it takes you (teal: the first two places, "and N more"), Rewards (gold: the quest's XP, else "No XP", and its first reward), and the ways to finish it (violet: "3 ways", or "N choices" when the choices add no steps). A cell with nothing is left out. The Rewards box in the side column stays. **Chips:** WO-160 Part 5 took the person and place chips out of a line page's steps for names linked in the sentence; I followed that here, not the chips this order asked for. A place named in a step is teal (a link on a place), a person orange.
+- **A person:** Where to find them (teal), What they are (orange), Trains (green) or Sells (gold), Follows you (orange, with how they join), Quests (violet, the count and the first two). **"At the current hour":** the planner has no game clock, so the cell says where they are most of the day (the place with the most hours in the read's day) and "First met: ..."; "at the hour" is for the PC's save to answer. **The day strip:** the read's day rows laid out as 24 hours (`src/lib/people/day.ts`, with a test), a colour for each place with the key under it (Aela: living quarters, Jorrvaskr, outside Jorrvaskr), and the rows under it as before; a person with one place all day gets no strip.
+- **Not sure yet** (`notSureOf`) lists only the fields the checker marked unsure, each with the reasons the read gives for it: Aela's list is three (what she trains, how she joins you, how she fights), not seven; Lydia's is when she moves, whether and how you can marry her, how she fights. A doubt on a field the checker settled isn't listed. (The quest, line and place pages' lists are the read's own, which carry no checker verdicts; I left them.)
+- **The contents rail** (`AutoToc`): a page's own section headings in the side column, the one in view lit, shown only when the page is taller than two screens and has at least three sections; it is on the quest and person pages. The place and line pages have their own contents.
+- **A one-word name is a person only with more than a shop** ("Trader" is a job): `peopleNames` takes a one-word name only for someone in a quest, a read, a follower, spouse, trainer or innkeeper, which kept "the Riverwood Trader" whole on the quest pages.
+- Tests: `e2e/wo165.spec.ts` (9: The Golden Claw, Lights Out!, Aela and Lydia at both widths, and the rail). Screenshots in `test-results/`: `wo165-golden-claw-1440.png` and `-390`, `wo165-lights-out-...`, `wo165-aela-...`, `wo165-lydia-...`.
 
 ## WO-163  Quest categories as tables (Mac, 27 Oct 2026)
 Status: queued (Mac; Bob's review)
