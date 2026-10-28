@@ -1,7 +1,7 @@
 import "server-only";
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import { mapStrings, mend, REASON_KEYS } from "@/lib/pages/player-words";
+import { EDITOR_BODY, mapStrings, mend, RECORD, REASON_KEYS } from "@/lib/pages/player-words";
 import { currentVersion } from "@/lib/rules/server";
 
 /**
@@ -136,7 +136,22 @@ export function peopleData() {
   try {
     rows = (JSON.parse(readFileSync(path.join(process.cwd(), "src", "data", `lorerim-${currentVersion().id}`, "people.json"), "utf8")) as { people: PersonRow[] }).people;
     // The reads' assembled wording ("in her own house, Bryling's House") is said once, here (WO-177 Part 5).
-    rows = rows.map((r) => (r.read ? { ...r, read: mapStrings(r.read, mend, REASON_KEYS) } : r));
+    rows = rows.map((row) => {
+      // A race the records name with an id (0Asy1um_OthrielSnowElfRace) has no player-facing name: nothing (WO-180).
+      const r = row.race && RECORD.test(row.race) ? { ...row, race: undefined } : row;
+      const trained = r.trainer ? { ...r, trainer: { ...r.trainer, skill: skillWords(r.trainer.skill) } } : r;
+      if (!trained.read) return trained;
+      const read = mapStrings(trained.read, mend, REASON_KEYS);
+      // A schedule note or a change that talks about the game's packages and aliases is the editors' (WO-180 Part 2): the note goes, the row stays.
+      return {
+        ...trained,
+        read: {
+          ...read,
+          changes: (read.changes ?? []).filter((c) => !EDITOR_BODY.test(c)),
+          day: (read.day ?? []).map((d) => (d.doing && EDITOR_BODY.test(d.doing) ? { ...d, doing: "" } : d)),
+        },
+      };
+    });
   } catch {
     // Not built yet.
   }
@@ -166,6 +181,10 @@ export function peopleData() {
   cached = { all, byName, bySlug };
   return cached;
 }
+
+/** A skill as the game shows it, not as the records key it (WO-180: "Trains OneHanded"). */
+const SKILLS: Record<string, string> = { OneHanded: "One-Handed", TwoHanded: "Two-Handed", LightArmor: "Light Armor", HeavyArmor: "Heavy Armor", Lockpick: "Lockpicking" };
+export const skillWords = (skill: string) => SKILLS[skill] ?? skill.replace(/([a-z])([A-Z])/g, "$1 $2");
 
 /** A person by their name, case and spacing aside; null when the index has none. */
 export const personByName = (name: string) => peopleData().byName.get(nameKey(name)) ?? null;

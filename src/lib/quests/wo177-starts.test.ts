@@ -30,9 +30,10 @@ describe("every quest's starts read as sentences", () => {
 describe("field keys are said in a player's words", () => {
   it("maps a key, a dotted key and a name, and gives nothing for an unknown key", () => {
     expect(fieldWords("takesYou")).toBe("where it takes you");
-    expect(fieldWords("takesYou.hold.")).toBe("where it takes you (hold)");
-    expect(fieldWords("Starts.where.")).toBe("how to start (where)");
-    expect(fieldWords("takesYou.Saarthal:")).toBe("where it takes you (Saarthal)");
+    // One item for a field, whatever part of it the reader was unsure of (WO-180).
+    expect(fieldWords("takesYou.hold.")).toBe("where it takes you");
+    expect(fieldWords("Starts.where.")).toBe("how to start");
+    expect(fieldWords("takesYou.Saarthal:")).toBe("where it takes you");
     expect(fieldWords("fooBar.baz")).toBeNull();
   });
 });

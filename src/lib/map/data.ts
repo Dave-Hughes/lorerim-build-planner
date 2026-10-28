@@ -12,6 +12,7 @@ import { questsData } from "@/lib/quests/data";
 import { pageOf, levelWords } from "@/lib/quests/reads";
 import { questBySlug, questHref } from "@/lib/quests/slugs";
 import { searchEverything } from "@/lib/search/everything";
+import { holdWords } from "@/lib/places/hold-words";
 
 /**
  * The Map page's data (WO-169): every place on Skyrim's map with what the filters need, the places a quest goes to in order, where a person is,
@@ -234,7 +235,7 @@ export function placeDrawer(slug: string): Drawer | null {
     slug,
     name: placeLabel(p),
     href: `/places/${slug}`,
-    tags: [placeType(p.type), p.hold ? `${p.hold} hold` : ""].filter(Boolean),
+    tags: [placeType(p.type), p.hold ? `${holdWords(p.hold)}` : ""].filter(Boolean),
     gettingThere: gettingThere(p),
     boss: lived ? null : boss,
     danger: lived ? null : danger,

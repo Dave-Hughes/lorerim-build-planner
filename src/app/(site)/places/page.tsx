@@ -9,6 +9,7 @@ import { PLACE_GROUPS, groupFrom, groupOf } from "@/lib/places/groups";
 import { placeCounts, placeHrefOf, placeLabel, placesData, placeType, type Place } from "@/lib/places/data";
 import { siteMetadata } from "@/lib/og/metadata";
 import styles from "@/components/pages/page-kit.module.css";
+import { holdWords } from "@/lib/places/hold-words";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Places", ...siteMetadata("/places", "Places") };
@@ -48,7 +49,7 @@ export default async function PlacesPage({ searchParams }: { searchParams: Promi
           All kinds
         </Link>
         {groups.map((g) => (
-          <Link key={g.key} href={href({ type: g.key, hold })} className={`${styles.chip} ${type === g.key ? styles.chipOn : ""}`}>
+          <Link key={g.key} title={`${g.n} places in all; the map draws the ones it can pin`} href={href({ type: g.key, hold })} className={`${styles.chip} ${type === g.key ? styles.chipOn : ""}`}>
             {g.label} <small>{g.n}</small>
           </Link>
         ))}
@@ -85,7 +86,7 @@ export default async function PlacesPage({ searchParams }: { searchParams: Promi
             .map((p) => (
               <div key={p.id} className={styles.qrow}>
                 <Link href={placeHrefOf(p)}>{placeLabel(p)}</Link>
-                <span>{[placeType(p.type), p.hold ? `${p.hold} hold` : null].filter(Boolean).join(", ")}</span>
+                <span>{[placeType(p.type), p.hold ? `${holdWords(p.hold)}` : null].filter(Boolean).join(", ")}</span>
               </div>
             ))}
         </section>
@@ -94,7 +95,7 @@ export default async function PlacesPage({ searchParams }: { searchParams: Promi
           {holdsAll.map(([h, ps]) => (
             <section key={h} className={styles.group} aria-labelledby={`h-${h}`}>
               <div className={styles.groupHead}>
-                <h2 id={`h-${h}`}>{h === "Elsewhere" ? h : `${h} hold`}</h2>
+                <h2 id={`h-${h}`}>{h}</h2>
                 <span>{ps.length} places</span>
               </div>
               <div className={styles.few}>

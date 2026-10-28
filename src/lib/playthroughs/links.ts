@@ -6,6 +6,7 @@ import { placeLabel, placesData, placeType, type Place } from "@/lib/places/data
 import { questsData } from "@/lib/quests/data";
 import type { GameData } from "@/lib/rules/data";
 import type { LinkKind, ObjectiveLink } from "./types";
+import { holdWords } from "@/lib/places/hold-words";
 
 /**
  * What an objective can link to (WO-111): the planner's quests, quest lines, followers (a line in
@@ -25,7 +26,7 @@ export interface Linkable {
 }
 
 /** "Mine, by Riverwood": a place's second column in the @ menu. */
-const placeLinkWhere = (p: Place) => [placeType(p.type), p.nearestTown ? `by ${p.nearestTown.town}` : p.hold ? `${p.hold} hold` : null].filter(Boolean).join(", ");
+const placeLinkWhere = (p: Place) => [placeType(p.type), p.nearestTown ? `by ${p.nearestTown.town}` : p.hold ? `${holdWords(p.hold)}` : null].filter(Boolean).join(", ");
 
 let placeIndex: Linkable[] | null = null;
 /** Every place in the places index (WO-128), once per server. */

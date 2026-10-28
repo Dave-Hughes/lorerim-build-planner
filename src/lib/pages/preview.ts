@@ -5,6 +5,7 @@ import { questsOf } from "@/lib/people/quests";
 import { placeBySlug, placeLabel, placeType } from "@/lib/places/data";
 import { dangerOf, pageOf } from "@/lib/quests/reads";
 import { questBySlug } from "@/lib/quests/slugs";
+import { holdWords } from "@/lib/places/hold-words";
 
 /** What the hover preview on a link to a person, place or quest says (WO-157 Part 5): the icon, the name, who or what it is, and one useful fact. Words from the pages, nothing new. */
 export interface Preview {
@@ -40,7 +41,7 @@ export async function previewOf(href: string): Promise<Preview | null> {
     if (!p) return null;
     const danger = dangerOf(p);
     const fact = danger ?? (p.quests?.length ? `${p.quests.length} quest${p.quests.length === 1 ? " goes" : "s go"} here` : undefined);
-    return { icon: "quest-travel", name: placeLabel(p), line: join([p.hold ? `${p.hold} hold` : null, placeType(p.type)]), ...(fact ? { fact } : {}) };
+    return { icon: "quest-travel", name: placeLabel(p), line: join([p.hold ? `${holdWords(p.hold)}` : null, placeType(p.type)]), ...(fact ? { fact } : {}) };
   }
   const quest = /^\/quests\/q\/([a-z0-9-]+)$/.exec(href);
   if (quest) {

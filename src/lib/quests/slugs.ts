@@ -1,4 +1,5 @@
 import "server-only";
+import { isTemplateName } from "@/lib/pages/player-words";
 import { questsData } from "./data";
 import type { Quest, QuestLine } from "./types";
 
@@ -42,7 +43,7 @@ function tails(edids: string[]): Map<string, string> {
 
 function build() {
   if (built) return built;
-  const all: Entry[] = questsData().lines.flatMap((l) => l.quests.map((q) => ({ lineId: l.id, edid: q.edid, name: slugify(q.name ?? ""), town: q.start?.towns?.length === 1 ? slugify(q.start.towns[0]) : null })));
+  const all: Entry[] = questsData().lines.flatMap((l) => l.quests.filter((q) => !isTemplateName(q.name ?? "")).map((q) => ({ lineId: l.id, edid: q.edid, name: slugify(q.name ?? ""), town: q.start?.towns?.length === 1 ? slugify(q.start.towns[0]) : null })));
   const byEdid = new Map<string, string>();
   const bySlug = new Map<string, { lineId: string; edid: string }>();
   const edids = new Set(all.map((q) => slugify(q.edid)));

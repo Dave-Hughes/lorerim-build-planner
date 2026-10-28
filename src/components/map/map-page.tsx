@@ -332,6 +332,7 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
   // What to draw: names as you come in, and never two plates on top of each other (WO-169 review): the more important name stays (the picked
   // place, a route's stops, the cities, then the towns) and the lesser one is dropped.
   const items = useMemo(() => {
+    const blockedBox = (b: Box) => b[0] < 6 || b[2] > size.w - 6 || [...covered.sheet, ...covered.over].some((o) => b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1]);
     const out: { p: MapPlace; x: number; y: number; named: boolean; side: "right" | "left"; members?: string[] }[] = [];
     for (const p of places) {
       const { x, y } = toScreen(p.px, p.py);
@@ -344,7 +345,7 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
       // side clear it is not drawn (WO-177). The picked place is always named.
       const rightBox: Box = [x + 8, y - 12, x + 14 + w, y + 12];
       const leftBox: Box = [x - 14 - w, y - 12, x - 8, y + 12];
-      const blocked = (b: Box) => b[0] < 6 || b[2] > size.w - 6 || [...covered.sheet, ...covered.over].some((o) => b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1]);
+      const blocked = blockedBox;
       const side = !blocked(rightBox) ? "right" : !blocked(leftBox) ? "left" : "right";
       const clear = side === "left" || !blocked(rightBox);
       out.push({ p, x, y, named: (picked || clear) && (picked || p.kind === "city" || (p.kind === "town" && k >= 0.28) || k >= 0.85), side });
@@ -355,22 +356,27 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
       if (!it.named) continue;
       const w = it.p.name.length * 7.4 + 22;
       const box: [number, number, number, number] = it.side === "right" ? [it.x + 8, it.y - 12, it.x + 14 + w, it.y + 12] : [it.x - 14 - w, it.y - 12, it.x - 8, it.y + 12];
-      // A route's stops are always named (WO-177 Part 6): another name may sit beside one, never replace it.
-      if (!inRoute.has(it.p.slug) && taken.some((t) => box[0] < t[2] && box[2] > t[0] && box[1] < t[3] && box[3] > t[1])) it.named = false;
+      // A route's stops come first; two that would overlap show their numbers only (WO-180).
+      if (taken.some((t) => box[0] < t[2] && box[2] > t[0] && box[1] < t[3] && box[3] > t[1])) it.named = false;
       else taken.push(box);
     }
     // Places inside one town are one pin, a count on the town's plate (WO-178): "Whiterun, 5 places".
     const folded = new Map<string, string[]>();
-    for (const it of out) if (it.p.inTown && selected !== it.p.slug) folded.set(it.p.inTown.slug, [...(folded.get(it.p.inTown.slug) ?? []), it.p.name]);
+    for (const it of out) if (it.p.inTown && selected !== it.p.slug && !inRoute.has(it.p.slug)) folded.set(it.p.inTown.slug, [...(folded.get(it.p.inTown.slug) ?? []), it.p.name]);
     const seenTown = new Set<string>();
     return out.flatMap((it) => {
       const t = it.p.inTown;
-      if (!t || selected === it.p.slug) return [it];
+      if (!t || selected === it.p.slug || inRoute.has(it.p.slug)) return [it];
       const names = folded.get(t.slug) ?? [it.p.name];
       if (seenTown.has(t.slug)) return [];
       seenTown.add(t.slug);
       // At every zoom the town's pin carries its count, and hovering it lists the places of the picked kind (WO-178 Part 3).
-      return [{ ...it, named: true, members: names, p: { ...it.p, slug: t.slug, name: names.length > 1 ? `${t.name}, ${names.length}` : names[0] } }];
+      const label = names.length > 1 ? `${t.name}, ${names.length}` : names[0];
+      // Its label goes where it is clear of the panel, the drawer and the controls, as every name does (WO-180: "arkarth, 3" under the panel).
+      const lw = label.length * 7.4 + 22;
+      const clearR = !blockedBox([it.x + 8, it.y - 12, it.x + 14 + lw, it.y + 12]);
+      const clearL = !blockedBox([it.x - 14 - lw, it.y - 12, it.x - 8, it.y + 12]);
+      return [{ ...it, named: clearR || clearL, side: clearR ? ("right" as const) : ("left" as const), members: names, p: { ...it.p, slug: t.slug, name: label } }];
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [places, toScreen, size.w, size.h, k, selected, types, onlyQuests, inRoute, lit, covered]);
@@ -402,10 +408,8 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
     const kept = clusters.filter((c) => {
       if (underSheet(c.x, c.y)) return false;
       const city = singles.find((it) => it.p.kind === "city" && Math.abs(it.x - c.x) < 90 && Math.abs(it.y - c.y) < 20);
-      if (city) {
-        withCity.set(city.p.slug, (withCity.get(city.p.slug) ?? 0) + c.n);
-        return false;
-      }
+      // With no kind picked a city's label has no number (WO-180: it was the nearby cluster, and changed with the zoom): the badge is not drawn.
+      if (city) return false;
       return true;
     });
     return { singles: singles.map((it) => (withCity.has(it.p.slug) ? { ...it, extra: withCity.get(it.p.slug) } : it)), clusters: kept };
@@ -595,7 +599,7 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
                   All
                 </button>
                 {groupCounts.map((g) => (
-                  <button key={g.key} type="button" aria-pressed={types.includes(g.key)} className={`${s.chip} ${types.includes(g.key) ? s.chipOn : ""}`} onClick={() => setTypes((cur) => (cur.includes(g.key) ? cur.filter((x) => x !== g.key) : [...cur, g.key]))}>
+                  <button key={g.key} type="button" title={`${g.n} on the map`} aria-pressed={types.includes(g.key)} className={`${s.chip} ${types.includes(g.key) ? s.chipOn : ""}`} onClick={() => setTypes((cur) => (cur.includes(g.key) ? cur.filter((x) => x !== g.key) : [...cur, g.key]))}>
                     {g.label} <small>{g.n}</small>
                   </button>
                 ))}

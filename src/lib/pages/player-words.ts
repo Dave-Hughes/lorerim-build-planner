@@ -7,7 +7,7 @@ const HEDGES: RegExp[] = [
   // "; the records don't show when", ", and the records don't show which one you get"
   /\s*[;,]?\s*(?:and\s+)?the records (?:don't|do not|doesn't|does not) (?:show|say|have|give|tell)\b[^;.()]*/gi,
   // "(not checked yet)", "(not checked yet: LoreRim's files set their chance to 0)", "(the records don't show when)", "(presumably once you own it)"
-  /\s*\((?:not checked yet|isn't checked yet|the records [^)]*|presumably [^)]*|probably [^)]*|probably|likely|possibly|perhaps|presumably)\)/gi,
+  /\s*\((?:not checked yet|isn't checked yet|the records [^)]*|(?:presumably|probably|likely|possibly|perhaps)\b[^)]*)\)/gi,
   /\s*[;,]?\s*not checked yet\b[^;.()]*/gi,
 ];
 
@@ -67,7 +67,8 @@ const EDITOR_TERMS = /\b(?:packages?|alias(?:es)?|scripts?|propert(?:y|ies)|reco
 /** An unsure reason for the page: whole, with a capital, or null when it is written for editors or names a record or a file. */
 export function playerReason(why: string): string | null {
   if (RECORD.test(why) || EDITOR_TERMS.test(why)) return null;
-  const t = why.trim().replace(/\s+/g, " ");
+  // The reader's own field label in front ("what you get: ...") goes: Not sure yet already names the field.
+  const t = why.trim().replace(/\s+/g, " ").replace(/^[a-z][a-z' ,()-]{2,40}:\s+(?=\S)/, "");
   return `${t.charAt(0).toUpperCase()}${t.slice(1)}${/[.!?]$/.test(t) ? "" : "."}`;
 }
 
@@ -90,7 +91,8 @@ const ALIAS = /<Alias=([A-Za-z0-9_]+)>/g;
 const aliasWords = (name: string) => `the ${name.replace(/\d+$/, "").replace(/([a-z])([A-Z])/g, "$1 $2").replace(/_/g, " ").toLowerCase().trim()}`;
 /** A bracket that holds a plugin file ("(cceejsse005-cave.esm; its start checks that…)"): a file is never shown to a player. */
 const FILE_BRACKET = /\s*\([^()]*\.(?:esp|esm|esl)\b[^()]*\)/gi;
-const ANY_HEDGE = /\((?:probably|likely|possibly|perhaps|presumably)\)|the records (?:don't|do not|doesn't|does not) (?:show|say|have|give|tell)|not checked yet|\((?:presumably|probably) /i;
+export const EDITOR_BODY = /\b(?:packages?|aliases|alias|scripts?|propert(?:y|ies)|keywords?|plugins?)\b/i;
+const ANY_HEDGE = /\((?:probably|likely|possibly|perhaps|presumably)\b|the records (?:don't|do not|doesn't|does not) (?:show|say|have|give|tell)|not checked yet|\((?:presumably|probably) /i;
 const SENTENCE_HEDGE = /(?<=[.!?]\s)The records (?:don't|do not|doesn't|does not) (?:show|say|have|give|tell)\b[^.]*\.\s*/g;
 
 /**
@@ -101,7 +103,21 @@ export function mend(text: string): string {
   if (SAID_NAMES[text]) return SAID_NAMES[text];
   // A shelf or a place named "Whiterun Hold": the hold is "Whiterun hold" on every page (the game's own journal words are left as they are).
   if (/^(?:Odd jobs in )?[A-Z][a-z']+(?: [A-Z][a-z']+)? Hold$/.test(text)) return text.replace(/ Hold$/, " hold");
-  let out = assembled(text).replace(ALIAS, (_m, n: string) => aliasWords(n)).replace(FILE_BRACKET, "");
+  // "a dragon lair in the Rift (likely one of: A, B)" is "a dragon lair in the Rift, one of: A, B" (WO-180 Part 2).
+  let out = assembled(text).replace(/\s*\((?:likely|probably|possibly|perhaps),?\s+one of:?\s+([^)]+)\)/gi, ", one of: $1").replace(ALIAS, (_m, n: string) => aliasWords(n)).replace(FILE_BRACKET, "");
+  // "(he's in the follower and marriage factions)": a bracket that holds an editor's term is an editor's note.
+  out = out.replace(/\s*\([^()]*\b(?:factions?|packages?|aliases|keywords?|scripts?|globals?)\b[^()]*\)/gi, "");
+  if (/^named in (?:its )?aliases?\.?$/i.test(out.trim())) return "Has a part in it";
+  // A clause that talks about the game's packages, aliases or scripts is the editors': "Going about her home; her sandbox package sits above her sleep package" keeps its first clause.
+  if (EDITOR_BODY.test(out) && out.includes(";")) {
+    const kept = out.split(/;\s*/).filter((c) => !EDITOR_BODY.test(c));
+    if (kept.length) out = kept.join("; ");
+  }
+  // A trailing clause after a comma that talks about the editors' packages ("..., or in the market by day once the market package applies") goes too.
+  if (EDITOR_BODY.test(out)) {
+    const trimmed = out.replace(/\s*,\s*(?:or |and )?[^,;.]*\b(?:packages?|aliases|alias|scripts?|propert(?:y|ies)|keywords?|plugins?)\b[^,;.]*(?=[.;]|$)/i, "");
+    if (trimmed.trim().length > 12) out = trimmed;
+  }
   if (ANY_HEDGE.test(out)) {
     const noSentence = out.replace(SENTENCE_HEDGE, "").trimEnd();
     const r = playerWords(noSentence);
@@ -110,8 +126,11 @@ export function mend(text: string): string {
   return out;
 }
 
-/** Keys whose subtree is a reason for a doubt: not mended, the Information Confidence box says them itself. (A quest's canDoWhy is body text and is mended.) */
-export const REASON_KEYS: ReadonlySet<string> = new Set(["why", "unsure"]);
+/** Keys whose subtree is a reason for a doubt: not mended, the Information Confidence box says them itself. (A quest's why, as in takesYou.why, and canDoWhy are body text and are mended.) */
+export const REASON_KEYS: ReadonlySet<string> = new Set(["unsure"]);
 
 /** Three quests the records name with an editor id, said as what they are (WO-177 Part 5: no record id on any page). */
 export const SAID_NAMES: Record<string, string> = { "DA02 Hook": "Boethiah's Calling: the hook", DB01_Opt: "Delayed Burial: optional objectives", "TG00 Maul Handler": "Maul's handler" };
+
+/** A job template with a placeholder name ("Delivery for the npc", "Hunter Marks Animal Den 02"): not a quest a player has a page for, nor a change (WO-180). */
+export const isTemplateName = (name: string) => /\bthe npc\b/i.test(name) || /^Hunter Marks Animal Den(?: \d+)?$/i.test(name.trim());

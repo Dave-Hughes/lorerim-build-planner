@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { assembled, playerField, playerReason, playerWords, quoteQuest, RECORD } from "./player-words";
+import { assembled, mend, playerField, playerReason, playerWords, quoteQuest, RECORD } from "./player-words";
 
 describe("playerWords", () => {
   it("takes the editors' hedge out of the sentence and keeps it as a reason for Not sure yet", () => {
@@ -32,6 +32,13 @@ describe("assembled", () => {
 describe("WO-177 Part 5", () => {
   it("keeps a space before a bracketed quest after a hedge is taken out", () => {
     expect(playerWords("its shops can be shut away; the records don't show when (Unbound)").text).toBe("its shops can be shut away (Unbound)");
+  });
+  it("WO-180: a likely list is 'one of:', any other likely or probably aside goes", () => {
+    expect(mend("a draugr crypt in the Rift (likely one of: Angarvunde, Geirmund's Hall)")).toBe("a draugr crypt in the Rift, one of: Angarvunde, Geirmund's Hall");
+    expect(mend("Cyrodilic Collections are Recruiting (likely next from Jukka)")).toBe("Cyrodilic Collections are Recruiting");
+    expect(mend("New Gnisis Cornerclub, Windhelm (probably, for Gabriella)")).toBe("New Gnisis Cornerclub, Windhelm");
+    expect(mend("Finish The Endless Fall (likely )")).toBe("Finish The Endless Fall");
+    expect(mend("Eastmarch (probably)")).toBe("Eastmarch");
   });
   it("takes a bare (probably) or (likely) out of the body", () => {
     expect(playerWords("Geirmund's Hall (probably)").text).toBe("Geirmund's Hall");

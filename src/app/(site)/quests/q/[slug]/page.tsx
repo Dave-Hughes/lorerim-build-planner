@@ -35,6 +35,7 @@ import { placeKind } from "@/lib/places/kind";
 import { personHref, roleOfName } from "@/lib/people/data";
 import { siteMetadata } from "@/lib/og/metadata";
 import styles from "@/components/pages/page-kit.module.css";
+import { holdWords } from "@/lib/places/hold-words";
 
 export const dynamic = "force-dynamic";
 
@@ -567,7 +568,7 @@ export default async function QuestPage({
                               t.place
                             )}
                             {t.hold ? (
-                              <span className={styles.hold}>{t.hold} hold</span>
+                              <span className={styles.hold}>{holdWords(t.hold)}</span>
                             ) : null}
                           </span>
                           {t.why ? (

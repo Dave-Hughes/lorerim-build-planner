@@ -5,6 +5,7 @@ import { placeHrefOf, placeLabel, placesData } from "@/lib/places/data";
 import { homeName, questsData } from "@/lib/quests/data";
 import { questHref } from "@/lib/quests/slugs";
 import { fuzzyScore, words } from "./fuzzy";
+import { holdWords } from "@/lib/places/hold-words";
 
 /** What a result is (WO-161), as its tag says it. */
 export type FoundKind = "Quest" | "Quest line" | "Person" | "Place" | "Character" | "Guide";
@@ -72,6 +73,6 @@ export function searchEverything(query: string, limit = 20): { quests: Found[]; 
       .sort((a, b) => a.s - b.s || b.mine.length - a.mine.length)
       .slice(0, limit)
       .map(({ p, mine }) => ({ kind: "Person" as const, name: p.name, href: `/people/${p.slug}`, note: [p.race, p.inTown].filter(Boolean).join(", "), why: mine.length ? `Matches the name. Is in ${mine.length} quest${mine.length === 1 ? "" : "s"}` : "Matches the name" })),
-    places: places.map(({ p }) => ({ kind: "Place" as const, name: placeLabel(p), href: placeHrefOf(p), note: [p.type, p.hold ? `${p.hold} hold` : null].filter(Boolean).join(", "), why: "Matches the name" })),
+    places: places.map(({ p }) => ({ kind: "Place" as const, name: placeLabel(p), href: placeHrefOf(p), note: [p.type, p.hold ? `${holdWords(p.hold)}` : null].filter(Boolean).join(", "), why: "Matches the name" })),
   };
 }

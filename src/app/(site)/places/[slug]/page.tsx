@@ -21,6 +21,7 @@ import { levelWords, pageOf } from "@/lib/quests/reads";
 import { questHref } from "@/lib/quests/slugs";
 import { siteMetadata } from "@/lib/og/metadata";
 import styles from "@/components/pages/page-kit.module.css";
+import { holdWords } from "@/lib/places/hold-words";
 
 export const dynamic = "force-dynamic";
 
@@ -62,7 +63,7 @@ function WhichOne({ places }: { places: Place[] }) {
               .map((p) => (
                 <div key={p.id} className={styles.qrow}>
                   <Link href={placeHrefOf(p)}>{placeLabel(p)}</Link>
-                  <span>{[placeType(p.type), p.hold ? `${p.hold} hold` : null, p.nearestTown ? `near ${p.nearestTown.town}` : p.inTown ? `in ${p.inTown}` : ""].filter(Boolean).join(", ")}</span>
+                  <span>{[placeType(p.type), p.hold ? `${holdWords(p.hold)}` : null, p.nearestTown ? `near ${p.nearestTown.town}` : p.inTown ? `in ${p.inTown}` : ""].filter(Boolean).join(", ")}</span>
                 </div>
               ))}
           </section>
@@ -79,7 +80,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     const several = placesSharingSlug(slug);
     return several ? { title: several[0].name, ...siteMetadata(`/places/${slug}`, several[0].name, `${several.length} places share this name`) } : {};
   }
-  return { title: placeLabel(p), ...siteMetadata(placeHrefOf(p), placeLabel(p), [placeType(p.type), p.hold ? `${p.hold} hold` : null].filter(Boolean).join(", ")) };
+  return { title: placeLabel(p), ...siteMetadata(placeHrefOf(p), placeLabel(p), [placeType(p.type), p.hold ? `${holdWords(p.hold)}` : null].filter(Boolean).join(", ")) };
 }
 
 /** Which expansion or mod a place's record is from, by its form id's plugin: "Base game". */
@@ -133,7 +134,7 @@ export default async function PlacePage({ params }: { params: Params }) {
   const near = town ? nearWords(town) : null;
   // A realm with no place on Tamriel's map (the Soul Cairn) says what it is and how you get there (WO-178), and has no levels gauge: its scale is not the land's. Its danger is said once (WO-178 Part 3): the foe lines under the cell, never "isn't known" beside a level.
   const realm = !place.pos && !place.inTown && !!place.gettingThere;
-  const lede = `${/^[AEIOU]/i.test(type) ? "An" : "A"} ${kind}${near ? ` ${near}` : place.hold ? ` in ${place.hold} hold` : ""}.${realm ? ` ${place.gettingThere}.` : ""}${boss ? ` Its boss is ${boss.name}.` : ""}`.replace(/\s+/g, " ");
+  const lede = `${/^[AEIOU]/i.test(type) ? "An" : "A"} ${kind}${near ? ` ${near}` : place.hold ? ` in ${holdWords(place.hold)}` : ""}.${realm ? ` ${place.gettingThere}.` : ""}${boss ? ` Its boss is ${boss.name}.` : ""}`.replace(/\s+/g, " ");
   const lived = placeKind(place) !== "dangerous";
   const ic = (
     <InformationConfidence
@@ -160,7 +161,7 @@ export default async function PlacePage({ params }: { params: Params }) {
   if (pkind !== "dangerous") {
     const goodToKnow: [string, string][] = [
       ...(place.inTown ? ([["In", place.inTown]] as [string, string][]) : []),
-      ...(place.hold ? ([["Hold", `${place.hold} hold`]] as [string, string][]) : []),
+      ...(place.hold ? ([["Hold", `${holdWords(place.hold)}`]] as [string, string][]) : []),
       ...(town ? ([["Nearest town", `${town.town}${town.walk ? `, ${town.walk}` : ""}`]] as [string, string][]) : []),
     ];
     return <PlaceTown place={place} kind={pkind} origin={origin} near={near} ic={ic} goodToKnow={goodToKnow} />;
@@ -186,7 +187,7 @@ export default async function PlacePage({ params }: { params: Params }) {
         tags={
           <>
             <span className={l.tagPlain}>{placeType(place.type)}</span>
-            {place.hold && <span className={l.tagPlace}>{place.hold} hold</span>}
+            {place.hold && <span className={l.tagPlace}>{holdWords(place.hold)}</span>}
             {origin && <span className={l.tagPlain}>{origin}</span>}
           </>
         }
@@ -214,7 +215,22 @@ export default async function PlacePage({ params }: { params: Params }) {
 
       <div className={`page ${styles.cols}`} style={{ paddingTop: 52 }}>
         <div className={styles.body}>
-          {(levels || a?.hostile === false || place.danger?.traps) && (
+          {/* A place with little known says what is known in one short block, not an empty page (WO-180). */}
+          {!levels && a?.hostile !== false && !hasWorth && quests.length === 0 && !place.pointers?.length && (
+            <section id="known" className={styles.sec} aria-label="What is known">
+              <p className={styles.way}>
+                {[
+                  `${/^[AEIOU]/i.test(type) ? "An" : "A"} ${kind}${place.hold ? ` in ${holdWords(place.hold)}` : ""}${near ? `, ${near}` : ""}.`,
+                  place.discoveryXp ? `Finding it gives ${place.discoveryXp} XP.` : "",
+                  place.danger?.traps ? "It has traps." : "",
+                  "How dangerous it is isn't known yet.",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+              </p>
+            </section>
+          )}
+          {(levels || a?.hostile === false || (place.danger?.traps && (hasWorth || quests.length > 0))) && (
           <section id="danger" className={styles.sec} aria-label="Danger">
             {levels ? (
               <>
@@ -320,6 +336,8 @@ export default async function PlacePage({ params }: { params: Params }) {
         </div>
 
         <aside className={styles.side}>
+          {/* A contents of one item (only Information Confidence) is no contents (WO-180). */}
+          {(hasWorth || quests.length > 0 || !!place.pointers?.length) && (
           <LineToc
             items={[
               ...(hasWorth ? [{ id: "worth", label: "Worth going for", icon: "mark-skill-book" }] : []),
@@ -328,6 +346,7 @@ export default async function PlacePage({ params }: { params: Params }) {
               { id: "sure", label: "Information Confidence", icon: "quest-sure" },
             ]}
           />
+          )}
         </aside>
       </div>
 

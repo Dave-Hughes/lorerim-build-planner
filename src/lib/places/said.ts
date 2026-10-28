@@ -3,9 +3,27 @@ import type { PlacePointer } from "./data";
 const TAG = /<[^>]*(?:Alias|Global|Token)[^>]*>/i;
 const PLAYER = /<Alias=Player>/gi;
 /** A pointer with `<Alias=Player>` said as "you"; null when any other tag is in it: the game fills the tag in, the planner can't. */
+/** The game's book markup as plain text: page breaks, font and image tags, and their attributes (WO-180 Part 1). */
+export function plainBook(t: string): string {
+  return t
+    .replace(/\[pagebreak\]/gi, "\n\n")
+    .replace(/<[^>]*>/g, "")
+    .replace(/<[^>]*(?:…|$)/g, "…")
+    .replace(/\b(?:size|face|color|align|width|height|src|font)\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)\s*>?/gi, "")
+    .replace(/(?:^|\s)>(?=\S)/g, " ")
+    .replace(/[ \t]{2,}/g, " ")
+    .trim();
+}
+/** A line the game fills in at play time leaves holes where its tags were ("Jarl of , to ,"): not fit to quote. */
+const HOLE = /\b(?:of|to|by|in|from|for|and)\s+[,.]|(?:^|\s)[,]\s+(?:to|of|in|and)\b/i;
+
 function quotable(p: PlacePointer): PlacePointer | null {
   const fields = [p.words, (p as { book?: string }).book, p.speaker, p.quest].map((f) => (f ?? "").replace(PLAYER, "you"));
   if (fields.some((f) => TAG.test(f))) return null;
+  fields[0] = plainBook(fields[0]);
+  if (HOLE.test(fields[0])) return null;
+  // A line with no speaker and no book is no quote (WO-180).
+  if ((p as { kind?: string }).kind !== "book" && !p.speaker) return null;
   return { ...p, words: fields[0], ...((p as { book?: string }).book !== undefined ? { book: fields[1] } : {}) } as PlacePointer;
 }
 
@@ -33,4 +51,4 @@ export function saidAbout(pointers: PlacePointer[] | undefined): { shown: PlaceP
 }
 
 /** A quest name a player would recognise: not an editor id, and not a mod's vendor, handler or reserved-location bookkeeping. */
-export const playerFacing = (name: string) => !!name.trim() && !/_/.test(name) && !/<|Alias=/.test(name) && !/\b(Vendor Quest|Reserved Locations?|Handler|Misc Objective|Convo System)\b/i.test(name);
+export const playerFacing = (name: string) => !!name.trim() && !/_/.test(name) && !/<|Alias=/.test(name) && !/\b(Vendor Quest|Reserved Locations?|Handler|Misc Objective|Convo System|Dialogue|Generic)\b/i.test(name);

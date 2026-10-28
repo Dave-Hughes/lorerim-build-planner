@@ -107,7 +107,8 @@ export function InformationConfidence({ id, line, sources, unsure, actions }: { 
     return { field: playerField(u.field), ...(why ? { why } : {}) };
   });
   const fields = [...new Set(clean.map((u) => u.field))];
-  const reasons = clean.filter((u) => u.why);
+  // One reason once, as a whole sentence with a capital and no field label in front of it (WO-180).
+  const reasons = [...new Set(clean.filter((u) => u.why).map((u) => u.why as string))];
   return (
     <section className={`frame ${styles.confidence}`} aria-labelledby={id}>
       <span className={styles.panelHead}>
@@ -151,10 +152,8 @@ export function InformationConfidence({ id, line, sources, unsure, actions }: { 
             <details className={styles.why}>
               <summary>Why we&apos;re unsure</summary>
               <ul>
-                {reasons.map((u, i) => (
-                  <li key={i}>
-                    <b>{u.field}</b>: {u.why}
-                  </li>
+                {reasons.map((why, i) => (
+                  <li key={i}>{why}</li>
                 ))}
               </ul>
             </details>

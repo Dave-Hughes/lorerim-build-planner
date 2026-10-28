@@ -363,6 +363,14 @@ test("Part 5: no page shows a plugin file, a record id or a bracket hedge, and n
     if (/\(not sure\)/i.test(t)) bad.push(`${u}: (not sure)`);
     if (/\b1 ways\b/.test(t)) bad.push(`${u}: 1 ways`);
     if (/&lt;Alias|<Alias|Alias=/i.test(t)) bad.push(`${u}: an alias tag`);
+    // WO-180: the game's markup, holes where tags were, a game file's name as a source, editor words, a bare likely or probably.
+    if (/\[pagebreak\]|size="\d|face="|<font|<img|WIDTH=|HEIGHT=|&lt;font|&lt;img/i.test(t)) bad.push(`${u}: book markup`);
+    if (/\b(?:of|to|by) ,|, to ,/.test(t)) bad.push(`${u}: a hole in a quote`);
+    const src = /\bin (?:[A-Z0-9][\w']* )*(?:Dialogue|Handler|Generic)\b(?! Expansion)|\bin 0[A-Za-z]\w+/.exec(t)?.[0];
+    if (src) bad.push(`${u}: a game file as a source: ${src}`);
+    if (/\(likely|\(probably/i.test(t.replace(/Information Confidence[\s\S]*$/, ""))) bad.push(`${u}: (likely or (probably`);
+    const editor = /\bsandbox package|\btop package|\bmarket package|package's name|\bno packages?\b|\ba shared package|Named in its aliases|follower and marriage factions|\bTrains OneHanded|\bonehanded\b/i.exec(t.replace(/Information Confidence[\s\S]*$/, ""))?.[0];
+    if (editor) bad.push(`${u}: an editor's word: ${editor}`);
     const key = /\b[a-z]+[A-Z]\w*\.\w+|\b(?:Starts|TakesYou|takesYou)\.\w+/.exec(t)?.[0];
     if (key) bad.push(`${u}: field key ${key}`);
     if (/(?<![-\w])(?:in|at) in\b|(?<![-\w])in around\b/.test(t)) bad.push(`${u}: in in`);
@@ -452,7 +460,42 @@ test("WO-176 Part 2 (Mac): a reward is said once, and an unknown danger is a cel
   await page.goto("/places/moss-mother-cavern");
   await expect(page.getByRole("region", { name: "At a glance" })).toContainText("Danger");
   await expect(page.getByRole("region", { name: "At a glance" })).toContainText("Not known yet");
-  await expect(page.locator("main")).not.toContainText("How dangerous it is isn't known yet");
+  // The one short block says what is known, and ends with what is not (WO-180); no lone line in an empty column.
+  await expect(page.getByRole("region", { name: "What is known" })).toContainText("How dangerous it is isn't known yet");
   await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("How dangerous it is");
   await expect(page.getByRole("region", { name: "Information Confidence" })).not.toContainText("Nothing is flagged");
+});
+
+
+test("WO-180 Part 3 (Mac): no label under the panel with a kind picked, a route's stops all numbered and never overlapping on a phone, /places headings are the hold's own name", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  for (const zoom of ["0.35", "0.6", "0.9"]) {
+    await page.goto(`/map?types=temples&z=${zoom}`);
+    await page.waitForTimeout(700);
+    const panel = (await page.getByRole("complementary", { name: "Map controls" }).boundingBox())!;
+    const plates = await page.getByRole("group", { name: "Map of Skyrim" }).locator("a[class*='pin'] [class*='plate']").all();
+    for (const p of plates) {
+      const b = (await p.boundingBox())!;
+      expect(b.x + b.width <= panel.x || b.x >= panel.x + panel.width || b.y + b.height <= panel.y || b.y >= panel.y + panel.height, `${await p.innerText()} under the panel at ${zoom}`).toBe(true);
+    }
+  }
+  await page.setViewportSize({ width: 390, height: 844 });
+  for (const [quest, stops] of [["forbidden-legend", 4], ["the-golden-claw", 2]] as const) {
+    await page.goto(`/map?quest=${quest}`);
+    await page.waitForTimeout(1800);
+    const pins = page.getByRole("group", { name: "Map of Skyrim" }).locator("a[class*='pin']").filter({ has: page.locator("i", { hasText: /^\d$/ }) });
+    expect(await pins.count(), quest).toBeGreaterThanOrEqual(stops);
+    const plates = await page.getByRole("group", { name: "Map of Skyrim" }).locator("a[class*='pin'] [class*='plate']").all();
+    const boxes = await Promise.all(plates.map((p) => p.boundingBox()));
+    for (let i = 0; i < boxes.length; i++)
+      for (let j = i + 1; j < boxes.length; j++) {
+        const a = boxes[i]!;
+        const b = boxes[j]!;
+        expect(a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y, `${quest}: two labels overlap`).toBe(false);
+      }
+  }
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/places");
+  const heads = await page.locator("main h2").allInnerTexts();
+  for (const h of heads) expect(h, h).not.toMatch(/ hold$/);
 });

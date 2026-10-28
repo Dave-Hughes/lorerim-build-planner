@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import { isTemplateName } from "@/lib/pages/player-words";
 import { describe, expect, it } from "vitest";
 import { placesData } from "@/lib/places/data";
 import { actTowns, fitOf, placesNear, townsIn } from "@/lib/places/suggest";
@@ -69,7 +70,8 @@ describe("get_quest, get_quest_log and suggest_quests on the real quests.json", 
     for (const l of lines)
       for (const q of l.quests) {
         const a = withQuestLink(getQuest({ id: q.edid }), "https://planner.test");
-        expect(a.link, q.edid).toMatch(/^https:\/\/planner\.test\/quests\/q\//);
+        // A job template with a placeholder name has no page (WO-180).
+        if (!isTemplateName(q.name)) expect(a.link, q.edid).toMatch(/^https:\/\/planner\.test\/quests\/q\//);
         clean(q.edid, a);
         for (const level of [5, 20, 50]) clean(`${q.edid} at ${level}`, getQuest({ id: q.edid }, undefined, playerState({ level })));
       }

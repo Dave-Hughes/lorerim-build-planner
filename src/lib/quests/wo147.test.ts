@@ -4,13 +4,15 @@ import { questLog } from "@/lib/mcp/quest-log";
 import { questsData } from "./data";
 import { isPlaceholder } from "./placeholder";
 import { legacyQuestHref, questBySlug, questHref } from "./slugs";
+import { isTemplateName } from "@/lib/pages/player-words";
 import { placesData } from "@/lib/places/data";
 import { placesNear } from "@/lib/places/suggest";
 
 /** WO-147: a page for every quest, grab-bags as shelves, placeholder objectives hidden. */
 
 describe("Part 1: a page for every quest", () => {
-  const all = questsData().lines.flatMap((l) => l.quests.map((q) => ({ line: l, quest: q })));
+  // A job template with a placeholder name has no page (WO-180).
+  const all = questsData().lines.flatMap((l) => l.quests.filter((q) => !isTemplateName(q.name)).map((q) => ({ line: l, quest: q })));
 
   it("every quest has an address, each different, and the address finds its quest and its line", () => {
     const hrefs = all.map(({ quest }) => questHref(quest.edid));

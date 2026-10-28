@@ -19,6 +19,7 @@ import { pageOf } from "@/lib/quests/reads";
 import { playerFacing } from "@/lib/places/said";
 import l from "@/components/quests/line-page.module.css";
 import t from "./place-town.module.css";
+import { holdWords } from "@/lib/places/hold-words";
 
 const ICON = { sells: "quest-rewards", trains: "tab-levels", follower: "quest-people", rents: "quest-travel", quests: "quest-side-stories" } as const;
 
@@ -38,7 +39,8 @@ export function PlaceSaid({ place }: { place: Place }) {
   const line = (p: (typeof all)[number], i: number) => {
     const q = p.quest ? byName.get(p.quest) : null;
     // A line credited to a quest uses its name; a record's id is never shown (WO-177 Part 5).
-    const questWords = p.quest && (q || !RECORD.test(p.quest)) ? p.quest : null;
+    // Only a quest a player has a page for is named; a game file's name ("Whiterun City Dialogue", "CH Generic") is not a quest (WO-180).
+    const questWords = p.quest && q && questHref(q.edid) && playerFacing(p.quest) ? p.quest : null;
     const qhref = q ? questHref(q.edid) : null;
     const href = p.speaker ? personHref(p.speaker) : null;
     return (
@@ -138,7 +140,7 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
     trainers.length ? `${list([...new Set(trainers.map((x) => x.trains!.toLowerCase()))])} trainers` : "",
   ].filter(Boolean);
   const pitch = [
-    `${/^[aeiou]/.test(typeWords) ? "An" : "A"} ${typeWords}${inside && place.inTown ? ` in ${place.inTown}` : place.hold ? ` in ${place.hold} hold` : ""}${near && !inside ? `, ${near}` : ""}.`,
+    `${/^[aeiou]/.test(typeWords) ? "An" : "A"} ${typeWords}${inside && place.inTown ? ` in ${place.inTown}` : place.hold ? ` in ${holdWords(place.hold)}` : ""}${near && !inside ? `, ${near}` : ""}.`,
     total ? `${total === 1 ? "One person lives" : `${total} people ${inside ? "are" : "live"}`} here${bits.length ? `, with ${list(bits)}` : ""}.` : "",
   ]
     .filter(Boolean)
@@ -162,7 +164,7 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
       </span>
     ));
   const cells: ReactNode[] = [
-    cell("where", "quest-travel", l.cTeal, "Where", inside ? (place.inTown ?? place.hold ?? "In a town") : place.hold ? `${place.hold} hold` : placeType(place.type), inside ? (upHref && place.inTown ? <PreviewLink href={upHref}>{`In ${place.inTown}`}</PreviewLink> : place.hold ? `${place.hold} hold` : null) : near ? cap(near) : null),
+    cell("where", "quest-travel", l.cTeal, "Where", inside ? (place.inTown ?? place.hold ?? "In a town") : place.hold ? `${holdWords(place.hold)}` : placeType(place.type), inside ? (upHref && place.inTown ? <PreviewLink href={upHref}>{`In ${place.inTown}`}</PreviewLink> : place.hold ? `${holdWords(place.hold)}` : null) : near ? cap(near) : null),
     ...(total ? [cell("people", "quest-people", l.cOrange, "People", String(total), houses.length === 1 ? undefined : `in ${houses.filter((h) => h.name !== place.name).length || houses.length} homes and buildings`)] : []),
     ...(sellers.length || keepers.length
       ? [
@@ -233,7 +235,7 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
           tags={
             <>
               <span className={l.tagPlain}>{placeType(place.type)}</span>
-              {place.hold && <span className={l.tagPlace}>{place.hold} hold</span>}
+              {place.hold && <span className={l.tagPlace}>{holdWords(place.hold)}</span>}
               {origin && <span className={l.tagPlain}>{origin}</span>}
             </>
           }
