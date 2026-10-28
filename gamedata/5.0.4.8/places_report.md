@@ -94,6 +94,46 @@ All nine found with an exterior position.
 | NecroDragontailMountains | 1 | no (a pocket world: coordinates mean nothing on a map) |
 | ksws07Dungeon02World | 1 | no (a pocket world: coordinates mean nothing on a map) |
 
+| Kind | Places | Positioned | In a town | Not placed |
+|---|---|---|---|---|
+| House | 203 | 35 | 168 | 0 |
+| Landmark | 155 | 140 | 10 | 5 |
+| Cave | 107 | 105 | 0 | 2 |
+| NordicRuin | 54 | 53 | 0 | 1 |
+| Store | 51 | 8 | 43 | 0 |
+| Fort | 46 | 44 | 2 | 0 |
+| Shack | 31 | 30 | 0 | 1 |
+| Inn | 29 | 6 | 23 | 0 |
+| DragonLair | 28 | 28 | 0 | 0 |
+| Building | 25 | 4 | 21 | 0 |
+| DwemerRuin | 24 | 24 | 0 | 0 |
+| Mine | 19 | 17 | 2 | 0 |
+| Camp | 16 | 16 | 0 | 0 |
+| Town | 15 | 15 | 0 | 0 |
+| ImperialTower | 14 | 14 | 0 | 0 |
+| Temple | 14 | 2 | 12 | 0 |
+| GiantCamp | 13 | 13 | 0 | 0 |
+| Guild | 13 | 0 | 13 | 0 |
+| NordicDwelling | 12 | 12 | 0 | 0 |
+| NordicTower | 12 | 12 | 0 | 0 |
+| PlayerHouse | 12 | 6 | 6 | 0 |
+| Doomstone | 11 | 10 | 0 | 1 |
+| City | 10 | 10 | 0 | 0 |
+| Altar | 10 | 10 | 0 | 0 |
+| DaedricShrine | 9 | 9 | 0 | 0 |
+| Keep | 9 | 0 | 9 | 0 |
+| Shipwreck | 9 | 8 | 1 | 0 |
+| Grove | 7 | 7 | 0 | 0 |
+| Pass | 5 | 5 | 0 | 0 |
+| Stables | 5 | 0 | 5 | 0 |
+| Barracks | 5 | 1 | 4 | 0 |
+| Jail | 5 | 0 | 5 | 0 |
+| Clearing | 4 | 4 | 0 | 0 |
+| OrcStronghold | 4 | 4 | 0 | 0 |
+| Lighthouse | 4 | 4 | 0 | 0 |
+| Settlement | 4 | 4 | 0 | 0 |
+| Castle | 4 | 0 | 4 | 0 |
+
 ### Not placed, and why
 
 | Why | Places | Types |

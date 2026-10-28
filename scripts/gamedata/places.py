@@ -1307,6 +1307,9 @@ def report(places, xp_from, cities=()):
     out += ["", "| World | Places | On a map |", "|---|---|---|"]
     for w, n in collections.Counter(p["world"] for p in placed).most_common():
         out.append(f"| {w} | {n} | {'yes' if w in MAPS else 'no (a pocket world: coordinates mean nothing on a map)'} |")
+    out += ["", "| Kind | Places | Positioned | In a town | Not placed |", "|---|---|---|---|---|"]
+    for kind, n in collections.Counter(p["type"] for p in rows).most_common():
+        out.append(f"| {kind} | {n} | {sum(1 for p in placed if p['type'] == kind)} | {sum(1 for p in in_town if p['type'] == kind)} | {sum(1 for p in nopos if p['type'] == kind)} |")
     if nopos:
         out += ["", "### Not placed, and why", "", "| Why | Places | Types |", "|---|---|---|"]
         for why, n in collections.Counter(p["noPos"] for p in nopos).most_common():
