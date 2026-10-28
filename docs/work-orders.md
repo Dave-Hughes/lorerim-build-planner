@@ -5155,7 +5155,7 @@ Status: for Bob (all eleven boxes built; typecheck, lint, 706 unit tests, the bu
 - **Screenshots** (in `test-results/`): `wo161-characters-1440.png`, `wo161-characters-390.png`, `wo161-player-1440.png`, `wo161-search-1440.png`, `wo161-changes-1440.png`, `wo161-phone-390.png`.
 
 ## WO-160  One page per quest line (Mac, 27 Oct 2026)
-Status: queued (Mac; Part 5 and the Quest XP box in Part 1 are unticked. Part 4 is built: typecheck, 706 unit tests, the build and the full e2e pass, 452 of 452)
+Status: building (Mac; Part 5 and the Quest XP box)
 
 **Why.** The big quest lines each have two pages built by two different orders and never merged: a line page (`/quests/main-quest`, `/quests/dawnguard`, `/quests/companions`, `/quests/dragonborn`, from WO-100) and a story page with chapters (`/quests/s/become-the-dragonborn`, `/quests/s/join-the-dawnguard`, `/quests/s/join-the-companions`, from WO-104/106). They look nothing alike, and the Main stories category lists both kinds side by side. Dave, 27 Oct: "Why are there multiple layouts?" There should be one. Boards: canvas row 36, `MainStoriesPage` and `LinePage`, https://claude.ai/artifact/48H6v9Q6wFuwhzRqE31uD1.
 
