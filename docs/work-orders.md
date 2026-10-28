@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-172  Places that share a name are still separate places (Mac, 28 Oct 2026)
-Status: queued (Mac; first: Dave found it on the Map page)
+Status: building (Mac)
 
 **Why.** Dave, 28 Oct 05:54, two screenshots of `/map` with an Imperial Military Camp picked: dozens of orange "picked" pins and plates all over the map (more pile up as he pans), pins drawn outside the map's frame, and the drawer showing the Winterhold camp whichever he clicked. The cause: a place's slug comes from its name (`placeHref(name)`, `slugOf` in `src/lib/map/data.ts`), and WO-166 kept 7 names that are different places (eight Imperial camps and eight Sons of Skyrim camps, one per hold; Hall of the Dead in four cities; Jarl's Longhouse, Shrine of Talos, Hall of Kyne, Cragwater Cavern). So eight pins share one slug: picking one lights all eight, React gets duplicate keys (which is what leaves the extra pins behind while panning), and `/places/imperial-military-camp` is one page for eight places.
 - [ ] **Every place has its own slug.** Where a name is shared, the slug adds the hold, or the town for a building inside one: `imperial-military-camp-the-reach`, `hall-of-the-dead-whiterun`. Every place page, map pin, drawer, link, search result and preview uses it. The old shared address lists the places with that name (a small "which one?" page), not one of them.
