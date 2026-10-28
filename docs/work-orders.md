@@ -5105,7 +5105,7 @@ Status: queued (Mac; after WO-161)
 - [ ] Typecheck, lint, tests, build, e2e; screenshots of Riverwood, the Sleeping Giant Inn, the Bee and Barb and Bleak Falls Barrow at 1440 and 390, then `for Bob`.
 
 ## WO-161  Small fixes from Bob's walk of every page (Mac, 27 Oct 2026)
-Status: queued (Mac; after WO-160)
+Status: building (Mac)
 
 **Why.** Bob walked every page on staging (`docs/page-templates.md`, the catalog). These are the small ones; the place page, the quest categories and the colour pass get their own orders with boards.
 
