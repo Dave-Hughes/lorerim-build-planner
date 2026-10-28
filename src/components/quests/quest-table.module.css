@@ -247,6 +247,10 @@ form.inp,
 
 /* A phone: each row is two lines, the name and its XP, then who, where and the level. */
 @media (max-width: 700px) {
+  /* The column says Level on a desktop; with no headings on a phone the cell says it itself. */
+  .lv::before {
+    content: "Level ";
+  }
   /* One column: the search and the three filters are the same width. */
   .sel {
     flex: 1 1 100%;

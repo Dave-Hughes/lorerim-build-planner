@@ -33,6 +33,10 @@ describe("WO-177 Part 5", () => {
   it("keeps a space before a bracketed quest after a hedge is taken out", () => {
     expect(playerWords("its shops can be shut away; the records don't show when (Unbound)").text).toBe("its shops can be shut away (Unbound)");
   });
+  it("takes a bare (probably) or (likely) out of the body", () => {
+    expect(playerWords("Geirmund's Hall (probably)").text).toBe("Geirmund's Hall");
+    expect(playerWords("Sword of Haafingar (likely) and more").text).toBe("Sword of Haafingar and more");
+  });
   it("says a guess as a reason, not a bracket", () => {
     const r = playerWords("Later she lives in Breezehome (presumably once you own Breezehome).");
     expect(r.text).toBe("Later she lives in Breezehome.");
@@ -46,7 +50,9 @@ describe("WO-177 Part 5", () => {
     expect(RECORD.test("'Cultists vs Player' (DLC2WE09)")).toBe(true);
     expect(RECORD.test("Vilkas Spar Skip.esp loosens")).toBe(true);
     expect(RECORD.test("a level 25 start at 3 pm")).toBe(false);
-    expect(playerReason("GORE.esp is the last plugin to edit it")).toBe("We couldn't confirm this from the game files.");
+    expect(playerReason("GORE.esp is the last plugin to edit it")).toBeNull();
+    expect(playerReason("Her sandbox package sits above her sleep package")).toBeNull();
+    expect(playerReason("I went with the book over the script")).toBeNull();
     expect(playerReason("the door isn't in the files")).toBe("The door isn't in the files.");
     expect(playerField("Cultists vs Player (DLC2WE09)")).toBe("Cultists vs Player");
   });

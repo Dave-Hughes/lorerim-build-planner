@@ -186,6 +186,18 @@ const blank = (t: string | undefined) => !t?.trim() || /^(not\b[^.]*\b(records|f
 /** The read's field names as a player says them. */
 const FIELD_WORDS: Record<string, string> = { canDo: "can I do it", needs: "what you need", starts: "how to start", firstStep: "first step", takesYou: "where it takes you", choices: "choices", rewards: "what you get", opens: "what it opens", closes: "what it closes", steps: "steps", people: "people", where: "where", who: "who", hold: "hold" };
 
+/**
+ * A read's field key as a player says it (WO-177 Part 6): "takesYou" is "where it takes you", "takesYou.hold" is "where it takes you (hold)", and
+ * "takesYou.Saarthal:" is "where it takes you (Saarthal)". A key the planner has no words for gives nothing and is never printed.
+ */
+export function fieldWords(key: string): string | null {
+  const [head, ...tail] = key.replace(/[:.\s]+$/, "").split(".");
+  const words = FIELD_WORDS[`${head.charAt(0).toLowerCase()}${head.slice(1)}`];
+  if (!words) return /^[A-Za-z][A-Za-z ,'-]*$/.test(head) && head.includes(" ") ? key : null;
+  const subs = tail.map((t) => FIELD_WORDS[`${t.charAt(0).toLowerCase()}${t.slice(1)}`] ?? (/^[A-Z][\w' -]*$/.test(t) ? t : null)).filter((t): t is string => !!t && t !== words);
+  return subs.length ? `${words} (${subs.join(", ")})` : words;
+}
+
 /** "1 report approved", "2 reports approved": the only way a page or the door says a player's input counted. */
 export const playersWords = (n: number) => `${n} ${n === 1 ? "report" : "reports"} approved`;
 const reportCount = (ways: { also?: string[] }[]) => ways.reduce((n, w) => n + 1 + (w.also?.length ?? 0), 0);
@@ -198,7 +210,10 @@ function viaReads(q: Quest, r: QuestRead): QuestPage {
     ...players.map((w) => ({ how: w.how, ...(w.who ? { who: w.who } : {}), ...(w.where ? { where: w.where } : {}), reportedBy: { source: w.source ?? "", ...(w.also?.length ? { also: w.also } : {}) }, ...(w.whereIs?.length ? { whereIs: w.whereIs } : {}), ...(w.unplaced ? { unplaced: w.unplaced } : {}) })),
     ...(r.starts ?? []).filter((s) => !said.has(blank(s.who) ? "" : (s.who ?? ""))).map((s) => ({ how: s.how ?? "", ...(!blank(s.who) ? { who: s.who } : {}), ...(!blank(s.where) ? { where: s.where } : {}) })),
   ].filter((s) => s.how || s.who);
-  const unsure = (r.unsure ?? []).filter((u) => u.field).map((u) => ({ ...u, field: FIELD_WORDS[u.field] ?? u.field }));
+  const unsure = (r.unsure ?? []).filter((u) => u.field).flatMap((u) => {
+    const field = fieldWords(u.field);
+    return field ? [{ ...u, field }] : [];
+  });
   const fields = [...new Set(unsure.map((u) => u.field))].join(", ");
   const sure = `Read from the game files and checked by a second reader${unsure.length ? `. Unsure: ${fields}` : ""}`;
   return {

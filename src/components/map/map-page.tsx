@@ -355,7 +355,8 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
       if (!it.named) continue;
       const w = it.p.name.length * 7.4 + 22;
       const box: [number, number, number, number] = it.side === "right" ? [it.x + 8, it.y - 12, it.x + 14 + w, it.y + 12] : [it.x - 14 - w, it.y - 12, it.x - 8, it.y + 12];
-      if (taken.some((t) => box[0] < t[2] && box[2] > t[0] && box[1] < t[3] && box[3] > t[1])) it.named = false;
+      // A route's stops are always named (WO-177 Part 6): another name may sit beside one, never replace it.
+      if (!inRoute.has(it.p.slug) && taken.some((t) => box[0] < t[2] && box[2] > t[0] && box[1] < t[3] && box[3] > t[1])) it.named = false;
       else taken.push(box);
     }
     // Places inside one town are one pin, a count on the town's plate (WO-178): "Whiterun, 5 places".
@@ -395,7 +396,18 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
       if (g.members.length === 1) singles.push(g.members[0]);
       else clusters.push({ x: g.x, y: g.y, n: g.members.length, px: g.members.reduce((a, m) => a + m.p.px, 0) / g.members.length, py: g.members.reduce((a, m) => a + m.p.py, 0) / g.members.length });
     }
-    return { singles, clusters: clusters.filter((c) => !underSheet(c.x, c.y)) };
+    // A count that falls on a city's label is that city's: "Whiterun 2", not a badge under its name (WO-177 Part 6).
+    const withCity = new Map<string, number>();
+    const kept = clusters.filter((c) => {
+      if (underSheet(c.x, c.y)) return false;
+      const city = singles.find((it) => it.p.kind === "city" && Math.abs(it.x - c.x) < 90 && Math.abs(it.y - c.y) < 20);
+      if (city) {
+        withCity.set(city.p.slug, (withCity.get(city.p.slug) ?? 0) + c.n);
+        return false;
+      }
+      return true;
+    });
+    return { singles: singles.map((it) => (withCity.has(it.p.slug) ? { ...it, extra: withCity.get(it.p.slug) } : it)), clusters: kept };
   }, [items, k, selected, inRoute, lit, size.w, underSheet]);
 
   // The tiles in view: the half-size ones from afar, the full-size ones close in; the whole picture is under them while they load.
@@ -469,7 +481,8 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
             {c.n}
           </button>
         ))}
-        {singles.map(({ p, x, y, named, side }) => {
+        {singles.map(({ p, x, y, named, side, ...rest }) => {
+          const extra = (rest as { extra?: number }).extra;
           // A name near the window's right edge goes on the pin's left, so it is never cut off.
           const flip = named && side === "left";
           return (
@@ -486,7 +499,14 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
           >
             <PreviewLink href={`/places/${p.slug}`} className={`${s.pin} ${s[KIND_COLOUR[p.kind]]} ${selected === p.slug ? s.picked : ""} ${flip ? s.flip : ""}`}>
               <i aria-hidden="true">{inRoute.get(p.slug) ?? ""}</i>
-              {named ? <span className={s.plate}>{p.name}</span> : <span className={s.sr}>{p.name}</span>}
+              {named ? (
+                <span className={s.plate}>
+                  {p.name}
+                  {extra ? <b className={s.plus}>{extra}</b> : null}
+                </span>
+              ) : (
+                <span className={s.sr}>{p.name}</span>
+              )}
             </PreviewLink>
           </div>
           );

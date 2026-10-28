@@ -39,7 +39,7 @@ export async function previewOf(href: string): Promise<Preview | null> {
     const p = placeBySlug(place[1]);
     if (!p) return null;
     const danger = dangerOf(p);
-    const fact = danger ?? (p.quests?.length ? `${p.quests.length} quest${p.quests.length === 1 ? "" : "s"} go here` : undefined);
+    const fact = danger ?? (p.quests?.length ? `${p.quests.length} quest${p.quests.length === 1 ? " goes" : "s go"} here` : undefined);
     return { icon: "quest-travel", name: placeLabel(p), line: join([p.hold ? `${p.hold} hold` : null, placeType(p.type)]), ...(fact ? { fact } : {}) };
   }
   const quest = /^\/quests\/q\/([a-z0-9-]+)$/.exec(href);

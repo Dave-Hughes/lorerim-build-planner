@@ -152,7 +152,7 @@ export function QuestTable({ rows, across = false, defaultSort = "name", q = "",
               </td>
               <td className={c.who} title={r.who ?? undefined}>{r.who ? r.whoHref ? <PreviewLink href={r.whoHref}>{r.who}</PreviewLink> : r.who : <span className={c.mut}>Not known yet</span>}</td>
               <td className={c.where} title={r.where ?? undefined}>{r.where ? <span className={c.pl}>{r.whereHref ? <PreviewLink href={r.whereHref}>{r.where}</PreviewLink> : r.where}</span> : <span className={c.mut}>Not known yet</span>}</td>
-              <td className={c.level}>{r.level ? <span className={c.lv}>Level {r.level}</span> : <span className={c.mut}>Any</span>}</td>
+              <td className={c.level}>{r.level ? <span className={c.lv} data-level={r.level}>{r.level}</span> : <span className={c.mut}>Any</span>}</td>
               <td className={c.length}>{r.length === 1 ? "1 quest" : `${r.length} quests`}</td>
               <td className={c.from}>
                 {r.from.kind === "base" ? (

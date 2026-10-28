@@ -136,6 +136,9 @@ a.tag:hover {
 
 /* Two columns: the page's body and a 380 px side. */
 .cols {
+  /* Auto side margins on a flex item shrink it to its content: a page with no side column sat to the right of its title (WO-177 Part 6). */
+  width: 100%;
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 380px;
   gap: 40px;
@@ -882,9 +885,14 @@ a.tag:hover {
   font-size: 13px;
   font-weight: 600;
   white-space: nowrap;
-  overflow: hidden;
+  /* A short bar's label runs past its end on the row's empty ground, never cut (WO-177 Part 6: "Er", "Skel", "B"). */
+  overflow: visible;
   background: var(--rule-strong);
   color: var(--text);
+}
+/* A bar at the right end of the scale lets its label run to the left instead. */
+.bandLeft {
+  justify-content: flex-end;
 }
 .bandBoss {
   background: #7a4038;

@@ -259,8 +259,7 @@ test("Part 3: search says a result once, Aela's cells say Yes and how it isn't s
   await page.goto("/people/aela-the-huntress");
   const glance = page.getByRole("region", { name: "At a glance" });
   const follows = glance.locator("div").filter({ hasText: /^Follows you/ }).first();
-  await expect(follows).toContainText("Yes");
-  await expect(follows).toContainText("How isn't sure yet");
+  await expect(follows).toContainText("Not sure yet");
   await expect(glance).toContainText("Take Up Arms");
   // A link in the words about a quest is as big as the words.
   const row = page.getByRole("region", { name: "Her quests" }).locator("div", { hasText: "Skjor offer you" }).last();
@@ -363,6 +362,10 @@ test("Part 5: no page shows a plugin file, a record id or a bracket hedge, and n
     if (id && !/^(?:ps\d|[a-z]\d)$/i.test(id)) bad.push(`${u}: id ${id} … ${t.slice(Math.max(0, t.indexOf(id) - 40), t.indexOf(id) + 40)}`);
     if (/\(not sure\)/i.test(t)) bad.push(`${u}: (not sure)`);
     if (/\b1 ways\b/.test(t)) bad.push(`${u}: 1 ways`);
+    if (/&lt;Alias|<Alias|Alias=/i.test(t)) bad.push(`${u}: an alias tag`);
+    const key = /\b[a-z]+[A-Z]\w*\.\w+|\b(?:Starts|TakesYou|takesYou)\.\w+/.exec(t)?.[0];
+    if (key) bad.push(`${u}: field key ${key}`);
+    if (/(?<![-\w])(?:in|at) in\b|(?<![-\w])in around\b/.test(t)) bad.push(`${u}: in in`);
     if (/\(presumably\b|\(not checked yet\)|the records don't show/i.test(t.replace(/Information Confidence[\s\S]*$/, ""))) bad.push(`${u}: a hedge in the body`);
   }
   expect(bad.slice(0, 40)).toEqual([]);
@@ -387,4 +390,31 @@ test("Part 5: on a phone a quest's whole route shows, every stop above the sheet
   await expect(panel.getByRole("button", { name: /^Temples and guilds/ })).toContainText(/2\d/);
   await expect(panel.getByText(/^2\d of \d+ places on the map$/)).toBeVisible();
   await expect(page.getByRole("group", { name: "Map of Skyrim" }).locator("a[href^='/places/']").first()).toBeVisible();
+});
+
+test("Part 6: every kind of page lines its body up with its title (50 places, 50 people, 50 quests)", async ({ page, request }) => {
+  test.setTimeout(420_000);
+  await page.setViewportSize({ width: 1440, height: 900 });
+  const html = async (u: string) => (await request.get(u)).text();
+  const pick = (h: string, re: RegExp, n: number) => {
+    const all = [...new Set([...h.matchAll(re)].map((m) => m[1]))];
+    return all.filter((_, i) => i % Math.max(1, Math.floor(all.length / n)) === 0).slice(0, n);
+  };
+  const places = pick(await html("/places"), /href="(\/places\/[a-z0-9-]+)"/g, 50);
+  const lines = pick(await html("/quests"), /href="(\/quests\/(?!c\/|q\/|s\/)[a-z0-9-]+)"/g, 30);
+  const quests: string[] = [];
+  for (const l of lines) quests.push(...pick(await html(l), /href="(\/quests\/q\/[a-z0-9-]+)"/g, 2));
+  const people = pick(await html(lines[0]) + (await html(lines[1])) + (await html(lines[2])) + (await html(lines[3])), /href="(\/people\/[a-z0-9-]+)"/g, 50);
+  expect(places.length + people.length + quests.length).toBeGreaterThan(80);
+  const off: string[] = [];
+  for (const u of [...places, ...people, ...quests.slice(0, 50)]) {
+    await page.goto(u);
+    const title = await page.getByRole("heading", { level: 1 }).first().boundingBox();
+    if (!title) continue;
+    const xs = await page.locator("main section[aria-labelledby], main section[aria-label]").evaluateAll((els) => els.map((e) => e.getBoundingClientRect()).filter((r) => r.width > 100 && r.width < window.innerWidth - 20 && r.height > 20).map((r) => r.x));
+    if (!xs.length) continue;
+    const left = Math.min(...xs);
+    if (Math.abs(left - title.x) > 3) off.push(`${u}: title ${Math.round(title.x)}, body ${Math.round(left)}`);
+  }
+  expect(off).toEqual([]);
 });

@@ -24,7 +24,7 @@ import { linkable, modNames, ownPlaceNames, personNames } from "@/lib/pages/name
 import { GlanceBand, type GlanceCell } from "@/components/pages/glance";
 import { AutoToc } from "@/components/pages/auto-toc";
 import l from "@/components/quests/line-page.module.css";
-import { placeOnly, vaguePlace } from "@/lib/pages/where";
+import { placeOnly, placePhrase, vaguePlace } from "@/lib/pages/where";
 import { assembled } from "@/lib/pages/player-words";
 import { categories, homeName, questsData } from "@/lib/quests/data";
 import { loadPlayerFacts } from "@/lib/quests/player-facts";
@@ -358,7 +358,7 @@ export default async function QuestPage({
                             {w.who ? " " : ""}
                             <Linked
                               names={names}
-                              text={w.who ? `in ${where}` : `In ${where}`}
+                              text={placePhrase(where, !!w.who)}
                             />
                           </span>
                         ) : null}

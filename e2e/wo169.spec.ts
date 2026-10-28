@@ -29,7 +29,7 @@ for (const width of [1440, 390]) {
     expect(await map(page).locator("img[src^='/maps/tamriel/']").count()).toBeGreaterThan(1);
     // At a distance pins are counts; the cities are named.
     await expect(map(page).getByRole("button", { name: /places, zoom in/ }).first()).toBeVisible();
-    await expect(map(page).getByText("Whiterun", { exact: true }).first()).toBeVisible();
+    await expect(map(page).getByText(/^Whiterun\d*$/).first()).toBeVisible();
     for (const n of ["Zoom in", "Zoom out", "North, and the whole map"]) await expect(page.getByRole("button", { name: n, exact: true })).toBeVisible();
     // On a phone the panel is a bar at the foot until it is opened.
     if (width === 390) await expect(page.getByRole("button", { name: "Search and filters" })).toBeVisible();
@@ -39,7 +39,7 @@ for (const width of [1440, 390]) {
     const free = width === 1440 ? { left: 354, right: 1440, top: 69, bottom: 900 } : { left: 0, right: 390, top: 56, bottom: 844 - 56 };
     // On a phone the map opens filling the screen's height, panned to the middle of Skyrim, so the far cities are off to the sides.
     for (const city of width === 1440 ? ["Markarth", "Solitude", "Whiterun", "Windhelm", "Riften", "Falkreath", "Morthal", "Dawnstar", "Winterhold"] : ["Whiterun"]) {
-      const b = await map(page).getByText(city, { exact: true }).first().boundingBox();
+      const b = await map(page).getByText(new RegExp(`^${city}\\d*$`)).first().boundingBox();
       expect(b, city).not.toBeNull();
       expect(b!.x, city).toBeGreaterThanOrEqual(free.left);
       expect(b!.x + b!.width, city).toBeLessThanOrEqual(free.right + 1);

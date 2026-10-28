@@ -100,7 +100,12 @@ export interface SureSource {
 export function InformationConfidence({ id, line, sources, unsure, actions }: { id: string; line: string; sources: SureSource[]; unsure: { field: string; why?: string }[]; actions: ReactNode }) {
   const mark = { yes: styles.markYes, part: styles.markPart, no: styles.markNo };
   // A reason is a whole sentence in a player's words, and no field or reason names a record or a file (WO-177 Part 5).
-  const clean = unsure.map((u) => ({ field: playerField(u.field), ...(u.why ? { why: playerReason(u.why) } : {}) }));
+  // A field key (takesYou.hold, startsWhere) is never printed, whatever sent it here.
+  const KEY = /^[A-Za-z]+(?:\.[A-Za-z]+)+[:.]*$|^[a-z]+[A-Z][A-Za-z]*[:.]*$/;
+  const clean = unsure.filter((u) => !KEY.test(u.field.trim())).map((u) => {
+    const why = u.why ? playerReason(u.why) : null;
+    return { field: playerField(u.field), ...(why ? { why } : {}) };
+  });
   const fields = [...new Set(clean.map((u) => u.field))];
   const reasons = clean.filter((u) => u.why);
   return (

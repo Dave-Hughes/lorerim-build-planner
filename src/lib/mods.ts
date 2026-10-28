@@ -54,5 +54,7 @@ export function shortModName(name: string): string {
   const parts = name.split(/\s+[-–—]\s+/).map((p) => p.trim()).filter(Boolean);
   while (parts.length > 1 && NOTE.test(parts[parts.length - 1])) parts.pop();
   const pick = parts.length > 1 && BUNDLES.has(parts[0]) ? parts[1] : parts[0];
+  // A first word that is only an author or a short code (Trad, Gore, ACDB) is not the mod's name: the mod list's own name, less its patch note.
+  if (parts.length > 1 && pick === parts[0] && pick.length <= 6) return parts.join(" - ");
   return pick && pick.length >= 4 ? pick : name;
 }

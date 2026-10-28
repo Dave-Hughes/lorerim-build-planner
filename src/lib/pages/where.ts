@@ -28,3 +28,15 @@ export function placeOnly(where: string | undefined): string | undefined {
 
 /** A place the read doesn't know: "wherever the long-dead lovers are", "somewhere in Skyrim". The page says "Not known yet". */
 export const vaguePlace = (text: string | undefined): boolean => !!text && /\b(wherever|somewhere|anywhere)\b/i.test(text);
+
+const PREPOSITION = /^(?:in|at|around|near|outside|inside|by|on|beside|behind|under|above|below|between|within|next to|close to)\b/i;
+
+/**
+ * "who in where": the place the read names, with the "in" put in front only when it has no preposition of its own (WO-177 Part 6: "Sven in in the
+ * Sleeping Giant Inn", "Narfi in around Ivarstead"). Without a who, the phrase starts with a capital.
+ */
+export function placePhrase(where: string, hasWho: boolean): string {
+  const t = where.trim();
+  const phrase = PREPOSITION.test(t) ? t : `in ${t}`;
+  return hasWho ? phrase : `${phrase.charAt(0).toUpperCase()}${phrase.slice(1)}`;
+}

@@ -85,8 +85,7 @@ test("review: places on a person page are links, one quest count, Follows you sa
   await expect(glance).toContainText("in 3 more");
   await expect(main).toContainText("She gives 9 quests, and is in 3 more");
   await expect(page.getByRole("region", { name: /quests/i }).filter({ hasText: "Gives 9 quests, and is in 3 more" })).toHaveCount(1);
-  await expect(glance).toContainText("Yes");
-  await expect(glance).toContainText("How isn't sure yet");
+  await expect(glance.locator("div").filter({ hasText: /^Follows you/ }).first()).toContainText("Not sure yet");
   for (const q of ["Brotherhood", "Blood's Honor", "Glory of the Dead"]) await expect(main.getByRole("link", { name: q, exact: true })).toHaveAttribute("href", /\/quests\//);
   await page.screenshot({ path: "test-results/wo165-aela-1440.png", fullPage: true });
   await page.goto("/people/lydia");

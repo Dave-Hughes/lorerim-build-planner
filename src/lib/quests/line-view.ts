@@ -188,12 +188,12 @@ export function lineView(line: QuestLine): LineView {
         name: o.name,
         needs: [
           ...o.needs.map((n) => {
-            if (n.checked === "not yet") unsure.push({ field: `What ${o.name} needs: ${n.text}`, why: `We haven't checked this against the game files yet${n.why ? `: ${n.why}` : ""}.` });
+            if (n.checked === "not yet") unsure.push({ field: `What ${o.name} needs: ${n.text}` });
             return { text: n.text, tone: n.kind === "level" ? ("danger" as const) : ("done" as const) };
           }),
           ...(o.or
             ? (() => {
-                if (o.or.checked === "not yet") unsure.push({ field: `What ${o.name} needs: ${o.or.text}`, why: "We haven't checked this against the game files yet." });
+                if (o.or.checked === "not yet") unsure.push({ field: `What ${o.name} needs: ${o.or.text}` });
                 return [{ text: o.or.text, tone: "other" as const }];
               })()
             : []),
@@ -297,7 +297,7 @@ export function lineView(line: QuestLine): LineView {
   const waysIn = line.ways ?? (startChecked(opening?.start) ? opening!.start!.ways : undefined);
   const startLines: string[] = story
     ? story.start.map((t) => {
-        if (t.checked === "not yet") unsure.push({ field: "How it starts", why: "We haven't checked this way of starting it against the game files yet." });
+        if (t.checked === "not yet") unsure.push({ field: "How it starts" });
         return t.text;
       })
     : lr?.getIn

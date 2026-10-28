@@ -7,7 +7,7 @@ const HEDGES: RegExp[] = [
   // "; the records don't show when", ", and the records don't show which one you get"
   /\s*[;,]?\s*(?:and\s+)?the records (?:don't|do not|doesn't|does not) (?:show|say|have|give|tell)\b[^;.()]*/gi,
   // "(not checked yet)", "(not checked yet: LoreRim's files set their chance to 0)", "(the records don't show when)", "(presumably once you own it)"
-  /\s*\((?:not checked yet|isn't checked yet|the records [^)]*|presumably [^)]*|probably [^)]*)\)/gi,
+  /\s*\((?:not checked yet|isn't checked yet|the records [^)]*|presumably [^)]*|probably [^)]*|probably|likely|possibly|perhaps|presumably)\)/gi,
   /\s*[;,]?\s*not checked yet\b[^;.()]*/gi,
 ];
 
@@ -58,9 +58,15 @@ export function assembled(text: string): string {
 /** A record's editor id (DLC2WE09, MQ102A, REQ_HOGITHUM) or a plugin file (Name.esp): never shown to a player. */
 export const RECORD = /\b[A-Za-z][A-Za-z_]*\d[A-Za-z0-9_]*\b|\b[A-Z]{2,}_[A-Za-z0-9_]+\b|\.(?:esp|esm|esl)\b/;
 
-/** An unsure reason for the page: whole, with a capital, and with no record or file in it (the reader's own words may have named one). */
-export function playerReason(why: string): string {
-  if (RECORD.test(why)) return "We couldn't confirm this from the game files.";
+/**
+ * Words an editor writes and a player does not (Bob's ruling, WO-177 Part 6): a reason for a doubt with any of them in it is not shown (it is kept in the
+ * data); the unsure field is still listed, in a player's words. A rewrite of the reasons in players' words is a later batch (docs/backlog.md).
+ */
+const EDITOR_TERMS = /\b(?:packages?|alias(?:es)?|scripts?|propert(?:y|ies)|records?|factions?|keywords?|conditions?|stages?|forms?|globals?|cells?|refs?|plugins?|placed|placement|I went with|here)\b/i;
+
+/** An unsure reason for the page: whole, with a capital, or null when it is written for editors or names a record or a file. */
+export function playerReason(why: string): string | null {
+  if (RECORD.test(why) || EDITOR_TERMS.test(why)) return null;
   const t = why.trim().replace(/\s+/g, " ");
   return `${t.charAt(0).toUpperCase()}${t.slice(1)}${/[.!?]$/.test(t) ? "" : "."}`;
 }
@@ -84,7 +90,7 @@ const ALIAS = /<Alias=([A-Za-z0-9_]+)>/g;
 const aliasWords = (name: string) => `the ${name.replace(/\d+$/, "").replace(/([a-z])([A-Z])/g, "$1 $2").replace(/_/g, " ").toLowerCase().trim()}`;
 /** A bracket that holds a plugin file ("(cceejsse005-cave.esm; its start checks that…)"): a file is never shown to a player. */
 const FILE_BRACKET = /\s*\([^()]*\.(?:esp|esm|esl)\b[^()]*\)/gi;
-const ANY_HEDGE = /the records (?:don't|do not|doesn't|does not) (?:show|say|have|give|tell)|not checked yet|\((?:presumably|probably) /i;
+const ANY_HEDGE = /\((?:probably|likely|possibly|perhaps|presumably)\)|the records (?:don't|do not|doesn't|does not) (?:show|say|have|give|tell)|not checked yet|\((?:presumably|probably) /i;
 const SENTENCE_HEDGE = /(?<=[.!?]\s)The records (?:don't|do not|doesn't|does not) (?:show|say|have|give|tell)\b[^.]*\.\s*/g;
 
 /**
@@ -93,6 +99,8 @@ const SENTENCE_HEDGE = /(?<=[.!?]\s)The records (?:don't|do not|doesn't|does not
  */
 export function mend(text: string): string {
   if (SAID_NAMES[text]) return SAID_NAMES[text];
+  // A shelf or a place named "Whiterun Hold": the hold is "Whiterun hold" on every page (the game's own journal words are left as they are).
+  if (/^(?:Odd jobs in )?[A-Z][a-z']+(?: [A-Z][a-z']+)? Hold$/.test(text)) return text.replace(/ Hold$/, " hold");
   let out = assembled(text).replace(ALIAS, (_m, n: string) => aliasWords(n)).replace(FILE_BRACKET, "");
   if (ANY_HEDGE.test(out)) {
     const noSentence = out.replace(SENTENCE_HEDGE, "").trimEnd();

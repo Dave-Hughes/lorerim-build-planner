@@ -220,11 +220,11 @@ export default async function PlacePage({ params }: { params: Params }) {
                 {!realm && (
                   <>
                 <div className={styles.gauge} role="img" aria-label={`${foes} from level ${levels[0]} to ${levels[1]}${boss?.range ? `; the boss from level ${boss.range[0]} to ${boss.range[1]}` : ""}, on a scale of 1 to 50`}>
-                  <span className={styles.band} style={{ gridColumn: `${Math.min(levels[0], 50)} / ${Math.min(levels[1], 50) + 1}`, gridRow: 1 }}>
+                  <span className={`${styles.band} ${levels[1] > 36 ? styles.bandLeft : ""}`} style={{ gridColumn: `${Math.min(levels[0], 50)} / ${Math.min(levels[1], 50) + 1}`, gridRow: 1 }}>
                     {foes} {levels[0] === levels[1] ? levels[0] : `${levels[0]} to ${levels[1]}`}
                   </span>
                   {boss?.range && (
-                    <span className={`${styles.band} ${styles.bandBoss}`} style={{ gridColumn: `${Math.min(boss.range[0], 50)} / ${Math.min(boss.range[1], 50) + 1}`, gridRow: 2 }}>
+                    <span className={`${styles.band} ${styles.bandBoss} ${boss.range[1] > 36 ? styles.bandLeft : ""}`} style={{ gridColumn: `${Math.min(boss.range[0], 50)} / ${Math.min(boss.range[1], 50) + 1}`, gridRow: 2 }}>
                       Boss {boss.range[0] === boss.range[1] ? boss.range[0] : `${boss.range[0]} to ${boss.range[1]}`}
                     </span>
                   )}

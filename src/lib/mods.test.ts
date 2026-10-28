@@ -11,7 +11,7 @@ describe("shortModName", () => {
     expect(shortModName("Skyrim Extended Cut - Saints and Seducers")).toBe("Saints and Seducers");
     expect(shortModName("Betalille's Hammerfell Quests Bundle - The Gray Cowl of Nocturnal")).toBe("The Gray Cowl of Nocturnal");
     expect(shortModName("Missives - Gray Cowl Patch")).toBe("Missives");
-    expect(shortModName("Trad - AE - CC - Collection - Requiem Patch")).toBe("Trad");
+    expect(shortModName("Trad - AE - CC - Collection - Requiem Patch")).toBe("Trad - AE - CC - Collection");
     expect(shortModName("Fists of Fury - Skyrim")).toBe("Fists of Fury");
     expect(shortModName("Remiel-Custom Voiced Follower")).toBe("Remiel-Custom Voiced Follower");
   });

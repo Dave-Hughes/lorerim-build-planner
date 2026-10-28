@@ -5,6 +5,7 @@ import { desc } from "drizzle-orm";
 import { db, schema } from "@/db";
 import { categories, questsData } from "@/lib/quests/data";
 import { questHref } from "@/lib/quests/slugs";
+import { playerFacing } from "@/lib/places/said";
 import { currentVersion } from "@/lib/rules/server";
 
 /**
@@ -49,6 +50,8 @@ export async function allChanges(): Promise<Change[]> {
   const data = questsData();
   const quests = new Map(data.lines.flatMap((l) => l.quests.map((q) => [q.edid, q] as const)));
   const out: Change[] = [];
+  const nameCount = new Map<string, number>();
+  for (const l of data.lines) for (const x of l.quests) nameCount.set(x.name.trim(), (nameCount.get(x.name.trim()) ?? 0) + 1);
   for (const g of generated()) {
     if (g.kind === "line") {
       const line = g.id ? data.byId.get(g.id) : undefined;
@@ -62,6 +65,8 @@ export async function allChanges(): Promise<Change[]> {
     const q = g.edid ? quests.get(g.edid) : undefined;
     const href = g.edid ? questHref(g.edid) : null;
     if (!q?.name || !href) continue;
+    // A job template (seven "Delivery" rows, "Hunter Marks Animal Den 02") is not a change worth a row (WO-177 Part 6).
+    if ((nameCount.get(q.name.trim()) ?? 0) >= 3 || /\s\d{2}$/.test(q.name.trim()) || !playerFacing(q.name)) continue;
     out.push({ kind: "quest", icon: "quest-side-stories", name: q.name, href, what: (g.ways ?? 0) > 1 ? "Its ways to finish it, each with its steps" : "", date: g.date });
   }
   // A player's report an admin approved: the quest it is about, the day it was approved.

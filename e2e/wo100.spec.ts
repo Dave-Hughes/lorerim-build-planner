@@ -31,7 +31,7 @@ test("Daedric Princes shows Ill Met By Moonlight at level 25, a fact, with no le
   await expect(page.getByLabel("Only what I can start")).toHaveCount(0);
   const card = page.getByRole("row").filter({ has: page.getByRole("link", { name: "Ill Met By Moonlight" }) });
   // Its level is a fact; with no player level, nothing says above or below it (WO-163: a row of the category's table).
-  await expect(card.getByText("Level 25", { exact: true })).toBeVisible();
+  await expect(card.getByText("25", { exact: true })).toBeVisible();
   await expect(card.getByRole("button", { name: "Tell me more" })).toHaveCount(0);
   // A line of one quest opens the quest's own page.
   await card.getByRole("link", { name: "Ill Met By Moonlight" }).first().click();

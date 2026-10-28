@@ -136,7 +136,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
               {view.lineTag && <span className={k.role}>{view.lineTag}</span>}
               {line.prince && <span className={k.tag}>{line.prince}</span>}
               {line.where && line.where !== dlcOf(line) && !line.sources.some((s) => s.name === line.where) && <span className={k.tag}>{line.where}</span>}
-              {(dlcOf(line) ? [{ name: dlcOf(line)!, modid: undefined as string | undefined }] : line.sources).map((s) =>
+              {(dlcOf(line) ? [{ name: dlcOf(line)!, modid: undefined as string | undefined }] : line.sources).filter((s) => s.name !== view.lineTag).map((s) =>
                 s.modid ? (
                   <a key={s.name} href={`https://www.nexusmods.com/skyrimspecialedition/mods/${s.modid}`} target="_blank" rel="noreferrer" className={k.tag}>
                     {s.name} <span aria-hidden="true">↗</span>

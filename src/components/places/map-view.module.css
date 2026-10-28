@@ -67,6 +67,10 @@ a.plate:hover {
   width: 0;
   height: 0;
 }
+/* A pin whose hover card is open is above every other pin, name and control (WO-177 Part 6). */
+.pinBox:has([role="tooltip"]) {
+  z-index: 1000;
+}
 .pin {
   position: absolute;
   left: 0;
