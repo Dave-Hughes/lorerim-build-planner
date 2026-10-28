@@ -5022,6 +5022,63 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-177  A cold review of staging: what's broken, what's off the grid, what reads wrong (Mac, 28 Oct 2026)
+Status: queued (Mac; first)
+
+**Why.** Dave, 28 Oct 10:06: "I've already spotted lots of things that are broken, or weird UI issues." Bob's reviews had checked each order's boxes and not the whole page. A reviewer who hadn't seen the orders walked 25 pages signed out at 1440 and 390, scrolling with the wheel and hovering: no console errors, no broken links, nothing scrolls sideways; and the list below (screenshots in Bob's scratch folder, `rex/shots/`). Bob confirmed the first ones by hand. Dave's own list joins this order when he sends it. Do the parts in order; each box is a fault seen, not a guess.
+
+### Part 1. Broken
+- [ ] **`/places` traps the mouse wheel**: with the pointer over the big map, the wheel neither zooms nor scrolls, and the map is the page's width, so a desktop player can't reach the hold lists. On `/places` the wheel scrolls the page; zoom is + and − (and pinch); only `/map` takes the wheel.
+- [ ] **A wrong link on the main quest**: Dragon Research's "Bring 3 Dragon **Blood**…" links "Blood" to `/people/blood-curse-of-molag-bal`. The linker never links a word inside an item's name, and never a one-word person whose page isn't about someone in this quest. Add the case to the names test.
+- [ ] **Lydia's page: "She in 2 quests."** The "is" is missing. Fix the sentence builder for every count wording, with a test over a few people.
+- [ ] **`/characters` at 390**: the featured card clips its name ("IRIEL THORNWHIS"), slices the tagline through the letters, and the maker reads "T…". On a phone the featured card is the ordinary card (cover on top, words under it), never the wide one.
+- [ ] **A quest page off the grid**: Dungeon Delving's body starts about 125 px right of the title and the band, and is narrower than every other quest page (since WO-174 moved Rewards into the column). Every quest page's body starts on the same left edge as its title.
+
+### Part 2. Ragged and uneven
+- [ ] **Where it takes you** on line pages breaks names over lines in a narrow cell ("High / Hrothgar", "Sleeping Giant / Inn"). Names never break inside themselves (`white-space: nowrap` on each name, the list wraps between names), and "and 4 more" is a link to the section.
+- [ ] **Place colour.** In a line's story, places are orange like people (Raven Rock, Skaal Village, Riverwood); the band and Opens other stories have them teal. A place is teal everywhere (rule 34).
+- [ ] **One heading style on a line page**: What the whole line gives and What it closes have no icon and a different heading from Along the way and Opens other stories. Same heading, each with its icon.
+- [ ] **`/quests` at 390**: the "Everything else, by place" intro sits indented beside its icon, narrower than the search and filters under it (Dave's rule: text and the controls share one width); the placeholder is cut ("…or the jou"); Hold, Level and From are three widths. One column, the selects equal.
+- [ ] **`/quests` table at 1440**: Level breaks "Level / 20"; places wrap ("Darkwater / Crossing"); From shows cut mod file names ("The Gray Cowl of Nocturnal - 10t…", "Arena - Markarth Side Town"). Level and a place never break; From shows the mod's own short name (from `plugins_raw.json`'s display name, or the Nexus title), full in the title.
+- [ ] **Home at 390**: a heading and its link squeeze each other onto two lines ("Every quest / line ›", "New in the / world"). On a phone the link goes under the heading.
+- [ ] **Place pages**: on the Sleeping Giant Inn and High Hrothgar the people start half way across with an empty left column (Riverwood has the house name there). A place with one building lists its people from the left edge.
+- [ ] **The Sleeping Giant Inn** has "Open on the map ›" alone on a row with no Getting there label. A place in a town says "In Riverwood" there, as the order for the town pin said.
+- [ ] **`/changes`**: the tab counts run into their labels ("EVERYTHING400", "QUESTS350"); the fold chevron is tiny and sits low; every row repeats "Its story and its quests, read from the game files". Space before the count; a chevron the size of the text, centred; a row says what changed or nothing.
+- [ ] **Map**: the + − buttons cover a label when zoomed in; a label at the top right goes under the drawer on `?place=`. Labels avoid every control and panel. "All" stays lit while a quest route shows 4 of 458: it unlights.
+- [ ] **`/characters` at 1440**: the middle card sits 3 px higher than its neighbours.
+
+### Part 3. Copy that reads wrong
+- [ ] **Search results say the same thing twice** ("Goes to Riverwood" then "It goes to Riverwood"). One line.
+- [ ] **Aela**: At a glance's Quests cell says "Gives 9 quests and is in 3 more. Take Up Arms; Animal Extermination" and its heading reads "Yes, how isn't sure yet" in the follow cell's big type. The big line is "Yes", the small line "How isn't sure yet"; the quests cell's example names are the first two she gives. In her quest list "Skjor" and "Ysgramor's Tomb" are larger than the text around them: a link takes its sentence's size.
+- [ ] **Lydia**: the tag says Can marry while Marriage says "(not sure)" and Not sure yet lists it. A tag only says what the page is sure of. On a phone the four At a glance cells repeat the sections under them almost word for word: on a phone, At a glance shows only the cells whose section isn't on the first screen, or the sections drop what the band said.
+- [ ] **Editors' words on the page**: Dragonborn's "Not counted as a step: Cultists vs Player … that likely sets off Dragonborn"; the main quest's "not checked yet: LoreRim's files set their chance to 0" under the cultists' level; "(not checked yet)" mid-sentence in How it starts. A player-facing line never names a record or hedges in brackets; what's unsure goes to Information Confidence's Not sure yet with its reason.
+- [ ] **One name for one thing**: "Vanilla" on quest and place pages, "Base game" on line pages and the table; "None" XP in the table and "No XP" on the page; Dawnguard and Dragonborn tagged "Base game" on their pages and "Dawnguard" as a From chip elsewhere. Use "Base game", "No XP", and the DLC's name for the DLC everywhere.
+- [ ] **Place tags**: Riverwood "Whiterun hold" in a teal chip; Bleak Falls Barrow "Whiterun" in a plain chip and an unboxed "Next to Riverwood". One pattern: kind, the hold (teal, "Whiterun hold"), base game or mod; the distance lives in Getting there.
+- [ ] **The Golden Claw**: a start heading in lower case ("bandits in Bleak Falls Barrow"); People has a line for some and none for Lucan, Gerdur, Hilde, Frodnar, Delphine. Headings start with a capital; a person in People has their role from the reads, or the role on their page.
+- [ ] **`/quests`**: "Everything else, by place" with an intro that says "Every quest and line in every category". The heading says what the table is: "Every quest, by place".
+- [ ] **Main quest**: "Paarthurnax dies if you kill him (Paarthurnax)" (say "if you kill him in the quest Paarthurnax", or drop the bracket when the quest is named in the sentence); "Helgen as a living town: … the records don't show when" (unsure goes to Not sure yet).
+- [ ] **Assembled wording**: "Auri in her house, Auri's House, in Falkreath" (say "in Auri's House, Falkreath"); "same job (Windhelm's own copy of it)"; "4 in 1 place". Read every generated sentence pattern aloud in the tests' fixtures.
+- [ ] **People pages**: "Where to find them" beside "What she offers"; roles capitalised two ways ("Blacksmith", "Housecarl" against "innkeeper", "quest giver"). Use the person's pronoun in every heading; roles in sentence case everywhere.
+- [ ] **Riverwood's Trainers and followers**: "Marksman / Faendal, Sven" reads as both training Marksman. Say who does what: "Faendal trains Marksman. Followers: Faendal, Sven."
+- [ ] **Bleak Falls Barrow**: "In 30 days, or 300 once cleared": "300 days once cleared".
+
+### Part 4. Checks
+- [ ] Bob's way now: each page scrolled with the wheel and hovered at both widths, in a real browser, before `for Bob`. Screenshots of every page named above, at the width named.
+
+## WO-178  Data a player would call wrong (PC, 28 Oct 2026)
+Status: queued (PC; first)
+
+From the same cold review (WO-177). Each is what the page shows; find why in the records and fix it in the build, or say why it's right.
+- [ ] **Only one temple or guild on the map** ("Temples and guilds 1": High Hrothgar). The Temple of Kynareth, the Temple of Mara, Jorrvaskr and the College are inside their cities, so they have no position (WO-166's rule). Give the Mac what it needs to show a place inside a town at its town's pin on the map when its group is picked (the town's position on each such row as `pinAt`), so the groups aren't empty.
+- [ ] **Counts disagree across pages**: the home strip says 75 towns and cities, `/map` 21, `/places` 29; Homes 73 against 283; Landmarks 84 against 177. One count per kind, written by the build into `places.json`'s summary, that every page reads (on the map, those it can pin; say which in the label).
+- [ ] **Castle Volkihar is a Fort with "skeletons from level 1, up to 150"**, and **the Soul Cairn** is pinned in the Sea of Ghosts on the map's frame (it is another plane; its door out is Castle Volkihar's). Castle Volkihar is a castle (Harkon's court, a lived-in place when you side with him); the Soul Cairn has no Tamriel position.
+- [ ] **High Hrothgar's nearest town is Riverwood**, "East of Riverwood, a short walk, and well above it". Players reach it by the 7,000 Steps from Ivarstead. A place on a mountain reached by a known path takes that path's town (an override with the reason), and Getting there says "Up the 7,000 Steps from Ivarstead".
+- [ ] **Riverwood's crafting** lists a sharpening wheel, an armor workbench and an enchanting table: no forge, anvil, smelter or tanning rack at Alvor's. Check which cells the crafting list reads (Alvor's forge stands outside his house, in Riverwood's exterior cells).
+- [ ] **Riverwood's quests** include Season Unending and leave out Before the Storm. Check how "quests that bring you here" is picked.
+- [ ] **Lydia on the map**: picking her flies to Whiterun, not Dragonsreach, and Whiterun's drawer lists only Companions under Who is inside, with quests named like code ("Deliver a Letter Distant", "Deliver a Potion Far"). A person goes to the building they're in; a city's drawer lists its notable people (jarl, steward, merchants, trainers) and drops radiant courier templates.
+- [ ] **Bleak Falls Barrow** "West of Riverwood, right next to it" while The Golden Claw says "up the mountain path northwest of Riverwood": the positions say 20,458 units west and 3,630 north; Getting there should say "up the mountain north-west of Riverwood" when the height difference is large (it's 5,866 units higher).
+- [ ] Then `for Bob`.
+
 ## WO-176  Two small things from Bob's read of WO-174 (Mac, then PC, 28 Oct 2026)
 Status: for Bob
 
