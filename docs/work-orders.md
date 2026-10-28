@@ -5187,7 +5187,7 @@ Dave, 27 Oct 18:46: the map's mod author OK'd its use on the site, with a credit
 - Bob, 28 Oct, 23:10: read the notes and the report, and pinned the nine cities, Riverwood, Bleak Falls Barrow, Embershard Mine, High Hrothgar, Ivarstead, Kynesgrove, Morvunskar Crypts, Nightgate Inn, Green-Tip Cabin and Fort Dawnguard on `tamriel.webp` with `maps.json`'s rule: every one lands where it belongs (Nightgate on Lake Yorgrim, Morvunskar Crypts by Kynesgrove, Fort Dawnguard at the canyon east of Riften, at the map's eastern edge). Done. Rulings on the four questions: Vigilant's realm stays in the data (the map shows Tamriel only); farms in a field get a position (WO-171); the 83 unplaceable are fine as they are; Dead Drop Falls on the fort's door is fine. Embershard Mine is south-west of Riverwood, not south: noted, the data is right.
 
 ## WO-165  The quest and person pages get the same at-a-glance and colours (Mac, 27 Oct 2026)
-Status: queued (Mac; Bob's second review, one box)
+Status: building (Mac; Bob's second review)
 
 **Why.** `docs/page-templates.md` rows 14 and 16: the quest and person pages read well but are one grey. WO-160 (`LinePage`) and WO-162 (`PlaceTown`) set the pattern: an At a glance band under the title, colour that means one thing, a contents rail on long pages. Same pattern here, so every World page feels like one site.
 - [x] **A quest**: At a glance under the title: how it starts (green: who and where), level and danger (red), where it takes you (blue), rewards and XP (gold), and the number of ways to finish it (purple). People and places in the steps as the coloured chips; XP in the pixel face. The Rewards box stays.
