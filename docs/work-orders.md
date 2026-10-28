@@ -5126,7 +5126,7 @@ Dave, 27 Oct 18:46: the map's mod author OK'd its use on the site, with a credit
 - [ ] Tests, then `for Bob` with the coverage: how many places have a position, by world.
 
 ## WO-165  The quest and person pages get the same at-a-glance and colours (Mac, 27 Oct 2026)
-Status: for Bob (all five boxes built; typecheck, lint, 717 unit tests, the build and the full e2e pass, 482 of 482)
+Status: queued (Mac; Bob's review)
 
 **Why.** `docs/page-templates.md` rows 14 and 16: the quest and person pages read well but are one grey. WO-160 (`LinePage`) and WO-162 (`PlaceTown`) set the pattern: an At a glance band under the title, colour that means one thing, a contents rail on long pages. Same pattern here, so every World page feels like one site.
 - [x] **A quest**: At a glance under the title: how it starts (green: who and where), level and danger (red), where it takes you (blue), rewards and XP (gold), and the number of ways to finish it (purple). People and places in the steps as the coloured chips; XP in the pixel face. The Rewards box stays.
@@ -5143,6 +5143,16 @@ Status: for Bob (all five boxes built; typecheck, lint, 717 unit tests, the buil
 - **The contents rail** (`AutoToc`): a page's own section headings in the side column, the one in view lit, shown only when the page is taller than two screens and has at least three sections; it is on the quest and person pages. The place and line pages have their own contents.
 - **A one-word name is a person only with more than a shop** ("Trader" is a job): `peopleNames` takes a one-word name only for someone in a quest, a read, a follower, spouse, trainer or innkeeper, which kept "the Riverwood Trader" whole on the quest pages.
 - Tests: `e2e/wo165.spec.ts` (9: The Golden Claw, Lights Out!, Aela and Lydia at both widths, and the rail). Screenshots in `test-results/`: `wo165-golden-claw-1440.png` and `-390`, `wo165-lights-out-...`, `wo165-aela-...`, `wo165-lydia-...`.
+
+### Bob's review (27 Oct, 22:30)
+Read on the preview: The Golden Claw, Aela at 1440 and 390, Lydia. The band, the day strip and the shorter Not sure yet on person pages are right; following WO-160 on chips was right. What's wrong:
+- [ ] **Places on a person page aren't linked at all.** Aela's page says Jorrvaskr twelve times (At a glance, the strip's key, every row) and links none; Lydia's says Dragonsreach. Both have pages. The person page's words go through the same linker as the line pages (with WO-160 Part 6's fixes), and the test covers a person page.
+- [ ] **Aela's numbers disagree.** The summary says "She gives six quests", At a glance says 12, and the list shows nine she gives and three she's a step in. One count, said the same way in all three: "Gives 9 quests, and is in 3 more". Lydia's "Quests 2" is two quests that change her, not two she gives; say so ("In 2 quests").
+- [ ] **Follows you: Yes** on Aela while What she offers says "(not sure)" and Not sure yet lists how she joins. When the how is unsure, the cell says "Yes, how isn't sure yet", not a bare Yes.
+- [ ] **A link that doesn't look like one.** Aela's Brotherhood, Blood's Honor and Glory of the Dead are links but drawn white like plain text. Every quest link the same orange.
+- [ ] **The Golden Claw, Where it takes you:** the Riverwood Trader has "Danger: Not known yet". A shop, inn, house or town has no danger cell (WO-162's kind decides).
+- [ ] **The Golden Claw, People:** "Gerdur, Hilde, Frodnar or Delphine" is listed as one person after Gerdur is already listed, and "bandits in Bleak Falls Barrow" as another. Each person once, linked; a group isn't a person.
+- [ ] Screenshots of Aela and The Golden Claw, then `for Bob`.
 
 ## WO-163  Quest categories as tables (Mac, 27 Oct 2026)
 Status: building (Mac; Bob's review)
