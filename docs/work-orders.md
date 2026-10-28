@@ -5066,7 +5066,7 @@ Status: building (Mac)
 - [ ] Bob's way now: each page scrolled with the wheel and hovered at both widths, in a real browser, before `for Bob`. Screenshots of every page named above, at the width named.
 
 ## WO-178  Data a player would call wrong (PC, 28 Oct 2026)
-Status: queued (PC; first)
+Status: building (PC)
 
 From the same cold review (WO-177). Each is what the page shows; find why in the records and fix it in the build, or say why it's right.
 - [ ] **Only one temple or guild on the map** ("Temples and guilds 1": High Hrothgar). The Temple of Kynareth, the Temple of Mara, Jorrvaskr and the College are inside their cities, so they have no position (WO-166's rule). Give the Mac what it needs to show a place inside a town at its town's pin on the map when its group is picked (the town's position on each such row as `pinAt`), so the groups aren't empty.
