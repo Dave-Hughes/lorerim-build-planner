@@ -5,6 +5,10 @@ import { PageTop, TitleBox } from "@/components/pages/page-kit";
 import { CategoryRows } from "@/components/quests/category-rows";
 import { categories, linesIn, searchLines } from "@/lib/quests/data";
 import { categoryRow } from "@/lib/quests/line-view";
+import { tableRows } from "@/lib/quests/table-rows";
+import { BackButton } from "@/components/pages/back-button";
+import { QuestTable } from "@/components/quests/quest-table";
+import hero from "@/components/quests/category-hero.module.css";
 import { siteMetadata } from "@/lib/og/metadata";
 import k from "@/components/pages/page-kit.module.css";
 
@@ -39,6 +43,33 @@ export default async function QuestCategoryPage({ params, searchParams }: { para
     const hits = new Set(searchLines(q, 500).map((r) => r.line.id));
     const has = (t: string | null) => !!t && words.every((w) => t.toLowerCase().includes(w));
     lines = lines.filter((l) => hits.has(l.id) || has(l.prince) || has(l.where));
+  }
+  // Every category but Main stories is a table (WO-163): a short banner, filters, and one sortable table.
+  if (!main) {
+    const sentence = c.subtitle.charAt(0).toLowerCase() + c.subtitle.slice(1);
+    return (
+      <main>
+        <section className={hero.hero} aria-label={c.name}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className={hero.scene} src={`/quests/${c.slug}.png`} alt="" />
+          <span className={hero.fade} />
+          <div className={`page ${hero.t}`}>
+            <BackButton home={{ href: "/quests", label: "Quests" }} />
+            <h1 className={hero.h1}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className={hero.px} src={`/icons/quest-${c.slug}.svg`} alt="" width={64} height={64} />
+              {c.name}
+            </h1>
+            <p className={hero.lead}>
+              {linesIn(c.key).length} {sentence}. {c.more.split(/(?<=[.!?])\s+/).slice(-1)[0]}
+            </p>
+          </div>
+        </section>
+        <div className="page" style={{ paddingTop: 30, paddingBottom: 80 }}>
+          <QuestTable rows={tableRows(lines)} q={q} label={c.name} />
+        </div>
+      </main>
+    );
   }
   const rows = lines.map((l) => categoryRow(l, c.key));
   // Main stories: the three stories this category is home to, in order; the others sit in their own category and are tied to these.

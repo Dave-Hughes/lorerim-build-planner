@@ -1,0 +1,76 @@
+/* A category's banner (WO-163): the scene short, the title over it. */
+.hero {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  border-bottom: 1px solid #243041;
+}
+.scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 70%;
+  image-rendering: pixelated;
+}
+.fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(11, 15, 20, 0.92) 0%, rgba(11, 15, 20, 0.6) 45%, rgba(11, 15, 20, 0.1) 100%);
+}
+.t {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.t > :first-child {
+  align-self: flex-start;
+  margin-bottom: 12px;
+}
+.h1 {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+  font-size: 78px;
+  line-height: 0.92;
+  color: #f4ead2;
+  text-shadow: 0 3px 0 #0b0f14;
+}
+.px {
+  image-rendering: pixelated;
+}
+.lead {
+  margin: 0;
+  font-size: 19px;
+  color: #dfe6ec;
+  text-shadow: 0 2px 0 #0b0f14;
+}
+@media (max-width: 700px) {
+  .hero {
+    height: 200px;
+  }
+  .h1 {
+    font-size: 46px;
+    gap: 10px;
+  }
+  .h1 img {
+    width: 40px;
+    height: 40px;
+  }
+  .lead {
+    font-size: 16px;
+  }
+  .t {
+    bottom: 18px;
+  }
+}

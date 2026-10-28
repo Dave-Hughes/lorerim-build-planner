@@ -17,7 +17,7 @@ test("the home shows the categories and everything else by place, with no player
   for (const name of ["Main stories", "Guilds and factions", "Daedric Princes", "New lands", "Side stories", "Followers"]) await expect(cats.filter({ hasText: name })).toHaveCount(1);
   // The jobs and the side stories sit under "Everything else, by place" (WO-154 Part 2).
   await expect(page.getByRole("heading", { name: "Everything else, by place" })).toBeVisible();
-  await expect(page.getByRole("link", { name: /^Missives/ })).toBeVisible();
+  await expect(page.locator('a[href="/quests/missives"]')).toBeVisible();
   // How many lines; nothing about the player: no Where you are, no "open to you".
   await expect(cats.filter({ hasText: "Daedric Princes" })).toContainText(/\d+ quest lines/);
   await expect(page.getByRole("region", { name: "Where you are" })).toHaveCount(0);
@@ -29,12 +29,11 @@ test("Daedric Princes shows Ill Met By Moonlight at level 25, a fact, with no le
   await expect(page.getByRole("heading", { level: 1, name: "Daedric Princes" })).toBeVisible();
   await expect(page.getByRole("spinbutton", { name: "Your level" })).toHaveCount(0);
   await expect(page.getByLabel("Only what I can start")).toHaveCount(0);
-  const card = page.getByRole("article", { name: "Ill Met By Moonlight" });
-  // Its level is a fact; with no player level, nothing says above or below it.
+  const card = page.getByRole("row").filter({ has: page.getByRole("link", { name: "Ill Met By Moonlight" }) });
+  // Its level is a fact; with no player level, nothing says above or below it (WO-163: a row of the category's table).
   await expect(card.getByText("Level 25", { exact: true })).toBeVisible();
-  await expect(card.getByText("Hircine")).toBeVisible();
-  // The rows have no Tell me more (WO-160); a line of one quest opens the quest's own page.
   await expect(card.getByRole("button", { name: "Tell me more" })).toHaveCount(0);
+  // A line of one quest opens the quest's own page.
   await card.getByRole("link", { name: "Ill Met By Moonlight" }).first().click();
   await expect(page).toHaveURL(/\/quests\/q\/ill-met-by-moonlight$/);
 });

@@ -5,7 +5,8 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { QuestSearch } from "@/components/quests/quest-search";
 import { categories, linesIn, questsData } from "@/lib/quests/data";
-import { questHref } from "@/lib/quests/slugs";
+import { tableRows } from "@/lib/quests/table-rows";
+import { QuestTable } from "@/components/quests/quest-table";
 import { searchEverything } from "@/lib/search/everything";
 import { siteMetadata } from "@/lib/og/metadata";
 import styles from "@/components/quests/quests.module.css";
@@ -22,13 +23,8 @@ export default async function QuestsHome({ searchParams }: { searchParams: Searc
   if (q) redirect(`/search?q=${encodeURIComponent(q)}`);
   const { lines } = questsData();
   const found = q ? searchEverything(q) : null;
-  // Everything that isn't one of the big lines (side stories and the jobs), by the town or place it is in (WO-154).
-  const rest = lines.filter((l) => l.category === "side" || l.category === "work");
-  const placeOf = (l: (typeof rest)[number]) => l.where ?? l.quests.find((x) => x.start?.towns?.[0])?.start?.towns?.[0] ?? "Elsewhere";
-  const byPlace = new Map<string, typeof rest>();
-  for (const l of rest) byPlace.set(placeOf(l), [...(byPlace.get(placeOf(l)) ?? []), l]);
-  const places = [...byPlace.entries()].sort(([a], [b]) => (a === "Elsewhere" ? 1 : b === "Elsewhere" ? -1 : a.localeCompare(b)));
-  const hrefOfLine = (l: (typeof rest)[number]) => (l.quests.length === 1 && l.category !== "work" ? (questHref(l.quests[0].edid) ?? `/quests/${l.id}`) : `/quests/${l.id}`);
+  // Every line in every category, as the one table (WO-163), sorted by place.
+  const rows = tableRows(lines);
   return (
     <main className={`page ${styles.main}`}>
       <div className={styles.homeHead}>
@@ -95,24 +91,11 @@ export default async function QuestsHome({ searchParams }: { searchParams: Searc
               Everything else, by place
             </h2>
             <span className={styles.sub}>
-              Side stories, notice boards and favours, by the town or place they start in. <Link href="/quests/c/side-stories">All side stories ›</Link>
+              Every quest and line in every category, by the town or place it starts in. <Link href="/quests/c/side-stories">All side stories ›</Link>
             </span>
           </span>
         </span>
-        <div className={styles.restGrid}>
-          {places.map(([place, ls]) => (
-            <div key={place}>
-              <h3 className={styles.h3}>{place}</h3>
-              <span className={styles.restList}>
-                {ls.map((l) => (
-                  <Link key={l.id} href={hrefOfLine(l)}>
-                    {l.name} {l.quests.length > 1 && <small>{l.quests.length}</small>}
-                  </Link>
-                ))}
-              </span>
-            </div>
-          ))}
-        </div>
+        <QuestTable rows={rows} across defaultSort="where" label="Every quest" />
       </section>
     </main>
   );

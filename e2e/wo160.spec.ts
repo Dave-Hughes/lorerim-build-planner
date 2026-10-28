@@ -92,11 +92,12 @@ test("Main stories is the three stories in order, numbered, then the mods' quest
 });
 
 test("another category takes the same rows, with its single quests after them", async ({ page }) => {
+  // Every category but Main stories is a table (WO-163): one row per quest or line, no cards.
   await page.goto("/quests/c/guilds-and-factions");
-  await expect(page.locator("main article h2").first()).toBeVisible();
+  await expect(page.locator("main table tbody tr").first()).toBeVisible();
   await expect(page.getByRole("button", { name: /Tell me more/ })).toHaveCount(0);
   await page.goto("/quests/c/side-stories");
-  await expect(page.getByRole("heading", { name: "Single quests" })).toBeVisible();
+  await expect(page.getByRole("columnheader", { name: "Quest XP" })).toBeVisible();
 });
 
 for (const [slug, title] of [

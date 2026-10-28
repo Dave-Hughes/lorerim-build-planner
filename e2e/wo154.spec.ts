@@ -34,7 +34,7 @@ test("Mourning Never Comes (a read quest): nothing from the rules, its own mod, 
 
 test("a line of one quest isn't a line: its category card opens the quest, and its line address goes there", async ({ page }) => {
   await page.goto("/quests/c/side-stories");
-  const card = page.getByRole("article", { name: "Lights Out!" });
+  const card = page.getByRole("row").filter({ has: page.getByRole("link", { name: "Lights Out!" }) });
   await expect(card.getByRole("link", { name: "Lights Out!" })).toHaveAttribute("href", "/quests/q/lights-out");
   await page.goto("/quests/lights-out");
   await expect(page).toHaveURL(/\/quests\/q\/lights-out$/);
@@ -119,7 +119,7 @@ test("the Quests page: the big lines first, then everything else by place", asyn
   await page.goto("/quests");
   const heads = await page.locator("main h2").allInnerTexts();
   expect(heads.at(-1)).toMatch(/Everything else, by place/i);
-  await expect(page.getByRole("heading", { name: "Riften", level: 3, exact: true })).toBeVisible();
+  await expect(page.getByRole("cell", { name: "Riften", exact: true }).first()).toBeVisible();
   await expect(page.getByRole("link", { name: /Main stories/ }).first()).toBeVisible();
 });
 

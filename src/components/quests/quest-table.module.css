@@ -1,0 +1,252 @@
+/* A quest category as a table (WO-163), from the design canvas board QuestCategoryTable. */
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.px {
+  image-rendering: pixelated;
+}
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+form.inp,
+.inp {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 360px;
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid #3a4658;
+  background: #10161d;
+}
+.inp input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+  outline: none;
+}
+.sel {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 44px;
+  padding: 0 10px 0 14px;
+  border: 1px solid #3a4658;
+  background: #10161d;
+  color: #e4ebf0;
+  font-size: 15px;
+}
+.sel b {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 12px;
+  font-weight: 600;
+  color: #8e9bab;
+}
+.sel select {
+  height: 100%;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  outline: none;
+  cursor: pointer;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px;
+  border: 1px solid #3a4658;
+  background: transparent;
+  font: inherit;
+  font-size: 14px;
+  color: #c3cdd6;
+  cursor: pointer;
+}
+.pill span {
+  color: #8e9bab;
+}
+.pillOn {
+  border-color: #f0913f;
+  color: #f6b27a;
+  background: rgba(240, 145, 63, 0.07);
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: 0;
+  text-align: left;
+  background: #111921;
+  border-top: 1px solid #243041;
+  border-bottom: 1px solid #243041;
+  white-space: nowrap;
+}
+.table thead th button {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 14px;
+  border: 0;
+  background: none;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 13px;
+  font-weight: 700;
+  color: #8e9bab;
+  cursor: pointer;
+}
+.table thead th.r button {
+  justify-content: flex-end;
+}
+.on button {
+  color: #f6b27a !important;
+}
+.ar {
+  display: inline-block;
+  margin-left: 6px;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+}
+.up {
+  transform: rotate(180deg);
+}
+.table tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #1c2430;
+  font-size: 15px;
+  color: #dfe6ec;
+  vertical-align: middle;
+}
+.table tbody tr:nth-child(even) td {
+  background: #0e141b;
+}
+.table tbody tr:hover td {
+  background: #16202b;
+}
+.r {
+  text-align: right;
+}
+.qn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.qn a {
+  font-size: 17px;
+  font-weight: 600;
+  color: #f0913f;
+  text-decoration: none;
+}
+.table a {
+  color: #f0913f;
+  text-decoration: none;
+}
+.pl,
+.pl a {
+  color: #9fd3e1;
+}
+.lv {
+  color: #eca69b;
+}
+.xpv {
+  font-family: var(--font-pixel), monospace;
+  font-size: 22px;
+  line-height: 1;
+  color: #e8c987;
+}
+.mut {
+  color: #6f7c8c;
+}
+.base {
+  color: #c3cdd6;
+}
+.mod {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 8px;
+  border: 1px solid #3a4658;
+  font-size: 13px;
+  color: #c3cdd6 !important;
+  max-width: 230px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cat,
+.length {
+  color: #c3cdd6;
+  white-space: nowrap;
+}
+.cap {
+  font-size: 14px;
+  color: #8e9bab;
+}
+
+/* A phone: each row is two lines, the name and its XP, then who, where and the level. */
+@media (max-width: 700px) {
+  .table thead {
+    display: none;
+  }
+  .table,
+  .table tbody {
+    display: block;
+  }
+  .table tbody tr {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 2px 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid #1c2430;
+  }
+  .table tbody td {
+    padding: 0;
+    border: 0;
+    background: none !important;
+    font-size: 14px;
+  }
+  /* The name and its XP fill the first line; who, where and the level follow on the second. */
+  .table tbody td.name {
+    order: 1;
+    flex: 1 1 calc(100% - 80px);
+    min-width: 0;
+  }
+  .table tbody td.xp {
+    order: 2;
+    flex: 0 0 60px;
+    text-align: right;
+  }
+  .table tbody td.who,
+  .table tbody td.where,
+  .table tbody td.level {
+    order: 3;
+  }
+  .table tbody td.length,
+  .table tbody td.from,
+  .table tbody td.cat {
+    display: none;
+  }
+}
