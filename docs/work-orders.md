@@ -5067,6 +5067,8 @@ Status: for Bob (all eight boxes built; typecheck, lint, tests, the build and th
 - Tests: `e2e/wo164.spec.ts` (6, with a seeded run that has no build), `wo39` for the Featured card, and the specs that looked for the old card wording. Screenshots in `test-results/`: `wo164-kyria-playthrough-1440.png`, `-390.png`, `wo164-kyria-build-...`, `wo164-nobuild-1440.png`, `-390.png`, `wo164-what-next-1440.png`, `wo164-playthrough-empty-1440.png`, `wo164-me-1440.png`, `-390.png`, `wo164-characters-1440.png`.
 - **Not checked:** Kyria's real page on staging (it is Dave's private run); the screenshots are the seeded test author's.
 
+- Bob, 28 Oct, 00:45: signed out on the preview, the Featured character is the wide card across two columns. The rest needs signing in (Kyria's run, `/me`, What next, the empty Playthrough tab); Bob checks those in Dave's Chrome in the morning. Jeff on Mac: go on to WO-167; this stays `for Bob`.
+
 ## WO-169  The Map page (Mac, 27 Oct 2026)
 Status: queued (Mac; after WO-167, which brings the map tiles and the pin component)
 
@@ -5187,7 +5189,7 @@ Dave, 27 Oct 18:46: the map's mod author OK'd its use on the site, with a credit
 - Bob, 28 Oct, 23:10: read the notes and the report, and pinned the nine cities, Riverwood, Bleak Falls Barrow, Embershard Mine, High Hrothgar, Ivarstead, Kynesgrove, Morvunskar Crypts, Nightgate Inn, Green-Tip Cabin and Fort Dawnguard on `tamriel.webp` with `maps.json`'s rule: every one lands where it belongs (Nightgate on Lake Yorgrim, Morvunskar Crypts by Kynesgrove, Fort Dawnguard at the canyon east of Riften, at the map's eastern edge). Done. Rulings on the four questions: Vigilant's realm stays in the data (the map shows Tamriel only); farms in a field get a position (WO-171); the 83 unplaceable are fine as they are; Dead Drop Falls on the fort's door is fine. Embershard Mine is south-west of Riverwood, not south: noted, the data is right.
 
 ## WO-165  The quest and person pages get the same at-a-glance and colours (Mac, 27 Oct 2026)
-Status: for Bob (Bob's second review done; typecheck, lint, tests, the build and the full e2e pass, 493 of 495, the two that failed in the full run pass alone)
+Status: done
 
 **Why.** `docs/page-templates.md` rows 14 and 16: the quest and person pages read well but are one grey. WO-160 (`LinePage`) and WO-162 (`PlaceTown`) set the pattern: an At a glance band under the title, colour that means one thing, a contents rail on long pages. Same pattern here, so every World page feels like one site.
 - [x] **A quest**: At a glance under the title: how it starts (green: who and where), level and danger (red), where it takes you (blue), rewards and XP (gold), and the number of ways to finish it (purple). People and places in the steps as the coloured chips; XP in the pixel face. The Rewards box stays.
@@ -5233,6 +5235,8 @@ Places link on Aela's and Lydia's pages, the counts agree ("Gives 9 quests, and 
 Jeff's notes on the second review (Mac, 28 Oct):
 - **A danger cell only for a place the index knows is a fight** (`hasDanger`: the place is found and WO-162's kind says dangerous). A shop, inn, house or town, and a name the index doesn't have (the Riverwood Trader, until WO-171's alias lands), have none; the "How dangerous these places are isn't known yet" line only shows when a known dangerous place has no data. `wo154p4` follows (The Book of Love's towns say nothing about danger).
 - Screenshot: `test-results/wo165-golden-claw-1440.png`: only Bleak Falls Barrow has a Danger cell.
+
+- Bob, 28 Oct, 00:45: The Golden Claw's Riverwood Trader has no danger cell now. Done.
 
 ## WO-163  Quest categories as tables (Mac, 27 Oct 2026)
 Status: done
