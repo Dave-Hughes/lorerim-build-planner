@@ -5031,7 +5031,7 @@ Status: building (Mac)
 - [ ] Bob checks both in Dave's Chrome signed in and signed out (two screenshots a few seconds apart to show the strip has moved). Screenshots at 1440 signed in and out, then `for Bob`.
 
 ## WO-172  Places that share a name are still separate places (Mac, 28 Oct 2026)
-Status: for Bob
+Status: done
 
 **Why.** Dave, 28 Oct 05:54, two screenshots of `/map` with an Imperial Military Camp picked: dozens of orange "picked" pins and plates all over the map (more pile up as he pans), pins drawn outside the map's frame, and the drawer showing the Winterhold camp whichever he clicked. The cause: a place's slug comes from its name (`placeHref(name)`, `slugOf` in `src/lib/map/data.ts`), and WO-166 kept 7 names that are different places (eight Imperial camps and eight Sons of Skyrim camps, one per hold; Hall of the Dead in four cities; Jarl's Longhouse, Shrine of Talos, Hall of Kyne, Cragwater Cavern). So eight pins share one slug: picking one lights all eight, React gets duplicate keys (which is what leaves the extra pins behind while panning), and `/places/imperial-military-camp` is one page for eight places.
 - [x] **Every place has its own slug.** Where a name is shared, the slug adds the hold, or the town for a building inside one: `imperial-military-camp-the-reach`, `hall-of-the-dead-whiterun`. Every place page, map pin, drawer, link, search result and preview uses it. The old shared address lists the places with that name (a small "which one?" page), not one of them.
@@ -5054,9 +5054,10 @@ Status: for Bob
 - **Bob's measure** (the map's place links, drag and zoom): the e2e now drags three times and zooms twice and checks no place link is drawn twice and one pin is picked; the eight camps each have their own address, so the eights that pointed at the eighth's page are gone.
 - After the push I read the staging preview itself: `/`, `/map`, `/map?place=imperial-military-camp-the-reach`, `/places`, `/places?hold=The%20Reach`, `/places/imperial-military-camp` ("Which one?", eight links), `/places/imperial-military-camp-the-reach`, `/places/hall-of-the-dead-whiterun`, `/places/sons-of-skyrim-military-camp-the-reach` ("After the war"), `/search?q=imperial%20military%20camp`, `/quests` and `/people/lydia` all answer 200. Full e2e: 531 of 532 (the command palette test fails on a busy run and passes alone, as before).
 
+- Bob, 28 Oct, 06:45: on the preview the map draws 320 places once each and still once each after three drags and a zoom; the Reach's camp picked lights one pin, the drawer says "Imperial Military Camp, the Reach"; `/places/imperial-military-camp` asks which of the eight. Done.
 
 ## WO-171  Farms are on the map, not inside a city (PC, 27 Oct 2026)
-Status: for Bob
+Status: queued (PC; Bob's review, two small boxes)
 
 **Why.** WO-166's notes: Battle-Born, Pelagia and Chillfurrow farms (and Rorikstead's and Falkreath's) are parented to the city's location in the records, so they read `inTown` and get no pin, though they stand in the fields outside the walls.
 - [x] A place with `LocTypeFarm` (or a Farm or Mill kind) and exterior cells of its own gets a position from those cells and its own `nearestTown`, not `inTown`. Its town stays as a tag ("near Whiterun").
@@ -5076,6 +5077,11 @@ Status: for Bob
 - **WO-165's Golden Claw page:** the Riverwood Trader is a place now, a Store in Riverwood, so the page finds its kind (the Mac side needs nothing).
 - **Checks.** Python 432 tests pass (5 new: the three Whiterun farms and four more out, the village farms staying in, nothing both in a town and on the map, the door names and their aliases, the cases held back). tsc clean. vitest 735 pass, 7 expected fail, 1 skipped, **1 fails and isn't mine: `src/lib/places/map-credit.test.ts` (Mac's, new) compares file paths written with `/` against what Windows gives back (`src\components\...`).** It fails on any Windows checkout; the fix is to normalise the separators in the test. Left for the Mac side.
 
+### Bob's review (28 Oct, 06:45)
+Read on the preview: Battle-Born Farm has its own map band; the Riverwood Trader has a page under its door name; Riverwood lists Sven and Hilde's House. Ruling on the village farms: right, a farm inside Rorikstead or Kynesgrove is the village; leave them in town. Two small things:
+- [ ] **Two names still carry "Interior"**: Sarethi Farm Interior and Chillfurrow Farm Interior (Chillfurrow's shows as a neighbour on Battle-Born Farm's map). Merge an interior into its farm, or drop the word, as the leftovers in WO-166 were.
+- [ ] **Farms are typed House** (Battle-Born, Katla's, Merryfair, Hlaalu…) and read "A house in Whiterun hold". A place named Farm, Farmhouse or Mill, or tagged `LocTypeFarm`, is a Farm (Mill for a mill), and the Places groups put them under Homes.
+- [ ] Then `for Bob`.
 
 ## WO-170  The home page comes alive (Mac, 27 Oct 2026)
 Status: done
@@ -5161,6 +5167,8 @@ Kyria's run (`/p/4et99tk25s`) has the build page's hero (her name, line, Made by
 - [ ] **On a fallback card the icon runs into the name**: the head sits behind "TEST: ISOLDE MARCHAND" and the tagline. The icon sits above the words with room, or smaller.
 - [ ] **What's under each card on `/me` doesn't line up**: "Plan a playthrough ›" on some, "Only you" and "AI assisted" on a line that wraps on others, so Delete and Edit sit at three different heights across one row. One fixed layout under every card: who can see it and AI assisted on one line, then Plan a playthrough when there's no run, then Delete and Edit at the same place.
 - [ ] Screenshots of Kyria's run and `/me` signed in, then `for Bob`.
+
+- [ ] **From Jeff on PC (WO-171's notes):** `src/lib/places/map-credit.test.ts` compares paths written with `/` against what Windows returns (`src\components\...`), so it fails on the PC's checkout. Normalise the separators in the test.
 
 ## WO-169  The Map page (Mac, 27 Oct 2026)
 Status: done
