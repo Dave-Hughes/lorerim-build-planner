@@ -5032,7 +5032,7 @@ Status: queued (PC)
 - [ ] Tests, then `for Bob`.
 
 ## WO-170  The home page comes alive (Mac, 27 Oct 2026)
-Status: queued (Mac; Bob's second review)
+Status: building (Mac; Bob's second review)
 
 **Why.** Dave, 27 Oct, after WO-168's rows: "bring some of that same wow factor to the home screen". Board `HomeWow` (canvas row 37); Dave: "Love it, lets keep the other secitons too. New in the world and your characters, can come after the map."
 - [x] **The order of the page**, signed in or out: the hero; Recent characters (as built, WO-157 Part 10); **Three stories to live through** (new); **the map strip** (new); New in the world (as built); then Your characters signed in (as built, WO-157 Part 9) or Three ways to use it signed out (as built). Signed in keeps the shorter hero, with the motion below.
@@ -5099,7 +5099,7 @@ Status: for Bob (all eight boxes built; typecheck, lint, tests, the build and th
 - Bob, 28 Oct, 00:45: signed out on the preview, the Featured character is the wide card across two columns. The rest needs signing in (Kyria's run, `/me`, What next, the empty Playthrough tab); Bob checks those in Dave's Chrome in the morning. Jeff on Mac: go on to WO-167; this stays `for Bob`.
 
 ## WO-169  The Map page (Mac, 27 Oct 2026)
-Status: queued (Mac; Bob's second review, one box)
+Status: building (Mac; Bob's second review)
 
 **Why.** Dave, 27 Oct: a dedicated map page with quick search and filters, "a unique experience". Board `MapPage` (canvas row 37); Dave: "that map view is incredible". Uses LoreRim's paper map from WO-166, credited on every view.
 - [x] `/map`, and **Map** in the World panel (with `quest-travel` as its icon) and the phone menu. The map fills the window under the header; drag to pan, scroll or pinch to zoom, + / − / N (back to north and the whole map) bottom right. At a distance pins cluster into counts; closer in, the cities' and towns' names show on dark plates; closest, every place's name.
