@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-177  A cold review of staging: what's broken, what's off the grid, what reads wrong (Mac, 28 Oct 2026)
-Status: for Bob
+Status: queued (Mac; Part 6 first)
 
 **Why.** Dave, 28 Oct 10:06: "I've already spotted lots of things that are broken, or weird UI issues." Bob's reviews had checked each order's boxes and not the whole page. A reviewer who hadn't seen the orders walked 25 pages signed out at 1440 and 390, scrolling with the wheel and hovering: no console errors, no broken links, nothing scrolls sideways; and the list below (screenshots in Bob's scratch folder, `rex/shots/`). Bob confirmed the first ones by hand. Dave's own list joins this order when he sends it. Do the parts in order; each box is a fault seen, not a guess.
 
@@ -5117,8 +5117,27 @@ Decisions and reasons:
 - **A memory fault found by the page test:** the people pages kept a compiled name pattern per person (the server ran out of memory over a few hundred pages). They now share one and skip the person's own link at the match.
 - **Not changed:** the person pages' "Not sure yet" field names still say "them" (they are field names).
 
+### Part 6. The third cold review (28 Oct, 14:50)
+Fixed now: map labels under panels, Aela's tag, Lydia's phone cell, "(Unbound)", Bryling, Alvor's pronoun, story counts everywhere, DA11FIN, "1 ways", place links teal, small cards' maker, the phone route, Lydia's heading, `/changes` (892, folded). Bob confirmed the first two below by hand. Still wrong or new:
+- [ ] **"in in" from the start builder**: "Sinding in in a cell in Falkreath Jail", "Thadgeir in in Falkreath", "Sven in in the Sleeping Giant Inn" and eight more; "Narfi in around Ivarstead". The builder joins "who" and "where" with "in" when the where already starts with a preposition. A test over every start.
+- [ ] **Field keys on the page**: "TakesYou.hold.", "Starts.where.", "takesYou.Saarthal:" as Not sure yet items on 9 quest pages (Lost to the Ages, Memories of the Umbranox, The Mad King, Remnants, Meridia's Order, Forbidden Legend…). Every field key maps to its player words ("Where it takes you"); an unknown key is never printed. The page-text test fails on a dotted or camelCase key.
+- [ ] **`<Alias=Player>` and other alias tags in quotes** on 8 place pages (Kynesgrove, Rorikstead, the Bannered Mare, Warmaiden's…). `<Alias=Player>` reads "you"; any other alias tag means the line isn't fit to quote: leave that line out. Same test.
+- [ ] **Bob's ruling on "Why we're unsure"**: the reasons come from the reads and are written for editors ("package" 259 times, "alias", "script property", "I went with the book"); the hedges "(probably)", "(likely)" sit in the body on about 40 pages ("Geirmund's Hall (probably)", "Sword of Haafingar (likely)"). For now: Not sure yet lists the unsure fields in player words only; the "Why we're unsure" reasons show only when they contain none of the editor terms (package, alias, script, property, record, faction, keyword, condition, stage, form, "I went with", "here"); the rest are hidden (kept in the data). A hedge in brackets in the body goes, and its field joins Not sure yet. A rewrite of the reasons in players' words is a later batch (backlog).
+- [ ] **The main quest's reason**, "What Dragonborn needs: Level 25, for the cultists to find you: We haven't checked this against the game files yet: LoreRim's files set their chance to 0", is three fragments joined by colons, under "Read from the game files and checked by a second reader". Under the ruling above it hides; and "How it starts." stands alone as an item: it reads "How it starts".
+- [ ] **The `/quests` table at 1440**: Level now reads "Level…" in every row. Level shows "20" (the column says Level), never truncated; Profane Divinity's From still "Trad" (use the mod's name as the mod list has it).
+- [ ] **"Dawnguard | Dawnguard"** still two tags (one orange, one plain); "Odd jobs in Whiterun Hold" beside "Whiterun hold" (the shelf names in `questlines.json` say "hold"); the Dawnguard line links "Volkihar Keep" to Castle Volkihar (fine as a link, but the words say Castle Volkihar's name elsewhere: leave the words as the game's, the link is right).
+- [ ] **Place pages off the grid**: 10 in a sample of 40 start their body 47 to 72 px right of the title (Fort Hraggstad, Blind Cliff Cave, Serpent's Bluff Redoubt, Weynon Stones, The Forgotten City, Liar's Retreat, Witchmist Burial Mound, Ragnvald Vale, Wreck of the Brinehammer, the Reach's Sons of Skyrim camp). Same cause as Dungeon Delving: a page with no side column. Every page kit lines the body up with the title; a test measures it on 50 pages of each kind.
+- [ ] **Count badges under city labels on `/map`** (a "2" under Dawnstar, Windhelm, Whiterun, Markarth, Falkreath): a city's label takes the badge's count into it ("Whiterun 2") or the badge sits beside it.
+- [ ] **"1 quest go here"** in hover cards (`src/lib/pages/preview.ts`): "goes".
+- [ ] **Levels chart cuts bar labels** ("Er", "Skel", "B") when a bar is short: the label goes outside the bar.
+- [ ] **Hover cards over map controls**: on `/places`, a card near the right edge runs under the − button; on `/map`, labels show through the card. The card sits above everything and keeps clear of the controls.
+- [ ] **Aela**: At a glance "Follows you: Yes" while What she offers says "Not sure yet": the cell says "Not sure yet" too.
+- [ ] **Small cards on a phone** still cut the tagline ("Javelins to pull,…"): two lines, then the cut. A route on `/map` at 390 leaves stop 3 (Saarthal) unnamed: route stops are always named.
+- [ ] **`/changes`**: seven identical "Delivery" rows and "Hunter Marks Animal Den 02": a job template isn't a change worth a row.
+- [ ] Walk at both widths; Bob sends the reviewer again.
+
 ## WO-178  Data a player would call wrong (PC, 28 Oct 2026)
-Status: for Bob (the PC's boxes and the Mac's are done)
+Status: queued (Mac for 1 and 2, PC for 3 to 5: Part 3)
 
 From the same cold review (WO-177). Each is what the page shows; find why in the records and fix it in the build, or say why it's right.
 - [x] **Only one temple or guild on the map** ("Temples and guilds 1": High Hrothgar). The Temple of Kynareth, the Temple of Mara, Jorrvaskr and the College are inside their cities, so they have no position (WO-166's rule). Give the Mac what it needs to show a place inside a town at its town's pin on the map when its group is picked (the town's position on each such row as `pinAt`), so the groups aren't empty.
@@ -5169,8 +5188,17 @@ Checks: Python 440 OK, `tsc` and eslint clean, vitest 775 pass / 7 expected fail
 - **Lydia, the PC half and the drawer**: a city's drawer is no longer the first six people in building order (all Companions at Whiterun). `drawerPeople()` in `src/lib/map/data.ts` takes who rules or serves first (jarl, steward, housecarl, court wizard, priest, healer, commander), then who sells or trains, innkeepers, quest givers, then the rest, two to a building when there are several. Whiterun: Balgruuf, Irileth, Danica Pure-Spring, Lydia, then two Companions. Riften, Solitude and Windhelm lead with their court wizards, jarls and commanders. Lydia herself will fly to Dragonsreach once the Mac draws in-town places at their town's pin (her first day is at Dragonsreach, which has `pinAt`); until then `mapPlaceNamed("Dragonsreach")` finds nothing and she lands on Whiterun. That is the first box of this part, not a PC job, so her box stays open.
 - **For the Mac, still open**: the first two boxes (pins for in-town places; `/map` and `/places` reading `placeCounts()`) and the last. Status below is the Mac's.
 
+### Part 3. The third cold review (28 Oct, 14:50)
+Fixed: the climb only on Bleak Falls Barrow; Bleak Falls Barrow's one answer; Lydia flies to Dragonsreach and Whiterun's drawer lists its notable people; Castle Volkihar's hold and people; the Soul Cairn as a realm. Still:
+- [ ] **(Mac) Temples at their town's pin** show only zoomed right in; at the opening zoom the pin has no label and hovering shows the town's own card ("1 quest go here"), nothing about its 4 temples. With a group picked, the town's pin carries the count at every zoom ("Whiterun, 4") and its hover lists the places of that group.
+- [ ] **(Mac) "on the map" total**: `/map` says 750, `/places` and home 457. One number from the build, the same rule everywhere (what the map draws, in-town places counted once at their town or not at all: say which).
+- [ ] **(Mac) Dragonsreach's drawer** doesn't list Lydia, the person you just picked to fly there.
+- [ ] **(PC) The Soul Cairn**: Danger "Level 13 and up" and under it "How dangerous it is isn't known yet". One answer. **Castle Volkihar's** page map is half frame, the pin in sea away from the drawn island: check its position (the castle's exterior is its own worldspace; use the boat dock on Tamriel the player uses, or the island's marker).
+- [ ] **(PC) `/places/dungeon`** is a placeholder from the courier-job mod ("Dungeon", "A landmark next to Dawnstar", quotes like "guarded by a ."). Placeholder locations of a radiant system aren't places: drop them, with a test listing the rule.
+- [ ] Then `for Bob`.
+
 ## WO-176  Two small things from Bob's read of WO-174 (Mac, then PC, 28 Oct 2026)
-Status: for Bob
+Status: queued (Mac and PC: Part 2)
 
 - [x] **Rewards is said twice in a row on a quest's page.** Song of the Green: At a glance's Rewards cell ("100 XP, You can make Auri's Bow…"), then straight under it the Rewards section with the same two lines. Now that Rewards sits in the main column, show the section only when it adds something the cell doesn't (more than one reward, or when and from whom); otherwise the cell is enough.
 - [x] **(PC) Danger that reads like one stray actor:** "Moss Mother Cavern: enemies from level 1, up to 2", "Sons of Skyrim Military Camp: level 1 to 2" (WO-172). Check where a place's range comes from one placed creature or guard while the place's real fight is a leveled list or a quest's spawn; when the records only show one low actor, say "Not known yet" rather than 1 to 2. Mac: then `for Bob`.
@@ -5185,6 +5213,11 @@ Status: for Bob
 
 Jeff's note (Mac, 28 Oct): **Rewards.** The section under At a glance shows only when it has more than the cell: a second reward, or a "when" that says more than "at the end" / "once the quest is done" / "at the start" (`GENERIC_WHEN` in the quest page; the data's one-reward timings are mostly "at the end" (72), then who or what hands it over: "when you report back to Nazir"). Song of the Green now has it in At a glance only; Lights Out! (several rewards) keeps the section; when it is hidden the contents drop its entry too. Test in `e2e/wo174.spec.ts`. Checks: typecheck, lint, `npm test` 746, full e2e 542 passed and one failure, the Ctrl+K palette in `wo154p4` (the keypress came before the page was ready in a loaded run; it passes alone, and nothing here touches it). The PC's box landed while this was building (rebased onto it): with its data in, `npm test` 746 and a build pass; read on a local server, Moss Mother Cavern's page says "How dangerous it is isn't known yet" (its map range is none) and the Sons of Skyrim camp in the Reach reads Level 4 to 27, 22 to 27 after the war.
 
+### Part 2. The third cold review (28 Oct, 14:50)
+- [ ] **(Mac) Rewards still said twice** on Extracting an Argonian (the cell's two lines repeated below), The Bonds of Matrimony ("Amulet of Mara / Handled by the quest's script"), Through a Glass, Darkly, Return Aegisbane, The Kagrumez Gauntlet. An editor's note ("Handled by the quest's script", "Inside Kagrumez") doesn't count as more; the section shows only when it adds a reward or a when/from-whom a player can use.
+- [ ] **(PC) Danger from stray low actors** remains where there are three or more: Darkwater Pass "Level 1 to 2, 3 in all" (a Falmer cave), Northwind Mine "Level 1 to 2, boss Skeleton level 1", Headwaters of Harstrad "boss Skeleton, level 1", Ivarstead "up to 3". The rule is about what kind of actor (placed non-leveled creatures and a town's guards aren't the place's fight), not how many.
+- [ ] **(Mac) Moss Mother Cavern** lost its Danger cell and shows a lone centred "How dangerous it is isn't known yet." in an empty column while Not sure yet says "Nothing is flagged". An unknown danger is a Danger cell saying "Not known yet", and Not sure yet lists it.
+- [ ] Then `for Bob`.
 
 ## WO-174  Dave's test, 28 Oct morning: the quest page's side column, its first step, and the Map page made simpler (Mac, 28 Oct 2026)
 Status: done
