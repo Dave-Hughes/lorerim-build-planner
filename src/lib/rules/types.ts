@@ -123,6 +123,8 @@ export interface BuildPlan {
   coverFocus?: { x: number; y: number };
   /** The guide theme of the build's page (WO-37, src/lib/themes.ts). Absent means Ember. */
   theme?: ThemeId;
+  /** The character's pronouns (WO-179); none set reads as "they". */
+  pronoun?: "she" | "he" | "they";
   /** The build's video guide: a YouTube video id (WO-39, src/lib/builds/youtube.ts). */
   videoId?: string;
   levels: LevelPlan[];

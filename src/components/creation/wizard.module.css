@@ -117,7 +117,8 @@
   font-weight: 600;
   color: var(--soft);
 }
-.next .stepName {
+.next .stepName,
+.optional .stepName {
   color: var(--muted);
 }
 .stepVal {

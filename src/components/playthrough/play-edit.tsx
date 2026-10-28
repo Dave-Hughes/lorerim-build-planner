@@ -468,6 +468,10 @@ function ObjectiveRow({
     if (!o) save(() => act.newObjective(pid, a.id, v), true, (r) => r.ok && onToggle());
     else save(() => act.saveObjective(pid, o.id, v), true);
   };
+  // A new objective is kept in the form until Add (WO-179): clicking outside or changing a field saves nothing; an existing one saves as it is changed.
+  const live = (patch: Parameters<typeof values>[0] = {}) => {
+    if (o) commit(patch);
+  };
   const addBeat = () =>
     o &&
     save(async () => {
@@ -524,7 +528,7 @@ function ObjectiveRow({
                     aria-label={`Unlink ${link.name}`}
                     onClick={() => {
                       setLink(null);
-                      commit({ link: null });
+                      live({ link: null });
                     }}
                   >
                     ×
@@ -545,11 +549,11 @@ function ObjectiveRow({
                   setText(t);
                   if (m.kind === "quest" && kind === "once") {
                     setDetect({ quest: m.id });
-                    commit({ link: l, text: t, detect: { quest: m.id } });
-                  } else commit({ link: l, text: t });
+                    live({ link: l, text: t, detect: { quest: m.id } });
+                  } else live({ link: l, text: t });
                 }}
                 onBlur={() => {
-                  if (!o || text.trim() !== o.text) commit();
+                  if (o && text.trim() !== o.text) commit();
                 }}
               />
             </span>
@@ -574,7 +578,7 @@ function ObjectiveRow({
                     aria-pressed={kind === k}
                     onClick={() => {
                       setKind(k);
-                      commit({ kind: k });
+                      live({ kind: k });
                     }}
                   >
                     {k === "once" ? "Done once" : "Reach a number"}
@@ -588,12 +592,12 @@ function ObjectiveRow({
               <span className="label">
                 Quest<InfoTip label="About the quest" text="Link a planner quest and the save can tick it. Leave it empty for something of her own." />
               </span>
-              <QuestStage quests={quests} detect={detect ?? (link?.link.kind === "quest" ? { quest: link.link.id } : null)} onChange={(det) => (setDetect(det), commit({ detect: det }))} />
+              <QuestStage quests={quests} detect={detect ?? (link?.link.kind === "quest" ? { quest: link.link.id } : null)} onChange={(det) => (setDetect(det), live({ detect: det }))} />
             </div>
           ) : (
             <div className={s.field}>
               <span className="label">What, and how many</span>
-              <ReachPick d={d.skills} reach={reach} onChange={(r) => (setReach(r), commit({ reach: r }))} />
+              <ReachPick d={d.skills} reach={reach} onChange={(r) => (setReach(r), live({ reach: r }))} />
             </div>
           )}
           {(kind === "reach" || detect || link?.link.kind === "quest") && (
@@ -605,7 +609,7 @@ function ObjectiveRow({
                 onChange={(ev) => {
                   const v = ev.target.checked ? "save" : "hand";
                   setDoneBy(v);
-                  commit({ doneBy: v });
+                  live({ doneBy: v });
                 }}
               />
               Ticks from your save<InfoTip label="About ticking from your save" text="The save ticks this when it shows it done. You can always tick it yourself." />
@@ -622,7 +626,7 @@ function ObjectiveRow({
                 value={stop}
                 onChange={(ev) => {
                   setStop(ev.target.value);
-                  commit({ stop: ev.target.value });
+                  live({ stop: ev.target.value });
                 }}
               >
                 <option value="">On the road</option>
@@ -636,7 +640,7 @@ function ObjectiveRow({
           )}
           <label className={s.field}>
             <span className="label">Why</span>
-            <input className={`input ${e.in}`} value={why} maxLength={300} onChange={(ev) => setWhy(ev.target.value)} onBlur={() => why.trim() !== (o?.why ?? "") && commit()} />
+            <input className={`input ${e.in}`} value={why} maxLength={300} onChange={(ev) => setWhy(ev.target.value)} onBlur={() => o && why.trim() !== (o.why ?? "") && commit()} />
           </label>
           {o && (
             <div className={s.field}>
@@ -679,16 +683,21 @@ function ObjectiveRow({
             ) : (
               <>
                 <span className="muted">@ links a quest, a quest line, a spell, an item or a follower</span>
-                <button
-                  type="button"
-                  className="btn btn-sm"
-                  onClick={() => {
-                    setError(null);
-                    onToggle();
-                  }}
-                >
-                  Cancel
-                </button>
+                <span style={{ display: "inline-flex", gap: 8 }}>
+                  <button type="button" className="btn btn-sm btn-primary" onClick={() => commit()} disabled={!text.trim()}>
+                    Add
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-sm"
+                    onClick={() => {
+                      setError(null);
+                      onToggle();
+                    }}
+                  >
+                    Cancel
+                  </button>
+                </span>
               </>
             )}
           </span>

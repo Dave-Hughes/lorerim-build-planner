@@ -74,6 +74,7 @@ function planSchema(d: GameData) {
     masterOfOneSkill: skillName.optional(),
     coverFocus: z.object({ x: z.number().min(0).max(100), y: z.number().min(0).max(100) }).optional(),
     theme: z.enum(THEME_IDS).optional(),
+    pronoun: z.enum(["she", "he", "they"]).optional(),
     mainSpells: z.array(z.string().min(1).max(200)).max(8).optional(),
     videoId: z.string().regex(/^[\w-]{11}$/, "That isn't a YouTube link.").optional(),
     traitChoices: z

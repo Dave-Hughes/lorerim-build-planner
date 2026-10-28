@@ -30,15 +30,16 @@ describe("Set up's step checks (WO-58)", () => {
     expect(checkStep(d, { ...full, majors: full.majors.slice(0, 2), minors: [] }, "", "skills")).toEqual({ state: "problem", problem: "Choose 1 more major" });
   });
 
-  it("Traits: none is valid; a trait that asks for a choice needs one", () => {
-    expect(checkStep(d, { ...full, traits: [] }, "", "traits")).toEqual({ state: "done" });
+  it("Traits: none is valid but no tick (optional); a trait that asks for a choice needs one", () => {
+    expect(checkStep(d, { ...full, traits: [] }, "", "traits")).toEqual({ state: "optional" });
     expect(checkStep(d, { ...full, traits: ["Focused Combat"], traitChoices: {} }, "", "traits")).toEqual({ state: "problem", problem: "Focused Combat needs a skill" });
     expect(checkStep(d, { ...full, traits: ["Focused Combat"], traitChoices: { "Focused Combat": "Marksman" } }, "", "traits")).toEqual({ state: "done" });
     expect(checkStep(d, { ...full, traits: ["Master of One"] }, "", "traits")).toEqual({ state: "problem", problem: "Master of One needs a skill" });
   });
 
-  it("Deity: always done (None is a choice)", () => {
-    expect(checkStep(d, { ...full, deity: "" }, "", "deity")).toEqual({ state: "done" });
+  it("Deity: a tick only when one is chosen; empty is optional (WO-179)", () => {
+    expect(checkStep(d, { ...full, deity: "" }, "", "deity")).toEqual({ state: "optional" });
+    expect(checkStep(d, { ...full, deity: d.deities[0] }, "", "deity")).toEqual({ state: "done" });
   });
 
   it("Mode and start: a start, and its option when it has one", () => {

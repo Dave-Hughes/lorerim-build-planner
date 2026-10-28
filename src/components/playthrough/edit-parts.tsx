@@ -67,6 +67,8 @@ export interface EditData {
   showDrafted: boolean;
   /** The build's cover (WO-114), the character's one. */
   coverImageUrl: string | null;
+  /** The character's pronouns, when set (WO-179). */
+  pronoun: "she" | "he" | "they" | null;
   /** The Tale page's title and epigraph (WO-114). */
   taleTitle: string;
   taleLine: string;
@@ -143,11 +145,24 @@ export function MentionInput({
   const ref = useRef<HTMLInputElement>(null);
   const listId = useId();
   const [at, setAt] = useState(0);
-  const query = /@([^@]*)$/.exec(value)?.[1] ?? null;
-  const hits = useMemo(() => (query === null ? [] : searchWithExtras(d, query, linkables, ["spell", "item"], 6)), [d, query, linkables]);
+  // `@` opens the menu as it always did; and so does plain typing (WO-179): the last words typed are looked up as a quest, a place, a person, an item
+  // or a spell, and the menu opens when something answers. The typed words are what a pick replaces.
+  const { query, hits, strip, plain } = useMemo(() => {
+    const at = /@([^@]*)$/.exec(value);
+    if (at) return { query: at[1], hits: searchWithExtras(d, at[1], linkables, ["spell", "item"], 6), strip: /@[^@]*$/, plain: false };
+    const words = value.trim().split(/\s+/).filter(Boolean);
+    for (const n of [3, 2, 1]) {
+      const q = words.slice(-n).join(" ");
+      if (q.length < 3) continue;
+      const found = searchWithExtras(d, q, linkables, ["spell", "item"], 6);
+      if (found.length) return { query: q, hits: found, strip: new RegExp(`${q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*$`), plain: true };
+    }
+    return { query: null as string | null, hits: [] as ExtraMention[], strip: /@[^@]*$/, plain: false };
+  }, [d, value, linkables]);
   const open = query !== null;
+  const touched = useRef(false);
   const pick = (m: ExtraMention) => {
-    const rest = value.replace(/@[^@]*$/, "").trim();
+    const rest = value.replace(strip, "").trim();
     onPick(m, rest ? `${rest} ${m.name}` : "");
   };
   return (
@@ -166,6 +181,7 @@ export function MentionInput({
         aria-autocomplete="list"
         onChange={(e) => {
           setAt(0);
+          touched.current = false;
           onChange(e.target.value);
         }}
         onBlur={() => {
@@ -176,9 +192,15 @@ export function MentionInput({
         }}
         onKeyDown={(e) => {
           if (!open) return;
-          if (e.key === "ArrowDown") setAt((n) => Math.min(n + 1, hits.length));
-          else if (e.key === "ArrowUp") setAt((n) => Math.max(n - 1, 0));
-          else if (e.key === "Enter") {
+          if (e.key === "ArrowDown") {
+            touched.current = true;
+            setAt((n) => Math.min(n + 1, hits.length));
+          } else if (e.key === "ArrowUp") {
+            touched.current = true;
+            setAt((n) => Math.max(n - 1, 0));
+          } else if (e.key === "Enter") {
+            // Typing plainly, Enter picks only what the arrow keys reached: the words may be the player's own.
+            if (plain && !touched.current) return;
             if (hits[at]) pick(hits[at]);
             else onChange(value.replace(/@/, ""));
           } else if (e.key === "Escape") onChange(value.replace(/@([^@]*)$/, "$1"));
@@ -203,19 +225,18 @@ export function MentionInput({
   );
 }
 
-/** The quest and stage the save shows when it's done: a quest from the planner's quests, and a stage. */
+/** The quest the save shows when it's done: a quest from the planner's quests (WO-179: a record's stage number is not something players know, so there is no Stage box; one already set stays). */
 export function QuestStage({ quests, detect, onChange }: { quests: ExtraMention[]; detect: Detect | null; onChange: (d: Detect) => void }) {
   const named = detect ? quests.find((q) => q.id === detect.quest) : undefined;
   const [name, setName] = useState(named?.name ?? "");
-  const [stage, setStage] = useState(detect?.stage === undefined ? "" : String(detect.stage));
   const listId = useId();
-  const send = (n: string, st: string) => {
+  const send = (n: string) => {
     const q = quests.find((x) => x.name.toLowerCase() === n.trim().toLowerCase());
-    if (q) onChange({ quest: q.id, ...(st.trim() ? { stage: Number(st) } : {}) });
+    if (q) onChange({ quest: q.id, ...(detect?.quest === q.id && detect.stage !== undefined ? { stage: detect.stage } : {}) });
   };
   return (
-    <span className={s.row} style={{ gridTemplateColumns: "minmax(0,1fr) 90px", gap: 10 }}>
-      <input className={`input ${s.in} ${s.sm}`} list={listId} aria-label="Quest" placeholder="[The quest]" value={name} onChange={(e) => setName(e.target.value)} onBlur={() => send(name, stage)} />
+    <span className={s.row} style={{ gridTemplateColumns: "minmax(0,1fr)", gap: 10 }}>
+      <input className={`input ${s.in} ${s.sm}`} list={listId} aria-label="Quest" placeholder="[The quest]" value={name} onChange={(e) => setName(e.target.value)} onBlur={() => send(name)} />
       <datalist id={listId}>
         {quests.map((q) => (
           <option key={q.id} value={q.name}>
@@ -223,7 +244,6 @@ export function QuestStage({ quests, detect, onChange }: { quests: ExtraMention[
           </option>
         ))}
       </datalist>
-      <input className={`input ${s.in} ${s.sm}`} type="number" min={0} aria-label="Stage" placeholder="Stage" value={stage} onChange={(e) => setStage(e.target.value)} onBlur={() => send(name, stage)} />
     </span>
   );
 }

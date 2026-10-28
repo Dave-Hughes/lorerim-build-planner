@@ -26,6 +26,7 @@ import { shippedVersions } from "@/lib/rules/versions";
 import { emptyLevel } from "@/lib/rules/derive";
 import { computeBuild } from "@/lib/rules/engine";
 import type { BuildPlan } from "@/lib/rules/types";
+import { PRONOUNS } from "@/lib/pronouns";
 import { useDismiss } from "@/lib/use-dismiss";
 import { YOUTUBE_ERROR, youtubeVideoId } from "@/lib/builds/youtube";
 import { addRun } from "@/lib/playthroughs/actions";
@@ -167,14 +168,17 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
     race: plan.race || "Not chosen",
     birthsign: masterOfDestiny ? "Removed by Master of Destiny" : plan.birthsign ? `The ${plan.birthsign}` : "Not chosen",
     skills: `${plan.majors.length} major${plan.majors.length === 1 ? "" : "s"}, ${plan.minors.length} minor${plan.minors.length === 1 ? "" : "s"}`,
-    traits: `${plan.traits.length} of ${d.rules.maxTraits} chosen`,
-    deity: plan.deity ? d.deities.includes(plan.deity) ? <IconLabel icon={<DeityIcon name={plan.deity} />}>{plan.deity}</IconLabel> : plan.deity : "None",
+    traits: plan.traits.length ? `${plan.traits.length} of ${d.rules.maxTraits} chosen` : "Optional",
+    deity: plan.deity ? d.deities.includes(plan.deity) ? <IconLabel icon={<DeityIcon name={plan.deity} />}>{plan.deity}</IconLabel> : plan.deity : "Optional",
     mode: `${plan.mode}${plan.start ? `, ${plan.start}${plan.startOption && plan.startOption !== "Random" ? `, ${plan.startOption}` : ""}` : ""}`,
     name: details.name || "Not named yet",
   };
 
   // A last step after Details when playthroughs are on (WO-164): What next, a playthrough or finish. Not a step key, so saved drafts keep working.
   const [whatNext, setWhatNext] = useState(false);
+  useEffect(() => {
+    if (whatNext) window.scrollTo({ top: 0 });
+  }, [whatNext]);
   const finish = (thenPlan = false) =>
     start(async () => {
       setError(null);
@@ -235,7 +239,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
                     className={`${styles.stepRow} ${styles[state]}`}
                     onClick={() => setStep(s)}
                     aria-current={state === "now" ? "step" : undefined}
-                    aria-label={`${STEP_NAMES[s]}: ${state === "done" ? "done" : state === "problem" ? check.state === "problem" ? check.problem : "" : state === "now" ? "this step" : "not started"}`}
+                    aria-label={`${STEP_NAMES[s]}: ${state === "done" ? "done" : state === "problem" ? check.state === "problem" ? check.problem : "" : state === "now" ? "this step" : state === "optional" ? "optional" : "not started"}`}
                   >
                     <span className={styles.stepMark} aria-hidden="true">
                       <span>{state === "done" ? <PixelCheck /> : state === "problem" ? "!" : i + 1}</span>
@@ -249,6 +253,30 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
                 </li>
               );
             })}
+            {/* What next is a step in the rail (WO-179), after Details, when playthroughs are on and a new character is being made. */}
+            {characters && mode === "create" && signedIn && (
+              <li>
+                <button
+                  type="button"
+                  className={`${styles.stepRow} ${styles[whatNext && step === "name" ? "now" : "next"]}`}
+                  onClick={() => {
+                    setStep("name");
+                    setWhatNext(true);
+                  }}
+                  disabled={!details.name.trim() || !plan.race}
+                  aria-current={whatNext && step === "name" ? "step" : undefined}
+                  aria-label="What next"
+                >
+                  <span className={styles.stepMark} aria-hidden="true">
+                    <span>{STEPS.length + 1}</span>
+                  </span>
+                  <span className={styles.stepText}>
+                    <span className={styles.stepName}>What next</span>
+                    <span className={styles.stepVal}>A playthrough or finish</span>
+                  </span>
+                </button>
+              </li>
+            )}
           </ol>
           {startState && (
             <div className={`frame ${styles.startPanel}`}>
@@ -1063,6 +1091,17 @@ function NameStep({
           focus={plan.coverFocus}
           onFocus={(coverFocus) => update((p) => ({ ...p, coverFocus }))}
         />
+        <fieldset className={styles.radios}>
+          <legend className="label">
+            Pronouns<InfoTip label="About pronouns" text="Used where the planner talks about the character: About her, Where is she in your game. Not set reads as they." />
+          </legend>
+          {PRONOUNS.map(({ key, label }) => (
+            <label key={key} className={styles.radio}>
+              <input type="radio" name="pronoun" value={key} checked={(plan.pronoun ?? "they") === key} onChange={() => update((p) => ({ ...p, pronoun: key }))} />
+              <span>{label}</span>
+            </label>
+          ))}
+        </fieldset>
         <TagField chosen={details.tags ?? suggestedTags(plan.majors)} suggested={details.tags == null} onChange={(tags) => updateDetails({ tags })} />
         <div className={styles.links}>
           <VideoField
@@ -1093,7 +1132,7 @@ function NameStep({
             <legend className="label">Who can see it</legend>
             {(
               [
-                ["public", "Listed on Browse builds"],
+                ["public", "Listed on Characters"],
                 ["unlisted", "Anyone with the link"],
                 ["private", "Only you"],
               ] as const
@@ -1132,7 +1171,7 @@ function TagField({ chosen, suggested, onChange }: { chosen: string[]; suggested
         Tags
         <InfoTip
           label="About tags"
-          text={`Up to ${MAX_TAGS}. They help people find it on Browse builds.${suggested && chosen.length ? " These are suggested from your majors: remove any that don't fit." : ""}`}
+          text={`Up to ${MAX_TAGS}. They help people find it on Characters.${suggested && chosen.length ? " These are suggested from your majors: remove any that don't fit." : ""}`}
         />
       </span>
       <span className={styles.tagChips}>

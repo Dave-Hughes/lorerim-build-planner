@@ -29,7 +29,7 @@ test("the visibility button changes Link only to Listed, and Set up's band shows
   await expect(page).toHaveURL(new RegExp(`/b/${LINK_ONLY_BUILD_ID}/setup`));
   await page.goto(`/b/${LINK_ONLY_BUILD_ID}/setup?step=name`);
   // Details has no Who can see it of its own (WO-118): the band says it.
-  await expect(page.getByLabel("Listed on Browse builds")).toHaveCount(0);
+  await expect(page.getByLabel("Listed on Characters")).toHaveCount(0);
   // Back to Link only, as seeded.
   await page.getByRole("region", { name: "Edit bar" }).getByRole("button", { name: "Who can see it: Listed" }).click();
   await page.getByRole("menuitemradio", { name: /^Link only/ }).click();

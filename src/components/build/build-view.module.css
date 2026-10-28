@@ -112,6 +112,22 @@
   min-height: 0;
   background-image: var(--hero-art), repeating-linear-gradient(135deg, var(--stripe) 0 2px, transparent 2px 16px), var(--hero-plain);
 }
+/* The fallback for a character with no cover (WO-164 on a card, WO-179 on the page): the race's pixel icon over the night blues. */
+.coverNight {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: max(24px, 8%);
+  background: linear-gradient(170deg, #1b2a44 0%, #14213a 45%, #0d1524 100%);
+}
+.coverNightIcon {
+  width: clamp(72px, 12vw, 128px);
+  aspect-ratio: 1;
+  image-rendering: pixelated;
+  opacity: 0.55;
+}
 /* A theme with pixel art (Aurora, WO-89): the scene drawn pixel for pixel, tall enough to read. */
 .coverArt {
   min-height: 360px;

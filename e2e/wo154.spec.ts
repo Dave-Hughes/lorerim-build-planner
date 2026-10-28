@@ -90,7 +90,8 @@ test("a place's page: the danger gauge, the boss, what points here, what it pays
   await expect(page.getByRole("heading", { level: 1, name: "Broken Oar Grotto" })).toBeVisible();
   await expect(page.getByRole("img", { name: /Bandits from level 6 to 24; the boss from level 19 to 24/ })).toBeVisible();
   await expect(page.getByRole("region", { name: "Quests that bring you here" }).getByRole("link", { name: "Lights Out!" })).toHaveAttribute("href", "/quests/q/lights-out");
-  await expect(page.getByRole("region", { name: "What people say about it" })).toContainText("Note from Jaree-Ra");
+  // Jaree-Ra's note has a hole where the game fills in a name ("make sure  is taken care of"): it is not quoted (WO-180).
+  await expect(page.getByRole("region", { name: "What people say about it" })).toHaveCount(0);
   await expect(page.getByRole("region", { name: "At a glance" })).toContainText("100 XP");
 });
 

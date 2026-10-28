@@ -327,6 +327,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
           signInToLike={signInToLike}
           autoCopy={!!autoCopy}
           admin={admin}
+          tab={tab}
           onWatch={() => {
             setTab("guide");
             setPlay((n) => n + 1);
@@ -1543,7 +1544,10 @@ function Cover({
   autoCopy,
   admin,
   onWatch,
+  tab,
 }: {
+  /** The tab open on the page: Edit goes to that tab's editor (WO-179). */
+  tab: BuildTab;
   build: BuildViewData;
   isOwner: boolean;
   signedIn: boolean;
@@ -1646,6 +1650,12 @@ function Cover({
           <div className={styles.coverTint} />
         </div>
       )}
+      {/* No cover and no theme art: the race's pixel icon on the night blues, the card's fallback (WO-164) on the page too (WO-179). */}
+      {!build.coverImageUrl && themeOf(drawnTheme(build.plan.theme)).vars["hero-art"] === "none" && (
+        <div className={styles.coverNight} aria-hidden="true">
+          {build.plan.race ? <img className={styles.coverNightIcon} src={`/icons/race-${build.plan.race.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}.svg`} alt="" /> : null}
+        </div>
+      )}
       {build.coverHeld && <span className={styles.coverHeld}>{HIDDEN_IMAGE_TEXT}</span>}
       <div className={styles.coverFade} />
       <div ref={deepen} className={styles.coverDeepen} />
@@ -1712,8 +1722,9 @@ function Cover({
           )}
           {isOwner ? (
             ownerBar ? null : (
-              <Link className="btn btn-primary" href={`/b/${build.id}/edit`}>
-                Edit build
+              // Edit opens on the tab you were on (WO-179): the playthrough's editor, the guide's, or the build's.
+              <Link className="btn btn-primary" href={tab === "play" ? `/b/${build.id}/play` : tab === "guide" ? `/b/${build.id}/guide` : `/b/${build.id}/edit`}>
+                Edit
               </Link>
             )
           ) : signedIn ? (

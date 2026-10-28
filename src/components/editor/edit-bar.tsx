@@ -18,7 +18,7 @@ export type EditPage = "setup" | "levels" | "play" | "guide" | "story";
 const VIS_ORDER: BuildVisibility[] = ["public", "unlisted", "private"];
 
 export const VISIBILITY: Record<BuildVisibility, { label: string; text: string }> = {
-  public: { label: "Listed", text: "Listed on Browse builds" },
+  public: { label: "Listed", text: "Listed on Characters" },
   unlisted: { label: "Link only", text: "Anyone with the link" },
   private: { label: "Only you", text: "Only you" },
 };

@@ -539,7 +539,8 @@
   /* The tagline keeps two lines and the maker keeps a name: the likes go on a phone's small card, and the level is smaller (WO-177 Part 5). */
   .grid .card:not(.wide) .tagline {
     -webkit-line-clamp: 2;
-    font-size: 14px;
+    font-size: 13px;
+    line-height: 1.25;
   }
   .grid .card:not(.wide) .likes {
     display: none;
@@ -552,10 +553,10 @@
     font-size: 19px;
   }
   .grid .card:not(.wide) .plain {
-    padding-top: 42px;
+    padding-top: 38px;
   }
   .grid .card:not(.wide) .plainIcon {
-    width: 34px;
+    width: 26px;
   }
 }
 

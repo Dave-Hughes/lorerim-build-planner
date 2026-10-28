@@ -1,3 +1,4 @@
+import { pro } from "@/lib/pronouns";
 import { ModsNeeded } from "@/components/ui/mods-needed";
 import Link from "next/link";
 import type { PlaythroughRecord } from "@/lib/playthroughs/queries";
@@ -60,7 +61,7 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
 
   return (
     <div className={s.body}>
-      <AboutHer answers={p.answers} />
+      <AboutHer answers={p.answers} pronoun={p.build?.pronoun ?? null} />
       <div className={s.grid}>
         <aside className={s.col}>
           {/* Her story, always on show (WO-124, the PlayRail board). */}
@@ -102,6 +103,7 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
               {isOwner ? (
                 <WhereIsShe
                   id={p.id}
+                  pronoun={p.build?.pronoun ?? null}
                   line={whereLine(p.snapshot)}
                   characters={[...new Set([p.name, p.build?.name].filter((n): n is string => !!n))]}
                   objectives={v.acts.flatMap((a) => a.objectives.flatMap((o) => (o.kind === "once" && o.doneBy === "save" && o.detect && o.accepted ? [{ detect: o.detect }] : [])))}
@@ -278,12 +280,12 @@ function Objective({ o, p, isOwner }: { o: ObjectiveView; p: PlaythroughRecord; 
 }
 
 /** About her (WO-139 Part 2): the Before you design answers, in the player's words, only when there are any. */
-function AboutHer({ answers }: { answers: PlaythroughRecord["answers"] }) {
+function AboutHer({ answers, pronoun }: { answers: PlaythroughRecord["answers"]; pronoun: "she" | "he" | "they" | null }) {
   if (!answers?.length) return null;
   return (
     <section aria-labelledby="about" className={s.about}>
       <h2 id="about" className={`${s.h2} ${s.h2s}`}>
-        About her
+        About {pro(pronoun).object}
       </h2>
       <dl className={s.aboutList}>
         {answers.map((a, i) => (

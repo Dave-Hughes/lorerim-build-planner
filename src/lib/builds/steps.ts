@@ -7,7 +7,8 @@ import { TRAIT_CHOICES } from "@/lib/rules/trait-choices";
 import type { BuildPlan } from "@/lib/rules/types";
 import type { Step } from "./draft";
 
-export type StepCheck = { state: "done" } | { state: "next" } | { state: "problem"; problem: string };
+/** `optional` is a step that may stay empty and has no choice yet: no tick (WO-179). */
+export type StepCheck = { state: "done" } | { state: "next" } | { state: "optional" } | { state: "problem"; problem: string };
 
 const more = (n: number, one: string) => `Choose ${n} more ${one}${n === 1 ? "" : "s"}`;
 
@@ -32,11 +33,11 @@ export function checkStep(d: GameData, plan: BuildPlan, name: string, step: Step
         if (c && !c.options.includes(plan.traitChoices?.[t] ?? ""))
           return { state: "problem", problem: `${t} needs ${t === "Focused Combat" || t === "Focused Magic" ? "a skill" : "a choice"}` };
       }
-      return { state: "done" };
+      // A tick only when a choice is made (WO-179): no traits is valid, and an optional step left empty says Optional.
+      return plan.traits.length ? { state: "done" } : { state: "optional" };
     }
     case "deity":
-      // None is a choice.
-      return { state: "done" };
+      return plan.deity ? { state: "done" } : { state: "optional" };
     case "mode": {
       if (!plan.start) return { state: "next" };
       const start = d.startByName.get(plan.start);

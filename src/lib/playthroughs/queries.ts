@@ -30,6 +30,8 @@ export interface PlaythroughRecord extends PlaythroughRow {
     /** The character's one cover (WO-114): the build's, unless an admin holds it back. */
     coverImageUrl: string | null;
     coverFocus: { x: number; y: number } | null;
+    /** The character's pronouns, when set (WO-179). */
+    pronoun: "she" | "he" | "they" | null;
   } | null;
   snapshot: SnapshotRow | null;
   view: PlaythroughView;
@@ -90,6 +92,7 @@ export async function getPlaythrough(id: string, viewerId: string | null): Promi
             visibility: b.visibility,
             coverImageUrl: coverShown,
             coverFocus: plan.coverFocus ?? null,
+            pronoun: plan.pronoun ?? null,
           }
         : null,
     snapshot,

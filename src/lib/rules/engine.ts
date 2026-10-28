@@ -26,9 +26,11 @@ function perkLabel(d: GameData, id: string, inTree?: string): string {
 export function checkCreation(b: BuildPlan, d: GameData = requireGameData(b.gameVersion)): Issue[] {
   const rules = d.rules;
   const out: Issue[] = [];
-  if (!d.raceByName.has(b.race)) out.push(issue("creation", `Unknown race "${b.race}".`));
+  // An empty choice is not yet made, not an unknown one (WO-179): the page never prints the code's message for it.
+  if (!b.race) out.push(issue("creation", "No race chosen yet."));
+  else if (!d.raceByName.has(b.race)) out.push(issue("creation", `Unknown race "${b.race}".`));
   if (!b.traits.includes("Master of Destiny") && !d.signByName.has(b.birthsign))
-    out.push(issue("creation", `Unknown birthsign "${b.birthsign}".`));
+    out.push(issue("creation", b.birthsign ? `Unknown birthsign "${b.birthsign}".` : "No birthsign chosen yet."));
   if (b.majors.length > rules.majorCount)
     out.push(issue("creation", `Only ${rules.majorCount} major skills.`));
   if (b.minors.length > rules.minorCount)

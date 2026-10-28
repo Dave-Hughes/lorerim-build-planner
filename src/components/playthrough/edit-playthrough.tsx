@@ -1,5 +1,6 @@
 "use client";
 
+import { pro } from "@/lib/pronouns";
 import { ModsEditor } from "@/components/ui/mods-editor";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -147,7 +148,7 @@ function Answers({ data, save }: { data: EditData; save: ReturnType<typeof useSa
   const set = (i: number, patch: Partial<Answer>) => setRows((r) => r.map((x, j) => (j === i ? { ...x, ...patch } : x)));
   return (
     <span className={s.field}>
-      <span className={s.lbl}>About her</span>
+      <span className={s.lbl}>About {pro(data.pronoun).object}</span>
       {rows.map((r, i) => (
         <span key={i} className={s.answerRow}>
           <input className={`input ${s.in}`} aria-label={`Question ${i + 1}`} placeholder="[The question]" value={r.question} maxLength={300} onChange={(e) => set(i, { question: e.target.value })} onBlur={() => keep(rows)} />

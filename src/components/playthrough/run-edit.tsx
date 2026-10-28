@@ -35,6 +35,7 @@ export async function RunEdit({ id, act }: { id: string; act?: string }) {
     draftedBy: p.draftedBy,
     showDrafted: p.showDrafted,
     coverImageUrl: p.build?.coverImageUrl ?? null,
+    pronoun: p.build?.pronoun ?? null,
     taleTitle: p.taleTitle ?? "",
     taleLine: p.taleLine ?? "",
     answers: p.answers ?? [],

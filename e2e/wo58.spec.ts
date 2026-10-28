@@ -38,14 +38,16 @@ test("a build through all 7 steps: Mephala on the Deity step saves, and the rail
   await page.getByRole("button", { name: "Next: Details" }).click();
   await page.getByLabel("Name", { exact: true }).fill("Seven Steps");
 
-  for (const s of ["Race", "Birthsign", "Skills", "Traits", "Deity", "Mode and start"]) await expect(rail.getByRole("button", { name: `${s}: done` })).toBeVisible();
+  for (const s of ["Race", "Birthsign", "Skills", "Deity", "Mode and start"]) await expect(rail.getByRole("button", { name: `${s}: done` })).toBeVisible();
+  // No traits is valid and has no tick (WO-179): the step says it is optional.
+  await expect(rail.getByRole("button", { name: "Traits: optional" })).toBeVisible();
   await page.getByRole("button", { name: "Next: What next" }).click();
   await page.getByRole("button", { name: "Finish" }).click();
   await page.waitForURL(/\/b\/([23456789abcdefghjkmnpqrstuvwxyz]{10})\/edit/);
   const id = page.url().match(/\/b\/(\w{10})\//)![1];
   await page.goto(`/b/${id}/setup?step=deity`);
   await expect(page.getByRole("button", { name: "Mephala", exact: true })).toHaveAttribute("aria-pressed", "true");
-  for (const s of ["Race", "Birthsign", "Skills", "Traits", "Mode and start", "Details"]) await expect(rail.getByRole("button", { name: `${s}: done` })).toBeVisible();
+  for (const s of ["Race", "Birthsign", "Skills", "Mode and start", "Details"]) await expect(rail.getByRole("button", { name: `${s}: done` })).toBeVisible();
 });
 
 test("an existing build opens on the Deity step with its god chosen; ?step=mode opens Mode and start", async ({ page, context }) => {

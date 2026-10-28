@@ -80,7 +80,7 @@ for (const width of [1440, 390]) {
     await signIn(context);
     await page.setViewportSize({ width, height: 900 });
     await page.goto(`/p/${pid}`);
-    const about = page.getByRole("region", { name: "About her" });
+    const about = page.getByRole("region", { name: "About them" });
     await expect(about.locator("dt")).toHaveText(ANSWERS.map((a) => a.question));
     await expect(about.locator("dd").first()).toHaveText(ANSWERS[0].answer);
     expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
@@ -107,8 +107,8 @@ test("the edit page edits, adds and removes an answer", async ({ page, context }
   await Promise.all([saved(), page.getByLabel("Answer 3").blur()]);
   await savedInBand(page);
   await page.goto(`/p/${pid}`);
-  await expect(page.getByRole("region", { name: "About her" }).locator("dt")).toHaveText([ANSWERS[1].question, ANSWERS[2].question, "Do they want a mount?"]);
-  await expect(page.getByRole("region", { name: "About her" })).toContainText("A bow, always.");
+  await expect(page.getByRole("region", { name: "About them" }).locator("dt")).toHaveText([ANSWERS[1].question, ANSWERS[2].question, "Do they want a mount?"]);
+  await expect(page.getByRole("region", { name: "About them" })).toContainText("A bow, always.");
 });
 
 for (const width of [1440, 390]) {

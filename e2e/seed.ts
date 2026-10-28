@@ -155,7 +155,8 @@ function samplePlan(): BuildPlan {
   const { name: _n, description: _d, ...plan } = sample as unknown as BuildPlan & { name: string; description: string };
   void _n;
   void _d;
-  return plan;
+  // The test characters are she (WO-179): their pages and editors say "her", as the specs expect.
+  return { ...plan, pronoun: "she" };
 }
 
 export async function seed() {

@@ -1,5 +1,6 @@
 "use client";
 
+import { pro } from "@/lib/pronouns";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { answer, enterByHand, tick } from "@/lib/playthroughs/actions";
@@ -173,11 +174,12 @@ export function HandEntry({
  * Read a save, the same reader as edit's, or Enter by hand, level, day and where she is. Once there's one: the line that
  * says where she is, and Update to read another.
  */
-export function WhereIsShe({ id, line, characters, objectives, skills }: { id: string; line: string | null; characters: string[]; objectives: { detect: Detect }[]; skills: Record<string, number> }) {
+export function WhereIsShe({ id, line, characters, objectives, skills, pronoun = null }: { id: string; line: string | null; characters: string[]; objectives: { detect: Detect }[]; skills: Record<string, number>; pronoun?: "she" | "he" | "they" | null }) {
+  const who = pro(pronoun);
   const [open, setOpen] = useState(!line);
   if (line && !open)
     return (
-      <span className={s.whereLine} aria-label="Where she is">
+      <span className={s.whereLine} aria-label={`Where ${who.subject} ${who.be}`}>
         {line}{" "}
         <button type="button" className={s.linkButton} onClick={() => setOpen(true)}>
           Update ›
@@ -188,9 +190,9 @@ export function WhereIsShe({ id, line, characters, objectives, skills }: { id: s
     <section className={s.where} aria-labelledby="where-title">
       <span className={s.whereWords}>
         <span id="where-title" className={s.whereTitle}>
-          Where is she in your game?
+          Where {who.be} {who.subject} in your game?
         </span>
-        <span className={s.whereHelp}>Fill it in from a save, or by hand. The save ticks her quests for you.</span>
+        <span className={s.whereHelp}>Fill it in from a save, or by hand. The save ticks {who.possessive} quests for you.</span>
       </span>
       <span className={s.whereDo}>
         <ReadSave id={id} characters={characters} objectives={objectives} skills={skills} buttonClassName="btn btn-sm" />
