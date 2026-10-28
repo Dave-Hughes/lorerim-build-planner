@@ -52,6 +52,7 @@ export function SiteNav() {
           { href: "/quests", label: "Quests", icon: "quest-side-stories", note: "Every quest, by line and by place" },
           { href: "/people", label: "People", icon: "quest-people", note: "Where to find them, what they offer" },
           { href: "/places", label: "Places", icon: "quest-travel", note: "By hold and by type" },
+          { href: "/map", label: "Map", icon: "quest-travel", note: "Every place, on the game's own map" },
         ]
       : []),
     ...(gear ? [{ href: "/gear", label: "Gear", icon: "slot-main-hand", note: "Every item, and how to make it" }] : []),

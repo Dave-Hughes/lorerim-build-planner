@@ -15,8 +15,8 @@ test.describe("at 1440", () => {
     await expect(header.getByRole("navigation", { name: "Site" }).getByRole("link")).toHaveText(["Characters", "Guide"]);
     await header.getByRole("button", { name: "World" }).click();
     const world = header.locator("ul").filter({ has: page.getByRole("link", { name: /^Quests/ }) });
-    await expect(world.getByRole("link")).toHaveText([/^Quests/, /^People/, /^Places/, /^Gear/]);
-    await expect(world.locator("img")).toHaveCount(4);
+    await expect(world.getByRole("link")).toHaveText([/^Quests/, /^People/, /^Places/, /^Map/, /^Gear/]);
+    await expect(world.locator("img")).toHaveCount(5);
     await expect(header.getByRole("button", { name: "Search the site" })).toContainText(/Ctrl K|⌘K/);
     await page.keyboard.press("Escape");
     await expect(world).toHaveCount(0);
@@ -198,8 +198,8 @@ test.describe("at 390", () => {
     await expect(header.getByRole("navigation", { name: "Site" })).toBeHidden();
     await header.getByRole("button", { name: "Menu" }).click();
     const menu = header.getByRole("navigation", { name: "Menu" });
-    await expect(menu.getByRole("link")).toHaveText(["Characters", /^Quests/, /^People/, /^Places/, /^Gear/, "Guide"]);
-    await expect(menu.locator("img")).toHaveCount(4);
+    await expect(menu.getByRole("link")).toHaveText(["Characters", /^Quests/, /^People/, /^Places/, /^Map/, /^Gear/, "Guide"]);
+    await expect(menu.locator("img")).toHaveCount(5);
     await header.getByRole("button", { name: "Menu" }).click();
     {
       const hero = await page.locator("section[aria-label='LoreRim Planner']").boundingBox();

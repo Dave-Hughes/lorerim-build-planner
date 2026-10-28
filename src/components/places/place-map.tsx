@@ -1,6 +1,7 @@
 import { MapView } from "./map-view";
 import { placeMap } from "@/lib/places/map";
-import type { Place } from "@/lib/places/data";
+import Link from "next/link";
+import { placeHref, type Place } from "@/lib/places/data";
 import s from "./place-map.module.css";
 
 /**
@@ -14,12 +15,18 @@ export function PlaceMapBand({ place }: { place: Place }) {
   return (
     <section aria-label="Map" className={s.band}>
       <MapView entry={m.entry} pins={m.around} here={m.here} hereLabel={m.inTown ? `In ${m.inTown}` : undefined} labelled={6} mode="band" />
-      {m.gettingThere && (
-        <div className={`page ${s.there}`}>
-          <h2 className={s.h2}>Getting there</h2>
-          <p className={s.p}>{m.gettingThere}</p>
-        </div>
-      )}
+      <div className={`page ${s.there}`}>
+        {m.gettingThere && (
+          <>
+            <h2 className={s.h2}>Getting there</h2>
+            <p className={s.p}>{m.gettingThere}</p>
+          </>
+        )}
+        {/* The whole map, opened on this place (WO-169). */}
+        <Link href={`/map?place=${(placeHref(place.name) ?? "").replace("/places/", "")}`} className={s.onMap}>
+          Open on the map ›
+        </Link>
+      </div>
     </section>
   );
 }

@@ -78,7 +78,7 @@ export function mapPins(): Pin[] {
 const DIRECTIONS = ["East", "Northeast", "North", "Northwest", "West", "Southwest", "South", "Southeast"];
 
 /** "West of Riverwood, a short walk, and well above it": the direction and distance from the nearest town, and the height against it. */
-function gettingThere(p: Place): string | null {
+export function gettingThere(p: Place): string | null {
   const t = p.nearestTown;
   const town = t ? placeByName(t.town) : null;
   if (!t || !town?.pos || !p.pos || town.world !== p.world) return null;

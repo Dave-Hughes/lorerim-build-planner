@@ -11,7 +11,7 @@ test("the header's nav is Characters, World (Quests, People, Places, Gear) and G
   await expect(header.getByRole("navigation", { name: "Site" }).getByRole("link")).toHaveText(["Characters", "Guide"]);
   await header.getByRole("button", { name: "World" }).click();
   await expect(header.getByRole("link", { name: /^Quests/ })).toBeVisible();
-  for (const w of ["People", "Places", "Gear"]) await expect(header.getByRole("link", { name: new RegExp(`^${w}`) })).toBeVisible();
+  for (const w of ["People", "Places", "Map", "Gear"]) await expect(header.getByRole("link", { name: new RegExp(`^${w}`) })).toBeVisible();
   await expect(header.getByRole("link", { name: "New character" })).toHaveClass(/btn-primary/);
 
   const account = header.getByRole("button", { name: /account menu/ });

@@ -18,9 +18,16 @@ describe("the map's credit", () => {
     expect(view).toMatch(/Map: /);
   });
 
-  it("is the only place that loads the map's pictures", () => {
+  it("is drawn by every component that loads the map's pictures: the band and whole map, and the Map page", () => {
     const users = src.filter((f) => /entry\.(tiles|image)\b|\/maps\/tamriel/.test(readFileSync(f, "utf8"))).map((f) => path.relative(process.cwd(), f));
-    expect(users.sort()).toEqual(["src/components/places/map-view.tsx"]);
+    expect(users.sort()).toEqual(["src/components/map/map-page.tsx", "src/components/places/map-view.tsx"]);
+    for (const f of users) {
+      const text = readFileSync(path.join(process.cwd(), f), "utf8");
+      expect(text, f).toMatch(/entry\.credit\.url/);
+      expect(text, f).toMatch(/entry\.credit\.text/);
+      expect(text, f).toMatch(/target="_blank"/);
+      expect(text, f).toMatch(/Map: /);
+    }
   });
 
   it("is in maps.json with the mod's page", () => {
