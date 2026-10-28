@@ -5095,7 +5095,7 @@ Status: done
 - Bob, 28 Oct, 06:45: on the preview the map draws 320 places once each and still once each after three drags and a zoom; the Reach's camp picked lights one pin, the drawer says "Imperial Military Camp, the Reach"; `/places/imperial-military-camp` asks which of the eight. Done.
 
 ## WO-171  Farms are on the map, not inside a city (PC, 27 Oct 2026)
-Status: queued (PC; Bob's review, two small boxes)
+Status: building (PC; Bob's review, two small boxes)
 
 **Why.** WO-166's notes: Battle-Born, Pelagia and Chillfurrow farms (and Rorikstead's and Falkreath's) are parented to the city's location in the records, so they read `inTown` and get no pin, though they stand in the fields outside the walls.
 - [x] A place with `LocTypeFarm` (or a Farm or Mill kind) and exterior cells of its own gets a position from those cells and its own `nearestTown`, not `inTown`. Its town stays as a tag ("near Whiterun").
