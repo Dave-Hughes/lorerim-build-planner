@@ -2093,7 +2093,7 @@
    "id": "Skyrim.esm:0BEDEE",
    "name": "Brandy-Mug Farm",
    "edid": "BrandyMugFarmInteriorLocation",
-   "type": "House",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeHouse"
@@ -4861,7 +4861,7 @@
    "id": "The Great Village of Kynesgrove.esp:164367",
    "name": "Gala's Stead",
    "edid": "KynesgroveGalasSteadLocationTGCoKG",
-   "type": "House",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeFarm",
@@ -5257,7 +5257,7 @@
    "id": "The Great Village of Kynesgrove.esp:164368",
    "name": "Herleif and Ragna's Farm",
    "edid": "KynesgroveHerleifAndRagnasFarmLocationTGCoKG",
-   "type": "House",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeFarm",
@@ -5494,7 +5494,7 @@
    "id": "Skyrim.esm:01705D",
    "name": "Hlaalu Farm",
    "edid": "HlaaluFarmInteriorLocation",
-   "type": "House",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeHouse"
@@ -5535,7 +5535,7 @@
    "id": "Skyrim.esm:01705B",
    "name": "Hollyfrost Farm",
    "edid": "HollyfrostFarmInteriorLocation",
-   "type": "House",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeHouse"
@@ -6515,7 +6515,7 @@
    "id": "The Great Village of Mixwater Mill.esp:03883C",
    "name": "Leif's and Kyne's Farm",
    "edid": "MixwaterMillLeifsandKynesFarmLocation",
-   "type": "House",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeHouse"
@@ -10676,7 +10676,7 @@
    "id": "Skyrim.esm:0200BD",
    "name": "Corpselight Farm",
    "edid": "FalkreathCorpselightFarmLocation",
-   "type": "Building",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeFarm"
@@ -12624,7 +12624,7 @@
    "id": "Skyrim.esm:0200AB",
    "name": "Half-Moon Mill",
    "edid": "HalfMoonLumberMillLocation",
-   "type": "House",
+   "type": "Mill",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeHouse"
@@ -14363,7 +14363,7 @@
    "id": "Skyrim.esm:0200C3",
    "name": "Lod's House",
    "edid": "FalkreathLodsHouseLocation",
-   "type": "Building",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeFarm"
@@ -16544,13 +16544,13 @@
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "ng beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as the flame burns, the college will stand.\r\n\r\nThe Bards College\r\n\r\nLooking up from the Bards College steps, you can see that the college stands taller than the Blue Palace itself. The bards who train here c",
+     "words": "stle Dour and the Temple and you'll get your first sight of the Blue Palace. Along the way, be sure to stop outside the Bards College, a large building on your left marked by the Flame of Callisos burning beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as th",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "stle Dour and the Temple and you'll get your first sight of the Blue Palace. Along the way, be sure to stop outside the Bards College, a large building on your left marked by the Flame of Callisos burning beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as th",
+     "words": "ng beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as the flame burns, the college will stand.\r\n\r\nThe Bards College\r\n\r\nLooking up from the Bards College steps, you can see that the college stands taller than the Blue Palace itself. The bards who train here c",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
@@ -18782,7 +18782,7 @@
    "id": "Skyrim.esm:01705C",
    "name": "Katla's Farm",
    "edid": "KatlasFarmInteriorLocation",
-   "type": "House",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeHouse"
@@ -20381,7 +20381,7 @@
    "id": "Skyrim.esm:10FE2C",
    "name": "Solitude Sawmill",
    "edid": "SolitudeSawmillInteriorLocation",
-   "type": "Building",
+   "type": "Mill",
    "keywords": [
     "LocTypeDwelling"
    ],
@@ -21492,13 +21492,13 @@
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "The city gradually grew to extend across the entire length of the arch. This growth culminated in the building of the Blue Palace, home of the High Kings and Queens of Skyrim. We will visit the palace later.\r\n\r\nThe Gates of Solitude\r\n\r\nEntrance to Solitude is guarded by two gat",
+     "words": ".\r\n\r\nContinue up the road from the college and you'll reach the courtyard of the Blue Palace, our final destination.\r\n\r\nThe Blue Palace\r\n\r\nThe Blue Palace is home to the Jarls of Solitude, who for centuries have also served as the High Kings and High Queens of Skyrim. The northea",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": ".\r\n\r\nContinue up the road from the college and you'll reach the courtyard of the Blue Palace, our final destination.\r\n\r\nThe Blue Palace\r\n\r\nThe Blue Palace is home to the Jarls of Solitude, who for centuries have also served as the High Kings and High Queens of Skyrim. The northea",
+     "words": "The city gradually grew to extend across the entire length of the arch. This growth culminated in the building of the Blue Palace, home of the High Kings and Queens of Skyrim. We will visit the palace later.\r\n\r\nThe Gates of Solitude\r\n\r\nEntrance to Solitude is guarded by two gat",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
@@ -35829,7 +35829,7 @@
    "id": "Skyrim.esm:043D3A",
    "name": "Loreius Farmhouse",
    "edid": "LoreiusFarmhouseLocation",
-   "type": "House",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeHouse"
@@ -41185,7 +41185,7 @@
    "id": "Lux Via - Markarth Entrance and Farm Overhaul.esp:000A77",
    "name": "Hilarius Farmhouse",
    "edid": "HilariusFarmhouseLocation",
-   "type": "House",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeHouse"
@@ -42557,7 +42557,7 @@
    "id": "Lux Via - Markarth Entrance and Farm Overhaul.esp:000B8E",
    "name": "Markarth Mill Maintenance",
    "edid": "MarkarthMillMaintenanceLocation",
-   "type": "House",
+   "type": "Mill",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeHouse"
@@ -44197,7 +44197,7 @@
    "id": "Skyrim.esm:01F805",
    "name": "Salvius Farmhouse",
    "edid": "SalviusFarmhouseLocation",
-   "type": "House",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeHouse"
@@ -48504,7 +48504,7 @@
    "id": "Skyrim.esm:0226A7",
    "name": "Fellstar Farm",
    "edid": "IvarsteadFellstarFarmLocation",
-   "type": "House",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeFarm",
@@ -49596,7 +49596,7 @@
    "id": "Skyrim.esm:05E0FB",
    "name": "Heartwood Mill",
    "edid": "HeartwoodMillInteriorLocation",
-   "type": "House",
+   "type": "Mill",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeHouse"
@@ -51056,7 +51056,7 @@
    "id": "Skyrim.esm:01706B",
    "name": "Merryfair Farm",
    "edid": "MerryfairFarmInteriorLocation",
-   "type": "House",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeHouse"
@@ -52634,9 +52634,9 @@
   },
   {
    "id": "Skyrim.esm:07592B",
-   "name": "Sarethi Farm Interior",
+   "name": "Sarethi Farm",
    "edid": "SarethiFarmInteriorLocation",
-   "type": "House",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeHouse"
@@ -52669,6 +52669,7 @@
     11598.8
    ],
    "posFrom": "door",
+   "recordName": "Sarethi Farm Interior",
    "actors": {
     "count": 2,
     "hostile": false
@@ -52677,7 +52678,47 @@
     "crafting": [
      "an alchemy lab"
     ]
-   }
+   },
+   "pointers": [
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "Season Unending",
+     "words": "We want compensation for the massacre at Sarethi Farm.",
+     "record": "INFO Skyrim.esm:086881 (Skyrim.esm)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "Season Unending",
+     "words": "We want compensation for the massacre at Sarethi Farm.",
+     "record": "INFO Skyrim.esm:08763F (Skyrim.esm)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "Season Unending",
+     "words": "The Empire will pay appropriate compensation for the massacre at Sarethi Farm.",
+     "record": "INFO Skyrim.esm:0DE4F3 (Skyrim.esm)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "Season Unending",
+     "words": "The Stormcloaks will pay appropriate compensation for the massacre at Sarethi Farm.",
+     "record": "INFO Skyrim.esm:0DFB1E (Skyrim.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Journal - Sinderion's",
+     "words": "y who had a small farm near the city of Riften. By bartering my knowledge of nirnroot cultivation, I was able to secure Sarethi Farm as a launching point for my field research. I kept the knowledge of the crimson nirnroot a secret from Avrusa, but imparted everything else I knew",
+     "record": "BOOK Skyrim.esm:0E4D6F (Book Covers Skyrim.esp)"
+    }
+   ]
   },
   {
    "id": "The Great Town of Shor's Stone.esp:08A3BE",
@@ -53208,7 +53249,7 @@
    "id": "Skyrim.esm:01706C",
    "name": "Snow-Shod Farm",
    "edid": "SnowShodFarmInteriorLocation",
-   "type": "House",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeHouse"
@@ -54046,13 +54087,13 @@
     {
      "kind": "book",
      "book": "Uncovering the Aetherium Forge",
-     "words": "to step foot here in thousands of years. More Resonators, easy enough. But the air... it feels different.\r\n[pagebreak]\r\nThe Aetherium Forge. We actually found it! The whole area is surrounded by a pool of magma. We'll have to shut off the steam so my friend can breathe down here.",
+     "words": "[pagebreak]\r\n\r\n\r\n\r\nUncovering the Aetherium Forge\r\n\r\n\r\nby Katria\r\n\r\n\r\n\r\n\r\nThe real mind behind \r\nThe Aetherium Wars\r\n\r\n[pagebreak]\r\n17th of Sun's Height \r\nDamn that sc",
      "record": "BOOK katriaslegacy.esp:000800 (katriaslegacy.esp)"
     },
     {
      "kind": "book",
      "book": "Uncovering the Aetherium Forge",
-     "words": "[pagebreak]\r\n\r\n\r\n\r\nUncovering the Aetherium Forge\r\n\r\n\r\nby Katria\r\n\r\n\r\n\r\n\r\nThe real mind behind \r\nThe Aetherium Wars\r\n\r\n[pagebreak]\r\n17th of Sun's Height \r\nDamn that sc",
+     "words": "to step foot here in thousands of years. More Resonators, easy enough. But the air... it feels different.\r\n[pagebreak]\r\nThe Aetherium Forge. We actually found it! The whole area is surrounded by a pool of magma. We'll have to shut off the steam so my friend can breathe down here.",
      "record": "BOOK katriaslegacy.esp:000800 (katriaslegacy.esp)"
     }
    ],
@@ -55092,7 +55133,7 @@
    "id": "Skyrim.esm:03AFE8",
    "name": "Battle-Born Farm",
    "edid": "BattleBornFarmInteriorLocation",
-   "type": "House",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeHouse"
@@ -55919,9 +55960,9 @@
   },
   {
    "id": "Skyrim.esm:03AFEA",
-   "name": "Chillfurrow Farm Interior",
+   "name": "Chillfurrow Farm",
    "edid": "ChillfurrowFarmInteriorLocation",
-   "type": "House",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeHouse"
@@ -55957,6 +55998,7 @@
     -3989.0
    ],
    "posFrom": "door",
+   "recordName": "Chillfurrow Farm Interior",
    "actors": {
     "count": 1,
     "hostile": false
@@ -55966,6 +56008,24 @@
      "One-Handed: The Importance of Where"
     ]
    },
+   "pointers": [
+    {
+     "kind": "dialogue",
+     "speaker": "Nazeem",
+     "speakerPlace": "The Drunken Huntsman",
+     "quest": "Whiterun City Dialogue",
+     "words": "Oh, it took years, but I earned my way to the top. I own Chillfurrow Farm, you see. Very successful business. Obviously.",
+     "record": "INFO Skyrim.esm:02AB91 (Skyrim.esm)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": "Megara",
+     "speakerPlace": "The Drunken Huntsman",
+     "quest": "The Sweetest Carrot",
+     "words": "That's exactly what I hoped for. I heard it was at Chillfurrow Farm.",
+     "record": "INFO Katana.esp:E2AA82 (Katana.esp)"
+    }
+   ],
    "quests": [
     {
      "quest": "The Sweetest Carrot",
@@ -55977,7 +56037,7 @@
    "id": "Skyrim.esm:01F882",
    "name": "Cowflop Farmhouse",
    "edid": "RoriksteadCowflopFarmLocation",
-   "type": "Building",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeFarm"
@@ -61382,7 +61442,7 @@
    "id": "Skyrim.esm:01F884",
    "name": "Lemkil's Farmhouse",
    "edid": "RoriksteadLemkilsFarmLocation",
-   "type": "Building",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeFarm"
@@ -61548,7 +61608,7 @@
    "id": "Skyrim.esm:03AFE9",
    "name": "Pelagia Farm",
    "edid": "PelagiaFarmInteriorLocation",
-   "type": "House",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeHouse"
@@ -72680,7 +72740,7 @@
    "id": "Wyrmstooth.esp:12E05E",
    "name": "Chalureel Farm",
    "edid": "WTArgonianHouseLocation",
-   "type": "House",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeHouse"
@@ -80073,7 +80133,7 @@
    "id": "The Great City of Solitude.esp:01B3C9",
    "name": "Frederik's Farm",
    "edid": "FrederiksFarmInteriorLocation",
-   "type": "House",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeHouse"
@@ -81688,7 +81748,7 @@
    "id": "The Great City of Solitude.esp:01B261",
    "name": "Jakob's Farm",
    "edid": "JakobsFarmInteriorLocation",
-   "type": "House",
+   "type": "Farm",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeHouse"

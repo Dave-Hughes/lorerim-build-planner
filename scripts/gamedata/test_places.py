@@ -5,6 +5,7 @@ places.py (WO-128 Part 1): the readers on made-up records, and the built index a
 import collections
 import json
 import os
+import re
 import struct
 import sys
 import unittest
@@ -541,7 +542,7 @@ class BuiltIndex(unittest.TestCase):
     def test_a_farm_in_a_field_is_on_the_map_not_in_the_town_its_record_is_parented_to(self):
         # WO-171: Battle-Born, Pelagia and Chillfurrow are parented to Whiterun's location; they stand in the fields, 0.14 to 0.27 km out.
         (whiterun,) = [p for p in self.rows if p["name"] == "Whiterun" and p["type"] == "City"]
-        for name in ("Battle-Born Farm", "Pelagia Farm", "Chillfurrow Farm Interior"):
+        for name in ("Battle-Born Farm", "Pelagia Farm", "Chillfurrow Farm"):
             p = self.by[name]
             self.assertIsNone(p.get("inTown"), name)
             self.assertEqual((p["world"], p["posFrom"]), ("Tamriel", "door"), name)  # the farmhouse's own door, not a field's middle
@@ -586,6 +587,29 @@ class BuiltIndex(unittest.TestCase):
         for p in renamed:
             self.assertEqual(names.count(p["name"].lower()), 1, p["name"])
             self.assertNotIn(p["recordName"].lower(), names, p["recordName"])
+
+    def test_no_name_ends_in_interior_and_the_record_keeps_its_own(self):
+        # WO-171 (Bob's second review): "Sarethi Farm Interior" and "Chillfurrow Farm Interior" are the farms.
+        self.assertEqual([p["name"] for p in self.rows if re.search(r"\bInterior$", p["name"])], [])
+        self.assertEqual(self.by["Sarethi Farm"]["recordName"], "Sarethi Farm Interior")
+        self.assertEqual(self.by["Chillfurrow Farm"]["recordName"], "Chillfurrow Farm Interior")
+        self.assertNotIn("Chillfurrow Farm Interior", self.by)
+
+    def test_a_farm_is_a_farm_and_a_mill_a_mill_not_a_house(self):
+        # WO-171 (Bob's second review): they read "A house in Whiterun hold" and sat under Homes.
+        for name in ("Battle-Born Farm", "Katla's Farm", "Merryfair Farm", "Hilarius Farmhouse", "Cowflop Farmhouse", "Lod's House", "Frederik's Farm"):
+            self.assertEqual(self.by[name]["type"], "Farm", name)
+        for name in ("Solitude Sawmill", "Markarth Mill Maintenance", "Half-Moon Mill", "Heartwood Mill"):
+            self.assertEqual(self.by[name]["type"], "Mill", name)
+        # not a village (Anga's Mill), a room of one, a farm's cellar, nor a landmark that is a fight
+        self.assertEqual(self.by["Anga's Mill"]["type"], "Settlement")
+        self.assertEqual(self.by["Anga's Mill Common House"]["type"], "House")
+        self.assertNotIn(self.by["Snow-Shod Farm Cellar"]["type"], ("Farm", "Mill"))
+        self.assertEqual(self.by["Goldenhills Plantation"]["type"], "Landmark")
+        # a farm is no more a fight than the house it was
+        for p in self.rows:
+            if p["type"] in ("Farm", "Mill"):
+                self.assertNotIn("boss", p.get("actors") or {}, p["name"])
 
 
 if __name__ == "__main__":

@@ -137,7 +137,7 @@ export interface Used {
  * the index because routes, search and objectives need them, but suggest_places is for places a character goes to on purpose out in
  * the world (rule 20). An Orc stronghold stays in: a destination with a gate and a reason. Guild halls are stops too (WO-151).
  */
-const STOPS = new Set(["City", "Town", "Settlement", "Inn", "Temple", "Keep", "Stables", "House", "PlayerHouse", "Guild"]);
+const STOPS = new Set(["City", "Town", "Settlement", "Inn", "Temple", "Keep", "Stables", "House", "PlayerHouse", "Guild", "Farm", "Mill"]);
 
 /**
  * Not a suggestion (WO-151): a stop, or anything the index says sits inside a town (a guild hall, an inn, a temple), where nobody

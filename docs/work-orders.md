@@ -5095,7 +5095,7 @@ Status: done
 - Bob, 28 Oct, 06:45: on the preview the map draws 320 places once each and still once each after three drags and a zoom; the Reach's camp picked lights one pin, the drawer says "Imperial Military Camp, the Reach"; `/places/imperial-military-camp` asks which of the eight. Done.
 
 ## WO-171  Farms are on the map, not inside a city (PC, 27 Oct 2026)
-Status: building (PC; Bob's review, two small boxes)
+Status: for Bob (second review's two boxes done, 28 Oct)
 
 **Why.** WO-166's notes: Battle-Born, Pelagia and Chillfurrow farms (and Rorikstead's and Falkreath's) are parented to the city's location in the records, so they read `inTown` and get no pin, though they stand in the fields outside the walls.
 - [x] A place with `LocTypeFarm` (or a Farm or Mill kind) and exterior cells of its own gets a position from those cells and its own `nearestTown`, not `inTown`. Its town stays as a tag ("near Whiterun").
@@ -5117,9 +5117,17 @@ Status: building (PC; Bob's review, two small boxes)
 
 ### Bob's review (28 Oct, 06:45)
 Read on the preview: Battle-Born Farm has its own map band; the Riverwood Trader has a page under its door name; Riverwood lists Sven and Hilde's House. Ruling on the village farms: right, a farm inside Rorikstead or Kynesgrove is the village; leave them in town. Two small things:
-- [ ] **Two names still carry "Interior"**: Sarethi Farm Interior and Chillfurrow Farm Interior (Chillfurrow's shows as a neighbour on Battle-Born Farm's map). Merge an interior into its farm, or drop the word, as the leftovers in WO-166 were.
-- [ ] **Farms are typed House** (Battle-Born, Katla's, Merryfair, Hlaalu…) and read "A house in Whiterun hold". A place named Farm, Farmhouse or Mill, or tagged `LocTypeFarm`, is a Farm (Mill for a mill), and the Places groups put them under Homes.
-- [ ] Then `for Bob`.
+- [x] **Two names still carry "Interior"**: Sarethi Farm Interior and Chillfurrow Farm Interior (Chillfurrow's shows as a neighbour on Battle-Born Farm's map). Merge an interior into its farm, or drop the word, as the leftovers in WO-166 were.
+- [x] **Farms are typed House** (Battle-Born, Katla's, Merryfair, Hlaalu…) and read "A house in Whiterun hold". A place named Farm, Farmhouse or Mill, or tagged `LocTypeFarm`, is a Farm (Mill for a mill), and the Places groups put them under Homes.
+- [x] Then `for Bob`.
+
+### Jeff's notes on the review (PC, 28 Oct)
+- **"Interior" is gone from both names.** Sarethi Farm Interior is **Sarethi Farm** and Chillfurrow Farm Interior is **Chillfurrow Farm**; no other place had either name, so nothing merged. The record's own name stays in `recordName`, not as an alias (nobody says "Interior"). The rule is general (a name ending in the word, where the rest is no other place's name), so these two are all it found among the 998. Pointers followed: a line that says "Sarethi Farm" (the Season Unending massacre) and Nazeem's "I own Chillfurrow Farm" now point at the farms.
+- **28 places are Farm or Mill now, were House or Building:** 24 farms (Battle-Born, Pelagia, Chillfurrow, Katla's, Merryfair, Hilarius, Salvius, Loreius, Sarethi, Snow-Shod, Brandy-Mug, Hlaalu, Hollyfrost, Leif's and Kyne's, Fellstar, Chalureel, Gala's Stead, Herleif and Ragna's, Cowflop, Lemkil's, Corpselight, Lod's House, Frederik's and Jakob's) and 4 mills (Half-Moon, Heartwood, Markarth Mill Maintenance, Solitude Sawmill). The report lists each with what it was. By keyword first (`LocTypeFarm`, `LocTypeLumberMill`), then the name's word (farm, farmhouse, mill, sawmill) on a house or building. The pages already say "A farm in Whiterun hold" from the type's own name; no page code needed.
+- **Left as they were, on purpose:** Anga's Mill and Chillwater Mill (settlements: a village, not a farm), Anga's Mill Common House (a room of one), Snow-Shod Farm Cellar (a cellar), and **Goldenhills Plantation**, which carries `LocTypeFarm` but is a Landmark with 15 hired guards, a fight with clear XP and respawn; typing it a Farm would have taken its fight away, so a Landmark is never retyped. Tell me if you want it a Farm anyway.
+- **Where the new types sit (the two TypeScript lines, both the PC's contract change):** `groups.ts` puts Farm and Mill in **Homes** (the order's own word for where they were; the group has no other home for them and an unlisted type falls into Landmarks), and `suggest.ts`'s stops list takes them (a farm is a stop, as the House it was; suggest_places stays as it was). If you want a "Farms and mills" group of their own, it is one line in `groups.ts` for the Mac side.
+- **Side effects, in the diff against the file before:** `type` on 28, `name` and `recordName` on 2, `pointers` on 5 (Sarethi Farm gains 5 lines and Chillfurrow Farm 2, the lines that say their names; the Bards College, the Blue Palace and the Aetherium Forge hold the same lines in another order). Nothing else; 998 places, no id added or lost.
+- **Checks:** Python 434 (2 new: no name ends in Interior, a farm is a Farm and a mill a Mill, with the cases left alone). tsc clean. vitest 745 pass, 7 expected fail, 1 skipped (`map-credit.test.ts` passes now: the Mac side normalised the separators). Generated: `places_raw.json`, `places_report.md`, `places.json`.
 
 ## WO-170  The home page comes alive (Mac, 27 Oct 2026)
 Status: done

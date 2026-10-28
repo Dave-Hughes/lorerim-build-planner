@@ -2,7 +2,7 @@
 
 Written by `scripts/gamedata/places.py` from the winning records across the load order (with the Creation Club plugins). Clear and discovery XP from `LoreRim - MCM and INI Settings`'s Experience.ini.
 
-**998 places.** 421 have a pointer (a line or a book that names them), 386 have a quest that goes there, and 435 have neither.
+**998 places.** 423 have a pointer (a line or a book that names them), 386 have a quest that goes there, and 434 have neither.
 
 ## The nine capitals
 
@@ -13,7 +13,7 @@ All nine found with an exterior position.
 
 | Type | Places | With a pointer | With a quest |
 |---|---|---|---|
-| House | 203 | 16 | 27 |
+| House | 180 | 9 | 24 |
 | Landmark | 155 | 44 | 79 |
 | Cave | 107 | 61 | 48 |
 | NordicRuin | 54 | 42 | 34 |
@@ -22,8 +22,9 @@ All nine found with an exterior position.
 | Shack | 31 | 6 | 7 |
 | Inn | 29 | 20 | 16 |
 | DragonLair | 28 | 9 | 1 |
-| Building | 25 | 6 | 6 |
 | DwemerRuin | 24 | 17 | 19 |
+| Farm | 24 | 8 | 4 |
+| Building | 20 | 4 | 5 |
 | Mine | 19 | 11 | 7 |
 | Camp | 16 | 11 | 8 |
 | Town | 15 | 15 | 9 |
@@ -50,15 +51,16 @@ All nine found with an exterior position.
 | Lighthouse | 4 | 2 | 1 |
 | Settlement | 4 | 4 | 3 |
 | Castle | 4 | 2 | 2 |
+| Mill | 4 | 3 | 0 |
 
 ## By hold
 
 | Hold | Places | With a pointer | With a quest |
 |---|---|---|---|
 | (none) | 166 | 46 | 63 |
-| The Rift | 97 | 53 | 37 |
+| The Rift | 97 | 54 | 37 |
 | Eastmarch | 96 | 40 | 32 |
-| Whiterun | 95 | 44 | 35 |
+| Whiterun | 95 | 45 | 35 |
 | The Reach | 94 | 43 | 40 |
 | Haafingar | 86 | 29 | 26 |
 | Falkreath | 65 | 36 | 28 |
@@ -96,7 +98,7 @@ All nine found with an exterior position.
 
 | Kind | Places | Positioned | In a town | Not placed |
 |---|---|---|---|---|
-| House | 203 | 43 | 160 | 0 |
+| House | 180 | 24 | 156 | 0 |
 | Landmark | 155 | 140 | 10 | 5 |
 | Cave | 107 | 105 | 0 | 2 |
 | NordicRuin | 54 | 53 | 0 | 1 |
@@ -105,8 +107,9 @@ All nine found with an exterior position.
 | Shack | 31 | 30 | 0 | 1 |
 | Inn | 29 | 6 | 23 | 0 |
 | DragonLair | 28 | 28 | 0 | 0 |
-| Building | 25 | 5 | 20 | 0 |
 | DwemerRuin | 24 | 24 | 0 | 0 |
+| Farm | 24 | 16 | 8 | 0 |
+| Building | 20 | 4 | 16 | 0 |
 | Mine | 19 | 17 | 2 | 0 |
 | Camp | 16 | 16 | 0 | 0 |
 | Town | 15 | 15 | 0 | 0 |
@@ -133,6 +136,7 @@ All nine found with an exterior position.
 | Lighthouse | 4 | 4 | 0 | 0 |
 | Settlement | 4 | 4 | 0 | 0 |
 | Castle | 4 | 0 | 4 | 0 |
+| Mill | 4 | 4 | 0 | 0 |
 
 ### Not placed, and why
 
@@ -167,10 +171,11 @@ Every location a named quest points at (a location alias, or the cell a forced r
 
 | Kind | Added | In a town | On a map |
 |---|---|---|---|
-| House | 203 | 160 | 43 |
+| House | 180 | 156 | 24 |
 | Landmark | 84 | 10 | 74 |
 | Store | 51 | 43 | 8 |
-| Building | 25 | 20 | 5 |
+| Farm | 24 | 8 | 16 |
+| Building | 20 | 16 | 4 |
 | PlayerHouse | 12 | 6 | 6 |
 | Fort | 8 | 2 | 6 |
 | Shack | 8 | 0 | 8 |
@@ -180,6 +185,7 @@ Every location a named quest points at (a location alias, or the cell a forced r
 | Mine | 5 | 2 | 3 |
 | Cave | 4 | 0 | 4 |
 | Castle | 4 | 4 | 0 |
+| Mill | 4 | 0 | 4 |
 | Camp | 3 | 0 | 3 |
 | Settlement | 3 | 0 | 3 |
 | DwemerRuin | 2 | 0 | 2 |
@@ -493,7 +499,7 @@ A farm or mill whose location owns exterior cells of its own stands in a field. 
 | Farm | Record's town | Found from | Nearest town | Position |
 |---|---|---|---|---|
 | Battle-Born Farm | Whiterun | door | Whiterun 0.2 km | 33889, -4967 |
-| Chillfurrow Farm Interior | Whiterun | door | Whiterun 0.2 km | 31199, -9735 |
+| Chillfurrow Farm | Whiterun | door | Whiterun 0.2 km | 31199, -9735 |
 | Hilarius Farmhouse | Markarth | door | Markarth 0.1 km | -163668, 7835 |
 | Katla's Farm | Solitude | door | Solitude 0.3 km | -75489, 96293 |
 | Markarth Mill Maintenance | Markarth | door | Markarth 0.1 km | -163379, 6673 |
@@ -550,7 +556,49 @@ Left as the record has them:
 | Jakob's Farm | Jakob's House | a farm stays a farm: the door is its house |
 | Riften Mercer's House | Riftweald Manor | another place's name holds it (Riftweald Manor Player Home) |
 
-27 more differ only in that one name holds the other (a town's name dropped from the front, a leading "The"): left as they are.
+25 more differ only in that one name holds the other (a town's name dropped from the front, a leading "The"): left as they are.
+
+### "Interior" dropped from a name (2) (WO-171, second review)
+
+| Record's name | Called |
+|---|---|
+| Chillfurrow Farm Interior | Chillfurrow Farm |
+| Sarethi Farm Interior | Sarethi Farm |
+
+### Farms and mills typed Farm and Mill, not House (28) (WO-171, second review)
+
+By the LocTypeFarm or LocTypeLumberMill keyword, else the name's word (farm, farmhouse; mill, sawmill) on a house or building.
+
+| Place | Was | Now |
+|---|---|---|
+| Battle-Born Farm | House | Farm |
+| Brandy-Mug Farm | House | Farm |
+| Chalureel Farm | House | Farm |
+| Chillfurrow Farm | House | Farm |
+| Corpselight Farm | Building | Farm |
+| Cowflop Farmhouse | Building | Farm |
+| Fellstar Farm | House | Farm |
+| Frederik's Farm | House | Farm |
+| Gala's Stead | House | Farm |
+| Half-Moon Mill | House | Mill |
+| Heartwood Mill | House | Mill |
+| Herleif and Ragna's Farm | House | Farm |
+| Hilarius Farmhouse | House | Farm |
+| Hlaalu Farm | House | Farm |
+| Hollyfrost Farm | House | Farm |
+| Jakob's Farm | House | Farm |
+| Katla's Farm | House | Farm |
+| Leif's and Kyne's Farm | House | Farm |
+| Lemkil's Farmhouse | Building | Farm |
+| Lod's House | Building | Farm |
+| Loreius Farmhouse | House | Farm |
+| Markarth Mill Maintenance | House | Mill |
+| Merryfair Farm | House | Farm |
+| Pelagia Farm | House | Farm |
+| Salvius Farmhouse | House | Farm |
+| Sarethi Farm | House | Farm |
+| Snow-Shod Farm | House | Farm |
+| Solitude Sawmill | Building | Mill |
 
 ### Names the words use that the record doesn't (51)
 
