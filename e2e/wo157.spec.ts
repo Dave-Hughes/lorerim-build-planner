@@ -151,7 +151,7 @@ test.describe("at 1440", () => {
   test("Part 8: the place page's grammar, one Level, the respawn words, quotes without boxes, no broken characters", async ({ page }) => {
     await page.goto("/places/bleak-falls-barrow");
     const main = page.locator("main");
-    await expect(main).toContainText("A Nordic ruin next to Riverwood.");
+    await expect(main).toContainText("A Nordic ruin a short walk from Riverwood.");
     // The distance lives in Getting there, not in a tag (WO-177).
     await expect(page.getByText("Next to Riverwood", { exact: true })).toHaveCount(0);
     await expect(main).toContainText("Level 40");
