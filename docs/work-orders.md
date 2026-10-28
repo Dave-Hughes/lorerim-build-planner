@@ -5113,7 +5113,7 @@ Status: queued (Mac; after WO-162)
 - [ ] Checks, screenshots of Side stories, Guilds and factions and the Quests home at 1440 and 390, then `for Bob`.
 
 ## WO-162  A place's page fits what the place is (Mac, 27 Oct 2026)
-Status: queued (Mac; after WO-161)
+Status: building (Mac)
 
 **Why.** `docs/page-templates.md` row 18: every place uses the dungeon template. Riverwood "Its boss is Camilla Valerius" with a danger chart and 100 XP "for clearing it"; the Bee and Barb shows Danger ("Nobody here is hostile") and "Comes back in 30 days, or 300 once cleared"; neither shows who lives there, shops, trainers or beds. Board: `PlaceTown` (canvas row 36).
 
