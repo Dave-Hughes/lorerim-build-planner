@@ -15,9 +15,9 @@ describe("which kind of page a place gets (WO-162)", () => {
     const real = placeByName("The Bee and Barb");
     if (real) expect(placeKind(real)).toBe("inside");
   });
-  it("a town that bandits hold is dangerous, and every cave, ruin, fort and lair is", () => {
+  it("a town that bandits hold is dangerous, and every cave, ruin, fort and lair whose people are hostile is (Fort Dawnguard, where nobody is, is a home)", () => {
     expect(placeKind({ type: "Town", actors: { count: 54, livesHere: "Bandit" } })).toBe("dangerous");
-    for (const p of placesData().places.filter((x) => ["Cave", "NordicRuin", "DwemerRuin", "DragonLair", "Mine", "Fort"].includes(x.type))) expect(placeKind(p), p.name).toBe("dangerous");
+    for (const p of placesData().places.filter((x) => ["Cave", "NordicRuin", "DwemerRuin", "DragonLair", "Mine", "Fort"].includes(x.type) && x.actors?.hostile !== false)) expect(placeKind(p), p.name).toBe("dangerous");
   });
   it("an inn that isn't inside a town (a roadside one) is a town-style page, not a dungeon", () => {
     expect(placeKind({ type: "Inn", actors: { count: 3, hostile: false } })).toBe("town");
