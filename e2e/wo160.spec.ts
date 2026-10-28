@@ -114,3 +114,21 @@ for (const [slug, title] of [
     }
   });
 }
+
+test("Part 4: one chip size, Dragonborn's seven quests, no empty rows, one button label", async ({ page }) => {
+  await page.goto("/quests/dragonborn");
+  const story = page.getByRole("region", { name: "The story" });
+  const sizes = await story.locator('[class*="__chip"]:not([class*="__chips"])').evaluateAll((els) => [...new Set(els.map((e) => getComputedStyle(e).fontSize))]);
+  expect(sizes).toHaveLength(1);
+  await expect(page.getByRole("region", { name: "At a glance" })).toContainText("7 quests");
+  await expect(page.locator("main").getByText("8 quests")).toHaveCount(0);
+  await expect(story.getByRole("link", { name: "Cultists vs Player" })).toHaveCount(0);
+  const how = page.getByRole("region", { name: "How it starts" });
+  await expect(how).toContainText("Cultists vs Player");
+  for (const li of await how.getByRole("listitem").all()) expect((await li.innerText()).trim().length).toBeGreaterThan(0);
+  await page.screenshot({ path: "test-results/wo160-dragonborn-1440.png", fullPage: true });
+  await page.goto("/quests/c/main-stories");
+  await expect(page.getByRole("link", { name: "Open the story ›" })).toHaveCount(3);
+  await expect(page.getByRole("link", { name: "Open ›", exact: true })).toHaveCount(0);
+  await expect(page.locator("main").getByText("7 quests").first()).toBeVisible();
+});

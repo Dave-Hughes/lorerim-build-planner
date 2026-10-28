@@ -12,10 +12,10 @@ import { placeNames } from "@/lib/pages/names";
 import k from "@/components/pages/page-kit.module.css";
 import { QuestReport } from "@/components/quests/quest-report";
 import { LineJobs, LineStory, LineToc } from "@/components/quests/line-parts";
-import { LineNeeds, type AfterLine } from "@/components/quests/line-start";
+import type { AfterLine } from "@/components/quests/line-start";
 import { categories, homeName, mainOrder, questsData } from "@/lib/quests/data";
 import { lineView } from "@/lib/quests/line-view";
-import { MAIN } from "@/lib/quests/open";
+import { MAIN, NOWHERE, needsOf } from "@/lib/quests/open";
 import { rowOf } from "@/lib/quests/reads";
 import { siteMetadata } from "@/lib/og/metadata";
 import { questHref } from "@/lib/quests/slugs";
@@ -87,6 +87,20 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
   const gives = line.quests.map((q) => ({ edid: q.edid, name: q.name, what: rows.get(q.edid)!.rewards.filter((r) => !/^Gold\b/i.test(r.what)) })).filter((g) => g.what.length > 0);
   const closes = line.quests.flatMap((q) => rows.get(q.edid)!.closes.map((text) => ({ edid: q.edid, name: q.name, text })));
   const pitch = told?.pitch ?? lr?.about ?? null;
+  // What the line needs first, as rows with text only: a level is red, a line or the main quest to finish first is green.
+  const nameOf = (id: string) => after.find((a) => a.id === id)?.name ?? id;
+  const mainName = (edid: string) => main.find((m) => m.edid === edid)?.name ?? edid;
+  const needs = needsOf({ id: line.id, minLevel: line.minLevel, after: line.after, mainQuestAt: line.mainQuestAt }, NOWHERE, main.map((m) => m.edid))
+    .map((n) =>
+      n.kind === "level"
+        ? { tone: "danger" as const, text: `Level ${n.level}`, href: null }
+        : n.kind === "line"
+          ? { tone: "done" as const, text: `${nameOf(n.id)} done`, href: `/quests/${n.id}` }
+          : n.kind === "main"
+            ? { tone: "done" as const, text: `The main quest through ${mainName(n.edid)}`, href: null }
+            : { tone: "done" as const, text: "Part of the main quest comes first; how far isn't checked yet.", href: null },
+    )
+    .filter((n) => n.text.trim());
   const g = view.glance;
   const cells = [
     { key: "start", icon: "quest-sure", tone: l.cGreen, label: "How it starts", ...g.start, vSmall: g.start.value.length > 30 },
@@ -256,6 +270,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
               {view.opens.map((o) => (
                 <div key={o.id} className={l.op}>
                   <Link href={`/quests/${o.id}`}>{o.name}</Link>
+                  {o.needs.length > 0 && (
                   <ul className={l.needs} aria-label={`Needs for ${o.name}`}>
                     {o.needs.map((n, i) => (
                       <li key={i} className={`${l.need} ${n.tone === "done" ? l.needDone : n.tone === "danger" ? l.needDanger : l.needOther}`}>
@@ -267,6 +282,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                       </li>
                     ))}
                   </ul>
+                  )}
                 </div>
               ))}
             </div>
@@ -338,7 +354,23 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                   )}
                 </>
               )}
-              <LineNeeds gate={{ id: line.id, minLevel: line.minLevel, after: line.after, mainQuestAt: line.mainQuestAt }} after={after} main={main} />
+              {needs.length ? (
+                <ul className={l.needs} aria-label="Needs">
+                  {needs.map((n, i) => (
+                    <li key={i} className={`${l.need} ${n.tone === "danger" ? l.needDanger : l.needDone}`}>
+                      <i />
+                      <span>{n.href ? <Link href={n.href}>{n.text.replace(/ done$/, "")}</Link> : n.text}{n.href ? " done" : ""}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p>Nothing needed first: any level can start it.</p>
+              )}
+              {view.notSteps.map((n) => (
+                <p key={n.name}>
+                  <b>{n.name}.</b> {n.text}
+                </p>
+              ))}
               <Link href={`/quests/${line.id}?report=1#report`} className={l.wrong}>
                 This was wrong ›
               </Link>

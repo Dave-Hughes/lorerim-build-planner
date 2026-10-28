@@ -50,7 +50,7 @@ export default async function QuestCategoryPage({ params, searchParams }: { para
       <TitleBox title={c.name} />
       <p className={k.lede}>{c.subtitle}.</p>
       <p style={{ margin: 0, maxWidth: 900, fontSize: 16, color: "var(--muted)" }}>{c.more}</p>
-      <CategoryRows lines={stories} solos={solos} q={q} fixed={main} soloTitle={main ? "Tied to these stories" : "Single quests"} soloNote={main ? "Quests from LoreRim's mods that hang off the three. Each also sits in its own category." : undefined} />
+      <CategoryRows lines={stories} solos={solos} q={q} fixed={main} open={main ? "Open the story ›" : "Open ›"} soloTitle={main ? "Tied to these stories" : "Single quests"} soloNote={main ? "Quests from LoreRim's mods that hang off the three. Each also sits in its own category." : undefined} />
     </main>
   );
 }

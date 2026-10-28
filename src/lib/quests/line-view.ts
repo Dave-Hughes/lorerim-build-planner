@@ -63,6 +63,8 @@ export interface LineView {
   glance: { start: { value: string; sub: string | null }; level: { value: string; sub: string | null }; length: { value: string; sub: string | null }; xp: { value: string; sub: string | null } | null; where: string | null };
   questCount: number;
   chapterCount: number;
+  /** What the read says is not a step of its own (Dragonborn's cultists' ambush), left out of the counts and the run and said under How it starts. */
+  notSteps: { name: string; text: string }[];
 }
 
 const placeLink = (text: string): string | null => placeHref(text) ?? placeHref(text.split(",")[0].trim()) ?? null;
@@ -143,6 +145,9 @@ export function lineView(line: QuestLine): LineView {
   const byName = new Map(quests.map((q) => [q.name, q]));
   const rows = new Map(quests.map((q, i) => [q.edid, rowOf(q, i > 0 ? quests[i - 1] : undefined)]));
   const opening = quests.find((q) => q.edid === line.opening);
+  // A quest the read says isn't a step of its own (it only sets the line off): not counted, not in the run.
+  const isNotAStep = (what: string | null | undefined) => /\b(?:isn't|is not|not) a step of its own\b/i.test(what ?? "");
+  const notSteps = (line.read?.order ?? []).filter((o) => isNotAStep(o.what)).map((o) => ({ name: o.quest, text: o.what! }));
   const branchAt = new Map((line.read?.branches ?? []).map((b) => [b.at, b.options]));
   const pick = (name: string): Chip[] => (branchAt.get(name)?.length ? [{ kind: "pick", text: "A choice" }] : []);
 
@@ -228,7 +233,7 @@ export function lineView(line: QuestLine): LineView {
     // A line with a read gives its quests in order; the older rules, those that pay XP, the opening first.
     const lr = line.read;
     const ordered = lr?.order?.length
-      ? lr.order.map((o) => ({ name: o.quest, what: o.what ?? null, where: o.where ?? null, needs: o.needs ?? null }))
+      ? lr.order.filter((o) => !isNotAStep(o.what)).map((o) => ({ name: o.quest, what: o.what ?? null, where: o.where ?? null, needs: o.needs ?? null }))
       : [...(opening && opening.xp > 0 ? [opening] : []), ...quests.filter((q) => q.xp > 0 && q !== opening)].map((q) => ({ name: q.name, what: rows.get(q.edid)!.summary, where: rows.get(q.edid)!.where, needs: null as string | null }));
     const qs: LineQuest[] = ordered.map((o) => {
       const lq = byName.get(o.name);
@@ -241,7 +246,7 @@ export function lineView(line: QuestLine): LineView {
       return { key: lq?.edid ?? o.name, name: o.name, href: lq ? questHref(lq.edid) : null, task: o.what ?? r?.summary ?? null, note: [note, needs ? `Needs: ${needs}` : null].filter(Boolean).join(" | ") || null, chips, xp: lq?.xp ?? 0 };
     });
     chapters = qs.length ? [{ n: null, name: null, quests: qs, xp: qs.reduce((n, q) => n + q.xp, 0) }] : [];
-    const listed = new Set(ordered.map((o) => o.name));
+    const listed = new Set([...ordered.map((o) => o.name), ...notSteps.map((n) => n.name)]);
     jobs = quests
       .filter((q) => q.xp === 0 && !listed.has(q.name))
       .map((q) => {
@@ -252,6 +257,7 @@ export function lineView(line: QuestLine): LineView {
   }
 
   const storyQuests = chapters.flatMap((c) => c.quests);
+  const skipped = new Set(notSteps.map((n) => n.name));
   const payers = quests.filter((q) => q.xp > 0);
   const first0 = storyQuests[0];
   const lr = line.read;
@@ -271,14 +277,15 @@ export function lineView(line: QuestLine): LineView {
       start: { value: shelf ? "Each job on its own" : (story?.chapters[0]?.name ?? first0?.name ?? opening?.name ?? "Not read yet"), sub: shelf ? "Open one for how it starts" : startText },
       level: line.minLevel ? { value: `Level ${line.minLevel}`, sub: line.level ?? null } : { value: "Any", sub: line.level ?? (lr ? "The records set no level for it" : null) },
       length: {
-        value: `${storyQuests.length || quests.length} ${(storyQuests.length || quests.length) === 1 ? "quest" : "quests"}`,
+        value: `${storyQuests.length || quests.length - skipped.size} ${(storyQuests.length || quests.length - skipped.size) === 1 ? "quest" : "quests"}`,
         sub: chapterCount ? `In ${chapterCount} chapters${jobs.length ? `, plus ${jobs.length} jobs along the way` : ""}` : (line.size ?? (jobs.length ? `Plus ${jobs.length} jobs along the way` : null)),
       },
       xp: xpTotal > 0 ? { value: xpTotal.toLocaleString("en-US"), sub: story ? (story.reward ? story.reward.text.split(": ")[1]?.replace(/\.$/, "") ?? null : null) ?? xpSub(payers) : xpSub(payers) } : null,
       where: uniquePlaces(storyQuests.flatMap((q) => q.chips.filter((c) => c.kind === "place").map((c) => c.text)).concat(line.where ? [line.where] : [])),
     },
-    questCount: storyQuests.length || quests.length,
+    questCount: storyQuests.length || quests.filter((q) => !skipped.has(q.name)).length,
     chapterCount,
+    notSteps,
   };
 }
 

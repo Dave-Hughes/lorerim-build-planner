@@ -24,7 +24,7 @@ function SourceTags({ sources }: { sources: CategoryRow["sources"] }) {
 }
 
 /** One line as a row (WO-160, MainStoriesPage): a big number when the page numbers them, the name, tags, the pitch, how it starts, and its XP. */
-export function LineRow({ r, n }: { r: CategoryRow; n?: number }) {
+export function LineRow({ r, n, open = "Open ›" }: { r: CategoryRow; n?: number; open?: string }) {
   return (
     <article className={`${c.story} ${n ? "" : c.plain}`} aria-labelledby={`line-${r.id}`}>
       {n ? <span className={c.n}>{n}</span> : null}
@@ -70,7 +70,7 @@ export function LineRow({ r, n }: { r: CategoryRow; n?: number }) {
           </>
         )}
         <Link href={r.href} className={c.go}>
-          {r.chapters.length ? "Open the story ›" : "Open ›"}
+          {open}
         </Link>
       </div>
     </article>
@@ -99,7 +99,7 @@ export function SoloRow({ r }: { r: CategoryRow }) {
  * A category's lines as rows, then its single quests (WO-160). Search and Source narrow both; the search goes to the server (the
  * journal's words), the source filter is here. Main stories passes `fixed` and gets no filters.
  */
-export function CategoryRows({ lines, solos, q, fixed = false, soloTitle = "Single quests", soloNote }: { lines: CategoryRow[]; solos: CategoryRow[]; q: string; fixed?: boolean; soloTitle?: string; soloNote?: string }) {
+export function CategoryRows({ lines, solos, q, fixed = false, soloTitle = "Single quests", soloNote, open }: { lines: CategoryRow[]; solos: CategoryRow[]; q: string; fixed?: boolean; soloTitle?: string; soloNote?: string; open?: string }) {
   const [source, setSource] = useState<"" | "base" | "mods">("");
   const [query, setQuery] = useState(q);
   const keep = (r: CategoryRow) => !source || (source === "base" ? r.sources.some((s) => s.base) : r.sources.some((s) => !s.base));
@@ -128,7 +128,7 @@ export function CategoryRows({ lines, solos, q, fixed = false, soloTitle = "Sing
       {shownLines.length + shownSolos.length === 0 && <p className="muted">Nothing matches.</p>}
       <div className={c.rows}>
         {shownLines.map((r, i) => (
-          <LineRow key={r.id} r={r} n={fixed ? i + 1 : undefined} />
+          <LineRow key={r.id} r={r} n={fixed ? i + 1 : undefined} open={open} />
         ))}
       </div>
       {shownSolos.length > 0 && (

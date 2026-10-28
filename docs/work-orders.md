@@ -5155,7 +5155,7 @@ Status: for Bob (all eleven boxes built; typecheck, lint, 706 unit tests, the bu
 - **Screenshots** (in `test-results/`): `wo161-characters-1440.png`, `wo161-characters-390.png`, `wo161-player-1440.png`, `wo161-search-1440.png`, `wo161-changes-1440.png`, `wo161-phone-390.png`.
 
 ## WO-160  One page per quest line (Mac, 27 Oct 2026)
-Status: building (Mac; Part 4)
+Status: queued (Mac; Part 5 and the Quest XP box in Part 1 are unticked. Part 4 is built: typecheck, 706 unit tests, the build and the full e2e pass, 452 of 452)
 
 **Why.** The big quest lines each have two pages built by two different orders and never merged: a line page (`/quests/main-quest`, `/quests/dawnguard`, `/quests/companions`, `/quests/dragonborn`, from WO-100) and a story page with chapters (`/quests/s/become-the-dragonborn`, `/quests/s/join-the-dawnguard`, `/quests/s/join-the-companions`, from WO-104/106). They look nothing alike, and the Main stories category lists both kinds side by side. Dave, 27 Oct: "Why are there multiple layouts?" There should be one. Boards: canvas row 36, `MainStoriesPage` and `LinePage`, https://claude.ai/artifact/48H6v9Q6wFuwhzRqE31uD1.
 
@@ -5178,11 +5178,18 @@ Status: building (Mac; Part 4)
 
 ### Part 4. Bob's review on the preview (27 Oct, 19:10)
 One page per line works: `/quests/s/...` redirects, the main quest, Dragonborn, the Companions and Dawnguard (both sides) use the new layout, and Main stories lists the three in order. Fix:
-- [ ] **Chips are two sizes.** A person or place chip that's a link renders its text larger than one that isn't ("Helgen" and "Temple of Miraak, Solstheim" next to "Starts here", "The Bee and Barb, Riften"). One size for every chip, linked or not.
-- [ ] **Dragonborn counts a non-step.** Its tags and At a glance say "8 quests" while its own summary says seven; "Cultists vs Player" is listed as quest 8 though it "isn't a step of its own". Leave a quest out of counts and the numbered run when the read says it isn't a step; show it under How it starts instead.
-- [ ] **Empty requirement rows.** Dragonborn's How it starts rail shows two empty check boxes (one with "Level 25", one with nothing). No row without text.
-- [ ] **Main stories buttons** say "Open the story ›" on two rows and "Open ›" on Dragonborn. One label.
-- [ ] Screenshots of Dragonborn and Main stories, then `for Bob`.
+- [x] **Chips are two sizes.** A person or place chip that's a link renders its text larger than one that isn't ("Helgen" and "Temple of Miraak, Solstheim" next to "Starts here", "The Bee and Barb, Riften"). One size for every chip, linked or not.
+- [x] **Dragonborn counts a non-step.** Its tags and At a glance say "8 quests" while its own summary says seven; "Cultists vs Player" is listed as quest 8 though it "isn't a step of its own". Leave a quest out of counts and the numbered run when the read says it isn't a step; show it under How it starts instead.
+- [x] **Empty requirement rows.** Dragonborn's How it starts rail shows two empty check boxes (one with "Level 25", one with nothing). No row without text.
+- [x] **Main stories buttons** say "Open the story ›" on two rows and "Open ›" on Dragonborn. One label.
+- [x] Screenshots of Dragonborn and Main stories, then `for Bob`.
+
+Jeff's notes on Part 4 (Mac, 27 Oct):
+- **Chip sizes.** The line's `.qn a` rule (21 px, underlined) was also catching a chip that is a link; a chip is 13.5 px, regular, never underlined, linked or not (`.qn .chip`, `.job .chip`). A test compares the computed size of every chip on Dragonborn.
+- **Dragonborn's count.** A quest whose read says it "isn't a step of its own" is left out of the counts, the numbered run and Along the way, and its words are shown under How it starts ("Cultists vs Player. The cultist ambush out in Skyrim that likely sets off Dragonborn: ..."). Dragonborn is 7 quests in the tags, At a glance and Main stories. It is read from the read's own words, so a later read that says the same of another quest takes it out the same way.
+- **Empty rows.** How it starts' needs are rows with text only, drawn as the page's diamonds (red for a level, green for what to finish first), not the old boxed marks; a row with no text is dropped; Opens other stories shows no list for a line with no needs (the Acolyte Priests had an empty one).
+- **One label.** Main stories says "Open the story ›" on all three; the other categories say "Open ›".
+- Screenshots: `test-results/wo160-dragonborn-1440.png`, `wo160-main-stories-1440.png`, `wo160-main-stories-390.png`.
 
 ### Part 5. Less on the page (Dave, 27 Oct, 19:20)
 Dave: "a bit too much fluff on the quest line pages."

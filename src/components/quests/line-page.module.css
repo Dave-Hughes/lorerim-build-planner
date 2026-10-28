@@ -356,6 +356,12 @@
   border-color: rgba(183, 162, 230, 0.45);
   background: rgba(183, 162, 230, 0.08);
 }
+.qn .chip,
+.job .chip {
+  font-size: 13.5px;
+  font-weight: 400;
+  text-decoration: none;
+}
 a.chip:hover {
   border-color: #f0913f;
 }
