@@ -5043,7 +5043,7 @@ Status: queued (Mac; waits on WO-166 Part 2's map files on staging, then after W
 - [ ] **Places** (`/places`): the whole map at the top, every pinned place on it, filterable by kind with the existing chips; hovering a pin previews the place.
 - [ ] On a phone the band is 240 px tall and drags sideways; the whole map pinches to zoom. Load tiles, not the whole map, so a place page stays light.
 - [ ] **The credit, on every instance of the map** (the place band, the whole map on Places, a phone view, any share card that uses it): a small line in the map's corner, "Map: Skyrim Paper Map by Caro Tuts ↗", linking to https://www.nexusmods.com/skyrimspecialedition/mods/62705 in a new tab. A test fails the build if a page renders the map without it.
-- [ ] Pins read on parchment: dark outline, the place's name in dark ink with a light halo (the board's style), not the site's white text.
+- [ ] Labels must read on the busy parchment (Dave, 27 Oct: "the text on the maps is almost invisible"): every name on a dark plate, cream text, a thin brass border, as the board now shows; the credit line in the same plate. Never bare text on the map.
 - [ ] Only Skyrim's map is cleared. A place on Solstheim or in a mod's own land gets no map until that map's author says yes.
 - [ ] Checks and screenshots of Bleak Falls Barrow, Riverwood, the Sleeping Giant Inn (town pin) and Places at 1440 and 390, then `for Bob`.
 
