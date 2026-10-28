@@ -2,6 +2,7 @@ import "server-only";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { currentVersion } from "@/lib/rules/server";
+import { PLACE_GROUPS, groupOf } from "./groups";
 
 /**
  * The places index (WO-128), as scripts/gamedata/places.py and build.py write places.json: every cave, mine, fort, ruin,
@@ -115,6 +116,13 @@ export interface Place {
    */
   world?: string;
   pos?: [number, number, number | null];
+  /**
+   * Where a place inside a town is shown on the map (WO-178): its town's position, since it has none of its own. Present exactly when `inTown` is
+   * set and `pos` is not (and the town has a position).
+   */
+  pinAt?: { world: string; pos: [number, number, number | null] };
+  /** The way there in words, when the way is known and the map's direction and distance would mislead (High Hrothgar: "Up the 7,000 Steps from Ivarstead"). */
+  gettingThere?: string;
   clearXp: number;
   actors?: Actors;
   /** What the people who live there say to a stranger at the door (an Orc stronghold), in the game's words. */
@@ -130,8 +138,16 @@ export interface Place {
   danger?: { traps?: boolean };
 }
 
+/** What the build counted (WO-178): every place and those with a position on Tamriel's map (their own or their town's, `pinAt`), by type. */
+export interface PlacesSummary {
+  places: number;
+  onMap: number;
+  byType: Record<string, { all: number; onMap: number }>;
+}
+
 interface Index {
   places: Place[];
+  summary: PlacesSummary;
   /** Places whose name no other place has, by name. */
   byName: Map<string, Place>;
   /** Every place by name, so a name two places share lists both (WO-172). */
@@ -144,8 +160,11 @@ const key = (s: string) => s.toLowerCase().replace(/[’']/g, "'").replace(/\s+/
 export function placesData(): Index {
   if (cached) return cached;
   let places: Place[] = [];
+  let summary: PlacesSummary = { places: 0, onMap: 0, byType: {} };
   try {
-    places = (JSON.parse(readFileSync(path.join(process.cwd(), "src", "data", `lorerim-${currentVersion().id}`, "places.json"), "utf8")) as { places: Place[] }).places;
+    const file = JSON.parse(readFileSync(path.join(process.cwd(), "src", "data", `lorerim-${currentVersion().id}`, "places.json"), "utf8")) as { places: Place[]; summary?: PlacesSummary };
+    places = file.places;
+    summary = file.summary ?? summary;
   } catch {
     // Not built yet.
   }
@@ -153,8 +172,23 @@ export function placesData(): Index {
   for (const p of places) named.set(key(p.name), [...(named.get(key(p.name)) ?? []), p]);
   const byName = new Map<string, Place>();
   for (const [k, ps] of named) if (ps.length === 1) byName.set(k, ps[0]);
-  cached = { places, byName, named };
+  cached = { places, summary, byName, named };
   return cached;
+}
+
+/**
+ * One count per kind of place, for every page that shows one (WO-178): the build's own, by the ten groups. `all` is every place of the kind;
+ * `onMap` those with a position on Tamriel's map, their own or their town's.
+ */
+export function placeCounts(): { places: number; onMap: number; groups: Record<string, { all: number; onMap: number }> } {
+  const { summary } = placesData();
+  const groups: Record<string, { all: number; onMap: number }> = Object.fromEntries(PLACE_GROUPS.map((g) => [g.key, { all: 0, onMap: 0 }]));
+  for (const [type, n] of Object.entries(summary.byType)) {
+    const g = groups[groupOf(type)];
+    g.all += n.all;
+    g.onMap += n.onMap;
+  }
+  return { places: summary.places, onMap: summary.onMap, groups };
 }
 
 /** Every place with this name, case and spacing aside: more than one where eight camps share a name. */

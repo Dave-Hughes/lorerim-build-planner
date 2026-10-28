@@ -133,7 +133,13 @@ CRAFTING_FURN = {"CraftingBlackSmithForge": "a forge", "CraftingBlackSmithForgeW
                  "CraftingBlackSmithForgeSkyforge": "the Skyforge", "CraftingBlacksmithAnvil": "an anvil",
                  "CraftingBlacksmithSharpeningWheel": "a sharpening wheel", "CraftingBlacksmithArmorWorkbench": "an armor workbench",
                  "CraftingEnchantingWorkbench": "an enchanting table", "CraftingEnchantingWorkbenchTabletop": "an enchanting table",
-                 "CraftingAlchemyWorkbench": "an alchemy lab", "CraftingAlchemyWorkbenchTabletop": "an alchemy lab"}
+                 "CraftingAlchemyWorkbench": "an alchemy lab", "CraftingAlchemyWorkbenchTabletop": "an alchemy lab",
+                 # WO-178: the smelter and the tanning rack stand beside the forge (Alvor's, at Riverwood), and each hold's own forge has its own record.
+                 "CraftingSmelterMarker1": "a smelter", "EC_SS_SICraftingSmelterMarker": "a smelter", "MyrwatchTnE_CraftingSmelterMarker1_NoSmoke": "a smelter",
+                 "CraftingTanningRackMarker": "a tanning rack", "EC_SS_CraftingTanningRackMarker": "a tanning rack",
+                 "XJKVigilHallCraftingTanningRackMarker": "a tanning rack",
+                 "CraftingRiftenBlackSmithForge": "a forge", "DLC1DawnguardCraftingBlackSmithForge": "a forge", "DLC2CraftingBlackSmithForge": "a forge",
+                 "DLC2CraftingBlackSmithSkaalForge": "a forge", "CraftingBlackSmithForgeMorr": "a forge", "CraftingBlacksmithAnvilSky": "an anvil"}
 SHRINE_ACTI = re.compile(r"(?i)shrineof")
 SHRINE_NOISE = re.compile(r"(?i)trigger|approach|exit")  # a scene helper beside the real shrine, not the shrine itself
 TRAP_EDID = re.compile(r"(?i)^trap")
@@ -216,7 +222,20 @@ LEFTOVER_NAME = re.compile(r"(?i)^name tbd$")  # Dawnguard's own placeholder, a 
 SAME_SPOT = 4096.0  # two places of one name this close (one exterior cell) are one place
 # Named by hand, as the four Orc strongholds are: the one place WO-166 adds whose people are the player's side. Its actors summary read
 # "Bandit, Troll, boss Isran, level 150" (the Dawnguard's own faction templates), which is no fight. Logged under the order.
-FRIENDLY_NAMES = {"Fort Dawnguard"}
+FRIENDLY_NAMES = {"Fort Dawnguard", "Castle Volkihar"}
+# WO-178: Riverwood's quests read "Season Unending" (the peace council, which never goes there) and left out "Before the Storm" (which does). The two
+# records that bring the player to Riverwood, MQ102A (Hadvar's way: Alvor, Sigrid) and MQ102B (Ralof's way: Gerdur, Hod, Frodnar, with Riverwood as
+# an alias location), are the two halves of Before the Storm (MQ102): each holds the parent in a script property and the parent holds both. Their
+# records carry the name of MQ302, the peace council. A part goes under its quest's name.
+# WO-178: the Missives mod's jobs ("Deliver a Letter Distant", "Deliver a Potion Far": 134 of them, one set for each town) were listed under every town
+# they deliver to. They are radiant jobs, a class of their own in overrides.json (questClasses.missives).
+RADIANT_PLUGINS = ("Missives",)
+QUEST_PARTS = {"Skyrim.esm:02BF9C": "Skyrim.esm:04E50D", "Skyrim.esm:02610A": "Skyrim.esm:04E50D"}
+OTHER_PLANES = {"Soul Cairn"}  # WO-178: a place on no map of Tamriel; the door-search position it was given belongs to the castle its portal opens in
+OTHER_PLANE = []  # (name, the world and position the door search gave it): what the last build() took off the map, for the report
+# WO-178: Castle Volkihar is the vampires' castle, Harkon's court and a lived-in place when you side with him, not a fort to clear (its record
+# has no location keyword, so it read as a Fort, with "skeletons from level 1, up to 150" from the dungeon beneath it). Named by hand.
+CASTLE_NAMES = {"Castle Volkihar"}
 GENERIC_NAMES = {"sewers", "basement", "warehouses", "cellar", "catacombs"}  # a room, not a name: "Sewers" is Ben Erai's, in Gray Fox Cowl
 DROPPED = []  # (name, edid, id, reason, kept-as): what the last build() took out, for the report
 OFF_MAP = []  # (name, plugin, why): named by a quest, allowed by its keywords, and found on no map; for the report
@@ -253,7 +272,7 @@ KIND_WORDS = {"LocTypeCave": "Cave", "LocTypeMine": "Mine", "LocTypeMilitaryFort
               "LocTypeWarlockLair": "Cave", "LocTypeSprigganGrove": "Grove", "LocTypeDragonPriestLair": "NordicRuin"}
 
 
-HELPER = re.compile(r"\b(Handler|Controller|Tracker|Dialogue|Misc|Retroactive|Scene|Reserve)\b")  # a quest no player sees as one
+HELPER = re.compile(r"\b(Handler|Controller|Tracker|Dialogue|Misc|Retroactive|Scene|Reserve|Fix alias)\b")  # a quest no player sees as one (WO-178: "Fix alias CrimeSceneInvestigator if MS11 started...", a patch repair, was under Windhelm)
 
 
 def form_id(key):
@@ -440,6 +459,7 @@ def scan():
     forced = {a["ref"] for q in quests.values() for a in q.get("aliases", {}).values() if a.get("ref")}
     cells, markers, actors, refcell, placed_npc, enable_info = {}, {}, {}, {}, {}, {}
     world_edid = {}
+    persistent_at = {}  # WO-178: (world, grid x, grid y) of every place a persistent ref stands, until the cells are all known
     cell_features = collections.defaultdict(lambda: {"wordWall": None, "skillBooks": set(), "bossChest": False,
                                                        "crafting": set(), "shrines": set(), "traps": False})
     for n in lo:
@@ -474,6 +494,7 @@ def scan():
                 if tt == "CELL":
                     cell = key
                     c = cells.setdefault(key, {})
+                    c["persistent"] = bool(flags & 0x400)  # WO-178: the world's persistent cell, whose refs stand anywhere in it
                     c["world"] = world if top == "WRLD" else None
                     c["worldEdid"] = world_edid.get(world) if top == "WRLD" else None
                     for s, v in subs:
@@ -511,7 +532,14 @@ def scan():
                                         "name": next((txt(v, loc, strings) for s, v in subs if s == "FULL"), "").strip()}
                     rbase = next((form_id(resolve(struct.unpack_from("<I", v)[0], masters, n)) for s, v in subs if s == "NAME" and len(v) >= 4), None)
                     if rbase and cell and not (flags & DELETED):
-                        f = cell_features[cell]
+                        # WO-178: a world's persistent cell holds refs that stand all over it (Alvor's forge at Riverwood); such a ref belongs to the
+                        # exterior cell it stands in, found by its position once every cell is known (below).
+                        pc = cells.get(cell) or {}
+                        if pc.get("persistent") and pc.get("worldEdid") and pos is not None:
+                            persistent_at[(pc["worldEdid"], int(pos[0] // 4096), int(pos[1] // 4096))] = None
+                            f = cell_features[(pc["worldEdid"], int(pos[0] // 4096), int(pos[1] // 4096))]
+                        else:
+                            f = cell_features[cell]
                         if rbase in wordwall_shout:
                             f["wordWall"] = wordwall_shout[rbase]
                         elif rbase in boss_chests:
@@ -533,6 +561,17 @@ def scan():
                                "boss": BOSS in {form_id(resolve(struct.unpack_from("<I", lrt, i)[0], masters, n)) for i in range(0, len(lrt) - 3, 4)}}
                 if base and not flags & DELETED:
                     placed_npc.setdefault(base, cell)
+    # WO-178: a persistent ref's features go to the exterior cell it stands in (the cell of that grid square in that world). Not its traps: a persistent
+    # "trap" ref in a city or a pond is a scene or a puzzle piece, not a hazard to warn of (Windhelm, Solitude and Clearpine Pond would have gained one).
+    by_grid = {(c["worldEdid"], c["grid"][0], c["grid"][1]): ck for ck, c in cells.items() if c.get("grid") and c.get("worldEdid") and not c.get("persistent")}
+    for gk in persistent_at:
+        got, ck = cell_features.pop(gk), by_grid.get(gk)
+        if ck:
+            into = cell_features[ck]
+            into["wordWall"] = into["wordWall"] or got["wordWall"]
+            into["bossChest"] = into["bossChest"] or got["bossChest"]
+            for k in ("skillBooks", "crafting", "shrines"):
+                into[k] |= got[k]
     return kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc, eczn, fact, cell_features, enable_info, forced
 
 
@@ -638,7 +677,7 @@ def build(version):
     xp, disc_xp, xp_from = clear_xp()
     cell_days, cleared_days = respawn_days()
     kname = lambda ks: {kw.get(k, k) for k in ks}  # noqa: E731
-    del DROPPED[:], OFF_MAP[:], LOST_MARKER[:], FARMS_OUT[:], FARMS_IN[:], DOOR_NAMED[:], DOOR_SKIPPED[:], INTERIOR_DROPPED[:], FARM_TYPED[:], STRAY_ACTORS[:]
+    del DROPPED[:], OFF_MAP[:], LOST_MARKER[:], FARMS_OUT[:], FARMS_IN[:], DOOR_NAMED[:], DOOR_SKIPPED[:], INTERIOR_DROPPED[:], FARM_TYPED[:], STRAY_ACTORS[:], OTHER_PLANE[:]
     marker_of = {k: markers.get(l["marker"]) for k, l in locs.items() if l.get("marker") in markers and not markers[l["marker"]]["deleted"]}
     marker_world = lambda m: pp.canon((cells.get(m["cell"]) or {}).get("worldEdid"))  # noqa: E731  (the five city worlds are Tamriel's own coordinates)
 
@@ -1060,6 +1099,16 @@ def build(version):
         if kind:
             FARM_TYPED.append((p["name"], p["type"], kind))
             p["type"] = kind
+    for p in places.values():
+        if p["name"] in CASTLE_NAMES:
+            p["type"] = "Castle"  # WO-178: see CASTLE_NAMES
+    # WO-178: the Soul Cairn is another plane. Its door out is Castle Volkihar's, so the door search put it in the Sea of Ghosts on the map.
+    for p in places.values():
+        if p["name"] in OTHER_PLANES and p.get("pos"):
+            OTHER_PLANE.append((p["name"], p["world"], p["pos"]))
+            for f in ("world", "pos", "posFrom", "hops", "exits"):
+                p.pop(f, None)
+            p["noPos"] = "another plane: the door out of it opens in Castle Volkihar, which has the position"
     # Nearest city and town, from the position now found (the marker's own for a place that has one, as before): a place found by
     # its cells or a door has one too. A city is the thing it would be measured to, so it has none.
     for k, p in places.items():
@@ -1378,8 +1427,12 @@ def build(version):
                 pl = place_of_cell(refcell[a["ref"]])
                 if pl:
                     hit.add(pl)
+        whole = quests.get(QUEST_PARTS.get(qid), q)  # WO-178: a part of a quest goes under the quest's name
+        if qid.startswith(RADIANT_PLUGINS):
+            continue  # WO-178: a courier's job from a notice board is not a quest that brings you to a place (overrides.json: questClasses.missives)
         for k in hit if q.get("named") and not HELPER.search(q["name"]) else ():
-            places[k].setdefault("quests", []).append({"quest": q["name"], "id": qid})
+            if not any(x["id"] == QUEST_PARTS.get(qid, qid) for x in places[k].get("quests", ())):
+                places[k].setdefault("quests", []).append({"quest": whole["name"], "id": QUEST_PARTS.get(qid, qid)})
     # Item 4: the roads, every capital and settlement to every other in the same worldspace, by their own markers
     # (never a place's: a settlement's road is to the next settlement, not shortened by a dungeon passed on the way).
     roads = []
@@ -1506,6 +1559,11 @@ def report(places, xp_from, cities=()):
                 "A place whose records show one or two actors of level 1 or 2, and whose own zone has a higher minimum or whose war garrison comes later: its levels are not "
                 "given (not checked yet), not read as \"1 to 2\".", "", "| Place | Hold | Actors | Read as | Why dropped |", "|---|---|---|---|---|"]
         out += [f"| {nm} | {hold} | {n} | {rng} | {why} |" for nm, hold, n, rng, why in sorted(STRAY_ACTORS)]
+    if OTHER_PLANE:
+        out += ["", f"### Taken off Tamriel's map: another plane ({len(OTHER_PLANE)}) (WO-178)", "",
+                "The door search gave these a position in Tamriel (where the door out of the plane opens); they are not there.", "",
+                "| Place | World | The position the door search gave it |", "|---|---|---|"]
+        out += [f"| {nm} | {w} | {pos[0]:.0f}, {pos[1]:.0f} |" for nm, w, pos in sorted(OTHER_PLANE)]
     if INTERIOR_DROPPED:
         out += ["", f"### \"Interior\" dropped from a name ({len(INTERIOR_DROPPED)}) (WO-171, second review)", "", "| Record's name | Called |", "|---|---|"]
         out += [f"| {rec} | {bare} |" for rec, bare in sorted(INTERIOR_DROPPED)]

@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { mapPlaces } from "@/lib/map/data";
+import { placeCounts } from "@/lib/places/data";
 import { mapEntry } from "@/lib/places/map";
 import c from "./map-strip.module.css";
 
@@ -14,7 +15,8 @@ export function MapStrip() {
   if (!entry) return null;
   const places = mapPlaces();
   const [x0, y0, x1, y1] = entry.border;
-  const towns = places.filter((p) => p.kind === "city" || p.kind === "town").length;
+  // The towns and cities the build counts (WO-178), the same number the Map and Places pages give for the group, not every lived-in place on the map.
+  const towns = placeCounts().groups.cities.onMap;
   const danger = places.filter((p) => p.kind === "danger").length;
   // The places in the band of the map the strip looks at as it pans (WO-173: the picture is 1.5 times the strip's width and goes about 400 px
   // across, so a window of it is ever in view), as a share of the picture: the cities, the towns, then places worth a fight, a few apart so the

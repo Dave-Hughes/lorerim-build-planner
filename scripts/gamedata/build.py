@@ -575,6 +575,27 @@ def main():
                     continue
                 # `aliases` add to the ones places.py found in the game's own words (WO-166), never replace them; any other field is replaced.
                 r[k] = sorted(set(r.get(k, [])) | set(v)) if k == "aliases" else v
+        # WO-178: a place inside a town has no position of its own, so the map could show nothing of the Temple of Kynareth, Jorrvaskr or the
+        # College. `pinAt` is its town's position: the pin it is shown at. (A town of one name: the one in the place's hold, else the only one.)
+        towns = {}
+        for r in rows:
+            if r["type"] in ("City", "Town", "Settlement") and r.get("pos") and r.get("world"):
+                towns.setdefault(r["name"], []).append(r)
+        for r in rows:
+            if r.get("inTown") and not r.get("pos"):
+                cand = towns.get(r["inTown"], [])
+                town = next((t for t in cand if t.get("hold") and t.get("hold") == r.get("hold")), cand[0] if len(cand) == 1 else None)
+                if town:
+                    r["pinAt"] = {"world": town["world"], "pos": town["pos"]}
+        # WO-178: one count per kind, here, that the home strip, the map and the places list all read. `onMap` is what has a position on Tamriel's
+        # map, its own or its town's (`pinAt`); the map's frame is the app's to apply.
+        on_map = lambda r: (r.get("world") == "Tamriel" and bool(r.get("pos"))) or (r.get("pinAt") or {}).get("world") == "Tamriel"  # noqa: E731
+        by_type = {}
+        for r in rows:
+            c = by_type.setdefault(r["type"], {"all": 0, "onMap": 0})
+            c["all"] += 1
+            c["onMap"] += 1 if on_map(r) else 0
+        summary = {"places": len(rows), "onMap": sum(c["onMap"] for c in by_type.values()), "byType": dict(sorted(by_type.items()))}
         # WO-157 Part 8: a quote ends on a whole sentence, and a byte the extraction lost is put back from the letters around it, until the
         # PC runs the extraction again with the "game" decoder (textdecode.py).
         from textdecode import repair_lost, tidy_excerpt
@@ -583,7 +604,7 @@ def main():
             for ptr in r.get("pointers", []):
                 ptr["words"] = tidy_excerpt(repair_lost(ptr["words"]), window=ptr["kind"] == "book")
         with open(os.path.join(OUT, "places.json"), "w", encoding="utf-8") as f:
-            json.dump({"places": rows, "roads": raw.get("roads", [])}, f, separators=(",", ":"), ensure_ascii=False)
+            json.dump({"summary": summary, "places": rows, "roads": raw.get("roads", [])}, f, separators=(",", ":"), ensure_ascii=False)
             f.write("\n")
         print(f"{len(rows)} places, {sum(1 for r in rows if r.get('pointers'))} with a pointer -> places.json")
     # People (WO-144 Part 2): the people index, from people.py's raw file.

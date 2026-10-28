@@ -667,8 +667,10 @@
     },
     "High Hrothgar": {
       "_source": "Bob, 27 Oct 2026",
-      "_why": "The records type High Hrothgar a Fort, with trolls on the path up. It is the Greybeards' home, where people live, so it gets the lived-in page.",
-      "type": "Monastery"
+      "_why": "The records type High Hrothgar a Fort, with trolls on the path up. It is the Greybeards' home, where people live, so it gets the lived-in page. WO-178: it is nearest Riverwood in a straight line (0.4 km), but no player walks that way; the only road up is the 7,000 Steps from Ivarstead (0.5 km on the map, a climb of 11,750 units), so Ivarstead is its town and `gettingThere` says the way.",
+      "type": "Monastery",
+      "nearestTown": {"town": "Ivarstead", "km": 0.5, "walk": "half a day"},
+      "gettingThere": "Up the 7,000 Steps from Ivarstead"
     }
   },
   "people": {

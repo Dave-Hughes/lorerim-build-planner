@@ -81,8 +81,13 @@ export function mapPins(): Pin[] {
 
 const DIRECTIONS = ["East", "Northeast", "North", "Northwest", "West", "Southwest", "South", "Southeast"];
 
-/** "West of Riverwood, a short walk, and well above it": the direction and distance from the nearest town, and the height against it. */
+/**
+ * "West of Riverwood, a short walk, and well above it": the direction and distance from the nearest town, and the height against it. A place well
+ * above its town (WO-178) is a climb: "Up the mountain west of Riverwood, a short walk", never "right next to it". A place with its own way in
+ * the data (`gettingThere`, from overrides.json) says that.
+ */
 export function gettingThere(p: Place): string | null {
+  if (p.gettingThere) return `${p.gettingThere}.`;
   const t = p.nearestTown;
   const town = t ? placeByName(t.town) : null;
   if (!t || !town?.pos || !p.pos || town.world !== p.world) return null;
@@ -91,7 +96,9 @@ export function gettingThere(p: Place): string | null {
   const dir = DIRECTIONS[Math.round(Math.atan2(dy, dx) / (Math.PI / 4) + 8) % 8];
   const dz = (p.pos[2] ?? town.pos[2] ?? 0) - (town.pos[2] ?? 0);
   const high = p.pos[2] == null || town.pos[2] == null ? null : Math.abs(dz) < 600 ? "about level with it" : `${Math.abs(dz) > 2000 ? "well " : "a little "}${dz > 0 ? "above" : "below"} it`;
-  const how = t.walk === "next to it" ? "right next to it" : (t.walk ?? `${t.km} km away`);
+  const climb = p.pos[2] != null && town.pos[2] != null && dz > 2000;
+  const how = t.walk === "next to it" ? (climb ? "a short walk" : "right next to it") : (t.walk ?? `${t.km} km away`);
+  if (climb) return `Up the mountain ${dir.toLowerCase()} of ${t.town}, ${how}.`;
   return `${dir} of ${t.town}, ${how}${high ? `, and ${high}` : ""}.`;
 }
 

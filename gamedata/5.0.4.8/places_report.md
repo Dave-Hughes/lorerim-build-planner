@@ -2,7 +2,7 @@
 
 Written by `scripts/gamedata/places.py` from the winning records across the load order (with the Creation Club plugins). Clear and discovery XP from `LoreRim - MCM and INI Settings`'s Experience.ini.
 
-**998 places.** 423 have a pointer (a line or a book that names them), 386 have a quest that goes there, and 434 have neither.
+**998 places.** 423 have a pointer (a line or a book that names them), 384 have a quest that goes there, and 434 have neither.
 
 ## The nine capitals
 
@@ -18,7 +18,7 @@ All nine found with an exterior position.
 | Cave | 107 | 61 | 48 |
 | NordicRuin | 54 | 42 | 34 |
 | Store | 51 | 23 | 20 |
-| Fort | 46 | 39 | 29 |
+| Fort | 45 | 38 | 28 |
 | Shack | 31 | 6 | 7 |
 | Inn | 29 | 20 | 16 |
 | DragonLair | 28 | 9 | 1 |
@@ -27,7 +27,7 @@ All nine found with an exterior position.
 | Building | 20 | 4 | 5 |
 | Mine | 19 | 11 | 7 |
 | Camp | 16 | 11 | 8 |
-| Town | 15 | 15 | 9 |
+| Town | 15 | 15 | 7 |
 | ImperialTower | 14 | 6 | 5 |
 | Temple | 14 | 12 | 7 |
 | GiantCamp | 13 | 12 | 0 |
@@ -44,13 +44,13 @@ All nine found with an exterior position.
 | Grove | 7 | 4 | 1 |
 | Pass | 5 | 1 | 1 |
 | Stables | 5 | 1 | 0 |
+| Castle | 5 | 3 | 3 |
 | Barracks | 5 | 1 | 3 |
 | Jail | 5 | 3 | 5 |
 | Clearing | 4 | 1 | 1 |
 | OrcStronghold | 4 | 4 | 4 |
 | Lighthouse | 4 | 2 | 1 |
 | Settlement | 4 | 4 | 3 |
-| Castle | 4 | 2 | 2 |
 | Mill | 4 | 3 | 0 |
 
 ## By hold
@@ -68,24 +68,24 @@ All nine found with an exterior position.
 | The Pale | 55 | 27 | 23 |
 | Winterhold | 52 | 26 | 27 |
 | Hjaalmarch | 44 | 19 | 14 |
-| Wyrmstooth | 30 | 16 | 9 |
-| Alik'r Desert | 29 | 9 | 10 |
+| Wyrmstooth | 30 | 16 | 8 |
+| Alik'r Desert | 29 | 9 | 9 |
 | Morrowind | 15 | 7 | 4 |
 | Hjorkvild Isles | 10 | 1 | 2 |
 
 ## Positions (WO-166)
 
-**669 of 998 places have a position**; 319 are in a town and have none of their own (`inTown`); 10 could not be placed. A position is `world` and `pos` [x, y, z] in game units, found from the place's own map marker, else the exterior cells it owns (the middle of their grid squares: no height, z is null), else a door out of its interior (up to 3 rooms deep). The five big cities' own worldspaces share Tamriel's coordinates (checked door to door) and are filed as Tamriel.
+**668 of 998 places have a position**; 319 are in a town and have none of their own (`inTown`); 11 could not be placed. A position is `world` and `pos` [x, y, z] in game units, found from the place's own map marker, else the exterior cells it owns (the middle of their grid squares: no height, z is null), else a door out of its interior (up to 3 rooms deep). The five big cities' own worldspaces share Tamriel's coordinates (checked door to door) and are filed as Tamriel.
 
 | Found from | Places |
 |---|---|
 | marker | 469 |
-| door | 156 |
+| door | 155 |
 | cells | 44 |
 
 | World | Places | On a map |
 |---|---|---|
-| Tamriel | 459 | yes |
+| Tamriel | 458 | yes |
 | DLC2SolstheimWorld | 71 | yes |
 | zCHMolagWorld | 58 | yes |
 | mannyGFDesert | 32 | yes |
@@ -99,11 +99,11 @@ All nine found with an exterior position.
 | Kind | Places | Positioned | In a town | Not placed |
 |---|---|---|---|---|
 | House | 180 | 24 | 156 | 0 |
-| Landmark | 155 | 140 | 10 | 5 |
+| Landmark | 155 | 139 | 10 | 6 |
 | Cave | 107 | 105 | 0 | 2 |
 | NordicRuin | 54 | 53 | 0 | 1 |
 | Store | 51 | 8 | 43 | 0 |
-| Fort | 46 | 44 | 2 | 0 |
+| Fort | 45 | 43 | 2 | 0 |
 | Shack | 31 | 30 | 0 | 1 |
 | Inn | 29 | 6 | 23 | 0 |
 | DragonLair | 28 | 28 | 0 | 0 |
@@ -129,13 +129,13 @@ All nine found with an exterior position.
 | Grove | 7 | 7 | 0 | 0 |
 | Pass | 5 | 5 | 0 | 0 |
 | Stables | 5 | 0 | 5 | 0 |
+| Castle | 5 | 1 | 4 | 0 |
 | Barracks | 5 | 1 | 4 | 0 |
 | Jail | 5 | 0 | 5 | 0 |
 | Clearing | 4 | 4 | 0 | 0 |
 | OrcStronghold | 4 | 4 | 0 | 0 |
 | Lighthouse | 4 | 4 | 0 | 0 |
 | Settlement | 4 | 4 | 0 | 0 |
-| Castle | 4 | 0 | 4 | 0 |
 | Mill | 4 | 4 | 0 | 0 |
 
 ### Not placed, and why
@@ -145,9 +145,11 @@ All nine found with an exterior position.
 | interior cells whose doors lead nowhere onto a map (looked 3 rooms deep) | 4 | Landmark, NordicRuin |
 | interior cells with no door at all | 3 | Cave, Landmark, Shack |
 | no cells: a location nothing is placed in | 3 | Cave, Doomstone, Landmark |
+| another plane: the door out of it opens in Castle Volkihar, which has the position | 1 | Landmark |
 
 | Place | Type | Plugin | Why |
 |---|---|---|---|
+| Soul Cairn | Landmark | 00Taliesin.esp | another plane: the door out of it opens in Castle Volkihar, which has the position |
 | Cave of Mora Sul | Landmark | Gray Fox Cowl.esm | no cells: a location nothing is placed in |
 | Awakening Chambers | Landmark | NightmarePlane.esp | interior cells whose doors lead nowhere onto a map (looked 3 rooms deep) |
 | Hall Of Awakening | Landmark | NightmarePlane.esp | interior cells with no door at all |
@@ -172,7 +174,7 @@ Every location a named quest points at (a location alias, or the cell a forced r
 | Kind | Added | In a town | On a map |
 |---|---|---|---|
 | House | 180 | 156 | 24 |
-| Landmark | 84 | 10 | 74 |
+| Landmark | 84 | 10 | 73 |
 | Store | 51 | 43 | 8 |
 | Farm | 24 | 8 | 16 |
 | Building | 20 | 16 | 4 |
@@ -233,7 +235,7 @@ The places that are not a house, shop, barracks, jail or building (those are onl
 
 | Place | Kind | Where | Plugin | Named by |
 |---|---|---|---|---|
-| Soul Cairn | Landmark | Tamriel | 00Taliesin.esp | Beyond Death, Call Those NPCs, Chapel of Love |
+| Soul Cairn | Landmark | (none) | 00Taliesin.esp | Beyond Death, Call Those NPCs, Chapel of Love |
 | Ancient Ruins | Landmark | mannyGFDesert | BetalillesHammerfellQuestBundle.esp | The Silent Sword |
 | Ash'abah Hideout | Landmark | mannyGFDesert | BetalillesHammerfellQuestBundle.esp | Honai, Nimshat |
 | Ben Erai | Town | mannyGFDesert | BetalillesHammerfellQuestBundle.esp | Deliver a Letter Distant, Deliver a Letter Medium, Deliver a Letter Near |
@@ -583,6 +585,14 @@ A place whose records show one or two actors of level 1 or 2, and whose own zone
 | Sons of Skyrim Military Camp | Winterhold | 1 | 1 to 2 | the war puts its garrison there later |
 | Windward Ruins | The Pale | 2 | 1 to 1 | its zone's minimum is 5 |
 | Wisp Light Crevasse |  | 1 | 1 to 1 | its zone's minimum is 15 |
+
+### Taken off Tamriel's map: another plane (1) (WO-178)
+
+The door search gave these a position in Tamriel (where the door out of the plane opens); they are not there.
+
+| Place | World | The position the door search gave it |
+|---|---|---|
+| Soul Cairn | Tamriel | -169242, 149956 |
 
 ### "Interior" dropped from a name (2) (WO-171, second review)
 

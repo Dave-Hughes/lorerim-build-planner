@@ -83,7 +83,7 @@ class BuiltIndex(unittest.TestCase):
         # WO-144 Part 1 item 2: NAMED_PLACES (the thirteen settlements, the four strongholds) are the one named
         # exception -- everything else stays out, so a stray "City"/"Town"/"Settlement" marker still can't sneak in.
         # WO-166 adds two more exceptions: the nine capitals (rows of type City) and the towns a quest, a home or a book names (Ben Erai, Stonehollow).
-        self.assertFalse([p["name"] for p in self.rows if p["type"] in pl.NOT_PLACES and p["name"] not in pl.NAMED_PLACES | pl.CAPITALS
+        self.assertFalse([p["name"] for p in self.rows if p["type"] in pl.NOT_PLACES and p["name"] not in pl.NAMED_PLACES | pl.CAPITALS | pl.CASTLE_NAMES
                           and not p.get("namedBy")])
         self.assertTrue(all(x["record"] for p in self.rows for x in p.get("pointers", [])))
         self.assertGreater(len({p["plugin"] for p in self.rows}), 20)  # across the load order, not only the base game
@@ -449,7 +449,7 @@ class BuiltIndex(unittest.TestCase):
 
     def test_fort_dawnguard_and_the_other_places_quests_name_are_places(self):
         # WO-166 (Bob, 27 Oct 21:45 and 21:50): Dawnguard starts at Fort Dawnguard, which had no place at all.
-        for name in ("Fort Dawnguard", "Thalmor Embassy", "Dayspring Canyon", "Soul Cairn", "Anga's Mill"):
+        for name in ("Fort Dawnguard", "Thalmor Embassy", "Dayspring Canyon", "Anga's Mill"):  # the Soul Cairn is off the map (WO-178)
             p = self.by[name]
             self.assertEqual(p["world"], "Tamriel", name)
             self.assertTrue(p["namedBy"], name)
@@ -630,6 +630,47 @@ class BuiltIndex(unittest.TestCase):
         self.assertIn("floor", self.by["Bleak Falls Barrow"]["actors"])
         self.assertIn("floor", self.by["Fort Hraggstad"]["actors"]["afterTheWar"])
         self.assertIn("floor", self.by["Septimus Signus' Outpost"]["actors"])  # a level 1 that is the man himself
+
+    def test_a_forge_a_smelter_and_a_tanning_rack_at_alvors_in_riverwood(self):
+        # WO-178 (Bob's cold review): Riverwood listed a sharpening wheel, an armor workbench and an enchanting table, no forge. Alvor's forge, smelter
+        # and tanning rack are refs of the world's persistent cell, so they belong to the exterior cell they stand in (the grid square of their position).
+        town = next(p for p in self.rows if p["name"] == "Riverwood" and p["type"] == "Town")
+        crafting = town["worthGoingFor"]["crafting"]
+        for station in ("a forge", "a smelter", "a tanning rack", "a sharpening wheel", "an armor workbench"):
+            self.assertIn(station, crafting)
+        self.assertNotIn("an anvil", crafting)  # the records place none at Alvor's
+
+    def test_quests_that_bring_you_to_riverwood_are_before_the_storm_not_the_peace_council(self):
+        town = next(p for p in self.rows if p["name"] == "Riverwood" and p["type"] == "Town")
+        names = [q["quest"] for q in town["quests"]]
+        self.assertIn("Before the Storm", names)
+        self.assertNotIn("Season Unending", names)
+        self.assertEqual(len(names), len(set(names)))
+        # the two halves of Before the Storm hold the parent in a script property, and name themselves for MQ302: that is why they are ruled parts
+        for part, whole in pl.QUEST_PARTS.items():
+            self.assertNotEqual(part, whole)
+
+    def test_no_place_lists_a_courier_job_as_a_quest_that_goes_there(self):
+        for p in self.rows:
+            for q in p.get("quests", []):
+                self.assertFalse(q["id"].startswith(pl.RADIANT_PLUGINS), f"{p['name']}: {q['quest']}")
+                self.assertFalse(q["quest"].startswith("Deliver a "), f"{p['name']}: {q['quest']}")
+
+    def test_castle_volkihar_is_a_castle_people_live_in_and_the_soul_cairn_is_off_the_map(self):
+        volkihar = self.by["Castle Volkihar"]
+        self.assertEqual(volkihar["type"], "Castle")
+        self.assertIs(volkihar["actors"]["hostile"], False)
+        self.assertNotIn("floor", volkihar["actors"])
+        cairn = self.by["Soul Cairn"]
+        self.assertNotIn("pos", cairn)
+        self.assertNotIn("world", cairn)
+        self.assertIn("another plane", cairn["noPos"])
+        self.assertIsNone(cairn.get("nearestTown"))
+
+    def test_a_persistent_ref_belongs_to_the_exterior_cell_it_stands_in(self):
+        # Word walls were persistent refs too: Bonestrewn Crest and Ancient's Ascent had none until the refs were placed by position.
+        self.assertEqual(self.by["Bonestrewn Crest"]["worthGoingFor"]["wordWall"], ["Frost Breath"])
+        self.assertEqual(self.by["Ancient's Ascent"]["worthGoingFor"]["wordWall"], ["Animal Allegiance"])
 
 
 if __name__ == "__main__":

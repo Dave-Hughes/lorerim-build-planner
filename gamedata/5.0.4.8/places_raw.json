@@ -365,44 +365,6 @@
      "words": "of Ja'darri\", and wrote a book about it.\r\n\r\nI believe it is seperated in three parts. The first one being somewhere in Ben Erai, probably in the fortress.\r\n\r\nIt would make a great addition to our archives, with permission of course.\r\n\r\nDuarelm",
      "record": "BOOK BetalillesHammerfellQuestBundle.esp:000AAE (BetalillesHammerfellQuestBundle.esp)"
     }
-   ],
-   "quests": [
-    {
-     "quest": "Deliver a Letter Distant",
-     "id": "Missives - Gray Cowl Patch.esp:000800"
-    },
-    {
-     "quest": "Deliver a Letter Near",
-     "id": "Missives - Gray Cowl Patch.esp:000801"
-    },
-    {
-     "quest": "Deliver a Letter Medium",
-     "id": "Missives - Gray Cowl Patch.esp:000802"
-    },
-    {
-     "quest": "Deliver a Potion Far",
-     "id": "Missives - Gray Cowl Patch.esp:000803"
-    },
-    {
-     "quest": "Deliver a Potion Near",
-     "id": "Missives - Gray Cowl Patch.esp:000804"
-    },
-    {
-     "quest": "Deliver a Potion Medium",
-     "id": "Missives - Gray Cowl Patch.esp:000805"
-    },
-    {
-     "quest": "Deliver a Weapon Distant",
-     "id": "Missives - Gray Cowl Patch.esp:000806"
-    },
-    {
-     "quest": "Deliver a Weapon Near",
-     "id": "Missives - Gray Cowl Patch.esp:000807"
-    },
-    {
-     "quest": "Deliver a Weapon Medium",
-     "id": "Missives - Gray Cowl Patch.esp:000808"
-    }
    ]
   },
   {
@@ -2028,6 +1990,9 @@
    "clearXp": 200,
    "discoveryXp": 10,
    "worthGoingFor": {
+    "wordWall": [
+     "Frost Breath"
+    ],
     "bossChest": true
    },
    "danger": {
@@ -2642,7 +2607,10 @@
     "skillBooks": [
      "Lockpicking: The Wolf Queen, Vol. 1"
     ],
-    "bossChest": true
+    "bossChest": true,
+    "crafting": [
+     "a tanning rack"
+    ]
    },
    "pointers": [
     {
@@ -3016,7 +2984,9 @@
      "Heavy Armor: Chimarvamidium"
     ],
     "crafting": [
-     "a sharpening wheel"
+     "a sharpening wheel",
+     "a smelter",
+     "a tanning rack"
     ]
    },
    "pointers": [
@@ -4794,6 +4764,7 @@
     "crafting": [
      "a sharpening wheel",
      "an alchemy lab",
+     "an anvil",
      "an armor workbench",
      "an enchanting table"
     ],
@@ -4947,6 +4918,7 @@
     ],
     "bossChest": true,
     "crafting": [
+     "a tanning rack",
      "an anvil",
      "an armor workbench"
     ]
@@ -5336,7 +5308,10 @@
    "clearXp": 200,
    "discoveryXp": 10,
    "worthGoingFor": {
-    "bossChest": true
+    "bossChest": true,
+    "crafting": [
+     "a tanning rack"
+    ]
    },
    "danger": {
     "traps": true
@@ -5416,6 +5391,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
@@ -5961,7 +5938,10 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "crafting": [
+     "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench"
     ]
@@ -6608,7 +6588,8 @@
     ],
     "bossChest": true,
     "crafting": [
-     "a sharpening wheel"
+     "a sharpening wheel",
+     "a tanning rack"
     ]
    },
    "danger": {
@@ -6939,6 +6920,7 @@
     "bossChest": true,
     "crafting": [
      "a forge",
+     "a tanning rack",
      "an armor workbench",
      "an enchanting table"
     ],
@@ -7439,6 +7421,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
@@ -7589,6 +7573,7 @@
      "Sneak: The Red Kitchen Reader"
     ],
     "crafting": [
+     "a tanning rack",
      "an alchemy lab",
      "an enchanting table"
     ]
@@ -7816,6 +7801,9 @@
    "worthGoingFor": {
     "skillBooks": [
      "Light Armor: Rislav the Righteous"
+    ],
+    "crafting": [
+     "a tanning rack"
     ]
    }
   },
@@ -7980,6 +7968,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "crafting": [
+     "a tanning rack",
      "an alchemy lab",
      "an enchanting table"
     ]
@@ -8516,6 +8505,11 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a tanning rack"
+    ]
+   },
    "danger": {
     "traps": true
    }
@@ -8868,7 +8862,10 @@
     "skillBooks": [
      "Block: A Dance in Fire, Vol. 2"
     ],
-    "bossChest": true
+    "bossChest": true,
+    "crafting": [
+     "a tanning rack"
+    ]
    },
    "pointers": [
     {
@@ -9146,6 +9143,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an anvil",
      "an armor workbench"
     ],
@@ -9160,10 +9159,6 @@
      "id": "Skyrim.esm:01F7A3"
     },
     {
-     "quest": "Fix alias CrimeSceneInvestigator if MS11 started before the Imperials took Windhelm",
-     "id": "Unofficial Skyrim Special Edition Patch.esp:007788"
-    },
-    {
      "quest": "Send the Vigil to Windhelm",
      "id": "Vigilant.esm:4E2512"
     },
@@ -9174,42 +9169,6 @@
     {
      "quest": "He Who Cannot Be Touched",
      "id": "Vigilant.esm:006271"
-    },
-    {
-     "quest": "Deliver a Letter Distant",
-     "id": "Missives.esp:00F64E"
-    },
-    {
-     "quest": "Deliver a Letter Near",
-     "id": "Missives.esp:00F655"
-    },
-    {
-     "quest": "Deliver a Letter Medium",
-     "id": "Missives.esp:00F65C"
-    },
-    {
-     "quest": "Deliver a Weapon Distant",
-     "id": "Missives.esp:00FBC4"
-    },
-    {
-     "quest": "Deliver a Weapon Near",
-     "id": "Missives.esp:00FBCB"
-    },
-    {
-     "quest": "Deliver a Weapon Medium",
-     "id": "Missives.esp:00FBD2"
-    },
-    {
-     "quest": "Deliver a Potion Near",
-     "id": "Missives.esp:038DBC"
-    },
-    {
-     "quest": "Deliver a Potion Medium",
-     "id": "Missives.esp:03C40F"
-    },
-    {
-     "quest": "Deliver a Potion Far",
-     "id": "Missives.esp:03CEDE"
     }
    ]
   },
@@ -9852,6 +9811,9 @@
    "clearXp": 200,
    "discoveryXp": 10,
    "worthGoingFor": {
+    "wordWall": [
+     "Animal Allegiance"
+    ],
     "bossChest": true
    },
    "danger": {
@@ -9929,6 +9891,7 @@
      "Marksman: The Gold Ribbon of Merit"
     ],
     "crafting": [
+     "a tanning rack",
      "an armor workbench"
     ]
    },
@@ -10224,6 +10187,10 @@
    "worthGoingFor": {
     "skillBooks": [
      "Lockpicking: Advances in Lockpicking"
+    ],
+    "crafting": [
+     "a tanning rack",
+     "an alchemy lab"
     ]
    },
    "pointers": [
@@ -10308,7 +10275,10 @@
     "bossChest": true,
     "crafting": [
      "a forge",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
+     "an armor workbench",
      "an enchanting table"
     ]
    },
@@ -10782,6 +10752,10 @@
     ],
     "bossChest": true,
     "crafting": [
+     "a forge",
+     "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench"
     ]
@@ -10883,6 +10857,8 @@
     ],
     "crafting": [
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an anvil",
      "an armor workbench",
@@ -11318,6 +11294,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an armor workbench"
     ]
    },
@@ -11530,7 +11508,10 @@
      "Two-Handed: The Legendary Sancre Tor"
     ],
     "crafting": [
+     "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an anvil",
      "an armor workbench"
@@ -11543,42 +11524,6 @@
     {
      "quest": "Send the Vigil to Falkreath",
      "id": "Vigilant.esm:4E2530"
-    },
-    {
-     "quest": "Deliver a Letter Distant",
-     "id": "Missives.esp:011C86"
-    },
-    {
-     "quest": "Deliver a Letter Near",
-     "id": "Missives.esp:011CBE"
-    },
-    {
-     "quest": "Deliver a Letter Medium",
-     "id": "Missives.esp:011CF5"
-    },
-    {
-     "quest": "Deliver a Weapon Distant",
-     "id": "Missives.esp:01228F"
-    },
-    {
-     "quest": "Deliver a Weapon Near",
-     "id": "Missives.esp:012828"
-    },
-    {
-     "quest": "Deliver a Weapon Medium",
-     "id": "Missives.esp:012DC3"
-    },
-    {
-     "quest": "Deliver a Potion Far",
-     "id": "Missives.esp:03A372"
-    },
-    {
-     "quest": "Deliver a Potion Medium",
-     "id": "Missives.esp:03C973"
-    },
-    {
-     "quest": "Deliver a Potion Far",
-     "id": "Missives.esp:03CEDF"
     }
    ]
   },
@@ -11760,6 +11705,7 @@
     "bossChest": true,
     "crafting": [
      "a sharpening wheel",
+     "an anvil",
      "an armor workbench"
     ]
    },
@@ -12031,7 +11977,10 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "crafting": [
+     "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
@@ -12833,10 +12782,16 @@
     ],
     "bossChest": true,
     "crafting": [
+     "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
+    ],
+    "shrines": [
+     "Shrine of Akatosh"
     ]
    },
    "danger": {
@@ -13676,16 +13631,12 @@
      "id": "Skyrim.esm:03372B"
     },
     {
-     "quest": "Season Unending",
-     "id": "Skyrim.esm:02610A"
+     "quest": "Before the Storm",
+     "id": "Skyrim.esm:04E50D"
     },
     {
      "quest": "MQ Reserved Locations",
      "id": "Skyrim.esm:01BC95"
-    },
-    {
-     "quest": "Season Unending",
-     "id": "Skyrim.esm:02BF9C"
     }
    ]
   },
@@ -13871,6 +13822,9 @@
    "worthGoingFor": {
     "skillBooks": [
      "Marksman: Father of the Niben"
+    ],
+    "crafting": [
+     "a tanning rack"
     ]
    },
    "pointers": [
@@ -14154,7 +14108,10 @@
     ],
     "bossChest": true,
     "crafting": [
+     "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench"
     ]
@@ -14283,6 +14240,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an anvil",
      "an armor workbench",
@@ -15037,6 +14996,7 @@
     "bossChest": true,
     "crafting": [
      "a sharpening wheel",
+     "a tanning rack",
      "an armor workbench"
     ]
    },
@@ -15310,7 +15270,12 @@
    },
    "respawns": "never",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "an alchemy lab"
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:061AE3",
@@ -16496,13 +16461,13 @@
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "ng beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as the flame burns, the college will stand.\r\n\r\nThe Bards College\r\n\r\nLooking up from the Bards College steps, you can see that the college stands taller than the Blue Palace itself. The bards who train here c",
+     "words": "stle Dour and the Temple and you'll get your first sight of the Blue Palace. Along the way, be sure to stop outside the Bards College, a large building on your left marked by the Flame of Callisos burning beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as th",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "stle Dour and the Temple and you'll get your first sight of the Blue Palace. Along the way, be sure to stop outside the Bards College, a large building on your left marked by the Flame of Callisos burning beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as th",
+     "words": "ng beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as the flame burns, the college will stand.\r\n\r\nThe Bards College\r\n\r\nLooking up from the Bards College steps, you can see that the college stands taller than the Blue Palace itself. The bards who train here c",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
@@ -16784,6 +16749,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an armor workbench"
     ]
    },
@@ -16864,6 +16831,7 @@
     ],
     "crafting": [
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
@@ -17471,6 +17439,7 @@
      "Two-Handed: Song of Hrormir"
     ],
     "crafting": [
+     "a tanning rack",
      "an armor workbench"
     ]
    },
@@ -18125,6 +18094,9 @@
    "worthGoingFor": {
     "skillBooks": [
      "Marksman: The Gold Ribbon of Merit"
+    ],
+    "crafting": [
+     "a forge"
     ]
    },
    "danger": {
@@ -18640,6 +18612,9 @@
    "worthGoingFor": {
     "skillBooks": [
      "Pickpocket: Beggar"
+    ],
+    "crafting": [
+     "a tanning rack"
     ]
    },
    "pointers": [
@@ -18830,6 +18805,9 @@
    "clearXp": 100,
    "discoveryXp": 10,
    "worthGoingFor": {
+    "wordWall": [
+     "Elemental Fury"
+    ],
     "skillBooks": [
      "Block: Battle of Red Mountain"
     ],
@@ -19659,6 +19637,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
@@ -20110,8 +20090,11 @@
     ],
     "bossChest": true,
     "crafting": [
+     "a forge",
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
+     "an anvil",
      "an armor workbench",
      "an enchanting table"
     ]
@@ -20132,42 +20115,6 @@
     {
      "quest": "Send the Vigil to Solitude",
      "id": "Vigilant.esm:4E2526"
-    },
-    {
-     "quest": "Deliver a Letter Distant",
-     "id": "Missives.esp:011C8D"
-    },
-    {
-     "quest": "Deliver a Letter Near",
-     "id": "Missives.esp:011CC5"
-    },
-    {
-     "quest": "Deliver a Letter Medium",
-     "id": "Missives.esp:011CFD"
-    },
-    {
-     "quest": "Deliver a Weapon Distant",
-     "id": "Missives.esp:012297"
-    },
-    {
-     "quest": "Deliver a Weapon Near",
-     "id": "Missives.esp:012830"
-    },
-    {
-     "quest": "Deliver a Weapon Medium",
-     "id": "Missives.esp:012DCA"
-    },
-    {
-     "quest": "Deliver a Potion Near",
-     "id": "Missives.esp:03A37C"
-    },
-    {
-     "quest": "Deliver a Potion Med",
-     "id": "Missives.esp:03C974"
-    },
-    {
-     "quest": "Deliver a Potion Far",
-     "id": "Missives.esp:03CEE0"
     }
    ]
   },
@@ -21432,13 +21379,13 @@
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": ".\r\n\r\nContinue up the road from the college and you'll reach the courtyard of the Blue Palace, our final destination.\r\n\r\nThe Blue Palace\r\n\r\nThe Blue Palace is home to the Jarls of Solitude, who for centuries have also served as the High Kings and High Queens of Skyrim. The northea",
+     "words": "The city gradually grew to extend across the entire length of the arch. This growth culminated in the building of the Blue Palace, home of the High Kings and Queens of Skyrim. We will visit the palace later.\r\n\r\nThe Gates of Solitude\r\n\r\nEntrance to Solitude is guarded by two gat",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "The city gradually grew to extend across the entire length of the arch. This growth culminated in the building of the Blue Palace, home of the High Kings and Queens of Skyrim. We will visit the palace later.\r\n\r\nThe Gates of Solitude\r\n\r\nEntrance to Solitude is guarded by two gat",
+     "words": ".\r\n\r\nContinue up the road from the college and you'll reach the courtyard of the Blue Palace, our final destination.\r\n\r\nThe Blue Palace\r\n\r\nThe Blue Palace is home to the Jarls of Solitude, who for centuries have also served as the High Kings and High Queens of Skyrim. The northea",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
@@ -22408,6 +22355,9 @@
    "clearXp": 200,
    "discoveryXp": 10,
    "worthGoingFor": {
+    "wordWall": [
+     "Whirlwind Sprint"
+    ],
     "skillBooks": [
      "Lockpicking: Surfeit of Thieves"
     ],
@@ -23233,6 +23183,9 @@
    "clearXp": 200,
    "discoveryXp": 10,
    "worthGoingFor": {
+    "wordWall": [
+     "Disarm"
+    ],
     "bossChest": true
    },
    "danger": {
@@ -23543,6 +23496,7 @@
     "crafting": [
      "a sharpening wheel",
      "an alchemy lab",
+     "an anvil",
      "an armor workbench",
      "an enchanting table"
     ]
@@ -24512,6 +24466,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench"
     ],
@@ -24530,42 +24486,6 @@
     {
      "quest": "Send the Vigil to Morthal",
      "id": "Vigilant.esm:4E2535"
-    },
-    {
-     "quest": "Deliver a Letter Distant",
-     "id": "Missives.esp:011C96"
-    },
-    {
-     "quest": "Deliver a Letter Near",
-     "id": "Missives.esp:011CCD"
-    },
-    {
-     "quest": "Deliver a Letter Medium",
-     "id": "Missives.esp:011D04"
-    },
-    {
-     "quest": "Deliver a Weapon Distant",
-     "id": "Missives.esp:01229F"
-    },
-    {
-     "quest": "Deliver a Weapon Near",
-     "id": "Missives.esp:012838"
-    },
-    {
-     "quest": "Deliver a Weapon Medium",
-     "id": "Missives.esp:012DD2"
-    },
-    {
-     "quest": "Deliver a Potion Near",
-     "id": "Missives.esp:03A386"
-    },
-    {
-     "quest": "Deliver a Potion Medium",
-     "id": "Missives.esp:03C975"
-    },
-    {
-     "quest": "Deliver a Potion Far",
-     "id": "Missives.esp:03CEE1"
     }
    ]
   },
@@ -24755,6 +24675,7 @@
     "bossChest": true,
     "crafting": [
      "a sharpening wheel",
+     "a tanning rack",
      "an anvil"
     ]
    },
@@ -24966,6 +24887,9 @@
    "clearXp": 200,
    "discoveryXp": 10,
    "worthGoingFor": {
+    "wordWall": [
+     "Frost Breath"
+    ],
     "bossChest": true,
     "shrines": [
      "Shrine of Akatosh"
@@ -25204,6 +25128,8 @@
     ],
     "crafting": [
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an armor workbench"
     ]
    },
@@ -25806,6 +25732,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an anvil",
      "an armor workbench",
@@ -25927,7 +25855,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   }
   },
   {
    "id": "Siege at Icemoth.esp:0FA292",
@@ -25990,7 +25921,9 @@
     "bossChest": true,
     "crafting": [
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
+     "an anvil",
      "an armor workbench",
      "an enchanting table"
     ]
@@ -26560,7 +26493,9 @@
     ],
     "bossChest": true,
     "crafting": [
+     "a forge",
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
      "an anvil",
      "an armor workbench",
@@ -26643,7 +26578,9 @@
    "worthGoingFor": {
     "crafting": [
      "a sharpening wheel",
+     "a smelter",
      "an alchemy lab",
+     "an anvil",
      "an armor workbench"
     ]
    },
@@ -26890,6 +26827,11 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a tanning rack"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -26964,6 +26906,7 @@
    "worthGoingFor": {
     "bossChest": true,
     "crafting": [
+     "a tanning rack",
      "an alchemy lab"
     ]
    },
@@ -27155,7 +27098,12 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a tanning rack"
+    ]
+   }
   },
   {
    "id": "Journey to Baan Malur.esp:2E9353",
@@ -27210,7 +27158,10 @@
    "clearXp": 100,
    "discoveryXp": 10,
    "worthGoingFor": {
-    "bossChest": true
+    "bossChest": true,
+    "crafting": [
+     "a tanning rack"
+    ]
    }
   },
   {
@@ -27321,7 +27272,10 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "crafting": [
-     "a sharpening wheel"
+     "a forge",
+     "a sharpening wheel",
+     "a tanning rack",
+     "an armor workbench"
     ]
    }
   },
@@ -27942,6 +27896,7 @@
    "worthGoingFor": {
     "bossChest": true,
     "crafting": [
+     "a tanning rack",
      "an alchemy lab"
     ]
    },
@@ -28064,7 +28019,10 @@
    "clearXp": 100,
    "discoveryXp": 10,
    "worthGoingFor": {
-    "bossChest": true
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel"
+    ]
    },
    "danger": {
     "traps": true
@@ -28177,6 +28135,11 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a tanning rack"
+    ]
+   },
    "quests": [
     {
      "quest": "Init quest",
@@ -28365,6 +28328,8 @@
    "worthGoingFor": {
     "bossChest": true,
     "crafting": [
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an anvil"
     ]
@@ -28716,6 +28681,11 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a tanning rack"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -29193,6 +29163,11 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a tanning rack"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -30150,7 +30125,10 @@
    "clearXp": 200,
    "discoveryXp": 10,
    "worthGoingFor": {
-    "bossChest": true
+    "bossChest": true,
+    "crafting": [
+     "a tanning rack"
+    ]
    },
    "danger": {
     "traps": true
@@ -30349,6 +30327,11 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a tanning rack"
+    ]
+   },
    "quests": [
     {
      "quest": "Init quest",
@@ -30444,6 +30427,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
@@ -31694,42 +31679,6 @@
     {
      "quest": "Clean Sweep",
      "id": "Dragonborn.esm:024DFC"
-    },
-    {
-     "quest": "Deliver a Letter Distant",
-     "id": "Missives - Solstheim.esp:00085D"
-    },
-    {
-     "quest": "Deliver a Letter Near",
-     "id": "Missives - Solstheim.esp:00085E"
-    },
-    {
-     "quest": "Deliver a Letter Medium",
-     "id": "Missives - Solstheim.esp:00085F"
-    },
-    {
-     "quest": "Deliver a Weapon Distant",
-     "id": "Missives - Solstheim.esp:000860"
-    },
-    {
-     "quest": "Deliver a Weapon Near",
-     "id": "Missives - Solstheim.esp:000861"
-    },
-    {
-     "quest": "Deliver a Weapon Medium",
-     "id": "Missives - Solstheim.esp:000862"
-    },
-    {
-     "quest": "Deliver a Potion Far",
-     "id": "Missives - Solstheim.esp:0008CE"
-    },
-    {
-     "quest": "Deliver a Potion Near",
-     "id": "Missives - Solstheim.esp:0008CF"
-    },
-    {
-     "quest": "Deliver a Potion Medium",
-     "id": "Missives - Solstheim.esp:0008D0"
     }
    ]
   },
@@ -31993,7 +31942,10 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "crafting": [
+     "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
@@ -32442,6 +32394,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -32986,6 +32941,11 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a forge"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -33880,6 +33840,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
    "quests": [
     {
      "quest": "Blindsighted",
@@ -33918,6 +33881,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an armor workbench"
     ],
     "shrines": [
@@ -33933,42 +33898,6 @@
     {
      "quest": "Vigilant of Stendarr",
      "id": "Vigilant.esm:005CE2"
-    },
-    {
-     "quest": "Deliver a Letter Distant",
-     "id": "Missives.esp:011C9E"
-    },
-    {
-     "quest": "Deliver a Letter Near",
-     "id": "Missives.esp:011CD5"
-    },
-    {
-     "quest": "Deliver a Letter Medium",
-     "id": "Missives.esp:011D0C"
-    },
-    {
-     "quest": "Deliver a Weapon Distant",
-     "id": "Missives.esp:0122A6"
-    },
-    {
-     "quest": "Deliver a Weapon Near",
-     "id": "Missives.esp:012840"
-    },
-    {
-     "quest": "Deliver a Weapon Medium",
-     "id": "Missives.esp:012DDA"
-    },
-    {
-     "quest": "Deliver a Potion Near",
-     "id": "Missives.esp:03A8F2"
-    },
-    {
-     "quest": "Deliver a Potion Medium",
-     "id": "Missives.esp:03C976"
-    },
-    {
-     "quest": "Deliver a Potion Far",
-     "id": "Missives.esp:03CEE2"
     }
    ]
   },
@@ -34107,6 +34036,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
@@ -34435,7 +34366,10 @@
      "Lockpicking: The Wolf Queen, Vol. 1",
      "Pickpocket: Purloined Shadows"
     ],
-    "bossChest": true
+    "bossChest": true,
+    "crafting": [
+     "a tanning rack"
+    ]
    },
    "danger": {
     "traps": true
@@ -34618,6 +34552,7 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench"
     ]
@@ -34774,6 +34709,9 @@
    "clearXp": 200,
    "discoveryXp": 10,
    "worthGoingFor": {
+    "wordWall": [
+     "Ice Form"
+    ],
     "skillBooks": [
      "Sneak: The Red Kitchen Reader"
     ],
@@ -34923,6 +34861,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
@@ -35047,6 +34987,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an anvil",
      "an armor workbench",
@@ -35337,6 +35279,7 @@
    "worthGoingFor": {
     "bossChest": true,
     "crafting": [
+     "a tanning rack",
      "an alchemy lab"
     ]
    },
@@ -36424,6 +36367,7 @@
     ],
     "bossChest": true,
     "crafting": [
+     "a tanning rack",
      "an armor workbench"
     ]
    },
@@ -38397,6 +38341,9 @@
      "Conjuration: Liminal Bridges"
     ],
     "bossChest": true,
+    "crafting": [
+     "a sharpening wheel"
+    ],
     "shrines": [
      "Shrine of Dibella"
     ]
@@ -38493,7 +38440,10 @@
     "skillBooks": [
      "Enchanting: A Tragedy in Black"
     ],
-    "bossChest": true
+    "bossChest": true,
+    "crafting": [
+     "a tanning rack"
+    ]
    },
    "pointers": [
     {
@@ -39223,6 +39173,9 @@
    "worthGoingFor": {
     "skillBooks": [
      "Marksman: The Marksmanship Lesson"
+    ],
+    "crafting": [
+     "a tanning rack"
     ]
    }
   },
@@ -39371,6 +39324,9 @@
    "clearXp": 100,
    "discoveryXp": 10,
    "worthGoingFor": {
+    "wordWall": [
+     "Dismay"
+    ],
     "skillBooks": [
      "Alchemy: A Game at Dinner"
     ],
@@ -39727,6 +39683,9 @@
    "clearXp": 200,
    "discoveryXp": 10,
    "worthGoingFor": {
+    "wordWall": [
+     "Elemental Fury"
+    ],
     "bossChest": true,
     "crafting": [
      "an enchanting table"
@@ -39826,6 +39785,7 @@
     "bossChest": true,
     "crafting": [
      "a sharpening wheel",
+     "a tanning rack",
      "an anvil"
     ],
     "shrines": [
@@ -39904,6 +39864,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench"
     ]
@@ -40196,6 +40158,7 @@
     "crafting": [
      "a sharpening wheel",
      "an alchemy lab",
+     "an anvil",
      "an armor workbench"
     ],
     "shrines": [
@@ -40375,7 +40338,10 @@
     "skillBooks": [
      "Restoration: Withershins"
     ],
-    "bossChest": true
+    "bossChest": true,
+    "crafting": [
+     "a smelter"
+    ]
    },
    "danger": {
     "traps": true
@@ -40477,6 +40443,7 @@
     ],
     "bossChest": true,
     "crafting": [
+     "a tanning rack",
      "an alchemy lab",
      "an anvil",
      "an armor workbench"
@@ -40668,6 +40635,7 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
      "an anvil",
      "an armor workbench",
@@ -41508,6 +41476,8 @@
     ],
     "bossChest": true,
     "crafting": [
+     "a forge",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
@@ -41744,7 +41714,10 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "crafting": [
+     "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an armor workbench"
     ]
    },
@@ -42263,10 +42236,14 @@
    "clearXp": 200,
    "discoveryXp": 10,
    "worthGoingFor": {
+    "wordWall": [
+     "Become Ethereal"
+    ],
     "bossChest": true,
     "crafting": [
      "a forge",
-     "a sharpening wheel"
+     "a sharpening wheel",
+     "a tanning rack"
     ]
    },
    "danger": {
@@ -42317,6 +42294,8 @@
     ],
     "crafting": [
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an armor workbench"
     ],
     "shrines": [
@@ -42331,42 +42310,6 @@
     {
      "quest": "Send the Vigil to Markarth",
      "id": "Vigilant.esm:4E252B"
-    },
-    {
-     "quest": "Deliver a Letter Distant",
-     "id": "Missives.esp:011CA8"
-    },
-    {
-     "quest": "Deliver a Letter Near",
-     "id": "Missives.esp:011CDD"
-    },
-    {
-     "quest": "Deliver a Letter Medium",
-     "id": "Missives.esp:011D14"
-    },
-    {
-     "quest": "Deliver a Weapon Distant",
-     "id": "Missives.esp:0122AE"
-    },
-    {
-     "quest": "Deliver a Weapon Near",
-     "id": "Missives.esp:012848"
-    },
-    {
-     "quest": "Deliver a Weapon Medium",
-     "id": "Missives.esp:012DE2"
-    },
-    {
-     "quest": "Deliver a Potion Near",
-     "id": "Missives.esp:03A8F3"
-    },
-    {
-     "quest": "Deliver a Potion Medium",
-     "id": "Missives.esp:03C977"
-    },
-    {
-     "quest": "Deliver a Potion Far",
-     "id": "Missives.esp:03D448"
     }
    ]
   },
@@ -42754,6 +42697,7 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
@@ -44039,6 +43983,7 @@
     "bossChest": true,
     "crafting": [
      "an alchemy lab",
+     "an anvil",
      "an armor workbench"
     ]
    },
@@ -44241,6 +44186,8 @@
     ],
     "bossChest": true,
     "crafting": [
+     "a tanning rack",
+     "an anvil",
      "an armor workbench",
      "an enchanting table"
     ]
@@ -44781,6 +44728,8 @@
     ],
     "crafting": [
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an enchanting table"
     ]
@@ -45577,6 +45526,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
@@ -45843,6 +45794,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
@@ -46326,10 +46279,16 @@
    "clearXp": 200,
    "discoveryXp": 10,
    "worthGoingFor": {
+    "wordWall": [
+     "Marked for Death"
+    ],
     "skillBooks": [
      "Light Armor: Jornibret's Last Dance"
     ],
-    "bossChest": true
+    "bossChest": true,
+    "crafting": [
+     "a tanning rack"
+    ]
    },
    "danger": {
     "dragonLair": true
@@ -46931,6 +46890,7 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
@@ -47306,7 +47266,10 @@
     "skillBooks": [
      "Two-Handed: Battle of Sancre Tor"
     ],
-    "bossChest": true
+    "bossChest": true,
+    "crafting": [
+     "a tanning rack"
+    ]
    },
    "danger": {
     "traps": true
@@ -48148,7 +48111,8 @@
     "bossChest": true,
     "crafting": [
      "a forge",
-     "a sharpening wheel"
+     "a sharpening wheel",
+     "a tanning rack"
     ]
    },
    "danger": {
@@ -48500,6 +48464,9 @@
    "clearXp": 200,
    "discoveryXp": 10,
    "worthGoingFor": {
+    "wordWall": [
+     "Storm Call"
+    ],
     "skillBooks": [
      "Restoration: The Exodus"
     ],
@@ -48625,6 +48592,7 @@
     ],
     "bossChest": true,
     "crafting": [
+     "a forge",
      "a sharpening wheel",
      "an armor workbench"
     ],
@@ -48716,6 +48684,9 @@
    "worthGoingFor": {
     "skillBooks": [
      "Marksman: Vernaccus and Bourlor"
+    ],
+    "crafting": [
+     "a tanning rack"
     ]
    }
   },
@@ -49583,6 +49554,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
@@ -49942,7 +49915,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "crafting": [
-     "a sharpening wheel"
+     "a sharpening wheel",
+     "a tanning rack"
     ]
    },
    "pointers": [
@@ -50560,6 +50534,7 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench"
     ]
@@ -50760,6 +50735,11 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a smelter"
+    ]
+   },
    "danger": {
     "traps": true
    },
@@ -50833,6 +50813,9 @@
    "clearXp": 200,
    "discoveryXp": 10,
    "worthGoingFor": {
+    "wordWall": [
+     "Dismay"
+    ],
     "bossChest": true
    },
    "danger": {
@@ -51251,7 +51234,13 @@
    "clearXp": 200,
    "discoveryXp": 10,
    "worthGoingFor": {
-    "bossChest": true
+    "wordWall": [
+     "Aura Whisper"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a smelter"
+    ]
    },
    "danger": {
     "dragonLair": true
@@ -51676,6 +51665,7 @@
     "bossChest": true,
     "crafting": [
      "a forge",
+     "a tanning rack",
      "an alchemy lab",
      "an enchanting table"
     ]
@@ -51731,6 +51721,7 @@
     "bossChest": true,
     "crafting": [
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
      "an anvil",
      "an armor workbench",
@@ -51777,42 +51768,6 @@
     {
      "quest": "Fists of Fury - The Rift",
      "id": "Fists of Fury - Skyrim.esp:04C991"
-    },
-    {
-     "quest": "Deliver a Letter Distant",
-     "id": "Missives.esp:011CAF"
-    },
-    {
-     "quest": "Deliver a Letter Near",
-     "id": "Missives.esp:011CE5"
-    },
-    {
-     "quest": "Deliver a Letter Medium",
-     "id": "Missives.esp:011D1D"
-    },
-    {
-     "quest": "Deliver a Weapon Distant",
-     "id": "Missives.esp:0122B6"
-    },
-    {
-     "quest": "Deliver a Weapon Near",
-     "id": "Missives.esp:012851"
-    },
-    {
-     "quest": "Deliver a Weapon Medium",
-     "id": "Missives.esp:012DEA"
-    },
-    {
-     "quest": "Deliver a Potion Near",
-     "id": "Missives.esp:03A8F4"
-    },
-    {
-     "quest": "Deliver a Potion Medium",
-     "id": "Missives.esp:03CEDB"
-    },
-    {
-     "quest": "Deliver a Potion Far",
-     "id": "Missives.esp:03D44A"
     }
    ]
   },
@@ -52210,6 +52165,7 @@
     ],
     "crafting": [
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
      "an anvil",
      "an armor workbench",
@@ -52654,6 +52610,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an armor workbench"
     ],
     "shrines": [
@@ -53371,6 +53329,7 @@
     ],
     "crafting": [
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench"
     ],
@@ -53911,13 +53870,13 @@
     {
      "kind": "book",
      "book": "Uncovering the Aetherium Forge",
-     "words": "[pagebreak]\r\n\r\n\r\n\r\nUncovering the Aetherium Forge\r\n\r\n\r\nby Katria\r\n\r\n\r\n\r\n\r\nThe real mind behind \r\nThe Aetherium Wars\r\n\r\n[pagebreak]\r\n17th of Sun's Height \r\nDamn that sc",
+     "words": "to step foot here in thousands of years. More Resonators, easy enough. But the air... it feels different.\r\n[pagebreak]\r\nThe Aetherium Forge. We actually found it! The whole area is surrounded by a pool of magma. We'll have to shut off the steam so my friend can breathe down here.",
      "record": "BOOK katriaslegacy.esp:000800 (katriaslegacy.esp)"
     },
     {
      "kind": "book",
      "book": "Uncovering the Aetherium Forge",
-     "words": "to step foot here in thousands of years. More Resonators, easy enough. But the air... it feels different.\r\n[pagebreak]\r\nThe Aetherium Forge. We actually found it! The whole area is surrounded by a pool of magma. We'll have to shut off the steam so my friend can breathe down here.",
+     "words": "[pagebreak]\r\n\r\n\r\n\r\nUncovering the Aetherium Forge\r\n\r\n\r\nby Katria\r\n\r\n\r\n\r\n\r\nThe real mind behind \r\nThe Aetherium Wars\r\n\r\n[pagebreak]\r\n17th of Sun's Height \r\nDamn that sc",
      "record": "BOOK katriaslegacy.esp:000800 (katriaslegacy.esp)"
     }
    ],
@@ -54305,7 +54264,8 @@
      "Smithing: The Armorer's Challenge"
     ],
     "crafting": [
-     "a sharpening wheel"
+     "a sharpening wheel",
+     "a tanning rack"
     ],
     "shrines": [
      "Shrine of Zenithar"
@@ -54484,6 +54444,7 @@
     "bossChest": true,
     "crafting": [
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab"
     ],
     "shrines": [
@@ -54572,6 +54533,7 @@
     ],
     "bossChest": true,
     "crafting": [
+     "a tanning rack",
      "an alchemy lab"
     ]
    },
@@ -55564,6 +55526,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
@@ -57505,6 +57469,8 @@
     ],
     "bossChest": true,
     "crafting": [
+     "a forge",
+     "a tanning rack",
      "an armor workbench"
     ]
    },
@@ -57743,6 +57709,9 @@
      "Alchemy: Song of the Alchemists"
     ],
     "crafting": [
+     "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an anvil",
      "an armor workbench",
@@ -57942,7 +57911,12 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a tanning rack"
+    ]
+   }
   },
   {
    "id": "SurWR.esp:33E518",
@@ -58356,6 +58330,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab"
     ]
    },
@@ -58580,6 +58556,7 @@
     ],
     "crafting": [
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
      "an anvil",
      "an enchanting table"
@@ -59441,6 +59418,7 @@
    "worthGoingFor": {
     "crafting": [
      "a sharpening wheel",
+     "a tanning rack",
      "an armor workbench"
     ],
     "shrines": [
@@ -61755,7 +61733,10 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "crafting": [
+     "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an armor workbench",
      "an enchanting table"
     ]
@@ -62870,8 +62851,8 @@
      "id": "Skyrim.esm:039645"
     },
     {
-     "quest": "Season Unending",
-     "id": "Skyrim.esm:02610A"
+     "quest": "Before the Storm",
+     "id": "Skyrim.esm:04E50D"
     }
    ]
   },
@@ -63193,6 +63174,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "crafting": [
+     "a tanning rack",
      "an armor workbench"
     ]
    },
@@ -64414,10 +64396,12 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
+     "Smithing: Heavy Armor Forging",
      "Smithing: Light Armor Forging"
     ],
     "bossChest": true,
     "crafting": [
+     "a forge",
      "a sharpening wheel",
      "an alchemy lab",
      "an armor workbench"
@@ -66730,6 +66714,7 @@
     ],
     "crafting": [
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
      "an anvil",
      "an armor workbench",
@@ -66748,46 +66733,6 @@
     {
      "quest": "Send the Vigil to Whiterun",
      "id": "Vigilant.esm:4E250C"
-    },
-    {
-     "quest": "Deliver a Letter Near",
-     "id": "Missives.esp:00BA9E"
-    },
-    {
-     "quest": "Deliver a Weapon Near",
-     "id": "Missives.esp:00D59D"
-    },
-    {
-     "quest": "Deliver a Letter Medium",
-     "id": "Missives.esp:00E080"
-    },
-    {
-     "quest": "Deliver a Letter Distant",
-     "id": "Missives.esp:00E5EB"
-    },
-    {
-     "quest": "Deliver a Weapon Medium",
-     "id": "Missives.esp:00EB55"
-    },
-    {
-     "quest": "Deliver a Weapon Distant",
-     "id": "Missives.esp:00EB5C"
-    },
-    {
-     "quest": "Deliver a Potion Near",
-     "id": "Missives.esp:03AE58"
-    },
-    {
-     "quest": "Deliver a Potion Medium",
-     "id": "Missives.esp:03CEDC"
-    },
-    {
-     "quest": "Deliver a Potion Far",
-     "id": "Missives.esp:03D44B"
-    },
-    {
-     "quest": "Heal the Sick",
-     "id": "MissivesExpansion.esp:0001AB"
     }
    ]
   },
@@ -67278,6 +67223,7 @@
     "bossChest": true,
     "crafting": [
      "a forge",
+     "a tanning rack",
      "an alchemy lab",
      "an anvil",
      "an armor workbench"
@@ -68074,6 +68020,9 @@
      "Heavy Armor: Orsinium and the Orcs"
     ],
     "bossChest": true,
+    "crafting": [
+     "a smelter"
+    ],
     "shrines": [
      "Shrine of Julianos"
     ]
@@ -68184,6 +68133,7 @@
     "bossChest": true,
     "crafting": [
      "a sharpening wheel",
+     "an alchemy lab",
      "an armor workbench"
     ]
    },
@@ -68298,7 +68248,10 @@
     "skillBooks": [
      "Restoration: Mystery of Talara, Vol. 2"
     ],
-    "bossChest": true
+    "bossChest": true,
+    "crafting": [
+     "a tanning rack"
+    ]
    },
    "danger": {
     "traps": true
@@ -69134,6 +69087,14 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Ice Form"
+    ],
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
    "danger": {
     "dragonLair": true
    },
@@ -70998,6 +70959,9 @@
    "worthGoingFor": {
     "skillBooks": [
      "Restoration: The Exodus"
+    ],
+    "crafting": [
+     "a tanning rack"
     ]
    },
    "aliases": [
@@ -71723,8 +71687,11 @@
    },
    "worthGoingFor": {
     "crafting": [
+     "a forge",
      "a sharpening wheel",
-     "an alchemy lab"
+     "a tanning rack",
+     "an alchemy lab",
+     "an armor workbench"
     ],
     "shrines": [
      "Shrine of Arkay",
@@ -71739,50 +71706,6 @@
     {
      "quest": "Send the Vigil to Winterhold",
      "id": "Vigilant.esm:4E251C"
-    },
-    {
-     "quest": "Deliver a Letter Distant",
-     "id": "Missives.esp:011CB6"
-    },
-    {
-     "quest": "Deliver a Letter Near",
-     "id": "Missives.esp:011CEE"
-    },
-    {
-     "quest": "Deliver a Letter Medium",
-     "id": "Missives.esp:011D24"
-    },
-    {
-     "quest": "Deliver a Weapon Distant",
-     "id": "Missives.esp:0122BF"
-    },
-    {
-     "quest": "Deliver a Weapon Near",
-     "id": "Missives.esp:012859"
-    },
-    {
-     "quest": "Deliver a Weapon Medium",
-     "id": "Missives.esp:012DF2"
-    },
-    {
-     "quest": "Gather Common Ore",
-     "id": "Missives.esp:0149DD"
-    },
-    {
-     "quest": "Gather Very Rare Ore",
-     "id": "Missives.esp:0154F5"
-    },
-    {
-     "quest": "Deliver a Potion Near",
-     "id": "Missives.esp:03AE59"
-    },
-    {
-     "quest": "Deliver a Potion Near",
-     "id": "Missives.esp:03CEDD"
-    },
-    {
-     "quest": "Deliver a Potion Far",
-     "id": "Missives.esp:03D44C"
     }
    ]
   },
@@ -71979,7 +71902,10 @@
    "clearXp": 100,
    "discoveryXp": 10,
    "worthGoingFor": {
-    "bossChest": true
+    "bossChest": true,
+    "crafting": [
+     "a tanning rack"
+    ]
    },
    "pointers": [
     {
@@ -72467,6 +72393,7 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a tanning rack",
      "an armor workbench"
     ]
    },
@@ -72652,7 +72579,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "crafting": [
-     "a sharpening wheel"
+     "a sharpening wheel",
+     "a tanning rack"
     ],
     "shrines": [
      "Shrine of Mara"
@@ -72848,6 +72776,7 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
@@ -73190,6 +73119,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
@@ -73808,6 +73739,7 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
@@ -74019,6 +73951,7 @@
     ],
     "crafting": [
      "a sharpening wheel",
+     "a tanning rack",
      "an anvil"
     ]
    }
@@ -74085,7 +74018,10 @@
    "worthGoingFor": {
     "bossChest": true,
     "crafting": [
+     "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an armor workbench"
     ],
     "shrines": [
@@ -74389,44 +74325,6 @@
      "words": "itude and your passage across the Sea of Ghosts to Wyrmstooth has been paid in full.\r\n\r\nWhen you arrive, seek me out at Stonehollow. Bolmar's recently discovered a rich ebony vein and he's currently recruiting miners. Sounds like the opportunity of a lifetime if you ask me.\r\n\r\nGo",
      "record": "BOOK Extended Encounters.esp:000204 (Extended Encounters.esp)"
     }
-   ],
-   "quests": [
-    {
-     "quest": "Deliver a Letter Distant",
-     "id": "Missives - Wyrmstooth.esp:00089A"
-    },
-    {
-     "quest": "Deliver a Letter Near",
-     "id": "Missives - Wyrmstooth.esp:00089B"
-    },
-    {
-     "quest": "Deliver a Letter Medium",
-     "id": "Missives - Wyrmstooth.esp:00089C"
-    },
-    {
-     "quest": "Deliver a Weapon Distant",
-     "id": "Missives - Wyrmstooth.esp:00089D"
-    },
-    {
-     "quest": "Deliver a Weapon Near",
-     "id": "Missives - Wyrmstooth.esp:00089E"
-    },
-    {
-     "quest": "Deliver a Weapon Medium",
-     "id": "Missives - Wyrmstooth.esp:00089F"
-    },
-    {
-     "quest": "Deliver a Potion Near",
-     "id": "Missives - Wyrmstooth.esp:0008B1"
-    },
-    {
-     "quest": "Deliver a Potion Med",
-     "id": "Missives - Wyrmstooth.esp:0008B2"
-    },
-    {
-     "quest": "Deliver a Potion Far",
-     "id": "Missives - Wyrmstooth.esp:0008B3"
-    }
    ]
   },
   {
@@ -74635,7 +74533,12 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a tanning rack"
+    ]
+   }
   },
   {
    "id": "Wyrmstooth.esp:4EE884",
@@ -74749,6 +74652,7 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
      "an anvil",
      "an armor workbench"
@@ -75518,7 +75422,9 @@
     ],
     "bossChest": true,
     "crafting": [
+     "a forge",
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
      "an anvil",
      "an armor workbench"
@@ -76079,6 +75985,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "crafting": [
+     "a tanning rack",
      "an enchanting table"
     ]
    },
@@ -76536,6 +76443,7 @@
    "worthGoingFor": {
     "crafting": [
      "a sharpening wheel",
+     "a tanning rack",
      "an anvil"
     ]
    }
@@ -76544,7 +76452,7 @@
    "id": "Dawnguard.esm:004C20",
    "name": "Castle Volkihar",
    "edid": "DLC1VampireCastleLocation",
-   "type": "Fort",
+   "type": "Castle",
    "keywords": [],
    "hold": null,
    "nearestTown": {
@@ -76576,33 +76484,8 @@
    ],
    "actors": {
     "count": 111,
-    "livesHere": "Skeleton",
-    "alsoHere": [
-     "Vampire",
-     "Draugr",
-     "Spider",
-     "Warlock"
-    ],
-    "floor": 1,
-    "ceiling": 150,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       150
-      ],
-      "words": "from 1, 1 to 150"
-     }
-    ],
-    "boss": {
-     "name": "Lord Harkon",
-     "level": "level 150"
-    }
+    "hostile": false
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 200,
-   "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
      "Alchemy: De Rerum Dirennis",
@@ -76614,6 +76497,8 @@
     "bossChest": true,
     "crafting": [
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an anvil",
      "an armor workbench",
@@ -77958,6 +77843,7 @@
     ],
     "crafting": [
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
      "an anvil",
      "an enchanting table"
@@ -78621,6 +78507,7 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
      "an enchanting table"
     ]
@@ -79276,7 +79163,10 @@
      "Enchanting: Catalogue of Weapon Enchantments"
     ],
     "crafting": [
+     "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
@@ -79532,6 +79422,7 @@
     "bossChest": true,
     "crafting": [
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
      "an anvil",
      "an enchanting table"
@@ -79741,6 +79632,7 @@
    "worthGoingFor": {
     "crafting": [
      "a sharpening wheel",
+     "a smelter",
      "an armor workbench"
     ]
    }
@@ -80779,6 +80671,7 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench"
     ]
@@ -81080,6 +80973,9 @@
    "clearXp": 200,
    "discoveryXp": 10,
    "worthGoingFor": {
+    "crafting": [
+     "a tanning rack"
+    ],
     "shrines": [
      "Shrine of Akatosh"
     ]
@@ -83141,6 +83037,7 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
@@ -87713,6 +87610,7 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a tanning rack",
      "an alchemy lab",
      "an armor workbench",
      "an enchanting table"
@@ -88809,16 +88707,8 @@
    "type": "Landmark",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Dragon Bridge",
-    "km": 1.4,
-    "walk": "half a day"
-   },
-   "nearestCity": {
-    "town": "Solitude",
-    "km": 1.7,
-    "walk": "half a day"
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "inTown": null,
    "plugin": "00Taliesin.esp",
    "marker": null,
@@ -88836,13 +88726,7 @@
     "Lucya",
     "Reaper"
    ],
-   "world": "Tamriel",
-   "pos": [
-    -169241.5,
-    149956.4,
-    -10227.6
-   ],
-   "posFrom": "door",
+   "noPos": "another plane: the door out of it opens in Castle Volkihar, which has the position",
    "actors": {
     "count": 88,
     "livesHere": "Skeleton",
@@ -88872,6 +88756,7 @@
    "worthGoingFor": {
     "bossChest": true,
     "crafting": [
+     "a smelter",
      "an alchemy lab",
      "an enchanting table"
     ]
@@ -89778,6 +89663,11 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a tanning rack"
+    ]
+   },
    "quests": [
     {
      "quest": "The Forgotten City",
@@ -90091,6 +89981,8 @@
     "crafting": [
      "a forge",
      "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
      "an armor workbench"
     ]
    }
@@ -90366,6 +90258,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
