@@ -81,7 +81,9 @@ class BuiltIndex(unittest.TestCase):
     def test_no_town_and_every_pointer_has_its_record(self):
         # WO-144 Part 1 item 2: NAMED_PLACES (the thirteen settlements, the four strongholds) are the one named
         # exception -- everything else stays out, so a stray "City"/"Town"/"Settlement" marker still can't sneak in.
-        self.assertFalse([p["name"] for p in self.rows if p["type"] in pl.NOT_PLACES and p["name"] not in pl.NAMED_PLACES])
+        # WO-166 adds two more exceptions: the nine capitals (rows of type City) and the towns a quest names (Ben Erai, Stonehollow).
+        self.assertFalse([p["name"] for p in self.rows if p["type"] in pl.NOT_PLACES and p["name"] not in pl.NAMED_PLACES | pl.CAPITALS
+                          and not p.get("namedByQuest")])
         self.assertTrue(all(x["record"] for p in self.rows for x in p.get("pointers", [])))
         self.assertGreater(len({p["plugin"] for p in self.rows}), 20)  # across the load order, not only the base game
 
@@ -391,6 +393,102 @@ class BuiltIndex(unittest.TestCase):
         lairs = [p for p in self.rows if p["type"] == "DragonLair"]
         self.assertGreater(len(lairs), 0)
         self.assertTrue(all(p["danger"]["dragonLair"] for p in lairs))
+
+    # ---- WO-166 Part 1: where each place is ----
+
+    def test_every_place_has_a_position_or_a_town_or_says_why_not(self):
+        for p in self.rows:
+            self.assertEqual(sum([bool(p.get("pos")), bool(p.get("inTown")), bool(p.get("noPos"))]), 1, p["name"])  # exactly one story
+            if p.get("pos"):
+                self.assertEqual(len(p["pos"]), 3, p["name"])
+                self.assertTrue(isinstance(p["world"], str) and p["world"], p["name"])
+                self.assertIn(p["posFrom"], ("marker", "cells", "door"), p["name"])
+                self.assertTrue(all(isinstance(v, (int, float)) for v in p["pos"][:2]), p["name"])
+                self.assertEqual(p["pos"][2] is None, p["posFrom"] == "cells", p["name"])  # a cell's middle has no height; the rest do
+
+    def test_nearly_every_place_is_placed(self):
+        # The proof placed 286 of 566 on Tamriel; now the markers, the cells and the doors place all but a handful.
+        free = [p for p in self.rows if not p.get("inTown")]
+        placed = [p for p in free if p.get("pos")]
+        self.assertGreater(len(placed), 0.97 * len(free), [p["name"] for p in free if not p.get("pos")])
+        self.assertGreater(len([p for p in placed if p["world"] == "Tamriel"]), 340)
+
+    def test_the_nine_capitals_are_cities_with_their_own_markers_positions(self):
+        cities = {p["name"]: p for p in self.rows if p["type"] == "City" and p["name"] in pl.CAPITALS}
+        self.assertEqual(set(cities), pl.CAPITALS)
+        for name, (x, y) in {"Whiterun": (19855, -7422), "Solitude": (-64943, 104648), "Riften": (173415, -96600), "Markarth": (-174024, 5256),
+                             "Windhelm": (135137, 35265), "Falkreath": (-30296, -86284)}.items():
+            c = cities[name]
+            self.assertEqual((c["world"], c["posFrom"]), ("Tamriel", "marker"), name)  # the five big cities' worlds share Tamriel's coordinates
+            self.assertLess(abs(c["pos"][0] - x) + abs(c["pos"][1] - y), 5, name)
+        self.assertEqual(cities["Whiterun"]["hold"], "Whiterun")
+        self.assertEqual(cities["Solitude"]["hold"], "Haafingar")
+        self.assertFalse([n for n, c in cities.items() if c.get("pointers")])  # a city keeps its quests, not every line that says its name
+        self.assertTrue(all(c.get("quests") for c in cities.values()))
+
+    def test_every_building_in_a_capital_points_at_a_city_row(self):
+        towns = {p["inTown"] for p in self.rows if p.get("inTown")}
+        cities = {p["name"] for p in self.rows if p["type"] == "City"}
+        self.assertTrue({t for t in towns if t in pl.CAPITALS} <= cities)
+
+    def test_bob_s_two_hand_checks_on_the_map(self):
+        # Bleak Falls Barrow is west-north-west of Riverwood and higher; Embershard Mine is south of it.
+        riv, bfb, emb = (self.by[n] for n in ("Riverwood", "Bleak Falls Barrow", "Embershard Mine"))
+        self.assertLess(bfb["pos"][0], riv["pos"][0])
+        self.assertGreater(bfb["pos"][1], riv["pos"][1])
+        self.assertGreater(bfb["pos"][2], riv["pos"][2])
+        self.assertLess(emb["pos"][1], riv["pos"][1])
+        self.assertLess(abs(bfb["pos"][0] - riv["pos"][0]) + abs(bfb["pos"][1] - riv["pos"][1]), 26000)  # "next to it": 0.3 km
+
+    def test_morvunskar_crypts_has_its_own_position_and_is_no_longer_riverwood_s_neighbour(self):
+        crypts, barrow = self.by["Morvunskar Crypts"], self.by["Bleak Falls Barrow"]
+        self.assertNotEqual(crypts["marker"], barrow["marker"])  # its record pointed at the barrow's map marker
+        self.assertGreater(abs(crypts["pos"][0] - barrow["pos"][0]) + abs(crypts["pos"][1] - barrow["pos"][1]), 10 * pl.SAME_SPOT)
+        self.assertNotEqual(crypts["nearestTown"]["town"], "Riverwood")
+
+    def test_fort_dawnguard_and_the_other_places_quests_name_are_places(self):
+        # WO-166 (Bob, 27 Oct 21:45): Dawnguard starts at Fort Dawnguard, which had no place at all.
+        for name in ("Fort Dawnguard", "Esbern's Vault", "Thalmor Embassy", "Dayspring Canyon"):
+            p = self.by[name]
+            self.assertEqual(p["world"], "Tamriel", name)
+            self.assertTrue(p["namedByQuest"], name)
+        self.assertEqual(self.by["Fort Dawnguard"]["type"], "Fort")
+        self.assertIs(self.by["Fort Dawnguard"]["actors"]["hostile"], False)  # the Dawnguard's home, not a fight with "Isran, level 150"
+        # ...and a room is not one: a house, a shop, a jail, a hold or a name no map holds stays out.
+        for name in ("Belethor's General Goods", "Whiterun Jail", "Haafingar", "Apocrypha", "Sovngarde"):
+            self.assertNotIn(name, self.by, name)
+
+    def test_the_leftovers_and_the_listed_twice_are_gone_or_merged(self):
+        self.assertNotIn("E3 Bleak Falls Barrow", self.by)  # an E3 demo's location
+        self.assertNotIn("Name TBD", self.by)
+        self.assertNotIn("Sewers", self.by)  # a room of Ben Erai's: named for it
+        self.assertIn("Ben Erai Sewers", self.by)
+        self.assertFalse([p["name"] for p in self.rows if pl.LEFTOVER.search(p["edid"])])
+        self.assertEqual(sum(1 for p in self.rows if p["name"] == "Sancre Tor"), 1)  # a place and its four parts
+        self.assertEqual(sum(1 for p in self.rows if p["name"] == "Bonestrewn Crest"), 1)  # the real one, not the UNUSED copy
+        self.assertEqual(self.by["Sancre Tor"]["alsoRecordedAs"][0]["edid"][:15], "manny_GF_L_Sanc")
+
+    def test_one_name_for_two_places_only_where_they_are_two_places(self):
+        by_name = collections.defaultdict(list)
+        for p in self.rows:
+            by_name[p["name"].lower()].append(p)
+        for name, group in by_name.items():
+            for i, a in enumerate(group):
+                for b in group[i + 1:]:
+                    self.assertFalse(a["marker"] and a["marker"] == b["marker"], name)
+                    if a.get("pos") and b.get("pos") and a["world"] == b["world"]:
+                        d = ((a["pos"][0] - b["pos"][0]) ** 2 + (a["pos"][1] - b["pos"][1]) ** 2) ** 0.5
+                        self.assertGreater(d, pl.SAME_SPOT, name)
+        self.assertEqual(len(by_name["imperial military camp"]), 8)  # one in each hold: eight places, not one
+        self.assertEqual(len(by_name["hall of the dead"]), 3)  # Markarth, Riften, Whiterun
+
+    def test_the_site_file_carries_where_a_place_is(self):
+        row = {"id": "X:1", "name": "Some Cave", "type": "Cave", "edid": "E", "world": "Tamriel", "pos": [1.0, 2.0, None], "posFrom": "cells",
+               "noPos": None, "alsoRecordedAs": [{"id": "Y:2"}], "namedByQuest": ["Q"]}
+        (out,) = pl.build_site([row])
+        self.assertEqual((out["world"], out["pos"]), ("Tamriel", [1.0, 2.0, None]))
+        for hidden in ("posFrom", "noPos", "alsoRecordedAs", "namedByQuest", "edid"):
+            self.assertNotIn(hidden, out)
 
 
 if __name__ == "__main__":

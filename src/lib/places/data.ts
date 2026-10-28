@@ -81,6 +81,13 @@ export interface Place {
   nearestCity?: { town: string; km: number; walk?: string };
   /** The town it sits inside (a guild hall, an inn, a temple): not a place to go out to. */
   inTown?: string;
+  /**
+   * Where it is (WO-166): the worldspace's editor id ("Tamriel", "DLC2SolstheimWorld") and [x, y, z] in game units. Absent for a place
+   * inside a town (`inTown`) and for the few nothing could place. z is null for a place found by its exterior cells (no height known).
+   * The nine hold capitals are places of type "City". `maps.json` turns a position into a pixel; only Tamriel's map is cleared.
+   */
+  world?: string;
+  pos?: [number, number, number | null];
   clearXp: number;
   actors?: Actors;
   /** What the people who live there say to a stranger at the door (an Orc stronghold), in the game's words. */
