@@ -5022,8 +5022,14 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-176  Two small things from Bob's read of WO-174 (Mac, then PC, 28 Oct 2026)
+Status: queued (Mac)
+
+- [ ] **Rewards is said twice in a row on a quest's page.** Song of the Green: At a glance's Rewards cell ("100 XP, You can make Auri's Bow…"), then straight under it the Rewards section with the same two lines. Now that Rewards sits in the main column, show the section only when it adds something the cell doesn't (more than one reward, or when and from whom); otherwise the cell is enough.
+- [ ] **(PC) Danger that reads like one stray actor:** "Moss Mother Cavern: enemies from level 1, up to 2", "Sons of Skyrim Military Camp: level 1 to 2" (WO-172). Check where a place's range comes from one placed creature or guard while the place's real fight is a leveled list or a quest's spawn; when the records only show one low actor, say "Not known yet" rather than 1 to 2. Mac: then `for Bob`.
+
 ## WO-174  Dave's test, 28 Oct morning: the quest page's side column, its first step, and the Map page made simpler (Mac, 28 Oct 2026)
-Status: for Bob
+Status: done
 
 **Why.** Dave, 28 Oct 07:04, testing staging. Bob missed the first one: his full-page screenshots never scroll, so a sticky column overlapping can't show in them; from now on Bob scrolls each long page in a real window.
 ### Part 1. A quest's page
@@ -5048,9 +5054,10 @@ Status: for Bob
 - **The home strip** reads "Search them, filter them by kind, and follow a quest from one place to the next."
 - Checks: typecheck, lint (two old warnings), `npm test` 746 passed, `npm run test:e2e`; the first full run had three failures from the moved columns (wo154 order, wo165 People), fixed and rerun green. Screenshots in `test-results/`: `wo174-song-of-the-green-1440.png`, `wo174-map-ruins-1440.png`, `wo174-map-hover-1440.png`. **Not checked:** the preview in Dave's Chrome, which is the open box.
 
+- Bob, 28 Oct, 09:00, scrolling Song of the Green in Dave's Chrome: the side column is contents only and never overlaps; the steps read as sentences; `favor204` redirects to `dungeon-delving-bandits`. `/map` with Ruins picked shows only ruins; a hover near the right edge opens to the left; Fold is a chevron; no Danger, no On the map, "With a quest" is a chip; the home strip's line says "filter them by kind". Done. One small repeat left for WO-176.
 
 ## WO-175  Maps for the other lands: what LoreRim already has (PC, 28 Oct 2026)
-Status: for Bob
+Status: done
 
 **Why.** Dave, 28 Oct: "we only have the core map for Skyrim … not the other locations you can travel to." The Map page shows Tamriel only. Solstheim (71 places), Vigilant's realm (58), Gray Fox Cowl's Hammerfell (32), Wyrmstooth (25), Hyorker Isle (10), the Shivering Isles mod (8) and a few small worlds have positions but no map. Find out what exists before anyone draws anything. Nothing is built from this order.
 - [x] **What the load order ships:** for each worldspace with places, is there a map texture in the winning files (Flat World Map Framework's `textures/terrain/<world>/`, a mod's own map, or the game's LOD), its size, which mod provides it, and its author and Nexus page.
@@ -5077,6 +5084,8 @@ Not in the table, because no place has a position in them (pocket worlds and a m
 **What I could not get:** the authors of the mods marked "not in the files". Nexus answers 403 to a fetch from here, and the mods' `meta.ini` holds the mod id and version, not the author. The four "by Limon" mods and Duncan's carry the name; Dave sees the rest on each Nexus page. The three pictures I judged by eye are not proof to the pixel as WO-166's three were; for the four unconfirmed worlds the right next step is a fit from a handful of places Dave can place in the game (the console's `player.moveto` and a look at the paper map), not a guess from me.
 
 **Where the rule comes from (so Mac can use it):** FWMF's patch (`FWMF - Ultimate Patch.esp`) sets each world's bounds (`NAM0` to `NAM9`) to the square its picture covers: Tamriel and Solstheim plus or minus 262,144 (8192 px, 64 u/px); Vigilant, Wyrmstooth, Hyorker and the Shivering Isles plus or minus 131,072; Gray Fox Cowl's 0 to 131,072. That is a good guess for the first four lines; it is a guess, and Gray Fox Cowl proves the bounds alone do not give the pixel (its picture is 8192 wide for a 131,072 world).
+
+- Bob, 28 Oct, 09:00: read. Every world with places has a paper map except the Frozen Heart and two tiny worlds. The list goes to Dave to ask each author; nothing is built until they say yes. Done.
 
 ## WO-173  The home page as the board: the full sky signed in, and a map strip that moves (Mac, 28 Oct 2026)
 Status: done
@@ -5124,7 +5133,7 @@ Status: done
 - Bob, 28 Oct, 06:45: on the preview the map draws 320 places once each and still once each after three drags and a zoom; the Reach's camp picked lights one pin, the drawer says "Imperial Military Camp, the Reach"; `/places/imperial-military-camp` asks which of the eight. Done.
 
 ## WO-171  Farms are on the map, not inside a city (PC, 27 Oct 2026)
-Status: for Bob (second review's two boxes done, 28 Oct)
+Status: done
 
 **Why.** WO-166's notes: Battle-Born, Pelagia and Chillfurrow farms (and Rorikstead's and Falkreath's) are parented to the city's location in the records, so they read `inTown` and get no pin, though they stand in the fields outside the walls.
 - [x] A place with `LocTypeFarm` (or a Farm or Mill kind) and exterior cells of its own gets a position from those cells and its own `nearestTown`, not `inTown`. Its town stays as a tag ("near Whiterun").
@@ -5157,6 +5166,8 @@ Read on the preview: Battle-Born Farm has its own map band; the Riverwood Trader
 - **Where the new types sit (the two TypeScript lines, both the PC's contract change):** `groups.ts` puts Farm and Mill in **Homes** (the order's own word for where they were; the group has no other home for them and an unlisted type falls into Landmarks), and `suggest.ts`'s stops list takes them (a farm is a stop, as the House it was; suggest_places stays as it was). If you want a "Farms and mills" group of their own, it is one line in `groups.ts` for the Mac side.
 - **Side effects, in the diff against the file before:** `type` on 28, `name` and `recordName` on 2, `pointers` on 5 (Sarethi Farm gains 5 lines and Chillfurrow Farm 2, the lines that say their names; the Bards College, the Blue Palace and the Aetherium Forge hold the same lines in another order). Nothing else; 998 places, no id added or lost.
 - **Checks:** Python 434 (2 new: no name ends in Interior, a farm is a Farm and a mill a Mill, with the cases left alone). tsc clean. vitest 745 pass, 7 expected fail, 1 skipped (`map-credit.test.ts` passes now: the Mac side normalised the separators). Generated: `places_raw.json`, `places_report.md`, `places.json`.
+
+- Bob, 28 Oct, 09:00: no place name carries "Interior"; 22 farms and 3 mills are typed Farm and Mill; Battle-Born Farm reads "A farm in Whiterun hold". Done.
 
 ## WO-170  The home page comes alive (Mac, 27 Oct 2026)
 Status: done
@@ -5210,7 +5221,7 @@ Jeff's notes on the second review (Mac, 28 Oct):
 - Bob, 28 Oct, 04:40: read on the preview: the cards are framed on the mountain, Miraak's temple and the eclipse, each with one whole line; the map strip's title breaks after "Every place,"; New in the world quotes no counts. Done; for Dave to look at on staging.
 
 ## WO-164  A character is one page, with or without a playthrough (Mac, 27 Oct 2026)
-Status: for Bob
+Status: done
 
 **Why.** Bob, signed in through Dave's Chrome (27 Oct, 18:05): Kyria's playthrough page (`/p/4et99tk25s`) still has the old framed title and none of her cover, though `/me` shows her golden-armour cover; "‹ My characters" is the old text link; `/p/<id>/build` redirects to `?tab=levels` and shows the same Play view, so a playthrough's build can't be reached from it. The character page (`/b/<id>`) has the full-width cover and a Build | Guide tab row; the two don't look like one character. The agreed pattern (canvas row 25, WO-114a): one hero, one row of tabs.
 - [x] **The build page (`/b/<id>`) does not change.** Dave, 27 Oct: "please do not redesign the character build pages, those are the best on the site." It's the reference the playthrough page copies, not something this order touches.
@@ -5250,6 +5261,8 @@ Jeff's note on the review (Mac, 28 Oct): a run with no cover has the night scene
 - Bob, 28 Oct, 07:10, in Dave's Chrome: Kyria's run now has the race icon large on the night blues: right. On `/me` the icon still runs into the names and the controls under the cards still sit at three heights; those two boxes and the Windows path box are still open, so this goes back.
 
 Jeff's note on the second review (Mac, 28 Oct): **The icon** on a card with no cover now sits in the top of the card, under the race and marks row, 72 px at most (34 px on a phone's two-across grid, where the name is 20 px and the tagline one line), so it ends above the name whatever the name's length; the test measures the icon's foot against the name's top on every fallback card at 1440 and 390. **Under each card on `/me`** is one layout (`recent.module.css`, `.under`): who can see it, Story and AI assisted on one line that doesn't wrap; Plan a playthrough on its own line when there is no run; Delete and Edit at the foot of the cell, so they sit at one height across a row whatever is above them (the test checks every row). **The credit test** turns `path.relative`'s separators into `/` before comparing (`map-credit.test.ts`). Checks: typecheck, lint (two old warnings), `npm test` 745 passed, `npm run test:e2e` 536 passed. Screenshots in `test-results/`: `wo164-me-1440.png`, `wo164-me-390.png`. **Not checked:** Kyria's run signed in as Dave (the seeded author's screenshots only; her run's cover is the same component the test covers).
+
+- Bob, 28 Oct, 09:00, in Dave's Chrome: on `/me` the race icons sit clear of the names and Delete and Edit line up under every card. Done.
 
 ## WO-169  The Map page (Mac, 27 Oct 2026)
 Status: done
