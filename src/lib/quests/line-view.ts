@@ -71,6 +71,8 @@ export interface LineView {
   glance: { start: { value: string; sub: string | null; more: string[] }; level: { value: string; sub: string | null }; length: { value: string; sub: string | null }; xp: { value: string; sub: string | null } | null; where: string | null };
   questCount: number;
   chapterCount: number;
+  /** The two sides of a story that splits in two, when it does (Dawnguard). */
+  sideNames?: string[];
   /** What the read says is not a step of its own (Dragonborn's cultists' ambush), left out of the counts and the run and said under How it starts. */
   notSteps: { name: string; text: string }[];
 }
@@ -192,6 +194,7 @@ export function lineView(line: QuestLine): LineView {
   let chapters: Chapter[] = [];
   let jobs: LineQuest[] = [];
   let jobsNote = "";
+  let sideNames: string[] | undefined;
   let first = true;
   if (story) {
     chapters = story.chapters.map((c, i) => {
@@ -215,6 +218,7 @@ export function lineView(line: QuestLine): LineView {
     // side the story's list leaves out are added to Along the way.
     const split = splitSides(line, rows);
     if (split) {
+      sideNames = split.sides.map((sd) => sd.name);
       const taken = new Set(split.sides.flatMap((sd) => sd.quests.map((q) => q.name)));
       chapters = chapters.map((c) => ({ ...c, quests: c.quests.filter((q) => !taken.has(q.name)) })).filter((c) => c.quests.length);
       const at = chapters.findIndex((c) => c.quests.some((q) => q.name === split.at));
@@ -309,6 +313,7 @@ export function lineView(line: QuestLine): LineView {
     questCount: storyQuests.length || quests.filter((q) => !skipped.has(q.name)).length,
     chapterCount,
     notSteps,
+    ...(sideNames ? { sideNames } : {}),
   };
 }
 
@@ -334,6 +339,8 @@ export interface CategoryRow {
   startParts?: Piece[];
   xp: string | null;
   chapters: string[];
+  /** What slides in under the pitch when the row opens (Main stories): the first chapters, or the two sides, or how it starts. */
+  reveal: string[];
   /** A line of one quest: its card opens that quest's page. */
   solo: boolean;
   /** "Also in Side stories": the other categories it sits in. */
@@ -345,7 +352,7 @@ export function categoryRow(line: QuestLine, key: string): CategoryRow {
   const href = solo ? questHref(line.quests[0].edid)! : `/quests/${line.id}`;
   const story = storyOfLine(line.id);
   const base = { id: line.id, href, sources: line.sources, prince: line.prince, levelNumber: line.minLevel ?? 0, level: line.minLevel ? `Level ${line.minLevel}` : "Any level", where: line.where, solo, also: [line.category, ...line.also].filter((k) => k !== key).length ? `Also in ${andList([line.category, ...line.also].filter((k) => k !== key).map(homeName))}` : "" };
-  if (solo) return { ...base, name: line.quests[0].name || line.name, lineTag: null, size: "One quest", pitch: line.begins, pitchParts: line.begins ? linkNames(line.begins, linkable()) : undefined, quoted: line.beginsFrom === "opening", start: null, xp: null, chapters: [] };
+  if (solo) return { ...base, name: line.quests[0].name || line.name, lineTag: null, size: "One quest", pitch: line.begins, pitchParts: line.begins ? linkNames(line.begins, linkable()) : undefined, quoted: line.beginsFrom === "opening", start: null, xp: null, chapters: [], reveal: [] };
   const v = lineView(line);
   const chapters = story ? story.chapters.map((c) => c.name) : [];
   const pitch = story?.pitch ?? line.read?.about ?? line.begins;
@@ -362,5 +369,13 @@ export function categoryRow(line: QuestLine, key: string): CategoryRow {
     start: v.glance.start.sub,
     xp: v.glance.xp?.value ?? null,
     chapters,
+    // What slides in when a Main stories row opens: the two sides, else the first chapters, else how it starts (its first clause).
+    reveal: v.sideNames
+      ? [v.sideNames[0].replace(/^On the (.*) side$/, "The $1"), "or", v.sideNames[1].replace(/^In /, "")]
+      : chapters.length
+        ? [...chapters.slice(0, 4), ...(chapters.length > 4 ? [`+ ${chapters.length - 4} chapters`] : [])]
+        : v.glance.start.sub
+          ? [v.glance.start.sub.split(/;\s*/)[0].slice(0, 120)]
+          : [],
   };
 }

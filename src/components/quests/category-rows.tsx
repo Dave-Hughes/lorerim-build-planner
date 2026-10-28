@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { Piece } from "@/lib/pages/link-names";
 import type { CategoryRow } from "@/lib/quests/line-view";
+import { SagaRow, hasSaga } from "./saga-row";
 import c from "./category-rows.module.css";
 
 /** A sentence with the people and places it names as links, where they are written (WO-160 Part 5). */
@@ -161,7 +162,7 @@ export function CategoryRows({ lines, solos, q, fixed = false, soloTitle = "Sing
       {shownLines.length + shownSolos.length === 0 && <p className="muted">Nothing matches.</p>}
       <div className={c.rows}>
         {shownLines.map((r, i) => (
-          <LineRow key={r.id} r={r} n={fixed ? i + 1 : undefined} open={open} />
+          fixed && hasSaga(r.id) ? <SagaRow key={r.id} r={r} n={i + 1} open={open ?? "Open the story ›"} /> : <LineRow key={r.id} r={r} n={fixed ? i + 1 : undefined} open={open} />
         ))}
       </div>
       {shownSolos.length > 0 && (
