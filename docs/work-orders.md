@@ -5129,7 +5129,7 @@ Dave, 27 Oct 18:46: the map's mod author OK'd its use on the site, with a credit
 - [ ] Tests, then `for Bob` with the coverage: how many places have a position, by world and by kind.
 
 ## WO-165  The quest and person pages get the same at-a-glance and colours (Mac, 27 Oct 2026)
-Status: queued (Mac; Bob's review)
+Status: building (Mac; Bob's review)
 
 **Why.** `docs/page-templates.md` rows 14 and 16: the quest and person pages read well but are one grey. WO-160 (`LinePage`) and WO-162 (`PlaceTown`) set the pattern: an At a glance band under the title, colour that means one thing, a contents rail on long pages. Same pattern here, so every World page feels like one site.
 - [x] **A quest**: At a glance under the title: how it starts (green: who and where), level and danger (red), where it takes you (blue), rewards and XP (gold), and the number of ways to finish it (purple). People and places in the steps as the coloured chips; XP in the pixel face. The Rewards box stays.
