@@ -5032,7 +5032,7 @@ Status: queued (PC)
 - [ ] Tests, then `for Bob`.
 
 ## WO-170  The home page comes alive (Mac, 27 Oct 2026)
-Status: for Bob (Bob's review done: the 500 fixed and read on the preview; typecheck, lint, tests, the build and the full e2e pass, 524 of 524)
+Status: queued (Mac; Bob's second review)
 
 **Why.** Dave, 27 Oct, after WO-168's rows: "bring some of that same wow factor to the home screen". Board `HomeWow` (canvas row 37); Dave: "Love it, lets keep the other secitons too. New in the world and your characters, can come after the map."
 - [x] **The order of the page**, signed in or out: the hero; Recent characters (as built, WO-157 Part 10); **Three stories to live through** (new); **the map strip** (new); New in the world (as built); then Your characters signed in (as built, WO-157 Part 9) or Three ways to use it signed out (as built). Signed in keeps the shorter hero, with the motion below.
@@ -5062,6 +5062,15 @@ Jeff's notes on the review (Mac, 28 Oct):
 - **The 500.** `vercel logs` on the staging deployment gave `TypeError: Cannot read properties of undefined (reading 'aria-describedby')`, from `Tooltip` (`children.props` undefined). The preview's recent characters include the Example build, whose `ExampleTag` renders `InfoTip`: a server component handing a `<button>` element to the client `Tooltip` as its child; on the deployed page that element reached `Tooltip` unresolved (it carries nothing of my sections; the page was fine on the dev and on the production build locally). **Fix:** `InfoTip` and `AiAssisted` are client components, so the trigger is made in the browser. The guess about `outputFileTracingIncludes` was not it: the map, Places and every page that reads `maps.json` and `places.json` load on the preview.
 - **A check that would have caught it:** after a push, curl the preview itself and read the pages the order touched. I did that for this fix and for the WO-169 fixes: `/`, `/map`, `/map?place=riverwood`, `/places`, `/places/bleak-falls-barrow`, `/characters`, `/quests` and `/people/lydia` answer 200 on the staging preview, and the home page has the three stories, the map strip with its credit and the Example tag. It cannot be a local e2e, which does not hit the deployed build, so it is a step of mine after each push.
 - Screenshots: the home at 1440 and 390 and a story card hovered, in `test-results/wo170-*` (from the full run).
+
+### Bob's second review (28 Oct, 03:45)
+The home page loads again (the 500 found and fixed: good catch on the tooltips). Read at 1440 and 390, a card hovered: the hero moves, the cards lift with Alduin flying, the map strip drifts with its credit, and the sections come in the order Dave asked. Fix:
+- [ ] **Each card is framed on the wrong part of its scene.** The main quest shows the mountain as a sliver at the right edge; Dragonborn's card is mostly empty sky with half a tower; Dawnguard's eclipse sits under the big "3". Frame each card on its landmark as the board does (the board's per-card offsets: mountain, Miraak's temple, the eclipse), and the number never on top of it.
+- [ ] **The cards' lines are cut mid-sentence** ("learn its…", "the Black…", "a fort south-…"). One short line that fits whole, as the board's: the story's one-line pitch from the data, or its first clause.
+- [ ] **"Every place, on the game's own / map":** the last word falls alone onto the second line at 1440 and 390. Break after "Every place," as the board does (Dave hates a word left alone on a line).
+- [ ] **New in the world quotes old counts:** "The main quest, 7 chapters and 23 quests" beside a card saying 19 quests; "Dragonborn, its 8 quests" though it's 7 since WO-160. A change row shows what changed, not a count that goes stale; drop the counts or read them from today's data.
+- [ ] Screenshots of the home at 1440 and 390, then `for Bob`.
+
 ## WO-164  A character is one page, with or without a playthrough (Mac, 27 Oct 2026)
 Status: for Bob (all eight boxes built; typecheck, lint, tests, the build and the full e2e pass, 493 of 495, the two that failed in the full run pass alone)
 
@@ -5090,7 +5099,7 @@ Status: for Bob (all eight boxes built; typecheck, lint, tests, the build and th
 - Bob, 28 Oct, 00:45: signed out on the preview, the Featured character is the wide card across two columns. The rest needs signing in (Kyria's run, `/me`, What next, the empty Playthrough tab); Bob checks those in Dave's Chrome in the morning. Jeff on Mac: go on to WO-167; this stays `for Bob`.
 
 ## WO-169  The Map page (Mac, 27 Oct 2026)
-Status: for Bob (Bob's review done; typecheck, lint, tests, the build and the full e2e pass, 524 of 524)
+Status: queued (Mac; Bob's second review, one box)
 
 **Why.** Dave, 27 Oct: a dedicated map page with quick search and filters, "a unique experience". Board `MapPage` (canvas row 37); Dave: "that map view is incredible". Uses LoreRim's paper map from WO-166, credited on every view.
 - [x] `/map`, and **Map** in the World panel (with `quest-travel` as its icon) and the phone menu. The map fills the window under the header; drag to pan, scroll or pinch to zoom, + / − / N (back to north and the whole map) bottom right. At a distance pins cluster into counts; closer in, the cities' and towns' names show on dark plates; closest, every place's name.
@@ -5132,6 +5141,11 @@ Jeff's notes on the review (Mac, 28 Oct):
 - **Phone, a place picked:** `/map?place=riverwood` puts the place in the upper part of the map, above the drawer, with its name on its plate (tested). A name near the window's right edge goes on the pin's left.
 - **Never under a control:** in the place band (WO-167) a name is left out, or put on the other side, when it would sit under the compass, scale bar, legend or credit; `wo167.spec.ts` checks it.
 - Screenshots: the whole map at 1440 and 390 and Riverwood picked at 390, in `test-results/wo169-*`.
+
+### Bob's second review (28 Oct, 03:45)
+At 1440 the whole map now fits beside the panel with every city named, diamonds everywhere and counts only where places pile up: right. On a phone a picked place sits in view with its plate. One left:
+- [ ] **The phone's opening view** is a small map in the middle of an empty screen, crowded with counts, and the city plates overlap (Winterhold's covers Solitude's). On a phone the map opens filling the screen's height, panned to the middle of Skyrim, and no two plates overlap (drop the lesser name, never stack them). Screenshot at 390, then `for Bob`.
+
 ## WO-168  The three main stories, each its own world (Mac, 27 Oct 2026)
 Status: done
 
