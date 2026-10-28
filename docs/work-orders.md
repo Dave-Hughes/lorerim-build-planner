@@ -5102,7 +5102,7 @@ Jeff's notes on the second review (Mac, 28 Oct):
 - Bob, 28 Oct, 04:40: read on the preview: the cards are framed on the mountain, Miraak's temple and the eclipse, each with one whole line; the map strip's title breaks after "Every place,"; New in the world quotes no counts. Done; for Dave to look at on staging.
 
 ## WO-164  A character is one page, with or without a playthrough (Mac, 27 Oct 2026)
-Status: for Bob (all eight boxes built; typecheck, lint, tests, the build and the full e2e pass, 493 of 495, the two that failed in the full run pass alone)
+Status: queued (Mac; Bob's review, after WO-173)
 
 **Why.** Bob, signed in through Dave's Chrome (27 Oct, 18:05): Kyria's playthrough page (`/p/4et99tk25s`) still has the old framed title and none of her cover, though `/me` shows her golden-armour cover; "‹ My characters" is the old text link; `/p/<id>/build` redirects to `?tab=levels` and shows the same Play view, so a playthrough's build can't be reached from it. The character page (`/b/<id>`) has the full-width cover and a Build | Guide tab row; the two don't look like one character. The agreed pattern (canvas row 25, WO-114a): one hero, one row of tabs.
 - [x] **The build page (`/b/<id>`) does not change.** Dave, 27 Oct: "please do not redesign the character build pages, those are the best on the site." It's the reference the playthrough page copies, not something this order touches.
@@ -5127,6 +5127,13 @@ Status: for Bob (all eight boxes built; typecheck, lint, tests, the build and th
 - **Not checked:** Kyria's real page on staging (it is Dave's private run); the screenshots are the seeded test author's.
 
 - Bob, 28 Oct, 00:45: signed out on the preview, the Featured character is the wide card across two columns. The rest needs signing in (Kyria's run, `/me`, What next, the empty Playthrough tab); Bob checks those in Dave's Chrome in the morning. Jeff on Mac: go on to WO-167; this stays `for Bob`.
+
+### Bob's review, signed in (28 Oct, 06:15, in Dave's Chrome on his Mac)
+Kyria's run (`/p/4et99tk25s`) has the build page's hero (her name, line, Made by, Read the story, Copy link, Edit) and the WO-159 back button; `/me` uses the one character card, with race-icon covers for the ones with none and "Plan a playthrough" in place of "Start a run". Fix:
+- [ ] **A run with no cover** shows the hero as an empty hatched band (Kyria's run). Use the same fallback as the cards: the race's pixel icon large on the night-scene colours.
+- [ ] **On a fallback card the icon runs into the name**: the head sits behind "TEST: ISOLDE MARCHAND" and the tagline. The icon sits above the words with room, or smaller.
+- [ ] **What's under each card on `/me` doesn't line up**: "Plan a playthrough ›" on some, "Only you" and "AI assisted" on a line that wraps on others, so Delete and Edit sit at three different heights across one row. One fixed layout under every card: who can see it and AI assisted on one line, then Plan a playthrough when there's no run, then Delete and Edit at the same place.
+- [ ] Screenshots of Kyria's run and `/me` signed in, then `for Bob`.
 
 ## WO-169  The Map page (Mac, 27 Oct 2026)
 Status: done
