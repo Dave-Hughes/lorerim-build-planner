@@ -5022,6 +5022,24 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-179  A character is one shell: its build, its guide and its playthrough (Mac, 28 Oct 2026)
+Status: queued (Mac; after WO-176 to WO-178 pass the reviewer)
+
+**Why.** Dave, 28 Oct: "A character is a shell that can hold: Build, Guide, Playthrough." Bob walked the whole flow signed in on staging (made "TEST: Bob walk": race, details, What next, Plan a playthrough, an act, an objective, ticked it, the Build tab, the Story editor; read Kyria's story). Underneath it is still two records joined by a dropdown, and it shows.
+
+**The approach (Bob's call under WO-138 Part 5; tell Dave if it can't hold):** the build record is the character (it already holds the name, line, cover, race and the rest). Every playthrough belongs to one (`build_id` required). A character with no levels planned is still a character; its Build tab says so. No new table.
+- [ ] **One address**: `/b/<id>` is the character, with its tabs. `/p/<id>` and every `/p/<id>/…` redirect to `/b/<build>?tab=playthrough` (the story reader keeps its own address under the character, `/b/<id>/story/…`, old ones redirect). Switching tabs never changes the page you're on.
+- [ ] **One set of tabs, the same in the page and the editor**: Playthrough, Build, Guide (and Story in the editor, or Story as part of Playthrough: one choice, both places). Today the page has Playthrough | Build | (Guide when written) and the editor Character | Build | Guide | Story | Playthrough. An empty tab shows the owner how to start it ("Write a guide", "Plan the levels", "Plan a playthrough"); visitors don't see empty tabs.
+- [ ] **One name, line and cover**: the playthrough's own Name, One line and Cover in its editor go; the character's are the only ones. The "Build" dropdown in the playthrough editor goes (a playthrough can't change character). Migration: where a run's name or cover differs from its build's, keep the build's and log the rest.
+- [ ] **Nothing alone**: `create_playthrough` without a `build` makes the character with it (as WO-114 said for the site); a run with no build today becomes a character of its own named as the run, and its owner sees "Is this the same character as …?" on `/me` with a list of their characters to join it to (Dave's two "Kyria Severa, Sword of Stendarr" are the case). `set_playthrough` can't unlink.
+- [ ] **Pronouns from the character**: the editor says "About her" and the page "Where is she in your game?" on a character with no gender set. Use the character's pronoun, and "them" when none is set; add the pronoun to Details if it isn't there.
+- [ ] **A character made without a birthsign** shows a red "Unknown birthsign ''." on its Build tab. Say "No birthsign chosen yet" (and the same for every empty choice); never print the code's message.
+- [ ] **Creation's rail**: Traits and Deity show green ticks at "0 of 2 chosen" and "None": a tick only when a choice is made (an optional step left empty has no tick and says "Optional"). What next is a step in the rail, and opens at its top, not scrolled down where Details was. "Listed on Browse builds" says "Listed on Characters".
+- [ ] **A character with no cover** has the blank hatched band on its page (TEST: Bob walk). The WO-164 fallback (race icon on the night blues) everywhere a character has no cover.
+- [ ] **The objective editor** shows a "Stage" box beside the quest (a record's number: players don't know stages); typing a quest name in What to do doesn't offer the quest; clicking outside closes the form and saves half of it. Stage goes (pick the quest's step from its steps by name, if needed); What to do offers quests, places and people as you type; the form saves with Add, or keeps open.
+- [ ] **Edit opens on the playthrough**; it opens on the tab you were on.
+- [ ] Bob walks it again signed in (make a character, plan a playthrough, edit, the story, the redirects from Kyria's old `/p/` links); screenshots of each step at 1440 and 390; then `for Bob`.
+
 ## WO-177  A cold review of staging: what's broken, what's off the grid, what reads wrong (Mac, 28 Oct 2026)
 Status: for Bob
 
