@@ -654,7 +654,9 @@
       "_source": "Bob, 27 Oct 2026 (WO-160 Part 6)",
       "_why": "Quest words call it Volkihar Keep; its page is Castle Volkihar. WO-178 Part 2: the records name no hold for it; it stands on an island off Haafingar's coast, and Solitude, Haafingar's capital, is its nearest city.",
       "aliases": ["Volkihar Keep"],
-      "hold": "Haafingar"
+      "hold": "Haafingar",
+      "pos": [-148300.0, 141900.0, -12472.0],
+      "_posWhy": "WO-178 Part 3: the game's own marker (and the island's doors, 170,000 to 176,000 units west, 148,000 to 154,000 north) put the castle at (-177219, 147389), 28,000 units west of where the paper map draws its island, so the pin fell in open sea. The pin is moved onto the drawn island (the crescent northwest of Haafingar's coast); the game's own position stays in places_raw.json."
     },
     "Dimhollow Crypt": {
       "_source": "Bob, 27 Oct 2026 (WO-160 Part 6)",

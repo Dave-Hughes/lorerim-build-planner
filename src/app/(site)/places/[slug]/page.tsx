@@ -131,7 +131,7 @@ export default async function PlacePage({ params }: { params: Params }) {
   const type = placeType(place.type);
   const kind = /^(Nordic|Dwemer|Imperial|Daedric|Orc|Orsimer)\b/.test(type) ? type : `${type.charAt(0).toLowerCase()}${type.slice(1)}`;
   const near = town ? nearWords(town) : null;
-  // A realm with no place on Tamriel's map (the Soul Cairn) says what it is and how you get there (WO-178), and has no levels gauge: its scale is not the land's.
+  // A realm with no place on Tamriel's map (the Soul Cairn) says what it is and how you get there (WO-178), and has no levels gauge: its scale is not the land's. Its danger is said once (WO-178 Part 3): the foe lines under the cell, never "isn't known" beside a level.
   const realm = !place.pos && !place.inTown && !!place.gettingThere;
   const lede = `${/^[AEIOU]/i.test(type) ? "An" : "A"} ${kind}${near ? ` ${near}` : place.hold ? ` in ${place.hold} hold` : ""}.${realm ? ` ${place.gettingThere}.` : ""}${boss ? ` Its boss is ${boss.name}.` : ""}`.replace(/\s+/g, " ");
   const lived = placeKind(place) !== "dangerous";
@@ -215,8 +215,10 @@ export default async function PlacePage({ params }: { params: Params }) {
       <div className={`page ${styles.cols}`} style={{ paddingTop: 52 }}>
         <div className={styles.body}>
           <section id="danger" className={styles.sec} aria-label="Danger">
-            {levels && !realm ? (
+            {levels ? (
               <>
+                {!realm && (
+                  <>
                 <div className={styles.gauge} role="img" aria-label={`${foes} from level ${levels[0]} to ${levels[1]}${boss?.range ? `; the boss from level ${boss.range[0]} to ${boss.range[1]}` : ""}, on a scale of 1 to 50`}>
                   <span className={styles.band} style={{ gridColumn: `${Math.min(levels[0], 50)} / ${Math.min(levels[1], 50) + 1}`, gridRow: 1 }}>
                     {foes} {levels[0] === levels[1] ? levels[0] : `${levels[0]} to ${levels[1]}`}
@@ -235,6 +237,8 @@ export default async function PlacePage({ params }: { params: Params }) {
                   ))}
                   <span style={{ gridColumn: 50, justifySelf: "end" }}>50</span>
                 </div>
+                  </>
+                )}
                 <div style={{ paddingTop: 8 }}>
                   <div className={styles.foe}>
                     <b>{foes}</b>

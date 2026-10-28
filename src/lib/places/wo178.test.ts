@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 import { placeCounts, placeSlug, placesData } from "./data";
 import { PLACE_GROUPS, groupOf } from "./groups";
 import { placeDrawer } from "@/lib/map/data";
-import { gettingThere, placeMap } from "./map";
+import path from "node:path";
+import { gettingThere, inFrame, mapEntry, placeMap, toTexture } from "./map";
 import { peopleAt } from "./people";
 
 /**
@@ -128,5 +129,38 @@ describe("WO-178 Part 2: the second cold review", () => {
     const names = placeDrawer(placeSlug(named("Whiterun", "City")))!.inside.map((x) => x.name);
     expect(names).toEqual(expect.arrayContaining(["Balgruuf the Greater", "Irileth", "Danica Pure-Spring"]));
     expect(names.length).toBeLessThanOrEqual(6);
+  });
+});
+
+describe("WO-178 Part 3: the third cold review", () => {
+  it("Castle Volkihar's pin is on the island the paper map draws, not in the sea beside it", async () => {
+    const sharp = (await import("sharp")).default;
+    const m = mapEntry()!;
+    const p = named("Castle Volkihar");
+    const { px, py } = toTexture(m, p.pos![0], p.pos![1]);
+    expect(inFrame(m, px, py)).toBe(true);
+    const { data, info } = await sharp(path.join(process.cwd(), "public", "maps", "tamriel.webp")).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+    const k = info.width / (m.border[2] - m.border[0]);
+    const at = (Math.round((py - m.border[1]) * k) * info.width + Math.round((px - m.border[0]) * k)) * 3;
+    const [r, , b] = [data[at], data[at + 1], data[at + 2]];
+    expect(r, `the pin's pixel is ${[data[at], data[at + 1], data[at + 2]]}: paper is warm, sea is blue`).toBeGreaterThan(b);
+    expect(placeMap(p)).not.toBeNull();
+  });
+  it("the Soul Cairn has a level range in the data, so its page's danger section shows the foe lines (the page test, e2e/wo178p3.spec.ts, reads it)", () => {
+    const a = named("Soul Cairn").actors!;
+    expect(a.floor).toBe(13);
+    expect(named("Soul Cairn").pos).toBeUndefined();
+  });
+  it("no place is called only a common noun with no marker: no page for 'Dungeon'", () => {
+    expect(places().filter((p) => p.name === "Dungeon")).toEqual([]);
+    expect(places().filter((p) => /^(Dungeon|Cave|Camp|Fort|Mine|Ruins|Tower|Lair|Den|Hideout|Barrow|Temple)$/i.test(p.name))).toEqual([]);
+  });
+  it("a few placed level 1 to 3 creatures, and a town's own people and guards, are not a place's fight", () => {
+    for (const name of ["Darkwater Pass", "Northwind Mine", "Headwaters of Harstrad", "Ivarstead", "Riverwood", "Rorikstead", "Karthwasten"]) {
+      const a = named(name).actors!;
+      expect(a.floor, name).toBeUndefined();
+      expect(a.boss, name).toBeUndefined();
+    }
+    expect(named("Helgen", "Town").actors!.floor).toBeDefined();
   });
 });

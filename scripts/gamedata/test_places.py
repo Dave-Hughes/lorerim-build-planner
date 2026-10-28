@@ -672,6 +672,31 @@ class BuiltIndex(unittest.TestCase):
         self.assertEqual(self.by["Bonestrewn Crest"]["worthGoingFor"]["wordWall"], ["Frost Breath"])
         self.assertEqual(self.by["Ancient's Ascent"]["worthGoingFor"]["wordWall"], ["Animal Allegiance"])
 
+    def test_no_place_is_a_bare_common_noun_with_no_marker(self):
+        # WO-178 Part 3: "Dungeon" (a location of Vigilant's, zzzAoMLocTemplePriosn) was a page of "A landmark next to Dawnstar" with 29 sentences
+        # that merely had the word in them. A place called only "Dungeon", "Cave", "Camp"... and not on the map is a template, not a place.
+        self.assertNotIn("Dungeon", self.by)
+        self.assertEqual([p["name"] for p in self.rows if p["name"].lower() in pl.TEMPLATE_NAMES and not p.get("marker")], [])
+        self.assertIn("Windhelm Dungeon", self.by)  # a real name that has the word in it stays
+
+    def test_low_actors_that_are_not_the_fight_give_no_range(self):
+        # WO-176 Part 2 (Bob, 28 Oct): what kind of actor it is, never how many. A cave whose zone says 12 to 25 with a few level 1 to 3 creatures placed in it,
+        # and a town's own people and guards, are "not known yet", not "1 to 2" or "up to 3".
+        for name in ("Darkwater Pass", "Northwind Mine", "Headwaters of Harstrad", "Ivarstead", "Riverwood", "Rorikstead", "Karthwasten"):
+            a = self.by[name]["actors"]
+            self.assertNotIn("floor", a, name)
+            self.assertNotIn("boss", a, name)
+        for p in self.rows:
+            a = p.get("actors") or {}
+            if "floor" not in a or a.get("hostile") is False:
+                continue
+            if p["type"] in ("Town", "Settlement"):
+                self.assertGreater(a["ceiling"], pl.TOWN_STRAY_CEILING, p["name"])
+            elif a["ceiling"] <= pl.STRAY_CEILING:
+                self.assertLess(a.get("zoneMin", 0), a["ceiling"] + 4, p["name"])
+                self.assertFalse(a.get("afterTheWar"), p["name"])
+        self.assertIn("floor", self.by["Helgen"]["actors"])  # a town with a real fight keeps its levels
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -2,7 +2,7 @@
 
 Written by `scripts/gamedata/places.py` from the winning records across the load order (with the Creation Club plugins). Clear and discovery XP from `LoreRim - MCM and INI Settings`'s Experience.ini.
 
-**998 places.** 423 have a pointer (a line or a book that names them), 384 have a quest that goes there, and 434 have neither.
+**997 places.** 422 have a pointer (a line or a book that names them), 384 have a quest that goes there, and 434 have neither.
 
 ## The nine capitals
 
@@ -14,7 +14,7 @@ All nine found with an exterior position.
 | Type | Places | With a pointer | With a quest |
 |---|---|---|---|
 | House | 180 | 9 | 24 |
-| Landmark | 155 | 44 | 79 |
+| Landmark | 154 | 43 | 79 |
 | Cave | 107 | 61 | 48 |
 | NordicRuin | 54 | 42 | 34 |
 | Store | 51 | 23 | 20 |
@@ -57,7 +57,7 @@ All nine found with an exterior position.
 
 | Hold | Places | With a pointer | With a quest |
 |---|---|---|---|
-| (none) | 166 | 46 | 63 |
+| (none) | 165 | 45 | 63 |
 | The Rift | 97 | 54 | 37 |
 | Eastmarch | 96 | 40 | 32 |
 | Whiterun | 95 | 45 | 35 |
@@ -75,17 +75,17 @@ All nine found with an exterior position.
 
 ## Positions (WO-166)
 
-**668 of 998 places have a position**; 319 are in a town and have none of their own (`inTown`); 11 could not be placed. A position is `world` and `pos` [x, y, z] in game units, found from the place's own map marker, else the exterior cells it owns (the middle of their grid squares: no height, z is null), else a door out of its interior (up to 3 rooms deep). The five big cities' own worldspaces share Tamriel's coordinates (checked door to door) and are filed as Tamriel.
+**667 of 997 places have a position**; 319 are in a town and have none of their own (`inTown`); 11 could not be placed. A position is `world` and `pos` [x, y, z] in game units, found from the place's own map marker, else the exterior cells it owns (the middle of their grid squares: no height, z is null), else a door out of its interior (up to 3 rooms deep). The five big cities' own worldspaces share Tamriel's coordinates (checked door to door) and are filed as Tamriel.
 
 | Found from | Places |
 |---|---|
 | marker | 469 |
-| door | 155 |
+| door | 154 |
 | cells | 44 |
 
 | World | Places | On a map |
 |---|---|---|
-| Tamriel | 458 | yes |
+| Tamriel | 457 | yes |
 | DLC2SolstheimWorld | 71 | yes |
 | zCHMolagWorld | 58 | yes |
 | mannyGFDesert | 32 | yes |
@@ -99,7 +99,7 @@ All nine found with an exterior position.
 | Kind | Places | Positioned | In a town | Not placed |
 |---|---|---|---|---|
 | House | 180 | 24 | 156 | 0 |
-| Landmark | 155 | 139 | 10 | 6 |
+| Landmark | 154 | 138 | 10 | 6 |
 | Cave | 107 | 105 | 0 | 2 |
 | NordicRuin | 54 | 53 | 0 | 1 |
 | Store | 51 | 8 | 43 | 0 |
@@ -161,20 +161,20 @@ All nine found with an exterior position.
 | Sanctum of Malacath | Cave | The Cursed Tribe - Quest Expansion.esp | no cells: a location nothing is placed in |
 | Frozen Caverns | Cave | WindhelmSSE.esp | interior cells with no door at all |
 
-### Added because a quest, a person's home or a book names them (442)
+### Added because a quest, a person's home or a book names them (441)
 
 Every location a named quest points at (a location alias, or the cell a forced reference stands in), a person's home (their first placed cell, people_raw.json) or a book is read or found in (book_places.json) that no place of the index covers, whatever it is, with a `kind` from its keywords (then its name's word): not a hold, a capital, a demo leftover or a name no map and no town holds. A town or city never covers what is inside it. A room inside another added place is part of it unless two quests name it. What is inside a town has `inTown` and no position; the rest needs one on a map. 48 are cells of no location at all (Green-Tip Cabin), a place of their own keyed by the cell.
 
 | Named by | Places |
 |---|---|
-| homes | 305 |
+| homes | 304 |
 | homes + quests | 96 |
 | quests | 41 |
 
 | Kind | Added | In a town | On a map |
 |---|---|---|---|
 | House | 180 | 156 | 24 |
-| Landmark | 84 | 10 | 73 |
+| Landmark | 83 | 10 | 72 |
 | Store | 51 | 43 | 8 |
 | Farm | 24 | 8 | 16 |
 | Building | 20 | 16 | 4 |
@@ -206,7 +206,7 @@ Every location a named quest points at (a location alias, or the cell a forced r
 | Plugin | Added |
 |---|---|
 | Skyrim.esm | 74 |
-| Vigilant.esm | 43 |
+| Vigilant.esm | 42 |
 | Unofficial Skyrim Special Edition Patch.esp | 26 |
 | RedBag's Solitude.esp | 23 |
 | WindhelmSSE.esp | 20 |
@@ -341,7 +341,6 @@ The places that are not a house, shop, barracks, jail or building (those are onl
 | Chapel of Arkay | Landmark | zCHMolagWorld | Vigilant.esm | Sir Torolf |
 | Chestnut Handy Stables | Landmark | zCHMolagWorld | Vigilant.esm | Ogra the Stablemaster, Skeletal Horse, Skeletal Unicorn |
 | Curia Morimath | Landmark | zCHMolagWorld | Vigilant.esm | Archpriest Centius |
-| Dungeon | Landmark | Tamriel | Vigilant.esm | Sacred Anatomancer |
 | Emperor Gorieus' Charnel | Landmark | zCHMolagWorld | Vigilant.esm | Emperor Gorieus, Gallant Specter of Emperor Gorieus |
 | Fort Verin | Fort | zCHMolagWorld | Vigilant.esm | Vernaccus |
 | Fountain Garden of Dibella | Landmark | zCHMolagWorld | Vigilant.esm | Sir Gregory, Sir Henrik, Sir Juncan |
@@ -560,29 +559,42 @@ Left as the record has them:
 
 25 more differ only in that one name holds the other (a town's name dropped from the front, a leading "The"): left as they are.
 
-### One or two low actors that are not the place's fight (19) (WO-176)
+### Low actors that are not the place's fight (32) (WO-176)
 
-A place whose records show one or two actors of level 1 or 2, and whose own zone has a higher minimum or whose war garrison comes later: its levels are not given (not checked yet), not read as "1 to 2".
+A place whose records show only actors of level 3 or less (any number), and whose own zone has a higher minimum or whose war garrison comes later; or a town whose people, animals and guards reach no higher than level 6: its levels are not given (not checked yet), not read as "1 to 2".
 
 | Place | Hold | Actors | Read as | Why dropped |
 |---|---|---|---|---|
+| Anga's Mill | The Pale | 11 | 1 to 3 | a town's residents, animals and guards are not a fight |
 | Angi's Camp | Falkreath | 1 | 1 to 1 | its zone's minimum is 12 |
-| Dragon Bridge | Haafingar | 1 | 1 to 1 | the war puts its garrison there later |
+| Darkwater Pass | The Rift | 3 | 1 to 2 | its zone's minimum is 18 |
+| Dragon Bridge | Haafingar | 1 | 1 to 1 | a town's residents, animals and guards are not a fight |
 | Fort Amol | Eastmarch | 2 | 1 to 2 | its zone's minimum is 6 |
 | Fort Greenwall | The Rift | 2 | 1 to 1 | its zone's minimum is 6 |
 | Fort Neugrad | Falkreath | 1 | 1 to 2 | its zone's minimum is 6 |
+| Fort Snowhawk | Hjaalmarch | 1 | 3 to 3 | the war puts its garrison there later |
 | Frostskarn Vault |  | 2 | 1 to 1 | its zone's minimum is 15 |
+| Headwaters of Harstrad | Solstheim | 3 | 1 to 2 | its zone's minimum is 25 |
 | Hrothmund's Barrow | Solstheim | 2 | 1 to 2 | its zone's minimum is 10 |
 | Imperial Military Camp | The Rift | 1 | 1 to 2 | the war puts its garrison there later |
 | Imperial Military Camp | Whiterun | 2 | 1 to 2 | the war puts its garrison there later |
+| Ivarstead | The Rift | 18 | 1 to 3 | a town's residents, animals and guards are not a fight |
+| Karthwasten | The Reach | 9 | 1 to 6 | a town's residents, animals and guards are not a fight |
 | Meeko's Shack | Hjaalmarch | 1 | 1 to 1 | its zone's minimum is 6 |
 | MerchantLocations |  | 2 | 1 to 1 | its zone's minimum is 8 |
 | Moss Mother Cavern | Falkreath | 1 | 1 to 2 | its zone's minimum is 8 |
+| Northwind Mine | The Rift | 6 | 1 to 2 | its zone's minimum is 12 |
+| Rimewind Grotto | Hjorkvild Isles | 4 | 1 to 1 | its zone's minimum is 6 |
+| Riverwood | Whiterun | 27 | 1 to 4 | a town's residents, animals and guards are not a fight |
+| Rorikstead | Whiterun | 24 | 1 to 3 | a town's residents, animals and guards are not a fight |
+| Shor's Stone | The Rift | 8 | 1 to 3 | a town's residents, animals and guards are not a fight |
+| Skaal Village | Solstheim | 2 | 1 to 3 | a town's residents, animals and guards are not a fight |
 | Sons of Skyrim Military Camp | Hjaalmarch | 1 | 1 to 2 | the war puts its garrison there later |
 | Sons of Skyrim Military Camp | The Pale | 1 | 1 to 2 | the war puts its garrison there later |
 | Sons of Skyrim Military Camp | The Reach | 2 | 1 to 2 | the war puts its garrison there later |
 | Sons of Skyrim Military Camp | The Rift | 1 | 1 to 2 | the war puts its garrison there later |
 | Sons of Skyrim Military Camp | Winterhold | 1 | 1 to 2 | the war puts its garrison there later |
+| Whitestream Den | Whiterun | 7 | 1 to 3 | its zone's minimum is 10 |
 | Windward Ruins | The Pale | 2 | 1 to 1 | its zone's minimum is 5 |
 | Wisp Light Crevasse |  | 1 | 1 to 1 | its zone's minimum is 15 |
 
@@ -694,7 +706,7 @@ A different way of writing a place's name (a possessive, a hyphen, a leading "Th
 | Winterhold Library | Hall of Runes |
 | Yngol Barrow | Yngol's Barrow |
 
-### Listed twice or left over, now out (28)
+### Listed twice or left over, now out (29)
 
 | Name | Editor id | Why | Kept as |
 |---|---|---|---|
@@ -706,6 +718,7 @@ A different way of writing a place's name (a possessive, a hyphen, a leading "Th
 | Castle Volkihar | DLC1VampireCastleDungeonLocation | the same place as the entry kept: inside it | DLC1VampireCastleLocation |
 | Dormitory | WinterholdCollegeDormitory2Location | the same place as the entry kept: the same name in the same town | WinterholdCollegeDormitoryLocation |
 | Doughlas House | OldHroldanTobiasHouseLocationTGCoOH | the same place as the entry kept: the same spot | OldHroldanDoughlasHouseLocationTGCoOH |
+| Dungeon | zzzAoMLocTemplePriosn | a template location: a bare common noun for a kind of place, and no marker of its own on the map | (nothing) |
 | E3 Bleak Falls Barrow | E3DemoBleakFallsBarrowLocation | a demo or cut-content leftover (its editor id or name says so) | (nothing) |
 | Fort Valus | WTFortValusLocationInterior | the same place as the entry kept: inside it | WTFortValusLocation |
 | Goldenhills Plantation | ccVSVSSE004_FarmInteriorLocation | the same place as the entry kept: inside it | ccVSVSSE004_FarmExteriorLocation |

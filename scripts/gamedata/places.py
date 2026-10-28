@@ -219,6 +219,7 @@ NOT_A_FIGHT = {"House", "PlayerHouse", "Store", "Jail", "Barracks", "Building", 
 # A leftover Bethesda's demo builds and cut content left in the records: never a place a player can go to.
 LEFTOVER = re.compile(r"(?i)unused|^E3Demo")
 LEFTOVER_NAME = re.compile(r"(?i)^name tbd$")  # Dawnguard's own placeholder, a cave with no cells
+TEMPLATE_NAMES = {"dungeon", "cave", "camp", "fort", "mine", "ruins", "ruin", "tower", "lair", "den", "hideout", "barrow", "temple"}  # WO-178 Part 3: a place can't be called just this
 SAME_SPOT = 4096.0  # two places of one name this close (one exterior cell) are one place
 # Named by hand, as the four Orc strongholds are: the one place WO-166 adds whose people are the player's side. Its actors summary read
 # "Bandit, Troll, boss Isran, level 150" (the Dawnguard's own faction templates), which is no fight. Logged under the order.
@@ -247,7 +248,9 @@ DOOR_NAMED = []  # (the record's name, the name on the door, kind): WO-171; for 
 DOOR_SKIPPED = []  # (the record's name, the name on the door, why not): WO-171
 INTERIOR_DROPPED = []  # (the record's name, the name without "Interior"): WO-171, Bob's second review
 FARM_TYPED = []  # (name, the kind it was, Farm or Mill): WO-171, Bob's second review
-STRAY_ACTORS = []  # (name, hold, count, the range it read, why it was dropped): WO-176, one or two low actors that are not the place's fight
+STRAY_ACTORS = []  # (name, hold, count, the range it read, why it was dropped): WO-176, low actors that are not the place's fight
+STRAY_CEILING = 3  # a placed creature of level 1 to 3 (a critter, a lone skeleton) in a place its own zone makes for higher levels, or whose war garrison comes later
+TOWN_STRAY_CEILING = 6  # a town's residents, farm animals and guards, up to level 6 (Karthwasten's miners); a town with a real fight (Helgen, 30) keeps its levels
 # WO-171: a farm or a mill is out in the fields, not in the town its record is parented to. A house, a shop and an inn are called by the name
 # on their door, which is their cell's name; a dungeon's cells are its inner levels and are not.
 FARM_KW = {"LocTypeFarm", "LocTypeLumberMill"}
@@ -988,6 +991,11 @@ def build(version):
     for k in [k for k, p in places.items() if LEFTOVER.search(p["edid"]) or LEFTOVER_NAME.match(p["name"])]:
         DROPPED.append((places[k]["name"], places[k]["edid"], k, "a demo or cut-content leftover (its editor id or name says so)", None))
         del places[k]
+    # WO-178 Part 3: a location named only by the common word for what it is ("Dungeon") and not on the map is a template a quest or radiant system fills
+    # in, not a place a player can name: no page of its own, and every sentence with the word in it was "pointing" at it.
+    for k in [k for k, p in places.items() if p["name"].lower() in TEMPLATE_NAMES and not p.get("marker")]:
+        DROPPED.append((places[k]["name"], places[k]["edid"], k, "a template location: a bare common noun for a kind of place, and no marker of its own on the map", None))
+        del places[k]
     by_name = collections.defaultdict(list)
     for k, p in places.items():
         by_name[p["name"].lower()].append(k)
@@ -1295,15 +1303,23 @@ def build(version):
     # Cavern: enemies from level 1, up to 2", zone minimum 8) or the war puts its real garrison there later (a Sons of Skyrim camp: "level 1 to 2",
     # sixteen soldiers of 4 to 27 after the war). The records place a stray critter or a guard; the real fight is a leveled list or a quest's spawn
     # they don't show. Its levels are dropped (the door says "levels not checked yet", the page "Not known yet"); what lives there stays.
+    # WO-176 Part 2 (Bob, 28 Oct, 14:50): the rule is about what kind of actor it is, not how many. Darkwater Pass (a Falmer cave, "1 to 2, 3 in all"),
+    # Northwind Mine ("1 to 2", boss "Skeleton, level 1") and Headwaters of Harstrad all have a handful of placed level 1 to 3 creatures in a zone
+    # that says the place is for level 12 to 25. A town's own residents, farm animals and guards are not a fight at all (Ivarstead "up to 3").
     for k, p in places.items():
         a = p.get("actors") or {}
-        if a.get("hostile") is False or "floor" not in a or a["count"] > 2 or a["ceiling"] > 2 or p["type"] in NOT_A_FIGHT:
+        if a.get("hostile") is False or "floor" not in a or p["type"] in NOT_A_FIGHT:
             continue
-        why = (f"its zone's minimum is {a['zoneMin']}" if a.get("zoneMin", 0) >= a["ceiling"] + 4 else  # Septimus Signus, level 1 in a zone of 2, is himself (Bob, 23 Oct)
-               "the war puts its garrison there later" if a.get("afterTheWar") else None)
+        if p["type"] in ("Town", "Settlement"):
+            why = "a town's residents, animals and guards are not a fight" if a["ceiling"] <= TOWN_STRAY_CEILING else None
+        elif a["ceiling"] <= STRAY_CEILING:
+            why = (f"its zone's minimum is {a['zoneMin']}" if a.get("zoneMin", 0) >= a["ceiling"] + 4 else  # Septimus Signus, level 1 in a zone of 2, is himself (Bob, 23 Oct)
+                   "the war puts its garrison there later" if a.get("afterTheWar") else None)
+        else:
+            why = None
         if why:
             STRAY_ACTORS.append((p["name"], p.get("hold") or "", a["count"], f"{a['floor']} to {a['ceiling']}", why))
-            for f in ("floor", "ceiling", "atLevel", "boss"):
+            for f in ("floor", "ceiling", "atLevel", "boss", "afterTheWar") if p["type"] in ("Town", "Settlement") else ("floor", "ceiling", "atLevel", "boss"):
                 a.pop(f, None)
     for k, p in places.items():
         if p["type"] == "City" or p["type"] in NOT_A_FIGHT:
@@ -1555,9 +1571,10 @@ def report(places, xp_from, cities=()):
                 out.append(f"| {rec} | {door_name} | {why} |")
         out += ["", f"{len(DOOR_SKIPPED) - len(skipped)} more differ only in that one name holds the other (a town's name dropped from the front, a leading \"The\"): left as they are."]
     if STRAY_ACTORS:
-        out += ["", f"### One or two low actors that are not the place's fight ({len(STRAY_ACTORS)}) (WO-176)", "",
-                "A place whose records show one or two actors of level 1 or 2, and whose own zone has a higher minimum or whose war garrison comes later: its levels are not "
-                "given (not checked yet), not read as \"1 to 2\".", "", "| Place | Hold | Actors | Read as | Why dropped |", "|---|---|---|---|---|"]
+        out += ["", f"### Low actors that are not the place's fight ({len(STRAY_ACTORS)}) (WO-176)", "",
+                f"A place whose records show only actors of level {STRAY_CEILING} or less (any number), and whose own zone has a higher minimum or whose war garrison comes later; "
+                f"or a town whose people, animals and guards reach no higher than level {TOWN_STRAY_CEILING}: its levels are not given (not checked yet), not read as \"1 to 2\".",
+                "", "| Place | Hold | Actors | Read as | Why dropped |", "|---|---|---|---|---|"]
         out += [f"| {nm} | {hold} | {n} | {rng} | {why} |" for nm, hold, n, rng, why in sorted(STRAY_ACTORS)]
     if OTHER_PLANE:
         out += ["", f"### Taken off Tamriel's map: another plane ({len(OTHER_PLANE)}) (WO-178)", "",
