@@ -15,12 +15,25 @@ export type Piece = { text: string; href?: string; external?: boolean };
 
 const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-export function linkNames(text: string, names: NameLink[]): Piece[] {
+/** The pattern for a list of names, built once per list (a page links many sentences against the same few thousand names). */
+const compiled = new WeakMap<NameLink[], { byText: Map<string, NameLink>; re: RegExp } | null>();
+function compile(names: NameLink[]) {
+  if (compiled.has(names)) return compiled.get(names)!;
   const usable = names.filter((n) => n.text.trim().length > 1);
-  if (!text || !usable.length) return [{ text }];
-  const byText = new Map(usable.map((n) => [n.text, n]));
-  const pattern = [...byText.keys()].sort((a, b) => b.length - a.length).map(escape).join("|");
-  const re = new RegExp(`(?<![\\p{L}\\p{N}])(${pattern})(?![\\p{L}\\p{N}])(?!\\s+\\p{Lu})`, "gu");
+  let out: { byText: Map<string, NameLink>; re: RegExp } | null = null;
+  if (usable.length) {
+    const byText = new Map(usable.map((n) => [n.text, n]));
+    const pattern = [...byText.keys()].sort((a, b) => b.length - a.length).map(escape).join("|");
+    out = { byText, re: new RegExp(`(?<![\\p{L}\\p{N}])(${pattern})(?![\\p{L}\\p{N}])(?!\\s+\\p{Lu})`, "gu") };
+  }
+  compiled.set(names, out);
+  return out;
+}
+
+export function linkNames(text: string, names: NameLink[]): Piece[] {
+  const c = compile(names);
+  if (!text || !c) return [{ text }];
+  const { byText, re } = c;
   const out: Piece[] = [];
   let last = 0;
   for (const m of text.matchAll(re)) {

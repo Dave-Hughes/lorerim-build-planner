@@ -5156,7 +5156,7 @@ Status: done (Bob, 27 Oct 20:10: checked on the preview: Guide out of the menu, 
 - **Screenshots** (in `test-results/`): `wo161-characters-1440.png`, `wo161-characters-390.png`, `wo161-player-1440.png`, `wo161-search-1440.png`, `wo161-changes-1440.png`, `wo161-phone-390.png`.
 
 ## WO-160  One page per quest line (Mac, 27 Oct 2026)
-Status: building (Mac; Part 5 and the Quest XP box)
+Status: for Bob (Part 5 and the Quest XP box built; typecheck, lint, unit tests, the build and the full e2e pass; one run had a single failure in wo79 that passes alone and in its neighbours, 451 of 452 then 18 of 18 in order)
 
 **Why.** The big quest lines each have two pages built by two different orders and never merged: a line page (`/quests/main-quest`, `/quests/dawnguard`, `/quests/companions`, `/quests/dragonborn`, from WO-100) and a story page with chapters (`/quests/s/become-the-dragonborn`, `/quests/s/join-the-dawnguard`, `/quests/s/join-the-companions`, from WO-104/106). They look nothing alike, and the Main stories category lists both kinds side by side. Dave, 27 Oct: "Why are there multiple layouts?" There should be one. Boards: canvas row 36, `MainStoriesPage` and `LinePage`, https://claude.ai/artifact/48H6v9Q6wFuwhzRqE31uD1.
 
@@ -5167,7 +5167,7 @@ Status: building (Mac; Part 5 and the Quest XP box)
 - [x] The colours mean one thing each, everywhere they're used: green how to start and what's done, red levels and danger, blue places, orange people and links, gold XP and rewards, purple choices and what a quest opens. Write them into `docs/design-rules.md`.
 - [x] Every line gets it: the main quest, Dawnguard, Dragonborn, the guilds, the Daedric lines, the mod lines. Check Dragonborn, Dawnguard (two sides: show both in the story, as two runs after the shared start) and one mod line at 1440 and 390.
 
-- [ ] **Quest XP says one thing.** The Companions' story page says 700 XP and "they pay no quest XP" for the jobs along the way; the line page says 2,100; `quests.json` has every job at 100. At a glance shows the story's XP and, under it, "jobs along the way pay 100 each" when they pay; Along the way says the same. Check every line with jobs.
+- [x] **Quest XP says one thing.** The Companions' story page says 700 XP and "they pay no quest XP" for the jobs along the way; the line page says 2,100; `quests.json` has every job at 100. At a glance shows the story's XP and, under it, "jobs along the way pay 100 each" when they pay; Along the way says the same. Check every line with jobs.
 
 ### Part 2. The category pages
 - [x] Main stories as `MainStoriesPage`: the three stories only, main quest first, then Dragonborn, then Dawnguard; then "Tied to these stories" for the mod quests that sit there now. No boxes, no Tell me more.
@@ -5194,11 +5194,19 @@ Jeff's notes on Part 4 (Mac, 27 Oct):
 
 ### Part 5. Less on the page (Dave, 27 Oct, 19:20)
 Dave: "a bit too much fluff on the quest line pages."
-- [ ] Drop the **Starts here** and **A choice** chips. The first quest is first; At a glance says how the line starts; a quest's choices are on its own page.
-- [ ] **Link in the sentence, not under it.** "Talk to Alvor or Gerdur in Riverwood" links Alvor, Gerdur and Riverwood where they're written; the person and place chips under each quest go. Same on the quest pages' steps, the category rows and anywhere else a sentence names a person or place.
-- [ ] **Link every name.** Every person and place named in any text on a line page (the summary, At a glance, each quest's line, Along the way, What the whole line gives, What it closes) is linked when it has a page. Dave found many that aren't. A test lists the names on the main quest, Dragonborn, Dawnguard and the Companions pages that have a page but no link, and fails if any.
-- [ ] **The right rail is the contents only.** How it starts is already in At a glance; take it out of the rail. Opens other stories moves into the main column as its own section after What it closes (it isn't anywhere else today), in the same style as the others.
-- [ ] Screenshots of the main quest and Dragonborn at 1440 and 390, then `for Bob`.
+- [x] Drop the **Starts here** and **A choice** chips. The first quest is first; At a glance says how the line starts; a quest's choices are on its own page.
+- [x] **Link in the sentence, not under it.** "Talk to Alvor or Gerdur in Riverwood" links Alvor, Gerdur and Riverwood where they're written; the person and place chips under each quest go. Same on the quest pages' steps, the category rows and anywhere else a sentence names a person or place.
+- [x] **Link every name.** Every person and place named in any text on a line page (the summary, At a glance, each quest's line, Along the way, What the whole line gives, What it closes) is linked when it has a page. Dave found many that aren't. A test lists the names on the main quest, Dragonborn, Dawnguard and the Companions pages that have a page but no link, and fails if any.
+- [x] **The right rail is the contents only.** How it starts is already in At a glance; take it out of the rail. Opens other stories moves into the main column as its own section after What it closes (it isn't anywhere else today), in the same style as the others.
+- [x] Screenshots of the main quest and Dragonborn at 1440 and 390, then `for Bob`.
+
+Jeff's notes on Part 5 and the Quest XP box (Mac, 27 Oct):
+- **Quest XP.** At a glance shows the story's own XP and, under it, "Jobs along the way pay 100 each" (or "50 to 200 each") when they pay; Along the way says "They pay 100 each", or "They pay no quest XP" when none do. The Companions: 700 for the story and "Jobs along the way pay 100 each". The jobs' XP is read from `quests.json` (each job's own value), not assumed. The Dawnguard jobs added for Harkon's court carry their own XP too.
+- **Chips.** Starts here and A choice are gone (the first quest's node is still green); the person and place chips under each quest are gone. The two chips left are the violet "Opens ..." on a quest that opens another story and the red danger on a shelf's job. A job's place is in its words, linked.
+- **Names are links in their sentence.** The line page's words (each quest's first step and note, the pitch, At a glance, Along the way, what the line gives and closes) go through one linker over every place with a page and every person a quest line may name: everyone in a quest, a read, a follower, spouse, merchant, trainer or innkeeper, and anyone with a whole name of more than one word (Jurgen Windcaller). Guards, bandits and one-word names nothing else says anything about are left out (a link on one would be wrong). A name followed by a capitalised word is still left whole or not at all (the rule from WO-154). The quest pages' steps use the same list, and so do the category rows (their pitch and how it starts). **The test** (`src/lib/quests/wo160-names.test.ts`) takes every text on the main quest, Dragonborn, Dawnguard and the Companions pages and fails if a place with a page or a person from that list is written whole and isn't linked.
+- **The rail is the contents only.** How it starts is not in the rail: everything it said is in At a glance's first cell (the story's starts with where each was checked, or the read's way in with who, where and what it needs, or the older rules' giver and ways in; and the needs as rows). Dragonborn's cultists, which the read says are not a step, are a line under the story ("Not counted as a step"). "This was wrong" is Information Confidence's Report a mistake. Opens other stories and Jobs and errands are sections of the column after What it closes.
+- **Not done:** the quest pages' own cards of "where it takes you" and the person pages' quest lists still show what they showed (their names link as before, now from the wider list); chips elsewhere (a person's page) are untouched.
+- Screenshots: `test-results/wo160-main-quest-1440.png`, `wo160-main-quest-390.png`, `wo160-dragonborn-1440.png`.
 
 ## WO-159  Dave's testing, 27 Oct afternoon: home, search, back links, a playthrough from the start, and the people reads on person pages (Mac, 27 Oct 2026)
 Status: done (Bob, 27 Oct 17:55: home, back buttons and the people reads checked on the preview (Lydia joins as housecarl when made Thane; Jaree-Ra by the Winking Skeever); the Playthrough tab is signed-in only, for Dave to see)

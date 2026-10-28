@@ -15,8 +15,8 @@ for (const width of [1440, 390]) {
     await expect(band).toContainText("3,800");
     const story = page.getByRole("region", { name: "The story" });
     await expect(story.getByRole("link", { name: "Unbound" })).toHaveAttribute("href", /\/quests\/q\/unbound/);
-    await expect(story.getByText("Starts here")).toBeVisible();
-    await expect(story.getByRole("link", { name: "Helgen" }).first()).toBeVisible();
+    await expect(story.getByText("Starts here")).toHaveCount(0);
+    await expect(story.getByText("A choice", { exact: true })).toHaveCount(0);
     await expect(page.getByRole("region", { name: "Along the way" }).getByRole("link", { name: "Dragon Research" })).toBeVisible();
     await expect(page.getByRole("region", { name: "What the whole line gives" })).toBeVisible();
     await expect(page.getByRole("region", { name: "What it closes" })).toBeVisible();
@@ -115,20 +115,45 @@ for (const [slug, title] of [
   });
 }
 
-test("Part 4: one chip size, Dragonborn's seven quests, no empty rows, one button label", async ({ page }) => {
+test("Part 4: Dragonborn's seven quests, no empty rows, one button label", async ({ page }) => {
   await page.goto("/quests/dragonborn");
   const story = page.getByRole("region", { name: "The story" });
-  const sizes = await story.locator('[class*="__chip"]:not([class*="__chips"])').evaluateAll((els) => [...new Set(els.map((e) => getComputedStyle(e).fontSize))]);
-  expect(sizes).toHaveLength(1);
   await expect(page.getByRole("region", { name: "At a glance" })).toContainText("7 quests");
   await expect(page.locator("main").getByText("8 quests")).toHaveCount(0);
   await expect(story.getByRole("link", { name: "Cultists vs Player" })).toHaveCount(0);
-  const how = page.getByRole("region", { name: "How it starts" });
-  await expect(how).toContainText("Cultists vs Player");
-  for (const li of await how.getByRole("listitem").all()) expect((await li.innerText()).trim().length).toBeGreaterThan(0);
+  await expect(page.locator("main")).toContainText("Not counted as a step: Cultists vs Player");
+  for (const li of await page.getByRole("region", { name: "At a glance" }).getByRole("listitem").all()) expect((await li.innerText()).trim().length).toBeGreaterThan(0);
   await page.screenshot({ path: "test-results/wo160-dragonborn-1440.png", fullPage: true });
   await page.goto("/quests/c/main-stories");
   await expect(page.getByRole("link", { name: "Open the story ›" })).toHaveCount(3);
   await expect(page.getByRole("link", { name: "Open ›", exact: true })).toHaveCount(0);
   await expect(page.locator("main").getByText("7 quests").first()).toBeVisible();
+});
+
+test("Part 5: less on the page, names linked in their sentence, the rail is the contents only, Opens other stories in the column, and one XP", async ({ page }) => {
+  for (const width of [1440, 390]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/quests/main-quest");
+    const story = page.getByRole("region", { name: "The story" });
+    // No Starts here or A choice chip, and no person or place chip under a quest.
+    await expect(story.locator('[class*="__chip"]').filter({ hasText: /Starts here|A choice/ })).toHaveCount(0);
+    await expect(story.locator('[class*="__who"], [class*="__place"]')).toHaveCount(0);
+    // "Talk to Alvor or Gerdur in Riverwood": the names are links where they are written.
+    const before = story.getByText("Talk to Alvor or Gerdur in Riverwood").first();
+    await expect(before.getByRole("link", { name: "Riverwood" })).toHaveAttribute("href", /\/places\/riverwood/);
+    await expect(before.getByRole("link", { name: "Alvor" }).or(before.getByRole("link", { name: "Gerdur" })).first()).toHaveAttribute("href", /\/people\//);
+    // The rail is the contents only; Opens other stories is a section of the column.
+    await expect(page.getByRole("complementary").getByRole("heading")).toHaveCount(0);
+    await expect(page.getByRole("region", { name: "Opens other stories" })).toBeVisible();
+    await expect(page.getByRole("region", { name: "How it starts" })).toHaveCount(0);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
+    await page.screenshot({ path: `test-results/wo160-main-quest-${width}.png`, fullPage: true });
+  }
+  // Quest XP says one thing: the story's XP, and under it what the jobs along the way pay; Along the way says the same.
+  await page.goto("/quests/companions");
+  const glance = page.getByRole("region", { name: "At a glance" });
+  await expect(glance).toContainText("Quest XP");
+  await expect(glance).toContainText(/Jobs along the way pay 100 each/);
+  await expect(page.getByRole("region", { name: "Along the way" })).toContainText("They pay 100 each");
+  await expect(page.getByRole("region", { name: "Along the way" })).not.toContainText("no quest XP");
 });

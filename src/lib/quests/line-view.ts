@@ -1,13 +1,14 @@
 import "server-only";
-import { personHref } from "@/lib/people/data";
-import { placeHref } from "@/lib/places/data";
 import { townsIn } from "@/lib/places/suggest";
 import { gateOf, homeName, questsData } from "./data";
 import { rowOf } from "./reads";
 import { questHref } from "./slugs";
 import { storyOfLine } from "./stories-data";
 import type { Story } from "./story";
+import { linkNames, type Piece } from "@/lib/pages/link-names";
+import { linkable } from "@/lib/pages/names";
 import type { Quest, QuestLine } from "./types";
+import { startChecked } from "./types";
 import { andList } from "./words";
 
 /**
@@ -16,7 +17,7 @@ import { andList } from "./words";
  * what the two old pages (the line's and the story's) already knew; nothing new is made up.
  */
 export interface Chip {
-  kind: "start" | "who" | "place" | "pick" | "danger";
+  kind: "pick" | "danger";
   text: string;
   href?: string | null;
 }
@@ -25,10 +26,17 @@ export interface LineQuest {
   key: string;
   name: string;
   href: string | null;
-  /** What to do first, in one line. */
+  /** What to do first, in one line, and the same with the people and places it names as links (WO-160 Part 5). */
   task: string | null;
-  /** A line of words under it: what it needs, or where when that is too long for a chip. */
+  taskParts?: Piece[];
+  /** A line of words under it: what it needs. */
   note?: string | null;
+  noteParts?: Piece[];
+  /** The quest that starts the line: its node is green. */
+  start?: boolean;
+  /** The places it names, for Where it takes you. */
+  places?: string[];
+  /** What it opens, and a place's danger. */
   chips: Chip[];
   xp: number;
 }
@@ -60,26 +68,19 @@ export interface LineView {
   jobs: LineQuest[];
   jobsNote: string;
   opens: Open[];
-  glance: { start: { value: string; sub: string | null }; level: { value: string; sub: string | null }; length: { value: string; sub: string | null }; xp: { value: string; sub: string | null } | null; where: string | null };
+  glance: { start: { value: string; sub: string | null; more: string[] }; level: { value: string; sub: string | null }; length: { value: string; sub: string | null }; xp: { value: string; sub: string | null } | null; where: string | null };
   questCount: number;
   chapterCount: number;
   /** What the read says is not a step of its own (Dragonborn's cultists' ambush), left out of the counts and the run and said under How it starts. */
   notSteps: { name: string; text: string }[];
 }
 
-const placeLink = (text: string): string | null => placeHref(text) ?? placeHref(text.split(",")[0].trim()) ?? null;
-const personLink = (text: string): string | null => personHref(text);
 const short = (s: string) => s.length <= 64;
 
-function chipsOf(who: string | null | undefined, where: string | null | undefined, extra: Chip[] = []): { chips: Chip[]; note: string | null } {
-  const chips: Chip[] = [...extra];
-  let note: string | null = null;
-  if (who && short(who)) chips.push({ kind: "who", text: who, href: personLink(who) });
-  if (where) {
-    if (short(where)) chips.push({ kind: "place", text: where, href: placeLink(where) });
-    else note = where;
-  }
-  return { chips, note };
+/** What a quest's who and where leave on the page: the places they name (for Where it takes you) and, when long, a line of words. No chips (WO-160 Part 5): the sentence links the names. */
+function whereOf(where: string | null | undefined): { places: string[]; note: string | null } {
+  if (!where) return { places: [], note: null };
+  return short(where) ? { places: [where], note: null } : { places: [], note: where };
 }
 
 /** "200" a quest when every paying quest pays the same. */
@@ -89,6 +90,21 @@ function xpSub(quests: Quest[]): string | null {
   const same = paying.every((q) => q.xp === paying[0].xp);
   return same ? `${paying[0].xp.toLocaleString("en-US")} a quest` : `${paying.length} of ${quests.length} quests pay XP`;
 }
+
+/** What the jobs along the way pay, in words: "100 each", "50 to 200 each", or null when none pay (WO-160 Part 5: one number for the line's XP). */
+function jobsPay(jobs: LineQuest[]): string | null {
+  const paying = jobs.filter((j) => j.xp > 0).map((j) => j.xp);
+  if (!paying.length) return null;
+  const lo = Math.min(...paying);
+  const hi = Math.max(...paying);
+  return lo === hi ? `${lo.toLocaleString("en-US")} each` : `${lo.toLocaleString("en-US")} to ${hi.toLocaleString("en-US")} each`;
+}
+
+/** The paying quests that are in the story's run (not the jobs along the way). */
+const storyOnly = (payers: Quest[], run: LineQuest[]) => payers.filter((q) => run.some((r) => r.name === q.name));
+
+/** A quest's words with the people and places they name as links (WO-160 Part 5), so the page links them where they are written. */
+const withParts = (q: LineQuest): LineQuest => ({ ...q, ...(q.task ? { taskParts: linkNames(q.task, linkable()) } : {}), ...(q.note ? { noteParts: linkNames(q.note, linkable()) } : {}) });
 
 function uniquePlaces(places: (string | null | undefined)[], limit = 6): string | null {
   const seen = new Set<string>();
@@ -127,9 +143,9 @@ function splitSides(line: QuestLine, rows: Map<string, ReturnType<typeof rowOf>>
     if (side === null) continue;
     const lq = line.quests.find((q) => q.name === o.quest);
     const radiant = /radiant/i.test(o.what ?? "");
-    const { chips, note } = chipsOf(null, o.where ?? null);
-    const row = { key: `${lq?.edid ?? o.quest}-${side}`, name: o.quest, href: lq ? questHref(lq.edid) : null, task: o.what ?? (lq ? rows.get(lq.edid)?.summary : null) ?? null, note: [note, o.needs ? `Needs: ${o.needs}` : null].filter(Boolean).join(" | ") || null, chips, xp: lq?.xp ?? 0 };
-    if (radiant) jobs.push({ ...row, xp: 0, note: [side === 0 ? "A Dawnguard job" : "A job for Harkon's court", row.note].filter(Boolean).join(" | ") });
+    const { places, note } = whereOf(o.where ?? null);
+    const row = { key: `${lq?.edid ?? o.quest}-${side}`, name: o.quest, href: lq ? questHref(lq.edid) : null, task: o.what ?? (lq ? rows.get(lq.edid)?.summary : null) ?? null, note: [note, o.needs ? `Needs: ${o.needs}` : null].filter(Boolean).join(" | ") || null, places, chips: [] as Chip[], xp: lq?.xp ?? 0 };
+    if (radiant) jobs.push({ ...row, note: [side === 0 ? "A Dawnguard job" : "A job for Harkon's court", row.note].filter(Boolean).join(" | ") });
     else sides[side].quests.push(row);
   }
   if (sides.some((sd) => sd.quests.length < 1)) return null;
@@ -148,8 +164,6 @@ export function lineView(line: QuestLine): LineView {
   // A quest the read says isn't a step of its own (it only sets the line off): not counted, not in the run.
   const isNotAStep = (what: string | null | undefined) => /\b(?:isn't|is not|not) a step of its own\b/i.test(what ?? "");
   const notSteps = (line.read?.order ?? []).filter((o) => isNotAStep(o.what)).map((o) => ({ name: o.quest, text: o.what! }));
-  const branchAt = new Map((line.read?.branches ?? []).map((b) => [b.at, b.options]));
-  const pick = (name: string): Chip[] => (branchAt.get(name)?.length ? [{ kind: "pick", text: "A choice" }] : []);
 
   // What other lines this one opens: from the story when it has one, else the lines that wait for it.
   const opens: Open[] = story
@@ -183,19 +197,18 @@ export function lineView(line: QuestLine): LineView {
     chapters = story.chapters.map((c, i) => {
       const qs: LineQuest[] = c.quests.map((sq) => {
         const lq = byEdid.get(sq.edid);
-        const extra: Chip[] = [];
-        if (first) extra.push({ kind: "start", text: "Starts here" });
+        const start = first;
         first = false;
-        const { chips, note } = chipsOf(sq.who, sq.where, extra);
+        const { places, note } = whereOf(sq.where);
         const opened = opensAt.get(sq.edid);
-        const rest: Chip[] = [...pick(sq.name), ...(opened ? [{ kind: "pick" as const, text: `Opens ${andList(opened)}` }] : [])];
-        return { key: sq.edid, name: sq.name, href: questHref(sq.edid), task: sq.task ?? (lq ? rows.get(lq.edid)!.summary : null), note: note ?? sq.note ?? null, chips: [...chips, ...rest], xp: sq.xp };
+        const chips: Chip[] = opened ? [{ kind: "pick" as const, text: `Opens ${andList(opened)}` }] : [];
+        return { key: sq.edid, name: sq.name, href: questHref(sq.edid), task: sq.task ?? (lq ? rows.get(lq.edid)!.summary : null), note: note ?? sq.note ?? null, start, places, chips, xp: sq.xp };
       });
       return { n: i + 1, name: c.name, quests: qs, xp: qs.reduce((n, q) => n + q.xp, 0) };
     });
     jobs = story.alongside.map((sq) => {
-      const { chips, note } = chipsOf(sq.who, sq.where);
-      return { key: sq.edid, name: sq.name, href: questHref(sq.edid), task: sq.task ?? null, note, chips, xp: 0 };
+      const { places, note } = whereOf(sq.where);
+      return { key: sq.edid, name: sq.name, href: questHref(sq.edid), task: sq.task ?? null, note, places, chips: [], xp: byEdid.get(sq.edid)?.xp ?? 0 };
     });
     // A story that splits in two (Dawnguard: refuse or accept Harkon's gift): the read's own words say which side each quest is on. The
     // shared start and the shared end stay as the story's chapters; each side is its own run between them, and the radiant jobs of the
@@ -209,9 +222,9 @@ export function lineView(line: QuestLine): LineView {
       chapters.splice(at >= 0 ? at + 1 : Math.min(1, chapters.length), 0, ...sideChapters);
       const have = new Set(jobs.map((j) => j.name));
       for (const j of split.jobs) if (!have.has(j.name)) jobs.push(j);
-      jobsNote = `${jobs.length} jobs that open as the story goes on, for either side. They pay no quest XP.`;
+      jobsNote = `${jobs.length} jobs that open as the story goes on, for either side. ${jobsPay(jobs) ? `They pay ${jobsPay(jobs)}.` : "They pay no quest XP."}`;
     }
-    if (!jobsNote) jobsNote = `${jobs.length} job${jobs.length === 1 ? "" : "s"} that open${jobs.length === 1 ? "s" : ""} as the story goes on. They pay no quest XP.`;
+    if (!jobsNote) jobsNote = `${jobs.length} job${jobs.length === 1 ? "" : "s"} that open${jobs.length === 1 ? "s" : ""} as the story goes on. ${jobsPay(jobs) ? `They pay ${jobsPay(jobs)}.` : "They pay no quest XP."}`;
   } else if (shelf && !line.board) {
     const pickUp = (q: Quest) => {
       const { where, town } = rows.get(q.edid)!;
@@ -222,10 +235,9 @@ export function lineView(line: QuestLine): LineView {
         .filter((q) => pickUp(q) === place)
         .map((q) => {
           const r = rows.get(q.edid)!;
-          return { key: q.edid, name: q.name, href: questHref(q.edid), task: r.summary, note: r.needs.length ? `Needs: ${r.needs.join("; ")}` : null, chips: r.places.slice(0, 1).flatMap((p) => {
-            const [place, ...danger] = p.split(": ");
-            return [{ kind: "place" as const, text: place, href: placeLink(place) }, ...(danger.length ? [{ kind: "danger" as const, text: danger.join(": ") }] : [])];
-          }), xp: q.xp };
+          // A job's place is named in its words; the danger there is the one chip left (red).
+          const [place, ...danger] = (r.places[0] ?? "").split(": ");
+          return { key: q.edid, name: q.name, href: questHref(q.edid), task: r.summary, note: r.needs.length ? `Needs: ${r.needs.join("; ")}` : null, places: place ? [place] : [], chips: danger.length ? [{ kind: "danger" as const, text: danger.join(": ") }] : [], xp: q.xp };
         });
       return { n: null, name: place, quests: qs, xp: qs.reduce((n, q) => n + q.xp, 0) };
     });
@@ -238,12 +250,9 @@ export function lineView(line: QuestLine): LineView {
     const qs: LineQuest[] = ordered.map((o) => {
       const lq = byName.get(o.name);
       const r = lq ? rows.get(lq.edid) : undefined;
-      const extra: Chip[] = [];
-      if (lq && lq === opening && !shelf) extra.push({ kind: "start", text: "Starts here" });
-      extra.push(...pick(o.name));
-      const { chips, note } = chipsOf(null, o.where ?? r?.where ?? null, extra);
+      const { places, note } = whereOf(o.where ?? r?.where ?? null);
       const needs = o.needs ?? (r?.needs.length ? r.needs.join("; ") : null);
-      return { key: lq?.edid ?? o.name, name: o.name, href: lq ? questHref(lq.edid) : null, task: o.what ?? r?.summary ?? null, note: [note, needs ? `Needs: ${needs}` : null].filter(Boolean).join(" | ") || null, chips, xp: lq?.xp ?? 0 };
+      return { key: lq?.edid ?? o.name, name: o.name, href: lq ? questHref(lq.edid) : null, task: o.what ?? r?.summary ?? null, note: [note, needs ? `Needs: ${needs}` : null].filter(Boolean).join(" | ") || null, start: !!lq && lq === opening && !shelf, places, chips: [], xp: lq?.xp ?? 0 };
     });
     chapters = qs.length ? [{ n: null, name: null, quests: qs, xp: qs.reduce((n, q) => n + q.xp, 0) }] : [];
     const listed = new Set([...ordered.map((o) => o.name), ...notSteps.map((n) => n.name)]);
@@ -251,7 +260,7 @@ export function lineView(line: QuestLine): LineView {
       .filter((q) => q.xp === 0 && !listed.has(q.name))
       .map((q) => {
         const r = rows.get(q.edid)!;
-        return { key: q.edid, name: q.name, href: questHref(q.edid), task: r.summary, note: null, chips: r.where && short(r.where) ? [{ kind: "place" as const, text: r.where, href: placeLink(r.where) }] : [], xp: 0 };
+        return { key: q.edid, name: q.name, href: questHref(q.edid), task: r.summary, note: null, places: r.where && short(r.where) ? [r.where] : [], chips: [], xp: 0 };
       });
     jobsNote = `${jobs.length} job${jobs.length === 1 ? "" : "s"} and bount${jobs.length === 1 ? "y" : "ies"} that open as you go. They pay no quest XP.`;
   }
@@ -261,27 +270,41 @@ export function lineView(line: QuestLine): LineView {
   const payers = quests.filter((q) => q.xp > 0);
   const first0 = storyQuests[0];
   const lr = line.read;
-  const startText = story?.start[0]?.text ?? lr?.getIn?.how ?? line.start ?? (line.giver ? `${line.giver.name}${line.giver.place ? ` in ${line.giver.place}` : ""}` : null);
+  // How it starts, in full, as the lines under it (WO-160 Part 5: the rail's How it starts is gone, so everything it said is here): the story's
+  // starts with where each was checked, else the read's way in with who, where and what it needs, else the older rules' giver, ways in and first step.
+  const waysIn = line.ways ?? (startChecked(opening?.start) ? opening!.start!.ways : undefined);
+  const startLines: string[] = story
+    ? story.start.map((t) => `${t.text}${t.checked === "not yet" ? " (not checked yet)" : ""}`)
+    : lr?.getIn
+      ? [lr.getIn.how, lr.getIn.who && lr.getIn.who !== "not named in the records" ? `Who: ${lr.getIn.who}` : "", lr.getIn.where ? `Where: ${lr.getIn.where}` : "", ...(lr.getIn.needs ?? []).map((n) => `Needs: ${n}`)].filter((x): x is string => !!x)
+      : [
+          line.start ?? "",
+          line.giver ? `${line.giver.name}${line.giver.place ? ` in ${line.giver.place}` : ""}` : "",
+          ...(!line.giver ? (waysIn ?? []).map((w) => w.how) : []),
+          !line.giver && !line.start && line.firstObjective ? `First step: ${line.firstObjective}` : "",
+        ].filter(Boolean);
+  const startText = startLines[0] ?? null;
   const chapterCount = story ? story.chapters.length : 0;
   const xpTotal = story ? story.chapters.flatMap((c) => c.quests).reduce((n, q) => n + q.xp, 0) : line.xpTotal;
   return {
     title: story?.name ?? line.name,
     lineTag: story ? line.name : null,
-    chapters,
+    chapters: chapters.map((c) => ({ ...c, quests: c.quests.map(withParts) })),
     numbered: !!story,
     shelf,
-    jobs,
+    jobs: jobs.map(withParts),
     jobsNote,
     opens,
     glance: {
-      start: { value: shelf ? "Each job on its own" : (story?.chapters[0]?.name ?? first0?.name ?? opening?.name ?? "Not read yet"), sub: shelf ? "Open one for how it starts" : startText },
+      start: { value: shelf ? "Each job on its own" : (story?.chapters[0]?.name ?? first0?.name ?? opening?.name ?? "Not read yet"), sub: shelf ? "Open one for how it starts" : startText, more: shelf ? [] : startLines.slice(1) },
       level: line.minLevel ? { value: `Level ${line.minLevel}`, sub: line.level ?? null } : { value: "Any", sub: line.level ?? (lr ? "The records set no level for it" : null) },
       length: {
         value: `${storyQuests.length || quests.length - skipped.size} ${(storyQuests.length || quests.length - skipped.size) === 1 ? "quest" : "quests"}`,
         sub: chapterCount ? `In ${chapterCount} chapters${jobs.length ? `, plus ${jobs.length} jobs along the way` : ""}` : (line.size ?? (jobs.length ? `Plus ${jobs.length} jobs along the way` : null)),
       },
-      xp: xpTotal > 0 ? { value: xpTotal.toLocaleString("en-US"), sub: story ? (story.reward ? story.reward.text.split(": ")[1]?.replace(/\.$/, "") ?? null : null) ?? xpSub(payers) : xpSub(payers) } : null,
-      where: uniquePlaces(storyQuests.flatMap((q) => q.chips.filter((c) => c.kind === "place").map((c) => c.text)).concat(line.where ? [line.where] : [])),
+      // The story's own quests, and under it what the jobs along the way pay when they pay (one number for the line, Along the way says the same).
+      xp: xpTotal > 0 ? { value: xpTotal.toLocaleString("en-US"), sub: jobsPay(jobs) ? `Jobs along the way pay ${jobsPay(jobs)}` : story ? (story.reward ? story.reward.text.split(": ")[1]?.replace(/\.$/, "") ?? null : null) ?? xpSub(storyOnly(payers, storyQuests)) : xpSub(payers) } : null,
+      where: uniquePlaces(storyQuests.flatMap((q) => q.places ?? []).concat(line.where ? [line.where] : [])),
     },
     questCount: storyQuests.length || quests.filter((q) => !skipped.has(q.name)).length,
     chapterCount,
@@ -305,8 +328,10 @@ export interface CategoryRow {
   size: string;
   where: string | null;
   pitch: string | null;
+  pitchParts?: Piece[];
   quoted: boolean;
   start: string | null;
+  startParts?: Piece[];
   xp: string | null;
   chapters: string[];
   /** A line of one quest: its card opens that quest's page. */
@@ -320,11 +345,15 @@ export function categoryRow(line: QuestLine, key: string): CategoryRow {
   const href = solo ? questHref(line.quests[0].edid)! : `/quests/${line.id}`;
   const story = storyOfLine(line.id);
   const base = { id: line.id, href, sources: line.sources, prince: line.prince, levelNumber: line.minLevel ?? 0, level: line.minLevel ? `Level ${line.minLevel}` : "Any level", where: line.where, solo, also: [line.category, ...line.also].filter((k) => k !== key).length ? `Also in ${andList([line.category, ...line.also].filter((k) => k !== key).map(homeName))}` : "" };
-  if (solo) return { ...base, name: line.quests[0].name || line.name, lineTag: null, size: "One quest", pitch: line.begins, quoted: line.beginsFrom === "opening", start: null, xp: null, chapters: [] };
+  if (solo) return { ...base, name: line.quests[0].name || line.name, lineTag: null, size: "One quest", pitch: line.begins, pitchParts: line.begins ? linkNames(line.begins, linkable()) : undefined, quoted: line.beginsFrom === "opening", start: null, xp: null, chapters: [] };
   const v = lineView(line);
   const chapters = story ? story.chapters.map((c) => c.name) : [];
+  const pitch = story?.pitch ?? line.read?.about ?? line.begins;
+  const startText = v.glance.start.sub;
   return {
     ...base,
+    pitchParts: pitch ? linkNames(pitch, linkable()) : undefined,
+    startParts: startText ? linkNames(startText, linkable()) : undefined,
     name: v.title,
     lineTag: v.lineTag,
     size: v.chapterCount ? `${v.questCount} quests in ${v.chapterCount} chapters` : `${v.questCount} quest${v.questCount === 1 ? "" : "s"}`,

@@ -16,7 +16,7 @@ test("the story page is facts: how it starts, its chapters and what it opens, wi
   await open(page);
   await expect(page.getByRole("region", { name: "Your next step" })).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Mark done" })).toHaveCount(0);
-  await expect(page.getByRole("region", { name: "How it starts" })).toContainText("Take a Dragonborn start");
+  await expect(page.getByRole("region", { name: "At a glance" })).toContainText("Take a Dragonborn start");
   await expect(page.locator("main")).toContainText("19 quests");
   await expect(page.getByRole("region", { name: "The story" })).not.toContainText("quests done");
 

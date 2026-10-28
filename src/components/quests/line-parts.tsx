@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { useEffect, useState, useSyncExternalStore } from "react";
+import type { Piece } from "@/lib/pages/link-names";
 import type { Chapter, Chip, LineQuest } from "@/lib/quests/line-view";
 import l from "./line-page.module.css";
 
@@ -38,7 +39,7 @@ function useHideAhead(): [boolean, () => void] {
   };
   return [hide, toggle];
 }
-const ICON: Record<Chip["kind"], string> = { start: "quest-sure", who: "quest-people", place: "quest-travel", pick: "quest-ways", danger: "tab-levels" };
+const ICON: Record<Chip["kind"], string> = { pick: "quest-ways", danger: "tab-levels" };
 
 function ChipView({ c }: { c: Chip }) {
   const body = (
@@ -57,14 +58,40 @@ function ChipView({ c }: { c: Chip }) {
   );
 }
 
+/** A sentence with the people and places it names as links, where they are written. */
+function Words({ text, parts }: { text: string; parts?: Piece[] }) {
+  if (!parts) return <>{text}</>;
+  return (
+    <>
+      {parts.map((p, i) =>
+        p.href ? (
+          <Link key={i} href={p.href} className={l.inline}>
+            {p.text}
+          </Link>
+        ) : (
+          <span key={i}>{p.text}</span>
+        ),
+      )}
+    </>
+  );
+}
+
 function QuestView({ q, first, last }: { q: LineQuest; first: boolean; last: boolean }) {
   return (
     <li id={`q-${q.key}`} className={`${l.q} ${first ? l.qFirst : ""} ${last ? l.qLast : ""}`}>
-      <i className={`${l.node} ${q.chips.some((c) => c.kind === "start") ? l.nodeStart : ""}`} aria-hidden="true" />
+      <i className={`${l.node} ${q.start ? l.nodeStart : ""}`} aria-hidden="true" />
       <div className={l.qn}>
         {q.href ? <Link href={q.href}>{q.name}</Link> : <b className={l.qname}>{q.name}</b>}
-        {q.task && <span className={l.obj}>{q.task}</span>}
-        {q.note && <span className={l.note}>{q.note}</span>}
+        {q.task && (
+          <span className={l.obj}>
+            <Words text={q.task} parts={q.taskParts} />
+          </span>
+        )}
+        {q.note && (
+          <span className={l.note}>
+            <Words text={q.note} parts={q.noteParts} />
+          </span>
+        )}
         {q.chips.length > 0 && (
           <span className={l.chips}>
             {q.chips.map((c, i) => (
@@ -165,7 +192,11 @@ export function LineJobs({ jobs, note, id }: { jobs: LineQuest[]; note: string; 
             <img className={l.px} src="/icons/quest-jobs-and-errands.svg" alt="" width={28} height={28} />
             <div>
               {j.href ? <Link href={j.href}>{j.name}</Link> : <b className={l.qname}>{j.name}</b>}
-              {j.task && <p>{j.task}</p>}
+              {j.task && (
+                <p>
+                  <Words text={j.task} parts={j.taskParts} />
+                </p>
+              )}
               {j.chips.length > 0 && (
                 <span className={l.chips}>
                   {j.chips.map((c, i) => (

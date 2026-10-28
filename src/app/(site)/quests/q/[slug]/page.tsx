@@ -20,7 +20,7 @@ import {
 import { Steps } from "@/components/pages/steps";
 import { QuestReport } from "@/components/quests/quest-report";
 import { SignInButton } from "@/components/site-header";
-import { modNames, personNames, placeNames } from "@/lib/pages/names";
+import { linkable, modNames, personNames } from "@/lib/pages/names";
 import { placeOnly, vaguePlace } from "@/lib/pages/where";
 import { categories, homeName, questsData } from "@/lib/quests/data";
 import { loadPlayerFacts } from "@/lib/quests/player-facts";
@@ -98,7 +98,7 @@ export default async function QuestPage({
   // Mods first, so a place or a person of the same name wins the link.
   const names = [
     ...modNames(),
-    ...placeNames(),
+    ...linkable(),
     ...personNames(people.map((p) => p.name)),
   ];
 

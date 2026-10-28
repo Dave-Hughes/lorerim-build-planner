@@ -59,7 +59,7 @@ test("a shelf opens on no quest's opening, its rows link to the quests and say h
   // The Bluesky Hall messenger is one quest's start, not the shelf's.
   await expect(page.getByText("I've recieved a note by a messenger")).toHaveCount(0);
   await expect(page.getByText("Starts here")).toHaveCount(0);
-  await expect(page.getByRole("region", { name: "How to start them" })).toContainText("Separate jobs, each with its own start");
+  await expect(page.getByRole("region", { name: "At a glance" })).toContainText("Each job on its own");
   const rat = page.locator('[id="q-0WRRatQuest"]');
   await expect(rat.getByRole("link", { name: "A Rat Problem" })).toHaveAttribute("href", "/quests/q/a-rat-problem");
   await expect(rat).toContainText("Igna");

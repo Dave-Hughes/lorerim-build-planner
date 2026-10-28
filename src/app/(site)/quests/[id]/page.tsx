@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { pageSources } from "@/lib/quests/player-source";
 import { loadPlayerFacts } from "@/lib/quests/player-facts";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -8,7 +7,7 @@ import { auth } from "@/auth";
 import { SignInButton } from "@/components/site-header";
 import { Linked } from "@/components/pages/linked";
 import { InformationConfidence, PageTop, TitleBox } from "@/components/pages/page-kit";
-import { placeNames } from "@/lib/pages/names";
+import { linkable } from "@/lib/pages/names";
 import k from "@/components/pages/page-kit.module.css";
 import { QuestReport } from "@/components/quests/quest-report";
 import { LineJobs, LineStory, LineToc } from "@/components/quests/line-parts";
@@ -19,10 +18,8 @@ import { MAIN, NOWHERE, needsOf } from "@/lib/quests/open";
 import { rowOf } from "@/lib/quests/reads";
 import { siteMetadata } from "@/lib/og/metadata";
 import { questHref } from "@/lib/quests/slugs";
-import { checkedLabel } from "@/lib/quests/story";
 import { storyOfLine } from "@/lib/quests/stories-data";
 import type { Quest, QuestLine } from "@/lib/quests/types";
-import { startChecked } from "@/lib/quests/types";
 import styles from "@/components/quests/quests.module.css";
 import l from "@/components/quests/line-page.module.css";
 
@@ -74,14 +71,12 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
     .map((a) => byId.get(a))
     .filter((x): x is QuestLine => !!x)
     .map((x) => ({ id: x.id, name: x.name, home: homeName(x.category), where: x.where, source: x.sources.map((s) => s.name).join(", "), begins: x.begins, quoted: x.beginsFrom === "opening" }));
-  const opening = line.quests.find((q) => q.edid === line.opening);
   const view = lineView(line);
   const told = storyOfLine(line.id);
   const lr = line.read;
-  const names = placeNames();
+  const names = linkable();
   const shelf = view.shelf;
   const read = line.quests.filter((q) => q.source === "reads").length;
-  const waysIn = line.ways ?? (startChecked(opening?.start) ? opening!.start!.ways : undefined);
   const sibs = siblings(line);
   const rows = new Map(line.quests.map((q: Quest, i) => [q.edid, rowOf(q, i > 0 ? line.quests[i - 1] : undefined)]));
   const gives = line.quests.map((q) => ({ edid: q.edid, name: q.name, what: rows.get(q.edid)!.rewards.filter((r) => !/^Gold\b/i.test(r.what)) })).filter((g) => g.what.length > 0);
@@ -148,7 +143,11 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
             </>
           }
         />
-        {pitch ? <p className={l.pitch}>{pitch}</p> : line.begins ? line.beginsFrom === "opening" ? <p className={styles.quote}>“{line.begins}”</p> : <p className={l.pitch}>{line.begins}</p> : null}
+        {pitch ? (
+          <p className={l.pitch}>
+            <Linked text={pitch} names={names} />
+          </p>
+        ) : line.begins ? line.beginsFrom === "opening" ? <p className={styles.quote}>“{line.begins}”</p> : <p className={l.pitch}>{line.begins}</p> : null}
       </div>
 
       <section className={l.band} aria-label="At a glance">
@@ -159,8 +158,28 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                 <img className={l.px} src={`/icons/${c.icon}.svg`} alt="" width={18} height={18} />
                 {c.label}
               </span>
-              <span className={`${l.v} ${c.key === "xp" ? l.cGold : ""} ${c.vSmall ? l.vSmall : ""}`}>{c.value}</span>
-              {c.sub && <span className={l.s}>{c.sub}</span>}
+              <span className={`${l.v} ${c.key === "xp" ? l.cGold : ""} ${c.vSmall ? l.vSmall : ""}`}>{c.key === "where" ? <Linked text={c.value} names={names} /> : c.value}</span>
+              {c.sub && (
+                <span className={l.s}>
+                  <Linked text={c.sub} names={names} />
+                </span>
+              )}
+              {c.key === "start" &&
+                g.start.more.map((t, i) => (
+                  <span key={i} className={l.s}>
+                    <Linked text={t} names={names} />
+                  </span>
+                ))}
+              {c.key === "start" && needs.length > 0 && (
+                <ul className={l.needs} aria-label="Needs">
+                  {needs.map((n, i) => (
+                    <li key={i} className={`${l.need} ${n.tone === "danger" ? l.needDanger : l.needDone}`}>
+                      <i />
+                      <span>{n.href ? <Link href={n.href}>{n.text.replace(/ done$/, "")}</Link> : n.text}{n.href ? " done" : ""}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           ))}
         </div>
@@ -169,6 +188,12 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
       <div className={`page ${l.cols}`}>
         <div className={l.main}>
           {hasStory && <LineStory chapters={view.chapters} numbered={view.numbered} hideable={view.numbered && view.chapters.length > 1} id="story" title={shelf ? "Jobs" : "The story"} icon="tab-play" />}
+
+          {view.notSteps.map((n) => (
+            <p key={n.name} className={l.cap}>
+              Not counted as a step: <b>{n.name}</b>. <Linked text={n.text} names={names} />
+            </p>
+          ))}
 
           {line.board && (
             <section className={l.sec} aria-labelledby="board-h">
@@ -221,7 +246,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
               <ul className={`${l.list} ${l.gives}`}>
                 {gives.map((x) => (
                   <li key={x.edid}>
-                    <b>{x.name}</b>: {x.what.map((r) => r.what + (r.when ? ` (${r.when})` : "")).join("; ")}
+                    <b>{x.name}</b>: <Linked text={x.what.map((r) => r.what + (r.when ? ` (${r.when})` : "")).join("; ")} names={names} />
                   </li>
                 ))}
               </ul>
@@ -253,142 +278,63 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
               <ul className={`${l.list} ${l.closes}`}>
                 {closes.map((x) => (
                   <li key={x.edid}>
-                    {x.text} <span className="muted">| {x.name}</span>
+                    <Linked text={x.text} names={names} /> <span className="muted">| {x.name}</span>
                   </li>
                 ))}
               </ul>
             </section>
           ) : null}
+          {view.opens.length > 0 && (
+            <section className={l.sec} id="opens" aria-labelledby="opens-h">
+              <div className={l.sechd}>
+                <h2 id="opens-h" className={l.h2}>
+                  <img className={l.px} src="/icons/quest-ways.svg" alt="" width={30} height={30} />
+                  Opens other stories
+                </h2>
+              </div>
+              <div className={l.opensGrid}>
+                {view.opens.map((o) => (
+                  <div key={o.id} className={l.op}>
+                    <Link href={`/quests/${o.id}`}>{o.name}</Link>
+                    {o.needs.length > 0 && (
+                      <ul className={l.needs} aria-label={`Needs for ${o.name}`}>
+                        {o.needs.map((n, i) => (
+                          <li key={i} className={`${l.need} ${n.tone === "done" ? l.needDone : n.tone === "danger" ? l.needDanger : l.needOther}`}>
+                            <i />
+                            <span>
+                              {n.text}
+                              {n.note && <small>{n.note}</small>}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {sibs.length > 0 && (
+            <section className={l.sec} aria-labelledby="sibs-h">
+              <div className={l.sechd}>
+                <h2 id="sibs-h" className={l.h2}>
+                  {shelves.work?.name ?? "Jobs and errands"}
+                </h2>
+              </div>
+              <div className={l.how}>
+                {sibs.map((x) => (
+                  <Link key={x.id} href={`/quests/${x.id}`}>
+                    {x.name} ({x.quests.length}) ›
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
         </div>
 
         <aside className={l.rail}>
           <LineToc items={toc} />
-
-          {view.opens.length > 0 && (
-            <div id="opens" style={{ scrollMarginTop: 90 }}>
-              <h3 className={l.rh}>Opens other stories</h3>
-              {view.opens.map((o) => (
-                <div key={o.id} className={l.op}>
-                  <Link href={`/quests/${o.id}`}>{o.name}</Link>
-                  {o.needs.length > 0 && (
-                  <ul className={l.needs} aria-label={`Needs for ${o.name}`}>
-                    {o.needs.map((n, i) => (
-                      <li key={i} className={`${l.need} ${n.tone === "done" ? l.needDone : n.tone === "danger" ? l.needDanger : l.needOther}`}>
-                        <i />
-                        <span>
-                          {n.text}
-                          {n.note && <small>{n.note}</small>}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
-
-          <section aria-labelledby="how-h">
-            <h3 id="how-h" className={l.rh}>
-              {shelf ? "How to start them" : "How it starts"}
-            </h3>
-            <div className={l.how}>
-              {told ? (
-                told.start.map((s, i) => (
-                  <p key={i}>
-                    {s.text}
-                    <span className={`${l.src} ${s.checked === "not yet" ? l.srcNo : ""}`}>{checkedLabel(s.checked)}</span>
-                  </p>
-                ))
-              ) : (
-                <>
-                  {shelf && <p>Separate jobs, each with its own start. Open one for how it starts.</p>}
-                  {!shelf && lr?.getIn?.who && (
-                    <p>
-                      <b>Who.</b> <Linked text={lr.getIn.who} names={names} />
-                    </p>
-                  )}
-                  {!shelf && lr?.getIn?.where && (
-                    <p>
-                      <b>Where.</b> <Linked text={lr.getIn.where} names={names} />
-                    </p>
-                  )}
-                  {!shelf && lr?.getIn?.how && (
-                    <p>
-                      <Linked text={lr.getIn.how} names={names} />
-                    </p>
-                  )}
-                  {!shelf && !lr?.getIn && line.giver && (
-                    <p>
-                      <b>Who.</b> {line.giver.name}
-                      {line.giver.place ? ` in ${line.giver.place}` : ""}
-                    </p>
-                  )}
-                  {/* No one giver (WO-121): the opening quest's ways in, as the start check words them (WO-121b). */}
-                  {!shelf && !lr?.getIn && !line.giver && !!waysIn?.length && (
-                    <ul className={styles.waysList}>
-                      {waysIn.map((w, i) => (
-                        <li key={i}>
-                          {w.how}
-                          {w.checked === "players" ? <span className={l.src}>{pageSources(w.source ?? "", w.also)}</span> : null}
-                          {"whereIs" in w && w.whereIs?.length ? <span className="muted"> ({w.whereIs.join("; ")})</span> : null}
-                          {"unplaced" in w && w.unplaced ? <span className="muted"> ({w.unplaced})</span> : null}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                  {!shelf && !lr?.getIn && !line.giver && line.firstObjective && (
-                    <p>
-                      <b>First step.</b> {line.firstObjective}
-                    </p>
-                  )}
-                  {!lr?.getIn?.how && line.start && <p>{line.start}</p>}
-                  {!!lr?.getIn?.needs?.length && (
-                    <ul className={k.needs}>
-                      {lr.getIn.needs.map((n, i) => (
-                        <li key={i}>
-                          <Linked text={n} names={names} />
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </>
-              )}
-              {needs.length ? (
-                <ul className={l.needs} aria-label="Needs">
-                  {needs.map((n, i) => (
-                    <li key={i} className={`${l.need} ${n.tone === "danger" ? l.needDanger : l.needDone}`}>
-                      <i />
-                      <span>{n.href ? <Link href={n.href}>{n.text.replace(/ done$/, "")}</Link> : n.text}{n.href ? " done" : ""}</span>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p>Nothing needed first: any level can start it.</p>
-              )}
-              {view.notSteps.map((n) => (
-                <p key={n.name}>
-                  <b>{n.name}.</b> {n.text}
-                </p>
-              ))}
-              <Link href={`/quests/${line.id}?report=1#report`} className={l.wrong}>
-                This was wrong ›
-              </Link>
-            </div>
-          </section>
-
-          {sibs.length > 0 && (
-            <div>
-              <h3 className={l.rh}>{shelves.work?.name ?? "Jobs and errands"}</h3>
-              <div className={l.how}>
-                {sibs.map((s) => (
-                  <Link key={s.id} href={`/quests/${s.id}`}>
-                    {s.name} ({s.quests.length}) ›
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
         </aside>
       </div>
 

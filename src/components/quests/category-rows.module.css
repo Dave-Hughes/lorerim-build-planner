@@ -272,3 +272,13 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* A name in a sentence: a link in the sentence's own size. */
+.inline {
+  font-size: inherit;
+  font-weight: inherit;
+  color: #f0913f;
+  text-decoration: underline;
+  text-decoration-color: rgba(240, 145, 63, 0.35);
+  text-underline-offset: 3px;
+}

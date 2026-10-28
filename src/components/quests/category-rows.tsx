@@ -2,8 +2,27 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import type { Piece } from "@/lib/pages/link-names";
 import type { CategoryRow } from "@/lib/quests/line-view";
 import c from "./category-rows.module.css";
+
+/** A sentence with the people and places it names as links, where they are written (WO-160 Part 5). */
+function Words({ text, parts }: { text: string; parts?: Piece[] }) {
+  if (!parts) return <>{text}</>;
+  return (
+    <>
+      {parts.map((p, i) =>
+        p.href ? (
+          <Link key={i} href={p.href} className={c.inline}>
+            {p.text}
+          </Link>
+        ) : (
+          <span key={i}>{p.text}</span>
+        ),
+      )}
+    </>
+  );
+}
 
 function SourceTags({ sources }: { sources: CategoryRow["sources"] }) {
   return (
@@ -46,11 +65,19 @@ export function LineRow({ r, n, open = "Open ›" }: { r: CategoryRow; n?: numbe
           )}
           {r.also && <span className={c.also}>{r.also}</span>}
         </div>
-        {r.pitch && <p className={r.quoted ? c.quote : c.pitch}>{r.quoted ? `“${r.pitch}”` : r.pitch}</p>}
+        {r.pitch && (
+          <p className={r.quoted ? c.quote : c.pitch}>
+            {r.quoted ? "“" : ""}
+            <Words text={r.pitch} parts={r.pitchParts} />
+            {r.quoted ? "”" : ""}
+          </p>
+        )}
         {r.start && (
           <div className={c.starts}>
             <b>Starts</b>
-            <span>{r.start}</span>
+            <span>
+              <Words text={r.start} parts={r.startParts} />
+            </span>
           </div>
         )}
         {r.chapters.length > 0 && (
@@ -84,7 +111,13 @@ export function SoloRow({ r }: { r: CategoryRow }) {
       <Link href={r.href} className={c.nm}>
         {r.name}
       </Link>
-      {r.pitch && <i>{r.quoted ? `“${r.pitch}”` : r.pitch}</i>}
+      {r.pitch && (
+        <i>
+          {r.quoted ? "“" : ""}
+          <Words text={r.pitch} parts={r.pitchParts} />
+          {r.quoted ? "”" : ""}
+        </i>
+      )}
       <span className={c.m}>
         {r.prince && <span className={c.tag}>{r.prince}</span>}
         {r.levelNumber > 0 && <span className={`${c.tag} ${c.lv}`}>{r.level}</span>}

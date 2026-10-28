@@ -54,21 +54,20 @@ test("Wyrmstooth: its needs as facts, no marks, and journals hidden until opened
 
   // Each quest is a row that links to its own page (WO-154): no journal to open, and what it needs beyond the quest before it.
   const quests = page.getByRole("region", { name: "The story" });
-  const opening = quests.getByRole("listitem").filter({ hasText: "Starts here" });
-  await expect(opening).toHaveCount(1);
-  await expect(opening.getByRole("link").first()).toHaveAttribute("href", /\/quests\/q\//);
+  // The opening quest is the first (WO-160 Part 5 dropped the Starts here chip).
+  await expect(quests.getByRole("listitem").first().getByRole("link").first()).toHaveAttribute("href", /\/quests\/q\//);
   await expect(page.getByRole("button", { name: "Journal ›" })).toHaveCount(0);
   await expect(page.getByText("game files", { exact: true })).toHaveCount(0);
 });
 
 test("The Book of Love: Ask Dinya Balu in the Temple of Mara, then Talk to Fastred at Fellstar Farm (WO-121)", async ({ page }) => {
   await page.goto("/quests/the-book-of-love");
-  const start = page.getByRole("region", { name: "How it starts" });
+  const start = page.getByRole("region", { name: "At a glance" });
   await expect(start).toContainText("Dinya Balu");
   // The line's read words how to get in as the read does, with where she sends you first (WO-154 Part 2).
   await expect(start).toContainText("Fastred");
   // Its quest's page has the way in and the first step (WO-154).
-  await page.locator("li", { hasText: "Starts here" }).getByRole("link").first().click();
+  await page.getByRole("region", { name: "The story" }).getByRole("listitem").first().getByRole("link").first().click();
   await expect(page.getByRole("region", { name: "How to start it" })).toContainText(/Dinya Balu\s+in Temple of Mara, Riften/);
   await expect(page.locator("main")).toContainText("Talk to Fastred");
 });

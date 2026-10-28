@@ -1,5 +1,6 @@
 import "server-only";
-import { personHref } from "@/lib/people/data";
+import { peopleData, personHref } from "@/lib/people/data";
+import { questsOf } from "@/lib/people/quests";
 import { placeHref, placesData } from "@/lib/places/data";
 import type { NameLink } from "./link-names";
 
@@ -45,4 +46,26 @@ export function personNames(names: (string | undefined)[]): NameLink[] {
     if (href) out.push({ text: n, href });
   }
   return out;
+}
+
+let peopleLinks: NameLink[] | null = null;
+
+/**
+ * The people a quest line's text may name, as links (WO-160 Part 5): everyone with a page who is a person a player asks about (is in a quest,
+ * has been read, or is a follower, spouse, merchant, trainer or innkeeper), and anyone whose name is more than one word (a whole name is not
+ * a common word). The many with one word for a name and nothing else (a guard, a bandit, a creature) are left out: a link on one would be wrong.
+ */
+export function peopleNames(): NameLink[] {
+  peopleLinks ??= peopleData()
+    .all.filter((p) => p.name.length > 3 && (/^\p{Lu}\S*(?:\s+\S+)+$/u.test(p.name.trim()) || p.read || p.follower || p.marriage || p.sells || p.trainer || p.innkeeper || questsOf(p.name).length > 0))
+    .map((p) => ({ text: p.name, href: `/people/${p.slug}` }));
+  return peopleLinks;
+}
+
+let everyLink: NameLink[] | null = null;
+
+/** Every place and person a sentence on a quest page may name: one list, so the pattern is built once. A place wins over a person of the same name. */
+export function linkable(): NameLink[] {
+  everyLink ??= [...peopleNames(), ...placeNames()];
+  return everyLink;
 }

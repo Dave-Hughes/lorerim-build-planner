@@ -97,7 +97,7 @@ test("a line with a read: its own words for what it is, how to get in, the quest
   await page.goto("/quests/main-quest");
   await expect(page.getByRole("heading", { level: 1, name: "Become the Dragonborn" })).toBeVisible();
   await expect(page.locator("main")).toContainText("Dragons have come back to Skyrim");
-  await expect(page.getByRole("region", { name: "How it starts" })).toContainText("Helgen");
+  await expect(page.getByRole("region", { name: "At a glance" })).toContainText("Helgen");
   await expect(page.getByRole("link", { name: "Bleak Falls Barrow" }).first()).toHaveAttribute("href", "/quests/q/bleak-falls-barrow");
   await expect(page.getByRole("region", { name: "What the whole line gives" })).toContainText("Thane of Whiterun");
   await expect(page.getByRole("region", { name: "Information Confidence" })).toBeVisible();
