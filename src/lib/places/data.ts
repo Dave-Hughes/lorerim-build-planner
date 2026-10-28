@@ -92,7 +92,7 @@ export interface Place {
   discoveryXp?: number;
   respawns?: string;
   /** What a visitor may want it for (WO-144 Part 3): skill books, a boss chest, crafting stations. */
-  worthGoingFor?: { skillBooks?: string[]; bossChest?: boolean; crafting?: string[] };
+  worthGoingFor?: { skillBooks?: string[]; bossChest?: boolean; crafting?: string[]; shrines?: string[]; wordWall?: string[] };
   danger?: { traps?: boolean };
 }
 

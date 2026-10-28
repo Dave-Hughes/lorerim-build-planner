@@ -1,0 +1,177 @@
+/* A place people live (WO-162, the board PlaceTown): who lives here by the building they sleep in, what they do for a player, close by, crafting. */
+.house {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 0 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid #1c2430;
+}
+.houseName {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding-top: 3px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #9fd3e1;
+}
+.houseName a {
+  color: #9fd3e1;
+  text-decoration: underline;
+  text-decoration-color: rgba(116, 191, 210, 0.4);
+  text-underline-offset: 3px;
+}
+.px {
+  image-rendering: pixelated;
+  flex: none;
+}
+.ppl {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.p {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+}
+.p > a {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f0913f;
+}
+.role {
+  font-size: 15px;
+  color: #c3cdd6;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  padding: 0 8px 0 6px;
+  font-size: 13px;
+  border: 1px solid;
+}
+.chip img {
+  width: 14px;
+  height: 14px;
+}
+.sells {
+  color: #ecd59c;
+  border-color: rgba(232, 201, 135, 0.45);
+  background: rgba(232, 201, 135, 0.07);
+}
+.trains {
+  color: #a9d69a;
+  border-color: rgba(143, 192, 124, 0.45);
+  background: rgba(143, 192, 124, 0.08);
+}
+.follower {
+  color: #f6b27a;
+  border-color: rgba(240, 145, 63, 0.4);
+  background: rgba(240, 145, 63, 0.07);
+}
+.quests {
+  color: #cbbcf0;
+  border-color: rgba(183, 162, 230, 0.45);
+  background: rgba(183, 162, 230, 0.08);
+}
+.rents {
+  color: #9fd3e1;
+  border-color: rgba(116, 191, 210, 0.4);
+  background: rgba(116, 191, 210, 0.07);
+}
+.list2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 40px;
+}
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #1c2430;
+  font-size: 16px;
+}
+.row img {
+  width: 22px;
+  height: 22px;
+}
+.row a {
+  color: #f0913f;
+  font-weight: 600;
+}
+.row .lv {
+  margin-left: auto;
+  font-size: 14px;
+  color: #eca69b;
+  white-space: nowrap;
+}
+.row .w {
+  display: block;
+  font-size: 13.5px;
+  color: #8e9bab;
+  font-weight: 400;
+}
+.said {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 0;
+}
+.said b {
+  font-size: 14px;
+  font-weight: 600;
+  color: #c3cdd6;
+}
+.said b small {
+  font-weight: 400;
+  color: #8e9bab;
+}
+.said b a {
+  color: #f0913f;
+}
+.quote {
+  margin: 0;
+  padding: 6px 0 6px 16px;
+  border-left: 2px solid #3a4658;
+  font-family: var(--font-flavor);
+  font-style: italic;
+  font-size: 17px;
+  color: #d4dbe1;
+}
+.kv {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 10px 14px;
+  font-size: 15px;
+  color: #dfe6ec;
+}
+.kv span:nth-child(odd) {
+  padding-top: 2px;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 12.5px;
+  color: #8e9bab;
+}
+.up {
+  font-size: 15px;
+}
+.more summary {
+  cursor: pointer;
+  font-size: 15px;
+  color: #f0913f;
+}
+@media (max-width: 800px) {
+  .house {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+  .list2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

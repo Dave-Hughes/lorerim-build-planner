@@ -155,10 +155,10 @@ test.describe("at 1440", () => {
     await expect(main).not.toContainText(/level level/i);
     await expect(main).toContainText("In 30 days, or 300 once cleared");
     expect(await main.innerText()).not.toContain("\ufffd");
-    const hear = page.getByRole("region", { name: "What points here" });
+    const hear = page.getByRole("region", { name: "What people say about it" });
     await expect(hear).toContainText("What’s this about his court wizards");
     await expect(hear).toContainText("Arvel");
-    await expect(hear.getByText(/^The other \d+ lines$/)).toBeVisible();
+    await expect(hear.getByText(/^All \d+ lines?, greetings included/)).toBeVisible();
     // The Arvel journal ends on a sentence, not in the middle of "keep th".
     await expect(hear).not.toContainText(/keep th\b/);
   });

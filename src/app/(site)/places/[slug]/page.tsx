@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -10,6 +11,10 @@ import { Gold, InformationConfidence, Icon, PageTop, Panel, Section, TitleBox } 
 import { personHref } from "@/lib/people/data";
 import { questsData } from "@/lib/quests/data";
 import { hasLevels, placeBySlug, placeHref, placeType, rangeOf } from "@/lib/places/data";
+import { PlaceSaid, PlaceTown, levelRange } from "@/components/places/place-town";
+import { placeKind } from "@/lib/places/kind";
+import { playerFacing } from "@/lib/places/said";
+import l from "@/components/quests/line-page.module.css";
 import { levelWords, pageOf } from "@/lib/quests/reads";
 import { questHref } from "@/lib/quests/slugs";
 import { siteMetadata } from "@/lib/og/metadata";
@@ -73,7 +78,7 @@ export default async function PlacePage({ params }: { params: Params }) {
   const quests = (place.quests ?? []).flatMap((name) => {
     const q = byName.get(name);
     const href = q ? questHref(q.edid) : null;
-    if (!q || !href) return [];
+    if (!q || !href || !playerFacing(name)) return [];
     const says = pageOf(q).takesYou.find((t) => t.place.toLowerCase() === place.name.toLowerCase())?.why;
     return [{ name, href, says }];
   });
@@ -82,20 +87,50 @@ export default async function PlacePage({ params }: { params: Params }) {
   const kind = /^(Nordic|Dwemer|Imperial|Daedric|Orc|Orsimer)\b/.test(type) ? type : `${type.charAt(0).toLowerCase()}${type.slice(1)}`;
   const near = town ? nearWords(town) : null;
   const lede = `${/^[AEIOU]/i.test(type) ? "An" : "A"} ${kind}${near ? ` ${near}` : place.hold ? ` in ${place.hold}` : ""}.${boss ? ` Its boss is ${boss.name}.` : ""}`.replace(/\s+/g, " ");
-  // What points here: the people who name it and the notes and books first, one line each; the lines no one is named for fold away.
-  const seenQuote = new Set<string>();
-  const pointing = { named: [] as NonNullable<typeof place.pointers>, rest: [] as NonNullable<typeof place.pointers> };
-  for (const p of place.pointers ?? []) {
-    const key = `${p.speaker ?? p.book ?? ""}|${p.words}`;
-    if (seenQuote.has(key)) continue;
-    seenQuote.add(key);
-    (p.kind === "book" || p.speaker ? pointing.named : pointing.rest).push(p);
+  const ic = (
+    <InformationConfidence
+      id="sure"
+      line="Counted from the game files."
+      sources={[
+        { mark: "yes", name: "LoreRim's game files", note: "Who lives here, the boss, books, crafting and XP, read from the records" },
+        confirmed.names.length
+          ? { mark: "yes", name: "Players", note: `Confirmed by ${confirmed.names.length} ${confirmed.names.length === 1 ? "player" : "players"}`, names: confirmed.names.map((n) => <span key={n}>{n}</span>) }
+          : { mark: "no", name: "Players", note: "No reports. No one has confirmed this page yet." },
+      ]}
+      unsure={worth?.bossChest ? [{ field: "what's in the boss chest" }] : []}
+      actions={
+        <>
+          <ConfirmButton kind="place" id={slug} path={`/places/${slug}`} title={place.name} signedIn={!!userId} mine={confirmed.mine} signIn={<SignInButton redirectTo={`/places/${slug}`} className="btn btn-primary" label="Sign in to confirm" />} />
+          <Link href="/quests" className="btn">
+            Report a mistake
+          </Link>
+        </>
+      }
+    />
+  );
+  const pkind = placeKind(place);
+  if (pkind !== "dangerous") {
+    const goodToKnow: [string, string][] = [
+      ...(place.inTown ? ([["In", place.inTown]] as [string, string][]) : []),
+      ...(place.hold ? ([["Hold", place.hold]] as [string, string][]) : []),
+      ...(town ? ([["Nearest town", `${town.town}${town.walk ? `, ${town.walk}` : ""}`]] as [string, string][]) : []),
+    ];
+    return <PlaceTown place={place} kind={pkind} origin={origin} near={near} ic={ic} goodToKnow={goodToKnow} />;
   }
-  pointing.named.sort((x, y) => Number(x.kind === "book") - Number(y.kind === "book"));
   const tick = (n: number) => (n === 1 ? "Level 1" : String(n));
 
+  // At a glance (WO-162, the colours of rule 34): danger in red, the boss and people in orange, what it pays in gold, when it comes back, and the nearest town in teal.
+  const glance: { key: string; icon: string; tone: string; label: string; value: React.ReactNode; sub?: React.ReactNode }[] = [
+    ...(levels ? [{ key: "danger", icon: "tab-levels", tone: l.cRed, label: "Danger", value: levelRange(levels), sub: `${foes}${a?.alsoHere?.length ? `, ${a.alsoHere.map((x) => PLURAL[x] ?? `${x}s`).join(", ")} too` : ""}` }] : a?.hostile === false ? [{ key: "danger", icon: "tab-levels", tone: l.cRed, label: "Danger", value: "None", sub: "Nobody here is hostile" }] : []),
+    ...(boss ? [{ key: "boss", icon: "quest-people", tone: l.cOrange, label: "The boss", value: personHref(boss.name) ? <PreviewLink href={personHref(boss.name)!}>{boss.name}</PreviewLink> : boss.name, sub: boss.words ? `Level ${boss.words}` : undefined }] : []),
+    ...(place.clearXp || place.discoveryXp ? [{ key: "xp", icon: "quest-rewards", tone: l.cGold, label: "Rewards", value: `${place.clearXp || place.discoveryXp} XP`, sub: [place.clearXp ? "For clearing it" : "", place.discoveryXp && place.clearXp ? `${place.discoveryXp} XP for finding it` : place.discoveryXp ? "For finding it" : ""].filter(Boolean).join("; ") }] : []),
+    ...(place.respawns ? [{ key: "back", icon: "tab-set-up", tone: l.cOrange, label: "Comes back", value: respawnWords(place.respawns), sub: undefined }] : []),
+    ...(town ? [{ key: "town", icon: "quest-travel", tone: l.cTeal, label: "Nearest town", value: town.town, sub: town.walk ? town.walk.charAt(0).toUpperCase() + town.walk.slice(1) : undefined }] : []),
+  ];
+
   return (
-    <main className={`page ${styles.main}`}>
+    <main className={l.root}>
+      <div className={`page ${l.top}`}>
       <PageTop back={{ href: "/places", label: "Places" }} />
 
       <TitleBox
@@ -111,8 +146,24 @@ export default async function PlacePage({ params }: { params: Params }) {
       />
 
       <p className={styles.lede}>{lede}</p>
+      </div>
 
-      <div className={styles.cols}>
+      <section className={l.band} aria-label="At a glance">
+        <div className={`page ${l.glance}`} style={{ "--cols": glance.length } as React.CSSProperties}>
+          {glance.map((c) => (
+            <div key={c.key} className={l.gl}>
+              <span className={`${l.k} ${c.tone}`}>
+                <img className={l.px} src={`/icons/${c.icon}.svg`} alt="" width={18} height={18} />
+                {c.label}
+              </span>
+              <span className={`${l.v} ${typeof c.value === "string" && c.value.length > 18 ? l.vSmall : ""}`}>{c.value}</span>
+              {c.sub ? <span className={l.s}>{c.sub}</span> : null}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <div className={`page ${styles.cols}`} style={{ paddingTop: 52 }}>
         <div className={styles.body}>
           <Section id="danger" icon="chapter-death" title="Danger">
             {levels ? (
@@ -207,26 +258,7 @@ export default async function PlacePage({ params }: { params: Params }) {
             </Section>
           )}
 
-          {place.pointers?.length ? (
-            <Section id="hear" icon="speech" title="What points here">
-              {pointing.named.map((p, i) => (
-                <div key={`n${i}`} className={styles.pointer}>
-                  <span className={styles.pointerWho}>{p.kind === "book" ? p.book : `${p.speaker} says`}</span>
-                  <p className={styles.note}>{p.words.replace(/\r\n?/g, "\n")}</p>
-                </div>
-              ))}
-              {pointing.rest.length > 0 && (
-                <details className={styles.folded}>
-                  <summary>The other {pointing.rest.length} {pointing.rest.length === 1 ? "line" : "lines"}</summary>
-                  {pointing.rest.map((p, i) => (
-                    <p key={i} className={styles.note}>
-                      {p.words.replace(/\r\n?/g, "\n")}
-                    </p>
-                  ))}
-                </details>
-              )}
-            </Section>
-          ) : null}
+          <PlaceSaid place={place} />
         </div>
 
         <aside className={styles.side}>
@@ -274,25 +306,7 @@ export default async function PlacePage({ params }: { params: Params }) {
         </aside>
       </div>
 
-      <InformationConfidence
-        id="sure"
-        line="Counted from the game files."
-        sources={[
-          { mark: "yes", name: "LoreRim's game files", note: "Who lives here, the boss, books, crafting and XP, read from the records" },
-          confirmed.names.length
-            ? { mark: "yes", name: "Players", note: `Confirmed by ${confirmed.names.length} ${confirmed.names.length === 1 ? "player" : "players"}`, names: confirmed.names.map((n) => <span key={n}>{n}</span>) }
-            : { mark: "no", name: "Players", note: "No reports. No one has confirmed this page yet." },
-        ]}
-        unsure={worth?.bossChest ? [{ field: "what's in the boss chest" }] : []}
-        actions={
-          <>
-            <ConfirmButton kind="place" id={slug} path={`/places/${slug}`} title={place.name} signedIn={!!userId} mine={confirmed.mine} signIn={<SignInButton redirectTo={`/places/${slug}`} className="btn btn-primary" label="Sign in to confirm" />} />
-            <Link href="/quests" className="btn">
-              Report a mistake
-            </Link>
-          </>
-        }
-      />
+      <div className={`page ${l.foot}`}>{ic}</div>
     </main>
   );
 }

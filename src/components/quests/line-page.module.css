@@ -608,3 +608,20 @@ a.chip:hover {
     padding-top: 36px;
   }
 }
+
+/* Tags on a place's page (WO-162): a plain one and a place one (teal, rule 34). */
+.tagPlain,
+.tagPlace {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--line-bright);
+  font-size: 14px;
+  color: var(--text);
+}
+.tagPlace {
+  border-color: rgba(116, 191, 210, 0.45);
+  color: #9fd3e1;
+  background: rgba(116, 191, 210, 0.07);
+}
