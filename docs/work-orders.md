@@ -5116,7 +5116,7 @@ Jeff's notes on the review (Mac, 27 Oct):
 - Bob, 27 Oct, 23:05: tentacles load and sway under the pointer; the line reads the rows' order. Done.
 
 ## WO-167  The map on place pages and on Places (Mac, 27 Oct 2026)
-Status: for Bob (all eight boxes built; typecheck, lint, 733 unit tests, the build and the full e2e pass, 504 of 506, the two that failed in the full run pass alone)
+Status: queued (Mac; Bob's review, three boxes; after the WO-169 build in progress)
 
 **Why.** In-game pictures are parked (WO-158). The map is LoreRim's own in-game map, Skyrim Paper Map by Caro Tuts for Flat World Map Framework, so the site shows what players open in game. Its mod author gave Dave the OK on Discord (27 Oct, 18:46) on one condition: **every place the map appears carries a small credit and link to the mod.** Board: `PlacePaperMap` (canvas row 36; ignore `PlaceMap`, the pixel map Dave didn't take).
 - [x] **A place's page**: under the title and tags, a full-width map band (400 px tall at 1440), the map cut around the place, the place's pin large and orange with a slow pulse, the places around it as small diamonds coloured by kind (blue towns, red dangerous places, grey the rest), names on the nearest few, every pin a link with the WO-157 hover preview; a compass N, a scale bar, a small legend. Under it, **Getting there**: the direction and distance from the nearest town and whether it's above or below it ("West of Riverwood, a short walk, and well above it"), computed from the positions.
@@ -5137,6 +5137,13 @@ Status: for Bob (all eight boxes built; typecheck, lint, 733 unit tests, the bui
 - **The credit** is "Map: Skyrim Paper Map by Caro Tuts ↗" to https://www.nexusmods.com/skyrimspecialedition/mods/62705 in a new tab, drawn by the component from `maps.json` in the map's bottom right corner, in the same dark plate as every name (cream text, brass border, no bare text on the parchment). `src/lib/places/map-credit.test.ts` fails the build if the component stops drawing it or if anything else loads the map's pictures, so a page cannot show the map without it. Every e2e in `wo167.spec.ts` checks it by link and `target`.
 - **On a phone** the band's window is about 390 by 240 texture pixels, so it often has no neighbour in it (the nearest places to Bleak Falls Barrow are further than half a screen); the whole map on Places is where the pins are.
 - Tests: `e2e/wo167.spec.ts` (11): the band, its height, tiles not the whole map, pins and plates, Getting there, the town pin, Places and its filter, the hover preview, no band without a position, dragging. Screenshots in `test-results/wo167-*` (Bleak Falls Barrow, Riverwood, the Sleeping Giant Inn and Places at 1440 and 390).
+
+### Bob's review (28 Oct, 01:50)
+Read on the preview: Bleak Falls Barrow at 1440 and 390, the Sleeping Giant Inn, Places. The band is the board: the parchment, the orange pin with Riverwood and the neighbours on dark plates, the compass, scale, legend and the credit in its plate; Getting there reads right. Places' whole map has the pins where they belong (Castle Volkihar and the Soul Cairn's portal sit out in the Sea of Ghosts, which is correct). Three things:
+- [ ] **Labels cut off at the band's edge.** On Bleak Falls Barrow a name plate at the top centre is clipped to a sliver. A label that would cross an edge goes on the pin's other side, or isn't drawn; never half a plate.
+- [ ] **The phone band shows only the place.** At 390 the full-size tiles cover so little that Bleak Falls Barrow has no Riverwood beside it. On a phone the band uses the half-size tiles (zoom 0, already built), so the nearest town is in view.
+- [ ] **Places has 38 kind chips** since WO-166 widened the index (House 203, Store 51, Jail, Barracks, Player house, Nordic dwelling…): a wall. Group them into about ten a player would pick: Cities and towns, Inns and shops, Homes, Temples and guilds, Forts and keeps, Caves and mines, Ruins, Camps and lairs, Shrines and stones, Landmarks. Each group's count, the map and the lists follow the group. The same groups on the Map page (WO-169).
+- [ ] Screenshots of Bleak Falls Barrow at 1440 and 390 and Places, then `for Bob`.
 
 ## WO-166  Every place's position, and the map images, from the game files (PC, 27 Oct 2026)
 Status: done
