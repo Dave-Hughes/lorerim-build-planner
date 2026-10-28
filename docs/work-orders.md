@@ -5032,7 +5032,7 @@ Status: queued (PC)
 - [ ] Tests, then `for Bob`.
 
 ## WO-170  The home page comes alive (Mac, 27 Oct 2026)
-Status: for Bob (Bob's second review done; typecheck, lint, tests, the build and the full e2e pass, 522 of 522; one flaky spec passed alone)
+Status: done
 
 **Why.** Dave, 27 Oct, after WO-168's rows: "bring some of that same wow factor to the home screen". Board `HomeWow` (canvas row 37); Dave: "Love it, lets keep the other secitons too. New in the world and your characters, can come after the map."
 - [x] **The order of the page**, signed in or out: the hero; Recent characters (as built, WO-157 Part 10); **Three stories to live through** (new); **the map strip** (new); New in the world (as built); then Your characters signed in (as built, WO-157 Part 9) or Three ways to use it signed out (as built). Signed in keeps the shorter hero, with the motion below.
@@ -5079,6 +5079,9 @@ Jeff's notes on the second review (Mac, 28 Oct):
 - **New in the world** says what changed, not a count (`src/lib/changes.ts`): "Its story and its quests, read from the game files", "Its steps, read from the game files", "Its ways to finish it, each with its steps". A test fails if a row has a number of quests, chapters, steps or ways in it.
 - Screenshots: `test-results/wo170-*` (the stories hovered at 1440, the stories and the strip at 390, the home at 1440 signed in).
 - After the push I read the staging preview again: the home page and the pages WO-169 touched answer 200.
+
+- Bob, 28 Oct, 04:40: read on the preview: the cards are framed on the mountain, Miraak's temple and the eclipse, each with one whole line; the map strip's title breaks after "Every place,"; New in the world quotes no counts. Done; for Dave to look at on staging.
+
 ## WO-164  A character is one page, with or without a playthrough (Mac, 27 Oct 2026)
 Status: for Bob (all eight boxes built; typecheck, lint, tests, the build and the full e2e pass, 493 of 495, the two that failed in the full run pass alone)
 
@@ -5107,7 +5110,7 @@ Status: for Bob (all eight boxes built; typecheck, lint, tests, the build and th
 - Bob, 28 Oct, 00:45: signed out on the preview, the Featured character is the wide card across two columns. The rest needs signing in (Kyria's run, `/me`, What next, the empty Playthrough tab); Bob checks those in Dave's Chrome in the morning. Jeff on Mac: go on to WO-167; this stays `for Bob`.
 
 ## WO-169  The Map page (Mac, 27 Oct 2026)
-Status: for Bob (Bob's second review done; typecheck, lint, tests, the build and the full e2e pass, 522 of 522; one flaky spec passed alone)
+Status: done
 
 **Why.** Dave, 27 Oct: a dedicated map page with quick search and filters, "a unique experience". Board `MapPage` (canvas row 37); Dave: "that map view is incredible". Uses LoreRim's paper map from WO-166, credited on every view.
 - [x] `/map`, and **Map** in the World panel (with `quest-travel` as its icon) and the phone menu. The map fills the window under the header; drag to pan, scroll or pinch to zoom, + / − / N (back to north and the whole map) bottom right. At a distance pins cluster into counts; closer in, the cities' and towns' names show on dark plates; closest, every place's name.
@@ -5160,6 +5163,9 @@ Jeff's notes on the second review (Mac, 28 Oct):
 - **No two plates overlap, at any width:** names are placed by weight (the picked place, a route's stops and a character's act, then the cities, then the towns, then the rest), and a name whose plate would cover one already placed is not drawn (the pin's name is still its accessible name); `wo169.spec.ts` checks every pair of plates on the whole map at 1440 and 390.
 - Screenshot: the whole map at 390 in `test-results/wo169-whole-390.png`.
 - After the push I read the staging preview again: `/map` and its address variants answer 200.
+
+- Bob, 28 Oct, 04:40: on a phone the map opens filling the screen with the cities on plates that don't overlap. Done; for Dave to look at on staging.
+
 ## WO-168  The three main stories, each its own world (Mac, 27 Oct 2026)
 Status: done
 
