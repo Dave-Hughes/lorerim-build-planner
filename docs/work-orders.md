@@ -5062,7 +5062,7 @@ Status: queued (Mac; after WO-167, which brings the map tiles and the pin compon
 - [ ] Checks; screenshots at 1440 and 390 of: the whole map, a search open, a quest's route, a place's drawer, signed in with a character; then `for Bob`.
 
 ## WO-168  The three main stories, each its own world (Mac, 27 Oct 2026)
-Status: queued (Mac; Bob's review)
+Status: building (Mac; Bob's review)
 
 **Why.** Dave, 27 Oct: the Main stories rows "look badass, would be awesome to go SUPER hard on those rows". Board `MainStoriesHard` (canvas row 37); Dave: "Looks great." The art is in the repo: `public/quests/stories/<line>/*.png`, 320 by 80 layers drawn by `scripts/art/main_stories.py`; shown at 4x, pixel-sharp.
 - [x] On `/quests/c/main-stories`, each of the three rows is the board's banner: the scene's layers stacked full width (sky, far, the moving layer, near), a dark fade from the left under the text, the story's own colour on the left edge (main quest orange `#f0913f`, Dragonborn green `#8fc07c`, Dawnguard crimson `#d6453f`), the big pixel number in that colour, the name, its tags, one line of what it's about, quest XP and Open the story on the right. Order: Become the Dragonborn, Dragonborn, Dawnguard.
@@ -5145,7 +5145,7 @@ Status: for Bob (all five boxes built; typecheck, lint, 717 unit tests, the buil
 - Tests: `e2e/wo165.spec.ts` (9: The Golden Claw, Lights Out!, Aela and Lydia at both widths, and the rail). Screenshots in `test-results/`: `wo165-golden-claw-1440.png` and `-390`, `wo165-lights-out-...`, `wo165-aela-...`, `wo165-lydia-...`.
 
 ## WO-163  Quest categories as tables (Mac, 27 Oct 2026)
-Status: queued (Mac; Bob's review)
+Status: building (Mac; Bob's review)
 
 **Why.** `docs/page-templates.md` rows 11 and 12: a category is up to 73 framed cards with a journal quote and Tell me more each, 10,000 px to scroll and nothing to compare. Dave: Wowhead is great. Board: `QuestCategoryTable` (canvas row 36).
 - [x] Every category page (`/quests/c/<slug>`) other than Main stories (WO-160) is the board: a short scene banner with the title over it; search; Hold, Level and From filters that apply as you pick; pills for All, Base game, Creation Club, Mods, and Lines of several quests, with real counts; then one table, one row per quest or line: icon (a line's icon differs from a single quest's), name, who starts it, where (blue), level (red, "Any" muted), length, from (base game plain, a mod as a tag with its link), quest XP in the pixel face (gold; "None" muted). Every column sorts; the header row sticks while you scroll.
@@ -5172,7 +5172,7 @@ Read on the preview: Side stories at 1440 and 390, the Quests home. The table is
 - [ ] Screenshot of Side stories, then `for Bob`.
 
 ## WO-162  A place's page fits what the place is (Mac, 27 Oct 2026)
-Status: queued (Mac; Part 5, Bob's review)
+Status: building (Mac; Bob's review)
 
 **Why.** `docs/page-templates.md` row 18: every place uses the dungeon template. Riverwood "Its boss is Camilla Valerius" with a danger chart and 100 XP "for clearing it"; the Bee and Barb shows Danger ("Nobody here is hostile") and "Comes back in 30 days, or 300 once cleared"; neither shows who lives there, shops, trainers or beds. Board: `PlaceTown` (canvas row 36).
 
@@ -5245,7 +5245,7 @@ Status: done (Bob, 27 Oct 20:10: checked on the preview: Guide out of the menu, 
 - **Screenshots** (in `test-results/`): `wo161-characters-1440.png`, `wo161-characters-390.png`, `wo161-player-1440.png`, `wo161-search-1440.png`, `wo161-changes-1440.png`, `wo161-phone-390.png`.
 
 ## WO-160  One page per quest line (Mac, 27 Oct 2026)
-Status: queued (Mac; Part 6, Bob's review of Part 5)
+Status: building (Mac; Bob's review)
 
 **Why.** The big quest lines each have two pages built by two different orders and never merged: a line page (`/quests/main-quest`, `/quests/dawnguard`, `/quests/companions`, `/quests/dragonborn`, from WO-100) and a story page with chapters (`/quests/s/become-the-dragonborn`, `/quests/s/join-the-dawnguard`, `/quests/s/join-the-companions`, from WO-104/106). They look nothing alike, and the Main stories category lists both kinds side by side. Dave, 27 Oct: "Why are there multiple layouts?" There should be one. Boards: canvas row 36, `MainStoriesPage` and `LinePage`, https://claude.ai/artifact/48H6v9Q6wFuwhzRqE31uD1.
 
