@@ -131,7 +131,9 @@ export default async function PlacePage({ params }: { params: Params }) {
   const type = placeType(place.type);
   const kind = /^(Nordic|Dwemer|Imperial|Daedric|Orc|Orsimer)\b/.test(type) ? type : `${type.charAt(0).toLowerCase()}${type.slice(1)}`;
   const near = town ? nearWords(town) : null;
-  const lede = `${/^[AEIOU]/i.test(type) ? "An" : "A"} ${kind}${near ? ` ${near}` : place.hold ? ` in ${place.hold}` : ""}.${boss ? ` Its boss is ${boss.name}.` : ""}`.replace(/\s+/g, " ");
+  // A realm with no place on Tamriel's map (the Soul Cairn) says what it is and how you get there (WO-178), and has no levels gauge: its scale is not the land's.
+  const realm = !place.pos && !place.inTown && !!place.gettingThere;
+  const lede = `${/^[AEIOU]/i.test(type) ? "An" : "A"} ${kind}${near ? ` ${near}` : place.hold ? ` in ${place.hold}` : ""}.${realm ? ` ${place.gettingThere}.` : ""}${boss ? ` Its boss is ${boss.name}.` : ""}`.replace(/\s+/g, " ");
   const lived = placeKind(place) !== "dangerous";
   const ic = (
     <InformationConfidence
@@ -213,7 +215,7 @@ export default async function PlacePage({ params }: { params: Params }) {
       <div className={`page ${styles.cols}`} style={{ paddingTop: 52 }}>
         <div className={styles.body}>
           <section id="danger" className={styles.sec} aria-label="Danger">
-            {levels ? (
+            {levels && !realm ? (
               <>
                 <div className={styles.gauge} role="img" aria-label={`${foes} from level ${levels[0]} to ${levels[1]}${boss?.range ? `; the boss from level ${boss.range[0]} to ${boss.range[1]}` : ""}, on a scale of 1 to 50`}>
                   <span className={styles.band} style={{ gridColumn: `${Math.min(levels[0], 50)} / ${Math.min(levels[1], 50) + 1}`, gridRow: 1 }}>

@@ -123,6 +123,8 @@ export interface Place {
   pinAt?: { world: string; pos: [number, number, number | null] };
   /** The way there in words, when the way is known and the map's direction and distance would mislead (High Hrothgar: "Up the 7,000 Steps from Ivarstead"). */
   gettingThere?: string;
+  /** A ruin or a home up a mountain path (overrides.json, a ruling): only such a place is said to be "up the mountain", never one that is merely higher than its town. */
+  mountain?: boolean;
   clearXp: number;
   actors?: Actors;
   /** What the people who live there say to a stranger at the door (an Orc stronghold), in the game's words. */

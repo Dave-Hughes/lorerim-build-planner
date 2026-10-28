@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { placeCounts, placesData } from "./data";
+import { placeCounts, placeSlug, placesData } from "./data";
 import { PLACE_GROUPS, groupOf } from "./groups";
-import { gettingThere } from "./map";
+import { placeDrawer } from "@/lib/map/data";
+import { gettingThere, placeMap } from "./map";
+import { peopleAt } from "./people";
 
 /**
  * WO-178 (PC): the data a player would call wrong, on the real places index. What the build writes for the Mac: `pinAt` for a place inside a town,
@@ -88,5 +90,43 @@ describe("the places Bob's cold review named", () => {
   it("no place lists a courier's job as a quest that goes there", () => {
     expect(places().flatMap((p) => (p.quests ?? []).filter((q) => /^Deliver a /.test(q)).map((q) => `${p.name}: ${q}`))).toEqual([]);
     expect(named("Whiterun", "City").quests).not.toContain("Deliver a Letter Distant");
+  });
+});
+
+describe("WO-178 Part 2: the second cold review", () => {
+  it("only a place marked as on a mountain is up one, and Bleak Falls Barrow and High Hrothgar are", () => {
+    const says = places().filter((p) => /^Up the mountain/.test(gettingThere(p) ?? ""));
+    expect(says.every((p) => p.mountain)).toBe(true);
+    expect(says.map((p) => p.name)).toEqual(["Bleak Falls Barrow"]); // High Hrothgar has its own words (the 7,000 Steps)
+    expect(places().filter((p) => p.mountain).map((p) => p.name).sort()).toEqual(["Bleak Falls Barrow", "High Hrothgar"]);
+    for (const [name, type] of [["Riverwood", "Town"], ["Nightgate Inn", undefined], ["Frostflow Lighthouse", undefined]] as const) {
+      const p = named(name, type);
+      expect(gettingThere(p) ?? "", name).not.toMatch(/mountain/);
+    }
+    expect(places().some((p) => p.world !== "Tamriel" && /^Up the mountain/.test(gettingThere(p) ?? ""))).toBe(false);
+  });
+  it("Bleak Falls Barrow says one thing: a short walk from Riverwood, up the mountain", () => {
+    const p = named("Bleak Falls Barrow");
+    expect(p.nearestTown).toMatchObject({ town: "Riverwood", walk: "a short walk" });
+    expect(gettingThere(p)).toBe("Up the mountain west of Riverwood, a short walk.");
+  });
+  it("Castle Volkihar has a hold, its people (the game calls its cell Volkihar Keep) and a map that stays on the picture", () => {
+    const p = named("Castle Volkihar");
+    expect(p.hold).toBe("Haafingar");
+    expect(peopleAt(p).total).toBeGreaterThan(5);
+    expect(placeMap(p)).not.toBeNull();
+    const drawer = placeDrawer(placeSlug(p))!;
+    expect(drawer.inside.length).toBeGreaterThan(3);
+    expect(drawer.inside.map((x) => x.name)).not.toContain("Garmr"); // a hound is not a person
+  });
+  it("the Soul Cairn is a realm, reached through Castle Volkihar's portal", () => {
+    const p = named("Soul Cairn");
+    expect(p.type).toBe("Realm");
+    expect(gettingThere(p)).toBe("Through the portal in Castle Volkihar.");
+  });
+  it("a city's drawer names its jarl, its housecarl and its priestess, not only the Companions", () => {
+    const names = placeDrawer(placeSlug(named("Whiterun", "City")))!.inside.map((x) => x.name);
+    expect(names).toEqual(expect.arrayContaining(["Balgruuf the Greater", "Irileth", "Danica Pure-Spring"]));
+    expect(names.length).toBeLessThanOrEqual(6);
   });
 });

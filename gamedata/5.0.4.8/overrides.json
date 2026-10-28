@@ -652,8 +652,9 @@
     "_note": "WO-162 Part 5: a ruling on a place replaces that field of the place in the index, keyed by the place's name. The generated file is never edited by hand.",
     "Castle Volkihar": {
       "_source": "Bob, 27 Oct 2026 (WO-160 Part 6)",
-      "_why": "Quest words call it Volkihar Keep; its page is Castle Volkihar.",
-      "aliases": ["Volkihar Keep"]
+      "_why": "Quest words call it Volkihar Keep; its page is Castle Volkihar. WO-178 Part 2: the records name no hold for it; it stands on an island off Haafingar's coast, and Solitude, Haafingar's capital, is its nearest city.",
+      "aliases": ["Volkihar Keep"],
+      "hold": "Haafingar"
     },
     "Dimhollow Crypt": {
       "_source": "Bob, 27 Oct 2026 (WO-160 Part 6)",
@@ -669,8 +670,21 @@
       "_source": "Bob, 27 Oct 2026",
       "_why": "The records type High Hrothgar a Fort, with trolls on the path up. It is the Greybeards' home, where people live, so it gets the lived-in page. WO-178: it is nearest Riverwood in a straight line (0.4 km), but no player walks that way; the only road up is the 7,000 Steps from Ivarstead (0.5 km on the map, a climb of 11,750 units), so Ivarstead is its town and `gettingThere` says the way.",
       "type": "Monastery",
+      "mountain": true,
       "nearestTown": {"town": "Ivarstead", "km": 0.5, "walk": "half a day"},
       "gettingThere": "Up the 7,000 Steps from Ivarstead"
+    },
+    "Bleak Falls Barrow": {
+      "_source": "Bob, 28 Oct 2026 (WO-178 Part 2)",
+      "_why": "A ruin on the mountain above Riverwood: 0.3 km on the flat map and 5,866 units up the path, so \"next to it\" is wrong and it is a climb. Only a place marked `mountain` is said to be up one; height alone is not enough (Riverwood is 'above' Whiterun, Blackreach is under everything).",
+      "mountain": true,
+      "nearestTown": {"town": "Riverwood", "km": 0.3, "walk": "a short walk"}
+    },
+    "Soul Cairn": {
+      "_source": "Bob, 28 Oct 2026 (WO-178 Part 2)",
+      "_why": "Another plane, with no position on Tamriel's map: what it is and how you get there.",
+      "type": "Realm",
+      "gettingThere": "Through the portal in Castle Volkihar"
     }
   },
   "people": {

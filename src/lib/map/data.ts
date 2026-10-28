@@ -3,7 +3,7 @@ import { linkNames } from "@/lib/pages/link-names";
 import { placeNames } from "@/lib/pages/names";
 import { dayHours, mainPlace } from "@/lib/people/day";
 import { personBySlug } from "@/lib/people/data";
-import { peopleAt } from "@/lib/places/people";
+import { peopleAt, type House, type PlacePerson } from "@/lib/places/people";
 import { afterWar, hasLevels, isGarrison, levelSpan, rangeOf, placeByName, placeBySlug, placeLabel, placeSlug, placeType, placesData, placesNamed, type Place } from "@/lib/places/data";
 import { gettingThere, inFrame, mapEntry, toTexture } from "@/lib/places/map";
 import { placeKind } from "@/lib/places/kind";
@@ -151,6 +151,25 @@ export interface Drawer {
   quests: { name: string; href: string }[];
 }
 
+/**
+ * Who a drawer names (WO-178): not the first six in the order of the buildings (all Companions, in Whiterun), but a spread. Whoever rules or
+ * keeps order first, then those who sell or train, then innkeepers, then those who give a quest, then the rest; two to a building at most.
+ */
+const RULING = /\b(jarl|steward|king|queen|emperor|housecarl|court wizard|priest|priestess|healer|commander)\b/i;
+export function drawerPeople(houses: House[], max = 6): PlacePerson[] {
+  const rank = (x: PlacePerson) => (RULING.test(x.role ?? "") && !/^(son|daughter|wife|husband)\b/i.test(x.role ?? "") ? 0 : x.sells || x.trains ? 1 : x.keeper ? 2 : x.gives ? 3 : 4);
+  const all = houses.flatMap((h, i) => h.people.map((x, j) => ({ x, house: i, order: j })));
+  all.sort((a, b) => rank(a.x) - rank(b.x) || b.x.gives - a.x.gives || a.house - b.house || a.order - b.order);
+  const perHouse = new Map<number, number>();
+  const out: PlacePerson[] = [];
+  for (const { x, house } of all) {
+    if (out.length >= max || (houses.length > 1 && (perHouse.get(house) ?? 0) >= 2)) continue;
+    perHouse.set(house, (perHouse.get(house) ?? 0) + 1);
+    out.push(x);
+  }
+  return out;
+}
+
 export function placeDrawer(slug: string): Drawer | null {
   const p: Place | null = placeBySlug(slug);
   if (!p) return null;
@@ -162,10 +181,7 @@ export function placeDrawer(slug: string): Drawer | null {
   });
   const lived = placeKind(p) !== "dangerous";
   const inside = lived
-    ? peopleAt(p)
-        .houses.flatMap((h) => h.people)
-        .slice(0, 6)
-        .map((x) => ({ name: x.name, href: x.href, role: x.role }))
+    ? drawerPeople(peopleAt(p).houses).map((x) => ({ name: x.name, href: x.href, role: x.role }))
     : [];
   const war = afterWar(p.actors);
   const garrison = isGarrison(p.actors);

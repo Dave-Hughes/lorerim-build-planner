@@ -46,10 +46,11 @@ export function MapView({ entry, pins, here, hereLabel, labelled = 0, mode, clas
   const clamp = useCallback(
     (v: { x: number; y: number }) => {
       if (mode === "band") {
-        const minX = size.w / 2 - x1 * bandK;
-        const maxX = size.w / 2 - x0 * bandK;
-        const minY = size.h / 2 - y1 * bandK;
-        const maxY = size.h / 2 - y0 * bandK;
+        // The window stays on the picture (WO-178): a place near the edge sits off-centre, never with a black strip beside the map.
+        const minX = Math.min(0, size.w - x1 * bandK);
+        const maxX = -x0 * bandK;
+        const minY = Math.min(0, size.h - y1 * bandK);
+        const maxY = -y0 * bandK;
         return { x: Math.min(maxX, Math.max(minX, v.x)), y: Math.min(maxY, Math.max(minY, v.y)) };
       }
       return { x: Math.min(0, Math.max(size.w - total.w, v.x)), y: Math.min(0, Math.max(size.h - total.h, v.y)) };

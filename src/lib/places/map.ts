@@ -82,9 +82,9 @@ export function mapPins(): Pin[] {
 const DIRECTIONS = ["East", "Northeast", "North", "Northwest", "West", "Southwest", "South", "Southeast"];
 
 /**
- * "West of Riverwood, a short walk, and well above it": the direction and distance from the nearest town, and the height against it. A place well
- * above its town (WO-178) is a climb: "Up the mountain west of Riverwood, a short walk", never "right next to it". A place with its own way in
- * the data (`gettingThere`, from overrides.json) says that.
+ * "West of Riverwood, a short walk, and well above it": the direction and distance from the nearest town, and the height against it. A place
+ * marked `mountain` in the data (WO-178: a ruling, never worked out from height, which the valleys and caves of Skyrim fool) is "Up the mountain
+ * west of Riverwood, a short walk". A place with its own way in the data (`gettingThere`) says that.
  */
 export function gettingThere(p: Place): string | null {
   if (p.gettingThere) return `${p.gettingThere}.`;
@@ -96,9 +96,8 @@ export function gettingThere(p: Place): string | null {
   const dir = DIRECTIONS[Math.round(Math.atan2(dy, dx) / (Math.PI / 4) + 8) % 8];
   const dz = (p.pos[2] ?? town.pos[2] ?? 0) - (town.pos[2] ?? 0);
   const high = p.pos[2] == null || town.pos[2] == null ? null : Math.abs(dz) < 600 ? "about level with it" : `${Math.abs(dz) > 2000 ? "well " : "a little "}${dz > 0 ? "above" : "below"} it`;
-  const climb = p.pos[2] != null && town.pos[2] != null && dz > 2000;
-  const how = t.walk === "next to it" ? (climb ? "a short walk" : "right next to it") : (t.walk ?? `${t.km} km away`);
-  if (climb) return `Up the mountain ${dir.toLowerCase()} of ${t.town}, ${how}.`;
+  const how = t.walk === "next to it" ? "right next to it" : (t.walk ?? `${t.km} km away`);
+  if (p.mountain) return `Up the mountain ${dir.toLowerCase()} of ${t.town}, ${how}.`;
   return `${dir} of ${t.town}, ${how}${high ? `, and ${high}` : ""}.`;
 }
 
@@ -121,6 +120,7 @@ export function placeMap(place: Place): PlaceMap | null {
   const at = place.pos && place.world === "Tamriel" ? place : inTown?.pos && inTown.world === "Tamriel" ? inTown : null;
   if (!at?.pos) return null;
   const { px, py } = toTexture(entry, at.pos[0], at.pos[1]);
+  if (!inFrame(entry, px, py)) return null; // WO-178: Castle Volkihar stands off the picture; a map of nothing is a black strip
   const href = placeHrefOf(at);
   const here: Pin = { name: placeLabel(at), href, kind: kindOf(at), px, py, type: at.type };
   const around = mapPins()

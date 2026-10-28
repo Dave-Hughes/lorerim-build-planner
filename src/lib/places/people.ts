@@ -35,7 +35,7 @@ export interface House {
   people: PlacePerson[];
 }
 
-const ANIMAL = /\b(cat|chick|chicken|dog|horse|goat|cow|rabbit|deer|fox|skeever|mudcrab|pig|sheep|wolf|bear)\b/i;
+const ANIMAL = /\b(cat|chick|chicken|dog|horse|goat|cow|rabbit|deer|fox|skeever|mudcrab|pig|sheep|wolf|bear|(?:death)?hound)\b/i;
 
 const notable = (p: Person) => !!(p.read || p.follower || p.marriage || p.sells || p.trainer || p.innkeeper || questsOf(p.name).length > 0);
 
@@ -76,12 +76,14 @@ export function peopleAt(place: Place): { houses: House[]; total: number } {
   const inside = placeKind(place) === "inside";
   // A hall or temple in a town: the name can be in four towns (Hall of the Dead), so a row has to be in this one's town too.
   const sameName = placesNamed(place.name).length > 1;
-  const placed = (r: Person["rows"][number]) => (inside ? r.cell === place.name && (!sameName || !place.inTown || !r.inTown || r.inTown === place.inTown) : r.inTown === place.name || r.cell === place.name);
+  // The cell is called what the game calls it, which may be an alias of the place's name (Volkihar Keep for Castle Volkihar, WO-178).
+  const named = (cell: string | null | undefined) => !!cell && (cell === place.name || !!place.aliases?.includes(cell));
+  const placed = (r: Person["rows"][number]) => (inside ? named(r.cell) && (!sameName || !place.inTown || !r.inTown || r.inTown === place.inTown) : r.inTown === place.name || named(r.cell));
   const here = peopleData().all.filter((p) => !(p.race && ANIMAL.test(p.race)) && lives(p) && p.rows.some(placed));
   const groups = new Map<string, PlacePerson[]>();
   for (const p of here) {
     const row = p.rows.find(placed)!;
-    const home = row.cell && row.cell !== place.name ? row.cell : place.name;
+    const home = row.cell && !named(row.cell) ? row.cell : place.name;
     groups.set(home, [...(groups.get(home) ?? []), personOf(p)]);
   }
   // A building whose name is in more than one town (a Hall of the Dead) is the one in this town.

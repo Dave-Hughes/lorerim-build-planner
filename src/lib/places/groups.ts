@@ -20,7 +20,7 @@ export const PLACE_GROUPS: PlaceGroup[] = [
   { key: "ruins", label: "Ruins", all: "ruins", types: ["NordicRuin", "DwemerRuin"] },
   { key: "camps", label: "Camps and lairs", all: "camps and lairs", types: ["Camp", "GiantCamp", "DragonLair"] },
   { key: "shrines", label: "Shrines and stones", all: "shrines and stones", types: ["Altar", "DaedricShrine", "Doomstone", "Grove"] },
-  { key: "landmarks", label: "Landmarks", all: "landmarks", types: ["Landmark", "Shipwreck", "Pass", "Clearing", "Lighthouse"] },
+  { key: "landmarks", label: "Landmarks", all: "landmarks", types: ["Landmark", "Shipwreck", "Pass", "Clearing", "Lighthouse", "Realm"] },
 ];
 
 const byType = new Map(PLACE_GROUPS.flatMap((g) => g.types.map((t) => [t, g.key] as const)));
