@@ -5131,7 +5131,7 @@ Status: building (Mac)
 - [ ] Checks and screenshots at 1440 and 390 of each, then `for Bob`.
 
 ## WO-160  One page per quest line (Mac, 27 Oct 2026)
-Status: for Bob (all three parts built; typecheck, lint, 706 unit tests, 379 gamedata tests, the build and the full e2e pass)
+Status: queued (Mac; Bob's review, Part 4, 27 Oct 19:10; take it before WO-161's next part)
 
 **Why.** The big quest lines each have two pages built by two different orders and never merged: a line page (`/quests/main-quest`, `/quests/dawnguard`, `/quests/companions`, `/quests/dragonborn`, from WO-100) and a story page with chapters (`/quests/s/become-the-dragonborn`, `/quests/s/join-the-dawnguard`, `/quests/s/join-the-companions`, from WO-104/106). They look nothing alike, and the Main stories category lists both kinds side by side. Dave, 27 Oct: "Why are there multiple layouts?" There should be one. Boards: canvas row 36, `MainStoriesPage` and `LinePage`, https://claude.ai/artifact/48H6v9Q6wFuwhzRqE31uD1.
 
@@ -5151,6 +5151,14 @@ Status: for Bob (all three parts built; typecheck, lint, 706 unit tests, 379 gam
 ### Part 3. Checks
 - [x] Old links to `/quests/s/...` land on the right page; the door's line and story tools return one record per line.
 - [x] Typecheck, lint, tests, build, e2e; screenshots at 1440 and 390 of Main stories, the main quest, Dragonborn and Dawnguard.
+
+### Part 4. Bob's review on the preview (27 Oct, 19:10)
+One page per line works: `/quests/s/...` redirects, the main quest, Dragonborn, the Companions and Dawnguard (both sides) use the new layout, and Main stories lists the three in order. Fix:
+- [ ] **Chips are two sizes.** A person or place chip that's a link renders its text larger than one that isn't ("Helgen" and "Temple of Miraak, Solstheim" next to "Starts here", "The Bee and Barb, Riften"). One size for every chip, linked or not.
+- [ ] **Dragonborn counts a non-step.** Its tags and At a glance say "8 quests" while its own summary says seven; "Cultists vs Player" is listed as quest 8 though it "isn't a step of its own". Leave a quest out of counts and the numbered run when the read says it isn't a step; show it under How it starts instead.
+- [ ] **Empty requirement rows.** Dragonborn's How it starts rail shows two empty check boxes (one with "Level 25", one with nothing). No row without text.
+- [ ] **Main stories buttons** say "Open the story ›" on two rows and "Open ›" on Dragonborn. One label.
+- [ ] Screenshots of Dragonborn and Main stories, then `for Bob`.
 
 ## WO-159  Dave's testing, 27 Oct afternoon: home, search, back links, a playthrough from the start, and the people reads on person pages (Mac, 27 Oct 2026)
 Status: done (Bob, 27 Oct 17:55: home, back buttons and the people reads checked on the preview (Lydia joins as housecarl when made Thane; Jaree-Ra by the Winking Skeever); the Playthrough tab is signed-in only, for Dave to see)
