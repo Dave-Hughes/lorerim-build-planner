@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-176  Two small things from Bob's read of WO-174 (Mac, then PC, 28 Oct 2026)
-Status: queued (Mac)
+Status: building (Mac)
 
 - [ ] **Rewards is said twice in a row on a quest's page.** Song of the Green: At a glance's Rewards cell ("100 XP, You can make Auri's Bow…"), then straight under it the Rewards section with the same two lines. Now that Rewards sits in the main column, show the section only when it adds something the cell doesn't (more than one reward, or when and from whom); otherwise the cell is enough.
 - [ ] **(PC) Danger that reads like one stray actor:** "Moss Mother Cavern: enemies from level 1, up to 2", "Sons of Skyrim Military Camp: level 1 to 2" (WO-172). Check where a place's range comes from one placed creature or guard while the place's real fight is a leveled list or a quest's spawn; when the records only show one low actor, say "Not known yet" rather than 1 to 2. Mac: then `for Bob`.
