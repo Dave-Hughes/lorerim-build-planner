@@ -5035,14 +5035,16 @@ Status: queued (Mac; after WO-165)
 - [ ] Checks, screenshots signed in (Kyria's page on each tab, a character with no cover on home and `/me`, the What next step) at 1440 and 390, then `for Bob`.
 
 ## WO-167  The map on place pages and on Places (Mac, 27 Oct 2026)
-Status: held (Bob, 27 Oct 18:55: Dave isn't sold on the pixel map. The likely map is LoreRim's own in-game paper map (board `PlacePaperMap`), which needs its artist's and mod author's OK before it goes on the site)
+Status: queued (Mac; waits on WO-166 Part 2's map files on staging, then after WO-164. Dave, 27 Oct 18:46: the map's mod author said go for it, with a credit and link on every instance)
 
-**Why.** In-game pictures are parked (WO-158). Dave picked a map instead, and Bob proved it on 27 Oct: a pixel map of Skyrim built from the game's own terrain, every place pinned where the records allow. Board: `PlaceMap` (canvas row 36).
+**Why.** In-game pictures are parked (WO-158). The map is LoreRim's own in-game map, Skyrim Paper Map by Caro Tuts for Flat World Map Framework, so the site shows what players open in game. Its mod author gave Dave the OK on Discord (27 Oct, 18:46) on one condition: **every place the map appears carries a small credit and link to the mod.** Board: `PlacePaperMap` (canvas row 36; ignore `PlaceMap`, the pixel map Dave didn't take).
 - [ ] **A place's page**: under the title and tags, a full-width map band (400 px tall at 1440), the map cut around the place, the place's pin large and orange with a slow pulse, the places around it as small diamonds coloured by kind (blue towns, red dangerous places, grey the rest), names on the nearest few, every pin a link with the WO-157 hover preview; a compass N, a scale bar, a small legend. Under it, **Getting there**: the direction and distance from the nearest town and whether it's above or below it ("West of Riverwood, a short walk, and well above it"), computed from the positions.
 - [ ] A place inside a town uses its town's pin and says so ("In Riverwood"). A place with no position gets no map band and no empty box.
 - [ ] **Places** (`/places`): the whole map at the top, every pinned place on it, filterable by kind with the existing chips; hovering a pin previews the place.
-- [ ] On a phone the band is 240 px tall and drags sideways; the whole map pinches to zoom.
-- [ ] Pixel-sharp at every size (nearest-neighbour scaling, never smoothed).
+- [ ] On a phone the band is 240 px tall and drags sideways; the whole map pinches to zoom. Load tiles, not the whole map, so a place page stays light.
+- [ ] **The credit, on every instance of the map** (the place band, the whole map on Places, a phone view, any share card that uses it): a small line in the map's corner, "Map: Skyrim Paper Map by Caro Tuts ↗", linking to https://www.nexusmods.com/skyrimspecialedition/mods/62705 in a new tab. A test fails the build if a page renders the map without it.
+- [ ] Pins read on parchment: dark outline, the place's name in dark ink with a light halo (the board's style), not the site's white text.
+- [ ] Only Skyrim's map is cleared. A place on Solstheim or in a mod's own land gets no map until that map's author says yes.
 - [ ] Checks and screenshots of Bleak Falls Barrow, Riverwood, the Sleeping Giant Inn (town pin) and Places at 1440 and 390, then `for Bob`.
 
 ## WO-166  Every place's position, and the map images, from the game files (PC, 27 Oct 2026)
@@ -5055,7 +5057,14 @@ Status: queued (PC)
 - [ ] The 210 the proof couldn't place: for each, try the cells whose location (`XLCN`) is it (an exterior cell's centre), then an interior's door out to the world (`XTEL` back to an exterior door). Report what's left by plugin and type, and why each kind failed.
 - [ ] The 34 places listed twice and the leftovers ("E3 Bleak Falls Barrow", "Sewers", "Unknown Gate"): find why each is there, merge or drop them in the build with a test, and say which in the log.
 
-### Part 2. The map images (held, Bob 27 Oct 18:55: don't build until Dave picks the pixel map or the in-game paper map; Part 1 goes ahead either way, since both need every place's position)
+### Part 2. The map, from LoreRim's own paper map
+Dave, 27 Oct 18:46: the map's mod author OK'd its use on the site, with a credit and link to the mod everywhere it appears (WO-167 does the credit). Only Skyrim's map is cleared; not Solstheim's or the mod lands' (other authors).
+- [ ] From `mods/Skyrim Paper Map by Caro Tuts for FWMF/textures/terrain/tamriel/skyrim.dds` (8192 by 8192, the winning copy in the load order): web tiles at two zooms (the full 8192 and half), 512 px WebP, under `public/maps/tamriel/<zoom>/<x>_<y>.webp`, and one whole-map image at about 2000 px wide for the Places page, cropped to the map's own border.
+- [ ] `src/data/lorerim-5.0.4.8/maps.json`: for Tamriel, the image size and the rule from a position to a pixel. Bob's proof: the texture covers the world's whole map area, so pixel x = 4096 + game x / 64 and pixel y = 4096 - game y / 64 on the 8192 image (checked on Lake Ilinalta, Lake Honrich and Riverwood). Check it on three more places by eye in the log.
+- [ ] The credit text and link in `maps.json` beside the map, so the Mac side never types it: "Skyrim Paper Map by Caro Tuts", https://www.nexusmods.com/skyrimspecialedition/mods/62705.
+- [ ] The pixel-map scripts in `scripts/gamedata/map_proof/` stay as they are (possible background art later); nothing builds from them.
+
+## Part 2. The map images (held, Bob 27 Oct 18:55: don't build until Dave picks the pixel map or the in-game paper map; Part 1 goes ahead either way, since both need every place's position)
 - [ ] A map for each worldspace with places in it, the way the proof does Tamriel: heights (LAND `VHGT`), water (`XCLW`, else the world's default), ground colour from each cell's base textures (LAND `BTXT` → LTEX editor id, the table in `render.py`), cells with no base texture filled from their neighbours, relief shading, reduced to pixels. Tamriel first, Solstheim (Dragonborn.esm) second, then each mod world with places. Read terrain from the winning record in the load order, not only Skyrim.esm.
 - [ ] Crop Tamriel to the playable land with a margin (the proof's crop: the pins' bounds plus 40).
 - [ ] Output `public/maps/<world>.png` (one pixel per 4 game units of a cell's 8, as the proof) and `src/data/lorerim-5.0.4.8/maps.json`: per world the image size, the cell bounds and scale, so a position becomes a pixel on the Mac side without the PC.
