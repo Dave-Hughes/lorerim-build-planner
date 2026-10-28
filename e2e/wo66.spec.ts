@@ -28,7 +28,7 @@ test("the guide lists 11 chapters, and each chapter renders every section, block
   expect(chapters).toHaveLength(11);
   expect(ALL_ASKS).toBe(49);
   await page.goto("/guide");
-  await expect(page).toHaveTitle("Guide | LoreRim Build Planner");
+  await expect(page).toHaveTitle("Guide | LoreRim Planner");
   await expect(page.getByRole("heading", { level: 1, name: "Guide" })).toBeVisible();
   await expect(page.getByText("For LoreRim 5.0.4.8", { exact: true })).toBeVisible();
   await expect(page.getByRole("main").getByRole("heading", { level: 2 })).toHaveCount(11);
@@ -97,7 +97,7 @@ test("links to a section or a question land below the header, the question open"
 
 test("All questions: the filter keeps matching questions and hides empty groups; Clear brings all 49 back", async ({ page }) => {
   await page.goto("/guide/questions");
-  await expect(page).toHaveTitle("All questions | LoreRim Build Planner");
+  await expect(page).toHaveTitle("All questions | LoreRim Planner");
   const visible = page.locator("details[id]:visible");
   await expect(visible).toHaveCount(ALL_ASKS);
   await page.getByPlaceholder("Filter questions").fill("vampire");

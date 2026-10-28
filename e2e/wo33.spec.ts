@@ -12,7 +12,7 @@ test("Iriel's page points og:image at her card, a 1200x630 PNG", async ({ page, 
   const image = await page.locator('meta[property="og:image"]').getAttribute("content");
   expect(image).toMatch(new RegExp(`/b/${IRIEL_BUILD_ID}/card\\.png\\?v=\\d+$`));
   await expect(page.locator('meta[property="og:image:width"]')).toHaveAttribute("content", "1200");
-  await expect(page.locator('meta[property="og:site_name"]')).toHaveAttribute("content", "LoreRim Build Planner");
+  await expect(page.locator('meta[property="og:site_name"]')).toHaveAttribute("content", "LoreRim Planner");
   await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute("content", "summary_large_image");
   const res = await request.get(new URL(image!).pathname + new URL(image!).search);
   expect(res.status()).toBe(200);
@@ -28,7 +28,7 @@ test("the home page's og:image is the site card; a private build shows nothing o
   expect(pngSize(await res.body())).toEqual({ width: 1200, height: 630 });
 
   await page.goto(`/b/${SCRATCH_BUILD_ID}`);
-  await expect(page).toHaveTitle("LoreRim Build Planner");
+  await expect(page).toHaveTitle("LoreRim Planner");
   expect(new URL((await page.locator('meta[property="og:image"]').getAttribute("content"))!).pathname).toBe("/og/site.png");
   expect((await request.get(`/b/${SCRATCH_BUILD_ID}/card.png`)).status()).toBe(404);
 });

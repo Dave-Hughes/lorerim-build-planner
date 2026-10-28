@@ -5114,21 +5114,34 @@ Status: queued (Mac; after WO-161)
 - [ ] Typecheck, lint, tests, build, e2e; screenshots of Riverwood, the Sleeping Giant Inn, the Bee and Barb and Bleak Falls Barrow at 1440 and 390, then `for Bob`.
 
 ## WO-161  Small fixes from Bob's walk of every page (Mac, 27 Oct 2026)
-Status: building (Mac)
+Status: for Bob (all eleven boxes built; typecheck, lint, 706 unit tests, the build and the full e2e pass, 451 of 451)
 
 **Why.** Bob walked every page on staging (`docs/page-templates.md`, the catalog). These are the small ones; the place page, the quest categories and the colour pass get their own orders with boards.
 
-- [ ] **Guide** in the top menu goes to a 404 on staging (the guide is off there). Show Guide only when the guide is on; same on the phone menu.
-- [ ] The browser tab says "LoreRim Build Planner" on every page; it's **LoreRim Planner** now (titles, the share cards' site name, the manifest). A quest's tab reads "The Golden Claw | The Golden Claw": once.
-- [ ] Characters, not builds, wherever a player reads it: `/u/<handle>` ("Builds by Tapps" → "Tapps's characters"; tabs Characters and Liked), `/me` signed out ("My builds" → "My characters").
-- [ ] **One character card.** The home page's Recent characters card (WO-157 Part 10) becomes the card on `/characters` and `/u/<handle>` too, in a grid; the Featured character keeps a wide card at the top of `/characters` in the same style.
-- [ ] `/playthroughs/new` signed out: one line on what a playthrough is (acts, each with a goal and a place, and the quests in each; your save says where you stand) above Sign in.
-- [ ] **Search results**: the kind icon and kind tag on each result (Quest, Quest line, Person, Place, Character), and the reason in plain words ("Lydia is named in it", not "Its name.").
-- [ ] **Everything that changed**: the newest day open, older days folded with their counts; a filter by kind at the top.
-- [ ] **New in the world** on home: each kind its own icon (a quest line the line's icon, a person `quest-people`, a place `quest-travel`, a report `quest-sure`), and the line under the name says what's new in that entry, not the same sentence six times ("Its 7 chapters and 19 quests, read from the game files").
-- [ ] **People**: the town filter applies as you pick it; no Show button.
-- [ ] **Phone**: the New character button says "New" beside the plus; the back button and the search box sit at the content's full width, one above the other.
-- [ ] Checks and screenshots at 1440 and 390 of each, then `for Bob`.
+- [x] **Guide** in the top menu goes to a 404 on staging (the guide is off there). Show Guide only when the guide is on; same on the phone menu.
+- [x] The browser tab says "LoreRim Build Planner" on every page; it's **LoreRim Planner** now (titles, the share cards' site name, the manifest). A quest's tab reads "The Golden Claw | The Golden Claw": once.
+- [x] Characters, not builds, wherever a player reads it: `/u/<handle>` ("Builds by Tapps" → "Tapps's characters"; tabs Characters and Liked), `/me` signed out ("My builds" → "My characters").
+- [x] **One character card.** The home page's Recent characters card (WO-157 Part 10) becomes the card on `/characters` and `/u/<handle>` too, in a grid; the Featured character keeps a wide card at the top of `/characters` in the same style.
+- [x] `/playthroughs/new` signed out: one line on what a playthrough is (acts, each with a goal and a place, and the quests in each; your save says where you stand) above Sign in.
+- [x] **Search results**: the kind icon and kind tag on each result (Quest, Quest line, Person, Place, Character), and the reason in plain words ("Lydia is named in it", not "Its name.").
+- [x] **Everything that changed**: the newest day open, older days folded with their counts; a filter by kind at the top.
+- [x] **New in the world** on home: each kind its own icon (a quest line the line's icon, a person `quest-people`, a place `quest-travel`, a report `quest-sure`), and the line under the name says what's new in that entry, not the same sentence six times ("Its 7 chapters and 19 quests, read from the game files").
+- [x] **People**: the town filter applies as you pick it; no Show button.
+- [x] **Phone**: the New character button says "New" beside the plus; the back button and the search box sit at the content's full width, one above the other.
+- [x] Checks and screenshots at 1440 and 390 of each, then `for Bob`.
+
+### Jeff's notes (Mac, 27 Oct)
+- **Guide.** The top menu, the phone menu and the footer already left Guide out while the guide is off (`siteGuide` in `site-nav.tsx`, `siteGuideOn()` in the footer; I wrote that in WO-157), and `e2e/wo81-launch.spec.ts` checks the nav and footer on the server with the switch off. I found no place that still links to it, so I changed nothing here; if Bob still saw it on staging, tell me where.
+- **The name.** `SITE_NAME` is "LoreRim Planner": every tab title, the share cards' site name, the invite page and the coming-soon page's title. A quest's tab names its line only when the line adds something (`The Golden Claw`, not `The Golden Claw | The Golden Claw`). **Left as LoreRim Build Planner on purpose:** the connector's server name and the style guide's heading (what an assistant has registered and reads; renaming it can break a connected assistant), and the coming-soon page's pixel art, which says Build Planner as a picture. There is no manifest in the app.
+- **Characters.** `/u/<handle>`: the title is "Tapps's characters", the tabs are Characters and Liked, the count says characters, the empty lines say characters. `/me` signed out: "My characters" and "Sign in to see the characters you have made."
+- **One character card.** The home strip's card moved to `src/components/build/character-card.tsx` and is the card on `/characters` and `/u/<handle>`, in a grid (`CharacterGrid`, five across at 1440, two on a phone). The Featured character is the same card two cells wide with the first lines of its intro. The name is a heading inside the card's one link (the link is named for it), the card is an `article`, the sample's Example tag sits over it (outside the link, with its tooltip), and a card with a listed run shows its act. **What the old card had that this one doesn't:** the author as a link (the card is one link; the author is a name), the heart's Like button (the count shows), the date, and the liked-on date in a player's Liked. `/me` keeps the old card: it is the owner's, with Edit, Delete and Start a run.
+- **A new playthrough, signed out** says what a playthrough is, in one line, above Sign in.
+- **Search results** show the kind icon and a kind tag (Quest, Person, Place, Character, Guide) before each name, and say why in plain words: "Matches the name", "Lydia is named in it", "Lydia gives it", "Is in 3 quests", "It goes to Whiterun". There are no Quest line results because the search doesn't look for lines (it never did); I didn't add them.
+- **Everything that changed.** The newest day is open, older days are folded with "N changes", and the pills at the top filter by kind (Everything, Quests, Quest lines, Player reports) with their counts, as `?kind=`.
+- **New in the world.** A quest line takes its category's icon (the main quest the Main stories one), and each line says what is new in it: "Its 7 chapters and 19 quests, read from the game files", "Its 12 steps ...", "7 ways to finish it ...". A person or a place has no entry because nothing dates them (WO-157's note).
+- **People.** Picking a town applies it at once (a small client component; with no script a Show button appears). Phone: the header's button says "+ New"; the back button and the search box under it are the content's full width, one above the other, on every page that has them.
+- **Checks.** Typecheck, lint (the same 3 old warnings), 706 unit tests, the build and the full e2e. `e2e/wo161.spec.ts` has 9 tests; old tests that looked for the card's `article`, its author link, its liked date, or "Builds by" were updated (`wo24`, `wo157`, `wo154p4`, `player`, `wo33`, `wo66`, `wo84-soon`).
+- **Screenshots** (in `test-results/`): `wo161-characters-1440.png`, `wo161-characters-390.png`, `wo161-player-1440.png`, `wo161-search-1440.png`, `wo161-changes-1440.png`, `wo161-phone-390.png`.
 
 ## WO-160  One page per quest line (Mac, 27 Oct 2026)
 Status: queued (Mac; Bob's review, Part 4, 27 Oct 19:10; take it before WO-161's next part)

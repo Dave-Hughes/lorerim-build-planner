@@ -111,7 +111,7 @@ test.describe("at 1440", () => {
     const card = strip.getByRole("link").first();
     await expect(card).toBeVisible();
     await expect(card.locator("img[src^='/icons/race-']")).toBeVisible();
-    await expect(card.locator("b")).not.toBeEmpty();
+    await expect(card.getByRole("heading")).not.toBeEmpty();
     await expect(card).toContainText("LV");
     await expect(card.getByLabel(/likes?$/)).toBeVisible();
     await expect(card.getByLabel(/^Planned to level \d+$/)).toBeVisible();

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { auth } from "@/auth";
-import { BuildCard, BuildGrid } from "@/components/build/build-card";
+import { CharacterCard, CharacterGrid } from "@/components/build/character-card";
 import { Avatar } from "@/components/ui/avatar";
 import { CopyLinkButton } from "@/components/ui/copy-link-button";
 import { TextTabs } from "@/components/ui/text-tabs";
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const player = await getPlayerByHandle(handle);
   if (!player) return { title: "Not found" };
   // The site's card for now (WO-33), not a build's raw, uncropped cover.
-  const title = `Builds by ${player.name}`;
+  const title = `${player.name}'s characters`;
   return { title, ...siteMetadata(`/u/${player.handle}`, title) };
 }
 
@@ -34,7 +34,7 @@ export default async function PlayerPage({ params, searchParams }: { params: Par
   if (!player) notFound();
   const [builds, liked] = await Promise.all([listListedBuildsByOwner(player.id), listLikedBuilds(player.id)]);
   const isOwner = session?.user?.id === player.id;
-  const buildsLabel = `${builds.length} build${builds.length === 1 ? "" : "s"}`;
+  const buildsLabel = `${builds.length} character${builds.length === 1 ? "" : "s"}`;
   return (
     <main className={`page ${styles.main}`}>
       <div className={styles.head}>
@@ -56,41 +56,41 @@ export default async function PlayerPage({ params, searchParams }: { params: Par
           tabs={[
             {
               key: "builds",
-              name: "Builds",
+              name: "Characters",
               sub: buildsLabel,
               panel:
                 builds.length === 0 ? (
                   <div className={styles.empty}>
-                    <p className="muted">No listed builds yet.</p>
+                    <p className="muted">No listed characters yet.</p>
                     {isOwner && (
                       <p className="muted">
-                        Only listed builds show here. <Link href="/me">My builds</Link>
+                        Only listed characters show here. <Link href="/me">My characters</Link>
                       </p>
                     )}
                   </div>
                 ) : (
-                  <BuildGrid>
+                  <CharacterGrid>
                     {builds.map((b) => (
-                      <BuildCard key={b.id} build={b} />
+                      <CharacterCard key={b.id} build={b} />
                     ))}
-                  </BuildGrid>
+                  </CharacterGrid>
                 ),
             },
             {
               key: "liked",
               name: "Liked",
-              sub: `${liked.length} build${liked.length === 1 ? "" : "s"}`,
+              sub: `${liked.length} character${liked.length === 1 ? "" : "s"}`,
               panel:
                 liked.length === 0 ? (
                   <div className={styles.empty}>
-                    <p className="muted">No liked builds yet.</p>
+                    <p className="muted">No liked characters yet.</p>
                   </div>
                 ) : (
-                  <BuildGrid>
+                  <CharacterGrid>
                     {liked.map((b) => (
-                      <BuildCard key={b.id} build={b} likedAt={b.likedAt} />
+                      <CharacterCard key={b.id} build={b} />
                     ))}
-                  </BuildGrid>
+                  </CharacterGrid>
                 ),
             },
           ]}

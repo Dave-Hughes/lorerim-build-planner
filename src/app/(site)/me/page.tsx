@@ -13,7 +13,7 @@ import { SCOPES, type Scope } from "@/lib/oauth/core";
 import { connectedAssistants } from "@/lib/oauth/assistants";
 import styles from "../home.module.css";
 
-export const generateMetadata = (): Metadata => ({ title: playthroughsOn() ? "My characters" : "My builds" });
+export const generateMetadata = (): Metadata => ({ title: "My characters" });
 export const dynamic = "force-dynamic";
 
 export default async function MyBuilds() {
@@ -22,10 +22,8 @@ export default async function MyBuilds() {
   if (!userId) {
     return (
       <main className={`page ${styles.main}`}>
-        <h1 className={`title ${styles.h1}`}>
-          My builds
-        </h1>
-        <p className="muted">Sign in to see the builds you have made.</p>
+        <h1 className={`title ${styles.h1}`}>My characters</h1>
+        <p className="muted">Sign in to see the characters you have made.</p>
         <SignInButton redirectTo="/me" />
       </main>
     );

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BuildCard, BuildGrid } from "@/components/build/build-card";
+import { CharacterCard, CharacterGrid } from "@/components/build/character-card";
 import { BrowseFilters } from "@/components/build/browse-filters";
 import { browseHref, type BrowseState } from "@/lib/builds/browse";
 import { getFeaturedBuild, searchBuilds } from "@/lib/builds/queries";
@@ -96,12 +97,12 @@ export default async function CharactersPage({ searchParams }: { searchParams: S
         </div>
       ) : builds.length > 0 || featured ? (
         <>
-          <BuildGrid>
-            {featured && <BuildCard key={featured.id} build={featured} featured={{ intro: featured.intro }} run={runs?.get(featured.id)} />}
+          <CharacterGrid>
+            {featured && <CharacterCard key={featured.id} build={featured} wide={{ intro: featured.intro }} run={runs?.get(featured.id)} />}
             {rest.map((b) => (
-              <BuildCard key={b.id} build={b} run={runs?.get(b.id)} />
+              <CharacterCard key={b.id} build={b} run={runs?.get(b.id)} />
             ))}
-          </BuildGrid>
+          </CharacterGrid>
           {more && (
             <Link href={browseHref(state, defaultVersion, shown + PAGE)} scroll={false} className="btn" style={{ alignSelf: "center" }}>
               Show more

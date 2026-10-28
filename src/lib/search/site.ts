@@ -27,7 +27,7 @@ export async function siteSearch(query: string, opts: { all?: boolean; limit?: n
   if (!q) return out;
   try {
     const { builds } = await searchBuilds({ q, limit: 6 });
-    out.builds = builds.map((b) => ({ name: b.name, href: `/b/${b.id}`, note: `By ${b.author.name ?? "a player"}`, why: "The words are in its name, description or choices" }));
+    out.builds = builds.map((b) => ({ kind: "Character" as const, name: b.name, href: `/b/${b.id}`, note: `By ${b.author.name ?? "a player"}`, why: "The words are in its name, description or choices" }));
   } catch {
     // No database here: no builds.
   }
@@ -35,10 +35,10 @@ export async function siteSearch(query: string, opts: { all?: boolean; limit?: n
     const w = words(q);
     for (const c of readGuide().chapters) {
       const cs = fuzzyScore(w, c.title);
-      if (cs !== null) out.guide.push({ name: c.title, href: `/guide/${c.slug}`, note: "Guide chapter", why: "Its title" });
+      if (cs !== null) out.guide.push({ kind: "Guide", name: c.title, href: `/guide/${c.slug}`, note: "Guide chapter", why: "Matches the title" });
       for (const s of c.sections) {
         const ss = fuzzyScore(w, s.title);
-        if (ss !== null) out.guide.push({ name: s.title, href: `/guide/${c.slug}#${s.id}`, note: c.title, why: "Its title" });
+        if (ss !== null) out.guide.push({ kind: "Guide", name: s.title, href: `/guide/${c.slug}#${s.id}`, note: c.title, why: "Matches the title" });
       }
     }
     out.guide = out.guide.slice(0, 8);

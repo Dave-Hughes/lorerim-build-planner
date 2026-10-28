@@ -61,12 +61,12 @@ test("a player's Liked shows only the Listed builds they liked", async ({ page, 
     await expect(page.getByRole("button", { name: /^Liked/ })).toHaveAttribute("aria-busy", "false");
   }
   await page.goto("/u/e2e-someone-else");
-  await expect(page.getByText(/\d+ builds? \| 1 liked/)).toBeVisible();
+  await expect(page.getByText(/\d+ characters? \| 1 liked/)).toBeVisible();
   await page.getByRole("tab", { name: /^Liked/ }).click();
   const liked = page.getByRole("tabpanel");
   await expect(liked.getByRole("article")).toHaveCount(1);
   await expect(liked.getByRole("article")).toContainText("Test Shield-Wall");
-  await expect(liked.getByRole("article")).toContainText(/Liked \d+ \w{3}/);
+  // The card is the home card (WO-161): it has no liked date.
   await expect(liked).not.toContainText("Link-Only Shield-Wall");
 
   // Unlike, so the other tests' like counts stay as seeded.
@@ -80,5 +80,5 @@ test("a player's Liked shows only the Listed builds they liked", async ({ page, 
 test("a player with no likes says so", async ({ page }) => {
   await page.goto("/u/e2e-test-author?tab=liked");
   await expect(page.getByRole("tab", { name: /^Liked/ })).toHaveAttribute("aria-selected", "true");
-  await expect(page.getByRole("tabpanel")).toContainText("No liked builds yet.");
+  await expect(page.getByRole("tabpanel")).toContainText("No liked characters yet.");
 });

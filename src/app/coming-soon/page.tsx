@@ -5,7 +5,7 @@ import { clientVersion, currentVersion } from "@/lib/rules/server";
 
 // The site's share card comes from the root layout (/og).
 export const metadata: Metadata = {
-  title: { absolute: "LoreRim Build Planner" },
+  title: { absolute: "LoreRim Planner" },
   description: "A build planner for LoreRim. Plan a character, see what changes at each level and share it.",
 };
 

@@ -4,6 +4,42 @@
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 12px;
 }
+/* The same card in a grid (Characters, a player's page), and the Featured character two cells wide. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 12px;
+}
+.cell {
+  position: relative;
+  min-width: 0;
+}
+.cellWide {
+  grid-column: span 2;
+}
+.wide {
+  aspect-ratio: 3 / 2.15;
+}
+.exampleMark {
+  position: absolute;
+  top: 12px;
+  left: 52px;
+  z-index: 5;
+}
+.intro {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #c3cdd6;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 .card {
   position: relative;
   display: block;
@@ -31,16 +67,16 @@
 .strip[data-rise="go"] .card {
   animation: rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
 }
-.strip[data-rise="go"] .card:nth-child(2) {
+.strip[data-rise="go"] .cell:nth-child(2) .card {
   animation-delay: 0.08s;
 }
-.strip[data-rise="go"] .card:nth-child(3) {
+.strip[data-rise="go"] .cell:nth-child(3) .card {
   animation-delay: 0.16s;
 }
-.strip[data-rise="go"] .card:nth-child(4) {
+.strip[data-rise="go"] .cell:nth-child(4) .card {
   animation-delay: 0.24s;
 }
-.strip[data-rise="go"] .card:nth-child(5) {
+.strip[data-rise="go"] .cell:nth-child(5) .card {
   animation-delay: 0.32s;
 }
 @keyframes rise {
@@ -69,16 +105,16 @@
   background-position: center;
   animation: drift 16s ease-in-out infinite alternate;
 }
-.card:nth-child(2) .cv {
+.cell:nth-child(2) .cv {
   animation-delay: -5s;
 }
-.card:nth-child(3) .cv {
+.cell:nth-child(3) .cv {
   animation-delay: -10s;
 }
-.card:nth-child(4) .cv {
+.cell:nth-child(4) .cv {
   animation-delay: -3s;
 }
-.card:nth-child(5) .cv {
+.cell:nth-child(5) .cv {
   animation-delay: -8s;
 }
 @keyframes drift {
@@ -171,6 +207,7 @@
   z-index: 2;
 }
 .name {
+  margin: 0;
   font-family: var(--font-title);
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -426,7 +463,7 @@
     scroll-snap-type: x mandatory;
     padding-bottom: 4px;
   }
-  .card {
+  .strip .cell {
     flex: 0 0 272px;
     scroll-snap-align: start;
   }

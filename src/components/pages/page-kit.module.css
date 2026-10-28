@@ -1041,6 +1041,22 @@ a.tag:hover {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+@media (max-width: 700px) {
+  /* A phone (WO-161): the back button, then the search box, each the content's full width. */
+  .top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .backButton {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .top > * {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
 @media (max-width: 600px) {
   .h1 {
     font-size: 44px;
@@ -1087,6 +1103,21 @@ a.tag:hover {
   gap: 2px;
   padding: 14px 0;
   border-bottom: 1px solid var(--rule-soft);
+}
+.resultHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.kind {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 8px;
+  border: 1px solid var(--line-bright);
+  font-size: 13px;
+  color: var(--text);
 }
 .result a {
   font-size: 18px;

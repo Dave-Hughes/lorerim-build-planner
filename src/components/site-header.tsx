@@ -36,6 +36,9 @@ export async function SiteHeader() {
               +
             </span>
             <span className={styles.newLabel}>{newLabel}</span>
+            <span className={styles.newShort} aria-hidden="true">
+              New
+            </span>
           </Link>
           {user ? (
             <AccountMenu

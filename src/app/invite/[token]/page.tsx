@@ -8,7 +8,7 @@ import { acceptInvite } from "@/lib/users/invite-actions";
 import { canUseInvite, hashInviteToken, inviteLine, isInviteToken } from "@/lib/users/invites";
 import cs from "@/components/coming-soon/coming-soon.module.css";
 
-export const metadata: Metadata = { title: { absolute: "You're invited | LoreRim Build Planner" }, robots: { index: false } };
+export const metadata: Metadata = { title: { absolute: "You're invited | LoreRim Planner" }, robots: { index: false } };
 export const dynamic = "force-dynamic";
 
 type Params = Promise<{ token: string }>;

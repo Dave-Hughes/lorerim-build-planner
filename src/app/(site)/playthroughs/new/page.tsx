@@ -17,7 +17,16 @@ export default async function NewPlaythroughPage() {
   return (
     <main className={`page ${styles.main}`}>
       <h1 className={`title ${styles.h1}`}>New playthrough</h1>
-      {userId ? <NewPlaythrough builds={await myBuildChoices(userId)} /> : <SignInButton redirectTo="/playthroughs/new" />}
+      {userId ? (
+        <NewPlaythrough builds={await myBuildChoices(userId)} />
+      ) : (
+        <>
+          <p className="muted" style={{ maxWidth: 560, margin: 0 }}>
+            A playthrough plans a character&apos;s run through the game in acts, each with a goal, a place and its quests. Your save says where you stand.
+          </p>
+          <SignInButton redirectTo="/playthroughs/new" />
+        </>
+      )}
     </main>
   );
 }

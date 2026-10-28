@@ -1,9 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SearchBox } from "@/components/search/search-box";
 import { siteSearch } from "@/lib/search/site";
 import { siteMetadata } from "@/lib/og/metadata";
 import styles from "@/components/pages/page-kit.module.css";
+
+const KIND_ICON = { Quest: "quest-side-stories", "Quest line": "quest-main-stories", Person: "quest-people", Place: "quest-travel", Character: "tab-set-up", Guide: "tab-guide" } as const;
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Search", ...siteMetadata("/search", "Search") };
@@ -38,7 +41,11 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
             </div>
             {list.map((h) => (
               <div key={h.href} className={styles.result}>
-                <Link href={h.href}>{h.name}</Link>
+                <span className={styles.resultHead}>
+                  {h.kind && <img className={styles.px} src={`/icons/${KIND_ICON[h.kind]}.svg`} alt="" width={20} height={20} />}
+                  {h.kind && <span className={styles.kind}>{h.kind}</span>}
+                  <Link href={h.href}>{h.name}</Link>
+                </span>
                 {h.note ? <span className={styles.src}>{h.note}</span> : null}
                 <span className={styles.why}>{h.why}</span>
               </div>

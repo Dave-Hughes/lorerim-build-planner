@@ -23,7 +23,7 @@ test("point 2: /, a build, /new and /guide all show the coming soon page, at the
     expect(new URL(page.url()).pathname, path).toBe(path);
     await isComingSoon(page);
   }
-  await expect(page).toHaveTitle("LoreRim Build Planner");
+  await expect(page).toHaveTitle("LoreRim Planner");
 });
 
 test("point 2: /signin shows the button, the auth API still answers, and an admin sees the real home page", async ({ page, context }) => {

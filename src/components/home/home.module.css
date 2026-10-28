@@ -368,3 +368,36 @@
     scroll-snap-align: start;
   }
 }
+
+/* Everything that changed (WO-161): a day, folded, with its count. */
+.day {
+  display: flex;
+  flex-direction: column;
+}
+.daySum {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule-strong);
+  cursor: pointer;
+  list-style: none;
+}
+.daySum::-webkit-details-marker {
+  display: none;
+}
+.daySum::before {
+  content: "›";
+  margin-right: 10px;
+  color: var(--ember);
+  transition: transform 0.15s;
+}
+.day[open] > .daySum::before {
+  transform: rotate(90deg);
+}
+.dayCount {
+  margin-left: auto;
+  font-size: 14px;
+  color: var(--muted);
+}

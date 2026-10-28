@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { TownFilter } from "@/components/people/town-filter";
 import { SearchBox } from "@/components/search/search-box";
 import { peopleData, type Person } from "@/lib/people/data";
 import { questsOf } from "@/lib/people/quests";
@@ -59,23 +60,7 @@ export default async function PeoplePage({ searchParams }: { searchParams: Promi
           </Link>
         ))}
       </div>
-      <form method="get" action="/people" className={styles.chips}>
-        {group && <input type="hidden" name="group" value={group.key} />}
-        <label className="field" style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
-          <span className="sub-label">Town</span>
-          <select className="select" name="town" defaultValue={town ?? ""}>
-            <option value="">Anywhere</option>
-            {towns.map(([t, n]) => (
-              <option key={t} value={t}>
-                {t} ({n})
-              </option>
-            ))}
-          </select>
-        </label>
-        <button type="submit" className="btn btn-sm">
-          Show
-        </button>
-      </form>
+      <TownFilter group={group?.key} town={town} towns={towns} />
 
       {listing ? (
         <section className={styles.sec} aria-labelledby="list">

@@ -4,7 +4,7 @@
  */
 import type { Metadata } from "next";
 
-export const SITE_NAME = "LoreRim Build Planner";
+export const SITE_NAME = "LoreRim Planner";
 export const SITE_LINE = "Plan and share LoreRim character builds level by level.";
 export const CARD = { width: 1200, height: 630 } as const;
 /** The site's card, for every page that isn't a build (it never changes, so it's cached for good). */

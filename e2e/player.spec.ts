@@ -6,13 +6,13 @@ test.describe("a player's page", () => {
   test("shows a visitor the listed builds and nothing else", async ({ page }) => {
     await page.goto(`/u/${TEST_USER_HANDLE}`);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(TEST_USER_NAME);
-    await expect(page.getByText("1 build", { exact: true })).toBeVisible();
+    await expect(page.getByText("1 character", { exact: true }).first()).toBeVisible();
     await expect(page.getByRole("heading", { name: "Test Shield-Wall" })).toBeVisible();
     // Link-only and private builds never show, not even to the owner.
     await expect(page.getByText("Link-Only Shield-Wall")).toHaveCount(0);
     await expect(page.getByText("Scratch Shield-Wall")).toHaveCount(0);
     await expect(page.getByRole("button", { name: "Copy link" })).toHaveCount(0);
-    await expect(page).toHaveTitle(/Builds by Test Author/);
+    await expect(page).toHaveTitle(/Test Author's characters/);
     // No email anywhere: not in the page, its props or its metadata.
     const html = await page.content();
     expect(html).not.toMatch(/[\w.+-]+@[\w-]+\.[a-z]{2,}/i);
@@ -35,10 +35,7 @@ test.describe("a player's page", () => {
     expect(res?.status()).toBe(404);
   });
 
-  test("author names lead to the author's page, from a card and from a build", async ({ page }) => {
-    await page.goto("/characters?version=all");
-    await page.getByRole("article").filter({ hasText: "Test Shield-Wall" }).getByRole("link", { name: TEST_USER_NAME }).click();
-    await expect(page).toHaveURL(new RegExp(`/u/${TEST_USER_HANDLE}$`));
+  test("author names lead to the author's page, from a build (a card is one link to its character, WO-161)", async ({ page }) => {
     await page.goto(`/b/${TEST_BUILD_ID}`);
     await page.getByRole("region", { name: "Build" }).getByRole("link", { name: TEST_USER_NAME }).click();
     await expect(page).toHaveURL(new RegExp(`/u/${TEST_USER_HANDLE}$`));

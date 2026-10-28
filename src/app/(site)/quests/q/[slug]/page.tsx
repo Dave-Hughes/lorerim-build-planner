@@ -43,8 +43,10 @@ export async function generateMetadata({
   const found = questBySlug((await params).slug);
   if (!found) return {};
   const { line, quest } = found;
+  const name = quest.name || quest.edid;
   return {
-    title: `${quest.name || quest.edid} | ${line.name}`,
+    // The line only when it adds something (WO-161): a quest that is its own line isn't named twice.
+    title: line.quests.length > 1 && line.name !== name ? `${name} | ${line.name}` : name,
     ...siteMetadata(
       questHref(quest.edid) ?? "/quests",
       quest.name || quest.edid,

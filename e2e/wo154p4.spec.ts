@@ -71,8 +71,8 @@ test("search shows suggestions as you type, then opens the one you choose; the r
   await page.getByRole("main").getByRole("combobox").fill("Brynjolf");
   await page.getByRole("main").getByRole("combobox").press("Enter");
   await expect(page).toHaveURL(/\/search\?q=Brynjolf/);
-  await expect(page.getByRole("region", { name: "People" })).toContainText("Its name");
-  await expect(page.getByRole("region", { name: "Quests" })).toContainText(/gives it|has a part in it|Its name/);
+  await expect(page.getByRole("region", { name: "People" })).toContainText("Matches the name");
+  await expect(page.getByRole("region", { name: "Quests" })).toContainText(/gives it|is named in it|Matches the quest's name/);
 });
 
 test("the command palette: Ctrl+K or the header's Search opens one box for quests, people, places, builds and the guide", async ({ page }) => {

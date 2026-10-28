@@ -22,6 +22,9 @@
   font-size: 22px;
   line-height: 1;
 }
+.newShort {
+  display: none;
+}
 
 /* The avatar and name: the account menu's button. */
 .menuWrap {
@@ -106,11 +109,13 @@
     gap: 10px;
   }
   .newBuild {
-    width: 44px;
-    padding: 0;
+    width: auto;
+    padding: 0 14px 0 10px;
+    gap: 6px;
     justify-content: center;
   }
-  .newIcon {
+  .newIcon,
+  .newShort {
     display: inline;
   }
   .newLabel,
