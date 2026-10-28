@@ -50,9 +50,9 @@ test("a character with a run opens on Play, from its build's address too; anothe
   // A character opens on Play from every way in (WO-117), its build's own address too.
   await page.goto(`/b/${KYRIA_BUILD_ID}`);
   await expect(tabs(page).getByRole("tab", { name: /^Play/ })).toHaveAttribute("aria-selected", "true");
-  // No nested tabs: the old Build tab's address is the Levels tab.
+  // The Build tab is the build's own page (WO-164): the old Build address, and ?tab=levels, go there.
   await page.goto(`${KYRIA}/build`);
-  await expect(page).toHaveURL(new RegExp(`${KYRIA}\\?tab=levels$`));
+  await expect(page).toHaveURL(new RegExp(`/b/${KYRIA_BUILD_ID}\\?tab=levels$`));
   await expect(tabs(page).getByRole("tab", { name: /^Build/ })).toHaveAttribute("aria-selected", "true");
 
   await context.clearCookies();
@@ -190,9 +190,9 @@ test("Start a run, from the hero and from the card", async ({ page, context }) =
   await signIn(context);
   await page.goto("/me");
   const card = page.getByRole("article").filter({ has: page.getByRole("link", { name: "Jo'Vashar", exact: true }) });
-  await expect(card.getByRole("link", { name: "Start a run ›" })).toHaveAttribute("href", `/b/${FRESH_BUILD_ID}/run`);
+  await expect(card.getByRole("link", { name: /^Plan a playthrough/ })).toHaveAttribute("href", `/b/${FRESH_BUILD_ID}/run`);
   await page.goto(`/b/${FRESH_BUILD_ID}`);
-  await page.getByRole("link", { name: "Start a run" }).click();
+  await page.getByRole("link", { name: "Plan a playthrough" }).click();
   await expect(page).toHaveURL(new RegExp(`/b/${FRESH_BUILD_ID}/run$`));
   await expect(page.getByRole("heading", { name: "The run" })).toBeVisible();
 });

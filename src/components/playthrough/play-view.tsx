@@ -7,7 +7,8 @@ import { ReaderProvider, ReaderLink, StoryCard } from "@/components/reader/reade
 import { actImageOf, runStops } from "@/lib/playthroughs/reader";
 import { docText, docWords, firstPlate } from "@/lib/guide/doc";
 import { ActCard } from "./act-card";
-import { RunHero } from "./tabs";
+import { RunCover } from "./run-cover";
+import { PageTop } from "@/components/pages/page-kit";
 import type { PassedBy } from "@/lib/playthroughs/types";
 import s from "./play.module.css";
 
@@ -19,16 +20,16 @@ export function PlayView({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
   const stops = runStops({ id: p.id, taleLine: p.taleLine, view: p.view, cover: p.build?.coverImageUrl ?? null, coverFocus: p.build?.coverFocus ?? null, isOwner, titlePicture: p.coverImageUrl });
   return (
     <ReaderProvider stops={stops} back={{ href: `/p/${p.id}`, label: `${p.name}'s playthrough` }} runId={p.id} title={p.taleTitle || p.name}>
-      <main className={`page ${s.main}`}>
-        {isOwner && (
-          <Link href="/me" className={s.back}>
-            ‹ My characters
-          </Link>
-        )}
-        <RunHero p={p} isOwner={isOwner} />
-        <ModsNeeded mods={p.mods} />
-        <PlayBody p={p} isOwner={isOwner} actIndex={actIndex} />
-      </main>
+      <div className={s.rootNoBuild}>
+        <div className={`page ${s.backRow}`}>
+          <PageTop back={isOwner ? { href: "/me", label: "My characters" } : { href: "/characters", label: "Characters" }} />
+        </div>
+        <RunCover p={p} isOwner={isOwner} />
+        <main className={`page ${s.main}`}>
+          <ModsNeeded mods={p.mods} />
+          <PlayBody p={p} isOwner={isOwner} actIndex={actIndex} />
+        </main>
+      </div>
     </ReaderProvider>
   );
 }

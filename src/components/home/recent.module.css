@@ -14,11 +14,34 @@
   position: relative;
   min-width: 0;
 }
+/* The Featured character (WO-164): a wide card across two columns and one row high, the cover on the left half and the words on the right. */
 .cellWide {
   grid-column: span 2;
+  display: flex;
 }
-.wide {
-  aspect-ratio: 3 / 2.15;
+.card.wide {
+  aspect-ratio: auto;
+  flex: 1;
+  min-height: 300px;
+  background: #10161d;
+}
+.wide .cvw {
+  right: 50%;
+}
+.wide .shade {
+  right: 50%;
+}
+.wide .bottom {
+  inset: 0 0 0 50%;
+  padding: 56px 22px 18px;
+  justify-content: flex-end;
+  background: linear-gradient(to right, rgba(16, 22, 29, 0.6), #10161d 30%);
+}
+.wide .top {
+  z-index: 3;
+}
+.wide .intro {
+  -webkit-line-clamp: 5;
 }
 .exampleMark {
   position: absolute;
@@ -125,10 +148,21 @@
     transform: scale(1.08) translate(-1.5%, -1%);
   }
 }
+/* No cover: the race's pixel icon, large, on the night scene's colours; the name is over it. */
 .plain {
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, #1e2833, #121820);
+  display: grid;
+  place-items: center;
+  background: linear-gradient(170deg, #1b2a44 0%, #14213a 45%, #0d1524 100%);
+}
+.plainIcon {
+  width: 46%;
+  max-width: 120px;
+  aspect-ratio: 1;
+  margin-top: -14%;
+  image-rendering: pixelated;
+  opacity: 0.92;
 }
 .shade {
   position: absolute;
@@ -474,4 +508,26 @@
   .strip[data-rise="go"] .card {
     animation: none;
   }
+}
+
+/* Under a card on My characters (WO-164): who can see it, then Delete and Edit. */
+.under {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 10px;
+}
+.underActions {
+  display: inline-flex;
+  gap: 8px;
+}
+.cell:has(> .under) {
+  display: flex;
+  flex-direction: column;
+}
+.planLink {
+  flex: 1 0 100%;
+  font-size: 15px;
 }

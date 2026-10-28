@@ -21,7 +21,8 @@ test("Skip ahead: write 2 to 10 and 11 to 25 as stretches, reset one, and read t
   await expect(page.getByText("Draft saved")).toBeVisible();
   await page.goto("/new?step=name");
   await page.getByLabel("Name", { exact: true }).fill("Skipping Altmer");
-  await page.getByRole("button", { name: "Create character" }).click();
+  await page.getByRole("button", { name: "Next: What next" }).click();
+  await page.getByRole("button", { name: "Finish" }).click();
   await page.waitForURL(/\/b\/\w{10}\/edit/);
   const id = page.url().match(/\/b\/(\w{10})\//)![1];
   // Level 1's six perks first (Naaktiid's three extra included), so 2 to 10 starts with nothing carried in.

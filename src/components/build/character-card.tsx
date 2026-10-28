@@ -13,7 +13,7 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(
  * name and the tagline, the race and traits, the maker, the likes and the planned level; a listed run adds its act. The home page's strip,
  * Characters and a player's page all use it; the Featured character is the same card, two cells wide, with the first lines of its intro.
  */
-export function CharacterCard({ build: b, run, wide }: { build: BuildSummary; run?: RunSummary; wide?: { intro: string } }) {
+export function CharacterCard({ build: b, run, wide, under }: { build: BuildSummary; run?: RunSummary; wide?: { intro: string }; under?: React.ReactNode }) {
   const marks = [
     ...(b.featured || wide ? [{ key: "featured", label: "Featured", className: styles.featured, icon: (
         <svg width="12" height="12" viewBox="0 0 22 22" aria-hidden="true">
@@ -41,7 +41,7 @@ export function CharacterCard({ build: b, run, wide }: { build: BuildSummary; ru
   return (
     <article className={`${styles.cell} ${wide ? styles.cellWide : ""}`} aria-label={wide ? `Featured: ${b.name}` : undefined}>
       <Link href={`/b/${b.id}`} className={`${styles.card} ${wide ? styles.wide : ""}`} aria-labelledby={`card-${b.id}`}>
-        <span className={styles.cvw}>{b.coverImageUrl && !b.coverHeld ? <span className={styles.cv} style={{ backgroundImage: `url("${b.coverImageUrl}")`, backgroundPosition: focus }} /> : <span className={styles.plain} />}</span>
+        <span className={styles.cvw}>{b.coverImageUrl && !b.coverHeld ? <span className={styles.cv} style={{ backgroundImage: `url("${b.coverImageUrl}")`, backgroundPosition: focus }} /> : <span className={styles.plain}>{b.race ? <img className={styles.plainIcon} src={`/icons/race-${slug(b.race)}.svg`} alt="" /> : null}</span>}</span>
         <span className={styles.shade} />
         <span className={styles.glow} />
         <span className={styles.embers} aria-hidden="true">
@@ -110,6 +110,7 @@ export function CharacterCard({ build: b, run, wide }: { build: BuildSummary; ru
           </span>
         </span>
       </Link>
+    {under ? <div className={styles.under}>{under}</div> : null}
     {b.example ? (
       <span className={styles.exampleMark}>
         <ExampleTag small />

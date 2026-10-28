@@ -5043,17 +5043,29 @@ Status: queued (Mac; after WO-169, since it reuses WO-168's scenes and WO-166's 
 - [ ] Checks; screenshots at 1440 (signed out, a card hovered) and 390, signed in at 1440; then `for Bob`.
 
 ## WO-164  A character is one page, with or without a playthrough (Mac, 27 Oct 2026)
-Status: building (Mac)
+Status: for Bob (all eight boxes built; typecheck, lint, tests, the build and the full e2e pass, 493 of 495, the two that failed in the full run pass alone)
 
 **Why.** Bob, signed in through Dave's Chrome (27 Oct, 18:05): Kyria's playthrough page (`/p/4et99tk25s`) still has the old framed title and none of her cover, though `/me` shows her golden-armour cover; "‹ My characters" is the old text link; `/p/<id>/build` redirects to `?tab=levels` and shows the same Play view, so a playthrough's build can't be reached from it. The character page (`/b/<id>`) has the full-width cover and a Build | Guide tab row; the two don't look like one character. The agreed pattern (canvas row 25, WO-114a): one hero, one row of tabs.
-- [ ] **The build page (`/b/<id>`) does not change.** Dave, 27 Oct: "please do not redesign the character build pages, those are the best on the site." It's the reference the playthrough page copies, not something this order touches.
-- [ ] `/p/<id>` takes the build page's hero exactly as it is (cover full width, name, tagline, maker, likes, Copy link, Edit), and under it the build page's own tab style with **Playthrough** (today's Play view: where she stands, the acts, objectives) open and **Build** beside it, which goes to `/b/<id>`. `/p/<id>/build` and `?tab=levels` go to `/b/<id>`.
-- [ ] The left rail (Her story card, the acts) and the objectives keep their content; the framed boxes go under the fewer-boxes rule; the back link is the WO-159 button.
-- [ ] **Making a character**: after Details, a last step, "What next": Plan a playthrough (makes the run and opens it) or Finish. Dave couldn't see how to add one while making a character.
-- [ ] The Playthrough tab with no run yet (WO-159 Part 4) shows what one looks like, not just a sentence: a sample act card (name, levels, place, three objectives) faded under "Plan a playthrough".
-- [ ] **Your characters** on home and the cards on `/me`: a character with no cover gets a fallback, not a blank tile: its race's pixel icon large on the night-scene colours, the name over it. `/me` uses the one character card (WO-161) with its Edit and Delete under it; "Start a run" becomes "Plan a playthrough" everywhere.
-- [ ] The Featured character on `/characters` is a tall card two rows high beside small ones; make it a wide card across two columns, one row high, cover on the left half, text on the right.
-- [ ] Checks, screenshots signed in (Kyria's page on each tab, a character with no cover on home and `/me`, the What next step) at 1440 and 390, then `for Bob`.
+- [x] **The build page (`/b/<id>`) does not change.** Dave, 27 Oct: "please do not redesign the character build pages, those are the best on the site." It's the reference the playthrough page copies, not something this order touches.
+- [x] `/p/<id>` takes the build page's hero exactly as it is (cover full width, name, tagline, maker, likes, Copy link, Edit), and under it the build page's own tab style with **Playthrough** (today's Play view: where she stands, the acts, objectives) open and **Build** beside it, which goes to `/b/<id>`. `/p/<id>/build` and `?tab=levels` go to `/b/<id>`.
+- [x] The left rail (Her story card, the acts) and the objectives keep their content; the framed boxes go under the fewer-boxes rule; the back link is the WO-159 button.
+- [x] **Making a character**: after Details, a last step, "What next": Plan a playthrough (makes the run and opens it) or Finish. Dave couldn't see how to add one while making a character.
+- [x] The Playthrough tab with no run yet (WO-159 Part 4) shows what one looks like, not just a sentence: a sample act card (name, levels, place, three objectives) faded under "Plan a playthrough".
+- [x] **Your characters** on home and the cards on `/me`: a character with no cover gets a fallback, not a blank tile: its race's pixel icon large on the night-scene colours, the name over it. `/me` uses the one character card (WO-161) with its Edit and Delete under it; "Start a run" becomes "Plan a playthrough" everywhere.
+- [x] The Featured character on `/characters` is a tall card two rows high beside small ones; make it a wide card across two columns, one row high, cover on the left half, text on the right.
+- [x] Checks, screenshots signed in (Kyria's page on each tab, a character with no cover on home and `/me`, the What next step) at 1440 and 390, then `for Bob`.
+
+
+### Jeff's notes (Mac, 28 Oct)
+- **The build page does not change.** `/b/<id>` is as it was; what changed is `/p/<id>`.
+- **A run's page** (`/p/<id>`) with a build is the build page's hero and tab row, Playthrough open. Build and Guide are the build's own page: they go to `/b/<id>?tab=levels` and `?tab=guide` (the build page opens on Play when there is a run, so the Build link says which tab). `/p/<id>/build`, `?tab=levels`, `?tab=gear` and `?tab=guide` on the run's address go there too; a run with no build stays on its page. The reference run the preview showed (Kyria's, `/p/4et99tk25s`) is the case of a run whose build isn't linked: that is now the next paragraph.
+- **A run with no build** has the build page's hero too: `src/components/playthrough/run-cover.tsx` uses the same cover classes (full width, name, line, maker, Copy link, Edit for the owner), then the Play view under the one back button (WO-159): "Back to My characters" for the owner, Characters for anyone else. The old framed band and the "‹ My characters" text link are gone.
+- **What next:** after Details a last step, not a step key, so saved drafts keep working: Plan a playthrough (makes the build, then the run as the Playthrough tab does, and opens it) or Finish. Only when playthroughs are on; builds alone still say Create build. Four specs that clicked Create character click through it.
+- **The Playthrough tab with no run** shows a sample act under the button, faded out: its name, levels and place and three objectives.
+- **Cards.** `/me` is the one character card with who can see it, Story and AI assisted marks, Delete and Edit under it and, on a build alone, "Plan a playthrough ›" on its own line. "Start a run" reads Plan a playthrough on the build page's hero and everywhere else. A character with no cover gets its race's pixel icon large on the night-scene blues with the name over it. The Featured character is a wide card across two columns, one card high, cover on the left half, words on the right (it was tall because `.card`'s aspect ratio came later in the file than `.wide`; the check in `wo39` now measures the card, not its cell).
+- **A shared bug found on the way:** the phone back button and search box rely on `.top > *` beating the search box's own width; they tied, so the stylesheet order decided. They now don't tie (`:not([hidden])`).
+- Tests: `e2e/wo164.spec.ts` (6, with a seeded run that has no build), `wo39` for the Featured card, and the specs that looked for the old card wording. Screenshots in `test-results/`: `wo164-kyria-playthrough-1440.png`, `-390.png`, `wo164-kyria-build-...`, `wo164-nobuild-1440.png`, `-390.png`, `wo164-what-next-1440.png`, `wo164-playthrough-empty-1440.png`, `wo164-me-1440.png`, `-390.png`, `wo164-characters-1440.png`.
+- **Not checked:** Kyria's real page on staging (it is Dave's private run); the screenshots are the seeded test author's.
 
 ## WO-169  The Map page (Mac, 27 Oct 2026)
 Status: queued (Mac; after WO-167, which brings the map tiles and the pin component)

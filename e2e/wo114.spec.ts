@@ -5,7 +5,7 @@
  */
 import { expect, test } from "@playwright/test";
 import { call, ip, signIn, tokenFor } from "./helpers";
-import { KYRIA_PLAYTHROUGH_ID, MENDER_BUILD_ID } from "./seed";
+import { MENDER_BUILD_ID } from "./seed";
 
 test.describe.configure({ mode: "serial" });
 
@@ -13,8 +13,7 @@ test("Start a run on a build alone's card: its Story becomes the run's first cha
   await signIn(context);
   await page.goto("/me");
   const card = page.getByRole("article").filter({ has: page.getByRole("link", { name: "The Mender", exact: true }) });
-  await expect(card.getByText("Build alone")).toBeVisible();
-  await card.getByRole("link", { name: "Start a run ›" }).click();
+  await card.getByRole("link", { name: /^Plan a playthrough/ }).click();
   await expect(page).toHaveURL(new RegExp(`/b/${MENDER_BUILD_ID}/run$`));
   await page.getByRole("button", { name: "Confirm" }).click();
   await expect(page).toHaveURL(/\/p\/[a-z0-9]{10}$/);
@@ -37,8 +36,10 @@ test("/me is one grid: characters with a run and builds alone", async ({ page, c
   await expect(page.getByRole("heading", { level: 1, name: "My characters" })).toBeVisible();
   await expect(page.getByText(/\d+ characters: \d+ with a run, \d+ builds? alone/)).toBeVisible();
   const kyria = page.getByRole("article").filter({ has: page.getByRole("link", { name: "Kyria, Knight of Stendarr" }) });
-  await expect(kyria.getByText("Where the run stands")).toBeVisible();
-  await expect(kyria.getByRole("link", { name: "Play ›" })).toHaveAttribute("href", `/p/${KYRIA_PLAYTHROUGH_ID}`);
+  // The one character card (WO-164): its act line, with Edit and Delete under it.
+  await expect(kyria.getByText(/^Act \d+ of \d+/)).toBeVisible();
+  await expect(kyria.getByRole("link", { name: "Edit" })).toBeVisible();
+  await expect(kyria.getByRole("button", { name: /^Delete/ })).toBeVisible();
   await expect(page.getByRole("heading", { name: "My playthroughs" })).toHaveCount(0);
 });
 

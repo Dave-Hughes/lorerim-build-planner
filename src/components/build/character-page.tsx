@@ -31,6 +31,7 @@ export async function CharacterPage({
   actIndex = null,
   copy = false,
   imported = null,
+  buildLinks = false,
 }: {
   build: BuildRecord;
   viewerId: string | null;
@@ -41,6 +42,8 @@ export async function CharacterPage({
   actIndex?: number | null;
   copy?: boolean;
   imported?: { skipped: number; dropped: string[] } | null;
+  /** On a character's own address (`/p/<id>`) the Build and Guide tabs are the build's page (WO-164). */
+  buildLinks?: boolean;
 }) {
   const { createdAt: _createdAt, updatedAt, featuredAt, ...rest } = build;
   void _createdAt;
@@ -96,6 +99,7 @@ export async function CharacterPage({
         playTab={run ? { node: <PlayBody p={run} isOwner={viewerId === run.ownerId} actIndex={actIndex} />, sub: playSub(run), here: run.snapshot?.level ?? null } : null}
         startRun={!run && isOwner && playthroughsOn() && !build.isSample ? `/b/${id}/run` : null}
         nudge={nudge}
+        tabLinks={run && buildLinks ? { levels: `/b/${id}?tab=levels`, guide: `/b/${id}?tab=guide` } : undefined}
         guide={shownDocs}
       />
     </GameDataProvider>

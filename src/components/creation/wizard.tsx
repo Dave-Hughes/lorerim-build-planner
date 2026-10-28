@@ -28,6 +28,8 @@ import { computeBuild } from "@/lib/rules/engine";
 import type { BuildPlan } from "@/lib/rules/types";
 import { useDismiss } from "@/lib/use-dismiss";
 import { YOUTUBE_ERROR, youtubeVideoId } from "@/lib/builds/youtube";
+import { addRun } from "@/lib/playthroughs/actions";
+import { FIRST_ACT, startObjective } from "@/lib/playthroughs/validate";
 import styles from "./wizard.module.css";
 
 interface WizardProps {
@@ -171,7 +173,9 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
     name: details.name || "Not named yet",
   };
 
-  const finish = () =>
+  // A last step after Details when playthroughs are on (WO-164): What next, a playthrough or finish. Not a step key, so saved drafts keep working.
+  const [whatNext, setWhatNext] = useState(false);
+  const finish = (thenPlan = false) =>
     start(async () => {
       setError(null);
       if (mode === "create") {
@@ -181,6 +185,12 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
         clearDraft();
         // Tapps shows the author round level 1, once (WO-61).
         authorTourPending();
+        if (thenPlan) {
+          // The run Plan a playthrough makes: Act I from the start the character chose, the start's quest as its first objective.
+          const first = plan.start ? d.startByName.get(plan.start) : undefined;
+          const run = await addRun(r.value.id, { name: details.name, line: details.description.slice(0, 140), act: { ...FIRST_ACT, place: first?.place ?? "", goal: "" }, objectives: first?.quest ? [startObjective(first.quest)] : [] });
+          if (run.ok) return router.push(`/p/${run.value.id}/edit/play`);
+        }
         router.push(`/b/${r.value.id}/edit`);
       }
     });
@@ -299,7 +309,8 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
             {step === "traits" && <TraitsStep plan={plan} update={update} />}
             {step === "deity" && <DeityStep plan={plan} update={update} />}
             {step === "mode" && <ModeStep plan={plan} update={update} />}
-            {step === "name" && (
+            {step === "name" && whatNext && <WhatNext name={details.name} pending={pending} onPlan={() => finish(true)} onFinish={() => finish(false)} error={error} />}
+            {step === "name" && !whatNext && (
               <NameStep
                 details={details}
                 updateDetails={updateDetails}
@@ -314,7 +325,11 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
           </GameDataProvider>
 
           <div className={styles.nav}>
-            {stepIndex > 0 ? (
+            {whatNext && step === "name" ? (
+              <button type="button" className="btn" onClick={() => setWhatNext(false)}>
+                Back: {STEP_NAMES.name}
+              </button>
+            ) : stepIndex > 0 ? (
               <button type="button" className="btn" onClick={() => setStep(STEPS[stepIndex - 1])}>
                 Back: {STEP_NAMES[STEPS[stepIndex - 1]]}
               </button>
@@ -333,10 +348,16 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
                 <button type="button" className={mode === "edit" ? "btn" : "btn btn-primary"} onClick={() => setStep(STEPS[stepIndex + 1])} disabled={step === "race" && !plan.race}>
                   Next: {STEP_NAMES[STEPS[stepIndex + 1]]}
                 </button>
-              ) : mode === "edit" ? null : signedIn ? (
-                <button type="button" className="btn btn-primary" onClick={finish} disabled={pending || !details.name.trim() || !plan.race}>
-                  {pending ? "Saving…" : characters ? "Create character" : "Create build"}
-                </button>
+              ) : mode === "edit" || whatNext ? null : signedIn ? (
+                characters ? (
+                  <button type="button" className="btn btn-primary" onClick={() => setWhatNext(true)} disabled={!details.name.trim() || !plan.race}>
+                    Next: What next
+                  </button>
+                ) : (
+                  <button type="button" className="btn btn-primary" onClick={() => finish(false)} disabled={pending || !details.name.trim() || !plan.race}>
+                    {pending ? "Saving…" : "Create build"}
+                  </button>
+                )
               ) : (
                 <span className={styles.signIn}>
                   <span className="muted">Sign in to save it</span>
@@ -349,6 +370,31 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
         </main>
       </div>
     </>
+  );
+}
+
+/** The last step of making a character (WO-164): plan a playthrough now (the run is made and opened), or finish. */
+function WhatNext({ name, pending, onPlan, onFinish, error }: { name: string; pending: boolean; onPlan: () => void; onFinish: () => void; error: string | null }) {
+  return (
+    <section aria-labelledby="what-next" className={styles.whatNext}>
+      <h1 id="what-next" className={`title ${styles.h1}`}>
+        What next
+      </h1>
+      <p className={styles.whatNextLine}>{name} is ready to save. A playthrough plans the character&apos;s run through the game in acts, each with a goal, a place and its quests. You can add one later from the character&apos;s page.</p>
+      <div className={styles.whatNextRow}>
+        <button type="button" className="btn btn-primary" onClick={onPlan} disabled={pending}>
+          {pending ? "Saving…" : "Plan a playthrough"}
+        </button>
+        <button type="button" className="btn" onClick={onFinish} disabled={pending}>
+          Finish
+        </button>
+      </div>
+      {error && (
+        <span role="alert" className="field-error">
+          {error}
+        </span>
+      )}
+    </section>
   );
 }
 

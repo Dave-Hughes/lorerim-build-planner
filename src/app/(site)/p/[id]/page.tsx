@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { auth } from "@/auth";
-import { CharacterPage, tabParam } from "@/components/build/character-page";
+import { CharacterPage } from "@/components/build/character-page";
 import { PlayView } from "@/components/playthrough/play-view";
 import { getBuild } from "@/lib/builds/queries";
 import { playthroughsOn } from "@/lib/features";
@@ -35,5 +35,7 @@ export default async function PlaythroughPage({ params, searchParams }: { params
   const actIndex = Number.isInteger(n) && n >= 1 ? n - 1 : null;
   const build = p.build ? await getBuild(p.build.id, viewerId) : null;
   if (!build || !isKnownVersion(build.gameVersion)) return <PlayView p={p} isOwner={viewerId === p.ownerId} actIndex={actIndex} />;
-  return <CharacterPage build={build} viewerId={viewerId} run={p} tab={tabParam(tab, true, "play", level)} level={Number(level) || 0} actIndex={actIndex} />;
+  // The Build and Guide tabs are the build's page (WO-164): its old addresses on this one go there.
+  if (tab === "levels" || tab === "gear" || tab === "guide" || (!tab && level)) redirect(`/b/${build.id}?tab=${tab === "guide" ? "guide" : "levels"}${!tab && level ? `&level=${level}` : ""}`);
+  return <CharacterPage build={build} viewerId={viewerId} run={p} tab="play" level={0} actIndex={actIndex} buildLinks />;
 }

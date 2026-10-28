@@ -55,6 +55,18 @@ export function PlanRun({
             </span>
           )}
         </span>
+        {/* What one looks like (WO-164): a sample act, faded, so the sentence above isn't all there is. */}
+        <section className={styles.sample} aria-label="A sample act, faded">
+          <div className={styles.sampleAct}>
+            <h2 className={styles.sampleName}>Act I: Helgen to Riverwood</h2>
+            <span className={styles.sampleWhere}>Levels 1 to 5 | Riverwood</span>
+            <ul className={styles.sampleList}>
+              <li>Escape Helgen with your life</li>
+              <li>Take the road to Riverwood and meet Alvor</li>
+              <li>Reach level 5 with Destruction at 25</li>
+            </ul>
+          </div>
+        </section>
       </main>
     </>
   );

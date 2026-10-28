@@ -6,6 +6,17 @@
   flex-direction: column;
   gap: 28px;
 }
+/* A run with no build: the back button, then the build page's hero, then the Play view. */
+.rootNoBuild {
+  display: flex;
+  flex-direction: column;
+}
+.backRow {
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 20px;
+  padding-bottom: 16px;
+}
 /* Play as a tab of the build's page (WO-116), or under the run's own band. */
 .body {
   padding-top: 8px;

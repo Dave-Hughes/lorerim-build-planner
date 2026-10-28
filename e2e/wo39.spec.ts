@@ -71,6 +71,11 @@ test("an admin features Iriel: first on Browse and two columns wide; others don'
   const big = (await cards.nth(0).boundingBox())!;
   const small = (await cards.nth(1).boundingBox())!;
   expect(big.width).toBeGreaterThan(small.width * 1.9);
+  // A wide card across two columns and one row high (WO-164), not a tall one.
+  const bigCard = (await cards.nth(0).locator("a").first().boundingBox())!;
+  const smallCard = (await cards.nth(1).locator("a").first().boundingBox())!;
+  expect(Math.abs(bigCard.height - smallCard.height)).toBeLessThan(12);
+  await page.screenshot({ path: "test-results/wo164-characters-1440.png" });
 
   // With a search it's an ordinary card.
   await page.goto("/characters?q=iriel");

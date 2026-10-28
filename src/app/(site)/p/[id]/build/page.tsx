@@ -1,8 +1,13 @@
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
+import { auth } from "@/auth";
+import { getPlaythrough } from "@/lib/playthroughs/queries";
 
 type Params = Promise<{ id: string }>;
 
-/** The Build tab is gone (WO-116): the build is the character page's Levels tab. */
+/** A character's Build is the build's own page (WO-164): `/p/<id>/build` goes to `/b/<id>`; a run with no build stays on its page. */
 export default async function RunBuildPage({ params }: { params: Params }) {
-  redirect(`/p/${(await params).id}?tab=levels`);
+  const { id } = await params;
+  const p = await getPlaythrough(id, (await auth())?.user?.id ?? null);
+  if (!p) notFound();
+  redirect(p.build ? `/b/${p.build.id}?tab=levels` : `/p/${id}`);
 }

@@ -113,8 +113,9 @@ test("on the site: private on its build's card under My characters, a tick opens
   await page.goto("/me");
   // One grid since WO-114: the run sits on its build's card.
   const card = page.getByRole("article").filter({ has: page.getByRole("link", { name: "Test Shield-Wall", exact: true }) });
-  await expect(card.getByText("Where the run stands")).toBeVisible();
-  await expect(card.getByRole("link", { name: "Play ›" })).toHaveAttribute("href", `/p/${pid}`);
+  // The one character card (WO-164): its act line and the Playthrough mark, and the card opens the character, whose first tab is Play.
+  await expect(card.getByText("Playthrough", { exact: true })).toBeVisible();
+  await expect(card.getByText(/^Act \d+ of \d+/)).toBeVisible();
 
   // Play is the first tab of the build's page (WO-116).
   const playTab = () => page.getByRole("tablist", { name: "Build sections" }).getByRole("tab", { name: /^Play/ });

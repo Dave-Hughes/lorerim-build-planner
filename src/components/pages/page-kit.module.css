@@ -1052,7 +1052,8 @@ a.tag:hover {
     width: 100%;
     box-sizing: border-box;
   }
-  .top > * {
+  /* Not left to the order the stylesheets load in: the search box has its own width. */
+  .top > *:not([hidden]) {
     width: 100%;
     box-sizing: border-box;
   }

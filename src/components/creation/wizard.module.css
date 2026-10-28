@@ -1179,3 +1179,23 @@
     animation-name: step-fade;
   }
 }
+
+/* What next (WO-164): the last step of making a character. */
+.whatNext {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+.whatNextLine {
+  max-width: 560px;
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--soft);
+}
+.whatNextRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}

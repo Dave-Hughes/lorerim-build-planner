@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { auth } from "@/auth";
 import { BuildCard, BuildGrid } from "@/components/build/build-card";
+import { CharacterCard, CharacterGrid } from "@/components/build/character-card";
+import { AiAssisted } from "@/components/ui/ai-assisted";
+import { DeleteBuildButton } from "@/components/build/delete-build-button";
+import recent from "@/components/home/recent.module.css";
 import { SignInButton } from "@/components/site-header";
 import { handleFor, listBuildsByOwner } from "@/lib/builds/queries";
 import { Assistants } from "@/components/account/assistants";
@@ -69,12 +73,47 @@ export default async function MyBuilds() {
       ))}
       {builds.length === 0 ? (
         <p className="muted">None yet.</p>
-      ) : (
-        <BuildGrid>
+      ) : characters ? (
+        // One character card (WO-161, WO-164), its who-can-see-it, Delete and Edit under it.
+        <CharacterGrid>
           {builds.map((b) => {
             const r = runs?.get(b.id);
-            return <BuildCard key={b.id} build={b} mine run={runs ? (r ?? "none") : undefined} />;
+            return (
+              <CharacterCard
+                key={b.id}
+                build={b}
+                run={typeof r === "object" ? r : undefined}
+                under={
+                  <>
+                    {runs && !r && (
+                      <Link href={`/b/${b.id}/run`} className={recent.planLink}>
+                        Plan a playthrough ›
+                      </Link>
+                    )}
+                    <span className="tag tag-sm">{b.visibility === "public" ? "Listed" : b.visibility === "unlisted" ? "Link only" : "Only you"}</span>
+                    {b.hasStory && <span className="tag tag-sm">Story</span>}
+                    {b.draftedBy && (
+                      <span className="muted">
+                        <AiAssisted author={b.author.name} />
+                      </span>
+                    )}
+                    <span className={recent.underActions}>
+                      <DeleteBuildButton id={b.id} name={b.name} />
+                      <Link href={`/b/${b.id}/edit`} className="btn btn-sm">
+                        Edit
+                      </Link>
+                    </span>
+                  </>
+                }
+              />
+            );
           })}
+        </CharacterGrid>
+      ) : (
+        <BuildGrid>
+          {builds.map((b) => (
+            <BuildCard key={b.id} build={b} mine />
+          ))}
         </BuildGrid>
       )}
       {unattached.length > 0 && (

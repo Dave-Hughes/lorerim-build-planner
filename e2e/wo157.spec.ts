@@ -110,7 +110,7 @@ test.describe("at 1440", () => {
     const strip = page.locator("[data-rise]");
     const card = strip.getByRole("link").first();
     await expect(card).toBeVisible();
-    await expect(card.locator("img[src^='/icons/race-']")).toBeVisible();
+    await expect(card.locator("img[src^='/icons/race-'][alt]:not([alt=''])")).toBeVisible();
     await expect(card.getByRole("heading")).not.toBeEmpty();
     await expect(card).toContainText("LV");
     await expect(card.getByLabel(/likes?$/)).toBeVisible();

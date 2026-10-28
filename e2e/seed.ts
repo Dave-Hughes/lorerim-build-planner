@@ -542,6 +542,8 @@ export async function seed() {
 export const KYRIA_PLAYTHROUGH_ID = "e2ekyrya22";
 /** WO-114: a build alone with a Story, for Add a run (the Story becomes the run's first chapter). */
 export const MENDER_BUILD_ID = "e2estry333";
+/** WO-164: a run with no build yet, for the character page's hero without a build. */
+export const NOBUILD_PLAYTHROUGH_ID = "e2enbqq2xa";
 /** Kyria's own build (WO-114): the character's cover is the build's, so hers has one. */
 export const KYRIA_BUILD_ID = "e2ekyryb22";
 
@@ -574,6 +576,9 @@ async function seedKyria(db: any) {
     visibility: "private",
     draftedBy: "Claude",
   });
+  await db.insert(schema.playthroughs).values({ id: NOBUILD_PLAYTHROUGH_ID, ownerId: TEST_USER_ID, buildId: null, name: "Nora Nobuild", line: "A run planned before the character was.", gameVersion: "5.0.4.8", visibility: "private" });
+  const [nora]: { id: number }[] = await db.insert(schema.playthroughActs).values({ playthroughId: NOBUILD_PLAYTHROUGH_ID, position: 1, name: "The first days", levelFrom: 1, levelTo: 5, place: "Riverwood", goal: "Get to Riverwood alive." }).returning({ id: schema.playthroughActs.id });
+  await db.insert(schema.playthroughObjectives).values({ actId: nora.id, position: 1, kind: "once", doneBy: "hand", status: "todo", accepted: true, text: "Walk to Riverwood" });
   const acts: { id: number }[] = await db
     .insert(schema.playthroughActs)
     .values([

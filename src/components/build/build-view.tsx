@@ -85,6 +85,8 @@ interface Props {
   startRun?: string | null;
   /** The owner's nudge on a draft with no cover (WO-118): Details, at the cover. */
   nudge?: string | null;
+  /** A tab that is another page (WO-164): on a character's page the Build and Guide tabs go to the build's own page. */
+  tabLinks?: Partial<Record<BuildTab, string>>;
 }
 
 export type BuildTab = "play" | "levels" | "guide";
@@ -119,7 +121,8 @@ function useNarrower(px: number): boolean {
  * navigation, then the level card (what to do, in the order the game asks, with the author's
  * note), then the reference (attributes, skills, perks).
  */
-export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab = "levels", signInToCopy, signInToLike, autoCopy, guide = {}, admin = null, playTab = null, startRun = null, nudge = null }: Props) {
+export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab = "levels", signInToCopy, signInToLike, autoCopy, guide = {}, admin = null, playTab = null, startRun = null, nudge = null, tabLinks }: Props) {
+  const router = useRouter();
   const d = useGameData();
   const reading = useReading();
   const noted = useMemo(() => notedLevels(guide), [guide]);
@@ -145,6 +148,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
     window.history.replaceState(null, "", url);
   };
   const setTab = (t: BuildTab) => {
+    if (tabLinks?.[t]) return router.push(tabLinks[t]!);
     setTabState(t);
     setUrl("tab", t === home ? null : t);
   };
@@ -1703,7 +1707,7 @@ function Cover({
           {ownerControls}
           {startRun && (
             <Link className="btn" href={startRun}>
-              Start a run
+              Plan a playthrough
             </Link>
           )}
           {isOwner ? (
