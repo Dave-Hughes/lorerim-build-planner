@@ -5022,6 +5022,14 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-173  The home page as the board: the full sky signed in, and a map strip that moves (Mac, 28 Oct 2026)
+Status: queued (Mac; after WO-172)
+
+**Why.** Dave, 28 Oct 06:03, signed in on his Mac: "the hero area isn't the same as you designed" and "the map on home screen also isn't animated or anything". Bob read it in his Chrome (1512 wide): signed in, the hero is the 480 px compact one, cut from the bottom of the scene, so the sky (aurora, moon, stars) and Alduin's flight across it are mostly gone; the board `HomeWow` shows the whole night sky. The map strip's drift runs, but it moves the map 3% over 70 seconds (`scale(1.06)` to `scale(1.14) translate(-3%, 2%)`), which no one can see; the board pans the paper map about 400 px over a minute.
+- [ ] **Signed in gets the same hero as signed out**: full height, the whole sky with the aurora, the moon and Alduin crossing it, the stars, the embers and the drift with the pointer. Only the buttons go (Make a character, Browse characters); the search box stays. The title stays one line (Dave, WO-159). WO-170's "signed in keeps the shorter hero" was Bob's mistake in the order; this replaces it.
+- [ ] **The map strip moves so you can see it:** the paper map larger than the strip (about 1.5 times its width, so the land's detail shows) and panning slowly across Skyrim, as the board: about 400 px over a minute, then back, never showing past the map's frame. The pins ride with it and pulse plainly (the board's ring). Reduced motion keeps it still; on a phone it pans too, slower.
+- [ ] Bob checks both in Dave's Chrome signed in and signed out (two screenshots a few seconds apart to show the strip has moved). Screenshots at 1440 signed in and out, then `for Bob`.
+
 ## WO-172  Places that share a name are still separate places (Mac, 28 Oct 2026)
 Status: building (Mac)
 
