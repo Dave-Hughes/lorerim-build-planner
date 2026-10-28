@@ -5041,7 +5041,7 @@ Status: building (Mac)
 - [ ] **The home map strip's line** says "Search them, filter them by danger": with the Danger sliders gone, say what the Map page does ("search them, filter them by kind, and follow a quest from one to the next").
 
 ## WO-175  Maps for the other lands: what LoreRim already has (PC, 28 Oct 2026)
-Status: queued (PC; after WO-171's two boxes)
+Status: building (PC)
 
 **Why.** Dave, 28 Oct: "we only have the core map for Skyrim … not the other locations you can travel to." The Map page shows Tamriel only. Solstheim (71 places), Vigilant's realm (58), Gray Fox Cowl's Hammerfell (32), Wyrmstooth (25), Hyorker Isle (10), the Shivering Isles mod (8) and a few small worlds have positions but no map. Find out what exists before anyone draws anything. Nothing is built from this order.
 - [ ] **What the load order ships:** for each worldspace with places, is there a map texture in the winning files (Flat World Map Framework's `textures/terrain/<world>/`, a mod's own map, or the game's LOD), its size, which mod provides it, and its author and Nexus page.
