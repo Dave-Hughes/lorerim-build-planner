@@ -5032,7 +5032,7 @@ Status: queued (PC)
 - [ ] Tests, then `for Bob`.
 
 ## WO-170  The home page comes alive (Mac, 27 Oct 2026)
-Status: for Bob (all seven boxes built; typecheck, lint, 736 unit tests, the build and the full e2e pass, 523 of 523)
+Status: queued (Mac; FIRST: the home page is a 500 on the preview)
 
 **Why.** Dave, 27 Oct, after WO-168's rows: "bring some of that same wow factor to the home screen". Board `HomeWow` (canvas row 37); Dave: "Love it, lets keep the other secitons too. New in the world and your characters, can come after the map."
 - [x] **The order of the page**, signed in or out: the hero; Recent characters (as built, WO-157 Part 10); **Three stories to live through** (new); **the map strip** (new); New in the world (as built); then Your characters signed in (as built, WO-157 Part 9) or Three ways to use it signed out (as built). Signed in keeps the shorter hero, with the motion below.
@@ -5051,6 +5051,11 @@ Status: for Bob (all seven boxes built; typecheck, lint, 736 unit tests, the bui
 - **Reduced motion:** no Alduin, star, embers, drift or pulse (they are not drawn; the layers don't drift); the cards still lift and show their colour, and the dragon, tentacles and bats don't move. **A phone:** the cards stack at 220 px with the layers still and no hover; the strip is 300 px with the text over a stronger fade and no drift; no pointer drift (it needs a wide window with a hover).
 - Tests: `e2e/wo170.spec.ts` (7): the order, the hero's motion and drift (the fire moves more than the sky, the title doesn't), the cards and their hover, the strip and its credit, reduced motion, a phone, and signed in. Screenshots in `test-results/wo170-*`: the hero, a card hovered and the strip at 1440 (signed out), the home page, the stories and the strip at 390, and the signed-in page at 1440.
 - **Not seen:** the board `HomeWow` itself (I build from the order's text), so the timing and sizes of Alduin, the star and the embers are mine to be judged.
+
+### Bob's review (28 Oct, 02:50)
+- [ ] **The home page doesn't load on the preview.** `/` returns 500 ("This page couldn't load") signed out, at 1440 and 390, every try from 02:45; every other page I opened loads. It loads locally with `next dev` on the dev database, so it's something only the deployed preview hits. Bob couldn't read the preview's logs (the Vercel connection here is refused for this team), so read them yourself (`vercel logs` on the staging deployment), fix it, and say what it was. A guess, unchecked: the map strip reads `maps.json` and `places.json` with `readFileSync(process.cwd() …)`; if the home page's function doesn't trace those files, `next.config.ts`'s `outputFileTracingIncludes` needs them for `/` as it has the guide's.
+- [ ] **A check that would have caught it:** after a push, open `/` and the pages the order touched on the preview itself (not only the local e2e), and say so in the notes.
+- [ ] Then the rest of the order is reviewed as usual; screenshots of the home at 1440 and 390, a story card hovered, then `for Bob`.
 
 ## WO-164  A character is one page, with or without a playthrough (Mac, 27 Oct 2026)
 Status: for Bob (all eight boxes built; typecheck, lint, tests, the build and the full e2e pass, 493 of 495, the two that failed in the full run pass alone)
@@ -5080,7 +5085,7 @@ Status: for Bob (all eight boxes built; typecheck, lint, tests, the build and th
 - Bob, 28 Oct, 00:45: signed out on the preview, the Featured character is the wide card across two columns. The rest needs signing in (Kyria's run, `/me`, What next, the empty Playthrough tab); Bob checks those in Dave's Chrome in the morning. Jeff on Mac: go on to WO-167; this stays `for Bob`.
 
 ## WO-169  The Map page (Mac, 27 Oct 2026)
-Status: for Bob (all eleven boxes built; typecheck, lint, 733 unit tests, the build and the full e2e pass, 514 of 516, the two that failed in the full run were the World menu's new Map item, fixed and passing)
+Status: queued (Mac; Bob's review, after WO-170's fix)
 
 **Why.** Dave, 27 Oct: a dedicated map page with quick search and filters, "a unique experience". Board `MapPage` (canvas row 37); Dave: "that map view is incredible". Uses LoreRim's paper map from WO-166, credited on every view.
 - [x] `/map`, and **Map** in the World panel (with `quest-travel` as its icon) and the phone menu. The map fills the window under the header; drag to pan, scroll or pinch to zoom, + / − / N (back to north and the whole map) bottom right. At a distance pins cluster into counts; closer in, the cities' and towns' names show on dark plates; closest, every place's name.
@@ -5106,6 +5111,14 @@ Status: for Bob (all eleven boxes built; typecheck, lint, 733 unit tests, the bu
 - **A phone:** the map is full screen; the panel is a sheet from the bottom that starts folded to its bar ("Search and filters"), with search first; a drawer is a second sheet, and opening one folds the panel and puts the place in the upper part of the map.
 - **Not done, as the order says:** other lands' maps, and discovered places.
 - Tests: `e2e/wo169.spec.ts` (10): the whole map at both widths, search and the drawer, a quest's route (Forbidden Legend, four places), a person, the filters, the address, the band's link, and signed out against signed in. The World menu's tests count Map. Screenshots in `test-results/wo169-*`: whole map, search, a quest's route, a drawer and a signed-in character at 1440; whole map, search and drawer at 390.
+
+### Bob's review (28 Oct, 02:50)
+Read on the preview: the whole map, `?place=bleak-falls-barrow` (drawer), `?quest=forbidden-legend` (the route runs Folgunthur, Geirmund's Hall, Saarthal, Reachwater Rock, in the quest's order), search for Lydia, and the phone. Search, the drawer, the route, the grouped Show chips and the credit all work. Fix:
+- [ ] **The panel hides the west of Skyrim.** On load the whole map sits under the panel's edge: Markarth and the Reach are behind it, so a city is missing from the opening view. Fit the whole map into the space beside the panel (and above the phone's sheet); every city in view and named.
+- [ ] **The whole map reads as a grid of numbered squares** (about 80 counts across it), not the board's pins. Count only pins that actually overlap (about 20 px apart), so the opening view is diamonds with the cities named, and counts only where places pile up.
+- [ ] **Phone, a place picked:** `/map?place=riverwood` at 390 opens the drawer, but the map above it shows no pin at all. The picked place sits in the middle of the map's visible part, its name on its plate.
+- [ ] **Labels and the corner controls:** on a phone the place band (WO-167) draws Anise's Cabin's plate under the scale bar and credit. A label never sits under a control; move it or leave it out.
+- [ ] Screenshots: whole map at 1440 and 390, Riverwood picked at 390, then `for Bob`.
 
 ## WO-168  The three main stories, each its own world (Mac, 27 Oct 2026)
 Status: done
@@ -5139,7 +5152,7 @@ Jeff's notes on the review (Mac, 27 Oct):
 - Bob, 27 Oct, 23:05: tentacles load and sway under the pointer; the line reads the rows' order. Done.
 
 ## WO-167  The map on place pages and on Places (Mac, 27 Oct 2026)
-Status: for Bob (Bob's review done; typecheck, lint, tests, the build and the full e2e pass, 516 of 516)
+Status: done
 
 **Why.** In-game pictures are parked (WO-158). The map is LoreRim's own in-game map, Skyrim Paper Map by Caro Tuts for Flat World Map Framework, so the site shows what players open in game. Its mod author gave Dave the OK on Discord (27 Oct, 18:46) on one condition: **every place the map appears carries a small credit and link to the mod.** Board: `PlacePaperMap` (canvas row 36; ignore `PlaceMap`, the pixel map Dave didn't take).
 - [x] **A place's page**: under the title and tags, a full-width map band (400 px tall at 1440), the map cut around the place, the place's pin large and orange with a slow pulse, the places around it as small diamonds coloured by kind (blue towns, red dangerous places, grey the rest), names on the nearest few, every pin a link with the WO-157 hover preview; a compass N, a scale bar, a small legend. Under it, **Getting there**: the direction and distance from the nearest town and whether it's above or below it ("West of Riverwood, a short walk, and well above it"), computed from the positions.
@@ -5174,6 +5187,8 @@ Jeff's notes on the review (Mac, 28 Oct):
 - **The phone band** uses the half-size tiles (zoom 0, drawn at half scale), so the stage is the texture at 0.5 and Bleak Falls Barrow has Riverwood beside it; the scale bar follows.
 - **Ten kinds** (`src/lib/places/groups.ts`, with a test that fails if the index gains a type no group names): Cities and towns, Inns and shops, Homes, Temples and guilds, Forts and keeps, Caves and mines, Ruins, Camps and lairs, Shrines and stones, Landmarks (the rest). Places' chips, its map and its lists, and the Map page's chips follow them, each with its count; `?type=<group>` (`?type=Inn` and the other old raw types still land on their group). On the Map page the address's `types` holds group keys.
 - Screenshots: `test-results/wo167-bleak-falls-barrow-1440.png`, `-390.png` and `wo167-places-1440.png`, `-390.png`.
+
+- Bob, 28 Oct, 02:50: no half plates at 1440; the phone band uses the half-size tiles and shows Riverwood; Places has ten groups. Done (one phone label nit carried to WO-169).
 
 ## WO-166  Every place's position, and the map images, from the game files (PC, 27 Oct 2026)
 Status: done
