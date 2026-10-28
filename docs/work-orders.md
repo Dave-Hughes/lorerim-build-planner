@@ -5067,6 +5067,7 @@ Status: queued (PC)
 ### Part 1. Positions
 - [ ] `places_raw.json` gains each place's `world` (the worldspace's editor id) and `pos` (x, y, z), from its map marker, else its location's marker (LCTN `MNAM`), reading the winning record in the active profile's load order (`esp.active_profile()`), as `places.py` already reads markers. A place in a town gets `inTown` and no position of its own.
 - [ ] The 210 the proof couldn't place: for each, try the cells whose location (`XLCN`) is it (an exterior cell's centre), then an interior's door out to the world (`XTEL` back to an exterior door). Report what's left by plugin and type, and why each kind failed.
+- [ ] **The nine cities aren't places at all** in `places_raw.json` (Whiterun, Solitude, Windhelm, Riften, Markarth, Winterhold, Dawnstar, Falkreath, Morthal); their map markers are in Skyrim.esm with their own marker types (e.g. `WhiterunMapMarkerREF`, type 40; `SolitudeMapmarkerRef`, 42). Add them as places of type City, with their positions; their buildings' `inTown` then points at them.
 - [ ] The 34 places listed twice and the leftovers ("E3 Bleak Falls Barrow", "Sewers", "Unknown Gate"): find why each is there, merge or drop them in the build with a test, and say which in the log.
 
 ### Part 2. The map, from LoreRim's own paper map
