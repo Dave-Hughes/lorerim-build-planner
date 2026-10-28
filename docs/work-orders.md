@@ -5129,7 +5129,7 @@ Jeff's notes on the review (Mac, 27 Oct):
 - Bob, 27 Oct, 23:05: tentacles load and sway under the pointer; the line reads the rows' order. Done.
 
 ## WO-167  The map on place pages and on Places (Mac, 27 Oct 2026)
-Status: queued (Mac; Bob's review, three boxes; after the WO-169 build in progress)
+Status: building (Mac; Bob's review)
 
 **Why.** In-game pictures are parked (WO-158). The map is LoreRim's own in-game map, Skyrim Paper Map by Caro Tuts for Flat World Map Framework, so the site shows what players open in game. Its mod author gave Dave the OK on Discord (27 Oct, 18:46) on one condition: **every place the map appears carries a small credit and link to the mod.** Board: `PlacePaperMap` (canvas row 36; ignore `PlaceMap`, the pixel map Dave didn't take).
 - [x] **A place's page**: under the title and tags, a full-width map band (400 px tall at 1440), the map cut around the place, the place's pin large and orange with a slow pulse, the places around it as small diamonds coloured by kind (blue towns, red dangerous places, grey the rest), names on the nearest few, every pin a link with the WO-157 hover preview; a compass N, a scale bar, a small legend. Under it, **Getting there**: the direction and distance from the nearest town and whether it's above or below it ("West of Riverwood, a short walk, and well above it"), computed from the positions.
