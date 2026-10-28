@@ -32,11 +32,11 @@ const PLURAL: Record<string, string> = { Bandit: "Bandits", Draugr: "Draugr", Sk
 /** Where it is from the town: "next to Riverwood", "a short walk from Whiterun", else "near Riverwood". */
 const nearWords = (t: { town: string; walk?: string }) => (t.walk === "next to it" ? `next to ${t.town}` : t.walk ? `${t.walk} from ${t.town}` : `near ${t.town}`);
 
-/** "after 300 days once cleared, 30 ordinarily" as "In 30 days, or 300 once cleared". */
+/** "after 300 days once cleared, 30 ordinarily" as "In 30 days, or 300 days once cleared". */
 function respawnWords(r: string): string {
   if (r === "never") return "Never. Once cleared, it stays cleared.";
   const m = /^after (\d+) days once cleared, (\d+) ordinarily$/.exec(r);
-  return m ? `In ${m[2]} days, or ${m[1]} once cleared` : r.charAt(0).toUpperCase() + r.slice(1);
+  return m ? `In ${m[2]} days, or ${m[1]} days once cleared` : r.charAt(0).toUpperCase() + r.slice(1);
 }
 
 const bossRange = (level: string | undefined): [number, number] | null => {
@@ -82,10 +82,10 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return { title: placeLabel(p), ...siteMetadata(placeHrefOf(p), placeLabel(p), [placeType(p.type), p.hold].filter(Boolean).join(" in ")) };
 }
 
-/** Which expansion or mod a place's record is from, by its form id's plugin: "Vanilla" for the base game. */
+/** Which expansion or mod a place's record is from, by its form id's plugin: "Base game". */
 const originOf = (id: string) => {
   const plugin = id.split(":")[0].toLowerCase();
-  return plugin === "skyrim.esm" ? "Vanilla" : ({ "dawnguard.esm": "Dawnguard", "dragonborn.esm": "Dragonborn", "hearthfires.esm": "Hearthfires" } as Record<string, string>)[plugin] ?? null;
+  return plugin === "skyrim.esm" ? "Base game" : ({ "dawnguard.esm": "Dawnguard", "dragonborn.esm": "Dragonborn", "hearthfires.esm": "Hearthfires" } as Record<string, string>)[plugin] ?? null;
 };
 
 /**
@@ -183,10 +183,9 @@ export default async function PlacePage({ params }: { params: Params }) {
         title={placeLabel(place)}
         tags={
           <>
-            <span className={styles.tag}>{placeType(place.type)}</span>
-            {place.hold && <span className={styles.tag}>{place.hold}</span>}
-            {origin && <span className={styles.tag}>{origin}</span>}
-            {near && <span className={styles.tagText}>{near.charAt(0).toUpperCase()}{near.slice(1)}</span>}
+            <span className={l.tagPlain}>{placeType(place.type)}</span>
+            {place.hold && <span className={l.tagPlace}>{place.hold} hold</span>}
+            {origin && <span className={l.tagPlain}>{origin}</span>}
           </>
         }
       />

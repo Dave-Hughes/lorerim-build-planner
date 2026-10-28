@@ -36,7 +36,7 @@ for (const width of [1440, 390]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/people/aela-the-huntress");
     const glance = page.getByRole("region", { name: "At a glance" });
-    for (const w of ["Where to find them", "What they are", "Follows you", "Quests"]) await expect(glance).toContainText(w);
+    for (const w of ["Where to find her", "What she is", "Follows you", "Quests"]) await expect(glance).toContainText(w);
     await expect(glance).toContainText("Jorrvaskr");
     const strip = page.getByRole("img", { name: /^Through the day:/ });
     await expect(strip).toBeVisible();
@@ -85,7 +85,8 @@ test("review: places on a person page are links, one quest count, Follows you sa
   await expect(glance).toContainText("in 3 more");
   await expect(main).toContainText("She gives 9 quests, and is in 3 more");
   await expect(page.getByRole("region", { name: /quests/i }).filter({ hasText: "Gives 9 quests, and is in 3 more" })).toHaveCount(1);
-  await expect(glance).toContainText("Yes, how isn't sure yet");
+  await expect(glance).toContainText("Yes");
+  await expect(glance).toContainText("How isn't sure yet");
   for (const q of ["Brotherhood", "Blood's Honor", "Glory of the Dead"]) await expect(main.getByRole("link", { name: q, exact: true })).toHaveAttribute("href", /\/quests\//);
   await page.screenshot({ path: "test-results/wo165-aela-1440.png", fullPage: true });
   await page.goto("/people/lydia");

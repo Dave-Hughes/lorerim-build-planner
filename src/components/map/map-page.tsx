@@ -305,6 +305,22 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
   // What to draw: names as you come in, and never two plates on top of each other (WO-169 review): the more important name stays (the picked
   // place, a route's stops, the cities, then the towns) and the lesser one is dropped.
   const items = useMemo(() => {
+    // What sits over the map, in its own pixels: the panel, the drawer, the zoom buttons and the credit (WO-177).
+    type Box = [number, number, number, number];
+    const wide = size.w >= 700;
+    const shift = selected && wide ? 352 : 0;
+    const covered: Box[] = wide
+      ? [
+          panelOpen ? [12, 12, 342, size.h - 12] : [12, 12, 342, 64],
+          ...(selected ? ([[size.w - 352, 12, size.w - 12, size.h - 12]] as Box[]) : []),
+          [size.w - 12 - 36 - shift - 6, size.h - 52 - 120 - 6, size.w - 12 - shift + 6, size.h - 52 + 6],
+          [size.w - 12 - 290 - shift, size.h - 12 - 34, size.w - 12 - shift, size.h - 12],
+        ]
+      : [
+          [0, size.h - (selected ? size.h * 0.58 : panelOpen ? size.h * 0.52 : 56), size.w, size.h],
+          [size.w - 12 - 36 - 6, 12 - 6, size.w - 6, 12 + 120 + 6],
+          [8, 8, size.w - 84, 40],
+        ];
     const out: { p: MapPlace; x: number; y: number; named: boolean; side: "right" | "left" }[] = [];
     for (const p of places) {
       const { x, y } = toScreen(p.px, p.py);
@@ -312,9 +328,14 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
       if (!shows(p)) continue;
       const picked = selected === p.slug || inRoute.has(p.slug) || lit.has(p.slug);
       const w = p.name.length * 7.4 + 22;
-      // A name that would run under the open drawer (352 px of the right edge on a wide window) goes on the pin's left.
-      const side = x + 14 + w > size.w - (selected && size.w >= 700 ? 352 : 6) && x - 14 - w > 6 ? "left" : "right";
-      out.push({ p, x, y, named: picked || p.kind === "city" || (p.kind === "town" && k >= 0.28) || k >= 0.85, side });
+      // A name goes on the pin's right, or its left when the right is under a control, the panel or the drawer, or off the edge; with neither
+      // side clear it is not drawn (WO-177). The picked place is always named.
+      const rightBox: Box = [x + 8, y - 12, x + 14 + w, y + 12];
+      const leftBox: Box = [x - 14 - w, y - 12, x - 8, y + 12];
+      const blocked = (b: Box) => b[0] < 6 || b[2] > size.w - 6 || covered.some((o) => b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1]);
+      const side = !blocked(rightBox) ? "right" : !blocked(leftBox) ? "left" : "right";
+      const clear = side === "left" || !blocked(rightBox);
+      out.push({ p, x, y, named: (picked || clear) && (picked || p.kind === "city" || (p.kind === "town" && k >= 0.28) || k >= 0.85), side });
     }
     const rank = (it: (typeof out)[number]) => (selected === it.p.slug || inRoute.has(it.p.slug) || lit.has(it.p.slug) ? 0 : it.p.kind === "city" ? 1 : it.p.kind === "town" ? 2 : 3);
     const taken: [number, number, number, number][] = [];
@@ -327,7 +348,7 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
     }
     return out;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [places, toScreen, size.w, size.h, k, selected, types, onlyQuests, inRoute, lit]);
+  }, [places, toScreen, size.w, size.h, k, selected, types, onlyQuests, inRoute, lit, panelOpen]);
   // Counts only where pins really pile up (WO-169 review): places less than about 14 px apart (their diamonds touch) are one count, so the opening view is diamonds with
   // the cities named. What a filter took out is not counted, and the picked place, a route's stops and a character's act never are.
   const { singles, clusters } = useMemo(() => {
@@ -505,7 +526,17 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
             <section aria-label="Show" className={s.group}>
               <h2 className={s.h2}>Show</h2>
               <div className={s.chips}>
-                <button type="button" className={`${s.chip} ${!types.length ? s.chipOn : ""}`} onClick={() => setTypes([])}>
+                {/* All is lit only while nothing narrows the map: no kind, no "with a quest", no route (WO-177). */}
+                <button
+                  type="button"
+                  aria-pressed={!types.length && !onlyQuests && !(route && showRoute)}
+                  className={`${s.chip} ${!types.length && !onlyQuests && !(route && showRoute) ? s.chipOn : ""}`}
+                  onClick={() => {
+                    setTypes([]);
+                    setOnlyQuests(false);
+                    setRoute(null);
+                  }}
+                >
                   All
                 </button>
                 {groupCounts.map((g) => (

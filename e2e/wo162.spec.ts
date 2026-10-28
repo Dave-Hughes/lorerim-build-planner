@@ -17,7 +17,7 @@ for (const width of [1440, 390]) {
     const people = page.getByRole("region", { name: "Who lives here" });
     await expect(people).toContainText("Riverwood Trader");
     await expect(people.getByRole("link", { name: "Lucan Valerius" })).toHaveAttribute("href", "/people/lucan-valerius");
-    await expect(people).toContainText("general goods merchant");
+    await expect(people).toContainText("General goods merchant");
     await expect(people.getByText("Sells").first()).toBeVisible();
     await expect(people.getByText("Trains Marksman")).toBeVisible();
     await expect(people.getByText("Follower").first()).toBeVisible();

@@ -65,7 +65,7 @@ function Words({ text, parts }: { text: string; parts?: Piece[] }) {
     <>
       {parts.map((p, i) =>
         p.href ? (
-          <Link key={i} href={p.href} className={l.inline}>
+          <Link key={i} href={p.href} className={`${l.inline} ${p.href.startsWith("/places/") ? l.inlinePlace : ""}`}>
             {p.text}
           </Link>
         ) : (

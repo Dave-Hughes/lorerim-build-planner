@@ -40,3 +40,12 @@ export function modsInOrder(...lists: (readonly Mod[] | null | undefined)[]): { 
   const all = lists.flatMap((l) => l ?? []).filter((m) => (seen.has(m.name.toLowerCase()) ? false : (seen.add(m.name.toLowerCase()), true)));
   return { required: all.filter((m) => m.need === "required"), recommended: all.filter((m) => m.need === "recommended") };
 }
+
+/**
+ * A mod's own short name for a table cell (WO-177): the folder names the load order uses carry a subtitle after " - " ("The Gray Cowl of
+ * Nocturnal - 10th anniversary", "Follower Dialogue Expansion - Faralda"), which the full name in the cell's title still has.
+ */
+export function shortModName(name: string): string {
+  const head = name.split(/\s+[-–—]\s+/)[0].trim();
+  return head.length >= 4 ? head : name;
+}

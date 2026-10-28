@@ -101,7 +101,9 @@ export function MapView({ entry, pins, here, hereLabel, labelled = 0, mode, clas
   useEffect(() => {
     const el = box.current;
     if (!el || mode !== "whole") return;
+    // A plain wheel scrolls the page (WO-177: the map is the page's width, and the wheel would trap the pointer); a trackpad pinch arrives as Ctrl and a wheel.
     const wheel = (e: WheelEvent) => {
+      if (!e.ctrlKey) return;
       e.preventDefault();
       zoomTo(Math.min(fit * 6, Math.max(fit, z * (e.deltaY < 0 ? 1.18 : 1 / 1.18))), { x: e.clientX, y: e.clientY });
     };

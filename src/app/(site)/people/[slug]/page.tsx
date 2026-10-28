@@ -19,6 +19,7 @@ import { questHref } from "@/lib/quests/slugs";
 import { dayHours, mainPlace } from "@/lib/people/day";
 import l from "@/components/quests/line-page.module.css";
 import { questsOf } from "@/lib/people/quests";
+import { questCountSentence } from "@/lib/people/quest-count";
 import { siteMetadata } from "@/lib/og/metadata";
 import styles from "@/components/pages/page-kit.module.css";
 
@@ -89,7 +90,7 @@ export default async function PersonPage({ params }: { params: Params }) {
   // One person is he or she by the record's sex, never "they"; and only what is known: race, town, and the quests (WO-154 Part 4).
   const he = person.sex === "female" ? "She" : person.sex === "male" ? "He" : null;
   const what = person.race ? `A${/^[AEIOU]/i.test(person.race) ? "n" : ""} ${person.race}${person.inTown ? ` in ${person.inTown}` : ""}.` : person.inTown ? `Lives in ${person.inTown}.` : "";
-  const gave = countWords ? `${he ?? person.name} ${countWords.charAt(0).toLowerCase()}${countWords.slice(1)}.` : "";
+  const gave = questCountSentence(he ?? person.name, gives.length, quests.length);
   const lede = [what, gave].filter(Boolean).join(" ");
 
   const subject = they === "her" ? "she" : they === "him" ? "he" : "they";
@@ -225,16 +226,18 @@ export default async function PersonPage({ params }: { params: Params }) {
       key: "where",
       icon: "quest-travel",
       tone: "teal" as const,
-      label: "Where to find them",
+      label: `Where to find ${they}`,
       value: L(mostly?.main ?? person.inTown ?? person.cell ?? "Not known yet"),
       sub: L(read?.firstMeet ? `First met: ${short(read.firstMeet.replace(/\.$/, ""), 90)}` : mostly && mostly.places.length > 1 ? `Also ${mostly.places.slice(1, 3).join(", ")}` : "Where they are through the day isn't known yet"),
       small: true,
     },
-    ...(roleText ? [{ key: "role", icon: "quest-people", tone: "orange" as const, label: "What they are", value: L(roleText ?? ""), sub: L([person.race, person.inTown].filter(Boolean).join(" in ")), small: roleText.length > 22 }] : []),
+    ...(roleText ? [{ key: "role", icon: "quest-people", tone: "orange" as const, label: `What ${subject} ${subject === "they" ? "are" : "is"}`, value: L(roleText ?? ""), sub: L([person.race, person.inTown].filter(Boolean).join(" in ")), small: roleText.length > 22 }] : []),
     ...(trainer ? [{ key: "trains", icon: "tab-levels", tone: "green" as const, label: "Trains", value: trainer.skill, sub: trainer.cap ? `Up to ${trainer.cap}` : undefined }] : sellsText ? [{ key: "sells", icon: "quest-rewards", tone: "gold" as const, label: "Sells", value: sellsText, sub: read?.sells ? short(read.sells.replace(/^[^,;(]*[,;(]\s*/, ""), 70) || undefined : undefined, small: sellsText.length > 20 }] : []),
-    ...(person.follower ? [{ key: "follows", icon: "quest-followers", tone: "orange" as const, label: "Follows you", value: notSure.has("joins") ? "Yes, how isn't sure yet" : "Yes", small: notSure.has("joins"), sub: L(read?.joins ? short(read.joins, 110) : "How to recruit isn't known yet") }] : []),
-    ...(quests.length ? [{ key: "quests", icon: "quest-side-stories", tone: "violet" as const, label: "Quests", value: gives.length ? `Gives ${plural(gives.length)}` : `In ${plural(quests.length)}`, sub: [alsoIn && gives.length ? `and is in ${alsoIn} more` : "", quests.slice(0, 2).map((q) => q.name).join("; ")].filter(Boolean).join(". ") }] : []),
+    ...(person.follower ? [{ key: "follows", icon: "quest-followers", tone: "orange" as const, label: "Follows you", value: "Yes", sub: notSure.has("joins") ? "How isn't sure yet" : L(read?.joins ? short(read.joins, 110) : "How to recruit isn't known yet") }] : []),
+    ...(quests.length ? [{ key: "quests", icon: "quest-side-stories", tone: "violet" as const, label: "Quests", value: gives.length ? `Gives ${plural(gives.length)}` : `In ${plural(quests.length)}`, sub: [alsoIn && gives.length ? `and is in ${alsoIn} more` : "", (gives.length ? gives : quests).slice(0, 2).map((q) => q.name).join("; ")].filter(Boolean).join(". ") }] : []),
   ].slice(0, 5);
+  // On a phone the sections are the first screen: the cells that repeat one (where, what they sell or train, whether they follow, their quests) are left out, and the role stays.
+  if (cells.some((c) => c.key === "role")) for (const c of cells) if (c.key !== "role") c.hidePhone = true;
 
   return (
     <main className={l.root}>
@@ -249,7 +252,8 @@ export default async function PersonPage({ params }: { params: Params }) {
             {person.inTown && <span className={styles.tag}>{person.inTown}</span>}
             {role && <span className={styles.role}>{role}</span>}
             {person.follower && <span className={styles.role}>Follower</span>}
-            {person.marriage && <span className={styles.role}>Can marry</span>}
+            {/* A tag says only what the page is sure of (WO-177): a marriage the read is not sure of is in Not sure yet, not in a tag. */}
+            {person.marriage && !notSure.has("marries") && <span className={styles.role}>Can marry</span>}
             {gives.length > 0 && <span className={styles.role}>Gives quests</span>}
             {sells && <span className={styles.role}>Sells goods</span>}
             {trainer && <span className={styles.role}>Trains {trainer.skill}</span>}
@@ -267,7 +271,7 @@ export default async function PersonPage({ params }: { params: Params }) {
       <div className={styles.cols}>
         <div className={styles.body}>
           {read && (read.firstMeet || read.day.length > 0) && (
-            <Section id="where" icon="quest-travel" title="Where to find them">
+            <Section id="where" icon="quest-travel" title={`Where to find ${they}`}>
               {read.firstMeet && (
                 <p className={styles.firstMeet}>
                   <b>First meeting.</b> {L(cap(read.firstMeet))}
@@ -314,7 +318,7 @@ export default async function PersonPage({ params }: { params: Params }) {
                       </div>
                     );
                   })}
-                  {sure("day") && <p className={styles.dayNote}>Where they are through the day: not sure.</p>}
+                  {sure("day") && <p className={styles.dayNote}>Where {subject} {subject === "they" ? "are" : "is"} through the day: not sure.</p>}
                 </div>
               )}
               {read.changes.length > 0 && (
@@ -337,7 +341,7 @@ export default async function PersonPage({ params }: { params: Params }) {
               {quests.map((q) => (
                 <div key={q.name} className={`${styles.qrow} ${read ? styles.qrowRead : ""}`}>
                   {q.href ? <PreviewLink href={q.href}>{q.name}</PreviewLink> : <b className={styles.qname}>{q.name}</b>}
-                  <span>{L(q.how)}</span>
+                  <span className={styles.qdesc}>{L(q.how)}</span>
                 </div>
               ))}
               {sure("quests") && <p className={styles.dayNote}>Which quests {they === "them" ? "they are" : they === "her" ? "she is" : "he is"} in: not sure.</p>}

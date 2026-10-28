@@ -74,9 +74,9 @@ test("filters apply as you pick them: From, Level, Hold, the pills and the searc
   await expect(page.getByText("Nothing matches.")).toBeVisible();
 });
 
-test("quest XP: None where LoreRim pays nothing for the quest's type (A Scroll For Anska, Ancestral Worship, Forbidden Legend), a number where it pays", async ({ page }) => {
+test("quest XP: No XP where LoreRim pays nothing for the quest's type (A Scroll For Anska, Ancestral Worship, Forbidden Legend), a number where it pays", async ({ page }) => {
   await page.goto("/quests/c/side-stories");
-  for (const name of ["A Scroll For Anska", "Ancestral Worship", "Forbidden Legend"]) await expect(rows(page).filter({ has: page.getByRole("link", { name }) }).locator("td").last()).toHaveText("None");
+  for (const name of ["A Scroll For Anska", "Ancestral Worship", "Forbidden Legend"]) await expect(rows(page).filter({ has: page.getByRole("link", { name }) }).locator("td").last()).toHaveText("No XP");
   await expect(rows(page).filter({ has: page.getByRole("link", { name: "A Dying Wish" }) }).locator("td").last()).toHaveText("100");
 });
 
@@ -111,11 +111,11 @@ test("Guilds and factions is the same table", async ({ page }) => {
   await page.screenshot({ path: "test-results/wo163-guilds-390.png" });
 });
 
-test("the Quests home: the five category cards stay, and Everything else, by place is the same table across every category, sorted by place, with the category as a column", async ({ page }) => {
+test("the Quests home: the five category cards stay, and Every quest, by place is the same table across every category, sorted by place, with the category as a column", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/quests");
   await expect(page.getByRole("link", { name: /Browse/ }).first()).toBeVisible();
-  const table = page.getByRole("region", { name: "Everything else, by place" });
+  const table = page.getByRole("region", { name: "Every quest, by place" });
   await expect(table.getByRole("columnheader", { name: "Category" })).toBeVisible();
   await expect(table.getByRole("columnheader", { name: "Where" })).toHaveAttribute("aria-sort", "ascending");
   const places = await table.locator("tbody tr td:nth-child(3)").allInnerTexts();

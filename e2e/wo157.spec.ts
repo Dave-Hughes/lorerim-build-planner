@@ -152,10 +152,11 @@ test.describe("at 1440", () => {
     await page.goto("/places/bleak-falls-barrow");
     const main = page.locator("main");
     await expect(main).toContainText("A Nordic ruin next to Riverwood.");
-    await expect(page.getByText("Next to Riverwood", { exact: true })).toBeVisible();
+    // The distance lives in Getting there, not in a tag (WO-177).
+    await expect(page.getByText("Next to Riverwood", { exact: true })).toHaveCount(0);
     await expect(main).toContainText("Level 40");
     await expect(main).not.toContainText(/level level/i);
-    await expect(main).toContainText("In 30 days, or 300 once cleared");
+    await expect(main).toContainText("In 30 days, or 300 days once cleared");
     expect(await main.innerText()).not.toContain("\ufffd");
     const hear = page.getByRole("region", { name: "What people say about it" });
     await expect(hear).toContainText("What’s this about his court wizards");

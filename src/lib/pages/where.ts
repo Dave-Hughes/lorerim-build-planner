@@ -20,6 +20,9 @@ export function placeOnly(where: string | undefined): string | undefined {
     if (m && m.index > 0) t = t.slice(0, m.index);
   }
   t = t.replace(/[\s,.]+$/, "").replace(/^(?:behind the counter in|out in|inside)\s+/i, "");
+  // "her house, Auri's House, in Falkreath" is Auri's House, Falkreath: the possessive is how the read found the place, the name is the place (WO-177).
+  const possessive = /^(?:his|her|their)\s+[\w'’ -]+?,\s+(?=\p{Lu})/u;
+  if (possessive.test(t)) t = t.replace(possessive, "").replace(/,\s+in\s+(?=\p{Lu})/gu, ", ");
   return t || undefined;
 }
 

@@ -43,6 +43,25 @@
 .wide .intro {
   -webkit-line-clamp: 5;
 }
+/* On a phone the Featured character is the ordinary card, full width: the cover above, the words under it, never the wide one (WO-177). */
+@media (max-width: 700px) {
+  .card.wide {
+    aspect-ratio: 4 / 5;
+    min-height: 0;
+  }
+  .wide .cvw,
+  .wide .shade {
+    right: 0;
+  }
+  .wide .bottom {
+    inset: auto 0 0 0;
+    padding: 0 16px 14px;
+    background: none;
+  }
+  .wide .intro {
+    -webkit-line-clamp: 3;
+  }
+}
 .exampleMark {
   position: absolute;
   top: 12px;

@@ -122,7 +122,8 @@ test("Part 4: Dragonborn's seven quests, no empty rows, one button label", async
   await expect(page.getByRole("region", { name: "At a glance" })).toContainText("7 quests");
   await expect(page.locator("main").getByText("8 quests")).toHaveCount(0);
   await expect(story.getByRole("link", { name: "Cultists vs Player" })).toHaveCount(0);
-  await expect(page.locator("main")).toContainText("Not counted as a step: Cultists vs Player");
+  // It named a record: the page no longer says it (WO-177).
+  await expect(page.locator("main")).not.toContainText("Not counted as a step");
   for (const li of await page.getByRole("region", { name: "At a glance" }).getByRole("listitem").all()) expect((await li.innerText()).trim().length).toBeGreaterThan(0);
   await page.screenshot({ path: "test-results/wo160-dragonborn-1440.png", fullPage: true });
   await page.goto("/quests/c/main-stories");

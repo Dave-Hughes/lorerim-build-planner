@@ -159,7 +159,7 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
     ));
   const cells: ReactNode[] = [
     cell("where", "quest-travel", l.cTeal, "Where", inside ? (place.inTown ?? place.hold ?? "In a town") : place.hold ? `${place.hold} hold` : placeType(place.type), inside ? (upHref && place.inTown ? <Link href={upHref}>{`In ${place.inTown}`}</Link> : place.hold ? `${place.hold} hold` : null) : near ? cap(near) : null),
-    ...(total ? [cell("people", "quest-people", l.cOrange, "People", String(total), `in ${houses.filter((h) => h.name !== place.name).length || houses.length} ${houses.length === 1 ? "place" : "homes and buildings"}`)] : []),
+    ...(total ? [cell("people", "quest-people", l.cOrange, "People", String(total), houses.length === 1 ? undefined : `in ${houses.filter((h) => h.name !== place.name).length || houses.length} homes and buildings`)] : []),
     ...(sellers.length || keepers.length
       ? [
           cell(
@@ -186,8 +186,19 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
             l.cGreen,
             "Trainers and followers",
             list([...new Set(trainers.map((x) => x.trains!))]) || "Followers",
+            // Who does what: "Faendal trains Marksman" and, apart, "Followers: Faendal, Sven" (WO-177: a list of names under a skill read as all training it).
             <>
-              {nameLinks([...trainers, ...followers.filter((f) => !f.trains)], 3)}
+              {trainers.slice(0, 3).map((x) => (
+                <span key={x.name} style={{ display: "block" }}>
+                  <Link href={x.href}>{x.name}</Link> trains {x.trains}.
+                </span>
+              ))}
+              {followers.length > 0 && (
+                <span style={{ display: "block" }}>
+                  {trainers.length > 0 ? `${followers.length === 1 ? "Follower" : "Followers"}: ` : ""}
+                  {nameLinks(followers, 3)}
+                </span>
+              )}
             </>,
             true,
           ),
@@ -246,8 +257,8 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
                 <span className={l.cap}>{inside ? "The keeper first" : "By where they sleep"}</span>
               </div>
               {houses.map((h) => (
-                <div key={h.name} className={t.house}>
-                  {h.name !== place.name ? (
+                <div key={h.name} className={`${t.house} ${houses.length === 1 ? t.houseSolo : ""}`}>
+                  {houses.length === 1 ? null : h.name !== place.name ? (
                     <b className={t.houseName}>
                       <img className={t.px} src="/icons/quest-travel.svg" alt="" width={18} height={18} />
                       {h.href ? <Link href={h.href}>{h.name}</Link> : h.name}

@@ -52,12 +52,14 @@ for (const width of [1440, 390]) {
     await page.screenshot({ path: `test-results/wo167-riverwood-${width}.png`, fullPage: false });
   });
 
-  test(`the Sleeping Giant Inn at ${width}: the town's pin, said as "In Riverwood"; no Getting there`, async ({ page }) => {
+  test(`the Sleeping Giant Inn at ${width}: the town's pin, said as "In Riverwood" in the map and in Getting there`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/places/sleeping-giant-inn");
     const map = page.getByRole("group", { name: "Map around this place" });
     await expect(map.getByText("In Riverwood", { exact: true })).toBeVisible();
-    await expect(page.getByText("Getting there", { exact: true })).toHaveCount(0);
+    // WO-177: the row has its label like any other place's.
+    await expect(page.getByText("Getting there", { exact: true })).toHaveCount(1);
+    await expect(page.getByRole("region", { name: "Map" })).toContainText("In Riverwood.");
     await creditOk(page, map);
     await page.waitForTimeout(600);
     await page.screenshot({ path: `test-results/wo167-sleeping-giant-inn-${width}.png`, fullPage: false });

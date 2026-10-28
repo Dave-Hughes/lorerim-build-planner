@@ -86,6 +86,15 @@ export function finishable(): { id: string; name: string }[] {
 }
 
 /** A category's name by key, the home or a shelf. */
+/**
+ * The expansion a line is from, when every quest in it is (the line's sources say "Base game" for Dawnguard and Dragonborn, and a quest's page
+ * says the expansion): one name for one thing everywhere (WO-177).
+ */
+export function dlcOf(line: QuestLine): string | null {
+  const first = line.quests[0]?.mod?.name;
+  return first && ["Dawnguard", "Dragonborn", "Hearthfires"].includes(first) && line.quests.every((q) => q.mod?.name === first) ? first : null;
+}
+
 export function homeName(key: string): string {
   const { categories: c, shelves } = questsData();
   return c[key]?.name ?? shelves[key]?.name ?? key;

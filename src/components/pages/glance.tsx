@@ -15,6 +15,8 @@ export interface GlanceCell {
   value: ReactNode;
   sub?: ReactNode;
   small?: boolean;
+  /** The section under the band says this again: on a phone the cell is left out. */
+  hidePhone?: boolean;
 }
 
 const TONE: Record<Tone, string> = { green: l.cGreen, red: l.cRed, teal: l.cTeal, orange: l.cOrange, gold: l.cGold, violet: l.cViolet };
@@ -25,7 +27,7 @@ export function GlanceBand({ cells }: { cells: GlanceCell[] }) {
     <section className={l.band} aria-label="At a glance">
       <div className={`page ${l.glance}`} style={{ "--cols": cells.length } as CSSProperties}>
         {cells.map((c) => (
-          <div key={c.key} className={l.gl}>
+          <div key={c.key} className={`${l.gl} ${c.hidePhone ? l.glHidePhone : ""}`}>
             <span className={`${l.k} ${TONE[c.tone]}`}>
               <img className={l.px} src={`/icons/${c.icon}.svg`} alt="" width={18} height={18} />
               {c.label}

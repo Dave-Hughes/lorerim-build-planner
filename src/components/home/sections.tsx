@@ -21,7 +21,7 @@ export function NewInTheWorld({ changes }: { changes: Change[] }) {
               <span className={styles.kind}>{KIND[c.kind]}</span>
               <Link href={c.href}>{c.name}</Link>
             </span>
-            <span className={styles.what}>{c.what}</span>
+            {c.what && <span className={styles.what}>{c.what}</span>}
           </span>
           <time dateTime={c.date}>{formatDayMonth(`${c.date}T12:00:00Z`)}</time>
         </div>

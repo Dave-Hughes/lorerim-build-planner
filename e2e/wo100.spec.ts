@@ -15,8 +15,8 @@ test("the home shows the categories and everything else by place, with no player
   const cats = page.locator('a[href^="/quests/c/"]');
   await expect(cats).toHaveCount(6);
   for (const name of ["Main stories", "Guilds and factions", "Daedric Princes", "New lands", "Side stories", "Followers"]) await expect(cats.filter({ hasText: name })).toHaveCount(1);
-  // The jobs and the side stories sit under "Everything else, by place" (WO-154 Part 2).
-  await expect(page.getByRole("heading", { name: "Everything else, by place" })).toBeVisible();
+  // The jobs and the side stories sit under "Every quest, by place" (WO-154 Part 2).
+  await expect(page.getByRole("heading", { name: "Every quest, by place" })).toBeVisible();
   await expect(page.locator('a[href="/quests/missives"]')).toBeVisible();
   // How many lines; nothing about the player: no Where you are, no "open to you".
   await expect(cats.filter({ hasText: "Daedric Princes" })).toContainText(/\d+ quest lines/);

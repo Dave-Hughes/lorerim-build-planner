@@ -318,6 +318,14 @@
   text-decoration-color: rgba(240, 145, 63, 0.35);
   text-underline-offset: 3px;
 }
+.nw {
+  white-space: nowrap;
+}
+.qn .inlinePlace,
+.job .inlinePlace {
+  color: #9fd3e1;
+  text-decoration-color: rgba(159, 211, 225, 0.4);
+}
 .note {
   font-size: 14px;
   color: #8e9bab;
@@ -586,6 +594,13 @@ a.chip:hover {
   }
   .gl:nth-child(2) {
     border-top: 1px solid #243041;
+  }
+  /* A cell the section under the band says again, almost word for word, is left out on a phone (WO-177). */
+  .glHidePhone {
+    display: none;
+  }
+  .glHidePhone:first-child + .gl {
+    border-top: 0;
   }
   .ch {
     grid-template-columns: 44px minmax(0, 1fr);

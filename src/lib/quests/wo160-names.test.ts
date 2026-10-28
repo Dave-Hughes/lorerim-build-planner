@@ -99,7 +99,22 @@ describe("WO-160 Part 6: the names the first pass missed", () => {
     expect(links("Driftshade Refuge")[0][1]).toBe(placeHref("Driftshade Sanctuary"));
   });
 
+  it("WO-177: a word that ends another name is not a person (Dragon Blood), a name that starts a sentence still links", () => {
+    expect(links("Bring 3 Dragon Blood, 3 Dragon Bile and 3 Dragon Rheum to Farengar").filter((l) => l[1]?.includes("blood-curse"))).toEqual([]);
+    expect(links("Bring 3 Dragon Blood to Farengar")).toEqual([["Farengar", "/people/farengar-secret-fire"]]);
+    expect(links("Meet Farengar and go")).toEqual([["Farengar", "/people/farengar-secret-fire"]]);
+    expect(links("Then Storn asks. Kodlak waits")).toEqual([["Storn", "/people/storn-crag-strider"], ["Kodlak", "/people/kodlak-whitemane"]]);
+  });
+
   it("a faction or group is not a person", () => {
     for (const w of ["the Silver Hand", "the Greybeards", "the Blades"]) expect(links(w).filter((l) => l[1]?.startsWith("/people/"))).toEqual([]);
+  });
+});
+
+describe("WO-177: a quest named after 'in the quest' is that quest, not the person", () => {
+  it("links the person at the start and the quest after the words", () => {
+    const got = links("Paarthurnax dies if you kill him in the quest Paarthurnax");
+    expect(got[0][1]).toMatch(/^\/people\//);
+    expect(got[1][1]).toMatch(/^\/quests\/q\//);
   });
 });

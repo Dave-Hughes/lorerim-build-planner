@@ -11,7 +11,7 @@ export interface NameLink {
   external?: boolean;
   /** A short name for someone (Farengar for Farengar Secret-Fire): may stand after a title (Jarl Balgruuf), and is not taken before "the" or "of" and a capital (WO-160 Part 6). */
   short?: boolean;
-  /** Matches only inside brackets: a quest's name written after a sentence, "(The Throat of the World)", is the quest and not the place in it. */
+  /** Matches only inside brackets, or after "in the quest": a quest's name written after a sentence, "(The Throat of the World)", is the quest and not the place in it. */
   bracketed?: boolean;
   /** Takes the text and links nothing: the name of a quest or an item holds a person's or place's name, which is not that person or place there. */
   plain?: boolean;
@@ -47,7 +47,8 @@ function compile(names: NameLink[]) {
     const edge = "(?<![\\p{L}\\p{N}])";
     const parts = [
       // In order: a bracketed quest's name, a whole name, a short name (with a title before it, when it has one).
-      ...(bracketed.m.size ? [`(?<=\\((?:[^()]*[,;]\\s+)?)(?<br>${bracketed.alt})(?=\\s*[,;)])`] : []),
+      // A quest's name in brackets, or after "in the quest" (WO-177: "Paarthurnax dies if you kill him in the quest Paarthurnax").
+      ...(bracketed.m.size ? [`(?:(?<=\\((?:[^()]*[,;]\\s+)?)|(?<=\\bin the quest\\s+))(?<br>${bracketed.alt})(?=\\s*[,;)]|\\s*\\.?$)`] : []),
       ...(normal.m.size ? [`${edge}(?<n>${normal.alt})(?![\\p{L}\\p{N}])(?!\\s+\\p{Lu})`] : []),
       ...(short.m.size ? [`${edge}(?:(?:${TITLES})\\s+)?(?<s>${short.alt})(?![\\p{L}\\p{N}])(?!\\s+\\p{Lu})(?!\\s+(?:the|of)\\s+\\p{Lu})`] : []),
     ];
@@ -55,6 +56,17 @@ function compile(names: NameLink[]) {
   }
   compiled.set(names, out);
   return out;
+}
+
+/**
+ * A short name standing right after a capitalised word that is not a title, in the middle of a sentence, is the end of a longer name ("Dragon
+ * Blood", not Blood), so it is text (WO-177). A word that starts the sentence is only capitalised for that ("Meet Farengar").
+ */
+function endsAnotherName(before: string): boolean {
+  const m = /(?:^|(.)\s+)(\p{Lu}[\p{L}'’-]*)\s+$/u.exec(before);
+  if (!m) return false;
+  const starts = m[1] === undefined || /[.!?:;"“(]/.test(m[1]);
+  return !starts && !new RegExp(`^(?:${TITLES})$`).test(m[2]);
 }
 
 export function linkNames(text: string, names: NameLink[]): Piece[] {
@@ -66,7 +78,7 @@ export function linkNames(text: string, names: NameLink[]): Piece[] {
     if (m.index > last) out.push({ text: text.slice(last, m.index) });
     const g = m.groups ?? {};
     const hit = (g.br !== undefined ? c.bracketed.get(g.br) : g.n !== undefined ? c.normal.get(g.n) : c.short.get(g.s))!;
-    out.push(hit.plain ? { text: m[0] } : { text: m[0], href: hit.href, ...(hit.external ? { external: true } : {}) });
+    out.push(hit.plain || (g.s !== undefined && m[0] === g.s && endsAnotherName(text.slice(0, m.index))) ? { text: m[0] } : { text: m[0], href: hit.href, ...(hit.external ? { external: true } : {}) });
     last = m.index + m[0].length;
   }
   if (last < text.length) out.push({ text: text.slice(last) });

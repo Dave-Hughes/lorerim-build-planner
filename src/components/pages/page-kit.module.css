@@ -3,6 +3,8 @@
  * PlacePage. One frame, one section head, one gold rewards box and one "How sure we are" panel for all four; the rest is each page's own.
  */
 .main {
+  /* Auto side margins on a flex item shrink it to its content: a page with little to say sat narrower than the title above it (WO-177). */
+  width: 100%;
   padding-top: 24px;
   padding-bottom: 80px;
   display: flex;
@@ -758,6 +760,11 @@ a.tag:hover {
 .qrow span {
   font-size: 15px;
   color: var(--soft);
+}
+/* A link inside the words about a quest takes the size of its sentence (WO-177). */
+.qrow .qdesc a {
+  font-size: inherit;
+  font-weight: inherit;
 }
 /* A quest with the read's own words for how the person is in it: the name, then the words beside it. */
 .qrowRead {

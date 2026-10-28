@@ -2,7 +2,8 @@ import "server-only";
 import { personHref } from "@/lib/people/data";
 import { placeByName, placeHref } from "@/lib/places/data";
 import { townsIn } from "@/lib/places/suggest";
-import { homeName } from "./data";
+import { shortModName } from "@/lib/mods";
+import { dlcOf, homeName } from "./data";
 import { pageOf } from "./reads";
 import { questHref } from "./slugs";
 import type { QuestLine } from "./types";
@@ -26,7 +27,7 @@ export interface TableRow {
   /** 0 for none. */
   level: number;
   length: number;
-  from: { kind: "base" | "cc" | "mod"; name: string; href?: string };
+  from: { kind: "base" | "cc" | "mod"; name: string; /** What the cell shows: the name without its subtitle; `name` is the title. */ short: string; href?: string };
   /** Quest XP; 0 pays none. */
   xp: number;
   /** The category, for the table across them all. */
@@ -60,7 +61,8 @@ export function tableRow(line: QuestLine): TableRow {
   const whereText = line.where ?? (solo ? page?.starts.find((s) => s.where)?.where : (line.read?.getIn?.where ?? page?.starts.find((s) => s.where)?.where)) ?? quest?.start?.towns?.[0] ?? null;
   const { where, hold } = whereOf(whereText);
   const mod = solo ? (quest.mod ?? line.sources[0]) : line.sources[0];
-  const from: TableRow["from"] = !mod || mod.base ? { kind: "base", name: "Base game" } : /^Creation Club/i.test(mod.name) ? { kind: "cc", name: "Creation Club" } : { kind: "mod", name: mod.name, ...(mod.modid ? { href: `https://www.nexusmods.com/skyrimspecialedition/mods/${mod.modid}` } : {}) };
+  const dlc = solo ? null : dlcOf(line);
+  const from: TableRow["from"] = dlc ? { kind: "mod", name: dlc, short: dlc } : !mod || mod.base ? { kind: "base", name: "Base game", short: "Base game" } : /^Creation Club/i.test(mod.name) ? { kind: "cc", name: "Creation Club", short: "Creation Club" } : { kind: "mod", name: mod.name, short: shortModName(mod.name), ...(mod.modid ? { href: `https://www.nexusmods.com/skyrimspecialedition/mods/${mod.modid}` } : {}) };
   return {
     id: line.id,
     href: solo ? questHref(quest.edid)! : `/quests/${line.id}`,

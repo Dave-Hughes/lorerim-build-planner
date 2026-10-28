@@ -93,11 +93,11 @@ test("the command palette: Ctrl+K or the header's Search opens one box for quest
   await expect(page.getByRole("dialog", { name: "Search the site" })).toBeHidden();
 });
 
-test("the Quests page: Everything else, by place stays in its panel at 1440 and 390", async ({ page }) => {
+test("the Quests page: Every quest, by place stays in its panel at 1440 and 390", async ({ page }) => {
   for (const width of [1440, 390]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/quests");
-    const rest = page.getByRole("region", { name: "Everything else, by place" });
+    const rest = page.getByRole("region", { name: "Every quest, by place" });
     const box = await rest.boundingBox();
     expect(box!.width).toBeLessThanOrEqual(width);
     expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);

@@ -11,6 +11,9 @@ describe("placeOnly", () => {
     expect(placeOnly("Jorrvaskr, Whiterun. Skjor eats in the main hall from 10 am to 1 pm")).toBe("Jorrvaskr, Whiterun");
     expect(placeOnly("Moss Mother Cavern near Falkreath at first; once his own trouble there is over")).toBe("Moss Mother Cavern near Falkreath");
   });
+  it("WO-177: names the house and the town, not 'her house' and a second 'in'", () => {
+    expect(placeOnly("her house, Auri's House, in Falkreath")).toBe("Auri's House, Falkreath");
+  });
   it("leaves a plain place as it is, and says nothing for nothing", () => {
     expect(placeOnly("Mistveil Keep in Riften")).toBe("Mistveil Keep in Riften");
     expect(placeOnly("the Dark Brotherhood Sanctuary, near Falkreath")).toBe("the Dark Brotherhood Sanctuary, near Falkreath");

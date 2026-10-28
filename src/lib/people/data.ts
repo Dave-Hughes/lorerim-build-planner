@@ -166,6 +166,14 @@ export function peopleData() {
 
 /** A person by their name, case and spacing aside; null when the index has none. */
 export const personByName = (name: string) => peopleData().byName.get(nameKey(name)) ?? null;
+
+/** What a person is, in a few words, from their own page: the read's role, else the records' job (WO-177: a quest's People gave a role to some and none to the rest). */
+export function roleOfName(name: string): string | null {
+  const p = personByName(name);
+  if (!p) return null;
+  const raw = p.read?.role ? p.read.role.split(";")[0].trim() : roleWords(p.role);
+  return raw || null;
+}
 export const personBySlug = (slug: string) => peopleData().bySlug.get(slug) ?? null;
 export const personHref = (name: string): string | null => {
   const p = personByName(name);

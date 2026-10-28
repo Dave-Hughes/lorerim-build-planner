@@ -35,7 +35,8 @@ export default async function Changes({ searchParams }: { searchParams: Promise<
           const n = k.key ? every.filter((c) => c.kind === k.key).length : every.length;
           return (
             <Link key={k.key} href={k.key ? `/changes?kind=${k.key}` : "/changes"} aria-current={on ? "page" : undefined} className={on ? "btn btn-sm btn-primary" : "btn btn-sm"}>
-              {k.label} <span style={{ opacity: 0.7 }}>{n}</span>
+              {k.label}
+              <span style={{ opacity: 0.7, marginLeft: 8 }}>{n}</span>
             </Link>
           );
         })}
@@ -59,7 +60,7 @@ export default async function Changes({ searchParams }: { searchParams: Promise<
                 <img className={styles.px} src={`/icons/${c.icon}.svg`} alt="" width={32} height={32} />
                 <span>
                   <Link href={c.href}>{c.name}</Link>
-                  <span className={styles.what}>{c.what}</span>
+                  {c.what && <span className={styles.what}>{c.what}</span>}
                 </span>
               </div>
             ))}

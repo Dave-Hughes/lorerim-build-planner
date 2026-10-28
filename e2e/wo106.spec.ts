@@ -23,7 +23,9 @@ test("the story page is facts: how it starts, its chapters and what it opens, wi
   const dragonborn = page.getByRole("list", { name: "Needs for Dragonborn" }).getByRole("listitem");
   await expect(dragonborn.filter({ hasText: "The Way of the Voice" })).toBeVisible();
   const lvl25 = dragonborn.filter({ hasText: "Level 25" });
-  await expect(lvl25).toContainText("not checked yet");
+  // What is not checked is in Not sure yet with its reason, not in a bracket under the level (WO-177).
+  await expect(lvl25).not.toContainText("not checked yet");
+  await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("What Dragonborn needs: Level 25");
   await expect(dragonborn.filter({ hasText: "Or sail to Raven Rock" })).toBeVisible();
   await expect(page.getByRole("list", { name: "Needs for Dragonborn" }).getByLabel("Done")).toHaveCount(0);
   await expect(page.getByRole("list", { name: "Needs for Wyrmstooth" }).getByRole("listitem").filter({ hasText: "Level 10" })).toBeVisible();

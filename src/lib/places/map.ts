@@ -130,5 +130,7 @@ export function placeMap(place: Place): PlaceMap | null {
     .sort((a, b) => a.d - b.d)
     .slice(0, 40)
     .map((x) => x.p);
-  return { credit: entry.credit, entry, here, inTown: place.inTown && at !== place ? place.inTown : null, around, gettingThere: at === place ? gettingThere(place) : null };
+  // A place inside a town is at the town's pin and says so (WO-177): the row has its label like any other.
+  const there = at === place ? gettingThere(place) : place.inTown ? `In ${place.inTown}.` : null;
+  return { credit: entry.credit, entry, here, inTown: place.inTown && at !== place ? place.inTown : null, around, gettingThere: there };
 }

@@ -89,7 +89,7 @@ export function QuestTable({ rows, across = false, defaultSort = "name", q = "",
             <path d="M11 11l4 4" />
           </svg>
           <span className="sr-only">Search {label}</span>
-          <input type="search" name="q" value={text} placeholder="Name, person, place, or the journal's words" onChange={(e) => setText(e.target.value)} />
+          <input type="search" name="q" value={text} placeholder="Name, person, place or journal" onChange={(e) => setText(e.target.value)} />
         </form>
         <label className={c.sel}>
           <b>Hold</b>
@@ -159,17 +159,17 @@ export function QuestTable({ rows, across = false, defaultSort = "name", q = "",
                   <span className={c.base}>Base game</span>
                 ) : r.from.href ? (
                   <a className={c.mod} href={r.from.href} target="_blank" rel="noreferrer" title={r.from.name}>
-                    <span className={c.modName}>{r.from.name}</span>
+                    <span className={c.modName}>{r.from.short}</span>
                     <span aria-hidden="true">↗</span>
                   </a>
                 ) : (
                   <span className={c.mod} title={r.from.name}>
-                    <span className={c.modName}>{r.from.name}</span>
+                    <span className={c.modName}>{r.from.short}</span>
                   </span>
                 )}
               </td>
               {across && <td className={c.cat}>{r.category}</td>}
-              <td className={`${c.xp} ${c.r}`}>{r.xp > 0 ? <span className={c.xpv}>{r.xp.toLocaleString("en-US")}</span> : <span className={c.mut}>None</span>}</td>
+              <td className={`${c.xp} ${c.r}`}>{r.xp > 0 ? <span className={c.xpv}>{r.xp.toLocaleString("en-US")}</span> : <span className={c.mut}>No XP</span>}</td>
             </tr>
           ))}
         </tbody>

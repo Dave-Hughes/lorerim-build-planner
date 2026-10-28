@@ -114,7 +114,7 @@ export function peopleNames(): NameLink[] {
 }
 
 /** First words that are not a first name: a title, a colour, a kind of thing. */
-const NOT_A_NAME = new Set(["Arch", "Archmage", "Arch-Mage", "High", "Old", "Young", "Black", "White", "Red", "Blind", "Mad", "Lost", "Grand", "Silver", "Dark", "Fort", "Castle", "Dragon", "Ghost", "Lord", "Jarl", "Lady", "Thane", "Queen", "King", "Captain", "Commander", "Master", "Brother", "Sister", "Legate", "General", "Steward", "Housecarl", "Dame", "Mistress", "Grandmaster", "Guard", "Orc", "Dead", "Sickly", "Wounded", "Visiting", "Hired", "Imperial", "Stormcloak", "Whiterun", "Windhelm", "Solitude", "Riften", "Markarth", "Falkreath", "Dawnstar", "Morthal", "Winterhold", "The"]);
+const NOT_A_NAME = new Set(["Arch", "Archmage", "Arch-Mage", "High", "Old", "Young", "Black", "White", "Red", "Blind", "Mad", "Lost", "Grand", "Silver", "Dark", "Fort", "Castle", "Dragon", "Blood", "Ghost", "Lord", "Jarl", "Lady", "Thane", "Queen", "King", "Captain", "Commander", "Master", "Brother", "Sister", "Legate", "General", "Steward", "Housecarl", "Dame", "Mistress", "Grandmaster", "Guard", "Orc", "Dead", "Sickly", "Wounded", "Visiting", "Hired", "Imperial", "Stormcloak", "Whiterun", "Windhelm", "Solitude", "Riften", "Markarth", "Falkreath", "Dawnstar", "Morthal", "Winterhold", "The"]);
 const TITLE_WORDS = new Set(["Jarl", "Lord", "Lady", "Thane", "Queen", "King", "Captain", "Commander", "Master", "Brother", "Sister", "Legate", "General", "Steward", "Housecarl", "Dame", "Mistress", "Grandmaster"]);
 
 let shortLinks: NameLink[] | null = null;

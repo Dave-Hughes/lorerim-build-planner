@@ -28,7 +28,7 @@ for (const width of [1440, 390]) {
 test("Mourning Never Comes (a read quest): nothing from the rules, its own mod, who and where first", async ({ page }) => {
   await page.goto("/quests/q/mourning-never-comes");
   await expect(page.locator("main")).not.toContainText(/Abandoned Shack Key|The door from/);
-  await expect(page.locator("main").getByText("Vanilla", { exact: true })).toBeVisible();
+  await expect(page.locator("main").getByText("Base game", { exact: true })).toBeVisible();
   await page.goto("/quests/q/speaking-with-silence");
   await expect(page.getByRole("region", { name: "How to start it" })).toContainText(/Mercer Frey\s+in /);
 });
@@ -119,7 +119,7 @@ test("search forgives a misspelling and finds a quest, a person and a place; the
 test("the Quests page: the big lines first, then everything else by place", async ({ page }) => {
   await page.goto("/quests");
   const heads = await page.locator("main h2").allInnerTexts();
-  expect(heads.at(-1)).toMatch(/Everything else, by place/i);
+  expect(heads.at(-1)).toMatch(/Every quest, by place/i);
   await expect(page.getByRole("cell", { name: "Riften", exact: true }).first()).toBeVisible();
   await expect(page.getByRole("link", { name: /Main stories/ }).first()).toBeVisible();
 });

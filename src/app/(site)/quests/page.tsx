@@ -88,7 +88,7 @@ export default async function QuestsHome({ searchParams }: { searchParams: Searc
           <img className={styles.px} src="/icons/quest-side-stories.svg" alt="" width={48} height={48} />
           <span className={styles.jobsWords}>
             <h2 id="rest-title" className={styles.jobsTitle}>
-              Everything else, by place
+              Every quest, by place
             </h2>
             <span className={styles.sub}>
               Every quest and line in every category, by the town or place it starts in. <Link href="/quests/c/side-stories">All side stories ›</Link>

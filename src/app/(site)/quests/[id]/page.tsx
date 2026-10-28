@@ -8,11 +8,12 @@ import { SignInButton } from "@/components/site-header";
 import { Linked } from "@/components/pages/linked";
 import { InformationConfidence, PageTop, TitleBox } from "@/components/pages/page-kit";
 import { linkable, opensNames, ownPlaceNames } from "@/lib/pages/names";
+import { playerWords, quoteQuest } from "@/lib/pages/player-words";
 import k from "@/components/pages/page-kit.module.css";
 import { QuestReport } from "@/components/quests/quest-report";
 import { LineJobs, LineStory, LineToc } from "@/components/quests/line-parts";
 import type { AfterLine } from "@/components/quests/line-start";
-import { categories, homeName, mainOrder, questsData } from "@/lib/quests/data";
+import { categories, dlcOf, homeName, mainOrder, questsData } from "@/lib/quests/data";
 import { lineView } from "@/lib/quests/line-view";
 import { MAIN, NOWHERE, needsOf } from "@/lib/quests/open";
 import { rowOf } from "@/lib/quests/reads";
@@ -105,6 +106,15 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
     ...(g.xp ? [{ key: "xp", icon: "quest-rewards", tone: l.cGold, label: "Quest XP", ...g.xp, vSmall: false }] : []),
     ...(g.where ? [{ key: "where", icon: "quest-travel", tone: l.cTeal, label: "Where it takes you", value: g.where, sub: null, vSmall: true }] : []),
   ];
+  // The read's own sentences, without the editors' hedges in them: what is unsure goes to Not sure yet (WO-177).
+  const hedged: { field: string; why?: string }[] = [];
+  const said = (field: string, x: string) => {
+    const r = playerWords(x);
+    for (const u of r.unsure) hedged.push({ field, why: u });
+    return quoteQuest(r.text);
+  };
+  const givesText = (lr?.gives ?? []).map((x) => said("What the whole line gives", x));
+  const closesText = (lr?.closes ?? []).map((x) => said("What it closes", x));
   const hasStory = view.chapters.length > 0;
   const toc = [
     ...(hasStory ? [{ id: "story", label: shelf ? "Jobs" : "The story", icon: "tab-play" }] : []),
@@ -126,7 +136,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
               {view.lineTag && <span className={k.role}>{view.lineTag}</span>}
               {line.prince && <span className={k.tag}>{line.prince}</span>}
               {line.where && <span className={k.tag}>{line.where}</span>}
-              {line.sources.map((s) =>
+              {(dlcOf(line) ? [{ name: dlcOf(line)!, modid: undefined as string | undefined }] : line.sources).map((s) =>
                 s.modid ? (
                   <a key={s.name} href={`https://www.nexusmods.com/skyrimspecialedition/mods/${s.modid}`} target="_blank" rel="noreferrer" className={k.tag}>
                     {s.name} <span aria-hidden="true">↗</span>
@@ -159,7 +169,33 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                 <img className={l.px} src={`/icons/${c.icon}.svg`} alt="" width={18} height={18} />
                 {c.label}
               </span>
-              <span className={`${l.v} ${c.key === "xp" ? l.cGold : ""} ${c.vSmall ? l.vSmall : ""}`}>{c.key === "where" ? <Linked text={c.value} names={names} /> : c.value}</span>
+              <span className={`${l.v} ${c.key === "xp" ? l.cGold : ""} ${c.vSmall ? l.vSmall : ""}`}>{c.key === "where" ? (
+                  g.whereList ? (
+                    // Each name whole, the list wrapping between names; the rest is a link to the story that visits them (WO-177).
+                    <>
+                      {g.whereList.names.map((n, i) => (
+                        <span key={n}>
+                          {i > 0 && ", "}
+                          <span className={l.nw}>
+                            <Linked text={n} names={names} />
+                          </span>
+                        </span>
+                      ))}
+                      {g.whereList.more > 0 && (
+                        <>
+                          {" and "}
+                          <a href={`#${toc[0]?.id ?? "story"}`} className={l.nw}>
+                            {g.whereList.more} more
+                          </a>
+                        </>
+                      )}
+                    </>
+                  ) : (
+                    <Linked text={c.value} names={names} />
+                  )
+                ) : (
+                  c.value
+                )}</span>
               {c.sub && (
                 <span className={l.s}>
                   <Linked text={c.sub} names={names} />
@@ -190,16 +226,11 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
         <div className={l.main}>
           {hasStory && <LineStory chapters={view.chapters} numbered={view.numbered} hideable={view.numbered && view.chapters.length > 1} id="story" title={shelf ? "Jobs" : "The story"} icon="tab-play" />}
 
-          {view.notSteps.map((n) => (
-            <p key={n.name} className={l.cap}>
-              Not counted as a step: <b>{n.name}</b>. <Linked text={n.text} names={names} />
-            </p>
-          ))}
-
           {line.board && (
             <section className={l.sec} aria-labelledby="board-h">
               <div className={l.sechd}>
                 <h2 id="board-h" className={l.h2}>
+                  <img className={l.px} src="/icons/quest-jobs-and-errands.svg" alt="" width={30} height={30} />
                   {line.board.name}
                 </h2>
                 <span className={l.cap}>{line.quests.length} jobs</span>
@@ -212,6 +243,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
             <section className={l.sec} aria-labelledby="radiant-h">
               <div className={l.sechd}>
                 <h2 id="radiant-h" className={l.h2}>
+                  <img className={l.px} src="/icons/quest-jobs-and-errands.svg" alt="" width={30} height={30} />
                   {line.radiant.name}
                 </h2>
                 <span className={l.cap}>{line.radiant.jobs} kinds</span>
@@ -226,11 +258,12 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
             <section className={l.sec} id="gives" aria-labelledby="gives-h">
               <div className={l.sechd}>
                 <h2 id="gives-h" className={l.h2}>
+                  <img className={l.px} src="/icons/quest-rewards.svg" alt="" width={30} height={30} />
                   What the whole line gives
                 </h2>
               </div>
               <ul className={`${l.list} ${l.gives}`}>
-                {lr.gives.map((x, i) => (
+                {givesText.map((x, i) => (
                   <li key={i}>
                     <Linked text={x} names={names} />
                   </li>
@@ -241,6 +274,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
             <section className={l.sec} id="gives" aria-labelledby="gives-h">
               <div className={l.sechd}>
                 <h2 id="gives-h" className={l.h2}>
+                  <img className={l.px} src="/icons/quest-rewards.svg" alt="" width={30} height={30} />
                   What the whole line gives
                 </h2>
               </div>
@@ -258,11 +292,12 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
             <section className={l.sec} id="closes" aria-labelledby="closes-h">
               <div className={l.sechd}>
                 <h2 id="closes-h" className={l.h2}>
+                  <img className={l.px} src="/icons/quest-changes.svg" alt="" width={30} height={30} />
                   What it closes
                 </h2>
               </div>
               <ul className={`${l.list} ${l.closes}`}>
-                {lr.closes.map((x, i) => (
+                {closesText.map((x, i) => (
                   <li key={i}>
                     <Linked text={x} names={names} />
                   </li>
@@ -273,6 +308,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
             <section className={l.sec} id="closes" aria-labelledby="closes-h">
               <div className={l.sechd}>
                 <h2 id="closes-h" className={l.h2}>
+                  <img className={l.px} src="/icons/quest-changes.svg" alt="" width={30} height={30} />
                   What it closes
                 </h2>
               </div>
@@ -304,7 +340,6 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                             <i />
                             <span>
                               <Linked text={n.text} names={opensWords} />
-                              {n.note && <small>{n.note}</small>}
                             </span>
                           </li>
                         ))}
@@ -320,6 +355,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
             <section className={l.sec} aria-labelledby="sibs-h">
               <div className={l.sechd}>
                 <h2 id="sibs-h" className={l.h2}>
+                  <img className={l.px} src="/icons/quest-jobs-and-errands.svg" alt="" width={30} height={30} />
                   {shelves.work?.name ?? "Jobs and errands"}
                 </h2>
               </div>
@@ -348,7 +384,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
             { mark: "no", name: "UESP", note: "Not compared yet" },
             { mark: "no", name: "Players", note: "No one has confirmed this page yet." },
           ]}
-          unsure={(lr?.unsure ?? []).filter((u) => !lr?.verdicts || lr.verdicts[u.field] === "unsure").map((u) => ({ ...u, field: LINE_FIELD_WORDS[u.field] ?? u.field }))}
+          unsure={[...(lr?.unsure ?? []).filter((u) => !lr?.verdicts || lr.verdicts[u.field] === "unsure").map((u) => ({ ...u, field: LINE_FIELD_WORDS[u.field] ?? u.field })), ...view.unsure, ...hedged]}
           actions={
             <QuestReport
               lineId={line.id}

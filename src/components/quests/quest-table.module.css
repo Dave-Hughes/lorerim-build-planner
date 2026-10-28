@@ -207,6 +207,11 @@ form.inp,
   color: #c3cdd6;
   white-space: nowrap;
 }
+/* A level and a place are never broken over two lines (WO-177). */
+.table tbody td.level,
+.table tbody td.where {
+  white-space: nowrap;
+}
 .cap {
   font-size: 14px;
   color: #8e9bab;
@@ -214,6 +219,14 @@ form.inp,
 
 /* A phone: each row is two lines, the name and its XP, then who, where and the level. */
 @media (max-width: 700px) {
+  /* One column: the search and the three filters are the same width. */
+  .sel {
+    flex: 1 1 100%;
+  }
+  .sel select {
+    flex: 1;
+    min-width: 0;
+  }
   .table thead {
     display: none;
   }

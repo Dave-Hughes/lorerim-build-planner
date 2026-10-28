@@ -6,6 +6,10 @@
   padding: 16px 0;
   border-bottom: 1px solid #1c2430;
 }
+/* One building: its people start at the left edge, with no column for a house's name (WO-177). */
+.houseSolo {
+  grid-template-columns: minmax(0, 1fr);
+}
 .houseName {
   display: flex;
   align-items: flex-start;

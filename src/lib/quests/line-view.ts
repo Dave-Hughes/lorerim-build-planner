@@ -68,13 +68,15 @@ export interface LineView {
   jobs: LineQuest[];
   jobsNote: string;
   opens: Open[];
-  glance: { start: { value: string; sub: string | null; more: string[] }; level: { value: string; sub: string | null }; length: { value: string; sub: string | null }; xp: { value: string; sub: string | null } | null; where: string | null };
+  glance: { start: { value: string; sub: string | null; more: string[] }; level: { value: string; sub: string | null }; length: { value: string; sub: string | null }; xp: { value: string; sub: string | null } | null; where: string | null; /** The same places, one by one, for a cell that keeps each name whole (WO-177). */ whereList: { names: string[]; more: number } | null };
   questCount: number;
   chapterCount: number;
   /** The two sides of a story that splits in two, when it does (Dawnguard). */
   sideNames?: string[];
-  /** What the read says is not a step of its own (Dragonborn's cultists' ambush), left out of the counts and the run and said under How it starts. */
+  /** What the read says is not a step of its own (Dragonborn's cultists' ambush), left out of the counts and the run. Not said on the page (WO-177: it named a record). */
   notSteps: { name: string; text: string }[];
+  /** What the read has not checked, for Information Confidence's Not sure yet with its reason (WO-177): never said in a bracket in the middle of a sentence. */
+  unsure: { field: string; why?: string }[];
 }
 
 const short = (s: string) => s.length <= 64;
@@ -107,7 +109,7 @@ function jobsPay(jobs: LineQuest[]): string | null {
 const withParts = (q: LineQuest): LineQuest => ({ ...q, ...(q.task ? { taskParts: linkNames(q.task, linkable()) } : {}), ...(q.note ? { noteParts: linkNames(q.note, linkable()) } : {}) });
 
 /** Where a line takes you: each place once, by its name ("Raven Rock and the Temple of Miraak" is two; "the stones around Raven Rock" is Raven Rock). */
-function uniquePlaces(places: (string | null | undefined)[], limit = 6): string | null {
+function placeList(places: (string | null | undefined)[], limit = 6): { names: string[]; more: number } | null {
   const seen = new Map<string, string>();
   for (const p of places) {
     const text = p?.trim();
@@ -122,7 +124,11 @@ function uniquePlaces(places: (string | null | undefined)[], limit = 6): string 
   }
   const list = [...seen.values()];
   if (!list.length) return null;
-  return list.slice(0, limit).join(", ") + (list.length > limit ? ` and ${list.length - limit} more` : "");
+  return { names: list.slice(0, limit), more: Math.max(0, list.length - limit) };
+}
+function uniquePlaces(places: (string | null | undefined)[], limit = 6): string | null {
+  const l = placeList(places, limit);
+  return l ? l.names.join(", ") + (l.more ? ` and ${l.more} more` : "") : null;
 }
 
 /**
@@ -173,17 +179,22 @@ export function lineView(line: QuestLine): LineView {
   const notSteps = (line.read?.order ?? []).filter((o) => isNotAStep(o.what)).map((o) => ({ name: o.quest, text: o.what! }));
 
   // What other lines this one opens: from the story when it has one, else the lines that wait for it.
+  const unsure: { field: string; why?: string }[] = [];
   const opens: Open[] = story
     ? story.opens.map((o) => ({
         id: o.line,
         name: o.name,
         needs: [
-          ...o.needs.map((n) => ({
-            text: n.text,
-            tone: n.kind === "level" ? ("danger" as const) : ("done" as const),
-            ...(n.checked === "not yet" ? { note: `not checked yet${n.why ? `: ${n.why}` : ""}` } : {}),
-          })),
-          ...(o.or ? [{ text: o.or.text, tone: "other" as const, ...(o.or.checked === "not yet" ? { note: "not checked yet" } : {}) }] : []),
+          ...o.needs.map((n) => {
+            if (n.checked === "not yet") unsure.push({ field: `What ${o.name} needs: ${n.text}`, ...(n.why ? { why: n.why } : {}) });
+            return { text: n.text, tone: n.kind === "level" ? ("danger" as const) : ("done" as const) };
+          }),
+          ...(o.or
+            ? (() => {
+                if (o.or.checked === "not yet") unsure.push({ field: `What ${o.name} needs: ${o.or.text}` });
+                return [{ text: o.or.text, tone: "other" as const }];
+              })()
+            : []),
         ],
       }))
     : data.lines
@@ -283,7 +294,10 @@ export function lineView(line: QuestLine): LineView {
   // starts with where each was checked, else the read's way in with who, where and what it needs, else the older rules' giver, ways in and first step.
   const waysIn = line.ways ?? (startChecked(opening?.start) ? opening!.start!.ways : undefined);
   const startLines: string[] = story
-    ? story.start.map((t) => `${t.text}${t.checked === "not yet" ? " (not checked yet)" : ""}`)
+    ? story.start.map((t) => {
+        if (t.checked === "not yet") unsure.push({ field: "How it starts", why: t.text });
+        return t.text;
+      })
     : lr?.getIn
       ? [lr.getIn.how, lr.getIn.who && lr.getIn.who !== "not named in the records" ? `Who: ${lr.getIn.who}` : "", lr.getIn.where ? `Where: ${lr.getIn.where}` : "", ...(lr.getIn.needs ?? []).map((n) => `Needs: ${n}`)].filter((x): x is string => !!x)
       : [
@@ -314,10 +328,12 @@ export function lineView(line: QuestLine): LineView {
       // The story's own quests, and under it what the jobs along the way pay when they pay (one number for the line, Along the way says the same).
       xp: xpTotal > 0 ? { value: xpTotal.toLocaleString("en-US"), sub: jobsPay(jobs) ? `Jobs along the way pay ${jobsPay(jobs)}` : story ? null : xpSub(payers) } : null,
       where: uniquePlaces(storyQuests.flatMap((q) => q.places ?? []).concat(line.where ? [line.where] : [])),
+      whereList: placeList(storyQuests.flatMap((q) => q.places ?? []).concat(line.where ? [line.where] : [])),
     },
     questCount: storyQuests.length || quests.filter((q) => !skipped.has(q.name)).length,
     chapterCount,
     notSteps,
+    unsure,
     ...(sideNames ? { sideNames } : {}),
   };
 }

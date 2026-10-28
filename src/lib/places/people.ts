@@ -59,7 +59,9 @@ function personOf(p: Person): PlacePerson {
   const keeper = !!p.innkeeper || readKeeper;
   const trainsSkill = read ? (read.trains ? (p.trainer?.skill ?? read.trains.split(/[\s(,]/)[0]) : null) : (p.trainer?.skill ?? null);
   const gives = questsOf(p.name).filter((q) => q.gives).length;
-  const role = (read?.role ? read.role.split(";")[0].trim() : roleWords(p.role)) || null;
+  // Roles are in sentence case wherever they are said (WO-177).
+  const raw = (read?.role ? read.role.split(";")[0].trim() : roleWords(p.role)) || null;
+  const role = raw ? `${raw.charAt(0).toUpperCase()}${raw.slice(1)}` : null;
   const chips: PlaceChip[] = [];
   if (sells) chips.push({ kind: "sells", text: "Sells" });
   if (trainsSkill) chips.push({ kind: "trains", text: `Trains ${trainsSkill}` });

@@ -4,8 +4,6 @@ import path from "node:path";
 import { desc } from "drizzle-orm";
 import { db, schema } from "@/db";
 import { categories, questsData } from "@/lib/quests/data";
-import { pageOf } from "@/lib/quests/reads";
-import { storyOfLine } from "@/lib/quests/stories-data";
 import { questHref } from "@/lib/quests/slugs";
 import { currentVersion } from "@/lib/rules/server";
 
@@ -19,6 +17,7 @@ export interface Change {
   icon: string;
   name: string;
   href: string;
+  /** What changed, when it is more than "it was read"; empty says nothing. */
   what: string;
   /** YYYY-MM-DD. */
   date: string;
@@ -54,19 +53,16 @@ export async function allChanges(): Promise<Change[]> {
     if (g.kind === "line") {
       const line = g.id ? data.byId.get(g.id) : undefined;
       if (line) {
-        // What is new in this line, said for this line, with no count in it: a count goes stale when the line is read again (WO-170 review).
-        const story = storyOfLine(line.id);
-        const what = story ? "Its story and its quests, read from the game files" : "Its quests, read from the game files";
+        // A line read from the game files says nothing more than that it was read (WO-177): every row said it, so a row says what changed, or nothing.
         const slug = categories().find((c) => c.key === line.category)?.slug;
-        out.push({ kind: "line", icon: slug ? `quest-${slug}` : "quest-side-stories", name: line.name, href: `/quests/${line.id}`, what, date: g.date });
+        out.push({ kind: "line", icon: slug ? `quest-${slug}` : "quest-side-stories", name: line.name, href: `/quests/${line.id}`, what: "", date: g.date });
       }
       continue;
     }
     const q = g.edid ? quests.get(g.edid) : undefined;
     const href = g.edid ? questHref(g.edid) : null;
     if (!q?.name || !href) continue;
-    const steps = pageOf(q).steps.reduce((n, st) => n + st.objectives.length, 0);
-    out.push({ kind: "quest", icon: "quest-side-stories", name: q.name, href, what: (g.ways ?? 0) > 1 ? "Its ways to finish it, each with its steps" : steps > 0 ? "Its steps, read from the game files" : "Read from the game files", date: g.date });
+    out.push({ kind: "quest", icon: "quest-side-stories", name: q.name, href, what: (g.ways ?? 0) > 1 ? "Its ways to finish it, each with its steps" : "", date: g.date });
   }
   // A player's report an admin approved: the quest it is about, the day it was approved.
   const facts = await db()

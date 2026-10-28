@@ -25,13 +25,14 @@ import { GlanceBand, type GlanceCell } from "@/components/pages/glance";
 import { AutoToc } from "@/components/pages/auto-toc";
 import l from "@/components/quests/line-page.module.css";
 import { placeOnly, vaguePlace } from "@/lib/pages/where";
+import { assembled } from "@/lib/pages/player-words";
 import { categories, homeName, questsData } from "@/lib/quests/data";
 import { loadPlayerFacts } from "@/lib/quests/player-facts";
 import { dangerParts, pageOf, placeNamed, playersWords } from "@/lib/quests/reads";
 import { legacyQuestHref, questBySlug, questHref } from "@/lib/quests/slugs";
 import { placeHref, placeHrefOf, type Place } from "@/lib/places/data";
 import { placeKind } from "@/lib/places/kind";
-import { personHref } from "@/lib/people/data";
+import { personHref, roleOfName } from "@/lib/people/data";
 import { siteMetadata } from "@/lib/og/metadata";
 import styles from "@/components/pages/page-kit.module.css";
 
@@ -232,7 +233,7 @@ export default async function QuestPage({
             )}
             {town && <span className={styles.tag}>{town}</span>}
             {mod?.base ? (
-              <span className={styles.tag}>Vanilla</span>
+              <span className={styles.tag}>Base game</span>
             ) : mod?.modid ? (
               <a
                 href={nexus(mod.modid)}
@@ -351,7 +352,7 @@ export default async function QuestPage({
                       (!where || w.how.includes(where.split(",")[0]))
                     ) ? (
                       <span className={styles.who}>
-                        {w.who ? <Linked names={names} text={w.who} /> : null}
+                        {w.who ? <Linked names={names} text={`${w.who.charAt(0).toUpperCase()}${w.who.slice(1)}`} /> : null}
                         {where ? (
                           <span className={styles.at}>
                             {w.who ? " " : ""}
@@ -367,7 +368,7 @@ export default async function QuestPage({
                       <NotKnown>Where: not known yet</NotKnown>
                     ) : null}
                     <p>
-                      <Linked names={names} text={w.how} />
+                      <Linked names={names} text={assembled(w.how)} />
                       {w.whereIs?.length ? (
                         <span className="muted"> ({w.whereIs.join("; ")})</span>
                       ) : null}
@@ -635,7 +636,10 @@ export default async function QuestPage({
                         ) : (
                           <b>{p.name}</b>
                         )}
-                        {p.role ? <small>{p.role}</small> : null}
+                        {(() => {
+                          const r = p.role ?? roleOfName(p.name);
+                          return r ? <small>{`${r.charAt(0).toUpperCase()}${r.slice(1)}`}</small> : null;
+                        })()}
                       </span>
                     );
                   },

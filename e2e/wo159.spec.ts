@@ -133,7 +133,7 @@ test.describe("the Playthrough tab before there is a run", () => {
 test.describe("the people reads", () => {
   test("Lydia: where to find her, how she joins, the marriage row, what isn't sure, and the checked line", async ({ page }) => {
     await page.goto("/people/lydia");
-    const where = page.getByRole("region", { name: "Where to find them" });
+    const where = page.getByRole("region", { name: "Where to find her" });
     await expect(where).toContainText("Dragonsreach, Whiterun");
     await expect(page.getByRole("region", { name: "What she offers" })).toContainText("As your housecarl once you're made Thane of Whiterun");
     await expect(page.getByRole("region", { name: "What she offers" })).toContainText("She is a potential spouse");
@@ -151,7 +151,7 @@ test.describe("the people reads", () => {
 
   test("Jaree-Ra is by the Winking Skeever, not the docks, and says a player's report counted", async ({ page }) => {
     await page.goto("/people/jaree-ra");
-    const where = page.getByRole("region", { name: "Where to find them" });
+    const where = page.getByRole("region", { name: "Where to find him" });
     await expect(where).toContainText("Solitude, by the Winking Skeever");
     await expect(where).not.toContainText(/Red Wave|docks, around|aboard/);
     await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("1 report approved");
@@ -160,7 +160,7 @@ test.describe("the people reads", () => {
 
   test("Lucan Valerius: his day in hours, what he sells, and his two quests with how each touches him", async ({ page }) => {
     await page.goto("/people/lucan-valerius");
-    await expect(page.getByRole("region", { name: "Where to find them" })).toContainText("The Sleeping Giant Inn, Riverwood");
+    await expect(page.getByRole("region", { name: "Where to find him" })).toContainText("The Sleeping Giant Inn, Riverwood");
     await expect(page.getByRole("region", { name: "What he offers" })).toContainText("General goods, 7 am to 8 pm");
     await expect(page.getByRole("region", { name: "His quests" }).getByRole("link", { name: "The Golden Claw" })).toHaveAttribute("href", "/quests/q/the-golden-claw");
     await page.screenshot({ path: "test-results/wo159-lucan-1440.png", fullPage: true });
