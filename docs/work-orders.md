@@ -5146,7 +5146,7 @@ Dave: "For followers, we have no information on how any of them join you." The r
 - **Screenshots** (in `test-results/`): `wo159-home-1440.png`, `wo159-home-390.png`, `wo159-palette-searching-1440.png`, `wo159-back-1440.png`, `wo159-playthrough-empty-1440.png`, `wo159-lydia-1440.png`, `wo159-lydia-390.png`, `wo159-jaree-ra-1440.png`, `wo159-lucan-1440.png`.
 
 ## WO-158  Pictures from the game: a test of 5 places and 5 people (PC, 27 Oct 2026)
-Status: blocked (PC; Part 1p: 3 of 5 places shot and good on their kind's numbers (cave, ruin, fort); Riverwood was in the trees and the Skeever faced the city gate -- both reframed, needs Dave's retake of those two, then the five people -- see "How Dave runs it" below)
+Status: for Bob (PC; Dave stopped the test at Part 1p, 27 Oct: 3 of 5 places shot and good on their kind's numbers (cave, ruin, fort) -- "that's all we need to see"; Riverwood was in the trees and the Skeever faced the city gate, both reframed but not retaken; the five people not run. Report section below has what the test showed; the driver for the full run is the next build if Bob wants it)
 
 **Why.** Quest, person and place pages have a plain title because there's no picture of most places and people. Dave wants a systematic way to get in-game pictures of every location and person (backlog, "Pictures of every place and person"). This order is only a test: 10 pictures, to judge whether it works and how they look, before anything runs at scale or reaches the site.
 
