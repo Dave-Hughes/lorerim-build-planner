@@ -358,7 +358,7 @@ test("Part 5: no page shows a plugin file, a record id or a bracket hedge, and n
   for (const [u, t] of texts) {
     const file = /\S+\.(?:esp|esm|esl)\b/i.exec(t)?.[0];
     if (file) bad.push(`${u}: file ${file}`);
-    const id = /\b[A-Za-z][A-Za-z_]*\d[A-Za-z0-9_]*\b/.exec(t.replace(/\b(?:LoreRim|Mk|[A-Z]\d|VOLUNR5D)\b/g, "") /* VOLUNR5D is in a book the game has: Holdings of Jarl Gjalund */)?.[0];
+    const id = /\b[A-Za-z][A-Za-z_]*\d[A-Za-z0-9_]*\b/.exec(t.replace(/\b(?:LoreRim|Mk|[A-Z]\d|[A-Z]{6,}\d[A-Z]?)\b/g, "") /* VOLUNR5D, BROMJUN1R: the game's own book, Holdings of Jarl Gjalund */)?.[0];
     if (id && !/^(?:ps\d|[a-z]\d)$/i.test(id)) bad.push(`${u}: id ${id} … ${t.slice(Math.max(0, t.indexOf(id) - 40), t.indexOf(id) + 40)}`);
     if (/\(not sure\)/i.test(t)) bad.push(`${u}: (not sure)`);
     if (/\b1 ways\b/.test(t)) bad.push(`${u}: 1 ways`);
