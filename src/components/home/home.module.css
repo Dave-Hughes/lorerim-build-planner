@@ -23,6 +23,131 @@
   object-position: 50% 100%;
   image-rendering: pixelated;
 }
+/* The drift (WO-170): each layer follows the pointer and the scroll by its own depth; a little bigger, so an edge never shows. `translate`
+   and `scale` are their own properties, so they don't fight the layers' own animations. */
+.drift {
+  translate: calc(var(--dx, 0) * var(--d, 0) * 1px) calc((var(--dy, 0) + var(--sy, 0)) * var(--d, 0) * 1px);
+  scale: 1.04;
+  transform-origin: 50% 100%;
+}
+/* Alduin crosses the aurora about every 22 s, then fades out; the sprite is cut from the story's layer (59 by 23 art pixels). */
+.alduin {
+  position: absolute;
+  left: 0;
+  top: 16%;
+  width: 295px;
+  height: 115px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  animation: alduin 22s linear infinite;
+}
+.alduin img {
+  position: absolute;
+  left: -480px;
+  top: -20px;
+  width: 1600px;
+  height: 400px;
+  max-width: none;
+  image-rendering: pixelated;
+}
+@keyframes alduin {
+  0% {
+    transform: translate(-340px, 40px);
+    opacity: 0;
+  }
+  3% {
+    opacity: 0.95;
+  }
+  38% {
+    opacity: 0.95;
+  }
+  44% {
+    transform: translate(calc(100vw + 40px), -50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(calc(100vw + 40px), -50px);
+    opacity: 0;
+  }
+}
+/* A shooting star about every nine seconds. */
+.shoot {
+  position: absolute;
+  width: 84px;
+  height: 2px;
+  background: linear-gradient(to left, #fff, rgba(255, 255, 255, 0));
+  transform: rotate(24deg);
+  opacity: 0;
+  pointer-events: none;
+  animation: shoot 9s linear infinite;
+}
+.shootA {
+  left: 16%;
+  top: 9%;
+}
+.shootB {
+  left: 66%;
+  top: 17%;
+  animation-delay: -4.6s;
+}
+@keyframes shoot {
+  0% {
+    opacity: 0;
+    translate: 0 0;
+  }
+  1.5% {
+    opacity: 1;
+  }
+  7% {
+    opacity: 0;
+    translate: 280px 126px;
+  }
+  100% {
+    opacity: 0;
+    translate: 280px 126px;
+  }
+}
+/* Embers rise from Tapps's fire. */
+.embers {
+  position: absolute;
+  left: 64%;
+  bottom: 9%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.embers i {
+  position: absolute;
+  bottom: 0;
+  width: 3px;
+  height: 3px;
+  background: #f0913f;
+  opacity: 0;
+  animation: ember 3.6s linear infinite;
+}
+.embers i:nth-child(2n) {
+  background: #ffd27a;
+}
+@keyframes ember {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-24px, -190px);
+    opacity: 0;
+  }
+}
+@media (max-width: 699px) {
+  .alduin {
+    transform-origin: 0 0;
+    scale: 0.6;
+  }
+}
 @keyframes aurora {
   0%,
   100% {
@@ -64,8 +189,20 @@
 @media (prefers-reduced-motion: reduce) {
   .auroraB,
   .starsB,
-  .fire {
+  .fire,
+  .alduin,
+  .shoot,
+  .embers i {
     animation: none;
+  }
+  .alduin,
+  .shoot,
+  .embers {
+    display: none;
+  }
+  .drift {
+    translate: none;
+    scale: 1;
   }
   .fire {
     opacity: 0;

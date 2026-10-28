@@ -1,0 +1,336 @@
+/*
+ * Three stories to live through (WO-170): three tall cards, each WO-168's scene cut to the card, its colour on the top edge. Under the pointer or
+ * focus a card lifts 8 px with a glow, the number lights and the layers slide apart. Reduced motion: no flight, sway, scatter, ash or embers;
+ * the cards still lift and colour. A phone: the cards stack, 220 px each, the layers still.
+ */
+.row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.card {
+  --acc: #f0913f;
+  --accRGB: 240, 145, 63;
+  position: relative;
+  display: block;
+  height: 300px;
+  overflow: hidden;
+  color: #e4ebf0;
+  border-top: 4px solid var(--acc);
+  text-decoration: none;
+  isolation: isolate;
+  background: #0b0f14;
+  transition:
+    transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.45s;
+}
+.card:focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: 3px;
+}
+.dg {
+  --acc: #d6453f;
+  --accRGB: 214, 69, 63;
+}
+.dbn {
+  --acc: #8fc07c;
+  --accRGB: 143, 192, 124;
+}
+.layer {
+  position: absolute;
+  inset: 0;
+}
+.l {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: calc(100% + 40px);
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 100%;
+  image-rendering: pixelated;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.shade {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: linear-gradient(to top, rgba(11, 15, 20, 0.96) 0%, rgba(11, 15, 20, 0.82) 34%, rgba(11, 15, 20, 0.1) 66%, rgba(11, 15, 20, 0) 100%);
+}
+.n {
+  position: absolute;
+  right: 16px;
+  top: 8px;
+  z-index: 6;
+  font-family: var(--font-pixel), monospace;
+  font-size: 96px;
+  line-height: 1;
+  color: var(--acc);
+  transition: text-shadow 0.4s;
+}
+.body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 20px 18px;
+}
+.h3 {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: 34px;
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #f4ead2;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.6);
+}
+.p {
+  font-size: 15px;
+  line-height: 1.4;
+  color: #dfe6ec;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.figs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  font-size: 13.5px;
+  color: #c3cdd6;
+}
+.xp b {
+  font-family: var(--font-pixel), monospace;
+  font-weight: 400;
+  font-size: 18px;
+  color: #e8c987;
+}
+.lv {
+  color: #f2b3a9;
+}
+
+@media (hover: hover) {
+  .card:hover,
+  .card:focus-visible {
+    transform: translateY(-8px);
+    box-shadow:
+      0 0 0 1px rgba(var(--accRGB), 0.55),
+      0 22px 54px rgba(var(--accRGB), 0.28);
+  }
+  .card:hover .n,
+  .card:focus-visible .n {
+    text-shadow:
+      0 0 26px rgba(var(--accRGB), 0.9),
+      0 0 2px #fff;
+  }
+  .card:hover .far,
+  .card:focus-visible .far {
+    transform: translateX(-14px);
+  }
+  .card:hover .near,
+  .card:focus-visible .near {
+    transform: translateX(-30px) scale(1.03);
+  }
+  .card:hover .sky,
+  .card:focus-visible .sky {
+    transform: scale(1.04);
+  }
+}
+
+/* The main quest: Alduin bobs at rest and flies across when the card is lifted; embers rise. */
+.dragon {
+  animation: bob 3.4s ease-in-out infinite;
+}
+@keyframes bob {
+  50% {
+    transform: translate(6px, -6px);
+  }
+}
+@media (hover: hover) {
+  .card:hover .dragon,
+  .card:focus-visible .dragon {
+    animation: fly 5s linear infinite;
+  }
+}
+@keyframes fly {
+  from {
+    transform: translate(-120px, 30px);
+  }
+  to {
+    transform: translate(520px, -40px);
+  }
+}
+.emb {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+.emb i {
+  position: absolute;
+  bottom: -6px;
+  width: 4px;
+  height: 4px;
+  background: #f0913f;
+  animation: rise 3s linear infinite;
+}
+.emb i:nth-child(2n) {
+  background: #ffd27a;
+  width: 3px;
+  height: 3px;
+}
+@keyframes rise {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-24px, -260px);
+    opacity: 0;
+  }
+}
+@media (hover: hover) {
+  .card:hover .emb,
+  .card:focus-visible .emb {
+    opacity: 1;
+  }
+}
+
+/* Dawnguard: the bats flap, and scatter when the card is lifted. */
+.bats {
+  animation: flap 0.35s steps(2) infinite;
+}
+@keyframes flap {
+  to {
+    transform: translateY(-3px);
+  }
+}
+@media (hover: hover) {
+  .card:hover .bats,
+  .card:focus-visible .bats {
+    animation:
+      flap 0.25s steps(2) infinite,
+      scatter 4s linear infinite;
+  }
+}
+@keyframes scatter {
+  to {
+    margin-left: -420px;
+  }
+}
+
+/* Dragonborn: the tentacles sway, faster and higher when lifted; the ash falls. */
+.tentacles {
+  transform-origin: 50% 100%;
+  animation: sway 4s ease-in-out infinite;
+}
+@keyframes sway {
+  0%,
+  100% {
+    transform: skewX(0deg);
+  }
+  50% {
+    transform: skewX(-4deg);
+  }
+}
+@media (hover: hover) {
+  .card:hover .tentacles,
+  .card:focus-visible .tentacles {
+    animation: sway 1.6s ease-in-out infinite;
+    transform: translateY(-16px);
+  }
+}
+.ash {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background-image: radial-gradient(#b8bfae 1px, transparent 1.5px);
+  background-size: 46px 38px;
+  opacity: 0.25;
+  animation: fall 9s linear infinite;
+}
+@keyframes fall {
+  to {
+    background-position: -60px 380px;
+  }
+}
+@media (hover: hover) {
+  .card:hover .ash,
+  .card:focus-visible .ash {
+    opacity: 0.5;
+    animation-duration: 4s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dragon,
+  .bats,
+  .tentacles,
+  .ash,
+  .emb i,
+  .card:hover .dragon,
+  .card:hover .bats,
+  .card:hover .tentacles,
+  .card:hover .ash,
+  .card:focus-visible .dragon,
+  .card:focus-visible .bats,
+  .card:focus-visible .tentacles,
+  .card:focus-visible .ash {
+    animation: none;
+  }
+  .emb {
+    display: none;
+  }
+  .l,
+  .card {
+    transition: none;
+  }
+}
+
+/* A phone: the cards stack, 220 px each, the layers still. */
+@media (max-width: 699px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+  .card,
+  .card:hover,
+  .card:focus-visible {
+    height: 220px;
+    transform: none;
+    box-shadow: none;
+  }
+  .l,
+  .card:hover .l,
+  .card:focus-visible .l {
+    animation: none;
+    transform: none;
+    object-position: 70% 100%;
+  }
+  .emb,
+  .ash {
+    display: none;
+  }
+  .n {
+    font-size: 64px;
+  }
+  .h3 {
+    font-size: 28px;
+  }
+  .p {
+    -webkit-line-clamp: 1;
+    font-size: 14px;
+  }
+}

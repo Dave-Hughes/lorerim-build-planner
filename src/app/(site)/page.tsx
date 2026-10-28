@@ -5,6 +5,8 @@ import { HomeHero } from "@/components/home/hero";
 import { YourCharacters } from "@/components/home/you";
 import { RecentCharacters } from "@/components/home/recent-characters";
 import { NewInTheWorld, ThreeWays } from "@/components/home/sections";
+import { ThreeStories } from "@/components/home/story-cards";
+import { MapStrip } from "@/components/home/map-strip";
 import { TourOffer } from "@/components/tour/tour";
 import { tourSampleId } from "@/lib/builds/sample-config";
 import { searchBuilds } from "@/lib/builds/queries";
@@ -55,10 +57,17 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
           </span>
         )}
       </HomeHero>
-      <main className={styles.main}>
-        <RecentCharacters builds={recent} runs={runs} />
-        <NewInTheWorld changes={changes} />
-        {userId ? <YourCharacters userId={userId} /> : <ThreeWays playthroughs={playthroughsOn()} />}
+      {/* The order (WO-170): recent characters, three stories, the map strip (full width), what's new, then your characters or the three ways. */}
+      <main>
+        <div className={styles.main} style={{ paddingBottom: 72 }}>
+          <RecentCharacters builds={recent} runs={runs} />
+          {questsOn() ? <ThreeStories /> : null}
+        </div>
+        {questsOn() ? <MapStrip /> : null}
+        <div className={styles.main} style={{ paddingTop: 72 }}>
+          <NewInTheWorld changes={changes} />
+          {userId ? <YourCharacters userId={userId} /> : <ThreeWays playthroughs={playthroughsOn()} />}
+        </div>
       </main>
     </>
   );
