@@ -2,7 +2,7 @@
 
 Written by `scripts/gamedata/places.py` from the winning records across the load order (with the Creation Club plugins). Clear and discovery XP from `LoreRim - MCM and INI Settings`'s Experience.ini.
 
-**998 places.** 418 have a pointer (a line or a book that names them), 386 have a quest that goes there, and 435 have neither.
+**998 places.** 421 have a pointer (a line or a book that names them), 386 have a quest that goes there, and 435 have neither.
 
 ## The nine capitals
 
@@ -17,12 +17,12 @@ All nine found with an exterior position.
 | Landmark | 155 | 44 | 79 |
 | Cave | 107 | 61 | 48 |
 | NordicRuin | 54 | 42 | 34 |
-| Store | 51 | 21 | 20 |
+| Store | 51 | 23 | 20 |
 | Fort | 46 | 39 | 29 |
 | Shack | 31 | 6 | 7 |
 | Inn | 29 | 20 | 16 |
 | DragonLair | 28 | 9 | 1 |
-| Building | 25 | 5 | 6 |
+| Building | 25 | 6 | 6 |
 | DwemerRuin | 24 | 17 | 19 |
 | Mine | 19 | 11 | 7 |
 | Camp | 16 | 11 | 8 |
@@ -58,10 +58,10 @@ All nine found with an exterior position.
 | (none) | 166 | 46 | 63 |
 | The Rift | 97 | 53 | 37 |
 | Eastmarch | 96 | 40 | 32 |
-| Whiterun | 95 | 42 | 35 |
+| Whiterun | 95 | 44 | 35 |
 | The Reach | 94 | 43 | 40 |
 | Haafingar | 86 | 29 | 26 |
-| Falkreath | 65 | 35 | 28 |
+| Falkreath | 65 | 36 | 28 |
 | Solstheim | 64 | 25 | 36 |
 | The Pale | 55 | 27 | 23 |
 | Winterhold | 52 | 26 | 27 |
@@ -73,17 +73,17 @@ All nine found with an exterior position.
 
 ## Positions (WO-166)
 
-**660 of 998 places have a position**; 328 are in a town and have none of their own (`inTown`); 10 could not be placed. A position is `world` and `pos` [x, y, z] in game units, found from the place's own map marker, else the exterior cells it owns (the middle of their grid squares: no height, z is null), else a door out of its interior (up to 3 rooms deep). The five big cities' own worldspaces share Tamriel's coordinates (checked door to door) and are filed as Tamriel.
+**669 of 998 places have a position**; 319 are in a town and have none of their own (`inTown`); 10 could not be placed. A position is `world` and `pos` [x, y, z] in game units, found from the place's own map marker, else the exterior cells it owns (the middle of their grid squares: no height, z is null), else a door out of its interior (up to 3 rooms deep). The five big cities' own worldspaces share Tamriel's coordinates (checked door to door) and are filed as Tamriel.
 
 | Found from | Places |
 |---|---|
 | marker | 469 |
-| door | 147 |
+| door | 156 |
 | cells | 44 |
 
 | World | Places | On a map |
 |---|---|---|
-| Tamriel | 450 | yes |
+| Tamriel | 459 | yes |
 | DLC2SolstheimWorld | 71 | yes |
 | zCHMolagWorld | 58 | yes |
 | mannyGFDesert | 32 | yes |
@@ -96,7 +96,7 @@ All nine found with an exterior position.
 
 | Kind | Places | Positioned | In a town | Not placed |
 |---|---|---|---|---|
-| House | 203 | 35 | 168 | 0 |
+| House | 203 | 43 | 160 | 0 |
 | Landmark | 155 | 140 | 10 | 5 |
 | Cave | 107 | 105 | 0 | 2 |
 | NordicRuin | 54 | 53 | 0 | 1 |
@@ -105,7 +105,7 @@ All nine found with an exterior position.
 | Shack | 31 | 30 | 0 | 1 |
 | Inn | 29 | 6 | 23 | 0 |
 | DragonLair | 28 | 28 | 0 | 0 |
-| Building | 25 | 4 | 21 | 0 |
+| Building | 25 | 5 | 20 | 0 |
 | DwemerRuin | 24 | 24 | 0 | 0 |
 | Mine | 19 | 17 | 2 | 0 |
 | Camp | 16 | 16 | 0 | 0 |
@@ -167,10 +167,10 @@ Every location a named quest points at (a location alias, or the cell a forced r
 
 | Kind | Added | In a town | On a map |
 |---|---|---|---|
-| House | 203 | 168 | 35 |
+| House | 203 | 160 | 43 |
 | Landmark | 84 | 10 | 74 |
 | Store | 51 | 43 | 8 |
-| Building | 25 | 21 | 4 |
+| Building | 25 | 20 | 5 |
 | PlayerHouse | 12 | 6 | 6 |
 | Fort | 8 | 2 | 6 |
 | Shack | 8 | 0 | 8 |
@@ -486,31 +486,128 @@ A record that names another place's map marker as its own (Morvunskar Crypts and
 | Western Watchtower | Fort Greymoor | Fort Greymoor |
 | Whispering Walls Catacombs | Wisp Light Crevasse | Wisp Light Crevasse |
 
-### Names the words use that the record doesn't (20)
+### Farms and mills in their fields, not inside a town (9) (WO-171)
+
+A farm or mill whose location owns exterior cells of its own stands in a field. Its record is parented to the town's location, which read as `inTown` and left it without a pin. Its position is its door out (the farmhouse), else the middle of its field's cells; its town stays as `nearestTown`.
+
+| Farm | Record's town | Found from | Nearest town | Position |
+|---|---|---|---|---|
+| Battle-Born Farm | Whiterun | door | Whiterun 0.2 km | 33889, -4967 |
+| Chillfurrow Farm Interior | Whiterun | door | Whiterun 0.2 km | 31199, -9735 |
+| Hilarius Farmhouse | Markarth | door | Markarth 0.1 km | -163668, 7835 |
+| Katla's Farm | Solitude | door | Solitude 0.3 km | -75489, 96293 |
+| Markarth Mill Maintenance | Markarth | door | Markarth 0.1 km | -163379, 6673 |
+| Merryfair Farm | Riften | door | Riften 0.1 km | 166264, -87441 |
+| Pelagia Farm | Whiterun | door | Whiterun 0.1 km | 18222, -17929 |
+| Salvius Farmhouse | Markarth | door | Markarth 0.1 km | -164439, 6674 |
+| Solitude Sawmill | Solitude | door | Dragon Bridge 0.4 km | -78658, 91650 |
+
+Farms that stay in their village, with no exterior cells of their own (7; each is 20 to 100 m from its town's marker): Corpselight Farm (Falkreath), Cowflop Farmhouse (Rorikstead), Fellstar Farm (Ivarstead), Gala's Stead (Kynesgrove), Herleif's and Ragna's Farm (Kynesgrove), Lemkil's Farmhouse (Rorikstead), Lod's House (Falkreath).
+
+### Called by the name on the door (31) (WO-171)
+
+A house, shop or inn whose location has one interior cell name, and that name is not the record's, takes the cell's (what the game shows on the door); the record's name is kept as an alias where it is two words or more and no other place's.
+
+| Record's name | The door's | Kind |
+|---|---|---|
+| Blacksmith | The Scorched Hammer | Store |
+| Chayim's House | Chayim and Euthymia's House | House |
+| Dengeir's Hall | Dengeir's House | House |
+| Emma's and Olafr's House | Emma's and Erik's House | House |
+| Erundil's House | Erundil's Shack | House |
+| Fine-Hair's House | Fine-Hair's Home | House |
+| Gravekeeper's House | Sexton's House | House |
+| Gray Pine Luxuries | Gray Pine Goods | Store |
+| Gundrud's Family House | Gundrud Family House | House |
+| Gunnar's Cabin | Gunnarr's Cabin | House |
+| Hall of Runes | Winterhold Library | Store |
+| Herleif's and Ragna's Farm | Herleif and Ragna's Farm | House |
+| Home of Thane Alarik | House of Thane Alarik | House |
+| Home of Thane Hearth-Healer | Hearth-Healer's Hall | House |
+| Home of Thane Skjorta | House of Thane Skjorta | House |
+| Home of Thane Valdemaar | House Steel-Arm | House |
+| House of Clan Snow-Shod | Snow-Shod Manor | House |
+| Karhwasten Hall | Karthwasten Hall | House |
+| Korri's House | Kraldar's House | House |
+| Lucan's Dry Goods | Riverwood Trader | Store |
+| Maddock's House | The Trusty Witch | House |
+| Magnar's House | House of Clan Frost-Vein | House |
+| Mathendi's Magics and Imports | Mathendi's Magic and Imports | Store |
+| Ranmir's House | Birna's Oddments | House |
+| Skaal Village Deor's House | Deor Woodcutter's House | House |
+| Sven's House | Sven and Hilde's House | House |
+| The Bakeship Valand | The Bakeshop Valand | Store |
+| The Hermit | The Handsome Hermit | Building |
+| Tilda's House | Tilda's Home | Building |
+| Whiterun Underforge | The Underforge | Building |
+| Wilhelm's Winter Wares | Wilhelm's Winter Warehouse | Store |
+
+Left as the record has them:
+
+| Record's name | The door's | Why |
+|---|---|---|
+| Frederik's Farm | Frederik's House | a farm stays a farm: the door is its house |
+| Jakob's Farm | Jakob's House | a farm stays a farm: the door is its house |
+| Riften Mercer's House | Riftweald Manor | another place's name holds it (Riftweald Manor Player Home) |
+
+27 more differ only in that one name holds the other (a town's name dropped from the front, a leading "The"): left as they are.
+
+### Names the words use that the record doesn't (51)
 
 A different way of writing a place's name (a possessive, a hyphen, a leading "The" dropped) that the game's own dialogue, books or quest names really use and no other place has. Two words or more. `aliases` on the place; the linker finds it by these too.
 
 | Place | Also written |
 |---|---|
+| Birna's Oddments | Ranmir's House |
 | Black-Briar Manor | Black Briar Manor |
 | Black-Briar Meadery | Black Briar Meadery |
 | Bryling's House | Bryling House |
+| Chayim and Euthymia's House | Chayim's House |
+| Dengeir's House | Dengeir's Hall |
+| Deor Woodcutter's House | Skaal Village Deor's House |
 | Eldergleam Sanctuary | Eldergleam's Sanctuary |
+| Emma's and Erik's House | Emma's and Olafr's House |
 | Erikur's House | Erikur House |
+| Erundil's Shack | Erundil's House |
+| Fine-Hair's Home | Fine-Hair's House |
+| Gray Pine Goods | Gray Pine Luxuries |
+| Gundrud Family House | Gundrud's Family House |
+| Gunnarr's Cabin | Gunnar's Cabin |
 | Half-Moon Mill | Half Moon Mill |
+| Hearth-Healer's Hall | Home of Thane Hearth-Healer |
+| Herleif and Ragna's Farm | Herleif's and Ragna's Farm |
+| House Steel-Arm | Home of Thane Valdemaar |
+| House of Clan Frost-Vein | Magnar's House |
+| House of Thane Alarik | Home of Thane Alarik |
+| House of Thane Skjorta | Home of Thane Skjorta |
+| Karthwasten Hall | Karhwasten Hall |
+| Kraldar's House | Korri's House |
+| Mathendi's Magic and Imports | Mathendi's Magics and Imports |
+| Riverwood Trader | Lucan's Dry Goods |
+| Sexton's House | Gravekeeper's House |
 | Silver-Blood Inn | Silver Blood Inn |
+| Snow-Shod Manor | House of Clan Snow-Shod |
+| Sven and Hilde's House | Sven's House |
 | The Aetherium Forge | Aetherium Forge |
+| The Bakeshop Valand | The Bakeship Valand |
 | The Bannered Mare | Bannered Mare |
 | The Blue Palace | Blue Palace |
 | The Frozen Hearth | Frozen Hearth |
+| The Handsome Hermit | The Hermit |
 | The Mortar and Pestle | Mortar and Pestle |
 | The Pawned Prawn | Pawned Prawn |
 | The Ragged Flagon | Ragged Flagon |
 | The Retching Netch | Retching Netch |
+| The Scorched Hammer | Scorched Hammer |
 | The Spiced Yam | Spiced Yam |
+| The Trusty Witch | Maddock's House |
+| The Underforge | Whiterun Underforge |
 | The White Hall | White Hall |
 | The White Phial | White Phial |
 | The Winking Skeever | Winking Skeever |
+| Tilda's Home | Tilda's House |
+| Wilhelm's Winter Warehouse | Wilhelm's Winter Wares |
+| Winterhold Library | Hall of Runes |
 | Yngol Barrow | Yngol's Barrow |
 
 ### Listed twice or left over, now out (28)

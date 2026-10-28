@@ -222,6 +222,15 @@ DROPPED = []  # (name, edid, id, reason, kept-as): what the last build() took ou
 OFF_MAP = []  # (name, plugin, why): named by a quest, allowed by its keywords, and found on no map; for the report
 MAPS = set()  # the worldspaces that are maps (place_pos.map_worlds), as the last build() found them; for the report
 LOST_MARKER = []  # (place, the marker's name it claimed, the place that kept it): for the report
+FARMS_OUT = []  # (id, name, the town its record sits under, found from): WO-171, the farms put on the map; for the report
+FARMS_IN = []  # (name, town): WO-171, farms that stay in their village (no exterior cells of their own); for the report
+DOOR_NAMED = []  # (the record's name, the name on the door, kind): WO-171; for the report
+DOOR_SKIPPED = []  # (the record's name, the name on the door, why not): WO-171
+# WO-171: a farm or a mill is out in the fields, not in the town its record is parented to. A house, a shop and an inn are called by the name
+# on their door, which is their cell's name; a dungeon's cells are its inner levels and are not.
+FARM_KW = {"LocTypeFarm", "LocTypeLumberMill"}
+DOOR_KINDS = {"House", "Store", "Inn", "PlayerHouse", "Building"}
+FARM_WORDS = {"farm", "farmhouse", "stead", "mill", "sawmill", "plantation"}
 # The LocType keywords that make a place, and those that rule one out (where people live, trade or rule).
 PLACE_KW = {"LocTypeDungeon", "LocTypeCave", "LocTypeMine", "LocTypeMilitaryFort", "LocTypeAnimalDen", "LocTypeBanditCamp",
             "LocTypeDraugrCrypt", "LocTypeDwarvenAutomatons", "LocTypeFalmerHive", "LocTypeForswornCamp", "LocTypeGiantCamp",
@@ -626,7 +635,7 @@ def build(version):
     xp, disc_xp, xp_from = clear_xp()
     cell_days, cleared_days = respawn_days()
     kname = lambda ks: {kw.get(k, k) for k in ks}  # noqa: E731
-    del DROPPED[:], OFF_MAP[:], LOST_MARKER[:]
+    del DROPPED[:], OFF_MAP[:], LOST_MARKER[:], FARMS_OUT[:], FARMS_IN[:], DOOR_NAMED[:], DOOR_SKIPPED[:]
     marker_of = {k: markers.get(l["marker"]) for k, l in locs.items() if l.get("marker") in markers and not markers[l["marker"]]["deleted"]}
     marker_world = lambda m: pp.canon((cells.get(m["cell"]) or {}).get("worldEdid"))  # noqa: E731  (the five city worlds are Tamriel's own coordinates)
 
@@ -786,9 +795,35 @@ def build(version):
             return "interior cells with no door at all"
         return f"interior cells whose doors lead nowhere onto a map (looked {pp.MAX_HOPS} rooms deep)"
 
+    def farm_out(k, p):
+        """WO-171: a farm or mill whose location owns exterior cells of its own stands in a field, outside the town its record is parented to
+        (Battle-Born, Pelagia and Chillfurrow under Whiterun; 0.14 to 0.27 km from it). Its position is its door out (the farmhouse, exact), else
+        the middle of its field's cells. A farm with no exterior cells of its own is in the village (Rorikstead's, Falkreath's, Kynesgrove's:
+        20 to 100 m from the town's marker) and stays `inTown`. The location is its own, or the one it is the house of."""
+        if k not in locs:
+            return None
+        parent = locs[k]["parent"]
+        farm = (k if FARM_KW & kname(locs[k]["keywords"]) else
+                parent if parent in locs and FARM_KW & kname(locs[parent]["keywords"]) and p["type"] in ("House", "Building") else None)
+        if farm is None or locs[farm]["name"] == p["inTown"]:
+            return None  # Anga's Mill is a mill and a settlement at once: its houses are in it
+        field = [c for c in cells_of_loc.get(farm, ()) if cells[c].get("grid")]
+        if not field:
+            FARMS_IN.append((p["name"], p["inTown"]))
+            return None
+        for got in (pp.at_doors(cells_under.get(k, []), cells, doors, maps), pp.at_cells(field, cells)):
+            if got and got["world"] in maps:
+                return got
+        return None
+
     def place_it(k, p):
-        """Its position, by place_pos.py's order of trust; a place in a town has none of its own."""
+        """Its position, by place_pos.py's order of trust; a place in a town has none of its own, but a farm in a field has."""
         if p.get("inTown"):
+            got = farm_out(k, p)
+            if not got:
+                return
+            FARMS_OUT.append((k, p["name"], p["inTown"], got["posFrom"]))
+            p["world"], p["pos"], p["posFrom"], p["inTown"] = got["world"], got["pos"], got["posFrom"], None
             return
         got = pp.locate(markers.get(p["marker"]) if p["marker"] else None, cells_under.get(k, []), cells, doors, maps)
         if got:
@@ -957,6 +992,44 @@ def build(version):
                     places[keep].setdefault("alsoRecordedAs", []).append({"id": k, "edid": places[k]["edid"], "plugin": places[k]["plugin"]})
                     absorbed[k] = keep
                     del places[k]
+    # WO-171 (Bob, 28 Oct): the name on the door. A house, shop or inn whose location has one interior cell name, and that name is not the
+    # record's, is called by the cell's: "Lucan's Dry Goods" is the Riverwood Trader, "Sven's House" is Sven and Hilde's House. The record's
+    # name stays as an alias (below). Not when one name holds the other (a town's name dropped from the front: "Skaal Village Edla's House" and the
+    # cell "Edla's House" is only shorter), not a room's bare name, and not when it would make two places one name.
+    norm = lambda s: re.sub(r"[^a-z0-9]", "", s.lower().replace("&", "and"))  # noqa: E731
+    door = {}
+    for k, p in places.items():
+        if p["type"] not in DOOR_KINDS or k not in locs:
+            continue
+        cell_names = {cells[c]["name"] for c in cells_of_loc.get(k, ()) if cells[c].get("name") and not cells[c].get("grid")}
+        if len(cell_names) != 1:
+            continue
+        cn = next(iter(cell_names))
+        a, b = norm(cn), norm(p["name"])
+        if a == b:
+            continue
+        farm_word = lambda s: bool(FARM_WORDS & set(re.findall(r"[a-z]+", s.lower())))  # noqa: E731
+        if a in b or b in a:
+            DOOR_SKIPPED.append((p["name"], cn, "one name holds the other"))
+        elif cn.lower() in GENERIC_NAMES:
+            DOOR_SKIPPED.append((p["name"], cn, "a room's bare name"))
+        elif farm_word(p["name"]) and not farm_word(cn):
+            DOOR_SKIPPED.append((p["name"], cn, "a farm stays a farm: the door is its house"))
+        else:
+            door[k] = cn
+    taken = collections.Counter(norm(p["name"]) for p in places.values())
+    asked = collections.Counter(norm(n) for n in door.values())
+    door_renamed = set()
+    for k, cn in sorted(door.items(), key=lambda kv: places[kv[0]]["name"]):
+        holds = [q["name"] for x, q in places.items() if x != k and norm(cn) in norm(q["name"])]
+        if taken[norm(cn)] or asked[norm(cn)] > 1 or holds:
+            DOOR_SKIPPED.append((places[k]["name"], cn, "another place has that name" if taken[norm(cn)] else
+                                 f"another place's name holds it ({holds[0]})" if holds else "several places would take it"))
+            continue
+        DOOR_NAMED.append((places[k]["name"], cn, places[k]["type"]))
+        places[k].setdefault("recordName", places[k]["name"])
+        places[k]["name"] = cn
+        door_renamed.add(k)
     # Nearest city and town, from the position now found (the marker's own for a place that has one, as before): a place found by
     # its cells or a door has one too. A city is the thing it would be measured to, so it has none.
     for k, p in places.items():
@@ -1212,6 +1285,14 @@ def build(version):
         mine = sorted(v for v in alias_variants(p["name"]) if claimed.get(v.lower()) == {k})
         if mine:
             p["aliases"] = mine
+    # WO-171: the name the record gave a place the door calls something else stays as an alias ("Lucan's Dry Goods" for the Riverwood Trader),
+    # two words or more and not another place's name or alias (a one-word record name, "Blacksmith", would link every blacksmith in the game).
+    others = collections.Counter(n for q in places.values() for n in ({q["name"].lower()} | {a.lower() for a in q.get("aliases", [])}))
+    for k in door_renamed:
+        p = places[k]
+        rec = p["recordName"]
+        if len(rec.split()) >= 2 and others[rec.lower()] == 0:
+            p["aliases"] = sorted(set(p.get("aliases", [])) | {rec})
     # What points at each place: dialogue and books that name it, on its whole name, case as written.
     named = collections.defaultdict(list)
     for k, p in places.items():
@@ -1351,6 +1432,31 @@ def report(places, xp_from, cities=()):
                 "place it is named for, and the other is placed from its own cells or doors.", "", "| Place | Claimed the marker of | Kept by |", "|---|---|---|"]
         for nm, mk, kept in sorted(LOST_MARKER):
             out.append(f"| {nm} | {mk} | {kept} |")
+    farms = [(places[k], town, how) for k, _nm, town, how in FARMS_OUT if k in places]
+    if farms or FARMS_IN:
+        out += ["", f"### Farms and mills in their fields, not inside a town ({len(farms)}) (WO-171)", "",
+                "A farm or mill whose location owns exterior cells of its own stands in a field. Its record is parented to the town's location, which read as `inTown` "
+                "and left it without a pin. Its position is its door out (the farmhouse), else the middle of its field's cells; its town stays as `nearestTown`.", "",
+                "| Farm | Record's town | Found from | Nearest town | Position |", "|---|---|---|---|---|"]
+        for p, town, how in sorted(farms, key=lambda f: f[0]["name"]):
+            nt = p.get("nearestTown") or {}
+            out.append(f"| {p['name']} | {town} | {how} | {nt.get('town', '(none)')} {nt.get('km', '')} km | {p['pos'][0]:.0f}, {p['pos'][1]:.0f} |")
+        if FARMS_IN:
+            out += ["", f"Farms that stay in their village, with no exterior cells of their own ({len(FARMS_IN)}; each is 20 to 100 m from its town's marker): "
+                    + ", ".join(f"{nm} ({town})" for nm, town in sorted(FARMS_IN)) + "."]
+    if DOOR_NAMED or DOOR_SKIPPED:
+        out += ["", f"### Called by the name on the door ({len(DOOR_NAMED)}) (WO-171)", "",
+                "A house, shop or inn whose location has one interior cell name, and that name is not the record's, takes the cell's (what the game shows on the door); "
+                "the record's name is kept as an alias where it is two words or more and no other place's.", "",
+                "| Record's name | The door's | Kind |", "|---|---|---|"]
+        for rec, door_name, kind in sorted(DOOR_NAMED):
+            out.append(f"| {rec} | {door_name} | {kind} |")
+        skipped = [s for s in DOOR_SKIPPED if not s[2].startswith("one name holds")]
+        if skipped:
+            out += ["", "Left as the record has them:", "", "| Record's name | The door's | Why |", "|---|---|---|"]
+            for rec, door_name, why in sorted(skipped):
+                out.append(f"| {rec} | {door_name} | {why} |")
+        out += ["", f"{len(DOOR_SKIPPED) - len(skipped)} more differ only in that one name holds the other (a town's name dropped from the front, a leading \"The\"): left as they are."]
     aliased = [p for p in rows if p.get("aliases")]
     if aliased:
         out += ["", f"### Names the words use that the record doesn't ({len(aliased)})", "",

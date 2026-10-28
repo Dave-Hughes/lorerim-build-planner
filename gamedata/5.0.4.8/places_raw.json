@@ -5255,7 +5255,7 @@
   },
   {
    "id": "The Great Village of Kynesgrove.esp:164368",
-   "name": "Herleif's and Ragna's Farm",
+   "name": "Herleif and Ragna's Farm",
    "edid": "KynesgroveHerleifAndRagnasFarmLocationTGCoKG",
    "type": "House",
    "keywords": [
@@ -5277,10 +5277,14 @@
     "Herleif Knot-Beard",
     "Ragna"
    ],
+   "recordName": "Herleif's and Ragna's Farm",
    "actors": {
     "count": 3,
     "hostile": false
-   }
+   },
+   "aliases": [
+    "Herleif's and Ragna's Farm"
+   ]
   },
   {
    "id": "Skyrim.esm:019196",
@@ -5660,78 +5664,6 @@
    }
   },
   {
-   "id": "WindhelmSSE.esp:19B6F3",
-   "name": "Home of Thane Alarik",
-   "edid": "0WindhelmThaneHouseLocation",
-   "type": "House",
-   "keywords": [
-    "LocTypeDwelling",
-    "LocTypeHouse",
-    "LocTypeInn"
-   ],
-   "hold": "Eastmarch",
-   "nearestTown": null,
-   "nearestCity": null,
-   "inTown": "Windhelm",
-   "plugin": "WindhelmSSE.esp",
-   "marker": null,
-   "namedBy": [
-    "homes"
-   ],
-   "homeOf": [
-    "Kolfinna",
-    "Thane Alarik"
-   ],
-   "actors": {
-    "count": 1,
-    "hostile": false
-   },
-   "worthGoingFor": {
-    "shrines": [
-     "Shrine of Dibella",
-     "Shrine of Talos"
-    ]
-   }
-  },
-  {
-   "id": "WindhelmSSE.esp:1BA09B",
-   "name": "Home of Thane Skjorta",
-   "edid": "0WindhelmThaneFemHouseLocation",
-   "type": "House",
-   "keywords": [
-    "LocTypeDwelling",
-    "LocTypeHouse"
-   ],
-   "hold": "Eastmarch",
-   "nearestTown": null,
-   "nearestCity": null,
-   "inTown": "Windhelm",
-   "plugin": "WindhelmSSE.esp",
-   "marker": null,
-   "namedBy": [
-    "homes"
-   ],
-   "homeOf": [
-    "Thane Skjorta",
-    "Thane-Legate Torbis",
-    "Yrsa"
-   ],
-   "actors": {
-    "count": 2,
-    "hostile": false
-   },
-   "worthGoingFor": {
-    "bossChest": true,
-    "crafting": [
-     "a sharpening wheel",
-     "an armor workbench"
-    ],
-    "shrines": [
-     "Shrine of Talos"
-    ]
-   }
-  },
-  {
    "id": "Skyrim.esm:0209ED",
    "name": "House of Clan Cruel-Sea",
    "edid": "WindhelmHouseOfClanCruelSeaLocation",
@@ -5810,6 +5742,86 @@
      "quest": "Blood on the Ice",
      "id": "Skyrim.esm:01F7A3"
     }
+   ]
+  },
+  {
+   "id": "WindhelmSSE.esp:19B6F3",
+   "name": "House of Thane Alarik",
+   "edid": "0WindhelmThaneHouseLocation",
+   "type": "House",
+   "keywords": [
+    "LocTypeDwelling",
+    "LocTypeHouse",
+    "LocTypeInn"
+   ],
+   "hold": "Eastmarch",
+   "nearestTown": null,
+   "nearestCity": null,
+   "inTown": "Windhelm",
+   "plugin": "WindhelmSSE.esp",
+   "marker": null,
+   "namedBy": [
+    "homes"
+   ],
+   "homeOf": [
+    "Kolfinna",
+    "Thane Alarik"
+   ],
+   "recordName": "Home of Thane Alarik",
+   "actors": {
+    "count": 1,
+    "hostile": false
+   },
+   "worthGoingFor": {
+    "shrines": [
+     "Shrine of Dibella",
+     "Shrine of Talos"
+    ]
+   },
+   "aliases": [
+    "Home of Thane Alarik"
+   ]
+  },
+  {
+   "id": "WindhelmSSE.esp:1BA09B",
+   "name": "House of Thane Skjorta",
+   "edid": "0WindhelmThaneFemHouseLocation",
+   "type": "House",
+   "keywords": [
+    "LocTypeDwelling",
+    "LocTypeHouse"
+   ],
+   "hold": "Eastmarch",
+   "nearestTown": null,
+   "nearestCity": null,
+   "inTown": "Windhelm",
+   "plugin": "WindhelmSSE.esp",
+   "marker": null,
+   "namedBy": [
+    "homes"
+   ],
+   "homeOf": [
+    "Thane Skjorta",
+    "Thane-Legate Torbis",
+    "Yrsa"
+   ],
+   "recordName": "Home of Thane Skjorta",
+   "actors": {
+    "count": 2,
+    "hostile": false
+   },
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an armor workbench"
+    ],
+    "shrines": [
+     "Shrine of Talos"
+    ]
+   },
+   "aliases": [
+    "Home of Thane Skjorta"
    ]
   },
   {
@@ -6701,7 +6713,7 @@
   },
   {
    "id": "WindhelmSSE.esp:1BA094",
-   "name": "Mathendi's Magics and Imports",
+   "name": "Mathendi's Magic and Imports",
    "edid": "0WindhelmGQSlumStore",
    "type": "Store",
    "keywords": [
@@ -6720,6 +6732,7 @@
    "homeOf": [
     "Mathendis"
    ],
+   "recordName": "Mathendi's Magics and Imports",
    "actors": {
     "count": 1,
     "hostile": false
@@ -6728,7 +6741,10 @@
     "crafting": [
      "an enchanting table"
     ]
-   }
+   },
+   "aliases": [
+    "Mathendi's Magics and Imports"
+   ]
   },
   {
    "id": "Skyrim.esm:01927B",
@@ -8518,7 +8534,7 @@
   },
   {
    "id": "WindhelmSSE.esp:2214E8",
-   "name": "The Bakeship Valand",
+   "name": "The Bakeshop Valand",
    "edid": "0WindhelmSweetStore",
    "type": "Store",
    "keywords": [
@@ -8537,10 +8553,14 @@
    "homeOf": [
     "Vanadis"
    ],
+   "recordName": "The Bakeship Valand",
    "actors": {
     "count": 1,
     "hostile": false
-   }
+   },
+   "aliases": [
+    "The Bakeship Valand"
+   ]
   },
   {
    "id": "WindhelmSSE.esp:1B623A",
@@ -9075,7 +9095,7 @@
   },
   {
    "id": "WindhelmSSE.esp:1BA096",
-   "name": "Wilhelm's Winter Wares",
+   "name": "Wilhelm's Winter Warehouse",
    "edid": "0WindhelmFurStore",
    "type": "Store",
    "keywords": [
@@ -9094,10 +9114,14 @@
    "homeOf": [
     "Wilhelm"
    ],
+   "recordName": "Wilhelm's Winter Wares",
    "actors": {
     "count": 1,
     "hostile": false
-   }
+   },
+   "aliases": [
+    "Wilhelm's Winter Wares"
+   ]
   },
   {
    "id": "Skyrim.esm:018A57",
@@ -11136,7 +11160,7 @@
   },
   {
    "id": "Skyrim.esm:0200BF",
-   "name": "Dengeir's Hall",
+   "name": "Dengeir's House",
    "edid": "FalkreathDengeirsHallLocation",
    "type": "House",
    "keywords": [
@@ -11157,10 +11181,14 @@
     "Tekla",
     "Thadgeir"
    ],
+   "recordName": "Dengeir's Hall",
    "actors": {
     "count": 3,
     "hostile": false
-   }
+   },
+   "aliases": [
+    "Dengeir's Hall"
+   ]
   },
   {
    "id": "Cannibal_Dung.esp:2C6F1B",
@@ -12323,7 +12351,7 @@
   },
   {
    "id": "Skyrim.esm:0200C5",
-   "name": "Gray Pine Luxuries",
+   "name": "Gray Pine Goods",
    "edid": "FalkreathGrayPineLuxuriesLocation",
    "type": "Store",
    "keywords": [
@@ -12348,10 +12376,56 @@
     "Bolund",
     "Solaf"
    ],
+   "recordName": "Gray Pine Luxuries",
    "actors": {
     "count": 2,
     "hostile": false
    },
+   "aliases": [
+    "Gray Pine Luxuries"
+   ],
+   "pointers": [
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "BYOHHouseBuilding",
+     "words": "Hmm. You might try Gray Pine Goods in Falkreath. They carry all sorts of things like that.",
+     "record": "INFO HearthFires.esm:00CD2F (HearthFires.esm)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": "Bolund",
+     "speakerPlace": "Gray Pine Goods",
+     "quest": "More to Say Falkreath Dialogue",
+     "words": "You might try Gray Pine Goods. You'll find my brother Solaf and I carry all sorts of things like that.",
+     "record": "INFO moretosayfalkreath.esp:00089C (moretosayfalkreath.esp)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": "Zaria",
+     "speakerPlace": "Grave Concoctions",
+     "quest": "More to Say Falkreath Dialogue",
+     "words": "You might try Gray Pine Goods. They carry all sorts of things like that.",
+     "record": "INFO moretosayfalkreath.esp:00089D (moretosayfalkreath.esp)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": "Delacourt",
+     "speakerPlace": "Dead Man's Drink",
+     "quest": "More to Say Falkreath Dialogue",
+     "words": "Hmm. The general goods store, Gray Pine Goods, is probably the place to start. They sell all sorts of things like that.",
+     "record": "INFO moretosayfalkreath.esp:00089E (moretosayfalkreath.esp)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": "Nenya",
+     "speakerPlace": "Hakkvild's High Hall",
+     "quest": "More to Say Falkreath Dialogue",
+     "words": "You might try Gray Pine Goods. They carry all sorts of things like that.",
+     "record": "INFO moretosayfalkreath.esp:00089F (moretosayfalkreath.esp)"
+    }
+   ],
    "quests": [
     {
      "quest": "BCSLL Vendor Quest",
@@ -18215,7 +18289,7 @@
   },
   {
    "id": "RedBag's Solitude.esp:03D306",
-   "name": "Gundrud's Family House",
+   "name": "Gundrud Family House",
    "edid": "aaaGundrudsFamilyHouseLocation",
    "type": "House",
    "keywords": [
@@ -18236,14 +18310,18 @@
     "Dora Gundrud",
     "Gud Gundrud"
    ],
+   "recordName": "Gundrud's Family House",
    "actors": {
     "count": 3,
     "hostile": false
-   }
+   },
+   "aliases": [
+    "Gundrud's Family House"
+   ]
   },
   {
    "id": "RedBag's Solitude.esp:056A01",
-   "name": "Gunnar's Cabin",
+   "name": "Gunnarr's Cabin",
    "edid": "aaaGunnarsCabinLocation",
    "type": "House",
    "keywords": [
@@ -18262,10 +18340,14 @@
    "homeOf": [
     "Gunnarr"
    ],
+   "recordName": "Gunnar's Cabin",
    "actors": {
     "count": 1,
     "hostile": false
-   }
+   },
+   "aliases": [
+    "Gunnar's Cabin"
+   ]
   },
   {
    "id": "Skyrim.esm:0200A1",
@@ -18716,7 +18798,7 @@
     "km": 0.3,
     "walk": "next to it"
    },
-   "inTown": "Solitude",
+   "inTown": null,
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:01635E",
    "namedBy": [
@@ -18727,6 +18809,13 @@
     "Katla",
     "Knud"
    ],
+   "world": "Tamriel",
+   "pos": [
+    -75489.1,
+    96292.7,
+    -11404.9
+   ],
+   "posFrom": "door",
    "actors": {
     "count": 4,
     "hostile": false
@@ -20307,7 +20396,7 @@
     "km": 0.4,
     "walk": "a short walk"
    },
-   "inTown": "Solitude",
+   "inTown": null,
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016382",
    "namedBy": [
@@ -20317,6 +20406,13 @@
     "Hjorunn",
     "Kharag gro-Shurkul"
    ],
+   "world": "Tamriel",
+   "pos": [
+    -78658.4,
+    91650.3,
+    -13629.9
+   ],
+   "posFrom": "door",
    "actors": {
     "count": 2,
     "hostile": false
@@ -22150,7 +22246,7 @@
   },
   {
    "id": "The Great City of Solitude.esp:01D233",
-   "name": "Tilda's House",
+   "name": "Tilda's Home",
    "edid": "SolitudeTildasHouseLocationTGCoS",
    "type": "Building",
    "keywords": [
@@ -22168,10 +22264,14 @@
    "homeOf": [
     "Tilda"
    ],
+   "recordName": "Tilda's House",
    "actors": {
     "count": 1,
     "hostile": false
-   }
+   },
+   "aliases": [
+    "Tilda's House"
+   ]
   },
   {
    "id": "The Great City of Solitude.esp:00E323",
@@ -28358,6 +28458,37 @@
    }
   },
   {
+   "id": "Dragonborn.esm:01D930",
+   "name": "Deor Woodcutter's House",
+   "edid": "DLC2SVDeorsHouseLocation",
+   "type": "House",
+   "keywords": [
+    "LocTypeDwelling",
+    "LocTypeHouse"
+   ],
+   "hold": "Solstheim",
+   "nearestTown": null,
+   "nearestCity": null,
+   "inTown": "Skaal Village",
+   "plugin": "Dragonborn.esm",
+   "marker": null,
+   "namedBy": [
+    "homes"
+   ],
+   "homeOf": [
+    "Deor Woodcutter",
+    "Yrsa"
+   ],
+   "recordName": "Skaal Village Deor's House",
+   "actors": {
+    "count": 2,
+    "hostile": false
+   },
+   "aliases": [
+    "Skaal Village Deor's House"
+   ]
+  },
+  {
    "id": "Dragons Awaken.esp:00085D",
    "name": "Dragon Roost Island",
    "edid": "DLC2DragonMound02Location",
@@ -32115,33 +32246,6 @@
     "crafting": [
      "an anvil"
     ]
-   }
-  },
-  {
-   "id": "Dragonborn.esm:01D930",
-   "name": "Skaal Village Deor's House",
-   "edid": "DLC2SVDeorsHouseLocation",
-   "type": "House",
-   "keywords": [
-    "LocTypeDwelling",
-    "LocTypeHouse"
-   ],
-   "hold": "Solstheim",
-   "nearestTown": null,
-   "nearestCity": null,
-   "inTown": "Skaal Village",
-   "plugin": "Dragonborn.esm",
-   "marker": null,
-   "namedBy": [
-    "homes"
-   ],
-   "homeOf": [
-    "Deor Woodcutter",
-    "Yrsa"
-   ],
-   "actors": {
-    "count": 2,
-    "hostile": false
    }
   },
   {
@@ -41087,9 +41191,17 @@
     "LocTypeHouse"
    ],
    "hold": "The Reach",
-   "nearestTown": null,
-   "nearestCity": null,
-   "inTown": "Markarth",
+   "nearestTown": {
+    "town": "Markarth",
+    "km": 0.1,
+    "walk": "next to it"
+   },
+   "nearestCity": {
+    "town": "Markarth",
+    "km": 0.1,
+    "walk": "next to it"
+   },
+   "inTown": null,
    "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
    "marker": null,
    "namedBy": [
@@ -41099,6 +41211,13 @@
     "Hilarius",
     "Vagdis Hilarius"
    ],
+   "world": "Tamriel",
+   "pos": [
+    -163667.9,
+    7835.3,
+    -4528.2
+   ],
+   "posFrom": "door",
    "actors": {
     "count": 2,
     "hostile": false
@@ -41452,37 +41571,6 @@
      "id": "ccmtysse001-knightsofthenine.esl:00083C"
     }
    ]
-  },
-  {
-   "id": "Skyrim.esm:01F7BD",
-   "name": "Karhwasten Hall",
-   "edid": "KarthwastenHallLocation",
-   "type": "House",
-   "keywords": [
-    "LocTypeDwelling",
-    "LocTypeHouse"
-   ],
-   "hold": "The Reach",
-   "nearestTown": null,
-   "nearestCity": null,
-   "inTown": "Karthwasten",
-   "plugin": "Skyrim.esm",
-   "marker": null,
-   "namedBy": [
-    "homes"
-   ],
-   "homeOf": [
-    "Ainethach"
-   ],
-   "actors": {
-    "count": 1,
-    "hostile": false
-   },
-   "worthGoingFor": {
-    "skillBooks": [
-     "Heavy Armor: The Knights of the Nine"
-    ]
-   }
   },
   {
    "id": "Skyrim.esm:01925F",
@@ -41988,6 +42076,41 @@
    ]
   },
   {
+   "id": "Skyrim.esm:01F7BD",
+   "name": "Karthwasten Hall",
+   "edid": "KarthwastenHallLocation",
+   "type": "House",
+   "keywords": [
+    "LocTypeDwelling",
+    "LocTypeHouse"
+   ],
+   "hold": "The Reach",
+   "nearestTown": null,
+   "nearestCity": null,
+   "inTown": "Karthwasten",
+   "plugin": "Skyrim.esm",
+   "marker": null,
+   "namedBy": [
+    "homes"
+   ],
+   "homeOf": [
+    "Ainethach"
+   ],
+   "recordName": "Karhwasten Hall",
+   "actors": {
+    "count": 1,
+    "hostile": false
+   },
+   "worthGoingFor": {
+    "skillBooks": [
+     "Heavy Armor: The Knights of the Nine"
+    ]
+   },
+   "aliases": [
+    "Karhwasten Hall"
+   ]
+  },
+  {
    "id": "Skyrim.esm:01F7D4",
    "name": "Kolskeggr Mine",
    "edid": "KolskeggrMineMineLocation",
@@ -42285,41 +42408,6 @@
    ]
   },
   {
-   "id": "The Great Town of Karthwasten.esp:005093",
-   "name": "Maddock's House",
-   "edid": "KarthwastenMaddocksHouseLocationTGCoKW",
-   "type": "House",
-   "keywords": [
-    "LocTypeDwelling",
-    "LocTypeHouse"
-   ],
-   "hold": "The Reach",
-   "nearestTown": null,
-   "nearestCity": null,
-   "inTown": "Karthwasten",
-   "plugin": "The Great Town of Karthwasten.esp",
-   "marker": null,
-   "namedBy": [
-    "homes"
-   ],
-   "homeOf": [
-    "Gwynith",
-    "Maddock"
-   ],
-   "actors": {
-    "count": 2,
-    "hostile": false
-   },
-   "worthGoingFor": {
-    "skillBooks": [
-     "Alchemy: Herbalist's Guide to Skyrim"
-    ],
-    "crafting": [
-     "an alchemy lab"
-    ]
-   }
-  },
-  {
    "id": "Skyrim.esm:018A59",
    "name": "Markarth",
    "edid": "MarkarthLocation",
@@ -42475,9 +42563,17 @@
     "LocTypeHouse"
    ],
    "hold": "The Reach",
-   "nearestTown": null,
-   "nearestCity": null,
-   "inTown": "Markarth",
+   "nearestTown": {
+    "town": "Markarth",
+    "km": 0.1,
+    "walk": "next to it"
+   },
+   "nearestCity": {
+    "town": "Markarth",
+    "km": 0.1,
+    "walk": "next to it"
+   },
+   "inTown": null,
    "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
    "marker": null,
    "namedBy": [
@@ -42486,6 +42582,13 @@
    "homeOf": [
     "Savantus Ingenius"
    ],
+   "world": "Tamriel",
+   "pos": [
+    -163378.8,
+    6673.4,
+    -4476.8
+   ],
+   "posFrom": "door",
    "actors": {
     "count": 1,
     "hostile": false
@@ -44100,9 +44203,17 @@
     "LocTypeHouse"
    ],
    "hold": "The Reach",
-   "nearestTown": null,
-   "nearestCity": null,
-   "inTown": "Markarth",
+   "nearestTown": {
+    "town": "Markarth",
+    "km": 0.1,
+    "walk": "next to it"
+   },
+   "nearestCity": {
+    "town": "Markarth",
+    "km": 0.1,
+    "walk": "next to it"
+   },
+   "inTown": null,
    "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
    "marker": null,
    "namedBy": [
@@ -44116,6 +44227,13 @@
     "Rogatus Salvius",
     "Vigdis Salvius"
    ],
+   "world": "Tamriel",
+   "pos": [
+    -164438.9,
+    6674.5,
+    -4497.0
+   ],
+   "posFrom": "door",
    "actors": {
     "count": 2,
     "hostile": false
@@ -45275,6 +45393,45 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10
+  },
+  {
+   "id": "The Great Town of Karthwasten.esp:005093",
+   "name": "The Trusty Witch",
+   "edid": "KarthwastenMaddocksHouseLocationTGCoKW",
+   "type": "House",
+   "keywords": [
+    "LocTypeDwelling",
+    "LocTypeHouse"
+   ],
+   "hold": "The Reach",
+   "nearestTown": null,
+   "nearestCity": null,
+   "inTown": "Karthwasten",
+   "plugin": "The Great Town of Karthwasten.esp",
+   "marker": null,
+   "namedBy": [
+    "homes"
+   ],
+   "homeOf": [
+    "Gwynith",
+    "Maddock"
+   ],
+   "recordName": "Maddock's House",
+   "actors": {
+    "count": 2,
+    "hostile": false
+   },
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy: Herbalist's Guide to Skyrim"
+    ],
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "aliases": [
+    "Maddock's House"
+   ]
   },
   {
    "id": "Skyrim.esm:01F30D",
@@ -47119,70 +47276,6 @@
    ]
   },
   {
-   "id": "Skyrim.esm:056621",
-   "name": "Blacksmith",
-   "edid": "RiftenBlacksmithLocation",
-   "type": "Store",
-   "keywords": [
-    "LocTypeDwelling",
-    "LocTypeStore"
-   ],
-   "hold": "The Rift",
-   "nearestTown": null,
-   "nearestCity": null,
-   "inTown": "Riften",
-   "plugin": "Skyrim.esm",
-   "marker": null,
-   "namedBy": [
-    "homes",
-    "quests"
-   ],
-   "namedByQuest": [
-    "ANDR_AJO_VendorQuest"
-   ],
-   "homeOf": [
-    "Asbjorn Fire-Tamer",
-    "Balimund"
-   ],
-   "actors": {
-    "count": 3,
-    "hostile": false
-   },
-   "worthGoingFor": {
-    "skillBooks": [
-     "Smithing: The Armorer's Challenge"
-    ],
-    "crafting": [
-     "a sharpening wheel"
-    ],
-    "shrines": [
-     "Shrine of Zenithar"
-    ]
-   },
-   "pointers": [
-    {
-     "kind": "dialogue",
-     "speaker": "Heimvar",
-     "speakerPlace": "Solitude Blacksmith",
-     "quest": "Solitude Dialogue",
-     "words": "Blacksmith, at your service.",
-     "record": "INFO Skyrim.esm:0C1D64 (Skyrim.esm)"
-    },
-    {
-     "kind": "book",
-     "book": "The Saga of Laknir Little-Hammer",
-     "words": "letter.png'>t was at the height of summer in the reign of Jarl Ovarn Bleakstern of Whiterun. Laknir Little-Hammer was a Blacksmith from Angarvunde, and he was the son of Haevar Little-Hammer who had made twelve swords for King Aetheric. He had no wife and no lands or titles of hi",
-     "record": "BOOK LB_ApocryphaBooks.esp:00000B (LB_ApocryphaBooks.esp)"
-    }
-   ],
-   "quests": [
-    {
-     "quest": "ANDR_AJO_VendorQuest",
-     "id": "Andrealphus Jobs Overhaul - MASTER.esp:000BB5"
-    }
-   ]
-  },
-  {
    "id": "Skyrim.esm:022484",
    "name": "Bolli's House",
    "edid": "RiftenBolliHouseLocation",
@@ -48020,7 +48113,7 @@
   },
   {
    "id": "The Great Town of Shor's Stone.esp:08A3BD",
-   "name": "Emma's and Olafr's House",
+   "name": "Emma's and Erik's House",
    "edid": "ShorsStoneEmmasAndOlafsHouseLocationTGCoSS",
    "type": "House",
    "keywords": [
@@ -48041,10 +48134,14 @@
     "Erik Olafson",
     "Olaf"
    ],
+   "recordName": "Emma's and Olafr's House",
    "actors": {
     "count": 3,
     "hostile": false
-   }
+   },
+   "aliases": [
+    "Emma's and Olafr's House"
+   ]
   },
   {
    "id": "Skyrim.esm:022639",
@@ -49854,39 +49951,6 @@
    ]
   },
   {
-   "id": "Skyrim.esm:022640",
-   "name": "House of Clan Snow-Shod",
-   "edid": "RiftenHouseofClanSnowShodLocation",
-   "type": "House",
-   "keywords": [
-    "LocTypeDwelling",
-    "LocTypeHouse"
-   ],
-   "hold": "The Rift",
-   "nearestTown": null,
-   "nearestCity": null,
-   "inTown": "Riften",
-   "plugin": "Skyrim.esm",
-   "marker": null,
-   "namedBy": [
-    "homes"
-   ],
-   "homeOf": [
-    "Asgeir Snow-Shod",
-    "Nura Snow-Shod",
-    "Vulwulf Snow-Shod"
-   ],
-   "actors": {
-    "count": 3,
-    "hostile": false
-   },
-   "worthGoingFor": {
-    "shrines": [
-     "Shrine of Talos"
-    ]
-   }
-  },
-  {
    "id": "Skyrim.esm:01926E",
    "name": "Imperial Military Camp",
    "edid": "MilitaryCampRiftImperialLocation",
@@ -51008,7 +51072,7 @@
     "km": 0.1,
     "walk": "next to it"
    },
-   "inTown": "Riften",
+   "inTown": null,
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0268FF",
    "namedBy": [
@@ -51018,6 +51082,13 @@
     "Dravin Llanith",
     "Synda Llanith"
    ],
+   "world": "Tamriel",
+   "pos": [
+    166264.5,
+    -87441.0,
+    11120.0
+   ],
+   "posFrom": "door",
    "actors": {
     "count": 2,
     "hostile": false
@@ -53227,6 +53298,43 @@
    }
   },
   {
+   "id": "Skyrim.esm:022640",
+   "name": "Snow-Shod Manor",
+   "edid": "RiftenHouseofClanSnowShodLocation",
+   "type": "House",
+   "keywords": [
+    "LocTypeDwelling",
+    "LocTypeHouse"
+   ],
+   "hold": "The Rift",
+   "nearestTown": null,
+   "nearestCity": null,
+   "inTown": "Riften",
+   "plugin": "Skyrim.esm",
+   "marker": null,
+   "namedBy": [
+    "homes"
+   ],
+   "homeOf": [
+    "Asgeir Snow-Shod",
+    "Nura Snow-Shod",
+    "Vulwulf Snow-Shod"
+   ],
+   "recordName": "House of Clan Snow-Shod",
+   "actors": {
+    "count": 3,
+    "hostile": false
+   },
+   "worthGoingFor": {
+    "shrines": [
+     "Shrine of Talos"
+    ]
+   },
+   "aliases": [
+    "House of Clan Snow-Shod"
+   ]
+  },
+  {
    "id": "Riften Docks Overhaul.esp:002511",
    "name": "Soderberg's House",
    "edid": "MVFMSoderbergLocation",
@@ -54297,6 +54405,114 @@
    ]
   },
   {
+   "id": "Skyrim.esm:056621",
+   "name": "The Scorched Hammer",
+   "edid": "RiftenBlacksmithLocation",
+   "type": "Store",
+   "keywords": [
+    "LocTypeDwelling",
+    "LocTypeStore"
+   ],
+   "hold": "The Rift",
+   "nearestTown": null,
+   "nearestCity": null,
+   "inTown": "Riften",
+   "plugin": "Skyrim.esm",
+   "marker": null,
+   "namedBy": [
+    "homes",
+    "quests"
+   ],
+   "namedByQuest": [
+    "ANDR_AJO_VendorQuest"
+   ],
+   "homeOf": [
+    "Asbjorn Fire-Tamer",
+    "Balimund"
+   ],
+   "recordName": "Blacksmith",
+   "actors": {
+    "count": 3,
+    "hostile": false
+   },
+   "worthGoingFor": {
+    "skillBooks": [
+     "Smithing: The Armorer's Challenge"
+    ],
+    "crafting": [
+     "a sharpening wheel"
+    ],
+    "shrines": [
+     "Shrine of Zenithar"
+    ]
+   },
+   "aliases": [
+    "Scorched Hammer"
+   ],
+   "pointers": [
+    {
+     "kind": "dialogue",
+     "speaker": "Heimvar",
+     "speakerPlace": "Solitude Blacksmith",
+     "quest": "Solitude Dialogue",
+     "words": "Blacksmith, at your service.",
+     "record": "INFO Skyrim.esm:0C1D64 (Skyrim.esm)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "Riften Dialogue",
+     "words": "There's fine steel at the Scorched Hammer, if you fancy a new blade.",
+     "record": "INFO Skyrim.esm:0DA657 (Skyrim.esm)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "Grand Plaza Scene 29",
+     "words": "Leather? If they're armored, you should talk to Balimund over at The Scorched Hammer.",
+     "record": "INFO Skyrim.esm:063ED3 (Skyrim.esm)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "ACFMoretoSayRiftenGuardsQuest",
+     "words": "There's fine steel at the Scorched Hammer, if you fancy a new blade.",
+     "record": "INFO moretosaycityguards.esp:00082D (moretosaycityguards.esp)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": "Grelka",
+     "speakerPlace": "Haelga's Bunkhouse",
+     "quest": "More to Say Riften Dialogue",
+     "words": "I don't usually deal in weapons. You should talk to Balimund over at the Scorched Hammer.",
+     "record": "INFO moretosayriften.esp:000951 (moretosayriften.esp)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": "Mjoll the Lioness",
+     "speakerPlace": "Aerin's House",
+     "quest": "More to Say Riften Dialogue",
+     "words": "Need a blade? There's fine steel at the Scorched Hammer.",
+     "record": "INFO moretosayriften.esp:000A35 (moretosayriften.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "The Saga of Laknir Little-Hammer",
+     "words": "letter.png'>t was at the height of summer in the reign of Jarl Ovarn Bleakstern of Whiterun. Laknir Little-Hammer was a Blacksmith from Angarvunde, and he was the son of Haevar Little-Hammer who had made twelve swords for King Aetheric. He had no wife and no lands or titles of hi",
+     "record": "BOOK LB_ApocryphaBooks.esp:00000B (LB_ApocryphaBooks.esp)"
+    }
+   ],
+   "quests": [
+    {
+     "quest": "ANDR_AJO_VendorQuest",
+     "id": "Andrealphus Jobs Overhaul - MASTER.esp:000BB5"
+    }
+   ]
+  },
+  {
    "id": "Skyrim.esm:0D567C",
    "name": "The Shadow Doomstone",
    "edid": "DoomstoneShadowLocation",
@@ -54892,7 +55108,7 @@
     "km": 0.2,
     "walk": "next to it"
    },
-   "inTown": "Whiterun",
+   "inTown": null,
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:016332",
    "namedBy": [
@@ -54901,6 +55117,13 @@
    "homeOf": [
     "Gwendolyn"
    ],
+   "world": "Tamriel",
+   "pos": [
+    33889.1,
+    -4967.0,
+    -4212.3
+   ],
+   "posFrom": "door",
    "actors": {
     "count": 1,
     "hostile": false
@@ -55704,9 +55927,17 @@
     "LocTypeHouse"
    ],
    "hold": "Whiterun",
-   "nearestTown": null,
-   "nearestCity": null,
-   "inTown": "Whiterun",
+   "nearestTown": {
+    "town": "Whiterun",
+    "km": 0.2,
+    "walk": "next to it"
+   },
+   "nearestCity": {
+    "town": "Whiterun",
+    "km": 0.2,
+    "walk": "next to it"
+   },
+   "inTown": null,
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": null,
    "namedBy": [
@@ -55719,6 +55950,13 @@
    "homeOf": [
     "Wilmuth"
    ],
+   "world": "Tamriel",
+   "pos": [
+    31199.3,
+    -9735.2,
+    -3989.0
+   ],
+   "posFrom": "door",
    "actors": {
     "count": 1,
     "hostile": false
@@ -57020,7 +57258,7 @@
   },
   {
    "id": "SurWR.esp:132FD3",
-   "name": "Erundil's House",
+   "name": "Erundil's Shack",
    "edid": "0WhiterunElfLoc",
    "type": "House",
    "keywords": [
@@ -57039,10 +57277,14 @@
    "homeOf": [
     "Erundil"
    ],
+   "recordName": "Erundil's House",
    "actors": {
     "count": 1,
     "hostile": false
-   }
+   },
+   "aliases": [
+    "Erundil's House"
+   ]
   },
   {
    "id": "Skyrim.esm:01CB89",
@@ -57190,7 +57432,7 @@
   },
   {
    "id": "SurWR.esp:132FCE",
-   "name": "Fine-Hair's House",
+   "name": "Fine-Hair's Home",
    "edid": "0WhiterunNewlyWedLoc",
    "type": "House",
    "keywords": [
@@ -57210,6 +57452,7 @@
     "Aumsi Fine-Hair",
     "Erich Fine-Hair"
    ],
+   "recordName": "Fine-Hair's House",
    "actors": {
     "count": 2,
     "hostile": false
@@ -57218,7 +57461,10 @@
     "shrines": [
      "Shrine of Dibella"
     ]
-   }
+   },
+   "aliases": [
+    "Fine-Hair's House"
+   ]
   },
   {
    "id": "ForsakenCrypt.esp:028667",
@@ -58329,6 +58575,42 @@
    }
   },
   {
+   "id": "SurWR.esp:132FCD",
+   "name": "Hearth-Healer's Hall",
+   "edid": "0WhiterunThaneHouseYoung",
+   "type": "House",
+   "keywords": [
+    "LocTypeDwelling",
+    "LocTypeHouse"
+   ],
+   "hold": "Whiterun",
+   "nearestTown": null,
+   "nearestCity": null,
+   "inTown": "Whiterun",
+   "plugin": "SurWR.esp",
+   "marker": null,
+   "namedBy": [
+    "homes"
+   ],
+   "homeOf": [
+    "Housecarl Gudling",
+    "Thane Hroa Hearth-Healer"
+   ],
+   "recordName": "Home of Thane Hearth-Healer",
+   "actors": {
+    "count": 2,
+    "hostile": false
+   },
+   "worthGoingFor": {
+    "crafting": [
+     "an armor workbench"
+    ]
+   },
+   "aliases": [
+    "Home of Thane Hearth-Healer"
+   ]
+  },
+  {
    "id": "Skyrim.esm:01F873",
    "name": "Heimskr's House",
    "edid": "WhiterunHeimskrsHouseLocation",
@@ -59080,66 +59362,6 @@
    }
   },
   {
-   "id": "SurWR.esp:132FCD",
-   "name": "Home of Thane Hearth-Healer",
-   "edid": "0WhiterunThaneHouseYoung",
-   "type": "House",
-   "keywords": [
-    "LocTypeDwelling",
-    "LocTypeHouse"
-   ],
-   "hold": "Whiterun",
-   "nearestTown": null,
-   "nearestCity": null,
-   "inTown": "Whiterun",
-   "plugin": "SurWR.esp",
-   "marker": null,
-   "namedBy": [
-    "homes"
-   ],
-   "homeOf": [
-    "Housecarl Gudling",
-    "Thane Hroa Hearth-Healer"
-   ],
-   "actors": {
-    "count": 2,
-    "hostile": false
-   },
-   "worthGoingFor": {
-    "crafting": [
-     "an armor workbench"
-    ]
-   }
-  },
-  {
-   "id": "SurWR.esp:132FCC",
-   "name": "Home of Thane Valdemaar",
-   "edid": "0WhiterunThaneHouseOldMan",
-   "type": "House",
-   "keywords": [
-    "LocTypeDwelling",
-    "LocTypeHouse"
-   ],
-   "hold": "Whiterun",
-   "nearestTown": null,
-   "nearestCity": null,
-   "inTown": "Whiterun",
-   "plugin": "SurWR.esp",
-   "marker": null,
-   "namedBy": [
-    "homes"
-   ],
-   "homeOf": [
-    "Mazuka the Knight",
-    "Thane Valdemaar Steel-Arm",
-    "Vilde Steel-Arm"
-   ],
-   "actors": {
-    "count": 3,
-    "hostile": false
-   }
-  },
-  {
    "id": "Skyrim.esm:047259",
    "name": "Honningbrew Meadery",
    "edid": "WhiterunHonningbrewMeaderyDungeonLocation",
@@ -59350,6 +59572,38 @@
      "words": "You honor this old blacksmith, Dragonborn. I thank you on behalf of House Gray-Mane, for showing Alduin we all deserve to live.",
      "record": "INFO IDE Jorrvaskr.esp:000AA4 (IDE Jorrvaskr.esp)"
     }
+   ]
+  },
+  {
+   "id": "SurWR.esp:132FCC",
+   "name": "House Steel-Arm",
+   "edid": "0WhiterunThaneHouseOldMan",
+   "type": "House",
+   "keywords": [
+    "LocTypeDwelling",
+    "LocTypeHouse"
+   ],
+   "hold": "Whiterun",
+   "nearestTown": null,
+   "nearestCity": null,
+   "inTown": "Whiterun",
+   "plugin": "SurWR.esp",
+   "marker": null,
+   "namedBy": [
+    "homes"
+   ],
+   "homeOf": [
+    "Mazuka the Knight",
+    "Thane Valdemaar Steel-Arm",
+    "Vilde Steel-Arm"
+   ],
+   "recordName": "Home of Thane Valdemaar",
+   "actors": {
+    "count": 3,
+    "hostile": false
+   },
+   "aliases": [
+    "Home of Thane Valdemaar"
    ]
   },
   {
@@ -61214,67 +61468,6 @@
    }
   },
   {
-   "id": "Skyrim.esm:01CB8D",
-   "name": "Lucan's Dry Goods",
-   "edid": "RiverwoodLucansDryGoodsLocation",
-   "type": "Store",
-   "keywords": [
-    "LocTypeDwelling",
-    "LocTypeStore"
-   ],
-   "hold": "Whiterun",
-   "nearestTown": null,
-   "nearestCity": null,
-   "inTown": "Riverwood",
-   "plugin": "Lux - Ryn's Riverwood Trader patch.esp",
-   "marker": null,
-   "namedBy": [
-    "homes",
-    "quests"
-   ],
-   "namedByQuest": [
-    "A Lovely Letter",
-    "ANDR_AJO_VendorQuest",
-    "BCSLL Vendor Quest"
-   ],
-   "homeOf": [
-    "Camilla Valerius",
-    "Lucan Valerius"
-   ],
-   "actors": {
-    "count": 2,
-    "hostile": false
-   },
-   "worthGoingFor": {
-    "shrines": [
-     "Shrine of Dibella",
-     "Shrine of Zenithar"
-    ]
-   },
-   "quests": [
-    {
-     "quest": "A Lovely Letter",
-     "id": "Skyrim.esm:074A83"
-    },
-    {
-     "quest": "The Golden Claw",
-     "id": "Skyrim.esm:039645"
-    },
-    {
-     "quest": "BCSLL Vendor Quest",
-     "id": "Book Covers Skyrim - Lost Library.esp:012C88"
-    },
-    {
-     "quest": "The Heart Will Go On",
-     "id": "moretosayriverwood.esp:000F02"
-    },
-    {
-     "quest": "ANDR_AJO_VendorQuest",
-     "id": "Andrealphus Jobs Overhaul - MASTER.esp:000BB5"
-    }
-   ]
-  },
-  {
    "id": "Skyrim.esm:0E66A5",
    "name": "Lund's Hut",
    "edid": "LundsHutLocation",
@@ -61361,9 +61554,17 @@
     "LocTypeHouse"
    ],
    "hold": "Whiterun",
-   "nearestTown": null,
-   "nearestCity": null,
-   "inTown": "Whiterun",
+   "nearestTown": {
+    "town": "Whiterun",
+    "km": 0.1,
+    "walk": "next to it"
+   },
+   "nearestCity": {
+    "town": "Whiterun",
+    "km": 0.1,
+    "walk": "next to it"
+   },
+   "inTown": null,
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": null,
    "namedBy": [
@@ -61373,6 +61574,13 @@
     "Gloth",
     "Nimriel"
    ],
+   "world": "Tamriel",
+   "pos": [
+    18221.8,
+    -17929.1,
+    -4435.3
+   ],
+   "posFrom": "door",
    "actors": {
     "count": 2,
     "hostile": false
@@ -61687,14 +61895,6 @@
    "pointers": [
     {
      "kind": "dialogue",
-     "speaker": "Delphine",
-     "speakerPlace": "Sleeping Giant Inn",
-     "quest": "The Golden Claw",
-     "words": "Lucan at the Riverwood Trader had his store broken into the other night. Oddly enough, barely anything's been stolen.",
-     "record": "INFO Skyrim.esm:0153B9 (Skyrim.esm)"
-    },
-    {
-     "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
      "quest": "Season Unending",
@@ -61743,51 +61943,11 @@
     },
     {
      "kind": "dialogue",
-     "speaker": "Lucan Valerius",
-     "speakerPlace": "Riverwood Trader",
-     "quest": "The Golden Claw",
-     "words": "I don't know what you overheard, but the Riverwood Trader is still open. Feel free to shop.",
-     "record": "INFO Skyrim.esm:03BC61 (Skyrim.esm)"
-    },
-    {
-     "kind": "dialogue",
-     "speaker": "Gerdur",
-     "speakerPlace": "Hod and Gerdur's House",
-     "quest": "The Golden Claw",
-     "words": "Lucan over in the Riverwood Trader says thieves broke into his store. Strange, he says they hardly took anything.",
-     "record": "INFO Skyrim.esm:039642 (Skyrim.esm)"
-    },
-    {
-     "kind": "dialogue",
-     "speaker": "Hilde",
-     "speakerPlace": "Sven and Hilde's House",
-     "quest": "The Golden Claw",
-     "words": "Did you hear? The Riverwood Trader was robbed! Poor Lucan must be torn to pieces over it.",
-     "record": "INFO Skyrim.esm:039644 (Skyrim.esm)"
-    },
-    {
-     "kind": "dialogue",
-     "speaker": "Camilla Valerius",
-     "speakerPlace": "Riverwood Trader",
-     "quest": "The Golden Claw",
-     "words": "Lucan's dead. I guess I'm in charge of the Riverwood Trader now.",
-     "record": "INFO Skyrim.esm:08AFA7 (Skyrim.esm)"
-    },
-    {
-     "kind": "dialogue",
      "speaker": "Delphine",
      "speakerPlace": "Sleeping Giant Inn",
      "quest": "Diplomatic Immunity",
      "words": "Meet me back in Riverwood. If I'm not back when you get there, wait for me. I shouldn't be long.",
      "record": "INFO Skyrim.esm:03B495 (Unofficial Skyrim Special Edition Patch.esp)"
-    },
-    {
-     "kind": "dialogue",
-     "speaker": "Lucan Valerius",
-     "speakerPlace": "Riverwood Trader",
-     "quest": "The Golden Claw",
-     "words": "Thank you so much for taking care of those thieves. The Riverwood Trader is back to the way it used to be!",
-     "record": "INFO Skyrim.esm:03DD27 (Golden Claw - More Choices.esp)"
     },
     {
      "kind": "dialogue",
@@ -61839,35 +61999,11 @@
     },
     {
      "kind": "dialogue",
-     "speaker": "Lucan Valerius",
-     "speakerPlace": "Riverwood Trader",
-     "quest": "Riverwood dialogue",
-     "words": "The Riverwood Trader is everything you need in a general store.",
-     "record": "INFO Skyrim.esm:04545F (Skyrim.esm)"
-    },
-    {
-     "kind": "dialogue",
      "speaker": "Alvor",
      "speakerPlace": "Alvor and Sigrid's House",
      "quest": "Riverwood dialogue",
      "words": "Ain't every day we get visitors in Riverwood.",
      "record": "INFO Skyrim.esm:045468 (Skyrim.esm)"
-    },
-    {
-     "kind": "dialogue",
-     "speaker": "Lucan Valerius",
-     "speakerPlace": "Riverwood Trader",
-     "quest": "The Golden Claw",
-     "words": "Here, take this. You've done a good thing for the Riverwood Trader.",
-     "record": "INFO Skyrim.esm:08AFAA (Skyrim.esm)"
-    },
-    {
-     "kind": "dialogue",
-     "speaker": "Camilla Valerius",
-     "speakerPlace": "Riverwood Trader",
-     "quest": "The Golden Claw",
-     "words": "Take this. You've done a good thing for the Riverwood Trader.",
-     "record": "INFO Skyrim.esm:08AFAC (Skyrim.esm)"
     },
     {
      "kind": "dialogue",
@@ -61996,14 +62132,6 @@
      "quest": "Alduin's Wall",
      "words": "From Riverwood? The road south through Falkreath is the most direct route.",
      "record": "INFO Skyrim.esm:0ADD73 (Unofficial Skyrim Special Edition Patch.esp)"
-    },
-    {
-     "kind": "dialogue",
-     "speaker": null,
-     "speakerPlace": null,
-     "quest": "Riverwood dialogue",
-     "words": "Lucan's got a little bit of everything at the Riverwood Trader.",
-     "record": "INFO Skyrim.esm:0BCCC6 (Unofficial Skyrim Special Edition Patch.esp)"
     },
     {
      "kind": "dialogue",
@@ -62287,14 +62415,6 @@
     },
     {
      "kind": "dialogue",
-     "speaker": "Hilde",
-     "speakerPlace": "Sven and Hilde's House",
-     "quest": "Additional Riverwood Dialogue",
-     "words": "Did you hear? The Riverwood Trader was robbed! Poor Lucan must be torn to pieces over it.",
-     "record": "INFO moretosayriverwood.esp:000806 (moretosayriverwood.esp)"
-    },
-    {
-     "kind": "dialogue",
      "speaker": "Sigrid",
      "speakerPlace": "Alvor and Sigrid's House",
      "quest": "Additional Riverwood Dialogue",
@@ -62404,14 +62524,6 @@
      "quest": "Additional Riverwood Dialogue",
      "words": "Riverwood's nearby. We need to make sure no one gets hurt.",
      "record": "INFO moretosayriverwood.esp:0009B2 (moretosayriverwood.esp)"
-    },
-    {
-     "kind": "dialogue",
-     "speaker": "Gerdur",
-     "speakerPlace": "Hod and Gerdur's House",
-     "quest": "Additional Riverwood Dialogue",
-     "words": "Lucan over in the Riverwood Trader says thieves broke into his store. Strange, he says they hardly took anything.",
-     "record": "INFO moretosayriverwood.esp:000E4A (moretosayriverwood.esp)"
     },
     {
      "kind": "dialogue",
@@ -62674,14 +62786,6 @@
      "speaker": null,
      "speakerPlace": null,
      "quest": "aaCamilla2",
-     "words": "If we have a few moments, I might pray to Zenithar here. The Riverwood Trader could always use his favor.",
-     "record": "INFO FDE Camilla.esp:0009F6 (FDE Camilla.esp)"
-    },
-    {
-     "kind": "dialogue",
-     "speaker": null,
-     "speakerPlace": null,
-     "quest": "aaCamilla2",
      "words": "When you brought me out of Riverwood, I thought we were going on an adventure to see the world and clear the occasional bandit lair...",
      "record": "INFO FDE Camilla.esp:0009E3 (FDE Camilla.esp)"
     },
@@ -62900,6 +63004,185 @@
     {
      "quest": "Season Unending",
      "id": "Skyrim.esm:02610A"
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01CB8D",
+   "name": "Riverwood Trader",
+   "edid": "RiverwoodLucansDryGoodsLocation",
+   "type": "Store",
+   "keywords": [
+    "LocTypeDwelling",
+    "LocTypeStore"
+   ],
+   "hold": "Whiterun",
+   "nearestTown": null,
+   "nearestCity": null,
+   "inTown": "Riverwood",
+   "plugin": "Lux - Ryn's Riverwood Trader patch.esp",
+   "marker": null,
+   "namedBy": [
+    "homes",
+    "quests"
+   ],
+   "namedByQuest": [
+    "A Lovely Letter",
+    "ANDR_AJO_VendorQuest",
+    "BCSLL Vendor Quest"
+   ],
+   "homeOf": [
+    "Camilla Valerius",
+    "Lucan Valerius"
+   ],
+   "recordName": "Lucan's Dry Goods",
+   "actors": {
+    "count": 2,
+    "hostile": false
+   },
+   "worthGoingFor": {
+    "shrines": [
+     "Shrine of Dibella",
+     "Shrine of Zenithar"
+    ]
+   },
+   "aliases": [
+    "Lucan's Dry Goods"
+   ],
+   "pointers": [
+    {
+     "kind": "dialogue",
+     "speaker": "Delphine",
+     "speakerPlace": "Sleeping Giant Inn",
+     "quest": "The Golden Claw",
+     "words": "Lucan at the Riverwood Trader had his store broken into the other night. Oddly enough, barely anything's been stolen.",
+     "record": "INFO Skyrim.esm:0153B9 (Skyrim.esm)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": "Lucan Valerius",
+     "speakerPlace": "Riverwood Trader",
+     "quest": "The Golden Claw",
+     "words": "I don't know what you overheard, but the Riverwood Trader is still open. Feel free to shop.",
+     "record": "INFO Skyrim.esm:03BC61 (Skyrim.esm)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": "Gerdur",
+     "speakerPlace": "Hod and Gerdur's House",
+     "quest": "The Golden Claw",
+     "words": "Lucan over in the Riverwood Trader says thieves broke into his store. Strange, he says they hardly took anything.",
+     "record": "INFO Skyrim.esm:039642 (Skyrim.esm)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": "Hilde",
+     "speakerPlace": "Sven and Hilde's House",
+     "quest": "The Golden Claw",
+     "words": "Did you hear? The Riverwood Trader was robbed! Poor Lucan must be torn to pieces over it.",
+     "record": "INFO Skyrim.esm:039644 (Skyrim.esm)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": "Camilla Valerius",
+     "speakerPlace": "Riverwood Trader",
+     "quest": "The Golden Claw",
+     "words": "Lucan's dead. I guess I'm in charge of the Riverwood Trader now.",
+     "record": "INFO Skyrim.esm:08AFA7 (Skyrim.esm)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": "Lucan Valerius",
+     "speakerPlace": "Riverwood Trader",
+     "quest": "The Golden Claw",
+     "words": "Thank you so much for taking care of those thieves. The Riverwood Trader is back to the way it used to be!",
+     "record": "INFO Skyrim.esm:03DD27 (Golden Claw - More Choices.esp)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": "Lucan Valerius",
+     "speakerPlace": "Riverwood Trader",
+     "quest": "Riverwood dialogue",
+     "words": "The Riverwood Trader is everything you need in a general store.",
+     "record": "INFO Skyrim.esm:04545F (Skyrim.esm)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": "Lucan Valerius",
+     "speakerPlace": "Riverwood Trader",
+     "quest": "The Golden Claw",
+     "words": "Here, take this. You've done a good thing for the Riverwood Trader.",
+     "record": "INFO Skyrim.esm:08AFAA (Skyrim.esm)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": "Camilla Valerius",
+     "speakerPlace": "Riverwood Trader",
+     "quest": "The Golden Claw",
+     "words": "Take this. You've done a good thing for the Riverwood Trader.",
+     "record": "INFO Skyrim.esm:08AFAC (Skyrim.esm)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "A Lovely Letter",
+     "words": "I've seen him sneaking over to the Riverwood Trader to speak with her when I'm not around. He's wasting his time.",
+     "record": "INFO Skyrim.esm:05C823 (NGCDT - LovelyLetter Patch.esp)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "Riverwood dialogue",
+     "words": "Lucan's got a little bit of everything at the Riverwood Trader.",
+     "record": "INFO Skyrim.esm:0BCCC6 (Unofficial Skyrim Special Edition Patch.esp)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": "Hilde",
+     "speakerPlace": "Sven and Hilde's House",
+     "quest": "Additional Riverwood Dialogue",
+     "words": "Did you hear? The Riverwood Trader was robbed! Poor Lucan must be torn to pieces over it.",
+     "record": "INFO moretosayriverwood.esp:000806 (moretosayriverwood.esp)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": "Gerdur",
+     "speakerPlace": "Hod and Gerdur's House",
+     "quest": "Additional Riverwood Dialogue",
+     "words": "Lucan over in the Riverwood Trader says thieves broke into his store. Strange, he says they hardly took anything.",
+     "record": "INFO moretosayriverwood.esp:000E4A (moretosayriverwood.esp)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "aaCamilla2",
+     "words": "If we have a few moments, I might pray to Zenithar here. The Riverwood Trader could always use his favor.",
+     "record": "INFO FDE Camilla.esp:0009F6 (FDE Camilla.esp)"
+    }
+   ],
+   "quests": [
+    {
+     "quest": "A Lovely Letter",
+     "id": "Skyrim.esm:074A83"
+    },
+    {
+     "quest": "The Golden Claw",
+     "id": "Skyrim.esm:039645"
+    },
+    {
+     "quest": "BCSLL Vendor Quest",
+     "id": "Book Covers Skyrim - Lost Library.esp:012C88"
+    },
+    {
+     "quest": "The Heart Will Go On",
+     "id": "moretosayriverwood.esp:000F02"
+    },
+    {
+     "quest": "ANDR_AJO_VendorQuest",
+     "id": "Andrealphus Jobs Overhaul - MASTER.esp:000BB5"
     }
    ]
   },
@@ -64543,7 +64826,7 @@
   },
   {
    "id": "Skyrim.esm:01CB8B",
-   "name": "Sven's House",
+   "name": "Sven and Hilde's House",
    "edid": "RiverwoodSvensHouseLocation",
    "type": "House",
    "keywords": [
@@ -64563,10 +64846,14 @@
     "Hilde",
     "Sven"
    ],
+   "recordName": "Sven's House",
    "actors": {
     "count": 2,
     "hostile": false
-   }
+   },
+   "aliases": [
+    "Sven's House"
+   ]
   },
   {
    "id": "Skyrim.esm:018EE2",
@@ -65597,6 +65884,65 @@
     "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily"
+  },
+  {
+   "id": "Skyrim.esm:01706D",
+   "name": "The Underforge",
+   "edid": "WhiterunUnderforgeInteriorLocation",
+   "type": "Building",
+   "keywords": [
+    "LocTypeDwelling"
+   ],
+   "hold": "Whiterun",
+   "nearestTown": null,
+   "nearestCity": null,
+   "inTown": "Whiterun",
+   "plugin": "Skyrim.esm",
+   "marker": null,
+   "namedBy": [
+    "quests"
+   ],
+   "namedByQuest": [
+    "Proving Honor",
+    "The Silver Hand",
+    "Totems of Hircine"
+   ],
+   "recordName": "Whiterun Underforge",
+   "aliases": [
+    "Whiterun Underforge"
+   ],
+   "pointers": [
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "The Silver Hand",
+     "words": "Not now. The Underforge, tonight.",
+     "record": "INFO Skyrim.esm:06767C (CompanionsTweaks.esp)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "The Silver Hand",
+     "words": "Not here. The Underforge. Come on.",
+     "record": "INFO Skyrim.esm:0716EF (CompanionsTweaks.esp)"
+    }
+   ],
+   "quests": [
+    {
+     "quest": "Totems of Hircine",
+     "id": "Skyrim.esm:0E3145"
+    },
+    {
+     "quest": "Proving Honor",
+     "id": "Skyrim.esm:06E803"
+    },
+    {
+     "quest": "The Silver Hand",
+     "id": "Skyrim.esm:01CEF4"
+    }
+   ]
   },
   {
    "id": "Skyrim.esm:0192BB",
@@ -66714,43 +67060,6 @@
    ]
   },
   {
-   "id": "Skyrim.esm:01706D",
-   "name": "Whiterun Underforge",
-   "edid": "WhiterunUnderforgeInteriorLocation",
-   "type": "Building",
-   "keywords": [
-    "LocTypeDwelling"
-   ],
-   "hold": "Whiterun",
-   "nearestTown": null,
-   "nearestCity": null,
-   "inTown": "Whiterun",
-   "plugin": "Skyrim.esm",
-   "marker": null,
-   "namedBy": [
-    "quests"
-   ],
-   "namedByQuest": [
-    "Proving Honor",
-    "The Silver Hand",
-    "Totems of Hircine"
-   ],
-   "quests": [
-    {
-     "quest": "Totems of Hircine",
-     "id": "Skyrim.esm:0E3145"
-    },
-    {
-     "quest": "Proving Honor",
-     "id": "Skyrim.esm:06E803"
-    },
-    {
-     "quest": "The Silver Hand",
-     "id": "Skyrim.esm:01CEF4"
-    }
-   ]
-  },
-  {
    "id": "CC Tundra Homestead - Tweaks and Enhancements.esp:00005F",
    "name": "Whitestream Den",
    "edid": "THTE_LCTN_WhitestreamDen",
@@ -67169,6 +67478,58 @@
     {
      "quest": "Beneath Bronze Waters",
      "id": "ccBGSSSE001-Fish.esm:000AD6"
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01EB7B",
+   "name": "Birna's Oddments",
+   "edid": "WinterholdRanmirsHouseLocation",
+   "type": "House",
+   "keywords": [
+    "LocTypeDwelling",
+    "LocTypeHouse"
+   ],
+   "hold": "Winterhold",
+   "nearestTown": null,
+   "nearestCity": null,
+   "inTown": "Winterhold",
+   "plugin": "The Great City of Winterhold v4.esp",
+   "marker": null,
+   "namedBy": [
+    "homes",
+    "quests"
+   ],
+   "namedByQuest": [
+    "ANDR_AJO_VendorQuest",
+    "BCSLL Vendor Quest"
+   ],
+   "homeOf": [
+    "Birna",
+    "Ranmir"
+   ],
+   "recordName": "Ranmir's House",
+   "actors": {
+    "count": 3,
+    "hostile": false
+   },
+   "worthGoingFor": {
+    "skillBooks": [
+     "Destruction: Mystery of Talara, Vol. 3",
+     "Speechcraft: Biography of the Wolf Queen"
+    ]
+   },
+   "aliases": [
+    "Ranmir's House"
+   ],
+   "quests": [
+    {
+     "quest": "BCSLL Vendor Quest",
+     "id": "Book Covers Skyrim - Lost Library.esp:012C88"
+    },
+    {
+     "quest": "ANDR_AJO_VendorQuest",
+     "id": "Andrealphus Jobs Overhaul - MASTER.esp:000BB5"
     }
    ]
   },
@@ -67606,7 +67967,7 @@
   },
   {
    "id": "The Great City of Winterhold v4.esp:40851B",
-   "name": "Chayim's House",
+   "name": "Chayim and Euthymia's House",
    "edid": "WinterholdChayimsHouseLocationTGCoWH",
    "type": "House",
    "keywords": [
@@ -67626,10 +67987,14 @@
     "Chayim",
     "Euthymia"
    ],
+   "recordName": "Chayim's House",
    "actors": {
     "count": 2,
     "hostile": false
-   }
+   },
+   "aliases": [
+    "Chayim's House"
+   ]
   },
   {
    "id": "Skyrim.esm:01EB74",
@@ -68072,38 +68437,6 @@
    }
   },
   {
-   "id": "The Great City of Winterhold v4.esp:143085",
-   "name": "Hall of Runes",
-   "edid": "WinterholdLibraryLocationTGC",
-   "type": "Store",
-   "keywords": [
-    "LocTypeDwelling",
-    "LocTypeHouse",
-    "LocTypeStore"
-   ],
-   "hold": "Winterhold",
-   "nearestTown": null,
-   "nearestCity": null,
-   "inTown": "Winterhold",
-   "plugin": "The Great City of Winterhold v4.esp",
-   "marker": null,
-   "namedBy": [
-    "homes"
-   ],
-   "homeOf": [
-    "Frode Snow-Owl"
-   ],
-   "actors": {
-    "count": 2,
-    "hostile": false
-   },
-   "worthGoingFor": {
-    "shrines": [
-     "Shrine of Julianos"
-    ]
-   }
-  },
-  {
    "id": "Skyrim.esm:01EB7A",
    "name": "Hall of the Elements",
    "edid": "WinterholdCollegeHallofElementsLocation",
@@ -68371,6 +68704,38 @@
      "quest": "The Ritual",
      "id": "Meridia.esp:01F41F"
     }
+   ]
+  },
+  {
+   "id": "The Great City of Winterhold v4.esp:00F5A2",
+   "name": "House of Clan Frost-Vein",
+   "edid": "WinterholdMagnarsHouseLocationTGCoWH",
+   "type": "House",
+   "keywords": [
+    "LocTypeDwelling",
+    "LocTypeHouse"
+   ],
+   "hold": "Winterhold",
+   "nearestTown": null,
+   "nearestCity": null,
+   "inTown": "Winterhold",
+   "plugin": "The Great City of Winterhold v4.esp",
+   "marker": null,
+   "namedBy": [
+    "homes"
+   ],
+   "homeOf": [
+    "Magnar Frost-Vein",
+    "Njal Frost-Vein",
+    "Skadi Frost-Vein"
+   ],
+   "recordName": "Magnar's House",
+   "actors": {
+    "count": 3,
+    "hostile": false
+   },
+   "aliases": [
+    "Magnar's House"
    ]
   },
   {
@@ -68722,7 +69087,7 @@
   },
   {
    "id": "Skyrim.esm:01EB7E",
-   "name": "Korri's House",
+   "name": "Kraldar's House",
    "edid": "WinterholdKorrisHouseLocation",
    "type": "House",
    "keywords": [
@@ -68742,6 +69107,7 @@
     "Kraldar",
     "Thonjolf"
    ],
+   "recordName": "Korri's House",
    "actors": {
     "count": 2,
     "hostile": false
@@ -68750,7 +69116,10 @@
     "skillBooks": [
      "Alteration: Breathing Water"
     ]
-   }
+   },
+   "aliases": [
+    "Korri's House"
+   ]
   },
   {
    "id": "Inigo.esp:07FF4E",
@@ -68836,34 +69205,6 @@
    ],
    "actors": {
     "count": 1,
-    "hostile": false
-   }
-  },
-  {
-   "id": "The Great City of Winterhold v4.esp:00F5A2",
-   "name": "Magnar's House",
-   "edid": "WinterholdMagnarsHouseLocationTGCoWH",
-   "type": "House",
-   "keywords": [
-    "LocTypeDwelling",
-    "LocTypeHouse"
-   ],
-   "hold": "Winterhold",
-   "nearestTown": null,
-   "nearestCity": null,
-   "inTown": "Winterhold",
-   "plugin": "The Great City of Winterhold v4.esp",
-   "marker": null,
-   "namedBy": [
-    "homes"
-   ],
-   "homeOf": [
-    "Magnar Frost-Vein",
-    "Njal Frost-Vein",
-    "Skadi Frost-Vein"
-   ],
-   "actors": {
-    "count": 3,
     "hostile": false
    }
   },
@@ -69057,54 +69398,6 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10
-  },
-  {
-   "id": "Skyrim.esm:01EB7B",
-   "name": "Ranmir's House",
-   "edid": "WinterholdRanmirsHouseLocation",
-   "type": "House",
-   "keywords": [
-    "LocTypeDwelling",
-    "LocTypeHouse"
-   ],
-   "hold": "Winterhold",
-   "nearestTown": null,
-   "nearestCity": null,
-   "inTown": "Winterhold",
-   "plugin": "The Great City of Winterhold v4.esp",
-   "marker": null,
-   "namedBy": [
-    "homes",
-    "quests"
-   ],
-   "namedByQuest": [
-    "ANDR_AJO_VendorQuest",
-    "BCSLL Vendor Quest"
-   ],
-   "homeOf": [
-    "Birna",
-    "Ranmir"
-   ],
-   "actors": {
-    "count": 3,
-    "hostile": false
-   },
-   "worthGoingFor": {
-    "skillBooks": [
-     "Destruction: Mystery of Talara, Vol. 3",
-     "Speechcraft: Biography of the Wolf Queen"
-    ]
-   },
-   "quests": [
-    {
-     "quest": "BCSLL Vendor Quest",
-     "id": "Book Covers Skyrim - Lost Library.esp:012C88"
-    },
-    {
-     "quest": "ANDR_AJO_VendorQuest",
-     "id": "Andrealphus Jobs Overhaul - MASTER.esp:000BB5"
-    }
-   ]
   },
   {
    "id": "Tools of Kagrenac.esp:0519F6",
@@ -71739,6 +72032,42 @@
    }
   },
   {
+   "id": "The Great City of Winterhold v4.esp:143085",
+   "name": "Winterhold Library",
+   "edid": "WinterholdLibraryLocationTGC",
+   "type": "Store",
+   "keywords": [
+    "LocTypeDwelling",
+    "LocTypeHouse",
+    "LocTypeStore"
+   ],
+   "hold": "Winterhold",
+   "nearestTown": null,
+   "nearestCity": null,
+   "inTown": "Winterhold",
+   "plugin": "The Great City of Winterhold v4.esp",
+   "marker": null,
+   "namedBy": [
+    "homes"
+   ],
+   "homeOf": [
+    "Frode Snow-Owl"
+   ],
+   "recordName": "Hall of Runes",
+   "actors": {
+    "count": 2,
+    "hostile": false
+   },
+   "worthGoingFor": {
+    "shrines": [
+     "Shrine of Julianos"
+    ]
+   },
+   "aliases": [
+    "Hall of Runes"
+   ]
+  },
+  {
    "id": "Skyrim.esm:0192A3",
    "name": "Wreck of the Pride of Tel Vos",
    "recordName": "Pride of Tel Vos",
@@ -74281,7 +74610,7 @@
   },
   {
    "id": "Wyrmstooth.esp:00B3FF",
-   "name": "The Hermit",
+   "name": "The Handsome Hermit",
    "edid": "WTTheHermitLocation",
    "type": "Building",
    "keywords": [
@@ -74301,6 +74630,7 @@
     "Anke Ebonhand",
     "Lorumend"
    ],
+   "recordName": "The Hermit",
    "actors": {
     "count": 5,
     "hostile": false
@@ -74316,6 +74646,9 @@
      "Shrine of Zenithar"
     ]
    },
+   "aliases": [
+    "The Hermit"
+   ],
    "pointers": [
     {
      "kind": "dialogue",
@@ -80187,46 +80520,6 @@
    "danger": {
     "traps": true
    }
-  },
-  {
-   "id": "Vigilant.esm:558630",
-   "name": "Gravekeeper's House",
-   "edid": "zzzCHLocWfSacristy",
-   "type": "House",
-   "keywords": [],
-   "hold": null,
-   "nearestTown": null,
-   "nearestCity": null,
-   "inTown": null,
-   "plugin": "Vigilant.esm",
-   "marker": null,
-   "namedBy": [
-    "homes",
-    "quests"
-   ],
-   "namedByQuest": [
-    "The Saint's Corpse"
-   ],
-   "homeOf": [
-    "Gravekeeper"
-   ],
-   "world": "zCHMolagWorld",
-   "pos": [
-    -18723.0,
-    -26368.4,
-    1418.5
-   ],
-   "posFrom": "door",
-   "actors": {
-    "count": 1,
-    "hostile": false
-   },
-   "quests": [
-    {
-     "quest": "The Saint's Corpse",
-     "id": "Vigilant.esm:55AA72"
-    }
-   ]
   },
   {
    "id": "FalkreathShades.esp:3238B2",
@@ -88060,6 +88353,50 @@
    "danger": {
     "traps": true
    }
+  },
+  {
+   "id": "Vigilant.esm:558630",
+   "name": "Sexton's House",
+   "edid": "zzzCHLocWfSacristy",
+   "type": "House",
+   "keywords": [],
+   "hold": null,
+   "nearestTown": null,
+   "nearestCity": null,
+   "inTown": null,
+   "plugin": "Vigilant.esm",
+   "marker": null,
+   "namedBy": [
+    "homes",
+    "quests"
+   ],
+   "namedByQuest": [
+    "The Saint's Corpse"
+   ],
+   "homeOf": [
+    "Gravekeeper"
+   ],
+   "world": "zCHMolagWorld",
+   "pos": [
+    -18723.0,
+    -26368.4,
+    1418.5
+   ],
+   "posFrom": "door",
+   "recordName": "Gravekeeper's House",
+   "actors": {
+    "count": 1,
+    "hostile": false
+   },
+   "aliases": [
+    "Gravekeeper's House"
+   ],
+   "quests": [
+    {
+     "quest": "The Saint's Corpse",
+     "id": "Vigilant.esm:55AA72"
+    }
+   ]
   },
   {
    "id": "Skyrim Extended Cut - Saints and Seducers.esp:0A5165",

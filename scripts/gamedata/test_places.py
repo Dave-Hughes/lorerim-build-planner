@@ -538,6 +538,55 @@ class BuiltIndex(unittest.TestCase):
         for hidden in ("posFrom", "noPos", "alsoRecordedAs", "namedByQuest", "edid"):
             self.assertNotIn(hidden, out)
 
+    def test_a_farm_in_a_field_is_on_the_map_not_in_the_town_its_record_is_parented_to(self):
+        # WO-171: Battle-Born, Pelagia and Chillfurrow are parented to Whiterun's location; they stand in the fields, 0.14 to 0.27 km out.
+        (whiterun,) = [p for p in self.rows if p["name"] == "Whiterun" and p["type"] == "City"]
+        for name in ("Battle-Born Farm", "Pelagia Farm", "Chillfurrow Farm Interior"):
+            p = self.by[name]
+            self.assertIsNone(p.get("inTown"), name)
+            self.assertEqual((p["world"], p["posFrom"]), ("Tamriel", "door"), name)  # the farmhouse's own door, not a field's middle
+            self.assertEqual(p["nearestTown"]["town"], "Whiterun", name)  # its town stays, as "near Whiterun"
+            d = ((p["pos"][0] - whiterun["pos"][0]) ** 2 + (p["pos"][1] - whiterun["pos"][1]) ** 2) ** 0.5
+            self.assertGreater(d * 0.0142875 / 1000, 0.05, name)
+        for name, town in (("Katla's Farm", "Solitude"), ("Merryfair Farm", "Riften"), ("Salvius Farmhouse", "Markarth"), ("Solitude Sawmill", "Solitude")):
+            self.assertTrue(self.by[name].get("pos") and not self.by[name].get("inTown"), name)
+            self.assertEqual(self.by[name]["nearestCity"]["town"], town, name)
+
+    def test_a_farm_in_its_village_stays_in_it(self):
+        # WO-171: no exterior cells of its own, and its door 20 to 100 m from the town's marker: Rorikstead's, Falkreath's, Kynesgrove's, Ivarstead's.
+        for name, town in (("Cowflop Farmhouse", "Rorikstead"), ("Lemkil's Farmhouse", "Rorikstead"), ("Corpselight Farm", "Falkreath"),
+                           ("Fellstar Farm", "Ivarstead"), ("Anga's Mill Common House", "Anga's Mill")):
+            self.assertEqual(self.by[name]["inTown"], town, name)
+            self.assertNotIn("pos", self.by[name], name)
+
+    def test_no_place_is_both_in_a_town_and_on_the_map(self):
+        self.assertEqual([p["name"] for p in self.rows if p.get("inTown") and p.get("pos")], [])
+
+    def test_a_house_or_shop_takes_the_name_on_its_door_and_keeps_the_records(self):
+        # WO-171 (Bob, 28 Oct): "Lucan's Dry Goods" is the Riverwood Trader, "Sven's House" is Sven and Hilde's House.
+        trader = self.by["Riverwood Trader"]
+        self.assertEqual((trader["type"], trader["inTown"], trader["recordName"]), ("Store", "Riverwood", "Lucan's Dry Goods"))
+        self.assertIn("Lucan's Dry Goods", trader["aliases"])
+        self.assertNotIn("Lucan's Dry Goods", self.by)
+        self.assertIn("Sven's House", self.by["Sven and Hilde's House"]["aliases"])
+        self.assertNotIn("Sven's House", self.by)
+        self.assertIn("Karthwasten Hall", self.by)  # a typo in the record, fixed by the door
+        self.assertNotIn("Karhwasten Hall", self.by)
+
+    def test_the_name_on_the_door_is_not_taken_where_it_would_mislead(self):
+        self.assertIn("Frederik's Farm", self.by)  # a farm stays a farm, whatever its house is called
+        self.assertIn("Skaal Village Edla's House", self.by)  # the cell "Edla's House" only drops the village from the front
+        self.assertIn("Riften Mercer's House", self.by)  # "Riftweald Manor" is inside another place's name
+        self.assertNotIn("Cellar", self.by)
+        # only a house, a shop or an inn is called by its door: a dungeon's cells are its inner levels
+        self.assertIn("Embershard Mine", self.by)
+        self.assertEqual(self.by["Bleak Falls Barrow"]["type"], "NordicRuin")
+        renamed = [p for p in self.rows if p.get("recordName") and p["recordName"] != p["name"] and p["type"] in pl.DOOR_KINDS and "aliases" in p]
+        names = [p["name"].lower() for p in self.rows]
+        for p in renamed:
+            self.assertEqual(names.count(p["name"].lower()), 1, p["name"])
+            self.assertNotIn(p["recordName"].lower(), names, p["recordName"])
+
 
 if __name__ == "__main__":
     unittest.main()
