@@ -228,6 +228,7 @@ DOOR_NAMED = []  # (the record's name, the name on the door, kind): WO-171; for 
 DOOR_SKIPPED = []  # (the record's name, the name on the door, why not): WO-171
 INTERIOR_DROPPED = []  # (the record's name, the name without "Interior"): WO-171, Bob's second review
 FARM_TYPED = []  # (name, the kind it was, Farm or Mill): WO-171, Bob's second review
+STRAY_ACTORS = []  # (name, hold, count, the range it read, why it was dropped): WO-176, one or two low actors that are not the place's fight
 # WO-171: a farm or a mill is out in the fields, not in the town its record is parented to. A house, a shop and an inn are called by the name
 # on their door, which is their cell's name; a dungeon's cells are its inner levels and are not.
 FARM_KW = {"LocTypeFarm", "LocTypeLumberMill"}
@@ -637,7 +638,7 @@ def build(version):
     xp, disc_xp, xp_from = clear_xp()
     cell_days, cleared_days = respawn_days()
     kname = lambda ks: {kw.get(k, k) for k in ks}  # noqa: E731
-    del DROPPED[:], OFF_MAP[:], LOST_MARKER[:], FARMS_OUT[:], FARMS_IN[:], DOOR_NAMED[:], DOOR_SKIPPED[:], INTERIOR_DROPPED[:], FARM_TYPED[:]
+    del DROPPED[:], OFF_MAP[:], LOST_MARKER[:], FARMS_OUT[:], FARMS_IN[:], DOOR_NAMED[:], DOOR_SKIPPED[:], INTERIOR_DROPPED[:], FARM_TYPED[:], STRAY_ACTORS[:]
     marker_of = {k: markers.get(l["marker"]) for k, l in locs.items() if l.get("marker") in markers and not markers[l["marker"]]["deleted"]}
     marker_world = lambda m: pp.canon((cells.get(m["cell"]) or {}).get("worldEdid"))  # noqa: E731  (the five city worlds are Tamriel's own coordinates)
 
@@ -1241,6 +1242,20 @@ def build(version):
         # WO-144 Part 1e-2: "show the later garrison separately" -- the actors enable-parented to a disabled Civil
         # War marker, summarized the same way, never merged into the start-of-game count or its boss.
         places[k].setdefault("actors", {"count": 0})["afterTheWar"] = summarize_actors(acts, eczn_by_loc.get(k))
+    # WO-176 (Bob, 28 Oct): one or two level-1 or 2 actors are not a place's fight when its own zone says it is for higher levels ("Moss Mother
+    # Cavern: enemies from level 1, up to 2", zone minimum 8) or the war puts its real garrison there later (a Sons of Skyrim camp: "level 1 to 2",
+    # sixteen soldiers of 4 to 27 after the war). The records place a stray critter or a guard; the real fight is a leveled list or a quest's spawn
+    # they don't show. Its levels are dropped (the door says "levels not checked yet", the page "Not known yet"); what lives there stays.
+    for k, p in places.items():
+        a = p.get("actors") or {}
+        if a.get("hostile") is False or "floor" not in a or a["count"] > 2 or a["ceiling"] > 2 or p["type"] in NOT_A_FIGHT:
+            continue
+        why = (f"its zone's minimum is {a['zoneMin']}" if a.get("zoneMin", 0) >= a["ceiling"] + 4 else  # Septimus Signus, level 1 in a zone of 2, is himself (Bob, 23 Oct)
+               "the war puts its garrison there later" if a.get("afterTheWar") else None)
+        if why:
+            STRAY_ACTORS.append((p["name"], p.get("hold") or "", a["count"], f"{a['floor']} to {a['ceiling']}", why))
+            for f in ("floor", "ceiling", "atLevel", "boss"):
+                a.pop(f, None)
     for k, p in places.items():
         if p["type"] == "City" or p["type"] in NOT_A_FIGHT:
             continue  # a city, a house or a shop isn't cleared and doesn't respawn
@@ -1486,6 +1501,11 @@ def report(places, xp_from, cities=()):
             for rec, door_name, why in sorted(skipped):
                 out.append(f"| {rec} | {door_name} | {why} |")
         out += ["", f"{len(DOOR_SKIPPED) - len(skipped)} more differ only in that one name holds the other (a town's name dropped from the front, a leading \"The\"): left as they are."]
+    if STRAY_ACTORS:
+        out += ["", f"### One or two low actors that are not the place's fight ({len(STRAY_ACTORS)}) (WO-176)", "",
+                "A place whose records show one or two actors of level 1 or 2, and whose own zone has a higher minimum or whose war garrison comes later: its levels are not "
+                "given (not checked yet), not read as \"1 to 2\".", "", "| Place | Hold | Actors | Read as | Why dropped |", "|---|---|---|---|---|"]
+        out += [f"| {nm} | {hold} | {n} | {rng} | {why} |" for nm, hold, n, rng, why in sorted(STRAY_ACTORS)]
     if INTERIOR_DROPPED:
         out += ["", f"### \"Interior\" dropped from a name ({len(INTERIOR_DROPPED)}) (WO-171, second review)", "", "| Record's name | Called |", "|---|---|"]
         out += [f"| {rec} | {bare} |" for rec, bare in sorted(INTERIOR_DROPPED)]

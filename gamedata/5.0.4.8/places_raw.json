@@ -4759,18 +4759,6 @@
    "posFrom": "marker",
    "actors": {
     "count": 2,
-    "floor": 1,
-    "ceiling": 2,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       2
-      ],
-      "words": "from 1, 1 to 2"
-     }
-    ],
     "zoneMin": 6,
     "afterTheWar": {
      "count": 92,
@@ -9931,18 +9919,6 @@
    "posFrom": "marker",
    "actors": {
     "count": 1,
-    "floor": 1,
-    "ceiling": 1,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       1
-      ],
-      "words": "from 1, 1 to 1"
-     }
-    ],
     "zoneMin": 12
    },
    "respawns": "never",
@@ -11748,18 +11724,6 @@
    "posFrom": "marker",
    "actors": {
     "count": 1,
-    "floor": 1,
-    "ceiling": 2,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       2
-      ],
-      "words": "from 1, 1 to 2"
-     }
-    ],
     "zoneMin": 6,
     "afterTheWar": {
      "count": 99,
@@ -14498,18 +14462,6 @@
    "posFrom": "marker",
    "actors": {
     "count": 1,
-    "floor": 1,
-    "ceiling": 2,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       2
-      ],
-      "words": "from 1, 1 to 2"
-     }
-    ],
     "zoneMin": 8
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -16544,13 +16496,13 @@
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "stle Dour and the Temple and you'll get your first sight of the Blue Palace. Along the way, be sure to stop outside the Bards College, a large building on your left marked by the Flame of Callisos burning beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as th",
+     "words": "ng beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as the flame burns, the college will stand.\r\n\r\nThe Bards College\r\n\r\nLooking up from the Bards College steps, you can see that the college stands taller than the Blue Palace itself. The bards who train here c",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "ng beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as the flame burns, the college will stand.\r\n\r\nThe Bards College\r\n\r\nLooking up from the Bards College steps, you can see that the college stands taller than the Blue Palace itself. The bards who train here c",
+     "words": "stle Dour and the Temple and you'll get your first sight of the Blue Palace. Along the way, be sure to stop outside the Bards College, a large building on your left marked by the Flame of Callisos burning beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as th",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
@@ -17490,18 +17442,6 @@
    "posFrom": "marker",
    "actors": {
     "count": 1,
-    "floor": 1,
-    "ceiling": 1,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       1
-      ],
-      "words": "from 1, 1 to 1"
-     }
-    ],
     "afterTheWar": {
      "count": 4,
      "livesHere": "Imperial",
@@ -24467,18 +24407,6 @@
    "posFrom": "marker",
    "actors": {
     "count": 1,
-    "floor": 1,
-    "ceiling": 1,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       1
-      ],
-      "words": "from 1, 1 to 1"
-     }
-    ],
     "zoneMin": 6
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -25087,18 +25015,6 @@
    "posFrom": "cells",
    "actors": {
     "count": 1,
-    "floor": 1,
-    "ceiling": 2,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       2
-      ],
-      "words": "from 1, 1 to 2"
-     }
-    ],
     "afterTheWar": {
      "count": 16,
      "livesHere": "Imperial",
@@ -29807,18 +29723,6 @@
    "posFrom": "marker",
    "actors": {
     "count": 2,
-    "floor": 1,
-    "ceiling": 2,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       2
-      ],
-      "words": "from 1, 1 to 2"
-     }
-    ],
     "zoneMin": 10
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -37157,18 +37061,6 @@
    "posFrom": "cells",
    "actors": {
     "count": 1,
-    "floor": 1,
-    "ceiling": 2,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       2
-      ],
-      "words": "from 1, 1 to 2"
-     }
-    ],
     "afterTheWar": {
      "count": 16,
      "livesHere": "Imperial",
@@ -37817,23 +37709,7 @@
    "posFrom": "marker",
    "actors": {
     "count": 2,
-    "floor": 1,
-    "ceiling": 1,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       1
-      ],
-      "words": "from 1, 1 to 1"
-     }
-    ],
-    "zoneMin": 5,
-    "boss": {
-     "name": "Skeever",
-     "level": "level 1"
-    }
+    "zoneMin": 5
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -45292,18 +45168,6 @@
    "posFrom": "cells",
    "actors": {
     "count": 2,
-    "floor": 1,
-    "ceiling": 2,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       2
-      ],
-      "words": "from 1, 1 to 2"
-     }
-    ],
     "afterTheWar": {
      "count": 16,
      "livesHere": "Imperial",
@@ -48724,23 +48588,7 @@
    "actors": {
     "count": 2,
     "livesHere": "Skeleton",
-    "floor": 1,
-    "ceiling": 1,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       1
-      ],
-      "words": "from 1, 1 to 1"
-     }
-    ],
     "zoneMin": 6,
-    "boss": {
-     "name": "Skeleton",
-     "level": "level 1"
-    },
     "afterTheWar": {
      "count": 98,
      "livesHere": "Imperial",
@@ -49982,18 +49830,6 @@
    "posFrom": "cells",
    "actors": {
     "count": 1,
-    "floor": 1,
-    "ceiling": 2,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       2
-      ],
-      "words": "from 1, 1 to 2"
-     }
-    ],
     "afterTheWar": {
      "count": 16,
      "livesHere": "Imperial",
@@ -53434,18 +53270,6 @@
    "posFrom": "cells",
    "actors": {
     "count": 1,
-    "floor": 1,
-    "ceiling": 2,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       2
-      ],
-      "words": "from 1, 1 to 2"
-     }
-    ],
     "afterTheWar": {
      "count": 12,
      "livesHere": "Imperial",
@@ -59828,22 +59652,6 @@
    "actors": {
     "count": 2,
     "livesHere": "Wolf",
-    "floor": 1,
-    "ceiling": 2,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       2
-      ],
-      "words": "from 1, 1 to 2"
-     }
-    ],
-    "boss": {
-     "name": "Wolf",
-     "level": "level 2"
-    },
     "afterTheWar": {
      "count": 11,
      "livesHere": "Imperial",
@@ -70954,18 +70762,6 @@
    "posFrom": "cells",
    "actors": {
     "count": 1,
-    "floor": 1,
-    "ceiling": 2,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       2
-      ],
-      "words": "from 1, 1 to 2"
-     }
-    ],
     "afterTheWar": {
      "count": 13,
      "livesHere": "Imperial",
@@ -80193,18 +79989,6 @@
    "posFrom": "marker",
    "actors": {
     "count": 2,
-    "floor": 1,
-    "ceiling": 1,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       1
-      ],
-      "words": "from 1, 1 to 1"
-     }
-    ],
     "zoneMin": 15
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -82918,18 +82702,6 @@
    "posFrom": "door",
    "actors": {
     "count": 2,
-    "floor": 1,
-    "ceiling": 1,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       1
-      ],
-      "words": "from 1, 1 to 1"
-     }
-    ],
     "zoneMin": 8
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -90628,18 +90400,6 @@
    "posFrom": "marker",
    "actors": {
     "count": 1,
-    "floor": 1,
-    "ceiling": 1,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       1
-      ],
-      "words": "from 1, 1 to 1"
-     }
-    ],
     "zoneMin": 15
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",

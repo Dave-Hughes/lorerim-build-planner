@@ -24,8 +24,9 @@ describe("suggest_places on the real places.json", () => {
   const places = placesData().places;
   const towns = [...new Set(places.flatMap((p) => (p.nearestTown ? [p.nearestTown.town] : [])))];
 
-  it("the index has the shape the tool reads: every place with hostile actors has a floor, a ceiling and a table", () => {
-    const bad = places.filter((p) => p.actors && p.actors.hostile !== false && !p.actors.afterTheWar && !(Number.isFinite(p.actors.floor) && Number.isFinite(p.actors.ceiling) && Array.isArray(p.actors.atLevel))).map((p) => p.name);
+  it("the index has the shape the tool reads: every place with hostile actors has a floor, a ceiling and a table, or none of the three (WO-176: one or two low actors in a place meant for more are not its levels)", () => {
+    const levelless = (a: NonNullable<(typeof places)[number]["actors"]>) => a.floor === undefined && a.ceiling === undefined && a.atLevel === undefined && a.count <= 2;
+    const bad = places.filter((p) => p.actors && p.actors.hostile !== false && !p.actors.afterTheWar && !levelless(p.actors) && !(Number.isFinite(p.actors.floor) && Number.isFinite(p.actors.ceiling) && Array.isArray(p.actors.atLevel))).map((p) => p.name);
     expect(bad).toEqual([]);
   });
   it("every town, at three stretches of levels, with and without an end: no throw, a fit and its words for every place", () => {

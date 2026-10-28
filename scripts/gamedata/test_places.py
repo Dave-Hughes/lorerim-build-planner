@@ -611,6 +611,26 @@ class BuiltIndex(unittest.TestCase):
             if p["type"] in ("Farm", "Mill"):
                 self.assertNotIn("boss", p.get("actors") or {}, p["name"])
 
+    def test_one_stray_low_actor_is_not_a_places_levels(self):
+        # WO-176 (Bob, 28 Oct): "Moss Mother Cavern: enemies from level 1, up to 2" (its zone says 8) and a Sons of Skyrim camp "level 1 to 2".
+        moss = self.by["Moss Mother Cavern"]["actors"]
+        self.assertEqual((moss["count"], moss["zoneMin"]), (1, 8))
+        for f in ("floor", "ceiling", "atLevel", "boss"):
+            self.assertNotIn(f, moss)
+        camps = [p for p in self.rows if p["name"] == "Sons of Skyrim Military Camp" and p.get("hold") == "The Reach"]
+        self.assertEqual(len(camps), 1)
+        self.assertNotIn("floor", camps[0]["actors"])
+        self.assertEqual(camps[0]["actors"]["afterTheWar"]["ceiling"], 27)  # the garrison's levels stay, as the after-the-war set
+        # nothing left reads as one or two low actors against a zone or a war that says more
+        for p in self.rows:
+            a = p.get("actors") or {}
+            if "floor" in a and a["count"] <= 2 and a["ceiling"] <= 2 and p["type"] not in pl.NOT_A_FIGHT:
+                self.assertFalse(a.get("zoneMin", 0) >= a["ceiling"] + 4 or a.get("afterTheWar"), p["name"])
+        # a real dungeon and a real garrison keep theirs
+        self.assertIn("floor", self.by["Bleak Falls Barrow"]["actors"])
+        self.assertIn("floor", self.by["Fort Hraggstad"]["actors"]["afterTheWar"])
+        self.assertIn("floor", self.by["Septimus Signus' Outpost"]["actors"])  # a level 1 that is the man himself
+
 
 if __name__ == "__main__":
     unittest.main()

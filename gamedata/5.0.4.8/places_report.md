@@ -558,6 +558,32 @@ Left as the record has them:
 
 25 more differ only in that one name holds the other (a town's name dropped from the front, a leading "The"): left as they are.
 
+### One or two low actors that are not the place's fight (19) (WO-176)
+
+A place whose records show one or two actors of level 1 or 2, and whose own zone has a higher minimum or whose war garrison comes later: its levels are not given (not checked yet), not read as "1 to 2".
+
+| Place | Hold | Actors | Read as | Why dropped |
+|---|---|---|---|---|
+| Angi's Camp | Falkreath | 1 | 1 to 1 | its zone's minimum is 12 |
+| Dragon Bridge | Haafingar | 1 | 1 to 1 | the war puts its garrison there later |
+| Fort Amol | Eastmarch | 2 | 1 to 2 | its zone's minimum is 6 |
+| Fort Greenwall | The Rift | 2 | 1 to 1 | its zone's minimum is 6 |
+| Fort Neugrad | Falkreath | 1 | 1 to 2 | its zone's minimum is 6 |
+| Frostskarn Vault |  | 2 | 1 to 1 | its zone's minimum is 15 |
+| Hrothmund's Barrow | Solstheim | 2 | 1 to 2 | its zone's minimum is 10 |
+| Imperial Military Camp | The Rift | 1 | 1 to 2 | the war puts its garrison there later |
+| Imperial Military Camp | Whiterun | 2 | 1 to 2 | the war puts its garrison there later |
+| Meeko's Shack | Hjaalmarch | 1 | 1 to 1 | its zone's minimum is 6 |
+| MerchantLocations |  | 2 | 1 to 1 | its zone's minimum is 8 |
+| Moss Mother Cavern | Falkreath | 1 | 1 to 2 | its zone's minimum is 8 |
+| Sons of Skyrim Military Camp | Hjaalmarch | 1 | 1 to 2 | the war puts its garrison there later |
+| Sons of Skyrim Military Camp | The Pale | 1 | 1 to 2 | the war puts its garrison there later |
+| Sons of Skyrim Military Camp | The Reach | 2 | 1 to 2 | the war puts its garrison there later |
+| Sons of Skyrim Military Camp | The Rift | 1 | 1 to 2 | the war puts its garrison there later |
+| Sons of Skyrim Military Camp | Winterhold | 1 | 1 to 2 | the war puts its garrison there later |
+| Windward Ruins | The Pale | 2 | 1 to 1 | its zone's minimum is 5 |
+| Wisp Light Crevasse |  | 1 | 1 to 1 | its zone's minimum is 15 |
+
 ### "Interior" dropped from a name (2) (WO-171, second review)
 
 | Record's name | Called |
