@@ -4,6 +4,7 @@ import { auth } from "@/auth";
 import { MapPage, type MapInitial } from "@/components/map/map-page";
 import { playthroughsOn, questsOn } from "@/lib/features";
 import { mapPlaces } from "@/lib/map/data";
+import { PLACE_GROUPS } from "@/lib/places/groups";
 import { mapEntry } from "@/lib/places/map";
 import { siteMetadata } from "@/lib/og/metadata";
 
@@ -30,7 +31,7 @@ export default async function MapRoute({ searchParams }: { searchParams: Search 
     place: sp.place && slugs.has(sp.place) ? sp.place : null,
     quest: sp.quest ? sp.quest.slice(0, 120) : null,
     character: sp.character ? sp.character.slice(0, 20) : null,
-    types: (sp.types ?? "").split(",").filter((t) => places.some((p) => p.type === t)),
+    types: (sp.types ?? "").split(",").filter((t) => PLACE_GROUPS.some((g) => g.key === t)),
     danger: Number.isFinite(lo) && Number.isFinite(hi) && lo >= 1 && hi <= 50 && lo <= hi ? [lo, hi] : [1, 50],
     onlyQuests: sp.quests === "1",
     zoom: num(sp.z),

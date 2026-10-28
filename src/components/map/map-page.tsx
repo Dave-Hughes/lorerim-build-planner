@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { PreviewLink } from "@/components/pages/preview-link";
 import type { Drawer, MapCharacter, MapPlace, MapSearch } from "@/lib/map/data";
+import { PLACE_GROUPS, groupOf } from "@/lib/places/groups";
 import type { MapEntry } from "@/lib/places/map";
 import s from "./map-page.module.css";
 
@@ -146,7 +147,6 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
   const [route, setRoute] = useState<Route | null>(null);
   const [showRoute, setShowRoute] = useState(true);
   const [types, setTypes] = useState<string[]>(initial.types);
-  const [moreTypes, setMoreTypes] = useState(false);
   const [danger, setDanger] = useState<[number, number]>(initial.danger);
   const [onlyQuests, setOnlyQuests] = useState(initial.onlyQuests);
   const [characters, setCharacters] = useState<{ id: string; name: string }[]>([]);
@@ -282,13 +282,17 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
   const lit = useMemo(() => new Set((characterId && character?.id === characterId ? character.lit : []).map((x) => x.slug)), [character, characterId]);
   const shows = (p: MapPlace) => {
     if (selected === p.slug || inRoute.has(p.slug) || lit.has(p.slug)) return true;
-    if (types.length && !types.includes(p.type)) return false;
+    if (types.length && !types.includes(groupOf(p.type))) return false;
     if (onlyQuests && !p.quests) return false;
     if (dangerOn && !(p.kind === "danger" && p.range && p.range[0] <= danger[1] && p.range[1] >= danger[0])) return false;
     if (inRoute.size && route && showRoute) return false;
     return true;
   };
-  const typeCounts = useMemo(() => [...places.reduce((m, p) => m.set(p.type, (m.get(p.type) ?? 0) + 1), new Map<string, number>())].sort((a, b) => b[1] - a[1]), [places]);
+  // The kinds a player would pick (WO-167 review): about ten groups of the records' types, the same as on Places.
+  const groupCounts = useMemo(() => {
+    const m = places.reduce((acc, p) => acc.set(groupOf(p.type), (acc.get(groupOf(p.type)) ?? 0) + 1), new Map<string, number>());
+    return PLACE_GROUPS.map((g) => ({ ...g, n: m.get(g.key) ?? 0 })).filter((g) => g.n > 0);
+  }, [places]);
   const shownCount = places.filter(shows).length;
 
   // What to draw: clusters at a distance, names as you come in.
@@ -469,16 +473,11 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
                 <button type="button" className={`${s.chip} ${!types.length ? s.chipOn : ""}`} onClick={() => setTypes([])}>
                   All
                 </button>
-                {(moreTypes ? typeCounts : typeCounts.filter(([t], i) => i < 8 || types.includes(t))).map(([t, n]) => (
-                  <button key={t} type="button" aria-pressed={types.includes(t)} className={`${s.chip} ${types.includes(t) ? s.chipOn : ""}`} onClick={() => setTypes((cur) => (cur.includes(t) ? cur.filter((x) => x !== t) : [...cur, t]))}>
-                    {t.replace(/([a-z])([A-Z])/g, "$1 $2")} <small>{n}</small>
+                {groupCounts.map((g) => (
+                  <button key={g.key} type="button" aria-pressed={types.includes(g.key)} className={`${s.chip} ${types.includes(g.key) ? s.chipOn : ""}`} onClick={() => setTypes((cur) => (cur.includes(g.key) ? cur.filter((x) => x !== g.key) : [...cur, g.key]))}>
+                    {g.label} <small>{g.n}</small>
                   </button>
                 ))}
-                {typeCounts.length > 8 && (
-                  <button type="button" className={s.chip} onClick={() => setMoreTypes((o) => !o)}>
-                    {moreTypes ? "Fewer" : `+ ${typeCounts.length - 8} more`}
-                  </button>
-                )}
               </div>
             </section>
 

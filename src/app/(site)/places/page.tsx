@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { SearchBox } from "@/components/search/search-box";
 import { MapView } from "@/components/places/map-view";
 import { mapEntry, mapPins } from "@/lib/places/map";
+import { PLACE_GROUPS, groupFrom, groupOf } from "@/lib/places/groups";
 import { placeHref, placesData, placeType, type Place } from "@/lib/places/data";
 import { siteMetadata } from "@/lib/og/metadata";
 import styles from "@/components/pages/page-kit.module.css";
@@ -15,24 +16,21 @@ const href = (q: Record<string, string | undefined>) => {
   const p = new URLSearchParams(Object.entries(q).filter((e): e is [string, string] => !!e[1]));
   return p.size ? `/places?${p}` : "/places";
 };
-/** A type's name in the plural: the records' own location types ("Cave", "NordicRuin"), said as words. */
-const plural = (type: string) => {
-  const w = placeType(type).toLowerCase();
-  return w.endsWith("y") ? `${w.slice(0, -1)}ies` : w.endsWith("s") || w.endsWith("h") ? `${w}es` : `${w}s`;
-};
-
 /** Places (WO-154): the holds as compact sections (a few notable places, "all N"), and a filter by the records' location types. */
 export default async function PlacesPage({ searchParams }: { searchParams: Promise<{ q?: string; hold?: string; type?: string }> }) {
   const sp = await searchParams;
   const q = (sp.q ?? "").slice(0, 100).trim();
   if (q) redirect(`/search?q=${encodeURIComponent(q)}`);
   const places = placesData().places;
-  const types = [...places.reduce((m, p) => m.set(p.type, (m.get(p.type) ?? 0) + 1), new Map<string, number>())].sort((a, b) => b[1] - a[1]);
-  const type = types.find(([t]) => t === sp.type)?.[0];
+  // About ten kinds a player would pick, not the records' thirty-eight types (WO-167 review); an old ?type=Cave link lands on its group.
+  const counts = places.reduce((m, p) => m.set(groupOf(p.type), (m.get(groupOf(p.type)) ?? 0) + 1), new Map<string, number>());
+  const groups = PLACE_GROUPS.map((g) => ({ ...g, n: counts.get(g.key) ?? 0 })).filter((g) => g.n > 0);
+  const group = groupFrom(sp.type);
+  const type = group?.key;
   const holdsAll = [...places.reduce((m, p) => m.set(p.hold ?? "Elsewhere", [...(m.get(p.hold ?? "Elsewhere") ?? []), p]), new Map<string, Place[]>())].sort(([a], [b]) => (a === "Elsewhere" ? 1 : b === "Elsewhere" ? -1 : a.localeCompare(b)));
   const hold = holdsAll.find(([h]) => h === sp.hold)?.[0];
   const listing = !!(type || hold);
-  const pool = places.filter((p) => (!type || p.type === type) && (!hold || (p.hold ?? "Elsewhere") === hold));
+  const pool = places.filter((p) => (!type || groupOf(p.type) === type) && (!hold || (p.hold ?? "Elsewhere") === hold));
   // Notable: the places quests go to, then the ones worth the most to clear.
   const notable = (ps: Place[]) => [...ps].sort((a, b) => (b.quests?.length ?? 0) - (a.quests?.length ?? 0) || b.clearXp - a.clearXp || a.name.localeCompare(b.name)).slice(0, 4);
 
@@ -47,9 +45,9 @@ export default async function PlacesPage({ searchParams }: { searchParams: Promi
         <Link href={href({ hold })} className={`${styles.chip} ${!type ? styles.chipOn : ""}`}>
           All kinds
         </Link>
-        {types.map(([t, n]) => (
-          <Link key={t} href={href({ type: t, hold })} className={`${styles.chip} ${type === t ? styles.chipOn : ""}`}>
-            {placeType(t)} <small>{n}</small>
+        {groups.map((g) => (
+          <Link key={g.key} href={href({ type: g.key, hold })} className={`${styles.chip} ${type === g.key ? styles.chipOn : ""}`}>
+            {g.label} <small>{g.n}</small>
           </Link>
         ))}
       </div>
@@ -58,7 +56,7 @@ export default async function PlacesPage({ searchParams }: { searchParams: Promi
       {(() => {
         const entry = mapEntry();
         if (!entry) return null;
-        const shown = mapPins().filter((p) => (!type || p.type === type) && (!hold || p.hold === hold));
+        const shown = mapPins().filter((p) => (!type || groupOf(p.type) === type) && (!hold || p.hold === hold));
         return (
           <section aria-label="Map of Skyrim" className="map-section">
             <MapView entry={entry} pins={shown} mode="whole" />
@@ -73,7 +71,7 @@ export default async function PlacesPage({ searchParams }: { searchParams: Promi
         <section className={styles.sec} aria-labelledby="list">
           <div className={styles.shead}>
             <h2 id="list" className={styles.h2}>
-              {type ? `All ${plural(type)}` : "All places"}
+              {group ? `All ${group.all}` : "All places"}
               {hold ? ` in ${hold}` : ""}
             </h2>
             <span className={styles.cnt}>{pool.length}</span>

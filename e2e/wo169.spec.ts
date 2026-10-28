@@ -96,7 +96,7 @@ test("the filters fade what is out: a kind, a danger range, only places with a q
   await open(page);
   const panel = page.getByRole("complementary", { name: "Map controls" });
   const total = Number((await panel.getByText(/^\d+ places$/).innerText()).split(" ")[0]);
-  await panel.getByRole("button", { name: /^Cave/ }).click();
+  await panel.getByRole("button", { name: /^Caves and mines/ }).click();
   await expect(panel.getByText(/^\d+ of \d+ places$/)).toBeVisible();
   const caves = Number((await panel.getByText(/of \d+ places$/).innerText()).split(" ")[0]);
   expect(caves).toBeLessThan(total);
@@ -112,9 +112,9 @@ test("the filters fade what is out: a kind, a danger range, only places with a q
 
 test("the address keeps the view: a place, the filters and the zoom come back from a link", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto("/map?place=bleak-falls-barrow&types=NordicRuin&z=0.9");
+  await page.goto("/map?place=bleak-falls-barrow&types=ruins&z=0.9");
   await expect(page.getByRole("complementary", { name: "Bleak Falls Barrow" })).toBeVisible();
-  await expect(page.getByRole("button", { name: /^Nordic Ruin/ })).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByRole("button", { name: /^Ruins/ })).toHaveAttribute("aria-pressed", "true");
   await expect(page).toHaveURL(/z=0\.9/);
   // Close in, every place is named.
   await expect(map(page).getByText("Bleak Falls Barrow", { exact: true }).first()).toBeVisible();

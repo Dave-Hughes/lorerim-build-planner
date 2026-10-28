@@ -25,7 +25,7 @@ for (const width of [1440, 390]) {
     const title = (await page.getByRole("heading", { level: 1 }).boundingBox())!;
     expect(box.y).toBeGreaterThan(title.y);
     // Tiles, not the whole map: a handful of pictures, each a 512 px tile.
-    await expect.poll(async () => map.locator("img[src^='/maps/tamriel/1/']").count()).toBeGreaterThan(1);
+    await expect.poll(async () => map.locator(`img[src^='/maps/tamriel/${width === 1440 ? 1 : 0}/']`).count()).toBeGreaterThan(width === 1440 ? 1 : 0);
     expect(await map.locator("img[src='/maps/tamriel.webp']").count()).toBe(0);
     await expect(map.getByText("Bleak Falls Barrow", { exact: true })).toBeVisible();
     // The places around it are pins that link, with names on the nearest few, every name on a dark plate.
@@ -73,8 +73,8 @@ for (const width of [1440, 390]) {
     expect(all).toBeGreaterThan(300);
     await creditOk(page, map);
     await expect(map.getByRole("button", { name: "Zoom in" })).toBeVisible();
-    await page.getByLabel("Kinds of place").getByRole("link", { name: /^Cave/ }).click();
-    await expect(page).toHaveURL(/type=Cave/);
+    await page.getByLabel("Kinds of place").getByRole("link", { name: /^Caves and mines/ }).click();
+    await expect(page).toHaveURL(/type=caves/);
     const some = await page.getByRole("group", { name: "Map of Skyrim" }).locator("a[href^='/places/']").count();
     expect(some).toBeLessThan(all);
     expect(some).toBeGreaterThan(10);

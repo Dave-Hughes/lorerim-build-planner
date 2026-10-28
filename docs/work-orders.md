@@ -5129,7 +5129,7 @@ Jeff's notes on the review (Mac, 27 Oct):
 - Bob, 27 Oct, 23:05: tentacles load and sway under the pointer; the line reads the rows' order. Done.
 
 ## WO-167  The map on place pages and on Places (Mac, 27 Oct 2026)
-Status: building (Mac; Bob's review)
+Status: for Bob (Bob's review done; typecheck, lint, tests, the build and the full e2e pass, 516 of 516)
 
 **Why.** In-game pictures are parked (WO-158). The map is LoreRim's own in-game map, Skyrim Paper Map by Caro Tuts for Flat World Map Framework, so the site shows what players open in game. Its mod author gave Dave the OK on Discord (27 Oct, 18:46) on one condition: **every place the map appears carries a small credit and link to the mod.** Board: `PlacePaperMap` (canvas row 36; ignore `PlaceMap`, the pixel map Dave didn't take).
 - [x] **A place's page**: under the title and tags, a full-width map band (400 px tall at 1440), the map cut around the place, the place's pin large and orange with a slow pulse, the places around it as small diamonds coloured by kind (blue towns, red dangerous places, grey the rest), names on the nearest few, every pin a link with the WO-157 hover preview; a compass N, a scale bar, a small legend. Under it, **Getting there**: the direction and distance from the nearest town and whether it's above or below it ("West of Riverwood, a short walk, and well above it"), computed from the positions.
@@ -5153,10 +5153,17 @@ Status: building (Mac; Bob's review)
 
 ### Bob's review (28 Oct, 01:50)
 Read on the preview: Bleak Falls Barrow at 1440 and 390, the Sleeping Giant Inn, Places. The band is the board: the parchment, the orange pin with Riverwood and the neighbours on dark plates, the compass, scale, legend and the credit in its plate; Getting there reads right. Places' whole map has the pins where they belong (Castle Volkihar and the Soul Cairn's portal sit out in the Sea of Ghosts, which is correct). Three things:
-- [ ] **Labels cut off at the band's edge.** On Bleak Falls Barrow a name plate at the top centre is clipped to a sliver. A label that would cross an edge goes on the pin's other side, or isn't drawn; never half a plate.
-- [ ] **The phone band shows only the place.** At 390 the full-size tiles cover so little that Bleak Falls Barrow has no Riverwood beside it. On a phone the band uses the half-size tiles (zoom 0, already built), so the nearest town is in view.
-- [ ] **Places has 38 kind chips** since WO-166 widened the index (House 203, Store 51, Jail, Barracks, Player house, Nordic dwelling…): a wall. Group them into about ten a player would pick: Cities and towns, Inns and shops, Homes, Temples and guilds, Forts and keeps, Caves and mines, Ruins, Camps and lairs, Shrines and stones, Landmarks. Each group's count, the map and the lists follow the group. The same groups on the Map page (WO-169).
-- [ ] Screenshots of Bleak Falls Barrow at 1440 and 390 and Places, then `for Bob`.
+- [x] **Labels cut off at the band's edge.** On Bleak Falls Barrow a name plate at the top centre is clipped to a sliver. A label that would cross an edge goes on the pin's other side, or isn't drawn; never half a plate.
+- [x] **The phone band shows only the place.** At 390 the full-size tiles cover so little that Bleak Falls Barrow has no Riverwood beside it. On a phone the band uses the half-size tiles (zoom 0, already built), so the nearest town is in view.
+- [x] **Places has 38 kind chips** since WO-166 widened the index (House 203, Store 51, Jail, Barracks, Player house, Nordic dwelling…): a wall. Group them into about ten a player would pick: Cities and towns, Inns and shops, Homes, Temples and guilds, Forts and keeps, Caves and mines, Ruins, Camps and lairs, Shrines and stones, Landmarks. Each group's count, the map and the lists follow the group. The same groups on the Map page (WO-169).
+- [x] Screenshots of Bleak Falls Barrow at 1440 and 390 and Places, then `for Bob`.
+
+
+Jeff's notes on the review (Mac, 28 Oct):
+- **No half plates.** In the band a name that would cross the edge goes on the pin's other side, or is not drawn (and a name too near the top or foot is not drawn); `wo167.spec.ts` checks every plate in the band sits inside it at both widths.
+- **The phone band** uses the half-size tiles (zoom 0, drawn at half scale), so the stage is the texture at 0.5 and Bleak Falls Barrow has Riverwood beside it; the scale bar follows.
+- **Ten kinds** (`src/lib/places/groups.ts`, with a test that fails if the index gains a type no group names): Cities and towns, Inns and shops, Homes, Temples and guilds, Forts and keeps, Caves and mines, Ruins, Camps and lairs, Shrines and stones, Landmarks (the rest). Places' chips, its map and its lists, and the Map page's chips follow them, each with its count; `?type=<group>` (`?type=Inn` and the other old raw types still land on their group). On the Map page the address's `types` holds group keys.
+- Screenshots: `test-results/wo167-bleak-falls-barrow-1440.png`, `-390.png` and `wo167-places-1440.png`, `-390.png`.
 
 ## WO-166  Every place's position, and the map images, from the game files (PC, 27 Oct 2026)
 Status: done

@@ -78,6 +78,10 @@ a.plate:hover {
   text-decoration: none;
   z-index: 1;
 }
+.flip {
+  flex-direction: row-reverse;
+  transform: translate(calc(-100% + 7px), -50%);
+}
 .pin i {
   display: block;
   width: 12px;

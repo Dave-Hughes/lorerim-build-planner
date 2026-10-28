@@ -128,7 +128,12 @@ test("Places: holds as compact sections; a kind of place opens all of them", asy
     await page.screenshot({ path: `test-results/wo154p4-places-${width}.png`, fullPage: true });
   }
   await page.goto("/places");
-  await page.getByRole("link", { name: /^Inn\b/ }).first().click();
-  await expect(page).toHaveURL(/type=Inn/);
-  await expect(page.getByRole("heading", { name: /All inns/i })).toBeVisible();
+  // About ten kinds a player would pick (WO-167 review), each with its count; the old raw type still lands on its group.
+  const kinds = page.getByLabel("Kinds of place").getByRole("link");
+  expect(await kinds.count()).toBeLessThanOrEqual(11);
+  await page.getByRole("link", { name: /^Inns and shops/ }).first().click();
+  await expect(page).toHaveURL(/type=inns/);
+  await expect(page.getByRole("heading", { name: /All inns and shops/i })).toBeVisible();
+  await page.goto("/places?type=Inn");
+  await expect(page.getByRole("heading", { name: /All inns and shops/i })).toBeVisible();
 });

@@ -25,6 +25,8 @@ export function MapView({ entry, pins, here, hereLabel, labelled = 0, mode, clas
     return () => ro.disconnect();
   }, []);
 
+  // On a phone the band uses the half-size tiles (zoom 0), so the nearest town is in view beside the place (WO-167 review).
+  const bandK = mode === "band" && size.w < 700 ? 0.5 : 1;
   const [x0, y0, x1, y1] = entry.border;
   const kWhole = entry.image.width / (x1 - x0);
   // `zoom`: css pixels for each pixel of the 8192 texture (band: 1) or of the whole picture (whole map).
@@ -32,27 +34,27 @@ export function MapView({ entry, pins, here, hereLabel, labelled = 0, mode, clas
   const [zoom, setZoom] = useState(mode === "band" ? 1 : 0);
   const z = mode === "band" ? 1 : Math.max(fit, zoom || fit);
   // The view: where the picture's origin sits in the box.
-  const toPix = useCallback((px: number, py: number) => (mode === "band" ? { x: px, y: py } : { x: (px - x0) * kWhole * z, y: (py - y0) * kWhole * z }), [mode, kWhole, z, x0, y0]);
+  const toPix = useCallback((px: number, py: number) => (mode === "band" ? { x: px * bandK, y: py * bandK } : { x: (px - x0) * kWhole * z, y: (py - y0) * kWhole * z }), [mode, bandK, kWhole, z, x0, y0]);
   const centre = here ?? null;
   const [pan, setPan] = useState<{ x: number; y: number } | null>(null);
   const view = useMemo(() => {
     if (pan) return pan;
-    if (mode === "band" && centre) return { x: size.w / 2 - centre.px, y: size.h / 2 - centre.py };
+    if (mode === "band" && centre) return { x: size.w / 2 - centre.px * bandK, y: size.h / 2 - centre.py * bandK };
     return { x: 0, y: 0 };
-  }, [pan, mode, centre, size.w, size.h]);
-  const total = mode === "band" ? { w: entry.texture.width, h: entry.texture.height } : { w: entry.image.width * z, h: entry.image.height * z };
+  }, [pan, mode, centre, bandK, size.w, size.h]);
+  const total = mode === "band" ? { w: entry.texture.width * bandK, h: entry.texture.height * bandK } : { w: entry.image.width * z, h: entry.image.height * z };
   const clamp = useCallback(
     (v: { x: number; y: number }) => {
       if (mode === "band") {
-        const minX = size.w / 2 - x1;
-        const maxX = size.w / 2 - x0;
-        const minY = size.h / 2 - y1;
-        const maxY = size.h / 2 - y0;
+        const minX = size.w / 2 - x1 * bandK;
+        const maxX = size.w / 2 - x0 * bandK;
+        const minY = size.h / 2 - y1 * bandK;
+        const maxY = size.h / 2 - y0 * bandK;
         return { x: Math.min(maxX, Math.max(minX, v.x)), y: Math.min(maxY, Math.max(minY, v.y)) };
       }
       return { x: Math.min(0, Math.max(size.w - total.w, v.x)), y: Math.min(0, Math.max(size.h - total.h, v.y)) };
     },
-    [mode, size.w, size.h, total.w, total.h, x0, x1, y0, y1],
+    [mode, bandK, size.w, size.h, total.w, total.h, x0, x1, y0, y1],
   );
   const at = clamp(view);
 
@@ -107,21 +109,23 @@ export function MapView({ entry, pins, here, hereLabel, labelled = 0, mode, clas
     return () => el.removeEventListener("wheel", wheel);
   }, [mode, z, fit, zoomTo]);
 
-  // The tiles in view, at full size: only the ones the box can see, and only those the map has.
+  // The tiles in view: full size on a wide band, half size (zoom 0) on a phone; only the ones the box can see, and only those the map has.
   const tiles = useMemo(() => {
     if (mode !== "band") return [];
-    const zoom1 = entry.tiles.zooms.find((t) => t.z === 1);
-    if (!zoom1) return [];
-    const T = entry.tiles.size;
+    const zoomTiles = entry.tiles.zooms.find((t) => t.z === (bandK < 1 ? 0 : 1));
+    if (!zoomTiles) return [];
+    // One tile spans this many pixels of the 8192 texture, and this many css pixels on the stage.
+    const span = (entry.tiles.size * entry.texture.width) / zoomTiles.size;
+    const T = span * bandK;
     const left = Math.floor((-at.x - T) / T);
     const right = Math.floor((-at.x + size.w + T) / T);
     const top = Math.floor((-at.y - T) / T);
     const bottom = Math.floor((-at.y + size.h + T) / T);
-    const out: { x: number; y: number; src: string }[] = [];
-    for (let ty = Math.max(top, zoom1.rows[0]); ty <= Math.min(bottom, zoom1.rows[1]); ty++)
-      for (let tx = Math.max(left, zoom1.columns[0]); tx <= Math.min(right, zoom1.columns[1]); tx++) out.push({ x: tx, y: ty, src: entry.tiles.url.replace("{z}", "1").replace("{x}", String(tx)).replace("{y}", String(ty)) });
+    const out: { x: number; y: number; src: string; css: number }[] = [];
+    for (let ty = Math.max(top, zoomTiles.rows[0]); ty <= Math.min(bottom, zoomTiles.rows[1]); ty++)
+      for (let tx = Math.max(left, zoomTiles.columns[0]); tx <= Math.min(right, zoomTiles.columns[1]); tx++) out.push({ x: tx, y: ty, css: T, src: entry.tiles.url.replace("{z}", String(zoomTiles.z)).replace("{x}", String(tx)).replace("{y}", String(ty)) });
     return out;
-  }, [mode, entry.tiles, at.x, at.y, size.w, size.h]);
+  }, [mode, bandK, entry.tiles, entry.texture.width, at.x, at.y, size.w, size.h]);
 
   // The pins in view.
   const visible = pins
@@ -129,7 +133,7 @@ export function MapView({ entry, pins, here, hereLabel, labelled = 0, mode, clas
     .filter((p) => p.x + at.x > -40 && p.x + at.x < size.w + 40 && p.y + at.y > -40 && p.y + at.y < size.h + 40);
   const hereAt = here ? toPix(here.px, here.py) : null;
   // 1 km is about 70,000 game units: 1,094 pixels of the texture.
-  const kmPx = (70000 / entry.texture.unitsPerPixel) * (mode === "band" ? 1 : kWhole * z);
+  const kmPx = (70000 / entry.texture.unitsPerPixel) * (mode === "band" ? bandK : kWhole * z);
   // The bar is as long as 1 km, or the part of a km that fits beside the credit.
   const cap = Math.min(220, size.w * 0.26);
 
@@ -151,20 +155,27 @@ export function MapView({ entry, pins, here, hereLabel, labelled = 0, mode, clas
         {mode === "band" ? (
           tiles.map((t) => (
             // eslint-disable-next-line @next/next/no-img-element
-            <img key={`${t.x}_${t.y}`} src={t.src} alt="" width={entry.tiles.size} height={entry.tiles.size} draggable={false} className={s.tile} style={{ left: t.x * entry.tiles.size, top: t.y * entry.tiles.size }} />
+            <img key={`${t.x}_${t.y}`} src={t.src} alt="" width={t.css} height={t.css} draggable={false} className={s.tile} style={{ left: t.x * t.css, top: t.y * t.css, width: t.css + 0.5, height: t.css + 0.5 }} />
           ))
         ) : (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={entry.image.url} alt="" width={entry.image.width * z} height={entry.image.height * z} draggable={false} className={s.whole_img} />
         )}
-        {visible.map(({ p, i, x, y }) => (
-          <div key={`${p.name}-${i}`} className={s.pinBox} style={{ left: x, top: y }}>
-            <PreviewLink href={p.href} className={`${s.pin} ${s[p.kind]}`}>
-              <i aria-hidden="true" />
-              {i < labelled ? <span className={s.plate}>{p.name}</span> : <span className={s.sr}>{p.name}</span>}
-            </PreviewLink>
-          </div>
-        ))}
+        {visible.map(({ p, i, x, y }) => {
+          // A name never shows half a plate: one that would cross the band's edge goes on the pin's other side, or is not drawn.
+          const w = p.name.length * 7.4 + 22;
+          const sx = x + at.x;
+          const sy = y + at.y;
+          const side = i >= labelled ? "none" : sy < 16 || sy > size.h - 16 ? "none" : sx + 14 + w <= size.w - 6 ? "right" : sx - 14 - w >= 6 ? "left" : "none";
+          return (
+            <div key={`${p.name}-${i}`} className={s.pinBox} style={{ left: x, top: y }}>
+              <PreviewLink href={p.href} className={`${s.pin} ${s[p.kind]} ${side === "left" ? s.flip : ""}`}>
+                <i aria-hidden="true" />
+                {side === "none" ? <span className={s.sr}>{p.name}</span> : <span className={s.plate}>{p.name}</span>}
+              </PreviewLink>
+            </div>
+          );
+        })}
         {here && hereAt && (
           <div className={s.pinBox} style={{ left: hereAt.x, top: hereAt.y }}>
             <span className={`${s.pin} ${s.here}`}>
