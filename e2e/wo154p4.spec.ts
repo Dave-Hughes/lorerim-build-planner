@@ -39,12 +39,13 @@ test("The Book of Love: its steps once, then its choices, not a second list that
   await expect(opens.locator('a[href*="nexusmods.com"]').first()).toHaveAttribute("target", "_blank");
 });
 
-test("how sure: UESP explained; where it takes you: a Danger label, or one line when none is known; the report is a modal", async ({ page }) => {
+test("how sure: UESP explained; where it takes you: a Danger label only on a place that is a fight; the report is a modal", async ({ page }) => {
   await page.goto("/quests/q/lights-out");
   await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("UESP (the Elder Scrolls wiki)");
   await expect(page.getByRole("region", { name: "Where it takes you" }).getByText("Danger", { exact: true }).first()).toBeVisible();
   await page.goto("/quests/q/the-book-of-love");
-  await expect(page.getByRole("region", { name: "Where it takes you" })).toContainText("How dangerous these places are isn't known yet.");
+  // Its places are towns and houses: no danger cell, and no line saying danger isn't known (WO-165's second review).
+  await expect(page.getByRole("region", { name: "Where it takes you" })).not.toContainText("How dangerous these places are isn't known yet.");
   await expect(page.getByRole("region", { name: "Where it takes you" }).getByText("Danger", { exact: true })).toHaveCount(0);
   await page.getByRole("button", { name: "Report a mistake" }).click();
   const dialog = page.getByRole("dialog", { name: "Report a mistake" });

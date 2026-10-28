@@ -5187,7 +5187,7 @@ Dave, 27 Oct 18:46: the map's mod author OK'd its use on the site, with a credit
 - Bob, 28 Oct, 23:10: read the notes and the report, and pinned the nine cities, Riverwood, Bleak Falls Barrow, Embershard Mine, High Hrothgar, Ivarstead, Kynesgrove, Morvunskar Crypts, Nightgate Inn, Green-Tip Cabin and Fort Dawnguard on `tamriel.webp` with `maps.json`'s rule: every one lands where it belongs (Nightgate on Lake Yorgrim, Morvunskar Crypts by Kynesgrove, Fort Dawnguard at the canyon east of Riften, at the map's eastern edge). Done. Rulings on the four questions: Vigilant's realm stays in the data (the map shows Tamriel only); farms in a field get a position (WO-171); the 83 unplaceable are fine as they are; Dead Drop Falls on the fort's door is fine. Embershard Mine is south-west of Riverwood, not south: noted, the data is right.
 
 ## WO-165  The quest and person pages get the same at-a-glance and colours (Mac, 27 Oct 2026)
-Status: building (Mac; Bob's second review)
+Status: for Bob (Bob's second review done; typecheck, lint, tests, the build and the full e2e pass, 493 of 495, the two that failed in the full run pass alone)
 
 **Why.** `docs/page-templates.md` rows 14 and 16: the quest and person pages read well but are one grey. WO-160 (`LinePage`) and WO-162 (`PlaceTown`) set the pattern: an At a glance band under the title, colour that means one thing, a contents rail on long pages. Same pattern here, so every World page feels like one site.
 - [x] **A quest**: At a glance under the title: how it starts (green: who and where), level and danger (red), where it takes you (blue), rewards and XP (gold), and the number of ways to finish it (purple). People and places in the steps as the coloured chips; XP in the pixel face. The Rewards box stays.
@@ -5227,7 +5227,12 @@ Jeff's notes on the review (Mac, 27 Oct):
 
 ### Bob's second review (27 Oct, 23:20)
 Places link on Aela's and Lydia's pages, the counts agree ("Gives 9 quests, and is in 3 more"; Lydia "In 2 quests"), Follows you says the how isn't sure, her quest links are orange, and The Golden Claw lists each person once. One left:
-- [ ] **The Riverwood Trader still shows "Danger: Not known yet"** on The Golden Claw. It has no place row under that name (the record calls it Lucan's Dry Goods; WO-171 adds the alias), so the page doesn't know its kind and falls back to the danger cell. A place the index doesn't know as dangerous shows no danger cell at all; only a place known to be a fight does. Screenshot of The Golden Claw, then `for Bob`.
+- [x] **The Riverwood Trader still shows "Danger: Not known yet"** on The Golden Claw. It has no place row under that name (the record calls it Lucan's Dry Goods; WO-171 adds the alias), so the page doesn't know its kind and falls back to the danger cell. A place the index doesn't know as dangerous shows no danger cell at all; only a place known to be a fight does. Screenshot of The Golden Claw, then `for Bob`.
+
+
+Jeff's notes on the second review (Mac, 28 Oct):
+- **A danger cell only for a place the index knows is a fight** (`hasDanger`: the place is found and WO-162's kind says dangerous). A shop, inn, house or town, and a name the index doesn't have (the Riverwood Trader, until WO-171's alias lands), have none; the "How dangerous these places are isn't known yet" line only shows when a known dangerous place has no data. `wo154p4` follows (The Book of Love's towns say nothing about danger).
+- Screenshot: `test-results/wo165-golden-claw-1440.png`: only Bleak Falls Barrow has a Danger cell.
 
 ## WO-163  Quest categories as tables (Mac, 27 Oct 2026)
 Status: done

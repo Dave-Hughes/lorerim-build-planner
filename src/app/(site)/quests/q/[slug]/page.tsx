@@ -480,8 +480,9 @@ export default async function QuestPage({
                 place: vaguePlace(t.place) ? null : placeNamed(t.place),
               }));
               // When no place on the quest has danger data the column goes, and the page says so once (WO-154 Part 4).
-              // A shop, inn, house or town has no danger (WO-162's kind decides): a row there has no danger cell.
-              const hasDanger = (place: Place | null) => !place || placeKind(place) === "dangerous";
+              // Only a place the index knows is a fight has a danger cell (WO-162's kind decides): a shop, inn, house or town, and a place
+              // the index doesn't know under that name, have none.
+              const hasDanger = (place: Place | null) => !!place && placeKind(place) === "dangerous";
               const anyDanger = rows.some((r) => hasDanger(r.place) && dangerParts(r.place) !== null);
               return (
                 <Section
@@ -563,7 +564,7 @@ export default async function QuestPage({
                       </div>
                     );
                   })}
-                  {!anyDanger && (
+                  {!anyDanger && rows.some((r) => hasDanger(r.place)) && (
                     <p className={styles.way}>
                       <span className={styles.muted}>
                         How dangerous these places are isn&apos;t known yet.

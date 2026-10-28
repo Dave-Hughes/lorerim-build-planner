@@ -95,6 +95,9 @@ test("review: places on a person page are links, one quest count, Follows you sa
   const takes = page.getByRole("region", { name: "Where it takes you" });
   const trader = takes.locator("div", { hasText: "Riverwood Trader" }).last();
   await expect(trader).not.toContainText("Danger");
+  // A danger cell only for a place the index knows is a fight, and never "Not known yet" beside Danger on a shop.
+  await expect(takes.locator("[class*='danger']").filter({ hasText: "Not known yet" })).toHaveCount(0);
+  await page.screenshot({ path: "test-results/wo165-golden-claw-1440.png", fullPage: true });
   const ppl = page.getByRole("complementary").getByRole("region", { name: "People" });
   const names = await ppl.getByRole("link").allInnerTexts();
   expect(new Set(names).size).toBe(names.length);
