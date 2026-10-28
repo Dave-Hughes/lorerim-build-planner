@@ -5038,6 +5038,8 @@ Status: queued (Mac; after WO-173)
 - [ ] **Hover previews stay on screen**: near an edge the preview opens to the other side (left of a pin near the right edge, below one near the top), on the Map page and the place bands.
 - [ ] Bob checks in Dave's Chrome, scrolling and hovering at the edges. Screenshots of Song of the Green scrolled half way, `/map` with Ruins picked, a hover near the right edge; then `for Bob`.
 
+- [ ] **The home map strip's line** says "Search them, filter them by danger": with the Danger sliders gone, say what the Map page does ("search them, filter them by kind, and follow a quest from one to the next").
+
 ## WO-175  Maps for the other lands: what LoreRim already has (PC, 28 Oct 2026)
 Status: queued (PC; after WO-171's two boxes)
 
@@ -5048,7 +5050,7 @@ Status: queued (PC; after WO-171's two boxes)
 - [ ] A table in the log: world, places, map found (mod, author, link), size, rule checked. Then `for Bob`; Bob takes the list to Dave, who asks each author, as he did Caro Tuts.
 
 ## WO-173  The home page as the board: the full sky signed in, and a map strip that moves (Mac, 28 Oct 2026)
-Status: for Bob
+Status: done
 
 **Why.** Dave, 28 Oct 06:03, signed in on his Mac: "the hero area isn't the same as you designed" and "the map on home screen also isn't animated or anything". Bob read it in his Chrome (1512 wide): signed in, the hero is the 480 px compact one, cut from the bottom of the scene, so the sky (aurora, moon, stars) and Alduin's flight across it are mostly gone; the board `HomeWow` shows the whole night sky. The map strip's drift runs, but it moves the map 3% over 70 seconds (`scale(1.06)` to `scale(1.14) translate(-3%, 2%)`), which no one can see; the board pans the paper map about 400 px over a minute.
 - [x] **Signed in gets the same hero as signed out**: full height, the whole sky with the aurora, the moon and Alduin crossing it, the stars, the embers and the drift with the pointer. Only the buttons go (Make a character, Browse characters); the search box stays. The title stays one line (Dave, WO-159). WO-170's "signed in keeps the shorter hero" was Bob's mistake in the order; this replaces it.
@@ -5064,6 +5066,7 @@ Status: for Bob
 - After the push I read the staging preview: `/` (the map strip and its credit, signed out with the buttons), `/map`, `/places`, `/characters`, `/me`, `/quests` answer 200. The signed-in hero and Kyria's run need a sign-in, which I don't have on the preview; Bob checks those in Dave's Chrome.
 - **Not seen:** the board `HomeWow` itself; the ring's size and speed are mine to be judged.
 
+- Bob, 28 Oct, 07:10, in Dave's Chrome signed in: the whole sky with the aurora, the moon and Alduin; the map strip is 1.5 times the window and moved 70 px in 8 seconds. Done. (Its line says "filter them by danger": WO-174 drops the danger filter, so that line changes there.)
 
 ## WO-172  Places that share a name are still separate places (Mac, 28 Oct 2026)
 Status: done
@@ -5170,7 +5173,7 @@ Jeff's notes on the second review (Mac, 28 Oct):
 - Bob, 28 Oct, 04:40: read on the preview: the cards are framed on the mountain, Miraak's temple and the eclipse, each with one whole line; the map strip's title breaks after "Every place,"; New in the world quotes no counts. Done; for Dave to look at on staging.
 
 ## WO-164  A character is one page, with or without a playthrough (Mac, 27 Oct 2026)
-Status: for Bob
+Status: queued (Mac; Bob's review: three boxes still open)
 
 **Why.** Bob, signed in through Dave's Chrome (27 Oct, 18:05): Kyria's playthrough page (`/p/4et99tk25s`) still has the old framed title and none of her cover, though `/me` shows her golden-armour cover; "‹ My characters" is the old text link; `/p/<id>/build` redirects to `?tab=levels` and shows the same Play view, so a playthrough's build can't be reached from it. The character page (`/b/<id>`) has the full-width cover and a Build | Guide tab row; the two don't look like one character. The agreed pattern (canvas row 25, WO-114a): one hero, one row of tabs.
 - [x] **The build page (`/b/<id>`) does not change.** Dave, 27 Oct: "please do not redesign the character build pages, those are the best on the site." It's the reference the playthrough page copies, not something this order touches.
@@ -5206,6 +5209,8 @@ Jeff's note on the review (Mac, 28 Oct): a run with no cover has the night scene
 - [ ] Screenshots of Kyria's run and `/me` signed in, then `for Bob`.
 
 - [ ] **From Jeff on PC (WO-171's notes):** `src/lib/places/map-credit.test.ts` compares paths written with `/` against what Windows returns (`src\components\...`), so it fails on the PC's checkout. Normalise the separators in the test.
+
+- Bob, 28 Oct, 07:10, in Dave's Chrome: Kyria's run now has the race icon large on the night blues: right. On `/me` the icon still runs into the names and the controls under the cards still sit at three heights; those two boxes and the Windows path box are still open, so this goes back.
 
 ## WO-169  The Map page (Mac, 27 Oct 2026)
 Status: done
