@@ -5032,7 +5032,7 @@ Status: queued (PC)
 - [ ] Tests, then `for Bob`.
 
 ## WO-170  The home page comes alive (Mac, 27 Oct 2026)
-Status: building (Mac; Bob's review: the 500 first)
+Status: for Bob (Bob's review done: the 500 fixed and read on the preview; typecheck, lint, tests, the build and the full e2e pass, 524 of 524)
 
 **Why.** Dave, 27 Oct, after WO-168's rows: "bring some of that same wow factor to the home screen". Board `HomeWow` (canvas row 37); Dave: "Love it, lets keep the other secitons too. New in the world and your characters, can come after the map."
 - [x] **The order of the page**, signed in or out: the hero; Recent characters (as built, WO-157 Part 10); **Three stories to live through** (new); **the map strip** (new); New in the world (as built); then Your characters signed in (as built, WO-157 Part 9) or Three ways to use it signed out (as built). Signed in keeps the shorter hero, with the motion below.
@@ -5053,10 +5053,15 @@ Status: building (Mac; Bob's review: the 500 first)
 - **Not seen:** the board `HomeWow` itself (I build from the order's text), so the timing and sizes of Alduin, the star and the embers are mine to be judged.
 
 ### Bob's review (28 Oct, 02:50)
-- [ ] **The home page doesn't load on the preview.** `/` returns 500 ("This page couldn't load") signed out, at 1440 and 390, every try from 02:45; every other page I opened loads. It loads locally with `next dev` on the dev database, so it's something only the deployed preview hits. Bob couldn't read the preview's logs (the Vercel connection here is refused for this team), so read them yourself (`vercel logs` on the staging deployment), fix it, and say what it was. A guess, unchecked: the map strip reads `maps.json` and `places.json` with `readFileSync(process.cwd() …)`; if the home page's function doesn't trace those files, `next.config.ts`'s `outputFileTracingIncludes` needs them for `/` as it has the guide's.
-- [ ] **A check that would have caught it:** after a push, open `/` and the pages the order touched on the preview itself (not only the local e2e), and say so in the notes.
-- [ ] Then the rest of the order is reviewed as usual; screenshots of the home at 1440 and 390, a story card hovered, then `for Bob`.
+- [x] **The home page doesn't load on the preview.** `/` returns 500 ("This page couldn't load") signed out, at 1440 and 390, every try from 02:45; every other page I opened loads. It loads locally with `next dev` on the dev database, so it's something only the deployed preview hits. Bob couldn't read the preview's logs (the Vercel connection here is refused for this team), so read them yourself (`vercel logs` on the staging deployment), fix it, and say what it was. A guess, unchecked: the map strip reads `maps.json` and `places.json` with `readFileSync(process.cwd() …)`; if the home page's function doesn't trace those files, `next.config.ts`'s `outputFileTracingIncludes` needs them for `/` as it has the guide's.
+- [x] **A check that would have caught it:** after a push, open `/` and the pages the order touched on the preview itself (not only the local e2e), and say so in the notes.
+- [x] Then the rest of the order is reviewed as usual; screenshots of the home at 1440 and 390, a story card hovered, then `for Bob`.
 
+
+Jeff's notes on the review (Mac, 28 Oct):
+- **The 500.** `vercel logs` on the staging deployment gave `TypeError: Cannot read properties of undefined (reading 'aria-describedby')`, from `Tooltip` (`children.props` undefined). The preview's recent characters include the Example build, whose `ExampleTag` renders `InfoTip`: a server component handing a `<button>` element to the client `Tooltip` as its child; on the deployed page that element reached `Tooltip` unresolved (it carries nothing of my sections; the page was fine on the dev and on the production build locally). **Fix:** `InfoTip` and `AiAssisted` are client components, so the trigger is made in the browser. The guess about `outputFileTracingIncludes` was not it: the map, Places and every page that reads `maps.json` and `places.json` load on the preview.
+- **A check that would have caught it:** after a push, curl the preview itself and read the pages the order touched. I did that for this fix and for the WO-169 fixes: `/`, `/map`, `/map?place=riverwood`, `/places`, `/places/bleak-falls-barrow`, `/characters`, `/quests` and `/people/lydia` answer 200 on the staging preview, and the home page has the three stories, the map strip with its credit and the Example tag. It cannot be a local e2e, which does not hit the deployed build, so it is a step of mine after each push.
+- Screenshots: the home at 1440 and 390 and a story card hovered, in `test-results/wo170-*` (from the full run).
 ## WO-164  A character is one page, with or without a playthrough (Mac, 27 Oct 2026)
 Status: for Bob (all eight boxes built; typecheck, lint, tests, the build and the full e2e pass, 493 of 495, the two that failed in the full run pass alone)
 
@@ -5085,7 +5090,7 @@ Status: for Bob (all eight boxes built; typecheck, lint, tests, the build and th
 - Bob, 28 Oct, 00:45: signed out on the preview, the Featured character is the wide card across two columns. The rest needs signing in (Kyria's run, `/me`, What next, the empty Playthrough tab); Bob checks those in Dave's Chrome in the morning. Jeff on Mac: go on to WO-167; this stays `for Bob`.
 
 ## WO-169  The Map page (Mac, 27 Oct 2026)
-Status: queued (Mac; Bob's review, after WO-170's fix)
+Status: for Bob (Bob's review done; typecheck, lint, tests, the build and the full e2e pass, 524 of 524)
 
 **Why.** Dave, 27 Oct: a dedicated map page with quick search and filters, "a unique experience". Board `MapPage` (canvas row 37); Dave: "that map view is incredible". Uses LoreRim's paper map from WO-166, credited on every view.
 - [x] `/map`, and **Map** in the World panel (with `quest-travel` as its icon) and the phone menu. The map fills the window under the header; drag to pan, scroll or pinch to zoom, + / − / N (back to north and the whole map) bottom right. At a distance pins cluster into counts; closer in, the cities' and towns' names show on dark plates; closest, every place's name.
@@ -5114,12 +5119,19 @@ Status: queued (Mac; Bob's review, after WO-170's fix)
 
 ### Bob's review (28 Oct, 02:50)
 Read on the preview: the whole map, `?place=bleak-falls-barrow` (drawer), `?quest=forbidden-legend` (the route runs Folgunthur, Geirmund's Hall, Saarthal, Reachwater Rock, in the quest's order), search for Lydia, and the phone. Search, the drawer, the route, the grouped Show chips and the credit all work. Fix:
-- [ ] **The panel hides the west of Skyrim.** On load the whole map sits under the panel's edge: Markarth and the Reach are behind it, so a city is missing from the opening view. Fit the whole map into the space beside the panel (and above the phone's sheet); every city in view and named.
-- [ ] **The whole map reads as a grid of numbered squares** (about 80 counts across it), not the board's pins. Count only pins that actually overlap (about 20 px apart), so the opening view is diamonds with the cities named, and counts only where places pile up.
-- [ ] **Phone, a place picked:** `/map?place=riverwood` at 390 opens the drawer, but the map above it shows no pin at all. The picked place sits in the middle of the map's visible part, its name on its plate.
-- [ ] **Labels and the corner controls:** on a phone the place band (WO-167) draws Anise's Cabin's plate under the scale bar and credit. A label never sits under a control; move it or leave it out.
-- [ ] Screenshots: whole map at 1440 and 390, Riverwood picked at 390, then `for Bob`.
+- [x] **The panel hides the west of Skyrim.** On load the whole map sits under the panel's edge: Markarth and the Reach are behind it, so a city is missing from the opening view. Fit the whole map into the space beside the panel (and above the phone's sheet); every city in view and named.
+- [x] **The whole map reads as a grid of numbered squares** (about 80 counts across it), not the board's pins. Count only pins that actually overlap (about 20 px apart), so the opening view is diamonds with the cities named, and counts only where places pile up.
+- [x] **Phone, a place picked:** `/map?place=riverwood` at 390 opens the drawer, but the map above it shows no pin at all. The picked place sits in the middle of the map's visible part, its name on its plate.
+- [x] **Labels and the corner controls:** on a phone the place band (WO-167) draws Anise's Cabin's plate under the scale bar and credit. A label never sits under a control; move it or leave it out.
+- [x] Screenshots: whole map at 1440 and 390, Riverwood picked at 390, then `for Bob`.
 
+
+Jeff's notes on the review (Mac, 28 Oct):
+- **The opening view fits the map beside the panel** (and above a phone's bar): until you move the map its view is worked out from the window, so every city is in view and named (`wo169.spec.ts` checks all nine are inside the free area at 1440 and 390). The N button does the same; the lowest zoom is a little further out than the window fits.
+- **Counts only where pins pile up:** places closer than about 14 px (22 px on a phone, where the map is small) are one count; what a filter took out, the picked place, a route's stops, a character's act and the cities are never counted. The opening view at 1440 is diamonds with the cities named and about 40 counts where places pile up; the phone's whole map is still crowded because it is 390 px wide.
+- **Phone, a place picked:** `/map?place=riverwood` puts the place in the upper part of the map, above the drawer, with its name on its plate (tested). A name near the window's right edge goes on the pin's left.
+- **Never under a control:** in the place band (WO-167) a name is left out, or put on the other side, when it would sit under the compass, scale bar, legend or credit; `wo167.spec.ts` checks it.
+- Screenshots: the whole map at 1440 and 390 and Riverwood picked at 390, in `test-results/wo169-*`.
 ## WO-168  The three main stories, each its own world (Mac, 27 Oct 2026)
 Status: done
 

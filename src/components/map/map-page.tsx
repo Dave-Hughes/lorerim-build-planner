@@ -51,14 +51,31 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
     return () => ro.disconnect();
   }, []);
   const [x0, y0, x1, y1] = entry.border;
-  const kMin = Math.min(size.w / (x1 - x0), size.h / (y1 - y0));
+  // A little further out than the window fits, so the whole map can sit beside the panel.
+  const kMin = Math.min(size.w / (x1 - x0), size.h / (y1 - y0)) * 0.8;
   const bySlug = useMemo(() => new Map(places.map((p) => [p.slug, p])), [places]);
 
-  // The view: the texture pixel at the middle of the window, and css pixels per texture pixel.
-  const [view, setView] = useState<View>(() => {
+  // The view: the texture pixel at the middle of the window, and css pixels per texture pixel. Until you move it, it is worked out from the
+  // window: the whole map fitted into the space beside the panel (and above a phone's bar), or the picked place in the part of the map you can see.
+  const [panelOpen, setPanelOpen] = useState(true);
+  const [moved, setView] = useState<View | null>(() => {
+    if (initial.zoom === null && initial.x === null) return null;
     const at = initial.place ? places.find((p) => p.slug === initial.place) : null;
     return { cx: initial.x ?? at?.px ?? (x0 + x1) / 2, cy: initial.y ?? at?.py ?? (y0 + y1) / 2, k: initial.zoom ?? (at ? 0.9 : 0.16) };
   });
+  const phone = size.w < 700;
+  const beside = !phone && panelOpen ? 354 : 0;
+  const view: View = (() => {
+    if (moved) return moved;
+    const at = initial.place ? places.find((p) => p.slug === initial.place) : null;
+    if (at) {
+      const kk = 0.9;
+      // On a phone the drawer is a sheet over the lower part of the map: the place goes in the upper part.
+      return { cx: at.px - (beside / 2) / kk, cy: at.py + (phone ? (size.h * 0.2) / kk : 0), k: kk };
+    }
+    const kk = Math.min((size.w - beside - 24) / (x1 - x0), (size.h - (phone ? 56 : 24)) / (y1 - y0));
+    return { cx: (x0 + x1) / 2 - beside / 2 / kk, cy: (y0 + y1) / 2 - (phone ? 28 / kk : 0), k: kk };
+  })();
   const k = Math.min(K_MAX, Math.max(kMin, view.k));
   const clampView = useCallback((v: View): View => ({ k: v.k, cx: Math.min(x1, Math.max(x0, v.cx)), cy: Math.min(y1, Math.max(y0, v.cy)) }), [x0, x1, y0, y1]);
   const toScreen = useCallback((px: number, py: number) => ({ x: (px - view.cx) * k + size.w / 2, y: (py - view.cy) * k + size.h / 2 }), [view.cx, view.cy, k, size.w, size.h]);
@@ -152,7 +169,6 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
   const [characters, setCharacters] = useState<{ id: string; name: string }[]>([]);
   const [characterId, setCharacterId] = useState<string | null>(initial.character);
   const [character, setCharacter] = useState<MapCharacter | null>(null);
-  const [panelOpen, setPanelOpen] = useState(true);
   // On a phone the panel starts folded to its bar, so the map is what you see first.
   useEffect(() => {
     if (window.matchMedia("(max-width: 700px)").matches) queueMicrotask(() => setPanelOpen(false));
@@ -308,27 +324,31 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
     return out;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [places, toScreen, size.w, size.h, k, selected, types, onlyQuests, danger, inRoute, lit]);
-  const CLUSTER = 84;
+  // Counts only where pins really pile up (WO-169 review): places less than about 14 px apart (their diamonds touch) are one count, so the opening view is diamonds with
+  // the cities named. What a filter took out is not counted, and the picked place, a route's stops and a character's act never are.
   const { singles, clusters } = useMemo(() => {
-    if (k >= 0.2) return { singles: items, clusters: [] as { x: number; y: number; n: number; px: number; py: number }[] };
-    const cells = new Map<string, typeof items>();
+    if (k >= 0.6) return { singles: items, clusters: [] as { x: number; y: number; n: number; px: number; py: number }[] };
     const singles: typeof items = [];
+    const groups: { x: number; y: number; members: typeof items }[] = [];
     for (const it of items) {
-      // What is filtered out stays where it is, faded, and is not counted into a cluster.
       if (!it.on || it.p.kind === "city" || selected === it.p.slug || inRoute.has(it.p.slug) || lit.has(it.p.slug)) {
         singles.push(it);
         continue;
       }
-      const key = `${Math.floor(it.x / CLUSTER)}_${Math.floor(it.y / CLUSTER)}`;
-      cells.set(key, [...(cells.get(key) ?? []), it]);
+      const g = groups.find((x) => Math.hypot(x.x - it.x, x.y - it.y) < (size.w < 700 ? 22 : 14));
+      if (g) {
+        g.members.push(it);
+        g.x = g.members.reduce((a, m) => a + m.x, 0) / g.members.length;
+        g.y = g.members.reduce((a, m) => a + m.y, 0) / g.members.length;
+      } else groups.push({ x: it.x, y: it.y, members: [it] });
     }
     const clusters: { x: number; y: number; n: number; px: number; py: number }[] = [];
-    for (const group of cells.values()) {
-      if (group.length === 1) singles.push(group[0]);
-      else clusters.push({ x: group.reduce((a, g) => a + g.x, 0) / group.length, y: group.reduce((a, g) => a + g.y, 0) / group.length, n: group.length, px: group.reduce((a, g) => a + g.p.px, 0) / group.length, py: group.reduce((a, g) => a + g.p.py, 0) / group.length });
+    for (const g of groups) {
+      if (g.members.length === 1) singles.push(g.members[0]);
+      else clusters.push({ x: g.x, y: g.y, n: g.members.length, px: g.members.reduce((a, m) => a + m.p.px, 0) / g.members.length, py: g.members.reduce((a, m) => a + m.p.py, 0) / g.members.length });
     }
     return { singles, clusters };
-  }, [items, k, selected, inRoute, lit]);
+  }, [items, k, selected, inRoute, lit, size.w]);
 
   // The tiles in view: the half-size ones from afar, the full-size ones close in; the whole picture is under them while they load.
   const tileZoom = k < 0.5 ? 0 : 1;
@@ -353,7 +373,10 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
   const charPlace = characterId && character?.id === characterId && character.place ? bySlug.get(character.place.slug) : null;
   const charAt = charPlace ? toScreen(charPlace.px, charPlace.py) : null;
 
-  const resetNorth = () => fly({ cx: (x0 + x1) / 2, cy: (y0 + y1) / 2, k: kMin });
+  const resetNorth = () => {
+    const kk = Math.min((size.w - beside - 24) / (x1 - x0), (size.h - (phone ? 56 : 24)) / (y1 - y0));
+    fly({ cx: (x0 + x1) / 2 - beside / 2 / kk, cy: (y0 + y1) / 2 - (phone ? 28 / kk : 0), k: kk });
+  };
   const openedDrawer = selected && drawer?.slug === selected ? drawer : null;
   const shownResults = q.trim() ? results : null;
   const shownCharacter = characterId && character?.id === characterId ? character : null;
@@ -398,7 +421,10 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
             {c.n}
           </button>
         ))}
-        {singles.map(({ p, x, y, on, named }) => (
+        {singles.map(({ p, x, y, on, named }) => {
+          // A name near the window's right edge goes on the pin's left, so it is never cut off.
+          const flip = named && x + 14 + (p.name.length * 7.4 + 22) > size.w - 6 && x - 14 - (p.name.length * 7.4 + 22) > 6;
+          return (
           <div
             key={p.slug}
             className={`${s.pinBox} ${on ? "" : s.dim} ${selected === p.slug ? s.pickedBox : ""}`}
@@ -410,12 +436,13 @@ export function MapPage({ entry, places, initial, signedIn }: { entry: MapEntry;
               select(p.slug === selected ? null : p.slug, false);
             }}
           >
-            <PreviewLink href={`/places/${p.slug}`} className={`${s.pin} ${s[KIND_COLOUR[p.kind]]} ${selected === p.slug ? s.picked : ""}`}>
+            <PreviewLink href={`/places/${p.slug}`} className={`${s.pin} ${s[KIND_COLOUR[p.kind]]} ${selected === p.slug ? s.picked : ""} ${flip ? s.flip : ""}`}>
               <i aria-hidden="true">{inRoute.get(p.slug) ?? ""}</i>
               {named ? <span className={s.plate}>{p.name}</span> : <span className={s.sr}>{p.name}</span>}
             </PreviewLink>
           </div>
-        ))}
+          );
+        })}
         {charAt && shownCharacter && (
           <div className={s.pinBox} style={{ left: charAt.x, top: charAt.y }}>
             <span className={s.me} data-testid="my-character">

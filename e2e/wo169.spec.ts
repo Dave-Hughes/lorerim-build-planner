@@ -34,6 +34,18 @@ for (const width of [1440, 390]) {
     if (width === 390) await expect(page.getByRole("button", { name: "Search and filters" })).toBeVisible();
     else await expect(page.getByRole("complementary", { name: "Map controls" }).getByText(/^\d+ places$/)).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
+    // The whole map fits beside the panel (and above a phone's bar): every city in view and named; counts only where pins pile up.
+    const free = width === 1440 ? { left: 354, right: 1440, top: 69, bottom: 900 } : { left: 0, right: 390, top: 56, bottom: 844 - 56 };
+    for (const city of ["Markarth", "Solitude", "Whiterun", "Windhelm", "Riften", "Falkreath", "Morthal", "Dawnstar", "Winterhold"]) {
+      const b = await map(page).getByText(city, { exact: true }).first().boundingBox();
+      expect(b, city).not.toBeNull();
+      expect(b!.x, city).toBeGreaterThanOrEqual(free.left);
+      expect(b!.x + b!.width, city).toBeLessThanOrEqual(free.right + 1);
+      expect(b!.y, city).toBeGreaterThanOrEqual(free.top);
+      expect(b!.y + b!.height, city).toBeLessThanOrEqual(free.bottom + 1);
+    }
+    expect(await map(page).getByRole("button", { name: /places, zoom in/ }).count()).toBeLessThan(width === 1440 ? 45 : 130);
+    if (width === 1440) expect(await map(page).locator("a[href^='/places/']").count()).toBeGreaterThan(300);
     await page.screenshot({ path: `test-results/wo169-whole-${width}.png` });
   });
 
@@ -138,4 +150,18 @@ test("signed out there is no character toggle; signed in, the character's pin si
   await expect(page).toHaveURL(/character=/);
   await page.waitForTimeout(900);
   await page.screenshot({ path: "test-results/wo169-character-1440.png" });
+});
+
+test("on a phone a picked place has its pin in the part of the map above the sheet, its name on its plate", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/map?place=riverwood");
+  await expect(page.getByRole("complementary", { name: "Riverwood" })).toBeVisible();
+  await page.waitForTimeout(600);
+  const plate = map(page).locator("a[href='/places/riverwood']");
+  const b = (await plate.boundingBox())!;
+  const sheet = (await page.getByRole("complementary", { name: "Riverwood" }).boundingBox())!;
+  expect(b.y + b.height).toBeLessThan(sheet.y);
+  expect(b.y).toBeGreaterThan(56);
+  await expect(plate).toContainText("Riverwood");
+  await page.screenshot({ path: "test-results/wo169-riverwood-390.png" });
 });

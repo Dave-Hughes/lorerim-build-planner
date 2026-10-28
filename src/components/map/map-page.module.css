@@ -79,6 +79,13 @@ a.plate:hover {
   text-decoration: none;
   z-index: 1;
 }
+.flip {
+  flex-direction: row-reverse;
+  transform: translate(calc(-100% + 7px), -50%);
+}
+.picked.flip {
+  transform: translate(calc(-100% + 13px), -50%);
+}
 .pin i {
   display: grid;
   place-items: center;
@@ -517,6 +524,12 @@ a.pin:hover i:not(:empty) {
 }
 
 @media (max-width: 700px) {
+  .cluster {
+    min-width: 22px;
+    height: 22px;
+    padding: 0 4px;
+    font-size: 11px;
+  }
   .root {
     height: calc(100dvh - 56px);
   }

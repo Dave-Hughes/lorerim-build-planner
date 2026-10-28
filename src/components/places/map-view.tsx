@@ -134,6 +134,16 @@ export function MapView({ entry, pins, here, hereLabel, labelled = 0, mode, clas
   const hereAt = here ? toPix(here.px, here.py) : null;
   // 1 km is about 70,000 game units: 1,094 pixels of the texture.
   const kmPx = (70000 / entry.texture.unitsPerPixel) * (mode === "band" ? bandK : kWhole * z);
+  // What the corner controls cover, in the box's own pixels: a name never sits under one (WO-167 review).
+  const phoneBox = size.w < 700;
+  const controls: [number, number, number, number][] = [
+    [0, 0, 56, 60],
+    [0, size.h - 44, Math.min(kmPx, 220) + 96, size.h],
+    ...(phoneBox ? [] : [[0, size.h - 82, 270, size.h - 40] as [number, number, number, number]]),
+    [size.w - (phoneBox ? Math.min(size.w - 130, 230) : 250), size.h - 44, size.w, size.h],
+    ...(mode === "whole" ? [[size.w - 56, 0, size.w, 90] as [number, number, number, number]] : []),
+  ];
+  const underControl = (x0_: number, x1_: number, y: number) => controls.some(([a, b, c, d]) => x1_ > a && x0_ < c && y + 13 > b && y - 13 < d);
   // The bar is as long as 1 km, or the part of a km that fits beside the credit.
   const cap = Math.min(220, size.w * 0.26);
 
@@ -166,7 +176,9 @@ export function MapView({ entry, pins, here, hereLabel, labelled = 0, mode, clas
           const w = p.name.length * 7.4 + 22;
           const sx = x + at.x;
           const sy = y + at.y;
-          const side = i >= labelled ? "none" : sy < 16 || sy > size.h - 16 ? "none" : sx + 14 + w <= size.w - 6 ? "right" : sx - 14 - w >= 6 ? "left" : "none";
+          const right = sx + 14 + w <= size.w - 6 && !underControl(sx + 8, sx + 14 + w, sy);
+          const left = sx - 14 - w >= 6 && !underControl(sx - 14 - w, sx - 8, sy);
+          const side = i >= labelled ? "none" : sy < 16 || sy > size.h - 16 ? "none" : right ? "right" : left ? "left" : "none";
           return (
             <div key={`${p.name}-${i}`} className={s.pinBox} style={{ left: x, top: y }}>
               <PreviewLink href={p.href} className={`${s.pin} ${s[p.kind]} ${side === "left" ? s.flip : ""}`}>
