@@ -1,0 +1,59 @@
+{
+ "Tamriel": {
+  "world": "Tamriel",
+  "credit": {
+   "text": "Skyrim Paper Map by Caro Tuts",
+   "url": "https://www.nexusmods.com/skyrimspecialedition/mods/62705"
+  },
+  "texture": {
+   "width": 8192,
+   "height": 8192,
+   "origin": [
+    4096,
+    4096
+   ],
+   "unitsPerPixel": 64.0
+  },
+  "border": [
+   725,
+   1533,
+   7635,
+   6419
+  ],
+  "image": {
+   "url": "/maps/tamriel.webp",
+   "width": 2000,
+   "height": 1414
+  },
+  "tiles": {
+   "url": "/maps/tamriel/{z}/{x}_{y}.webp",
+   "size": 512,
+   "zooms": [
+    {
+     "z": 0,
+     "size": 4096,
+     "columns": [
+      0,
+      7
+     ],
+     "rows": [
+      1,
+      6
+     ]
+    },
+    {
+     "z": 1,
+     "size": 8192,
+     "columns": [
+      1,
+      14
+     ],
+     "rows": [
+      2,
+      12
+     ]
+    }
+   ]
+  }
+ }
+}

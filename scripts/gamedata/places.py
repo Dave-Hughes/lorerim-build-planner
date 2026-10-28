@@ -143,17 +143,73 @@ def walk(km):
     return next((w for cutoff, w in WALK_BANDS if km < cutoff), "a long day's road")
 
 
+# WO-166 (Bob, 27 Oct 21:50): the words call a place by a name that differs only slightly from the record's ("Yngol's Barrow" in a
+# line, "Yngol Barrow" in the record). A candidate alias is one of a few ways a name is written differently; it becomes an alias
+# only when the game's own text (dialogue, books, quest names) really uses it, and no other place has that name.
+ALIAS_STRUCTURES = {"barrow", "cave", "caverns", "cavern", "mine", "hall", "keep", "tower", "fort", "camp", "hideout", "lair", "grotto",
+                    "ruins", "tomb", "crypt", "house", "farm", "mill", "inn", "retreat", "redoubt", "sanctuary", "refuge", "rest", "watch"}
+
+
+def alias_variants(name):
+    """The other ways a name might be written: a leading "The" dropped (never added: "the Dawnstar" turns up in any speech and says
+    nothing), a possessive dropped ("Yngol's Barrow") or added to a first word that names a person ("Yngol Barrow"), a hyphen for
+    a space. Candidates only; each is checked against the text."""
+    n = name.replace("’", "'")
+    out = {n[4:]} if n.startswith("The ") else set()
+    words = n.split()
+    if "'s" in n:
+        out.add(re.sub(r"'s\b", "", n))
+    elif len(words) >= 2 and words[1].lower() in ALIAS_STRUCTURES and words[0][:1].isupper() and words[0].lower() not in ("the", "old", "new"):
+        out.add(f"{words[0]}'s " + " ".join(words[1:]))
+    if "-" in n:
+        out.add(n.replace("-", " "))
+    # Two words or more: "Hermit", "Midden" and "Rooftop" are English, and a one-word alias would link every "hermit" in the game.
+    return {v for v in out if len(v.split()) >= 2 and v.lower() != n.lower()}
+
+
+def _read(version, name):
+    path = os.path.join(REPO, "gamedata", version, name)
+    return json.load(open(path, encoding="utf-8")) if os.path.exists(path) else None
+
+
+def home_cells(version):
+    """[(person, the name of their home cell)] from people_raw.json (each person's first placed cell, their home); [] when it isn't built."""
+    raw = _read(version, "people_raw.json")
+    return [(p["name"], p["cell"]) for p in (raw or {}).get("people", []) if p.get("name") and p.get("cell")]
+
+
+def book_cells(version):
+    """The cell names book_places.json says a book is read or found in (each part of "Thalmor Embassy, Barracks, Thalmor Embassy"); [] when not built."""
+    out, raw = [], _read(version, "book_places.json")
+
+    def walk_json(o):
+        if isinstance(o, dict):
+            if isinstance(o.get("where"), str):
+                out.extend(x.strip() for x in o["where"].split(",") if x.strip())
+            for v in o.values():
+                walk_json(v)
+        elif isinstance(o, list):
+            for v in o:
+                walk_json(v)
+
+    walk_json(raw or {})
+    return out
+
+
 # WO-166 Part 1. The nine cities are rows of type City: the one location in the load order with the capital's own name and the
 # CWCapital keyword (as CAPITALS says), positioned by its own map marker, found by the marker's editor id ("WhiterunMapMarkerREF",
 # "SolitudeMapmarkerRef"...: the game's own naming, which the city-overhaul mods don't touch, unlike the marker's icon type).
 TOWNISH = {"City", "Town", "Settlement"}  # a place of these kinds never "covers" what is inside it: Esbern's Vault is Riften's, and its own place
-# A location a quest names that no place covers becomes a place when its keywords say it could be one (a place keyword, a town, or
-# none at all -- Fort Dawnguard and Thalmor Embassy carry no LocType) and it is found on a map. Never a house, shop, jail or barracks
-# (Bob's WO-144 rule: those are rooms, not destinations) and never a hold (a region) or a capital (a City already).
-HOUSEY_KW = {"LocTypeHouse", "LocTypePlayerHouse", "LocTypeStore", "LocTypeJail", "LocTypeBarracks", "LocTypeStewardsDwelling"}
+# Every location a quest, a person's home or a book names that no place covers is a place (Bob, 27 Oct 21:50), whatever it is, with a `kind`
+# from its keywords; never a hold (a region) or a capital (a City already). Fort Dawnguard and Thalmor Embassy carry no LocType at all.
+# This supersedes WO-144's "houses, shops and jails are rooms, not destinations": a quest starts in them and a person lives in them.
 # A name's own word, for a place the records give no kind to (a location with no LocType): a judgment call under WO-138 Part 5,
 # kept to the four words that can't mean anything else. Anything else stays a Landmark.
 NAME_KIND = {"fort": "Fort", "mine": "Mine", "cave": "Cave", "cavern": "Cave"}
+# ...and for a building the records give no keyword to ("Ulrik's House" carries none): its name's word, used last.
+HOUSE_WORDS = {"house": "House", "manor": "House", "lodge": "House", "barracks": "Barracks", "jail": "Jail", "inn": "Inn", "temple": "Temple"}
+# What a house or a shop or a jail is: a stop, never a fight. Their people are the player's side.
+NOT_A_FIGHT = {"House", "PlayerHouse", "Store", "Jail", "Barracks", "Building", "Castle"}
 # A leftover Bethesda's demo builds and cut content left in the records: never a place a player can go to.
 LEFTOVER = re.compile(r"(?i)unused|^E3Demo")
 LEFTOVER_NAME = re.compile(r"(?i)^name tbd$")  # Dawnguard's own placeholder, a cave with no cells
@@ -165,6 +221,7 @@ GENERIC_NAMES = {"sewers", "basement", "warehouses", "cellar", "catacombs"}  # a
 DROPPED = []  # (name, edid, id, reason, kept-as): what the last build() took out, for the report
 OFF_MAP = []  # (name, plugin, why): named by a quest, allowed by its keywords, and found on no map; for the report
 MAPS = set()  # the worldspaces that are maps (place_pos.map_worlds), as the last build() found them; for the report
+LOST_MARKER = []  # (place, the marker's name it claimed, the place that kept it): for the report
 # The LocType keywords that make a place, and those that rule one out (where people live, trade or rule).
 PLACE_KW = {"LocTypeDungeon", "LocTypeCave", "LocTypeMine", "LocTypeMilitaryFort", "LocTypeAnimalDen", "LocTypeBanditCamp",
             "LocTypeDraugrCrypt", "LocTypeDwarvenAutomatons", "LocTypeFalmerHive", "LocTypeForswornCamp", "LocTypeGiantCamp",
@@ -569,7 +626,7 @@ def build(version):
     xp, disc_xp, xp_from = clear_xp()
     cell_days, cleared_days = respawn_days()
     kname = lambda ks: {kw.get(k, k) for k in ks}  # noqa: E731
-    del DROPPED[:], OFF_MAP[:]
+    del DROPPED[:], OFF_MAP[:], LOST_MARKER[:]
     marker_of = {k: markers.get(l["marker"]) for k, l in locs.items() if l.get("marker") in markers and not markers[l["marker"]]["deleted"]}
     marker_world = lambda m: pp.canon((cells.get(m["cell"]) or {}).get("worldEdid"))  # noqa: E731  (the five city worlds are Tamriel's own coordinates)
 
@@ -688,16 +745,28 @@ def build(version):
         a, b = place_name.lower(), (marker_name or "").lower()
         return 0 if a == b else 1 if a in b else 2 if b and b in a else 3
 
-    claims = collections.defaultdict(list)
-    for k, p in places.items():
-        if p["marker"]:
-            claims[p["marker"]].append(k)
-    for mk_key, ks in claims.items():
-        if len(ks) > 1:
-            fits = {k: fit(locs[k]["name"], markers[mk_key]["name"]) for k in ks}
-            for k, f in fits.items():
-                if f > min(fits.values()):
+    def resolve_claims():
+        """A marker several places name goes to the one it is named for. Those that fit it worse lose it; so do all of a tie between
+        different names (the two Doomstones on one marker: nothing says whose it is). Returns the places that lost one."""
+        claims, lost = collections.defaultdict(list), []
+        for k, p in places.items():
+            if p["marker"]:
+                claims[p["marker"]].append(k)
+        for mk_key, ks in claims.items():
+            if len(ks) < 2:
+                continue
+            fits = {k: fit((locs.get(k) or {}).get("name") or places[k]["name"], markers[mk_key]["name"]) for k in ks}
+            best = min(fits.values())
+            winners = [k for k in ks if fits[k] == best]
+            tied = len(winners) > 1 and len({places[k]["name"].lower() for k in winners}) > 1
+            for k in ks:
+                if fits[k] > best or tied:
                     places[k]["marker"] = None
+                    LOST_MARKER.append((places[k]["name"], markers[mk_key]["name"], "nobody: the names tie" if tied else ", ".join(sorted(places[x]["name"] for x in winners))))
+                    lost.append(k)
+        return lost
+
+    resolve_claims()
 
     def why_not(k):
         cks = cells_under.get(k, [])
@@ -719,50 +788,105 @@ def build(version):
 
     for k, p in places.items():
         place_it(k, p)
-    # Locations a named quest points at (a location alias, or the cell a forced reference stands in) that no place covers. A town
-    # or city doesn't cover what is inside it. Added when the keywords allow a place and a position lands it on a map.
-    quest_locs = collections.defaultdict(set)
+    # WO-166 (Bob, 27 Oct 21:50): every location a named quest, a person's home or a book names is a place, whatever it is -- a fort, an
+    # inn, a house, a shop, a jail -- with a `kind` that tells them apart. A quest names a location by an alias or by the cell a forced
+    # reference stands in; a person's home is their first placed cell (people_raw.json), a book's place a cell it is found or read in
+    # (book_places.json): each cell's name, taken only when exactly one location owns an interior cell of that name. A town or city
+    # never covers what is inside it. What is inside a town has `inTown` and no position; the rest needs a position on a map.
+    # A cell that belongs to no location ("Green-Tip Cabin") is a place by itself: its key is the cell's own.
+    interior_by_name, loose_by_name = collections.defaultdict(set), collections.defaultdict(set)
+    for ck, c in cells.items():
+        if c.get("name") and not c.get("grid"):
+            if c.get("location") in locs:
+                interior_by_name[c["name"].lower()].add(c["location"])
+            elif not c.get("location"):
+                loose_by_name[c["name"].lower()].add(ck)
+
+    def named_place_of(cell_name):
+        """The one location, else the one location-less cell, an interior cell of this name belongs to; None when none or several do."""
+        n = (cell_name or "").lower()
+        owners = interior_by_name.get(n) or loose_by_name.get(n)
+        return next(iter(owners)) if owners and len(owners) == 1 else None
+
+    named_by = collections.defaultdict(lambda: {"quests": set(), "homes": set(), "books": set()})
     for q in quests.values():
         if not q.get("named") or HELPER.search(q["name"]):
             continue
         for a in q.get("aliases", {}).values():
-            for qloc in (a.get("location"), (cells.get(refcell.get(a.get("ref"))) or {}).get("location") if a.get("ref") else None):
+            rc = refcell.get(a.get("ref")) if a.get("ref") else None
+            rcell = cells.get(rc) or {}
+            for qloc in (a.get("location"), rcell.get("location") or (rc if rcell.get("name") and not rcell.get("grid") else None)):
                 if qloc:
-                    quest_locs[qloc].add(q["name"])
+                    named_by[qloc]["quests"].add(q["name"])
+    for person, cell_name in home_cells(version):
+        if named_place_of(cell_name):
+            named_by[named_place_of(cell_name)]["homes"].add(person)
+    for cell_name in book_cells(version):
+        if named_place_of(cell_name):
+            named_by[named_place_of(cell_name)]["books"].add(cell_name)
     TOWN_KINDS = {"LocTypeCity": "City", "LocTypeTown": "Town", "LocTypeSettlement": "Settlement"}
-    off_map = []  # (name, plugin, why): named by a quest, allowed by its keywords, and found on no map
+    # A building's kind by its keywords, the first that matches: an inn tagged LocTypeHouse as well is still an inn.
+    BUILDING_KINDS = (("LocTypeInn", "Inn"), ("LocTypeTemple", "Temple"), ("LocTypeGuild", "Guild"), ("LocTypeStables", "Stables"),
+                      ("LocTypeJail", "Jail"), ("LocTypeBarracks", "Barracks"), ("LocTypeStore", "Store"),
+                      ("LocTypePlayerHouse", "PlayerHouse"), ("LocTypeHouse", "House"), ("LocTypeCastle", "Castle"), ("LocTypeDwelling", "Building"))
+    off_map = []  # (name, plugin, why): named by a quest, a home or a book, and found on no map
     added = set()  # the places this step adds
-    for qloc in sorted(quest_locs, key=lambda x: (len(chain(x)), x)):  # shallowest first: a mansion covers its wings
+    for qloc in sorted(named_by, key=lambda x: (len(chain(x)), x)):  # shallowest first: a mansion covers its wings
         l = locs.get(qloc)
-        if not l or l["deleted"] or not l["name"] or qloc in places:
+        if l is None and qloc in cells:  # a cell of no location: a record of its own, with no keywords, parents or hold
+            l = {"name": cells[qloc].get("name"), "edid": "", "plugin": qloc.split(":")[0], "keywords": [], "deleted": False, "parent": None, "marker": None}
+            cells_under[qloc] = [qloc]
+        if not l or l["deleted"] or not l["name"] or qloc in places or LEFTOVER.search(l["edid"]) or LEFTOVER_NAME.match(l["name"]) or l["name"] in CAPITALS:
             continue
+        src = named_by[qloc]
         covered_by = [x for x in chain(qloc) if x in places and places[x]["type"] not in TOWNISH]
         # A place of the index already covers it -- except one this step just added, which covers only a room (named by one quest):
         # Fort Dawnguard, named by three, is a destination in its own right although Dayspring Canyon, which it sits in, came first.
-        if covered_by and not (all(x in added for x in covered_by) and len(quest_locs[qloc]) >= 2):
+        if covered_by and not (all(x in added for x in covered_by) and len(src["quests"]) >= 2):
             continue
         names = kname(l["keywords"])
-        if "LocTypeHold" in names or "CWCapital" in names or (names & HOUSEY_KW and not names & PLACE_KW):
-            continue
-        if any(x.startswith("LocType") for x in names) and not (names & PLACE_KW or names & TOWN_KW):
+        if "LocTypeHold" in names or "CWCapital" in names:
             continue
         mk_key = (l.get("marker") if marker_of.get(qloc) else
                   by_marker_name[l["name"]][0] if len(by_marker_name.get(l["name"], [])) == 1 else None)
         mk = markers.get(mk_key) if mk_key else None
-        got = pp.locate(mk, cells_under.get(qloc, []), cells, doors, maps)
-        if not got or got["world"] not in maps:
-            off_map.append((l["name"], l["plugin"], "no position" if not got else f"only inside {got['world']}, which is no map"))
-            continue
+        # Inside a town: an ancestor that is a capital, a settlement or a town of the index -- never a hold (Whiterun Hold is named "Whiterun"
+        # too, and every farm in it sits under it).
+        town = next((locs[x]["name"] for x in chain(qloc)[1:] if locs[x].get("name") and "LocTypeHold" not in kname(locs[x]["keywords"]) and
+                     (locs[x]["name"] in (CAPITALS | SETTLEMENTS) or (x in places and places[x]["type"] in TOWNISH))), None)
+        if not town:
+            got = pp.locate(mk, cells_under.get(qloc, []), cells, doors, maps)
+            if not got or got["world"] not in maps:
+                off_map.append((l["name"], l["plugin"], "no position" if not got else f"only inside {got['world']}, which is no map"))
+                continue
         words = {w.lower() for w in re.findall(r"[A-Za-z']+", l["name"])}
+        # Its keywords first (a Store in a fort is a Store), then its name's word, then nothing: a Landmark. Bob's WO-144 cleaning pass holds for
+        # an Inn, a Temple or a Guild: not one on his named list, nor one tagged a city, a fort or a bandit camp. His LocTypeHouse and
+        # LocTypePlayerHouse rule does not: it kept Nightgate Inn (tagged LocTypeHouse as well as LocTypeInn) out of the inns, and it is an inn.
+        # A location tagged a house as well as an inn is an inn only if its name says so ("Nightgate Inn", not "Home of Thane Alarik").
+        house_tagged = bool(names & {"LocTypeHouse", "LocTypePlayerHouse"})
+        bld_ok = l["name"] not in NOT_BUILDINGS and not (names & (NOT_BUILDING_KW - {"LocTypeHouse", "LocTypePlayerHouse"}))
         kind = ((mk or {}).get("type") if (mk or {}).get("type") not in NOT_PLACES else None) or \
-            next((v for w, v in NAME_KIND.items() if w in words), None) or \
             next((KIND_WORDS[x] for x in sorted(names) if x in KIND_WORDS), None) or \
-            next((TOWN_KINDS[x] for x in sorted(names) if x in TOWN_KINDS), None) or "Landmark"
+            next((TOWN_KINDS[x] for x in sorted(names) if x in TOWN_KINDS), None) or \
+            next((v for x, v in BUILDING_KINDS if x in names and (v not in ("Inn", "Temple", "Guild") or (bld_ok and (not house_tagged or v.lower() in words)))), None) or \
+            next((v for w, v in NAME_KIND.items() if w in words), None) or \
+            next((v for w, v in HOUSE_WORDS.items() if w in words), None) or "Landmark"
         places[qloc] = {"id": qloc, "name": l["name"], "edid": l["edid"], "type": kind, "keywords": sorted(x for x in names if x.startswith("LocType")),
-                        "hold": hold_of(qloc), "nearestTown": None, "nearestCity": None, "inTown": None, "plugin": l["plugin"],
-                        "marker": mk_key if mk else None, "namedByQuest": sorted(quest_locs[qloc])[:3]}
+                        "hold": hold_of(qloc), "nearestTown": None, "nearestCity": None, "inTown": town, "plugin": l["plugin"],
+                        "marker": mk_key if mk else None,
+                        "namedBy": sorted(k for k in ("quests", "homes", "books") if src[k])}
+        if src["quests"]:
+            places[qloc]["namedByQuest"] = sorted(src["quests"])[:3]
+        if src["homes"]:
+            places[qloc]["homeOf"] = sorted(src["homes"])[:3]
         place_it(qloc, places[qloc])
         added.add(qloc)
+    # The places just added name markers too (four farms' houses on one farm's marker): the same rule, and what lost a marker is placed again.
+    for k in resolve_claims():
+        for f in ("world", "pos", "posFrom", "noPos"):
+            places[k].pop(f, None)
+        place_it(k, places[k])
     # A bare "Sewers" or "Warehouses" is a room of the place above it: named for it ("Ben Erai Sewers"), not left as a place anyone could mean.
     for k, p in places.items():
         parent = chain(k)[1] if len(chain(k)) > 1 else None
@@ -787,6 +911,8 @@ def build(version):
             return "inside it"
         if pa["marker"] and pa["marker"] == pb["marker"]:
             return "the same map marker"
+        if pa.get("inTown") and pa["inTown"] == pb.get("inTown"):
+            return "the same name in the same town"  # Angeline's Aromatics twice in Solitude: one shop, recorded by a mod as well
         if pa.get("pos") and pb.get("pos") and pa["world"] == pb["world"] and \
                 sum((x - y) ** 2 for x, y in zip(pa["pos"][:2], pb["pos"][:2])) ** 0.5 <= SAME_SPOT:
             return "the same spot"
@@ -850,6 +976,11 @@ def build(version):
             if x in places:
                 owner[k] = x
                 break
+
+    def place_of_cell(ck):
+        """The place a cell belongs to: its location's, else itself when it is a place of its own (a cell of no location, WO-166)."""
+        return owner.get((cells.get(ck) or {}).get("location")) or (ck if ck in places and ck not in locs else None)
+
     def cw_garrison(key, seen=None):
         # WO-144 Part 1e-2/1e-4: the Civil War's own later garrison, shown separately (`afterTheWar`): a marker
         # named "CWGarrisonEnableMarker..." anywhere up the enable-parent chain (Fort Hraggstad's Imperial
@@ -887,7 +1018,7 @@ def build(version):
     for akey, a in actors.items():
         if a["deleted"] or (npcs.get(a["base"]) or {}).get("race") == MANAKIN_RACE:
             continue  # a display mannequin (ManakinRace) is never an enemy
-        pl = owner.get((cells.get(a["cell"]) or {}).get("location"))
+        pl = place_of_cell(a["cell"])
         if pl:
             (after_war_by_place if cw_garrison(akey) or cw_faction(a["base"]) else by_place)[pl].append(a)
     # The encounter zone owning a place, by its location (ECZN's own Location field, not a guess -- Bob decoded the
@@ -985,7 +1116,7 @@ def build(version):
     # generalized to every building a place can be (an inn's innkeeper, a temple's priest, a keep's jarl were all
     # coming back as the "boss", the highest-level named person on site, for want of any friendly/hostile
     # distinction at all). None of these is a combat encounter, whatever levels its people happen to be.
-    FRIENDLY_TYPES = {"Keep", "Stables", "Temple", "Inn", "Guild", "City"}
+    FRIENDLY_TYPES = {"Keep", "Stables", "Temple", "Inn", "Guild", "City"} | NOT_A_FIGHT
 
     def friendly(k):
         return places[k]["type"] in FRIENDLY_TYPES or places[k]["name"] in STRONGHOLDS or places[k]["name"] in FRIENDLY_NAMES
@@ -999,8 +1130,8 @@ def build(version):
         # War marker, summarized the same way, never merged into the start-of-game count or its boss.
         places[k].setdefault("actors", {"count": 0})["afterTheWar"] = summarize_actors(acts, eczn_by_loc.get(k))
     for k, p in places.items():
-        if p["type"] == "City":
-            continue  # a city doesn't clear and doesn't respawn
+        if p["type"] == "City" or p["type"] in NOT_A_FIGHT:
+            continue  # a city, a house or a shop isn't cleared and doesn't respawn
         zone = eczn_by_loc.get(k)
         if zone and zone["flags"] & 0x01:  # "never resets" (Bob's own flag note, 23 Oct, 16:15)
             p["respawns"] = "never"
@@ -1022,7 +1153,7 @@ def build(version):
     goodies_by_place = collections.defaultdict(lambda: {"wordWalls": set(), "skillBooks": set(), "bossChest": False, "crafting": set(), "shrines": set()})
     traps_by_place = set()
     for cell_key, feat in cell_features.items():
-        pl_key = owner.get((cells.get(cell_key) or {}).get("location"))
+        pl_key = place_of_cell(cell_key)
         if not pl_key:
             continue
         g = goodies_by_place[pl_key]
@@ -1057,12 +1188,26 @@ def build(version):
             danger["traps"] = True
         if danger:
             p["danger"] = danger
+    # Alias names: the candidates of alias_variants that the game's text really uses, and that no other place has as its name or its alias.
+    corpus = ("\n".join(l for inf in infos.values() for l in inf["lines"]) + "\n" + "\n".join((b.get("text") or "") for b in books.values())
+              + "\n" + "\n".join(q["name"] for q in quests.values())).replace("’", "'").lower()
+    all_names = {p["name"].lower() for p in places.values()} | {p["recordName"].lower() for p in places.values() if p.get("recordName")}
+    claimed = collections.defaultdict(set)  # alias (lower case) -> the places that would carry it
+    for k, p in places.items():
+        for v in alias_variants(p["name"]):
+            lv = v.lower()
+            if len(v) >= 5 and lv not in all_names and lv in corpus and re.search(r"(?<![a-z])" + re.escape(lv) + r"(?![a-z])", corpus):
+                claimed[lv].add(k)
+    for k, p in places.items():
+        mine = sorted(v for v in alias_variants(p["name"]) if claimed.get(v.lower()) == {k})
+        if mine:
+            p["aliases"] = mine
     # What points at each place: dialogue and books that name it, on its whole name, case as written.
     named = collections.defaultdict(list)
     for k, p in places.items():
         if p["type"] == "City":
             continue  # WO-166: every line that says "Whiterun" is not about Whiterun's page (778 of them); a city keeps its quests, not its mentions
-        for nm in {p["name"], p.get("recordName") or p["name"]}:  # the map's name and the record's ("Embershard Mine", "Embershard")
+        for nm in {p["name"], p.get("recordName") or p["name"], *p.get("aliases", [])}:  # the map's name, the record's ("Embershard Mine", "Embershard"), what the words call it
             if len(nm) >= 5:
                 named[nm].append(k)
     if named:
@@ -1095,7 +1240,7 @@ def build(version):
             if a.get("location") and owner.get(a["location"]):
                 hit.add(owner[a["location"]])
             if a.get("ref") and refcell.get(a["ref"]):
-                pl = owner.get((cells.get(refcell[a["ref"]]) or {}).get("location"))
+                pl = place_of_cell(refcell[a["ref"]])
                 if pl:
                     hit.add(pl)
         for k in hit if q.get("named") and not HELPER.search(q["name"]) else ():
@@ -1159,19 +1304,47 @@ def report(places, xp_from, cities=()):
         out += ["", "| Place | Type | Plugin | Why |", "|---|---|---|---|"]
         for p in sorted(nopos, key=lambda p: (p["plugin"], p["name"])):
             out.append(f"| {p['name']} | {p['type']} | {p['plugin']} | {p['noPos']} |")
-    added = [p for p in rows if p.get("namedByQuest")]
-    out += ["", f"### Added because a quest names them ({len(added)})", "",
-            "Locations a named quest points at (a location alias, or the cell a forced reference stands in) that no place covered: not a hold, a capital, "
-            "a house, shop, jail or barracks; a place keyword, a town, or no LocType at all; and found on a map. A quest-named room inside another added "
-            "place is part of it unless two quests name it.", "", "| Place | Type | Plugin | World | Named by |", "|---|---|---|---|---|"]
-    for p in sorted(added, key=lambda p: (p["plugin"], p["name"])):
-        out.append(f"| {p['name']} | {p['type']} | {p['plugin']} | {p.get('world') or '(none)'} | {', '.join(p['namedByQuest'])} |")
+    added = [p for p in rows if p.get("namedBy")]
+    from_cell = [p for p in added if not p["edid"]]
+    out += ["", f"### Added because a quest, a person's home or a book names them ({len(added)})", "",
+            "Every location a named quest points at (a location alias, or the cell a forced reference stands in), a person's home (their first placed cell, "
+            "people_raw.json) or a book is read or found in (book_places.json) that no place of the index covers, whatever it is, with a `kind` from its keywords "
+            "(then its name's word): not a hold, a capital, a demo leftover or a name no map and no town holds. A town or city never covers what is inside it. "
+            "A room inside another added place is part of it unless two quests name it. What is inside a town has `inTown` and no position; the rest needs one on a map. "
+            f"{len(from_cell)} are cells of no location at all (Green-Tip Cabin), a place of their own keyed by the cell.", "",
+            "| Named by | Places |", "|---|---|"]
+    for src, n in collections.Counter(" + ".join(p["namedBy"]) for p in added).most_common():
+        out.append(f"| {src} | {n} |")
+    out += ["", "| Kind | Added | In a town | On a map |", "|---|---|---|---|"]
+    for kind, n in collections.Counter(p["type"] for p in added).most_common():
+        out.append(f"| {kind} | {n} | {sum(1 for p in added if p['type'] == kind and p.get('inTown'))} | {sum(1 for p in added if p['type'] == kind and p.get('pos'))} |")
+    out += ["", "| Plugin | Added |", "|---|---|"]
+    for plug, n in collections.Counter(p["plugin"] for p in added).most_common(25):
+        out.append(f"| {plug} | {n} |")
+    out += ["", "The places that are not a house, shop, barracks, jail or building (those are only counted above):", "",
+            "| Place | Kind | Where | Plugin | Named by |", "|---|---|---|---|---|"]
+    for p in sorted((p for p in added if p["type"] not in NOT_A_FIGHT), key=lambda p: (p["plugin"], p["name"])):
+        out.append(f"| {p['name']} | {p['type']} | {p.get('inTown') or p.get('world') or '(none)'} | {p['plugin']} | "
+                   f"{', '.join(p.get('namedByQuest') or p.get('homeOf') or p['namedBy'])} |")
     if OFF_MAP:
-        out += ["", f"### Named by a quest, allowed by its keywords, and on no map ({len(OFF_MAP)})", "",
-                "Not places: their interiors reach no map by any door (Apocrypha, Sovngarde, Vigilant's rooms). The quest data still names them.", "",
-                "| Location | Plugin | Why |", "|---|---|---|"]
+        out += ["", f"### Named by a quest, a home or a book, and found on no map and in no town ({len(OFF_MAP)})", "",
+                "Not places: their interiors reach no map by any door (holding cells, storage and test cells, Apocrypha, Sovngarde, Meridia's realm, Vigilant's rooms). "
+                "The quest data still names them.", "", "| Location | Plugin | Why |", "|---|---|---|"]
         for nm, plug, why in sorted(OFF_MAP):
             out.append(f"| {nm} | {plug} | {why} |")
+    if LOST_MARKER:
+        out += ["", f"### A map marker two places claimed ({len(LOST_MARKER)})", "",
+                "A record that names another place's map marker as its own (Morvunskar Crypts and Bleak Falls Barrow's) does not get its position: the marker goes to the "
+                "place it is named for, and the other is placed from its own cells or doors.", "", "| Place | Claimed the marker of | Kept by |", "|---|---|---|"]
+        for nm, mk, kept in sorted(LOST_MARKER):
+            out.append(f"| {nm} | {mk} | {kept} |")
+    aliased = [p for p in rows if p.get("aliases")]
+    if aliased:
+        out += ["", f"### Names the words use that the record doesn't ({len(aliased)})", "",
+                "A different way of writing a place's name (a possessive, a hyphen, a leading \"The\" dropped) that the game's own dialogue, books or quest names really use "
+                "and no other place has. Two words or more. `aliases` on the place; the linker finds it by these too.", "", "| Place | Also written |", "|---|---|"]
+        for p in sorted(aliased, key=lambda p: p["name"]):
+            out.append(f"| {p['name']} | {', '.join(p['aliases'])} |")
     if DROPPED:
         out += ["", f"### Listed twice or left over, now out ({len(DROPPED)})", "", "| Name | Editor id | Why | Kept as |", "|---|---|---|---|"]
         for nm, edid, _k, why, kept in sorted(DROPPED):
@@ -1202,7 +1375,8 @@ def build_site(rows):
     out = []
     for p in rows:
         # world and pos (WO-166): where it is, for the map and for "next to"; z is null for a place found by its cells (no height known).
-        r = {k: p[k] for k in ("id", "name", "type", "hold", "nearestTown", "nearestCity", "inTown", "world", "pos", "clearXp", "discoveryXp", "respawns") if p.get(k) is not None}
+        # `aliases` (WO-166): the other names the game's own words use for it ("Yngol's Barrow" for "Yngol Barrow"), for the linker.
+        r = {k: p[k] for k in ("id", "name", "type", "hold", "nearestTown", "nearestCity", "inTown", "world", "pos", "aliases", "clearXp", "discoveryXp", "respawns") if p.get(k) is not None}
         if p.get("actors"):
             r["actors"] = p["actors"]
         if p.get("worthGoingFor"):

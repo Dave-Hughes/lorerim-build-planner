@@ -33,6 +33,16 @@ def plugin_paths():
     for f in os.listdir(sd):
         if f.lower().endswith(('.esp','.esm','.esl')) and f.lower() not in m: m[f.lower()]=sd+'/'+f
     return m
+def winning_asset(rel):
+    """The loose file the game sees at a path under Data ('textures/terrain/tamriel/skyrim.dds') -- WO-166. MO2's overwrite folder is
+    on top; then the profile's mods, the first '+' line of modlist.txt being the highest priority (the same order plugin_paths reads
+    them in); then the game's own Data folder. The full path, or None when nothing has it."""
+    rel=rel.replace('\\','/').lstrip('/')
+    mods=[l.strip()[1:] for l in open(ROOT+'/profiles/'+active_profile()+'/modlist.txt',encoding='utf-8',errors='ignore') if l.startswith('+')]
+    for base in [ROOT+'/overwrite']+[ROOT+'/mods/'+d for d in mods]+[ROOT+'/Stock Game/Data']:
+        p=base+'/'+rel
+        if os.path.isfile(p): return p
+    return None
 def creation_club():
     """The Creation Club plugins the game loads (Stock Game's Skyrim.ccc, in its order) that the install has, by their file names."""
     ccc=ROOT+'/Stock Game/Skyrim.ccc'
