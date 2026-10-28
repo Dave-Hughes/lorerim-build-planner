@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-177  A cold review of staging: what's broken, what's off the grid, what reads wrong (Mac, 28 Oct 2026)
-Status: for Bob
+Status: queued (Mac; Part 5 first)
 
 **Why.** Dave, 28 Oct 10:06: "I've already spotted lots of things that are broken, or weird UI issues." Bob's reviews had checked each order's boxes and not the whole page. A reviewer who hadn't seen the orders walked 25 pages signed out at 1440 and 390, scrolling with the wheel and hovering: no console errors, no broken links, nothing scrolls sideways; and the list below (screenshots in Bob's scratch folder, `rex/shots/`). Bob confirmed the first ones by hand. Dave's own list joins this order when he sends it. Do the parts in order; each box is a fault seen, not a guess.
 
@@ -5082,8 +5082,28 @@ Decisions and reasons:
 - **Aela's "Follows you" cell** is "Yes" over "How isn't sure yet"; the quests cell's examples are the first two she gives.
 - **Not done, by design:** the person-page "Not sure yet" field names still say "them" (they are field names, not headings). Lydia on the map, the counts across pages and the rest of the data are WO-178.
 
+### Part 5. The second cold review (28 Oct, 12:20)
+The same reviewer, every box again, at 1440 and 390, scrolling and hovering, plus the text of 2,511 pages searched for the copy patterns. Fixed: the wheel on Places, the Blood link, Lydia's sentence, the featured card, Dungeon Delving's grid, Where it takes you, line-page colours and headings, `/quests` at 390, home at 390, the place people, the inn's "In Riverwood", `/changes`, search, Aela, place tags, The Golden Claw, the `/quests` heading, the respawn days. Still wrong or new:
+- [ ] **The `/quests` table moved its squeeze**: Level and places hold, but now the quest and the giver break ("Song of the / Green", "The / Forgemaster's / Fingers", "Froki Whetted- / Blade"). Give Quest and Starts with the room; shrink From. And some From short names name the wrong mod ("More to do in Whiterun: Rob's Bug Fixes", "Profane Divinity: Trad", "On Hogithum: Requiem", "Saints and Seducers: Skyrim Extended Cut"): the short name is the mod that adds the quest, nothing appended.
+- [ ] **Map labels and badges still draw under the panel, the drawer and the header** (High Hrothgar's under Riverwood's drawer; a "2" poking out of the panel's top). A label or badge whose pin is under a panel isn't drawn.
+- [ ] **A tag the page isn't sure of**: Aela's "Follower" tag beside "She's a potential follower. (not sure)". Same rule as Lydia's: a tag only for what's sure. On a phone, Lydia's one At a glance cell, "Nord in Whiterun", repeats the lede "A Nord in Whiterun."
+- [ ] **Editors' words left**: "Why we're unsure" names records and files ("'Cultists vs Player' (DLC2WE09)", plugin `.esp` names on 23 quest pages); "(not sure)" in brackets on 35 pages; Lydia's "What changes it (not sure)" and "(presumably once you own Breezehome)". Not sure yet says what is unsure and why in a player's words; a file or record id never shows; no bracket hedges in the body. A test over every page's text for `.esp`, an editor-id pattern and "(not sure)".
+- [ ] **Not sure yet's reasons are fragments** on the main quest ("What it closes: The records don't show when", "LoreRim's files set their chance to 0", How it starts' reason repeats its sentence). Each reason is a whole sentence about the thing ("We can't tell from the files when Helgen's shops close.").
+- [ ] **"Dawnguard | Dawnguard"**: two identical tags on the Dawnguard line. And the hold is named three ways ("Whiterun hold", "Whiterun", "Whiterun, Town" in search): "Whiterun hold" for the hold everywhere, "Whiterun" for the city.
+- [ ] **"can be shut away(Unbound)"**: a missing space. Check every "(Quest)" join.
+- [ ] **Assembled wording on more pages**: Bryling's "in her own house, Bryling's House". The fix goes in the sentence builder, not page by page; a test over the people reads.
+- [ ] **"Where they are through the day isn't known yet"** on Alvor's At a glance: "Where he is…" (the person's pronoun).
+- [ ] **The same story, two sets of numbers**: Dawnguard is 12 quests and 2,000 XP on home and its page, 39 and 6,800 in the `/quests` table; the main quest 19 against 23. The table counts the story's quests and XP the same way the line page does (jobs apart).
+- [ ] **Record ids as quest names**: the Hall of the Dead (Riften) says "Brother Verulus in DA11FIN". A line credited to a quest uses its name; no editor id on any page (the same test).
+- [ ] **"1 ways"** on 21 quest pages: "1 way".
+- [ ] **Place links orange outside line pages**: The Golden Claw's Where it takes you, the inn's "In Riverwood", High Hrothgar's "Jarl of Whiterun" (a role, not a place: no link). A place link is teal on every page.
+- [ ] **On a phone**: the small character cards cut the maker ("Ta…") and the tagline; a quest route on `/map` shows only stop 1; Lydia's "What she offers" heading is smaller than the others.
+- [ ] **`/changes` stops at exactly 400** (350 quests, 50 lines), back to 23 Oct: a query limit. Show all, folded by day, or say "and N older".
+- [ ] **"More to Say Find Angi"** on Faendal's page (a quest name glued to an objective?) and "and 1 more" as a link for one name: say the name.
+- [ ] Walk every page above at both widths, scrolling and hovering, before `for Bob`; Bob sends the reviewer again.
+
 ## WO-178  Data a player would call wrong (PC, 28 Oct 2026)
-Status: for Bob
+Status: queued (PC for the data, Mac for the map: Part 2)
 
 From the same cold review (WO-177). Each is what the page shows; find why in the records and fix it in the build, or say why it's right.
 - [x] **Only one temple or guild on the map** ("Temples and guilds 1": High Hrothgar). The Temple of Kynareth, the Temple of Mara, Jorrvaskr and the College are inside their cities, so they have no position (WO-166's rule). Give the Mac what it needs to show a place inside a town at its town's pin on the map when its group is picked (the town's position on each such row as `pinAt`), so the groups aren't empty.
@@ -5115,6 +5135,16 @@ Every box is ticked. Checks: Python 440 OK, `tsc` clean, eslint clean on the fil
 - **Bleak Falls Barrow**: kept in the Mac's text, not the data. `gettingThere()` says "Up the mountain west of Riverwood, a short walk." when a place is more than 2,000 units above its town and has a height for both (it was "West of Riverwood, right next to it, and well above it"). The positions say west (10 degrees north of west), so the compass word is "west", not "north-west" as the order has it; the Golden Claw line's "northwest" is the NPC's. A change to the data's `walk` for every place above a cell's height touched 348 places, which is no fix, so I left the data alone.
 
 **Odd, not fixed**: a book pointer's excerpt on The Aetherium Forge differs between runs (the pointer finder iterates a set of matched names, so which match comes first varies). It is in the regenerated file as one changed row; harmless, pre-existing, and worth a sorted iteration when someone is in there.
+
+### Part 2. The second cold review (28 Oct, 12:20)
+Fixed: Castle Volkihar is a castle, the Soul Cairn is off the map, High Hrothgar is up the 7,000 Steps, Riverwood's crafting and quests. Not fixed or new:
+- [ ] **(Mac) Temples and guilds on the map**: still "Temples and guilds 1". The PC added each in-town place's `pinAt`; the map doesn't use it. Draw an in-town place at its town's pin when its group is picked (one pin, a count on the town's plate).
+- [ ] **(Mac) One count per kind**: `/map` and `/places` still disagree (towns 21 against 29, homes 73 against 283, temples 1 against 28, landmarks 83 against 177). Both read the build's counts; the map's label says "on the map" when it shows fewer.
+- [ ] **(PC) "Up the mountain" is wrong on 192 pages**: Riverwood "Up the mountain south of Whiterun", Blackreach "Up the mountain southeast of Stonehills", Nightgate Inn, Frostflow Lighthouse. `gettingThere()` (`src/lib/places/map.ts`) calls any place 2,000 units above its town a climb. A climb is said only for places marked as on a mountain (an override list, Bleak Falls Barrow and High Hrothgar first), never from height alone; an interior or underground world never.
+- [ ] **(PC) Bleak Falls Barrow's lede and Nearest town** still say "next to Riverwood" and "Next to it" beside the new climb line. One answer from the same rule.
+- [ ] **(PC and Mac) Lydia on the map** still flies to Whiterun, not Dragonsreach, and Whiterun's Who is inside lists only Companions. A person goes to the building they're in; a city's drawer lists its jarl, steward, merchants and trainers.
+- [ ] **(PC) Castle Volkihar** lists no people, has no hold and sits under "Elsewhere" on `/places`; its page map has a black strip left of the picture. **The Soul Cairn**'s lede is "A landmark." with a "Level 13 to 150" bar on a 1 to 50 scale: a realm with no map says what it is and how you get there (through Castle Volkihar's portal).
+- [ ] Then `for Bob`; Bob sends the reviewer again.
 
 ## WO-176  Two small things from Bob's read of WO-174 (Mac, then PC, 28 Oct 2026)
 Status: for Bob
