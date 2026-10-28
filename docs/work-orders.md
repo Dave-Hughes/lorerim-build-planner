@@ -5032,6 +5032,7 @@ Status: queued (Mac; after WO-165)
 - [ ] **Making a character**: after Details, a last step, "What next": Plan a playthrough (makes the run and opens it) or Finish. Dave couldn't see how to add one while making a character.
 - [ ] The Playthrough tab with no run yet (WO-159 Part 4) shows what one looks like, not just a sentence: a sample act card (name, levels, place, three objectives) faded under "Plan a playthrough".
 - [ ] **Your characters** on home and the cards on `/me`: a character with no cover gets a fallback, not a blank tile: its race's pixel icon large on the night-scene colours, the name over it. `/me` uses the one character card (WO-161) with its Edit and Delete under it; "Start a run" becomes "Plan a playthrough" everywhere.
+- [ ] The Featured character on `/characters` is a tall card two rows high beside small ones; make it a wide card across two columns, one row high, cover on the left half, text on the right.
 - [ ] Checks, screenshots signed in (Kyria's page on each tab, a character with no cover on home and `/me`, the What next step) at 1440 and 390, then `for Bob`.
 
 ## WO-168  The three main stories, each its own world (Mac, 27 Oct 2026)
@@ -5125,7 +5126,7 @@ Status: queued (Mac; after WO-161)
 - [ ] Typecheck, lint, tests, build, e2e; screenshots of Riverwood, the Sleeping Giant Inn, the Bee and Barb and Bleak Falls Barrow at 1440 and 390, then `for Bob`.
 
 ## WO-161  Small fixes from Bob's walk of every page (Mac, 27 Oct 2026)
-Status: for Bob (all eleven boxes built; typecheck, lint, 706 unit tests, the build and the full e2e pass, 451 of 451)
+Status: done (Bob, 27 Oct 20:10: checked on the preview: Guide out of the menu, tab titles, Tapps's characters, My characters, search reasons, the changes page by day and kind, one character card. The featured card's shape moves to WO-164)
 
 **Why.** Bob walked every page on staging (`docs/page-templates.md`, the catalog). These are the small ones; the place page, the quest categories and the colour pass get their own orders with boards.
 
