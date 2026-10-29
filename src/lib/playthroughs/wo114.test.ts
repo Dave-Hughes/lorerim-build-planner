@@ -24,6 +24,8 @@ function chain(kind: string, table?: unknown) {
       return c;
     },
     from: () => c,
+    innerJoin: () => c,
+    leftJoin: () => c,
     where: () => c,
     limit: () => c,
     orderBy: () => c,
@@ -111,7 +113,7 @@ describe("one tale per character", () => {
 });
 
 describe("the build page's run line", () => {
-  it("shows a private run to its owner only, a Link only or Listed run to anyone", async () => {
+  it("shows a run whose character is private to its owner only, a Link only or Listed one to anyone", async () => {
     rows = [{ id: "run1", name: "Kyria Severa", ownerId: "u1", visibility: "private" }];
     expect(await runOfBuild("b", "u1")).toMatchObject({ id: "run1" });
     expect(await runOfBuild("b", "u2")).toBeNull();

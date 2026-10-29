@@ -42,7 +42,7 @@ test("the owner sees Edit on the shared page, opening the build's editor; a visi
   await page.goto(`/b/${TEST_BUILD_ID}`);
   await expect(page.getByRole("region", { name: "Edit bar" })).toHaveCount(0);
   const hero = page.getByRole("region", { name: "Build" });
-  await expect(hero.getByRole("link", { name: "Edit", exact: true })).toHaveAttribute("href", new RegExp(`^/b/${TEST_BUILD_ID}/(edit|play)$`));
+  await expect(hero.getByRole("link", { name: "Edit", exact: true })).toHaveAttribute("href", new RegExp(`^/b/${TEST_BUILD_ID}/edit(/play)?$`));
   const visitor = await browser.newPage();
   await visitor.goto(`/b/${TEST_BUILD_ID}`);
   await expect(visitor.getByRole("heading", { level: 1 })).toHaveText("Test Shield-Wall");

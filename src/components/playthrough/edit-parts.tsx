@@ -119,9 +119,9 @@ export const REACH_KINDS = [
   { v: "count", label: "A count" },
 ] as const;
 
-export const LINK_LABEL: Record<ObjectiveLink["kind"], string> = { quest: "Quest", line: "Quest line", spell: "Spell", item: "Item", follower: "Follower", place: "Place" };
+export const LINK_LABEL: Record<ObjectiveLink["kind"], string> = { quest: "Quest", line: "Quest line", spell: "Spell", item: "Item", follower: "Follower", place: "Place", person: "Person" };
 
-/** The text, with `@` opening the mention menu: a quest, a quest line, a spell, an item or a follower. */
+/** The text, with `@` opening the mention menu: a quest, a quest line, a spell, an item, a follower, a place or a person. */
 export function MentionInput({
   d,
   value,
@@ -145,6 +145,10 @@ export function MentionInput({
   const ref = useRef<HTMLInputElement>(null);
   const listId = useId();
   const [at, setAt] = useState(0);
+  // The menu is open while the box has focus and its words haven't been answered: a pick, Escape or leaving the box closes it, and it
+  // stays closed for those very words (WO-179 Part 2); typing on opens it again.
+  const [focused, setFocused] = useState(!!autoFocus);
+  const [closedFor, setClosedFor] = useState<string | null>(null);
   // `@` opens the menu as it always did; and so does plain typing (WO-179): the last words typed are looked up as a quest, a place, a person, an item
   // or a spell, and the menu opens when something answers. The typed words are what a pick replaces.
   const { query, hits, strip, plain } = useMemo(() => {
@@ -159,10 +163,11 @@ export function MentionInput({
     }
     return { query: null as string | null, hits: [] as ExtraMention[], strip: /@[^@]*$/, plain: false };
   }, [d, value, linkables]);
-  const open = query !== null;
+  const open = query !== null && focused && closedFor !== value;
   const touched = useRef(false);
   const pick = (m: ExtraMention) => {
     const rest = value.replace(strip, "").trim();
+    setClosedFor(rest ? `${rest} ${m.name}` : m.name);
     onPick(m, rest ? `${rest} ${m.name}` : "");
   };
   return (
@@ -179,12 +184,16 @@ export function MentionInput({
         aria-expanded={open}
         aria-controls={listId}
         aria-autocomplete="list"
+        onFocus={() => setFocused(true)}
         onChange={(e) => {
           setAt(0);
           touched.current = false;
+          setClosedFor(null);
           onChange(e.target.value);
         }}
         onBlur={() => {
+          // The menu closes at once; a pick in it is made on mouse down, so it is never lost to this.
+          setFocused(false);
           // A pick in the menu comes first.
           setTimeout(() => {
             if (document.activeElement !== ref.current) onBlur();
@@ -202,9 +211,15 @@ export function MentionInput({
             // Typing plainly, Enter picks only what the arrow keys reached: the words may be the player's own.
             if (plain && !touched.current) return;
             if (hits[at]) pick(hits[at]);
-            else onChange(value.replace(/@/, ""));
-          } else if (e.key === "Escape") onChange(value.replace(/@([^@]*)$/, "$1"));
-          else return;
+            else {
+              setClosedFor(value.replace(/@/, ""));
+              onChange(value.replace(/@/, ""));
+            }
+          } else if (e.key === "Escape") {
+            const kept = value.replace(/@([^@]*)$/, "$1");
+            setClosedFor(kept);
+            onChange(kept);
+          } else return;
           e.preventDefault();
         }}
       />
@@ -216,7 +231,16 @@ export function MentionInput({
               <small>{m.where}</small>
             </li>
           ))}
-          <li role="option" aria-selected={at === hits.length} onMouseDown={(e) => (e.preventDefault(), onChange(value.replace(/@([^@]*)$/, "$1")))}>
+          <li
+            role="option"
+            aria-selected={at === hits.length}
+            onMouseDown={(e) => {
+              e.preventDefault();
+              const kept = value.replace(/@([^@]*)$/, "$1");
+              setClosedFor(kept);
+              onChange(kept);
+            }}
+          >
             <span className="muted">Or leave it as your own words</span>
           </li>
         </ul>

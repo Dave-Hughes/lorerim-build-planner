@@ -117,6 +117,8 @@ export async function writeDetails(userId: string, id: string, details: BuildDet
     .where(and(eq(schema.builds.id, id), eq(schema.builds.ownerId, userId)))
     .returning({ id: schema.builds.id });
   if (!rows[0]) return false;
+  // A character has one visibility (WO-179 Part 2): its run follows it.
+  await db().update(schema.playthroughs).set({ visibility: details.visibility }).where(eq(schema.playthroughs.buildId, id));
   if (details.tags) await setTags(id, details.tags);
   return true;
 }

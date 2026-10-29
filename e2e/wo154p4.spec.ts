@@ -78,9 +78,12 @@ test("search shows suggestions as you type, then opens the one you choose; the r
 
 test("the command palette: Ctrl+K or the header's Search opens one box for quests, people, places, builds and the guide", async ({ page }) => {
   await page.goto("/quests");
-  await page.keyboard.press("Control+k");
   const palette = page.getByRole("dialog", { name: "Search the site" });
-  await expect(palette).toBeVisible();
+  // The shortcut is heard once the page has hydrated: press it until the box opens.
+  await expect(async () => {
+    await page.keyboard.press("Control+k");
+    await expect(palette).toBeVisible({ timeout: 1500 });
+  }).toPass({ timeout: 15_000 });
   await palette.getByRole("combobox").fill("Lights Out");
   await expect(palette.getByRole("listbox")).toContainText("Lights Out!");
   await palette.getByRole("combobox").press("ArrowDown");

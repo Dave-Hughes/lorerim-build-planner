@@ -10,6 +10,7 @@ import type { BuildVisibility } from "@/lib/builds/validate";
 import { InfoTip } from "@/components/ui/info-tip";
 import type { EditFrameData } from "@/lib/edit/frame";
 import { saveDetails } from "@/lib/playthroughs/actions";
+import { editPlayHref, editStoryHref } from "@/lib/playthroughs/hrefs";
 import styles from "./edit-bar.module.css";
 import f from "./edit-frame.module.css";
 
@@ -180,7 +181,7 @@ export function OwnerControls({ buildId, visibility, onVisibility, tab }: { buil
     }
   };
   // Edit opens on the tab you were on (WO-179): the playthrough's editor, the build's, the guide's; with no tab, Set up.
-  const edit = tab === "play" ? `/b/${buildId}/play` : tab === "levels" ? `/b/${buildId}/edit` : tab === "guide" ? `/b/${buildId}/guide` : `/b/${buildId}/setup?step=name`;
+  const edit = tab === "play" ? `/b/${buildId}/edit/play` : tab === "levels" ? `/b/${buildId}/edit` : tab === "guide" ? `/b/${buildId}/guide` : `/b/${buildId}/setup?step=name`;
   return (
     <span className={styles.right}>
       {error && (
@@ -238,14 +239,14 @@ function tabsOf(f: EditFrameData | null, buildId: string): Tab[] {
   const id = b?.id ?? buildId;
   // The same tabs, in the same order, as the character's page (WO-179): Playthrough, Build, Guide. Character (Set up) and the Story follow.
   // The page's own address, never one that redirects (WO-124 Part 4): a redirect during a tab change made Next load the whole document again.
-  if (r) out.push({ key: "play", label: "Playthrough", href: `/p/${r.id}/edit/play` });
-  else if (f?.playOn && b) out.push({ key: "play", label: "Playthrough", href: `/b/${b.id}/play` });
+  if (r) out.push({ key: "play", label: "Playthrough", href: editPlayHref(r) });
+  else if (f?.playOn && b) out.push({ key: "play", label: "Playthrough", href: `/b/${b.id}/edit/play` });
   if (b || !f) {
     out.push({ key: "levels", label: "Build", href: `/b/${id}/edit` });
     out.push({ key: "guide", label: "Guide", href: `/b/${id}/guide` });
     out.push({ key: "setup", label: "Character", href: `/b/${id}/setup?step=name` });
   }
-  if (r) out.push({ key: "story", label: "Story", href: `/p/${r.id}/edit/story/title` });
+  if (r) out.push({ key: "story", label: "Story", href: editStoryHref(r) });
   else if (f?.storyOn && b) out.push({ key: "story", label: "Story", href: `/b/${b.id}/edit/story` });
   return out;
 }
@@ -299,8 +300,7 @@ function SaveLine({ save }: { save: SaveState }) {
  * The top of every edit page, one slim bar (WO-124, the EditCompact board): the cover as a 48 px thumbnail (to the cover
  * in Character's Details), Editing and the name, the tabs as text, then the save line, who can see it and Done, the one
  * ember button; under it one line saying what the tab is for. Pinned under the site header as you scroll. On a phone the
- * tabs fold into the tab you're on, as a menu. A run's tabs (Playthrough, Story) set the run's visibility; the build's,
- * the build's.
+ * tabs fold into the tab you're on, as a menu. A character has one visibility, set from any tab (WO-179 Part 2).
  */
 export function EditBar({
   buildId,
@@ -325,7 +325,8 @@ export function EditBar({
   const frame = useContext(FrameContext);
   const tabs = tabsOf(frame, buildId);
   const run = frame?.run;
-  const onRun = !!run && (current === "play" || current === "story" || !frame?.build);
+  // One visibility (WO-179 Part 2): the character's, whichever tab; a run with no character yet has its own.
+  const runOnly = !!run && !frame?.build;
   const done = run ? (frame?.build ? `/b/${frame.build.id}?tab=playthrough` : `/p/${run.id}`) : `/b/${buildId}?tab=levels`;
   const cover = frame?.build?.coverImageUrl;
   const focus = frame?.build?.coverFocus;
@@ -337,8 +338,16 @@ export function EditBar({
           <span className={f.who}>
             {frame?.build && (
               <Link href={`/b/${frame.build.id}/setup?step=name#cover`} className={f.thumb} aria-label={cover ? "Change the cover" : "Add a cover"} title={cover ? "Change the cover" : "Add a cover"}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                {cover ? <img src={cover} alt="" style={focus ? { objectPosition: `${focus.x}% ${focus.y}%` } : undefined} /> : <span className={f.thumbNone} aria-hidden="true" />}
+                {cover ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={cover} alt="" style={focus ? { objectPosition: `${focus.x}% ${focus.y}%` } : undefined} />
+                ) : (
+                  <span className={f.thumbNone} aria-hidden="true">
+                    {/* No cover yet: the race's icon, or the planner's own mark when none is chosen (WO-179 Part 2). */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={frame.build.race ? `/icons/race-${frame.build.race.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}.svg` : "/icons/logo-0.svg"} alt="" />
+                  </span>
+                )}
               </Link>
             )}
             <span className={f.editing}>
@@ -361,10 +370,10 @@ export function EditBar({
             <SaveLine save={save} />
             <span className={f.wideOnly}>
               <VisibilityMenu
-                key={onRun ? `r${run!.visibility}` : `b${visibility}`}
-                initial={onRun ? run!.visibility : visibility}
-                choose={(v) => (onRun ? saveDetails(run!.id, { visibility: v }) : setBuildVisibility(buildId, v))}
-                onChange={onRun ? undefined : onVisibility}
+                key={runOnly ? `r${run!.visibility}` : `b${visibility}`}
+                initial={runOnly ? run!.visibility : visibility}
+                choose={(v) => (runOnly ? saveDetails(run!.id, { visibility: v }) : setBuildVisibility(buildId, v))}
+                onChange={runOnly ? undefined : onVisibility}
               />
             </span>
             <Link

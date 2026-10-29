@@ -70,7 +70,7 @@ test("What next ends making a character: Plan a playthrough makes the run and op
   await expect(page.getByRole("heading", { level: 1, name: "What next" })).toBeVisible();
   await page.screenshot({ path: "test-results/wo164-what-next-1440.png" });
   await page.getByRole("button", { name: "Plan a playthrough" }).click();
-  await page.waitForURL(/\/p\/[^/]+\/edit\/play/);
+  await page.waitForURL(/\/b\/[^/]+\/edit\/play/);
 });
 
 test("the Playthrough tab with no run shows a sample act, faded, under Plan a playthrough", async ({ page, context }) => {

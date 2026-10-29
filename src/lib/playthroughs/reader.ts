@@ -1,4 +1,5 @@
 import { firstPlate, type GuideDoc } from "@/lib/guide/doc";
+import { editStoryHref } from "./hrefs";
 import type { ActView, ChapterView, PlaythroughView } from "./view";
 
 /**
@@ -78,7 +79,7 @@ export function runStops(p: { id: string; buildId?: string | null; taleLine: str
       waiting: c.open ? null : waitingText(v, c),
       chapterId: c.id,
       game: c.inGame ? { text: c.inGame.text, href: rowHref(c.inGame.id) } : null,
-      edit: p.isOwner ? `/p/${p.id}/edit/story/${c.id}` : null,
+      edit: p.isOwner ? editStoryHref(p, c.id) : null,
       readAt: p.isOwner && c.readAt ? new Date(c.readAt).getTime() : null,
     };
   });

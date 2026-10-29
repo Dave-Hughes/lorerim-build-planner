@@ -20,7 +20,7 @@ const playthrough = z.string().min(1).max(80).describe("The playthrough's id, fr
 const act = z.string().min(1).max(60).describe('The act: its number as a string ("2"), "Act II", or its name.');
 const objective = z.string().min(1).max(160).describe("The objective: its id from get_playthrough, as a string, or its words.");
 const chapter = z.string().min(1).max(60).describe("The chapter: its id from get_playthrough, as a string, or its title.");
-const linkSchema = z.object({ kind: z.enum(LINK_KINDS), name: z.string().min(1).max(160) }).describe('What it links to in the planner, by name: a quest ("Name (Line)" when two lines have one of that name), a quest line, a spell, an item, a follower, or a place from suggest_places ("Reach <place>" or "Clear <place>", its hook in the why line). Leave it out for the player\'s own aims; never invent a quest or a place.');
+const linkSchema = z.object({ kind: z.enum(LINK_KINDS), name: z.string().min(1).max(160) }).describe('What it links to in the planner, by name: a quest ("Name (Line)" when two lines have one of that name), a quest line, a spell, an item, a follower, a person from the people pages, or a place from suggest_places ("Reach <place>" or "Clear <place>", its hook in the why line). Leave it out for the player\'s own aims; never invent a quest or a place.');
 /**
  * What the save reads, as flat fields: quest (and stage), or reachKey and reachTarget. Every objective can also be
  * ticked by the player (WO-123); fromSave says whether the save ticks it too.

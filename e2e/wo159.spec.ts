@@ -115,12 +115,12 @@ test.describe("the Playthrough tab before there is a run", () => {
     const tabs = page.getByRole("navigation", { name: "Edit tabs" });
     await expect(tabs.getByRole("link", { name: /^Playthrough/ })).toBeVisible();
     await tabs.getByRole("link", { name: /^Playthrough/ }).click();
-    await expect(page).toHaveURL(new RegExp(`/b/${SKIPS_BUILD_ID}/play$`));
+    await expect(page).toHaveURL(new RegExp(`/b/${SKIPS_BUILD_ID}/edit/play$`));
     await expect(page.getByRole("heading", { level: 1, name: "Playthrough" })).toBeVisible();
     await expect(page.getByText(/acts, each with a goal, a place and its quests/)).toBeVisible();
     await page.screenshot({ path: "test-results/wo159-playthrough-empty-1440.png" });
     await page.getByRole("button", { name: "Plan a playthrough" }).click();
-    await page.waitForURL(/\/p\/[^/]+\/edit\/play/);
+    await page.waitForURL(/\/b\/[^/]+\/edit\/play/);
     await expect(page.getByRole("navigation", { name: "Edit tabs" }).getByRole("link", { name: /^Playthrough/ })).toHaveAttribute("aria-current", "page");
   });
 

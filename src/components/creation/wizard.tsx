@@ -26,7 +26,7 @@ import { shippedVersions } from "@/lib/rules/versions";
 import { emptyLevel } from "@/lib/rules/derive";
 import { computeBuild } from "@/lib/rules/engine";
 import type { BuildPlan } from "@/lib/rules/types";
-import { PRONOUNS } from "@/lib/pronouns";
+import { PRONOUNS, pro, type Pronoun } from "@/lib/pronouns";
 import { useDismiss } from "@/lib/use-dismiss";
 import { YOUTUBE_ERROR, youtubeVideoId } from "@/lib/builds/youtube";
 import { addRun } from "@/lib/playthroughs/actions";
@@ -193,7 +193,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
           // The run Plan a playthrough makes: Act I from the start the character chose, the start's quest as its first objective.
           const first = plan.start ? d.startByName.get(plan.start) : undefined;
           const run = await addRun(r.value.id, { name: details.name, line: details.description.slice(0, 140), act: { ...FIRST_ACT, place: first?.place ?? "", goal: "" }, objectives: first?.quest ? [startObjective(first.quest)] : [] });
-          if (run.ok) return router.push(`/p/${run.value.id}/edit/play`);
+          if (run.ok) return router.push(`/b/${r.value.id}/edit/play`);
         }
         router.push(`/b/${r.value.id}/edit`);
       }
@@ -231,13 +231,17 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
           <ol className={styles.steps}>
             {STEPS.map((s, i) => {
               const check = checks[s];
-              const state = i === stepIndex ? "now" : check.state;
+              // On What next, Details is behind you: it keeps its tick (WO-179 Part 2).
+              const state = i === stepIndex && !(whatNext && s === "name") ? "now" : check.state;
               return (
                 <li key={s}>
                   <button
                     type="button"
                     className={`${styles.stepRow} ${styles[state]}`}
-                    onClick={() => setStep(s)}
+                    onClick={() => {
+                      setWhatNext(false);
+                      setStep(s);
+                    }}
                     aria-current={state === "now" ? "step" : undefined}
                     aria-label={`${STEP_NAMES[s]}: ${state === "done" ? "done" : state === "problem" ? check.state === "problem" ? check.problem : "" : state === "now" ? "this step" : state === "optional" ? "optional" : "not started"}`}
                   >
@@ -337,7 +341,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
             {step === "traits" && <TraitsStep plan={plan} update={update} />}
             {step === "deity" && <DeityStep plan={plan} update={update} />}
             {step === "mode" && <ModeStep plan={plan} update={update} />}
-            {step === "name" && whatNext && <WhatNext name={details.name} pending={pending} onPlan={() => finish(true)} onFinish={() => finish(false)} error={error} />}
+            {step === "name" && whatNext && <WhatNext name={details.name} pronoun={plan.pronoun ?? null} pending={pending} onPlan={() => finish(true)} onFinish={() => finish(false)} error={error} />}
             {step === "name" && !whatNext && (
               <NameStep
                 details={details}
@@ -402,13 +406,13 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
 }
 
 /** The last step of making a character (WO-164): plan a playthrough now (the run is made and opened), or finish. */
-function WhatNext({ name, pending, onPlan, onFinish, error }: { name: string; pending: boolean; onPlan: () => void; onFinish: () => void; error: string | null }) {
+function WhatNext({ name, pronoun, pending, onPlan, onFinish, error }: { name: string; pronoun: Pronoun | null; pending: boolean; onPlan: () => void; onFinish: () => void; error: string | null }) {
   return (
     <section aria-labelledby="what-next" className={styles.whatNext}>
       <h1 id="what-next" className={`title ${styles.h1}`}>
         What next
       </h1>
-      <p className={styles.whatNextLine}>{name} is ready to save. A playthrough plans the character&apos;s run through the game in acts, each with a goal, a place and its quests. You can add one later from the character&apos;s page.</p>
+      <p className={styles.whatNextLine}>{name} is ready to save. A playthrough plans {pro(pronoun).possessive} run through the game in acts, each with a goal, a place and its quests. You can add one later from {pro(pronoun).possessive} page.</p>
       <div className={styles.whatNextRow}>
         <button type="button" className="btn btn-primary" onClick={onPlan} disabled={pending}>
           {pending ? "Saving…" : "Plan a playthrough"}

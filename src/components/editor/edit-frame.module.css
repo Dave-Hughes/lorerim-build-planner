@@ -41,10 +41,18 @@
   border-color: var(--muted);
 }
 .thumbNone {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
   background: var(--sunk);
+}
+.thumbNone img {
+  width: 62%;
+  height: 62%;
+  object-fit: contain;
+  image-rendering: pixelated;
 }
 .editing {
   display: flex;

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ReadTheStory } from "@/components/reader/reader";
 import { AiAssisted } from "@/components/ui/ai-assisted";
 import { CopyLinkButton } from "@/components/ui/copy-link-button";
+import { editPlayHref } from "@/lib/playthroughs/hrefs";
 import type { PlaythroughRecord } from "@/lib/playthroughs/queries";
 import s from "./play.module.css";
 
@@ -27,7 +28,7 @@ export function RunHero({ p, isOwner }: { p: PlaythroughRecord; isOwner: boolean
   const actions = (
     <span className={`on-image ${s.bandActions}`}>
       {isOwner && (
-        <Link href={`/p/${p.id}/edit`} className="btn">
+        <Link href={editPlayHref(p)} className="btn">
           Edit
         </Link>
       )}

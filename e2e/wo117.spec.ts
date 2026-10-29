@@ -19,7 +19,7 @@ test("Edit opens the editor of the tab open, for a character and a build alone",
   await signIn(context);
   await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}`);
   await page.getByRole("region", { name: "Build" }).getByRole("link", { name: "Edit", exact: true }).click();
-  await expect(page).toHaveURL(new RegExp(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/play$`));
+  await expect(page).toHaveURL(new RegExp(`/b/${KYRIA_BUILD_ID}/edit/play$`));
   await expect(editTab(page, "Playthrough")).toHaveAttribute("aria-current", "page");
   await page.goto(`/b/${FRESH_BUILD_ID}`);
   await page.getByRole("region", { name: "Build" }).getByRole("link", { name: "Edit", exact: true }).click();
@@ -72,16 +72,16 @@ test("Done goes to Play for a character and Levels for a build alone", async ({ 
 test("the old edit addresses go to their tabs", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit`);
-  await expect(page).toHaveURL(new RegExp(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/play$`));
+  await expect(page).toHaveURL(new RegExp(`/b/${KYRIA_BUILD_ID}/edit/play$`));
   await expect(editTab(page, "Playthrough")).toHaveAttribute("aria-current", "page");
   await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit?tale=1`);
-  await expect(page).toHaveURL(new RegExp(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/story/title$`));
+  await expect(page).toHaveURL(new RegExp(`/b/${KYRIA_BUILD_ID}/edit/story/title$`));
   await expect(editTab(page, "Story")).toHaveAttribute("aria-current", "page");
   const chapter = page.getByRole("complementary", { name: "Contents" }).getByRole("link", { name: /The Mark of Dibella/ });
   const href = (await chapter.getAttribute("href"))!;
   const cid = href.split("/").pop();
   await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/tale/${cid}`);
-  await expect(page).toHaveURL(new RegExp(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/story/${cid}$`));
+  await expect(page).toHaveURL(new RegExp(`/b/${KYRIA_BUILD_ID}/edit/story/${cid}$`));
   await expect(editTab(page, "Story")).toHaveAttribute("aria-current", "page");
   await page.goto(`/b/${FRESH_BUILD_ID}/story/edit`);
   await expect(page).toHaveURL(new RegExp(`/b/${FRESH_BUILD_ID}/edit/story$`));
@@ -118,7 +118,7 @@ test("the act card's Write it in the Story opens that act's chapter", async ({ p
   await expect(card.getByText("Add an image")).toBeVisible();
   await card.getByRole("link", { name: "Write it in the Story ›" }).click();
   // Its place in the Story; the chapter is made by its first word (Part 4).
-  await expect(page).toHaveURL(new RegExp(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/story/act-\\d+$`));
+  await expect(page).toHaveURL(new RegExp(`/b/${KYRIA_BUILD_ID}/edit/story/act-\\d+$`));
   await expect(editTab(page, "Story")).toHaveAttribute("aria-current", "page");
   await expect(page.getByLabel("Title")).toHaveValue("The Bard's Road");
 });

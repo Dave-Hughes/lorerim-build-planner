@@ -1,5 +1,5 @@
 import "server-only";
-import { and, asc, desc, eq, inArray, isNotNull, sql } from "drizzle-orm";
+import { and, asc, desc, eq, inArray, isNotNull, sql, type SQL } from "drizzle-orm";
 import { db, schema } from "@/db";
 import { isValidBuildId } from "@/lib/builds/ids";
 import { imageHold } from "@/lib/builds/queries";
@@ -10,7 +10,7 @@ import { assemble, roman, type PlaythroughView, type SnapshotRow } from "./view"
 
 /**
  * Reading playthroughs (WO-111). A private one is only its owner's: anyone else gets null, as for
- * builds, and the page 404s.
+ * builds, and the page 404s. A character has one visibility (WO-179 Part 2): its run's is the build's, whatever the run's own column holds.
  */
 
 export type PlaythroughRow = typeof schema.playthroughs.$inferSelect;
@@ -40,13 +40,15 @@ export interface PlaythroughRecord extends PlaythroughRow {
 export async function getPlaythrough(id: string, viewerId: string | null): Promise<PlaythroughRecord | null> {
   if (!isValidBuildId(id)) return null;
   const [row] = await db()
-    .select({ p: schema.playthroughs, authorName: schema.users.name, authorHandle: schema.users.handle })
+    .select({ p: schema.playthroughs, authorName: schema.users.name, authorHandle: schema.users.handle, characterVisibility: schema.builds.visibility })
     .from(schema.playthroughs)
     .innerJoin(schema.users, eq(schema.users.id, schema.playthroughs.ownerId))
+    .leftJoin(schema.builds, eq(schema.builds.id, schema.playthroughs.buildId))
     .where(eq(schema.playthroughs.id, id))
     .limit(1);
   if (!row) return null;
-  const p = row.p;
+  // The character's visibility is the run's (WO-179 Part 2); a run with no character yet has its own.
+  const p = { ...row.p, visibility: row.characterVisibility ?? row.p.visibility };
   if (p.visibility === "private" && p.ownerId !== viewerId) return null;
   const [acts, chapters, snapshots, build] = await Promise.all([
     db().select().from(schema.playthroughActs).where(eq(schema.playthroughActs.playthroughId, p.id)).orderBy(asc(schema.playthroughActs.position)),
@@ -126,13 +128,16 @@ export interface PlaythroughCard {
 }
 
 /** Cards for a grid: each one's act count and the act the player is in. */
-async function cards(where: ReturnType<typeof eq> | ReturnType<typeof and>, limit: number): Promise<PlaythroughCard[]> {
+/** A run's visibility, the character's (WO-179 Part 2), else its own. */
+const runVisibility = sql<PlaythroughRow["visibility"]>`coalesce(${schema.builds.visibility}, ${schema.playthroughs.visibility})`;
+
+async function cards(where: SQL | undefined, limit: number): Promise<PlaythroughCard[]> {
   const rows = await db()
     .select({
       id: schema.playthroughs.id,
       name: schema.playthroughs.name,
       line: schema.playthroughs.line,
-      visibility: schema.playthroughs.visibility,
+      visibility: runVisibility,
       draftedBy: schema.playthroughs.draftedBy,
       showDrafted: schema.playthroughs.showDrafted,
       updatedAt: schema.playthroughs.updatedAt,
@@ -143,6 +148,7 @@ async function cards(where: ReturnType<typeof eq> | ReturnType<typeof and>, limi
     })
     .from(schema.playthroughs)
     .innerJoin(schema.users, eq(schema.users.id, schema.playthroughs.ownerId))
+    .leftJoin(schema.builds, eq(schema.builds.id, schema.playthroughs.buildId))
     .where(where)
     .orderBy(desc(schema.playthroughs.updatedAt))
     .limit(limit);
@@ -210,14 +216,15 @@ export async function listedRunsByBuild(buildIds: string[]): Promise<Map<string,
   const rows = await db()
     .select({ id: schema.playthroughs.id, buildId: schema.playthroughs.buildId, name: schema.playthroughs.name })
     .from(schema.playthroughs)
-    .where(and(inArray(schema.playthroughs.buildId, buildIds), eq(schema.playthroughs.visibility, "public")))
+    .innerJoin(schema.builds, eq(schema.builds.id, schema.playthroughs.buildId))
+    .where(and(inArray(schema.playthroughs.buildId, buildIds), eq(schema.builds.visibility, "public")))
     .orderBy(desc(schema.playthroughs.updatedAt));
   for (const r of rows) if (r.buildId && !out.has(r.buildId)) out.set(r.buildId, { ...(await runOf(r.id)), name: r.name });
   return out;
 }
 
 export const listMyPlaythroughs = (userId: string) => cards(eq(schema.playthroughs.ownerId, userId), 100);
-export const listListedPlaythroughs = () => cards(eq(schema.playthroughs.visibility, "public"), 60);
+export const listListedPlaythroughs = () => cards(sql`${runVisibility} = 'public'`, 60);
 
 /** The player's own builds, for the playthrough's Build picker. */
 export async function myBuildChoices(userId: string) {
@@ -234,11 +241,19 @@ export async function isOwner(userId: string, id: string): Promise<boolean> {
   return !!r;
 }
 
-/** A build's run (WO-114), the latest, when the viewer may see it: the owner always, others while it's Listed or Link only. */
+/** The character a run belongs to (WO-179 Part 2), for the old /p/ editor addresses; null for a run from before characters. */
+export async function buildOfRun(id: string): Promise<string | null> {
+  if (!isValidBuildId(id)) return null;
+  const [r] = await db().select({ buildId: schema.playthroughs.buildId }).from(schema.playthroughs).where(eq(schema.playthroughs.id, id)).limit(1);
+  return r?.buildId ?? null;
+}
+
+/** A build's run (WO-114), the latest, when the viewer may see it: the owner always, others while the character is Listed or Link only (its one visibility, WO-179 Part 2). */
 export async function runOfBuild(buildId: string, viewerId: string | null) {
   const [r] = await db()
-    .select({ id: schema.playthroughs.id, name: schema.playthroughs.name, ownerId: schema.playthroughs.ownerId, visibility: schema.playthroughs.visibility })
+    .select({ id: schema.playthroughs.id, name: schema.playthroughs.name, ownerId: schema.playthroughs.ownerId, visibility: schema.builds.visibility })
     .from(schema.playthroughs)
+    .innerJoin(schema.builds, eq(schema.builds.id, schema.playthroughs.buildId))
     .where(eq(schema.playthroughs.buildId, buildId))
     .orderBy(desc(schema.playthroughs.updatedAt))
     .limit(1);

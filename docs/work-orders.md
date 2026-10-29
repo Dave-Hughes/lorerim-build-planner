@@ -5338,7 +5338,7 @@ Decisions and reasons:
 - **A place with little known** (Moss Mother Cavern, Northwind Mine) shows one short "What is known" block (what it is, where, what finding it pays, traps, and that its danger is not known); its contents menu shows only with two or more entries. A lone "! Traps" is in the block.
 
 ## WO-179  A character is one shell: its build, its guide and its playthrough (Mac, 28 Oct 2026)
-Status: building (Mac: Part 2)
+Status: for Bob
 
 **Why.** Dave, 28 Oct: "A character is a shell that can hold: Build, Guide, Playthrough." Bob walked the whole flow signed in on staging (made "TEST: Bob walk": race, details, What next, Plan a playthrough, an act, an objective, ticked it, the Build tab, the Story editor; read Kyria's story). Underneath it is still two records joined by a dropdown, and it shows.
 
@@ -5367,15 +5367,15 @@ What holds:
 - `/me` asks "Is this the same character as…?".
 
 These don't hold:
-- [ ] **The editor is still under `/p/`**: Plan a playthrough opens `/p/p9fcs97cck/edit/play`. The editor belongs under the character too (`/b/<id>/edit?tab=playthrough`), and `/p/<id>/edit/…` redirects there.
-- [ ] **Two visibility settings**: the playthrough's editor says "Only you" while the character's page says "Link only". A visitor with the link sees the character with no Playthrough tab. A character has one visibility, and its playthrough follows it. The migration keeps the character's setting.
-- [ ] **What to do's suggestions don't close.** After you pick a quest, press Escape, or click into Why, the list stays open over Kind and the Quest field. It closes on pick, on Escape and on blur.
-- [ ] **After you pick a quest, the separate Quest field still says "[The quest]".** One place holds the link: fill the field from the pick, or drop the field when the pick is a quest.
-- [ ] **People aren't offered**: "Keerava" suggests nothing, while "Bee and Barb" offers the inn. The box asked for quests, places and people. The hint under the form ("@ links a quest, a quest line, a spell, an item or a follower") should name what it offers.
-- [ ] **Creation's rail on What next**: Details stays highlighted as if current, beside What next, and gets no tick though the character is named. The address stays `?step=name`.
-- [ ] **What next's text** says "the character's run" for a character set to she/her: use her pronoun. The paragraph stops at about half the width of the rule under it. Text and its controls share one width (Dave's standing rule).
-- [ ] **No cover, no race**: the character made from Dave's orphan run ("Kyria Severa, Sword of Stendarr") is an empty dark card on `/me`. The editor's header shows an empty square for TEST: Bob walk 2. Both need the fallback: the race icon, or the planner's mark when there is no race.
-- [ ] **Small**: the Build tab says "Levels 1 to 1" for a one-level plan ("Level 1"). A visitor's Build tab says the birthsign is missing twice ("Not chosen yet" in the row and "No birthsign chosen yet." under the level).
+- [x] **The editor is still under `/p/`**: Plan a playthrough opens `/p/p9fcs97cck/edit/play`. The editor belongs under the character too (`/b/<id>/edit?tab=playthrough`), and `/p/<id>/edit/…` redirects there.
+- [x] **Two visibility settings**: the playthrough's editor says "Only you" while the character's page says "Link only". A visitor with the link sees the character with no Playthrough tab. A character has one visibility, and its playthrough follows it. The migration keeps the character's setting.
+- [x] **What to do's suggestions don't close.** After you pick a quest, press Escape, or click into Why, the list stays open over Kind and the Quest field. It closes on pick, on Escape and on blur.
+- [x] **After you pick a quest, the separate Quest field still says "[The quest]".** One place holds the link: fill the field from the pick, or drop the field when the pick is a quest.
+- [x] **People aren't offered**: "Keerava" suggests nothing, while "Bee and Barb" offers the inn. The box asked for quests, places and people. The hint under the form ("@ links a quest, a quest line, a spell, an item or a follower") should name what it offers.
+- [x] **Creation's rail on What next**: Details stays highlighted as if current, beside What next, and gets no tick though the character is named. The address stays `?step=name`.
+- [x] **What next's text** says "the character's run" for a character set to she/her: use her pronoun. The paragraph stops at about half the width of the rule under it. Text and its controls share one width (Dave's standing rule).
+- [x] **No cover, no race**: the character made from Dave's orphan run ("Kyria Severa, Sword of Stendarr") is an empty dark card on `/me`. The editor's header shows an empty square for TEST: Bob walk 2. Both need the fallback: the race icon, or the planner's mark when there is no race.
+- [x] **Small**: the Build tab says "Levels 1 to 1" for a one-level plan ("Level 1"). A visitor's Build tab says the birthsign is missing twice ("Not chosen yet" in the row and "No birthsign chosen yet." under the level).
 - [ ] **From the reviewer (signed out):**
   - Kyria's run on no build became `/b/mgf6t6a64y` only when its owner opened it. Until then visitors saw the old page, and `/characters?run=1` linked to `/p/`. On production every such run stays on the old page until its owner visits.
   - The fix is `scripts/backfill-characters.ts --apply`, which writes to the database, so **Dave says yes first** and Mac runs it on staging, then production.
@@ -5384,6 +5384,27 @@ These don't hold:
 - [ ] Screenshots of each fix at 1440 and 390, then `for Bob`. Bob walks it again.
 
 - [x] Bob walks it again signed in (make a character, plan a playthrough, edit, the story, the redirects from Kyria's old `/p/` links); screenshots of each step at 1440 and 390; then `for Bob`.
+
+
+### Mac's notes on Part 2 (29 Oct)
+All nine boxes are built. Checks: typecheck, lint, `npm test` (811 passed), `npm run build`, and the full `npm run test:e2e` (the full run: 548 passed, 8 failed; every failure was then looked at and the affected files rerun, all passing; see below). New spec `e2e/wo179b.spec.ts` (five tests); `wo114`, `wo117`, `wo159`, `wo164` and `wo179` changed for the new editor addresses.
+
+Decisions and reasons:
+- **The editor is under the character.** `/b/<id>/edit/play` (the run's editor, or Plan a playthrough when there is no run), `/b/<id>/edit/story/<page>` (`title`, a chapter's id, `act-<id>`), beside the build editor at `/b/<id>/edit`. I used paths, not `?tab=playthrough`, so that changing tab is a change of route like the others; `/b/<id>/edit?tab=playthrough` (and `&act=`) still lands on it. `/p/<id>/edit`, `/edit/play`, `/edit/story[/…]`, `/edit/tale/<n>` and `/b/<id>/play` all redirect. A run from before characters (no build) is still edited under `/p/` until it is given one; every link the editors make comes from one helper, `src/lib/playthroughs/hrefs.ts`.
+- **One visibility, no migration.** The character's. A run's visibility is read from its build everywhere it is read (the page, `/me`, Characters, Browse's "with a playthrough", the build page's run line), so a link-only character shows its run to a visitor. The edit bar's menu sets the character's from every tab. Setting it from `set_playthrough` or the old editor sets the character's, and saving the character's sets the run's column to match. The run's own column is therefore dead weight; I left it (dropping it is a schema change: your say). Rows where the two differed now follow the character, which is what "the migration keeps the character's setting" asks for, with nothing run against any database.
+- **People in What to do.** A new link kind, `person`, stored as the person's page slug and linked to `/people/<slug>`; offered are the people the people pages answer for (followers, spouses, sellers, trainers, innkeepers, quest givers, anyone with a read), by name with their role and town (Keerava: "Innkeeper, Windhelm"). A follower is left to the follower lines so Lydia is offered once. `add_objective` accepts `{ kind: "person", name }` and refuses a name it doesn't know with the closest ones. It adds one word to what the assistants are told (the link kinds); the player's questions still pass.
+- **The list closes** on a pick, on Escape and on leaving the box, and stays closed for those very words (typing on opens it again). Before, a pick left the quest's name in the box, which matched itself and reopened the list.
+- **The Quest field** is filled from the pick. I kept the field, since it also takes a quest on its own for an objective whose words are the player's own.
+- **Creation's rail:** on What next, Details is behind you and ticked, What next is the current step. Choosing any step leaves What next. The address stays `?step=name` (What next is not a step key, so saved drafts keep working); say if you want `?step=next`.
+- **What next's text** says "her run" and "her page" (his, their). It is as wide as the column; the paragraph, the buttons and the rule under them start at one edge.
+- **No cover:** the race's icon, or the planner's star when no race is chosen, on the `/me` card and in the edit bar's thumbnail.
+- **Small:** one level reads "Level 1" on the Build tab; the level card no longer prints "No race chosen yet." or "No birthsign chosen yet." under a row that already says "Not chosen yet".
+
+Not done, and said so: the new spec cannot show the one-visibility test failing before the change without rebuilding the old code; it shows the visitor now sees the run, and that the editor and the character say the same.
+Screenshots (1440 and 390, `npx playwright test e2e/wo179b.spec.ts` writes them to `test-results/`): `wo179b-what-to-do-*`, `wo179b-what-next-*`, `wo179b-no-cover-bar-*`, `wo179b-no-cover-card-*`.
+
+What the full run's eight failures were: five older specs that assumed the old model (`wo114` read the run's id out of the editor's address, which is the character's now; `wo116` expected another player to see no Play on Kyria, whose character is Link only and whose run was seeded Only you, and had a regex for the old Edit address; `wo26` the same regex; `wo118` toggles Kyria's visibility and did not wait for its save, so a slower save left her private for the next tests); one redirect that dropped `?images=1` (a real bug of mine, fixed: the old `/p/…/edit/story/…` addresses now carry their query); two failures of my own new spec, from the 20-draft cap (it made three characters; it makes one now). `wo154p4`'s palette test (Ctrl+K pressed before the page has hydrated) failed under load and passes alone and ten times in its file; it now presses the shortcut until the box opens.
+**A flake I found and left in the app:** `wo116` "previous and next walk the tale" fails about one run in six if the reader's Back is taken within a second of the last chapter being saved as read: the save revalidates the character's page, and the refresh can land after the way back and keep the old address. The test now waits 1.5 s (8 of 8 pass); a reader who goes back that fast could see the same, rarely. A real fix means the reader not firing a revalidation per chapter; say if you want it as its own order.
 
 ### Mac's notes (29 Oct)
 All the boxes are built except Bob's walk. Checks: typecheck, lint, `npm test` (795 passed), `npm run build`, and the full `npm run test:e2e` (563 passed; `perf` failed once on a worst-case timing under load, 232 and 240 ms against 160, and passes alone at 112 to 128; one more spec then needed its tab list updated and passes). Eight older spec files asserted the old addresses and names and are changed (listed under Specs changed).

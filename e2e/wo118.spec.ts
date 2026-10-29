@@ -148,8 +148,10 @@ test("the owner likes their own private character, with the burst, and unlikes i
   const vis = async (to: RegExp) => {
     await page.goto(`/b/${KYRIA_BUILD_ID}/setup?step=name`);
     await page.getByRole("region", { name: "Edit bar" }).getByRole("button", { name: /^Who can see it/ }).click();
+    // The save is the page's own POST: wait for it, so the next page doesn't walk away from it.
+    const saved = page.waitForResponse((r) => r.request().method() === "POST");
     await page.getByRole("menu", { name: "Who can see it" }).getByRole("menuitemradio", { name: to }).click();
-    await expect(page.getByRole("region", { name: "Edit bar" }).getByRole("status")).not.toContainText("Saving");
+    await saved;
   };
   await vis(/^Only you/);
   await page.goto(KYRIA);

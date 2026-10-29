@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ReadTheStory } from "@/components/reader/reader";
 import { CopyLinkButton } from "@/components/ui/copy-link-button";
 import { drawnTheme, themeStyle } from "@/lib/themes";
+import { editPlayHref } from "@/lib/playthroughs/hrefs";
 import type { PlaythroughRecord } from "@/lib/playthroughs/queries";
 import { Byline } from "./tabs";
 import styles from "@/components/build/build-view.module.css";
@@ -47,7 +48,7 @@ export function RunCover({ p, isOwner }: { p: PlaythroughRecord; isOwner: boolea
             <ReadTheStory />
             <CopyLinkButton path={`/p/${p.id}`} className="btn" />
             {isOwner && (
-              <Link href={`/p/${p.id}/edit`} className="btn btn-primary">
+              <Link href={editPlayHref(p)} className="btn btn-primary">
                 Edit
               </Link>
             )}

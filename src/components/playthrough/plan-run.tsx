@@ -36,7 +36,7 @@ export function PlanRun({
         act: { ...FIRST_ACT, place: initial.place, goal: "" },
         objectives: startQuest ? [startObjective(startQuest)] : [],
       });
-      if (r.ok) router.push(`/p/${r.value.id}/edit/play`);
+      if (r.ok) router.push(`/b/${buildId}/edit/play`);
       else setError(r.error);
     });
   return (

@@ -41,7 +41,7 @@ export function CharacterCard({ build: b, run, wide, under }: { build: BuildSumm
   return (
     <article className={`${styles.cell} ${wide ? styles.cellWide : ""}`} aria-label={wide ? `Featured: ${b.name}` : undefined}>
       <Link href={`/b/${b.id}`} className={`${styles.card} ${wide ? styles.wide : ""} ${actLine ? styles.withRun : ""}`} aria-labelledby={`card-${b.id}`}>
-        <span className={styles.cvw}>{b.coverImageUrl && !b.coverHeld ? <span className={styles.cv} style={{ backgroundImage: `url("${b.coverImageUrl}")`, backgroundPosition: focus }} /> : <span className={styles.plain}>{b.race ? <img className={styles.plainIcon} src={`/icons/race-${slug(b.race)}.svg`} alt="" /> : null}</span>}</span>
+        <span className={styles.cvw}>{b.coverImageUrl && !b.coverHeld ? <span className={styles.cv} style={{ backgroundImage: `url("${b.coverImageUrl}")`, backgroundPosition: focus }} /> : <span className={styles.plain}>{/* No cover: the race's icon, or the planner's own mark when none is chosen yet (WO-179 Part 2). */}<img className={styles.plainIcon} src={b.race ? `/icons/race-${slug(b.race)}.svg` : "/icons/logo-0.svg"} alt="" /></span>}</span>
         <span className={styles.shade} />
         <span className={styles.glow} />
         <span className={styles.embers} aria-hidden="true">

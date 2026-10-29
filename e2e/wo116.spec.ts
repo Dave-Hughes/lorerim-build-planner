@@ -39,7 +39,7 @@ test("a build alone has Levels and Guide, no Story tab, and Read the story opens
   await expect(reader(page)).toHaveCount(0);
 });
 
-test("a character with a run opens on Play, from its build's address too; another player sees no Play", async ({ page, context }) => {
+test("a character with a run opens on Play, from its build's address too; another player sees it too (a character has one visibility)", async ({ page, context }) => {
   await signIn(context);
   await page.goto(KYRIA);
   await expect(page.getByRole("heading", { level: 1, name: "Kyria, Knight of Stendarr" })).toBeVisible();
@@ -59,7 +59,8 @@ test("a character with a run opens on Play, from its build's address too; anothe
   await signIn(context, "other");
   await page.goto(`/b/${KYRIA_BUILD_ID}`);
   await expect(page.getByRole("heading", { level: 1, name: "Kyria, Knight of Stendarr" })).toBeVisible();
-  await expect(tabs(page).getByRole("tab", { name: /^Play/ })).toHaveCount(0);
+  // Kyria's character is Link only and her run was seeded Only you: the run follows the character (WO-179 Part 2), so a visitor with the link has Play.
+  await expect(tabs(page).getByRole("tab", { name: /^Play/ })).toHaveCount(1);
 });
 
 test("the tab row pins as a thin bar with the name and the tabs, on every tab", async ({ page, context }) => {
@@ -140,6 +141,8 @@ test("previous and next walk the tale in reading order and stop at a waiting bea
   // Opened from a link, the way back is the page under it (WO-124: Esc no longer closes anything).
   await page.keyboard.press("Escape");
   await expect(reader(page)).toBeVisible();
+  // Each chapter reached is saved as read, and the save refreshes the character's page: let those land before the way back is taken.
+  await page.waitForTimeout(1500);
   await backOut(page);
   await expect(page).toHaveURL(new RegExp(`/b/${KYRIA_BUILD_ID}\\?tab=playthrough$`));
   await expect(reader(page)).toHaveCount(0);
@@ -241,6 +244,6 @@ for (const [what, path, tabNames, owner] of [
     await expect(pinned.getByText(/^Story$/)).toHaveCount(0);
     await expect(pinned.getByRole("button", { name: /^Who can see it/ })).toBeVisible();
     await expect(pinned.getByRole("button", { name: "Copy link" })).toBeVisible();
-    await expect(pinned.getByRole("link", { name: "Edit", exact: true })).toHaveAttribute("href", new RegExp("/b/[a-z0-9]{10}/(edit|play)$"));
+    await expect(pinned.getByRole("link", { name: "Edit", exact: true })).toHaveAttribute("href", new RegExp("/b/[a-z0-9]{10}/edit(/play)?$"));
   });
 }

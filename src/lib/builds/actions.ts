@@ -158,6 +158,8 @@ export async function setBuildVisibility(id: string, visibility: unknown): Promi
     .where(and(eq(schema.builds.id, id), eq(schema.builds.ownerId, userId)))
     .returning({ id: schema.builds.id });
   if (!rows[0]) return { ok: false, error: "Only the build's author can change it." };
+  // A character has one visibility (WO-179 Part 2): its run follows it.
+  await db().update(schema.playthroughs).set({ visibility: v.data }).where(eq(schema.playthroughs.buildId, id));
   revalidatePath(`/b/${id}`);
   revalidatePath("/");
   revalidatePath("/me");

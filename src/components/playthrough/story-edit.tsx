@@ -8,6 +8,7 @@ import { editFrameForRun } from "@/lib/edit/frame";
 import { emptyDoc, firstPlate } from "@/lib/guide/doc";
 import { playthroughsOn } from "@/lib/features";
 import { getPlaythrough } from "@/lib/playthroughs/queries";
+import { editStoryHref } from "@/lib/playthroughs/hrefs";
 import { roman } from "@/lib/playthroughs/view";
 import { clientVersion, currentVersion, isKnownVersion } from "@/lib/rules/server";
 import { StoryWriter, type WriterGroup, type WriterItem, type WriterPage } from "./story-writer";
@@ -15,7 +16,7 @@ import { StoryWriter, type WriterGroup, type WriterItem, type WriterPage } from 
 /**
  * The Story tab in edit mode for a run (WO-117), as the EditStory board: Contents in reading order
  * (WO-118: the title page, the Prologue's chapters, then each act's, a locked one with its lock and
- * what unlocks it), and the page being written, at /p/<id>/edit/story/<page>: `title`, a chapter's
+ * what unlocks it), and the page being written, at /b/<character>/edit/story/<page> (WO-179 Part 2): `title`, a chapter's
  * id, or `act-<id>` for an act with no chapter yet (made by its first word).
  */
 export async function RunStoryEdit({ id, page: key }: { id: string; page: string | null }) {
@@ -25,9 +26,9 @@ export async function RunStoryEdit({ id, page: key }: { id: string; page: string
   const p = await getPlaythrough(id, userId);
   if (!p) notFound();
   if (p.ownerId !== userId) redirect(key && /^\d+$/.test(key) ? `/p/${id}/story/${key}` : `/p/${id}`);
-  if (!key) redirect(`/p/${id}/edit/story/title`);
+  if (!key) redirect(editStoryHref(p));
   const v = p.view;
-  const base = `/p/${id}/edit/story`;
+  const base = editStoryHref(p, "").replace(/\/$/, "");
   // An act with a chapter already: its first one's own address.
   const actKey = /^act-(\d+)$/.exec(key);
   if (actKey) {

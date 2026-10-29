@@ -12,6 +12,7 @@ import type { ExtraMention } from "@/lib/guide/mention";
 import * as act from "@/lib/playthroughs/actions";
 import { objectiveRefusal } from "@/lib/playthroughs/status";
 import type { Detect, DoneBy, ObjectiveKind, ObjectiveLink, Reach, RouteStop } from "@/lib/playthroughs/types";
+import { editPlayHref, editStoryHref } from "@/lib/playthroughs/hrefs";
 import { LINK_LABEL, MentionInput, QuestStage, ReachPick, useSave, type EditAct, type EditChapter, type EditData, type EditObjective } from "./edit-parts";
 import e from "./edit.module.css";
 import s from "./play-edit.module.css";
@@ -46,7 +47,7 @@ export function PlayEdit({ data, current, linkables, details }: { data: EditData
         {current ? (
           <>
             <ActCard key={`c${current.id}`} data={data} a={current} />
-            <ActFields key={`f${current.id}`} pid={data.id} a={current} last={data.acts.length === 1} />
+            <ActFields key={`f${current.id}`} pid={data.id} run={data} a={current} last={data.acts.length === 1} />
             <Route key={`r${current.id}:${current.route.map((r) => r.place).join("|")}`} pid={data.id} a={current} />
             <Objectives key={`o${current.id}`} data={data} a={current} linkables={linkables} />
           </>
@@ -120,7 +121,7 @@ function ActsList({ data, current }: { data: EditData; current: EditAct | null }
       {data.acts.map((a, i) => (
         <div key={a.id} className={s.actRow} aria-current={a.id === current?.id ? "true" : undefined} {...row(a.id, i)}>
           <Handle label={`Act ${a.n} ${a.name}`} onKeyDown={keys(a.id)} />
-          <Link href={`/p/${data.id}/edit/play?act=${a.id}`} scroll={false} className={s.actLink}>
+          <Link href={editPlayHref(data, a.id)} scroll={false} className={s.actLink}>
             <span className={s.actName}>
               {a.n} {a.name}
             </span>
@@ -135,7 +136,7 @@ function ActsList({ data, current }: { data: EditData; current: EditAct | null }
           save(async () => {
             const from = last ? (last.levelTo ?? last.levelFrom) : 1;
             const r = await act.newAct(data.id, { name: `Act ${data.acts.length + 1}`, levels: `${from} and up`, place: "", goal: "" });
-            if (r.ok) router.push(`/p/${data.id}/edit/play?act=${r.value}`);
+            if (r.ok) router.push(editPlayHref(data, r.value));
             return r;
           }, true)
         }
@@ -160,7 +161,7 @@ function ActCard({ data, a }: { data: EditData; a: EditAct }) {
   const [uploading, setUploading] = useState(false);
   const [upError, setUpError] = useState<string | null>(null);
   const chapter = a.chapterId !== null ? data.chapters.find((c) => c.id === a.chapterId) : undefined;
-  const story = `/p/${data.id}/edit/story/${chapter ? chapter.id : `act-${a.id}`}`;
+  const story = editStoryHref(data, chapter ? chapter.id : `act-${a.id}`);
   const upload = async (file: File) => {
     setUploading(true);
     setUpError(null);
@@ -217,7 +218,7 @@ function ActCard({ data, a }: { data: EditData; a: EditAct }) {
   );
 }
 
-function ActFields({ pid, a, last }: { pid: string; a: EditAct; last: boolean }) {
+function ActFields({ pid, run, a, last }: { pid: string; run: { id: string; buildId: string | null }; a: EditAct; last: boolean }) {
   const router = useRouter();
   const { error, save } = useSave(() => {});
   const [from, setFrom] = useState(String(a.levelFrom));
@@ -282,7 +283,7 @@ function ActFields({ pid, a, last }: { pid: string; a: EditAct; last: boolean })
               if (!window.confirm(`Remove Act ${a.n}, its objectives and chapters?`)) return;
               save(async () => {
                 const r = await act.removeAct(pid, a.id);
-                if (r.ok) router.push(`/p/${pid}/edit/play`);
+                if (r.ok) router.push(editPlayHref(run));
                 return r;
               }, true);
             }}
@@ -476,7 +477,7 @@ function ObjectiveRow({
     o &&
     save(async () => {
       const r = await act.newChapter(pid, { title: "A new chapter", actId: a.id, unlocksWhen: o.id });
-      if (r.ok) router.push(`/p/${pid}/edit/story/${r.value}`);
+      if (r.ok) router.push(editStoryHref(data, r.value));
       return r;
     });
   const others = data.acts.filter((x) => x.id !== a.id);
@@ -493,7 +494,7 @@ function ObjectiveRow({
           </button>
           <span className={s.obSide}>
             {tale.map((c) => (
-              <Link key={c.id} href={`/p/${pid}/edit/story/${c.id}`} className={s.obStory}>
+              <Link key={c.id} href={editStoryHref(data, c.id)} className={s.obStory}>
                 Story: {c.title}
               </Link>
             ))}
@@ -592,7 +593,12 @@ function ObjectiveRow({
               <span className="label">
                 Quest<InfoTip label="About the quest" text="Link a planner quest and the save can tick it. Leave it empty for something of her own." />
               </span>
-              <QuestStage quests={quests} detect={detect ?? (link?.link.kind === "quest" ? { quest: link.link.id } : null)} onChange={(det) => (setDetect(det), live({ detect: det }))} />
+              <QuestStage
+                key={(detect ?? (link?.link.kind === "quest" ? { quest: link.link.id } : null))?.quest ?? "none"}
+                quests={quests}
+                detect={detect ?? (link?.link.kind === "quest" ? { quest: link.link.id } : null)}
+                onChange={(det) => (setDetect(det), live({ detect: det }))}
+              />
             </div>
           ) : (
             <div className={s.field}>
@@ -648,7 +654,7 @@ function ObjectiveRow({
               {tale.length ? (
                 tale.map((c) => (
                   <span key={c.id} className={s.storyLine}>
-                    {c.title}{c.kind === "beat" ? ", unlocks when this is done" : ""}. <Link href={`/p/${pid}/edit/story/${c.id}`}>Open it in the Story ›</Link>
+                    {c.title}{c.kind === "beat" ? ", unlocks when this is done" : ""}. <Link href={editStoryHref(data, c.id)}>Open it in the Story ›</Link>
                   </span>
                 ))
               ) : (
@@ -682,7 +688,7 @@ function ObjectiveRow({
               </>
             ) : (
               <>
-                <span className="muted">@ links a quest, a quest line, a spell, an item or a follower</span>
+                <span className="muted">@ links a quest, a quest line, a place, a person, a spell, an item or a follower</span>
                 <span style={{ display: "inline-flex", gap: 8 }}>
                   <button type="button" className="btn btn-sm btn-primary" onClick={() => commit()} disabled={!text.trim()}>
                     Add

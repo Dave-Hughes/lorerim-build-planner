@@ -19,7 +19,7 @@ test("the run's old address goes to the character's, with its tab, act and chapt
   const names = (await page.getByRole("tablist", { name: "Build sections" }).getByRole("tab").allInnerTexts()).map((t) => t.split("\n")[0].trim().toLowerCase());
   expect(names.slice(0, 2)).toEqual(["playthrough", "build"]);
   // Edit opens on the tab you are on.
-  await expect(page.locator(`a[href="/b/${KYRIA_BUILD_ID}/play"]`, { hasText: /^Edit$/ })).toHaveCount(1);
+  await expect(page.locator(`a[href="/b/${KYRIA_BUILD_ID}/edit/play"]`, { hasText: /^Edit$/ })).toHaveCount(1);
   await page.getByRole("tab", { name: /^Build/ }).click();
   await expect(page.locator(`a[href="/b/${KYRIA_BUILD_ID}/edit"]`, { hasText: /^Edit$/ })).toHaveCount(1);
 });

@@ -5,7 +5,7 @@ import { revalidatePath } from "next/cache";
 import { db, schema } from "@/db";
 import { gearData } from "@/lib/gear/data";
 import { ipCall } from "@/lib/moderation/limits";
-import { lineOfQuest, placeLinkables, questLinkables, type Linkable } from "@/lib/playthroughs/links";
+import { lineOfQuest, personLinkables, placeLinkables, questLinkables, type Linkable } from "@/lib/playthroughs/links";
 import { placeByName, placeLabel, placesData, placesNamed, placeType } from "@/lib/places/data";
 import { holdNamed, whereTerms } from "@/lib/places/holds";
 import { citiesOf } from "@/lib/places/inside";
@@ -139,6 +139,12 @@ export function resolveLinkName(version: string, input: { kind: LinkKind; name: 
     const several = placesNamed(want);
     if (several.length > 1) throw new FactsError(`More than one place is called ${want}. Say which one: ${several.map(placeLabel).join("; ")}.`);
     throw new FactsError(`No place called ${want} in the planner's places index. The closest: ${names.closest(want, placeLinkables().map((x) => x.name)).join(", ")}. suggest_places lists the places near an act's towns; never invent one.`);
+  }
+  if (input.kind === "person") {
+    const found = personLinkables().filter((x) => norm(x.name) === norm(want));
+    if (found.length === 1) return { link: { kind: "person", id: found[0].id }, name: found[0].name };
+    if (found.length > 1) throw new FactsError(`More than one person is called ${want}. Say which one: ${found.map((x) => `${x.name} (${x.where})`).join("; ")}.`);
+    throw new FactsError(`No person called ${want} on the planner's people pages. The closest: ${names.closest(want, personLinkables().map((x) => x.name)).join(", ")}. Never invent one: leave the link out and use the player's own words.`);
   }
   const pool: Linkable[] = questLinkables().filter((x) => x.kind === input.kind);
   const paren = /^(.*)\s+\(([^()]+)\)$/.exec(want);

@@ -3,10 +3,10 @@
  * from the snapshot or the player's tick (see status.ts), never stored by an assistant.
  */
 
-export const LINK_KINDS = ["quest", "line", "spell", "item", "follower", "place"] as const;
+export const LINK_KINDS = ["quest", "line", "spell", "item", "follower", "place", "person"] as const;
 export type LinkKind = (typeof LINK_KINDS)[number];
 
-/** What an objective links to: a planner quest (by its edid), quest line, spell, item, follower line, or a place from the places index (WO-128, by its id). */
+/** What an objective links to: a planner quest (by its edid), quest line, spell, item, follower line, a place from the places index (WO-128, by its id), or a person from the people pages (WO-179, by their page's slug). */
 export interface ObjectiveLink {
   kind: LinkKind;
   id: string;

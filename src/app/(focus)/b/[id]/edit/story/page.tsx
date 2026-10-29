@@ -30,7 +30,7 @@ export default async function StoryEditPage({ params }: { params: Params }) {
   if (!isKnownVersion(build.gameVersion)) redirect(`/b/${id}`);
   // One tale per character (WO-114): with a run, the tale is the run's, and this editor is off.
   const run = playthroughsOn() ? await runOfBuild(id, userId) : null;
-  if (run) redirect(`/p/${run.id}/edit/story/title`);
+  if (run) redirect(`/b/${id}/edit/story/title`);
   const [guide, frame] = await Promise.all([getGuide(id, build.plan), editFrameForBuild(build, userId)]);
   const doc = guide.story?.doc ?? emptyDoc();
   const title = docText(guide["story:title"]?.doc);

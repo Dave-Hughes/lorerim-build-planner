@@ -19,11 +19,11 @@ test("Start a run on a build alone's card: its Story becomes the run's first cha
   await expect(page).toHaveURL(new RegExp(`/b/${MENDER_BUILD_ID}\\?tab=playthrough$`));
   // WO-179: the run is the character's Playthrough tab; its id is in the Edit link.
   await page.getByRole("region", { name: "Build" }).getByRole("link", { name: "Edit", exact: true }).click();
-  await expect(page).toHaveURL(/\/p\/[a-z0-9]{10}\/edit\/play$/);
-  const pid = new URL(page.url()).pathname.split("/")[2];
+  await expect(page).toHaveURL(/\/b\/[a-z0-9]{10}\/edit\/play$/);
 
   // The Story is the run's first chapter, in the reader (WO-116).
-  await page.goto(`/p/${pid}/tale`);
+  await page.goto(`/b/${MENDER_BUILD_ID}`);
+  await page.getByRole("link", { name: /^Read the story/ }).first().click();
   const reader = page.getByRole("region", { name: /^Reading: / });
   await expect(reader.getByRole("heading", { level: 1, name: "The Mender" })).toBeVisible();
   await expect(reader.getByText("Every wound in Skyrim is somebody's business.")).toBeVisible();

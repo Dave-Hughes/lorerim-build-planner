@@ -113,7 +113,9 @@ export async function setDetails(
   // A playthrough belongs to its character (WO-179): it can't be unlinked or moved to another. A run from before, on no build, may be given one.
   if (input.buildId !== undefined && p.buildId && input.buildId !== p.buildId) fail("A playthrough belongs to its character: it can't be unlinked or moved to another. Use Is this the same character as…? on My characters.");
   const build = input.buildId === undefined ? undefined : await ownBuild(userId, input.buildId);
-  if (input.visibility === "public" && p.visibility !== "public") {
+  // A character has one visibility (WO-179 Part 2): the run's follows it, so a visibility given here is the character's.
+  const [character] = p.buildId ? await db().select({ visibility: schema.builds.visibility }).from(schema.builds).where(eq(schema.builds.id, p.buildId)).limit(1) : [];
+  if (input.visibility === "public" && (character?.visibility ?? p.visibility) !== "public") {
     const hold = await newAccountHold(userId);
     if (hold) fail(hold);
   }
@@ -142,6 +144,12 @@ export async function setDetails(
       ...(never ? { never: never.data!.length ? never.data!.map((n) => ({ what: n.what, ...(n.words ? { words: n.words } : {}) })) : null } : {}),
     })
     .where(eq(schema.playthroughs.id, p.id));
+  if (input.visibility && p.buildId) {
+    await db()
+      .update(schema.builds)
+      .set({ visibility: input.visibility, ...(input.visibility === "public" ? {} : { featuredAt: null }) })
+      .where(and(eq(schema.builds.id, p.buildId), eq(schema.builds.ownerId, userId)));
+  }
   // Attaching moves the build's Story into the run, in the same transaction; detaching leaves the chapters.
   const moved = attaching ? await storyMoveStatements(attaching.id, p.id) : [];
   if (moved.length) await db().batch([update, ...moved]);

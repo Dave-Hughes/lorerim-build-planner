@@ -9,7 +9,7 @@ import { editFrameForRun } from "@/lib/edit/frame";
 import { docText } from "@/lib/guide/doc";
 import { standLine } from "@/lib/playthroughs/view";
 import { playthroughsOn } from "@/lib/features";
-import { placeLinkables, questLinkables } from "@/lib/playthroughs/links";
+import { personLinkables, placeLinkables, questLinkables } from "@/lib/playthroughs/links";
 import { getPlaythrough, myBuildChoices } from "@/lib/playthroughs/queries";
 import { clientVersion, currentVersion, isKnownVersion } from "@/lib/rules/server";
 
@@ -84,7 +84,7 @@ export async function RunEdit({ id, act }: { id: string; act?: string }) {
     // The scene's first lines only; the whole of it is in the Story editor.
     chapters: p.view.chapters.map((c) => ({ id: c.id, kind: c.kind, title: c.title, actId: c.actId, opensAfter: c.opensAfter, firstLine: docText(c.doc).slice(0, 200) })),
   };
-  const linkables = [...questLinkables(), ...placeLinkables()].map(({ kind, id: lid, name, where }) => ({ kind, id: lid, name, where }));
+  const linkables = [...questLinkables(), ...placeLinkables(), ...personLinkables()].map(({ kind, id: lid, name, where }) => ({ kind, id: lid, name, where }));
   return (
     <EditFrameProvider data={frame}>
       {/* The site header over the edit bar, as on every edit tab (WO-124). */}

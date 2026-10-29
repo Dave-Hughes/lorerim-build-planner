@@ -17,6 +17,7 @@ import { saveGuideSection } from "@/lib/builds/actions";
 import type { BuildVisibility } from "@/lib/builds/validate";
 import { STORY_IMAGES, STORY_IMAGE_ERROR, lineDoc, type GuideDoc } from "@/lib/guide/doc";
 import * as act from "@/lib/playthroughs/actions";
+import { editStoryHref } from "@/lib/playthroughs/hrefs";
 import r from "@/components/reader/reader.module.css";
 import s from "./story-writer.module.css";
 
@@ -58,6 +59,9 @@ export interface WriterPage {
   /** Unlocks when (WO-118): a chapter in an act, none or one of the act's objectives. */
   unlocks: { value: number | null; options: { id: number; text: string }[] } | null;
 }
+/** A page of the Story in edit mode: under the character (WO-179 Part 2). */
+const storyHref = (o: Owner, page: string | number) => (o.kind === "run" ? editStoryHref({ id: o.id, buildId: o.buildId }, page) : `/b/${o.id}/edit/story`);
+
 type Owner = { kind: "run"; id: string; buildId: string; name: string; visibility: BuildVisibility } | { kind: "build"; id: string; name: string; visibility: BuildVisibility };
 type Near = { href: string; title: string } | null;
 
@@ -324,7 +328,7 @@ export function StoryWriter({ owner, groups, page, prev, next }: { owner: Owner;
                   className={s.remove}
                   onClick={() => {
                     if (!window.confirm(`Remove ${page.title}?`)) return;
-                    void send(() => act.removeChapter(owner.id, page.chapterId!)).then((ok) => ok && router.push(`/p/${owner.id}/edit/story/title`));
+                    void send(() => act.removeChapter(owner.id, page.chapterId!)).then((ok) => ok && router.push(storyHref(owner, "title")));
                   }}
                 >
                   Remove this chapter
@@ -355,7 +359,7 @@ function ContentsGroup({ owner, g, current }: { owner: Owner; g: WriterGroup; cu
   const make = async () => {
     setError(null);
     const res = await act.newChapter(pid, { title: "A new chapter", actId: g.actId });
-    if (res.ok) router.push(`/p/${pid}/edit/story/${res.value}`);
+    if (res.ok) router.push(storyHref(owner, res.value));
     else setError(res.error);
   };
   const row = (it: WriterItem, i: number) => {

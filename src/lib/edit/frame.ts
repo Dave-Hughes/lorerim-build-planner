@@ -32,6 +32,8 @@ export interface EditFrameData {
     visibility: BuildVisibility;
     coverImageUrl: string | null;
     coverFocus: { x: number; y: number } | null;
+    /** The race chosen, for the cover's stand-in (WO-179 Part 2). */
+    race: string | null;
     /** "Nord | The Warrior": Set up's tab line. */
     setup: string;
     levels: number;
@@ -39,6 +41,8 @@ export interface EditFrameData {
   } | null;
   run: {
     id: string;
+    /** The character the run belongs to (WO-179 Part 2): its editor is under it. */
+    buildId: string | null;
     name: string;
     visibility: BuildVisibility;
     acts: number;
@@ -66,6 +70,7 @@ function buildPart(b: BuildRecord, guide: Awaited<ReturnType<typeof getGuide>>):
     visibility: b.visibility,
     coverImageUrl: b.coverImageUrl,
     coverFocus: b.plan.coverFocus ?? null,
+    race: b.plan.race || null,
     setup: [b.plan.race, b.plan.birthsign ? `The ${b.plan.birthsign}` : null].filter(Boolean).join(" | ") || "Not chosen yet",
     levels: b.plan.levels.length,
     hasStory: !!storyOf(docs),
@@ -87,6 +92,7 @@ function runPart(p: PlaythroughRecord): NonNullable<EditFrameData["run"]> {
   const v = p.view;
   return {
     id: p.id,
+    buildId: p.buildId,
     name: p.name,
     visibility: p.visibility,
     acts: v.acts.length,

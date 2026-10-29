@@ -209,7 +209,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
   const TAB_NAMES: Record<BuildTab, string> = { play: "Playthrough", levels: "Build", guide: "Guide" };
   // Each tab's second line: what's in it.
   const TAB_SUB: Record<BuildTab, string> = {
-    levels: planned ? `Levels 1 to ${total}` : "Not planned yet",
+    levels: planned ? (total === 1 ? "Level 1" : `Levels 1 to ${total}`) : "Not planned yet",
     guide: plan.videoId ? "Video" : overview ? "" : "Not written yet",
     play: playTab?.sub ?? "Not planned yet",
   };
@@ -1213,6 +1213,8 @@ export function LevelCard({
   // "and 4 more", under a list cut short.
   const more = (n: number) => (n > 0 ? <span className="muted">and {n} more</span> : null);
   const s = states[level - 1];
+  // The race and birthsign rows beside it already say "Not chosen yet": the level doesn't say it again (WO-179 Part 2).
+  const problems = s.issues.filter((i) => !/^No (race|birthsign) chosen yet\.$/.test(i.message));
   const changes = levelChanges(d, plan, states, level);
   const rows: [string, React.ReactNode][] = [];
   // The rule behind a row, from the engine's own numbers (WO-17's wording in the editor).
@@ -1488,9 +1490,9 @@ export function LevelCard({
         ) : (
           <p className="muted">{level === 1 ? "No starting perks yet." : "Nothing yet."}</p>
         )}
-        {!glance && s.issues.length > 0 && (
+        {!glance && problems.length > 0 && (
           <ul className={styles.issues} aria-label="Problems at this level">
-            {s.issues.map((i, n) => (
+            {problems.map((i, n) => (
               <li key={n}>{i.message}</li>
             ))}
           </ul>
@@ -1760,7 +1762,7 @@ function Cover({
           {isOwner ? (
             ownerBar ? null : (
               // Edit opens on the tab you were on (WO-179): the playthrough's editor, the guide's, or the build's.
-              <Link className="btn btn-primary" href={tab === "play" ? `/b/${build.id}/play` : tab === "guide" ? `/b/${build.id}/guide` : `/b/${build.id}/edit`}>
+              <Link className="btn btn-primary" href={tab === "play" ? `/b/${build.id}/edit/play` : tab === "guide" ? `/b/${build.id}/guide` : `/b/${build.id}/edit`}>
                 Edit
               </Link>
             )
