@@ -9242,16 +9242,6 @@
    "plugin": "Unofficial Skyrim Special Edition Patch.esp"
   },
   {
-   "id": "Skyrim.esm:0B2977",
-   "name": "Eimar",
-   "race": "Nord",
-   "sex": "male",
-   "cell": "Honningbrew Meadery",
-   "inTown": "Whiterun",
-   "role": null,
-   "plugin": "GORE.esp"
-  },
-  {
    "id": "SurWR.esp:0C8849",
    "name": "Elam",
    "race": "Dunmer",
@@ -9382,16 +9372,6 @@
    "plugin": "Snazzy Interiors - JKs Dragonsreach - Lux patch.esp"
   },
   {
-   "id": "Skyrim.esm:10A04C",
-   "name": "Hamelyn",
-   "race": "Breton",
-   "sex": "male",
-   "cell": "Honningbrew Basement",
-   "inTown": "Whiterun",
-   "role": null,
-   "plugin": "GORE.esp"
-  },
-  {
    "id": "Skyrim.esm:013BAC",
    "name": "Heimskr",
    "race": "Nord",
@@ -9498,7 +9478,7 @@
    "sex": "female",
    "cell": "Witch's Wisdoms",
    "inTown": "Whiterun",
-   "role": "JobSpellVendor",
+   "role": "JobApothecary",
    "plugin": "SurWR.esp"
   },
   {
@@ -9510,16 +9490,6 @@
    "inTown": "Whiterun",
    "role": "JobHireling",
    "plugin": "Skyrim.esm"
-  },
-  {
-   "id": "Skyrim.esm:01A69D",
-   "name": "Jervar",
-   "race": "Nord",
-   "sex": "male",
-   "cell": "Whiterun Stables",
-   "inTown": "Whiterun",
-   "role": null,
-   "plugin": "Unofficial Skyrim Modders Patch.esp"
   },
   {
    "id": "Skyrim.esm:013BB1",
@@ -9592,16 +9562,6 @@
    "plugin": "Snazzy Interiors - Whiterun AIO - Lux patch.esp"
   },
   {
-   "id": "Skyrim.esm:013BC0",
-   "name": "Lillith Maiden-Loom",
-   "race": "Elder",
-   "sex": "female",
-   "cell": "Whiterun Stables",
-   "inTown": "Whiterun",
-   "role": null,
-   "plugin": "Unofficial Skyrim Modders Patch.esp"
-  },
-  {
    "id": "HearthFires.esm:003F5F",
    "name": "Lucia",
    "race": "Imperial",
@@ -9620,16 +9580,6 @@
    "inTown": "Whiterun",
    "role": null,
    "plugin": "Lux - TNF houses remodel patch.esp"
-  },
-  {
-   "id": "Skyrim.esm:02BA8E",
-   "name": "Mallus Maccius",
-   "race": "Imperial",
-   "sex": "male",
-   "cell": "Honningbrew Meadery",
-   "inTown": "Whiterun",
-   "role": null,
-   "plugin": "GORE.esp"
   },
   {
    "id": "Skyrim.esm:01C605",
@@ -9802,16 +9752,6 @@
    "plugin": "GORE.esp"
   },
   {
-   "id": "Skyrim.esm:02BA8C",
-   "name": "Sabjorn",
-   "race": "Nord",
-   "sex": "male",
-   "cell": "Honningbrew Meadery",
-   "inTown": "Whiterun",
-   "role": null,
-   "plugin": "GORE.esp"
-  },
-  {
    "id": "Skyrim.esm:013B98",
    "name": "Saffir",
    "race": "Redguard",
@@ -9872,26 +9812,6 @@
    "plugin": "GORE.esp"
   },
   {
-   "id": "Skyrim.esm:0490F2",
-   "name": "Skeever",
-   "race": "Skeever",
-   "sex": "male",
-   "cell": "Honningbrew Basement",
-   "inTown": "Whiterun",
-   "role": null,
-   "plugin": "GORE.esp"
-  },
-  {
-   "id": "Skyrim.esm:10195B",
-   "name": "Skeever",
-   "race": "Skeever",
-   "sex": "male",
-   "cell": "Honningbrew Meadery",
-   "inTown": "Whiterun",
-   "role": null,
-   "plugin": "GORE.esp"
-  },
-  {
    "id": "Skyrim.esm:01A690",
    "name": "Skjor",
    "race": "Nord",
@@ -9900,16 +9820,6 @@
    "inTown": "Whiterun",
    "role": null,
    "plugin": "GORE.esp"
-  },
-  {
-   "id": "Skyrim.esm:013BB7",
-   "name": "Skulvar Sable-Hilt",
-   "race": "Nord",
-   "sex": "male",
-   "cell": "Whiterun Stables",
-   "inTown": "Whiterun",
-   "role": null,
-   "plugin": "Unofficial Skyrim Modders Patch.esp"
   },
   {
    "id": "Skyrim.esm:0559DF",
@@ -10682,16 +10592,6 @@
    "plugin": "WindhelmSSE.esp"
   },
   {
-   "id": "WindhelmSSE.esp:35DCD5",
-   "name": "Hverung",
-   "race": "Nord",
-   "sex": "male",
-   "cell": "Thalmor Embassy Interior",
-   "inTown": "Windhelm",
-   "role": null,
-   "plugin": "WindhelmSSE.esp"
-  },
-  {
    "id": "Skyrim.esm:01411B",
    "name": "Idesa Sadri",
    "race": "Dunmer",
@@ -11178,7 +11078,7 @@
    "sex": "male",
    "cell": null,
    "inTown": "Windhelm",
-   "role": "JobHunter",
+   "role": "JobMerchant",
    "plugin": "Lux Orbis - TNF Remodel Houses patch.esp"
   },
   {
@@ -11277,26 +11177,6 @@
    "race": "Dunmer",
    "sex": "male",
    "cell": "Tevyn's Shack",
-   "inTown": "Windhelm",
-   "role": null,
-   "plugin": "WindhelmSSE.esp"
-  },
-  {
-   "id": "WindhelmSSE.esp:35DCBE",
-   "name": "Thalmor Justiciar",
-   "race": null,
-   "sex": "male",
-   "cell": "Thalmor Embassy",
-   "inTown": "Windhelm",
-   "role": null,
-   "plugin": "WindhelmSSE.esp"
-  },
-  {
-   "id": "WindhelmSSE.esp:35DCC7",
-   "name": "Thalmor Justiciar",
-   "race": null,
-   "sex": "male",
-   "cell": "Thalmor Embassy",
    "inTown": "Windhelm",
    "role": null,
    "plugin": "WindhelmSSE.esp"
@@ -21282,6 +21162,16 @@
    "plugin": "Unofficial Skyrim Special Edition Patch.esp"
   },
   {
+   "id": "Skyrim.esm:0B2977",
+   "name": "Eimar",
+   "race": "Nord",
+   "sex": "male",
+   "cell": "Honningbrew Meadery",
+   "inTown": null,
+   "role": null,
+   "plugin": "GORE.esp"
+  },
+  {
    "id": "Skyrim.esm:02C6CC",
    "name": "Einarth",
    "race": "Elder",
@@ -26272,6 +26162,16 @@
    "plugin": "Lux.esp"
   },
   {
+   "id": "Skyrim.esm:10A04C",
+   "name": "Hamelyn",
+   "race": "Breton",
+   "sex": "male",
+   "cell": "Honningbrew Basement",
+   "inTown": null,
+   "role": null,
+   "plugin": "GORE.esp"
+  },
+  {
    "id": "Skyrim.esm:0C029C",
    "name": "Haming",
    "race": "Nord",
@@ -27360,6 +27260,16 @@
    "inTown": null,
    "role": null,
    "plugin": "Unofficial Skyrim Special Edition Patch.esp"
+  },
+  {
+   "id": "WindhelmSSE.esp:35DCD5",
+   "name": "Hverung",
+   "race": "Nord",
+   "sex": "male",
+   "cell": "Thalmor Embassy Interior",
+   "inTown": null,
+   "role": null,
+   "plugin": "WindhelmSSE.esp"
   },
   {
    "id": "ccpewsse002-armsofchaos.esl:00081D",
@@ -28550,6 +28460,16 @@
    "inTown": null,
    "role": null,
    "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Skyrim.esm:01A69D",
+   "name": "Jervar",
+   "race": "Nord",
+   "sex": "male",
+   "cell": "Whiterun Stables",
+   "inTown": null,
+   "role": null,
+   "plugin": "Unofficial Skyrim Modders Patch.esp"
   },
   {
    "id": "ForgottenCity.esp:02BBB0",
@@ -30362,6 +30282,16 @@
    "plugin": null
   },
   {
+   "id": "Skyrim.esm:013BC0",
+   "name": "Lillith Maiden-Loom",
+   "race": "Elder",
+   "sex": "female",
+   "cell": "Whiterun Stables",
+   "inTown": null,
+   "role": null,
+   "plugin": "Unofficial Skyrim Modders Patch.esp"
+  },
+  {
    "id": "Skyrim.esm:07D679",
    "name": "Linwe",
    "race": "Altmer",
@@ -31310,6 +31240,16 @@
    "inTown": null,
    "role": null,
    "plugin": null
+  },
+  {
+   "id": "Skyrim.esm:02BA8E",
+   "name": "Mallus Maccius",
+   "race": "Imperial",
+   "sex": "male",
+   "cell": "Honningbrew Meadery",
+   "inTown": null,
+   "role": null,
+   "plugin": "GORE.esp"
   },
   {
    "id": "Gray Fox Cowl.esm:03D5A5",
@@ -37652,6 +37592,16 @@
    "plugin": null
   },
   {
+   "id": "Skyrim.esm:02BA8C",
+   "name": "Sabjorn",
+   "race": "Nord",
+   "sex": "male",
+   "cell": "Honningbrew Meadery",
+   "inTown": null,
+   "role": null,
+   "plugin": "GORE.esp"
+  },
+  {
    "id": "Skyrim.esm:023AB5",
    "name": "Sabre Cat",
    "race": "Sabre Cat",
@@ -39602,6 +39552,26 @@
    "plugin": "Requiem.esp"
   },
   {
+   "id": "Skyrim.esm:0490F2",
+   "name": "Skeever",
+   "race": "Skeever",
+   "sex": "male",
+   "cell": "Honningbrew Basement",
+   "inTown": null,
+   "role": null,
+   "plugin": "GORE.esp"
+  },
+  {
+   "id": "Skyrim.esm:10195B",
+   "name": "Skeever",
+   "race": "Skeever",
+   "sex": "male",
+   "cell": "Honningbrew Meadery",
+   "inTown": null,
+   "role": null,
+   "plugin": "GORE.esp"
+  },
+  {
    "id": "Skyrim.esm:0481A0",
    "name": "Skeever",
    "race": "Skeever",
@@ -40130,6 +40100,16 @@
    "inTown": null,
    "role": null,
    "plugin": "Lux - Great Village of Old Hroldan patch.esp"
+  },
+  {
+   "id": "Skyrim.esm:013BB7",
+   "name": "Skulvar Sable-Hilt",
+   "race": "Nord",
+   "sex": "male",
+   "cell": "Whiterun Stables",
+   "inTown": null,
+   "role": null,
+   "plugin": "Unofficial Skyrim Modders Patch.esp"
   },
   {
    "id": "Skybound.esp:000385",
@@ -42200,6 +42180,26 @@
    "inTown": null,
    "role": null,
    "plugin": null
+  },
+  {
+   "id": "WindhelmSSE.esp:35DCBE",
+   "name": "Thalmor Justiciar",
+   "race": null,
+   "sex": "male",
+   "cell": "Thalmor Embassy",
+   "inTown": null,
+   "role": null,
+   "plugin": "WindhelmSSE.esp"
+  },
+  {
+   "id": "WindhelmSSE.esp:35DCC7",
+   "name": "Thalmor Justiciar",
+   "race": null,
+   "sex": "male",
+   "cell": "Thalmor Embassy",
+   "inTown": null,
+   "role": null,
+   "plugin": "WindhelmSSE.esp"
   },
   {
    "id": "Dragonborn.esm:025888",

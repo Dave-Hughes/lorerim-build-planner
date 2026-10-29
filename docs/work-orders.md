@@ -5159,7 +5159,7 @@ Nothing is dropped from the database: the columns and tables stay (CLAUDE.md, no
 ---
 
 ## WO-180  Junk text out of the pages, and the last map faults (Mac and PC, 28 Oct 2026)
-Status: building (PC: Part 4a; Mac: Part 4b, then the test)
+Status: queued (Mac: Part 4b, then the test)
 
 **Why.** The fourth cold review (Bob's reviewer, 3,721 pages crawled, 51 walked at both widths) passed WO-176 to WO-178, and named what would still hit Dave in his first ten minutes: old text from the game files that was never cleaned. Bob confirmed the holes and Web Mother by hand. No order is done until a page-text test fails on each of these.
 ### Part 1. Quotes (PC writes the cleaner; Mac's test fails on any page)
@@ -5185,8 +5185,8 @@ Status: building (PC: Part 4a; Mac: Part 4b, then the test)
 Most of Parts 1 to 3 hold. Across 3,678 pages there is no `[pagebreak]`, no markup, no game-file sources, no " · " and no em dash. Othriel and Whiterun are right, the headings are plain, and the map labels and counts are right as the map first loads. These still fail.
 
 **Part 4a (PC, the cleaner and the reads)**
-- [ ] **Removing a hedge leaves "( )"** on 12 quest pages: all eight Thane quests ("when you enter Whiterun ( );"), The Endless Fall (three times), No Mercy, Unbound, Boethiah's Calling and Lazy Afternoon. Remove the brackets with the hedge.
-- [ ] **"in" stuck onto a phrase that already has its own preposition or hedge:**
+- [x] **Removing a hedge leaves "( )"** on 12 quest pages: all eight Thane quests ("when you enter Whiterun ( );"), The Endless Fall (three times), No Mercy, Unbound, Boethiah's Calling and Lazy Afternoon. Remove the brackets with the hedge.
+- [x] **"in" stuck onto a phrase that already has its own preposition or hedge:**
   - Hail Sithis: "The Night Mother in where her coffin ends up"
   - The Endless Fall: "Altano in where No Mercy left him"
   - Darkness Returns: "Karliah in where you come out"
@@ -5194,37 +5194,50 @@ Most of Parts 1 to 3 hold. Across 3,678 pages there is no `[pagebreak]`, no mark
   - Thus Spoke Khajiit
 
   This is the same family as WO-177's "in in".
-- [ ] **Hedges without brackets go too** (Bob's call): 92 in the body of 64 pages, for example:
+- [x] **Hedges without brackets go too** (Bob's call): 92 in the body of 64 pages, for example:
   - "most likely beneath Stendarr's Beacon" (No Mercy)
   - "Needs: Probably Black Marsh Maps." (Gray Cowl)
   - "probably Ebony Warrior's Armor"
 
   A fact the reads aren't sure of goes under Not sure yet, in the players' words, or isn't said.
-- [ ] **The record's role names and game blanks never print:**
+- [x] **The record's role names and game blanks never print:**
   - Before the Storm: "Talk to the riverwood friend in Riverwood", "with the faction friend". Use the person, or "your friend from Helgen" when the read can't name them.
   - Cultists vs Player: "Search the the actor".
   - A False Front: "Bring the documents to the field co".
   - Angle-bracket blanks on 15 pages: "<the item>", "<the dungeon>", "<the place he names>", "<recipient>", "<fort>". These are the Dungeon Delving quests, Black Book, Dragonguard Archives, Bounty Forsworn 2, and Ralof, Hadvar and Brill.
 
   Say what the blank is in plain words ("an item the job names") or leave the line out.
-- [ ] **Job names that are still placeholders:**
+- [x] **Job names that are still placeholders:**
   - "Delivery for the npc" and the two "The item" (Belethor's Sister)
   - "Hunter Marks Animal Den" and "… 02" (Hunter's Mark)
   - "Delivery for <recipient>" (Brill)
 
   A job named that way gets a plain name ("A delivery", "Mark an animal den") or isn't listed.
-- [ ] **Riverwood credits Before the Storm's lines to "Season Unending"** (Ralof, Hod, Sigrid, Alvor). WO-178 found the records name the wrong quest; the quote's credit follows the fix.
-- [ ] **Editor talk in the body:**
+- [x] **Riverwood credits Before the Storm's lines to "Season Unending"** (Ralof, Hod, Sigrid, Alvor). WO-178 found the records name the wrong quest; the quote's credit follows the fix.
+- [x] **Editor talk in the body:**
   - "From the quest script" and "Given by the quest's script" (7 pages, for example A Dying Wish)
   - "(amount not in these files)" (61 pages)
   - "(per the records; it sits next to Darkwater Crossing in Eastmarch)" (Extracting an Argonian)
   - "the records here don't say who" (Gabriella)
 
   A reward with no known amount says nothing about the amount. A source is "the quest" or "game files", never the script.
-- [ ] **"A Speechcraft skill book"** on 14 pages (Angarvunde). The game says Speech.
-- [ ] **Whiterun's Shops and beds** is a run-on of record pieces ("General goods at Belethor's General Goods, General goods, Goods from her market stall, … Trades from Belethor's General Goods lists"). Write one item per shop, with its name and what it sells, once.
-- [ ] **Hendraheim quotes "Warrior's Challenge" twice**, with overlapping text. Keep one.
-- [ ] **Whiterun counts Honningbrew Meadery and Whiterun Stables**, which are outside the walls. Part 2's rule stands: inside the city's worldspace only. They are listed on the Whiterun page as nearby, not as the city's.
+- [x] **"A Speechcraft skill book"** on 14 pages (Angarvunde). The game says Speech.
+- [x] **Whiterun's Shops and beds** is a run-on of record pieces ("General goods at Belethor's General Goods, General goods, Goods from her market stall, … Trades from Belethor's General Goods lists"). Write one item per shop, with its name and what it sells, once.
+- [x] **Hendraheim quotes "Warrior's Challenge" twice**, with overlapping text. Keep one.
+- [x] **Whiterun counts Honningbrew Meadery and Whiterun Stables**, which are outside the walls. Part 2's rule stands: inside the city's worldspace only. They are listed on the Whiterun page as nearby, not as the city's.
+
+Jeff's notes on Part 4a (PC, 29 Oct):
+Every Part 4a box is ticked. Checks: Python 470 OK (16 new in `scripts/gamedata/test_read_clean.py`), `tsc` and eslint clean, vitest 807 pass / 7 expected fail / 1 skipped (12 new in `src/lib/pages/wo180-4a.test.ts`, which walks every quest, line and person read the way a page does). e2e not run on the PC and I did not look at a page in a browser. Regenerated: `places_raw.json`, `places_report.md`, `people_raw.json`, `people_report.md`, `places.json`, `people.json`, `quests.json`.
+- **One cleaner, at the build (`scripts/gamedata/read_clean.py`)**, called where the quest reads, ways, line reads, people reads and the start's own words are loaded. A guess (probably, most likely, likely, possibly, perhaps, presumably) or a note about the files (the records, these files, the quest's script) comes out as the smallest thing that holds it: a bracket, the clause after a comma, "and" or a colon, or the sentence; a whole item that is only a guess ("Probably Remnants") is left out. The field it came out of is added to the read's `unsure` (the field's name, no reason), so Not sure yet lists it in the players' words. What someone says in quotes and what the reads copied from the game (a step's objectives, a way's steps) keep the game's own words, hedges and all; only their blanks are filled. Examples: No Mercy's place is "Altar of Molag Bal"; Hail Sithis, The Endless Fall and Darkness Returns have no "where" (it was a sentence, not a place); the Thane quests lose "( )"; "Payment from Nazir (amount not in these records)" is "Payment from Nazir".
+- **A cost, said plainly:** a clause with a guess in it is gone, with what else sat in it. "Probably by speaking with Lamae Beolfag: she has the quest's first line." is now gone whole. Bob can read `git diff src/data/lorerim-5.0.4.8/quests.json` for the reads that lost the most; I did not rewrite any reads by hand.
+- **Role names and blanks:** `plain_alias` (quest_pages.py) says RiverwoodFriend and FactionFriend as "your friend from Helgen", FieldCO as "the field commander", Actor as "the person". The read agents' own blanks are said as what they are: `<the item>` is "the item the job names", `<25>` is "25", `<BribeCost> gold` leaves the quote without it. "Search the the actor" is "Search the person" (my word for it: the files don't say who is searched). `test_quest_truth.py` compares the pages' first step with UESP's and now allows those two plain-word differences (`SAID`).
+- **Job names:** "Delivery for the npc" is "A delivery", the two "The item" are "A shipment to collect" in the line and in Brill's read; "Hunter Marks Animal Den" is "Mark an animal den" and "… 02" is "Mark an animal den (second job)". The quests themselves have no page (`isTemplateName` now holds "The item" too); the names are only the ones a list shows.
+- **Riverwood:** the pointers took their quest from the record that holds the line, as the quest list did before WO-178; they now go through the same `QUEST_PARTS`. Ralof, Hod, Sigrid and Alvor are Before the Storm.
+- **Speechcraft:** the skill books' `SKILL_NAMES` said it; it is Speech now (14 pages), and Speech is what the reads say too.
+- **Whiterun's Shops and beds:** each seller's read is one of a few kinds (general goods, apothecary, blacksmith, spells, fletcher's goods, food and drink; `shopKind` in `src/lib/places/people.ts`), so the cell says each once.
+- **Hendraheim:** a book of one title is quoted once (the longer record).
+- **Outside the walls:** Honningbrew Meadery and Whiterun Stables are places of their own (their door's position on Tamriel; Whiterun is their nearest town), and their people are not Whiterun's. The door search finds 55 more buildings under the five big cities whose doors open on Tamriel (Daighre's House in Markarth, Dockmaster's Home in Windhelm, Esbern's Vault in Riften...). Several look inside the walls (a city mod can open a house in the walls onto Tamriel) and I could not tell the rest, so I moved only the two Bob named; the rest are listed at the end of `places_report.md`'s "Buildings outside the city's walls", for Bob to rule on.
+- **Not done:** "Kindred Judgment"'s "with you, after you take Auriel's Bow" would still read "in with you" as a place; it isn't on Bob's list.
 
 **Part 4b (Mac)**
 - [ ] **The page-text test catches all of the above:**

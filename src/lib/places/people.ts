@@ -50,7 +50,20 @@ const shortSells = (s: string) => s.split(/[;(]|,\s*\d/)[0].trim().replace(/\.$/
 
 /** What a seller sells, in a few words: the read's, else the job the record gives, else what the building's name says, else just goods. */
 const SHOP: Record<string, string> = { JobBlacksmith: "blacksmith", JobApothecary: "apothecary", JobMerchant: "general goods", JobSpellVendor: "spells", JobFletcher: "fletcher's goods" };
-const shopOf = (p: Person) => (p.read ? shortSells(p.read.sells) : p.sells ? (SHOP[p.role ?? ""] ?? (/trader|general/i.test(p.cell ?? "") ? "general goods" : /smith|forge/i.test(p.cell ?? "") ? "blacksmith" : "goods")) : "");
+/** A read's sentence about a shop is one of a few kinds (WO-180 Part 4a): "General goods at Belethor's General Goods" and "goods from her market stall (general 'misc' merchant)" are both general goods, said once on the page. */
+const KINDS: [RegExp, string][] = [
+  [/apothecar|alchem|potion|ingredient/i, "apothecary"],
+  [/blacksmith|smith|forge|weapon|armou?r/i, "blacksmith"],
+  [/spell/i, "spells"],
+  [/fletch|arrow|\bbows?\b/i, "fletcher's goods"],
+  [/\bmead\b|\bfood\b|\bdrink\b|\bale\b/i, "food and drink"],
+  [/general|goods|trades from|stall|misc/i, "general goods"],
+];
+const shopKind = (s: string) => KINDS.find(([re]) => re.test(s))?.[1] ?? shortSells(s);
+const shopOf = (p: Person) => {
+  const said = p.read?.sells ? shopKind(p.read.sells) : "";
+  return said || (p.sells ? (SHOP[p.role ?? ""] ?? (/trader|general/i.test(p.cell ?? "") ? "general goods" : /smith|forge/i.test(p.cell ?? "") ? "blacksmith" : "goods")) : "");
+};
 
 function personOf(p: Person): PlacePerson {
   const read = p.read;

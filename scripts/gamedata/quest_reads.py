@@ -10,6 +10,7 @@ import os
 import re
 
 from editor_words import without_editor_words
+from read_clean import clean_read
 
 # What a page and the door use, in BRIEF.md's words. `evidence` (record ids) and `plugin` stay in the batch files, not the data.
 FIELDS = ("canDo", "canDoWhy", "needs", "starts", "firstStep", "takesYou", "choices", "steps", "rewards", "type", "opens", "closes", "people", "unsure")
@@ -50,6 +51,8 @@ def load_reads(folder):
                 read["people"] = [{**{k: v for k, v in p.items() if k != "role"}, **({"role": r} if (r := without_editor_words(p.get("role"))) else {})} for p in read["people"]]
             if read.get("rewards"):
                 read["rewards"] = [{**w, **({"what": s} if "what" in w else {})} for w in read["rewards"] if "what" not in w or (s := without_editor_words(w["what"]))]
+            # WO-180 Part 4a: a guess or a note about the files comes out of the field and the field goes under Not sure yet.
+            read = clean_read(read)
             out[edid] = {**read, "fixed": fixed.get(edid, [])}
     return out
 
@@ -91,7 +94,7 @@ def load_ways(folder):
         for q in group.get("quests", []):
             ways = [{"title": w["title"], **({"ends": w["ends"]} if w.get("ends") else {}), "steps": list(w.get("steps") or [])} for w in q.get("ways", []) if w.get("title")]
             if q.get("edid") and ways:
-                out[q["edid"]] = {"shape": q.get("shape") if q.get("shape") in ("paths", "endings") else "paths", "shared": list(q.get("shared") or []), "ways": ways, **({"unsure": player_unsure([{"field": "ways", **u} for u in q["unsure"]])} if q.get("unsure") else {})}
+                out[q["edid"]] = clean_read({"shape": q.get("shape") if q.get("shape") in ("paths", "endings") else "paths", "shared": list(q.get("shared") or []), "ways": ways, **({"unsure": player_unsure([{"field": "ways", **u} for u in q["unsure"]])} if q.get("unsure") else {})})
     return out
 
 
@@ -118,7 +121,7 @@ def load_line_reads(folder):
                 read["verdicts"] = verdicts[line["id"]]
             if "unsure" in read:
                 read["unsure"] = player_unsure(read["unsure"])
-            out[line["id"]] = read
+            out[line["id"]] = clean_read(read)
     return out
 
 

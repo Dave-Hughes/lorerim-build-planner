@@ -75,17 +75,17 @@ All nine found with an exterior position.
 
 ## Positions (WO-166)
 
-**667 of 997 places have a position**; 319 are in a town and have none of their own (`inTown`); 11 could not be placed. A position is `world` and `pos` [x, y, z] in game units, found from the place's own map marker, else the exterior cells it owns (the middle of their grid squares: no height, z is null), else a door out of its interior (up to 3 rooms deep). The five big cities' own worldspaces share Tamriel's coordinates (checked door to door) and are filed as Tamriel.
+**669 of 997 places have a position**; 317 are in a town and have none of their own (`inTown`); 11 could not be placed. A position is `world` and `pos` [x, y, z] in game units, found from the place's own map marker, else the exterior cells it owns (the middle of their grid squares: no height, z is null), else a door out of its interior (up to 3 rooms deep). The five big cities' own worldspaces share Tamriel's coordinates (checked door to door) and are filed as Tamriel.
 
 | Found from | Places |
 |---|---|
 | marker | 469 |
-| door | 154 |
+| door | 156 |
 | cells | 44 |
 
 | World | Places | On a map |
 |---|---|---|
-| Tamriel | 457 | yes |
+| Tamriel | 459 | yes |
 | DLC2SolstheimWorld | 71 | yes |
 | zCHMolagWorld | 58 | yes |
 | mannyGFDesert | 32 | yes |
@@ -98,7 +98,7 @@ All nine found with an exterior position.
 
 | Kind | Places | Positioned | In a town | Not placed |
 |---|---|---|---|---|
-| House | 180 | 24 | 156 | 0 |
+| House | 180 | 25 | 155 | 0 |
 | Landmark | 154 | 138 | 10 | 6 |
 | Cave | 107 | 105 | 0 | 2 |
 | NordicRuin | 54 | 53 | 0 | 1 |
@@ -128,7 +128,7 @@ All nine found with an exterior position.
 | Shipwreck | 9 | 8 | 1 | 0 |
 | Grove | 7 | 7 | 0 | 0 |
 | Pass | 5 | 5 | 0 | 0 |
-| Stables | 5 | 0 | 5 | 0 |
+| Stables | 5 | 1 | 4 | 0 |
 | Castle | 5 | 1 | 4 | 0 |
 | Barracks | 5 | 1 | 4 | 0 |
 | Jail | 5 | 0 | 5 | 0 |
@@ -173,7 +173,7 @@ Every location a named quest points at (a location alias, or the cell a forced r
 
 | Kind | Added | In a town | On a map |
 |---|---|---|---|
-| House | 180 | 156 | 24 |
+| House | 180 | 155 | 25 |
 | Landmark | 83 | 10 | 72 |
 | Store | 51 | 43 | 8 |
 | Farm | 24 | 8 | 16 |
@@ -511,6 +511,18 @@ A farm or mill whose location owns exterior cells of its own stands in a field. 
 | Solitude Sawmill | Solitude | door | Dragon Bridge 0.4 km | -78658, 91650 |
 
 Farms that stay in their village, with no exterior cells of their own (7; each is 20 to 100 m from its town's marker): Corpselight Farm (Falkreath), Cowflop Farmhouse (Rorikstead), Fellstar Farm (Ivarstead), Gala's Stead (Kynesgrove), Herleif's and Ragna's Farm (Kynesgrove), Lemkil's Farmhouse (Rorikstead), Lod's House (Falkreath).
+
+### Buildings outside the city's walls (3) (WO-180 Part 4a)
+
+A location the record parents to a city, whose door opens onto Tamriel itself and not onto the city's own worldspace, stands outside the walls. It is a place of its own, put where its door is; the city stays its nearest town, and its people are not the city's.
+
+| Place | Record's city | Found from |
+|---|---|---|
+| Honningbrew Meadery | Whiterun | door |
+| Honningbrew Meadery | Whiterun | door |
+| Whiterun Stables | Whiterun | door |
+
+Buildings whose door opens on Tamriel too, left inside their city until Bob rules (55): Aksels House (Solitude), Angeline's Aromatics (Solitude), Argonian Assemblage (Windhelm), Black-Briar Lodge (Riften), Black-Briar Meadery (Riften), Clan Shatter-Shield Offices (Windhelm), Daighre's House (Markarth), Digitus Quintus' House (Solitude), Dockmaster's Home (Windhelm), Dorte's Cabin (Solitude), East Empire Company (Windhelm), East Empire Company Outpost (Riften), Esbern's Vault (Riften), Freyja's House (Solitude), Guard Tower (Whiterun), Gunnar's Cabin (Solitude), Hjoldan's House (Solitude), Honeyside (Riften), Jo'vanni's Dream Theater (Whiterun), Kodraug's Cabin (Solitude), Laurircella's Cabin (Solitude), Markarth East Empire Dormitory (Markarth), Markarth East Empire Goods (Markarth), Markarth Old Observatory (Markarth), Markarth Stables (Markarth), Markarth Waste Collector (Markarth), Naspis' Cabin (Solitude), New Gnisis Cornerclub (Windhelm), Old Dam (Markarth), Oyalf's Cabin (Solitude), Qrvar's Cabin (Solitude), Ratway Arena (Riften), Riften Fishery (Riften), Riften Jail (Riften), Riften Stables (Riften), Riften Warehouse (Riften), Shack (Windhelm), Skaggi's House (Markarth), Soderberg's House (Riften), Solitude Stables (Solitude), Sverre's Cabin (Solitude), Tahlen-Ra's House (Solitude), The Katariah (Solitude), The Leaning Cabin (Solitude), The Pawned Prawn (Riften), The Ragged Flagon (Riften), The Roadhouse (Whiterun), Thieves Guild Headquarters (Riften), Tilda's House (Solitude), Torbec's House (Solitude), Toril's House (Solitude), Understone Keep (Markarth), Wallside Inn (Windhelm), Whiterun Underforge (Whiterun), Windhelm Stables (Windhelm).
 
 ### Called by the name on the door (31) (WO-171)
 

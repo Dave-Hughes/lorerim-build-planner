@@ -78,7 +78,7 @@ class Doors(unittest.TestCase):
 
     def test_an_interiors_door_out_gives_the_door_standing_outside(self):
         got = pp.at_doors(["int1"], CELLS, self.doors, self.maps)
-        self.assertEqual(got, {"world": "Tamriel", "pos": [40000.0, 12000.0, 300.0], "posFrom": "door", "hops": 1, "exits": 1})
+        self.assertEqual(got, {"world": "Tamriel", "pos": [40000.0, 12000.0, 300.0], "posFrom": "door", "hops": 1, "exits": 1, "rawWorld": "Tamriel"})
 
     def test_it_follows_a_door_into_the_next_room_when_there_is_none_out_of_this_one(self):
         got = pp.at_doors(["int3"], CELLS, self.doors, self.maps)

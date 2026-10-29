@@ -315,8 +315,17 @@ _NEUTRAL = {"pronoun": "they", "pronouncap": "They", "pronounobj": "them", "pron
             "pronounposcap": "Their", "pronounposobj": "theirs", "pronounposobjcap": "Theirs"}
 
 
+# WO-180 Part 4a: aliases the records name by a role, said as the player knows them. The rest are the alias's own words.
+ALIAS_SAID = {"riverwoodfriend": "your friend from Helgen", "factionfriend": "your friend from Helgen", "fieldco": "the field commander",
+              "enemyfieldco": "the enemy field commander", "cwfieldco": "the field commander", "actor": "the person"}
+
+
 def plain_alias(name):
     """An alias the records fill only at run time, in plain words: Item -> "the item", TargetLocation -> "the target location"."""
+    key = re.sub(r"\d+$", "", name.strip().lower())
+    said = ALIAS_SAID.get(key) or ALIAS_SAID.get(re.sub(r"^[a-z]{0,6}\d+", "", key)) or ("the enemy field commander" if key.startswith("enemy") and key.endswith("fieldco") else "the field commander" if key.endswith("fieldco") or "fieldco" in key else None)
+    if said:
+        return said
     name = re.sub(r"^[A-Za-z]{0,6}\d+", "", name)  # an EDID-like prefix: MS11TargetLocation -> TargetLocation
     words = [w for w in re.findall(r"[A-Z]+(?![a-z])|[A-Z]?[a-z]+|\d+", name.replace("_", " ")) if not any(ch.isdigit() for ch in w)]
     words = [w.lower() for w in words if w.lower() not in ("alias", "ref", "quest")] or ["one"]

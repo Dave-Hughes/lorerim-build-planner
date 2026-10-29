@@ -35,6 +35,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from esp import header, iter_group, load_order, plugin_paths, rec_data, resolve, subrecs  # noqa: E402
 import places as pl  # noqa: E402
 from editor_words import EDITOR  # noqa: E402
+from read_clean import clean_read  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
@@ -114,7 +115,8 @@ def build(version):
     # farm out in its fields) is a place of its own, so the people who live there are its, never the town whose location it is parented to
     # (Whiterun listed 133 people: Web Mother, Jon the Mad, the Greybeards, all of Fort Greymoor).
     placed_file = os.path.join(REPO, "gamedata", version, "places_raw.json")
-    own_place = {p["id"] for p in json.load(open(placed_file, encoding="utf-8"))["places"] if not p.get("inTown")} if os.path.exists(placed_file) else set()
+    # (A place the record has twice, as a location and as its interior's, is its own under both ids: Honningbrew Meadery.)
+    own_place = {i for p in json.load(open(placed_file, encoding="utf-8"))["places"] if not p.get("inTown") for i in [p["id"], *(a["id"] for a in p.get("alsoRecordedAs", []))]} if os.path.exists(placed_file) else set()
 
     def in_town(loc_key):
         # Bob, 23 Oct: Borgakh had no town -- she's at Mor Khazgur, a stronghold, which this left out.
@@ -236,7 +238,8 @@ def tidy_person_read(read):
     read["day"] = [{**d, "where": tidy_read(d.get("where", "")), "doing": tidy_read(d.get("doing", ""))} for d in read.get("day", [])]
     read["quests"] = [{**q, "how": tidy_read(q.get("how", ""))} for q in read.get("quests", [])]
     read["unsure"] = [{**u, "why": tidy_why(u.get("why", ""))} for u in read.get("unsure", [])]
-    return read
+    # WO-180 Part 4a: a guess or a note about the files comes out of the field and the field goes under Not sure yet.
+    return clean_read(read)
 
 
 # What a read says about a person (WO-159): the checker's corrected object, field by field.

@@ -3026,7 +3026,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "Where to start? Well, the news you heard about Ulfric was true. The Imperials ambushed us outside Darkwater Crossing.",
      "record": "INFO Skyrim.esm:054E7D (Skyrim.esm)"
     },
@@ -7833,7 +7833,7 @@
    },
    "worthGoingFor": {
     "skillBooks": [
-     "Speechcraft: 2920, Vol. 05: Second Seed"
+     "Speech: 2920, Vol. 05: Second Seed"
     ]
    },
    "pointers": [
@@ -10967,7 +10967,7 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Speechcraft: A Dance in Fire, Vol. 6"
+     "Speech: A Dance in Fire, Vol. 6"
     ],
     "crafting": [
      "an alchemy lab"
@@ -12830,7 +12830,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "Hadvar, thank Talos! Your friend told me about Helgen...",
      "record": "INFO Skyrim.esm:0D5531 (Skyrim.esm)"
     },
@@ -12838,7 +12838,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "Mara's mercy! A dragon... in Helgen? Why, it could be here at any moment!",
      "record": "INFO Skyrim.esm:0D5532 (Skyrim.esm)"
     },
@@ -12846,7 +12846,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "We were stopped in Helgen when we were attacked... by a dragon.",
      "record": "INFO Skyrim.esm:02C44E (Unofficial Skyrim Special Edition Patch.esp)"
     },
@@ -12854,7 +12854,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "Now, then, boy. Helgen was destroyed? How did you get away?",
      "record": "INFO Skyrim.esm:0D553D (Skyrim.esm)"
     },
@@ -12878,7 +12878,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "Is there somewhere we can talk? There's no telling when the news from Helgen will reach the Imperials...",
      "record": "INFO Skyrim.esm:04D318 (Skyrim.esm)"
     },
@@ -12886,7 +12886,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "Brother! Mara's mercy, you're safe! Your friend told me about Helgen...",
      "record": "INFO Skyrim.esm:0DF1FB (Skyrim.esm)"
     },
@@ -12894,7 +12894,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "We stopped in Helgen this morning, and I thought it was all over. Had us lined up to the headsman's block and ready to start chopping.",
      "record": "INFO Skyrim.esm:054E7D (Skyrim.esm)"
     },
@@ -12902,7 +12902,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "We'd better keep moving. I don't want to run into any Imperials who know what happened at Helgen.",
      "record": "INFO Skyrim.esm:057999 (Skyrim.esm)"
     },
@@ -13022,7 +13022,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "Helgen? Has something happened...?",
      "record": "INFO Skyrim.esm:09A034 (Skyrim.esm)"
     },
@@ -13046,7 +13046,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "Remember, this isn't Stormcloak territory. If we're ahead of the news from Helgen we should be fine as long as we don't do anything stupid.",
      "record": "INFO Skyrim.esm:0AC11D (Skyrim.esm)"
     },
@@ -13110,7 +13110,7 @@
      "kind": "dialogue",
      "speaker": "Alvor",
      "speakerPlace": "Alvor and Sigrid's House",
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "What? A dragon? In Helgen?",
      "record": "INFO Skyrim.esm:0D2324 (Skyrim.esm)"
     },
@@ -13206,7 +13206,7 @@
      "kind": "dialogue",
      "speaker": "Gerdur",
      "speakerPlace": "Hod and Gerdur's House",
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "A dragon? In Helgen? It can't be... although...",
      "record": "INFO Skyrim.esm:0DF021 (Skyrim.esm)"
     },
@@ -14564,7 +14564,7 @@
      "Elemental Fury"
     ],
     "skillBooks": [
-     "Speechcraft: 2920, Vol. 05: Second Seed"
+     "Speech: 2920, Vol. 05: Second Seed"
     ],
     "bossChest": true
    },
@@ -15814,7 +15814,7 @@
    "worthGoingFor": {
     "skillBooks": [
      "Alchemy: Song of the Alchemists",
-     "Speechcraft: The Buying Game"
+     "Speech: The Buying Game"
     ],
     "crafting": [
      "an alchemy lab",
@@ -16419,13 +16419,13 @@
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "stle Dour and the Temple and you'll get your first sight of the Blue Palace. Along the way, be sure to stop outside the Bards College, a large building on your left marked by the Flame of Callisos burning beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as th",
+     "words": "ng beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as the flame burns, the college will stand.\r\n\r\nThe Bards College\r\n\r\nLooking up from the Bards College steps, you can see that the college stands taller than the Blue Palace itself. The bards who train here c",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "ng beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as the flame burns, the college will stand.\r\n\r\nThe Bards College\r\n\r\nLooking up from the Bards College steps, you can see that the college stands taller than the Blue Palace itself. The bards who train here c",
+     "words": "stle Dour and the Temple and you'll get your first sight of the Blue Palace. Along the way, be sure to stop outside the Bards College, a large building on your left marked by the Flame of Callisos burning beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as th",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
@@ -16904,7 +16904,7 @@
      "kind": "dialogue",
      "speaker": "Hadvar",
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "General Tullius has his headquarters in Castle Dour, in the city of Solitude, northwest of here.",
      "record": "INFO Skyrim.esm:0D19A4 (Skyrim.esm)"
     },
@@ -17235,7 +17235,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Speechcraft: A Dance in Fire, Vol. 6"
+     "Speech: A Dance in Fire, Vol. 6"
     ]
    },
    "pointers": [
@@ -18219,7 +18219,7 @@
    },
    "worthGoingFor": {
     "skillBooks": [
-     "Speechcraft: Biography of the Wolf Queen"
+     "Speech: Biography of the Wolf Queen"
     ],
     "shrines": [
      "Shrine of Arkay"
@@ -20581,7 +20581,7 @@
    "worthGoingFor": {
     "skillBooks": [
      "Alchemy: Song of the Alchemists",
-     "Speechcraft: A Dance in Fire, Vol. 7"
+     "Speech: A Dance in Fire, Vol. 7"
     ],
     "crafting": [
      "an alchemy lab"
@@ -21041,10 +21041,10 @@
      "Enchanting: Catalogue of Armor Enchantments",
      "Heavy Armor: The Knights of the Nine",
      "One-Handed: Night Falls on Sentinel",
-     "Speechcraft: 2920, Vol. 05: Second Seed",
-     "Speechcraft: A Dance in Fire, Vol. 7",
-     "Speechcraft: Biography of the Wolf Queen",
-     "Speechcraft: The Buying Game"
+     "Speech: 2920, Vol. 05: Second Seed",
+     "Speech: A Dance in Fire, Vol. 7",
+     "Speech: Biography of the Wolf Queen",
+     "Speech: The Buying Game"
     ],
     "crafting": [
      "an alchemy lab",
@@ -21309,13 +21309,13 @@
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "The city gradually grew to extend across the entire length of the arch. This growth culminated in the building of the Blue Palace, home of the High Kings and Queens of Skyrim. We will visit the palace later.\r\n\r\nThe Gates of Solitude\r\n\r\nEntrance to Solitude is guarded by two gat",
+     "words": ".\r\n\r\nContinue up the road from the college and you'll reach the courtyard of the Blue Palace, our final destination.\r\n\r\nThe Blue Palace\r\n\r\nThe Blue Palace is home to the Jarls of Solitude, who for centuries have also served as the High Kings and High Queens of Skyrim. The northea",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": ".\r\n\r\nContinue up the road from the college and you'll reach the courtyard of the Blue Palace, our final destination.\r\n\r\nThe Blue Palace\r\n\r\nThe Blue Palace is home to the Jarls of Solitude, who for centuries have also served as the High Kings and High Queens of Skyrim. The northea",
+     "words": "The city gradually grew to extend across the entire length of the arch. This growth culminated in the building of the Blue Palace, home of the High Kings and Queens of Skyrim. We will visit the palace later.\r\n\r\nThe Gates of Solitude\r\n\r\nEntrance to Solitude is guarded by two gat",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
@@ -21654,7 +21654,7 @@
    "worthGoingFor": {
     "skillBooks": [
      "Enchanting: Twin Secrets",
-     "Speechcraft: A Dance in Fire, Vol. 7"
+     "Speech: A Dance in Fire, Vol. 7"
     ],
     "crafting": [
      "an alchemy lab",
@@ -22999,7 +22999,7 @@
      "Whirlwind Sprint"
     ],
     "skillBooks": [
-     "Speechcraft: The Buying Game"
+     "Speech: The Buying Game"
     ],
     "bossChest": true,
     "crafting": [
@@ -24283,7 +24283,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Speechcraft: A Dance in Fire, Vol. 6"
+     "Speech: A Dance in Fire, Vol. 6"
     ]
    }
   },
@@ -25039,7 +25039,7 @@
    "worthGoingFor": {
     "skillBooks": [
      "Heavy Armor: Orsinium and the Orcs",
-     "Speechcraft: 2920, Vol. 05: Second Seed"
+     "Speech: 2920, Vol. 05: Second Seed"
     ],
     "crafting": [
      "a sharpening wheel",
@@ -33494,7 +33494,7 @@
    },
    "worthGoingFor": {
     "skillBooks": [
-     "Speechcraft: Biography of the Wolf Queen"
+     "Speech: Biography of the Wolf Queen"
     ]
    }
   },
@@ -35586,7 +35586,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Speechcraft: A Dance in Fire, Vol. 7"
+     "Speech: A Dance in Fire, Vol. 7"
     ],
     "bossChest": true
    },
@@ -37776,7 +37776,7 @@
    },
    "worthGoingFor": {
     "skillBooks": [
-     "Speechcraft: A Dance in Fire, Vol. 7"
+     "Speech: A Dance in Fire, Vol. 7"
     ]
    },
    "pointers": [
@@ -38341,7 +38341,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Speechcraft: Biography of the Wolf Queen"
+     "Speech: Biography of the Wolf Queen"
     ],
     "bossChest": true
    },
@@ -41948,7 +41948,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Speechcraft: Biography of the Wolf Queen"
+     "Speech: Biography of the Wolf Queen"
     ],
     "bossChest": true
    }
@@ -44076,7 +44076,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Speechcraft: The Buying Game"
+     "Speech: The Buying Game"
     ],
     "crafting": [
      "an alchemy lab"
@@ -45812,7 +45812,7 @@
     ],
     "skillBooks": [
      "Illusion: Before the Ages of Man",
-     "Speechcraft: A Dance in Fire, Vol. 7"
+     "Speech: A Dance in Fire, Vol. 7"
     ],
     "bossChest": true
    },
@@ -48883,7 +48883,7 @@
    "worthGoingFor": {
     "skillBooks": [
      "Pickpocket: Beggar",
-     "Speechcraft: The Buying Game"
+     "Speech: The Buying Game"
     ],
     "shrines": [
      "Shrine of Dibella"
@@ -51433,7 +51433,7 @@
      "Alchemy: Song of the Alchemists",
      "Enchanting: Catalogue of Weapon Enchantments",
      "Pickpocket: Beggar",
-     "Speechcraft: A Dance in Fire, Vol. 7"
+     "Speech: A Dance in Fire, Vol. 7"
     ],
     "bossChest": true,
     "crafting": [
@@ -54675,7 +54675,7 @@
    },
    "worthGoingFor": {
     "skillBooks": [
-     "Speechcraft: Biography of the Wolf Queen"
+     "Speech: Biography of the Wolf Queen"
     ],
     "shrines": [
      "Shrine of Zenithar"
@@ -54904,7 +54904,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "See that ruin up there? Bleak Falls Barrow. When I was a boy, that place always used to give me nightmares.",
      "record": "INFO Skyrim.esm:0AC11B (Skyrim.esm)"
     },
@@ -54912,7 +54912,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "See that ruin up there? Bleak Falls Barrow. I never understood how my sister could stand living in the shadow of that place.",
      "record": "INFO Skyrim.esm:0AC126 (Skyrim.esm)"
     },
@@ -55705,7 +55705,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "When you get to Whiterun, just keep going up. When you get to the top of the hill, you're at Dragonsreach, the jarl's palace.",
      "record": "INFO Skyrim.esm:02D756 (Unofficial Skyrim Special Edition Patch.esp)"
     },
@@ -58237,8 +58237,8 @@
     "skillBooks": [
      "Alchemy: De Rerum Dirennis",
      "Enchanting: Twin Secrets",
-     "Speechcraft: 2920, Vol. 05: Second Seed",
-     "Speechcraft: Biography of the Wolf Queen"
+     "Speech: 2920, Vol. 05: Second Seed",
+     "Speech: Biography of the Wolf Queen"
     ],
     "crafting": [
      "a sharpening wheel",
@@ -58928,7 +58928,7 @@
     "km": 0.2,
     "walk": "next to it"
    },
-   "inTown": "Whiterun",
+   "inTown": null,
    "plugin": "GORE.esp",
    "marker": "Skyrim.esm:038593",
    "namedBy": [
@@ -58942,6 +58942,13 @@
     "Hamelyn",
     "Skeever"
    ],
+   "world": "Tamriel",
+   "pos": [
+    32256.0,
+    -17728.0,
+    -4208.0
+   ],
+   "posFrom": "door",
    "alsoRecordedAs": [
     {
      "id": "Skyrim.esm:049B60",
@@ -58978,7 +58985,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "Just follow the road north. When you get to Honningbrew Meadery, turn left and the road will take you to the city gates.",
      "record": "INFO Skyrim.esm:0D39B9 (Skyrim.esm)"
     },
@@ -61401,7 +61408,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "Changed your mind? Come with me. I'm heading to Riverwood. It's just up the road and my uncle Alvor is the blacksmith there.",
      "record": "INFO Skyrim.esm:02C2FB (Skyrim.esm)"
     },
@@ -61433,7 +61440,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "Come on. I'll feel better once we're under cover in Riverwood.",
      "record": "INFO Skyrim.esm:02C300 (Skyrim.esm)"
     },
@@ -61441,7 +61448,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "I was hoping you'd change your mind. Come on. I'm heading to Riverwood, just up the road. My sister Gerdur will help us out.",
      "record": "INFO Skyrim.esm:032B91 (Skyrim.esm)"
     },
@@ -61521,7 +61528,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "Come on. I'll feel better once we're under cover in Riverwood.",
      "record": "INFO Skyrim.esm:054E9A (Skyrim.esm)"
     },
@@ -61529,7 +61536,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "Are we really the first to make it to Riverwood?",
      "record": "INFO Skyrim.esm:054E95 (Skyrim.esm)"
     },
@@ -61537,7 +61544,7 @@
      "kind": "dialogue",
      "speaker": "Ralof",
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "My sister Gerdur runs the mill in Riverwood, just up the road. I'm sure she'd help you out.",
      "record": "INFO Skyrim.esm:0DE1A5 (Skyrim.esm)"
     },
@@ -61545,7 +61552,7 @@
      "kind": "dialogue",
      "speaker": "Hod",
      "speakerPlace": "Hod and Gerdur's House",
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "Don't even say such things! I hope that dragon stays away from Riverwood. We don't need that kind of trouble.",
      "record": "INFO Skyrim.esm:056AAB (Skyrim.esm)"
     },
@@ -61553,7 +61560,7 @@
      "kind": "dialogue",
      "speaker": "Sigrid",
      "speakerPlace": "Alvor and Sigrid's House",
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "I just hope the war doesn't come to Riverwood. There's enough trouble in the world without those Stormcloaks stirring up more.",
      "record": "INFO Skyrim.esm:056B25 (Skyrim.esm)"
     },
@@ -61601,7 +61608,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "I'm glad you decided to come with me. We're almost to Riverwood.",
      "record": "INFO Skyrim.esm:0AC124 (Skyrim.esm)"
     },
@@ -61609,7 +61616,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "You sure you won't change your mind? Riverwood isn't far. I'm sure my uncle will be glad to help you out.",
      "record": "INFO Skyrim.esm:0AC125 (Skyrim.esm)"
     },
@@ -61617,7 +61624,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "I'm glad you decided to come with me. We're almost to Riverwood.",
      "record": "INFO Skyrim.esm:0AC11E (Skyrim.esm)"
     },
@@ -61625,7 +61632,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "You sure you won't change your mind? Riverwood isn't far. I'm sure my sister will be glad to help you out.",
      "record": "INFO Skyrim.esm:0AC11F (Skyrim.esm)"
     },
@@ -61641,7 +61648,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "Closest town from here is Riverwood. My uncle's the blacksmith there. I'm sure he'd help you out.",
      "record": "INFO Skyrim.esm:0D33B3 (Skyrim.esm)"
     },
@@ -61665,7 +61672,7 @@
      "kind": "dialogue",
      "speaker": "Alvor",
      "speakerPlace": "Alvor and Sigrid's House",
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "The jarl needs to know if there's a dragon on the loose. Riverwood is defenseless...",
      "record": "INFO Skyrim.esm:0D2327 (Unofficial Skyrim Special Edition Patch.esp)"
     },
@@ -61713,7 +61720,7 @@
      "kind": "dialogue",
      "speaker": null,
      "speakerPlace": null,
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "I'm sure Riverwood will be all right, dear. When the jarl learns what's happened, he's sure to send soldiers.",
      "record": "INFO Skyrim.esm:0D553C (Unofficial Skyrim Special Edition Patch.esp)"
     },
@@ -61729,7 +61736,7 @@
      "kind": "dialogue",
      "speaker": "Gerdur",
      "speakerPlace": "Hod and Gerdur's House",
-     "quest": "Season Unending",
+     "quest": "Before the Storm",
      "words": "The jarl needs to know if there's a dragon on the loose. Riverwood is defenseless...",
      "record": "INFO Skyrim.esm:0DF01D (Unofficial Skyrim Special Edition Patch.esp)"
     },
@@ -66454,9 +66461,16 @@
     "km": 1.3,
     "walk": "half a day"
    },
-   "inTown": "Whiterun",
+   "inTown": null,
    "plugin": "Unofficial Skyrim Modders Patch.esp",
    "marker": "Skyrim.esm:072879",
+   "world": "Tamriel",
+   "pos": [
+    17752.1,
+    -10388.9,
+    -4552.0
+   ],
+   "posFrom": "door",
    "actors": {
     "count": 3,
     "hostile": false
@@ -66914,7 +66928,7 @@
    "worthGoingFor": {
     "skillBooks": [
      "Destruction: Mystery of Talara, Vol. 3",
-     "Speechcraft: Biography of the Wolf Queen"
+     "Speech: Biography of the Wolf Queen"
     ]
    },
    "aliases": [
@@ -66994,7 +67008,7 @@
      "Alchemy: De Rerum Dirennis",
      "Alchemy: Mannimarco, King of Worms",
      "Block: Warrior",
-     "Speechcraft: A Dance in Fire, Vol. 6"
+     "Speech: A Dance in Fire, Vol. 6"
     ],
     "bossChest": true,
     "crafting": [
@@ -75908,8 +75922,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Speechcraft: 2920, Vol. 05: Second Seed",
-     "Speechcraft: A Dance in Fire, Vol. 6"
+     "Speech: 2920, Vol. 05: Second Seed",
+     "Speech: A Dance in Fire, Vol. 6"
     ]
    },
    "quests": [
@@ -81903,7 +81917,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Speechcraft: A Dance in Fire, Vol. 6"
+     "Speech: A Dance in Fire, Vol. 6"
     ]
    },
    "quests": [

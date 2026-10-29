@@ -82,16 +82,17 @@ def at_doors(cell_keys, cells, doors, maps, max_hops=MAX_HOPS):
                 d = doors.get(c["doors"][ref]["dest"])
                 if not d:
                     continue
-                far = canon((cells.get(d["cell"]) or {}).get("worldEdid"))
+                raw = (cells.get(d["cell"]) or {}).get("worldEdid")
+                far = canon(raw)
                 if far and far in maps and far != mine:
-                    exits.append((far, d["cell"], ref, tuple(d["pos"][:3])))
+                    exits.append((far, d["cell"], ref, tuple(d["pos"][:3]), raw))
                 elif d["cell"] not in seen:
                     seen.add(d["cell"])
                     nxt.append(d["cell"])
         if exits:
             world = max(collections.Counter(e[0] for e in exits), key=lambda w: (sum(1 for e in exits if e[0] == w), w))
             mine = sorted(e for e in exits if e[0] == world)
-            return {"world": world, "pos": [round(v, 1) for v in mine[0][3]], "posFrom": "door", "hops": hop, "exits": len(mine)}
+            return {"world": world, "pos": [round(v, 1) for v in mine[0][3]], "posFrom": "door", "hops": hop, "exits": len(mine), "rawWorld": mine[0][4]}
         frontier = sorted(nxt)
     return None
 

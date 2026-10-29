@@ -495,6 +495,14 @@ def main():
 
         reads = load_reads(os.path.join(RAW, "quest_reads", "checked"))
         with_read, without_read, unmatched = attach_reads(pages, reads)
+        # WO-180 Part 4a: the start's own words (the rules' ways in) never say what the records "don't name".
+        from read_clean import clean_read
+
+        for l in pages:
+            for q in l["quests"]:
+                if q.get("start"):
+                    cleaned = clean_read({k: q["start"][k] for k in ("needs", "ways", "then") if k in q["start"]})
+                    q["start"].update({k: v for k, v in cleaned.items() if k != "unsure"})
         print(f"{with_read} quests read and checked, {without_read} on the older rules" + (f"; {len(unmatched)} reads match no quest on the pages: {', '.join(unmatched[:8])}" if unmatched else ""))
         # WO-154 Part 2: the ways through a quest, the line reads, and the mods that changed each quest.
         from quest_pages import quest_mod, source_name
@@ -611,6 +619,14 @@ def main():
         for r in rows:
             for ptr in r.get("pointers", []):
                 ptr["words"] = tidy_excerpt(repair_lost(ptr["words"]), window=ptr["kind"] == "book")
+            # WO-180 Part 4a: a book of one title is quoted once (Hendraheim's "Warrior's Challenge" is two records, one's passage inside the other's): the longer.
+            if r.get("pointers"):
+                best = {}
+                for ptr in r["pointers"]:
+                    if ptr["kind"] == "book" and ptr.get("book"):
+                        if ptr["book"] not in best or len(ptr["words"]) > len(best[ptr["book"]]["words"]):
+                            best[ptr["book"]] = ptr
+                r["pointers"] = [p for p in r["pointers"] if p["kind"] != "book" or not p.get("book") or best[p["book"]] is p]
         with open(os.path.join(OUT, "places.json"), "w", encoding="utf-8") as f:
             json.dump({"summary": summary, "places": rows, "roads": raw.get("roads", [])}, f, separators=(",", ":"), ensure_ascii=False)
             f.write("\n")

@@ -8,28 +8,29 @@
 |---|---|
 | (none) | 4600 |
 | JobFarmer | 24 |
-| JobMerchant | 13 |
+| JobMerchant | 14 |
 | JobInnkeeper | 6 |
 | JobHireling | 6 |
 | JobMiner | 6 |
-| JobSpellVendor | 3 |
+| JobSpellVendor | 2 |
 | JobJarl | 2 |
-| JobHunter | 2 |
 | JobHostler | 2 |
 | JobHousecarl | 1 |
+| JobHunter | 1 |
 | JobSteward | 1 |
 | JobBlacksmith | 1 |
+| JobApothecary | 1 |
 
 ## By town
 
 | Town | People |
 |---|---|
-| (none) | 3412 |
+| (none) | 3424 |
 | Solitude | 176 |
 | Riften | 161 |
-| Windhelm | 144 |
+| Windhelm | 141 |
 | Markarth | 135 |
-| Whiterun | 120 |
+| Whiterun | 111 |
 | Winterhold | 94 |
 | Helgen | 50 |
 | Dawnstar | 44 |

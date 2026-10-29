@@ -127,7 +127,7 @@ SKILL_NAMES = {"Alchemy": "Alchemy", "Alteration": "Alteration", "Block": "Block
                "Destruction": "Destruction", "Enchanting": "Enchanting", "HeavyArmor": "Heavy Armor", "Illusion": "Illusion",
                "LightArmor": "Light Armor", "Lockpicking": "Lockpicking", "Marksman": "Marksman", "OneHanded": "One-Handed",
                "Pickpocket": "Pickpocket", "Restoration": "Restoration", "Smithing": "Smithing", "Sneak": "Sneak",
-               "Speechcraft": "Speechcraft", "TwoHanded": "Two-Handed"}
+               "Speechcraft": "Speech", "TwoHanded": "Two-Handed"}
 BOSS_CHEST_EDID = re.compile(r"ChestBoss")  # "TreasBanditChestBoss", "TreasDraugrChestBoss"...
 CRAFTING_FURN = {"CraftingBlackSmithForge": "a forge", "CraftingBlackSmithForgeWR": "a forge",
                  "CraftingBlackSmithForgeSkyforge": "the Skyforge", "CraftingBlacksmithAnvil": "an anvil",
@@ -243,6 +243,12 @@ OFF_MAP = []  # (name, plugin, why): named by a quest, allowed by its keywords, 
 MAPS = set()  # the worldspaces that are maps (place_pos.map_worlds), as the last build() found them; for the report
 LOST_MARKER = []  # (place, the marker's name it claimed, the place that kept it): for the report
 FARMS_OUT = []  # (id, name, the town its record sits under, found from): WO-171, the farms put on the map; for the report
+OUTSIDE_WALLS = []  # (id, name, the city its record sits under, found from): WO-180 Part 4a, buildings whose door opens on Tamriel, not on the city; for the report
+BIG_CITIES = {"Whiterun", "Windhelm", "Riften", "Solitude", "Markarth"}  # cities with a worldspace of their own: what is inside it is inside the walls
+# Bob's rulings (WO-180 Part 4): these stand outside Whiterun's walls. The door search finds more that open on Tamriel (listed in the report as candidates, not moved:
+# a city mod can open a house in the walls onto Tamriel), so a building moves only when it is named here and its door says so too.
+OUTSIDE_RULED = {"Honningbrew Meadery", "Whiterun Stables"}
+OUTSIDE_CANDIDATES = []  # (id, name, the city its record sits under): found by the door search, not ruled; for the report
 FARMS_IN = []  # (name, town): WO-171, farms that stay in their village (no exterior cells of their own); for the report
 DOOR_NAMED = []  # (the record's name, the name on the door, kind): WO-171; for the report
 DOOR_SKIPPED = []  # (the record's name, the name on the door, why not): WO-171
@@ -680,7 +686,7 @@ def build(version):
     xp, disc_xp, xp_from = clear_xp()
     cell_days, cleared_days = respawn_days()
     kname = lambda ks: {kw.get(k, k) for k in ks}  # noqa: E731
-    del DROPPED[:], OFF_MAP[:], LOST_MARKER[:], FARMS_OUT[:], FARMS_IN[:], DOOR_NAMED[:], DOOR_SKIPPED[:], INTERIOR_DROPPED[:], FARM_TYPED[:], STRAY_ACTORS[:], OTHER_PLANE[:]
+    del DROPPED[:], OFF_MAP[:], LOST_MARKER[:], FARMS_OUT[:], OUTSIDE_WALLS[:], OUTSIDE_CANDIDATES[:], FARMS_IN[:], DOOR_NAMED[:], DOOR_SKIPPED[:], INTERIOR_DROPPED[:], FARM_TYPED[:], STRAY_ACTORS[:], OTHER_PLANE[:]
     marker_of = {k: markers.get(l["marker"]) for k, l in locs.items() if l.get("marker") in markers and not markers[l["marker"]]["deleted"]}
     marker_world = lambda m: pp.canon((cells.get(m["cell"]) or {}).get("worldEdid"))  # noqa: E731  (the five city worlds are Tamriel's own coordinates)
 
@@ -861,13 +867,31 @@ def build(version):
                 return got
         return None
 
+    def outside_walls(k, p):
+        """WO-180 Part 4a: a city's record is the parent of buildings that stand outside it (Honningbrew Meadery and Whiterun Stables, next to Whiterun
+        and under its location). A city is a worldspace of its own, and what is in the city has doors that open onto it; a building whose way out opens
+        on Tamriel itself is outside the walls, a place of its own with its door as its position, and its city stays its nearest town."""
+        if p["inTown"] not in BIG_CITIES or k not in locs:
+            return None
+        got = pp.at_doors(cells_under.get(k, []), cells, doors, maps)
+        if got and got["world"] in maps and got.get("rawWorld") not in pp.CITY_WORLDS:
+            if p["name"] in OUTSIDE_RULED:
+                return got
+            OUTSIDE_CANDIDATES.append((k, p["name"], p["inTown"]))
+        return None
+
     def place_it(k, p):
         """Its position, by place_pos.py's order of trust; a place in a town has none of its own, but a farm in a field has."""
         if p.get("inTown"):
             got = farm_out(k, p)
+            if got:
+                FARMS_OUT.append((k, p["name"], p["inTown"], got["posFrom"]))
+            else:
+                got = outside_walls(k, p)
+                if got:
+                    OUTSIDE_WALLS.append((k, p["name"], p["inTown"], got["posFrom"]))
             if not got:
                 return
-            FARMS_OUT.append((k, p["name"], p["inTown"], got["posFrom"]))
             p["world"], p["pos"], p["posFrom"], p["inTown"] = got["world"], got["pos"], got["posFrom"], None
             return
         got = pp.locate(markers.get(p["marker"]) if p["marker"] else None, cells_under.get(k, []), cells, doors, maps)
@@ -1431,7 +1455,7 @@ def build(version):
                     places[k].setdefault("pointers", []).append({
                         "kind": "dialogue", "speaker": (npcs.get(inf["speaker"]) or {}).get("name") if inf["speaker"] else None,
                         "speakerPlace": where_npc(inf["speaker"]) if inf["speaker"] else None,
-                        "quest": (quests.get(inf["quest"]) or {}).get("name") if inf["quest"] else None,
+                        "quest": (quests.get(QUEST_PARTS.get(inf["quest"], inf["quest"])) or {}).get("name") if inf["quest"] else None,  # WO-180 Part 4a: a part goes under its quest, as in the quest list
                         "words": said, "record": f"INFO {iid} ({inf['plugin']})"})
         for bid, b in books.items():
             text = game_text(b["text"] or "")
@@ -1567,6 +1591,15 @@ def report(places, xp_from, cities=()):
         if FARMS_IN:
             out += ["", f"Farms that stay in their village, with no exterior cells of their own ({len(FARMS_IN)}; each is 20 to 100 m from its town's marker): "
                     + ", ".join(f"{nm} ({town})" for nm, town in sorted(FARMS_IN)) + "."]
+    if OUTSIDE_WALLS or OUTSIDE_CANDIDATES:
+        out += ["", f"### Buildings outside the city's walls ({len(OUTSIDE_WALLS)}) (WO-180 Part 4a)", "",
+                "A location the record parents to a city, whose door opens onto Tamriel itself and not onto the city's own worldspace, stands outside the walls. It is a place "
+                "of its own, put where its door is; the city stays its nearest town, and its people are not the city's.", "",
+                "| Place | Record's city | Found from |", "|---|---|---|"]
+        out += [f"| {nm} | {town} | {how} |" for _k, nm, town, how in sorted(OUTSIDE_WALLS, key=lambda o: o[1])]
+    if OUTSIDE_CANDIDATES:
+        out += ["", f"Buildings whose door opens on Tamriel too, left inside their city until Bob rules ({len(OUTSIDE_CANDIDATES)}): "
+                + ", ".join(sorted({f"{nm} ({town})" for _k, nm, town in OUTSIDE_CANDIDATES})) + "."]
     if DOOR_NAMED or DOOR_SKIPPED:
         out += ["", f"### Called by the name on the door ({len(DOOR_NAMED)}) (WO-171)", "",
                 "A house, shop or inn whose location has one interior cell name, and that name is not the record's, takes the cell's (what the game shows on the door); "
