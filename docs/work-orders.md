@@ -5291,7 +5291,7 @@ Decisions and reasons:
 - **A place with little known** (Moss Mother Cavern, Northwind Mine) shows one short "What is known" block (what it is, where, what finding it pays, traps, and that its danger is not known); its contents menu shows only with two or more entries. A lone "! Traps" is in the block.
 
 ## WO-179  A character is one shell: its build, its guide and its playthrough (Mac, 28 Oct 2026)
-Status: queued (Mac: Part 2, before WO-181)
+Status: building (Mac: Part 2)
 
 **Why.** Dave, 28 Oct: "A character is a shell that can hold: Build, Guide, Playthrough." Bob walked the whole flow signed in on staging (made "TEST: Bob walk": race, details, What next, Plan a playthrough, an act, an objective, ticked it, the Build tab, the Story editor; read Kyria's story). Underneath it is still two records joined by a dropdown, and it shows.
 
