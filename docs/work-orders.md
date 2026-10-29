@@ -5159,7 +5159,7 @@ Nothing is dropped from the database: the columns and tables stay (CLAUDE.md, no
 ---
 
 ## WO-180  Junk text out of the pages, and the last map faults (Mac and PC, 28 Oct 2026)
-Status: for Bob
+Status: queued (PC: Part 4a; Mac: Part 4b, then the test)
 
 **Why.** The fourth cold review (Bob's reviewer, 3,721 pages crawled, 51 walked at both widths) passed WO-176 to WO-178, and named what would still hit Dave in his first ten minutes: old text from the game files that was never cleaned. Bob confirmed the holes and Web Mother by hand. No order is done until a page-text test fails on each of these.
 ### Part 1. Quotes (PC writes the cleaner; Mac's test fails on any page)
@@ -5180,6 +5180,72 @@ Status: for Bob
 - [x] **`/changes` and pages for job templates**: "Hunter Marks Animal Den" and "Delivery for the npc" (a placeholder title with its own quest page). A job template with a placeholder name isn't a quest page or a change.
 - [x] **Moss Mother Cavern's body** is empty but for a one-link menu; Northwind Mine shows a lone "! Traps". A place with little known says what is known in one short block, not an empty page.
 - [ ] Then `for Bob`; Bob sends the reviewer again.
+
+### Part 4. What the review found (Bob's reviewer, 29 Oct; Bob checked the first four by hand on staging)
+Most of Parts 1 to 3 hold. Across 3,678 pages there is no `[pagebreak]`, no markup, no game-file sources, no " · " and no em dash. Othriel and Whiterun are right, the headings are plain, and the map labels and counts are right as the map first loads. These still fail.
+
+**Part 4a (PC, the cleaner and the reads)**
+- [ ] **Removing a hedge leaves "( )"** on 12 quest pages: all eight Thane quests ("when you enter Whiterun ( );"), The Endless Fall (three times), No Mercy, Unbound, Boethiah's Calling and Lazy Afternoon. Remove the brackets with the hedge.
+- [ ] **"in" stuck onto a phrase that already has its own preposition or hedge:**
+  - Hail Sithis: "The Night Mother in where her coffin ends up"
+  - The Endless Fall: "Altano in where No Mercy left him"
+  - Darkness Returns: "Karliah in where you come out"
+  - Bloodsucker: "Altano in most likely still in the Temple of Stendarr"
+  - Thus Spoke Khajiit
+
+  This is the same family as WO-177's "in in".
+- [ ] **Hedges without brackets go too** (Bob's call): 92 in the body of 64 pages, for example:
+  - "most likely beneath Stendarr's Beacon" (No Mercy)
+  - "Needs: Probably Black Marsh Maps." (Gray Cowl)
+  - "probably Ebony Warrior's Armor"
+
+  A fact the reads aren't sure of goes under Not sure yet, in the players' words, or isn't said.
+- [ ] **The record's role names and game blanks never print:**
+  - Before the Storm: "Talk to the riverwood friend in Riverwood", "with the faction friend". Use the person, or "your friend from Helgen" when the read can't name them.
+  - Cultists vs Player: "Search the the actor".
+  - A False Front: "Bring the documents to the field co".
+  - Angle-bracket blanks on 15 pages: "<the item>", "<the dungeon>", "<the place he names>", "<recipient>", "<fort>". These are the Dungeon Delving quests, Black Book, Dragonguard Archives, Bounty Forsworn 2, and Ralof, Hadvar and Brill.
+
+  Say what the blank is in plain words ("an item the job names") or leave the line out.
+- [ ] **Job names that are still placeholders:**
+  - "Delivery for the npc" and the two "The item" (Belethor's Sister)
+  - "Hunter Marks Animal Den" and "… 02" (Hunter's Mark)
+  - "Delivery for <recipient>" (Brill)
+
+  A job named that way gets a plain name ("A delivery", "Mark an animal den") or isn't listed.
+- [ ] **Riverwood credits Before the Storm's lines to "Season Unending"** (Ralof, Hod, Sigrid, Alvor). WO-178 found the records name the wrong quest; the quote's credit follows the fix.
+- [ ] **Editor talk in the body:**
+  - "From the quest script" and "Given by the quest's script" (7 pages, for example A Dying Wish)
+  - "(amount not in these files)" (61 pages)
+  - "(per the records; it sits next to Darkwater Crossing in Eastmarch)" (Extracting an Argonian)
+  - "the records here don't say who" (Gabriella)
+
+  A reward with no known amount says nothing about the amount. A source is "the quest" or "game files", never the script.
+- [ ] **"A Speechcraft skill book"** on 14 pages (Angarvunde). The game says Speech.
+- [ ] **Whiterun's Shops and beds** is a run-on of record pieces ("General goods at Belethor's General Goods, General goods, Goods from her market stall, … Trades from Belethor's General Goods lists"). Write one item per shop, with its name and what it sells, once.
+- [ ] **Hendraheim quotes "Warrior's Challenge" twice**, with overlapping text. Keep one.
+- [ ] **Whiterun counts Honningbrew Meadery and Whiterun Stables**, which are outside the walls. Part 2's rule stands: inside the city's worldspace only. They are listed on the Whiterun page as nearby, not as the city's.
+
+**Part 4b (Mac)**
+- [ ] **The page-text test catches all of the above:**
+  - "( )"
+  - " in where ", " in most likely", " in probably"
+  - unbracketed "probably" and "most likely" in the body
+  - angle-bracket blanks
+  - "the the"
+  - the role names "riverwood friend" and "faction friend"
+  - "quest script" and "these files"
+  - "Speechcraft"
+
+  Run it against the generated data and a sample of rendered pages, and make it fail before the PC's fix lands.
+- [ ] **Northwind Mine still shows a lone "! Traps"** above Worth going for. Its skill book keeps the What is known block from showing. Put Traps in the danger line, as other places do, whatever else the place has.
+- [ ] **Route stops still overlap labels at 390 once zoomed out:**
+  - Forbidden Legend: stop 3 sits on Folgunthur after two zoom-outs, by wheel or with −.
+  - The Golden Claw: stop 2 runs into the bottom of Bleak Falls Barrow on the third zoom-out.
+
+  Lay labels out again on every zoom, not only on first load. The test zooms out three times at 390.
+- [ ] **/map at 390:** a cluster badge pokes out from behind the N button. The "N on the map" explanation is only in a title, which phones never show, so show it in the panel too.
+- [ ] Screenshots of each fixed page at 1440 and 390, then `for Bob`. Bob sends the reviewer again.
 
 Jeff's notes on WO-180 (PC, 28 Oct):
 - **Quotes** (`places.py`, `build.py`): one cleaner, `game_text()`, runs on a book's whole text and on every dialogue line before a quote is cut: `<Alias=Player>` is "you"; any other `<Alias…>`, `<Global…>` or `<Token…>` leaves a hole mark and a quote with one in what is cut around it is left out (the next mention of the place in that book is tried; the Lakeview and Windstad charters have no mention without a hole, so they are not quoted); every other tag (`<font …>`, `<img …>`) and `[pagebreak]` goes before the cut, so no `size="18">` stub is left. A quote names a quest only when it is a quest on the Quests pages by that name; the game's own dialogue quest ("Riften Dialogue") moves to a new field, `dialogue`, which no page shows. Why keep it: the assistant's town gossip (`suggest.ts`, WO-151) reads it to say which town a line with no speaker is about (`wo151.test.ts` caught the first try, which dropped it). A dialogue line with no speaker stays in the data for the same reason; `saidAbout()` leaves it off the pages (one line in `said.ts`: "no speaker, no quote"). 4,761 pointers became 4,741: twenty had a hole in them and went (Lakeview and Windstad Manors no longer quote their charters; Hendraheim, Rorikstead and the rest have none left with markup). The Mac's page-text test is mine too: `wo180.test.ts` runs `saidAbout()` on every place and fails on markup, a hole, a speakerless line or a quest no player has.
