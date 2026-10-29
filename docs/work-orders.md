@@ -5084,6 +5084,7 @@ Status: building (Mac)
 - [x] **A character with no cover** has the blank hatched band on its page (TEST: Bob walk). The WO-164 fallback (race icon on the night blues) everywhere a character has no cover.
 - [x] **The objective editor** shows a "Stage" box beside the quest (a record's number: players don't know stages); typing a quest name in What to do doesn't offer the quest; clicking outside closes the form and saves half of it. Stage goes (pick the quest's step from its steps by name, if needed); What to do offers quests, places and people as you type; the form saves with Add, or keeps open.
 - [x] **Edit opens on the playthrough**; it opens on the tab you were on.
+- [ ] **No read times** (Dave, 28 Oct): the Guide tab's "N min read" goes, and no page says how long something takes to read. With a video the tab says "Video"; otherwise the tab has its name alone.
 - [ ] Bob walks it again signed in (make a character, plan a playthrough, edit, the story, the redirects from Kyria's old `/p/` links); screenshots of each step at 1440 and 390; then `for Bob`.
 
 ### Mac's progress notes (28 Oct)
