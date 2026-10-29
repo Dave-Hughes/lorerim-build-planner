@@ -356,8 +356,10 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
       if (!it.named) continue;
       const w = it.p.name.length * 7.4 + 22;
       const box: [number, number, number, number] = it.side === "right" ? [it.x + 8, it.y - 12, it.x + 14 + w, it.y + 12] : [it.x - 14 - w, it.y - 12, it.x - 8, it.y + 12];
-      // A route's stops come first; two that would overlap show their numbers only (WO-180).
-      if (taken.some((t) => box[0] < t[2] && box[2] > t[0] && box[1] < t[3] && box[3] > t[1])) it.named = false;
+      // A route's stops come first; two that would overlap show their numbers only (WO-180). A name never runs under another stop's number
+      // either (WO-180 Part 4b: Saarthal's 3 under "Folgunthur" once zoomed out), at every zoom, since this is worked out again with each.
+      const overStop = out.some((o) => o !== it && inRoute.has(o.p.slug) && box[0] < o.x + 12 && box[2] > o.x - 12 && box[1] < o.y + 12 && box[3] > o.y - 12);
+      if (overStop || taken.some((t) => box[0] < t[2] && box[2] > t[0] && box[1] < t[3] && box[3] > t[1])) it.named = false;
       else taken.push(box);
     }
     // Places inside one town are one pin, a count on the town's plate (WO-178): "Whiterun, 5 places".
@@ -407,13 +409,15 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
     const withCity = new Map<string, number>();
     const kept = clusters.filter((c) => {
       if (underSheet(c.x, c.y)) return false;
+      // A badge is not drawn under a control either: the zoom buttons, the N, the search (WO-180 Part 4b: a count poking out behind the N on a phone).
+      if (covered.over.some((o) => c.x + 14 > o[0] && c.x - 14 < o[2] && c.y + 14 > o[1] && c.y - 14 < o[3])) return false;
       const city = singles.find((it) => it.p.kind === "city" && Math.abs(it.x - c.x) < 90 && Math.abs(it.y - c.y) < 20);
       // With no kind picked a city's label has no number (WO-180: it was the nearby cluster, and changed with the zoom): the badge is not drawn.
       if (city) return false;
       return true;
     });
     return { singles: singles.map((it) => (withCity.has(it.p.slug) ? { ...it, extra: withCity.get(it.p.slug) } : it)), clusters: kept };
-  }, [items, k, selected, inRoute, lit, size.w, underSheet]);
+  }, [items, k, selected, inRoute, lit, size.w, underSheet, covered]);
 
   // The tiles in view: the half-size ones from afar, the full-size ones close in; the whole picture is under them while they load.
   const tileZoom = k < 0.5 ? 0 : 1;
@@ -607,6 +611,8 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
                   With a quest
                 </button>
               </div>
+              {/* What the numbers are, said in the panel: the chips' titles never show on a phone (WO-180 Part 4b). */}
+              <p className={s.chipNote}>The number beside each kind is how many of them are on the map.</p>
             </section>
 
             {route && (

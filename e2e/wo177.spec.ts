@@ -314,6 +314,14 @@ const textOf = (html: string) =>
     .replace(/&amp;/g, "&")
     .replace(/&#x27;|&apos;/g, "'")
     .replace(/\s+/g, " ");
+/** The page's own words: what the game says is left out (a step's objective, a quote and who said it in what quest), as the reads' tests do (WO-180 Part 4b). */
+const ownWords = (html: string) =>
+  textOf(
+    html
+      .replace(/<li><span class="[^"]*__num">[\s\S]*?<\/li>/g, " ")
+      .replace(/<p class="[^"]*quote[^"]*">[\s\S]*?<\/p>/g, " ")
+      .replace(/<small>[\s\S]*?<\/small>/g, " "),
+  );
 
 test("Part 5: no page shows a plugin file, a record id or a bracket hedge, and no quest says '1 ways'", async ({ request }) => {
   test.setTimeout(420_000);
@@ -339,8 +347,10 @@ test("Part 5: no page shows a plugin file, a record id or a bracket hedge, and n
     for (let i = 0; i < urls.length; i += 6) await Promise.all(urls.slice(i, i + 6).map(async (u) => fn(u, await get(u))));
   };
   const texts = new Map<string, string>();
+  const own = new Map<string, string>();
   await batch(lines, (u, html) => {
     texts.set(u, textOf(html));
+    own.set(u, ownWords(html));
     for (const q of hrefs(html, /href="(\/quests\/q\/[a-z0-9-]+)"/g)) pages.add(q);
     for (const p of hrefs(html, /href="(\/people\/[a-z0-9-]+)"/g)) people.add(p);
     for (const p of hrefs(html, /href="(\/places\/[a-z0-9-]+)"/g)) places.add(p);
@@ -348,11 +358,18 @@ test("Part 5: no page shows a plugin file, a record id or a bracket hedge, and n
   const quests = [...pages].filter((u) => u.startsWith("/quests/q/"));
   await batch(quests, (u, html) => {
     texts.set(u, textOf(html));
+    own.set(u, ownWords(html));
     for (const p of hrefs(html, /href="(\/people\/[a-z0-9-]+)"/g)) people.add(p);
     for (const p of hrefs(html, /href="(\/places\/[a-z0-9-]+)"/g)) places.add(p);
   });
-  await batch([...people].slice(0, 400), (u, html) => texts.set(u, textOf(html)));
-  await batch([...places].slice(0, 300), (u, html) => texts.set(u, textOf(html)));
+  await batch([...people].slice(0, 400), (u, html) => {
+    texts.set(u, textOf(html));
+    own.set(u, ownWords(html));
+  });
+  await batch([...places].slice(0, 300), (u, html) => {
+    texts.set(u, textOf(html));
+    own.set(u, ownWords(html));
+  });
   expect(texts.size).toBeGreaterThan(800);
   const bad: string[] = [];
   for (const [u, t] of texts) {
@@ -375,6 +392,23 @@ test("Part 5: no page shows a plugin file, a record id or a bracket hedge, and n
     if (key) bad.push(`${u}: field key ${key}`);
     if (/(?<![-\w])(?:in|at) in\b|(?<![-\w])in around\b/.test(t)) bad.push(`${u}: in in`);
     if (/\(presumably\b|\(not checked yet\)|the records don't show/i.test(t.replace(/Information Confidence[\s\S]*$/, ""))) bad.push(`${u}: a hedge in the body`);
+    // WO-180 Part 4b: what the fourth review found on rendered pages. What a character says in quotes is the game's own, hedges and all.
+    const body = (own.get(u) ?? t).replace(/Information Confidence[\s\S]*$/, "");
+    const said = body.replace(/["“][^"”]*["”]/g, "");
+    const slip = [
+      [/\(\s*\)/, "an empty bracket", body],
+      [/ in (?:where|most likely|probably)\b/i, "a guess after in", said],
+      [/\b(?:probably|most likely)\b/i, "a guess in the body", said],
+      [/&lt;[^&]{1,40}&gt;|<[A-Za-z][^<>]{0,40}>/, "an angle-bracket blank", body],
+      [/\bthe the\b/i, "the the", body],
+      [/\b(?:riverwood|faction) friend\b/i, "a role name from the files", said],
+      [/\bquest'?s? script\b|\bthese files\b/i, "a note about the files", said],
+      [/\bSpeechcraft\b/, "Speechcraft (the skill is Speech)", said],
+    ] as const;
+    for (const [re, what, text] of slip) {
+      const m = re.exec(text);
+      if (m) bad.push(`${u}: ${what}: ${text.slice(Math.max(0, m.index - 40), m.index + 60)}`);
+    }
   }
   expect(bad.slice(0, 40)).toEqual([]);
 });
@@ -498,4 +532,64 @@ test("WO-180 Part 3 (Mac): no label under the panel with a kind picked, a route'
   await page.goto("/places");
   const heads = await page.locator("main h2").allInnerTexts();
   for (const h of heads) expect(h, h).not.toMatch(/ hold$/);
+});
+
+test("WO-180 Part 4b (Mac): a route's stops stay clear of every label after each zoom out at 390, and the Traps flag sits in Northwind Mine's danger line", async ({ page }) => {
+  test.setTimeout(120_000);
+  await page.setViewportSize({ width: 390, height: 844 });
+  for (const quest of ["forbidden-legend", "the-golden-claw"]) {
+    await page.goto(`/map?quest=${quest}`);
+    await page.waitForTimeout(1800);
+    const map = page.getByRole("group", { name: "Map of Skyrim" });
+    const check = async (step: string) => {
+      // Every numbered stop and every name, in the window's pixels: no stop's number sits on another place's name, and no two names overlap.
+      const boxes = await map.locator("a[class*='pin']").evaluateAll((pins) =>
+        pins.map((p) => {
+          const r = (el: Element | null) => {
+            const b = el?.getBoundingClientRect();
+            return b && b.width ? [b.left, b.top, b.right, b.bottom] : null;
+          };
+          return { num: r(p.querySelector("i")), plate: r(p.querySelector("[class*='plate']")), label: p.textContent ?? "" };
+        }),
+      );
+      const hit = (a: number[], b: number[]) => a[0] < b[2] && a[2] > b[0] && a[1] < b[3] && a[3] > b[1];
+      for (let i = 0; i < boxes.length; i++) {
+        for (let j = 0; j < boxes.length; j++) {
+          if (i === j) continue;
+          const [a, b] = [boxes[i], boxes[j]];
+          if (a.num && b.plate && hit(a.num, b.plate)) throw new Error(`${quest} ${step}: stop ${a.label} sits on the name ${b.label}`);
+          if (i < j && a.plate && b.plate && hit(a.plate, b.plate)) throw new Error(`${quest} ${step}: the names ${a.label} and ${b.label} overlap`);
+        }
+      }
+    };
+    await check("on opening");
+    for (let n = 1; n <= 3; n++) {
+      await page.getByRole("button", { name: "Zoom out" }).click();
+      await page.waitForTimeout(900);
+      await check(`after zoom out ${n}`);
+      await page.screenshot({ path: `test-results/wo180-4b-${quest}-zoom${n}-390.png` });
+    }
+  }
+  // /map at 390: no count badge under the zoom buttons, the N or the search, at the opening view and zoomed out; the panel says what its numbers are.
+  await page.goto("/map");
+  await page.waitForTimeout(1500);
+  for (let n = 0; n <= 2; n++) {
+    if (n) {
+      await page.getByRole("button", { name: "Zoom out" }).click();
+      await page.waitForTimeout(700);
+    }
+    const controls = await page.locator("[class*='plate'][aria-label='Zoom in'], [class*='plate'][aria-label='Zoom out'], [class*='plate'][aria-label^='North']").evaluateAll((els) => els.map((e) => e.getBoundingClientRect()).map((b) => [b.left, b.top, b.right, b.bottom]));
+    const badges = await page.locator("button[class*='cluster']").evaluateAll((els) => els.map((e) => e.getBoundingClientRect()).map((b) => [b.left, b.top, b.right, b.bottom]));
+    for (const b of badges) for (const c of controls) expect(b[0] < c[2] && b[2] > c[0] && b[1] < c[3] && b[3] > c[1], `a count under a control after ${n} zoom outs`).toBe(false);
+  }
+  await page.getByRole("button", { name: "Open search and filters" }).click();
+  await expect(page.getByRole("complementary", { name: "Map controls" })).toContainText("The number beside each kind is how many of them are on the map.");
+  await page.screenshot({ path: "test-results/wo180-4b-map-panel-390.png" });
+  await page.goto("/places/northwind-mine");
+  await expect(page.getByRole("region", { name: "Danger" })).toContainText("How dangerous it is isn't known yet");
+  await expect(page.getByRole("region", { name: "Danger" })).toContainText("Traps");
+  await page.screenshot({ path: "test-results/wo180-4b-northwind-390.png", fullPage: true });
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/places/northwind-mine");
+  await page.screenshot({ path: "test-results/wo180-4b-northwind-1440.png", fullPage: true });
 });

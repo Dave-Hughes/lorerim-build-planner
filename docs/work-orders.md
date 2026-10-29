@@ -5159,7 +5159,7 @@ Nothing is dropped from the database: the columns and tables stay (CLAUDE.md, no
 ---
 
 ## WO-180  Junk text out of the pages, and the last map faults (Mac and PC, 28 Oct 2026)
-Status: building (Mac: Part 4b, then the test)
+Status: for Bob
 
 **Why.** The fourth cold review (Bob's reviewer, 3,721 pages crawled, 51 walked at both widths) passed WO-176 to WO-178, and named what would still hit Dave in his first ten minutes: old text from the game files that was never cleaned. Bob confirmed the holes and Web Mother by hand. No order is done until a page-text test fails on each of these.
 ### Part 1. Quotes (PC writes the cleaner; Mac's test fails on any page)
@@ -5240,7 +5240,7 @@ Every Part 4a box is ticked. Checks: Python 470 OK (16 new in `scripts/gamedata/
 - **Not done:** "Kindred Judgment"'s "with you, after you take Auriel's Bow" would still read "in with you" as a place; it isn't on Bob's list.
 
 **Part 4b (Mac)**
-- [ ] **The page-text test catches all of the above:**
+- [x] **The page-text test catches all of the above:**
   - "( )"
   - " in where ", " in most likely", " in probably"
   - unbracketed "probably" and "most likely" in the body
@@ -5251,14 +5251,21 @@ Every Part 4a box is ticked. Checks: Python 470 OK (16 new in `scripts/gamedata/
   - "Speechcraft"
 
   Run it against the generated data and a sample of rendered pages, and make it fail before the PC's fix lands.
-- [ ] **Northwind Mine still shows a lone "! Traps"** above Worth going for. Its skill book keeps the What is known block from showing. Put Traps in the danger line, as other places do, whatever else the place has.
-- [ ] **Route stops still overlap labels at 390 once zoomed out:**
+- [x] **Northwind Mine still shows a lone "! Traps"** above Worth going for. Its skill book keeps the What is known block from showing. Put Traps in the danger line, as other places do, whatever else the place has.
+- [x] **Route stops still overlap labels at 390 once zoomed out:**
   - Forbidden Legend: stop 3 sits on Folgunthur after two zoom-outs, by wheel or with −.
   - The Golden Claw: stop 2 runs into the bottom of Bleak Falls Barrow on the third zoom-out.
 
   Lay labels out again on every zoom, not only on first load. The test zooms out three times at 390.
-- [ ] **/map at 390:** a cluster badge pokes out from behind the N button. The "N on the map" explanation is only in a title, which phones never show, so show it in the panel too.
-- [ ] Screenshots of each fixed page at 1440 and 390, then `for Bob`. Bob sends the reviewer again.
+- [x] **/map at 390:** a cluster badge pokes out from behind the N button. The "N on the map" explanation is only in a title, which phones never show, so show it in the panel too.
+- [x] Screenshots of each fixed page at 1440 and 390, then `for Bob`. Bob sends the reviewer again.
+
+Jeff's notes on Part 4b (Mac, 29 Oct):
+Every Part 4b box is ticked. Checks: typecheck, lint, `npm test` (807 passed, 7 expected fail, 1 skipped), `npm run build`, and the full `npm run test:e2e` (559 passed, one failure that passes in three runs of its file alone: `wo116` "previous and next walk the tale…" ended on the chapter's address instead of the page after the reader's back link. The same click comes right after "Read it anyway", which saves the read and refreshes the page it was on (WO-179), so under load the refresh can land after the way back; a person reading doesn't click that fast, so I left it and say it here). Screenshots (1440 and 390) are written by `npx playwright test e2e/wo177.spec.ts -g "Part 4b"` into `test-results/wo180-4b-*.png`: Northwind Mine at both widths, Forbidden Legend and The Golden Claw at 390 after each of three zoom-outs, and /map at 390 with the panel open.
+- **The page-text test** is the crawl in `e2e/wo177.spec.ts` ("Part 5: no page shows…", about 1,500 pages), with one more block of checks on each page's own words: an empty bracket, "in where / in most likely / in probably", a bare "probably" or "most likely", an angle-bracket blank, "the the", "riverwood friend", "faction friend", "quest script", "these files" and "Speechcraft". Its own words exclude what the game says: a step's objective (the numbered list on a quest page), a quote card and the "in {quest}" under who said it, and anything in quote marks. Without that, 13 pages failed on the game's own text ("the White Hall, probably talking about Ulfric", the Ordo's "the the Imperial Province", the numbered "most likely to destroy the city"). **I could not show it failing before the PC's fix landed**: Part 4a was already on staging when I took this part. The first run of the new block found only that game text and nothing of the PC's patterns; `src/lib/pages/wo180-4a.test.ts` (PC) walks the same patterns over the data itself.
+- **Northwind Mine:** a place with traps and no levels shows "How dangerous it is isn't known yet." and then the "! Traps" flag in its Danger section, so the flag is not alone above Worth going for. A place with levels keeps the gauge and the flag as before.
+- **Route stops:** a stop's name is dropped (its number stays) when it would run under another stop's number, worked out with every zoom like the other overlaps (it was only checked name against name). The new test zooms out three times with the − button at 390 for Forbidden Legend and The Golden Claw and fails on a number under a name or two names over each other; it failed on Saarthal's 3 under Folgunthur's name before the change.
+- **/map at 390:** a count badge is not drawn when it would sit under the zoom buttons, the N or the search. The panel says what the numbers beside each kind are: "The number beside each kind is how many of them are on the map." (the chips keep their title for a mouse).
 
 Jeff's notes on WO-180 (PC, 28 Oct):
 - **Quotes** (`places.py`, `build.py`): one cleaner, `game_text()`, runs on a book's whole text and on every dialogue line before a quote is cut: `<Alias=Player>` is "you"; any other `<Alias…>`, `<Global…>` or `<Token…>` leaves a hole mark and a quote with one in what is cut around it is left out (the next mention of the place in that book is tried; the Lakeview and Windstad charters have no mention without a hole, so they are not quoted); every other tag (`<font …>`, `<img …>`) and `[pagebreak]` goes before the cut, so no `size="18">` stub is left. A quote names a quest only when it is a quest on the Quests pages by that name; the game's own dialogue quest ("Riften Dialogue") moves to a new field, `dialogue`, which no page shows. Why keep it: the assistant's town gossip (`suggest.ts`, WO-151) reads it to say which town a line with no speaker is about (`wo151.test.ts` caught the first try, which dropped it). A dialogue line with no speaker stays in the data for the same reason; `saidAbout()` leaves it off the pages (one line in `said.ts`: "no speaker, no quote"). 4,761 pointers became 4,741: twenty had a hole in them and went (Lakeview and Windstad Manors no longer quote their charters; Hendraheim, Rorikstead and the rest have none left with markup). The Mac's page-text test is mine too: `wo180.test.ts` runs `saidAbout()` on every place and fails on markup, a hole, a speakerless line or a quest no player has.

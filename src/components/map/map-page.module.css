@@ -330,6 +330,12 @@ a.pin:hover i:not(:empty) {
   font-size: 13px;
   color: #c9b58a;
 }
+.chipNote {
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #c9b58a;
+}
 .searchBox input {
   width: 100%;
   box-sizing: border-box;

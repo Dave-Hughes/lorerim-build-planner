@@ -286,6 +286,9 @@ export default async function PlacePage({ params }: { params: Params }) {
               </>
             ) : a?.hostile === false ? (
               <p className={styles.way}>Nobody here is hostile.</p>
+            ) : !realm ? (
+              // Traps with no levels known (Northwind Mine) sit in the danger line with what is not known, not alone above Worth going for (WO-180 Part 4b).
+              <p className={styles.way}>How dangerous it is isn&apos;t known yet.</p>
             ) : null}
             {place.danger?.traps && (
               <div className={styles.flag}>
