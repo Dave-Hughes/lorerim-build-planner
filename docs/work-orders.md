@@ -5378,8 +5378,8 @@ These don't hold:
 - [x] **Small**: the Build tab says "Levels 1 to 1" for a one-level plan ("Level 1"). A visitor's Build tab says the birthsign is missing twice ("Not chosen yet" in the row and "No birthsign chosen yet." under the level).
 - [ ] **From the reviewer (signed out):**
   - Kyria's run on no build became `/b/mgf6t6a64y` only when its owner opened it. Until then visitors saw the old page, and `/characters?run=1` linked to `/p/`. On production every such run stays on the old page until its owner visits.
-  - The fix is `scripts/backfill-characters.ts --apply`, which writes to the database, so **Dave says yes first** and Mac runs it on staging, then production.
-  - A character made from a run with nothing planned says "Planned to level 1" and "LV 1" and offers "Copy to my builds": say nothing about a plan, and don't offer the copy.
+  - [ ] The fix is `scripts/backfill-characters.ts --apply`, which writes to the database, so **Dave says yes first** and Mac runs it on staging, then production. **Not run: waiting for Dave.**
+  - [x] A character made from a run with nothing planned says "Planned to level 1" and "LV 1" and offers "Copy to my builds": say nothing about a plan, and don't offer the copy.
 - [ ] **Not fixed here**: the reader bar overlapping at 390, the name twice in the reader bar and on the story card, "Her story" fixed for every pronoun, and the done stories' `/p/` links. All are in the Story, which WO-181 Part 3 retires.
 - [ ] Screenshots of each fix at 1440 and 390, then `for Bob`. Bob walks it again.
 
@@ -5387,7 +5387,7 @@ These don't hold:
 
 
 ### Mac's notes on Part 2 (29 Oct)
-All nine boxes are built. Checks: typecheck, lint, `npm test` (811 passed), `npm run build`, and the full `npm run test:e2e` (the full run: 548 passed, 8 failed; every failure was then looked at and the affected files rerun, all passing; see below). New spec `e2e/wo179b.spec.ts` (five tests); `wo114`, `wo117`, `wo159`, `wo164` and `wo179` changed for the new editor addresses.
+All nine boxes are built. Checks: typecheck, lint, `npm test` (811 passed), `npm run build`, and the full `npm run test:e2e` (a first full run found 8 failures (below); after fixing them the full run passed, 572 of 572). New spec `e2e/wo179b.spec.ts` (five tests); `wo114`, `wo117`, `wo159`, `wo164` and `wo179` changed for the new editor addresses.
 
 Decisions and reasons:
 - **The editor is under the character.** `/b/<id>/edit/play` (the run's editor, or Plan a playthrough when there is no run), `/b/<id>/edit/story/<page>` (`title`, a chapter's id, `act-<id>`), beside the build editor at `/b/<id>/edit`. I used paths, not `?tab=playthrough`, so that changing tab is a change of route like the others; `/b/<id>/edit?tab=playthrough` (and `&act=`) still lands on it. `/p/<id>/edit`, `/edit/play`, `/edit/story[/…]`, `/edit/tale/<n>` and `/b/<id>/play` all redirect. A run from before characters (no build) is still edited under `/p/` until it is given one; every link the editors make comes from one helper, `src/lib/playthroughs/hrefs.ts`.
@@ -5398,6 +5398,7 @@ Decisions and reasons:
 - **Creation's rail:** on What next, Details is behind you and ticked, What next is the current step. Choosing any step leaves What next. The address stays `?step=name` (What next is not a step key, so saved drafts keep working); say if you want `?step=next`.
 - **What next's text** says "her run" and "her page" (his, their). It is as wide as the column; the paragraph, the buttons and the rule under them start at one edge.
 - **No cover:** the race's icon, or the planner's star when no race is chosen, on the `/me` card and in the edit bar's thumbnail.
+- **Nothing planned** (the reviewer's signed-out finding): a character with no race and no perks no longer says "Planned to level 1" on its page, "LV 1" on its card, or offers "Copy to my builds" to a visitor. The helper that says "nothing planned" moved to `src/lib/playthroughs/unplanned.ts` so the page and the writes share it.
 - **Small:** one level reads "Level 1" on the Build tab; the level card no longer prints "No race chosen yet." or "No birthsign chosen yet." under a row that already says "Not chosen yet".
 
 Not done, and said so: the new spec cannot show the one-visibility test failing before the change without rebuilding the old code; it shows the visitor now sees the run, and that the editor and the character say the same.

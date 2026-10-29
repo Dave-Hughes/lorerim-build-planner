@@ -12,6 +12,7 @@ import { newAccountHold } from "@/lib/moderation/limits";
 import { actSchema, answersSchema, chapterTitleSchema, detailsSchema, neverSchema, firstIssue, stopKey, taleSchema, objectiveSchema, snapshotSchema, type ActInput, type ObjectiveInput, type SnapshotInput } from "./validate";
 import { PLAYTHROUGH_LIMITS, type Answer, type ChapterKind, type Never, type ObjectiveStatus, type RouteStop } from "./types";
 import { storyOrder } from "./view";
+import { unplanned } from "./unplanned";
 
 /**
  * A playthrough's writes (WO-111), shared by the edit page's actions and the assistants' tools, so
@@ -778,9 +779,6 @@ export async function makeCharacterOfRun(userId: string, runId: string): Promise
  * which must be the player's and have no run; the made-up character, if nothing was planned on it, is removed. Both are the player's own.
  */
 /** A character nothing was planned on: no race and no perks (the shell a run makes of itself). */
-function unplanned(plan: { race?: unknown; levels: { perks?: unknown[] }[] }) {
-  return !plan.race && plan.levels.every((l) => !l.perks?.length);
-}
 
 export async function joinCharacter(userId: string, runId: string, targetBuildId: string) {
   const p = await ownedPlaythrough(userId, runId);

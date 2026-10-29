@@ -45,6 +45,7 @@ import { Avatar } from "@/components/ui/avatar";
 import { InfoTip } from "@/components/ui/info-tip";
 import { AttributeIcon, DeityIcon, GameIcon, IconLabel, SignIcon, SkillIcon, SkillLabel, MarkIcon, SlotIcon, TagIcon } from "@/components/ui/skill-icon";
 import { ArrowTip, LevelBars, LevelLegend, LevelStepper, RunHere, useArrowTip, useHoldInPlace } from "./level-nav";
+import { unplanned } from "@/lib/playthroughs/unplanned";
 import { levelsLine, skips, stretchAt, stretches, writtenLevels } from "@/lib/rules/stretches";
 import { BottomSheet, PerkDetails, Tree, ViewToggle, type TreeView } from "./tree";
 import styles from "./build-view.module.css";
@@ -1597,6 +1598,8 @@ function Cover({
   ownerControls?: React.ReactNode;
   startRun?: string | null;
 }) {
+  // A character nothing is planned on says nothing about a plan, and there is nothing to copy (WO-179 Part 2).
+  const nothingPlanned = !build.isSample && unplanned(build.plan);
   const router = useRouter();
   const [copied, setCopied] = useState(false);
   const [pending, start] = useTransition();
@@ -1713,10 +1716,15 @@ function Cover({
             {skips(build.plan) && <span className={styles.writtenLevels}>{levelsLine(writtenLevels(build.plan))}</span>}
             {/* One unit, so a wrap never leaves the bar dangling at a line's end. */}
             <span className={styles.dates}>
-              <span>Planned to level {build.plan.levels.length}</span>
-              <span className={styles.pipe} aria-hidden="true">
-                |
-              </span>
+              {/* A character nothing is planned on says nothing about a plan (WO-179 Part 2). */}
+              {!nothingPlanned && (
+                <>
+                  <span>Planned to level {build.plan.levels.length}</span>
+                  <span className={styles.pipe} aria-hidden="true">
+                    |
+                  </span>
+                </>
+              )}
               <span>
                 Updated <LocalDate date={build.updatedAt} />
               </span>
@@ -1766,7 +1774,7 @@ function Cover({
                 Edit
               </Link>
             )
-          ) : signedIn ? (
+          ) : nothingPlanned ? null : signedIn ? (
             <button type="button" className={video ? "btn" : "btn btn-primary"} onClick={copyToMine} disabled={pending}>
               {pending ? "Copying…" : "Copy to my builds"}
             </button>

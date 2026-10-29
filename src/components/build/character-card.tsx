@@ -103,10 +103,13 @@ export function CharacterCard({ build: b, run, wide, under }: { build: BuildSumm
               </svg>
               {b.likeCount}
             </span>
-            <span className={styles.level} aria-label={`Planned to level ${b.levels}`}>
-              <small>LV</small>
-              {b.levels}
-            </span>
+            {/* No race chosen: nothing is planned, so no level is said (WO-179 Part 2). */}
+            {b.race ? (
+              <span className={styles.level} aria-label={`Planned to level ${b.levels}`}>
+                <small>LV</small>
+                {b.levels}
+              </span>
+            ) : null}
           </span>
         </span>
       </Link>

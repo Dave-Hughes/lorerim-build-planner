@@ -80,6 +80,9 @@ test("a character has one visibility: set from the playthrough's editor, the cha
   await page.goto(`/b/${buildId}`);
   await expect(page.getByRole("heading", { level: 1, name: "E2E One Visibility" })).toBeVisible();
   await expect(page.getByRole("region", { name: "Act I The Sister's House" })).toBeVisible();
+  // Nothing is planned on it: no "Planned to level" and nothing to copy.
+  await expect(page.getByText(/Planned to level/)).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Copy to my builds" })).toHaveCount(0);
   await page.goto(`/p/${pt}`);
   await expect(page).toHaveURL(new RegExp(`/b/${buildId}\\?tab=playthrough`));
   // Set from the character's side, the run follows: back to private, the visitor has neither.
@@ -185,6 +188,7 @@ test("a character with no cover and no race shows the planner's mark, in the edi
     const card = page.getByRole("article").filter({ hasText: "E2E One Visibility" });
     const mark = card.locator("img[class*='plainIcon']");
     await expect(mark).toHaveAttribute("src", "/icons/logo-0.svg");
+    await expect(card.getByLabel(/^Planned to level/)).toHaveCount(0);
     await card.scrollIntoViewIfNeeded();
     await page.screenshot({ path: `test-results/wo179b-no-cover-card-${width}.png` });
   }
