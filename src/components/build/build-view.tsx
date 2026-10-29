@@ -30,7 +30,7 @@ import { guideHeadings } from "@/components/guide/guide-view";
 import { LocalDate } from "@/components/ui/local-date";
 import { GuideSection } from "@/components/guide/guide-section";
 import { LevelNote } from "@/components/guide/level-note";
-import { docText, docWords, firstParagraph, isEmptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
+import { docText, firstParagraph, isEmptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
 import { GuideView } from "@/components/guide/guide-view";
 import { ReadTheStory, useReading } from "@/components/reader/reader";
 import { AiAssisted } from "@/components/ui/ai-assisted";
@@ -135,11 +135,18 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
   const overview = guide.overview && !isEmptyDoc(guide.overview) ? guide.overview : null;
   // The Guide tab holds the guide and the video guide (WO-39), either or both. A character's run is
   // the first tab, Play (WO-116); the Story is no tab, it opens in the reader.
-  const tabs: BuildTab[] = [...(playTab ? (["play"] as const) : []), "levels", ...(overview || plan.videoId ? (["guide"] as const) : [])];
+  // An empty tab shows its owner how to start it and its visitors nothing (WO-179): Build says Plan the levels, Guide Write a guide, Playthrough Plan a playthrough.
+  const planned = !!plan.race;
+  const ownerTabs = isOwner && !build.isSample && !!playTab ? true : false;
+  const tabs: BuildTab[] = [
+    ...(playTab || (isOwner && startRun) ? (["play"] as const) : []),
+    ...(planned || ownerTabs || !playTab ? (["levels"] as const) : []),
+    ...(overview || plan.videoId || ownerTabs ? (["guide"] as const) : []),
+  ];
   // "Watch the video guide" in the hero: opens the Guide tab at the video and starts it.
   const [play, setPlay] = useState(0);
   const [tabState, setTabState] = useState<BuildTab>(initialTab);
-  const tab = tabs.includes(tabState) ? tabState : "levels";
+  const tab: BuildTab = tabs.includes(tabState) ? tabState : tabs.includes("levels") ? "levels" : tabs[0];
   const home: BuildTab = playTab ? "play" : "levels";
   const setUrl = (key: string, value: string | null) => {
     const url = new URL(window.location.href);
@@ -150,7 +157,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
   const setTab = (t: BuildTab) => {
     if (tabLinks?.[t]) return router.push(tabLinks[t]!);
     setTabState(t);
-    setUrl("tab", t === home ? null : t);
+    setUrl("tab", t === home ? null : t === "play" ? "playthrough" : t);
   };
 
   // The open level is the one that holds its stretch's choices (WO-69): `?level=20` opens the stretch holding 20.
@@ -201,11 +208,10 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
   // Named as the edit tabs are (WO-124): Playthrough, Build, Guide.
   const TAB_NAMES: Record<BuildTab, string> = { play: "Playthrough", levels: "Build", guide: "Guide" };
   // Each tab's second line: what's in it.
-  const minutes = overview ? Math.max(1, Math.ceil(docWords(overview) / 200)) : 0;
   const TAB_SUB: Record<BuildTab, string> = {
-    levels: `Levels 1 to ${total}`,
-    guide: overview ? `${minutes} min read${plan.videoId ? " | Video" : ""}` : "Video",
-    play: playTab?.sub ?? "",
+    levels: planned ? `Levels 1 to ${total}` : "Not planned yet",
+    guide: plan.videoId ? "Video" : overview ? "" : "Not written yet",
+    play: playTab?.sub ?? "Not planned yet",
   };
 
   const hasGuideTab = tabs.includes("guide");
@@ -288,7 +294,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
   };
   // The owner's controls (WO-116a), in the hero and the pinned bar; one visibility between them.
   const [visibility, setVisibility] = useState(build.visibility);
-  const ownerControls = isOwner && !build.isSample ? <OwnerControls key={visibility} buildId={build.id} current={null} visibility={visibility} onVisibility={setVisibility} /> : null;
+  const ownerControls = isOwner && !build.isSample ? <OwnerControls key={visibility} buildId={build.id} current={null} visibility={visibility} onVisibility={setVisibility} tab={tab} /> : null;
   // A tab picked in the pinned bar opens at its top: the tab row comes back under the bars (WO-116).
   const openFromBar = (t: BuildTab) => {
     setTab(t);
@@ -401,7 +407,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
                     <GameIcon file={`tab-${t}`} size={32} className={styles.tabIcon} />
                     <span className={styles.tabText}>
                       <span className={styles.tabName}>{TAB_NAMES[t]}</span>
-                      <span className={styles.tabSub}>{TAB_SUB[t]}</span>
+                      {TAB_SUB[t] && <span className={styles.tabSub}>{TAB_SUB[t]}</span>}
                     </span>
                   </button>
                 ))}
@@ -477,7 +483,17 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
           <div className={styles.withRail}>
           <ContentsRail items={railItems} />
           <div className={styles.railMain}>
-          {tab === "levels" && (
+          {tab === "levels" && !planned && (
+            <div id="panel-levels" role="tabpanel" aria-labelledby="tab-levels" className={styles.emptyTab}>
+              <p>No levels are planned for this character yet.</p>
+              {isOwner && (
+                <Link className="btn btn-primary" href={`/b/${build.id}/setup?step=race`}>
+                  Plan the levels
+                </Link>
+              )}
+            </div>
+          )}
+          {tab === "levels" && planned && (
             <div id="panel-levels" role={tabs.length > 1 ? "tabpanel" : undefined} aria-labelledby={tabs.length > 1 ? "tab-levels" : undefined} className={styles.panelStack}>
               {playTab && <AboutBar plan={plan} />}
               <LevelsTab
@@ -496,6 +512,16 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
               />
             </div>
           )}
+          {tab === "guide" && !overview && !plan.videoId && (
+            <div id="panel-guide" role="tabpanel" aria-labelledby="tab-guide" className={styles.emptyTab}>
+              <p>No guide is written for this character yet.</p>
+              {isOwner && (
+                <Link className="btn btn-primary" href={`/b/${build.id}/guide`}>
+                  Write a guide
+                </Link>
+              )}
+            </div>
+          )}
           {tab === "guide" && (overview || plan.videoId) && (
             <div id="panel-guide" role="tabpanel" aria-labelledby="tab-guide" className={styles.guidePanel}>
               {plan.videoId && <VideoGuide videoId={plan.videoId} title={build.name} play={play} />}
@@ -504,6 +530,16 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
           )}
           </div>
           </div>
+          )}
+          {tab === "play" && !playTab && (
+            <div id="panel-play" role="tabpanel" aria-labelledby="tab-play" className={styles.emptyTab}>
+              <p>No playthrough is planned for this character yet.</p>
+              {startRun && (
+                <Link className="btn btn-primary" href={startRun}>
+                  Plan a playthrough
+                </Link>
+              )}
+            </div>
           )}
           {tab === "play" && playTab && (
             <div id="panel-play" role="tabpanel" aria-labelledby="tab-play">
@@ -1653,6 +1689,7 @@ function Cover({
       {/* No cover and no theme art: the race's pixel icon on the night blues, the card's fallback (WO-164) on the page too (WO-179). */}
       {!build.coverImageUrl && themeOf(drawnTheme(build.plan.theme)).vars["hero-art"] === "none" && (
         <div className={styles.coverNight} aria-hidden="true">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           {build.plan.race ? <img className={styles.coverNightIcon} src={`/icons/race-${build.plan.race.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}.svg`} alt="" /> : null}
         </div>
       )}

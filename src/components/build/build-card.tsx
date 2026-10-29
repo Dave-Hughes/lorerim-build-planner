@@ -114,7 +114,7 @@ function RunBox({ build, run }: { build: BuildSummary; run: CardRun }) {
   return (
     <div className={styles.run}>
       <b>Where the run stands</b>
-      <Link href={`/p/${run.id}`} className={styles.runLink}>
+      <Link href={`/b/${build.id}?tab=playthrough`} className={styles.runLink}>
         Play ›
       </Link>
       <span>{where}</span>

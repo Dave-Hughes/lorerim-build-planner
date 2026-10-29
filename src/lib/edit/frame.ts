@@ -3,7 +3,7 @@ import { getBuild } from "@/lib/builds/queries";
 import type { BuildRecord } from "@/lib/builds/types";
 import type { BuildVisibility } from "@/lib/builds/validate";
 import { playthroughsOn, storyOn } from "@/lib/features";
-import { docWords, isEmptyDoc, storyOf } from "@/lib/guide/doc";
+import { storyOf } from "@/lib/guide/doc";
 import { getGuide } from "@/lib/guide/queries";
 import { getPlaythrough, runOfBuild, type PlaythroughRecord } from "@/lib/playthroughs/queries";
 
@@ -35,8 +35,6 @@ export interface EditFrameData {
     /** "Nord | The Warrior": Set up's tab line. */
     setup: string;
     levels: number;
-    /** The guide's reading time, or null when there's none. */
-    guideMinutes: number | null;
     hasStory: boolean;
   } | null;
   run: {
@@ -61,7 +59,6 @@ export interface EditFrameData {
 }
 
 function buildPart(b: BuildRecord, guide: Awaited<ReturnType<typeof getGuide>>): NonNullable<EditFrameData["build"]> {
-  const overview = guide.overview?.doc;
   const docs = Object.fromEntries(Object.entries(guide).map(([k, v]) => [k, v.doc]));
   return {
     id: b.id,
@@ -71,7 +68,6 @@ function buildPart(b: BuildRecord, guide: Awaited<ReturnType<typeof getGuide>>):
     coverFocus: b.plan.coverFocus ?? null,
     setup: [b.plan.race, b.plan.birthsign ? `The ${b.plan.birthsign}` : null].filter(Boolean).join(" | ") || "Not chosen yet",
     levels: b.plan.levels.length,
-    guideMinutes: overview && !isEmptyDoc(overview) ? Math.max(1, Math.ceil(docWords(overview) / 200)) : null,
     hasStory: !!storyOf(docs),
   };
 }
@@ -104,8 +100,9 @@ function frame(b: BuildRecord | null, guide: Awaited<ReturnType<typeof getGuide>
   return {
     build: b && guide ? buildPart(b, guide) : null,
     run: p ? runPart(p) : null,
-    name: p?.name ?? b?.name ?? "",
-    line: p ? p.line || b?.description || "" : (b?.description ?? ""),
+    // One name and line (WO-179): the character's; a run with none of its own character has its own.
+    name: b?.name ?? p?.name ?? "",
+    line: b?.description || p?.line || "",
     author: p?.author.name ?? b?.author.name ?? "",
     traits: b ? [b.plan.race, b.plan.birthsign ? `The ${b.plan.birthsign}` : null, b.plan.deity || null].filter(Boolean).join(" | ") : "",
     aiAssisted: p ? !!p.draftedBy && p.showDrafted : !!b?.draftedBy && b.showDrafted !== false,

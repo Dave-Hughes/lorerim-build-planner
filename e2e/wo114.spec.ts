@@ -16,7 +16,10 @@ test("Start a run on a build alone's card: its Story becomes the run's first cha
   await card.getByRole("link", { name: /^Plan a playthrough/ }).click();
   await expect(page).toHaveURL(new RegExp(`/b/${MENDER_BUILD_ID}/run$`));
   await page.getByRole("button", { name: "Confirm" }).click();
-  await expect(page).toHaveURL(/\/p\/[a-z0-9]{10}$/);
+  await expect(page).toHaveURL(new RegExp(`/b/${MENDER_BUILD_ID}\\?tab=playthrough$`));
+  // WO-179: the run is the character's Playthrough tab; its id is in the Edit link.
+  await page.getByRole("region", { name: "Build" }).getByRole("link", { name: "Edit", exact: true }).click();
+  await expect(page).toHaveURL(/\/p\/[a-z0-9]{10}\/edit\/play$/);
   const pid = new URL(page.url()).pathname.split("/")[2];
 
   // The Story is the run's first chapter, in the reader (WO-116).
@@ -27,7 +30,7 @@ test("Start a run on a build alone's card: its Story becomes the run's first cha
   await expect(reader.getByText("She came north with a satchel of herbs")).toBeVisible();
   // The build's own page reads the run's tale from the beginning.
   await page.goto(`/b/${MENDER_BUILD_ID}`);
-  await expect(page.getByRole("link", { name: /^Read the story/ }).first()).toHaveAttribute("href", new RegExp(`/p/${pid}/story/\\d+$`));
+  await expect(page.getByRole("link", { name: /^Read the story/ }).first()).toHaveAttribute("href", new RegExp(`/b/${MENDER_BUILD_ID}/story/\\d+$`));
 });
 
 test("/me is one grid: characters with a run and builds alone", async ({ page, context }) => {

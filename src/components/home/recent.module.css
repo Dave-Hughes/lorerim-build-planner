@@ -558,6 +558,10 @@
   .grid .card:not(.wide) .plainIcon {
     width: 26px;
   }
+  /* A card with a run says its act and a progress bar as well: with a two-line name and tagline there is no room left for the icon under the badges. */
+  .grid .card.withRun:not(.wide) .plainIcon {
+    display: none;
+  }
 }
 
 /* Under a card on My characters (WO-164): one layout under every card. Who can see it and AI assisted on one line, Plan a playthrough when there is no run, then

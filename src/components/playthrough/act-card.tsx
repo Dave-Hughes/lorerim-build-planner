@@ -29,7 +29,7 @@ const readKey = (key: string) => {
   }
 };
 
-export function ActCard({ runId, chapterId, n, name, picture, focus, lines, length, read, isOwner }: { runId: string; chapterId: number; n: string; name: string; picture: string | null; focus?: { x: number; y: number } | null; lines: string; length: string; read: boolean; isOwner: boolean }) {
+export function ActCard({ runId, buildId = null, chapterId, n, name, picture, focus, lines, length, read, isOwner }: { runId: string; chapterId: number; n: string; name: string; picture: string | null; focus?: { x: number; y: number } | null; lines: string; length: string; read: boolean; isOwner: boolean; buildId?: string | null }) {
   const key = `play:act-read:${runId}:${chapterId}`;
   const here = useSyncExternalStore(
     subscribe,
@@ -38,20 +38,19 @@ export function ActCard({ runId, chapterId, n, name, picture, focus, lines, leng
   );
   const [opened, setOpened] = useState(false);
   const [expanded, setExpanded] = useState(false);
-  const href = `/p/${runId}/story/${chapterId}`;
+  const href = buildId ? `/b/${buildId}/story/${chapterId}` : `/p/${runId}/story/${chapterId}`;
   const seen = read || here || opened;
   const open = () => {
     setOpened(true);
     setExpanded(false);
-    if (isOwner) void readEarly(runId, chapterId);
-    else {
-      try {
-        localStorage.setItem(key, "1");
-      } catch {
-        // No storage: it stays open in this visit only.
-      }
-      listeners.forEach((l) => l());
+    // Kept in this browser as well as the owner's record: the reader is a route now (WO-179), so the page comes back rendered again and must not wait on the server to say so.
+    try {
+      localStorage.setItem(key, "1");
+    } catch {
+      // No storage: it stays open in this visit only.
     }
+    listeners.forEach((l) => l());
+    if (isOwner) void readEarly(runId, chapterId);
   };
   if (seen && !expanded)
     return (

@@ -81,17 +81,23 @@ export const readFromSave = async (id: string, input: Omit<SnapshotInput, "sourc
   run(id, (u) => w.setSnapshot(u, id, { ...input, source: "save", readBy: "Read a save" }));
 
 /** The owner read a beat before it opened; kept, and nothing is ticked. */
-export const readEarly = async (id: string, chapterId: number) => run(null, (u) => w.markRead(u, id, [chapterId]));
+export const readEarly = async (id: string, chapterId: number) =>
+  run(null, async (u) => {
+    const buildId = await w.markRead(u, id, [chapterId]);
+    // The character's page is the reader's way back (WO-179): the browser's Back must not bring a copy from before the read.
+    if (buildId) revalidatePath(`/b/${buildId}`);
+  });
 
 /**
- * The owner read a chapter in the reader (WO-118: Continue reading). Nothing is revalidated: the page
- * under the reader keeps its place, and the reader holds where you are for the visit.
+ * The owner read a chapter in the reader (WO-118: Continue reading). The reader holds where you are for the visit; the
+ * character's page is revalidated so its way back, and Continue reading, know it too (WO-179: the reader is a route of the character).
  */
 export async function noteRead(id: string, chapterId: number): Promise<void> {
   if (!playthroughsOn()) return;
   const userId = (await auth())?.user?.id;
   if (!userId) return;
-  await w.markRead(userId, id, [chapterId]).catch(() => {});
+  const buildId = await w.markRead(userId, id, [chapterId]).catch(() => null);
+  if (buildId) revalidatePath(`/b/${buildId}`);
 }
 
 /** A chapter's text from the Story editor, autosaved (the same checks as the Story, WO-79). */
@@ -103,4 +109,12 @@ export const addRun = async (buildId: string, input: w.RunInput) =>
     const id = await w.attachRun(u, buildId, input);
     revalidatePath(`/b/${buildId}`);
     return { id };
+  });
+
+/** Is this the same character as …? (WO-179): a run on a character made for it joins the player's real one. */
+export const joinCharacter = async (runId: string, buildId: string) =>
+  run(runId, async (u) => {
+    await w.joinCharacter(u, runId, buildId);
+    revalidatePath(`/b/${buildId}`);
+    return {};
   });

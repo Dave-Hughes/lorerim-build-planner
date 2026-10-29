@@ -1,4 +1,8 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
+import { auth } from "@/auth";
+import { getBuild } from "@/lib/builds/queries";
+import { isKnownVersion } from "@/lib/rules/server";
 import { playthroughsOn } from "@/lib/features";
 import { getPlaythrough } from "@/lib/playthroughs/queries";
 import PlaythroughPage from "../../page";
@@ -17,9 +21,14 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 /**
- * A chapter's own address (WO-116): the character's page with the reader open on it, so a scene can
- * be linked. Opened from the page, the reader pushes this address over the page instead.
+ * A chapter's old address (WO-116): it goes to the character's (WO-179); a run on no build keeps showing here.
  */
 export default async function ChapterPage({ params, searchParams }: { params: Params; searchParams: Promise<{ act?: string; tab?: string; level?: string }> }) {
+  // A chapter is at the character's address (WO-179): `/b/<id>/story/<chapter>`.
+  if (playthroughsOn()) {
+    const { id, chapter } = await params;
+    const p = await getPlaythrough(id, (await auth())?.user?.id ?? null);
+    if (p?.build && isKnownVersion((await getBuild(p.build.id, p.ownerId === (await auth())?.user?.id ? p.ownerId : null))?.gameVersion ?? "")) redirect(`/b/${p.build.id}/story/${chapter}`);
+  }
   return PlaythroughPage({ params, searchParams });
 }

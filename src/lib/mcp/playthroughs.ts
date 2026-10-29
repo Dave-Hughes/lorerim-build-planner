@@ -43,6 +43,8 @@ import type { CreateInput } from "./plan";
  */
 
 const link = (p: Player, id: string, path = "") => `${p.origin}/p/${id}${path}`;
+/** The character's address (WO-179): a run is a tab of its build. */
+const characterLink = (p: Player, buildId: string | null, id: string, path = "") => (buildId ? `${p.origin}/b/${buildId}${path}` : link(p, id, path));
 
 /** 30 writes a minute per player, as the build tools. */
 async function writeGuard(p: Player) {
@@ -296,7 +298,7 @@ export async function setPlaythrough(p: Player, input: { playthrough: string; na
   revalidatePath(`/p/${pt.id}`);
   revalidatePath("/me");
   const now = (await getPlaythrough(pt.id, p.userId))!;
-  return { playthrough: pt.id, name: now.name, line: now.line, build: now.build ? { id: now.build.id, name: now.build.name } : null, link: link(p, pt.id) };
+  return { playthrough: pt.id, name: now.name, line: now.line, build: now.build ? { id: now.build.id, name: now.build.name } : null, link: characterLink(p, pt.build?.id ?? null, pt.id) };
 }
 
 /**
@@ -349,7 +351,7 @@ export async function addAct(p: Player, input: { playthrough: string; name: stri
   await writeGuard(p);
   const pt = await mine(p, input.playthrough);
   const id = await writes(() => w.addAct(p.userId, pt.id, { name: input.name, levels: input.levels, place: input.place, goal: input.goal, standingRule: input.standingRule ?? null, passedBy: input.passedBy ?? null, route: input.route ?? null }));
-  return { playthrough: pt.id, act: String(pt.view.acts.length + 1), actId: String(id), link: link(p, pt.id) };
+  return { playthrough: pt.id, act: String(pt.view.acts.length + 1), actId: String(id), link: characterLink(p, pt.build?.id ?? null, pt.id) };
 }
 
 export async function setAct(p: Player, input: { playthrough: string; act: string; name?: string; levels?: string; place?: string; goal?: string; standingRule?: string | null; passedBy?: PassedBy[]; route?: RouteStop[] }) {
@@ -478,7 +480,7 @@ export async function writeChapter(p: Player, input: { playthrough: string; titl
   const after = input.unlocksWhen !== undefined ? objectiveOf(pt, input.unlocksWhen, a ?? undefined).id : null;
   const doc = await writes(async () => markdownToDoc(input.text));
   const id = await writes(() => w.addChapter(p.userId, pt.id, { title: input.title, doc, actId: a?.id ?? null, unlocksWhen: after, fromSave: input.fromSave ?? null }, p.clientName.slice(0, 80)));
-  return { playthrough: pt.id, chapter: String(id), link: link(p, pt.id, `/story/${id}`) };
+  return { playthrough: pt.id, chapter: String(id), link: characterLink(p, pt.build?.id ?? null, pt.id, `/story/${id}`) };
 }
 
 export async function setChapter(p: Player, input: { playthrough: string; chapter: string; title?: string; text?: string; unlocksWhen?: string; fromSave?: string }) {
@@ -507,7 +509,7 @@ export async function setSnapshot(p: Player, input: { playthrough: string; sourc
   const d = versionData(pt.gameVersion);
   const skills = Object.fromEntries(Object.entries(input.skills ?? {}).map(([k, v]) => [names.skill(d, k), v]));
   await writes(() => w.setSnapshot(p.userId, pt.id, { source: "save", label: input.label, level: input.level, xp: input.xp ?? null, day: input.day ?? null, place: input.place ?? null, skills, questStages: input.questStages ?? null, counts: input.counts ?? null, readBy: p.clientName.slice(0, 80) }));
-  return { playthrough: pt.id, saved: true, link: link(p, pt.id) };
+  return { playthrough: pt.id, saved: true, link: characterLink(p, pt.build?.id ?? null, pt.id) };
 }
 
 /** The playthrough in the plain shape the inputs use, each objective with how it stands. */
@@ -657,7 +659,7 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
     name: pt.name,
     line: pt.line,
     visibility: pt.visibility,
-    link: link(p, pt.id),
+    link: characterLink(p, pt.build?.id ?? null, pt.id),
     // The character's build (WO-114): its id, name, cover and levels.
     build: pt.build ? { id: pt.build.id, name: pt.build.name, cover: pt.build.coverImageUrl, levels: pt.build.levels, link: `${p.origin}/b/${pt.build.id}` } : null,
     draftedByAnAssistant: !!pt.draftedBy,
@@ -759,10 +761,10 @@ export async function finishDraft(p: Player, input: { playthrough: string }) {
   const warnings = warningsOf(pt);
   return {
     ready: true,
-    link: link(p, pt.id),
+    link: characterLink(p, pt.build?.id ?? null, pt.id),
     addCover,
     ...(warnings.length ? { warnings, warningsNote: "Fix these or tell the player why you left them." } : {}),
-    message: `Ready: open ${link(p, pt.id)} to read it, tick what's done and publish.${addCover ? ` The cover is the player's to add: ${addCover}` : ""}`,
+    message: `Ready: open ${characterLink(p, pt.build?.id ?? null, pt.id)} to read it, tick what's done and publish.${addCover ? ` The cover is the player's to add: ${addCover}` : ""}`,
   };
 }
 

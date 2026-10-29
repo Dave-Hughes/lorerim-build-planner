@@ -25,7 +25,11 @@ export async function overLimit(userId: string, kind: LimitKind): Promise<string
   const since = sql`now() - make_interval(hours => ${hours})`;
   let n: number;
   if (kind === "build") {
-    const [r] = await db().select({ n: count() }).from(schema.builds).where(and(eq(schema.builds.ownerId, userId), gt(schema.builds.createdAt, since)));
+    // A character a playthrough made of itself, with nothing planned on it yet (WO-179), isn't a build the account listed: it doesn't count.
+    const [r] = await db()
+      .select({ n: count() })
+      .from(schema.builds)
+      .where(and(eq(schema.builds.ownerId, userId), gt(schema.builds.createdAt, since), sql`coalesce(${schema.builds.plan}->>'race', '') <> ''`));
     n = r.n;
   } else if (kind === "report") {
     const [r] = await db().select({ n: count() }).from(schema.buildReports).where(and(eq(schema.buildReports.reporterId, userId), gt(schema.buildReports.createdAt, since)));

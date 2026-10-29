@@ -46,12 +46,14 @@ export interface ReaderBack {
 }
 
 /** A run's tale, in reading order. `cover` is the character's cover. */
-export function runStops(p: { id: string; taleLine: string | null; view: PlaythroughView; cover: string | null; coverFocus?: { x: number; y: number } | null; isOwner: boolean; titlePicture?: string | null }): ReaderStop[] {
+/** With the character's build id the stops are at the character's own address, `/b/<id>/story/<chapter>` (WO-179); a run on no build keeps its own. */
+export function runStops(p: { id: string; buildId?: string | null; taleLine: string | null; view: PlaythroughView; cover: string | null; coverFocus?: { x: number; y: number } | null; isOwner: boolean; titlePicture?: string | null }): ReaderStop[] {
   const v = p.view;
+  const base = p.buildId ? `/b/${p.buildId}` : `/p/${p.id}`;
   const actOf = new Map(v.acts.map((a, i) => [a.id, { a, n: i + 1 }]));
   const rowHref = (oid: number) => {
     const n = v.acts.findIndex((a) => a.objectives.some((o) => o.id === oid)) + 1;
-    return `/p/${p.id}?act=${n}#o${oid}`;
+    return p.buildId ? `/b/${p.buildId}?tab=playthrough&act=${n}#o${oid}` : `/p/${p.id}?act=${n}#o${oid}`;
   };
   return v.chapters.map((c, i) => {
     const act = c.actId !== null ? actOf.get(c.actId) : undefined;
@@ -62,7 +64,7 @@ export function runStops(p: { id: string; taleLine: string | null; view: Playthr
     const title = i === 0 ? (p.titlePicture ?? null) : null;
     return {
       key: String(c.id),
-      href: `/p/${p.id}/story/${c.id}`,
+      href: `${base}/story/${c.id}`,
       kicker: act ? `Act ${act.a.n}` : "Prologue",
       title: c.title,
       line: i === 0 && p.taleLine ? p.taleLine : c.fromSave ? `From ${c.fromSave.toLowerCase()}` : null,

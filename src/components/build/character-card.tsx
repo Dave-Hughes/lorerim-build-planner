@@ -40,7 +40,7 @@ export function CharacterCard({ build: b, run, wide, under }: { build: BuildSumm
   const actLine = run && run.acts > 0 ? `Act ${run.act || 1} of ${run.acts}${run.actName ? `: ${run.actName}` : ""}` : null;
   return (
     <article className={`${styles.cell} ${wide ? styles.cellWide : ""}`} aria-label={wide ? `Featured: ${b.name}` : undefined}>
-      <Link href={`/b/${b.id}`} className={`${styles.card} ${wide ? styles.wide : ""}`} aria-labelledby={`card-${b.id}`}>
+      <Link href={`/b/${b.id}`} className={`${styles.card} ${wide ? styles.wide : ""} ${actLine ? styles.withRun : ""}`} aria-labelledby={`card-${b.id}`}>
         <span className={styles.cvw}>{b.coverImageUrl && !b.coverHeld ? <span className={styles.cv} style={{ backgroundImage: `url("${b.coverImageUrl}")`, backgroundPosition: focus }} /> : <span className={styles.plain}>{b.race ? <img className={styles.plainIcon} src={`/icons/race-${slug(b.race)}.svg`} alt="" /> : null}</span>}</span>
         <span className={styles.shade} />
         <span className={styles.glow} />

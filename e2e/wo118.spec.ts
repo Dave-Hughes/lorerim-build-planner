@@ -32,12 +32,12 @@ test("Read the story sits at the right of the tab row; the reader's Contents jum
   await contents.getByRole("button", { name: /The Mark of Dibella/ }).click();
   await expect(reader(page).getByRole("heading", { level: 1, name: "The Mark of Dibella" })).toBeVisible();
   await expect(contents.getByRole("button", { name: /The Mark of Dibella/ })).toHaveAttribute("aria-current", "page");
-  await expect(page).toHaveURL(new RegExp(`${KYRIA}/story/\\d+$`));
+  await expect(page).toHaveURL(new RegExp(`/b/${KYRIA_BUILD_ID}/story/\\d+$`));
 
   // Esc closes nothing now; the bar's way back does.
   await page.keyboard.press("Escape");
   await expect(reader(page)).toBeVisible();
-  await reader(page).getByRole("link", { name: "‹ Kyria Severa's playthrough" }).click();
+  await reader(page).getByRole("link", { name: "‹ Kyria, Knight of Stendarr's playthrough" }).click();
   await expect(reader(page)).toHaveCount(0);
 
   // Continue reading, with the chapter's name, then and after a reload (the owner's readAt).

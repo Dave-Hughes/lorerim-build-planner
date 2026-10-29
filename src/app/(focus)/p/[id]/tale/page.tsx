@@ -14,5 +14,5 @@ export default async function TalePage({ params }: { params: Params }) {
   const p = await getPlaythrough(id, session?.user?.id ?? null);
   if (!p) notFound();
   const first = p.view.chapters[0];
-  redirect(first ? `/p/${id}/story/${first.id}` : `/p/${id}`);
+  redirect(p.build ? (first ? `/b/${p.build.id}/story/${first.id}` : `/b/${p.build.id}?tab=playthrough`) : `/p/${id}`);
 }

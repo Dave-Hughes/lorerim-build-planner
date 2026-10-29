@@ -4,6 +4,7 @@ import { and, asc, count, eq, inArray, isNotNull, max, sql } from "drizzle-orm";
 import type { BatchItem } from "drizzle-orm/batch";
 import { db, schema } from "@/db";
 import { newBuildId } from "@/lib/builds/ids";
+import { emptyPlan } from "@/lib/builds/draft";
 import { checkGuideDoc, docText, imageUrls, isEmptyDoc, lineDoc, type GuideDoc } from "@/lib/guide/doc";
 import { isOurImage } from "@/lib/guide/images";
 import type { BuildVisibility } from "@/lib/builds/validate";
@@ -67,11 +68,19 @@ export async function createPlaythrough(userId: string, input: { name: string; l
     if (other) fail("That build has a run already.");
   }
   const id = newBuildId();
+  // Nothing alone (WO-179): a run with no build makes its character with it, in one transaction: a build with nothing planned yet, named as the run.
+  const shellId = build ? null : newBuildId();
+  const shell = shellId
+    ? db()
+        .insert(schema.builds)
+        .values({ id: shellId, ownerId: userId, name: d.data!.name, description: d.data!.line, gameVersion: input.gameVersion, plan: emptyPlan(input.gameVersion), visibility: "private", draftedBy })
+    : null;
   const insert = db()
     .insert(schema.playthroughs)
-    .values({ id, ownerId: userId, buildId: build?.id ?? null, name: d.data!.name, line: d.data!.line, gameVersion: build?.gameVersion ?? input.gameVersion, visibility: "private", draftedBy });
+    .values({ id, ownerId: userId, buildId: build?.id ?? shellId, name: d.data!.name, line: d.data!.line, gameVersion: build?.gameVersion ?? input.gameVersion, visibility: "private", draftedBy });
   const moved = build ? await storyMoveStatements(build.id, id) : [];
-  if (moved.length) await db().batch([insert, ...moved]);
+  if (shell) await db().batch([shell, insert]);
+  else if (moved.length) await db().batch([insert, ...moved]);
   else await insert;
   return id;
 }
@@ -81,7 +90,15 @@ export async function setDetails(
   id: string,
   input: { name?: string; line?: string; buildId?: string | null; visibility?: BuildVisibility; showDrafted?: boolean; taleTitle?: string; taleLine?: string; answers?: Answer[]; never?: Never[]; mods?: Mod[] },
 ) {
-  const p = await ownedPlaythrough(userId, id);
+  let p = await ownedPlaythrough(userId, id);
+  // A run on a character nothing was planned on (the one made with it) may be given to a character that has a plan: it is the same character (WO-179).
+  if (input.buildId && p.buildId && input.buildId !== p.buildId) {
+    const [old] = await db().select().from(schema.builds).where(eq(schema.builds.id, p.buildId)).limit(1);
+    if (old && old.ownerId === userId && unplanned(old.plan)) {
+      await joinCharacter(userId, id, input.buildId);
+      p = await ownedPlaythrough(userId, id);
+    }
+  }
   const d = detailsSchema.safeParse({ name: input.name ?? p.name, line: input.line ?? p.line });
   if (!d.success) fail(firstIssue(d.error));
   const tale = taleSchema.safeParse({ taleTitle: input.taleTitle, taleLine: input.taleLine });
@@ -93,6 +110,8 @@ export async function setDetails(
   if (never && !never.success) fail(firstIssue(never.error));
   const mods = input.mods === undefined ? undefined : modsSchema.safeParse(input.mods);
   if (mods && !mods.success) fail(firstIssue(mods.error));
+  // A playthrough belongs to its character (WO-179): it can't be unlinked or moved to another. A run from before, on no build, may be given one.
+  if (input.buildId !== undefined && p.buildId && input.buildId !== p.buildId) fail("A playthrough belongs to its character: it can't be unlinked or moved to another. Use Is this the same character as…? on My characters.");
   const build = input.buildId === undefined ? undefined : await ownBuild(userId, input.buildId);
   if (input.visibility === "public" && p.visibility !== "public") {
     const hold = await newAccountHold(userId);
@@ -127,6 +146,13 @@ export async function setDetails(
   const moved = attaching ? await storyMoveStatements(attaching.id, p.id) : [];
   if (moved.length) await db().batch([update, ...moved]);
   else await update;
+  // One name and one line (WO-179): the character's. A name or line given here (an assistant's set_playthrough) is the character's.
+  if ((input.name !== undefined || input.line !== undefined) && (p.buildId || build)) {
+    await db()
+      .update(schema.builds)
+      .set({ ...(input.name !== undefined ? { name: d.data!.name } : {}), ...(input.line !== undefined ? { description: d.data!.line } : {}) })
+      .where(and(eq(schema.builds.id, (build?.id ?? p.buildId)!), eq(schema.builds.ownerId, userId)));
+  }
 }
 
 /**
@@ -680,11 +706,12 @@ export async function moveChapter(userId: string, pid: string, chapterId: number
 /** A reader opened a beat early ("Read it anyway"); nothing is ticked. Only the owner's reads are kept. */
 export async function markRead(userId: string, pid: string, chapterIds: number[]) {
   const p = await ownedPlaythrough(userId, pid);
-  if (!chapterIds.length) return;
+  if (!chapterIds.length) return p.buildId;
   await db()
     .update(schema.playthroughChapters)
     .set({ readAt: new Date() })
     .where(and(eq(schema.playthroughChapters.playthroughId, p.id), inArray(schema.playthroughChapters.id, chapterIds.map(Number))));
+  return p.buildId;
 }
 
 /* ---------- Where you stand ---------- */
@@ -719,4 +746,45 @@ export async function setSnapshot(userId: string, pid: string, input: SnapshotIn
     .values({ playthroughId: p.id, ...row })
     .onConflictDoUpdate({ target: schema.playthroughSnapshots.playthroughId, set: row });
   await touch(p.id);
+}
+
+/**
+ * A run from before WO-179 on no build becomes a character of its own (WO-179, "nothing alone"): a build with nothing planned yet, named as the
+ * run, with its line, cover and visibility, and the run attached. Idempotent: a run that has a build is left as it is. Where the run's name or
+ * cover differs from a build it already followed, the build's win and nothing is copied (the caller logs the difference).
+ */
+export async function makeCharacterOfRun(userId: string, runId: string): Promise<string> {
+  const p = await ownedPlaythrough(userId, runId);
+  if (p.buildId) return p.buildId;
+  const shellId = newBuildId();
+  const shell = db()
+    .insert(schema.builds)
+    .values({ id: shellId, ownerId: userId, name: p.name, description: p.line, gameVersion: p.gameVersion, plan: emptyPlan(p.gameVersion), coverImageUrl: p.coverImageUrl, visibility: p.visibility, draftedBy: p.draftedBy, showDrafted: p.showDrafted });
+  const attach = db().update(schema.playthroughs).set({ buildId: shellId }).where(eq(schema.playthroughs.id, p.id));
+  await db().batch([shell, attach]);
+  return shellId;
+}
+
+/**
+ * The character a run on a made-up character really belongs to (WO-179: "Is this the same character as …?"): the run moves to the build named,
+ * which must be the player's and have no run; the made-up character, if nothing was planned on it, is removed. Both are the player's own.
+ */
+/** A character nothing was planned on: no race and no perks (the shell a run makes of itself). */
+function unplanned(plan: { race?: unknown; levels: { perks?: unknown[] }[] }) {
+  return !plan.race && plan.levels.every((l) => !l.perks?.length);
+}
+
+export async function joinCharacter(userId: string, runId: string, targetBuildId: string) {
+  const p = await ownedPlaythrough(userId, runId);
+  const target = await ownBuild(userId, targetBuildId);
+  if (!target) fail("Pick one of your characters.");
+  if (p.buildId === target!.id) fail("That is this character already.");
+  const [other] = await db().select({ id: schema.playthroughs.id }).from(schema.playthroughs).where(eq(schema.playthroughs.buildId, target!.id)).limit(1);
+  if (other) fail("That character has a playthrough already.");
+  const [old] = p.buildId ? await db().select().from(schema.builds).where(eq(schema.builds.id, p.buildId)).limit(1) : [];
+  const update = db().update(schema.playthroughs).set({ buildId: target!.id, gameVersion: target!.gameVersion }).where(eq(schema.playthroughs.id, p.id));
+  const moved = await storyMoveStatements(target!.id, p.id);
+  await db().batch([update, ...moved]);
+  // The made-up character goes when nothing was planned on it.
+  if (old && unplanned(old.plan) && old.ownerId === userId) await db().delete(schema.builds).where(eq(schema.builds.id, old.id));
 }

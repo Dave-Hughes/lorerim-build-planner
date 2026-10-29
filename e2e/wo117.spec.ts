@@ -14,27 +14,29 @@ test.use({ viewport: { width: 1440, height: 900 } });
 
 const tabNames = (page: import("@playwright/test").Page) => page.getByRole("navigation", { name: "Edit tabs" }).getByRole("link");
 
-test("Edit opens Set up at Details, for a character and a build alone", async ({ page, context }) => {
+// WO-179: Edit opens the editor of the tab you are on: the playthrough's on a character that has one, the build's on a build alone.
+test("Edit opens the editor of the tab open, for a character and a build alone", async ({ page, context }) => {
   await signIn(context);
-  for (const path of [`/p/${KYRIA_PLAYTHROUGH_ID}`, `/b/${FRESH_BUILD_ID}`]) {
-    await page.goto(path);
-    await page.getByRole("region", { name: "Build" }).getByRole("link", { name: "Edit", exact: true }).click();
-    await expect(page).toHaveURL(/\/setup\?step=name$/);
-    await expect(page.getByRole("heading", { level: 1, name: "Details" })).toBeVisible();
-    await expect(editTab(page, "Character")).toHaveAttribute("aria-current", "page");
-  }
+  await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}`);
+  await page.getByRole("region", { name: "Build" }).getByRole("link", { name: "Edit", exact: true }).click();
+  await expect(page).toHaveURL(new RegExp(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/play$`));
+  await expect(editTab(page, "Playthrough")).toHaveAttribute("aria-current", "page");
+  await page.goto(`/b/${FRESH_BUILD_ID}`);
+  await page.getByRole("region", { name: "Build" }).getByRole("link", { name: "Edit", exact: true }).click();
+  await expect(page).toHaveURL(new RegExp(`/b/${FRESH_BUILD_ID}/edit$`));
+  await expect(editTab(page, "Build")).toHaveAttribute("aria-current", "page");
 });
 
 test("five tabs on a character, and the same five on a build with no run yet, and the band's Done is the one ember button", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/b/${KYRIA_BUILD_ID}/setup?step=name`);
   // WO-124: named for what's in them.
-  await expect(tabNames(page)).toHaveText(["Character", "Build", "Guide", "Story", "Playthrough"]);
-  await expect(page.getByRole("region", { name: "Edit bar" })).toContainText("EditingKyria Severa");
+  await expect(tabNames(page)).toHaveText(["Playthrough", "Build", "Guide", "Character", "Story"]);
+  await expect(page.getByRole("region", { name: "Edit bar" })).toContainText("EditingKyria, Knight of Stendarr");
   await expect(page.getByRole("link", { name: "Change the cover" })).toHaveAttribute("href", `/b/${KYRIA_BUILD_ID}/setup?step=name#cover`);
   await page.goto(`/b/${FRESH_BUILD_ID}/edit`);
   // A character with no run yet still shows Playthrough to its owner (WO-159), which opens the page that plans one.
-  await expect(tabNames(page)).toHaveText(["Character", "Build", "Guide", "Story", "Playthrough"]);
+  await expect(tabNames(page)).toHaveText(["Playthrough", "Build", "Guide", "Character", "Story"]);
   // Below the site header (its New character is the site's), Done is the one ember button.
   await expect(page.locator(".btn-primary:visible:not(header .btn-primary)")).toHaveCount(1);
   await expect(page.getByRole("region", { name: "Edit bar" }).getByRole("link", { name: "Done" })).toHaveClass(/btn-primary/);
@@ -60,7 +62,7 @@ test("Done goes to Play for a character and Levels for a build alone", async ({ 
   await signIn(context);
   await page.goto(`/b/${KYRIA_BUILD_ID}/guide`);
   await page.getByRole("region", { name: "Edit bar" }).getByRole("link", { name: "Done" }).click();
-  await expect(page).toHaveURL(new RegExp(`/p/${KYRIA_PLAYTHROUGH_ID}$`));
+  await expect(page).toHaveURL(new RegExp(`/b/${KYRIA_BUILD_ID}\\?tab=playthrough$`));
   await expect(page.getByRole("tablist", { name: "Build sections" }).getByRole("tab", { name: /^Play/ })).toHaveAttribute("aria-selected", "true");
   await page.goto(`/b/${FRESH_BUILD_ID}/guide`);
   await page.getByRole("region", { name: "Edit bar" }).getByRole("link", { name: "Done" }).click();

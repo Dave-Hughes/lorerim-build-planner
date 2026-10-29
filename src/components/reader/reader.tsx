@@ -52,10 +52,12 @@ export function ReaderProvider({ stops, back, runId, title, children }: { stops:
     },
     [stops],
   );
+  const router = useRouter();
   const close = useCallback(() => {
     if (pushed.current) window.history.back();
-    else window.history.replaceState(null, "", back.href);
-  }, [back.href]);
+    // Opened from an address: the reader is a route of the character now (WO-179), so the way back is a navigation to its page.
+    else router.replace(back.href);
+  }, [back.href, router]);
   // Closed by any way (the back link, the browser's back), the page comes back where it was.
   const wasReading = useRef(at >= 0);
   useEffect(() => {

@@ -28,7 +28,8 @@ export async function RunEdit({ id, act }: { id: string; act?: string }) {
   const [builds, frame] = await Promise.all([myBuildChoices(p.ownerId), editFrameForRun(p, userId)]);
   const data: EditData = {
     id: p.id,
-    name: p.name,
+    // One name (WO-179): the character's, whatever the run was first called.
+    name: p.build?.name ?? p.name,
     line: p.line,
     buildId: p.buildId,
     visibility: p.visibility,

@@ -11,7 +11,6 @@ import { personHref } from "@/lib/people/data";
 import { placeHref, placeHrefOf, placeLabel, placeType, rangeOf, type Place } from "@/lib/places/data";
 import { closeBy, peopleAt, type PlacePerson } from "@/lib/places/people";
 import type { PlaceKind } from "@/lib/places/kind";
-import { RECORD } from "@/lib/pages/player-words";
 import { saidAbout } from "@/lib/places/said";
 import { questHref } from "@/lib/quests/slugs";
 import { questsData } from "@/lib/quests/data";

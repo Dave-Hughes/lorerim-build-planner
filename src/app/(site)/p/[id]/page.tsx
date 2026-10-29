@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import { auth } from "@/auth";
-import { CharacterPage } from "@/components/build/character-page";
 import { PlayView } from "@/components/playthrough/play-view";
 import { getBuild } from "@/lib/builds/queries";
 import { playthroughsOn } from "@/lib/features";
 import { getPlaythrough } from "@/lib/playthroughs/queries";
+import { makeCharacterOfRun } from "@/lib/playthroughs/writes";
 import { isKnownVersion } from "@/lib/rules/server";
 
 export const dynamic = "force-dynamic";
@@ -33,9 +33,14 @@ export default async function PlaythroughPage({ params, searchParams }: { params
   if (!p) notFound();
   const n = Number(act);
   const actIndex = Number.isInteger(n) && n >= 1 ? n - 1 : null;
+  // A run from before WO-179 on no build becomes a character of its own when its owner opens it (nothing alone).
+  if (!p.build && viewerId === p.ownerId) {
+    const buildId = await makeCharacterOfRun(viewerId, p.id);
+    redirect(`/b/${buildId}?tab=playthrough`);
+  }
   const build = p.build ? await getBuild(p.build.id, viewerId) : null;
   if (!build || !isKnownVersion(build.gameVersion)) return <PlayView p={p} isOwner={viewerId === p.ownerId} actIndex={actIndex} />;
-  // The Build and Guide tabs are the build's page (WO-164): its old addresses on this one go there.
+  // One address (WO-179): a character is `/b/<id>`, its tabs on it. This address goes there, on the tab the old one meant.
   if (tab === "levels" || tab === "gear" || tab === "guide" || (!tab && level)) redirect(`/b/${build.id}?tab=${tab === "guide" ? "guide" : "levels"}${!tab && level ? `&level=${level}` : ""}`);
-  return <CharacterPage build={build} viewerId={viewerId} run={p} tab="play" level={0} actIndex={actIndex} buildLinks />;
+  redirect(`/b/${build.id}?tab=playthrough${actIndex !== null ? `&act=${actIndex + 1}` : ""}`);
 }

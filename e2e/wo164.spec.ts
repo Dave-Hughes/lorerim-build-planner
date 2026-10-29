@@ -12,7 +12,7 @@ for (const width of [1440, 390]) {
     await signIn(context);
     await page.setViewportSize({ width, height: 900 });
     await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}`);
-    await expect(page.getByRole("heading", { level: 1, name: "Kyria Severa" })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1, name: "Kyria, Knight of Stendarr" })).toBeVisible();
     const hero = page.locator("section[aria-label=Build]");
     await expect(hero).toBeVisible();
     expect((await hero.boundingBox())!.width).toBeGreaterThan(width - 20);
@@ -34,20 +34,17 @@ for (const width of [1440, 390]) {
 test("a run with no build has the same hero: the full-width band, the name and line, Copy link and Edit, and the WO-159 back button", async ({ page, context }) => {
   await signIn(context);
   await page.setViewportSize({ width: 1440, height: 900 });
+  // WO-179: a run with no build is a character of its own, named as the run, the first time its owner opens it.
   await page.goto(`/p/${NOBUILD_PLAYTHROUGH_ID}`);
+  await expect(page).toHaveURL(/\/b\/[^/]+\?tab=playthrough$/);
   await expect(page.getByRole("heading", { level: 1, name: "Nora Nobuild" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Back to My characters" })).toHaveAttribute("href", "/me");
-  await expect(page.getByText("‹ My characters")).toHaveCount(0);
-  const hero = page.getByRole("region", { name: "Playthrough" }).first();
+  const hero = page.getByRole("region", { name: "Build" }).first();
   expect((await hero.boundingBox())!.width).toBeGreaterThan(1400);
   await expect(hero.getByRole("button", { name: "Copy link" })).toBeVisible();
   await expect(hero.getByRole("link", { name: "Edit" })).toBeVisible();
   await expect(page.locator(".frame").filter({ has: page.getByRole("heading", { level: 1 }) })).toHaveCount(0);
-  // No cover: the cards' fallback, a large pixel icon on the night scene's blues, not an empty hatched band.
-  const icon = hero.locator("img[src$='.svg']").first();
-  await expect(icon).toBeVisible();
-  expect((await icon.boundingBox())!.width).toBeGreaterThan(100);
-  expect(await hero.locator("[class*='night']").evaluate((el) => getComputedStyle(el).backgroundImage)).toContain("linear-gradient");
+  // No cover: the cards' fallback, the night scene's blues (a character with no race has no icon on them), not an empty hatched band.
+  expect(await hero.locator("[class*='overNight']").evaluate((el) => getComputedStyle(el).backgroundImage)).toContain("linear-gradient");
   await expect(page.getByRole("heading", { name: "Objectives" })).toBeVisible();
   // The hero's words rise in over half a second.
   await page.waitForTimeout(1000);
@@ -59,7 +56,7 @@ test("a run with no build has the same hero: the full-width band, the name and l
   await page.screenshot({ path: "test-results/wo164-nobuild-390.png", fullPage: true });
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto(`/p/${NOBUILD_PLAYTHROUGH_ID}/build`);
-  await expect(page).toHaveURL(new RegExp(`/p/${NOBUILD_PLAYTHROUGH_ID}$`));
+  await expect(page).toHaveURL(/\/b\/[^/]+\?tab=levels$/);
 });
 
 test("What next ends making a character: Plan a playthrough makes the run and opens it", async ({ page, context }) => {
@@ -100,7 +97,7 @@ test("My characters: one character card each with Edit and Delete under it, and 
     await expect(fresh.getByRole("button", { name: /^Delete/ })).toBeVisible();
     await expect(page.getByText("Start a run")).toHaveCount(0);
     await expect(page.locator("main").getByRole("link", { name: /^Plan a playthrough/ }).first()).toBeVisible();
-    const icon = page.locator("main article img[src*='/icons/race-']").first();
+    const icon = page.locator("main article img[class*='plainIcon']:visible").first();
     await expect(icon).toBeVisible();
     await page.screenshot({ path: `test-results/wo164-me-${width}.png`, fullPage: true });
     // One layout under every card: Delete sits at the same height under every card in a row, and on a fallback card the icon ends above the name.
@@ -110,9 +107,9 @@ test("My characters: one character card each with Edit and Delete under it, and 
       const dels = tops.filter((t) => t.row === row).map((t) => t.del);
       expect(new Set(dels).size, `Delete at ${dels.join(", ")} in the row at ${row}`).toBe(1);
     }
-    const plain = page.locator("main article").filter({ has: page.locator("img[class*='plainIcon']") });
+    const plain = page.locator("main article").filter({ has: page.locator("img[class*='plainIcon']:visible") });
     for (let i = 0; i < Math.min(await plain.count(), 3); i++) {
-      const [img, name] = [await plain.nth(i).locator("img[class*='plainIcon']").boundingBox(), await plain.nth(i).getByRole("heading").boundingBox()];
+      const [img, name] = [await plain.nth(i).locator("img[class*='plainIcon']:visible").boundingBox(), await plain.nth(i).getByRole("heading").boundingBox()];
       expect(img!.y + img!.height, "the icon ends above the name").toBeLessThanOrEqual(name!.y);
     }
   }

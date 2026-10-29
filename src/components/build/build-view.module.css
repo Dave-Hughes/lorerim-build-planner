@@ -734,15 +734,19 @@
   outline-offset: 4px;
 }
 @media (max-width: 599px) {
-  /* Two tabs share a phone's width. */
+  /* Three tabs share a phone's width (WO-179): the icon steps aside so "Playthrough" fits whole. */
   .tab {
     flex: 1 1 0;
     min-width: 0;
     gap: 10px;
-    padding: 12px 12px 12px 10px;
+    padding: 12px 10px;
+  }
+  .tabIcon {
+    display: none;
   }
   .tabName {
-    font-size: 22px;
+    font-size: 17px;
+    letter-spacing: 0.04em;
   }
   .tabSub {
     font-size: 12px;
@@ -1775,4 +1779,18 @@
   .tabsRow > .tabs {
     min-width: 0;
   }
+}
+
+/* An empty tab, for its owner: what is not there yet and the one way to start it (WO-179). */
+.emptyTab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 36px 0 12px;
+  color: var(--soft);
+}
+.emptyTab p {
+  margin: 0;
+  font-size: 17px;
 }

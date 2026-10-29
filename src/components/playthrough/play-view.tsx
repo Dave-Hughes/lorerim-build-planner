@@ -1,12 +1,13 @@
 import { pro } from "@/lib/pronouns";
 import { ModsNeeded } from "@/components/ui/mods-needed";
 import Link from "next/link";
+import { DoneFold } from "./done-fold";
 import type { PlaythroughRecord } from "@/lib/playthroughs/queries";
 import { byStop, standLine, whereLine, type ActView, type ObjectiveView } from "@/lib/playthroughs/view";
 import { Answer, TickBox, WhereIsShe } from "./play-controls";
 import { ReaderProvider, ReaderLink, StoryCard } from "@/components/reader/reader";
 import { actImageOf, runStops } from "@/lib/playthroughs/reader";
-import { docText, docWords, firstPlate } from "@/lib/guide/doc";
+import { docText, firstPlate } from "@/lib/guide/doc";
 import { ActCard } from "./act-card";
 import { RunCover } from "./run-cover";
 import { PageTop } from "@/components/pages/page-kit";
@@ -18,7 +19,7 @@ import s from "./play.module.css";
  * view, with no tabs (WO-116; with a build, Play is a tab of the build's page).
  */
 export function PlayView({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwner: boolean; actIndex: number | null }) {
-  const stops = runStops({ id: p.id, taleLine: p.taleLine, view: p.view, cover: p.build?.coverImageUrl ?? null, coverFocus: p.build?.coverFocus ?? null, isOwner, titlePicture: p.coverImageUrl });
+  const stops = runStops({ id: p.id, buildId: p.build?.id ?? null, taleLine: p.taleLine, view: p.view, cover: p.build?.coverImageUrl ?? null, coverFocus: p.build?.coverFocus ?? null, isOwner, titlePicture: p.coverImageUrl });
   return (
     <ReaderProvider stops={stops} back={{ href: `/p/${p.id}`, label: `${p.name}'s playthrough` }} runId={p.id} title={p.taleTitle || p.name}>
       <div className={s.rootNoBuild}>
@@ -77,7 +78,7 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
                 const open = a === act;
                 const state = a.total > 0 && a.done === a.total ? s.actDone : open ? s.actNow : s.actLater;
                 return (
-                  <Link key={a.id} href={`/p/${p.id}?act=${i + 1}`} scroll={false} className={`${s.act} ${state} ${open ? s.actOpenRow : ""}`} aria-current={open ? "true" : undefined}>
+                  <Link key={a.id} href={p.build ? `/b/${p.build.id}?tab=playthrough&act=${i + 1}` : `/p/${p.id}?act=${i + 1}`} scroll={false} className={`${s.act} ${state} ${open ? s.actOpenRow : ""}`} aria-current={open ? "true" : undefined}>
                     <span className={s.actName}>
                       {a.n} {a.name}
                     </span>
@@ -119,7 +120,7 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
               {card ? (
                 // The act opens with its story (WO-116): the card, then the goal line leads the objectives.
                 <section aria-label={`Act ${act.n} ${act.name}`} className={s.actOpen}>
-                  <ActCard key={card.chapterId} runId={p.id} isOwner={isOwner} {...card} />
+                  <ActCard key={card.chapterId} runId={p.id} buildId={p.build?.id ?? null} isOwner={isOwner} {...card} />
                   {act.goal && <span className={s.goal}>{act.goal}</span>}
                   {act.standingRule && <Throughout text={act.standingRule} />}
                   {act.passedBy?.length ? <PassedByLine places={act.passedBy} /> : null}
@@ -162,17 +163,21 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
                   ),
                 )}
                 {done.length > 0 && (
-                  <details className={s.doneFold}>
-                    <summary>
-                      <span className={s.doneMark} aria-hidden="true">
-                        ✓
-                      </span>
-                      {done.length} done <span aria-hidden="true">▾</span>
-                    </summary>
+                  <DoneFold
+                    className={s.doneFold}
+                    label={
+                      <>
+                        <span className={s.doneMark} aria-hidden="true">
+                          ✓
+                        </span>
+                        {done.length} done <span aria-hidden="true">▾</span>
+                      </>
+                    }
+                  >
                     {done.map((o) => (
                       <Objective key={o.id} o={o} p={p} isOwner={isOwner} />
                     ))}
-                  </details>
+                  </DoneFold>
                 )}
                 {shown.length === 0 && <p className="muted">No objectives in this act yet.</p>}
               </section>
@@ -218,8 +223,6 @@ function actCard(p: PlaythroughRecord, act: ActView) {
   const v = p.view;
   const c = act.chapter !== null ? v.chapters.find((x) => x.id === act.chapter) : undefined;
   if (!c) return null;
-  const open = v.chapters.filter((x) => x.actId === act.id && x.open);
-  const minutes = Math.max(1, Math.ceil(open.reduce((n, x) => n + docWords(x.doc), 0) / 200));
   const all = v.chapters.filter((x) => x.actId === act.id).length;
   const paras = c.open ? c.doc.content.filter((n) => n.type === "paragraph").map((n) => docText(n).trim()).filter(Boolean) : [];
   return {
@@ -231,7 +234,7 @@ function actCard(p: PlaythroughRecord, act: ActView) {
       return own ? { picture: own.url, focus: own.focus } : { picture: p.build?.coverImageUrl ?? null, focus: p.build?.coverFocus ?? null };
     })(),
     lines: paras.slice(0, 2).join(" "),
-    length: `${minutes} min | ${all === 1 ? "a chapter" : `${all} chapters`}`,
+    length: all === 1 ? "A chapter" : `${all} chapters`,
     read: !!c.readAt,
   };
 }

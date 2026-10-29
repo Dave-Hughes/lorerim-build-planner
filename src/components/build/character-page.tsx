@@ -64,20 +64,20 @@ export async function CharacterPage({
   // The reader (WO-116): a character's tale is its run's; a build alone's, its Story.
   const told = run ? null : storyOf(shownDocs);
   const stops = run
-    ? runStops({ id: run.id, taleLine: run.taleLine, view: run.view, cover, coverFocus: build.plan.coverFocus ?? null, isOwner: viewerId === run.ownerId, titlePicture: run.coverImageUrl })
+    ? runStops({ id: run.id, buildId: build.id, taleLine: run.taleLine, view: run.view, cover, coverFocus: build.plan.coverFocus ?? null, isOwner: viewerId === run.ownerId, titlePicture: run.coverImageUrl })
     : told
       ? [storyStop({ id, title: told.title, line: told.line, doc: told.doc, cover, isOwner })]
       : [];
   // The reader's way back (WO-124): "‹ Kyria Severa's playthrough".
-  const back = run ? { href: `/p/${run.id}`, label: `${run.name}'s playthrough` } : { href: `/b/${id}`, label: `${build.name}'s build` };
+  const back = run ? { href: `/b/${id}?tab=playthrough`, label: `${build.name}'s playthrough` } : { href: `/b/${id}`, label: `${build.name}'s build` };
   // A draft asks for one thing (WO-118): the owner's box on a drafted character with no cover.
   const nudge = run && isOwner && run.draftedBy && !build.coverImageUrl ? `/b/${id}/setup?step=name#cover` : null;
   return (
-    <ReaderProvider stops={stops} back={back} runId={run?.id ?? null} title={run ? run.taleTitle || run.name : (told?.title ?? build.name)}>
+    <ReaderProvider stops={stops} back={back} runId={run?.id ?? null} title={run ? run.taleTitle || build.name : (told?.title ?? build.name)}>
     <GameDataProvider version={build.gameVersion} serverVersion={clientVersion(build.gameVersion)}>
       <BuildView
-        // A character's hero carries the run's name and line (WO-116); the build's own page, its own.
-        build={{ ...rest, mods: allMods(rest.mods, run?.mods), ...(run ? { name: run.name, description: run.line || rest.description, ...(run.draftedBy ? { draftedBy: run.draftedBy, showDrafted: run.showDrafted } : {}) } : {}), coverImageUrl: coverHeld ? null : rest.coverImageUrl, coverHeld, updatedAt: updatedAt.toISOString() }}
+        // One name, line and cover (WO-179): the character's, whether or not it has a run.
+        build={{ ...rest, mods: allMods(rest.mods, run?.mods), ...(run ? { ...(run.draftedBy ? { draftedBy: run.draftedBy, showDrafted: run.showDrafted } : {}) } : {}), coverImageUrl: coverHeld ? null : rest.coverImageUrl, coverHeld, updatedAt: updatedAt.toISOString() }}
         isOwner={isOwner}
         signedIn={!!viewerId}
         initialLevel={level || run?.snapshot?.level || 1}
@@ -111,7 +111,7 @@ export async function CharacterPage({
 export function tabParam(tab: string | undefined, hasRun: boolean, home: BuildTab, level?: string): BuildTab {
   if (tab === "levels" || tab === "guide") return tab;
   if (tab === "gear" || (!tab && level)) return "levels";
-  if (tab === "play" && hasRun) return "play";
+  if ((tab === "play" || tab === "playthrough") && hasRun) return "play";
   return hasRun ? home : "levels";
 }
 

@@ -29,7 +29,8 @@ test("an assistant drafts a playthrough end to end, refused for an objective tha
   expect(made.json()).toMatchObject({ visibility: "private" });
 
   // WO-111c: the build drafted after the playthrough, linked through the door; another player's is refused.
-  expect((await go("get_playthrough", { playthrough: pid })).json().build).toBeNull();
+  // WO-179: a run made with no build has its character already, named as the run, until it is given a planned one.
+  expect((await go("get_playthrough", { playthrough: pid })).json().build).toMatchObject({ name: "E2E Kyria" });
   const theirs = await go("set_playthrough", { playthrough: pid, build: OTHER_BUILD_ID });
   expect(theirs.isError).toBe(true);
   expect(theirs.text).toContain(`No build of yours has the id or name ${OTHER_BUILD_ID}`);
@@ -101,7 +102,7 @@ test("an assistant drafts a playthrough end to end, refused for an objective tha
   expect(got.done).toBe("0 of 6");
 
   const done = await go("finish_draft_playthrough", { playthrough: pid });
-  expect(done.json()).toMatchObject({ ready: true, link: `${baseURL!.replace(/\/$/, "")}/p/${pid}` });
+  expect(done.json()).toMatchObject({ ready: true, link: `${baseURL!.replace(/\/$/, "")}/b/${TEST_BUILD_ID}` });
 
   const quests = await call(baseURL!, from, token, "suggest_quests", { level: 10 });
   expect(quests.isError, quests.text).toBe(false);
@@ -120,7 +121,7 @@ test("on the site: private on its build's card under My characters, a tick opens
   // Play is the first tab of the build's page (WO-116).
   const playTab = () => page.getByRole("tablist", { name: "Build sections" }).getByRole("tab", { name: /^Play/ });
   await page.goto(`/p/${pid}`);
-  await expect(page.getByRole("heading", { level: 1, name: "E2E Kyria" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "Test Shield-Wall" })).toBeVisible();
   await expect(playTab()).toContainText("0 of 6 done");
   // The Levels tab is the build linked through the door (WO-111c).
   // Other specs add levels to the shared test build, so the count isn't fixed: the words are.
@@ -172,13 +173,13 @@ test("the reader shows the chapter, the opened beat and its way back to the game
   const back = reader.getByRole("link", { name: "Hunt and tan her first hides" });
   await expect(back).toBeVisible();
   await back.click();
-  await expect(page).toHaveURL(new RegExp(`/p/${pid}\\?act=1#o\\d+`));
+  await expect(page).toHaveURL(new RegExp(`/b/${TEST_BUILD_ID}\\?tab=playthrough&act=1#o\\d+`));
 });
 
 test("editing by hand: a @quest mention, and the rule under a refused objective", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/p/${pid}/edit`);
-  await expect(page.getByRole("region", { name: "Edit bar" })).toContainText("EditingE2E Kyria");
+  await expect(page.getByRole("region", { name: "Edit bar" })).toContainText("EditingTest Shield-Wall");
   await page.getByRole("button", { name: "Add an objective" }).click();
   const box = page.getByRole("combobox", { name: "Objective" }).last();
   await box.fill("@Spread the");

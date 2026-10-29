@@ -167,7 +167,7 @@ export function MenuButton({
  * The owner's controls on the build's own page (WO-116a): who can see it, Copy link, and Edit, which
  * opens Set up at Details (WO-117). Phones: who can see it, and a ⋯ menu with the rest.
  */
-export function OwnerControls({ buildId, visibility, onVisibility }: { buildId: string; current?: null; visibility: BuildVisibility; onVisibility?: (v: BuildVisibility) => void }) {
+export function OwnerControls({ buildId, visibility, onVisibility, tab }: { buildId: string; current?: null; visibility: BuildVisibility; onVisibility?: (v: BuildVisibility) => void; tab?: "play" | "levels" | "guide" }) {
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const copy = async () => {
@@ -179,7 +179,8 @@ export function OwnerControls({ buildId, visibility, onVisibility }: { buildId: 
       setError("Couldn't copy. The link is the build page's address.");
     }
   };
-  const edit = `/b/${buildId}/setup?step=name`;
+  // Edit opens on the tab you were on (WO-179): the playthrough's editor, the build's, the guide's; with no tab, Set up.
+  const edit = tab === "play" ? `/b/${buildId}/play` : tab === "levels" ? `/b/${buildId}/edit` : tab === "guide" ? `/b/${buildId}/guide` : `/b/${buildId}/setup?step=name`;
   return (
     <span className={styles.right}>
       {error && (
@@ -234,18 +235,18 @@ function tabsOf(f: EditFrameData | null, buildId: string): Tab[] {
   const b = f?.build;
   const r = f?.run;
   const out: Tab[] = [];
-  if (b || !f) {
-    const id = b?.id ?? buildId;
-    out.push({ key: "setup", label: "Character", href: `/b/${id}/setup?step=name` });
-    out.push({ key: "levels", label: "Build", href: `/b/${id}/edit` });
-    out.push({ key: "guide", label: "Guide", href: `/b/${id}/guide` });
-  }
-  // The page's own address, never one that redirects (WO-124 Part 4): a redirect during a tab change made Next load the
-  // whole document again, an empty frame for 0.8 s.
-  if (r) out.push({ key: "story", label: "Story", href: `/p/${r.id}/edit/story/title` });
-  else if (f?.storyOn && b) out.push({ key: "story", label: "Story", href: `/b/${b.id}/edit/story` });
+  const id = b?.id ?? buildId;
+  // The same tabs, in the same order, as the character's page (WO-179): Playthrough, Build, Guide. Character (Set up) and the Story follow.
+  // The page's own address, never one that redirects (WO-124 Part 4): a redirect during a tab change made Next load the whole document again.
   if (r) out.push({ key: "play", label: "Playthrough", href: `/p/${r.id}/edit/play` });
   else if (f?.playOn && b) out.push({ key: "play", label: "Playthrough", href: `/b/${b.id}/play` });
+  if (b || !f) {
+    out.push({ key: "levels", label: "Build", href: `/b/${id}/edit` });
+    out.push({ key: "guide", label: "Guide", href: `/b/${id}/guide` });
+    out.push({ key: "setup", label: "Character", href: `/b/${id}/setup?step=name` });
+  }
+  if (r) out.push({ key: "story", label: "Story", href: `/p/${r.id}/edit/story/title` });
+  else if (f?.storyOn && b) out.push({ key: "story", label: "Story", href: `/b/${b.id}/edit/story` });
   return out;
 }
 
@@ -325,7 +326,7 @@ export function EditBar({
   const tabs = tabsOf(frame, buildId);
   const run = frame?.run;
   const onRun = !!run && (current === "play" || current === "story" || !frame?.build);
-  const done = run ? `/p/${run.id}` : `/b/${buildId}?tab=levels`;
+  const done = run ? (frame?.build ? `/b/${frame.build.id}?tab=playthrough` : `/p/${run.id}`) : `/b/${buildId}?tab=levels`;
   const cover = frame?.build?.coverImageUrl;
   const focus = frame?.build?.coverFocus;
   const here = tabs.find((t) => t.key === current);

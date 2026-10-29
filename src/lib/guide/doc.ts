@@ -233,7 +233,7 @@ export function withHiddenImages(doc: GuideDoc, hidden: (src: string) => boolean
   return walk(doc) as GuideDoc;
 }
 
-/** Words in a document, for "6 min read". */
+/** Words in a document. */
 export function docWords(n: GuideNode): number {
   const own = n.text ? n.text.split(/\s+/).filter(Boolean).length : 0;
   return own + (n.content ?? []).reduce((sum, c) => sum + docWords(c), 0);

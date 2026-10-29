@@ -12,7 +12,9 @@ import { Assistants } from "@/components/account/assistants";
 import { mcpOn, playthroughsOn, questsOn } from "@/lib/features";
 import { approvedFor } from "@/lib/quests/approvals";
 import { PlaythroughCards } from "@/components/playthrough/cards";
-import { listMyPlaythroughs, runsByBuild } from "@/lib/playthroughs/queries";
+import { listMyPlaythroughs, runsByBuild, type PlaythroughCard } from "@/lib/playthroughs/queries";
+import { makeCharacterOfRun } from "@/lib/playthroughs/writes";
+import { JoinCharacter } from "@/components/playthrough/join-character";
 import { SCOPES, type Scope } from "@/lib/oauth/core";
 import { connectedAssistants } from "@/lib/oauth/assistants";
 import styles from "../home.module.css";
@@ -33,17 +35,19 @@ export default async function MyBuilds() {
     );
   }
   const characters = playthroughsOn();
-  const [builds, handle, assistants, runs, playthroughs, thanks] = await Promise.all([
+  // A run from before WO-179 on no build becomes a character of its own, the first time its owner opens My characters (nothing alone).
+  if (characters) for (const r of (await listMyPlaythroughs(userId)).filter((p) => !p.buildId)) await makeCharacterOfRun(userId, r.id);
+  const [builds, handle, assistants, runs, thanks] = await Promise.all([
     listBuildsByOwner(userId),
     handleFor(userId),
     mcpOn() ? connectedAssistants(userId, characters) : Promise.resolve(null),
     characters ? runsByBuild(userId) : Promise.resolve(null),
-    characters ? listMyPlaythroughs(userId) : Promise.resolve(null),
     // A player's report an admin approved (WO-146): said once it is on the planner.
     questsOn() ? approvedFor(userId) : Promise.resolve([]),
   ]);
-  // A run made before WO-114 with no build yet has no card of its own in the grid.
-  const unattached = playthroughs?.filter((p) => !p.buildId) ?? [];
+  const unattached: PlaythroughCard[] = [];
+  // A character made for a run that had none (nothing planned on it) offers to join one of the player's others that has no run.
+  const joinTo = builds.filter((b) => b.race && runs && !runs.has(b.id)).map((b) => ({ id: b.id, name: b.name }));
   const withRun = runs ? builds.filter((b) => runs.has(b.id)).length : 0;
   return (
     <main className={`page ${styles.main}`}>
@@ -94,6 +98,7 @@ export default async function MyBuilds() {
                         </span>
                       )}
                     </span>
+                    {runs && typeof r === "object" && !b.race && <JoinCharacter runId={r.id} choices={joinTo} />}
                     {runs && !r && (
                       <Link href={`/b/${b.id}/run`} className={recent.planLink}>
                         Plan a playthrough ›

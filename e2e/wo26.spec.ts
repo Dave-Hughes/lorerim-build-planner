@@ -37,12 +37,12 @@ test("the visibility button changes Link only to Listed, and Set up's band shows
 });
 
 // WO-116a: the shared page has no edit bar; the owner's controls are in the hero (and the pinned bar).
-test("the owner sees Edit on the shared page, opening Set up at Details; a visitor sees none of it", async ({ page, context, browser }) => {
+test("the owner sees Edit on the shared page, opening the build's editor; a visitor sees none of it", async ({ page, context, browser }) => {
   await signIn(context);
   await page.goto(`/b/${TEST_BUILD_ID}`);
   await expect(page.getByRole("region", { name: "Edit bar" })).toHaveCount(0);
   const hero = page.getByRole("region", { name: "Build" });
-  await expect(hero.getByRole("link", { name: "Edit", exact: true })).toHaveAttribute("href", `/b/${TEST_BUILD_ID}/setup?step=name`);
+  await expect(hero.getByRole("link", { name: "Edit", exact: true })).toHaveAttribute("href", new RegExp(`^/b/${TEST_BUILD_ID}/(edit|play)$`));
   const visitor = await browser.newPage();
   await visitor.goto(`/b/${TEST_BUILD_ID}`);
   await expect(visitor.getByRole("heading", { level: 1 })).toHaveText("Test Shield-Wall");

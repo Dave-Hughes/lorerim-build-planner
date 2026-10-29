@@ -11,7 +11,7 @@ export function PlaythroughCards({ rows, mine }: { rows: PlaythroughCard[]; mine
   return (
     <div className={s.cards}>
       {rows.map((p) => (
-        <Link key={p.id} href={`/p/${p.id}`} className={`frame ${s.card}`}>
+        <Link key={p.id} href={p.buildId ? `/b/${p.buildId}?tab=playthrough` : `/p/${p.id}`} className={`frame ${s.card}`}>
           <span className={s.cardName}>{p.name}</span>
           {p.line && <span className={s.cardLine}>{p.line}</span>}
           <span className={s.cardMeta}>

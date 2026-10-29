@@ -11,11 +11,11 @@ test.describe("an author's builds", () => {
     await expect(page.getByRole("region", { name: "Edit bar" }).getByText("Falkreath Shield-Wall")).toBeVisible();
 
     await page.goto("/me");
-    const card = page.getByRole("article").filter({ hasText: "Falkreath Shield-Wall" });
+    const card = page.getByRole("article").filter({ has: page.getByRole("link", { name: "Falkreath Shield-Wall", exact: true }) });
     await expect(card).toContainText("Only you");
     await card.getByRole("button", { name: "Delete Falkreath Shield-Wall" }).click();
     await card.getByRole("button", { name: "Confirm: delete Falkreath Shield-Wall" }).click();
-    await expect(page.getByRole("article").filter({ hasText: "Falkreath Shield-Wall" })).toHaveCount(0);
+    await expect(page.getByRole("link", { name: "Falkreath Shield-Wall", exact: true })).toHaveCount(0);
   });
 
   test("changes the setup of an existing build", async ({ page, context }) => {
