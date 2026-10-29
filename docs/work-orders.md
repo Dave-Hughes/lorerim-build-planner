@@ -5291,7 +5291,7 @@ Decisions and reasons:
 - **A place with little known** (Moss Mother Cavern, Northwind Mine) shows one short "What is known" block (what it is, where, what finding it pays, traps, and that its danger is not known); its contents menu shows only with two or more entries. A lone "! Traps" is in the block.
 
 ## WO-179  A character is one shell: its build, its guide and its playthrough (Mac, 28 Oct 2026)
-Status: for Bob
+Status: queued (Mac: Part 2, before WO-181)
 
 **Why.** Dave, 28 Oct: "A character is a shell that can hold: Build, Guide, Playthrough." Bob walked the whole flow signed in on staging (made "TEST: Bob walk": race, details, What next, Plan a playthrough, an act, an objective, ticked it, the Build tab, the Story editor; read Kyria's story). Underneath it is still two records joined by a dropdown, and it shows.
 
@@ -5307,7 +5307,31 @@ Status: for Bob
 - [x] **The objective editor** shows a "Stage" box beside the quest (a record's number: players don't know stages); typing a quest name in What to do doesn't offer the quest; clicking outside closes the form and saves half of it. Stage goes (pick the quest's step from its steps by name, if needed); What to do offers quests, places and people as you type; the form saves with Add, or keeps open.
 - [x] **Edit opens on the playthrough**; it opens on the tab you were on.
 - [x] **No read times** (Dave, 28 Oct): the Guide tab's "N min read" goes, and no page says how long something takes to read. With a video the tab says "Video"; otherwise the tab has its name alone.
-- [ ] Bob walks it again signed in (make a character, plan a playthrough, edit, the story, the redirects from Kyria's old `/p/` links); screenshots of each step at 1440 and 390; then `for Bob`.
+### Part 2. Bob's signed-in walk (29 Oct, Dave's Chrome on staging, "TEST: Bob walk 2")
+What holds:
+- Kyria's old `/p/jr9pf9emnb` lands on `/b/fsxh33upak?tab=playthrough`.
+- The page and the editor both show Playthrough, Build and Guide.
+- Edit opens on the tab you were on.
+- Pronouns come from the character ("About her", "Her run").
+- The rail shows Traits and Deity as Optional, with no tick.
+- What next is a step.
+- What to do suggests quests and places as you type.
+- Add saves.
+- `/me` asks "Is this the same character as…?".
+
+These don't hold:
+- [ ] **The editor is still under `/p/`**: Plan a playthrough opens `/p/p9fcs97cck/edit/play`. The editor belongs under the character too (`/b/<id>/edit?tab=playthrough`), and `/p/<id>/edit/…` redirects there.
+- [ ] **Two visibility settings**: the playthrough's editor says "Only you" while the character's page says "Link only". A visitor with the link sees the character with no Playthrough tab. A character has one visibility, and its playthrough follows it. The migration keeps the character's setting.
+- [ ] **What to do's suggestions don't close.** After you pick a quest, press Escape, or click into Why, the list stays open over Kind and the Quest field. It closes on pick, on Escape and on blur.
+- [ ] **After you pick a quest, the separate Quest field still says "[The quest]".** One place holds the link: fill the field from the pick, or drop the field when the pick is a quest.
+- [ ] **People aren't offered**: "Keerava" suggests nothing, while "Bee and Barb" offers the inn. The box asked for quests, places and people. The hint under the form ("@ links a quest, a quest line, a spell, an item or a follower") should name what it offers.
+- [ ] **Creation's rail on What next**: Details stays highlighted as if current, beside What next, and gets no tick though the character is named. The address stays `?step=name`.
+- [ ] **What next's text** says "the character's run" for a character set to she/her: use her pronoun. The paragraph stops at about half the width of the rule under it. Text and its controls share one width (Dave's standing rule).
+- [ ] **No cover, no race**: the character made from Dave's orphan run ("Kyria Severa, Sword of Stendarr") is an empty dark card on `/me`. The editor's header shows an empty square for TEST: Bob walk 2. Both need the fallback: the race icon, or the planner's mark when there is no race.
+- [ ] **Small**: the Build tab says "Levels 1 to 1" for a one-level plan ("Level 1"). A visitor's Build tab says the birthsign is missing twice ("Not chosen yet" in the row and "No birthsign chosen yet." under the level).
+- [ ] Screenshots of each fix at 1440 and 390, then `for Bob`. Bob walks it again.
+
+- [x] Bob walks it again signed in (make a character, plan a playthrough, edit, the story, the redirects from Kyria's old `/p/` links); screenshots of each step at 1440 and 390; then `for Bob`.
 
 ### Mac's notes (29 Oct)
 All the boxes are built except Bob's walk. Checks: typecheck, lint, `npm test` (795 passed), `npm run build`, and the full `npm run test:e2e` (563 passed; `perf` failed once on a worst-case timing under load, 232 and 240 ms against 160, and passes alone at 112 to 128; one more spec then needed its tab list updated and passes). Eight older spec files asserted the old addresses and names and are changed (listed under Specs changed).
