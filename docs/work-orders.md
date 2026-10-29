@@ -5159,7 +5159,7 @@ Nothing is dropped from the database: the columns and tables stay (CLAUDE.md, no
 ---
 
 ## WO-180  Junk text out of the pages, and the last map faults (Mac and PC, 28 Oct 2026)
-Status: building (PC: Part 5a; Mac: Part 5b after PC)
+Status: queued (Mac: Part 5b)
 
 **Why.** The fourth cold review (Bob's reviewer, 3,721 pages crawled, 51 walked at both widths) passed WO-176 to WO-178, and named what would still hit Dave in his first ten minutes: old text from the game files that was never cleaned. Bob confirmed the holes and Web Mother by hand. No order is done until a page-text test fails on each of these.
 ### Part 1. Quotes (PC writes the cleaner; Mac's test fails on any page)
@@ -5271,23 +5271,23 @@ Every Part 4b box is ticked. Checks: typecheck, lint, `npm test` (807 passed, 7 
 Part 4 mostly holds. Across 3,703 pages there are no empty "( )", bare hedges, angle-bracket blanks, "Speechcraft", "quest script" or "amount not in" left. Riverwood credits Before the Storm, Before the Storm and A False Front read right, Hendraheim is quoted once, and the map at 390 and Northwind Mine are fixed. These still fail.
 
 **Part 5a (PC)**
-- [ ] **"Search the the actor" (Cultists vs Player) is still on the page.** The page reads `read.steps`, which still has the alias blank; Part 4a fixed `objectives` only. Clean `read.steps` the same way.
+- [x] **"Search the the actor" (Cultists vs Player) is still on the page.** The page reads `read.steps`, which still has the alias blank; Part 4a fixed `objectives` only. Clean `read.steps` the same way.
 
   The same family in steps:
   - Maggot: "Take back your name from the owner in the target location", and "the victim has been dazzled…" three times, in lower case
   - Feral Soul-Shriven: "Defeat the enemy"
-- [ ] **Hunter's Mark still lists "Hunter Marks Animal Den" and "… 02".** Its "Where it takes you" reads "an animal den picked from the hold you are in, an animal den picked by the mod". It starts in lower case, says the same thing twice, and is wide enough to make the page scroll sideways at 1440 and 390.
-- [ ] **More "in" stuck onto another word:**
+- [x] **Hunter's Mark still lists "Hunter Marks Animal Den" and "… 02".** Its "Where it takes you" reads "an animal den picked from the hold you are in, an animal den picked by the mod". It starts in lower case, says the same thing twice, and is wide enough to make the page scroll sideways at 1440 and 390.
+- [x] **More "in" stuck onto another word:**
   - "Miraak's cultists in out on the road" (Cultists vs Player)
   - "Klimmek in out around Ivarstead" (Climb the Steps)
   - "Boethiah in after you earn the Ebony Mail"
   - "Serana in with you" (Kindred Judgment)
 
   Fix the sentence builder, not each line: when the place phrase starts with a preposition or an adverb, don't add "in".
-- [ ] **Whiterun's Shops and beds** now reads "Blacksmith, General goods, Apothecary and an inn with rooms", then "Hulda, Mikael, Saadia, Keld, Aela the Huntress". That list mixes a bard and a Companion in with shopkeepers, and no shop is named. As Part 4 said: one item per shop, with its name, its keeper and what it sells.
+- [x] **Whiterun's Shops and beds** now reads "Blacksmith, General goods, Apothecary and an inn with rooms", then "Hulda, Mikael, Saadia, Keld, Aela the Huntress". That list mixes a bard and a Companion in with shopkeepers, and no shop is named. As Part 4 said: one item per shop, with its name, its keeper and what it sells.
 
   Honningbrew Meadery and Whiterun Stables now show only as map labels. List them under Close by as near the city, not only the dangerous places.
-- [ ] **Records talk:**
+- [x] **Records talk:**
   - "The records set no level for it" (30 line pages, under Level): say "Any level", or show nothing more than "Any".
   - "From the records. What exactly isn't known yet." (29 people pages)
   - "Named in the quest's records; role not shown" (The Staff of Magnus)
@@ -5304,6 +5304,15 @@ Part 4 mostly holds. Across 3,703 pages there are no empty "( )", bare hedges, a
 - [ ] **Map names dropped with room to spare:** at The Golden Claw's third zoom-out at 390, both stop names go although there is room left and right, and Saarthal has no name when Forbidden Legend opens. Try the other side before dropping a name.
 - [ ] **Northwind Mine says "not known" three times on one screen**: in the band, in the danger section, and under Not sure yet. Say it once, under Not sure yet.
 - [ ] Screenshots at 1440 and 390, then `for Bob`.
+
+Jeff's notes on Part 5a (PC, 29 Oct):
+- **Steps:** a read's steps are copied from the quest's objectives, so `build.py` now fills their tags the way the objectives' are (`fill_all` over each quest's read, with the quest's own fills). "Search the person" (Cultists vs Player), "Take back your name from the owner in the target location" and "The victim has been dazzled by the Radiance of Life" (Maggot) are the result. The fault under Maggot was `plain_alias`: it took "Victim01" for an EDID-like prefix and said "the one"; a prefix now has to be followed by letters. "Defeat the enemy" (Feral Soul-Shriven) is what its alias says; I did not guess who the enemy is.
+- **"in" before a preposition or an adverb:** one list in `where.ts` (`PREPOSITION`) now holds out, up, over, back, along, across, through, into, to, from, with, without, after, before, until, once, when, while, if, for, about, still, and the rest it had. "out on the road", "after you earn the Ebony Mail" and "with you" take no "in".
+- **Hunter's Mark:** the two quests are named "Mark an animal den" and "Mark an animal den (second job)" in the data (`JOB_NAMES` in `quest_pages.py`), still with no page or link (`isTemplateName` holds the new names). Both reads now say "an animal den in the hold you are in", so the page says it once, in capitals. Not seen at 1440 or 390: I can't open the page here, so the sideways scroll is Mac's to check in Part 5b.
+- **Whiterun's Shops and beds:** a shopkeeper is one whose read says what they sell, or whose job is a seller's, or who sleeps in a building named like a shop; the record's `sells` flag alone is not enough (Mikael, Aela, Farkas and Lydia have it). `shopsOf()` in `places/people.ts` gives one row per shop with its name, keeper and what it sells; a seller whose read names another's shop ("trades from Belethor's General Goods lists", Ysolda) is put in that shop. The cell reads "N shops and an inn with rooms", then a line per shop and the inn with its keeper.
+- **Close by:** it now lists a farm, stable, meadery, mill or inn within a kilometre of the town as well as the dangerous places. Whiterun Stables' nearest town was Riverwood (a city is a worldspace of its own, so no marker is measured to it); the two buildings Bob named now keep their city as `nearestTown` ("next to it", 0.3 km for the Stables, a ruling).
+- **Records talk:** a line's Level reads "Any level" with nothing under it; "From the records. What exactly isn't known yet." is "What they do for you isn't known yet."; "Essential.." was the read's own full stop plus the page's; "role not shown" is "Has a part in it"; "also in the quest's records; X" is "Also at X"; Brill's "separate from the recipient" is out of the sentence (the reason stays under Not sure yet).
+- **Generated files:** the quest names above, `nearestTown` for the Stables and the filled steps changed in `quests.json` and `places.json` (no key added or dropped). Checks: python unittest (471), typecheck, lint, `npm test` (813 passed, 7 expected fail). Nothing was viewed in a browser, and e2e was not run on the PC.
 
 Jeff's notes on WO-180 (PC, 28 Oct):
 - **Quotes** (`places.py`, `build.py`): one cleaner, `game_text()`, runs on a book's whole text and on every dialogue line before a quote is cut: `<Alias=Player>` is "you"; any other `<Alias…>`, `<Global…>` or `<Token…>` leaves a hole mark and a quote with one in what is cut around it is left out (the next mention of the place in that book is tried; the Lakeview and Windstad charters have no mention without a hole, so they are not quoted); every other tag (`<font …>`, `<img …>`) and `[pagebreak]` goes before the cut, so no `size="18">` stub is left. A quote names a quest only when it is a quest on the Quests pages by that name; the game's own dialogue quest ("Riften Dialogue") moves to a new field, `dialogue`, which no page shows. Why keep it: the assistant's town gossip (`suggest.ts`, WO-151) reads it to say which town a line with no speaker is about (`wo151.test.ts` caught the first try, which dropped it). A dialogue line with no speaker stays in the data for the same reason; `saidAbout()` leaves it off the pages (one line in `said.ts`: "no speaker, no quote"). 4,761 pointers became 4,741: twenty had a hole in them and went (Lakeview and Windstad Manors no longer quote their charters; Hendraheim, Rorikstead and the rest have none left with markup). The Mac's page-text test is mine too: `wo180.test.ts` runs `saidAbout()` on every place and fails on markup, a hole, a speakerless line or a quest no player has.

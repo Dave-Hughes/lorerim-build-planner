@@ -9478,7 +9478,7 @@
    "sex": "female",
    "cell": "Witch's Wisdoms",
    "inTown": "Whiterun",
-   "role": "JobApothecary",
+   "role": "JobSpellVendor",
    "plugin": "SurWR.esp"
   },
   {
@@ -11078,7 +11078,7 @@
    "sex": "male",
    "cell": null,
    "inTown": "Windhelm",
-   "role": "JobMerchant",
+   "role": "JobHunter",
    "plugin": "Lux Orbis - TNF Remodel Houses patch.esp"
   },
   {

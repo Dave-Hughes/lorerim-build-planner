@@ -133,4 +133,4 @@ export const REASON_KEYS: ReadonlySet<string> = new Set(["unsure"]);
 export const SAID_NAMES: Record<string, string> = { "DA02 Hook": "Boethiah's Calling: the hook", DB01_Opt: "Delayed Burial: optional objectives", "TG00 Maul Handler": "Maul's handler" };
 
 /** A job template with a placeholder name ("Delivery for the npc", "Hunter Marks Animal Den 02"): not a quest a player has a page for, nor a change (WO-180). */
-export const isTemplateName = (name: string) => /\bthe npc\b/i.test(name) || /^Hunter Marks Animal Den(?: \d+)?$/i.test(name.trim()) || /^The item$/i.test(name.trim());
+export const isTemplateName = (name: string) => /\bthe npc\b/i.test(name) || /^Hunter Marks Animal Den(?: \d+)?$/i.test(name.trim()) || /^The item$/i.test(name.trim()) || /^Mark an animal den(?: \(second job\))?$/i.test(name.trim());

@@ -29,7 +29,8 @@ export function placeOnly(where: string | undefined): string | undefined {
 /** A place the read doesn't know: "wherever the long-dead lovers are", "somewhere in Skyrim". The page says "Not known yet". */
 export const vaguePlace = (text: string | undefined): boolean => !!text && /\b(wherever|somewhere|anywhere)\b/i.test(text);
 
-const PREPOSITION = /^(?:in|at|around|near|outside|inside|by|on|beside|behind|under|above|below|between|within|next to|close to)\b/i;
+// A place phrase that starts with a preposition or an adverb already says where (WO-180 Part 5a: "out on the road", "after you earn the Ebony Mail", "with you").
+const PREPOSITION = /^(?:in|at|around|near|outside|inside|by|on|beside|behind|under|above|below|between|within|next to|close to|out|up|down|over|back|away|off|along|alongside|across|through|into|onto|toward|towards|to|from|past|beyond|opposite|throughout|with|without|after|before|until|once|when|while|if|for|about|still|wherever|somewhere)\b/i;
 
 /**
  * "who in where": the place the read names, with the "in" put in front only when it has no preposition of its own (WO-177 Part 6: "Sven in in the

@@ -316,6 +316,8 @@ _NEUTRAL = {"pronoun": "they", "pronouncap": "They", "pronounobj": "them", "pron
 
 
 # WO-180 Part 4a: aliases the records name by a role, said as the player knows them. The rest are the alias's own words.
+# WO-180 Part 5a: the two Hunter's Mark jobs are called by the editor's title in the records; a list says them as what they are.
+JOB_NAMES = {"Hunter Marks Animal Den": "Mark an animal den", "Hunter Marks Animal Den 02": "Mark an animal den (second job)"}
 ALIAS_SAID = {"riverwoodfriend": "your friend from Helgen", "factionfriend": "your friend from Helgen", "fieldco": "the field commander",
               "enemyfieldco": "the enemy field commander", "cwfieldco": "the field commander", "actor": "the person"}
 
@@ -326,7 +328,7 @@ def plain_alias(name):
     said = ALIAS_SAID.get(key) or ALIAS_SAID.get(re.sub(r"^[a-z]{0,6}\d+", "", key)) or ("the enemy field commander" if key.startswith("enemy") and key.endswith("fieldco") else "the field commander" if key.endswith("fieldco") or "fieldco" in key else None)
     if said:
         return said
-    name = re.sub(r"^[A-Za-z]{0,6}\d+", "", name)  # an EDID-like prefix: MS11TargetLocation -> TargetLocation
+    name = re.sub(r"^[A-Za-z]{0,6}\d+(?=[A-Za-z])", "", name)  # an EDID-like prefix: MS11TargetLocation -> TargetLocation (Victim01 is a name and a number, not a prefix)
     words = [w for w in re.findall(r"[A-Z]+(?![a-z])|[A-Z]?[a-z]+|\d+", name.replace("_", " ")) if not any(ch.isdigit() for ch in w)]
     words = [w.lower() for w in words if w.lower() not in ("alias", "ref", "quest")] or ["one"]
     return "the " + " ".join(words)
@@ -1938,7 +1940,7 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
                 {
                     "edid": q["edid"],
                     # A record whose name is its editor id ("MyrwatchTNE_Quest") opens its line under the line's name.
-                    "name": line["name"] if q["edid"] == line["opening"] and _RECORD_FORM.search(q["name"] or "") else q["name"],
+                    "name": line["name"] if q["edid"] == line["opening"] and _RECORD_FORM.search(q["name"] or "") else JOB_NAMES.get(q["name"], q["name"]),
                     "type": q.get("type"),
                     # The mod the quest itself is from (WO-154 Part 1b), not its line's: a base-game quest in a line mods add to.
                     "mod": quest_mod(q),

@@ -16419,13 +16419,13 @@
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "ng beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as the flame burns, the college will stand.\r\n\r\nThe Bards College\r\n\r\nLooking up from the Bards College steps, you can see that the college stands taller than the Blue Palace itself. The bards who train here c",
+     "words": "stle Dour and the Temple and you'll get your first sight of the Blue Palace. Along the way, be sure to stop outside the Bards College, a large building on your left marked by the Flame of Callisos burning beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as th",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "stle Dour and the Temple and you'll get your first sight of the Blue Palace. Along the way, be sure to stop outside the Bards College, a large building on your left marked by the Flame of Callisos burning beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as th",
+     "words": "ng beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as the flame burns, the college will stand.\r\n\r\nThe Bards College\r\n\r\nLooking up from the Bards College steps, you can see that the college stands taller than the Blue Palace itself. The bards who train here c",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
@@ -53556,13 +53556,13 @@
     {
      "kind": "book",
      "book": "Uncovering the Aetherium Forge",
-     "words": "the first to step foot here in thousands of years. More Resonators, easy enough. But the air... it feels different.\r\n \r\nThe Aetherium Forge. We actually found it! The whole area is surrounded by a pool of magma. We'll have to shut off the steam so my friend can breathe down here.",
+     "words": "Uncovering the Aetherium Forge\r\n\r\n\r\nby Katria\r\n\r\n\r\n\r\n\r\nThe real mind behind \r\nThe Aetherium Wars\r\n\r\n \r\n17th of Sun's Height \r\nDamn that scheming elf! Damn him! He steals my no",
      "record": "BOOK katriaslegacy.esp:000800 (katriaslegacy.esp)"
     },
     {
      "kind": "book",
      "book": "Uncovering the Aetherium Forge",
-     "words": "Uncovering the Aetherium Forge\r\n\r\n\r\nby Katria\r\n\r\n\r\n\r\n\r\nThe real mind behind \r\nThe Aetherium Wars\r\n\r\n \r\n17th of Sun's Height \r\nDamn that scheming elf! Damn him! He steals my no",
+     "words": "the first to step foot here in thousands of years. More Resonators, easy enough. But the air... it feels different.\r\n \r\nThe Aetherium Forge. We actually found it! The whole area is surrounded by a pool of magma. We'll have to shut off the steam so my friend can breathe down here.",
      "record": "BOOK katriaslegacy.esp:000800 (katriaslegacy.esp)"
     }
    ],
@@ -58942,6 +58942,7 @@
     "Hamelyn",
     "Skeever"
    ],
+   "outsideOf": "Whiterun",
    "world": "Tamriel",
    "pos": [
     32256.0,
@@ -66452,9 +66453,9 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Riverwood",
-    "km": 0.5,
-    "walk": "a short walk"
+    "town": "Whiterun",
+    "km": 0.3,
+    "walk": "next to it"
    },
    "nearestCity": {
     "town": "Falkreath",
@@ -66464,6 +66465,7 @@
    "inTown": null,
    "plugin": "Unofficial Skyrim Modders Patch.esp",
    "marker": "Skyrim.esm:072879",
+   "outsideOf": "Whiterun",
    "world": "Tamriel",
    "pos": [
     17752.1,

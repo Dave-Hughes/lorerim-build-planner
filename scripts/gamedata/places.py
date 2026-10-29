@@ -890,6 +890,7 @@ def build(version):
                 got = outside_walls(k, p)
                 if got:
                     OUTSIDE_WALLS.append((k, p["name"], p["inTown"], got["posFrom"]))
+                    p["outsideOf"] = p["inTown"]  # its city stays its nearest town, however near another town's marker is (WO-180 Part 5a)
             if not got:
                 return
             p["world"], p["pos"], p["posFrom"], p["inTown"] = got["world"], got["pos"], got["posFrom"], None
@@ -1151,6 +1152,8 @@ def build(version):
         if not ref:
             continue
         for field, candidates in (("nearestTown", towns), ("nearestCity", cities)):
+            if p.get("outsideOf") and field == "nearestTown":
+                candidates = [(t, m) for t, m in [*towns, *cities] if t == p["outsideOf"]] or candidates
             best = None
             for tname, tm in candidates:
                 if marker_world(tm) != ref["world"] or tm is mk:
@@ -1161,6 +1164,9 @@ def build(version):
             if best:
                 km = round(best[0] * 0.0142875 / 1000, 1)  # 1 unit = 1.43 cm
                 p[field] = {"town": best[1], "km": km, "walk": walk(km)}
+            elif p.get("outsideOf") and field == "nearestTown":
+                # A city is a worldspace of its own, so no marker of its own is measured to: Bob's ruling is that it stands next to the city.
+                p[field] = {"town": p["outsideOf"], "km": 0.3, "walk": "next to it"}
     OFF_MAP[:] = off_map
     # Actors in each place's cells, and its child locations' (a dungeon's inner levels).
     owner = {}

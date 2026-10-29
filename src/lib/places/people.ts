@@ -27,6 +27,10 @@ export interface PlacePerson {
   keeperRank: number;
   gives: number;
   read: boolean;
+  /** Runs a shop (WO-180 Part 5a): the read says what they sell, or their job is a seller's, or they sleep in a building that is a shop. The record's "sells" flag alone is not that (a Companion, a bard and a housecarl have it). */
+  shopkeeper: boolean;
+  /** The shop the read names for them ("Belethor's General Goods"), when it is not the building they sleep in. */
+  shopName: string | null;
 }
 export interface House {
   name: string;
@@ -65,9 +69,15 @@ const shopOf = (p: Person) => {
   return said || (p.sells ? (SHOP[p.role ?? ""] ?? (/trader|general/i.test(p.cell ?? "") ? "general goods" : /smith|forge/i.test(p.cell ?? "") ? "blacksmith" : "goods")) : "");
 };
 
+/** A building whose name says it is a shop. */
+const SHOPPY = /goods|cauldron|wisdoms?|smith|forge|bakery|stall|warmaiden|trader|market|store|shop|armou?r|fletch|apothecary|alchem|emporium|wares/i;
+/** The shop a read names for a seller: "general goods at Belethor's General Goods; trades 7 am to 9 pm", "trades from Belethor's General Goods lists". */
+const shopNameOf = (s: string) => /\b(?:at|from)\s+([A-Z][\w'’-]*(?:\s+[A-Z][\w'’-]*)*)/.exec(s)?.[1] ?? null;
+
 function personOf(p: Person): PlacePerson {
   const read = p.read;
   const sells = shopOf(p);
+  const shopkeeper = !!sells && (!!read?.sells || !!SHOP[p.role ?? ""] || SHOPPY.test(p.cell ?? ""));
   const readKeeper = !!read && /\binnkeeper\b|rents rooms/i.test(read.role ?? "");
   const keeper = !!p.innkeeper || readKeeper;
   const trainsSkill = read ? (read.trains ? (p.trainer?.skill ?? read.trains.split(/[\s(,]/)[0]) : null) : (p.trainer?.skill ?? null);
@@ -81,7 +91,31 @@ function personOf(p: Person): PlacePerson {
   if (p.follower) chips.push({ kind: "follower", text: "Follower" });
   if (keeper) chips.push({ kind: "rents", text: "Rents rooms" });
   if (gives > 0) chips.push({ kind: "quests", text: gives === 1 ? "Gives a quest" : "Gives quests" });
-  return { name: p.name, href: `/people/${p.slug}`, role, chips, sells: sells || null, trains: trainsSkill, follower: !!p.follower, keeper, keeperRank: readKeeper ? 2 : p.innkeeper ? 1 : 0, gives, read: !!read };
+  return { name: p.name, href: `/people/${p.slug}`, role, chips, sells: sells || null, trains: trainsSkill, follower: !!p.follower, keeper, keeperRank: readKeeper ? 2 : p.innkeeper ? 1 : 0, gives, read: !!read, shopkeeper, shopName: shopkeeper && read?.sells ? shopNameOf(read.sells) : null };
+}
+
+export interface Shop {
+  name: string;
+  href: string | null;
+  keeper: PlacePerson;
+  /** What it sells in a few words ("apothecary", "general goods"). */
+  kind: string;
+}
+
+/** The shops among a place's houses (WO-180 Part 5a): one per shop, with its name, its keeper and what it sells; the ones who sell from another's shop are in that shop. */
+export function shopsOf(houses: House[]): Shop[] {
+  const out = new Map<string, Shop & { own: boolean }>();
+  for (const h of houses) {
+    for (const p of h.people) {
+      if (!p.shopkeeper) continue;
+      const name = p.shopName ?? h.name;
+      const own = h.name === name;
+      const had = out.get(name);
+      if (had && (had.own || !own)) continue;
+      out.set(name, { name, href: own ? h.href : placeHref(name), keeper: p, kind: p.sells ?? "goods", own });
+    }
+  }
+  return [...out.values()].map((s): Shop => ({ name: s.name, href: s.href, keeper: s.keeper, kind: s.kind })).sort((a, b) => a.name.localeCompare(b.name));
 }
 
 /** The people at a place, grouped by the building they sleep in; a town's, or an inn's, temple's or hall's. */
@@ -116,11 +150,15 @@ export function peopleAt(place: Place): { houses: House[]; total: number } {
   return { houses, total: here.length };
 }
 
-/** The dangerous places whose nearest town is this one (a name once: a mod's second record of a place is left out), nearest first. */
+/** A place people use and live at, next to a town: a farm, the stables, a meadery (WO-180 Part 5a). */
+const NEAR_TYPES = new Set(["Farm", "Stables", "House", "Mill", "Inn", "Building"]);
+
+/** The places whose nearest town is this one: the dangerous ones (a name once: a mod's second record of a place is left out) and the farms and stables next to it, nearest first. */
 export function closeBy(town: Place): { place: Place; range: [number, number] | null; words: string }[] {
   const seen = new Map<string, Place>();
   for (const p of placesData().places) {
-    if (p.nearestTown?.town !== town.name || p === town || placeKind(p) !== "dangerous") continue;
+    if (p.nearestTown?.town !== town.name || p === town) continue;
+    if (placeKind(p) !== "dangerous" && !(NEAR_TYPES.has(p.type) && !p.inTown && (p.nearestTown.km ?? 9) <= 1)) continue;
     // Two places of one name in different holds (the Imperial camps) are two places.
     const k = `${p.name}|${p.hold ?? ""}`;
     const had = seen.get(k);
@@ -128,6 +166,6 @@ export function closeBy(town: Place): { place: Place; range: [number, number] | 
   }
   return [...seen.values()]
     .sort((a, b) => (a.nearestTown!.km ?? 0) - (b.nearestTown!.km ?? 0) || a.name.localeCompare(b.name))
-    .slice(0, 8)
+    .slice(0, 10)
     .map((p) => ({ place: p, range: p.actors && (p.actors.floor !== undefined || p.actors.atLevel?.length) ? rangeOf(p.actors) : null, words: p.nearestTown!.walk === "next to it" ? "next to it" : (p.nearestTown!.walk ?? "close by") }));
 }

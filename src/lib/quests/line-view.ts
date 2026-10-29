@@ -115,7 +115,7 @@ function placeList(places: (string | null | undefined)[], limit = 6): { names: s
     const text = p?.trim();
     if (!text) continue;
     const named = linkNames(text, placeNames()).filter((x) => x.href);
-    const found = named.length ? named.map((x) => x.text) : short(text.split(",")[0].trim()) ? [text.split(",")[0].trim()] : [];
+    const found = named.length ? named.map((x) => x.text) : short(text.split(",")[0].trim()) ? [text.split(",")[0].trim().replace(/^[a-z]/, (c) => c.toUpperCase())] : [];
     for (const f of found) {
       // A place's other name (Volkihar Keep) and its own (Castle Volkihar) are one place.
       const key = linkNames(f, placeNames())[0]?.href ?? f.toLowerCase();
@@ -322,7 +322,7 @@ export function lineView(line: QuestLine): LineView {
     opens,
     glance: {
       start: { value: shelf ? "Each job on its own" : (story?.chapters[0]?.name ?? first0?.name ?? opening?.name ?? "Not read yet"), sub: shelf ? "Open one for how it starts" : startText, more: shelf ? [] : startLines.slice(1) },
-      level: line.minLevel ? { value: `Level ${line.minLevel}`, sub: line.level ?? null } : { value: "Any", sub: line.level ?? (lr ? "The records set no level for it" : null) },
+      level: line.minLevel ? { value: `Level ${line.minLevel}`, sub: line.level ?? null } : { value: "Any level", sub: line.level ?? null },
       length: {
         value: `${storyQuests.length || quests.length - skipped.size} ${(storyQuests.length || quests.length - skipped.size) === 1 ? "quest" : "quests"}`,
         sub: chapterCount ? `In ${chapterCount} chapters${jobs.length ? `, plus ${jobs.length} jobs along the way` : ""}` : (line.size ?? (jobs.length ? `Plus ${jobs.length} jobs along the way` : null)),

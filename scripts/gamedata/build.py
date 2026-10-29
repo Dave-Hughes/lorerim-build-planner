@@ -503,6 +503,14 @@ def main():
                 if q.get("start"):
                     cleaned = clean_read({k: q["start"][k] for k in ("needs", "ways", "then") if k in q["start"]})
                     q["start"].update({k: v for k, v in cleaned.items() if k != "unsure"})
+        # WO-180 Part 5a: a read's steps are copied from the quest's objectives, so their tags are filled the way the objectives' are.
+        from quest_pages import fill_all as fill_read
+
+        read_fills = {q["edid"]: q.get("fills", {}) for q in quests_raw}
+        for l in pages:
+            for q in l["quests"]:
+                if q.get("read"):
+                    q["read"] = fill_read(q["read"], read_fills.get(q["edid"], {}), raw_file.get("globals", {}))
         print(f"{with_read} quests read and checked, {without_read} on the older rules" + (f"; {len(unmatched)} reads match no quest on the pages: {', '.join(unmatched[:8])}" if unmatched else ""))
         # WO-154 Part 2: the ways through a quest, the line reads, and the mods that changed each quest.
         from quest_pages import quest_mod, source_name

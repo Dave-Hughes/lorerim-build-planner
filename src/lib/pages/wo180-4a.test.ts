@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { peopleData } from "@/lib/people/data";
 import { questsData } from "@/lib/quests/data";
 import { placesData } from "@/lib/places/data";
-import { peopleAt } from "@/lib/places/people";
+import { closeBy, peopleAt, shopsOf } from "@/lib/places/people";
 import { placeOnly, placePhrase, vaguePlace } from "@/lib/pages/where";
 import { isTemplateName } from "@/lib/pages/player-words";
 
@@ -111,5 +111,63 @@ describe("what a place says of its shops and its books (WO-180 Part 4a)", () => 
     const books = placesData().places.flatMap((p) => p.worthGoingFor?.skillBooks ?? []);
     expect(books.filter((b) => /^Speechcraft:/.test(b))).toEqual([]);
     expect(books.some((b) => /^Speech:/.test(b))).toBe(true);
+  });
+});
+
+describe("the second check (WO-180 Part 5a)", () => {
+  // A quest's steps are the planner's words once their blanks are filled, so they are walked too (the game's own quoted words aside).
+  const stepStrings = () => {
+    const out: [string, string][] = [];
+    for (const l of questsData().lines)
+      for (const q of l.quests) {
+        for (const s of q.read?.steps ?? []) for (const o of s.objectives ?? []) out.push([q.name, o]);
+        for (const o of q.objectives ?? []) out.push([q.name, o]);
+      }
+    return out.map(([n, s]) => [n, quoted(s)] as [string, string]);
+  };
+  const stepBad = (re: RegExp) => stepStrings().filter(([, s]) => re.test(s)).map(([n, s]) => `${n}: ${s}`);
+  it("a step has its blanks filled: no tag, no 'the the', no 'the actor', no 'The one'", () => {
+    expect(stepBad(/<[^<>]+>/)).toEqual([]);
+    expect(stepBad(/the the|the actor|^The one has/i)).toEqual([]);
+    expect(stepStrings().some(([n, s]) => n === "Cultists vs Player" && s === "Search the person")).toBe(true);
+    expect(stepStrings().some(([n, s]) => n === "Maggot" && /^The victim has been dazzled/.test(s))).toBe(true);
+  });
+  it("Hunter's Mark names its two jobs as what they are and says where each takes you once", () => {
+    const line = questsData().lines.find((l) => l.id === "hunters-mark")!;
+    expect(line.quests.map((q) => q.name)).toEqual(["Mark an animal den", "Mark an animal den (second job)"]);
+    expect(line.quests.every((q) => isTemplateName(q.name ?? ""))).toBe(true);
+    const places = new Set(line.quests.flatMap((q) => (q.read?.takesYou ?? []).map((t) => t.place)));
+    expect([...places]).toEqual(["an animal den in the hold you are in"]);
+  });
+  it("a place that starts with a preposition or an adverb gets no 'in' in front of it", () => {
+    for (const w of ["out on the road", "out around Ivarstead", "after you earn the Ebony Mail", "with you", "around Ivarstead", "in the Sleeping Giant Inn"]) {
+      expect(placePhrase(w, true)).toBe(w);
+    }
+    expect(placePhrase("the Sleeping Giant Inn", true)).toBe("in the Sleeping Giant Inn");
+    expect(placePhrase("out on the road", false)).toBe("Out on the road");
+  });
+  it("Whiterun's Shops and beds is one item per shop, with its name, its keeper and what it sells", () => {
+    const shops = shopsOf(peopleAt(placesData().places.find((p) => p.name === "Whiterun" && p.type === "City")!).houses);
+    const names = shops.map((s) => s.name);
+    for (const n of ["Arcadia's Cauldron", "Belethor's General Goods", "Warmaiden's"]) expect(names, n).toContain(n);
+    expect(shops.find((s) => s.name === "Arcadia's Cauldron")?.kind).toBe("apothecary");
+    expect(shops.find((s) => s.name === "Belethor's General Goods")?.keeper.name).toBe("Belethor");
+    // A bard, a Companion and a housecarl have the record's "sells" flag and run no shop.
+    const keepers = shops.map((s) => s.keeper.name);
+    for (const n of ["Mikael", "Aela the Huntress", "Lydia", "Farkas"]) expect(keepers, n).not.toContain(n);
+    expect(new Set(names).size).toBe(names.length);
+  });
+  it("Close by lists the farms and the stables next to Whiterun, not only the dangerous places", () => {
+    const whiterun = placesData().places.find((p) => p.name === "Whiterun" && p.type === "City")!;
+    const near = closeBy(whiterun).map((c) => c.place.name);
+    expect(near).toContain("Honningbrew Meadery");
+    expect(near).toContain("Whiterun Stables");
+  });
+  it("no record talk in the reads: 'role not shown', 'separate from the recipient'", () => {
+    const people: string[] = [];
+    for (const l of questsData().lines) for (const q of l.quests) for (const p of q.read?.people ?? []) people.push(`${q.name}: ${p.role ?? ""}`);
+    expect(people.filter((s) => /records|role not shown/i.test(s))).toEqual([]);
+    const text = peopleData().all.flatMap((p) => strings(p.read ?? {}, `person ${p.name}`).map(([, s]) => s));
+    expect(text.filter((s) => /separate from the recipient/i.test(s))).toEqual([]);
   });
 });

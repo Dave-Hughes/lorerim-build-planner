@@ -99,7 +99,9 @@ export default async function PersonPage({ params }: { params: Params }) {
   type Offer = { title: string; body: React.ReactNode };
   const offers: Offer[] = [];
   if (read) {
-    const killer = read.canDie.toLowerCase();
+    // A read ends its sentence with a full stop already ("essential."): the page adds its own (WO-180 Part 5a).
+    const dies = read.canDie.replace(/[.\s]+$/, "");
+    const killer = dies.toLowerCase();
     if (person.follower || read.joins) {
       offers.push({
         title: "Follower",
@@ -164,10 +166,10 @@ export default async function PersonPage({ params }: { params: Params }) {
     if (killer.startsWith("essential") || person.essential) {
       offers.push({
         title: "Can't be killed",
-        body: killer === "essential" || !killer ? <>{can} is essential: {subject} goes down in a fight but gets back up.</> : <>{cap(read.canDie.replace(/ in (?:his|her|their) record/i, ""))}.</>,
+        body: killer === "essential" || !killer ? <>{can} is essential: {subject} goes down in a fight but gets back up.</> : <>{cap(dies.replace(/ in (?:his|her|their) record/i, ""))}.</>,
       });
     } else if (killer.startsWith("protected")) {
-      offers.push({ title: "Protected", body: killer === "protected" ? "Other characters can't kill " + they + ". You can." : cap(read.canDie) + "." });
+      offers.push({ title: "Protected", body: killer === "protected" ? "Other characters can't kill " + they + ". You can." : cap(dies) + "." });
     }
   } else {
     if (role)
@@ -175,7 +177,7 @@ export default async function PersonPage({ params }: { params: Params }) {
         title: role,
         body: (
           <>
-            From the records. <em className={styles.nk}>What exactly isn&apos;t known yet.</em>
+            <em className={styles.nk}>What they do for you isn&apos;t known yet.</em>
           </>
         ),
       });

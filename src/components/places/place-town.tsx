@@ -9,7 +9,7 @@ import { PlaceMapBand } from "./place-map";
 import { linkable } from "@/lib/pages/names";
 import { personHref } from "@/lib/people/data";
 import { placeHref, placeHrefOf, placeLabel, placeType, rangeOf, type Place } from "@/lib/places/data";
-import { closeBy, peopleAt, type PlacePerson } from "@/lib/places/people";
+import { closeBy, peopleAt, shopsOf, type PlacePerson } from "@/lib/places/people";
 import type { PlaceKind } from "@/lib/places/kind";
 import { saidAbout } from "@/lib/places/said";
 import { questHref } from "@/lib/quests/slugs";
@@ -109,7 +109,8 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
   const { houses, total } = peopleAt(place);
   const everyone = houses.flatMap((h) => h.people);
   const keepers = everyone.filter((p) => p.keeper).sort((a, b) => b.keeperRank - a.keeperRank);
-  const sellers = everyone.filter((p) => p.sells);
+  const shops = shopsOf(houses);
+  const inns = houses.filter((h) => h.people.some((p) => p.keeper));
   const trainers = everyone.filter((p) => p.trains);
   const followers = everyone.filter((p) => p.follower);
   const names = linkable();
@@ -134,7 +135,7 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
   // The page's own words: a summary from what is known.
   const typeWords = placeType(place.type).toLowerCase();
   const bits = [
-    sellers.length ? list([...new Set(sellers.map((s) => s.sells!).filter((x) => x !== "goods"))].slice(0, 2)) : "",
+    shops.length ? list([...new Set(shops.map((s) => s.kind).filter((x) => x !== "goods"))].slice(0, 2)) : "",
     keepers.length ? (inside ? "rooms to rent" : "an inn") : "",
     trainers.length ? `${list([...new Set(trainers.map((x) => x.trains!.toLowerCase()))])} trainers` : "",
   ].filter(Boolean);
@@ -165,20 +166,31 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
   const cells: ReactNode[] = [
     cell("where", "quest-travel", l.cTeal, "Where", inside ? (place.inTown ?? place.hold ?? "In a town") : place.hold ? `${holdWords(place.hold)}` : placeType(place.type), inside ? (upHref && place.inTown ? <PreviewLink href={upHref}>{`In ${place.inTown}`}</PreviewLink> : place.hold ? `${holdWords(place.hold)}` : null) : near ? cap(near) : null),
     ...(total ? [cell("people", "quest-people", l.cOrange, "People", String(total), houses.length === 1 ? undefined : `in ${houses.filter((h) => h.name !== place.name).length || houses.length} homes and buildings`)] : []),
-    ...(sellers.length || keepers.length
+    ...(shops.length || keepers.length
       ? [
           cell(
             "shops",
             "quest-rewards",
             l.cGold,
             "Shops and beds",
-            list(
-              (() => {
-                const kinds = [...new Set(sellers.map((s) => cap(s.sells!)))];
-                return (kinds.length > 1 ? kinds.filter((x) => x !== "Goods") : kinds).concat(keepers.length ? ["an inn with rooms"] : []);
-              })(),
-            ) || "A shop",
-            nameLinks([...keepers, ...sellers.filter((s) => !s.keeper)], 5),
+            cap(list([shops.length ? `${shops.length} ${shops.length === 1 ? "shop" : "shops"}` : "", keepers.length ? (inns.length > 1 ? `${inns.length} inns with rooms` : "an inn with rooms") : ""].filter(Boolean))),
+            // One line per shop: its name, its keeper and what it sells; then the inn and who keeps it.
+            <>
+              {shops.slice(0, 6).map((s) => (
+                <span key={s.name} style={{ display: "block" }}>
+                  {s.href ? <Link href={s.href}>{s.name}</Link> : s.name}: <Link href={s.keeper.href}>{s.keeper.name}</Link>, {s.kind}
+                </span>
+              ))}
+              {shops.length > 6 && <span style={{ display: "block" }}>and {shops.length - 6} more</span>}
+              {inns.slice(0, 2).map((h) => {
+                const keeper = h.people.find((p) => p.keeper)!;
+                return (
+                  <span key={h.name} style={{ display: "block" }}>
+                    {h.href ? <Link href={h.href}>{h.name}</Link> : h.name}: <Link href={keeper.href}>{keeper.name}</Link>, rooms to rent
+                  </span>
+                );
+              })}
+            </>,
             true,
           ),
         ]

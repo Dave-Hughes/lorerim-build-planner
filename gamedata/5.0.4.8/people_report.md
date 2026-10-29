@@ -8,18 +8,17 @@
 |---|---|
 | (none) | 4600 |
 | JobFarmer | 24 |
-| JobMerchant | 14 |
+| JobMerchant | 13 |
 | JobInnkeeper | 6 |
 | JobHireling | 6 |
 | JobMiner | 6 |
-| JobSpellVendor | 2 |
+| JobSpellVendor | 3 |
 | JobJarl | 2 |
+| JobHunter | 2 |
 | JobHostler | 2 |
 | JobHousecarl | 1 |
-| JobHunter | 1 |
 | JobSteward | 1 |
 | JobBlacksmith | 1 |
-| JobApothecary | 1 |
 
 ## By town
 

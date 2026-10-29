@@ -61,6 +61,12 @@ class Strings(unittest.TestCase):
         self.assertEqual(said("Talk to the riverwood friend in Riverwood"), "Talk to your friend from Helgen in Riverwood")
         self.assertEqual(said("Speechcraft to 75 (journeyman)"), "Speech to 75 (journeyman)")
 
+    def test_a_role_that_talks_of_the_records_says_where_they_are(self):
+        self.assertEqual(said("in the quest's records at Cidhna Mine"), "At Cidhna Mine")
+        self.assertEqual(said("also in the quest's records; Shaman's Hut, Skaal Village"), "Also at Shaman's Hut, Skaal Village")
+        self.assertEqual(said("named in the quest's records; role not shown"), "Has a part in it")
+        self.assertEqual(said("has his own part in it, separate from the recipient."), "has his own part in it.")
+
     def test_a_job_with_a_placeholder_name_gets_a_plain_one(self):
         self.assertEqual(said("Delivery for the npc"), "A delivery")
         self.assertEqual(said("The item"), "A shipment to collect")

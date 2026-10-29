@@ -41,6 +41,12 @@ PLAIN = [
     (re.compile(r"\b(the )?(enemy )?field co\b\.?", re.I), lambda m: f"{m.group(1) or ''}{m.group(2) or ''}field commander"),
     (re.compile(r"\s*\(\s*\)"), ""),
     (re.compile(r"\bthe the\b", re.I), "the"),
+    (re.compile(r"^named in the quest's records; role not shown$", re.I), "Has a part in it"),
+    (re.compile(r"^also in the quest's records; ", re.I), "Also at "),
+    (re.compile(r"^in the quest's records at ", re.I), "At "),
+    (re.compile(r",?\s*separate from the recipient(?=[.;,]|$)", re.I), ""),
+    # Hunter's Mark: its two jobs send you to the same kind of place, said once (WO-180 Part 5a).
+    (re.compile(r"\ban animal den picked (?:from the hold you are in|by the mod)\b", re.I), "an animal den in the hold you are in"),
     (re.compile(r"\bthe actor\b", re.I), "the person"),
     (re.compile(r"\bthe npc\b", re.I), "the person"),
     (re.compile(r"\bSpeechcraft\b"), "Speech"),
