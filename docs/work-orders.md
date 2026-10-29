@@ -5159,7 +5159,7 @@ Nothing is dropped from the database: the columns and tables stay (CLAUDE.md, no
 ---
 
 ## WO-180  Junk text out of the pages, and the last map faults (Mac and PC, 28 Oct 2026)
-Status: for Bob
+Status: queued (PC: Part 5a; Mac: Part 5b after PC)
 
 **Why.** The fourth cold review (Bob's reviewer, 3,721 pages crawled, 51 walked at both widths) passed WO-176 to WO-178, and named what would still hit Dave in his first ten minutes: old text from the game files that was never cleaned. Bob confirmed the holes and Web Mother by hand. No order is done until a page-text test fails on each of these.
 ### Part 1. Quotes (PC writes the cleaner; Mac's test fails on any page)
@@ -5267,6 +5267,44 @@ Every Part 4b box is ticked. Checks: typecheck, lint, `npm test` (807 passed, 7 
 - **Route stops:** a stop's name is dropped (its number stays) when it would run under another stop's number, worked out with every zoom like the other overlaps (it was only checked name against name). The new test zooms out three times with the − button at 390 for Forbidden Legend and The Golden Claw and fails on a number under a name or two names over each other; it failed on Saarthal's 3 under Folgunthur's name before the change.
 - **/map at 390:** a count badge is not drawn when it would sit under the zoom buttons, the N or the search. The panel says what the numbers beside each kind are: "The number beside each kind is how many of them are on the map." (the chips keep their title for a mouse).
 
+### Part 5. The second check (Bob's reviewer, 29 Oct; Bob confirmed the first three on staging)
+Part 4 mostly holds. Across 3,703 pages there are no empty "( )", bare hedges, angle-bracket blanks, "Speechcraft", "quest script" or "amount not in" left. Riverwood credits Before the Storm, Before the Storm and A False Front read right, Hendraheim is quoted once, and the map at 390 and Northwind Mine are fixed. These still fail.
+
+**Part 5a (PC)**
+- [ ] **"Search the the actor" (Cultists vs Player) is still on the page.** The page reads `read.steps`, which still has the alias blank; Part 4a fixed `objectives` only. Clean `read.steps` the same way.
+
+  The same family in steps:
+  - Maggot: "Take back your name from the owner in the target location", and "the victim has been dazzled…" three times, in lower case
+  - Feral Soul-Shriven: "Defeat the enemy"
+- [ ] **Hunter's Mark still lists "Hunter Marks Animal Den" and "… 02".** Its "Where it takes you" reads "an animal den picked from the hold you are in, an animal den picked by the mod". It starts in lower case, says the same thing twice, and is wide enough to make the page scroll sideways at 1440 and 390.
+- [ ] **More "in" stuck onto another word:**
+  - "Miraak's cultists in out on the road" (Cultists vs Player)
+  - "Klimmek in out around Ivarstead" (Climb the Steps)
+  - "Boethiah in after you earn the Ebony Mail"
+  - "Serana in with you" (Kindred Judgment)
+
+  Fix the sentence builder, not each line: when the place phrase starts with a preposition or an adverb, don't add "in".
+- [ ] **Whiterun's Shops and beds** now reads "Blacksmith, General goods, Apothecary and an inn with rooms", then "Hulda, Mikael, Saadia, Keld, Aela the Huntress". That list mixes a bard and a Companion in with shopkeepers, and no shop is named. As Part 4 said: one item per shop, with its name, its keeper and what it sells.
+
+  Honningbrew Meadery and Whiterun Stables now show only as map labels. List them under Close by as near the city, not only the dangerous places.
+- [ ] **Records talk:**
+  - "The records set no level for it" (30 line pages, under Level): say "Any level", or show nothing more than "Any".
+  - "From the records. What exactly isn't known yet." (29 people pages)
+  - "Named in the quest's records; role not shown" (The Staff of Magnus)
+  - "Essential.." (Vigilant Tyranus)
+  - "separate from the recipient" (Brill)
+
+  "these files" inside Why we're unsure waits for the backlog rewrite of that section.
+
+**Part 5b (Mac)**
+- [ ] **The page-text test skips quest steps.**
+  - `ownWords()` in `e2e/wo177.spec.ts` strips every numbered step, and the PC's `wo180-4a.test.ts` skips `steps` and `objectives`. A filled alias blank is the planner's words, not the game's, so steps are checked too.
+  - Add "the the", "the actor", "the victim", "the target location", "the enemy" (a step that is only that), " in out ", " in after ", " in with ", "The records set no level", "From the records", and "..", outside a quoted book.
+  - It fails before Part 5a lands.
+- [ ] **Map names dropped with room to spare:** at The Golden Claw's third zoom-out at 390, both stop names go although there is room left and right, and Saarthal has no name when Forbidden Legend opens. Try the other side before dropping a name.
+- [ ] **Northwind Mine says "not known" three times on one screen**: in the band, in the danger section, and under Not sure yet. Say it once, under Not sure yet.
+- [ ] Screenshots at 1440 and 390, then `for Bob`.
+
 Jeff's notes on WO-180 (PC, 28 Oct):
 - **Quotes** (`places.py`, `build.py`): one cleaner, `game_text()`, runs on a book's whole text and on every dialogue line before a quote is cut: `<Alias=Player>` is "you"; any other `<Alias…>`, `<Global…>` or `<Token…>` leaves a hole mark and a quote with one in what is cut around it is left out (the next mention of the place in that book is tried; the Lakeview and Windstad charters have no mention without a hole, so they are not quoted); every other tag (`<font …>`, `<img …>`) and `[pagebreak]` goes before the cut, so no `size="18">` stub is left. A quote names a quest only when it is a quest on the Quests pages by that name; the game's own dialogue quest ("Riften Dialogue") moves to a new field, `dialogue`, which no page shows. Why keep it: the assistant's town gossip (`suggest.ts`, WO-151) reads it to say which town a line with no speaker is about (`wo151.test.ts` caught the first try, which dropped it). A dialogue line with no speaker stays in the data for the same reason; `saidAbout()` leaves it off the pages (one line in `said.ts`: "no speaker, no quote"). 4,761 pointers became 4,741: twenty had a hole in them and went (Lakeview and Windstad Manors no longer quote their charters; Hendraheim, Rorikstead and the rest have none left with markup). The Mac's page-text test is mine too: `wo180.test.ts` runs `saidAbout()` on every place and fails on markup, a hole, a speakerless line or a quest no player has.
 - **A race with an editor id for a name**: the Snow Elf race's own name in its record is "0Asy1um_OthrielSnowElfRace". `race_words()` says it in words (the id's last part, no "Race", split at capitals: MudCrab is Mud Crab, HighlandCow Highland Cow); Othriel's one is ruled ("Snow Elf") since the id's words give "Othriel Snow Elf".
@@ -5329,6 +5367,11 @@ These don't hold:
 - [ ] **What next's text** says "the character's run" for a character set to she/her: use her pronoun. The paragraph stops at about half the width of the rule under it. Text and its controls share one width (Dave's standing rule).
 - [ ] **No cover, no race**: the character made from Dave's orphan run ("Kyria Severa, Sword of Stendarr") is an empty dark card on `/me`. The editor's header shows an empty square for TEST: Bob walk 2. Both need the fallback: the race icon, or the planner's mark when there is no race.
 - [ ] **Small**: the Build tab says "Levels 1 to 1" for a one-level plan ("Level 1"). A visitor's Build tab says the birthsign is missing twice ("Not chosen yet" in the row and "No birthsign chosen yet." under the level).
+- [ ] **From the reviewer (signed out):**
+  - Kyria's run on no build became `/b/mgf6t6a64y` only when its owner opened it. Until then visitors saw the old page, and `/characters?run=1` linked to `/p/`. On production every such run stays on the old page until its owner visits.
+  - The fix is `scripts/backfill-characters.ts --apply`, which writes to the database, so **Dave says yes first** and Mac runs it on staging, then production.
+  - A character made from a run with nothing planned says "Planned to level 1" and "LV 1" and offers "Copy to my builds": say nothing about a plan, and don't offer the copy.
+- [ ] **Not fixed here**: the reader bar overlapping at 390, the name twice in the reader bar and on the story card, "Her story" fixed for every pronoun, and the done stories' `/p/` links. All are in the Story, which WO-181 Part 3 retires.
 - [ ] Screenshots of each fix at 1440 and 390, then `for Bob`. Bob walks it again.
 
 - [x] Bob walks it again signed in (make a character, plan a playthrough, edit, the story, the redirects from Kyria's old `/p/` links); screenshots of each step at 1440 and 390; then `for Bob`.
