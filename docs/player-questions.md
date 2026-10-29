@@ -207,3 +207,15 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 - Calls: `get_person({ name: "Lydia" })`.
 - Must: she joins as your housecarl once you're made Thane of Whiterun (the end of Dragon Rising, or Thane of Whiterun); she can be married; read from the game files and checked by a second reader. Never the reader's "the extracts" in the words.
 - Passes since WO-159 Part 5.
+
+## A character's theme (WO-181)
+
+**39. "Help me write who my character is for the planner."**
+- Calls: `get_style_guide()`.
+- Must: the Who she is rules: a backstory of events in flat sentences, with no sayings, no closing lines, no riddles and no feelings narrated; From, Gods and Goal as plain facts; She will, She won't and Grey areas as things the player does or avoids in the game, in the game's words. Never: "Tale", "chapter", `write_chapter`, a read time.
+- Fails today: **WO-181 Part 4**.
+
+**40. "Show me Kyria's playthrough."**
+- Calls: `get_playthrough({ playthrough })`.
+- Must: her backstory, From, Gods and Goal, She will, She won't and Grey areas, and her acts with their routes. Never: chapters, the Tale, a level or day from a save, or a done count.
+- Fails today: **WO-181 Parts 1 and 3**.
