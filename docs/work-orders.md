@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-184  Players make it right: screenshots, I know this, Help fill the gaps, one review list (Mac, 30 Oct 2026)
-Status: for Bob (Mac: all but the Tapps uploads, see the notes)
+Status: queued (Mac: Part 7, Dave's change to the layout; then Bob reviews the whole order)
 
 **Why.** Dave, 30 Oct: with playthroughs cut, double down on quests, places and people, and "accelerate the ideas for community confirmation of quest info, the admin review section, and of course the image collection work for locations and NPCs." These are the backlog's 23 Oct, 28 Oct and 28 Oct items, decided.
 
@@ -5127,6 +5127,28 @@ Additive migrations only.
   - Recently confirmed shows the confirmation.
 - [x] Page-text test: no "picture" or "image" in what a player reads about screenshots.
 - [x] Screenshots of each board's screen at 1440 and 390 against the canvas, then `for Bob`.
+
+### Part 7. Dave's change to the layout (30 Oct, 14:04, after seeing the boards)
+Dave: "I don't think the screenshot should live beside the map. Let's make this feel a bit more intentional." The boards are redrawn: `PicPlace`, `PicYours`, `PicAdmin`, `PicPerson` and the new `MapFull`, in row 39. This replaces Part 1's "Where they show"; everything else in Part 1 stands.
+- [ ] **The lead screenshot is the hero's background**, on place and person pages alike:
+  - full width and about 600 tall;
+  - the title, tags and lede over it on the left, darkened behind the text and faded into the page at the foot;
+  - "Screenshot by <Discord name>" with the avatar at its foot on the right, linking to the Screenshots section.
+  - With no approved screenshot, the hero is today's plain one.
+  - The hero crops to fill, keeping the middle.
+- [ ] **The map goes back to its own full band**, as before WO-184.
+- [ ] **A Screenshots section** further down the page, in its section list:
+  - a grid of 16:9 tiles (letterboxed in black when a screenshot isn't 16:9), each with the uploader and date;
+  - the lead one marked "Leads the page";
+  - an Add tile last.
+  - A tile opens the screenshot whole.
+  - Your own screenshot under review shows only here, flagged, never as the hero.
+  - An admin's Approve, Make it lead (it becomes the hero), Remove and Delete (with a confirm) sit under each tile.
+  - With none: "None yet" and "+ Add a screenshot of <name>".
+- [ ] **Every map gets Full screen** (`MapFull`): the place pages' map band, the quest and quest line maps, and any other map a page shows.
+  - The map opens over the whole window: a top bar with the name, its key, "Open on the Map page ›" and Close (Esc closes too); the same pins, labels and route with room round them; zoom, drag and the credit.
+  - On a phone it fills the screen the same way.
+- [ ] Screenshots at 1440 and 390 against the redrawn boards, then `for Bob`.
 
 ### Jeff's notes
 
