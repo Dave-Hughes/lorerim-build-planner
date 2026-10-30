@@ -322,6 +322,13 @@ const ownWords = (html: string) =>
       .replace(/<p class="[^"]*quote[^"]*">[\s\S]*?<\/p>/g, " ")
       .replace(/<small>[\s\S]*?<\/small>/g, " "),
   );
+/** The page's words with its numbered steps left in (WO-180 Part 5b): a step's blanks are filled by the planner, so a step is the planner's words; only quotes and who said them are left out. */
+const stepWords = (html: string) =>
+  textOf(html.replace(/<p class="[^"]*quote[^"]*">[\s\S]*?<\/p>/g, " ").replace(/<small>[\s\S]*?<\/small>/g, " "));
+/** A name or a noun with "in" stuck on before out, after or with ("Serana in with you", "Boethiah in after you earn…"). "Check in with Remi" and "Go in after him" are verbs and left alone. */
+const IN_BEFORE_WORD = /\b(?!(?:Check|Go|Get|Come|Break|Barge|Move|Step|Let|Sneak|Walk|Wait|Stay|Join|Turn|Hand|Drop|Sit|Settle|Stop|Bring|Take|Sign|Log|Fit|Team|Cave|Rush|Run|Charge|Fight|Head|Hurry|Dive|Rope|Butt|Jump|Slip|Wade|Storm|Report|Look|Pop|Stick|Fill|Tag|Phone|Call|Drive|Ride|Sail|Swim|Climb|Cut|Chip|Pitch|Weigh|Dig|Ease|Hold|Lock|Pull|Push|Key)\b)[A-Z][A-Za-z']+ in (?:out|after|with)\b/;
+/** The text of each numbered step, one string each. */
+const stepsOf = (html: string) => [...html.matchAll(/<li><span class="[^"]*__num">[\s\S]*?<\/span><span class="[^"]*__txt">([\s\S]*?)<\/span><\/li>/g)].map((m) => textOf(m[1]).trim());
 
 test("Part 5: no page shows a plugin file, a record id or a bracket hedge, and no quest says '1 ways'", async ({ request }) => {
   test.setTimeout(420_000);
@@ -348,28 +355,28 @@ test("Part 5: no page shows a plugin file, a record id or a bracket hedge, and n
   };
   const texts = new Map<string, string>();
   const own = new Map<string, string>();
-  await batch(lines, (u, html) => {
+  const withSteps = new Map<string, string>();
+  const steps = new Map<string, string[]>();
+  const keep = (u: string, html: string) => {
     texts.set(u, textOf(html));
     own.set(u, ownWords(html));
+    withSteps.set(u, stepWords(html));
+    steps.set(u, stepsOf(html));
+  };
+  await batch(lines, (u, html) => {
+    keep(u, html);
     for (const q of hrefs(html, /href="(\/quests\/q\/[a-z0-9-]+)"/g)) pages.add(q);
     for (const p of hrefs(html, /href="(\/people\/[a-z0-9-]+)"/g)) people.add(p);
     for (const p of hrefs(html, /href="(\/places\/[a-z0-9-]+)"/g)) places.add(p);
   });
   const quests = [...pages].filter((u) => u.startsWith("/quests/q/"));
   await batch(quests, (u, html) => {
-    texts.set(u, textOf(html));
-    own.set(u, ownWords(html));
+    keep(u, html);
     for (const p of hrefs(html, /href="(\/people\/[a-z0-9-]+)"/g)) people.add(p);
     for (const p of hrefs(html, /href="(\/places\/[a-z0-9-]+)"/g)) places.add(p);
   });
-  await batch([...people].slice(0, 400), (u, html) => {
-    texts.set(u, textOf(html));
-    own.set(u, ownWords(html));
-  });
-  await batch([...places].slice(0, 300), (u, html) => {
-    texts.set(u, textOf(html));
-    own.set(u, ownWords(html));
-  });
+  await batch([...people].slice(0, 400), keep);
+  await batch([...places].slice(0, 300), keep);
   expect(texts.size).toBeGreaterThan(800);
   const bad: string[] = [];
   for (const [u, t] of texts) {
@@ -409,6 +416,22 @@ test("Part 5: no page shows a plugin file, a record id or a bracket hedge, and n
       const m = re.exec(text);
       if (m) bad.push(`${u}: ${what}: ${text.slice(Math.max(0, m.index - 40), m.index + 60)}`);
     }
+    // WO-180 Part 5b: the steps too. A filled blank is the planner's words, not the game's; a quoted book keeps its own ".." and "the the".
+    const stepped = (withSteps.get(u) ?? t).replace(/&quot;/g, '"').replace(/Sign in with Discord/g, " ").replace(/Information Confidence[\s\S]*$/, "").replace(/["“][^"”]*["”]/g, "");
+    const blanks = [
+      [/\bthe the\b/i, "the the"],
+      [/ in out /i, "'in' stuck onto another word"],
+      [IN_BEFORE_WORD, "'in' stuck onto a name"],
+      [/The records set no level/i, "the records set no level"],
+      [/From the records\b/i, "'From the records'"],
+      [/(?<!\.)\.\.(?!\.)/, "two full stops"],
+    ] as const;
+    for (const [re, what] of blanks) {
+      const m = re.exec(stepped);
+      if (m) bad.push(`${u}: ${what}: ${stepped.slice(Math.max(0, m.index - 40), m.index + 60)}`);
+    }
+    // A step that is only a role name from the files says nothing: "the enemy", "the victim". A step like "Rescue the victim from the lair" is the game's own sentence.
+    for (const s of steps.get(u) ?? []) if (/^(?:the )?(?:actor|victim|target location|enemy)\.?$/i.test(s)) bad.push(`${u}: a step that is only '${s}'`);
   }
   expect(bad.slice(0, 40)).toEqual([]);
 });
@@ -492,10 +515,9 @@ test("WO-176 Part 2 (Mac): a reward is said once, and an unknown danger is a cel
     await expect(page.getByRole("region", { name: "Rewards", exact: true })).toHaveCount(0);
   }
   await page.goto("/places/moss-mother-cavern");
-  await expect(page.getByRole("region", { name: "At a glance" })).toContainText("Danger");
-  await expect(page.getByRole("region", { name: "At a glance" })).toContainText("Not known yet");
-  // The one short block says what is known, and ends with what is not (WO-180); no lone line in an empty column.
-  await expect(page.getByRole("region", { name: "What is known" })).toContainText("How dangerous it is isn't known yet");
+  // The one short block says what is known (WO-180); how dangerous it is, when nobody knows, is said once, under Not sure yet (Part 5b).
+  await expect(page.getByRole("region", { name: "At a glance" })).not.toContainText("Not known yet");
+  await expect(page.getByRole("region", { name: "What is known" })).not.toContainText("isn't known yet");
   await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("How dangerous it is");
   await expect(page.getByRole("region", { name: "Information Confidence" })).not.toContainText("Nothing is flagged");
 });
@@ -534,7 +556,7 @@ test("WO-180 Part 3 (Mac): no label under the panel with a kind picked, a route'
   for (const h of heads) expect(h, h).not.toMatch(/ hold$/);
 });
 
-test("WO-180 Part 4b (Mac): a route's stops stay clear of every label after each zoom out at 390, and the Traps flag sits in Northwind Mine's danger line", async ({ page }) => {
+test("WO-180 Part 4b (Mac): a route's stops stay clear of every label after each zoom out at 390, and Northwind Mine's traps are its Danger cell, with how dangerous it is said once", async ({ page }) => {
   test.setTimeout(120_000);
   await page.setViewportSize({ width: 390, height: 844 });
   for (const quest of ["forbidden-legend", "the-golden-claw"]) {
@@ -586,10 +608,41 @@ test("WO-180 Part 4b (Mac): a route's stops stay clear of every label after each
   await expect(page.getByRole("complementary", { name: "Map controls" })).toContainText("The number beside each kind is how many of them are on the map.");
   await page.screenshot({ path: "test-results/wo180-4b-map-panel-390.png" });
   await page.goto("/places/northwind-mine");
-  await expect(page.getByRole("region", { name: "Danger" })).toContainText("How dangerous it is isn't known yet");
-  await expect(page.getByRole("region", { name: "Danger" })).toContainText("Traps");
+  // Part 5b: the traps are the band's Danger cell, not a lone flag over Worth going for.
+  await expect(page.getByRole("region", { name: "At a glance" })).toContainText("Danger");
+  await expect(page.getByRole("region", { name: "At a glance" })).toContainText("Traps");
+  await expect(page.getByRole("region", { name: "Danger" })).toHaveCount(0);
+  // WO-180 Part 5b: it is not known how dangerous the mine is, and the page says so once, under Not sure yet.
+  const said = (await page.locator("main").innerText()).match(/how dangerous it is|danger\s+not known|not known yet/gi) ?? [];
+  expect(said, "how dangerous it is, said where").toHaveLength(1);
+  await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("How dangerous it is");
   await page.screenshot({ path: "test-results/wo180-4b-northwind-390.png", fullPage: true });
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/places/northwind-mine");
   await page.screenshot({ path: "test-results/wo180-4b-northwind-1440.png", fullPage: true });
+});
+
+test("WO-180 Part 5b (Mac): a route's stop keeps its name when the other side has room (The Golden Claw's two stops, Saarthal)", async ({ page }) => {
+  test.setTimeout(120_000);
+  await page.setViewportSize({ width: 390, height: 844 });
+  const named = async (quest: string, step: string, stops: string[] | number) => {
+    const map = page.getByRole("group", { name: "Map of Skyrim" });
+    const seen = await map.locator("a[class*='pin']").evaluateAll((pins) => pins.filter((p) => p.querySelector("i")).map((p) => (p.querySelector("[class*='plate']")?.textContent ?? "").trim()));
+    if (typeof stops === "number") expect(seen.filter(Boolean), `${quest} ${step}: every stop is named (${seen.map((t) => t || "(none)").join(", ")})`).toHaveLength(stops);
+    else for (const stop of stops) expect(seen.some((t) => t.includes(stop)), `${quest} ${step}: ${stop} has no name (${seen.map((t) => t || "(none)").join(", ")})`).toBe(true);
+  };
+  await page.goto("/map?quest=forbidden-legend");
+  await page.waitForTimeout(1800);
+  await page.screenshot({ path: "test-results/wo180-5b-forbidden-legend-390.png" });
+  await named("forbidden-legend", "on opening", ["Saarthal"]);
+  await page.goto("/map?quest=the-golden-claw");
+  await page.waitForTimeout(1800);
+  for (let n = 1; n <= 3; n++) {
+    await page.getByRole("button", { name: "Zoom out" }).click();
+    await page.waitForTimeout(900);
+    if (n === 3) {
+      await page.screenshot({ path: "test-results/wo180-5b-golden-claw-zoom3-390.png" });
+      await named("the-golden-claw", `after zoom out ${n}`, 2);
+    }
+  }
 });

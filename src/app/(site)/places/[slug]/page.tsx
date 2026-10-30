@@ -134,6 +134,8 @@ export default async function PlacePage({ params }: { params: Params }) {
   const near = town ? nearWords(town) : null;
   // A realm with no place on Tamriel's map (the Soul Cairn) says what it is and how you get there (WO-178), and has no levels gauge: its scale is not the land's. Its danger is said once (WO-178 Part 3): the foe lines under the cell, never "isn't known" beside a level.
   const realm = !place.pos && !place.inTown && !!place.gettingThere;
+  // How dangerous it is, when not known, is said once, under Not sure yet; a place that page doesn't list keeps its band cell (WO-180 Part 5b).
+  const dangerUnsure = !levels && a?.hostile !== false && !realm && placeKind(place) === "dangerous";
   const lede = `${/^[AEIOU]/i.test(type) ? "An" : "A"} ${kind}${near ? ` ${near}` : place.hold ? ` in ${holdWords(place.hold)}` : ""}.${realm ? ` ${place.gettingThere}.` : ""}${boss ? ` Its boss is ${boss.name}.` : ""}`.replace(/\s+/g, " ");
   const lived = placeKind(place) !== "dangerous";
   const ic = (
@@ -146,7 +148,7 @@ export default async function PlacePage({ params }: { params: Params }) {
           ? { mark: "yes", name: "Players", note: `Confirmed by ${confirmed.names.length} ${confirmed.names.length === 1 ? "player" : "players"}`, names: confirmed.names.map((n) => <span key={n}>{n}</span>) }
           : { mark: "no", name: "Players", note: "No reports. No one has confirmed this page yet." },
       ]}
-      unsure={[...(worth?.bossChest ? [{ field: "what's in the boss chest" }] : []), ...(!levels && a?.hostile !== false && !realm && placeKind(place) === "dangerous" ? [{ field: "how dangerous it is" }] : [])]}
+      unsure={[...(worth?.bossChest ? [{ field: "what's in the boss chest" }] : []), ...(dangerUnsure ? [{ field: "how dangerous it is" }] : [])]}
       actions={
         <>
           <ConfirmButton kind="place" id={slug} path={`/places/${slug}`} title={placeLabel(place)} signedIn={!!userId} mine={confirmed.mine} signIn={<SignInButton redirectTo={`/places/${slug}`} className="btn btn-primary" label="Sign in to confirm" />} />
@@ -170,7 +172,7 @@ export default async function PlacePage({ params }: { params: Params }) {
 
   // At a glance (WO-162, the colours of rule 34): danger in red, the boss and people in orange, what it pays in gold, when it comes back, and the nearest town in teal.
   const glance: { key: string; icon: string; tone: string; label: string; value: React.ReactNode; sub?: React.ReactNode }[] = [
-    ...(levels ? [{ key: "danger", icon: "tab-levels", tone: l.cRed, label: "Danger", value: levelRange(levels), sub: `${foes}${alsoHere?.length ? `, ${alsoHere.map((x) => PLURAL[x] ?? `${x}s`).join(", ")} too` : ""}` }] : a?.hostile === false ? [{ key: "danger", icon: "tab-levels", tone: l.cRed, label: "Danger", value: "None", sub: "Nobody here is hostile" }] : [{ key: "danger", icon: "tab-levels", tone: l.cRed, label: "Danger", value: "Not known yet", sub: undefined }]),
+    ...(levels ? [{ key: "danger", icon: "tab-levels", tone: l.cRed, label: "Danger", value: levelRange(levels), sub: `${foes}${alsoHere?.length ? `, ${alsoHere.map((x) => PLURAL[x] ?? `${x}s`).join(", ")} too` : ""}` }] : a?.hostile === false ? [{ key: "danger", icon: "tab-levels", tone: l.cRed, label: "Danger", value: "None", sub: "Nobody here is hostile" }] : dangerUnsure ? (place.danger?.traps ? [{ key: "danger", icon: "tab-levels", tone: l.cRed, label: "Danger", value: "Traps", sub: undefined }] : []) : [{ key: "danger", icon: "tab-levels", tone: l.cRed, label: "Danger", value: "Not known yet", sub: undefined }]),
     ...(boss ? [{ key: "boss", icon: "quest-people", tone: l.cOrange, label: "The boss", value: personHref(boss.name) ? <PreviewLink href={personHref(boss.name)!}>{boss.name}</PreviewLink> : boss.name, sub: boss.words ? `Level ${boss.words}` : undefined }] : []),
     ...(place.clearXp || place.discoveryXp ? [{ key: "xp", icon: "quest-rewards", tone: l.cGold, label: "Rewards", value: `${place.clearXp || place.discoveryXp} XP`, sub: [place.clearXp ? "For clearing it" : "", place.discoveryXp && place.clearXp ? `${place.discoveryXp} XP for finding it` : place.discoveryXp ? "For finding it" : ""].filter(Boolean).join("; ") }] : []),
     ...(place.respawns ? [{ key: "back", icon: "tab-set-up", tone: l.cOrange, label: "Comes back", value: respawnWords(place.respawns), sub: undefined }] : []),
@@ -223,14 +225,13 @@ export default async function PlacePage({ params }: { params: Params }) {
                   `${/^[AEIOU]/i.test(type) ? "An" : "A"} ${kind}${place.hold ? ` in ${holdWords(place.hold)}` : ""}${near ? `, ${near}` : ""}.`,
                   place.discoveryXp ? `Finding it gives ${place.discoveryXp} XP.` : "",
                   place.danger?.traps ? "It has traps." : "",
-                  "How dangerous it is isn't known yet.",
                 ]
                   .filter(Boolean)
                   .join(" ")}
               </p>
             </section>
           )}
-          {(levels || a?.hostile === false || (place.danger?.traps && (hasWorth || quests.length > 0))) && (
+          {(levels || a?.hostile === false || (place.danger?.traps && !dangerUnsure && (hasWorth || quests.length > 0))) && (
           <section id="danger" className={styles.sec} aria-label="Danger">
             {levels ? (
               <>
@@ -286,9 +287,6 @@ export default async function PlacePage({ params }: { params: Params }) {
               </>
             ) : a?.hostile === false ? (
               <p className={styles.way}>Nobody here is hostile.</p>
-            ) : !realm ? (
-              // Traps with no levels known (Northwind Mine) sit in the danger line with what is not known, not alone above Worth going for (WO-180 Part 4b).
-              <p className={styles.way}>How dangerous it is isn&apos;t known yet.</p>
             ) : null}
             {place.danger?.traps && (
               <div className={styles.flag}>

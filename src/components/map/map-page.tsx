@@ -37,6 +37,9 @@ interface Route {
 const K_MAX = 1.6;
 const KIND_COLOUR = { city: "city", town: "town", danger: "danger", other: "other" } as const;
 
+/** How wide a name's plate is drawn, a little over: measured at 12.5px, 77px for Folgunthur, 111 for Reachwater Rock, 63 for Saarthal (WO-180 Part 5b: 7.4 a letter dropped names that had room). */
+const plateWidth = (name: string) => name.length * 6.5 + 15;
+
 export function MapPage({ entry, places, initial }: { entry: MapEntry; places: MapPlace[]; initial: MapInitial }) {
   const box = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ w: 1440, h: 800 });
@@ -333,14 +336,14 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
   // place, a route's stops, the cities, then the towns) and the lesser one is dropped.
   const items = useMemo(() => {
     const blockedBox = (b: Box) => b[0] < 6 || b[2] > size.w - 6 || [...covered.sheet, ...covered.over].some((o) => b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1]);
-    const out: { p: MapPlace; x: number; y: number; named: boolean; side: "right" | "left"; members?: string[] }[] = [];
+    const out: { p: MapPlace; x: number; y: number; named: boolean; side: "right" | "left"; rightOk: boolean; leftOk: boolean; members?: string[] }[] = [];
     for (const p of places) {
       const { x, y } = toScreen(p.px, p.py);
       if (x < -60 || y < -40 || x > size.w + 60 || y > size.h + 40) continue;
       if (!shows(p)) continue;
       const picked = selected === p.slug || inRoute.has(p.slug) || lit.has(p.slug);
       if (!picked && underSheet(x, y)) continue;
-      const w = p.name.length * 7.4 + 22;
+      const w = plateWidth(p.name);
       // A name goes on the pin's right, or its left when the right is under a control, the panel or the drawer, or off the edge; with neither
       // side clear it is not drawn (WO-177). The picked place is always named.
       const rightBox: Box = [x + 8, y - 12, x + 14 + w, y + 12];
@@ -348,19 +351,27 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
       const blocked = blockedBox;
       const side = !blocked(rightBox) ? "right" : !blocked(leftBox) ? "left" : "right";
       const clear = side === "left" || !blocked(rightBox);
-      out.push({ p, x, y, named: (picked || clear) && (picked || p.kind === "city" || (p.kind === "town" && k >= 0.28) || k >= 0.85), side });
+      out.push({ p, x, y, named: (picked || clear) && (picked || p.kind === "city" || (p.kind === "town" && k >= 0.28) || k >= 0.85), side, rightOk: !blocked(rightBox), leftOk: !blocked(leftBox) });
     }
     const rank = (it: (typeof out)[number]) => (selected === it.p.slug || inRoute.has(it.p.slug) || lit.has(it.p.slug) ? 0 : it.p.kind === "city" ? 1 : it.p.kind === "town" ? 2 : 3);
     const taken: [number, number, number, number][] = [];
-    for (const it of [...out].sort((a, b) => rank(a) - rank(b))) {
+    // Within a rank the name with only one side to go on is placed first, so a stop at the edge keeps the side it has (WO-180 Part 5b: Saarthal).
+    const sidesLeft = (it: (typeof out)[number]) => Number(it.rightOk) + Number(it.leftOk);
+    for (const it of [...out].sort((a, b) => rank(a) - rank(b) || sidesLeft(a) - sidesLeft(b))) {
       if (!it.named) continue;
-      const w = it.p.name.length * 7.4 + 22;
-      const box: [number, number, number, number] = it.side === "right" ? [it.x + 8, it.y - 12, it.x + 14 + w, it.y + 12] : [it.x - 14 - w, it.y - 12, it.x - 8, it.y + 12];
+      const w = plateWidth(it.p.name);
+      const boxAt = (side: "right" | "left"): Box => (side === "right" ? [it.x + 8, it.y - 12, it.x + 14 + w, it.y + 12] : [it.x - 14 - w, it.y - 12, it.x - 8, it.y + 12]);
       // A route's stops come first; two that would overlap show their numbers only (WO-180). A name never runs under another stop's number
       // either (WO-180 Part 4b: Saarthal's 3 under "Folgunthur" once zoomed out), at every zoom, since this is worked out again with each.
-      const overStop = out.some((o) => o !== it && inRoute.has(o.p.slug) && box[0] < o.x + 12 && box[2] > o.x - 12 && box[1] < o.y + 12 && box[3] > o.y - 12);
-      if (overStop || taken.some((t) => box[0] < t[2] && box[2] > t[0] && box[1] < t[3] && box[3] > t[1])) it.named = false;
-      else taken.push(box);
+      const free = (box: Box) => !out.some((o) => o !== it && inRoute.has(o.p.slug) && box[0] < o.x + 12 && box[2] > o.x - 12 && box[1] < o.y + 12 && box[3] > o.y - 12) && !taken.some((t) => box[0] < t[2] && box[2] > t[0] && box[1] < t[3] && box[3] > t[1]);
+      // The other side is tried before a name is dropped (WO-180 Part 5b: both stops of The Golden Claw lost theirs with room left and right).
+      const sides = (it.side === "right" ? ["right", "left"] : ["left", "right"]) as ("right" | "left")[];
+      const side = sides.find((sd) => (sd === it.side || (sd === "right" ? it.rightOk : it.leftOk)) && free(boxAt(sd)));
+      if (!side) it.named = false;
+      else {
+        it.side = side;
+        taken.push(boxAt(side));
+      }
     }
     // Places inside one town are one pin, a count on the town's plate (WO-178): "Whiterun, 5 places".
     const folded = new Map<string, string[]>();
@@ -375,7 +386,7 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
       // At every zoom the town's pin carries its count, and hovering it lists the places of the picked kind (WO-178 Part 3).
       const label = names.length > 1 ? `${t.name}, ${names.length}` : names[0];
       // Its label goes where it is clear of the panel, the drawer and the controls, as every name does (WO-180: "arkarth, 3" under the panel).
-      const lw = label.length * 7.4 + 22;
+      const lw = plateWidth(label);
       const clearR = !blockedBox([it.x + 8, it.y - 12, it.x + 14 + lw, it.y + 12]);
       const clearL = !blockedBox([it.x - 14 - lw, it.y - 12, it.x - 8, it.y + 12]);
       return [{ ...it, named: clearR || clearL, side: clearR ? ("right" as const) : ("left" as const), members: names, p: { ...it.p, slug: t.slug, name: label } }];

@@ -5159,7 +5159,7 @@ Nothing is dropped from the database: the columns and tables stay (CLAUDE.md, no
 ---
 
 ## WO-180  Junk text out of the pages, and the last map faults (Mac and PC, 28 Oct 2026)
-Status: building (Mac: Part 5b)
+Status: for Bob
 
 **Why.** The fourth cold review (Bob's reviewer, 3,721 pages crawled, 51 walked at both widths) passed WO-176 to WO-178, and named what would still hit Dave in his first ten minutes: old text from the game files that was never cleaned. Bob confirmed the holes and Web Mother by hand. No order is done until a page-text test fails on each of these.
 ### Part 1. Quotes (PC writes the cleaner; Mac's test fails on any page)
@@ -5297,13 +5297,20 @@ Part 4 mostly holds. Across 3,703 pages there are no empty "( )", bare hedges, a
   "these files" inside Why we're unsure waits for the backlog rewrite of that section.
 
 **Part 5b (Mac)**
-- [ ] **The page-text test skips quest steps.**
+- [x] **The page-text test skips quest steps.**
   - `ownWords()` in `e2e/wo177.spec.ts` strips every numbered step, and the PC's `wo180-4a.test.ts` skips `steps` and `objectives`. A filled alias blank is the planner's words, not the game's, so steps are checked too.
   - Add "the the", "the actor", "the victim", "the target location", "the enemy" (a step that is only that), " in out ", " in after ", " in with ", "The records set no level", "From the records", and "..", outside a quoted book.
   - It fails before Part 5a lands.
-- [ ] **Map names dropped with room to spare:** at The Golden Claw's third zoom-out at 390, both stop names go although there is room left and right, and Saarthal has no name when Forbidden Legend opens. Try the other side before dropping a name.
-- [ ] **Northwind Mine says "not known" three times on one screen**: in the band, in the danger section, and under Not sure yet. Say it once, under Not sure yet.
-- [ ] Screenshots at 1440 and 390, then `for Bob`.
+- [x] **Map names dropped with room to spare:** at The Golden Claw's third zoom-out at 390, both stop names go although there is room left and right, and Saarthal has no name when Forbidden Legend opens. Try the other side before dropping a name.
+- [x] **Northwind Mine says "not known" three times on one screen**: in the band, in the danger section, and under Not sure yet. Say it once, under Not sure yet.
+- [x] Screenshots at 1440 and 390, then `for Bob`.
+
+Mac's notes on Part 5b (29 Oct):
+- **Page-text test** (`e2e/wo177.spec.ts`): the crawl now keeps each page's numbered steps (`stepWords`, `stepsOf`) and checks them with the quotes still left out. Added: "the the", " in out ", "The records set no level", "From the records", a doubled full stop, and a step that is only "the actor", "the victim", "the target location" or "the enemy". Three of these I made narrower than the list, with reasons: (1) " in with " and " in after " are ordinary English after a verb ("Check in with Remi", "Go in after Sarthis Idren", "Get in with the passphrase": 40 real steps on the first try), so the test flags them only after a name or a noun (`IN_BEFORE_WORD`; "Serana in with you", "Boethiah in after you earn", "Klimmek in out around" all fail it, "Check in with Remi" does not; the list of verbs it leaves alone is in the spec). (2) "the victim" and "the target location" are in real steps ("Rescue the victim from the lair", the PC's own "the owner in the target location"), so those only fail as a whole step; "the actor" and "the enemy" the same. (3) ".." is exactly two full stops; "Intervene..." is the game's ellipsis. The page's "Sign in with Discord" is taken out first. I did not run it against the data from before Part 5a, so I can't say it fails there; it was checked against Bob's own strings and passes on staging's text now.
+- **Map names** (`map-page.tsx`): a route stop's name tries its other side before it is dropped, and within a rank the name with only one side to go on is placed first (Saarthal is at the right edge, so only its left is clear; it used to lose to Folgunthur taking that room). The estimate of a plate's width was 7.4 px a letter plus 22; the plates are 77 px for Folgunthur, 111 for Reachwater Rock, 63 for Saarthal, so it is now 6.5 a letter plus 15 (`plateWidth`), still a little over. That is what gave The Golden Claw its names back: Bleak Falls Barrow on the left and Riverwood Trader on the right at the third zoom-out at 390. The 4b test (no stop under another name, no two names overlapping, after each zoom out) passes unchanged. New test: Saarthal is named on opening Forbidden Legend; both Golden Claw stops are named after three zoom-outs.
+- **Northwind Mine:** "How dangerous it is" is said once, under Not sure yet. The band's Danger cell is now "Traps" for a place with traps and nothing known of its danger (no Danger cell at all if it has no traps), the danger section no longer says it, and the lone Traps flag over Worth going for is gone with it (it had come back once the sentence next to it was removed). A place whose kind isn't "dangerous" keeps the band's "Not known yet", since Not sure yet doesn't list it. The two earlier assertions that expected the sentence (Moss Mother Cavern, Northwind) now expect it absent and count it once.
+- **Not seen:** Hunter's Mark's sideways scroll at 1440 and 390, which Part 5a left to this part. Both quests have no page of their own, so there was no page to open; the line pages that mention it show no sideways scroll in the crawl's other tests (`wo154` and `wo164` check this at 390), but I did not look at it by eye.
+- **Checks:** typecheck, lint (the same 2 old warnings), `npm test` (817 passed, 7 expected fail), `npm run build`, full `npm run test:e2e`: 573 passed. Screenshots: `wo180-4b-northwind-1440.png` and `-390.png`, `wo180-5b-forbidden-legend-390.png`, `wo180-5b-golden-claw-zoom3-390.png`.
 
 Jeff's notes on Part 5a (PC, 29 Oct):
 - **Steps:** a read's steps are copied from the quest's objectives, so `build.py` now fills their tags the way the objectives' are (`fill_all` over each quest's read, with the quest's own fills). "Search the person" (Cultists vs Player), "Take back your name from the owner in the target location" and "The victim has been dazzled by the Radiance of Life" (Maggot) are the result. The fault under Maggot was `plain_alias`: it took "Victim01" for an EDID-like prefix and said "the one"; a prefix now has to be followed by letters. "Defeat the enemy" (Feral Soul-Shriven) is what its alias says; I did not guess who the enemy is.
