@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-184  Players make it right: screenshots, I know this, Help fill the gaps, one review list (Mac, 30 Oct 2026)
-Status: queued (Mac: Part 7, Dave's change to the layout; then Bob reviews the whole order)
+Status: building (Mac: Part 7)
 
 **Why.** Dave, 30 Oct: with playthroughs cut, double down on quests, places and people, and "accelerate the ideas for community confirmation of quest info, the admin review section, and of course the image collection work for locations and NPCs." These are the backlog's 23 Oct, 28 Oct and 28 Oct items, decided.
 
