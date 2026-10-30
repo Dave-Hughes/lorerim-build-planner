@@ -1,0 +1,243 @@
+/* The review list's four tabs and their cards (WO-184 Part 5, board AdminReview). */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--rule);
+}
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 20px;
+  border-bottom: 2px solid transparent;
+  color: var(--soft);
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 18px;
+  text-decoration: none;
+  margin-bottom: -1px;
+}
+.tab.on {
+  color: var(--ember);
+  border-bottom-color: var(--ember);
+}
+.tab i {
+  font-style: normal;
+  display: inline-grid;
+  place-items: center;
+  min-width: 24px;
+  height: 22px;
+  padding: 0 6px;
+  background: var(--rule-soft);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0;
+}
+.q {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 28px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+.q h3,
+.pqh {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+.said {
+  margin: 0;
+  padding: 12px 14px;
+  background: var(--sunk-deep);
+  border: 1px solid var(--rule);
+  font-size: 16px;
+  line-height: 1.5;
+  color: #dfe6ec;
+  overflow-wrap: anywhere;
+}
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-size: 14px;
+  color: var(--muted);
+  align-items: center;
+}
+.who {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #dfe6ec;
+}
+.av {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--rule-soft);
+  object-fit: cover;
+  display: inline-block;
+  flex: none;
+}
+.prop {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 18px;
+  background: #111922;
+  border: 1px solid #1f2a36;
+  min-width: 0;
+}
+.k {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.prop > .k:first-child {
+  color: #b7a2e6;
+}
+.reading {
+  font-size: 15.5px;
+  line-height: 1.5;
+}
+.muted {
+  color: var(--muted);
+  font-size: 14.5px;
+}
+.diff {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr);
+  gap: 6px 12px;
+  font-size: 15px;
+  line-height: 1.45;
+}
+.was {
+  color: #e07a6c;
+  text-decoration: line-through;
+  text-decoration-color: rgba(224, 122, 108, 0.6);
+}
+.now {
+  color: #8fc07c;
+}
+.acts {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.err {
+  color: #f2a79c;
+  font-size: 14px;
+}
+.editLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--soft);
+}
+.editLabel textarea,
+.editLabel input {
+  font: inherit;
+  font-size: 16px;
+  color: var(--text);
+  background: var(--sunk-deep);
+  border: 1px solid var(--rule-strong);
+  padding: 11px 12px;
+  box-sizing: border-box;
+  width: 100%;
+}
+.pq {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 24px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.pq img {
+  width: 320px;
+  height: 180px;
+  object-fit: contain;
+  background: #000;
+  border: 1px solid var(--rule);
+}
+.note {
+  font-size: 15px;
+  color: var(--soft);
+}
+.reported {
+  font-size: 15px;
+  color: #e8c987;
+}
+.green {
+  color: #8fc07c;
+}
+.gold {
+  color: #e8c987;
+}
+.redBtn {
+  border-color: #8a4a42 !important;
+  color: #f2a79c !important;
+}
+.trust {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-top: 12px;
+}
+.trustNote {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--soft);
+}
+.pl {
+  display: flex;
+  flex-direction: column;
+}
+.r {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: 16px;
+  flex-wrap: wrap;
+}
+.add {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: end;
+}
+.empty {
+  font-size: 17px;
+  padding: 24px 0;
+}
+@media (max-width: 800px) {
+  .q,
+  .pq {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .pq img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+  .tab {
+    padding: 0 12px;
+    font-size: 16px;
+  }
+}

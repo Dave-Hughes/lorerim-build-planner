@@ -138,7 +138,8 @@ test("confirm it's accurate: signed out it asks to sign in; signed in it records
     await dialog.getByRole("button", { name: "Close" }).click();
     await page.reload();
     await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("Confirmed by 1 player");
-    await page.getByRole("button", { name: "Undo my confirmation" }).click();
+    await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("You confirmed this on");
+    await page.getByRole("region", { name: "Information Confidence" }).getByRole("button", { name: "Undo" }).click();
     await expect(page.getByRole("button", { name: "Confirm it's accurate" })).toBeVisible();
     await page.reload();
     await expect(page.getByRole("region", { name: "Information Confidence" })).not.toContainText("Confirmed by 1 player");

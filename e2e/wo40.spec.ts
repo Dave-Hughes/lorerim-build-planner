@@ -34,7 +34,7 @@ test("three players report a build: its cover hides; an admin keeps it and the c
   await signInAs(context, "e2e-session-token-0001");
   await page.goto("/characters");
   await expect(page.getByRole("button", { name: /account menu/ }).getByLabel(/to review/)).toBeVisible();
-  await page.goto("/admin/review");
+  await page.goto("/admin/review?tab=builds");
   const item = page.getByRole("listitem", { name: /^Reports on Iriel/ });
   await expect(item).toContainText("3 reports");
   await expect(item).toContainText("Sexual content");

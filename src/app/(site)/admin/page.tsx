@@ -11,7 +11,10 @@ import { ImportBuild } from "@/components/admin/import-build";
 import { buildHistory } from "@/lib/builds/revision-queries";
 import { doorCounts } from "@/lib/mcp/door-events";
 import { mcpOn, questsOn } from "@/lib/features";
+import { countOpenReview } from "@/lib/moderation/review";
 import { listQuestReports } from "@/lib/quests/reports";
+import { countShotsToReview } from "@/lib/screenshots/store";
+import { countTipsToReview } from "@/lib/tips/store";
 import { isAdmin } from "@/lib/users/admin";
 import { listEarlyAccess, listInvites } from "@/lib/users/invite-queries";
 import { inviteState } from "@/lib/users/invites";
@@ -29,18 +32,21 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
   if (!(await isAdmin(userId))) notFound();
   const asked = (await searchParams).build;
   const buildId = (Array.isArray(asked) ? asked[0] : asked)?.trim().slice(0, 40) ?? "";
-  const [invites, people, door, history, reports] = await Promise.all([
+  const [invites, people, door, history, reports, waiting] = await Promise.all([
     listInvites(),
     listEarlyAccess(),
     mcpOn() ? doorCounts() : null,
     buildId ? buildHistory(buildId) : null,
     questsOn() ? loadPlayerFacts().then(() => listQuestReports()) : null,
+    Promise.all([countOpenReview(), questsOn() ? countShotsToReview() : 0, questsOn() ? countTipsToReview() : 0]),
   ]);
+  const [builds, shots, tips] = waiting;
+  const facts = tips + (reports ?? []).filter((r) => r.status === "new" && !r.decision).length;
   return (
     <main className={`page ${styles.main}`}>
       <h1 className="title">Admin</h1>
       <p>
-        <Link href="/admin/review">The review list</Link>: images and reported builds waiting on an admin.
+        <Link href="/admin/review">The review list</Link>: {facts} {facts === 1 ? "thing" : "things"} players know, {shots} {shots === 1 ? "screenshot" : "screenshots"}, {builds} reported {builds === 1 ? "build or image" : "builds and images"} waiting on an admin.
       </p>
       <EarlyAccess
         invites={invites.map((i) => ({ id: i.id, label: i.label, createdAt: i.createdAt, state: inviteState(i), usedByName: i.usedByName }))}

@@ -8,6 +8,7 @@ import recent from "@/components/home/recent.module.css";
 import { SignInButton } from "@/components/site-header";
 import { handleFor, listBuildsByOwner } from "@/lib/builds/queries";
 import { Assistants } from "@/components/account/assistants";
+import { WhatYouSent } from "@/components/account/sent";
 import { mcpOn, playthroughsOn, questsOn } from "@/lib/features";
 import { approvedFor } from "@/lib/quests/approvals";
 import { PlaythroughCards } from "@/components/playthrough/cards";
@@ -124,6 +125,7 @@ export default async function MyBuilds() {
           <PlaythroughCards rows={unattached} mine />
         </section>
       )}
+      {questsOn() && <WhatYouSent userId={userId} />}
       {/* The assistants this player let in (WO-109), while the MCP door is open. */}
       {assistants && <Assistants rows={assistants.map((a) => ({ clientId: a.clientId, name: a.name, may: shownScopes(a.scopes).map((s) => SCOPES[s as Scope] ?? s), since: a.since, lastUsed: a.lastUsed, drafted: a.drafted }))} noun="character" />}
     </main>

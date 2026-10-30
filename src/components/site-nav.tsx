@@ -53,6 +53,7 @@ export function SiteNav() {
           { href: "/people", label: "People", icon: "quest-people", note: "Where to find them, what they offer" },
           { href: "/places", label: "Places", icon: "quest-travel", note: "By hold and by type" },
           { href: "/map", label: "Map", icon: "quest-travel", note: "Every place, on the game's own map" },
+          { href: "/help-fill-the-gaps", label: "Help fill the gaps", icon: "quest-sure", note: "What we're unsure of, and how to tell us" },
         ]
       : []),
     ...(gear ? [{ href: "/gear", label: "Gear", icon: "slot-main-hand", note: "Every item, and how to make it" }] : []),

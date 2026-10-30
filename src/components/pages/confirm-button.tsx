@@ -12,6 +12,12 @@ export function ConfirmButton({ kind, id, path, title, signedIn, mine, signIn }:
   const [names, setNames] = useState<string[] | null>(null);
   const [error, setError] = useState("");
   const [done, setDone] = useState(mine);
+  // Undo from the Players line changes `mine` from outside this button: follow it (adjusting state while rendering, not in an effect).
+  const [seen, setSeen] = useState(mine);
+  if (mine !== seen) {
+    setSeen(mine);
+    setDone(mine);
+  }
   const [pending, start] = useTransition();
   const dialog = useRef<HTMLDialogElement>(null);
   if (!signedIn) return <>{signIn}</>;
@@ -37,9 +43,9 @@ export function ConfirmButton({ kind, id, path, title, signedIn, mine, signIn }:
   return (
     <>
       {done ? (
-        <button type="button" className="btn" onClick={undo} disabled={pending}>
-          Undo my confirmation
-        </button>
+        <span className="btn" aria-disabled="true" style={{ opacity: 0.6 }}>
+          Confirmed
+        </span>
       ) : (
         <button type="button" className="btn btn-primary" onClick={confirm} disabled={pending}>
           Confirm it&apos;s accurate

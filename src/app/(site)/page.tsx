@@ -5,6 +5,8 @@ import { HomeHero } from "@/components/home/hero";
 import { YourCharacters } from "@/components/home/you";
 import { RecentCharacters } from "@/components/home/recent-characters";
 import { NewInTheWorld, ThreeWays } from "@/components/home/sections";
+import { RecentlyConfirmed } from "@/components/home/confirmed";
+import { recentlyConfirmed } from "@/lib/confirmed/recent";
 import { ThreeStories } from "@/components/home/story-cards";
 import { MapStrip } from "@/components/home/map-strip";
 import { TourOffer } from "@/components/tour/tour";
@@ -35,9 +37,10 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
   }
   const session = await auth();
   const userId = session?.user?.id;
-  const [recent, changes] = await Promise.all([
+  const [recent, changes, confirmed] = await Promise.all([
     searchBuilds({ gameVersion: currentVersion().id, sort: "newest", limit: 5 }).then((r) => r.builds),
     questsOn() ? recentChanges(6) : Promise.resolve([]),
+    questsOn() ? recentlyConfirmed(8) : Promise.resolve([]),
   ]);
   // A listed run adds its act to the card.
   const runs = playthroughsOn() ? await listedRunsByBuild(recent.map((b) => b.id)) : null;
@@ -65,6 +68,7 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
         </div>
         {questsOn() ? <MapStrip /> : null}
         <div className={styles.main} style={{ paddingTop: 72 }}>
+          <RecentlyConfirmed cards={confirmed} />
           <NewInTheWorld changes={changes} />
           {userId ? <YourCharacters userId={userId} /> : <ThreeWays />}
         </div>

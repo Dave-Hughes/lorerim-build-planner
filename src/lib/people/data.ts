@@ -1,7 +1,8 @@
 import "server-only";
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import { EDITOR_BODY, mapStrings, mend, RECORD, REASON_KEYS } from "@/lib/pages/player-words";
+import { EDITOR_BODY, mapStrings, mend, playerWords, RECORD, REASON_KEYS } from "@/lib/pages/player-words";
+import type { Unsure } from "@/lib/pages/unsure";
 import { currentVersion } from "@/lib/rules/server";
 
 /**
@@ -217,3 +218,15 @@ export const personHref = (name: string): string | null => {
   const p = personByName(name);
   return p ? `/people/${p.slug}` : null;
 };
+
+/**
+ * What a person's page is not sure of (WO-159, WO-177 Part 5): what the checker could not settle, the read's own hedges about what changes where they
+ * are, and, for a person not read yet, where they are through the day and night. One place for it, so the page and Help fill the gaps (WO-184) agree.
+ */
+export function personUnsure(person: Person): Unsure[] {
+  const read = person.read;
+  if (!read) return [{ field: "where they are through the day and night" }, { field: "what changes where they are" }, ...(person.follower || person.marriage ? [{ field: "how to recruit or marry them" }] : [])];
+  const hedged: Unsure[] = [];
+  for (const c of read.changes ?? []) for (const why of playerWords(c).unsure) hedged.push({ field: "What changes where they are", why });
+  return [...notSureOf(read), ...hedged];
+}

@@ -550,3 +550,73 @@
   font-size: 14px;
   color: var(--muted);
 }
+
+/* Recently confirmed by players (WO-184 Part 4, board HomeConfirmed). */
+.rc {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.rcard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 18px;
+  background: var(--panel);
+  border: 1px solid var(--rule-soft);
+  text-decoration: none;
+  color: var(--text);
+}
+.rcard:hover {
+  border-color: var(--rule-strong);
+}
+.rtop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+.rkind {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--muted);
+}
+.rcard b {
+  font-weight: 500;
+  font-size: 19px;
+  color: #f4ead2;
+}
+.rby {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--soft);
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+.rby time {
+  margin-left: auto;
+  color: var(--muted);
+}
+.rav {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--rule-soft);
+  object-fit: cover;
+  display: inline-block;
+  flex: none;
+}
+@media (max-width: 1000px) {
+  .rc {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  .rc {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

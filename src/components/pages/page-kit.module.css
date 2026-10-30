@@ -1281,3 +1281,142 @@ a.tag:hover {
   width: 12px;
   height: 12px;
 }
+
+/* A person's head (WO-184 Part 1, board PicPerson): the title and lede, and a 16:9 screenshot spot beside them. */
+.headGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 480px;
+  gap: 48px;
+  align-items: end;
+}
+.headText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.headShot {
+  min-width: 0;
+}
+@media (max-width: 900px) {
+  .headGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+}
+
+.youConfirmed {
+  font-size: 13.5px;
+  color: var(--soft);
+}
+.linkBtn {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--ember);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* "I know this" on a Not sure yet line (WO-184 Part 2, board Confirm). */
+.unsureLi {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.unsureRow {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.unsureRow > :first-child {
+  flex: 1;
+}
+.unsureRow > :last-child:not(:first-child) {
+  margin-left: auto;
+  font-size: 14.5px;
+  white-space: nowrap;
+}
+.thanks {
+  color: #8fc07c;
+}
+.signLink form {
+  display: inline;
+}
+.answered {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--soft);
+  padding-left: 12px;
+  border-left: 2px solid var(--brass);
+}
+.by {
+  color: var(--muted);
+}
+.seeAll {
+  font-size: 14.5px;
+  margin-top: 6px;
+}
+.knowForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px 20px;
+  background: var(--sunk-deep);
+  border: 1px solid var(--rule-strong);
+  margin: 4px 0 10px;
+}
+.knowLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--soft);
+}
+.knowLabel textarea,
+.knowLabel input[type="url"],
+.knowLabel input[type="file"] {
+  font: inherit;
+  font-size: 16px;
+  color: var(--text);
+  background: var(--sunk-deep);
+  border: 1px solid var(--rule-strong);
+  padding: 11px 12px;
+  box-sizing: border-box;
+  width: 100%;
+}
+.knowLabel textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+.radios {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 15px;
+}
+.radios label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.radios input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+.knowNote {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.knowErr {
+  margin: 0;
+  color: #f2a79c;
+  font-size: 14px;
+}
+.knowBtns {
+  display: flex;
+  gap: 10px;
+}

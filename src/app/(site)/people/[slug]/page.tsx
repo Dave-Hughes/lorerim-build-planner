@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { auth } from "@/auth";
 import { ConfirmButton } from "@/components/pages/confirm-button";
 import { SignInButton } from "@/components/site-header";
-import { confirmationsOf } from "@/lib/quests/confirmations";
 import { PreviewLink } from "@/components/pages/preview-link";
 import { InformationConfidence, PageTop, Panel, Section, TitleBox } from "@/components/pages/page-kit";
-import { notSureOf, personBySlug, roleWords, unsureFields } from "@/lib/people/data";
+import { PersonShots } from "@/components/screenshots/person-shots";
+import { pageExtras } from "@/components/pages/page-extras";
+import { ReportMistake } from "@/components/pages/report-mistake";
+import { personBySlug, personUnsure, roleWords, unsureFields } from "@/lib/people/data";
 import { playersWords } from "@/lib/quests/reads";
 import { GlanceBand, type GlanceCell } from "@/components/pages/glance";
 import { AutoToc } from "@/components/pages/auto-toc";
@@ -48,8 +48,8 @@ const whenWords = (from: string, span: string) => (/^any hour$/i.test(from) ? { 
 export default async function PersonPage({ params }: { params: Params }) {
   const person = personBySlug((await params).slug);
   if (!person) notFound();
-  const userId = (await auth())?.user?.id ?? null;
-  const confirmed = await confirmationsOf("person", person.slug, userId);
+  const x = await pageExtras("person", person.slug, `/people/${person.slug}`);
+  const { userId, confirmed } = x;
   const reporters = person.read?.reports ?? 0;
   const found = questsOf(person.name);
   const read = person.read ?? null;
@@ -60,13 +60,8 @@ export default async function PersonPage({ params }: { params: Params }) {
   const notSure = read ? unsureFields(read) : new Set<string>();
   // What the read is not sure of is said as a plain muted sentence, never as a bracket in the body; Not sure yet has the reason (WO-177 Part 5).
   const sure = (f: string) => (notSure.has(f) ? <em className={styles.nk}> Not sure yet.</em> : null);
-  // The read's own hedges ("(presumably once you own Breezehome)") come out of its sentences and go to Not sure yet.
-  const hedged: { field: string; why: string }[] = [];
-  const changes = (read?.changes ?? []).map((c) => {
-    const r = playerWords(c);
-    for (const u of r.unsure) hedged.push({ field: "What changes where they are", why: u });
-    return r.text;
-  });
+  // The read's own hedges ("(presumably once you own Breezehome)") come out of its sentences and go to Not sure yet (personUnsure).
+  const changes = (read?.changes ?? []).map((c) => playerWords(c).text);
   // The quests the read lists with how each touches them, linked where the planner has the quest; those only the quest pages name follow.
   const byName = new Map(found.map((q) => [q.name.toLowerCase(), q]));
   // A quest the read names that the quest pages don't list this person in still has a page by its name.
@@ -229,6 +224,8 @@ export default async function PersonPage({ params }: { params: Params }) {
       <div className={`page ${l.top}`}>
       <PageTop back={{ href: "/people", label: "People" }} />
 
+      <div className={styles.headGrid}>
+      <div className={styles.headText}>
       <TitleBox
         title={person.name}
         tags={
@@ -248,6 +245,11 @@ export default async function PersonPage({ params }: { params: Params }) {
       />
 
       {lede && <p className={styles.lede}>{lede}</p>}
+      </div>
+      <aside className={styles.headShot} aria-label="Screenshots">
+        <PersonShots slug={person.slug} name={person.name} />
+      </aside>
+      </div>
       </div>
 
       <GlanceBand cells={cells} />
@@ -364,17 +366,17 @@ export default async function PersonPage({ params }: { params: Params }) {
                 mark: "yes",
                 name: "Players",
                 note: [reporters ? playersWords(reporters) : "", confirmed.names.length ? `Confirmed by ${confirmed.names.length} ${confirmed.names.length === 1 ? "player" : "players"}` : ""].filter(Boolean).join(". "),
-                names: confirmed.names.map((n) => <span key={n}>{n}</span>),
+                names: x.names,
               }
             : { mark: "no", name: "Players", note: "No reports. No one has confirmed this page yet." },
         ]}
-        unsure={read ? [...notSureOf(read), ...hedged] : [{ field: "where they are through the day and night" }, { field: "what changes where they are" }, ...(person.follower || person.marriage ? [{ field: "how to recruit or marry them" }] : [])]}
+        unsure={personUnsure(person)}
+        know={x.know}
         actions={
           <>
+            {x.beacon}
             <ConfirmButton kind="person" id={person.slug} path={`/people/${person.slug}`} title={person.name} signedIn={!!userId} mine={confirmed.mine} signIn={<SignInButton redirectTo={`/people/${person.slug}`} className="btn btn-primary" label="Sign in to confirm" />} />
-            <Link href="/quests" className="btn">
-              Report a mistake
-            </Link>
+            <ReportMistake kind="person" pageKey={person.slug} what="person" shots={x.reportable} signedIn={!!userId} signIn={<SignInButton redirectTo={`/people/${person.slug}`} className="btn" label="Sign in to report a mistake" />} />
           </>
         }
       />

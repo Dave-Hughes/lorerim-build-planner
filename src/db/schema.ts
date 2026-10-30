@@ -597,3 +597,96 @@ export const pageConfirmations = pgTable(
   },
   (t) => [uniqueIndex("page_confirmation_one_per_player").on(t.kind, t.key, t.userId), index("page_confirmation_page").on(t.kind, t.key)],
 );
+
+/**
+ * A player's screenshot of a place or a person (WO-184 Part 1). `key` is the page's slug. The original is kept at full size; `url` is the
+ * 1600-wide copy the page shows and `thumbUrl` the small one for the strip. `status`: `review` (waiting on an admin, shown only to its
+ * uploader and the admins), `live`, or `removed` (never shown). `lead` is the one an admin chose to lead; with none chosen, the
+ * earliest live one leads. A report ("This screenshot isn't this place") puts a live one back on the review list without taking it down.
+ */
+export const pageScreenshots = pgTable(
+  "page_screenshot",
+  {
+    id: serial("id").primaryKey(),
+    kind: text("kind").$type<"place" | "person">().notNull(),
+    key: text("key").notNull(),
+    originalUrl: text("original_url").notNull(),
+    url: text("url").notNull(),
+    thumbUrl: text("thumb_url").notNull(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    status: text("status").$type<"review" | "live" | "removed">().notNull().default("review"),
+    lead: boolean("lead").notNull().default(false),
+    /** The nudity check's outcome (passed, listed, unchecked) and scores; a refused screenshot is never stored. */
+    check: text("check").notNull().default("unchecked"),
+    scores: jsonb("scores").$type<Record<string, number> | null>(),
+    /** A report that it isn't the place (or person): the player's words, who, and when; cleared when an admin decides. */
+    reportNote: text("report_note"),
+    reportedBy: text("reported_by").references(() => users.id, { onDelete: "set null" }),
+    reportedAt: timestamp("reported_at", { withTimezone: true }),
+    /** Who decided it last (approved, removed, led) and when. */
+    decidedBy: text("decided_by").references(() => users.id, { onDelete: "set null" }),
+    decidedAt: timestamp("decided_at", { withTimezone: true }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("page_screenshot_page_idx").on(t.kind, t.key, t.status), index("page_screenshot_user_idx").on(t.userId, t.createdAt)],
+);
+
+/** Approved players (WO-184 Part 5): their screenshots go live at once. The check still runs on every one. `source` says what they were added from. */
+export const trustedPlayers = pgTable("trusted_player", {
+  userId: text("user_id")
+    .primaryKey()
+    .references(() => users.id, { onDelete: "cascade" }),
+  addedBy: text("added_by").references(() => users.id, { onDelete: "set null" }),
+  source: text("source").notNull().default(""),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+/**
+ * What a player tells the planner about a quest, a person or a place (WO-184 Part 2): "I know this" on a Not sure yet line (`know`, with the
+ * `field` it answers), or a Report a mistake (`mistake`). It waits on an admin; nothing reaches a page until `approved`. The agent's reading
+ * of it against the records is `reading`. `screenshotUrl` is an optional screenshot the player sent with it.
+ */
+export const pageTips = pgTable(
+  "page_tip",
+  {
+    id: serial("id").primaryKey(),
+    kind: text("kind").$type<"quest" | "person" | "place">().notNull(),
+    key: text("key").notNull(),
+    type: text("type").$type<"know" | "mistake">().notNull().default("know"),
+    field: text("field").notNull().default(""),
+    words: text("words").notNull(),
+    /** `game` (saw it in their game), `guide` (a mod page or guide), `other` (somewhere else, with the link in `link`). */
+    how: text("how").$type<"game" | "guide" | "other">().notNull().default("game"),
+    link: text("link"),
+    screenshotUrl: text("screenshot_url"),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    status: text("status").$type<"new" | "approved" | "rejected" | "fixed" | "sent" | "not a mistake">().notNull().default("new"),
+    /** The agent's reading: what agrees with the records, what doesn't, and how sure. */
+    reading: jsonb("reading").$type<{ words: string; fits: string; confidence: string; model: string; at: string } | null>(),
+    /** What the page says when approved: the player's words, or the admin's edit of them. */
+    shown: text("shown"),
+    decidedBy: text("decided_by").references(() => users.id, { onDelete: "set null" }),
+    decidedAt: timestamp("decided_at", { withTimezone: true }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("page_tip_page_idx").on(t.kind, t.key, t.status), index("page_tip_user_idx").on(t.userId, t.createdAt), index("page_tip_status_idx").on(t.status, t.createdAt)],
+);
+
+/**
+ * A page's views per day (WO-184 Part 3), for ordering Help fill the gaps. One row per page per day; no cookie, address or account is kept.
+ * Rows older than 90 days are cleared as new ones are counted.
+ */
+export const pageViews = pgTable(
+  "page_view",
+  {
+    kind: text("kind").$type<"quest" | "person" | "place">().notNull(),
+    key: text("key").notNull(),
+    day: text("day").notNull(),
+    n: integer("n").notNull().default(0),
+  },
+  (t) => [primaryKey({ columns: [t.kind, t.key, t.day] }), index("page_view_day_idx").on(t.day)],
+);

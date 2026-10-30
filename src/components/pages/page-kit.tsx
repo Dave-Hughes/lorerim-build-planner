@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import type { ReactNode } from "react";
-import { playerField, playerReason } from "@/lib/pages/player-words";
+import { cleanUnsure } from "@/lib/pages/unsure";
 import { BackButton } from "./back-button";
 import { PageSearch } from "./page-search";
+import { NotSureList, type AnsweredLine } from "./not-sure";
 import styles from "./page-kit.module.css";
 
 /** The pieces the quest, line, person and place pages share (WO-154 Part 2): the boards' frame, section head, gold box and "How sure we are". */
@@ -84,6 +85,16 @@ export function Gold({ id, title = "Rewards", children }: { id: string; title?: 
   );
 }
 
+/** What "I know this" needs on a page's Not sure yet lines (WO-184 Part 2). */
+export interface KnowProps {
+  kind: "quest" | "person" | "place";
+  key: string;
+  signedIn: boolean;
+  sent: string[];
+  answered: AnsweredLine[];
+  signIn: ReactNode;
+}
+
 export interface SureSource {
   mark: "yes" | "part" | "no";
   name: string;
@@ -97,19 +108,9 @@ export interface SureSource {
  * Information Confidence (WO-157): always alone and full width at the foot of a page, in a box with the brass corner marks. The plain-word line, a tick per source (game files, UESP, players), what isn't sure yet in a player's words, and the two
  * buttons. The reader's reasons for a doubt are folded under the list, not in it.
  */
-export function InformationConfidence({ id, line, sources, unsure, actions }: { id: string; line: string; sources: SureSource[]; unsure: { field: string; why?: string }[]; actions: ReactNode }) {
+export function InformationConfidence({ id, line, sources, unsure, actions, know }: { id: string; line: string; sources: SureSource[]; unsure: { field: string; why?: string }[]; actions: ReactNode; know?: KnowProps }) {
   const mark = { yes: styles.markYes, part: styles.markPart, no: styles.markNo };
-  // A reason is a whole sentence in a player's words, and no field or reason names a record or a file (WO-177 Part 5).
-  // A field key (takesYou.hold, startsWhere) is never printed, whatever sent it here.
-  const KEY = /^[A-Za-z]+(?:\.[A-Za-z]+)+[:.]*$|^[a-z]+[A-Z][A-Za-z]*[:.]*$/;
-  const clean = unsure.filter((u) => !KEY.test(u.field.trim())).map((u) => {
-    const why = u.why ? playerReason(u.why) : null;
-    return { field: playerField(u.field), ...(why ? { why } : {}) };
-  });
-  // One place is not two (WO-180 Part 6b): "Where" and "Where it takes you" are the same doubt, said once as the longer.
-  const fields = [...new Set(clean.map((u) => u.field))].filter((f, _, all) => !(f.toLowerCase() === "where" && all.some((g) => g.toLowerCase() === "where it takes you")));
-  // One reason once, as a whole sentence with a capital and no field label in front of it (WO-180).
-  const reasons = [...new Set(clean.filter((u) => u.why).map((u) => u.why as string))];
+  const { fields, reasons } = cleanUnsure(unsure);
   return (
     <section className={`frame ${styles.confidence}`} aria-labelledby={id}>
       <span className={styles.panelHead}>
@@ -140,7 +141,9 @@ export function InformationConfidence({ id, line, sources, unsure, actions }: { 
         </div>
         <div className={styles.sureCol} style={{ gap: 10 }}>
           <h3 className={styles.h3}>Not sure yet</h3>
-          {fields.length ? (
+          {fields.length && know ? (
+            <NotSureList kind={know.kind} pageKey={know.key} fields={fields} signedIn={know.signedIn} sent={know.sent} answered={know.answered} signIn={know.signIn} seeAll />
+          ) : fields.length ? (
             <ul className={styles.unsure}>
               {fields.map((f) => (
                 <li key={f}>{f.charAt(0).toUpperCase() + f.slice(1)}.</li>

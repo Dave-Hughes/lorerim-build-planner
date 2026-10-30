@@ -3,11 +3,10 @@ import { lineLevelText } from "@/lib/quests/gate";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
-import { auth } from "@/auth";
 import { ConfirmButton } from "@/components/pages/confirm-button";
 import { Linked } from "@/components/pages/linked";
 import { PreviewLink } from "@/components/pages/preview-link";
-import { confirmationsOf } from "@/lib/quests/confirmations";
+import { pageExtras } from "@/components/pages/page-extras";
 import {
   Gold,
   InformationConfidence,
@@ -97,7 +96,8 @@ export default async function QuestPage({
   }
   const { line, quest } = found;
   const reporting = (await searchParams).report === "1";
-  const userId = (await auth())?.user?.id ?? null;
+  const x = await pageExtras("quest", quest.edid, questHref(quest.edid) ?? "/quests");
+  const { userId } = x;
   const name = quest.name || quest.edid;
   const start = quest.start;
   const home = questsData().categories[line.category]
@@ -148,7 +148,7 @@ export default async function QuestPage({
   const reported = (start?.ways ?? []).filter((w) => w.checked === "players");
   // No player's name on a page (WO-154 Part 4): a report is "a player's report"; only a confirmation shows the Discord name its player chose.
   const reporters = page.reports;
-  const confirmed = await confirmationsOf("quest", quest.edid, userId);
+  const confirmed = x.confirmed;
   const sources: SureSource[] = [
     reads
       ? {
@@ -186,7 +186,7 @@ export default async function QuestPage({
           ]
             .filter(Boolean)
             .join(". "),
-          names: confirmed.names.map((r) => <span key={r}>{r}</span>),
+          names: x.names,
         }
       : {
           mark: "no",
@@ -737,9 +737,12 @@ export default async function QuestPage({
           line={sureLine}
           sources={sources}
           unsure={page.unsure}
+          know={x.know}
           actions={
             <>
+              {x.beacon}
               <ConfirmButton
+               
                 kind="quest"
                 id={quest.edid}
                 path={questHref(quest.edid) ?? "/quests"}

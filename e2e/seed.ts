@@ -170,6 +170,11 @@ export async function seed() {
     // A fact an admin approved from a test player's report (WO-146) keeps no user when they go, so it goes first, or it would
     // stay laid over its quest.
     await db.delete(schema.questPlayerFacts).where(like(schema.questPlayerFacts.userId, "e2e-%"));
+    // WO-184: what the tests' players sent (their rows also go with the users), and the page views the tests counted.
+    await db.delete(schema.pageScreenshots).where(like(schema.pageScreenshots.userId, "e2e-%"));
+    await db.delete(schema.pageTips).where(like(schema.pageTips.userId, "e2e-%"));
+    await db.delete(schema.pageConfirmations).where(like(schema.pageConfirmations.userId, "e2e-%"));
+    await db.delete(schema.pageViews);
     await db.delete(schema.builds).where(like(schema.builds.id, "e2e%"));
     // The test players' invites (WO-96), made or used: they'd outlive them with no one on them.
     await db.delete(schema.invites).where(or(like(schema.invites.createdBy, "e2e-%"), like(schema.invites.usedBy, "e2e-%")));
@@ -662,7 +667,7 @@ async function seedKyria(db: any) {
 /** Images the tests uploaded (dev/builds/e2e…, and the seeded runs' dev/playthroughs/e2e…, which count to a run's 40). */
 async function cleanupImages() {
   if (!process.env.BLOB_READ_WRITE_TOKEN) return;
-  for (const prefix of ["dev/builds/e2e", "dev/playthroughs/e2e"]) {
+  for (const prefix of ["dev/builds/e2e", "dev/playthroughs/e2e", "dev/screenshots/", "dev/tips/e2e"]) {
     let cursor: string | undefined;
     do {
       const page = await list({ prefix, cursor, limit: 1000 });
@@ -714,6 +719,11 @@ export async function cleanup() {
   try {
     await db.delete(schema.imageChecks).where(like(schema.imageChecks.uploaderId, "e2e-%"));
     await db.delete(schema.questPlayerFacts).where(like(schema.questPlayerFacts.userId, "e2e-%"));
+    // WO-184: what the tests' players sent (their rows also go with the users), and the page views the tests counted.
+    await db.delete(schema.pageScreenshots).where(like(schema.pageScreenshots.userId, "e2e-%"));
+    await db.delete(schema.pageTips).where(like(schema.pageTips.userId, "e2e-%"));
+    await db.delete(schema.pageConfirmations).where(like(schema.pageConfirmations.userId, "e2e-%"));
+    await db.delete(schema.pageViews);
     await db.delete(schema.builds).where(and(like(schema.builds.id, "e2e%")));
     await db.delete(schema.builds).where(eq(schema.builds.ownerId, TEST_USER_ID));
     // The MCP route's calls (WO-108): the tests' made-up addresses, counted by subject with no account.

@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-184  Players make it right: screenshots, I know this, Help fill the gaps, one review list (Mac, 30 Oct 2026)
-Status: building (Mac)
+Status: for Bob (Mac: all but the Tapps uploads, see the notes)
 
 **Why.** Dave, 30 Oct: with playthroughs cut, double down on quests, places and people, and "accelerate the ideas for community confirmation of quest info, the admin review section, and of course the image collection work for locations and NPCs." These are the backlog's 23 Oct, 28 Oct and 28 Oct items, decided.
 
@@ -5046,64 +5046,64 @@ Build from the boards, and where this order and a board disagree, the board wins
 Additive migrations only.
 
 ### Part 1. Screenshots of places and people
-- [ ] **Where they show.**
+- [x] **Where they show.**
   - On a **place**, the lead screenshot sits beside the map in one band: the screenshot about half the width at 16:9, the map in the rest.
   - On a **person**, it sits beside the title, 16:9.
   - Under either one, a strip of every screenshot shown, plus an Add tile.
   - The caption carries the uploader's Discord avatar and name ("Screenshot by …") and "n of m".
   - A screenshot that isn't 16:9 is letterboxed in black, never cropped (Dave: "16:9 is ideal but we can add black bars").
-- [ ] **No screenshot yet**: the spot says "No screenshot of <name> yet" with "+ Add a screenshot" (signed out: "Sign in to add a screenshot"). The map keeps its half.
-- [ ] **Adding one** (`PicAdd`):
+- [x] **No screenshot yet**: the spot says "No screenshot of <name> yet" with "+ Add a screenshot" (signed out: "Sign in to add a screenshot"). The map keeps its half.
+- [x] **Adding one** (`PicAdd`):
   - PNG or JPG up to 15 MB; stored at full size and served at 1600 wide with a thumbnail.
   - The tick box "This is my own screenshot, and it shows <name>." is required.
   - Below it, the plain line on what happens next, as drawn.
-- [ ] **Who sees what:**
+- [x] **Who sees what:**
   - The nudity check runs on every upload. A refused screenshot is never shown, even to its uploader, who is told plainly it wasn't accepted.
   - Otherwise, by default, it waits in `/admin`. The uploader sees it at once, flagged **Under review**, with "Only you can see it until an admin approves it" and "Remove it". Nobody else sees it.
   - An **approved player's** upload is live at once.
   - The first approved screenshot leads the strip until an admin picks another.
   - A cap of 10 uploads a day per player, and 20 waiting at once.
-- [ ] **An admin on the page** (`PicAdmin`):
+- [x] **An admin on the page** (`PicAdmin`):
   - Approve and Remove on any screenshot waiting.
   - Make this lead.
   - Delete, with a confirm ("It goes from the page for everyone").
   - The uploader's `/me` lists what they sent and what happened to each: live, waiting, removed.
-- [ ] **Report a mistake** gets "This screenshot isn't this place" (or person), which puts that screenshot back in `/admin` with the report (Dave, 30 Oct).
+- [x] **Report a mistake** gets "This screenshot isn't this place" (or person), which puts that screenshot back in `/admin` with the report (Dave, 30 Oct).
 - [ ] Dave's own camera-test shots are uploaded as Tapps, approved:
   - Bleak Falls Barrow, Broken Oar Grotto and Fort Hraggstad, from `C:\LoreRim\_fieldguide\screens\wo158\`.
   - The PC copies them to a place Mac can read (say where, in the notes).
   - Not the Riverwood and Winking Skeever "MISS" files.
 
 ### Part 2. Confirm, and I know this, on quests, places and people
-- [ ] **Confirm** stays as built. Signed in and confirmed, the Players line says "You confirmed this on <date>. Undo", and the button reads Confirmed.
-- [ ] **I know this** on every line under Not sure yet (`Confirm`), on quest, place and person pages alike:
+- [x] **Confirm** stays as built. Signed in and confirmed, the Players line says "You confirmed this on <date>. Undo", and the button reads Confirmed.
+- [x] **I know this** on every line under Not sure yet (`Confirm`), on quest, place and person pages alike:
   - It opens the form under that line: What do you know? (required), How do you know? (I saw it in my game, A mod page or guide, Somewhere else with a link), and an optional screenshot.
   - The line under it: "An admin reads it before it shows on the page. It's credited to your Discord name."
   - After Send, the line says "Sent. Thanks." for that player.
-- [ ] It's stored as WO-146's player fact, now for places and people too: the page, the Not sure yet field it answers, the words, how they know, the screenshot, and who sent it. The agent's Propose (WO-146 Part 2) reads it against the records and proposes the change for that field.
-- [ ] Rate limits as for reports. Signed out, I know this says "Sign in to tell us".
+- [x] It's stored as WO-146's player fact, now for places and people too: the page, the Not sure yet field it answers, the words, how they know, the screenshot, and who sent it. The agent's Propose (WO-146 Part 2) reads it against the records and proposes the change for that field.
+- [x] Rate limits as for reports. Signed out, I know this says "Sign in to tell us".
 
 ### Part 3. Help fill the gaps (`HelpGaps`)
-- [ ] **A public page**, linked from the World menu, from every Not sure yet box ("See everything we're unsure of ›"), and from Recently confirmed. Its address is `/help-fill-the-gaps` unless a shorter one reads better: say which in the notes.
-- [ ] **Every quest, place and person with anything under Not sure yet.**
+- [x] **A public page**, linked from the World menu, from every Not sure yet box ("See everything we're unsure of ›"), and from Recently confirmed. Its address is `/help-fill-the-gaps` unless a shorter one reads better: say which in the notes.
+- [x] **Every quest, place and person with anything under Not sure yet.**
   - Each row shows its icon, its name linked, what it is and where, the missing fields as chips, and "I know this ›" (which opens that page at the form).
   - Filters: All, Quests, People, Places, each with its count.
   - Shown 50 at a time, with Show more.
-- [ ] **Most looked at first** (Dave, 30 Oct: "Sure"):
+- [x] **Most looked at first** (Dave, 30 Oct: "Sure"):
   - A page-view counter per quest, place and person page: one row per page per day, counted on the server.
   - No cookies, no IP and no user id stored. Bots are left out by user agent.
   - The row shows "<n> looked this week".
   - Kept 90 days.
-- [ ] The page's lede and labels as on the board, in plain words.
+- [x] The page's lede and labels as on the board, in plain words.
 
 ### Part 4. Recently confirmed by players, on the home page (`HomeConfirmed`)
-- [ ] **Above New in the world**: the 8 latest confirmations and approved player facts.
+- [x] **Above New in the world**: the 8 latest confirmations and approved player facts.
   - Each card shows the kind, the page linked, "Confirmed by <Discord name>" with their avatar, and when.
   - One card per page: the newest wins.
-- [ ] The heading's link goes to Help fill the gaps. With nothing yet, the section isn't drawn.
+- [x] The heading's link goes to Help fill the gaps. With nothing yet, the section isn't drawn.
 
 ### Part 5. One review list in `/admin` (`AdminReview`)
-- [ ] **`/admin/review` has four tabs, each with its count:**
+- [x] **`/admin/review` has four tabs, each with its count:**
   - **What players know**: player facts and Report a mistake, for quests, places and people, newest first.
     - Each shows what they wrote, who, how they know and when, plus the agent's reading and its before and after.
     - Then Approve, Edit then approve, or Reject (reports: Fix it, Send to Jeff, Not a mistake).
@@ -5112,11 +5112,11 @@ Additive migrations only.
     - The note: the check only looks for nudity, and whether it shows the place is the admin's call.
   - **Reported builds**: as today.
   - **Approved players**: the list (Tapps as admin, then each player with when and from what they were added) with Remove, and Add a player by Discord name.
-- [ ] The top of `/admin` links to it with the counts waiting.
-- [ ] Nothing reaches a page until it's approved, and every approval is logged with who and when.
+- [x] The top of `/admin` links to it with the counts waiting.
+- [x] Nothing reaches a page until it's approved, and every approval is logged with who and when.
 
 ### Part 6. The check
-- [ ] e2e, two players and an admin:
+- [x] e2e, two players and an admin:
   - A player uploads and sees Under review.
   - The second player doesn't see it.
   - The admin approves it, and both see it.
@@ -5125,10 +5125,39 @@ Additive migrations only.
   - I know this on a person page is proposed and approved, and the page shows it as a player's report.
   - Help fill the gaps lists the page until then.
   - Recently confirmed shows the confirmation.
-- [ ] Page-text test: no "picture" or "image" in what a player reads about screenshots.
-- [ ] Screenshots of each board's screen at 1440 and 390 against the canvas, then `for Bob`.
+- [x] Page-text test: no "picture" or "image" in what a player reads about screenshots.
+- [x] Screenshots of each board's screen at 1440 and 390 against the canvas, then `for Bob`.
 
 ### Jeff's notes
+
+**Mac, 30 Oct: everything but the Tapps uploads is built.** Typecheck, lint (the two old warnings), `npm test` (879 passed, 7 expected fail), `npm run build` and the full e2e are green; `e2e/wo184.spec.ts` is the order's own check (11 tests). Screenshots of every board's screen are in `test-results/wo184-*-1440.png` and `-390.png`.
+
+**What was built, and where**
+- Four additive tables (migration 0031): `page_screenshot`, `trusted_player`, `page_tip`, `page_view`.
+- Screenshots (`src/lib/screenshots/`, `src/components/screenshots/`, `/api/screenshots`): PNG or JPG to 15 MB, checked from the bytes; the original is kept, `url` is 1600 wide (sharp, now a direct dependency) and `thumbUrl` 320. The nudity check runs on every one; refused is never stored and the player is told. 10 uploads a day, 20 waiting.
+- The place band is the screenshot at 16:9 beside the map (`PlaceMapBand`, both place layouts); a person has it beside the title with the strip under it. A screenshot that isn't 16:9 is letterboxed (`object-fit: contain` on black).
+- I know this (`src/lib/tips/`, `/api/tips`, `NotSureList`): on every Not sure yet line of a quest page, a quest line page, a person and a place. Hash `#know-N` opens line N's form, which is how Help fill the gaps links in.
+- Help fill the gaps at **`/help-fill-the-gaps`**, in the World menu and under every Not sure yet box. Every quest page, person and place with a line under Not sure yet (3,434 today: 833 quests, 2,253 people, 348 places), built from the same functions the pages use (`placeUnsure`, `personUnsure`, `cleanUnsure`), so a line there is a line on its page. A line an admin has taken a player's word on drops off the list.
+- Page views: `POST /api/views` from a small client beacon, one row per page per day, UA bots left out, no cookie, address or account, rows older than 90 days cleared as new ones come.
+- Recently confirmed on the home page (confirmations, approved tips and approved quest player facts, one card a page, 8 cards).
+- `/admin/review` has the four tabs with counts; `/admin` links to it with the counts; the header badge counts everything waiting. `/me` has What you sent.
+
+**Decisions I made (Bob, overrule any)**
+1. **"Stored as WO-146's player fact"**: WO-146's `quest_report`/`quest_player_fact` are shaped for a quest's way in (a line, a quest, a `ReportKind`), so I made one `page_tip` table for I know this and Report a mistake on all three kinds of page, and left the quest reports as they are. The review list shows both in one tab, newest first, with each one's own buttons. An approved tip shows on its page under that Not sure yet line as "A player's report, not the game files: …", with the player's name and day; it does not change the page's own sentences.
+2. **The agent's reading of a tip** is a "Read it" button on the card (an admin runs it, one call, logged) rather than a batch; it needs `ANTHROPIC_API_KEY`, as WO-146's does. Not run here (no key in dev).
+3. **A trusted player's upload goes live unless the check flagged it** (`listed`). When Sightengine can't run (`unchecked`) a trusted player is not held up for it; anyone else's waits as before. Say if you'd rather unchecked always waits.
+4. **Report a mistake on places and people** used to be a link to /quests. It is now a small dialog (what is wrong, or "This screenshot isn't this place/person" with the screenshot chosen when there are several). Quest pages keep WO-121a's form.
+5. **Help fill the gaps lists quest pages (`/quests/q/…`), not quest line pages**, though I know this works on both. Line pages have no confirm and their Not sure yet is the lines of several quests at once.
+6. `/admin` keeps its old Quest reports block (many e2e specs drive it); the same reports are also in the review list's first tab. One of them can go once you've picked.
+7. The Players line on a confirmed page: "You confirmed this on 30 Oct. Undo", and the button reads Confirmed (WO-154's "Undo my confirmation" button is gone; Undo is in that line and in the dialog).
+
+**Not done, and why**
+- **Dave's camera-test shots as Tapps** (Bleak Falls Barrow, Broken Oar Grotto, Fort Hraggstad): they're on the PC and each environment has its own Blob store and database, so this needs files Mac can't read and each environment's own credentials. The simplest way is for Tapps to add them in the app on staging (Add a screenshot, then Approve in /admin/review); an admin's own upload is live at once. If you want a script instead, say so and name the folder.
+- The agent's reading has not run against the real model.
+
+**Things I saw that aren't mine**
+- A person the records call **"???"** is in the people index and sorts first on Help fill the gaps. Probably a PC data matter (a generic or unnamed actor); not touched.
+- Four older specs changed with the pages: wo154 (confirm), wo157 (World menu has a sixth item), wo167 (map band is half the width beside the screenshot, 405 tall at 1440), wo40 (reported builds live on the Reported builds tab).
 
 ---
 

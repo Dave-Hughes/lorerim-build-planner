@@ -19,8 +19,14 @@ for (const width of [1440, 390]) {
     const map = page.getByRole("group", { name: "Map around this place" });
     await expect(map).toBeVisible();
     const box = (await map.boundingBox())!;
-    expect(Math.abs(box.height - (width === 1440 ? 400 : 240))).toBeLessThan(2);
-    expect(box.width).toBeGreaterThanOrEqual(width - 2);
+    // WO-184: the map shares the band with the lead screenshot, at 16:9 of half the width (about 405 at 1440); on a phone it sits under it.
+    if (width === 1440) {
+      expect(Math.abs(box.height - 405)).toBeLessThan(12);
+      expect(box.width).toBeGreaterThanOrEqual(width / 2 - 2);
+    } else {
+      expect(box.height).toBeGreaterThanOrEqual(238);
+      expect(box.width).toBeGreaterThanOrEqual(width - 2);
+    }
     // Under the title and tags, above At a glance.
     const title = (await page.getByRole("heading", { level: 1 }).boundingBox())!;
     expect(box.y).toBeGreaterThan(title.y);

@@ -2,6 +2,13 @@ import "server-only";
 import { desc, eq, inArray, isNull, sql } from "drizzle-orm";
 import { db, schema } from "@/db";
 import { REPORT_REASONS } from "./reports";
+import { countShotsToReview } from "@/lib/screenshots/store";
+import { countTipsToReview } from "@/lib/tips/store";
+
+async function countPlayerReview(): Promise<number> {
+  const [shots, tips, reports] = await Promise.all([countShotsToReview(), countTipsToReview(), db().select({ n: sql<number>`count(*)::int` }).from(schema.questReports).where(eq(schema.questReports.status, "new"))]);
+  return shots + tips + (reports[0]?.n ?? 0);
+}
 
 export interface ReviewImage {
   kind: "image";
@@ -28,7 +35,9 @@ export async function countOpenReview(): Promise<number> {
     db().select({ n: sql<number>`count(*)::int` }).from(schema.imageChecks).where(eq(schema.imageChecks.review, "open")),
     db().select({ n: sql<number>`count(distinct ${schema.buildReports.buildId})::int` }).from(schema.buildReports).where(isNull(schema.buildReports.clearedAt)),
   ]);
-  return (images[0]?.n ?? 0) + (builds[0]?.n ?? 0);
+  // WO-184: what players know and the screenshots waiting are on the same list.
+  const extra = await countPlayerReview().catch(() => 0);
+  return (images[0]?.n ?? 0) + (builds[0]?.n ?? 0) + extra;
 }
 
 /** The review list (WO-40): images the check listed or couldn't check, and reported builds, newest first. */

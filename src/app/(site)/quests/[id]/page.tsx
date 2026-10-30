@@ -2,6 +2,7 @@
 import { loadPlayerFacts } from "@/lib/quests/player-facts";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { pageExtras } from "@/components/pages/page-extras";
 import { notFound, redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { SignInButton } from "@/components/site-header";
@@ -73,6 +74,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
     .filter((x): x is QuestLine => !!x)
     .map((x) => ({ id: x.id, name: x.name, home: homeName(x.category), where: x.where, source: x.sources.map((s) => s.name).join(", "), begins: x.begins, quoted: x.beginsFrom === "opening" }));
   const view = lineView(line);
+  const x = await pageExtras("quest", `line:${line.id}`, `/quests/${line.id}`);
   const told = storyOfLine(line.id);
   const lr = line.read;
   const names = [...linkable(), ...ownPlaceNames(line.quests.map((q) => q.name))];
@@ -409,8 +411,11 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
             { mark: "no", name: "UESP", note: "Not compared yet" },
             { mark: "no", name: "Players", note: "No one has confirmed this page yet." },
           ]}
+          know={x.know}
           unsure={[...(lr?.unsure ?? []).filter((u) => !lr?.verdicts || lr.verdicts[u.field] === "unsure").map((u) => ({ ...u, field: LINE_FIELD_WORDS[u.field] ?? u.field })), ...view.unsure, ...hedged]}
           actions={
+            <>
+            {x.beacon}
             <QuestReport
               lineId={line.id}
               quests={line.quests.map((q) => ({ edid: q.edid, name: q.name }))}
@@ -420,6 +425,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
               buttonClass="btn"
               signIn={<SignInButton redirectTo={`/quests/${line.id}?report=1`} className="btn btn-sm btn-primary" label="Sign in with Discord" />}
             />
+            </>
           }
         />
       </div>

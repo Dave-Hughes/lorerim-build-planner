@@ -2,10 +2,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
-import { auth } from "@/auth";
 import { ConfirmButton } from "@/components/pages/confirm-button";
 import { SignInButton } from "@/components/site-header";
-import { confirmationsOf } from "@/lib/quests/confirmations";
+import { pageExtras } from "@/components/pages/page-extras";
+import { ReportMistake } from "@/components/pages/report-mistake";
 import { PreviewLink } from "@/components/pages/preview-link";
 import { InformationConfidence, Icon, PageTop, Section, TitleBox } from "@/components/pages/page-kit";
 import { LineToc } from "@/components/quests/line-parts";
@@ -22,6 +22,7 @@ import { questHref } from "@/lib/quests/slugs";
 import { siteMetadata } from "@/lib/og/metadata";
 import styles from "@/components/pages/page-kit.module.css";
 import { holdWords } from "@/lib/places/hold-words";
+import { placeUnsure } from "@/lib/places/unsure";
 
 export const dynamic = "force-dynamic";
 
@@ -104,8 +105,8 @@ export default async function PlacePage({ params }: { params: Params }) {
     if (!several) notFound();
     return <WhichOne places={several} />;
   }
-  const userId = (await auth())?.user?.id ?? null;
-  const confirmed = await confirmationsOf("place", slug, userId);
+  const x = await pageExtras("place", slug, `/places/${slug}`);
+  const { userId, confirmed } = x;
   const a = place.actors;
   // A camp with a guard or two before the war and a garrison after it (WO-172): the page gives the garrison's levels and says so, not the guard's.
   const war = a?.hostile === false ? null : afterWar(a);
@@ -148,16 +149,16 @@ export default async function PlacePage({ params }: { params: Params }) {
       sources={[
         { mark: "yes", name: "LoreRim's game files", note: lived ? "Who lives here, what they sell and teach, books, crafting and XP, read from the records" : "Who lives here, the boss, books, crafting and XP, read from the records" },
         confirmed.names.length
-          ? { mark: "yes", name: "Players", note: `Confirmed by ${confirmed.names.length} ${confirmed.names.length === 1 ? "player" : "players"}`, names: confirmed.names.map((n) => <span key={n}>{n}</span>) }
+          ? { mark: "yes", name: "Players", note: `Confirmed by ${confirmed.names.length} ${confirmed.names.length === 1 ? "player" : "players"}`, names: x.names }
           : { mark: "no", name: "Players", note: "No reports. No one has confirmed this page yet." },
       ]}
-      unsure={[...(worth?.bossChest ? [{ field: "what's in the boss chest" }] : []), ...(dangerUnsure ? [{ field: "how dangerous it is" }] : [])]}
+      unsure={placeUnsure(place)}
+      know={x.know}
       actions={
         <>
+          {x.beacon}
           <ConfirmButton kind="place" id={slug} path={`/places/${slug}`} title={placeLabel(place)} signedIn={!!userId} mine={confirmed.mine} signIn={<SignInButton redirectTo={`/places/${slug}`} className="btn btn-primary" label="Sign in to confirm" />} />
-          <Link href="/quests" className="btn">
-            Report a mistake
-          </Link>
+          <ReportMistake kind="place" pageKey={slug} what="place" shots={x.reportable} signedIn={!!userId} signIn={<SignInButton redirectTo={`/places/${slug}`} className="btn" label="Sign in to report a mistake" />} />
         </>
       }
     />
