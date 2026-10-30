@@ -6,9 +6,11 @@ import { PageTop, TitleBox } from "@/components/pages/page-kit";
 import { PreviewLink } from "@/components/pages/preview-link";
 import { LineToc } from "@/components/quests/line-parts";
 import { PlaceMapBand } from "./place-map";
+import { ShotHero } from "@/components/screenshots/shot-hero";
+import { ShotsSection } from "@/components/screenshots/shots-section";
 import { linkable } from "@/lib/pages/names";
 import { personHref } from "@/lib/people/data";
-import { placeHref, placeHrefOf, placeLabel, placeType, rangeOf, type Place } from "@/lib/places/data";
+import { placeHref, placeHrefOf, placeLabel, placeSlug, placeType, rangeOf, type Place } from "@/lib/places/data";
 import { closeBy, innsOf, peopleAt, shopsOf, type PlacePerson, type Shop } from "@/lib/places/people";
 import type { PlaceKind } from "@/lib/places/kind";
 import { saidAbout } from "@/lib/places/said";
@@ -255,11 +257,13 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
     ...(close.length ? [{ id: "close", label: "Close by", icon: "quest-ways" }] : []),
     ...(crafting.length || shrines.length || books.length || walls.length ? [{ id: "craft", label: "Books, crafting and shrines", icon: "quest-rewards" }] : []),
     ...(place.pointers?.length ? [{ id: "said", label: "What people say about it", icon: "speech" }] : []),
+    { id: "shots", label: "Screenshots", icon: "tab-play" },
     { id: "sure", label: "Information Confidence", icon: "quest-sure" },
   ];
 
   return (
     <main className={l.root}>
+      <ShotHero kind="place" slug={placeSlug(place)}>
       <div className={`page ${l.top}`}>
         <PageTop back={inside && upHref && place.inTown ? { href: upHref, label: place.inTown } : { href: "/places", label: "Places" }} />
         <TitleBox
@@ -274,6 +278,7 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
         />
         <p className={l.pitch}>{pitch}</p>
       </div>
+      </ShotHero>
 
       <PlaceMapBand place={place} />
 
@@ -420,6 +425,10 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
             </div>
           )}
         </aside>
+      </div>
+
+      <div className="page">
+        <ShotsSection kind="place" slug={placeSlug(place)} name={placeLabel(place)} back={`/places/${placeSlug(place)}`} />
       </div>
 
       <div className={`page ${l.foot}`}>

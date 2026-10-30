@@ -64,7 +64,7 @@ export default async function PlacesPage({ searchParams }: { searchParams: Promi
         const onMap = mapPlaces().filter((p) => (!type || groupOf(p.type) === type) && (!hold || p.hold === hold)).length;
         return (
           <section aria-label="Map of Skyrim" className="map-section">
-            <MapView entry={entry} pins={shown} mode="whole" />
+            <MapView entry={entry} pins={shown} mode="whole" title="Skyrim" mapHref="/map" />
             <p className="muted" style={{ margin: "8px 0 0", fontSize: 14 }}>
               {onMap} {onMap === 1 ? "place" : "places"} on the map, those inside a town counted once at the town&apos;s pin. Skyrim only: Solstheim and the mods&apos; lands have no map here yet.
             </p>

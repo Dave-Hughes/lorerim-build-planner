@@ -10,6 +10,8 @@ import { PreviewLink } from "@/components/pages/preview-link";
 import { InformationConfidence, Icon, PageTop, Section, TitleBox } from "@/components/pages/page-kit";
 import { LineToc } from "@/components/quests/line-parts";
 import { PlaceMapBand } from "@/components/places/place-map";
+import { ShotHero } from "@/components/screenshots/shot-hero";
+import { ShotsSection } from "@/components/screenshots/shots-section";
 import { personHref } from "@/lib/people/data";
 import { questsData } from "@/lib/quests/data";
 import { afterWar, hasLevels, isGarrison, placeByRecordName, placeBySlug, placeHrefOf, placeLabel, placesSharingSlug, placeType, rangeOf, type Place } from "@/lib/places/data";
@@ -185,6 +187,7 @@ export default async function PlacePage({ params }: { params: Params }) {
 
   return (
     <main className={l.root}>
+      <ShotHero kind="place" slug={slug}>
       <div className={`page ${l.top}`}>
       <PageTop back={{ href: "/places", label: "Places" }} />
 
@@ -202,6 +205,7 @@ export default async function PlacePage({ params }: { params: Params }) {
 
       <p className={styles.lede}>{lede}</p>
       </div>
+      </ShotHero>
 
       <PlaceMapBand place={place} />
 
@@ -342,18 +346,20 @@ export default async function PlacePage({ params }: { params: Params }) {
         </div>
 
         <aside className={styles.side}>
-          {/* A contents of one item (only Information Confidence) is no contents (WO-180). */}
-          {(hasWorth || quests.length > 0 || !!place.pointers?.length) && (
           <LineToc
             items={[
               ...(hasWorth ? [{ id: "worth", label: "Worth going for", icon: "mark-skill-book" }] : []),
               ...(quests.length ? [{ id: "quests", label: "Quests that bring you here", icon: "tab-play" }] : []),
               ...(place.pointers?.length ? [{ id: "said", label: "What people say about it", icon: "speech" }] : []),
+              { id: "shots", label: "Screenshots", icon: "tab-play" },
               { id: "sure", label: "Information Confidence", icon: "quest-sure" },
             ]}
           />
-          )}
         </aside>
+      </div>
+
+      <div className="page">
+        <ShotsSection kind="place" slug={slug} name={placeLabel(place)} back={`/places/${slug}`} />
       </div>
 
       <div className={`page ${l.foot}`}>{ic}</div>

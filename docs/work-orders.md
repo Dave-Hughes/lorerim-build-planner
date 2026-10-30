@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-184  Players make it right: screenshots, I know this, Help fill the gaps, one review list (Mac, 30 Oct 2026)
-Status: building (Mac: Part 7)
+Status: for Bob (Mac: Parts 1 to 7; the Tapps uploads are open, see the notes)
 
 **Why.** Dave, 30 Oct: with playthroughs cut, double down on quests, places and people, and "accelerate the ideas for community confirmation of quest info, the admin review section, and of course the image collection work for locations and NPCs." These are the backlog's 23 Oct, 28 Oct and 28 Oct items, decided.
 
@@ -5130,14 +5130,14 @@ Additive migrations only.
 
 ### Part 7. Dave's change to the layout (30 Oct, 14:04, after seeing the boards)
 Dave: "I don't think the screenshot should live beside the map. Let's make this feel a bit more intentional." The boards are redrawn: `PicPlace`, `PicYours`, `PicAdmin`, `PicPerson` and the new `MapFull`, in row 39. This replaces Part 1's "Where they show"; everything else in Part 1 stands.
-- [ ] **The lead screenshot is the hero's background**, on place and person pages alike:
+- [x] **The lead screenshot is the hero's background**, on place and person pages alike:
   - full width and about 600 tall;
   - the title, tags and lede over it on the left, darkened behind the text and faded into the page at the foot;
   - "Screenshot by <Discord name>" with the avatar at its foot on the right, linking to the Screenshots section.
   - With no approved screenshot, the hero is today's plain one.
   - The hero crops to fill, keeping the middle.
-- [ ] **The map goes back to its own full band**, as before WO-184.
-- [ ] **A Screenshots section** further down the page, in its section list:
+- [x] **The map goes back to its own full band**, as before WO-184.
+- [x] **A Screenshots section** further down the page, in its section list:
   - a grid of 16:9 tiles (letterboxed in black when a screenshot isn't 16:9), each with the uploader and date;
   - the lead one marked "Leads the page";
   - an Add tile last.
@@ -5145,10 +5145,10 @@ Dave: "I don't think the screenshot should live beside the map. Let's make this 
   - Your own screenshot under review shows only here, flagged, never as the hero.
   - An admin's Approve, Make it lead (it becomes the hero), Remove and Delete (with a confirm) sit under each tile.
   - With none: "None yet" and "+ Add a screenshot of <name>".
-- [ ] **Every map gets Full screen** (`MapFull`): the place pages' map band, the quest and quest line maps, and any other map a page shows.
+- [x] **Every map gets Full screen** (`MapFull`): the place pages' map band, the quest and quest line maps, and any other map a page shows.
   - The map opens over the whole window: a top bar with the name, its key, "Open on the Map page ›" and Close (Esc closes too); the same pins, labels and route with room round them; zoom, drag and the credit.
   - On a phone it fills the screen the same way.
-- [ ] Screenshots at 1440 and 390 against the redrawn boards, then `for Bob`.
+- [x] Screenshots at 1440 and 390 against the redrawn boards, then `for Bob`.
 
 ### Jeff's notes
 
@@ -5180,6 +5180,16 @@ Dave: "I don't think the screenshot should live beside the map. Let's make this 
 **Things I saw that aren't mine**
 - A person the records call **"???"** is in the people index and sorts first on Help fill the gaps. Probably a PC data matter (a generic or unnamed actor); not touched.
 - Four older specs changed with the pages: wo154 (confirm), wo157 (World menu has a sixth item), wo167 (map band is half the width beside the screenshot, 405 tall at 1440), wo40 (reported builds live on the Reported builds tab).
+
+
+**Part 7 (Mac, 30 Oct): the layout Dave asked for**
+- **Hero**: `ShotHero` wraps the page's own top block on a place (both layouts) and on a person. With a live lead screenshot it is the background, 600 tall (520 on a phone), cropped to fill and keeping the middle, the page's own title, tags and lede over it on the left, dark behind the text and faded into the page at the foot, and "Screenshot by <name>" with the avatar at the foot on the right, linking to `#shots`. With none it renders nothing extra: today's plain hero. A screenshot under review is never the hero (e2e checks it). The lead is the one an admin picked, else the earliest live.
+- **Map**: back to its own full band, as before WO-184 (`place-map.tsx` is the old file plus Full screen).
+- **Screenshots section** (`shot-section.tsx`, id `shots`, in the section list of both place layouts): 16:9 tiles with black bars, who and when under each, "Leads the page" on the lead, "Under review" and "Only you can see this until an admin approves it. Remove it" on the reader's own, Add tile last (or "+ Add a screenshot of <name>" with three faded tiles when there are none). A tile opens the screenshot whole. Admin: Approve, Make it lead (a waiting one is approved by it), Remove (waiting) or Delete with a confirm (live). The person page has the section above Information Confidence, with no contents list to add it to.
+- **Full screen** (`MapView`, board MapFull): every `MapView` that is given a title has the button: the place band, and the Places page's whole map. It opens the whole paper map over the window, zoomed in on the place (14 names), with the bar (name, hold, Town and Dangerous place key, Open on the Map page, Close; Esc closes too), zoom buttons, wheel zoom, drag and the credit. On a phone it fills the screen the same way.
+- **What I did not find to add Full screen to**: the order says "the quest and quest line maps", but no quest or line page draws a map today; they link to `/map` ("Where it takes you"), which is the whole map already. The home page's map strip is a decorative picture (aria-hidden) with its own Open the map link. If you mean a map I haven't seen, tell me which page.
+- Tests: `e2e/wo184.spec.ts` now has 12 (the hero is not the hero until a screenshot is live; Make it lead moves the hero; Full screen at 1440 and 390 and on /places). `wo167.spec.ts` is back to what it was. Screenshots: `test-results/wo184-*-1440.png` and `-390.png`, `wo184-map-full-place-*.png`.
+- In a full-suite run `wo184.spec.ts`'s "I know this" test failed twice for the same reason, other specs leaving quest reports waiting (so "Nothing waiting." and the count of 1 were wrong); both assertions now look for the card, and the spec passes alone and after the others.
 
 ---
 

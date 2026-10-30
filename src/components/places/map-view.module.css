@@ -249,3 +249,109 @@ a.pin:focus-visible {
     white-space: normal;
   }
 }
+
+/* Full screen (WO-184 Part 7, board MapFull). */
+.fullBtn {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  z-index: 6;
+  gap: 8px;
+  height: 36px;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+.zoomLow {
+  top: 56px;
+}
+.noLegend .legend {
+  display: none;
+}
+.full {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: #0b1016;
+  display: flex;
+  flex-direction: column;
+}
+.fullBar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 60px;
+  padding: 8px 20px;
+  background: rgba(11, 16, 22, 0.96);
+  border-bottom: 1px solid var(--rule);
+  flex-wrap: wrap;
+  flex: none;
+}
+.fullTitle {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 20px;
+}
+.fullSub {
+  color: var(--muted);
+  font-size: 14px;
+}
+.fullKey {
+  display: flex;
+  gap: 14px;
+  margin-left: 24px;
+  font-size: 13.5px;
+}
+.fullKey span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.fullKey i {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background: var(--pin);
+  transform: rotate(45deg);
+}
+.fullOpen {
+  margin-left: auto;
+  font-size: 15px;
+}
+.fullClose {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 12px;
+  background: rgba(11, 16, 22, 0.9);
+  border: 1px solid var(--rule-strong);
+  color: var(--text);
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+.fullMap {
+  flex: 1;
+  min-height: 0;
+  aspect-ratio: auto !important;
+  max-height: none !important;
+  height: auto !important;
+  border: 0 !important;
+}
+@media (max-width: 700px) {
+  .fullKey {
+    display: none;
+  }
+  .fullOpen {
+    margin-left: 0;
+  }
+}

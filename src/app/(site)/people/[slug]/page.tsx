@@ -4,7 +4,8 @@ import { ConfirmButton } from "@/components/pages/confirm-button";
 import { SignInButton } from "@/components/site-header";
 import { PreviewLink } from "@/components/pages/preview-link";
 import { InformationConfidence, PageTop, Panel, Section, TitleBox } from "@/components/pages/page-kit";
-import { PersonShots } from "@/components/screenshots/person-shots";
+import { ShotHero } from "@/components/screenshots/shot-hero";
+import { ShotsSection } from "@/components/screenshots/shots-section";
 import { pageExtras } from "@/components/pages/page-extras";
 import { ReportMistake } from "@/components/pages/report-mistake";
 import { personBySlug, personUnsure, roleWords, unsureFields } from "@/lib/people/data";
@@ -221,11 +222,10 @@ export default async function PersonPage({ params }: { params: Params }) {
 
   return (
     <main className={l.root}>
+      <ShotHero kind="person" slug={person.slug}>
       <div className={`page ${l.top}`}>
       <PageTop back={{ href: "/people", label: "People" }} />
 
-      <div className={styles.headGrid}>
-      <div className={styles.headText}>
       <TitleBox
         title={person.name}
         tags={
@@ -246,11 +246,7 @@ export default async function PersonPage({ params }: { params: Params }) {
 
       {lede && <p className={styles.lede}>{lede}</p>}
       </div>
-      <aside className={styles.headShot} aria-label="Screenshots">
-        <PersonShots slug={person.slug} name={person.name} />
-      </aside>
-      </div>
-      </div>
+      </ShotHero>
 
       <GlanceBand cells={cells} />
 
@@ -352,6 +348,8 @@ export default async function PersonPage({ params }: { params: Params }) {
           )}
         </aside>
       </div>
+
+      <ShotsSection kind="person" slug={person.slug} name={person.name} back={`/people/${person.slug}`} />
 
       <InformationConfidence
         id="sure"

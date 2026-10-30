@@ -180,12 +180,13 @@ export async function removeShot(id: number, by: string, forGood: boolean): Prom
   return true;
 }
 
-/** Make this screenshot lead its page (and no other). */
+/** Make this screenshot lead its page (and no other); a waiting one is approved by it. */
 export async function leadShot(id: number, adminId: string): Promise<boolean> {
   const row = await shotRow(id);
-  if (!row || row.status !== "live") return false;
+  if (!row || row.status === "removed") return false;
   await db().update(schema.pageScreenshots).set({ lead: false }).where(and(eq(schema.pageScreenshots.kind, row.kind), eq(schema.pageScreenshots.key, row.key)));
-  await db().update(schema.pageScreenshots).set({ lead: true, decidedBy: adminId, decidedAt: new Date() }).where(eq(schema.pageScreenshots.id, id));
+  // Making a waiting screenshot lead approves it: it becomes the hero.
+  await db().update(schema.pageScreenshots).set({ lead: true, status: "live", reportNote: null, reportedBy: null, reportedAt: null, decidedBy: adminId, decidedAt: new Date() }).where(eq(schema.pageScreenshots.id, id));
   return true;
 }
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { PreviewLink } from "@/components/pages/preview-link";
 import type { MapEntry, Pin } from "@/lib/places/map";
 import s from "./map-view.module.css";
@@ -12,7 +13,77 @@ import s from "./map-view.module.css";
  */
 const KIND_WORDS = { town: "Town", danger: "Dangerous place", other: "Other" } as const;
 
-export function MapView({ entry, pins, here, hereLabel, labelled = 0, mode, className }: { entry: MapEntry; pins: Pin[]; here?: Pin; hereLabel?: string; labelled?: number; mode: "band" | "whole"; className?: string }) {
+export interface MapViewProps {
+  entry: MapEntry;
+  pins: Pin[];
+  here?: Pin;
+  hereLabel?: string;
+  labelled?: number;
+  mode: "band" | "whole";
+  className?: string;
+  /** What the full screen map's bar says (WO-184 Part 7, board MapFull): the page's name and its hold, and where the Map page opens on it. A map with a title has a Full screen button. */
+  title?: string;
+  sub?: string;
+  mapHref?: string;
+}
+
+/**
+ * Every map on a page gets Full screen (WO-184 Part 7): the same pins and labels over the whole window, with a bar (the name, the key, Open on the Map page, Close; Esc closes too),
+ * zoom, drag and the credit. The full screen map is the whole picture, zoomed in on the place when there is one.
+ */
+export function MapView(props: MapViewProps) {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <MapCore {...props} onFull={props.title ? () => setOpen(true) : undefined} />
+      {open && props.title && typeof document !== "undefined" && createPortal(<FullScreen {...props} onClose={() => setOpen(false)} />, document.body)}
+    </>
+  );
+}
+
+function FullScreen({ title, sub, mapHref, onClose, ...rest }: MapViewProps & { onClose: () => void }) {
+  const close = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    const key = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", key);
+    const was = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    close.current?.focus();
+    return () => {
+      window.removeEventListener("keydown", key);
+      document.body.style.overflow = was;
+    };
+  }, [onClose]);
+  return (
+    <div className={s.full} role="dialog" aria-modal="true" aria-label={`${title}, full screen map`}>
+      <div className={s.fullBar}>
+        <span className={s.fullTitle}>{title}</span>
+        {sub && <span className={s.fullSub}>{sub}</span>}
+        <span className={s.fullKey}>
+          <span className={s.town}>
+            <i aria-hidden="true" />
+            Town
+          </span>
+          <span className={s.danger}>
+            <i aria-hidden="true" />
+            Dangerous place
+          </span>
+        </span>
+        {mapHref && (
+          <a className={s.fullOpen} href={mapHref}>
+            Open on the Map page ›
+          </a>
+        )}
+        <button ref={close} type="button" className={s.fullClose} aria-label="Close the full screen map" onClick={onClose}>
+          <span aria-hidden="true">✕ </span>Close
+        </button>
+      </div>
+      <MapCore {...rest} mode="whole" labelled={rest.here ? 14 : 0} overlay className={s.fullMap} />
+    </div>
+  );
+}
+
+function MapCore({ entry, pins, here, hereLabel, labelled = 0, mode, className, onFull, overlay }: MapViewProps & { onFull?: () => void; overlay?: boolean }) {
   const box = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ w: mode === "band" ? 1440 : 1000, h: mode === "band" ? 400 : 707 });
   useLayoutEffect(() => {
@@ -32,7 +103,9 @@ export function MapView({ entry, pins, here, hereLabel, labelled = 0, mode, clas
   // `zoom`: css pixels for each pixel of the 8192 texture (band: 1) or of the whole picture (whole map).
   const fit = size.w / entry.image.width;
   const [zoom, setZoom] = useState(mode === "band" ? 1 : 0);
-  const z = mode === "band" ? 1 : Math.max(fit, zoom || fit);
+  // The full screen map opens zoomed in on its place; every other whole map opens at the whole picture.
+  const boost = overlay && here ? 2.6 : 1;
+  const z = mode === "band" ? 1 : Math.max(fit, zoom || fit * boost);
   // The view: where the picture's origin sits in the box.
   const toPix = useCallback((px: number, py: number) => (mode === "band" ? { x: px * bandK, y: py * bandK } : { x: (px - x0) * kWhole * z, y: (py - y0) * kWhole * z }), [mode, bandK, kWhole, z, x0, y0]);
   const centre = here ?? null;
@@ -40,8 +113,9 @@ export function MapView({ entry, pins, here, hereLabel, labelled = 0, mode, clas
   const view = useMemo(() => {
     if (pan) return pan;
     if (mode === "band" && centre) return { x: size.w / 2 - centre.px * bandK, y: size.h / 2 - centre.py * bandK };
+    if (mode === "whole" && overlay && centre) return { x: size.w / 2 - (centre.px - x0) * kWhole * z, y: size.h / 2 - (centre.py - y0) * kWhole * z };
     return { x: 0, y: 0 };
-  }, [pan, mode, centre, bandK, size.w, size.h]);
+  }, [pan, mode, overlay, centre, bandK, size.w, size.h, kWhole, z, x0, y0]);
   const total = mode === "band" ? { w: entry.texture.width * bandK, h: entry.texture.height * bandK } : { w: entry.image.width * z, h: entry.image.height * z };
   const clamp = useCallback(
     (v: { x: number; y: number }) => {
@@ -104,13 +178,13 @@ export function MapView({ entry, pins, here, hereLabel, labelled = 0, mode, clas
     if (!el || mode !== "whole") return;
     // A plain wheel scrolls the page (WO-177: the map is the page's width, and the wheel would trap the pointer); a trackpad pinch arrives as Ctrl and a wheel.
     const wheel = (e: WheelEvent) => {
-      if (!e.ctrlKey) return;
+      if (!e.ctrlKey && !overlay) return;
       e.preventDefault();
       zoomTo(Math.min(fit * 6, Math.max(fit, z * (e.deltaY < 0 ? 1.18 : 1 / 1.18))), { x: e.clientX, y: e.clientY });
     };
     el.addEventListener("wheel", wheel, { passive: false });
     return () => el.removeEventListener("wheel", wheel);
-  }, [mode, z, fit, zoomTo]);
+  }, [mode, overlay, z, fit, zoomTo]);
 
   // The tiles in view: full size on a wide band, half size (zoom 0) on a phone; only the ones the box can see, and only those the map has.
   const tiles = useMemo(() => {
@@ -153,9 +227,9 @@ export function MapView({ entry, pins, here, hereLabel, labelled = 0, mode, clas
   return (
     <div
       ref={box}
-      className={`${s.map} ${mode === "band" ? s.band : s.whole} ${className ?? ""}`}
+      className={`${s.map} ${mode === "band" ? s.band : s.whole} ${overlay ? s.noLegend : ""} ${className ?? ""}`}
       role="group"
-      aria-label={mode === "band" ? "Map around this place" : "Map of Skyrim"}
+      aria-label={overlay ? "Map, full screen" : mode === "band" ? "Map around this place" : "Map of Skyrim"}
       onPointerDown={onDown}
       onPointerMove={onMove}
       onPointerUp={onUp}
@@ -217,8 +291,16 @@ export function MapView({ entry, pins, here, hereLabel, labelled = 0, mode, clas
           </span>
         ))}
       </span>
+      {onFull && (
+        <button type="button" className={`${s.plate} ${s.fullBtn}`} aria-label="Open the map full screen" onClick={onFull}>
+          <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.6">
+            <path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4" />
+          </svg>
+          Full screen
+        </button>
+      )}
       {mode === "whole" && (
-        <span className={s.zoomBtns}>
+        <span className={`${s.zoomBtns} ${onFull ? s.zoomLow : ""}`}>
           <button type="button" className={s.plate} aria-label="Zoom in" onClick={() => zoomTo(Math.min(fit * 6, z * 1.4), null)}>
             +
           </button>

@@ -1282,28 +1282,6 @@ a.tag:hover {
   height: 12px;
 }
 
-/* A person's head (WO-184 Part 1, board PicPerson): the title and lede, and a 16:9 screenshot spot beside them. */
-.headGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 480px;
-  gap: 48px;
-  align-items: end;
-}
-.headText {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-.headShot {
-  min-width: 0;
-}
-@media (max-width: 900px) {
-  .headGrid {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 24px;
-  }
-}
-
 .youConfirmed {
   font-size: 13.5px;
   color: var(--soft);
