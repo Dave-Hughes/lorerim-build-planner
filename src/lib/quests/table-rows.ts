@@ -1,3 +1,4 @@
+import { gateKnown } from "./gate";
 import "server-only";
 import { personHref } from "@/lib/people/data";
 import { placeByName, placeHref } from "@/lib/places/data";
@@ -27,6 +28,8 @@ export interface TableRow {
   hold: string | null;
   /** 0 for none. */
   level: number;
+  /** Whether the level (0: none) was read; a line whose gate nobody read is not "Any" (WO-183 Part 4). */
+  levelKnown: boolean;
   length: number;
   from: { kind: "base" | "cc" | "mod"; name: string; /** What the cell shows: the name without its subtitle; `name` is the title. */ short: string; href?: string };
   /** Quest XP; 0 pays none. */
@@ -78,6 +81,7 @@ export function tableRow(line: QuestLine): TableRow {
     whereHref: where ? placeHref(where) : null,
     hold,
     level: line.minLevel ?? 0,
+    levelKnown: gateKnown(line),
     length: counts.length,
     from,
     xp: counts.xp,

@@ -13,7 +13,7 @@ for (const width of [1440, 390]) {
     await expect(page.getByRole("heading", { level: 1, name: "Lights Out!" })).toBeVisible();
     const order = await page.locator("main h2").allInnerTexts();
     // Rewards first after At a glance, People after Where it takes you (WO-174).
-    const wanted = ["Rewards", "How to start it", "5 ways to finish it", "Where it takes you", "People", "What it closes", "Information Confidence"];
+    const wanted = ["Rewards", "How to start it", "4 ways to finish it", "Where it takes you", "People", "What it closes", "Information Confidence"];
     expect(order.map((t) => t.toLowerCase())).toEqual(expect.arrayContaining(wanted.map((t) => t.toLowerCase())));
     expect(wanted.map((t) => order.findIndex((o) => o.toLowerCase() === t.toLowerCase()))).toEqual([...wanted.map((t) => order.findIndex((o) => o.toLowerCase() === t.toLowerCase()))].sort((a, b) => a - b));
     await expect(page.getByRole("region", { name: "How to start it" })).toContainText("Talk to Jaree-Ra in Solitude, by the Winking Skeever");

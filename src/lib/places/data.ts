@@ -301,6 +301,12 @@ export const placeHref = (name: string): string | null => {
   return group.length > 1 ? `/places/${slugOf(group[0].name)}` : null;
 };
 export const placeBySlug = (slug: string): Place | null => slugged().bySlug.get(slug) ?? null;
+
+/** A place's old address, from the name its record gave it before it had its in-game name (WO-183 Part 4: /places/dormitory is the Hall of Attainment). */
+export function placeByRecordName(slug: string): Place | null {
+  if (slugged().bySlug.has(slug)) return null;
+  return placesData().places.find((p) => p.recordName && slugOf(p.recordName) === slug) ?? null;
+}
 /** The places a shared address lists ("/places/imperial-military-camp"): null when the slug is not a shared name's. */
 export const placesSharingSlug = (slug: string): Place[] | null => slugged().sharedSlugs.get(slug) ?? null;
 

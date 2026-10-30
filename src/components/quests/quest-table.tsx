@@ -14,7 +14,7 @@ const LEVELS = [
   { key: "21-30", label: "Level 21 to 30" },
   { key: "31+", label: "Level 31 and up" },
 ];
-const inLevel = (r: TableRow, k: string) => (k === "" ? true : k === "none" ? r.level === 0 : r.level > 0 && (k === "31+" ? r.level >= 31 : r.level >= Number(k.split("-")[0]) && r.level <= Number(k.split("-")[1])));
+const inLevel = (r: TableRow, k: string) => (k === "" ? true : k === "none" ? r.level === 0 && r.levelKnown : r.level > 0 && (k === "31+" ? r.level >= 31 : r.level >= Number(k.split("-")[0]) && r.level <= Number(k.split("-")[1])));
 const known = (s: string | null) => (s ?? "").toLowerCase();
 
 /**
@@ -152,7 +152,7 @@ export function QuestTable({ rows, across = false, defaultSort = "name", q = "",
               </td>
               <td className={c.who} title={r.who ?? undefined}>{r.who ? r.whoHref ? <PreviewLink href={r.whoHref}>{r.who}</PreviewLink> : r.who : <span className={c.mut}>Not known yet</span>}</td>
               <td className={c.where} title={r.where ?? undefined}>{r.where ? <span className={c.pl}>{r.whereHref ? <PreviewLink href={r.whereHref}>{r.where}</PreviewLink> : r.where}</span> : <span className={c.mut}>Not known yet</span>}</td>
-              <td className={c.level}>{r.level ? <span className={c.lv} data-level={r.level}>{r.level}</span> : <span className={c.mut}>Any</span>}</td>
+              <td className={c.level}>{r.level ? <span className={c.lv} data-level={r.level}>{r.level}</span> : <span className={c.mut}>{r.levelKnown ? "Any" : "Not sure yet"}</span>}</td>
               <td className={c.length}>{r.length === 1 ? "1 quest" : `${r.length} quests`}</td>
               <td className={c.from}>
                 {r.from.kind === "base" ? (

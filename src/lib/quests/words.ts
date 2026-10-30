@@ -28,8 +28,8 @@ export function andList(items: string[]): string {
 }
 
 /** "20–40 on the island" stays; numbers read as the game writes them. */
-export const levelChip = (minLevel: number | undefined, level: number | null): { text: string; above: boolean } => {
-  if (!minLevel) return { text: "Any level", above: false };
+export const levelChip = (minLevel: number | undefined, level: number | null, known = true): { text: string; above: boolean } => {
+  if (!minLevel) return { text: known ? "Any level" : "Not sure yet", above: false };
   if (level !== null && minLevel > level) return { text: `Opens at level ${minLevel}`, above: true };
   return { text: `Level ${minLevel}`, above: false };
 };

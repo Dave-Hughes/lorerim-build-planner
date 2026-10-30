@@ -237,6 +237,31 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
               </div>
               <p className={l.body}>{line.board.says}</p>
               <p className={l.cap}>{line.board.boards?.length ? `Where the boards are: ${line.board.boards.join("; ")}.` : "Where the boards are isn't checked yet."}</p>
+              {/* The kinds of job, each with its quests linked (WO-183 Part 4: 384 jobs and not one link). A kind's distances are its quests: Near, Medium, Distant. */}
+              {(() => {
+                const kinds = new Map<string, { label: string; href: string | null }[]>();
+                for (const q of line.quests) {
+                  const m = /^(.*?)\s+(Near|Medium|Distant|Far|Med)$/.exec(q.name);
+                  const kind = (m ? m[1] : q.name).replace(/\s+Board$/i, "");
+                  kinds.set(kind, [...(kinds.get(kind) ?? []), { label: m ? m[2] : q.name === kind ? "The job" : "The board", href: questHref(q.edid) }]);
+                }
+                return (
+                  <ul className={l.body} style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: 4 }}>
+                    {[...kinds].map(([kind, qs]) => (
+                      <li key={kind}>
+                        <b>{kind}</b>{" "}
+                        {[...new Map(qs.map((x) => [x.label, { ...x, n: qs.filter((y) => y.label === x.label).length }])).values()].map((x, i) => (
+                          <span key={`${x.label}-${i}`}>
+                            {i ? ", " : ""}
+                            {x.href ? <Link href={x.href}>{x.label}</Link> : x.label}
+                            {x.n > 1 ? ` (${x.n} boards)` : ""}
+                          </span>
+                        ))}
+                      </li>
+                    ))}
+                  </ul>
+                );
+              })()}
             </section>
           )}
           {line.radiant && (

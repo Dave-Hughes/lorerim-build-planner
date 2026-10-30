@@ -132,10 +132,14 @@ export function registerFactTools(server: Server, guarded: Guarded, origin = "")
     {
       title: "A person",
       description:
-        "Get a person in LoreRim by name: their race and town, and for the people who have been read and checked (more every week) where you first meet them, where they are through the day and night, what changes it, what they sell and train, how they join you as a follower, whether and how you can marry them, how they fight, the quests they are in and how each touches them, and whether they can die. notSure lists what the checkers could not settle, each with the reason; say so to the player rather than guess. A person not read yet comes back without those fields and says so.",
-      inputSchema: z.object({ name: z.string().min(1).max(120).describe("The person's name, as in the game.") }),
+        "Get a person in LoreRim by name (or, with trains, everyone who trains a skill, in a place if you give one): their race and town, and for the people who have been read and checked (more every week) where you first meet them, where they are through the day and night, what changes it, what they sell and train, how they join you as a follower, whether and how you can marry them, how they fight, the quests they are in and how each touches them, and whether they can die. notSure lists what the checkers could not settle, each with the reason; say so to the player rather than guess. A person not read yet comes back without those fields and says so.",
+      inputSchema: z.object({
+        name: z.string().min(1).max(120).optional().describe("The person's name, as in the game."),
+        trains: z.string().min(1).max(40).optional().describe('Instead of a name: a skill, "Enchanting", for everyone who trains it and how far each takes you.'),
+        where: z.string().min(1).max(80).optional().describe('With trains: a town, hold or place to keep to, "Solstheim", "Markarth".'),
+      }),
     },
-    async (a: { name: string }) => guarded(() => getPerson(a, origin)),
+    async (a: { name?: string; trains?: string; where?: string }) => guarded(() => getPerson(a, origin)),
   );
   server.registerTool(
     "get_quest_start",

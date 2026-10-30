@@ -94,7 +94,7 @@ describe("the door", () => {
   });
   it("a quest with no read says nothing was read, never a blank", () => {
     const d = doorPage(quest());
-    expect(d).toMatchObject({ source: "rules", canDo: "not read yet", needs: ["Nothing: any level"] });
+    expect(d).toMatchObject({ source: "rules", canDo: "not read yet", needs: ["Not sure yet: what the start asks for hasn't been read"] });
     expect(d).toHaveProperty("sourceNote");
   });
   it("suggest_quests' short form has can-do, needs, starts and what it gets, never a null start", () => {

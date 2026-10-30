@@ -1,5 +1,6 @@
 import "server-only";
 import { capFirst } from "@/lib/pages/player-words";
+import { gateKnown } from "./gate";
 import { afterWar, isGarrison, placeByName, placesNamed, rangeOf, hasLevels, type Place } from "@/lib/places/data";
 import { GOLD, RUN_CHANGE } from "./run-change";
 import { questHref } from "./slugs";
@@ -67,6 +68,9 @@ const CAN_DO: Record<NonNullable<QuestRead["canDo"]>, string> = {
   cut: "Cut from the game: only the console starts it",
   background: "Not a quest you'll see: it runs in the background",
 };
+
+/** What a quest no record starts says in place of how it starts (WO-183 Part 4). */
+export const NOT_STARTED = "Not started in normal play";
 
 let byName: Map<string, string | null> | null = null;
 let modOf: Map<string, { name: string; modid?: string }> | null = null;
@@ -218,13 +222,15 @@ function viaReads(q: Quest, r: QuestRead): QuestPage {
   const sure = `Read from the game files and checked by a second reader${unsure.length ? `. Unsure: ${fields}` : ""}`;
   return {
     source: "reads",
-    canDo: r.canDo ? { label: CAN_DO[r.canDo], ...(r.canDo !== "talk" && r.canDoWhy ? { why: r.canDoWhy } : {}) } : null,
+    // A quest no record starts is "Not started in normal play", never "Starts by itself" (WO-183 Part 4); "Talk to someone to start it" needs someone
+    // the start names, else the read is guessing the way in.
+    canDo: q.noStart ? { label: NOT_STARTED } : r.canDo === "talk" && !starts.some((x) => x.who) ? null : r.canDo ? { label: CAN_DO[r.canDo], ...(r.canDo !== "talk" && r.canDoWhy ? { why: r.canDoWhy } : {}) } : null,
     // A needed quest is a link to its page when the planner has it by that name (the read's "Finish Scoundrel's Folly" links the quest).
     needs: (r.needs ?? []).map((n) => {
       const href = n.kind === "quest" ? linkFor(n.what.replace(/^(finish|complete|after)\s+/i, "")).href : undefined;
       return { text: n.what, ...(href ? { href } : {}) };
     }),
-    starts,
+    starts: q.noStart ? [] : starts,
     ...(r.firstStep ? { firstStep: r.firstStep } : {}),
     takesYou: (r.takesYou ?? []).map((t) => {
       const danger = dangerOf(placeNamed(t.place, q.name));
@@ -303,7 +309,7 @@ export function doorPage(q: Quest) {
     source: p.source,
     ...(p.source === "rules" ? { sourceNote: "This quest hasn't been read yet; these fields are from the planner's older rules. Say it isn't read yet rather than filling the gap." } : {}),
     canDo: p.canDo ? (p.canDo.why ? `${p.canDo.label}: ${p.canDo.why}` : p.canDo.label) : "not read yet",
-    needs: p.needs.length ? p.needs.map((n) => n.text) : ["Nothing: any level"],
+    needs: needsFor(q, p.needs.map((n) => n.text)),
     starts,
     ...(p.firstStep ? { firstStep: p.firstStep } : {}),
     takesYou: p.takesYou,
@@ -319,6 +325,18 @@ export function doorPage(q: Quest) {
     ...(p.reports ? { playerReports: playersWords(p.reports) } : {}),
     ...(p.unsure.length ? { unsure: p.unsure } : {}),
   };
+}
+
+/**
+ * What get_quest says a quest needs first (WO-183 Part 4): the read's needs; the line's level when it has one and the needs don't say it; and, with nothing
+ * needed, "Nothing: any level" only when the line's gate was read, else that the gate hasn't been.
+ */
+function needsFor(q: Quest, needs: string[]): string[] {
+  const line = questsData().lines.find((l) => l.quests.some((x) => x.edid === q.edid));
+  const level = line?.minLevel ? `Level ${line.minLevel}` : null;
+  const withLevel = level && !needs.some((n) => /\blevel \d+/i.test(n)) ? [level, ...needs] : needs;
+  if (withLevel.length) return withLevel;
+  return line && gateKnown(line) ? ["Nothing: any level"] : ["Not sure yet: what the start asks for hasn't been read"];
 }
 
 /** suggest_quests' short form: can I do it, what I need, how to start, what I get. */

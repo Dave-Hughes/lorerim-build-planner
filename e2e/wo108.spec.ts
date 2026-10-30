@@ -48,9 +48,9 @@ test("initialize, tools/list and one call of each tool", async ({ baseURL }) => 
   const bloodline = JSON.parse(textOf(await client.callTool({ name: "get_quest", arguments: { name: "Bloodline", level: 30 } })));
   expect(bloodline.openForYou.state).toBe("unknown");
   expect(bloodline.openForYou.says).toMatch(/^unknown: needs After Awakening/);
-  // A quest whose start isn't checked is unknown through the door, never open (WO-115 Part 4).
+  // A quest whose start isn't checked is unknown through the door, never open (WO-115 Part 4); On Hogithum has no record that starts it (WO-183 Part 4).
   const unchecked = JSON.parse(textOf(await client.callTool({ name: "get_quest", arguments: { id: "on-hogithum", level: 40 } })));
-  expect(unchecked.openForYou).toMatchObject({ state: "unknown", says: "unknown: the start isn't checked yet" });
+  expect(unchecked.openForYou).toMatchObject({ state: "unknown", says: "unknown: not started in normal play, no record starts it" });
   expect(textOf(await client.callTool({ name: "get_style_guide", arguments: {} }))).toContain("Unknown means say unknown.");
   expect(JSON.parse(textOf(await client.callTool({ name: "check_progression", arguments: { build: plan } })))).toMatchObject({ levels: 6 });
   expect(textOf(await client.callTool({ name: "get_style_guide", arguments: {} }))).toContain("How to write for LoreRim Build Planner");

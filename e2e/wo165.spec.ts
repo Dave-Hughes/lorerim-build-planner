@@ -12,7 +12,7 @@ for (const width of [1440, 390]) {
     for (const w of ["How it starts", "Level and danger", "Where it takes you", "Rewards", "Ways to finish it"]) await expect(glance).toContainText(w);
     await expect(glance).toContainText("Lucan Valerius");
     await expect(glance).toContainText("100 XP");
-    await expect(glance).toContainText("3 ways");
+    await expect(glance).toContainText("2 ways");
     await expect(glance).toContainText("Bleak Falls Barrow");
     await expect(page.getByRole("region", { name: "Rewards" }).last()).toBeVisible();
     // A place named in a step is teal, a person orange.
@@ -28,7 +28,7 @@ for (const width of [1440, 390]) {
     const glance = page.getByRole("region", { name: "At a glance" });
     await expect(glance).toContainText("How it starts");
     await expect(glance).toContainText("Jaree-Ra");
-    await expect(glance).toContainText("5 ways");
+    await expect(glance).toContainText("4 ways");
     await page.screenshot({ path: `test-results/wo165-lights-out-${width}.png`, fullPage: true });
   });
 

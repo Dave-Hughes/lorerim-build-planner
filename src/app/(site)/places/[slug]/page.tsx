@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { auth } from "@/auth";
 import { ConfirmButton } from "@/components/pages/confirm-button";
 import { SignInButton } from "@/components/site-header";
@@ -12,7 +12,7 @@ import { LineToc } from "@/components/quests/line-parts";
 import { PlaceMapBand } from "@/components/places/place-map";
 import { personHref } from "@/lib/people/data";
 import { questsData } from "@/lib/quests/data";
-import { afterWar, hasLevels, isGarrison, placeBySlug, placeHrefOf, placeLabel, placesSharingSlug, placeType, rangeOf, type Place } from "@/lib/places/data";
+import { afterWar, hasLevels, isGarrison, placeByRecordName, placeBySlug, placeHrefOf, placeLabel, placesSharingSlug, placeType, rangeOf, type Place } from "@/lib/places/data";
 import { PlaceSaid, PlaceTown, levelRange } from "@/components/places/place-town";
 import { placeKind } from "@/lib/places/kind";
 import { playerFacing } from "@/lib/places/said";
@@ -97,6 +97,9 @@ export default async function PlacePage({ params }: { params: Params }) {
   const slug = (await params).slug;
   const place = placeBySlug(slug);
   if (!place) {
+    // A place's old address, by the name its record gave it, goes to its in-game name (WO-183 Part 4).
+    const was = placeByRecordName(slug);
+    if (was) permanentRedirect(placeHrefOf(was));
     const several = placesSharingSlug(slug);
     if (!several) notFound();
     return <WhichOne places={several} />;
@@ -117,7 +120,7 @@ export default async function PlacePage({ params }: { params: Params }) {
   const town = place.nearestTown;
   const origin = originOf(place.id);
   const worth = place.worthGoingFor;
-  const hasWorth = !!(worth?.skillBooks?.length || worth?.bossChest || worth?.crafting?.length);
+  const hasWorth = !!(worth?.skillBooks?.length || worth?.wordWall?.length || worth?.bossChest || worth?.crafting?.length);
 
   // The quests that go here, with what each one says about it.
   const byName = new Map(questsData().lines.flatMap((l) => l.quests.map((q) => [q.name, q] as const)));
@@ -136,7 +139,7 @@ export default async function PlacePage({ params }: { params: Params }) {
   const realm = !place.pos && !place.inTown && !!place.gettingThere;
   // How dangerous it is, when not known, is said once, under Not sure yet; a place that page doesn't list keeps its band cell (WO-180 Part 5b).
   const dangerUnsure = !levels && a?.hostile !== false && !realm && placeKind(place) === "dangerous";
-  const lede = `${/^[AEIOU]/i.test(type) ? "An" : "A"} ${kind}${near ? ` ${near}` : place.hold ? ` in ${holdWords(place.hold)}` : ""}.${realm ? ` ${place.gettingThere}.` : ""}${boss ? ` Its boss is ${boss.name}.` : ""}`.replace(/\s+/g, " ");
+  const lede = `${/^[AEIOU]/i.test(type) ? "An" : "A"} ${kind}${near ? ` ${near}` : place.realm ? ` in ${place.realm.replace(/^The /, "the ")}` : place.hold ? ` in ${holdWords(place.hold)}` : ""}.${realm ? ` ${place.gettingThere}.` : ""}${boss ? ` Its boss is ${boss.name}.` : ""}`.replace(/\s+/g, " ");
   const lived = placeKind(place) !== "dangerous";
   const ic = (
     <InformationConfidence
@@ -190,6 +193,7 @@ export default async function PlacePage({ params }: { params: Params }) {
           <>
             <span className={l.tagPlain}>{placeType(place.type)}</span>
             {place.hold && <span className={l.tagPlace}>{holdWords(place.hold)}</span>}
+            {place.realm && !place.hold && <span className={l.tagPlace}>{place.realm}</span>}
             {origin && <span className={l.tagPlain}>{origin}</span>}
           </>
         }
@@ -297,6 +301,13 @@ export default async function PlacePage({ params }: { params: Params }) {
                   <Icon name="mark-skill-book" />
                   <b>{b.includes(": ") ? b.split(": ")[1] : b}</b>
                   <small>{b.includes(": ") ? `${/^[aeiou]/i.test(b) ? "An" : "A"} ${b.split(": ")[0]} skill book` : "A skill book"}</small>
+                </div>
+              ))}
+              {worth?.wordWall?.map((w) => (
+                <div key={w} className={styles.worth}>
+                  <Icon name="quest-sure" />
+                  <b>{w}</b>
+                  <small>A word wall</small>
                 </div>
               ))}
               {worth?.bossChest && (

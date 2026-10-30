@@ -135,6 +135,9 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
   const worth = place.worthGoingFor;
   const crafting = worth?.crafting ?? [];
   const shrines = worth?.shrines ?? [];
+  // What places.json holds for the place and a page didn't show (WO-183 Part 4): its skill books and a word wall.
+  const books = worth?.skillBooks ?? [];
+  const walls = worth?.wordWall ?? [];
 
   // The page's own words: a summary from what is known.
   const typeWords = placeType(place.type).toLowerCase().replace(/^stables$/, "stable");
@@ -250,7 +253,7 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
     ...(houses.length ? [{ id: "people", label: inside ? "Who is here" : "Who lives here", icon: "quest-people" }] : []),
     ...(quests.length ? [{ id: "quests", label: "Quests that bring you here", icon: "tab-play" }] : []),
     ...(close.length ? [{ id: "close", label: "Close by", icon: "quest-ways" }] : []),
-    ...(crafting.length || shrines.length ? [{ id: "craft", label: "Crafting and shrines", icon: "quest-rewards" }] : []),
+    ...(crafting.length || shrines.length || books.length || walls.length ? [{ id: "craft", label: "Books, crafting and shrines", icon: "quest-rewards" }] : []),
     ...(place.pointers?.length ? [{ id: "said", label: "What people say about it", icon: "speech" }] : []),
     { id: "sure", label: "Information Confidence", icon: "quest-sure" },
   ];
@@ -366,15 +369,27 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
             </section>
           )}
 
-          {(crafting.length > 0 || shrines.length > 0) && (
+          {(crafting.length > 0 || shrines.length > 0 || books.length > 0 || walls.length > 0) && (
             <section className={l.sec} id="craft" aria-labelledby="craft-h">
               <div className={l.sechd}>
                 <h2 id="craft-h" className={l.h2}>
                   <img className={l.px} src="/icons/quest-rewards.svg" alt="" width={30} height={30} />
-                  Crafting and shrines
+                  Books, crafting and shrines
                 </h2>
               </div>
               <div className={t.list2}>
+                {books.map((b) => (
+                  <div key={b} className={t.row}>
+                    <img className={t.px} src="/icons/mark-skill-book.svg" alt="" width={22} height={22} />
+                    {b.includes(": ") ? `${b.split(": ")[1]}, ${/^[aeiou]/i.test(b) ? "an" : "a"} ${b.split(": ")[0]} skill book` : `${b}, a skill book`}
+                  </div>
+                ))}
+                {walls.map((w) => (
+                  <div key={w} className={t.row}>
+                    <img className={t.px} src="/icons/quest-sure.svg" alt="" width={22} height={22} />
+                    {w}, a word wall
+                  </div>
+                ))}
                 {crafting.length > 0 && (
                   <div className={t.row}>
                     <img className={t.px} src="/icons/smithing.svg" alt="" width={22} height={22} />

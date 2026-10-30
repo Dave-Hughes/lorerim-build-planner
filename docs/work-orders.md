@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-183  Data you can trust: fix the causes the accuracy audit found (PC, then Mac, 30 Oct 2026)
-Status: building (Mac: Part 4; PC: Parts 1 to 3 pushed, what is open is in the notes)
+Status: for Bob (Mac: Part 4 done; PC: Parts 1 to 3 pushed, what is open is in the notes)
 
 **Why.** Dave, 30 Oct: "With us cutting playthroughs we're going to want to double down on quests, locations, NPCs… make sure the pages are BULLET proof, the data must be as solid as we can get it."
 
@@ -5129,18 +5129,29 @@ Unknown is fine when the page says so. Wrong is not.
 - [x] **Ways to finish come from completing stages, not fail stages.** Back-Stabbing Rodents' only way is "Turn down Drevis's class".
 
 ### Part 4. The pages (Mac)
-- [ ] A default never prints as a fact: no "Any level", "Lives in", "Starts by itself" or "Talk to someone to start it" unless the data says so. The page-text test fails on a default posing as a fact.
-- [ ] Generic actors: no page, no search result, 404 on the old address, shown on place pages as enemies (Part 1).
-- [ ] What the PC adds in Parts 1 to 3 reaches the page: roles, trainers with their level, the boss, word walls, skill books, residents, realms, gates, rewards and choices.
+- [x] A default never prints as a fact: no "Any level", "Lives in", "Starts by itself" or "Talk to someone to start it" unless the data says so. The page-text test fails on a default posing as a fact.
+- [x] Generic actors: no page, no search result, 404 on the old address, shown on place pages as enemies (Part 1).
+- [x] What the PC adds in Parts 1 to 3 reaches the page: roles, trainers with their level, the boss, word walls, skill books, residents, realms, gates, rewards and choices.
 
 ### Part 5. The check
 - [ ] **The rest of the first sample**:
   - The 24 base quests UESP's bot check blocked get read through UESP's mirrors (`app.uesp.net`, `content1.uesp.net`), or by Bob in a browser.
   - The 15 mod quests get read by the PC against the records. Add both to the audit file.
 - [ ] **A fresh sample** (new seed, logged): 40 quests, 30 places and 30 people, by the reviewer, the same method. Under 2% wrong in every field, or this order reopens with what's left.
-- [ ] `docs/player-questions.md` gets a question for each family that a player would ask: "Where is Neloth?", "Who trains Enchanting on Solstheim?", "How do I start The Whispering Door?", "What do I need to marry?". Each must pass.
+- [x] `docs/player-questions.md` gets a question for each family that a player would ask: "Where is Neloth?", "Who trains Enchanting on Solstheim?", "How do I start The Whispering Door?", "What do I need to marry?". Each must pass.
 
 ### Jeff's notes
+
+**Part 4 and the questions of Part 5 (Mac, 30 Oct)**
+- **A default never prints as a fact.** `src/lib/quests/gate.ts`: a line's level is "Level N", "Any level" only when its gate was read (`checked.gate` "files"), else "Not sure yet". It is used by the line page, the category rows, the table (its Level filter's "No level needed" and its "Any" cell too) and the quest page's level cell; the door's `needs` never says "Nothing: any level" for a line nobody read ("Not sure yet: what the start asks for hasn't been read"), and gives the line's level when the needs leave it out (The Whispering Door's page and door say Level 20, where both said "Any level"). A quest with `noStart` says "Not started in normal play" (glance, Can I do it?, and "No record starts it in normal play." under How to start it), has no starts, and is "unknown: not started in normal play" through the door (`openForYou`), never "Starts by itself". "Talk to someone to start it" is said only when the start names someone. "Lives in" comes from `inTown`, which the PC's data fixes. Tests: `src/lib/pages/wo183-pages.test.ts` over every line and quest, and `e2e/wo183.spec.ts`.
+- **Generic actors:** `/people/goblin`, `/mercenary`, `/dark-brotherhood-assassin` answer 404 and the search finds no person by those names (e2e). Place pages already show what lives there as the enemy type in the danger cell, from the place's own actor data; nothing else was needed.
+- **What the PC's data adds reaches the page:** a trainer comes from the class record (a read that left it out no longer hides it): Neloth "Trains Enchanting, Up to 90"; "What he is" says the trainer, merchant or follower before the race; a word wall and the skill books show on dangerous places (Frostmere: Ice Form, The Red Kitchen Reader) and on city, guild, store and inn pages under "Books, crafting and shrines" (Hall of Attainment: three); the realm is said in the lede and a tag (Borogove: "A fort in the Shivering Isles"); the Dormitory's old address goes to the Hall of Attainment (`placeByRecordName`, a 308); a quest's reward and gate come from the data as the PC wrote them.
+- **Missives** (`tidyMissives`, `data.ts`): "each is a short delivery" stays on the deliveries only (the line's sentence loses it too), and the rieklings job, which is Solstheim's, no longer ends at the jarl (Solstheim has none; the steward step stays). Mac's guess: Kill Some Marauders and Kill Some Forsworn are not clearly Solstheim's, so they were left alone; Bob to say. `/quests/missives` lists its 70 kinds, each distance and each job linked (a kind that many boards share is one link with "(12 boards)").
+- **Door:** `get_person` takes `trains` (and `where`) in place of a name: who trains a skill, with how far each goes ("Who trains Enchanting on Solstheim?" is Neloth, 90). Questions 42 to 45 are in `docs/player-questions.md` and pass: Where is Neloth, Who trains Enchanting on Solstheim, How do I start The Whispering Door, What do I need to marry (the Amulet of Mara is a need the read isn't sure of, never a reward).
+- **Old tests changed, with the data they follow:** `wo108` (On Hogithum has no start record: "unknown: not started in normal play"), `wo136` (the board's sentence, per kind), `wo154` and `wo165` (Lights Out! 4 ways and The Golden Claw 2, after the PC dropped the failing ways), `wo154.test.ts` (a quest on no line is "Not sure yet", not "Any level").
+- **Not mine, still open:** Part 3's story-manager starts, "one of three" choices (Black Book), the boss marker rule, the missing Dwemer and wispmother enemies, place to quest, Carlotta's goods and Hjorunn's sex are the PC's or Bob's (the PC's notes say why). Part 5's two sampling boxes are the reviewer's. A quest that says "Level and danger: Not sure yet" now shows on 66 lines; that is the data's honesty, not a fault.
+- **Checks:** typecheck, lint (two old warnings), `npm test` (874 passed, 7 expected fail), `npm run build`, full `npm run test:e2e` (583 passed; eight failures, all old expectations the data changed, fixed as above and rerun green). The PC's note that three tests fail on staging was not so here: they pass on Mac (the unit tests run with `FEATURE_PLAYTHROUGHS` on, set in `vitest.config.mts`, which a checkout before 16678d2 lacks). Screenshots at 1440 and 390 are written by `npx playwright test e2e/wo183.spec.ts` into `test-results/wo183-*.png`.
+
 
 **Part 1, people (PC, 30 Oct; progress push)**
 - **Generic and leveled actors** (`people.py`, `people.json` `generic`, `data.ts`). The row is one per base NPC record, so a name shared by 19 records (Goblin, Mercenary) was 19 people the page folded into one. A record is generic when it is not a unique record (ACBS flag 0x20, now read in `places.scan()`) and either leveled to the player (flag 0x80), a name more than one record shares, a copy of a template, or a creature (a race that is not one of the ten peoples). Many mods' named people lack the unique flag, so `build_site` keeps anyone a player asks about: a read, a follower, a spouse, a trainer, or an essential actor with a name of their own (Odahviing, the Civil War captains, Stalleo). 1,925 of 4,633 rows are generic; 2,442 names are people. `peopleData()` leaves a generic row out, so the person page, the search, the sitemap and the quest links lose it and the address answers 404 (`wo183.test.ts`). Left for Mac (Part 4): the place pages showing them as an enemy or resident type. `people_report.md` lists the names.

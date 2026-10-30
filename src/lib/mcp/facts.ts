@@ -26,6 +26,7 @@ import { doorSources } from "@/lib/quests/player-source";
 import { questHref } from "@/lib/quests/slugs";
 import { doorPage, playersWords } from "@/lib/quests/reads";
 import { notSureOf, peopleData, personByName } from "@/lib/people/data";
+import { placeByName, placesData } from "@/lib/places/data";
 import { questsOf } from "@/lib/people/quests";
 import { HOMES, HOMES_NOTE, MOUNTS, TOME_TRIALS } from "./living";
 import { howPointsWork, pointRules } from "./rules-text";
@@ -525,6 +526,8 @@ const SAYS = { open: "open for you", locked: "locked", unknown: "unknown" } as c
 
 /** One quest of a line, open for the player or not, and why (WO-115 Part 3): what an assistant says about it. */
 export function openForYou(line: QuestLine, quest: Quest, p: PlayerState, version = DEFAULT_VERSION) {
+  // A quest no record starts is never open for anyone (WO-183 Part 4): the page says "Not started in normal play", and so does the door.
+  if (quest.noStart) return { state: "unknown" as const, says: "unknown: not started in normal play, no record starts it", because: ["No record starts it in normal play."] };
   const { lines } = questsFor(version);
   // A line's order is no gate (WO-142 item 1, after WO-130's work shelves): only the records' own needs gate a quest.
   const r = openFor(quest, p, questNames(lines.flatMap((l) => l.quests)));
@@ -536,13 +539,38 @@ export function openForYou(line: QuestLine, quest: Quest, p: PlayerState, versio
 }
 
 /**
+ * get_person with `trains` (WO-183 Part 5): who trains a skill, from the class records, with how far each takes you; `where` keeps to a town, a hold
+ * or a place ("Solstheim", "Markarth"). Each is a person the planner has a page for.
+ */
+function trainersOf(skill: string, where: string | undefined, origin: string) {
+  const want = norm(skill).replace(/s$/, "");
+  const at = where?.trim() ? norm(where) : null;
+  const holdOf = (p: { cell?: string | null; inTown?: string | null }) => {
+    const names = [p.inTown, p.cell].filter((x): x is string => !!x);
+    return names.flatMap((n) => {
+      const hit = placeByName(n) ?? placesData().places.find((x) => x.name.toLowerCase().startsWith(n.toLowerCase()));
+      return hit ? [hit.hold, hit.nearestTown?.town].filter((x): x is string => !!x) : [];
+    });
+  };
+  const found = peopleData().all.filter((p) => p.trainer && norm(p.trainer.skill).replace(/s$/, "") === want && (!at || [p.inTown, p.cell, ...holdOf(p)].some((x) => x && norm(x).includes(at))));
+  if (!found.length) throw new FactsError(`No one the planner knows trains ${skill}${where ? ` in ${where}` : ""}. Ask the player where they have looked; don't guess.`);
+  return {
+    skill: found[0].trainer!.skill,
+    ...(where ? { where } : {}),
+    trainers: found.map((p) => ({ name: p.name, ...(p.inTown ? { town: p.inTown } : {}), ...(p.cell ? { place: p.cell } : {}), upTo: p.trainer!.cap ?? null, link: `${origin}/people/${p.slug}` })),
+    note: "upTo is the highest skill level they train to.",
+  };
+}
+
+/**
  * get_person (WO-159): a person, by name. Who they are, and when they have been read and checked (people_reads/checked) the same
  * fields their page shows: the first meeting, their day, what changes it, what they sell and train, how they join you, whether
  * you can marry them, how they fight, their quests and how each touches them, and whether they can die. What the checker
  * could not settle is in `notSure`, each with its reason; a person not read yet says so and gives only what the index holds.
  */
-export function getPerson({ name }: { name?: string }, origin = "") {
-  if (!name?.trim()) throw new FactsError("Give the person's name.");
+export function getPerson({ name, trains, where }: { name?: string; trains?: string; where?: string }, origin = "") {
+  if (trains?.trim() && !name?.trim()) return trainersOf(trains, where, origin);
+  if (!name?.trim()) throw new FactsError("Give the person's name, or a skill in trains.");
   const p = personByName(name);
   if (!p) {
     const want = norm(name);

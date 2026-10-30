@@ -5,7 +5,9 @@ import { suggestQuests } from "./playthroughs";
 import { questsData } from "@/lib/quests/data";
 
 /** WO-136: Missives as one class (ruling 3), a key row counts as checked (ruling 2), no "(0/0)" counter (ruling 6). */
-const SAYS = "Missives: take a missive from the notice board in any hold's capital or a courier's request; each is a short delivery.";
+// WO-183 Part 4: "each is a short delivery" is true of the deliveries only, so the line's sentence and a kill, gather or find job's way leave it out.
+const DELIVERY_SAYS = "Missives: take a missive from the notice board in any hold's capital or a courier's request; each is a short delivery.";
+const SAYS = "Missives: take a missive from the notice board in any hold's capital or a courier's request.";
 const all = () => questsData().lines.flatMap((l) => l.quests);
 
 describe("jobs from a board (WO-136 ruling 3)", () => {
@@ -15,13 +17,14 @@ describe("jobs from a board (WO-136 ruling 3)", () => {
     expect(line.board).toEqual({ name: "Jobs from a board", says: SAYS, boards: ["Ben Erai", "Dawnstar", "Falkreath", "Markarth", "Morthal", "Raven Rock", "Riften", "Solitude", "Stonehollow", "Whiterun", "Windhelm", "Winterhold"], jobs: 364 });
     const untraced = line.quests.filter((q) => q.start?.board);
     expect(untraced).toHaveLength(364);
-    expect(untraced.every((q) => q.start?.checked === "files" && q.start.ways?.[0].how === SAYS)).toBe(true);
+    expect(untraced.every((q) => q.start?.checked === "files" && q.start.ways?.[0].how === (/^Deliver\b/i.test(q.name) ? DELIVERY_SAYS : SAYS))).toBe(true);
   });
 
   it("get_quest on a missive says the sentence once, with where the boards are, and it can be judged", () => {
     const a = getQuest({ id: "missives" }, undefined, playerState({ level: 5, done: [] }));
     expect(a.jobFromABoard).toEqual({ says: SAYS, boards: ["Ben Erai", "Dawnstar", "Falkreath", "Markarth", "Morthal", "Raven Rock", "Riften", "Solitude", "Stonehollow", "Whiterun", "Windhelm", "Winterhold"] });
-    expect(a.quest.start.ways).toEqual([{ way: SAYS }]);
+    const opening = questsData().byId.get("missives")!.quests.find((q) => q.edid === questsData().byId.get("missives")!.opening);
+    expect(a.quest.start.ways).toEqual([{ way: /^Deliver\b/i.test(opening?.name ?? "") ? DELIVERY_SAYS : SAYS }]);
     expect(a.openForYou?.state).toBe("open");
   });
 });

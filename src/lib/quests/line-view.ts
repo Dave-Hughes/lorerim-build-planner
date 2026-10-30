@@ -1,4 +1,5 @@
 import { capFirst } from "@/lib/pages/player-words";
+import { gateKnown, lineLevelText } from "./gate";
 import "server-only";
 import { townsIn } from "@/lib/places/suggest";
 import { gateOf, homeName, questsData } from "./data";
@@ -323,7 +324,7 @@ export function lineView(line: QuestLine): LineView {
     opens,
     glance: {
       start: { value: shelf ? "Each job on its own" : (story?.chapters[0]?.name ?? first0?.name ?? opening?.name ?? "Not read yet"), sub: shelf ? (chapters.some((c) => c.quests.some((q) => q.href)) || jobs.some((j) => j.href) ? "Open one for how it starts" : null) : startText, more: shelf ? [] : startLines.slice(1) },
-      level: line.minLevel ? { value: `Level ${line.minLevel}`, sub: line.level ?? null } : { value: "Any level", sub: line.level ?? null },
+      level: { value: lineLevelText(line), sub: line.level ?? null },
       length: {
         value: `${storyQuests.length || quests.length - skipped.size} ${(storyQuests.length || quests.length - skipped.size) === 1 ? "quest" : "quests"}`,
         sub: chapterCount ? `In ${chapterCount} chapters${jobs.length ? `, plus ${jobs.length} jobs along the way` : ""}` : (line.size ?? (jobs.length ? `Plus ${jobs.length} jobs along the way` : null)),
@@ -375,7 +376,7 @@ export function categoryRow(line: QuestLine, key: string): CategoryRow {
   const solo = line.quests.length === 1 && line.category !== "work" && !!questHref(line.quests[0].edid);
   const href = solo ? questHref(line.quests[0].edid)! : `/quests/${line.id}`;
   const story = storyOfLine(line.id);
-  const base = { id: line.id, href, sources: line.sources, prince: line.prince, levelNumber: line.minLevel ?? 0, level: line.minLevel ? `Level ${line.minLevel}` : "Any level", where: line.where, solo, also: [line.category, ...line.also].filter((k) => k !== key).length ? `Also in ${andList([line.category, ...line.also].filter((k) => k !== key).map(homeName))}` : "" };
+  const base = { id: line.id, href, sources: line.sources, prince: line.prince, levelNumber: line.minLevel ?? 0, level: lineLevelText(line), levelKnown: gateKnown(line), where: line.where, solo, also: [line.category, ...line.also].filter((k) => k !== key).length ? `Also in ${andList([line.category, ...line.also].filter((k) => k !== key).map(homeName))}` : "" };
   if (solo) return { ...base, name: line.quests[0].name || line.name, lineTag: null, size: "One quest", pitch: line.begins, pitchParts: line.begins ? linkNames(line.begins, linkable()) : undefined, quoted: line.beginsFrom === "opening", start: null, xp: null, chapters: [], reveal: [] };
   const v = lineView(line);
   const chapters = story ? story.chapters.map((c) => c.name) : [];

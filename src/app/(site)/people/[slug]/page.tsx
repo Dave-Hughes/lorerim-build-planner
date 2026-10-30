@@ -55,7 +55,8 @@ export default async function PersonPage({ params }: { params: Params }) {
   const read = person.read ?? null;
   // What they sell and train: a read person says so by the read (a follower's vendor entry in the records is only trading with you).
   const sells = read ? !!read.sells : !!person.sells;
-  const trainer = read ? (read.trains ? person.trainer : undefined) : person.trainer;
+  // The class record says who trains what and how far (WO-183 Part 1), so a read that left it out doesn't hide it.
+  const trainer = person.trainer;
   const notSure = read ? unsureFields(read) : new Set<string>();
   // What the read is not sure of is said as a plain muted sentence, never as a bracket in the body; Not sure yet has the reason (WO-177 Part 5).
   const sure = (f: string) => (notSure.has(f) ? <em className={styles.nk}> Not sure yet.</em> : null);
@@ -152,6 +153,8 @@ export default async function PersonPage({ params }: { params: Params }) {
         ),
       });
     }
+    else if (person.trainer)
+      offers.push({ title: `Trains ${person.trainer.skill}`, body: person.trainer.cap ? `Up to ${person.trainer.cap}.` : "" });
     if (read.fightsWith) {
       offers.push({
         title: "Fights",
@@ -198,7 +201,8 @@ export default async function PersonPage({ params }: { params: Params }) {
   const short = (t: string, n = 100) => (t.length > n ? `${t.slice(0, n - 1).trimEnd()}…` : t);
   // The person themself is not linked in their own words: skipped at the match, so one compiled pattern serves every page (a pattern for each person leaked memory, WO-177 Part 5).
   const L = (t: string) => <Linked text={t} names={linkable()} skip={`/people/${person.slug}`} />;
-  const roleText = read?.role ? cap(read.role.split(";")[0].trim()) : (role ?? person.race ?? null);
+  // What they are comes from what the records say they do, before their race (WO-183 Part 4: 82% of pages had the race where a trainer, a merchant or a follower was known).
+  const roleText = read?.role ? cap(read.role.split(";")[0].trim()) : (role ?? (trainer ? `${trainer.skill} trainer` : person.follower ? "Follower" : sells ? "Merchant" : (person.race ?? null)));
   const sellsText = read?.sells ? cap(read.sells.split(/[;(]|,\s*\d/)[0].trim().replace(/\.$/, "")) : sells ? "Goods" : null;
   // At a glance (WO-165, rule 34): where to find them (teal), what they are (orange), what they sell (gold) or train (green), that they follow you (orange), and their quests (violet).
   const cells: GlanceCell[] = [

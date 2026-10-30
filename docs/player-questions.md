@@ -235,3 +235,26 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 - Calls: `get_style_guide()`, as the launch planner gives it (playthroughs off).
 - Must: say the planner has no playthroughs yet, and offer to plan a build instead.
 - Passes since WO-182.
+
+## Data you can trust (WO-183)
+
+**42. "Where is Neloth?"**
+- Calls: `get_person({ name: "Neloth" })`.
+- Must: Tel Mithryn, his tower on Solstheim. Never: "Lives in", Markarth.
+- Passes since WO-183 Part 4.
+
+**43. "Who trains Enchanting on Solstheim?"**
+- Calls: `get_person({ trains: "Enchanting", where: "Solstheim" })`.
+- Must: Neloth at Tel Mithryn, to 90. Never: Hamal or Sergius Turrianus (Markarth and Winterhold).
+- Passes since WO-183 Part 4: `get_person` takes `trains` and `where` in place of a name.
+
+**44. "How do I start The Whispering Door?"**
+- Calls: `get_quest({ name: "The Whispering Door" })`.
+- Must: Level 20, Balgruuf the Greater, Dragonsreach. Never: "any level".
+- Passes since WO-183 Part 4.
+
+**45. "What do I need to marry?"**
+- Calls: `get_quest({ name: "The Bonds of Matrimony" })`.
+- Must: someone who can marry you agrees to it; Maramal at the Temple of Mara. Never: an Amulet of Mara as a reward.
+- Passes since WO-183 Part 4.
+

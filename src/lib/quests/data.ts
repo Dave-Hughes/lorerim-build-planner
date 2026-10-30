@@ -37,6 +37,30 @@ export function questsData() {
 const NO_LEVEL = /(?:[;,]\s*(?:and\s+)?|\s+and\s+)the records set no level(?: gate)?(?: for it)?(?=\.\s*$)/i;
 const tidyRead = (l: QuestLine): QuestLine => (l.minLevel && l.read?.about && NO_LEVEL.test(l.read.about) ? { ...l, read: { ...l.read, about: l.read.about.replace(NO_LEVEL, "") } } : l);
 
+/**
+ * Missives (WO-183 Part 4): the board's one sentence says "each is a short delivery", which is true of the deliveries only, so a job that kills, gathers
+ * or finds something doesn't say it; and Solstheim has no jarl, so the rieklings job doesn't send you to one for the bounty.
+ */
+const DELIVERY = /;\s*each is a short delivery(?=\.?\s*$)/i;
+const isDelivery = (name: string) => /^Deliver\b/i.test(name);
+function tidyMissives(l: QuestLine): QuestLine {
+  if (l.id !== "missives") return l;
+  const drop = (a: string[] | undefined, jarl: boolean) => (a && jarl ? a.filter((x) => !/bounty from the jarl/i.test(x)) : a);
+  return {
+    ...l,
+    ...(l.board ? { board: { ...l.board, says: l.board.says.replace(DELIVERY, "") } } : {}),
+    quests: l.quests.map((q) => {
+      const jarl = /rieklings/i.test(q.name);
+      const ways = q.start?.ways?.map((w) => (isDelivery(q.name) ? w : { ...w, how: w.how.replace(DELIVERY, "") }));
+      return {
+        ...q,
+        ...(q.start && ways ? { start: { ...q.start, ways } } : {}),
+        ...(jarl ? { objectives: drop(q.objectives, true), read: q.read ? { ...q.read, steps: q.read.steps?.map((s) => ({ ...s, objectives: drop(s.objectives, true) ?? [] })) } : q.read } : {}),
+      };
+    }),
+  };
+}
+
 function baseQuestsData() {
   if (cached) return cached;
   const file = path.join(process.cwd(), "src", "data", `lorerim-${currentVersion().id}`, "quests.json");
@@ -52,7 +76,7 @@ function baseQuestsData() {
   const SAID = SAID_NAMES;
   data = { ...data, lines: data.lines.map((l) => (l.quests.some((q) => SAID[q.name]) ? { ...l, quests: l.quests.map((q) => (SAID[q.name] ? { ...q, name: SAID[q.name] } : q)) } : l)) };
   const lines = data.lines.map((l) => (l.quests.some((q) => q.objectives?.some(isPlaceholder)) ? { ...l, quests: l.quests.map((q) => (q.objectives?.some(isPlaceholder) ? { ...q, objectives: q.objectives.filter((o) => !isPlaceholder(o)) } : q)) } : l));
-  const tidied = lines.map(tidyRead);
+  const tidied = lines.map(tidyRead).map(tidyMissives);
   cached = { ...data, lines: tidied, byId: new Map(tidied.map((l) => [l.id, l])) };
   return cached;
 }

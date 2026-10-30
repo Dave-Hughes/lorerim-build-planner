@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { lineLevelText } from "@/lib/quests/gate";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
@@ -213,7 +214,7 @@ export default async function QuestPage({
       sub: startPlace ? <Linked names={names} text={startPlace} /> : first?.how && first.how.length <= 110 ? <Linked names={names} text={first.how} /> : undefined,
       small: !startWho,
     }),
-    cell({ key: "level", icon: "tab-levels", tone: "red", label: "Level and danger", value: levelNeed ? `Level ${levelNeed}` : "Any level", sub: danger ? `${danger.place}: ${danger.danger}` : undefined }),
+    cell({ key: "level", icon: "tab-levels", tone: "red", label: "Level and danger", value: levelNeed ? `Level ${levelNeed}` : lineLevelText(line), sub: danger ? `${danger.place}: ${danger.danger}` : undefined }),
     page.takesYou.length
       ? cell({ key: "where", icon: "quest-travel", tone: "teal", label: "Where it takes you", value: <Linked names={names} text={page.takesYou.slice(0, page.takesYou.length === 3 ? 3 : 2).map((t) => t.place).join(", ")} />, sub: page.takesYou.length > 3 ? `and ${page.takesYou.length - 2} more` : undefined, small: true })
       : null,
@@ -387,7 +388,7 @@ export default async function QuestPage({
               })
             ) : (
               <p className={styles.way}>
-                <span className="muted">Its start isn&apos;t read yet.</span>
+                <span className="muted">{quest.noStart ? "No record starts it in normal play." : "Its start isn't read yet."}</span>
               </p>
             )}
             {/* The first step is the first of The steps just below (WO-174): said here only when the page has no steps or ways of its own. */}

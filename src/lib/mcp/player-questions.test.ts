@@ -117,6 +117,35 @@ const NEVER_DB_MQ = [
 
 const QUESTIONS: Question[] = [
   {
+    n: 42,
+    asks: "Where is Neloth?",
+    ask: () => [getPerson({ name: "Neloth" })],
+    must: ["Tel Mithryn", "his tower on Solstheim"],
+    never: [/Lives in/, /Markarth/],
+  },
+  {
+    n: 43,
+    asks: "Who trains Enchanting on Solstheim?",
+    ask: () => [getPerson({ trains: "Enchanting", where: "Solstheim" })],
+    must: ["Neloth", "Tel Mithryn", '"upTo":90'],
+    never: [/Hamal/, /Markarth/, /Sergius/],
+  },
+  {
+    n: 44,
+    asks: "How do I start The Whispering Door?",
+    ask: () => [getQuest({ name: "The Whispering Door" })],
+    must: ["Level 20", "Balgruuf the Greater", "Dragonsreach"],
+    never: [/any level/i],
+  },
+  {
+    n: 45,
+    asks: "What do I need to marry?",
+    ask: () => [getQuest({ name: "The Bonds of Matrimony" })],
+    must: ["Someone who can marry you agrees to it", "Maramal", "Temple of Mara"],
+    // An amulet you wear to propose is a need, not a reward; the page can't say it is one.
+    never: [/"rewards":\[\{[^\]]*Amulet of Mara/],
+  },
+  {
     n: 41,
     asks: "Plan me a playthrough.",
     // With playthroughs off the planner has no playthrough tools; what the assistant is told says so and offers a build.
