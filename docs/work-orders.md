@@ -5378,7 +5378,7 @@ These don't hold:
 - [x] **Small**: the Build tab says "Levels 1 to 1" for a one-level plan ("Level 1"). A visitor's Build tab says the birthsign is missing twice ("Not chosen yet" in the row and "No birthsign chosen yet." under the level).
 - [ ] **From the reviewer (signed out):**
   - Kyria's run on no build became `/b/mgf6t6a64y` only when its owner opened it. Until then visitors saw the old page, and `/characters?run=1` linked to `/p/`. On production every such run stays on the old page until its owner visits.
-  - [ ] The fix is `scripts/backfill-characters.ts --apply`, which writes to the database, so **Dave says yes first** and Mac runs it on staging, then production. **Not run: waiting for Dave.**
+  - [ ] The fix is `scripts/backfill-characters.ts --apply`, which writes to the database, so **Dave says yes first** and Mac runs it on staging, then production. **Dave said yes (29 Oct, 18:38): run it on staging, check Kyria's and the other runs, then production.**
   - [x] A character made from a run with nothing planned says "Planned to level 1" and "LV 1" and offers "Copy to my builds": say nothing about a plan, and don't offer the copy.
 - [ ] **Not fixed here**: the reader bar overlapping at 390, the name twice in the reader bar and on the story card, "Her story" fixed for every pronoun, and the done stories' `/p/` links. All are in the Story, which WO-181 Part 3 retires.
 - [ ] Screenshots of each fix at 1440 and 390, then `for Bob`. Bob walks it again.
