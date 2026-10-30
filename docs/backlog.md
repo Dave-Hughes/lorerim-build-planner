@@ -125,3 +125,6 @@ Items 10 to 60 from Dave's play-testing of Kyria, copied into [playthrough-findi
 - **Pixel scenes for each kind of place** (Bob, 27 Oct): about a dozen scenes (cave mouth, Nordic ruin, fort, town, inn, Dwemer ruin, dragon lair, camp, shrine, shipwreck, mine), tinted by hold, as a banner on place pages. Art to draw, after the map lands (WO-166, WO-167).
 
 - **Decided, 27 Oct (Dave):** the site's map is LoreRim's in-game paper map (Skyrim Paper Map by Caro Tuts, for FWMF). Its mod author OK'd it on Discord on one condition: every instance of the map carries a small credit and link to the mod (https://www.nexusmods.com/skyrimspecialedition/mods/62705). Other lands' paper maps (Solstheim, Wyrmstooth, Vigilant and the rest) have other authors and aren't cleared.
+
+- **Decided (Dave, 30 Oct 2026): launch without playthroughs.** "We're never gonna launch this thing." The launch is quests you can trust, places, people, and character builds. Playthroughs, Who she is, acts, stories, saves and progress are turned off behind `FEATURE_PLAYTHROUGHS` (WO-182), with code and data kept. WO-179's backfill and WO-181 Part 6 are paused, and Kyria's theme text isn't written. Whether and how they come back is a later decision.
+

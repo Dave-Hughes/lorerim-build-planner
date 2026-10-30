@@ -5022,8 +5022,84 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-182  Launch without playthroughs (Mac, 30 Oct 2026)
+Status: queued (Mac, first: before WO-180 Part 6b and anything else)
+
+**Why.** Dave, 30 Oct: "Lets look at the entire site and remove everything related to playthroughs; it's just still kind of not working." The launch is four things:
+- quests you can trust;
+- places;
+- people;
+- character builds.
+
+Playthroughs come back later, if at all, so this order **turns them off, not out**:
+- The code stays behind the flag that already exists, `FEATURE_PLAYTHROUGHS` (`src/lib/features.ts`). Production already has it off, and staging has it on only because it isn't set.
+- No table or column is dropped (CLAUDE.md: nothing destructive without Dave).
+- A visitor, a signed-in player and an assistant must find **no trace** of playthroughs, acts, objectives, Who she is, stories, saves or progress anywhere.
+
+**WO-179 and WO-181 stop here.**
+- WO-179's backfill isn't run: with playthroughs off it changes nothing anyone sees.
+- Kyria's text script isn't run.
+- WO-181 Part 6 waits.
+- Their code stays, behind the flag.
+
+### Part 1. The switch
+- [ ] **`FEATURE_PLAYTHROUGHS=off` on staging** (Vercel, Preview, the staging branch) and on production, set on purpose so it no longer depends on the default.
+  - Dev keeps it on for the playthrough tests. A test run with it off covers everything below.
+  - Say in the notes how it was set (Vercel CLI or Dave in the dashboard).
+- [ ] **Every playthrough address** answers 404 with the flag off: `/p/…`, `/playthroughs…`, `/b/<id>/play`, `/b/<id>/run`, `/b/<id>/edit/play`, `/b/<id>/story…`, `/api/playthroughs…`, `/api/map/character(s)`. A character's own `/b/<id>` and `/b/<id>/edit` still work.
+
+### Part 2. The site, page by page (with the flag off)
+- [ ] **A character is its build again.** `/b/<id>` shows the hero and then the build.
+  - The tabs are Build, and Guide when the guide is written. With only Build there is no tab row.
+  - Nothing says Playthrough, acts, Who she is, a story or a save.
+  - The editor's tabs are Build, Guide and Character, with no Playthrough or Story.
+  - A character that exists only because of a run (a run-made character, Kyria's `mgf6t6a64y` on staging) doesn't show on any list. Its page is 404 for visitors.
+  - The owner sees it nowhere either. It returns when the flag does.
+- [ ] **Creating a character** ends at Details with Finish. There is no What next step and no "Plan a playthrough". The rail has 7 steps.
+- [ ] **Cards** (home, `/characters`, `/me`, `/u/<handle>`): no run box, no "Act x of y", no bar, no Playthrough tag. `/characters` has no "with a run" filter, and `?run=1` is ignored. `/me`'s count says "N characters" with no runs, and "Is this the same character as…?" is gone.
+- [ ] **Home:**
+  - The hero, Three ways, the strip and Recent characters say nothing of playthroughs, acts or saves. Three ways becomes the launch's ways in: quests, places and people, and builds.
+  - "Plan the life", "See a playthrough ›" and "Your save says where you stand" go.
+  - Mark the copy for Dave to read before launch.
+- [ ] **The map** draws no character pin and takes no `?character=` or `?stops=` route from an act. Quest routes stay.
+- [ ] **Quest, place and people pages:** no "Add to a playthrough", "On Kyria's road", or anything that reads a playthrough.
+- [ ] **Header, footer, search, the tour ("Show me around"), `/changes`, the site guide and the share cards:** no Playthroughs link, result, step or line. Search returns no runs.
+
+### Part 3. What an assistant is told and can do (the connector)
+- [ ] **Tools:** with the flag off the door doesn't list or answer any playthrough tool:
+  - `create_playthrough`, `get_playthrough`, `list_my_playthroughs`, `set_playthrough`, `finish_draft_playthrough`, `add_act`, `set_act`, `move_act`, `remove_act`, `add_objective`, `set_objective`, `move_objective`, `remove_objective`, `suggest_objective`, `set_status`, `set_snapshot`, `set_theme`, `get_quest_log`;
+  - and the `playthrough` and `act` inputs on `suggest_quests`, `suggest_places`, `suggest_doings`, `get_quest` and `set_details`.
+
+  `set_details` keeps the build's name, description, notes, tags, main spells and mods. With no run to keep them on, `answers` and `never` go (say in the notes if they should move to the build later).
+- [ ] **`get_style_guide`** with the flag off has no Playthroughs or Who she is sections, and no rule that mentions acts, objectives, the Tale, saves or ticking.
+  - Before you design keeps the questions that shape a build (27 and 28, the god, crafting). The ones that only fed a run go: 29's first act, 32 to 34, 36's mods for a story.
+  - Renumber nothing that a build rule cites. Say what was cut.
+  - The full guide comes back with the flag.
+- [ ] **The save connector** (`LoreRim save connector` on Dave's PC) is out of the launch. The door's save tools are off with the flag, and the connector says so if called.
+- [ ] **The player's questions:** every question that needs a playthrough or a save (8, 14, 20 to 22, 25, 26, 31, 32, 40 and any others) is marked "paused with playthroughs (WO-182)" and skipped while the flag is off, not deleted. Every quest, place, person and build question still passes. Add one: "Plan me a playthrough" gets an answer that says playthroughs aren't on the planner yet, and offers a build.
+
+### Part 4. The check
+- [ ] **A test with the flag off** that crawls the site as a visitor and signed in (the e2e seed user), and fails on any of these words in the pages or the door's tool list and descriptions:
+  - Playthrough, Who she is, Begin Act, acts as a heading, objective, Read a save, Where is she, Your save, story card, chapter.
+  
+  Quests' own "Act" names and a quest's objectives in its steps are the game's words and allowed; say how the test tells them apart.
+- [ ] The checks in CLAUDE.md, with the flag off and on (the playthrough tests run with it on).
+- [ ] Screenshots at 1440 and 390, signed in and out:
+  - home;
+  - `/characters`;
+  - `/me`;
+  - Kyria's character and editor;
+  - creating a character to Finish;
+  - a quest page.
+
+  Then `for Bob`. Bob sends the reviewer over the whole site, then Dave tests.
+
+### Jeff's notes
+
+---
+
 ## WO-181  Who she is, and acts with their own maps; the Story and progress tracking retire (Mac, 29 Oct 2026)
-Status: queued (Mac: Part 6; Kyria's text waits for Dave)
+Status: paused (Dave, 30 Oct: playthroughs are off for launch, WO-182)
 
 **Why.** Dave's decision of 28 Oct (backlog, "No grand narrative"): a character has a theme, not a tale. A player reads who she is and how she plays, then follows acts that fit her, and each act has a map of where she goes. The long-form Story retires; Dave keeps Kyria's tale himself. On the board he also turned off progress tracking for now ("Maybe we bring it back later but for now we can kill this functionality"), took read times off the page, and called the first draft's writing "hyper cringe". This order also writes the rules that stop the connector from writing that way.
 
@@ -5471,7 +5547,7 @@ Decisions and reasons:
 - **A place with little known** (Moss Mother Cavern, Northwind Mine) shows one short "What is known" block (what it is, where, what finding it pays, traps, and that its danger is not known); its contents menu shows only with two or more entries. A lone "! Traps" is in the block.
 
 ## WO-179  A character is one shell: its build, its guide and its playthrough (Mac, 28 Oct 2026)
-Status: queued (Mac: run the backfill with Dave's yes, then WO-181)
+Status: paused (Dave, 30 Oct: playthroughs are off for launch, WO-182; the backfill isn't run)
 
 **Why.** Dave, 28 Oct: "A character is a shell that can hold: Build, Guide, Playthrough." Bob walked the whole flow signed in on staging (made "TEST: Bob walk": race, details, What next, Plan a playthrough, an act, an objective, ticked it, the Build tab, the Story editor; read Kyria's story). Underneath it is still two records joined by a dropdown, and it shows.
 
