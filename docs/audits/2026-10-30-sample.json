@@ -1,0 +1,671 @@
+{
+ "seed": 20261030,
+ "quests_base": [
+  {
+   "edid": "MS06Start",
+   "name": "The Man Who Cried Wolf",
+   "line": "The Wolf Queen Awakened",
+   "mod": "Base game"
+  },
+  {
+   "edid": "MGRitual04",
+   "name": "Restoration Ritual Spell",
+   "line": "The College of Winterhold",
+   "mod": "Base game"
+  },
+  {
+   "edid": "MS11b",
+   "name": "Blood on the Ice",
+   "line": "Blood on the Ice",
+   "mod": "Base game"
+  },
+  {
+   "edid": "DBEviction",
+   "name": "Honor Thy Family",
+   "line": "The Dark Brotherhood",
+   "mod": "Base game"
+  },
+  {
+   "edid": "RelationshipMarriage",
+   "name": "The Bonds of Matrimony",
+   "line": "The Bonds of Matrimony",
+   "mod": "Base game"
+  },
+  {
+   "edid": "WEDA02",
+   "name": "DA02 Hook",
+   "line": "Boethiah's Calling",
+   "mod": "Base game"
+  },
+  {
+   "edid": "FreeformHighHrothgarA",
+   "name": "The Words of Power",
+   "line": "The main quest",
+   "mod": "Base game"
+  },
+  {
+   "edid": "ccBGSSSE001_Misc_Solitude",
+   "name": "The Ultimate Feast",
+   "line": "Fishing",
+   "mod": "Creation Club"
+  },
+  {
+   "edid": "FreeformIvarstead01",
+   "name": "Lifting the Shroud",
+   "line": "Odd jobs in the Rift",
+   "mod": "Base game"
+  },
+  {
+   "edid": "DLC2BlackBook04Quest",
+   "name": "Black Book: The Winds of Change",
+   "line": "The Black Books",
+   "mod": "Dragonborn"
+  },
+  {
+   "edid": "dunHillgrundsTombQST",
+   "name": "Ancestral Worship",
+   "line": "Ancestral Worship",
+   "mod": "Base game"
+  },
+  {
+   "edid": "FreeformShipsWindhelm",
+   "name": "Harsh Master",
+   "line": "Odd jobs in Eastmarch",
+   "mod": "Base game"
+  },
+  {
+   "edid": "TG09",
+   "name": "Darkness Returns",
+   "line": "The Thieves Guild",
+   "mod": "Base game"
+  },
+  {
+   "edid": "ccEEJSSE004_Quest",
+   "name": "Hendraheim",
+   "line": "Hendraheim",
+   "mod": "Creation Club"
+  },
+  {
+   "edid": "TGRBE",
+   "name": "The Burglary Job",
+   "line": "The Thieves Guild",
+   "mod": "Base game"
+  },
+  {
+   "edid": "DLC2MQ02",
+   "name": "The Temple of Miraak",
+   "line": "Dragonborn",
+   "mod": "Dragonborn"
+  },
+  {
+   "edid": "DBSideContract03",
+   "name": "Contract: Kill Beitild",
+   "line": "The Dark Brotherhood",
+   "mod": "Base game"
+  },
+  {
+   "edid": "TGTQ03",
+   "name": "Imitation Amnesty",
+   "line": "The Thieves Guild",
+   "mod": "Base game"
+  },
+  {
+   "edid": "DA02KillObj",
+   "name": "Boethiah's Bidding",
+   "line": "Boethiah's Calling",
+   "mod": "Base game"
+  },
+  {
+   "edid": "C02",
+   "name": "Brotherhood",
+   "line": "The Companions",
+   "mod": "Base game"
+  },
+  {
+   "edid": "Favor104",
+   "name": "Kill the Bandit Leader",
+   "line": "Bounties and favours for the jarls",
+   "mod": "Base game"
+  },
+  {
+   "edid": "C05",
+   "name": "Purity of Revenge",
+   "line": "The Companions",
+   "mod": "Base game"
+  },
+  {
+   "edid": "CR06",
+   "name": "Family Heirloom",
+   "line": "The Companions",
+   "mod": "Base game"
+  },
+  {
+   "edid": "DLC1RV09",
+   "name": "Amulets of Night Power",
+   "line": "Dawnguard",
+   "mod": "Dawnguard"
+  },
+  {
+   "edid": "MQ206",
+   "name": "Alduin's Bane",
+   "line": "The main quest",
+   "mod": "Base game"
+  },
+  {
+   "edid": "TGTQ01",
+   "name": "Silver Lining",
+   "line": "The Thieves Guild",
+   "mod": "Base game"
+  },
+  {
+   "edid": "Favor001",
+   "name": "Delivery",
+   "line": "Favours for townsfolk",
+   "mod": "Base game"
+  },
+  {
+   "edid": "DBSideContract09",
+   "name": "Contract: Kill Agnis",
+   "line": "The Dark Brotherhood",
+   "mod": "Base game"
+  },
+  {
+   "edid": "ccBGSSSE001_Radiant_1",
+   "name": "Stocking Up",
+   "line": "Fishing",
+   "mod": "Creation Club"
+  },
+  {
+   "edid": "DA08",
+   "name": "The Whispering Door",
+   "line": "The Whispering Door",
+   "mod": "Base game"
+  },
+  {
+   "edid": "FreeformCidhnaMineA",
+   "name": "Shiv",
+   "line": "The Forsworn Conspiracy",
+   "mod": "Base game"
+  },
+  {
+   "edid": "DA05",
+   "name": "Ill Met By Moonlight",
+   "line": "Ill Met By Moonlight",
+   "mod": "Base game"
+  },
+  {
+   "edid": "DB08",
+   "name": "Recipe for Disaster",
+   "line": "The Dark Brotherhood",
+   "mod": "Base game"
+  },
+  {
+   "edid": "DLC1VQ02",
+   "name": "Bloodline",
+   "line": "Dawnguard",
+   "mod": "Dawnguard"
+  },
+  {
+   "edid": "DLC1RH03",
+   "name": "Preemptive Strike",
+   "line": "Dawnguard",
+   "mod": "Dawnguard"
+  },
+  {
+   "edid": "DLC2TT2",
+   "name": "Old Friends",
+   "line": "Neloth of Tel Mithryn",
+   "mod": "Dragonborn"
+  },
+  {
+   "edid": "DBSideContract02",
+   "name": "Contract: Kill Ennodius Papius",
+   "line": "The Dark Brotherhood",
+   "mod": "Base game"
+  },
+  {
+   "edid": "BardsCollegeDrum",
+   "name": "Rjorn's Drum",
+   "line": "The Bards College",
+   "mod": "Base game"
+  },
+  {
+   "edid": "FreeformRiften13",
+   "name": "Pilgrimage",
+   "line": "Odd jobs in the Rift",
+   "mod": "Base game"
+  },
+  {
+   "edid": "DLC2TTR3b",
+   "name": "Wind and Sand",
+   "line": "Neloth of Tel Mithryn",
+   "mod": "Dragonborn"
+  }
+ ],
+ "quests_mod": [
+  {
+   "edid": "RE01MiasmaQst",
+   "name": "Miasma",
+   "line": "Miasma",
+   "mod": "Miasma"
+  },
+  {
+   "edid": "_M_QuestAlikrBasinGatherIngrMed",
+   "name": "Gather Some Uncommon Ingredients",
+   "line": "Missives",
+   "mod": "Missives - Gray Cowl Patch"
+  },
+  {
+   "edid": "0WHQuestRieklings",
+   "name": "Unusual Imports",
+   "line": "More to do in Windhelm",
+   "mod": "Capital Windhelm Expansion"
+  },
+  {
+   "edid": "aaJenassaAmor5RomanceQuest",
+   "name": "Shadows of the Past",
+   "line": "Jenassa",
+   "mod": "Follower Dialogue Expansion - Jenassa"
+  },
+  {
+   "edid": "BQ01Reach",
+   "name": "Bounty: Bandit Boss",
+   "line": "Bounties and favours for the jarls",
+   "mod": "Favor Quests Separated"
+  },
+  {
+   "edid": "_M_QuestHaafingarGatherOreHigh",
+   "name": "Gather Rare Ore",
+   "line": "Missives",
+   "mod": "Missives"
+  },
+  {
+   "edid": "_M_QuestWinterholdKillAnimal",
+   "name": "Kill Some Things",
+   "line": "Missives",
+   "mod": "Missives"
+  },
+  {
+   "edid": "_M_QuestAlikrBasinCourierPotionLow",
+   "name": "Deliver a Potion Near",
+   "line": "Missives",
+   "mod": "Missives - Gray Cowl Patch"
+  },
+  {
+   "edid": "_M_QuestSolstheimKillDragon",
+   "name": "Kill a Dragon",
+   "line": "Missives",
+   "mod": "Missives - Solstheim Patch SE"
+  },
+  {
+   "edid": "CYCOHQuest01",
+   "name": "Black Marsh Maps",
+   "line": "The Gray Cowl of Nocturnal",
+   "mod": "Betalille's Hammerfell Quests Bundle - The Gray Cowl of Nocturnal"
+  },
+  {
+   "edid": "_M_QuestSolstheimCourierPotionMed",
+   "name": "Deliver a Potion Medium",
+   "line": "Missives",
+   "mod": "Missives - Solstheim Patch SE"
+  },
+  {
+   "edid": "OK_FH_Quest",
+   "name": "A Forlorn Hope",
+   "line": "Seeking A Cure",
+   "mod": "A Forlorn Hope - an addon for Seeking The Cure"
+  },
+  {
+   "edid": "Cow_illusion",
+   "name": "Back-Stabbing Rodents",
+   "line": "The College of Winterhold",
+   "mod": "College of Winterhold - Quest Expansion"
+  },
+  {
+   "edid": "_M_QuestReachCourierWeaponMed",
+   "name": "Deliver a Weapon Medium",
+   "line": "Missives",
+   "mod": "Missives"
+  },
+  {
+   "edid": "NMeridia02",
+   "name": "Our Lady",
+   "line": "Meridia's Order",
+   "mod": "Meridia's Order"
+  }
+ ],
+ "places": [
+  {
+   "id": "Skyrim.esm:01914C",
+   "name": "Southfringe Sanctum",
+   "type": "Cave",
+   "hold": "Falkreath"
+  },
+  {
+   "id": "Skyrim.esm:018A56",
+   "name": "Whiterun",
+   "type": "City",
+   "hold": "Whiterun"
+  },
+  {
+   "id": "RedBag's Solitude.esp:04542C",
+   "name": "Ulrenssen's House",
+   "type": "House",
+   "hold": "Haafingar"
+  },
+  {
+   "id": "Skyrim.esm:01F7C1",
+   "name": "Enmon's House",
+   "type": "House",
+   "hold": "The Reach"
+  },
+  {
+   "id": "The Great Town of Shor's Stone.esp:085201",
+   "name": "Fallowstone Vault",
+   "type": "Guild",
+   "hold": "The Rift"
+  },
+  {
+   "id": "Skyrim Extended Cut - Saints and Seducers.esp:165E68",
+   "name": "Borogove Outgrabe",
+   "type": "Landmark",
+   "hold": null
+  },
+  {
+   "id": "RedBag's Solitude.esp:11232C",
+   "name": "Dorte's Cabin",
+   "type": "House",
+   "hold": "Haafingar"
+  },
+  {
+   "id": "SurWR.esp:32F220",
+   "name": "Whiterun Customs Hall",
+   "type": "Building",
+   "hold": "Whiterun"
+  },
+  {
+   "id": "Skyrim.esm:019269",
+   "name": "Bilegulch Mine",
+   "type": "Mine",
+   "hold": "Falkreath"
+  },
+  {
+   "id": "Skyrim.esm:0226A7",
+   "name": "Fellstar Farm",
+   "type": "Farm",
+   "hold": "The Rift"
+  },
+  {
+   "id": "Skyrim.esm:01929D",
+   "name": "Shimmermist Cave",
+   "type": "Cave",
+   "hold": "Whiterun"
+  },
+  {
+   "id": "Skyrim.esm:019281",
+   "name": "Mzulft",
+   "type": "DwemerRuin",
+   "hold": "Eastmarch"
+  },
+  {
+   "id": "Skyrim.esm:0209F6",
+   "name": "Temple of Talos",
+   "type": "Temple",
+   "hold": "Eastmarch"
+  },
+  {
+   "id": "Skyrim Extended Cut - Saints and Seducers.esp:0A5168",
+   "name": "Borogove",
+   "type": "Fort",
+   "hold": null
+  },
+  {
+   "id": "Skyrim.esm:01918A",
+   "name": "Gloomreach",
+   "type": "Cave",
+   "hold": "The Reach"
+  },
+  {
+   "id": "Skyrim.esm:10FE2C",
+   "name": "Solitude Sawmill",
+   "type": "Mill",
+   "hold": "Haafingar"
+  },
+  {
+   "id": "WindhelmSSE.esp:19B6F3",
+   "name": "House of Thane Alarik",
+   "type": "House",
+   "hold": "Eastmarch"
+  },
+  {
+   "id": "Wyrmstooth.esp:486524",
+   "name": "Krakevisa",
+   "type": "Altar",
+   "hold": "Wyrmstooth"
+  },
+  {
+   "id": "NightmarePlane.esp:2284B6",
+   "name": "Nightmare of Self Doubt",
+   "type": "Landmark",
+   "hold": null
+  },
+  {
+   "id": "Skyrim.esm:019264",
+   "name": "Liar's Retreat",
+   "type": "Cave",
+   "hold": "The Reach"
+  },
+  {
+   "id": "Dragonborn.esm:019A24",
+   "name": "The Retching Netch",
+   "type": "Inn",
+   "hold": "Solstheim"
+  },
+  {
+   "id": "Skyrim.esm:01F7D4",
+   "name": "Kolskeggr Mine",
+   "type": "Mine",
+   "hold": "The Reach"
+  },
+  {
+   "id": "Skyrim.esm:0D566B",
+   "name": "Lost Prospect Mine",
+   "type": "Mine",
+   "hold": "The Rift"
+  },
+  {
+   "id": "Skyrim.esm:019159",
+   "name": "Cragslane Cavern",
+   "type": "Cave",
+   "hold": "Eastmarch"
+  },
+  {
+   "id": "Vigilant.esm:26C067",
+   "name": "Lipsand Cave",
+   "type": "Cave",
+   "hold": null
+  },
+  {
+   "id": "Skyrim.esm:0200C5",
+   "name": "Gray Pine Goods",
+   "type": "Store",
+   "hold": "Falkreath"
+  },
+  {
+   "id": "Skyrim.esm:019291",
+   "name": "Ravenscar Hollow",
+   "type": "Cave",
+   "hold": "Haafingar"
+  },
+  {
+   "id": "Skyrim.esm:0209F4",
+   "name": "Sadri's Used Wares",
+   "type": "Store",
+   "hold": "Eastmarch"
+  },
+  {
+   "id": "Skyrim.esm:0192B8",
+   "name": "Frostmere Crypt",
+   "type": "NordicRuin",
+   "hold": "The Pale"
+  },
+  {
+   "id": "Skyrim.esm:01EB74",
+   "name": "Dormitory",
+   "type": "Guild",
+   "hold": "Winterhold"
+  }
+ ],
+ "people": [
+  {
+   "name": "Neloth",
+   "race": "Dunmer",
+   "cell": "Tel Mithryn"
+  },
+  {
+   "name": "Reldith",
+   "race": "Altmer",
+   "cell": "Cowflop Farmhouse"
+  },
+  {
+   "name": "Imperial Commander",
+   "race": null,
+   "cell": null
+  },
+  {
+   "name": "Dark Brotherhood Assassin",
+   "race": "Nord",
+   "cell": "Dawnstar Sanctuary"
+  },
+  {
+   "name": "Sirkjorg",
+   "race": "Nord",
+   "cell": null
+  },
+  {
+   "name": "Gissur",
+   "race": "Nord",
+   "cell": "Thalmor Embassy, Elenwen's Solar"
+  },
+  {
+   "name": "Dro'Zel",
+   "race": "Khajiit",
+   "cell": "Mad King's Bedroom"
+  },
+  {
+   "name": "Jumping Shock Spider",
+   "race": "Frostbite Spider",
+   "cell": "DLC2 WarehouseSpiders"
+  },
+  {
+   "name": "Zedrick",
+   "race": "Elder",
+   "cell": "Balmir's House"
+  },
+  {
+   "name": "Goblin",
+   "race": null,
+   "cell": "Bulwark Krettin"
+  },
+  {
+   "name": "Frost Troll",
+   "race": "Snow Troll",
+   "cell": "Bleak Falls Barrow"
+  },
+  {
+   "name": "Glowing Crab",
+   "race": "Mud Crab",
+   "cell": "Dimfrost Boilery"
+  },
+  {
+   "name": "Corrupter of Hearts",
+   "race": "Giant",
+   "cell": null
+  },
+  {
+   "name": "Mogdurz",
+   "race": "Orsimer",
+   "cell": "Gloombound Mine"
+  },
+  {
+   "name": "Ghost Knight",
+   "race": "Breton",
+   "cell": null
+  },
+  {
+   "name": "Mercenary",
+   "race": null,
+   "cell": null
+  },
+  {
+   "name": "Agmaer",
+   "race": "Nord",
+   "cell": "Fort Dawnguard"
+  },
+  {
+   "name": "Emilie Valtyr",
+   "race": "Nord",
+   "cell": "Valtyr's House"
+  },
+  {
+   "name": "Gurzak",
+   "race": "Orsimer",
+   "cell": null
+  },
+  {
+   "name": "Nameless Bard",
+   "race": "Skeleton",
+   "cell": null
+  },
+  {
+   "name": "Tildreylo Redoran",
+   "race": "Dunmer",
+   "cell": null
+  },
+  {
+   "name": "Sybilla of Shivers",
+   "race": "Arpen Buro Race",
+   "cell": "Blood Curse of Shivers"
+  },
+  {
+   "name": "Alit",
+   "race": null,
+   "cell": null
+  },
+  {
+   "name": "Larina",
+   "race": "Imperial",
+   "cell": "Hob's Fall Cave"
+  },
+  {
+   "name": "Imperial Battlemage",
+   "race": "Imperial",
+   "cell": null
+  },
+  {
+   "name": "Falion",
+   "race": "Redguard",
+   "cell": "Falion's House"
+  },
+  {
+   "name": "Nix Silverspoon",
+   "race": "Imperial",
+   "cell": "The Silverspoon Trading Company"
+  },
+  {
+   "name": "Heirmir",
+   "race": "Nord",
+   "cell": null
+  },
+  {
+   "name": "Moira",
+   "race": "Hagraven",
+   "cell": null
+  },
+  {
+   "name": "Shadow Merchant",
+   "race": "Nord",
+   "cell": "Mausoleum Throne"
+  }
+ ]
+}

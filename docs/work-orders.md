@@ -5022,6 +5022,128 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-183  Data you can trust: fix the causes the accuracy audit found (PC, then Mac, 30 Oct 2026)
+Status: queued (PC: Parts 1 to 3 after WO-180 Part 6a; Mac: Part 4 after WO-182)
+
+**Why.** Dave, 30 Oct: "With us cutting playthroughs we're going to want to double down on quests, locations, NPCs… make sure the pages are BULLET proof, the data must be as solid as we can get it."
+
+The reviews so far chased junk text. This audit asks whether what a page tells a player is **true**:
+- It took a seeded random sample (seed 20261030, `docs/audits/2026-10-30-sample.json`) and checked each fact on the page against UESP.
+- Each fact was marked right, wrong, unknown (the page says it isn't sure, which is honest) or missing.
+- The full reports, with every page, field and source link: `docs/audits/2026-10-30-places-people.md` and `docs/audits/2026-10-30-quests.md`.
+- Bob confirmed these on staging himself: Neloth tagged "Farmer", Moira the hagraven "he", Goblin "Lives in Riften", Borogove "Enemies 4 to 18000", Boethiah's Bidding shown as playable, The Whispering Door "Any level", and The Bonds of Matrimony paying the Amulet of Mara.
+
+**What it measured:**
+
+| | Wrong | Wrong or missing | Worst field |
+|---|---|---|---|
+| People (30) | 17% | 39% | Where to find them: 40% wrong |
+| Places (30) | 6% | 21% | Danger 21%, people and boss 18% wrong |
+| Quests (16 of 40 reached UESP) | 4% | | Gate 13% wrong and 38% unknown; pays 40% unknown; danger block wrong on 10 of 55 |
+
+The quests' journal-read fields (first step, steps, places, line) were clean on every checked quest. The rot is in what's **inferred**: from factions, from leveled lists, from defaults and from location-parent chains.
+
+**The bar.** Every part fixes a **cause**, not the sampled pages. The order is done when a fresh sample, with a new seed and the same method, run by the reviewer, shows:
+- **under 2% wrong in every field**, for quests, places and people separately;
+- no field with a default posing as a fact ("Any level" when the start conditions weren't read, "Lives in <town>" for a wilderness cell).
+
+Unknown is fine when the page says so. Wrong is not.
+
+### Part 1. People (PC data, Mac page)
+- [ ] **Generic and leveled actors aren't people.** `src/lib/people/data.ts` groups rows by name and shows the best-scored row, so a generic or leveled name becomes one invented person at one place. Examples: Mercenary (19 rows), Goblin (19), Dark Brotherhood Assassin (6), Imperial Commander, Frost Troll, Jumping Shock Spider (a scroll's summon).
+  - `people.json` gets a `generic` flag from the records: a leveled actor, a name shared by more than one base record, or a template with no unique flag.
+  - A generic name gets **no person page and no search result**. It shows on place pages as an enemy or resident type.
+  - Old addresses for them answer 404.
+  - Bob's call: a page that lists every placement as "where you meet them" is a later idea, not this order.
+- [ ] **Where to find someone.** 40% wrong.
+  - A cell that isn't inside a town's own worldspace or location never becomes "Lives in <town>": Goblin in Gromm's Pass, Imperial Battlemage in Helgen.
+  - Say the place itself, linked.
+  - A corpse placement (Hag's End's assassin) is said as such or left out.
+  - A developer test cell (`DLC2 WarehouseSpiders` and anything like it) is never shown. Keep a list of test-cell patterns, in the notes.
+- [ ] **Sex and race through the template chain.** Read `TPLT` and the template flags, as the game does: Moira the hagraven is "she", and Hjorunn is female per UESP (check the records).
+  - Race names print as players know them: "Elder" is Skyrim's old-age record, so print the person's real race. No "Arpen Buro Race".
+  - A creature race reads as the creature: "Snow Troll", "Skeletal Ancient Assassin". Check each against the in-game name.
+- [ ] **What someone does, from what they really do.** Badges and roles come from:
+  - vendor data: a vendor faction with buy and sell lists, and its keeper's stall or shop;
+  - trainer data: the class's training skill and level;
+  - stewards, housecarls, followers and marriage.
+
+  They never come from a generic faction ("Farmer" on Neloth). The audit found:
+  - trainers missed: Neloth's master Enchanting, and 5 of Whiterun's 9 (the Companions);
+  - false "Rents rooms" on Mikael and Saadia;
+  - Carlotta "general goods" where UESP says food;
+  - "What he is" showing the race when the role is known (82% of role fields missing).
+- [ ] **One person, one page**: Alara and High Priestess Alara, and Mathies listed twice, are each one record shown twice. Merge by form id.
+
+### Part 2. Places (PC data, Mac page)
+- [ ] **Danger from who is really there.** The danger block is a raw count of actors:
+  - `actors.livesHere` falls back to "Bandit";
+  - actors placed for later quests count as the place's enemies.
+
+  The result:
+  - the Dark Brotherhood Sanctuary shows bandits and a Penitus Oculatus "boss" on every DB page;
+  - Twilight Sepulcher shows bandits with a level-3 boss;
+  - Meridia's Sanctum shows necromancers at her own shrine;
+  - Borogove runs "Level 4 to 18000";
+  - Southfringe Sanctum's boss is "Spellsword" (UESP: Bashnag).
+
+  The fix:
+  - Count only actors enabled in normal play when the place is first entered.
+  - The boss is the place's boss marker (`LCRT` Boss), not the best-scored actor.
+  - Levels are clamped to what the game can spawn.
+  - A guild home, temple, player home or town shows no danger block.
+  - Missing enemies come back: Dwemer automatons at Mzulft and Shimmermist, the wispmother at Frostmere.
+- [ ] **The page shows what `places.json` already has**: the Ice Form word wall at Frostmere, skill books on store, guild and city pages, and the residents of guild pages (Dormitory: 0 shown, 15 counted).
+- [ ] **In-game names**: Dormitory is the Hall of Attainment. A place's name is its in-game full name, never the cell's editor name, and the old address redirects.
+- [ ] **Place to quest**: the quests that start at or send you to a place, from the quest's own aliases and markers, never a book fragment ("On Hogithum").
+  - Vanilla dungeon quests come back (The Savior of Selveni Nethri, Liar's Retreat's).
+  - Whiterun lists the quests that start there: UESP has 10, and it shows none.
+- [ ] **Outside Tamriel** (Shivering Isles, Coldharbour, Wyrmstooth, the nightmare plane): say the realm, and drop the default XP and respawn numbers when the records don't give them.
+- [ ] **Nearest town by distance** in the same worldspace: Solitude Sawmill is nearer Solitude than Dragon Bridge.
+
+### Part 3. Quests (PC data, Mac page)
+- [ ] **A gate the start conditions don't spell out is "Not sure yet", never "Any level".**
+  - Known gates come from LoreRim's own text where it states them: the Daedric shelf says level 20, Hircine 25.
+  - Read the records for the rest. The audit's misses: Restoration 90, the Horn of Jurgen Windcaller, wearing an Amulet of Mara, The Final Descent, Destruction 40, Spirits Away, and The Whispering Door (UESP: level 20 and Dragon Rising; check what the Quest Expansion changes).
+- [ ] **Rewards**:
+  - leveled gold given by script on contracts and radiant jobs ("Gold, by your level");
+  - choices offered as one of several (Black Book: one of three Insights, each named);
+  - the word "gold" kept when the data says `gold: "medium"`;
+  - an item you need, not one you're given, is never a reward. The Amulet of Mara is what you wear to propose in The Bonds of Matrimony.
+- [ ] **No start record, no playable page.** Boethiah's Bidding has no start record, and UESP lists it under Unfinished Quests, yet it shows as "Starts by itself" with a giver.
+  - A quest no record starts is either hidden or marked "Not started in normal play".
+  - The PC checks whether a LoreRim mod restores it, and says so in the notes.
+- [ ] **Story-manager starts say what sets them off**, from the event node:
+  - The Words of Power: Arngeir, after the previous quest. It does not fire on entering High Hrothgar.
+  - Imitation Amnesty and Silver Lining: not "Talk to someone to start it".
+- [ ] **Cut and split text**:
+  - "Castle Volkiharnearest city Solitude)" (`hold` holds a fragment);
+  - "…upper part of Markarth and." (cut mid-sentence);
+  - "Balagog is placed in its cellar" (editor wording).
+
+  Fix the field, and add a test for fields that end in "and." or hold an unmatched bracket.
+- [ ] **Missives**:
+  - "Each is a short delivery" isn't said on kill and gather jobs;
+  - "Collect bounty from the jarl" isn't said on a Solstheim job;
+  - `/quests/missives` says 384 quests and links none: link them, or say what they are and how to find them on a board.
+- [ ] **Ways to finish come from completing stages, not fail stages.** Back-Stabbing Rodents' only way is "Turn down Drevis's class".
+
+### Part 4. The pages (Mac)
+- [ ] A default never prints as a fact: no "Any level", "Lives in", "Starts by itself" or "Talk to someone to start it" unless the data says so. The page-text test fails on a default posing as a fact.
+- [ ] Generic actors: no page, no search result, 404 on the old address, shown on place pages as enemies (Part 1).
+- [ ] What the PC adds in Parts 1 to 3 reaches the page: roles, trainers with their level, the boss, word walls, skill books, residents, realms, gates, rewards and choices.
+
+### Part 5. The check
+- [ ] **The rest of the first sample**:
+  - The 24 base quests UESP's bot check blocked get read through UESP's mirrors (`app.uesp.net`, `content1.uesp.net`), or by Bob in a browser.
+  - The 15 mod quests get read by the PC against the records. Add both to the audit file.
+- [ ] **A fresh sample** (new seed, logged): 40 quests, 30 places and 30 people, by the reviewer, the same method. Under 2% wrong in every field, or this order reopens with what's left.
+- [ ] `docs/player-questions.md` gets a question for each family that a player would ask: "Where is Neloth?", "Who trains Enchanting on Solstheim?", "How do I start The Whispering Door?", "What do I need to marry?". Each must pass.
+
+### Jeff's notes
+
+---
+
 ## WO-182  Launch without playthroughs (Mac, 30 Oct 2026)
 Status: building (Mac)
 
