@@ -128,3 +128,5 @@ Items 10 to 60 from Dave's play-testing of Kyria, copied into [playthrough-findi
 
 - **Decided (Dave, 30 Oct 2026): launch without playthroughs.** "We're never gonna launch this thing." The launch is quests you can trust, places, people, and character builds. Playthroughs, Who she is, acts, stories, saves and progress are turned off behind `FEATURE_PLAYTHROUGHS` (WO-182), with code and data kept. WO-179's backfill and WO-181 Part 6 are paused, and Kyria's theme text isn't written. Whether and how they come back is a later decision.
 
+- **Ordered (Dave, 30 Oct 2026): players make it right.** Screenshots of places and people (Dave: "They aren't pictures, lets call them screenshots"; 16:9, black bars when a screenshot isn't), I know this on every Not sure yet line for quests, places and people, a public Help fill the gaps page ordered by page views (a counter with no cookies or ids), Recently confirmed on home, "This screenshot isn't this place" in Report a mistake, and one review list in /admin with approved players. Boards: canvas row 39. Order: WO-184.
+

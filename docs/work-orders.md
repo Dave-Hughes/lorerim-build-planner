@@ -5022,6 +5022,116 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-184  Players make it right: screenshots, I know this, Help fill the gaps, one review list (Mac, 30 Oct 2026)
+Status: queued (Mac; after WO-182 and WO-183 Part 4)
+
+**Why.** Dave, 30 Oct: with playthroughs cut, double down on quests, places and people, and "accelerate the ideas for community confirmation of quest info, the admin review section, and of course the image collection work for locations and NPCs." These are the backlog's 23 Oct, 28 Oct and 28 Oct items, decided.
+
+**The design** is row 39 on the canvas, "Players make it right":
+- `PicPlace`, `PicYours`, `PicAdd`, `PicAdmin` and `PicPerson` (screenshots);
+- `Confirm` (Confirm and I know this);
+- `HelpGaps`;
+- `HomeConfirmed`;
+- `AdminReview`.
+
+Build from the boards, and where this order and a board disagree, the board wins. **They're screenshots, never "pictures" or "images", in every word a player reads** (Dave, 30 Oct).
+
+**What exists to build on**:
+- the image checker (`image_check`, Sightengine, `src/lib/moderation/`);
+- `/admin/review` (images, reported builds);
+- `quest_report` and `quest_player_fact` with the agent's Propose and an admin's Approve (WO-146);
+- `page_confirmation` and Sign in to confirm (`src/lib/quests/confirmations.ts`);
+- Report a mistake.
+
+Additive migrations only.
+
+### Part 1. Screenshots of places and people
+- [ ] **Where they show.**
+  - On a **place**, the lead screenshot sits beside the map in one band: the screenshot about half the width at 16:9, the map in the rest.
+  - On a **person**, it sits beside the title, 16:9.
+  - Under either one, a strip of every screenshot shown, plus an Add tile.
+  - The caption carries the uploader's Discord avatar and name ("Screenshot by …") and "n of m".
+  - A screenshot that isn't 16:9 is letterboxed in black, never cropped (Dave: "16:9 is ideal but we can add black bars").
+- [ ] **No screenshot yet**: the spot says "No screenshot of <name> yet" with "+ Add a screenshot" (signed out: "Sign in to add a screenshot"). The map keeps its half.
+- [ ] **Adding one** (`PicAdd`):
+  - PNG or JPG up to 15 MB; stored at full size and served at 1600 wide with a thumbnail.
+  - The tick box "This is my own screenshot, and it shows <name>." is required.
+  - Below it, the plain line on what happens next, as drawn.
+- [ ] **Who sees what:**
+  - The nudity check runs on every upload. A refused screenshot is never shown, even to its uploader, who is told plainly it wasn't accepted.
+  - Otherwise, by default, it waits in `/admin`. The uploader sees it at once, flagged **Under review**, with "Only you can see it until an admin approves it" and "Remove it". Nobody else sees it.
+  - An **approved player's** upload is live at once.
+  - The first approved screenshot leads the strip until an admin picks another.
+  - A cap of 10 uploads a day per player, and 20 waiting at once.
+- [ ] **An admin on the page** (`PicAdmin`):
+  - Approve and Remove on any screenshot waiting.
+  - Make this lead.
+  - Delete, with a confirm ("It goes from the page for everyone").
+  - The uploader's `/me` lists what they sent and what happened to each: live, waiting, removed.
+- [ ] **Report a mistake** gets "This screenshot isn't this place" (or person), which puts that screenshot back in `/admin` with the report (Dave, 30 Oct).
+- [ ] Dave's own camera-test shots are uploaded as Tapps, approved:
+  - Bleak Falls Barrow, Broken Oar Grotto and Fort Hraggstad, from `C:\LoreRim\_fieldguide\screens\wo158\`.
+  - The PC copies them to a place Mac can read (say where, in the notes).
+  - Not the Riverwood and Winking Skeever "MISS" files.
+
+### Part 2. Confirm, and I know this, on quests, places and people
+- [ ] **Confirm** stays as built. Signed in and confirmed, the Players line says "You confirmed this on <date>. Undo", and the button reads Confirmed.
+- [ ] **I know this** on every line under Not sure yet (`Confirm`), on quest, place and person pages alike:
+  - It opens the form under that line: What do you know? (required), How do you know? (I saw it in my game, A mod page or guide, Somewhere else with a link), and an optional screenshot.
+  - The line under it: "An admin reads it before it shows on the page. It's credited to your Discord name."
+  - After Send, the line says "Sent. Thanks." for that player.
+- [ ] It's stored as WO-146's player fact, now for places and people too: the page, the Not sure yet field it answers, the words, how they know, the screenshot, and who sent it. The agent's Propose (WO-146 Part 2) reads it against the records and proposes the change for that field.
+- [ ] Rate limits as for reports. Signed out, I know this says "Sign in to tell us".
+
+### Part 3. Help fill the gaps (`HelpGaps`)
+- [ ] **A public page**, linked from the World menu, from every Not sure yet box ("See everything we're unsure of ›"), and from Recently confirmed. Its address is `/help-fill-the-gaps` unless a shorter one reads better: say which in the notes.
+- [ ] **Every quest, place and person with anything under Not sure yet.**
+  - Each row shows its icon, its name linked, what it is and where, the missing fields as chips, and "I know this ›" (which opens that page at the form).
+  - Filters: All, Quests, People, Places, each with its count.
+  - Shown 50 at a time, with Show more.
+- [ ] **Most looked at first** (Dave, 30 Oct: "Sure"):
+  - A page-view counter per quest, place and person page: one row per page per day, counted on the server.
+  - No cookies, no IP and no user id stored. Bots are left out by user agent.
+  - The row shows "<n> looked this week".
+  - Kept 90 days.
+- [ ] The page's lede and labels as on the board, in plain words.
+
+### Part 4. Recently confirmed by players, on the home page (`HomeConfirmed`)
+- [ ] **Above New in the world**: the 8 latest confirmations and approved player facts.
+  - Each card shows the kind, the page linked, "Confirmed by <Discord name>" with their avatar, and when.
+  - One card per page: the newest wins.
+- [ ] The heading's link goes to Help fill the gaps. With nothing yet, the section isn't drawn.
+
+### Part 5. One review list in `/admin` (`AdminReview`)
+- [ ] **`/admin/review` has four tabs, each with its count:**
+  - **What players know**: player facts and Report a mistake, for quests, places and people, newest first.
+    - Each shows what they wrote, who, how they know and when, plus the agent's reading and its before and after.
+    - Then Approve, Edit then approve, or Reject (reports: Fix it, Send to Jeff, Not a mistake).
+  - **Screenshots**: each shows the screenshot, its page, the uploader, when, and the check's result in words ("Passed the automatic check", "The check wasn't sure").
+    - Then Approve, Approve and trust this player, or Remove.
+    - The note: the check only looks for nudity, and whether it shows the place is the admin's call.
+  - **Reported builds**: as today.
+  - **Approved players**: the list (Tapps as admin, then each player with when and from what they were added) with Remove, and Add a player by Discord name.
+- [ ] The top of `/admin` links to it with the counts waiting.
+- [ ] Nothing reaches a page until it's approved, and every approval is logged with who and when.
+
+### Part 6. The check
+- [ ] e2e, two players and an admin:
+  - A player uploads and sees Under review.
+  - The second player doesn't see it.
+  - The admin approves it, and both see it.
+  - The admin trusts the first player, whose next upload is live at once.
+  - "This screenshot isn't this place" sends it back.
+  - I know this on a person page is proposed and approved, and the page shows it as a player's report.
+  - Help fill the gaps lists the page until then.
+  - Recently confirmed shows the confirmation.
+- [ ] Page-text test: no "picture" or "image" in what a player reads about screenshots.
+- [ ] Screenshots of each board's screen at 1440 and 390 against the canvas, then `for Bob`.
+
+### Jeff's notes
+
+---
+
 ## WO-183  Data you can trust: fix the causes the accuracy audit found (PC, then Mac, 30 Oct 2026)
 Status: for Bob (Mac: Part 4 done; PC: Parts 1 to 3 pushed, what is open is in the notes)
 
