@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-181  Who she is, and acts with their own maps; the Story and progress tracking retire (Mac, 29 Oct 2026)
-Status: queued (Mac; after WO-179 passes the reviewer)
+Status: building (Mac)
 
 **Why.** Dave's decision of 28 Oct (backlog, "No grand narrative"): a character has a theme, not a tale. A player reads who she is and how she plays, then follows acts that fit her, and each act has a map of where she goes. The long-form Story retires; Dave keeps Kyria's tale himself. On the board he also turned off progress tracking for now ("Maybe we bring it back later but for now we can kill this functionality"), took read times off the page, and called the first draft's writing "hyper cringe". This order also writes the rules that stop the connector from writing that way.
 
