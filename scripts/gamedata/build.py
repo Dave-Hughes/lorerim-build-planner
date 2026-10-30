@@ -465,6 +465,9 @@ def main():
 
         raw_file = load("quests_raw.json")
         quests_raw = raw_file["quests"]
+        from quest_pages import alias_rulings
+
+        print(f"{alias_rulings(quests_raw, overrides.get('questAliases'), raw_file.get('globals', {}))} story-quest aliases said as the read says them")
         # The save reader's names for quests (WO-112): plugin and local form id, lower case, to the editor id.
         forms = {f"{q['id'].rsplit(':', 1)[0].lower()}:{q['id'].rsplit(':', 1)[1].lower()}": q["edid"] for q in quests_raw}
         with open(os.path.join(OUT, "quest_forms.json"), "w", encoding="utf-8") as f:
@@ -546,9 +549,12 @@ def main():
         raw_of = {q["edid"]: q for q in quests_raw}
         for l in pages:
             for q in l["quests"]:
-                new = in_read_words(q, role_steps(raw_of.get(q["edid"], {}), raw_file.get("globals", {})))
+                new = in_read_words(q, role_steps(raw_of.get(q["edid"], {}), raw_file.get("globals", {})), raw_of.get(q["edid"], {}).get("ruled"))
                 q.clear()
                 q.update(new)
+        from quest_pages import role_people
+
+        print(f"{role_people(pages)} People entries said as what the job picks, or split into the people they name")
         print(f"{tied} quests with their ways, {read_lines} lines with a read" + (f"; {len(no_line)} line reads match no line: {', '.join(no_line[:8])}" if no_line else ""))
         if unmapped:
             print(f"note: {len(unmapped)} plugins that change quests aren't in plugins_raw.json; named from their file, unlinked (for the PC): {', '.join(sorted(unmapped)[:12])}{' ...' if len(unmapped) > 12 else ''}")
@@ -674,7 +680,8 @@ def main():
         # The people reads (WO-159): every checked batch, with a player's found-in-game fact over the read where overrides.json has one.
         reads = load_reads(os.path.join(RAW, "people_reads", "checked"))
         rulings = {k: v for k, v in overrides.get("people", {}).items() if not k.startswith("_")}
-        rows = build_people_site(load("people_raw.json")["people"], person_facts(dump), reads, rulings)
+        vendors = load("shops_raw.json")["vendors"] if os.path.exists(os.path.join(RAW, "shops_raw.json")) else {}
+        rows = build_people_site(load("people_raw.json")["people"], person_facts(dump, vendors), reads, rulings)
         with open(os.path.join(OUT, "people.json"), "w", encoding="utf-8") as f:
             json.dump({"people": rows}, f, separators=(",", ":"), ensure_ascii=False)
             f.write("\n")

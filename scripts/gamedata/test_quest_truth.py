@@ -99,6 +99,11 @@ def _roles():
         words = [w for w in words if w not in ("alias", "ref", "quest")]
         if words:
             phrases.add("the " + " ".join(words))
+    # WO-180 Part 7a: a story quest's person said as its read says them (overrides.json questAliases) is a role too: "the enemy courier" for UESP's "the courier".
+    with open(os.path.join(ROOT, "gamedata", VERSION, "overrides.json"), encoding="utf-8") as f:
+        for key, aliases in json.load(f).get("questAliases", {}).items():
+            if not key.startswith("_"):
+                phrases.update(aliases.values())
     return sorted((p for p in phrases if p), key=len, reverse=True)
 
 

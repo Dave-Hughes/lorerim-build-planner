@@ -219,10 +219,40 @@ def report(people):
 SKILL_SHOWN = {"OneHanded": "One-Handed", "TwoHanded": "Two-Handed", "HeavyArmor": "Heavy Armor", "LightArmor": "Light Armor", "Speechcraft": "Speech", "Lockpick": "Lockpicking"}
 
 
-def person_facts(dump):
+def shop_of(d, vendors):
+    """
+    WO-180 Part 7a: the shop a seller works at, from the vendor faction's own data (shops.py): {kind, hours?, cell?, stall?, world?}. `cell` is the interior the vendor chest stands in
+    (the shop, or the home or keep the seller works from); a chest in the open is a `stall` in the market of `world`. A person in more than one vendor faction takes the services
+    faction (ServicesWhiterunWarmaidens), which is the shop's own; none with a chest placed and a kind gives no shop.
+    """
+    # (Hearthfire's urchins you adopt share one vendor list and a chest in Windhelm: they are children, not sellers in the city they stand in)
+    mine = [(x.get("faction"), x.get("edid") or "") for x in d.get("factions", []) if (vendors or {}).get(x.get("faction"), {}).get("kind") and not (x.get("edid") or "").startswith("BYOH")]
+    mine.sort(key=lambda fe: (not fe[1].startswith("Services"), not (vendors[fe[0]].get("cell") or {}).get("name") and not (vendors[fe[0]].get("cell") or {}).get("world")))
+    for fk, _ in mine:
+        v = vendors[fk]
+        c = v.get("cell")
+        if not c:
+            continue
+        shop = {"kind": v["kind"]}
+        if v.get("hours"):
+            shop["hours"] = v["hours"]
+        if c.get("interior") and c.get("name"):
+            shop["cell"] = c["name"]
+        elif not c.get("interior") and c.get("world") and c["world"] != "Tamriel":
+            shop["stall"] = True  # in the open in a city's own worldspace: a stall in its market
+            shop["world"] = c["world"]
+        elif not c.get("interior") and c.get("world"):
+            shop["outdoors"] = True  # in the open in the wilds' map: a forge or a stand at the seller's home (Alvor's), no market
+        else:
+            continue
+        return shop
+    return None
+
+
+def person_facts(dump, vendors=None):
     """
     What a person is to a player, from the WO-156 dump's record fields (not their AI packages): `essential`, `follower`, `marriage`,
-    `sells` (has a vendor list), `innkeeper` (in the innkeepers' faction) and `trainer` ({skill, cap}). Keyed by record id; a person with none of them has no entry.
+    `sells` (has a vendor list), `shop` (the vendor faction's shop, shop_of), `innkeeper` (in the innkeepers' faction) and `trainer` ({skill, cap}). Keyed by record id; a person with none of them has no entry.
     """
     out = {}
     for pid, d in (dump or {}).items():
@@ -235,6 +265,9 @@ def person_facts(dump):
             f["marriage"] = True
         if d.get("vendor"):
             f["sells"] = True
+            shop = shop_of(d, vendors)
+            if shop:
+                f["shop"] = shop
         # WO-183 Part 1: the innkeepers' faction also holds the inn's bard and its server (Mikael, Saadia): only the keeper rents rooms.
         eds = {x.get("edid") for x in d.get("factions", [])}
         if "JobInnkeeperFaction" in eds and not (eds & {"JobBardFaction", "JobInnServer"}):

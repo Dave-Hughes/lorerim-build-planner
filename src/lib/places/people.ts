@@ -1,5 +1,5 @@
 import "server-only";
-import { peopleData, roleWords, type Person } from "@/lib/people/data";
+import { peopleData, roleWords, type Person, type SellerShop } from "@/lib/people/data";
 import { questsOf } from "@/lib/people/quests";
 import { placeHref, placeHrefOf, placesData, placesNamed, rangeOf, type Place } from "./data";
 import { placeKind } from "./kind";
@@ -27,16 +27,10 @@ export interface PlacePerson {
   keeperRank: number;
   gives: number;
   read: boolean;
-  /** Runs a shop (WO-180 Part 5a): the read says what they sell, or their job is a seller's, or they sleep in a building that is a shop. The record's "sells" flag alone is not that (a Companion, a bard and a housecarl have it). */
+  /** Runs a shop (WO-180 Part 7a): the vendor faction they belong to has a vendor chest placed and a list of what it takes. The record's "sells" flag alone is not that (a Companion, a bard and a housecarl have it). An innkeeper's food is the inn's. */
   shopkeeper: boolean;
-  /** The shop the read names for them ("Belethor's General Goods"), when it is not the building they sleep in. */
-  shopName: string | null;
-  /** How much the record and the read say they run a shop: 2 for the read's words, 1 for the job. */
-  shopRank: number;
-  /** They sell from a stall in the market. */
-  stall: boolean;
-  /** The named place they work at (the Skyforge), when it is not where they sleep. */
-  workplace: string | null;
+  /** The shop they work at, from the vendor faction's own data (shops.py): what it sells, its hours, and where its chest stands. */
+  shop: SellerShop | null;
 }
 export interface House {
   name: string;
@@ -55,8 +49,6 @@ const TITLED = /^(dead|ghostly|wounded|visiting|sickly|blasphemous|hired|imperia
 /** Anyone with a person page who sleeps here: someone a player asks about, or a person with a name of their own (Hod, Embry, Dorthe), not a type of soldier or a creature. */
 const lives = (p: Person) => notable(p) || (p.rows.length === 1 && !!p.race && PEOPLE.test(p.race) && !TITLED.test(p.name));
 
-/** What a seller sells, by the job the record gives. */
-const SHOP: Record<string, string> = { JobBlacksmith: "blacksmith", JobApothecary: "apothecary", JobMerchant: "general goods", JobSpellVendor: "spells", JobFletcher: "fletcher" };
 /**
  * What a shop sells, in a word players use (WO-180 Part 6a): blacksmith, general goods, apothecary, food, spells. By the shop's name first, then what the read says it
  * sells and the job it gives; the first of these that matches wins. "Goods" alone says nothing, so a shop whose words give no kind is general goods.
@@ -78,8 +70,8 @@ export const kindOf = (...texts: (string | null | undefined)[]) => {
   const s = texts.filter(Boolean).join(" ; ");
   return KINDS.find(([re]) => re.test(s))?.[1] ?? "general goods";
 };
-/** What the shop is called when it has no name of its own: "Brand-Shei's stall", "Lod's smithy". */
-const NOUN: Record<string, string> = { blacksmith: "smithy", apothecary: "apothecary", spells: "spells", food: "food stall", clothing: "clothing stall", books: "bookshop", mead: "mead", fletcher: "fletchery", jewelry: "jewelry stall" };
+/** What a seller's place is called when it has no name of its own and is not a stall in the market: "Lod's smithy", "Falion's spell shop". */
+const NOUN: Record<string, string> = { blacksmith: "smithy", apothecary: "apothecary", spells: "spell shop", silversmith: "silversmith", fletcher: "fletchery", weapons: "weapon shop" };
 
 /** A building whose name says it is a shop. */
 const SHOPPY = /goods|cauldron|wisdoms?|smith|forge|bakery|bakeshop|stall|warmaiden|trader|market|store|shop|armou?r|fletch|apothecary|alchem|emporium|wares|meadery|elixirs|oddments|imports|warehouse|company|raiment|aromatics|phial/i;
@@ -89,29 +81,20 @@ const HOMELY = /\b(?:house|home|residence|lodging|quarters|bunkhouse|shack|hall|
 const officialName = (name: string) => placesNamed(name)[0]?.name ?? placesNamed(`The ${name}`)[0]?.name ?? name;
 /** Whether the place of this name is of this type; the people's cells say "The Bee and Barb" where the places say "Bee and Barb". */
 const placeOfType = (name: string | null | undefined, type: string) => !!name && [name, name.replace(/^the\s+/i, "")].some((n) => placesNamed(n).some((x) => x.type === type));
-/** A name of a shop or a place: capitalised words, with "and", "of" and "the" between them ("The Mortar and Pestle"). */
-const PROPER = String.raw`[A-Z][\w'’-]*(?:\s+(?:and|of|the)\s+[A-Z][\w'’-]*|\s+[A-Z][\w'’-]*)*`;
-/** The shop a read names for a seller: "general goods at Belethor's General Goods; trades 7 am to 9 pm", "trades from Belethor's General Goods lists". */
-const shopNameOf = (s: string) => new RegExp(String.raw`\b(?:at|from)\s+(${PROPER})`).exec(s)?.[1] ?? null;
-/** Where a seller works, from the day the read gives: a stall in the market, or a named place ("the Skyforge"); null when it is only the home they sleep in. */
-function workOf(p: Person): { stall: boolean; place: string | null } | null {
-  for (const d of p.read?.day ?? []) {
-    if (!/\b(?:work|sell|shop|stall|forge|trad|merchant|minding|keeping|running|tending)/i.test(d.doing ?? "")) continue;
-    const where = (d.where ?? "").trim();
-    if (/\bstall\b|\bmarket\b/i.test(where)) return { stall: true, place: null };
-    const named = new RegExp(String.raw`^(the\s+)?(${PROPER})`).exec(where.split(",")[0]);
-    if (named) return { stall: false, place: `${named[1] ? "The " : ""}${named[2]}` };
-  }
-  return null;
-}
+/** A seller in the open at a forge the places do not list: UESP's "Eorlund works at the Skyforge" (the chest stands beside it). */
+const FORGES: Record<string, string> = { "Eorlund Gray-Mane": "The Skyforge" };
 
-function personOf(p: Person): PlacePerson {
+/** A mod's nameless worker ("Worker", at a brothel in every city) is no shopkeeper a player can look for. */
+const GENERIC_SELLER = /^(?:worker|vendor|merchant|shopkeeper|clerk|servant|customer)$/i;
+
+function personOf(p: Person, row?: Person["rows"][number]): PlacePerson {
   const read = p.read;
-  const flagged = !!read?.sells || !!p.sells;
-  const shopkeeper = flagged && !p.follower && (!!read?.sells || !!SHOP[p.role ?? ""] || SHOPPY.test(p.cell ?? "") || placeOfType(p.cell, "Store"));
-  const work = shopkeeper ? workOf(p) : null;
-  const shopName = shopkeeper && read?.sells ? shopNameOf(read.sells) : null;
-  const sells = shopkeeper ? kindOf(shopName ?? p.cell, read?.sells, read?.role, SHOP[p.role ?? ""]) : "";
+  // The shop is the vendor faction's (WO-180 Part 7a). A follower's is theirs, not a shop; an innkeeper's food is the inn's.
+  // (the row they are placed by: a name placed in two towns, Frida's, has its shop in one.)
+  const mine = row ? row.shop : p.shop;
+  const shop = mine && !p.follower && !GENERIC_SELLER.test(p.name) && !(mine.kind === "food" && placeOfType(mine.cell, "Inn")) ? mine : null;
+  const shopkeeper = !!shop;
+  const sells = shop?.kind ?? "";
   const readKeeper = !!read && /\binnkeeper\b|rents rooms/i.test(read.role ?? "") && !/stand-in|\bbard\b|barmaid|\bserver\b/i.test(read.role ?? "");
   const keeper = !!p.innkeeper || readKeeper;
   const trainsSkill = read ? (read.trains ? (p.trainer?.skill ?? read.trains.split(/[\s(,]/)[0]) : null) : (p.trainer?.skill ?? null);
@@ -139,10 +122,7 @@ function personOf(p: Person): PlacePerson {
     gives,
     read: !!read,
     shopkeeper,
-    shopName,
-    shopRank: (read?.sells ? 2 : 0) + (SHOP[p.role ?? ""] ? 1 : 0),
-    stall: !!work?.stall,
-    workplace: work?.place ?? null,
+    shop,
   };
 }
 
@@ -153,50 +133,56 @@ export interface Shop {
   keeper: PlacePerson;
   /** What it sells in a word players use ("blacksmith", "general goods", "apothecary", "food"). */
   kind: string;
-  /** Set when the shop has no name of its own: the page says "<keeper>'s <noun>". */
+  /** Set when the shop has no name of its own: the page says "<keeper>'s <noun>" ("stall in the market", "smithy in Understone Keep"). */
   noun: string | null;
+  /** When it is open, in words ("8 am to 8 pm"); null when it never closes. */
+  hours: string | null;
 }
 
 /**
- * The shops among a place's houses (WO-180 Part 6a), for every city: one per shop, named by the shop or the stall and never by the keeper's house. A shop is a building
- * the places call a Store; the shop a seller's read names; the named place they work at ("the Skyforge"); else their stall or their trade, said as "Brand-Shei's stall".
- * Every shop is here, with its keeper and what it sells. The ones who sell from another's shop (Ysolda, from Belethor's lists) are in that shop.
+ * The shops among a place's houses (WO-180 Part 7a), from the vendor factions' own data and no longer from a guess at the keeper's cell: a seller's shop is where their
+ * vendor chest stands. A chest in a building the places call a Store (or a meadery) is that shop, named by the building; a chest in the open in a city is "<keeper>'s stall in
+ * the market"; a chest in the open elsewhere is the seller's own forge or stand ("Alvor's smithy"); a chest in a home, a keep or a hall is the seller working from there
+ * ("Ghorza's smithy in Understone Keep"), never the home as a shop. What it sells is what the vendor list takes, and the hours are the faction's. One shop each; the keeper
+ * is who sleeps there, else the better-known seller, and the ones who sell from another's chest (Ysolda, from Belethor's) are in that shop.
  */
 export function shopsOf(houses: House[]): Shop[] {
   const out = new Map<string, Shop & { rank: number }>();
   for (const h of houses) {
-    const inn = placeOfType(h.name, "Inn");
     for (const p of h.people) {
-      if (!p.shopkeeper) continue;
-      const isShop = (n: string | null | undefined) => !!n && (placeOfType(n, "Store") || SHOPPY.test(n) || n === h.name);
+      const s = p.shop;
+      if (!s || !p.shopkeeper) continue;
+      const cell = s.cell ? officialName(s.cell) : null;
+      // (a house the places call a Store is still a house: Falion sells from his, he doesn't keep a shop called "Falion's House")
+      const building = !!cell && !HOMELY.test(cell) && (placeOfType(cell, "Store") || placeOfType(cell, "Meadery") || (SHOPPY.test(cell) && !placeOfType(cell, "Inn")));
       let name: string | null = null;
       let href: string | null = null;
-      let own = false;
-      if (p.shopName && isShop(p.shopName)) {
-        name = p.shopName;
-        own = h.name === name;
-        href = own ? h.href : placeHref(name);
-      } else if (!inn && (placeOfType(h.name, "Store") || !HOMELY.test(h.name))) {
-        name = officialName(h.name);
-        own = true;
-        href = h.href ?? placeHref(name);
-      } else if (p.workplace && !HOMELY.test(p.workplace) && !placeOfType(p.workplace, "Inn")) {
-        name = p.workplace;
+      let noun: string | null = null;
+      let key: string;
+      if (building) {
+        name = cell;
+        href = placeHref(cell!);
+        key = cell!.toLowerCase();
+      } else if (s.stall && FORGES[p.name]) {
+        name = FORGES[p.name];
         href = placeHref(name);
-      } else if (inn) {
-        continue; // an innkeeper's goods are the inn's: the page says the inn
+        key = name.toLowerCase();
+      } else if (s.stall) {
+        // a smith in the open in a city works at a forge (the Skyforge), not a stall in its market
+        noun = s.kind === "blacksmith" ? "forge" : "stall in the market";
+        key = `stall|${p.name}`;
+      } else {
+        const base = NOUN[s.kind] ?? "shop";
+        noun = cell ? `${base} in ${cell}` : base;
+        href = cell ? placeHref(cell) : null;
+        key = cell ? `${cell}|${s.kind}`.toLowerCase() : `own|${p.name}`;
       }
-      const kind = p.sells ?? "general goods";
-      const noun = name ? null : /fence/i.test(p.role ?? "") || kind === "general goods" ? (p.stall ? "stall" : "shop") : (NOUN[kind] ?? "shop");
-      const shown = name ?? `${p.name}'s ${noun}`;
-      const rank = (own ? 4 : 0) + p.shopRank;
-      // Two who sell the same thing from one home with no shop of their own (Windhelm's two smiths) are one shop, the better-known one's.
-      const key = name ? name.toLowerCase() : `${h.name}|${kind}`.toLowerCase();
+      const rank = (cell && h.name === cell ? 4 : 0) + (p.read ? 1 : 0);
       const had = out.get(key);
-      if (!had || rank > had.rank) out.set(key, { name: shown, href, keeper: p, kind, noun, rank });
+      if (!had || rank > had.rank) out.set(key, { name: name ?? `${p.name}'s ${noun}`, href, keeper: p, kind: s.kind, noun, hours: s.hours ?? null, rank });
     }
   }
-  return [...out.values()].map((s): Shop => ({ name: s.name, href: s.href, keeper: s.keeper, kind: s.kind, noun: s.noun })).sort((a, b) => a.name.localeCompare(b.name));
+  return [...out.values()].map((s): Shop => ({ name: s.name, href: s.href, keeper: s.keeper, kind: s.kind, noun: s.noun, hours: s.hours })).sort((a, b) => a.name.localeCompare(b.name));
 }
 
 /** The inns among a place's houses: a building the places call an Inn, or one whose keeper the read names; a keeper in a shop is not an inn. */
@@ -217,7 +203,7 @@ export function peopleAt(place: Place): { houses: House[]; total: number } {
   for (const p of here) {
     const row = p.rows.find(placed)!;
     const home = row.cell && !named(row.cell) ? row.cell : place.name;
-    groups.set(home, [...(groups.get(home) ?? []), personOf(p)]);
+    groups.set(home, [...(groups.get(home) ?? []), personOf(p, row)]);
   }
   // A building whose name is in more than one town (a Hall of the Dead) is the one in this town.
   const town = inside ? place.inTown : place.name;

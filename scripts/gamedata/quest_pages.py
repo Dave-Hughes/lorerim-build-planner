@@ -421,6 +421,93 @@ def fill_all(obj, fills, globals_):
     return fill_text(obj, fills, globals_)
 
 
+# WO-180 Part 7a: a quest's People list never names someone by a role the game fills in when the job is given ("the quest giver", "the target"). It says what the job picks, in a
+# sentence with a capital, and the read's own detail stays under it. A "X and Y" entry is two people, so a person the page already links by name is not listed twice (Mathies).
+ROLE_PEOPLE = {
+    "the quest giver": lambda role: "A Dawnguard member who gives out jobs" if re.match(r"(?i)dawnguard", role or "") else "The person who gave you the job",
+    "the target": lambda role: "The vampire you're sent to kill" if re.search(r"(?i)\bvampire\b", role or "") else "The person you're sent to kill",
+    "the captive": lambda role: "The person you're sent to rescue",
+    "the troublemaker": lambda role: "The troublemaker the job picks",
+    "the victim": lambda role: "The victim the job picks",
+    "the escaped criminal": lambda role: "The escaped criminal the job picks",
+    "the client": lambda role: "The client the job picks",
+    "the mark": lambda role: "The person you pickpocket",
+    "the contact": lambda role: "The vampire's last known contact in the town" if re.search(r"(?i)contact", role or "") else "The contact the job picks",
+    "the business's owner": lambda role: "The owner of the business the job picks",
+    "the book's owner": lambda role: "The owner of the book, named on the bounty",
+    "the boss": lambda role: "The boss the bounty picks",
+    "the vampire": lambda role: "The vampire who took them" if re.search(r"(?i)kidnap", role or "") else "The vampire you're sent to kill",
+}
+_AND = re.compile(r"\s*,\s*|\s+and\s+")
+
+
+def role_people(pages):
+    """The People lists of the reads with a role never standing as a person's name, and "X and Y" as two people. Returns how many entries changed."""
+    n = 0
+    for l in pages:
+        for q in l["quests"]:
+            read = q.get("read") or {}
+            people = read.get("people")
+            if not people:
+                continue
+            out = []
+            for p in people:
+                name = (p.get("name") or "").strip()
+                said = ROLE_PEOPLE.get(name.lower())
+                if said:
+                    out.append({**p, "name": said(p.get("role"))})
+                    n += 1
+                    continue
+                parts = [x.strip() for x in _AND.split(name) if x.strip()]
+                if len(parts) > 1 and not re.search(r"(?i)^(the|a|an|your|any)\b|[():]", name) and all(x[:1].isupper() for x in parts):
+                    out.extend({**p, "name": x} for x in parts)
+                    n += 1
+                else:
+                    out.append({**p, "name": name[:1].upper() + name[1:]} if name[:1].islower() else p)  # a sentence, with a capital
+            seen, deduped = set(), []
+            for p in out:
+                if p["name"].lower() not in seen:
+                    seen.add(p["name"].lower())
+                    deduped.append(p)
+            read["people"] = deduped
+    return n
+
+
+def alias_rulings(quests_raw, rulings, globals_=None):
+    """
+    WO-180 Part 7a: a story quest says its person, never "the person the job names". overrides.json `questAliases` ({edid or prefix*: {alias: words}}) puts the read's words in
+    the quest's fills for every tag of that alias the quest's texts hold, so a step, a log entry and a read all say it. A fill the records gave is never replaced. Returns how many
+    quests got one. A step a read or a ways file copied before the ruling says the role phrase: `ruled` on the quest maps that text to the new one, for in_read_words.
+    """
+    rules = {k: v for k, v in (rulings or {}).items() if not k.startswith("_")}
+    n = 0
+    for q in quests_raw:
+        got = {}
+        for key, aliases in rules.items():
+            if q["edid"] == key or (key.endswith("*") and q["edid"].startswith(key[:-1])):
+                got.update({a.lower(): w for a, w in aliases.items()})
+        if not got:
+            continue
+        fills = q.setdefault("fills", {})
+        before = dict(fills)
+        for m in TAG.finditer(json.dumps(q.get("objectives", [])) + json.dumps(q.get("stages", []))):
+            words = got.get(m.group(3).strip().lower())
+            if m.group(1).lower() == "alias" and words and m.group(0) not in fills:
+                fills[m.group(0)] = words
+                n += 1
+        ruled = {}
+        for o in q.get("objectives", []):
+            text = o.get("text") or ""
+            was, now = fill_text(text, before, globals_ or {}).strip(), fill_text(text, fills, globals_ or {}).strip()
+            if was != now:
+                ruled[was] = now
+                # a reader's "<the item>" came out of read_clean as "the item the job names"
+                ruled[fill_text(text, before, globals_ or {}, lambda a: plain_alias(a) + (" the job names" if plain_alias(a) == ROLE_THING else "")).strip()] = now
+        if ruled:
+            q["ruled"] = ruled
+    return n
+
+
 def role_steps(rq, globals_):
     """The quest's objectives (filled) that hold a fill plain_alias made, not one the records gave, each with the text the same objective had before Part 6a changed the fill (WO-180 Part 6a)."""
     fills = rq.get("fills", {})
@@ -496,9 +583,11 @@ def _onceall(o):
     return o
 
 
-def in_read_words(q, role):
-    """A quest page with its steps in the read's own words where it has them, and no step said twice in a row (WO-180 Part 6a)."""
+def in_read_words(q, role, ruled=None):
+    """A quest page with its steps in the read's own words where it has them, and no step said twice in a row (WO-180 Part 6a). `ruled`: steps a ruling (Part 7a) says another way."""
     swap = read_worded(q, role) if role else {}
+    for was, now in (ruled or {}).items():
+        swap.setdefault(was, now)
     # A read or a ways file written from the text as it was filled before says the old words: they get the new ones, or the read's.
     for now, before in (role or {}).items():
         if before != now:

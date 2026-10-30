@@ -75,7 +75,8 @@ describe("a city's shops are named by the shop or the stall, each with its keepe
     for (const c of cities) {
       const shops = shopsOf(peopleAt(c).houses);
       // (a home the places call a Store, like Falion's House in Morthal, is a shop by the places' own word)
-      expect(shops.filter((s) => HOME.test(s.name) && !placesData().places.some((p) => p.name === s.name && p.type === "Store")).map((s) => `${c.name}: ${s.name}`)).toEqual([]);
+      // (WO-180 Part 7a: a seller working from a home is "<keeper>'s smithy in <the home>", never the home as the shop)
+      expect(shops.filter((s) => !/ in /.test(s.name) && HOME.test(s.name) && !placesData().places.some((p) => p.name === s.name && p.type === "Store")).map((s) => `${c.name}: ${s.name}`)).toEqual([]);
       expect(shops.filter((s) => !s.keeper.name || !s.kind || s.kind === "goods" || / at /.test(s.kind)).map((s) => `${c.name}: ${s.name}: ${s.kind}`)).toEqual([]);
       const names = shops.map((s) => s.name);
       expect(new Set(names).size).toBe(names.length);
@@ -87,14 +88,14 @@ describe("a city's shops are named by the shop or the stall, each with its keepe
     expect(by("Warmaiden's")?.keeper.name).toBe("Adrianne Avenicci");
     expect(by("The Skyforge")?.keeper.name).toBe("Eorlund Gray-Mane");
     expect(by("The Skyforge")?.kind).toBe("blacksmith");
-    expect(by("Carlotta Valentia's stall")?.keeper.name).toBe("Carlotta Valentia");
+    expect(by("Carlotta Valentia's stall in the market")?.keeper.name).toBe("Carlotta Valentia");
     expect(by("Belethor's General Goods")?.kind).toBe("general goods");
     expect(shops.map((s) => s.name)).not.toContain("House Gray-Mane");
     expect(shops.map((s) => s.name)).not.toContain("Carlotta Valentia's House");
   });
   it("the other cities Bob named: Riften, Markarth and Windhelm", () => {
     expect(shopsIn("Riften").map((s) => s.name)).not.toContain("Haelga's Bunkhouse");
-    expect(shopsIn("Riften").find((s) => s.keeper.name === "Brand-Shei")?.name).toBe("Brand-Shei's stall");
+    expect(shopsIn("Riften").find((s) => s.keeper.name === "Brand-Shei")?.name).toBe("Brand-Shei's stall in the market");
     expect(shopsIn("Markarth").find((s) => s.keeper.name === "Lisbet")?.name).toBe("Arnleif and Sons Trading Company");
     const sadri = shopsIn("Windhelm").find((s) => s.name === "Sadri's Used Wares");
     expect(sadri?.keeper.name).toBe("Revyn Sadri");

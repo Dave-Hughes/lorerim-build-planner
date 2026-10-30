@@ -1,0 +1,5265 @@
+{
+ "vendors": {
+  "AlternatePerspective.esp:04C926": {
+   "edid": "AP_ServicesHelgenRestingPilgrimInn",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Sleeping Giant Services",
+   "cell": {
+    "name": "The Resting Pilgrim",
+    "edid": "APHelgenInn",
+    "interior": true
+   }
+  },
+  "AlternatePerspective.esp:1B53B9": {
+   "edid": "AP_GunnarServiceFaction",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "hours": "10 am to 8 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "AlternatePerspective.esp:1CEBE8": {
+   "edid": "AP_ServicesSkaleisScrap",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "9 am to 8 pm",
+   "cell": {
+    "name": "Skalei's Scrap",
+    "edid": "APSkaleisJunk",
+    "interior": true
+   }
+  },
+  "AlternatePerspective.esp:20165A": {
+   "edid": "AP_VilodServiceFaction",
+   "list": "VendorItemsInnkeeperOrgnar",
+   "kind": "food",
+   "cell": {
+    "name": "Vilod's Meadery",
+    "edid": "APVilodMeadery",
+    "interior": true
+   }
+  },
+  "Andrealphus Jobs Overhaul - MASTER.esp:000BBA": {
+   "edid": "ServicesQuartermasterGuardHjaalmarchFaction",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "ServicesQuartermasterGuardHjaalmarchFaction",
+   "cell": {
+    "name": "Moorside Inn",
+    "edid": "MorthalMoorsideInn",
+    "interior": true
+   }
+  },
+  "AnimatedShips.esl:00080B": {
+   "edid": "zxSHWinterholdTraderFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Trader Faction",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "AnimatedShips.esl:00080C": {
+   "edid": "zxSHFactionShipTraderDunmer",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Trader Faction",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "AnimatedShips.esl:00080D": {
+   "edid": "zxSHHoningbrewMerchantFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Honningbrew Faction",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "AnimatedShips.esl:00080E": {
+   "edid": "zxSHSolitudeTraderFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Trader Faction",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "AnimatedShips.esl:00080F": {
+   "edid": "zxSHWindhelmFishermanFaction01",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "name": "Fisherman Faction",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "AnimatedShips.esl:000810": {
+   "edid": "zxSHWindhelmFishermanFaction02",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "name": "Fisherman Faction",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "AnimatedShips.esl:000811": {
+   "edid": "zxSHSolitudeFishermanFaction",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "name": "Fisherman Faction",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "AnimatedShips.esl:000812": {
+   "edid": "zxSHHorkerMerchantFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Horker Merchant Faction",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "AnimatedShips.esl:000813": {
+   "edid": "zxSHDawnstarFishermanFaction",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "name": "Fisherman Faction",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "AnimatedShips.esl:000814": {
+   "edid": "zxSHRiftenFishermanFaction01",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "name": "Fisherman Faction",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "AnimatedShips.esl:000815": {
+   "edid": "zxSHWindhelmTraderFaction01",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "name": "Trader Faction",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "AnimatedShips.esl:0008A7": {
+   "edid": "zxSHRiftenTraderFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Trader Faction",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "AnimatedShips.esl:000942": {
+   "edid": "zxSHWindhelmFencerMerchantFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Windhelm Fencer Faction",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "AnimatedShips.esl:000955": {
+   "edid": "zxSHRifteFencerMerchantFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Riften Fencer Faction",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "AnimatedShips.esl:000956": {
+   "edid": "zxSHBlackbriarMerchantFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Blackbriar Faction",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "AnimatedShips.esl:000A5C": {
+   "edid": "zxSHLakeFishermanFaction01",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "name": "Fisherman Faction",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "AnimatedShips.esl:000A6A": {
+   "edid": "zxSHLakeTreasureHunterFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Treasure Hunter Faction",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "AnimatedShips.esl:000A6B": {
+   "edid": "zxSHDawnstarTraderFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Trader Faction",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "Apocalypse - Magic of Skyrim.esp:0668E6": {
+   "edid": "WB_IllusoryEntity_Faction",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Illusory Entity"
+  },
+  "Apocalypse - Magic of Skyrim.esp:06A925": {
+   "edid": "WB_Kyrgar_Faction",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Kyrgar Services",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "Arena - Markarth Side.esp:05230D": {
+   "edid": "ServicesMarkarthSideMeatMarketFaction",
+   "list": "VendorItemsHunter",
+   "kind": "hunting goods",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "Arena - Markarth Side.esp:05C6CC": {
+   "edid": "ServicesMarkarthSideClothingShopFaction",
+   "list": "VendorItemsTailor",
+   "kind": "clothing",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "The Splended Spool",
+    "edid": "aaaMarkarthSideClothingShopInterior",
+    "interior": true
+   }
+  },
+  "Arena - Markarth Side.esp:080333": {
+   "edid": "MarkarthSideMagicShopFaction",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Healers and Dealers",
+    "edid": "aaaMarkarthSideAlchemyShopInterior",
+    "interior": true
+   }
+  },
+  "Arena - Markarth Side.esp:080334": {
+   "edid": "ServicesMarkarthSideMagicShopFaction",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "The Boiling Cauldron",
+    "edid": "aaaMarkarthSideMagicShop",
+    "interior": true
+   }
+  },
+  "Arena - Markarth Side.esp:0A8E2B": {
+   "edid": "ServicesMarkarthSideJewelryMarketFaction",
+   "list": "VendorItemsJeweler",
+   "kind": "jewelry",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "Arena - Markarth Side.esp:109802": {
+   "edid": "MarkarthSideGeneralStoreFaction",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "name": "Markarth Side General Store",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Healers and Dealers",
+    "edid": "aaaMarkarthSideAlchemyShopInterior",
+    "interior": true
+   }
+  },
+  "Arena - Markarth Side.esp:109803": {
+   "edid": "ServicesMarkarthSideGeneralStoreFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Markarth General Store",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "The Silverspoon Trading Company",
+    "edid": "aaaMarkarthSideGeneralStore",
+    "interior": true
+   }
+  },
+  "Arena - Markarth Side.esp:127BC9": {
+   "edid": "ServicesMarkarthSideInn",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Markarth Side Inn Services",
+   "cell": {
+    "name": "The Kings Rest",
+    "edid": "aaaMarkarthSideInnInterior",
+    "interior": true
+   }
+  },
+  "Arena - Markarth Side.esp:136ED5": {
+   "edid": "MarkarthSideAlchemyFaction",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Healers and Dealers",
+    "edid": "aaaMarkarthSideAlchemyShopInterior",
+    "interior": true
+   }
+  },
+  "Arena - Markarth Side.esp:13BFF0": {
+   "edid": "ServicesMarkarthSideAlchemyFaction",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Healers and Dealers",
+    "edid": "aaaMarkarthSideAlchemyShopInterior",
+    "interior": true
+   }
+  },
+  "Arena - Markarth Side.esp:13BFF6": {
+   "edid": "MarkarthSideBlacksmithFaction",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Healers and Dealers",
+    "edid": "aaaMarkarthSideAlchemyShopInterior",
+    "interior": true
+   }
+  },
+  "Arena - Markarth Side.esp:13BFF7": {
+   "edid": "ServicesMarkarthSideBlacksmithFaction",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Iron Maidens",
+    "edid": "aaaMarkarthSideBlacksmithInterior",
+    "interior": true
+   }
+  },
+  "Arena - Markarth Side.esp:141131": {
+   "edid": "ServicesMarkarthSideBlacksmithFactionOutdoor",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Iron Maidens",
+    "edid": "aaaMarkarthSideBlacksmithInterior",
+    "interior": true
+   }
+  },
+  "Armors of the Velothi Pt2.esl:00098F": {
+   "edid": "STMCaravanALeader",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "BetalillesHammerfellQuestBundle.esp:000CBD": {
+   "edid": "HABLMajyaVendorFaction",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "hours": "9 am to 9 pm",
+   "cell": {
+    "world": "mannyGFDesert"
+   }
+  },
+  "BetalillesHammerfellQuestBundle.esp:00129A": {
+   "edid": "LAMIOzirianaMerchantFaction",
+   "list": "VendorItemsJeweler",
+   "kind": "jewelry",
+   "cell": {
+    "world": "mannyGFDesert"
+   }
+  },
+  "BetalillesHammerfellQuestBundle.esp:0016CC": {
+   "edid": "ASHGInnkeeperFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Salas Kazas' Inn",
+    "edid": "ASHGInn",
+    "interior": true
+   }
+  },
+  "BetalillesHammerfellQuestBundle.esp:001736": {
+   "edid": "ASHGDarkElfVendorFaction01",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "hours": "8 am to 10 pm",
+   "cell": {
+    "world": "mannyGFDesert"
+   }
+  },
+  "BetalillesHammerfellQuestBundle.esp:00173C": {
+   "edid": "ASHGDarkElfVendorFaction02",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "world": "mannyGFDesert"
+   }
+  },
+  "CC Farming - Tweaks and Enhancements.esp:000B09": {
+   "edid": "ccVSVSSE004_Services_GoldenhillsFarmerUrval_Faction",
+   "list": "ccVSVSSE004_VendorItemsFarmer",
+   "kind": "food",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Goldenhills Plantation",
+    "edid": "ccVSVSSE004FarmhouseInterior",
+    "interior": true
+   }
+  },
+  "CC Farming - Tweaks and Enhancements.esp:000B0A": {
+   "edid": "ccVSVSSE004_Services_GoldenhillsAlchemistJonquil_Faction",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Goldenhills Plantation",
+    "edid": "ccVSVSSE004FarmhouseInterior",
+    "interior": true
+   }
+  },
+  "Dawnguard.esm:00F1A7": {
+   "edid": "DLC1ServicesSorineJurard",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Fort Dawnguard",
+    "edid": "DLC1DawnguardHQ01",
+    "interior": true
+   }
+  },
+  "Dawnguard.esm:00F827": {
+   "edid": "DLC1ServicesGunmar",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Fort Dawnguard",
+    "edid": "DLC1DawnguardHQ01",
+    "interior": true
+   }
+  },
+  "Dawnguard.esm:00F82D": {
+   "edid": "DLC1ServicesFlorentius",
+   "list": "DLC1FlorentiusVendorItems",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Fort Dawnguard",
+    "edid": "DLC1DawnguardHQ01",
+    "interior": true
+   }
+  },
+  "Dawnguard.esm:01047D": {
+   "edid": "DLC1ServicesFeran",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Volkihar Keep",
+    "edid": "DLC1VampireCastleGuildhall",
+    "interior": true
+   }
+  },
+  "Dawnguard.esm:01047E": {
+   "edid": "DLC1ServicesHestla",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Volkihar Keep",
+    "edid": "DLC1VampireCastleGuildhall",
+    "interior": true
+   }
+  },
+  "Dawnguard.esm:01047F": {
+   "edid": "DLC1ServicesRonthil",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Volkihar Keep",
+    "edid": "DLC1VampireCastleGuildhall",
+    "interior": true
+   }
+  },
+  "Dawnguard.esm:01393F": {
+   "edid": "DLC1dunRedwaterDenMerchant",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Redwater Den",
+    "edid": "DLC1RedwaterDen01",
+    "interior": true
+   }
+  },
+  "Dragonborn.esm:0177C5": {
+   "edid": "DLC2ServicesTelMithrynElynea",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "name": "Elynea Services",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Tel Mithryn Apothecary",
+    "edid": "DLC2TelMithrynApothecary",
+    "interior": true
+   }
+  },
+  "Dragonborn.esm:0177C6": {
+   "edid": "DLC2ServicesTelMithrynTalvas",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Talvas Services",
+   "cell": {
+    "name": "Tel Mithryn",
+    "edid": "DLC2TelMithryn",
+    "interior": true
+   }
+  },
+  "Dragonborn.esm:0177C7": {
+   "edid": "DLC2ServicesTelMithrynNeloth",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Neloth Services",
+   "cell": {
+    "name": "Tel Mithryn",
+    "edid": "DLC2TelMithryn",
+    "interior": true
+   }
+  },
+  "Dragonborn.esm:01DC62": {
+   "edid": "DLC2dunFrostmoonWerewolvesVendorFaction",
+   "list": "TVR_DLC2VendorItemsMajni",
+   "kind": "apothecary",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "Dragonborn.esm:01EEC4": {
+   "edid": "DLC2DremoraMerchantFaction",
+   "list": "DLC2DremoraVendorExclusion",
+   "kind": null,
+   "cell": {
+    "name": "Dremora Holding Cell",
+    "edid": "DLC2DremoraShop",
+    "interior": true
+   }
+  },
+  "Dragonborn.esm:01F88C": {
+   "edid": "DLC2SkaalMerchant",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Edla's House",
+    "edid": "DLC2SVEdlasHouse",
+    "interior": true
+   }
+  },
+  "Dragonborn.esm:01F899": {
+   "edid": "DLC2SkaalBlacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Baldor Iron-Shaper's House",
+    "edid": "DLC2SVBaldorIronShapersHouse",
+    "interior": true
+   }
+  },
+  "Dragonborn.esm:02501A": {
+   "edid": "DLC2RRServicesRavenRockMilore",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "name": "Raven Rock Milore Services Faction",
+   "hours": "7 am to 8 pm",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "Dragonborn.esm:025025": {
+   "edid": "DLC2RRServicesRavenRockFethis",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Raven Rock Fethis Services Faction",
+   "hours": "7 am to 8 pm",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "Dragonborn.esm:025026": {
+   "edid": "DLC2RRServicesRavenRockGaryn",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Raven Rock Garyn Services Faction",
+   "hours": "7 am to 8 pm",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "Dragonborn.esm:025027": {
+   "edid": "DLC2RRServicesRavenRockGlover",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "Raven Rock Glover Services Faction",
+   "hours": "7 am to 8 pm",
+   "cell": {
+    "name": "Glover Mallory's House",
+    "edid": "DLC2RRGloverMalloryHouse",
+    "interior": true
+   }
+  },
+  "Dragonborn.esm:025028": {
+   "edid": "DLC2RRServicesRavenRockGeldis",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Raven Rock Geldis Services Faction",
+   "hours": "7 am to 8 pm",
+   "cell": {
+    "name": "The Retching Netch",
+    "edid": "DLC2RRTheRetchingNetch",
+    "interior": true
+   }
+  },
+  "Dragonborn.esm:027107": {
+   "edid": "DLC2ServicesThirskHalbarn",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "Halbarn Services",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "Dragonborn.esm:027E12": {
+   "edid": "DLC2AncarionServicesFaction",
+   "list": "DLC2SV02AncarionMerchantBuyList",
+   "kind": "dlc2sv02ancarion merchant buy",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "Dragonborn.esm:032801": {
+   "edid": "dlc2MerchMerchantFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "midnight to 5 am",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "Dragonborn.esm:03572D": {
+   "edid": "DLC2ServicesThirskElmus",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Elmus Services",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Thirsk Mead Hall",
+    "edid": "DLC2ThirskMeadHallInterior01",
+    "interior": true
+   }
+  },
+  "Environs - Riften Warehouse.esp:000A2C": {
+   "edid": "ENVRiftenWarehouseEastEmpireServices",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "East Empire Company Outpost",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "East Empire Company Outpost",
+    "edid": "ENVCell006",
+    "interior": true
+   }
+  },
+  "Evolving Locations - Riverside Shack.esp:0000E4": {
+   "edid": "ELRiversideServiceFaction",
+   "list": "VendorItemsHunter",
+   "kind": "hunting goods",
+   "hours": "8 am to 10 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "Extended Encounters.esp:0002EC": {
+   "edid": "EE_WEServicesAlchemist",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Warehouse Bookshelves",
+    "edid": "EE_WEMerchantChests",
+    "interior": true
+   }
+  },
+  "Extended Encounters.esp:0002ED": {
+   "edid": "EE_WEServicesScholar",
+   "list": "VendorItemsCollegeUrag",
+   "kind": "books and spells",
+   "cell": {
+    "name": "Warehouse Bookshelves",
+    "edid": "EE_WEMerchantChests",
+    "interior": true
+   }
+  },
+  "Extended Encounters.esp:000351": {
+   "edid": "EE_WEServicesSkoomaDealer",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary"
+  },
+  "FalkreathShades.esp:54C73D": {
+   "edid": "GRVEShadowMerchAlchFaction",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "name": "Gravewind Merchants",
+   "cell": {
+    "name": "Gravewind Apothecary",
+    "edid": "GRVEHouseAlchemy01",
+    "interior": true
+   }
+  },
+  "FalkreathShades.esp:55BA68": {
+   "edid": "GRVEShadowMerchMagicFaction",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Gravewind Merchants",
+   "cell": {
+    "name": "Mausoleum Throne",
+    "edid": "GRVEMausoleumHall02",
+    "interior": true
+   }
+  },
+  "FalkreathShades.esp:560BE1": {
+   "edid": "GRVEShadowMerchMiscFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Gravewind Merchants",
+   "cell": {
+    "name": "Unbarred House",
+    "edid": "GRVEHouseMisc01",
+    "interior": true
+   }
+  },
+  "Fists of Fury - Skyrim.esp:09DA04": {
+   "edid": "FOFRatwayArenaInnkeeperFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Ratway Arena Merchant",
+   "cell": {
+    "name": "The Ratway Arena",
+    "edid": "FOFMissileRatwayArena",
+    "interior": true
+   }
+  },
+  "ForgottenCity.esp:02623C": {
+   "edid": "000FCHabiqMerchantFaction",
+   "list": "VendorItemsLumberjack",
+   "kind": "firewood",
+   "hours": "9 am to 5 pm",
+   "cell": {
+    "name": "Firefly Finery",
+    "edid": "000ForgottenCityB0414",
+    "interior": true
+   }
+  },
+  "ForgottenCity.esp:0272B7": {
+   "edid": "000FCVernonMerchantFaction",
+   "list": "VendorItemsLumberjack",
+   "kind": "firewood",
+   "hours": "9 am to 5 pm",
+   "cell": {
+    "name": "Vernon's Fresh Produce",
+    "edid": "000ForgottenCityB0412",
+    "interior": true
+   }
+  },
+  "ForgottenCity.esp:0278F4": {
+   "edid": "000FCDeglundMerchantFaction",
+   "list": "VendorItemsLumberjack",
+   "kind": "firewood",
+   "hours": "9 am to 5 pm",
+   "cell": {
+    "name": "The Honest Trader",
+    "edid": "000ForgottenCityB0413",
+    "interior": true
+   }
+  },
+  "ForgottenCity.esp:02CC89": {
+   "edid": "000FCLukiMerchantFaction",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "hours": "9 am to 6 pm",
+   "cell": {
+    "name": "Luki's chambers",
+    "edid": "000ForgottenCityB0417",
+    "interior": true
+   }
+  },
+  "ForgottenCity.esp:088B5F": {
+   "edid": "000FCRastasiaMerchantFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "10 am to midnight",
+   "cell": {
+    "name": "The Golden Sentinel Tavern",
+    "edid": "000ForgottenCity08",
+    "interior": true
+   }
+  },
+  "Fort Dunstad.esp:000018": {
+   "edid": "ServicesFortDunstadTrader",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Fort Dunstad Trader Services",
+   "hours": "7 am to 8 pm",
+   "cell": {
+    "name": "Fort Dunstad Trader",
+    "edid": "FortDunstadTrader",
+    "interior": true
+   }
+  },
+  "Fort Dunstad.esp:000095": {
+   "edid": "ServicesFortDunstadBlacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "Fort Dunstad Blacksmith Services",
+   "hours": "7 am to 8 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "Fort Dunstad.esp:0001A4": {
+   "edid": "FortDunstadTraderFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Fort Dunstad Trader Faction",
+   "hours": "7 am to 8 pm",
+   "cell": {
+    "name": "Fort Dunstad Trader",
+    "edid": "FortDunstadTrader",
+    "interior": true
+   }
+  },
+  "Fort Dunstad.esp:0001A6": {
+   "edid": "FortDunstadBlacksmithFaction",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "Fort Dunstad Blacksmith Faction",
+   "hours": "7 am to 8 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "Fort Dunstad.esp:00034F": {
+   "edid": "FortDunstadStumblingSabreFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Fort Dunstad Stumbling Sabrecat Faction",
+   "cell": {
+    "name": "The Stumbling Sabrecat",
+    "edid": "FortDunstadInnWorking",
+    "interior": true
+   }
+  },
+  "Fort Dunstad.esp:000350": {
+   "edid": "ServicesFortDunstadStumblingSabre",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Services Fort Dunstad Stumbling Sabrecat",
+   "cell": {
+    "name": "The Stumbling Sabrecat",
+    "edid": "FortDunstadInnWorking",
+    "interior": true
+   }
+  },
+  "Fort Greymoor.esp:0008EE": {
+   "edid": "GreymoorImperialQuarterMaster",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "Imperia lQuarterMaster",
+   "hours": "6 am to 8 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "Fort Greymoor.esp:0008F3": {
+   "edid": "GreymoorSonsQuarterMaster",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "Imperia lQuarterMaster",
+   "hours": "6 am to 8 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "GG's Thieves Guild Headquarters.esp:000FBE": {
+   "edid": "ServicesThievesGuildPlantsDreams",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "hours": "4 pm to 8 am",
+   "cell": {
+    "name": "The Ragged Flagon - Cistern",
+    "edid": "RiftenThievesGuildHeadquarters",
+    "interior": true
+   }
+  },
+  "GG's Thieves Guild Headquarters.esp:000FBF": {
+   "edid": "ServicesThievesGuildSmellsLikeGuar",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "4 am to 6 pm",
+   "cell": {
+    "name": "The Ragged Flagon - Cistern",
+    "edid": "RiftenThievesGuildHeadquarters",
+    "interior": true
+   }
+  },
+  "Gonz - Stonehills ReRe-imagined.esp:000090": {
+   "edid": "StonehillTavernFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Stonehills Tavern Faction",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "Gray Fox Cowl.esm:0167FF": {
+   "edid": "manny_GF_Faction_Service_Ilrav",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Ben Erai Ilrav Service Faction",
+   "hours": "8 am to 6 pm",
+   "cell": {
+    "name": "Three Peaks Staff and Magic",
+    "edid": "mannyGFIntThreePeaks",
+    "interior": true
+   }
+  },
+  "Gray Fox Cowl.esm:03E05A": {
+   "edid": "manny_GF_Faction_Service_Telrav",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Ben Erai Telrav Service Faction",
+   "hours": "8 am to 7 pm",
+   "cell": {
+    "name": "Last Sentinel Emporium",
+    "edid": "mannyGFIntLastSentinelEmporium",
+    "interior": true
+   }
+  },
+  "Gray Fox Cowl.esm:03ECB5": {
+   "edid": "manny_GF_Faction_Service_Malpenix",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "Ben Erai Malpenix Service Faction",
+   "hours": "9 am to 3 pm",
+   "cell": {
+    "name": "Malpenix and Isobel House",
+    "edid": "mannyGFIntMalpenixIsobelHouse",
+    "interior": true
+   }
+  },
+  "Gray Fox Cowl.esm:042FF0": {
+   "edid": "manny_GF_Faction_Service_Gordon",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Ben Erai Gordon Service Faction",
+   "cell": {
+    "name": "Black Mesa Inn",
+    "edid": "mannyGFIntBlackMesaInn",
+    "interior": true
+   }
+  },
+  "HLIORemi.esp:04C77A": {
+   "edid": "HLIORemielAlchemyFaction",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "name": "Remiel Alchemy Faction",
+   "cell": {
+    "name": "Silver-Blood Inn",
+    "edid": "MarkarthSilverBloodInn",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000DF0": {
+   "edid": "ServicesSpouseCCHouse01Apothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000DF1": {
+   "edid": "ServicesSpouseCCHouse01Blacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000DF2": {
+   "edid": "ServicesSpouseCCHouse01Innkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000DF3": {
+   "edid": "ServicesSpouseCCHouse01MiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000DF4": {
+   "edid": "ServicesSpouseCCHouse01Spells",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000DF5": {
+   "edid": "ServicesSpouseCCHouse02Apothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000DF6": {
+   "edid": "ServicesSpouseCCHouse03Apothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000DF7": {
+   "edid": "ServicesSpouseCCHouse04Apothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000DF8": {
+   "edid": "ServicesSpouseCCHouse05Apothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000DF9": {
+   "edid": "ServicesSpouseCCHouse06Apothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000DFA": {
+   "edid": "ServicesSpouseCCHouse07Apothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000DFB": {
+   "edid": "ServicesSpouseCCHouse08Apothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000DFC": {
+   "edid": "ServicesSpouseCCHouse09Apothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary"
+  },
+  "HearthFires.esm:000DFD": {
+   "edid": "ServicesSpouseCCHouse10Apothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000DFE": {
+   "edid": "ServicesSpouseCCHouse11Apothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary"
+  },
+  "HearthFires.esm:000DFF": {
+   "edid": "ServicesSpouseCCHouse12Apothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary"
+  },
+  "HearthFires.esm:000E00": {
+   "edid": "ServicesSpouseCCHouse13Apothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary"
+  },
+  "HearthFires.esm:000E01": {
+   "edid": "ServicesSpouseCCHouse14Apothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary"
+  },
+  "HearthFires.esm:000E02": {
+   "edid": "ServicesSpouseCCHouse15Apothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary"
+  },
+  "HearthFires.esm:000E03": {
+   "edid": "ServicesSpouseCCHouse16Apothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary"
+  },
+  "HearthFires.esm:000E04": {
+   "edid": "ServicesSpouseCCHouse17Apothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary"
+  },
+  "HearthFires.esm:000E05": {
+   "edid": "ServicesSpouseCCHouse18Apothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary"
+  },
+  "HearthFires.esm:000E06": {
+   "edid": "ServicesSpouseCCHouse19Apothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary"
+  },
+  "HearthFires.esm:000E07": {
+   "edid": "ServicesSpouseCCHouse20Apothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary"
+  },
+  "HearthFires.esm:000E08": {
+   "edid": "ServicesSpouseCCHouse02Blacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E09": {
+   "edid": "ServicesSpouseCCHouse03Blacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E0A": {
+   "edid": "ServicesSpouseCCHouse04Blacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E0B": {
+   "edid": "ServicesSpouseCCHouse05Blacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E0C": {
+   "edid": "ServicesSpouseCCHouse06Blacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E0D": {
+   "edid": "ServicesSpouseCCHouse07Blacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E0E": {
+   "edid": "ServicesSpouseCCHouse08Blacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E0F": {
+   "edid": "ServicesSpouseCCHouse09Blacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith"
+  },
+  "HearthFires.esm:000E10": {
+   "edid": "ServicesSpouseCCHouse10Blacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E11": {
+   "edid": "ServicesSpouseCCHouse11Blacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith"
+  },
+  "HearthFires.esm:000E12": {
+   "edid": "ServicesSpouseCCHouse12Blacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith"
+  },
+  "HearthFires.esm:000E13": {
+   "edid": "ServicesSpouseCCHouse13Blacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith"
+  },
+  "HearthFires.esm:000E14": {
+   "edid": "ServicesSpouseCCHouse14Blacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith"
+  },
+  "HearthFires.esm:000E15": {
+   "edid": "ServicesSpouseCCHouse15Blacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith"
+  },
+  "HearthFires.esm:000E16": {
+   "edid": "ServicesSpouseCCHouse16Blacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith"
+  },
+  "HearthFires.esm:000E17": {
+   "edid": "ServicesSpouseCCHouse17Blacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith"
+  },
+  "HearthFires.esm:000E18": {
+   "edid": "ServicesSpouseCCHouse18Blacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith"
+  },
+  "HearthFires.esm:000E19": {
+   "edid": "ServicesSpouseCCHouse19Blacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith"
+  },
+  "HearthFires.esm:000E1A": {
+   "edid": "ServicesSpouseCCHouse20Blacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith"
+  },
+  "HearthFires.esm:000E1B": {
+   "edid": "ServicesSpouseCCHouse02Innkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E1C": {
+   "edid": "ServicesSpouseCCHouse03Innkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E1D": {
+   "edid": "ServicesSpouseCCHouse04Innkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E1E": {
+   "edid": "ServicesSpouseCCHouse05Innkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E1F": {
+   "edid": "ServicesSpouseCCHouse06Innkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E20": {
+   "edid": "ServicesSpouseCCHouse07Innkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E21": {
+   "edid": "ServicesSpouseCCHouse08Innkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E22": {
+   "edid": "ServicesSpouseCCHouse09Innkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food"
+  },
+  "HearthFires.esm:000E23": {
+   "edid": "ServicesSpouseCCHouse10Innkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E24": {
+   "edid": "ServicesSpouseCCHouse11Innkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food"
+  },
+  "HearthFires.esm:000E25": {
+   "edid": "ServicesSpouseCCHouse12Innkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food"
+  },
+  "HearthFires.esm:000E26": {
+   "edid": "ServicesSpouseCCHouse13Innkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food"
+  },
+  "HearthFires.esm:000E27": {
+   "edid": "ServicesSpouseCCHouse14Innkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food"
+  },
+  "HearthFires.esm:000E28": {
+   "edid": "ServicesSpouseCCHouse15Innkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food"
+  },
+  "HearthFires.esm:000E29": {
+   "edid": "ServicesSpouseCCHouse16Innkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food"
+  },
+  "HearthFires.esm:000E2A": {
+   "edid": "ServicesSpouseCCHouse17Innkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food"
+  },
+  "HearthFires.esm:000E2B": {
+   "edid": "ServicesSpouseCCHouse18Innkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food"
+  },
+  "HearthFires.esm:000E2C": {
+   "edid": "ServicesSpouseCCHouse19Innkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food"
+  },
+  "HearthFires.esm:000E2D": {
+   "edid": "ServicesSpouseCCHouse20Innkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food"
+  },
+  "HearthFires.esm:000E2E": {
+   "edid": "ServicesSpouseCCHouse02MiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E2F": {
+   "edid": "ServicesSpouseCCHouse03MiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E30": {
+   "edid": "ServicesSpouseCCHouse04MiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E31": {
+   "edid": "ServicesSpouseCCHouse05MiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E32": {
+   "edid": "ServicesSpouseCCHouse06MiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E33": {
+   "edid": "ServicesSpouseCCHouse07MiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E34": {
+   "edid": "ServicesSpouseCCHouse08MiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E35": {
+   "edid": "ServicesSpouseCCHouse09MiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods"
+  },
+  "HearthFires.esm:000E36": {
+   "edid": "ServicesSpouseCCHouse10MiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E37": {
+   "edid": "ServicesSpouseCCHouse11MiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods"
+  },
+  "HearthFires.esm:000E38": {
+   "edid": "ServicesSpouseCCHouse12MiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods"
+  },
+  "HearthFires.esm:000E39": {
+   "edid": "ServicesSpouseCCHouse13MiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods"
+  },
+  "HearthFires.esm:000E3A": {
+   "edid": "ServicesSpouseCCHouse14MiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods"
+  },
+  "HearthFires.esm:000E3B": {
+   "edid": "ServicesSpouseCCHouse15MiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods"
+  },
+  "HearthFires.esm:000E3C": {
+   "edid": "ServicesSpouseCCHouse16MiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods"
+  },
+  "HearthFires.esm:000E3D": {
+   "edid": "ServicesSpouseCCHouse17MiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods"
+  },
+  "HearthFires.esm:000E3E": {
+   "edid": "ServicesSpouseCCHouse18MiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods"
+  },
+  "HearthFires.esm:000E3F": {
+   "edid": "ServicesSpouseCCHouse19MiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods"
+  },
+  "HearthFires.esm:000E40": {
+   "edid": "ServicesSpouseCCHouse20MiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods"
+  },
+  "HearthFires.esm:000E41": {
+   "edid": "ServicesSpouseCCHouse02Spells",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E42": {
+   "edid": "ServicesSpouseCCHouse03Spells",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E43": {
+   "edid": "ServicesSpouseCCHouse04Spells",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E44": {
+   "edid": "ServicesSpouseCCHouse05Spells",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E45": {
+   "edid": "ServicesSpouseCCHouse06Spells",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E46": {
+   "edid": "ServicesSpouseCCHouse07Spells",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E47": {
+   "edid": "ServicesSpouseCCHouse08Spells",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E48": {
+   "edid": "ServicesSpouseCCHouse09Spells",
+   "list": "VendorItemsSpells",
+   "kind": "spells"
+  },
+  "HearthFires.esm:000E49": {
+   "edid": "ServicesSpouseCCHouse10Spells",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:000E4A": {
+   "edid": "ServicesSpouseCCHouse11Spells",
+   "list": "VendorItemsSpells",
+   "kind": "spells"
+  },
+  "HearthFires.esm:000E4B": {
+   "edid": "ServicesSpouseCCHouse12Spells",
+   "list": "VendorItemsSpells",
+   "kind": "spells"
+  },
+  "HearthFires.esm:000E4C": {
+   "edid": "ServicesSpouseCCHouse13Spells",
+   "list": "VendorItemsSpells",
+   "kind": "spells"
+  },
+  "HearthFires.esm:000E4D": {
+   "edid": "ServicesSpouseCCHouse14Spells",
+   "list": "VendorItemsSpells",
+   "kind": "spells"
+  },
+  "HearthFires.esm:000E4E": {
+   "edid": "ServicesSpouseCCHouse15Spells",
+   "list": "VendorItemsSpells",
+   "kind": "spells"
+  },
+  "HearthFires.esm:000E4F": {
+   "edid": "ServicesSpouseCCHouse16Spells",
+   "list": "VendorItemsSpells",
+   "kind": "spells"
+  },
+  "HearthFires.esm:000E50": {
+   "edid": "ServicesSpouseCCHouse17Spells",
+   "list": "VendorItemsSpells",
+   "kind": "spells"
+  },
+  "HearthFires.esm:000E51": {
+   "edid": "ServicesSpouseCCHouse18Spells",
+   "list": "VendorItemsSpells",
+   "kind": "spells"
+  },
+  "HearthFires.esm:000E52": {
+   "edid": "ServicesSpouseCCHouse19Spells",
+   "list": "VendorItemsSpells",
+   "kind": "spells"
+  },
+  "HearthFires.esm:000E53": {
+   "edid": "ServicesSpouseCCHouse20Spells",
+   "list": "VendorItemsSpells",
+   "kind": "spells"
+  },
+  "HearthFires.esm:003F55": {
+   "edid": "BYOHUrchin_BlaiseJobFaction",
+   "list": "BYOHUrchin_SofieVendorList",
+   "kind": "apothecary",
+   "cell": {
+    "world": "WindhelmWorld"
+   }
+  },
+  "HearthFires.esm:003F5D": {
+   "edid": "BYOHUrchin_LuciaJobFaction",
+   "list": "BYOHUrchin_SofieVendorList",
+   "kind": "apothecary",
+   "cell": {
+    "world": "WindhelmWorld"
+   }
+  },
+  "HearthFires.esm:003F61": {
+   "edid": "BYOHDisallowGamesFaction",
+   "list": "BYOHUrchin_SofieVendorList",
+   "kind": "apothecary",
+   "cell": {
+    "world": "WindhelmWorld"
+   }
+  },
+  "HearthFires.esm:003F62": {
+   "edid": "BYOHUrchin_AlesanJobFaction",
+   "list": "BYOHUrchin_SofieVendorList",
+   "kind": "apothecary",
+   "cell": {
+    "world": "WindhelmWorld"
+   }
+  },
+  "HearthFires.esm:004033": {
+   "edid": "BYOHUrchin_SofieJobFaction",
+   "list": "BYOHUrchin_SofieVendorList",
+   "kind": "apothecary",
+   "cell": {
+    "world": "WindhelmWorld"
+   }
+  },
+  "HearthFires.esm:00403A": {
+   "edid": "BYOHServicesWindhelmSofie",
+   "list": "BYOHUrchin_SofieVendorList",
+   "kind": "apothecary",
+   "name": "Sofie's Flowers",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "WindhelmWorld"
+   }
+  },
+  "HearthFires.esm:018473": {
+   "edid": "BYOHHouseFalkreathServicesSpouseBlacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:018474": {
+   "edid": "BYOHHouseFalkreathServicesSpouseApothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:018475": {
+   "edid": "BYOHHouseFalkreathServicesSpouseInnkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:018476": {
+   "edid": "BYOHHouseFalkreathServicesSpouseMiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:018477": {
+   "edid": "BYOHHouseFalkreathServicesSpouseSpells",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:018478": {
+   "edid": "BYOHHouseHjaalmarchServicesSpouseApothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:018479": {
+   "edid": "BYOHHouseHjaalmarchServicesSpouseBlacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:01847A": {
+   "edid": "BYOHHouseHjaalmarchServicesSpouseInnkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:01847B": {
+   "edid": "BYOHHouseHjaalmarchServicesSpouseMiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:01847C": {
+   "edid": "BYOHHouseHjaalmarchServicesSpouseSpells",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:01847D": {
+   "edid": "BYOHHousePaleServicesSpouseApothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:01847E": {
+   "edid": "BYOHHousePaleServicesSpouseBlacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:01847F": {
+   "edid": "BYOHHousePaleServicesSpouseInnkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:018480": {
+   "edid": "BYOHHousePaleServicesSpouseMiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "HearthFires.esm:018481": {
+   "edid": "BYOHHousePaleServicesSpouseSpells",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Hendraheim - Tweaks and Enhancements.esp:000C1E": {
+   "edid": "ServicesHendraheimTnEBartender",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Hendraheim",
+    "edid": "ccEEJSSE004Interior01",
+    "interior": true
+   }
+  },
+  "Hunters Sell Fish And More Animal Parts.esp:00090A": {
+   "edid": "ANDR_WEServicesFishermanFaction",
+   "list": "ANDR_VendorItemsFisherman",
+   "kind": "fish",
+   "cell": {
+    "name": "Editor Smoke Test Cell",
+    "edid": "QASmoke",
+    "interior": true
+   }
+  },
+  "Inigo.esp:075793": {
+   "edid": "InigoRideWithoutPlayerFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Is Inigo allowed to ride even when the player isn't?"
+  },
+  "Inigo.esp:0B4325": {
+   "edid": "InigoGiftFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "What does the player want?"
+  },
+  "Journey to Baan Malur.esp:01A35E": {
+   "edid": "BaanSDBubblingPotFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "hours": "6 am to 9 pm",
+   "cell": {
+    "name": "The Bubbling Pot",
+    "edid": "BaanSDBubblingPot",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:03327F": {
+   "edid": "mihailcrabmerchantfaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods"
+  },
+  "Journey to Baan Malur.esp:033E92": {
+   "edid": "BaanEDBrassBreweryFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "hours": "6 am to 9 pm",
+   "cell": {
+    "name": "The Brass Brewery",
+    "edid": "BaanEDBrewery",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:039122": {
+   "edid": "BaanWDDwemerClub",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Ganner's House",
+    "edid": "BaanWDDockhouseLarge09",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:03DDD8": {
+   "edid": "BaanWDJewellersFaction",
+   "list": "VendorItemsJeweler",
+   "kind": "jewelry",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Arena Market",
+    "edid": "BaanEDInnerMarket",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:03DDDB": {
+   "edid": "BaanWDDrinksFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "hours": "8 am to 9 pm",
+   "cell": {
+    "name": "Arena Market",
+    "edid": "BaanEDInnerMarket",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:03DDDF": {
+   "edid": "BaanWDBantamFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "9 am to 9 pm",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "Journey to Baan Malur.esp:03DDF2": {
+   "edid": "BaanWDGemFaction",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Arena Market",
+    "edid": "BaanEDInnerMarket",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:03DE09": {
+   "edid": "BaanWDCobblersFaction",
+   "list": "VendorItemsTailor",
+   "kind": "clothing",
+   "hours": "9 am to 8 pm",
+   "cell": {
+    "name": "Arena Market",
+    "edid": "BaanEDInnerMarket",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:03E4F1": {
+   "edid": "BaanABLightArmour",
+   "list": "VendorItemsLightArmourer",
+   "kind": "armor",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "The Chipped Chitin",
+    "edid": "BaanABChippedChitin",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:042E0A": {
+   "edid": "CrossroadsCCFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "hours": "8 am to 9 pm",
+   "cell": {
+    "name": "Cormar Crossing Cornerclub",
+    "edid": "CrossroadsCornerclub01",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:04CF77": {
+   "edid": "CormarisCornerclubFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "hours": "8 am to 11 pm",
+   "cell": {
+    "name": "Reaver's Regret Cornerclub",
+    "edid": "CormarisCornerclub",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:04DF2D": {
+   "edid": "BaanEDBakeryFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "hours": "10 am to 8 pm",
+   "cell": {
+    "name": "The Crisp Loaf",
+    "edid": "BaanEDBakery",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:04DF73": {
+   "edid": "BaanEDBreadSellerFaction",
+   "list": "VendorItemsBakery",
+   "kind": "baked goods",
+   "hours": "8 am to 9 pm",
+   "cell": {
+    "name": "The Crisp Loaf",
+    "edid": "BaanEDBakery",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:04DF7C": {
+   "edid": "BaanEDEggSellerFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "Journey to Baan Malur.esp:04E041": {
+   "edid": "BaanEDHouseofGroundedPleasuresFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "The House of Grounded Pleasures",
+    "edid": "BaanEDHouseofGroundedPleasures",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:057440": {
+   "edid": "CormarisBakerFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "hours": "8 am to 6 pm",
+   "cell": {
+    "name": "Border Bakes",
+    "edid": "CormarisBakery",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:06BAC8": {
+   "edid": "CormarisFarmFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "8 am to 9 pm",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "Journey to Baan Malur.esp:085389": {
+   "edid": "StrojarriFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "8 am to 4 pm",
+   "cell": {
+    "name": "Oddities of Tamriel",
+    "edid": "CormarisGeneralGoods",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:085434": {
+   "edid": "CormarisSmithFaction",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "Journey to Baan Malur.esp:0868A8": {
+   "edid": "CormarisFarmerChildFaction",
+   "list": "VendorItemsJeweler",
+   "kind": "jewelry",
+   "hours": "8 am to 4 pm",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "Journey to Baan Malur.esp:0BF483": {
+   "edid": "BaanSDTelvanniTearoomFaction",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "hours": "8 am to 10 pm",
+   "cell": {
+    "name": "The Telvanni Tearoom",
+    "edid": "BaanSDTelvanniTearoom",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:0D6A43": {
+   "edid": "CormarisBakerWifeFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "8 am to 9 pm",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "Journey to Baan Malur.esp:0EDB99": {
+   "edid": "BaanSDUnderootFaction",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "The Underoot",
+    "edid": "BaanSDUnderoot",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:0F810E": {
+   "edid": "BaanABVexedStoneFaction",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "hours": "8 am to 9 pm",
+   "cell": {
+    "name": "The Vexed Stone",
+    "edid": "BaanABVexedStone",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:1243DD": {
+   "edid": "BaanABYamSellerFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "9 am to 8 pm",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "Journey to Baan Malur.esp:1295CD": {
+   "edid": "BaanABBantamFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Arena Market",
+    "edid": "BaanEDInnerMarket",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:129708": {
+   "edid": "BaanWDCliffracersDemiseFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "The Cliffracer's Demise",
+    "edid": "BaanWDCliffracersDemise",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:135AC3": {
+   "edid": "BaanABStreetFoodFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "10 am to 10 pm",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "Journey to Baan Malur.esp:1528D5": {
+   "edid": "PryaiCornerclubFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Pryai Cornerclub",
+    "edid": "STPCornerclub",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:15CFDC": {
+   "edid": "SOMRSailorCaptainFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "The Keremissu",
+    "edid": "RavenRockKeremissu",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:1776E5": {
+   "edid": "PryaiFishermanFaction",
+   "list": "VendorItemsHunter",
+   "kind": "hunting goods",
+   "hours": "6 am to 8 pm",
+   "cell": {
+    "name": "Fisherman's House",
+    "edid": "STPFishersHouse",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:1DF6F1": {
+   "edid": "BaanABSpicedYamFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "hours": "10 am to 8 pm",
+   "cell": {
+    "name": "The Spiced Yam",
+    "edid": "BaanABSpicedYam",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:202F9F": {
+   "edid": "BaanHSFletchersFaction",
+   "list": "VendorItemsFletcher",
+   "kind": "fletcher",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Corkbulb Crock",
+    "edid": "BaanHSArchery",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:208208": {
+   "edid": "BaanHSBookstoreFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "The Sepia Pages",
+    "edid": "BaanHSBookstore",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:20D368": {
+   "edid": "BaanHSBakeryFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "hours": "10 am to 6 pm",
+   "cell": {
+    "name": "Bevolni Bakery",
+    "edid": "BaanHSBakery",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:20D3FC": {
+   "edid": "BaanHSBakeryOutsideFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Bevolni Bakery",
+    "edid": "BaanHSBakery",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:221B02": {
+   "edid": "BaanHSGretiansGoodsFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Gretian's Goods",
+    "edid": "BaanHSGeneralStore",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:226DB0": {
+   "edid": "BaanHSScramblingScribFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "The Scrambling Scrib",
+    "edid": "BaanHSScramblingScrib",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:230EC7": {
+   "edid": "BaanEDScrappyMudcrabFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "The Scrappy Mudcrab",
+    "edid": "BaanEDScrappyMudcrab",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:2362BD": {
+   "edid": "BaanHSAlchemistFaction",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Baan Malur Brews",
+    "edid": "BaanHSAlchemists",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:23B777": {
+   "edid": "BaanRPBlacksmithFaction",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "hours": "6 am to 6 pm",
+   "cell": {
+    "name": "Drol Smithy",
+    "edid": "BaanRPSmithy",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:25EB55": {
+   "edid": "BaanHSClothierFaction",
+   "list": "VendorItemsTailor",
+   "kind": "clothing",
+   "hours": "9 am to 8 pm",
+   "cell": {
+    "name": "Fine Cladding",
+    "edid": "BaanHSClothier",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:2A783A": {
+   "edid": "BaanEDBonesmithFaction",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "hours": "6 am to 8 pm",
+   "cell": {
+    "name": "The Bonesmith",
+    "edid": "BaanEDBoneshop",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:2B90DF": {
+   "edid": "CormarisFarmMerchantFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "8 am to 9 pm",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "Journey to Baan Malur.esp:2C63EB": {
+   "edid": "BaanEDZashanjiFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "6 am to 6 pm",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "Journey to Baan Malur.esp:2C9782": {
+   "edid": "BaanDrScrappyMudcrabFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "The Scrappy Mudcrab",
+    "edid": "BaanDrScrappyMudcrab",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:30DBA7": {
+   "edid": "LlethrinFelMoistTankardFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "The Moist Tankard",
+    "edid": "LlethrinFelCornerclub",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:35DCB2": {
+   "edid": "BaanWDYamSellerFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "Journey to Baan Malur.esp:35DCB3": {
+   "edid": "BaanWDCrabSellerFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "hours": "8 am to 7 pm",
+   "cell": {
+    "name": "Arena Market",
+    "edid": "BaanEDInnerMarket",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:35DCE5": {
+   "edid": "BaanWDHerbSellerFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "9 am to 8 pm",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "Journey to Baan Malur.esp:362E49": {
+   "edid": "BaanWDBlacksmithFaction",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "Journey to Baan Malur.esp:36D0F0": {
+   "edid": "BaanWDGeneralStoreFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Suri's Wares",
+    "edid": "BaanWDGeneralStore",
+    "interior": true
+   }
+  },
+  "Journey to Baan Malur.esp:3A2378": {
+   "edid": "LlethrinFelScribSellerFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "8 am to 8 pm"
+  },
+  "Keep It Clean.esp:0928D2": {
+   "edid": "SBServicesSoapVendor",
+   "list": "SBVendorSoapFLST",
+   "kind": "sb soap",
+   "cell": {
+    "name": "SBSoapContainerCell",
+    "edid": "aaaSBSoapContainerCell",
+    "interior": true
+   }
+  },
+  "Kidmer - Adoptable Elf Children 1_2.esp:000D6A": {
+   "edid": "urshug_OrcOrphanFaction",
+   "list": "BYOHUrchin_SofieVendorList",
+   "kind": "apothecary",
+   "cell": {
+    "world": "WindhelmWorld"
+   }
+  },
+  "LoreRim Bard Cloth Vendors.esp:000003": {
+   "edid": "LoreRim_0WRRedguardBardClothFaction",
+   "list": "VendorItemsTailor",
+   "kind": "clothing",
+   "name": "0WRRedguard Bard Cloth Vendor",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "LoreRim Bard Cloth Vendors.esp:000004": {
+   "edid": "LoreRim_IlldiBardClothFaction",
+   "list": "VendorItemsTailor",
+   "kind": "clothing",
+   "name": "Illdi Bard Cloth Vendor",
+   "cell": {
+    "name": "Bards College",
+    "edid": "SolitudeBardsCollege",
+    "interior": true
+   }
+  },
+  "Lux Via - Markarth Entrance and Farm Overhaul.esp:000B90": {
+   "edid": "MarkarthSavantusFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "1 pm to 7 pm"
+  },
+  "Lux Via - Markarth Entrance and Farm Overhaul.esp:0E14CD": {
+   "edid": "ServicesMarkarthEntranceDormitory",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Markarth East Empire Dormitory",
+    "edid": "MarkarthEntranceDormitory",
+    "interior": true
+   }
+  },
+  "Lux Via - Markarth Entrance and Farm Overhaul.esp:0E14D3": {
+   "edid": "ServicesMarkarthEntranceShop",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "8 am to 6 pm",
+   "cell": {
+    "name": "Markarth East Empire Goods",
+    "edid": "MarkarthEntranceShop",
+    "interior": true
+   }
+  },
+  "Lux Via - Markarth Entrance and Farm Overhaul.esp:0E14D4": {
+   "edid": "ServicesMarkarthEntranceWasteCollector",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "noon to 8 pm",
+   "cell": {
+    "name": "Markarth Waste Collector",
+    "edid": "MarkarthEntranceWasteCollection",
+    "interior": true
+   }
+  },
+  "Lux Via - Markarth Entrance and Farm Overhaul.esp:0E14D5": {
+   "edid": "ServicesMarkarthEntranceObservatory",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "hours": "8 am to 6 pm",
+   "cell": {
+    "name": "Markarth Old Observatory",
+    "edid": "MarkarthEntranceOldObservatory",
+    "interior": true
+   }
+  },
+  "Lux Via - Markarth Entrance and Farm Overhaul.esp:0E14D9": {
+   "edid": "ServicesMarkarthEntranceTGHQ",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Old Dam",
+    "edid": "MarkarthEntranceOldDam",
+    "interior": true
+   }
+  },
+  "Meridia.esp:02CD7F": {
+   "edid": "NMeridiaMerchantUnaFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Fort Justice",
+    "edid": "NMeridiaFortJustice",
+    "interior": true
+   }
+  },
+  "Meridia.esp:0319AB": {
+   "edid": "NMeridiaMerchantValrarFaction",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Fort Justice",
+    "edid": "NMeridiaFortJustice",
+    "interior": true
+   }
+  },
+  "Meridia.esp:07AF78": {
+   "edid": "NMeridiaMerchantLucettaFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Meridia's Sanctum",
+    "edid": "NMeridiasSanctum",
+    "interior": true
+   }
+  },
+  "Orc Strongholds - All In One.esp:0005F8": {
+   "edid": "00_OrcMerchantFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Orc Merchant",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "Requiem.esp:AD382E": {
+   "edid": "REQ_SkoomaDealer",
+   "list": "VendorItemsDB",
+   "kind": "alchemist",
+   "cell": {
+    "name": "Warehouse Bookshelves",
+    "edid": "WEMerchantChests",
+    "interior": true
+   }
+  },
+  "Riften Docks Overhaul.esp:002439": {
+   "edid": "MVRFServicesRiftenFishMarket",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "hours": "8 am to 6 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "Riften Docks Overhaul.esp:00243B": {
+   "edid": "MVRFKlaraThedHouseFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "hours": "8 am to 7 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "SkaalFishingCamp.esp:000846": {
+   "edid": "FS_FishMerchants",
+   "list": "VendorItemsHunter",
+   "kind": "hunting goods",
+   "name": "Skaal Fishermen",
+   "cell": {
+    "world": "DLC2SolstheimWorld"
+   }
+  },
+  "Sky City.esp:007C13": {
+   "edid": "SKYCITYSilliaCookhouse",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "hours": "8 am to 10 pm",
+   "cell": {
+    "name": "Sillia's Cookhouse",
+    "edid": "SKYCITYHouse01",
+    "interior": true
+   }
+  },
+  "Skyrim Extended Cut - Saints and Seducers.esp:033AF1": {
+   "edid": "EC_SS_TheodorMerchantFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "The Near Corgi Shop",
+    "edid": "ECSSTheNearCorgiShop",
+    "interior": true
+   }
+  },
+  "Skyrim Extended Cut - Saints and Seducers.esp:033AF3": {
+   "edid": "EC_SS_LizardManMerchantFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "world": "ECSSShiveringIsles"
+   }
+  },
+  "Skyrim.esm:016AC9": {
+   "edid": "CWServicesQuartermasterSons",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Quick Test Cell",
+    "edid": "CWQuartermasterContainers",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:05A665": {
+   "edid": "ServicesRiverwoodRiverwoodTrader",
+   "list": "VendorItemsMiscLucan",
+   "kind": "general goods",
+   "name": "Riverwood Trader Services",
+   "hours": "7 am to 8 pm",
+   "cell": {
+    "name": "Riverwood Trader",
+    "edid": "RiverwoodRiverwoodTrader",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:05A666": {
+   "edid": "ServicesRiverwoodAlvor",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "Alvor Services",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "Skyrim.esm:05C84E": {
+   "edid": "CurrentFollowerFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods"
+  },
+  "Skyrim.esm:06479E": {
+   "edid": "ServicesMarkarthCastleCook",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Understone Keep",
+    "edid": "MarkarthUnderStoneKeep",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0647A1": {
+   "edid": "ServicesMarkarthCastleBlacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Understone Keep",
+    "edid": "MarkarthUnderStoneKeep",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:065C3B": {
+   "edid": "ServicesRiftenBeeandBarbTalenJeiExtra",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "The Bee and Barb",
+    "edid": "RiftenBeeandBarb",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:06A879": {
+   "edid": "ServicesFalkreathGraveConcoctions",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Grave Concoctions",
+    "edid": "FalkreathGraveConcoctions",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:07277B": {
+   "edid": "ServicesFalkreathBlacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Lod's House",
+    "edid": "FalkreathLodsHouse",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:074351": {
+   "edid": "CaravanALeader",
+   "list": "REQ_VendorItems_NoSale",
+   "kind": null,
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "Skyrim.esm:074352": {
+   "edid": "CaravanBLeader",
+   "list": "REQ_VendorItems_NoSale",
+   "kind": null,
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "Skyrim.esm:074354": {
+   "edid": "CaravanCLeader",
+   "list": "REQ_VendorItems_NoSale",
+   "kind": null,
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "Skyrim.esm:0914F1": {
+   "edid": "ServicesRiverwoodSleepingGiantInn",
+   "list": "VendorItemsInnkeeperOrgnar",
+   "kind": "food",
+   "name": "Sleeping Giant Services",
+   "cell": {
+    "name": "Sleeping Giant Inn",
+    "edid": "RiverwoodSleepingGiantInn",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:093B16": {
+   "edid": "WhiterunArcadiasCauldronFaction",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "name": "Whiterun Arcadias's Cauldron Faction",
+   "hours": "7 am to 9 pm",
+   "cell": {
+    "name": "Arcadia's Cauldron",
+    "edid": "WhiterunArcadiasCauldron",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:093B22": {
+   "edid": "WhiterunWarmaidensFaction",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "Whiterun Warmaiden's Faction",
+   "hours": "7 am to 9 pm",
+   "cell": {
+    "name": "Warmaiden's",
+    "edid": "WhiterunWarmaidens",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:094375": {
+   "edid": "ServicesMarkarthArnleifandSons",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "8 am to midnight",
+   "cell": {
+    "name": "Arnleif and Sons Trading Company",
+    "edid": "MarkarthArnleifandSonsTradingCompany",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:09437E": {
+   "edid": "ServicesMarkarthJewelryVendor",
+   "list": "VendorItemsJeweler",
+   "kind": "jewelry",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "MarkarthWorld"
+   }
+  },
+  "Skyrim.esm:09437F": {
+   "edid": "ServicesMarkarthFoodMerchant",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "MarkarthWorld"
+   }
+  },
+  "Skyrim.esm:094382": {
+   "edid": "ServicesMarkarthHagsCure",
+   "list": "TVR_VendorItemsApothecary",
+   "kind": "apothecary",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "The Hag's Cure",
+    "edid": "MarkarthHagsCure",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:094386": {
+   "edid": "ServicesMarkarthSilverFishInn",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Silver-Blood Inn",
+    "edid": "MarkarthSilverBloodInn",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:09438B": {
+   "edid": "ServicesMarkarthCastleWizard",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "cell": {
+    "name": "Understone Keep",
+    "edid": "MarkarthUnderStoneKeep",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:094390": {
+   "edid": "ServicesMarkarthBlacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Understone Keep",
+    "edid": "MarkarthUnderStoneKeep",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:096F82": {
+   "edid": "ServicesWhiterunAnoriath",
+   "list": "VendorItemsHunter",
+   "kind": "hunting goods",
+   "name": "Whiterun Services Faction - Anoriath",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "WhiterunWorld"
+   }
+  },
+  "Skyrim.esm:098BA0": {
+   "edid": "ServicesWinterholdCollegeDrevis",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Drevis Neloren Services",
+   "cell": {
+    "name": "Hall of Countenance",
+    "edid": "WinterholdCollegeHallofCountenance",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:098BA8": {
+   "edid": "ServicesWinterholdCollegeColette",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Colette Marence Services",
+   "cell": {
+    "name": "Hall of Countenance",
+    "edid": "WinterholdCollegeHallofCountenance",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:098BA9": {
+   "edid": "ServicesWinterholdCollegeFaralda",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Faralda Services",
+   "cell": {
+    "name": "Hall of Countenance",
+    "edid": "WinterholdCollegeHallofCountenance",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:098BAA": {
+   "edid": "ServicesWinterholdCollegePhinis",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Phinis Gestor Services",
+   "cell": {
+    "name": "Hall of Countenance",
+    "edid": "WinterholdCollegeHallofCountenance",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:098BAB": {
+   "edid": "ServicesWinterholdCollegeTolfdir",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Tolfdir Services",
+   "cell": {
+    "name": "Hall of Attainment",
+    "edid": "WinterholdCollegeHallofAttainment",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:09CAF5": {
+   "edid": "ServicesWhiterunBelethorsGoods",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Belethor's Goods",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Belethor's General Goods",
+    "edid": "WhiterunBelethorsGeneralGoods",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:09CAFC": {
+   "edid": "ServicesWhiterunBanneredMare",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Bannered Mare Services",
+   "cell": {
+    "name": "The Bannered Mare",
+    "edid": "WhiterunBanneredMare",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:09CAFF": {
+   "edid": "ServicesWhiterunWarmaidens",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "Warmaidens",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Warmaiden's",
+    "edid": "WhiterunWarmaidens",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:09CD47": {
+   "edid": "ServicesWhiterunArcadiasCauldtron",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Arcadia's Cauldron",
+    "edid": "WhiterunArcadiasCauldron",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:09DA2C": {
+   "edid": "DawnstarWindpeakInnFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food"
+  },
+  "Skyrim.esm:09DA2E": {
+   "edid": "ServicesDawnstarUsefulThingsApothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "The Mortar and Pestle",
+    "edid": "DawnstarMortarandPestle",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:09DA3E": {
+   "edid": "ServicesDawnstarRustleifSmithy",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "Skyrim.esm:09DA48": {
+   "edid": "ServicesDawnstarWindpeakInn",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Windpeak Inn",
+    "edid": "DawnstarWindpeakInn",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:09DA55": {
+   "edid": "ServicesMorthalJonna",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Moorside Inn Services",
+   "cell": {
+    "name": "Moorside Inn",
+    "edid": "MorthalMoorsideInn",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:09DA58": {
+   "edid": "ServicesMorthalFalion",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Moorside Inn Services",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Falion's House",
+    "edid": "MorthalFalionsHouse",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:09DA5B": {
+   "edid": "ServicesMorthalLami",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "name": "Lami Services",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Thaumaturgist's Hut",
+    "edid": "MorthalThaumaturgistsHut",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:09DA61": {
+   "edid": "ServicesWinterholdFrozenHearth",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "The Frozen Hearth Services",
+   "cell": {
+    "name": "The Frozen Hearth",
+    "edid": "WinterholdTheFrozenHearth",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:09DA62": {
+   "edid": "ServicesWinterholdBirna",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Birna Services",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Birna's Oddments",
+    "edid": "WinterholdRanmirshouse",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:09E12B": {
+   "edid": "ServicesDushnikYalWiseWoman",
+   "list": "TVR_VendorItemsApothecary",
+   "kind": "apothecary",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Burguk's Longhouse",
+    "edid": "DushnikhYalLonghouse",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:09E12C": {
+   "edid": "ServicesDushnikhYalBlacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "Skyrim.esm:09E461": {
+   "edid": "ServicesOldHroldanHangedManInn",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Old Hroldan Inn",
+    "edid": "OldHroldanInn",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:09E46B": {
+   "edid": "ServicesMorKhazgurWiseWoman",
+   "list": "TVR_VendorItemsApothecary",
+   "kind": "apothecary",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Larak's Longhouse",
+    "edid": "MorKhazgurLaraksLonghouse",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:09E46C": {
+   "edid": "ServicesMorKhazgurBlacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "Skyrim.esm:09F252": {
+   "edid": "ServicesRoriksteadMralkiFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Frostfruit Inn",
+    "edid": "RoriksteadFrostfruitInn",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:09F259": {
+   "edid": "ServicesWhiterunDrunkenHuntsman",
+   "list": "VendorItemsDrunkenHuntsman",
+   "kind": "weapons",
+   "name": "Whiterun Drunken Huntsman Vendor",
+   "cell": {
+    "name": "The Drunken Huntsman",
+    "edid": "WhiterunDrunkenHuntsman",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:09F25A": {
+   "edid": "ServicesWhiterunFralia",
+   "list": "VendorItemsJeweler",
+   "kind": "jewelry",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "WhiterunWorld"
+   }
+  },
+  "Skyrim.esm:09F25B": {
+   "edid": "ServicesWhiterunCarlotta",
+   "list": "RVT_FL_VendorItemsFoodWithIngrediants",
+   "kind": "food",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "WhiterunWorld"
+   }
+  },
+  "Skyrim.esm:0A0705": {
+   "edid": "ServicesRiftenBeeandBarb",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "The Bee and Barb",
+    "edid": "RiftenBeeandBarb",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0A0708": {
+   "edid": "ServicesIvarsteadVilemyrInn",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Vilemyr Inn",
+    "edid": "IvarsteadVilemyrInn",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0A31C2": {
+   "edid": "ServicesRiftenTheScorchedHammer",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "Riften The Scorched Hammer Services",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "The Scorched Hammer",
+    "edid": "RiftenBlacksmith",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0A31C3": {
+   "edid": "ServicesRiftenBlackBriarMeadery",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Black-Briar Meadery",
+    "edid": "RiftenBlackBriarMeadery",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0A31C4": {
+   "edid": "ServicesRiftenElgrimsElixirs",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Elgrim's Elixirs",
+    "edid": "RiftenElgrimsElixirs",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0A31C5": {
+   "edid": "ServicesRiftenPawnedPrawn",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Pawned Prawn",
+    "edid": "RiftenPawnedPrawn",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0A31C6": {
+   "edid": "ServicesRiftenRaggedFlagon",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "The Ragged Flagon",
+    "edid": "RiftenRaggedFlagon",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0A31C7": {
+   "edid": "ServicesRiftenPlazaBrandish",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "7 am to 8 pm",
+   "cell": {
+    "world": "RiftenWorld"
+   }
+  },
+  "Skyrim.esm:0A31C8": {
+   "edid": "ServicesRiftenPlazaMadesi",
+   "list": "VendorItemsJeweler",
+   "kind": "jewelry",
+   "hours": "6 am to 8 pm",
+   "cell": {
+    "world": "RiftenWorld"
+   }
+  },
+  "Skyrim.esm:0A31C9": {
+   "edid": "ServicesRiftenPlazaGrelka",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "7 am to 8 pm",
+   "cell": {
+    "world": "RiftenWorld"
+   }
+  },
+  "Skyrim.esm:0A31CA": {
+   "edid": "ServicesRiftenPlazaMarise",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "hours": "7 am to 8 pm",
+   "cell": {
+    "world": "RiftenWorld"
+   }
+  },
+  "Skyrim.esm:0A3F01": {
+   "edid": "ServicesWindhelmCandelhearthHall",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Candlehearth Hall Services",
+   "cell": {
+    "name": "Candlehearth Hall",
+    "edid": "WindhelmCandlehearthHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0A3F04": {
+   "edid": "ServicesKynesgroveDravynea",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Dravynea Services",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Braidwood Inn",
+    "edid": "KynesgroveBraidwoodInn",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0A3F07": {
+   "edid": "ServicesWindhelmNiranye",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Niranye Services",
+   "hours": "8 am to 7 pm",
+   "cell": {
+    "world": "WindhelmWorld"
+   }
+  },
+  "Skyrim.esm:0A3F0B": {
+   "edid": "ServicesWindhelmAvalAtheron",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Aval Atheron Services",
+   "hours": "8 am to 7 pm",
+   "cell": {
+    "world": "WindhelmWorld"
+   }
+  },
+  "Skyrim.esm:0A3F0E": {
+   "edid": "ServicesWindhelmHillevi",
+   "list": "RVT_FL_VendorItemsFoodWithIngrediants",
+   "kind": "food",
+   "name": "Hillevi Cruel-Sea Services",
+   "hours": "8 am to 7 pm",
+   "cell": {
+    "world": "WindhelmWorld"
+   }
+  },
+  "Skyrim.esm:0A3F12": {
+   "edid": "ServicesWindhelmRevynSadri",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Revyn Sadri Services",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Sadri's Used Wares",
+    "edid": "WindhelmSadrisUsedWares",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0A3F16": {
+   "edid": "ServicesWindhelmCornerclub",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "New Gnisis Cornerclub Services",
+   "cell": {
+    "name": "New Gnisis Cornerclub",
+    "edid": "WindhelmNewGnisisCornerclub",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0A3F1A": {
+   "edid": "ServicesWindhelmBlacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "Windhelm Blacksmith Services",
+   "hours": "8 am to 7 pm",
+   "cell": {
+    "world": "WindhelmWorld"
+   }
+  },
+  "Skyrim.esm:0A3F1E": {
+   "edid": "ServicesWindhelmWuunferth",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Wuunferth Services",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Palace of the Kings",
+    "edid": "WindhelmPalaceoftheKings",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0A3F21": {
+   "edid": "ServicesWindhelmStables",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Windhelm Stable Services",
+   "hours": "9 am to 9 pm"
+  },
+  "Skyrim.esm:0A3F27": {
+   "edid": "ServicesKynesgroveBraidwoodInn",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Braidwood Inn Services",
+   "cell": {
+    "name": "Braidwood Inn",
+    "edid": "KynesgroveBraidwoodInn",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0A6BF5": {
+   "edid": "ServicesDragonBrideFourShieldsInn",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Sleeping Giant Services",
+   "cell": {
+    "name": "Four Shields Tavern",
+    "edid": "DragonBridgeFourShieldsTavern",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0A6BF9": {
+   "edid": "ServicesSolitudeWinkingSkeeverInn",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Winking Skeever Inn",
+   "cell": {
+    "name": "The Winking Skeever",
+    "edid": "SolitudeWinkingSkeever",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0A6BFB": {
+   "edid": "ServicesFalkreathDeadMansDrinkInn",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Dead Mans Drink",
+   "cell": {
+    "name": "Dead Man's Drink",
+    "edid": "FalkreathDeadMansDrink",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0A6BFE": {
+   "edid": "ServicesFalkreathGrayPineGoods",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Gray Pine Goods",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Gray Pine Goods",
+    "edid": "FalkreathGrayPineGoods",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0A6BFF": {
+   "edid": "ServicesSolitudeAngelinesAromatics",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "name": "Angeline's Aromatics Services",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Angeline's Aromatics",
+    "edid": "SolitudeAngelinesAromatics",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0A6C00": {
+   "edid": "ServicesSolitudeRadiantRaiments",
+   "list": "VendorItemsTailor",
+   "kind": "clothing",
+   "name": "Radiant Raiments",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Radiant Raiment",
+    "edid": "SolitudeRadiantRaiment",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0A6C01": {
+   "edid": "ServicesSolitudeStables",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Solutide stables",
+   "cell": {
+    "name": "Solitude Stables",
+    "edid": "SolitudeStables",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0A6C02": {
+   "edid": "ServicesSolitudeBitsAndPieces",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Bits and Pieces",
+   "cell": {
+    "name": "Bits and Pieces",
+    "edid": "SolitudeBitsandPieces",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0A6C03": {
+   "edid": "ServicesSolitudeBlacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Solitude Blacksmith",
+    "edid": "SolitudeBlackSmith",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0A6C11": {
+   "edid": "ServicesSolitudeFishAddvar",
+   "list": "RVT_FL_VendorItemsFoodWithIngrediants",
+   "kind": "food",
+   "name": "Fish vendor",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "SolitudeWorld"
+   }
+  },
+  "Skyrim.esm:0A6C12": {
+   "edid": "ServicesSolitudeFruitJala",
+   "list": "RVT_FL_VendorItemsFoodWithIngrediants",
+   "kind": "food",
+   "name": "Fruit vendor",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "SolitudeWorld"
+   }
+  },
+  "Skyrim.esm:0A6C13": {
+   "edid": "ServicesSolitudeFruitEvette",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Solitude Evette services",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "SolitudeWorld"
+   }
+  },
+  "Skyrim.esm:0AB87A": {
+   "edid": "ServicesMS13RiverwoodRiverwoodTrader",
+   "list": "VendorItemsMiscLucan",
+   "kind": "general goods",
+   "name": "Riverwood Trader Services",
+   "cell": {
+    "name": "Riverwood Trader",
+    "edid": "RiverwoodRiverwoodTrader",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0ABB43": {
+   "edid": "ServicesWhiterunFarengar",
+   "list": "RVT_FL_VendorItemsFarengar",
+   "kind": "spells",
+   "name": "Farengar spell vendor",
+   "cell": {
+    "name": "Dragonsreach",
+    "edid": "WhiterunDragonsreach",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0ABD9C": {
+   "edid": "ServicesDBBabette",
+   "list": "TVR_VendorItemsDB",
+   "kind": "alchemist",
+   "name": "Babette's Dark Brotherhood Services",
+   "cell": {
+    "name": "Dark Brotherhood Sanctuary",
+    "edid": "DarkBrotherhoodSanctuary",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0AC9BE": {
+   "edid": "ServicesDawnstarCourtWizard",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "The White Hall",
+    "edid": "DawnstarTheWhiteHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0AC9C2": {
+   "edid": "WEServicesHunterFaction",
+   "list": "VendorItemsHunter",
+   "kind": "hunting goods",
+   "cell": {
+    "name": "USKP Storage",
+    "edid": "USKPStorage",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0AC9CD": {
+   "edid": "ServicesRiftenWylandriahVendor",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Riften Wylandriah Vendor Services",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Mistveil Keep",
+    "edid": "RiftenMistveilKeep",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0AC9D0": {
+   "edid": "ServicesShorsStoneFilnjar",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "Shor's Stone Filnjar Services",
+   "hours": "7 am to 7 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "Skyrim.esm:0AC9DE": {
+   "edid": "ServicesThievesGuildArnskar",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "The Ragged Flagon",
+    "edid": "RiftenRaggedFlagon",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0AC9DF": {
+   "edid": "ServicesThievesGuildSyndus",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "The Ragged Flagon",
+    "edid": "RiftenRaggedFlagon",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0AC9E0": {
+   "edid": "ServicesThievesGuildHerluin",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "The Ragged Flagon",
+    "edid": "RiftenRaggedFlagon",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0AC9E1": {
+   "edid": "ServicesThievesGuildVanryth",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "The Ragged Flagon",
+    "edid": "RiftenRaggedFlagon",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0ACB6E": {
+   "edid": "ServicesLargashburAtub",
+   "list": "TVR_VendorItemsApothecary",
+   "kind": "apothecary",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Largashbur Longhouse",
+    "edid": "LargashburShagrolsLonghouse",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0AF631": {
+   "edid": "ServicesWindhelmWhitePhial",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "name": "White Phial Services",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "The White Phial",
+    "edid": "WindhelmWhitePhial",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0B2036": {
+   "edid": "ServicesSolitudeSybilleStentor",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Sybille Stentor",
+   "cell": {
+    "name": "Blue Palace",
+    "edid": "SolitudeBluePalace",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0B2037": {
+   "edid": "ServicesSolitudeFletcher",
+   "list": "VendorItemsFletcher",
+   "kind": "fletcher",
+   "name": "Fletcher",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Fletcher",
+    "edid": "SolitudeFletcher",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0B298B": {
+   "edid": "ServicesHonningbrewMeadery",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Honningbrew Meadery",
+    "edid": "HonningbrewMeadery01",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0B31E7": {
+   "edid": "ServicesHonningbrewMeaderyPost",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Honningbrew Meadery",
+    "edid": "HonningbrewMeadery01",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0B3FDF": {
+   "edid": "ServicesNarzulburBolar",
+   "list": "TVR_VendorItemsApothecary",
+   "kind": "apothecary",
+   "name": "Bolar Services",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Mauhulakh's Longhouse",
+    "edid": "NarzulburMauhulakhsLonghouse",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0B3FE3": {
+   "edid": "ServicesNarzulburDushnamub",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "Dushnamub Services",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Mauhulakh's Longhouse",
+    "edid": "NarzulburMauhulakhsLonghouse",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0B5D55": {
+   "edid": "WEServiceMiscMerchant",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Warehouse Bookshelves",
+    "edid": "WEMerchantChests",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0BBE6A": {
+   "edid": "WERJ04ServicesFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Warehouse Bookshelves",
+    "edid": "WEMerchantChests",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C6455": {
+   "edid": "ServicesSpouseMarkarthBlacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C6456": {
+   "edid": "ServicesSpouseMarkarthMiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C6457": {
+   "edid": "ServicesSpouseMarkarthSpells",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C6458": {
+   "edid": "ServicesSpouseMarkarthApothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C6459": {
+   "edid": "ServicesSpouseMarkarthInnkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C645A": {
+   "edid": "ServicesSpouseWhiterunApothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C645B": {
+   "edid": "ServicesSpouseWhiterunBlacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C645C": {
+   "edid": "ServicesSpouseWhiterunInnkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C645D": {
+   "edid": "ServicesSpouseWhiterunMiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C645E": {
+   "edid": "ServicesSpouseWhiterunSpells",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C645F": {
+   "edid": "ServicesSpouseSolitudeApothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C6460": {
+   "edid": "ServicesSpouseSolitudeBlacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C6461": {
+   "edid": "ServicesSpouseSolitudeInnkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C6462": {
+   "edid": "ServicesSpouseSolitudeMiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C6463": {
+   "edid": "ServicesSpouseSolitudeSpells",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C6464": {
+   "edid": "ServicesSpouseWindhelmApothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C6465": {
+   "edid": "ServicesSpouseWindhelmBlacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C6466": {
+   "edid": "ServicesSpouseWindhelmInnkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C6467": {
+   "edid": "ServicesSpouseWindhelmMiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C6468": {
+   "edid": "ServicesSpouseWindhelmSpells",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C6469": {
+   "edid": "ServicesSpouseRiftenApothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C646A": {
+   "edid": "ServicesSpouseRiftenBlacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C646B": {
+   "edid": "ServicesSpouseRiftenInnkeeper",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C646C": {
+   "edid": "ServicesSpouseRiftenMiscVendor",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C646D": {
+   "edid": "ServicesSpouseRiftenSpells",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "cell": {
+    "name": "Vlindrel Hall",
+    "edid": "MarkarthVlindrelHall",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0C6E40": {
+   "edid": "ServicesWhiterunWarmaidensForge",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "Warmaidens",
+   "hours": "6 am to 8 pm",
+   "cell": {
+    "name": "Warmaiden's",
+    "edid": "WhiterunWarmaidens",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0D54C4": {
+   "edid": "ServicesThievesGuildTonilia",
+   "list": "REQ_List_VendorItemsMiscBlackmarket",
+   "kind": null,
+   "cell": {
+    "name": "The Ragged Flagon",
+    "edid": "RiftenRaggedFlagon",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0D6AC5": {
+   "edid": "ServicesSolitudeEastEmpireCompany",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "East Empire Company",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "Skyrim.esm:0D8842": {
+   "edid": "ServicesThievesGuildEndon",
+   "list": "REQ_List_VendorItemsMiscBlackmarket",
+   "kind": null,
+   "cell": {
+    "name": "Endon's House",
+    "edid": "MarkarthEndonsHouse",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0D8843": {
+   "edid": "ServicesThievesGuildNiranye",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Niranye's House",
+    "edid": "WindhelmNiranyesHouse",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0D8844": {
+   "edid": "ServicesThievesGuildEnthir",
+   "list": "REQ_List_VendorItemsMiscBlackmarket",
+   "kind": null,
+   "cell": {
+    "name": "Hall of Attainment",
+    "edid": "WinterholdCollegeHallofAttainment",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0D8845": {
+   "edid": "ServicesThievesGuildGulumEi",
+   "list": "REQ_List_VendorItemsMiscBlackmarket",
+   "kind": null,
+   "cell": {
+    "name": "The Winking Skeever",
+    "edid": "SolitudeWinkingSkeever",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0D8846": {
+   "edid": "ServicesThievesGuildMallus",
+   "list": "REQ_List_VendorItemsMiscBlackmarket",
+   "kind": null,
+   "cell": {
+    "name": "Honningbrew Meadery",
+    "edid": "HonningbrewMeadery01",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0D8E52": {
+   "edid": "ServicesThievesGuildCaravanMajhad",
+   "list": "REQ_List_VendorItemsMiscBlackmarket",
+   "kind": null,
+   "cell": {
+    "name": "Do Not Delete - Not A Test Cell",
+    "edid": "ThievesGuildHoldingCell",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0D8E53": {
+   "edid": "ServicesThievesGuildCaravanAtahba",
+   "list": "REQ_List_VendorItemsMiscBlackmarket",
+   "kind": null,
+   "cell": {
+    "name": "Do Not Delete - Not A Test Cell",
+    "edid": "ThievesGuildHoldingCell",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0D8E54": {
+   "edid": "ServicesThievesGuildCaravanZaynabi",
+   "list": "REQ_List_VendorItemsMiscBlackmarket",
+   "kind": null,
+   "cell": {
+    "name": "Do Not Delete - Not A Test Cell",
+    "edid": "ThievesGuildHoldingCell",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0DA688": {
+   "edid": "ServicesNightGateInn",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Bannered Mare Services",
+   "cell": {
+    "name": "Nightgate Inn",
+    "edid": "NightgateInn",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0E7BCF": {
+   "edid": "ServicesWinterholdNelacar",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "The Frozen Hearth",
+    "edid": "WinterholdTheFrozenHearth",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0EE9F6": {
+   "edid": "ServicesWinterholdCollegeEnthir",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Enthir Services",
+   "cell": {
+    "name": "Hall of Attainment",
+    "edid": "WinterholdCollegeHallofAttainment",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0FE47C": {
+   "edid": "CWServicesQuartermasterImperial",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Quick Test Cell",
+    "edid": "CWQuartermasterContainers",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:0FFD65": {
+   "edid": "DBSancBabetteBedFaction",
+   "list": "VendorItemsDB",
+   "kind": "alchemist",
+   "name": "Babette's Bed Ownership",
+   "cell": {
+    "name": "Dark Brotherhood Sanctuary",
+    "edid": "DarkBrotherhoodSanctuary",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:10C42F": {
+   "edid": "ServicesWinterholdCollegeUrag",
+   "list": "VendorItemsCollegeUrag",
+   "kind": "books and spells",
+   "name": "Urag gro-Shub Services",
+   "cell": {
+    "name": "The Arcanaeum",
+    "edid": "WinterholdCollegeArcanaeum",
+    "interior": true
+   }
+  },
+  "Skyrim.esm:10FDE8": {
+   "edid": "ServicesWhiterunEorlund",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "Eorlund Gray-Mane",
+   "cell": {
+    "world": "WhiterunWorld"
+   }
+  },
+  "Snazzy Interiors - Markarth AIO.esp:000EBE": {
+   "edid": "GM_ServciesMarkarthSilversmith",
+   "list": "GM_VendorItemsSilversmith",
+   "kind": "silversmith",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Endon's House",
+    "edid": "MarkarthEndonsHouse",
+    "interior": true
+   }
+  },
+  "SurWR.esp:04D689": {
+   "edid": "0WRServiceWitchFaction",
+   "list": "VendorItemsApothecaryWR",
+   "kind": "apothecary",
+   "name": "Witch Shop",
+   "hours": "7 am to 7 pm",
+   "cell": {
+    "name": "Witch's Wisdoms",
+    "edid": "0WRSurWitchHouse",
+    "interior": true
+   }
+  },
+  "SurWR.esp:076F8B": {
+   "edid": "0WRServiceBakeryFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Bakery",
+   "hours": "7 am to 7 pm",
+   "cell": {
+    "name": "Brightflour Bakery",
+    "edid": "0WRBakery",
+    "interior": true
+   }
+  },
+  "SurWR.esp:09054A": {
+   "edid": "0WRDeedPeddlerFaction",
+   "list": "VendorItemsQUINTUSsWR",
+   "kind": "books and spells",
+   "hours": "6 am to 8 pm",
+   "cell": {
+    "world": "WhiterunWorld"
+   }
+  },
+  "SurWR.esp:0C8857": {
+   "edid": "0WRServiceBuilder",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Building Materials",
+   "hours": "7 am to 7 pm",
+   "cell": {
+    "name": "Happy Homestead General Goods",
+    "edid": "0WRSurBigShackShop",
+    "interior": true
+   }
+  },
+  "SurWR.esp:14C80F": {
+   "edid": "0WRRoadhouse",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "The Roadhouse",
+   "cell": {
+    "name": "The Roadhouse",
+    "edid": "0WRExtRoadhouse",
+    "interior": true
+   }
+  },
+  "SurWR.esp:14C810": {
+   "edid": "0WRExtBowSeller",
+   "list": "VendorItemsFletcher",
+   "kind": "fletcher",
+   "name": "Fletcher",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "The Roadhouse",
+    "edid": "0WRExtRoadhouse",
+    "interior": true
+   }
+  },
+  "SurWR.esp:18991F": {
+   "edid": "0WRFence",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "Whiterun Waterworks",
+    "edid": "0WRSewer",
+    "interior": true
+   }
+  },
+  "SurWR.esp:2F706A": {
+   "edid": "0WRGiantMerchant",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "House Steel-Arm",
+    "edid": "0WRSurNobleHouse",
+    "interior": true
+   }
+  },
+  "The Great City of Dawnstar.esp:023223": {
+   "edid": "ServicesDawnstarDawnstarTrader",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Dawnstar Trader Services",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "The Great City of Dragon Bridge.esp:002039": {
+   "edid": "BjornFactionBlacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "BjornFactionBlacksmith",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Bjorn's House",
+    "edid": "DragonBridgeBjornHouse",
+    "interior": true
+   }
+  },
+  "The Great City of Morthal.esp:0041F1": {
+   "edid": "ServicesMorthalErika",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "The Great City of Solitude.esp:00802A": {
+   "edid": "ServicesSolitudeEmpireTraderTGCoS",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Empire Trader",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "The Empire Trader",
+    "edid": "SolitudeTheEmpireTrader",
+    "interior": true
+   }
+  },
+  "The Great City of Solitude.esp:008C57": {
+   "edid": "ServicesSolitudeBlacksmithDocks",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "Blacksmith Docks",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Aksel's House",
+    "edid": "SolitudeAkselsHouse",
+    "interior": true
+   }
+  },
+  "The Great City of Solitude.esp:00D58E": {
+   "edid": "ServicesSolitudeSwampsideApothecaryTGCoS",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "name": "Swampside Apothecary Services",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Riverside Apothecary",
+    "edid": "SolitudeSwampsideApothecary",
+    "interior": true
+   }
+  },
+  "The Great City of Solitude.esp:01AA43": {
+   "edid": "ServicesSolitudeFruitJytteTGCoS",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Fruit vendor",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "The Great City of Winterhold v4.esp:00FB71": {
+   "edid": "ServicesWinterholdMagnarSmithTGC",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "hours": "9 am to 6 pm",
+   "cell": {
+    "name": "House of Clan Frost-Vein",
+    "edid": "WinterholdHouseFrostVeinTGCoWH",
+    "interior": true
+   }
+  },
+  "The Great City of Winterhold v4.esp:44F700": {
+   "edid": "ServicesWinterholdJhunalCultTGCoWH",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Hall of Runes",
+    "edid": "WinterholdLibraryTGC",
+    "interior": true
+   }
+  },
+  "The Great Town of Ivarstead.esp:000427": {
+   "edid": "ServicesIvarsteadGeneralGoodsTGCoI",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Pilgrim's Needs",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Pilgrim's Needs",
+    "edid": "IvarsteadKynehearthsHouseTGCoI",
+    "interior": true
+   }
+  },
+  "The Great Town of Karthwasten.esp:005D0C": {
+   "edid": "KarthwastenSleepyHagsInnFactionTGCoKW",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Sleepy Hags Inn Faction",
+   "cell": {
+    "name": "Sleepy Hags Inn",
+    "edid": "KarthwastenSleepyHagsInnTGCoKW",
+    "interior": true
+   }
+  },
+  "The Great Town of Karthwasten.esp:0066F2": {
+   "edid": "ServicesKarthwastenTheTrustyWitchTGCoKW",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "The Trusty Witch",
+    "edid": "KarthwastenTheTrustyWitchTGCoKW",
+    "interior": true
+   }
+  },
+  "The Great Town of Karthwasten.esp:0066F8": {
+   "edid": "ServicesKarthwastenBlacksmithTGCoKW",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "The Great Town of Karthwasten.esp:006704": {
+   "edid": "ServicesKarthwastenSleepyHagsInnTGCoKW",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Sleepy Hags Services",
+   "cell": {
+    "name": "Sleepy Hags Inn",
+    "edid": "KarthwastenSleepyHagsInnTGCoKW",
+    "interior": true
+   }
+  },
+  "The Great Town of Shor's Stone.esp:0668CB": {
+   "edid": "ServicesShorsStoneTheSlyFoxTGCoSS",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "The Sly Fox",
+    "edid": "ShorsStoneTheSlyFoxTGCoSS",
+    "interior": true
+   }
+  },
+  "The Great Village of Kynesgrove.esp:118190": {
+   "edid": "ServicesKynesgroveHerleifTGCoKG",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "Kynesgrove Herleif Services",
+   "hours": "8 am to 6 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "TheGiftofSaturalia.esp:000A5C": {
+   "edid": "Sat_FactionTrader",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Saturalia Faction Trader",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "TomeTrials.esp:000861": {
+   "edid": "TomeTrials_HistoryFaction",
+   "list": "TomeTrials_VendorList",
+   "kind": "tome trials",
+   "name": "Tome Trials History Teacher Faction",
+   "cell": {
+    "name": "Bards College",
+    "edid": "SolitudeBardsCollege",
+    "interior": true
+   }
+  },
+  "Tools of Kagrenac.esp:019E1A": {
+   "edid": "TOK_FACT_VonosServices",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Vonos Services",
+   "cell": {
+    "name": "The Arcanaeum",
+    "edid": "WinterholdCollegeArcanaeum",
+    "interior": true
+   }
+  },
+  "Triumvirate - Mage Archetypes.esp:43D32E": {
+   "edid": "TVR_Druid_Faction_ServicesDanicaPurespring",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Danica Pure-Spring Services",
+   "hours": "7 am to midnight",
+   "cell": {
+    "name": "Marker Storage Unit",
+    "edid": "TVR_Cell",
+    "interior": true
+   }
+  },
+  "Triumvirate - Mage Archetypes.esp:43D331": {
+   "edid": "TVR_Cleric_Faction_ServicesHamal",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Hamal Services",
+   "cell": {
+    "name": "Marker Storage Unit",
+    "edid": "TVR_Cell",
+    "interior": true
+   }
+  },
+  "Triumvirate - Mage Archetypes.esp:442434": {
+   "edid": "TVR_Cleric_Faction_ServicesRunil",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Runil Services",
+   "hours": "5 am to midnight",
+   "cell": {
+    "name": "Marker Storage Unit",
+    "edid": "TVR_Cell",
+    "interior": true
+   }
+  },
+  "Triumvirate - Mage Archetypes.esp:442435": {
+   "edid": "TVR_Cleric_Faction_ServicesRorlund",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Rorlund Services",
+   "hours": "6 am to midnight",
+   "cell": {
+    "name": "Marker Storage Unit",
+    "edid": "TVR_Cell",
+    "interior": true
+   }
+  },
+  "Triumvirate - Mage Archetypes.esp:442438": {
+   "edid": "TVR_Shaman_Faction_ServicesJora",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Jora Services",
+   "hours": "8 am to midnight",
+   "cell": {
+    "name": "Marker Storage Unit",
+    "edid": "TVR_Cell",
+    "interior": true
+   }
+  },
+  "Triumvirate - Mage Archetypes.esp:44243B": {
+   "edid": "TVR_Cleric_Faction_ServicesMaramal",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Maramal Services",
+   "hours": "7 am to midnight",
+   "cell": {
+    "name": "Marker Storage Unit",
+    "edid": "TVR_Cell",
+    "interior": true
+   }
+  },
+  "Triumvirate - Mage Archetypes.esp:442441": {
+   "edid": "TVR_Druid_Faction_ServicesFroki",
+   "list": "TVR_VendorItemsHunter",
+   "kind": "hunting goods",
+   "name": "Froki Services",
+   "cell": {
+    "name": "Marker Storage Unit",
+    "edid": "TVR_Cell",
+    "interior": true
+   }
+  },
+  "Triumvirate - Mage Archetypes.esp:442444": {
+   "edid": "TVR_Druid_Faction_ServicesDravynea",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Dravynea Services",
+   "cell": {
+    "name": "Marker Storage Unit",
+    "edid": "TVR_Cell",
+    "interior": true
+   }
+  },
+  "Triumvirate - Mage Archetypes.esp:442447": {
+   "edid": "TVR_Shaman_Faction_ServicesNura",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "name": "Nura Services",
+   "hours": "8 am to midnight",
+   "cell": {
+    "name": "Marker Storage Unit",
+    "edid": "TVR_Cell",
+    "interior": true
+   }
+  },
+  "Undeath.esp:0BB038": {
+   "edid": "NecroMerchantFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "The Broker's Shack",
+    "edid": "NecromancerMerchantShack",
+    "interior": true
+   }
+  },
+  "Undeath.esp:0EAB85": {
+   "edid": "NecroUpgradesMerchantFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "The Broker's Shack",
+    "edid": "NecromancerMerchantShack",
+    "interior": true
+   }
+  },
+  "Unofficial Skyrim Special Edition Patch.esp:00F6BB": {
+   "edid": "USKPServicesLargashburGarakh",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "Vigilant.esm:03AE1A": {
+   "edid": "zzzBMFactionMerchantVamp",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Vampire Merchant Faction",
+   "cell": {
+    "name": "Matron's Chamber",
+    "edid": "zzzBMMatronBedRoom",
+    "interior": true
+   }
+  },
+  "Vigilant.esm:051E77": {
+   "edid": "zzzCOFactionMerchantVigilant",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Vigilant Merchant Faction",
+   "cell": {
+    "world": "zCOBruiantWorld"
+   }
+  },
+  "Vigilant.esm:0A6BF1": {
+   "edid": "zzzAoMLibrarianTraderFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Librarian Trader Faction",
+   "cell": {
+    "name": "Temple of Stendarr",
+    "edid": "zzzAoMTempleOfStendarr",
+    "interior": true
+   }
+  },
+  "Vigilant.esm:0B1627": {
+   "edid": "zzzCHBalorShopFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Highwayman Shop Faction",
+   "cell": {
+    "name": "Highwayman's General Store",
+    "edid": "zzzCHWaterfrontHouse09",
+    "interior": true
+   }
+  },
+  "Vigilant.esm:0B57E1": {
+   "edid": "zzzCHTubalBlackSmithFaction",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "Tubal Blacksmith Faction",
+   "cell": {
+    "name": "Rusty Blacksmith",
+    "edid": "zzzCHWaterfrontHouse06",
+    "interior": true
+   }
+  },
+  "Vigilant.esm:0C1A26": {
+   "edid": "zzzCHPlagueDoctorFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Plage Doctor Faction",
+   "cell": {
+    "name": "Thrassian Apothecary",
+    "edid": "zzzCHDrugStore",
+    "interior": true
+   }
+  },
+  "Vigilant.esm:0DF11C": {
+   "edid": "zzzCHEnchanterFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Enchanter Faction",
+   "cell": {
+    "name": "Witch's House",
+    "edid": "zzzCHWaterfrontHouse14",
+    "interior": true
+   }
+  },
+  "Vigilant.esm:0F4777": {
+   "edid": "zzzCHCadwelShopFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Cadwel Shop Faction",
+   "cell": {
+    "name": "Beggar's Path",
+    "edid": "zzzCHSlumToSewer",
+    "interior": true
+   }
+  },
+  "Vigilant.esm:1273E7": {
+   "edid": "zzzCHJazhanShopFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Jazhan Shop Faction",
+   "cell": {
+    "name": "Prison Tower",
+    "edid": "zzzCHPrisonTower",
+    "interior": true
+   }
+  },
+  "Vigilant.esm:12906D": {
+   "edid": "zzzCHWormShopFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Worm Shop Faction",
+   "cell": {
+    "name": "Silorn's Priory",
+    "edid": "zzzCHPriorySilorn01",
+    "interior": true
+   }
+  },
+  "Vigilant.esm:244BCC": {
+   "edid": "zzzCHArasilShopFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Arasil Shop Faction",
+   "cell": {
+    "name": "Watchtower",
+    "edid": "zzzCHPlazaWatchTower01",
+    "interior": true
+   }
+  },
+  "Vigilant.esm:24724E": {
+   "edid": "zzzCHOgraShopFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Ogra Shop Faction",
+   "cell": {
+    "name": "Chestnut Handy Stables",
+    "edid": "zzzCHFGStable",
+    "interior": true
+   }
+  },
+  "Vigilant.esm:25D8BD": {
+   "edid": "zzzCHOwlShopFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Owl Shop Faction",
+   "cell": {
+    "name": "Jhunal's Library",
+    "edid": "zzzCHJhunalLibrary",
+    "interior": true
+   }
+  },
+  "Vigilant.esm:27350A": {
+   "edid": "zzzCHMeridiaShopFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Meridia Shop",
+   "cell": {
+    "name": "Dried Well",
+    "edid": "zzzCHSewerDriedWell",
+    "interior": true
+   }
+  },
+  "Vigilant.esm:2D4913": {
+   "edid": "zzzCHEpiJazhanJrShopFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Jazhan Shop Faction",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "Vigilant.esm:36182A": {
+   "edid": "zzzAoMWhiteOwlMerchantFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "White Owl Trader Faction",
+   "cell": {
+    "name": "Storage Room",
+    "edid": "zzzAoMDebugRoom",
+    "interior": true
+   }
+  },
+  "Vigilant.esm:36182B": {
+   "edid": "zzzAoMBlackOwlMerchantFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Black Owl Trader Faction",
+   "cell": {
+    "name": "Storage Room",
+    "edid": "zzzAoMDebugRoom",
+    "interior": true
+   }
+  },
+  "Vigilant.esm:4FE929": {
+   "edid": "zzzAoMGrayOwlMerchantFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Gra Owl Trader Faction",
+   "cell": {
+    "name": "Storage Room",
+    "edid": "zzzAoMDebugRoom",
+    "interior": true
+   }
+  },
+  "WindhelmSSE.esp:04D546": {
+   "edid": "0WHShopWinter",
+   "list": "VendorItemsHunterWilhelm",
+   "kind": "hunting goods",
+   "hours": "6 am to 10 pm",
+   "cell": {
+    "name": "Wilhelm's Winter Warehouse",
+    "edid": "0WHMarketWinterWares",
+    "interior": true
+   }
+  },
+  "WindhelmSSE.esp:04D58E": {
+   "edid": "0WHShopSalt",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "hours": "8 am to 9 pm",
+   "cell": {
+    "name": "Bread and Salt",
+    "edid": "0WHMarketBakery",
+    "interior": true
+   }
+  },
+  "WindhelmSSE.esp:06C709": {
+   "edid": "JobFenceFactionWHSoot",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "Fence",
+   "cell": {
+    "name": "The Rooftop",
+    "edid": "0GrayQuarterThievesGuild",
+    "interior": true
+   }
+  },
+  "WindhelmSSE.esp:06C731": {
+   "edid": "0GQShopFaction",
+   "list": "VendorItemsSpellsWHBoth",
+   "kind": "spells",
+   "hours": "6 am to 9 pm",
+   "cell": {
+    "name": "Mathendi's Magic and Imports",
+    "edid": "0GrayQuarterMerchant",
+    "interior": true
+   }
+  },
+  "WindhelmSSE.esp:14EC71": {
+   "edid": "0WHServiceAxes",
+   "list": "VendorItemsBlacksmithWHAxes",
+   "kind": "weapons",
+   "hours": "6 am to 6 pm",
+   "cell": {
+    "name": "Audmund's Axes",
+    "edid": "0WHIronAxes",
+    "interior": true
+   }
+  },
+  "WindhelmSSE.esp:15CFD2": {
+   "edid": "0WHBookMerchant",
+   "list": "VendorItemsCollegeUrag",
+   "kind": "books and spells",
+   "hours": "6 am to 8 pm",
+   "cell": {
+    "name": "Tormund's Tales",
+    "edid": "0WHMarketBookshop",
+    "interior": true
+   }
+  },
+  "WindhelmSSE.esp:16857C": {
+   "edid": "0WHServiceMeaderyFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "hours": "5 am to 9 pm",
+   "cell": {
+    "name": "Battle-Brew Meadery",
+    "edid": "0WHIronMeadry",
+    "interior": true
+   }
+  },
+  "WindhelmSSE.esp:18BFD3": {
+   "edid": "0WHExtInkeepService",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "hours": "4 am to midnight",
+   "cell": {
+    "name": "Wallside Inn",
+    "edid": "0WHExtTavern",
+    "interior": true
+   }
+  },
+  "WindhelmSSE.esp:1EE38F": {
+   "edid": "0WHExtElfSmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "hours": "5 am to 11 pm",
+   "cell": {
+    "name": "Delmon's Shack",
+    "edid": "0GQExtGrayShackSmith",
+    "interior": true
+   }
+  },
+  "WindhelmSSE.esp:211D53": {
+   "edid": "0WHIronHallServiceaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "cell": {
+    "name": "The Iron Halls",
+    "edid": "0WHIronHall",
+    "interior": true
+   }
+  },
+  "WindhelmSSE.esp:22152C": {
+   "edid": "0WHBakeryFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "hours": "6 am to 9 pm",
+   "cell": {
+    "name": "The Bakeshop Valand",
+    "edid": "0WHTsunBakery",
+    "interior": true
+   }
+  },
+  "Wintersun - Faiths of Skyrim.esp:03820C": {
+   "edid": "WSN_Divine_Zenithar_Boon2_Merchant_Faction",
+   "list": "DLC2DremoraVendorExclusion",
+   "kind": null,
+   "cell": {
+    "name": "WSN Location",
+    "edid": "WSN_AltarsCell",
+    "interior": true
+   }
+  },
+  "Wyrmstooth.esp:0603DA": {
+   "edid": "WTServicesGeneralTrader",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "General Trader",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "WyrmstoothWorld"
+   }
+  },
+  "Wyrmstooth.esp:060422": {
+   "edid": "WTServicesBlacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "Blacksmith",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "WyrmstoothWorld"
+   }
+  },
+  "Wyrmstooth.esp:4B9DD6": {
+   "edid": "WTServicesFortValusBlacksmithFaction",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "Blacksmith",
+   "cell": {
+    "name": "Fort Valus Muster",
+    "edid": "WyrmstoothFortValusMuster",
+    "interior": true
+   }
+  },
+  "Wyrmstooth.esp:4B9DD7": {
+   "edid": "WTServicesFortValusGardenFaction",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "name": "Garden",
+   "cell": {
+    "name": "Fort Valus Muster",
+    "edid": "WyrmstoothFortValusMuster",
+    "interior": true
+   }
+  },
+  "Wyrmstooth.esp:4B9DD8": {
+   "edid": "WTServicesFortValusKitchenFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Kitchen",
+   "cell": {
+    "name": "Fort Valus Muster",
+    "edid": "WyrmstoothFortValusMuster",
+    "interior": true
+   }
+  },
+  "Wyrmstooth.esp:52105E": {
+   "edid": "WTServicesThievesGuildWyrmstooth",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "name": "The Handsome Hermit",
+    "edid": "WyrmstoothTheHermit",
+    "interior": true
+   }
+  },
+  "Wyrmstooth.esp:541F50": {
+   "edid": "WTServicesOrcsApothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "name": "Apothecary",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "WyrmstoothWorld"
+   }
+  },
+  "Wyrmstooth.esp:5D0599": {
+   "edid": "WTServicesMudcrabMerchant",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "name": "General Trader",
+   "cell": {
+    "world": "WyrmstoothWorld"
+   }
+  },
+  "Wyrmstooth.esp:70BC0E": {
+   "edid": "WTServicesOrcsBlacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "Blacksmith",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "WyrmstoothWorld"
+   }
+  },
+  "Wyrmstooth.esp:A08510": {
+   "edid": "WTServicesInnFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Inn",
+   "cell": {
+    "name": "The Handsome Hermit",
+    "edid": "WyrmstoothTheHermit",
+    "interior": true
+   }
+  },
+  "Wyrmstooth.esp:BE98E4": {
+   "edid": "WTServicesCragwaterApothecary",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "name": "Cragwater Cavern",
+    "edid": "WyrmstoothCragwaterCavern",
+    "interior": true
+   }
+  },
+  "Wyrmstooth.esp:BE98E5": {
+   "edid": "WTServicesCragwaterBlacksmith",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "name": "Cragwater Cavern",
+    "edid": "WyrmstoothCragwaterCavern",
+    "interior": true
+   }
+  },
+  "Wyrmstooth.esp:BEB9D1": {
+   "edid": "WTServicesCragwaterEnchanter",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "cell": {
+    "name": "Cragwater Cavern",
+    "edid": "WyrmstoothCragwaterCavern",
+    "interior": true
+   }
+  },
+  "aaaGraniteHill.esp:005C12": {
+   "edid": "GraniteHillBlacksmithFaction",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "GraniteHillBlacksmithFaction",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "aaaGraniteHill.esp:005D46": {
+   "edid": "GraniteHillPriviousFaction",
+   "list": "VendorItemsSpells",
+   "kind": "spells",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Oddities & Curiosities",
+    "edid": "aaaOdditiesandCuriosities",
+    "interior": true
+   }
+  },
+  "aaaGraniteHill.esp:0078F3": {
+   "edid": "GraniteHillSheepsheadInnFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Granite Hill Sheepshead Inn Faction",
+   "cell": {
+    "name": "Sheepshead Inn",
+    "edid": "aaaGraniteHillSheepsHeadInn",
+    "interior": true
+   }
+  },
+  "aaaGraniteHill.esp:00846D": {
+   "edid": "GraniteHillPotentPotablesFaction",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Potent Potables",
+    "edid": "aaaGraniteHillPotentPotables",
+    "interior": true
+   }
+  },
+  "aaaGraniteHill.esp:00E16D": {
+   "edid": "GraniteHillPotentPotablesOutsideFaction",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "aaaGraniteHill.esp:00E6DE": {
+   "edid": "GraniteHillBlacksmithOutsideFaction",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "name": "GraniteHillBlacksmithFaction",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "aaaGraniteHill.esp:02160E": {
+   "edid": "GraniteHillGeneralStoreFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "8 am to 8 pm",
+   "cell": {
+    "name": "Crossroads Goods",
+    "edid": "aaaGraniteHillGeneralGoods",
+    "interior": true
+   }
+  },
+  "aaaGraniteHill.esp:03FCC9": {
+   "edid": "GraniteHillJenJohnFaction",
+   "list": "VendorItemsInnkeeper",
+   "kind": "food",
+   "name": "Granite Hill Jen John Faction",
+   "hours": "8 am to 6 pm",
+   "cell": {
+    "world": "Tamriel"
+   }
+  },
+  "ccBGSSSE001-Fish.esm:000F1D": {
+   "edid": "ccBGSSSE001_ServicesRiftenPlazaViriya",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "hours": "6 am to 6 pm",
+   "cell": {
+    "world": "RiftenWorld"
+   }
+  },
+  "ccasvsse001-almsivi.esm:000EC1": {
+   "edid": "ccASVSSE001_AlchemistrFaction",
+   "list": "VendorItemsApothecary",
+   "kind": "apothecary",
+   "cell": {
+    "edid": "ccASVSSE001Interior02",
+    "interior": true
+   }
+  },
+  "ccasvsse001-almsivi.esm:000EC3": {
+   "edid": "ccASVSSE001_CaretakerFaction",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "edid": "ccASVSSE001Interior02",
+    "interior": true
+   }
+  },
+  "ccasvsse001-almsivi.esm:001171": {
+   "edid": "ccASVSSE001_BlacksmithFaction",
+   "list": "VendorItemsBlacksmith",
+   "kind": "blacksmith",
+   "cell": {
+    "edid": "ccASVSSE001Interior02",
+    "interior": true
+   }
+  },
+  "ccvsvsse001-winter.esl:000801": {
+   "edid": "ccVSVSSE001_ServicesReindeerMerchant",
+   "list": "VendorItemsMisc",
+   "kind": "general goods",
+   "cell": {
+    "world": "Tamriel"
+   }
+  }
+ }
+}

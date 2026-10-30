@@ -713,5 +713,12 @@
         "Lights Out! settles what happens to him: he can be arrested if you report him, killed on the docks, persuaded to give up, or followed to Broken Oar Grotto with the stolen loot and killed there; he can also become your partner in looting the Icerunner."
       ]
     }
+  },
+  "questAliases": {
+    "_note": "WO-180 Part 7a (Bob, 30 Oct): a story quest always has its person; the records leave some of them as an alias filled at run time (a courier spawned at a marker, an authority figure found by condition, a copy of the follower alias). plain_alias would say 'the person the job names' for them. These say them as the quest's read does, by editor id (a trailing * is a prefix) and alias name: {edid: {alias: words}}.",
+    "CWMission03": { "Courier": "the enemy courier" },
+    "MS11": { "AuthorityFigure": "the steward" },
+    "ksws07MainQuest": { "WaifuKill": "Othriel" },
+    "Favor110*": { "QuestItem": "of the requested item" }
   }
 }
