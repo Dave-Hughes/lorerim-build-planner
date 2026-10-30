@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { auth } from "@/auth";
-import { BuildCard, BuildGrid } from "@/components/build/build-card";
 import { CharacterCard, CharacterGrid } from "@/components/build/character-card";
 import { AiAssisted } from "@/components/ui/ai-assisted";
 import { DeleteBuildButton } from "@/components/build/delete-build-button";
@@ -15,7 +14,7 @@ import { PlaythroughCards } from "@/components/playthrough/cards";
 import { listMyPlaythroughs, runsByBuild, type PlaythroughCard } from "@/lib/playthroughs/queries";
 import { makeCharacterOfRun } from "@/lib/playthroughs/writes";
 import { JoinCharacter } from "@/components/playthrough/join-character";
-import { SCOPES, type Scope } from "@/lib/oauth/core";
+import { SCOPES, shownScopes, type Scope } from "@/lib/oauth/core";
 import { connectedAssistants } from "@/lib/oauth/assistants";
 import styles from "../home.module.css";
 
@@ -34,14 +33,15 @@ export default async function MyBuilds() {
       </main>
     );
   }
-  const characters = playthroughsOn();
+  // Runs are a launch-held-back part (WO-182): a character is its build, with no run box, count or way to plan one while they are off.
+  const withRuns = playthroughsOn();
   // A run from before WO-179 on no build becomes a character of its own, the first time its owner opens My characters (nothing alone).
-  if (characters) for (const r of (await listMyPlaythroughs(userId)).filter((p) => !p.buildId)) await makeCharacterOfRun(userId, r.id);
+  if (withRuns) for (const r of (await listMyPlaythroughs(userId)).filter((p) => !p.buildId)) await makeCharacterOfRun(userId, r.id);
   const [builds, handle, assistants, runs, thanks] = await Promise.all([
     listBuildsByOwner(userId),
     handleFor(userId),
-    mcpOn() ? connectedAssistants(userId, characters) : Promise.resolve(null),
-    characters ? runsByBuild(userId) : Promise.resolve(null),
+    mcpOn() ? connectedAssistants(userId, withRuns) : Promise.resolve(null),
+    withRuns ? runsByBuild(userId) : Promise.resolve(null),
     // A player's report an admin approved (WO-146): said once it is on the planner.
     questsOn() ? approvedFor(userId) : Promise.resolve([]),
   ]);
@@ -52,7 +52,7 @@ export default async function MyBuilds() {
   return (
     <main className={`page ${styles.main}`}>
       <div className={styles.head}>
-        <h1 className={`title ${styles.h1}`}>{characters ? "My characters" : "My builds"}</h1>
+        <h1 className={`title ${styles.h1}`}>My characters</h1>
         <span className={styles.headActions}>
           {handle && (
             <Link href={`/u/${handle}`} className="btn btn-sm">
@@ -60,13 +60,13 @@ export default async function MyBuilds() {
             </Link>
           )}
           <Link href="/new" className="btn btn-primary btn-sm">
-            {characters ? "New character" : "New build"}
+            New character
           </Link>
         </span>
         {/* One list (WO-114): every build is a character, with a run or alone. */}
-        {characters && builds.length > 0 && (
+        {builds.length > 0 && (
           <span className="muted" style={{ marginLeft: "auto", fontSize: 14 }}>
-            {characterCount(builds.length, withRun)}
+            {withRuns ? characterCount(builds.length, withRun) : `${builds.length} ${builds.length === 1 ? "character" : "characters"}`}
           </span>
         )}
       </div>
@@ -77,7 +77,7 @@ export default async function MyBuilds() {
       ))}
       {builds.length === 0 ? (
         <p className="muted">None yet.</p>
-      ) : characters ? (
+      ) : (
         // One character card (WO-161, WO-164), its who-can-see-it, Delete and Edit under it.
         <CharacterGrid>
           {builds.map((b) => {
@@ -115,12 +115,6 @@ export default async function MyBuilds() {
             );
           })}
         </CharacterGrid>
-      ) : (
-        <BuildGrid>
-          {builds.map((b) => (
-            <BuildCard key={b.id} build={b} mine />
-          ))}
-        </BuildGrid>
       )}
       {unattached.length > 0 && (
         <section id="playthroughs" aria-labelledby="unattached" style={{ display: "flex", flexDirection: "column", gap: 20, marginTop: 48 }}>
@@ -131,7 +125,7 @@ export default async function MyBuilds() {
         </section>
       )}
       {/* The assistants this player let in (WO-109), while the MCP door is open. */}
-      {assistants && <Assistants rows={assistants.map((a) => ({ clientId: a.clientId, name: a.name, may: a.scopes.map((s) => SCOPES[s as Scope] ?? s), since: a.since, lastUsed: a.lastUsed, drafted: a.drafted }))} noun={characters ? "character" : "build"} />}
+      {assistants && <Assistants rows={assistants.map((a) => ({ clientId: a.clientId, name: a.name, may: shownScopes(a.scopes).map((s) => SCOPES[s as Scope] ?? s), since: a.since, lastUsed: a.lastUsed, drafted: a.drafted }))} noun="character" />}
     </main>
   );
 }

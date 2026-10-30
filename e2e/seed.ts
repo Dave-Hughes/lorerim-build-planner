@@ -20,6 +20,7 @@ import { snowflakeAt } from "../src/lib/moderation/age";
 import { emptyLevel } from "../src/lib/rules/derive";
 import { altmerSkipsPlan } from "../src/lib/rules/__fixtures__/altmer-skips";
 import type { BuildPlan } from "../src/lib/rules/types";
+import { emptyPlan } from "../src/lib/builds/draft";
 
 config({ path: ".env.local", quiet: true });
 
@@ -672,6 +673,30 @@ async function cleanupImages() {
 }
 
 /** Removes one build a test made (WO-90's import), so it doesn't sit in other tests' lists. */
+/** WO-182: a character that exists only because of a run (a shell with nothing planned and a run attached), Listed, made and removed by the one test that needs it. */
+export const RUN_MADE_BUILD_ID = "e2erunmade";
+export const RUN_MADE_PLAYTHROUGH_ID = "e2erunmadp";
+export async function addRunMadeCharacter() {
+  const pool = new Pool({ connectionString: assertDatabaseMatchesEnvironment() });
+  try {
+    const db = drizzle(pool, { schema });
+    await db.insert(schema.builds).values({ id: RUN_MADE_BUILD_ID, ownerId: TEST_USER_ID, name: "Rhea Runmade", description: "Made by a run.", gameVersion: "5.0.4.8", plan: emptyPlan("5.0.4.8"), visibility: "public", createdAt: new Date(Date.now() - 2 * 86_400_000) });
+    await db.insert(schema.playthroughs).values({ id: RUN_MADE_PLAYTHROUGH_ID, ownerId: TEST_USER_ID, buildId: RUN_MADE_BUILD_ID, name: "Rhea Runmade", line: "Made by a run.", gameVersion: "5.0.4.8", visibility: "public" });
+  } finally {
+    await pool.end();
+  }
+}
+export async function removeRunMadeCharacter() {
+  const pool = new Pool({ connectionString: assertDatabaseMatchesEnvironment() });
+  try {
+    const db = drizzle(pool, { schema });
+    await db.delete(schema.playthroughs).where(eq(schema.playthroughs.id, RUN_MADE_PLAYTHROUGH_ID));
+    await db.delete(schema.builds).where(eq(schema.builds.id, RUN_MADE_BUILD_ID));
+  } finally {
+    await pool.end();
+  }
+}
+
 export async function deleteBuild(id: string) {
   const pool = new Pool({ connectionString: assertDatabaseMatchesEnvironment() });
   try {

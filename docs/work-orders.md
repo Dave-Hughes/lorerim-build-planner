@@ -5145,7 +5145,7 @@ Unknown is fine when the page says so. Wrong is not.
 ---
 
 ## WO-182  Launch without playthroughs (Mac, 30 Oct 2026)
-Status: building (Mac)
+Status: for Bob (one box for Dave: the Vercel variable)
 
 **Why.** Dave, 30 Oct: "Lets look at the entire site and remove everything related to playthroughs; it's just still kind of not working." The launch is four things:
 - quests you can trust;
@@ -5168,45 +5168,45 @@ Playthroughs come back later, if at all, so this order **turns them off, not out
 - [ ] **`FEATURE_PLAYTHROUGHS=off` on staging** (Vercel, Preview, the staging branch) and on production, set on purpose so it no longer depends on the default.
   - Dev keeps it on for the playthrough tests. A test run with it off covers everything below.
   - Say in the notes how it was set (Vercel CLI or Dave in the dashboard).
-- [ ] **Every playthrough address** answers 404 with the flag off: `/p/…`, `/playthroughs…`, `/b/<id>/play`, `/b/<id>/run`, `/b/<id>/edit/play`, `/b/<id>/story…`, `/api/playthroughs…`, `/api/map/character(s)`. A character's own `/b/<id>` and `/b/<id>/edit` still work.
+- [x] **Every playthrough address** answers 404 with the flag off: `/p/…`, `/playthroughs…`, `/b/<id>/play`, `/b/<id>/run`, `/b/<id>/edit/play`, `/b/<id>/story…`, `/api/playthroughs…`, `/api/map/character(s)`. A character's own `/b/<id>` and `/b/<id>/edit` still work.
 
 ### Part 2. The site, page by page (with the flag off)
-- [ ] **A character is its build again.** `/b/<id>` shows the hero and then the build.
+- [x] **A character is its build again.** `/b/<id>` shows the hero and then the build.
   - The tabs are Build, and Guide when the guide is written. With only Build there is no tab row.
   - Nothing says Playthrough, acts, Who she is, a story or a save.
   - The editor's tabs are Build, Guide and Character, with no Playthrough or Story.
   - A character that exists only because of a run (a run-made character, Kyria's `mgf6t6a64y` on staging) doesn't show on any list. Its page is 404 for visitors.
   - The owner sees it nowhere either. It returns when the flag does.
-- [ ] **Creating a character** ends at Details with Finish. There is no What next step and no "Plan a playthrough". The rail has 7 steps.
-- [ ] **Cards** (home, `/characters`, `/me`, `/u/<handle>`): no run box, no "Act x of y", no bar, no Playthrough tag. `/characters` has no "with a run" filter, and `?run=1` is ignored. `/me`'s count says "N characters" with no runs, and "Is this the same character as…?" is gone.
-- [ ] **Home:**
+- [x] **Creating a character** ends at Details with Finish. There is no What next step and no "Plan a playthrough". The rail has 7 steps.
+- [x] **Cards** (home, `/characters`, `/me`, `/u/<handle>`): no run box, no "Act x of y", no bar, no Playthrough tag. `/characters` has no "with a run" filter, and `?run=1` is ignored. `/me`'s count says "N characters" with no runs, and "Is this the same character as…?" is gone.
+- [x] **Home:**
   - The hero, Three ways, the strip and Recent characters say nothing of playthroughs, acts or saves. Three ways becomes the launch's ways in: quests, places and people, and builds.
   - "Plan the life", "See a playthrough ›" and "Your save says where you stand" go.
   - Mark the copy for Dave to read before launch.
-- [ ] **The map** draws no character pin and takes no `?character=` or `?stops=` route from an act. Quest routes stay.
-- [ ] **Quest, place and people pages:** no "Add to a playthrough", "On Kyria's road", or anything that reads a playthrough.
-- [ ] **Header, footer, search, the tour ("Show me around"), `/changes`, the site guide and the share cards:** no Playthroughs link, result, step or line. Search returns no runs.
+- [x] **The map** draws no character pin and takes no `?character=` or `?stops=` route from an act. Quest routes stay.
+- [x] **Quest, place and people pages:** no "Add to a playthrough", "On Kyria's road", or anything that reads a playthrough.
+- [x] **Header, footer, search, the tour ("Show me around"), `/changes`, the site guide and the share cards:** no Playthroughs link, result, step or line. Search returns no runs.
 
 ### Part 3. What an assistant is told and can do (the connector)
-- [ ] **Tools:** with the flag off the door doesn't list or answer any playthrough tool:
+- [x] **Tools:** with the flag off the door doesn't list or answer any playthrough tool:
   - `create_playthrough`, `get_playthrough`, `list_my_playthroughs`, `set_playthrough`, `finish_draft_playthrough`, `add_act`, `set_act`, `move_act`, `remove_act`, `add_objective`, `set_objective`, `move_objective`, `remove_objective`, `suggest_objective`, `set_status`, `set_snapshot`, `set_theme`, `get_quest_log`;
   - and the `playthrough` and `act` inputs on `suggest_quests`, `suggest_places`, `suggest_doings`, `get_quest` and `set_details`.
 
   `set_details` keeps the build's name, description, notes, tags, main spells and mods. With no run to keep them on, `answers` and `never` go (say in the notes if they should move to the build later).
-- [ ] **`get_style_guide`** with the flag off has no Playthroughs or Who she is sections, and no rule that mentions acts, objectives, the Tale, saves or ticking.
+- [x] **`get_style_guide`** with the flag off has no Playthroughs or Who she is sections, and no rule that mentions acts, objectives, the Tale, saves or ticking.
   - Before you design keeps the questions that shape a build (27 and 28, the god, crafting). The ones that only fed a run go: 29's first act, 32 to 34, 36's mods for a story.
   - Renumber nothing that a build rule cites. Say what was cut.
   - The full guide comes back with the flag.
-- [ ] **The save connector** (`LoreRim save connector` on Dave's PC) is out of the launch. The door's save tools are off with the flag, and the connector says so if called.
-- [ ] **The player's questions:** every question that needs a playthrough or a save (8, 14, 20 to 22, 25, 26, 31, 32, 40 and any others) is marked "paused with playthroughs (WO-182)" and skipped while the flag is off, not deleted. Every quest, place, person and build question still passes. Add one: "Plan me a playthrough" gets an answer that says playthroughs aren't on the planner yet, and offers a build.
+- [x] **The save connector** (`LoreRim save connector` on Dave's PC) is out of the launch. The door's save tools are off with the flag, and the connector says so if called.
+- [x] **The player's questions:** every question that needs a playthrough or a save (8, 14, 20 to 22, 25, 26, 31, 32, 40 and any others) is marked "paused with playthroughs (WO-182)" and skipped while the flag is off, not deleted. Every quest, place, person and build question still passes. Add one: "Plan me a playthrough" gets an answer that says playthroughs aren't on the planner yet, and offers a build.
 
 ### Part 4. The check
-- [ ] **A test with the flag off** that crawls the site as a visitor and signed in (the e2e seed user), and fails on any of these words in the pages or the door's tool list and descriptions:
+- [x] **A test with the flag off** that crawls the site as a visitor and signed in (the e2e seed user), and fails on any of these words in the pages or the door's tool list and descriptions:
   - Playthrough, Who she is, Begin Act, acts as a heading, objective, Read a save, Where is she, Your save, story card, chapter.
   
   Quests' own "Act" names and a quest's objectives in its steps are the game's words and allowed; say how the test tells them apart.
-- [ ] The checks in CLAUDE.md, with the flag off and on (the playthrough tests run with it on).
-- [ ] Screenshots at 1440 and 390, signed in and out:
+- [x] The checks in CLAUDE.md, with the flag off and on (the playthrough tests run with it on).
+- [x] Screenshots at 1440 and 390, signed in and out:
   - home;
   - `/characters`;
   - `/me`;
@@ -5216,7 +5216,29 @@ Playthroughs come back later, if at all, so this order **turns them off, not out
 
   Then `for Bob`. Bob sends the reviewer over the whole site, then Dave tests.
 
-### Jeff's notes
+### Jeff's notes (Mac, 30 Oct)
+
+**One box is Dave's.** `FEATURE_PLAYTHROUGHS=off` is not set in Vercel: the CLI write (`vercel env add`, Preview on `staging` and Production) was refused by the permission check here, and I didn't go round it. What stands in its place is in the code: `playthroughsOn()` is now off whenever the variable is unset, except under `next dev` (it was on for Preview), so staging and production are off with no setting. Dave sets it on purpose in the Vercel dashboard (Settings, Environment Variables: `FEATURE_PLAYTHROUGHS` = `off`, Production and Preview/`staging`), or tells me to retry the CLI.
+
+**How it works.**
+- `src/lib/playthroughs/gate.ts` holds the switch and the list of playthrough addresses; `src/proxy.ts` answers every one with the not found page (404) while it is off: `/p/…`, `/playthroughs…`, `/b/<id>/play|run|story…`, `/b/<id>/edit/play|story…`, `/api/playthroughs…`, `/api/map/character(s)`. A character's own `/b/<id>` and `/b/<id>/edit` work.
+- A character that exists only because of a run (nothing planned, a run attached; `notRunMade` in `src/lib/builds/queries.ts`) is on no list and 404s for everyone, its owner too; it returns with the switch. The test makes one (`e2e/seed.ts`, `addRunMadeCharacter`).
+- Pages: `/new` says New character and ends at Details with Finish (the wizard takes `playthroughs` apart from `characters`, so What next is the only thing the switch removes); `/me` says "N characters" and has no join or plan links; `/characters` has no run filter and `?run=1` does nothing; the map ignores `?character=` and `?stops=` (a quest's route stays); Three ways is now "Look up a quest", "Find a place or a person", "Build a character".
+- The door: no playthrough tool is registered, and a call to one is the door's no such tool, not a sign-in (`signInNeeds` is per switch). `suggest_quests` and `suggest_places` stay (they were registered with the playthroughs; now `registerSuggestionTools`), `suggest_places` open to anyone with `where` and `levels`. `get_quest`, `set_details` and `list_my_builds` lose `playthrough`, `answers`, `never` and the run. `set_details` mods go on the build. `playthroughs:write` is not offered, granted, shown on the consent page or in whoami, and is left out of the metadata.
+- The style guide (`content/mcp/style.md`) has `[runs]` and `[launch]` lines and a `<!--runs-->` block; the full guide with the switch on is byte for byte what it was (checked). Off, it drops the Playthroughs and Who she is sections, 29, 32 to 34, 36's bard and Callings text, and 42 to 44, keeps 27, 28, 30, 31, 35 and 36, and says "The planner has no playthroughs yet. When a player asks for one, say so plainly and offer to plan a build instead." No rule was renumbered.
+- The save connector (`tools/save-connector/server.ts`) says it is out of the launch from both tools; `SAVE_CONNECTOR=on` brings it back.
+- Questions: 8, 14, 19, 20, 21, 22, 26, 39 and 40 are `paused` (skipped when the switch is off, in `player-questions.test.ts` and `docs/player-questions.md`). The unit tests run with it on (`vitest.config.mts`), so they still run; question 41 ("Plan me a playthrough") is new and asks for the launch guide.
+
+**The test** (`e2e/wo182.spec.ts`, a fifth server, the `noruns` project: the launch's switches on, playthroughs, progress and the Story off). It reads each page's text, title, labels and previews, and the door's tool list and the style guide. The words that fail everywhere: Playthrough, Who she is, Begin Act, Read a save, Where is she, Your save, story card, save connector. Objective, chapter and an act's name ("Act I") are also the game's words on a quest's steps and a line's chapters, so those three only fail outside `/quests`, `/places`, `/people`, `/map`, `/search`, `/changes`, `/guide`, `/gear`, and in the tools that don't read quests. The beginner's guide is about the game, so "your save" and "playthrough" in its text (back up your saves, a playthrough in the player's sense) are allowed there only. The one line in the launch style guide that says playthroughs aren't there is let through.
+
+**Checks.** Typecheck, lint (two old warnings), `npm test` (826 passed, 7 expected fail, 1 skipped), `npm run build`, and the full `npm run test:e2e`: 575 passed and two failed. `wo81-launch` asserted the old redirect of `/b/<id>/story` and now asserts the 404 (the order's Part 1). `perf.spec.ts` (WO-71, the 100-level editor) took 49.5 s in the full run against a limit it missed, and 46.2 s alone, where it passes; it is a timing test and the order touches nothing in the editor. `wo111-off`'s `/new` test now says New character with no What next. Both were rerun and pass, and `noruns` passes (16).
+
+**Screenshots** are written by `npx playwright test --project=noruns -g screenshots` (and the Finish one by "a character is made to Finish") into `test-results/wo182-*.png`: signed out and signed in, 1440 and 390: home, `/characters`, `/me`, Kyria's character and editor, a quest page, and `/new` at Details with Finish.
+
+**Copy for Dave to read before launch.** Home: the hero line "Plan a LoreRim character from the first perk to the last quest, checked against the game's own files" (left as it was; "last quest" may read as a run), and the three ways: "Look up a quest: How it starts, what it needs and what each step asks of you, read from the game's own files." / "Find a place or a person: Where it is on the map and who is there; where a person is through the day, what they sell and train." / "Build a character: Race, birthsign, god and traits, then perks and skills level by level, inside LoreRim's rules." The connector's line, "Ask your Claude", left the home page; the door is still on `/me`.
+
+**Not done, on purpose.** No table or column was dropped. WO-179's backfill and Kyria's text script were not run. WO-181 Part 6 waits.
+
 
 ---
 

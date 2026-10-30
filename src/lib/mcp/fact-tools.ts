@@ -11,6 +11,7 @@ import { creationFields, gearRow, levelFields } from "./build-tools";
 import { versionData } from "./errors";
 import { DEFAULT_VERSION, FACT_KINDS, FactsError, checkPlan, checkProgression, getPerk, getPerson, getQuest, getCreation, getRules, getSpell, getTree, playerState, searchFacts, styleGuide, withQuestLink } from "./facts";
 import { toldOf } from "./playthroughs";
+import { playthroughsOn } from "@/lib/playthroughs/gate";
 
 /**
  * The facts tools (WO-108), open with no sign-in, and whoami and get_style_guide. Out of the route so
@@ -96,6 +97,7 @@ export function registerFactTools(server: Server, guarded: Guarded, origin = "")
     },
     async ({ version: v }) => guarded(() => getRules(v)),
   );
+  const runs = playthroughsOn();
   const questInput = {
     id: z.string().min(1).max(120).optional().describe("A quest line or story id from search_facts, or a quest's EDID."),
     name: z.string().min(1).max(120).optional().describe("A quest's, quest line's or story's name."),
@@ -103,14 +105,15 @@ export function registerFactTools(server: Server, guarded: Guarded, origin = "")
     // Where the player is (WO-115 Part 3): give any of these and the answer says whether it's open for them.
     level: z.number().int().min(1).max(100).optional().describe("The player's level, for openForYou."),
     done: z.array(z.string().max(120)).max(200).optional().describe("Quest lines (ids or names) and quests (EDIDs or names) the player has finished, from what they said."),
-    playthrough: z.string().max(80).optional().describe("One of the player's playthroughs: its save's level and quest stages and what it has ticked (needs sign-in)."),
+    // Held back from launch (WO-182): the playthrough input is there only while playthroughs are on.
+    ...(runs ? { playthrough: z.string().max(80).optional().describe("One of the player's playthroughs: its save's level and quest stages and what it has ticked (needs sign-in).") } : {}),
     places: z.boolean().optional().describe("true for every place a thing to read can be found; eight are given by default, grouped by area."),
   };
   type QuestArgs = { id?: string; name?: string; version?: string; level?: number; done?: string[]; playthrough?: string; places?: boolean };
   const quest = async (a: QuestArgs, ctx: { http?: { authInfo?: unknown } }) => {
-    const told = a.level !== undefined || a.done?.length || a.playthrough;
+    const told = a.level !== undefined || a.done?.length || (runs && a.playthrough);
     const userId = (ctx.http?.authInfo as PlannerAuth | undefined)?.extra?.userId;
-    const player = told ? playerState(await toldOf(a, typeof userId === "string" ? userId : null), a.version) : null;
+    const player = told ? playerState(await toldOf(runs ? a : { ...a, playthrough: undefined }, runs && typeof userId === "string" ? userId : null), a.version) : null;
     // The quest's own page (WO-147 Part 1).
     return withQuestLink(getQuest({ id: a.id, name: a.name, places: a.places }, a.version, player), origin);
   };
@@ -119,10 +122,10 @@ export function registerFactTools(server: Server, guarded: Guarded, origin = "")
     {
       title: "A quest",
       description:
-        "Get a LoreRim quest, quest line or story by id or name: how it starts (who, where, how, its level gate and what else it needs, with where each fact was checked; unchecked lines say so and give no instructions), and the quest's objectives and the endings its records list, each with when it shows. A line or story answers for its opening quest. A name that isn't a quest's finds the quest by what's in it, as search_facts does, and found says what matched. Give the player's level, what they've finished, or their playthrough, and openForYou says \"open for you\", \"locked: why\" or \"unknown: why\"; with a playthrough, \"locked for this character: why\" when the quest or what it needs is on the character's never list (set_details never). Never call a quest open unless it says open for you.",
+        `Get a LoreRim quest, quest line or story by id or name: how it starts (who, where, how, its level gate and what else it needs, with where each fact was checked; unchecked lines say so and give no instructions), and the quest's objectives and the endings its records list, each with when it shows. A line or story answers for its opening quest. A name that isn't a quest's finds the quest by what's in it, as search_facts does, and found says what matched. Give the player's level${runs ? ", what they've finished, or their playthrough" : " or what they've finished"}, and openForYou says "open for you", "locked: why" or "unknown: why";${runs ? ` with a playthrough, "locked for this character: why" when the quest or what it needs is on the character's never list (set_details never).` : ""} Never call a quest open unless it says open for you.`,
       inputSchema: z.object(questInput),
     },
-    async (a: QuestArgs, ctx) => guarded(() => quest(a, ctx)),
+    async (a: unknown, ctx) => guarded(() => quest(a as QuestArgs, ctx)),
   );
   server.registerTool(
     "get_person",
@@ -141,7 +144,7 @@ export function registerFactTools(server: Server, guarded: Guarded, origin = "")
       description: "The same as get_quest, kept for assistants that still call it by this name. Use get_quest.",
       inputSchema: z.object(questInput),
     },
-    async (a: QuestArgs, ctx) => guarded(() => quest(a, ctx)),
+    async (a: unknown, ctx) => guarded(() => quest(a as QuestArgs, ctx)),
   );
   server.registerTool(
     "check_progression",
@@ -244,9 +247,9 @@ export function registerFactTools(server: Server, guarded: Guarded, origin = "")
     "get_style_guide",
     {
       title: "How to write for the planner",
-      description: "Get the planner's rules for writing builds, guides and playthroughs that will be published on it.",
+      description: runs ? "Get the planner's rules for writing builds, guides and playthroughs that will be published on it." : "Get the planner's rules for writing builds and guides that will be published on it.",
       inputSchema: z.object({}),
     },
-    async () => guarded(() => styleGuide()),
+    async () => guarded(() => styleGuide(runs)),
   );
 }

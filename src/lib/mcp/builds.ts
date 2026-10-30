@@ -7,6 +7,8 @@ import { db, schema } from "@/db";
 import { buildDetailsSchema, type BuildDetails } from "@/lib/builds/validate";
 import { MAX_TAGS, TAG_BY_SLUG, TAGS } from "@/lib/builds/tags";
 import { insertBuild, writeDetails, writePlan } from "@/lib/builds/writes";
+import { notRunMade } from "@/lib/builds/queries";
+import { playthroughsOn } from "@/lib/features";
 import { gearData } from "@/lib/gear/data";
 import { ipCall, overLimit } from "@/lib/moderation/limits";
 import { readPlan } from "@/lib/rules/convert";
@@ -185,21 +187,23 @@ export async function getBuild(p: Player, input: { build: string }) {
   return { build: b.id, name: b.name, description: b.description, visibility: b.visibility, link: link(p, b.id), draftedByAnAssistant: !!b.draftedBy, ...(b.mods?.length ? { mods: b.mods } : {}), ...plainOf(d, b.plan), ...(warnings.length ? { warnings } : {}) };
 }
 
-/** list_my_builds: the player's builds, newest first, each with its run when it has one (WO-114). */
+/** list_my_builds: the player's builds, newest first, each with its run when it has one (WO-114), while playthroughs are on. */
 export async function listMyBuilds(p: Player) {
-  const runs = await db()
-    .select({ id: schema.playthroughs.id, buildId: schema.playthroughs.buildId, name: schema.playthroughs.name })
-    .from(schema.playthroughs)
-    .where(and(eq(schema.playthroughs.ownerId, p.userId), isNotNull(schema.playthroughs.buildId)));
+  const runs = playthroughsOn()
+    ? await db()
+        .select({ id: schema.playthroughs.id, buildId: schema.playthroughs.buildId, name: schema.playthroughs.name })
+        .from(schema.playthroughs)
+        .where(and(eq(schema.playthroughs.ownerId, p.userId), isNotNull(schema.playthroughs.buildId)))
+    : [];
   const rows = await db()
     .select({ id: schema.builds.id, name: schema.builds.name, visibility: schema.builds.visibility, plan: schema.builds.plan, updatedAt: schema.builds.updatedAt, draftedBy: schema.builds.draftedBy })
     .from(schema.builds)
-    .where(eq(schema.builds.ownerId, p.userId))
+    .where(and(eq(schema.builds.ownerId, p.userId), notRunMade()))
     .orderBy(desc(schema.builds.updatedAt))
     .limit(100);
   return rows.map((r) => {
     const run = runs.find((x) => x.buildId === r.id);
-    return { build: r.id, name: r.name, visibility: r.visibility, levels: r.plan.levels.length, updated: r.updatedAt.toISOString(), draftedByAnAssistant: !!r.draftedBy, run: run ? { playthrough: run.id, name: run.name } : null };
+    return { build: r.id, name: r.name, visibility: r.visibility, levels: r.plan.levels.length, updated: r.updatedAt.toISOString(), draftedByAnAssistant: !!r.draftedBy, ...(playthroughsOn() ? { run: run ? { playthrough: run.id, name: run.name } : null } : {}) };
   });
 }
 

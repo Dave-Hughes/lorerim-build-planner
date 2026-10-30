@@ -627,7 +627,7 @@ export async function suggestPlaces(p: Player, input: { playthrough?: string; ac
  * suggest_places for a place and levels, with no stored act (WO-148 item 3): where is a town, a hold (every town in it) or a
  * place (the town nearest it); levels is "15 to 20". The same places, pointers and fit as for an act; nothing is used yet.
  */
-export function placesAt(where: string | undefined, levels: string | undefined) {
+export function placesAt(where: string | undefined, levels: string | undefined, runs = true) {
   if (!where?.trim()) throw new FactsError('Give where (a town, a hold or a place: "Solitude", "Haafingar") and levels ("15 to 20"), or a playthrough and an act.');
   const lv = parseLevels(levels ?? "");
   if (typeof lv === "string") throw new FactsError(levels ? lv : 'Give the levels too: "15 to 20".');
@@ -643,7 +643,9 @@ export function placesAt(where: string | undefined, levels: string | undefined) 
     towns,
     places: placesNear(towns, lv.from, lv.to, { linked: [], passedBy: [] }),
     ...(notMeasured.length ? { notMeasuredYet: notMeasured, notMeasuredNote: `The places index doesn't measure distances from ${notMeasured.join(" or ")} yet.` } : {}),
-    note: "Pick a few that fit what she cares about, and leave most of them alone (rule 20). Nothing here is on a playthrough yet.",
+    note: runs
+      ? "Pick a few that fit what she cares about, and leave most of them alone (rule 20). Nothing here is on a playthrough yet."
+      : "Pick a few that fit what the character cares about, and leave most of them alone. A place above these levels is one to come back to.",
   };
 }
 

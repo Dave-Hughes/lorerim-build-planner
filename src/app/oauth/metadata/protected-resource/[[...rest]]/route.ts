@@ -1,5 +1,5 @@
 import { generateProtectedResourceMetadata } from "mcp-handler";
-import { GRANTABLE } from "@/lib/oauth/core";
+import { grantable } from "@/lib/oauth/core";
 import { endpoint, json } from "@/lib/oauth/http";
 import { MCP_PATH, resourceAt } from "@/lib/oauth/resource";
 import { originOf } from "@/lib/oauth/store";
@@ -15,7 +15,7 @@ const handle = endpoint(async (req: Request) => {
   const parts = path.split("/").filter(Boolean).map(decodeURIComponent);
   // The door's own path form (/api/mcp/<rest>); anything else, or nothing, names /api/mcp.
   const under = parts.slice(0, 2).join("/") === MCP_PATH.slice(1) ? parts.slice(2) : [];
-  return json(generateProtectedResourceMetadata({ authServerUrls: [origin], resourceUrl: resourceAt(origin, under), additionalMetadata: { scopes_supported: GRANTABLE, resource_name: "LoreRim Build Planner" } }), 200, {
+  return json(generateProtectedResourceMetadata({ authServerUrls: [origin], resourceUrl: resourceAt(origin, under), additionalMetadata: { scopes_supported: grantable(), resource_name: "LoreRim Build Planner" } }), 200, {
     "cache-control": "max-age=3600",
   });
 });

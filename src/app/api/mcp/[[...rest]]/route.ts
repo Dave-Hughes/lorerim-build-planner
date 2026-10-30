@@ -7,7 +7,7 @@ import { answer, type Answer } from "@/lib/mcp/answer";
 import { mcpCall } from "@/lib/moderation/limits";
 import { recordDoorEvent } from "@/lib/mcp/door-events";
 import { registerBuildTools } from "@/lib/mcp/build-tools";
-import { registerPlaythroughTools } from "@/lib/mcp/playthrough-tools";
+import { registerPlaythroughTools, registerSuggestionTools } from "@/lib/mcp/playthrough-tools";
 import { verifyBearer } from "@/lib/oauth/mcp-auth";
 import { gateOf } from "@/lib/mcp/sign-in-tools";
 import { OAuthError, OAuthErrorCode, bearerAuthChallengeResponse } from "@modelcontextprotocol/server";
@@ -53,7 +53,8 @@ function handlerFor(ip: string, origin: string) {
         }) as never)) as typeof server.registerTool;
       registerFactTools(server, (run) => guarded(ip, run), origin);
       registerBuildTools(server, (run) => guarded(ip, run), origin);
-      // Playthroughs (WO-111), while their switch is on.
+      // Playthroughs (WO-111), while their switch is on; the quest and place suggestions stay either way (WO-182).
+      registerSuggestionTools(server, (run) => guarded(ip, run), origin, playthroughsOn());
       if (playthroughsOn()) registerPlaythroughTools(server, (run) => guarded(ip, run), origin);
     },
     { serverInfo: { name: "LoreRim Build Planner", version: "1.0.0" } },

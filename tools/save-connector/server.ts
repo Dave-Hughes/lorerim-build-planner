@@ -19,7 +19,14 @@ const folders = given.length ? given : (process.env.SAVE_FOLDERS ?? "").split(";
 const FOLDERS = folders.length ? folders : defaultFolders(homedir());
 const FORMS = loadForms([join(here, "quest_forms.json"), join(here, "..", "..", "src", "data", "lorerim-5.0.4.8", "quest_forms.json")]);
 
-const TOOLS = [
+/**
+ * Out of the launch (WO-182): the planner has no playthroughs yet, so there is nowhere for a save to go. Both tools say so when called, and
+ * their descriptions do too. SAVE_CONNECTOR=on brings them back as they were; the reader and everything under it stay.
+ */
+const PAUSED = process.env.SAVE_CONNECTOR?.trim().toLowerCase() !== "on";
+const PAUSED_TEXT = "The save connector is out of the planner's launch. The planner has no playthroughs yet, so there is nothing for a save to go to.";
+
+const LIVE_TOOLS = [
   {
     name: "read_latest_save",
     title: "Read the latest save",
@@ -39,7 +46,10 @@ const TOOLS = [
   },
 ];
 
+const TOOLS = PAUSED ? LIVE_TOOLS.map((t) => ({ ...t, description: PAUSED_TEXT })) : LIVE_TOOLS;
+
 function call(name: string, args: Record<string, unknown>) {
+  if (PAUSED) throw new Error(PAUSED_TEXT);
   const character = typeof args.character === "string" && args.character.trim() ? args.character : undefined;
   if (name === "read_latest_save") return readLatest(FOLDERS, FORMS, character);
   if (name === "list_saves") {
@@ -72,7 +82,7 @@ createInterface({ input: process.stdin }).on("line", (line) => {
       protocolVersion: typeof params.protocolVersion === "string" ? params.protocolVersion : "2025-06-18",
       capabilities: { tools: {} },
       serverInfo: { name: "lorerim-save-connector", title: "LoreRim save connector", version: "1.0.0" },
-      instructions: "Reads the player's Skyrim saves on this PC for the LoreRim Build Planner. Pass read_latest_save's snapshot to set_snapshot unchanged.",
+      instructions: PAUSED ? PAUSED_TEXT : "Reads the player's Skyrim saves on this PC for the LoreRim Build Planner. Pass read_latest_save's snapshot to set_snapshot unchanged.",
     });
   if (method === "ping") return answer(id, {});
   if (method === "tools/list") return answer(id, { tools: TOOLS });

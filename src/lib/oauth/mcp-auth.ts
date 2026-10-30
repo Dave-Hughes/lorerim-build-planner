@@ -1,7 +1,7 @@
 import "server-only";
 import { eq } from "drizzle-orm";
 import { db, schema } from "@/db";
-import { SCOPES, scopeRefusal, verifyAccess, type Scope } from "./core";
+import { SCOPES, scopeRefusal, shownScopes, verifyAccess, type Scope } from "./core";
 import { dbStore } from "./store";
 
 /** The token's details as the MCP tools see them (ctx.http.authInfo). */
@@ -42,7 +42,7 @@ export async function whoami(userId: string, scopes: string[]) {
     name: u?.name ?? null,
     handle: u?.handle ?? null,
     page: u?.handle ? `/u/${u.handle}` : null,
-    scopes: scopes.map((s) => ({ scope: s, means: SCOPES[s as Scope] ?? s })),
+    scopes: shownScopes(scopes).map((s) => ({ scope: s, means: SCOPES[s as Scope] ?? s })),
   };
 }
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MapPage, type MapInitial } from "@/components/map/map-page";
-import { progressTracking, questsOn } from "@/lib/features";
+import { playthroughsOn, progressTracking, questsOn } from "@/lib/features";
 import { mapPlaces, stopsRoute } from "@/lib/map/data";
 import { PLACE_GROUPS } from "@/lib/places/groups";
 import { mapEntry } from "@/lib/places/map";
@@ -28,10 +28,11 @@ export default async function MapRoute({ searchParams }: { searchParams: Search 
   const initial: MapInitial = {
     place: sp.place && slugs.has(sp.place) ? sp.place : null,
     quest: sp.quest ? sp.quest.slice(0, 120) : null,
-    character: sp.character && progressTracking() ? sp.character.slice(0, 20) : null,
+    character: sp.character && playthroughsOn() && progressTracking() ? sp.character.slice(0, 20) : null,
     types: (sp.types ?? "").split(",").filter((t) => PLACE_GROUPS.some((g) => g.key === t)),
     onlyQuests: sp.quests === "1",
-    stops: sp.stops ? stopsRoute(sp.stops.split(",").map((x) => x.trim()), sp.route || "Her route") : null,
+    // An act's route is a playthrough's (WO-182): ignored while they are off. A quest's stays.
+    stops: sp.stops && playthroughsOn() ? stopsRoute(sp.stops.split(",").map((x) => x.trim()), sp.route || "Her route") : null,
     zoom: num(sp.z),
     x: num(sp.x),
     y: num(sp.y),

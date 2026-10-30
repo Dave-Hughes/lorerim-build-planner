@@ -44,8 +44,8 @@ export function NewInTheWorld({ changes }: { changes: Change[] }) {
   );
 }
 
-/** Three ways to use it, last. */
-export function ThreeWays({ playthroughs }: { playthroughs: boolean }) {
+/** Three ways to use it, last (WO-182): the quests, the places and people, and the builds. */
+export function ThreeWays() {
   return (
     <section className={`${styles.sec} ${styles.rule}`} aria-labelledby="ways">
       <h2 id="ways" className={styles.h2}>
@@ -54,20 +54,21 @@ export function ThreeWays({ playthroughs }: { playthroughs: boolean }) {
       <div className={styles.ways}>
         <div className={styles.w}>
           <span className={styles.n}>1</span>
-          <h3>Build a character</h3>
-          <p>Race, birthsign, god and traits, then perks and skills level by level, inside LoreRim&apos;s rules.</p>
-          <Link href="/new">Make a character ›</Link>
+          <h3>Look up a quest</h3>
+          <p>How it starts, what it needs and what each step asks of you, read from the game&apos;s own files.</p>
+          <Link href="/quests">Browse quests ›</Link>
         </div>
         <div className={styles.w}>
           <span className={styles.n}>2</span>
-          <h3>Plan the life</h3>
-          <p>Acts with a goal and a place, and the quests and jobs in each. Your save says where you stand.</p>
-          {playthroughs ? <Link href="/characters?run=1">See a playthrough ›</Link> : null}
+          <h3>Find a place or a person</h3>
+          <p>Where it is on the map and who is there; where a person is through the day, what they sell and train.</p>
+          <Link href="/places">Browse places ›</Link>
         </div>
         <div className={styles.w}>
           <span className={styles.n}>3</span>
-          <h3>Ask your Claude</h3>
-          <p>Your own Claude can draft a character here, and read your save to it.</p>
+          <h3>Build a character</h3>
+          <p>Race, birthsign, god and traits, then perks and skills level by level, inside LoreRim&apos;s rules.</p>
+          <Link href="/new">Make a character ›</Link>
         </div>
       </div>
     </section>

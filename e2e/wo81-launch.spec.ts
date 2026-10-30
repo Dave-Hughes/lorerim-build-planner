@@ -19,11 +19,8 @@ test("point 2: Story off: no way into the reader, no Story page, edit-bar link o
   await expect(page.getByText("The Mender")).toHaveCount(0);
   await expect(page.getByRole("link", { name: /^Read the story/ }).first()).toHaveCount(0);
 
-  // WO-181: the Story is retired for good, so its addresses go to the character's page and its editor to the Playthrough tab.
-  await page.goto(`/b/${HEALER_BUILD_ID}/story`);
-  await expect(page).toHaveURL(new RegExp(`/b/${HEALER_BUILD_ID}(\\?tab=playthrough)?$`));
-  await page.goto(`/b/${HEALER_BUILD_ID}/story/edit`);
-  await expect(page).toHaveURL(new RegExp(`/b/${HEALER_BUILD_ID}/edit/play$`));
+  // WO-182: this server has playthroughs off too, so the Story's addresses (retired in WO-181) are not found, not sent anywhere.
+  for (const path of [`/b/${HEALER_BUILD_ID}/story`, `/b/${HEALER_BUILD_ID}/story/edit`, `/b/${HEALER_BUILD_ID}/edit/story`]) expect((await page.goto(path))?.status(), path).toBe(404);
   await page.goto(`/b/${HEALER_BUILD_ID}/edit`);
   await expect(editTab(page, "Guide")).toBeVisible();
   await expect(editTab(page, "Story")).toHaveCount(0);

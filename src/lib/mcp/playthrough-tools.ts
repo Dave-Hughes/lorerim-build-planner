@@ -8,7 +8,7 @@ import { DEFAULT_VERSION, FactsError } from "./errors";
 import { creationFields } from "./build-tools";
 import * as t from "./playthroughs";
 
-/** The playthrough tools' registration (WO-111), each needing a sign-in with playthroughs:write; suggest_quests is facts. */
+/** The playthrough tools' registration (WO-111), each needing a sign-in with playthroughs:write. suggest_quests and suggest_places are registered apart (WO-182). */
 
 type Server = Parameters<Parameters<typeof createMcpHandler>[0]>[0];
 type Guarded = (run: () => unknown | Promise<unknown>) => Promise<{ content: { type: "text"; text: string }[]; isError?: boolean }>;
@@ -189,18 +189,6 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
     z.object({ playthrough }),
     (p, a: { playthrough: string }) => t.getQuestLog(p, a),
   );
-  tool(
-    "suggest_places",
-    "Places near an act",
-    "The caves, mines, forts, ruins, camps, lairs and landmarks near where an act goes (its place, its quests' towns, earlier acts' places), from the planner's places index: each with its type, hold, nearest town, levels and boss, clear XP, what in the game points at it (who says what and where they stand, or the book), any quest that already goes there, and when against the act's levels (fits now; plant now, pay off later; too high for this act). Also what the playthrough already uses. With where and levels in place of a playthrough and act, the same for a town, a hold or a place at those levels, with nothing used yet. Never a stop (a town, inn, temple, keep, stable or home). It changes nothing (rule 20).",
-    z.object({
-      playthrough: playthrough.optional().describe("With act: the stored act to read."),
-      act: act.optional().describe("With playthrough: the stored act to read."),
-      where: z.string().min(1).max(80).optional().describe('Instead of a stored act: a town, a hold (every town in it) or a place, "Solitude", "Haafingar", "Embershard Mine".'),
-      levels: z.string().min(1).max(20).optional().describe('With where: the levels, "15 to 20".'),
-    }),
-    (p, a: { playthrough?: string; act?: string; where?: string; levels?: string }) => t.suggestPlaces(p, a),
-  );
   tool("list_my_playthroughs", "List the player's playthroughs", "List the signed-in player's playthroughs: id, name, who can see it, acts, last change, and whether an assistant drafted it.", z.object({}), (p) => t.listMine(p));
   tool(
     "finish_draft_playthrough",
@@ -209,23 +197,57 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
     z.object({ playthrough }),
     (p, a: { playthrough: string }) => t.finishDraft(p, a),
   );
+}
 
+/**
+ * suggest_quests and suggest_places, which stay when playthroughs are off (WO-182): quests open for the player and places near a town,
+ * for the launch's quests and places. With `runs` (playthroughs on) they are as WO-111 made them, with the playthrough and act inputs;
+ * without, they take a level, a place and what the player has finished, and say nothing of acts or objectives.
+ */
+export function registerSuggestionTools(server: Server, guarded: Guarded, origin: string, runs: boolean) {
   server.registerTool(
     "suggest_quests",
     {
       title: "Quests to suggest",
-      description: "Stories whose starts the planner has checked in the game files and whose first quest is open for the player, not done yet, each with its checked start, why it's open and the planner's link. Never a quest the planner can't judge. Offer them as suggestions (suggest_objective); nothing is added unless the player accepts.",
+      description: runs
+        ? "Stories whose starts the planner has checked in the game files and whose first quest is open for the player, not done yet, each with its checked start, why it's open and the planner's link. Never a quest the planner can't judge. Offer them as suggestions (suggest_objective); nothing is added unless the player accepts."
+        : "Stories and quest lines whose starts the planner has checked in the game files and whose first quest is open for the player, not done yet, each with its checked start, why it's open and the planner's link. Never a quest the planner can't judge. Offer them as suggestions; the player chooses.",
       inputSchema: z.object({
         level: z.number().int().min(1).max(100),
         where: z.string().max(80).optional().describe("A hold or place to keep to."),
         done: z.array(z.string().max(120)).max(200).optional().describe("Quest lines (ids or names) and quests (EDIDs or names) the player has finished, from what they said."),
-        playthrough: z.string().max(80).optional().describe("One of the player's playthroughs: its save's quest stages and what it has ticked (needs sign-in)."),
+        ...(runs ? { playthrough: z.string().max(80).optional().describe("One of the player's playthroughs: its save's quest stages and what it has ticked (needs sign-in).") } : {}),
       }),
     },
-    async (args: { level: number; where?: string; done?: string[]; playthrough?: string }, ctx: Ctx) =>
+    async (raw: unknown, ctx: Ctx) =>
       guarded(() => {
+        const args = raw as { level: number; where?: string; done?: string[]; playthrough?: string };
         const userId = (ctx.http?.authInfo as PlannerAuth | undefined)?.extra?.userId;
-        return t.suggestQuests(origin, args, typeof userId === "string" ? userId : null);
+        return t.suggestQuests(origin, runs ? args : { ...args, playthrough: undefined }, runs && typeof userId === "string" ? userId : null);
       }),
+  );
+  server.registerTool(
+    "suggest_places",
+    {
+      title: runs ? "Places near an act" : "Places near a town",
+      description: runs
+        ? "The caves, mines, forts, ruins, camps, lairs and landmarks near where an act goes (its place, its quests' towns, earlier acts' places), from the planner's places index: each with its type, hold, nearest town, levels and boss, clear XP, what in the game points at it (who says what and where they stand, or the book), any quest that already goes there, and when against the act's levels (fits now; plant now, pay off later; too high for this act). Also what the playthrough already uses. With where and levels in place of a playthrough and act, the same for a town, a hold or a place at those levels, with nothing used yet. Never a stop (a town, inn, temple, keep, stable or home). It changes nothing (rule 20)."
+        : "The caves, mines, forts, ruins, camps, lairs and landmarks near a town, a hold or a place at a range of levels, from the planner's places index: each with its type, hold, nearest town, levels and boss, clear XP, what in the game points at it (who says what and where they stand, or the book), and when against those levels (fits now; plant now, pay off later; too high). Never a stop (a town, inn, temple, keep, stable or home). It changes nothing.",
+      inputSchema: z.object({
+        ...(runs ? { playthrough: playthrough.optional().describe("With act: the stored act to read."), act: act.optional().describe("With playthrough: the stored act to read.") } : {}),
+        where: z.string().min(1).max(80).optional().describe('Instead of a stored act: a town, a hold (every town in it) or a place, "Solitude", "Haafingar", "Embershard Mine".'),
+        levels: z.string().min(1).max(20).optional().describe('With where: the levels, "15 to 20".'),
+      }),
+    },
+    async (raw: unknown, ctx: Ctx) => {
+      const args = raw as { playthrough?: string; act?: string; where?: string; levels?: string };
+      return runs
+        ? guarded(async () => {
+            const w = await writer(ctx.http?.authInfo as PlannerAuth | undefined, "playthroughs:write");
+            if ("refusal" in w) throw new FactsError(w.refusal);
+            return t.suggestPlaces({ ...w, origin }, args);
+          })
+        : guarded(() => t.placesAt(args.where, args.levels, false));
+    },
   );
 }

@@ -1,4 +1,5 @@
 import "server-only";
+import { playthroughsOn } from "@/lib/playthroughs/gate";
 
 /**
  * Switches for parts held back from launch (WO-81), read from the environment so they come back
@@ -37,15 +38,8 @@ export const mcpOn = (env: Record<string, string | undefined> = process.env) => 
   return v === "on" || v === "1" || v === "true";
 };
 
-/**
- * Playthroughs (WO-111): /p/<id>, /playthroughs, My playthroughs on /me, Playthroughs in the header,
- * and the assistants' playthrough tools. On in dev and on staging unset, as the Quests pages.
- */
-export const playthroughsOn = (env: Record<string, string | undefined> = process.env) => {
-  const v = env.FEATURE_PLAYTHROUGHS?.trim().toLowerCase();
-  if (!v) return env.NODE_ENV === "development" || env.VERCEL_ENV === "preview";
-  return v === "on" || v === "1" || v === "true";
-};
+/** Playthroughs (WO-111), held back from launch (WO-182): see src/lib/playthroughs/gate.ts. */
+export { playthroughsOn };
 
 /**
  * Progress tracking (WO-181 Part 3): ticks and done marks on objectives, "x of y done", where she is in your game, her pin on the maps and the tools

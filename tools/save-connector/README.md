@@ -28,3 +28,7 @@ node tools/save-connector/dist/server/index.js "C:\LoreRim"
 ```
 
 then send it one JSON-RPC message a line (`initialize`, `tools/list`, `tools/call`).
+
+## Out of the launch (WO-182)
+
+The planner has no playthroughs yet, so both tools answer that they are out of the launch and do nothing else (`server.ts`, `PAUSED`). `SAVE_CONNECTOR=on` in the connector's environment brings them back as they were; the reader under them is untouched.

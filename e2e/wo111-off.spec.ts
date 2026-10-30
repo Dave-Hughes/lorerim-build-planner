@@ -10,10 +10,12 @@ test("with FEATURE_PLAYTHROUGHS off, its pages are not found and the header has 
   await expect(page.getByRole("navigation", { name: "Site" }).getByRole("link", { name: "Playthroughs" })).toHaveCount(0);
 });
 
-// WO-114: with the switch off, a new build is a build: no question first, and the header says New build.
-test("with FEATURE_PLAYTHROUGHS off, /new opens Set up and the header says New build", async ({ page }) => {
+// WO-114, WO-182: with the switch off, a new character is a character: the header says New character, the rail has its seven steps and no What next.
+test("with FEATURE_PLAYTHROUGHS off, /new opens Set up and the header says New character, with no What next", async ({ page }) => {
   await page.goto("/new");
   await expect(page.getByLabel("Setup steps")).toBeVisible();
+  await expect(page.getByLabel("Setup steps").getByRole("listitem")).toHaveCount(7);
+  await expect(page.getByLabel("Setup steps")).not.toContainText("What next");
   await expect(page.getByRole("heading", { name: "What are you making?" })).toHaveCount(0);
-  await expect(page.getByRole("banner").getByRole("link", { name: "New character" })).toHaveCount(0);
+  await expect(page.getByRole("banner")).toContainText("New character");
 });

@@ -4,6 +4,7 @@ import { z } from "zod";
 import { writer, type PlannerAuth } from "@/lib/oauth/mcp-auth";
 import { DEFAULT_VERSION, FactsError } from "./errors";
 import { setAbout } from "./playthroughs";
+import { playthroughsOn } from "@/lib/playthroughs/gate";
 import { addLevel, createBuild, finishDraft, getBuild, listMyBuilds, removeLastLevel, setCreation, setDetails, setGear, setLevel, type Player } from "./builds";
 
 /** The build tools' registration on the MCP server (WO-110), each needing a sign-in with builds:write. */
@@ -55,6 +56,8 @@ export const gearRow = z.object({
 });
 
 export function registerBuildTools(server: Server, guarded: Guarded, origin: string) {
+  // With playthroughs off (WO-182) the tools that touch a run lose their playthrough, answers and never inputs.
+  const runs = playthroughsOn();
   /** Every build tool's run: signed in with builds:write, then the tool. */
   const as = (ctx: Ctx, run: (p: Player) => unknown | Promise<unknown>) =>
     guarded(async () => {
@@ -106,22 +109,23 @@ export function registerBuildTools(server: Server, guarded: Guarded, origin: str
     "set_details",
     {
       title: "Set the details",
-      description:
-        "Set the name, description, notes, tags (by slug) or main spells (by name) of one of the player's builds; and the character's Before you design answers, what they will never do, and the mods they need (style guide rules 27 to 36). answers and never are kept on the character's run: the playthrough named, or the run on the build named. mods go on the playthrough when one is named, else on the build. Each is the whole list each time; an empty list clears it.",
+      description: runs
+        ? "Set the name, description, notes, tags (by slug) or main spells (by name) of one of the player's builds; and the character's Before you design answers, what they will never do, and the mods they need (style guide rules 27 to 36). answers and never are kept on the character's run: the playthrough named, or the run on the build named. mods go on the playthrough when one is named, else on the build. Each is the whole list each time; an empty list clears it."
+        : "Set the name, description, notes, tags (by slug), main spells (by name) or the mods they need (style guide rule 36) of one of the player's builds. Each list is the whole list each time; an empty list clears it.",
       inputSchema: z.object({
         build: build.optional().describe("The build's id, from create_build or list_my_builds. Needed for the build's own details."),
-        playthrough: z.string().min(1).max(80).optional().describe("The character's run, by id or name, for answers and never; the run on build when left out."),
+        ...(runs ? { playthrough: z.string().min(1).max(80).optional().describe("The character's run, by id or name, for answers and never; the run on build when left out.") } : {}),
         name: z.string().max(80).optional(),
         description: z.string().max(300).optional(),
         notes: z.string().max(6000).optional(),
         tags: z.array(z.string().max(40)).max(10).optional(),
         mainSpells: z.array(z.string().max(120)).max(8).optional(),
-        answers: z
+        ...(runs ? { answers: z
           .array(z.object({ question: z.string().min(1).max(300).describe("The question, as you asked it."), answer: z.string().min(1).max(300).describe("The player's answer, in their words.") }))
           .max(12)
           .optional()
-          .describe("The Before you design questions you settled with the player, and their answers: up to 12."),
-        never: z
+          .describe("The Before you design questions you settled with the player, and their answers: up to 12.") } : {}),
+        ...(runs ? { never: z
           .array(
             z.object({
               what: z.string().min(1).max(120).describe('A quest line or story id ("main-quest", "the-dark-brotherhood"), a side ("imperial", "stormcloak"), a state ("vampire", "werewolf"), "kill" (never kills: a quest whose objectives need a kill), or a line in the player\'s words ("never kills for money").'),
@@ -130,7 +134,7 @@ export function registerBuildTools(server: Server, guarded: Guarded, origin: str
           )
           .max(20)
           .optional()
-          .describe("What the character will never do, from the answers. The planner keeps to quest lines, stories, sides and kill."),
+          .describe("What the character will never do, from the answers. The planner keeps to quest lines, stories, sides and kill.") } : {}),
         mods: z
           .array(
             z.object({
@@ -142,7 +146,7 @@ export function registerBuildTools(server: Server, guarded: Guarded, origin: str
           )
           .max(12)
           .optional()
-          .describe("Mods this character needs that LoreRim doesn't ship (rule 36), kept on the playthrough when one is named, else on the build. The whole list each time; an empty list clears it."),
+          .describe(runs ? "Mods this character needs that LoreRim doesn't ship (rule 36), kept on the playthrough when one is named, else on the build. The whole list each time; an empty list clears it." : "Mods this character needs that LoreRim doesn't ship (rule 36). The whole list each time; an empty list clears it."),
       }),
     },
     async (args: unknown, ctx: Ctx) =>
@@ -152,8 +156,8 @@ export function registerBuildTools(server: Server, guarded: Guarded, origin: str
         const modsOnRun = a.mods !== undefined && !!a.playthrough;
         const own = a.name !== undefined || a.description !== undefined || a.notes !== undefined || a.tags !== undefined || a.mainSpells !== undefined || (a.mods !== undefined && !modsOnRun);
         const about = a.answers !== undefined || a.never !== undefined || modsOnRun;
-        if (!a.build && !a.playthrough) throw new FactsError("Name the build, or the playthrough for answers and never.");
-        if (own && !a.build) throw new FactsError("Name the build for its name, description, notes, tags or main spells, or for mods when no playthrough is named.");
+        if (!a.build && !a.playthrough) throw new FactsError(runs ? "Name the build, or the playthrough for answers and never." : "Name the build.");
+        if (own && !a.build) throw new FactsError(runs ? "Name the build for its name, description, notes, tags or main spells, or for mods when no playthrough is named." : "Name the build for its name, description, notes, tags, main spells or mods.");
         let out: Record<string, unknown> = {};
         if (about) {
           const w = await writer(auth, "playthroughs:write");
@@ -169,7 +173,7 @@ export function registerBuildTools(server: Server, guarded: Guarded, origin: str
       }),
   );
   tool("get_build", "Read a build", "Get one of the player's builds in the same plain shape the inputs use, each level with its state, plus its review link and who can see it. Unspent skill points carry to the next level, as on the site.", z.object({ build }), (p, a: { build: string }) => getBuild(p, a));
-  tool("list_my_builds", "List the player's builds", "List the signed-in player's builds: id, name, who can see it, levels, last change, whether an assistant drafted it, and its run when it has one.", z.object({}), (p) => listMyBuilds(p));
+  tool("list_my_builds", "List the player's builds", runs ? "List the signed-in player's builds: id, name, who can see it, levels, last change, whether an assistant drafted it, and its run when it has one." : "List the signed-in player's builds: id, name, who can see it, levels, last change, and whether an assistant drafted it.", z.object({}), (p) => listMyBuilds(p));
   tool(
     "finish_draft",
     "Check a draft is ready",

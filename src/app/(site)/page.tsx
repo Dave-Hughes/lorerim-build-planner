@@ -66,7 +66,7 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
         {questsOn() ? <MapStrip /> : null}
         <div className={styles.main} style={{ paddingTop: 72 }}>
           <NewInTheWorld changes={changes} />
-          {userId ? <YourCharacters userId={userId} /> : <ThreeWays playthroughs={playthroughsOn()} />}
+          {userId ? <YourCharacters userId={userId} /> : <ThreeWays />}
         </div>
       </main>
     </>

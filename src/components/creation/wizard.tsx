@@ -43,15 +43,17 @@ interface WizardProps {
   signIn: React.ReactNode;
   /** An assistant drafted it (WO-110): its name, and whether the page says so. */
   drafted?: { by: string; show: boolean } | null;
-  /** Playthroughs are on (WO-114): a new build is a character; a run is started from it (WO-116). */
+  /** A new build is a character (WO-114): the header says New character. */
   characters?: boolean;
+  /** Playthroughs are on (WO-182): a last step after Details, What next, plans one or finishes. Off, Details ends with Finish. */
+  playthroughs?: boolean;
 }
 
 function plainTraitText(text: string): string {
   return text.replace(/<([^<>]*)>/g, "$1");
 }
 
-export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, signIn, drafted, characters = false }: WizardProps) {
+export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, signIn, drafted, characters = false, playthroughs = false }: WizardProps) {
   const router = useRouter();
   // Rendered on the client only (see wizard-loader.tsx), so the draft in this
   // browser can seed the state directly.
@@ -258,7 +260,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
               );
             })}
             {/* What next is a step in the rail (WO-179), after Details, when playthroughs are on and a new character is being made. */}
-            {characters && mode === "create" && signedIn && (
+            {playthroughs && mode === "create" && signedIn && (
               <li>
                 <button
                   type="button"
@@ -381,13 +383,13 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
                   Next: {STEP_NAMES[STEPS[stepIndex + 1]]}
                 </button>
               ) : mode === "edit" || whatNext ? null : signedIn ? (
-                characters ? (
+                playthroughs ? (
                   <button type="button" className="btn btn-primary" onClick={() => setWhatNext(true)} disabled={!details.name.trim() || !plan.race}>
                     Next: What next
                   </button>
                 ) : (
                   <button type="button" className="btn btn-primary" onClick={() => finish(false)} disabled={pending || !details.name.trim() || !plan.race}>
-                    {pending ? "Saving…" : "Create build"}
+                    {pending ? "Saving…" : "Finish"}
                   </button>
                 )
               ) : (

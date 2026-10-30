@@ -9,6 +9,7 @@ import { registerBuildTools } from "./build-tools";
 import { registerPlaythroughTools } from "./playthrough-tools";
 import { questLog } from "./quest-log";
 import { questsData } from "@/lib/quests/data";
+import { playthroughsOn } from "@/lib/playthroughs/gate";
 
 /**
  * The player's questions (WO-135, docs/player-questions.md): each asked as a player types it, run through the door's own
@@ -27,6 +28,8 @@ interface Question {
   never?: Want[];
   /** The order that fixes it, while it fails. */
   todo?: string;
+  /** Needs a playthrough or a save, so it is skipped while playthroughs are off (WO-182). */
+  paused?: true;
 }
 
 // Never in an answer (outside the ids an assistant passes back): an editor id, a form id, a raw condition function, or a
@@ -114,7 +117,15 @@ const NEVER_DB_MQ = [
 
 const QUESTIONS: Question[] = [
   {
+    n: 41,
+    asks: "Plan me a playthrough.",
+    // With playthroughs off the planner has no playthrough tools; what the assistant is told says so and offers a build.
+    ask: () => [styleGuide(false).split("\n").filter((l) => /playthrough/i.test(l) || /^## Builds/.test(l)).join(" ")],
+    must: ["The planner has no playthroughs yet", "offer to plan a build", "Builds"],
+  },
+  {
     n: 39,
+    paused: true,
     asks: "Help me write who my character is for the planner.",
     // The tools' own names are what the guide teaches; they are not what a player is told.
     ask: () => [styleGuide().replace(/\b[a-z]+(?:_[a-z]+)+\b/g, "(tool)")],
@@ -123,6 +134,7 @@ const QUESTIONS: Question[] = [
   },
   {
     n: 40,
+    paused: true,
     asks: "Show me Kyria's playthrough.",
     ask: () => [playthroughOut({ origin: "https://planner.example", userId: "u", clientName: "test" } as never, kyria())],
     must: ["Anvil, raised at Dibella's chapel", "Stendarr, and Dibella", "Find Pia", "Work inn shifts and play for coin", "Steal from homes, farms or shops", "Loots bandit camps and keeps the gold", "The Bard's Road", "Solitude", '"by":"carriage"'],
@@ -191,6 +203,7 @@ const QUESTIONS: Question[] = [
   },
   {
     n: 8,
+    paused: true,
     asks: "What quests are in my quest log?",
     // get_quest_log's own answer from a stored snapshot (the handler needs a signed-in playthrough; this is what it returns).
     ask: () => [questLog({ label: "Save 70", level: 10, day: 15, place: "Ivarstead", questStages: { "0WRHorseQ": 10, MS11: 100, MQ101RescueHelper: 20 } })],
@@ -240,6 +253,7 @@ const QUESTIONS: Question[] = [
   },
   {
     n: 14,
+    paused: true,
     asks: "What quests are in my quest log? (Kyria's Save 70)",
     // Save 70's faults as Bob read them (22 Oct): helpers in the log, quests at stage 0, two quests of one name. The stages
     // here are the ones he named, not the whole save (no copy of it is in the repo).
@@ -300,6 +314,7 @@ const QUESTIONS: Question[] = [
   },
   {
     n: 19,
+    paused: true,
     asks: "Design me a new character.",
     // The assistant can't be tested; what it's told can.
     ask: () => {
@@ -336,6 +351,7 @@ const QUESTIONS: Question[] = [
   },
   {
     n: 20,
+    paused: true,
     asks: "What can she do in Windhelm at level 12?",
     ask: () => [suggestFrom("https://planner.test", { level: 12, where: "Windhelm" }, { level: 12, never: NEVER_DB_MQ })],
     must: [/left out: 2 stories this character won't do/, "she won't be the Dragonborn", "she won't take a contract"],
@@ -343,6 +359,7 @@ const QUESTIONS: Question[] = [
   },
   {
     n: 21,
+    paused: true,
     asks: "How do I start Dawnguard?",
     // Bob's question had Dawnguard locked for her. The records don't: Agmaer at Fort Dawnguard has no need on the main quest,
     // and Durak's needs are met by a main quest never begun. The line the main quest closes is Dragonborn (Solstheim), asked too.
@@ -360,6 +377,7 @@ const QUESTIONS: Question[] = [
   },
   {
     n: 22,
+    paused: true,
     asks: "What mods does Kyria need?",
     // The live check is Bob's, on Kyria's own playthrough; this is what get_playthrough says for a run that carries Callings,
     // and what the guide's mods page says about it. (Callings has no link until Dave publishes it.)
@@ -420,6 +438,7 @@ const QUESTIONS: Question[] = [
   },
   {
     n: 26,
+    paused: true,
     asks: "What's near Riften for Kyria's first act?",
     // Her Act I: Riften, levels 1 to 6 (WO-151: read as a player, with no kilometres, guild halls, helper names or unnamed speakers).
     ask: () => [placesAt("Riften", "1 to 6")],
@@ -464,8 +483,10 @@ describe("the player's questions (WO-135)", () => {
       results.push(r);
       expect({ missing: r.missing, banned: r.banned }).toEqual({ missing: [], banned: [] });
     };
+    // Paused with playthroughs (WO-182): skipped while the switch is off, not deleted.
+    if (q.paused && !playthroughsOn()) it.skip(`${q.n}. ${q.asks} [paused with playthroughs (WO-182)]`, run);
     // A marked question is expected to fail: once it passes, this goes red, and the mark comes off.
-    if (q.todo) it.fails(`${q.n}. ${q.asks} [fails today: ${q.todo}]`, run);
+    else if (q.todo) it.fails(`${q.n}. ${q.asks} [fails today: ${q.todo}]`, run);
     else it(`${q.n}. ${q.asks}`, run);
   }
   afterAll(() => {

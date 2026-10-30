@@ -4,6 +4,7 @@
  * database. Tokens and codes are random 32-byte strings, kept only as SHA-256s, and never logged.
  */
 import { createHash, randomBytes, timingSafeEqual } from "node:crypto";
+import { playthroughsOn } from "@/lib/playthroughs/gate";
 
 export const CODE_MINUTES = 10;
 export const ACCESS_HOURS = 8;
@@ -22,6 +23,8 @@ export const SCOPE_LIST = Object.keys(SCOPES) as Scope[];
  * for none. builds:write since WO-110, playthroughs:write since WO-111.
  */
 export const GRANTABLE: Scope[] = ["facts", "builds:write", "playthroughs:write"];
+/** What is offered and granted now (WO-182): playthroughs:write goes while playthroughs are off, and a client that asks for it is given the rest. */
+export const grantable = (env: Record<string, string | undefined> = process.env): Scope[] => GRANTABLE.filter((s) => s !== "playthroughs:write" || playthroughsOn(env));
 
 export const newSecret = () => randomBytes(32).toString("base64url");
 export const sha256 = (s: string) => createHash("sha256").update(s).digest("hex");
@@ -41,11 +44,14 @@ export const redirectAllowed = (uri: string, allowed: readonly string[]) => allo
  * The scopes to grant: those asked for that have tools today, or all of those when none is named;
  * null when one isn't ours at all. A scope whose tools haven't shipped is left out, not refused.
  */
-export function parseScopes(param: string | null | undefined): Scope[] | null {
+/** The scopes to show a player (WO-182): a token that still carries playthroughs:write doesn't say so while playthroughs are off. */
+export const shownScopes = (scopes: string[], env: Record<string, string | undefined> = process.env) => scopes.filter((s) => s !== "playthroughs:write" || playthroughsOn(env));
+
+export function parseScopes(param: string | null | undefined, env: Record<string, string | undefined> = process.env): Scope[] | null {
   const asked = (param ?? "").split(/\s+/).filter(Boolean);
-  if (!asked.length) return [...GRANTABLE];
+  if (!asked.length) return [...grantable(env)];
   if (asked.some((s) => !(s in SCOPES))) return null;
-  const granted = GRANTABLE.filter((s) => asked.includes(s));
+  const granted = grantable(env).filter((s) => asked.includes(s));
   return granted.length ? granted : null;
 }
 

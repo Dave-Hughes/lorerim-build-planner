@@ -11,7 +11,7 @@ import { sampleBuild } from "./sample";
 import { tourSampleId } from "./sample-config";
 import type { BuildRecord, BuildSummary } from "./types";
 import { isHandle } from "@/lib/users/handles";
-import { storyOn } from "@/lib/features";
+import { playthroughsOn, storyOn } from "@/lib/features";
 import { assignHandle } from "@/lib/users/assign-handle";
 
 const summaryFields = {
@@ -42,6 +42,13 @@ const summaryFields = {
   authorImage: schema.users.image,
   authorHandle: schema.users.handle,
 };
+
+/**
+ * A character that exists only because of a run (WO-182): nothing planned on it (no race, no perk at any level) and a run attached, the shell
+ * a run made of itself. While playthroughs are off it is on no list and its page is not found, for its owner too; it returns with the switch.
+ */
+const runMade = sql`(coalesce(${schema.builds.plan}->>'race', '') = '' and not exists(select 1 from jsonb_array_elements(${schema.builds.plan}->'levels') rl where case when jsonb_typeof(rl->'perks') = 'array' then jsonb_array_length(rl->'perks') else 0 end > 0) and exists(select 1 from ${schema.playthroughs} rpt where rpt.build_id = ${schema.builds.id}))`;
+export const notRunMade = () => (playthroughsOn() ? sql`true` : sql`not ${runMade}`);
 
 function summaries() {
   return db().select(summaryFields).from(schema.builds).innerJoin(schema.users, eq(schema.users.id, schema.builds.ownerId)).$dynamic();
@@ -81,7 +88,7 @@ function toSummary(r: SummaryRow): BuildSummary {
  */
 export async function getFeaturedBuild(): Promise<(BuildSummary & { intro: string }) | null> {
   const rows = await summaries()
-    .where(and(eq(schema.builds.visibility, "public"), isNotNull(schema.builds.featuredAt)))
+    .where(and(eq(schema.builds.visibility, "public"), isNotNull(schema.builds.featuredAt), notRunMade()))
     .orderBy(desc(schema.builds.featuredAt))
     .limit(1);
   const build = rows[0] && toSummary(rows[0]);
@@ -112,7 +119,7 @@ export async function getBuild(id: string, viewerId: string | null): Promise<Bui
     })
     .from(schema.builds)
     .innerJoin(schema.users, eq(schema.users.id, schema.builds.ownerId))
-    .where(eq(schema.builds.id, id))
+    .where(and(eq(schema.builds.id, id), notRunMade()))
     .limit(1);
   const row = rows[0];
   if (!row) return null;
@@ -148,8 +155,8 @@ export async function listPublicBuilds(gameVersion?: string, limit = 60): Promis
   const rows = await summaries()
     .where(
       gameVersion
-        ? and(eq(schema.builds.visibility, "public"), eq(schema.builds.gameVersion, gameVersion))
-        : eq(schema.builds.visibility, "public"),
+        ? and(eq(schema.builds.visibility, "public"), eq(schema.builds.gameVersion, gameVersion), notRunMade())
+        : and(eq(schema.builds.visibility, "public"), notRunMade()),
     )
     .orderBy(desc(schema.builds.updatedAt))
     .limit(limit);
@@ -157,7 +164,7 @@ export async function listPublicBuilds(gameVersion?: string, limit = 60): Promis
 }
 
 export async function listBuildsByOwner(ownerId: string): Promise<BuildSummary[]> {
-  const rows = await summaries().where(eq(schema.builds.ownerId, ownerId)).orderBy(desc(schema.builds.updatedAt));
+  const rows = await summaries().where(and(eq(schema.builds.ownerId, ownerId), notRunMade())).orderBy(desc(schema.builds.updatedAt));
   return rows.map(toSummary);
 }
 
@@ -176,7 +183,7 @@ export async function getPlayerByHandle(handle: string): Promise<{ id: string; n
 /** A player's listed builds only, newest first: what anyone, the owner included, sees on /u/<handle>. */
 export async function listListedBuildsByOwner(ownerId: string): Promise<BuildSummary[]> {
   const rows = await summaries()
-    .where(and(eq(schema.builds.ownerId, ownerId), eq(schema.builds.visibility, "public")))
+    .where(and(eq(schema.builds.ownerId, ownerId), eq(schema.builds.visibility, "public"), notRunMade()))
     .orderBy(desc(schema.builds.updatedAt));
   return rows.map(toSummary);
 }
@@ -191,7 +198,7 @@ export async function listLikedBuilds(userId: string, limit = 60): Promise<(Buil
     .from(schema.buildLikes)
     .innerJoin(schema.builds, eq(schema.builds.id, schema.buildLikes.buildId))
     .innerJoin(schema.users, eq(schema.users.id, schema.builds.ownerId))
-    .where(and(eq(schema.buildLikes.userId, userId), eq(schema.builds.visibility, "public")))
+    .where(and(eq(schema.buildLikes.userId, userId), eq(schema.builds.visibility, "public"), notRunMade()))
     .orderBy(desc(schema.buildLikes.createdAt))
     .limit(limit);
   return rows.map((r) => ({ ...toSummary(r), likedAt: r.likedAt }));
@@ -226,10 +233,10 @@ function spellIdsNamed(word: string): string[] {
 
 export async function searchBuilds(f: BrowseQuery): Promise<{ builds: BuildSummary[]; more: boolean }> {
   const limit = f.limit ?? 24;
-  const where = [eq(schema.builds.visibility, "public")];
+  const where = [eq(schema.builds.visibility, "public"), notRunMade()];
   if (f.gameVersion) where.push(eq(schema.builds.gameVersion, f.gameVersion));
   if (f.race) where.push(sql`${schema.builds.plan}->>'race' = ${f.race}`);
-  if (f.withRun) where.push(sql`exists(select 1 from ${schema.playthroughs} pt where pt.build_id = ${schema.builds.id})`);
+  if (f.withRun && playthroughsOn()) where.push(sql`exists(select 1 from ${schema.playthroughs} pt where pt.build_id = ${schema.builds.id})`);
   const q = f.q?.trim();
   if (q) {
     // Every word must appear somewhere: "nord shield" finds a Nord with a shield.

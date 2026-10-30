@@ -29,6 +29,7 @@ import { notSureOf, peopleData, personByName } from "@/lib/people/data";
 import { questsOf } from "@/lib/people/quests";
 import { HOMES, HOMES_NOTE, MOUNTS, TOME_TRIALS } from "./living";
 import { howPointsWork, pointRules } from "./rules-text";
+import { playthroughsOn } from "@/lib/playthroughs/gate";
 import { canTakeAt, issuesOf, planFromPlain, stateAt, type PlainBuild } from "./plan";
 
 /** The quest data is for the current version only. */
@@ -601,12 +602,26 @@ export function checkProgression(plain: PlainBuild) {
   return checkPlan(d, planFromPlain(d, plain));
 }
 
-let style: string | null = null;
-/** The planner's writing and layout rules for assistants (content/mcp/style.md). */
-/** The style guide (WO-108), with How points work written in from the rules (WO-119), never by hand. */
-export function styleGuide(): string {
-  if (style === null) style = readFileSync(path.join(process.cwd(), "content", "mcp", "style.md"), "utf8").replace("{{how-points-work}}", howPointsWork());
-  return style;
+const styles = new Map<boolean, string>();
+/**
+ * The planner's writing and layout rules for assistants (content/mcp/style.md), with How points work written in from the rules (WO-119),
+ * never by hand. With playthroughs off (WO-182) the Playthroughs and Who she is sections go, with every line marked [runs]; the lines marked
+ * [launch] take their place, and [[runs:this|launch:that]] says one word either way. Rule numbers stay as they are: a build rule may cite one, so none is renumbered.
+ */
+export function styleGuide(runs = playthroughsOn()): string {
+  const cached = styles.get(runs);
+  if (cached !== undefined) return cached;
+  const raw = readFileSync(path.join(process.cwd(), "content", "mcp", "style.md"), "utf8").replace("{{how-points-work}}", howPointsWork());
+  const out = raw
+    .replace(/<!--runs-->\n([\s\S]*?)<!--\/runs-->\n?/g, (_, body: string) => (runs ? body : ""))
+    .split("\n")
+    .flatMap((l) => (l.startsWith("[runs] ") ? (runs ? [l.slice(7)] : []) : l.startsWith("[launch] ") ? (runs ? [] : [l.slice(9)]) : [l]))
+    .join("\n")
+    // Inline: [[runs:this|launch:that]] is this with playthroughs on and that with them off.
+    .replace(/\[\[runs:([^|\]]*)\|launch:([^\]]*)\]\]/g, (_, on: string, off: string) => (runs ? on : off))
+    .replace(/\n{3,}/g, "\n\n");
+  styles.set(runs, out);
+  return out;
 }
 
 /**

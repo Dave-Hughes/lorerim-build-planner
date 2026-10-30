@@ -56,6 +56,7 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 ## The player's own game
 
 **8. "What quests are in my quest log?"**
+- Paused with playthroughs (WO-182): skipped while FEATURE_PLAYTHROUGHS is off, not deleted.
 - Calls: `get_quest_log({ playthrough })` on a stored save (in the test: Running Wild at 10, Blood on the Ice at 100, an unnamed helper at 20).
 - Must: Running Wild under way, at "Catch the white, or palonimo, horse"; Blood on the Ice finished, with its ending; the helper counted, never named.
 - Passes since WO-134. The test reads `questLog` on the snapshot, what `get_quest_log` returns for a playthrough that stores it (the tool itself needs a signed-in playthrough).
@@ -86,6 +87,7 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 - Passes since WO-137 item 3.
 
 **14. "What quests are in my quest log?" (Kyria's Save 70)**
+- Paused with playthroughs (WO-182): skipped while FEATURE_PLAYTHROUGHS is off, not deleted.
 - Calls: `get_quest_log({ playthrough })`.
 - Must: each line under its own category ("Guilds and factions", "Jobs and errands"), never one heading for everything; no helper names (TG00 Misc Handler, LTN Quest Handler) in the log; no quest at stage 0 listed as "started but unclear" (a stage 0 isn't started); no quest listed twice (Animal Extermination, Special Delivery).
 - Passes since WO-137 item 4. The test uses the stages Bob named from Save 70, not the whole save (no copy of it is in the repo).
@@ -110,16 +112,19 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 - Fails today: **WO-154** (Bob's word): Thane of Whiterun is read now. Its read names "Balgruuf the Greater or Vignar Gray-Mane" as one jarl and doesn't say Vignar is the one if the Stormcloaks hold Whiterun, which WO-138 ruled in. Its need is worded "once you have helped enough people of the hold" (the test asks for that wording now).
 
 **19. "Design me a new character."**
+- Paused with playthroughs (WO-182): skipped while FEATURE_PLAYTHROUGHS is off, not deleted.
 - Calls: `get_style_guide()`; the descriptions of `create_build` and `create_playthrough`.
 - Must: the guide holds the Before you design section with its eight always-ask questions worded as WO-139 says, the softened reason-to-travel line, the mods rule, and the How to build line; both descriptions point to it.
 - Passes since WO-139 Part 1.
 
 **20. "What can she do in Windhelm at level 12?"** on a playthrough whose `never` holds `the-dark-brotherhood` and `main-quest`.
+- Paused with playthroughs (WO-182): skipped while FEATURE_PLAYTHROUGHS is off, not deleted.
 - Calls: `suggest_quests({ level: 12, where: "Windhelm", playthrough })`.
 - Must: neither Join the Dark Brotherhood nor a main-quest story; a line saying what was left out and why.
 - Passes since WO-139 Part 3.
 
 **21. "How do I start Dawnguard?"** on that playthrough.
+- Paused with playthroughs (WO-182): skipped while FEATURE_PLAYTHROUGHS is off, not deleted.
 - Calls: `get_quest({ name: "Dawnguard", playthrough })`, and `get_quest({ name: "Dragonborn", playthrough })` for the line the main quest does close.
 - Must: Dawnguard open, by Agmaer in Fort Dawnguard; Dragonborn (Solstheim) `locked for this character: she won't be the Dragonborn`. Never Dawnguard "locked for this character".
 - Changed by Jeff under WO-139 (Bob to rule): the question as written had Dawnguard locked, but the records don't gate it on the main quest. Talking to Agmaer at Fort Dawnguard has no need, and Durak's need "Dragonborn stage 5 or The Way of the Voice before stage 160" is met by a main quest never begun. The planner must not say locked when the records say open (style guide rule 24). Dragonborn waits on The Way of the Voice (stage 160), so it is the one the never closes.
@@ -127,6 +132,7 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 - Fails today: **WO-154 Part 1b** (Bob's word): Dawnguard's opening quest is read now, and the read names no one who starts it (the five at Fort Dawnguard are under what it is unsure of), so "Agmaer" isn't in the answer.
 
 **22. "What mods does Kyria need?"**
+- Paused with playthroughs (WO-182): skipped while FEATURE_PLAYTHROUGHS is off, not deleted.
 - Calls: `get_playthrough({ playthrough: "Kyria Severa" })`.
 - Must: `mods` lists Callings as required, with Dave's why; the guide's mods page says the same, and neither shows a link while Callings is unpublished.
 - Passes since WO-139 Part 4, on the shape. The live check on Kyria's own row is Bob's, once `set_details` has put Callings there (Jeff has no access to that row).
@@ -147,6 +153,7 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 - Fails today: **WO-143**.
 
 **26. "What's near Riften for Kyria's first act?"**
+- Paused with playthroughs (WO-182): skipped while FEATURE_PLAYTHROUGHS is off, not deleted.
 - Calls: `suggest_places({ playthrough: "Kyria Severa", act: "1" })`.
 - Must: places with pointers near Riften; the distance in a walk band ("a short walk from Riften", "next to Riften"); a town's unattributed line as "people in Riften"; Largashbur as the Orcs' own home, in their words at the door; a place with no levels says "not checked yet"; no "doesn't measure distances from Riften" note.
 - Never: kilometres; the Thieves Guild Headquarters; a helper or vendor script among the quests that go there ("Radiant Guild Trophy Enabler", "BCSLL Vendor Quest"); "someone the line doesn't name".
@@ -211,11 +218,20 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 ## A character's theme (WO-181)
 
 **39. "Help me write who my character is for the planner."**
+- Paused with playthroughs (WO-182): skipped while FEATURE_PLAYTHROUGHS is off, not deleted.
 - Calls: `get_style_guide()`.
 - Must: the Who she is rules: a backstory of events in flat sentences, with no sayings, no closing lines, no riddles and no feelings narrated; From, Gods and Goal as plain facts; She will, She won't and Grey areas as things the player does or avoids in the game, in the game's words. Never: "Tale", "chapter", `write_chapter`, a read time.
 - Passes since WO-181 Part 4.
 
 **40. "Show me Kyria's playthrough."**
+- Paused with playthroughs (WO-182): skipped while FEATURE_PLAYTHROUGHS is off, not deleted.
 - Calls: `get_playthrough({ playthrough })`.
 - Must: her backstory, From, Gods and Goal, She will, She won't and Grey areas, and her acts with their routes. Never: chapters, the Tale, a level or day from a save, or a done count.
 - Passes since WO-181 Parts 1 and 3.
+
+## Without playthroughs (WO-182)
+
+**41. "Plan me a playthrough."**
+- Calls: `get_style_guide()`, as the launch planner gives it (playthroughs off).
+- Must: say the planner has no playthroughs yet, and offer to plan a build instead.
+- Passes since WO-182.

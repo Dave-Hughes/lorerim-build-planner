@@ -40,8 +40,8 @@ export default async function CharactersPage({ searchParams }: { searchParams: S
     // Characters with a listed playthrough only (WO-154 Part 5); builds alone while playthroughs are off.
     run: playthroughsOn() && sp.run === "1",
   };
-  // A build and a run are one character (WO-114, WO-154 Part 5): one public page for both, while playthroughs are on.
-  const characters = playthroughsOn();
+  // A build and a run are one character (WO-114, WO-154 Part 5): one public page for both, while playthroughs are on (WO-182).
+  const withRuns = playthroughsOn();
   const shown = Math.min(240, Math.max(PAGE, Number(sp.n) || PAGE));
   const { builds, more } = await searchBuilds({
     q: state.q,
@@ -54,9 +54,9 @@ export default async function CharactersPage({ searchParams }: { searchParams: S
   });
   const filtered = !!(state.q || state.tags.length || state.race || state.run);
   // Each card with a listed run shows where it stands, as My characters does; a build alone shows no run box.
-  const runs = characters ? await listedRunsByBuild(builds.map((b) => b.id)) : null;
+  const runs = withRuns ? await listedRunsByBuild(builds.map((b) => b.id)) : null;
   // Listed runs made before a build was attached have no card of their own: they sit under the grid on the playthrough view.
-  const unattached = characters && state.run ? (await listListedPlaythroughs()).filter((p) => !p.buildId) : [];
+  const unattached = withRuns && state.run ? (await listListedPlaythroughs()).filter((p) => !p.buildId) : [];
   // The featured build comes first, and larger, when nothing narrows the list (WO-39); with a search
   // or filter it sits in the grid like any other card.
   const featured = !filtered && version === defaultVersion ? await getFeaturedBuild() : null;
@@ -67,7 +67,7 @@ export default async function CharactersPage({ searchParams }: { searchParams: S
       <div className={styles.head}>
         <h1 className="title">Characters</h1>
       </div>
-      <BrowseFilters state={state} versions={versions} defaultVersion={defaultVersion} races={races} empty={builds.length === 0 && unattached.length === 0} withRuns={characters} />
+      <BrowseFilters state={state} versions={versions} defaultVersion={defaultVersion} races={races} empty={builds.length === 0 && unattached.length === 0} withRuns={withRuns} />
       {builds.length === 0 && !filtered ? (
         <div className={styles.empty}>
           <p className="muted">No characters listed yet. Here is the example, or start your own.</p>

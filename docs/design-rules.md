@@ -66,6 +66,8 @@ The guide teaches the game in the order a player meets it: chapters, then sectio
 
 ## Playthroughs
 
+**Held back from launch (WO-182, Dave, 30 Oct 2026).** Playthroughs, acts, Who she is, stories, saves and progress are turned off behind `FEATURE_PLAYTHROUGHS`; a visitor, a player and an assistant find no trace of them. The rules below stay for the day they come back.
+
 A playthrough is a character's whole run: who she is, and acts with objectives (WO-111, 19 Oct 2026; WO-181 retired the Story). These rules are the same as rules 12 to 18 of the assistants' style guide (`content/mcp/style.md`), numbered here after the rules above; the style guide's Who she is rules (38 to 41) govern what is written under Who she is.
 
 23. Everything on an act is Play: what the player does, where, with which quest or item, in plain instructions. An act's goal, an objective and its why line say what to do and why. Who she is is written once, under Who she is, and never inside an act.
