@@ -5159,7 +5159,7 @@ Nothing is dropped from the database: the columns and tables stay (CLAUDE.md, no
 ---
 
 ## WO-180  Junk text out of the pages, and the last map faults (Mac and PC, 28 Oct 2026)
-Status: for Bob
+Status: queued (PC: Part 6a; Mac: Part 6b after PC)
 
 **Why.** The fourth cold review (Bob's reviewer, 3,721 pages crawled, 51 walked at both widths) passed WO-176 to WO-178, and named what would still hit Dave in his first ten minutes: old text from the game files that was never cleaned. Bob confirmed the holes and Web Mother by hand. No order is done until a page-text test fails on each of these.
 ### Part 1. Quotes (PC writes the cleaner; Mac's test fails on any page)
@@ -5320,6 +5320,63 @@ Jeff's notes on Part 5a (PC, 29 Oct):
 - **Close by:** it now lists a farm, stable, meadery, mill or inn within a kilometre of the town as well as the dangerous places. Whiterun Stables' nearest town was Riverwood (a city is a worldspace of its own, so no marker is measured to it); the two buildings Bob named now keep their city as `nearestTown` ("next to it", 0.3 km for the Stables, a ruling).
 - **Records talk:** a line's Level reads "Any level" with nothing under it; "From the records. What exactly isn't known yet." is "What they do for you isn't known yet."; "Essential.." was the read's own full stop plus the page's; "role not shown" is "Has a part in it"; "also in the quest's records; X" is "Also at X"; Brill's "separate from the recipient" is out of the sentence (the reason stays under Not sure yet).
 - **Generated files:** the quest names above, `nearestTown` for the Stables and the filled steps changed in `quests.json` and `places.json` (no key added or dropped). Checks: python unittest (471), typecheck, lint, `npm test` (813 passed, 7 expected fail). Nothing was viewed in a browser, and e2e was not run on the PC.
+
+### Part 6. The third check (Bob's reviewer, 29 Oct, 19:40; Bob confirmed Maggot, Rescue Mission and Whiterun on staging)
+These now hold:
+- The "in" joins, across all 3,705 pages.
+- The records talk, now gone from the page bodies.
+- Close by lists the Meadery and the Stables.
+- Hunter's Mark, with no placeholder jobs and no sideways scroll.
+- Northwind Mine.
+- The map names at 390.
+
+Three things don't. The first is the same fault for the third time, so this part fixes the cause, not the examples.
+
+**Part 6a (PC)**
+- [ ] **Role words in steps come from `plain_alias`** in `scripts/gamedata/quest_pages.py`, which turns an alias's name into words by design ("TargetLocation" becomes "the target location"). Every fill comes out as a role word. Change the rule:
+  1. A step uses the read's own words when the read has them. Rescue Mission's read says "Escort the captive back home" and "Return to Vilkas", but the page shows "Escort the victim back to the victim home", "Talk to the victim" and "Return to the questgiver".
+  2. Otherwise the alias is filled with the person, place or thing the read names. For example, Feral Soul-Shriven's page already says it points you "at a feral Soul-Shriven".
+  3. Otherwise it gets a plain phrase that says the job picks it: "the person the job names", "the place the job names".
+  4. Never a split-up alias name.
+  
+  Duplicate steps that differ only in a role word become one: Maggot's "The victim has been dazzled…" appears three times.
+  
+  Named pages:
+  - Maggot: "Take back your name from the owner in the target location"
+  - Feral Soul-Shriven: "Defeat the enemy"
+  - Cultists vs Player: "Search the person"; the page's People section says a cultist carries a note
+  - Rescue Mission
+  - "Kill the target" (7 pages: The Hunt, The Dark Brotherhood Forever and the five Contract: Kill the Target)
+  - "Return to the quest giver" (6 pages)
+  - "Kill the vampire at the dungeon" (Hunting the Monster)
+- [ ] **Whiterun's Shops and beds**, the third time. The cell says "8 shops" but shows 6 and a plain "and 2 more" you can't open, and the hidden two include Warmaiden's. A keeper's home stands in for the shop ("House Gray-Mane: Eorlund", "Carlotta Valentia's House"), and "goods" says nothing.
+  
+  Rebuild `shopsOf()` for every city:
+  - a shop's name is the shop or stall, not the keeper's house;
+  - every shop is listed;
+  - each shows its keeper and what it sells, in a word players use (blacksmith, general goods, apothecary, food).
+  
+  The same fault shows in other cities: Riften's "Haelga's Bunkhouse: Brand-Shei", Markarth's "Arnleif: Lisbet", and Windhelm's "Sadri's Used Wares … at Sadri's Used Wares".
+  
+  While you're there, fix these on Whiterun:
+  - the lede says "an inn", but there are two;
+  - Trainers names four skills and lists three;
+  - Aela, Farkas, Vilkas, Lydia, Lucia and Mikael are tagged "Sells";
+  - Honningbrew Meadery's kind is "House";
+  - "A stables".
+
+**Part 6b (Mac)**
+- [ ] **The step check fails on the order's own examples.** Today it flags "the victim", "the actor", "the target location" and "the enemy" only when one is a whole step. Fail on any step that holds a fill `plain_alias` makes, with a short allowlist of the game's own sentences checked against the raw record. Show it failing on Maggot, Feral Soul-Shriven and Rescue Mission before Part 6a lands, and say so in the notes.
+- [ ] **Lower-case starts.** 271 quest pages' "Where it takes you" band starts in lower case ("the town Farkas names…", Hired Muscle; "the warehouse at the Windhelm docks", Unusual Imports), and so do 448 entries in the Where it takes you section. A place phrase that stands alone starts with a capital, at render, everywhere. The test checks it.
+- [ ] **/map with Homes picked:** town labels with their count sit on other names. Anga's Mill covers "Windhelm, 24" at 1440, and "Whiterun, 21" covers two farms at 390; Solitude and Markarth do the same. Count the label's full width when placing names. Golden Claw's second zoom-out at 390 drops both names over a 1 to 4 px collision: try above and below as well as left and right. `plateWidth` runs a little under for some names (Dawnstar, Whiterun); make it a little over, as its comment says.
+- [ ] **Small, while you're in these pages:**
+  - Hunter's Mark says "Open one for how it starts", but its jobs have no pages.
+  - Moss Mother Cavern's unheaded block repeats the lede.
+  - People pages say "What they do for you" on a page that says "he"; use the person's pronoun. Belrand says "isn't known yet" six times, so say it once.
+  - Not sure yet lists both "Where." and "Where it takes you." on 144 pages.
+  - The Dwemer Specialist has "then as the main branch" and lower-case branch labels.
+  - Feral Soul-Shriven has "Repeats: a radiant job: A short …".
+- [ ] Screenshots at 1440 and 390, then `for Bob`.
 
 Jeff's notes on WO-180 (PC, 28 Oct):
 - **Quotes** (`places.py`, `build.py`): one cleaner, `game_text()`, runs on a book's whole text and on every dialogue line before a quote is cut: `<Alias=Player>` is "you"; any other `<Alias…>`, `<Global…>` or `<Token…>` leaves a hole mark and a quote with one in what is cut around it is left out (the next mention of the place in that book is tried; the Lakeview and Windstad charters have no mention without a hole, so they are not quoted); every other tag (`<font …>`, `<img …>`) and `[pagebreak]` goes before the cut, so no `size="18">` stub is left. A quote names a quest only when it is a quest on the Quests pages by that name; the game's own dialogue quest ("Riften Dialogue") moves to a new field, `dialogue`, which no page shows. Why keep it: the assistant's town gossip (`suggest.ts`, WO-151) reads it to say which town a line with no speaker is about (`wo151.test.ts` caught the first try, which dropped it). A dialogue line with no speaker stays in the data for the same reason; `saidAbout()` leaves it off the pages (one line in `said.ts`: "no speaker, no quote"). 4,761 pointers became 4,741: twenty had a hole in them and went (Lakeview and Windstad Manors no longer quote their charters; Hendraheim, Rorikstead and the rest have none left with markup). The Mac's page-text test is mine too: `wo180.test.ts` runs `saidAbout()` on every place and fails on markup, a hole, a speakerless line or a quest no player has.
