@@ -5133,7 +5133,7 @@ Additive migrations only.
 ---
 
 ## WO-183  Data you can trust: fix the causes the accuracy audit found (PC, then Mac, 30 Oct 2026)
-Status: for Bob (Mac: Part 4 done; PC: Parts 1 to 3 pushed, what is open is in the notes)
+Status: queued (PC: Part 6, Bob's rulings; then Bob runs the fresh sample)
 
 **Why.** Dave, 30 Oct: "With us cutting playthroughs we're going to want to double down on quests, locations, NPCs… make sure the pages are BULLET proof, the data must be as solid as we can get it."
 
@@ -5249,6 +5249,19 @@ Unknown is fine when the page says so. Wrong is not.
   - The 15 mod quests get read by the PC against the records. Add both to the audit file.
 - [ ] **A fresh sample** (new seed, logged): 40 quests, 30 places and 30 people, by the reviewer, the same method. Under 2% wrong in every field, or this order reopens with what's left.
 - [x] `docs/player-questions.md` gets a question for each family that a player would ask: "Where is Neloth?", "Who trains Enchanting on Solstheim?", "How do I start The Whispering Door?", "What do I need to marry?". Each must pass.
+
+### Part 6. Bob's rulings on what was left open (30 Oct, 12:00)
+- [ ] **Place to quest: yes, take it from where the starting person is placed.**
+  - "Quests that start here" are those whose starting NPC is placed in this place or its town, or whose start is a trigger or marker in it.
+  - "Quests that send you here" are those whose own aliases or markers fill this place, listed apart.
+  - A radiant job that can start anywhere counts once per kind, under the town that gives it, not once per board.
+  - Check it against `wo178.test.ts`'s Riverwood three and UESP's 10 for Whiterun. Where the rule disagrees with either, list the differences in the notes for Bob, don't force them.
+- [ ] **Story-manager starts: yes, read the SMQN/SMEN conditions.** "The Words of Power: Arngeir, after the previous quest" is the test. Imitation Amnesty and Silver Lining say who gives them in the Thieves Guild.
+- [ ] **Black Book's one of three Insights**: read the choice from the book's stages and name each one. The same for any reward that is a choice.
+- [ ] **Hjorunn and Sybilla Stentor**: before keeping "male", check the winning override record and the face (`FTST` and head parts) for a female head. If the records truly say male, the page says what the records say, and the reviewer notes it as differs-maybe-LoreRim. Never "Not sure yet" for a field the records answer.
+- [ ] **Missives**: leave Kill Some Marauders and Kill Some Forsworn as they are.
+- [ ] **Mathies**: the reviewer will say where the second one showed.
+- [ ] Then `for Bob`. Bob runs the fresh sample (Part 5) when this part is in.
 
 ### Jeff's notes
 
