@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-182  Launch without playthroughs (Mac, 30 Oct 2026)
-Status: queued (Mac, first: before WO-180 Part 6b and anything else)
+Status: building (Mac)
 
 **Why.** Dave, 30 Oct: "Lets look at the entire site and remove everything related to playthroughs; it's just still kind of not working." The launch is four things:
 - quests you can trust;
