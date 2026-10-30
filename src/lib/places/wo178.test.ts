@@ -44,7 +44,8 @@ describe("one count per kind", () => {
   });
   it("by group, the count every page reads: 29 towns and cities, 21 of them on Tamriel's map", () => {
     const c = placeCounts();
-    expect(c.groups.cities).toEqual({ all: 29, onMap: 21 });
+    // (WO-183 Part 2: two Dark Brotherhood sanctuaries were typed Town, and are a guild's homes: 29 and 21 became 27 and 19.)
+    expect(c.groups.cities).toEqual({ all: 27, onMap: 19 });
     expect(Object.values(c.groups).reduce((n, g) => n + g.all, 0)).toBe(places().length);
     for (const g of PLACE_GROUPS) expect(c.groups[g.key].all, g.key).toBe(places().filter((p) => groupOf(p.type) === g.key).length);
   });

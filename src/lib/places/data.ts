@@ -106,6 +106,10 @@ export interface Place {
   type: string;
   /** Other names the words of a quest call it by (Volkihar Keep for Castle Volkihar), from overrides.json. */
   aliases?: string[];
+  /** The name the records give it, when the page uses the in-game one (Dormitory is the Hall of Attainment): people's cells say it, and its old address redirects (WO-183 Part 2). */
+  recordName?: string;
+  /** The realm outside Tamriel it is in ("The Shivering Isles", "Coldharbour"): no default clearing XP or respawn is claimed for it (WO-183 Part 2). */
+  realm?: string;
   hold?: string;
   nearestTown?: { town: string; km: number; walk?: string };
   nearestCity?: { town: string; km: number; walk?: string };

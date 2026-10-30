@@ -249,7 +249,12 @@ BIG_CITIES = {"Whiterun", "Windhelm", "Riften", "Solitude", "Markarth"}  # citie
 # a city mod can open a house in the walls onto Tamriel), so a building moves only when it is named here and its door says so too.
 OUTSIDE_RULED = {"Honningbrew Meadery", "Whiterun Stables"}
 # Bob's ruling (WO-180 Part 6a): the record calls Honningbrew Meadery a house; it is a meadery.
-TYPE_RULED = {"Honningbrew Meadery": "Meadery"}
+# (WO-183 Part 2: the Brotherhood's sanctuaries are homes of a guild, typed Town by the settlement keyword on their location; no danger block for a home.)
+TYPE_RULED = {"Honningbrew Meadery": "Meadery", "Dark Brotherhood Sanctuary": "Guild", "Dawnstar Sanctuary": "Guild"}
+# The realms outside Tamriel (WO-183 Part 2): a place there says which, and the default clearing XP and respawn the game gives a cleared place are not claimed for it.
+REALMS = {"ECSSShiveringIsles": "The Shivering Isles", "zCHMolagWorld": "Coldharbour", "WyrmstoothWorld": "Wyrmstooth"}
+# A place's name is what the game calls it (WO-183 Part 2): the college's Hall of Attainment is "Dormitory" in the records.
+NAME_RULED = {("Dormitory", "Winterhold"): "Hall of Attainment"}
 OUTSIDE_CANDIDATES = []  # (id, name, the city its record sits under): found by the door search, not ruled; for the report
 FARMS_IN = []  # (name, town): WO-171, farms that stay in their village (no exterior cells of their own); for the report
 DOOR_NAMED = []  # (the record's name, the name on the door, kind): WO-171; for the report
@@ -588,6 +593,9 @@ def scan():
     return kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc, eczn, fact, cell_features, enable_info, forced
 
 
+MAX_LEVEL = 100  # no level above this is a level a player is told of: the page says "and up" from 100 (a record's 18000 is no level)
+
+
 def level_entries(base, npcs, lvln, gate=0, depth=0, seen=None, cache=None):
     """Every leaf level reachable from base, each with the player level a leveled list's own entry needs before it
     can be picked at all (the max `LVLO` level stored on the path to it -- Bob, 23 Oct, 17:10: that field is the
@@ -611,13 +619,16 @@ def level_entries(base, npcs, lvln, gate=0, depth=0, seen=None, cache=None):
                 return got
         if n["scaled"]:
             mult, lo, hi = n["scaled"]
+            # WO-183 Part 2: a leveled actor's ceiling in the record can be a number no player reaches (Borogove, "1 to 18000"); the game's own top is 81.
+            lo, hi = min(lo, MAX_LEVEL), min(hi, MAX_LEVEL)
             words = (f"matches your level, {lo} to {hi}" if hi else f"matches your level, from {lo}") if mult == 1 else (
                 f"your level x{mult:g}" + (f" ({lo}-{hi})" if hi else f" (from {lo})"))
             r = [(gate, lo or 1, hi or 81, words)]
             cache[key] = r
             return r
         if n["level"]:
-            r = [(gate, n["level"], n["level"], f"level {n['level']}")]
+            lvl = min(n["level"], MAX_LEVEL)  # (WO-183 Part 2: Borogove's actors of level 18000)
+            r = [(gate, lvl, lvl, f"level {lvl}")]
             cache[key] = r
             return r
         return []
@@ -1141,6 +1152,10 @@ def build(version):
             p["type"] = "Castle"  # WO-178: see CASTLE_NAMES
         if p["name"] in TYPE_RULED:
             p["type"] = TYPE_RULED[p["name"]]  # WO-180 Part 6a
+        if (p["name"], p.get("hold")) in NAME_RULED:
+            # The old name stays as the record's name (the people's cells still say it; the old address redirects).
+            p["recordName"] = p["name"]
+            p["name"] = NAME_RULED[(p["name"], p.get("hold"))]
     # WO-178: the Soul Cairn is another plane. Its door out is Castle Volkihar's, so the door search put it in the Sea of Ghosts on the map.
     for p in places.values():
         if p["name"] in OTHER_PLANES and p.get("pos"):
@@ -1150,6 +1165,8 @@ def build(version):
             p["noPos"] = "another plane: the door out of it opens in Castle Volkihar, which has the position"
     # Nearest city and town, from the position now found (the marker's own for a place that has one, as before): a place found by
     # its cells or a door has one too. A city is the thing it would be measured to, so it has none.
+    # WO-183 Part 2: measured to the town or city where its page puts it (the position the map pins), the same worldspace as the place.
+    town_refs = {p["name"]: {"world": p["world"], "pos": p["pos"]} for p in places.values() if p["type"] in ("City", "Town", "Settlement") and p.get("pos") and p.get("world")}
     for k, p in places.items():
         if p["type"] == "City":
             continue
@@ -1157,14 +1174,17 @@ def build(version):
         ref = pp.at_marker(mk, cells) if p.get("inTown") else ({"world": p["world"], "pos": p["pos"]} if p.get("pos") else None)
         if not ref:
             continue
-        for field, candidates in (("nearestTown", towns), ("nearestCity", cities)):
+        # The nearest town is the nearest town or city (WO-183 Part 2: Solitude Sawmill is nearer Solitude than Dragon Bridge); the nearest city stays its own field.
+        for field, candidates in (("nearestTown", [*towns, *cities]), ("nearestCity", cities)):
             if p.get("outsideOf") and field == "nearestTown":
                 candidates = [(t, m) for t, m in [*towns, *cities] if t == p["outsideOf"]] or candidates
             best = None
             for tname, tm in candidates:
-                if marker_world(tm) != ref["world"] or tm is mk:
+                tr = town_refs.get(tname)
+                tworld, tpos = (tr["world"], tr["pos"]) if tr else (marker_world(tm), tm["pos"])
+                if tworld != ref["world"] or tm is mk:
                     continue
-                dist = sum((a - b) ** 2 for a, b in zip(tm["pos"][:2], ref["pos"][:2])) ** 0.5
+                dist = sum((a - b) ** 2 for a, b in zip(tpos[:2], ref["pos"][:2])) ** 0.5
                 if best is None or dist < best[0]:
                     best = (dist, tname)
             if best:
@@ -1360,6 +1380,10 @@ def build(version):
     for k, p in places.items():
         if p["type"] == "City" or p["type"] in NOT_A_FIGHT:
             continue  # a city, a house or a shop isn't cleared and doesn't respawn
+        realm = REALMS.get(p.get("world"))
+        if realm:
+            p["realm"] = realm
+            continue  # the default clearing XP and respawn are the Tamriel game's, not the records' for a realm of its own (WO-183 Part 2)
         zone = eczn_by_loc.get(k)
         if zone and zone["flags"] & 0x01:  # "never resets" (Bob's own flag note, 23 Oct, 16:15)
             p["respawns"] = "never"
@@ -1697,7 +1721,7 @@ def build_site(rows):
     for p in rows:
         # world and pos (WO-166): where it is, for the map and for "next to"; z is null for a place found by its cells (no height known).
         # `aliases` (WO-166): the other names the game's own words use for it ("Yngol's Barrow" for "Yngol Barrow"), for the linker.
-        r = {k: p[k] for k in ("id", "name", "type", "hold", "nearestTown", "nearestCity", "inTown", "world", "pos", "aliases", "clearXp", "discoveryXp", "respawns") if p.get(k) is not None}
+        r = {k: p[k] for k in ("id", "name", "type", "hold", "nearestTown", "nearestCity", "inTown", "world", "pos", "aliases", "clearXp", "discoveryXp", "respawns", "realm", "recordName") if p.get(k) is not None}
         if p.get("actors"):
             r["actors"] = p["actors"]
         if p.get("worthGoingFor"):

@@ -210,7 +210,7 @@ export function peopleAt(place: Place): { houses: House[]; total: number } {
   // A hall or temple in a town: the name can be in four towns (Hall of the Dead), so a row has to be in this one's town too.
   const sameName = placesNamed(place.name).length > 1;
   // The cell is called what the game calls it, which may be an alias of the place's name (Volkihar Keep for Castle Volkihar, WO-178).
-  const named = (cell: string | null | undefined) => !!cell && (cell === place.name || !!place.aliases?.includes(cell));
+  const named = (cell: string | null | undefined) => !!cell && (cell === place.name || cell === place.recordName || !!place.aliases?.includes(cell));
   const placed = (r: Person["rows"][number]) => (inside ? named(r.cell) && (!sameName || !place.inTown || !r.inTown || r.inTown === place.inTown) : r.inTown === place.name || named(r.cell));
   const here = peopleData().all.filter((p) => !(p.race && ANIMAL.test(p.race)) && lives(p) && p.rows.some(placed));
   const groups = new Map<string, PlacePerson[]>();

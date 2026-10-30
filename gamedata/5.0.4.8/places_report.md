@@ -2,7 +2,7 @@
 
 Written by `scripts/gamedata/places.py` from the winning records across the load order (with the Creation Club plugins). Clear and discovery XP from `LoreRim - MCM and INI Settings`'s Experience.ini.
 
-**997 places.** 420 have a pointer (a line or a book that names them), 384 have a quest that goes there, and 435 have neither.
+**997 places.** 421 have a pointer (a line or a book that names them), 384 have a quest that goes there, and 435 have neither.
 
 ## The nine capitals
 
@@ -27,11 +27,11 @@ All nine found with an exterior position.
 | Building | 20 | 4 | 5 |
 | Mine | 19 | 11 | 7 |
 | Camp | 16 | 11 | 8 |
-| Town | 15 | 15 | 7 |
+| Guild | 15 | 11 | 10 |
 | ImperialTower | 14 | 6 | 5 |
 | Temple | 14 | 12 | 7 |
 | GiantCamp | 13 | 12 | 0 |
-| Guild | 13 | 8 | 8 |
+| Town | 13 | 13 | 5 |
 | NordicDwelling | 12 | 4 | 1 |
 | NordicTower | 12 | 6 | 3 |
 | PlayerHouse | 12 | 10 | 5 |
@@ -67,7 +67,7 @@ All nine found with an exterior position.
 | Falkreath | 65 | 36 | 28 |
 | Solstheim | 64 | 25 | 36 |
 | The Pale | 55 | 26 | 23 |
-| Winterhold | 52 | 26 | 27 |
+| Winterhold | 52 | 27 | 27 |
 | Hjaalmarch | 44 | 19 | 14 |
 | Wyrmstooth | 30 | 16 | 8 |
 | Alik'r Desert | 29 | 9 | 9 |
@@ -113,11 +113,11 @@ All nine found with an exterior position.
 | Building | 20 | 4 | 16 | 0 |
 | Mine | 19 | 17 | 2 | 0 |
 | Camp | 16 | 16 | 0 | 0 |
-| Town | 15 | 15 | 0 | 0 |
+| Guild | 15 | 2 | 13 | 0 |
 | ImperialTower | 14 | 14 | 0 | 0 |
 | Temple | 14 | 2 | 12 | 0 |
 | GiantCamp | 13 | 13 | 0 | 0 |
-| Guild | 13 | 0 | 13 | 0 |
+| Town | 13 | 13 | 0 | 0 |
 | NordicDwelling | 12 | 12 | 0 | 0 |
 | NordicTower | 12 | 12 | 0 | 0 |
 | PlayerHouse | 12 | 6 | 6 | 0 |
@@ -183,7 +183,7 @@ Every location a named quest points at (a location alias, or the cell a forced r
 | PlayerHouse | 12 | 6 | 6 |
 | Fort | 8 | 2 | 6 |
 | Shack | 8 | 0 | 8 |
-| Town | 7 | 0 | 7 |
+| Town | 5 | 0 | 5 |
 | Barracks | 5 | 4 | 1 |
 | Jail | 5 | 5 | 0 |
 | Mine | 5 | 2 | 3 |
@@ -192,6 +192,7 @@ Every location a named quest points at (a location alias, or the cell a forced r
 | Mill | 4 | 0 | 4 |
 | Camp | 3 | 0 | 3 |
 | Settlement | 3 | 0 | 3 |
+| Guild | 3 | 1 | 2 |
 | DwemerRuin | 2 | 0 | 2 |
 | Shipwreck | 2 | 1 | 1 |
 | Inn | 2 | 1 | 1 |
@@ -204,7 +205,6 @@ Every location a named quest points at (a location alias, or the cell a forced r
 | DaedricShrine | 1 | 0 | 1 |
 | Lighthouse | 1 | 0 | 1 |
 | Meadery | 1 | 0 | 1 |
-| Guild | 1 | 1 | 0 |
 
 | Plugin | Added |
 |---|---|
@@ -261,7 +261,7 @@ The places that are not a house, shop, barracks, jail or building (those are onl
 | The Forgotten City | Landmark | Tamriel | ForgottenCity.esp | The Forgotten City |
 | Underground Tunnels | Landmark | Tamriel | ForgottenCity.esp | Altrius, Dwarven Spider Worker, Giant Skeever |
 | Campsite | Camp | Tamriel | GORE.esp | Gore |
-| Dark Brotherhood Sanctuary | Town | Tamriel | GORE.esp | BCSLL Vendor Quest, Death Incarnate, Destroy the Dark Brotherhood! |
+| Dark Brotherhood Sanctuary | Guild | Tamriel | GORE.esp | BCSLL Vendor Quest, Death Incarnate, Destroy the Dark Brotherhood! |
 | Dayspring Canyon | Landmark | Tamriel | GORE.esp | Dawnguard, Destroying the Dawnguard |
 | Esbern's Vault | Landmark | Riften | GORE.esp | A Cornered Rat, Champion's Choice, MQ Reserved Locations |
 | Honningbrew Meadery | Meadery | Tamriel | GORE.esp | Dampened Spirits |
@@ -300,7 +300,7 @@ The places that are not a house, shop, barracks, jail or building (those are onl
 | Fort Dawnguard | Fort | Tamriel | Lux - JK's Fort Dawnguard patch.esp | ANDR_AJO_VendorQuest, BCSLL Vendor Quest, Dawnguard |
 | Hidden Minotaur Village | Landmark | Tamriel | Lux - Vigilant patch.esp | Horbahha the Chief, Mordog the Man-Bull |
 | Goldenglow Estate | Landmark | Tamriel | Lux Via.esp | Loud and Clear, The Litany of Larceny |
-| Dawnstar Sanctuary | Town | Tamriel | Lux.esp | A Nest of Vipers, The Dark Brotherhood Forever |
+| Dawnstar Sanctuary | Guild | Tamriel | Lux.esp | A Nest of Vipers, The Dark Brotherhood Forever |
 | Dark Dawn Sanctuary | Landmark | Tamriel | Meridia.esp | Infiltration, The Dark Dawn |
 | Fort Justice | Fort | Tamriel | Meridia.esp | A New Day, Fort Justice, The Ritual |
 | Fort Ruins | Fort | Tamriel | Meridia.esp | A New Day |
@@ -347,7 +347,7 @@ The places that are not a house, shop, barracks, jail or building (those are onl
 | Curia Morimath | Landmark | zCHMolagWorld | Vigilant.esm | Archpriest Centius |
 | Emperor Gorieus' Charnel | Landmark | zCHMolagWorld | Vigilant.esm | Emperor Gorieus, Gallant Specter of Emperor Gorieus |
 | Fort Verin | Fort | zCHMolagWorld | Vigilant.esm | Vernaccus |
-| Fountain Garden of Dibella | Landmark | zCHMolagWorld | Vigilant.esm | Sir Gregory, Sir Henrik, Sir Juncan |
+| Fountain Garden of Dibella | Landmark | zCHMolagWorld | Vigilant.esm | Sir Gregory, Sir Juncan |
 | Golden Sanctuary | Landmark | zCHMolagWorld | Vigilant.esm | Temptation of Marukh |
 | Imperial Prison Sewers | Landmark | zCHMolagWorld | Vigilant.esm | Atima, Dark Kid, Dark One |
 | Jhunal's Library | Landmark | zCHMolagWorld | Vigilant.esm | Jhunal the Owl, Piece of Jhunal, Saklas the Man-Ape |
@@ -376,7 +376,7 @@ The places that are not a house, shop, barracks, jail or building (those are onl
 | Honrich Lake Cave | Cave | Tamriel | evgSIRENROOT.esm | Deluge of Deceit |
 | Gomgralmaulgr Cave | Cave | Tamriel | mihailseagiants.esp | Grahl, Grahl Matron, Half-Giant Frostcaller |
 
-### Named by a quest, a home or a book, and found on no map and in no town (84)
+### Named by a quest, a home or a book, and found on no map and in no town (75)
 
 Not places: their interiors reach no map by any door (holding cells, storage and test cells, Apocrypha, Sovngarde, Meridia's realm, Vigilant's rooms). The quest data still names them.
 
@@ -410,9 +410,7 @@ Not places: their interiors reach no map by any door (holding cells, storage and
 | Burmuk's Shack | Journey to Baan Malur.esp | no position |
 | DLC1 Item Holding Cell | Dawnguard.esm | no position |
 | DLC1LD Holding Cell | Dawnguard.esm | no position |
-| DLC2 WarehouseSpiders | Dragonborn.esm | no position |
 | Deep Library | Unmarked Locations Pack - All In One.esp | no position |
-| Dremora Shop Location | Dragonborn.esm | no position |
 | Dwarven Dome | ForgottenCity.esp | no position |
 | Editor Smoke Test Cell | Skyrim.esm | no position |
 | Enchantress' Palace | Vigilant.esm | no position |
@@ -420,7 +418,6 @@ Not places: their interiors reach no map by any door (holding cells, storage and
 | Gravewind Depths | FalkreathShades.esp | no position |
 | Hall of Heroes | Skyrim.esm | no position |
 | Herrah's Catacombs | FalkreathShades.esp | no position |
-| Hidden Room | Vigilant.esm | no position |
 | Hoarfrost Grotto | Skyrim.esm | no position |
 | Honrich Aranseli | evgSIRENROOT.esm | no position |
 | Honrich Atasel | evgSIRENROOT.esm | no position |
@@ -448,13 +445,10 @@ Not places: their interiors reach no map by any door (holding cells, storage and
 | Piper Temple | Vigilant.esm | no position |
 | Pryai | Journey to Baan Malur.esp | no position |
 | Raven Rock Holding Cell | Dragonborn.esm | no position |
-| SBSoapContainerCell | Keep It Clean.esp | no position |
 | Sancremor Angasel | Vigilant.esm | no position |
-| Service Room - Get off from here! | Gray Fox Cowl.esm | no position |
 | Skyrim | evgSIRENROOT.esm | no position |
 | Solitary Cell | Vigilant.esm | no position |
 | Sovngarde | Skyrim.esm | no position |
-| TestPrvtI | PrvtIRoyalArmory.esp | no position |
 | The Funhouse | Requiem - Improved Spell Learning.esp | no position |
 | The Malevolent Barracks | Meridia.esp | no position |
 | The Malevolent Dungeon | Meridia.esp | no position |
@@ -463,9 +457,6 @@ Not places: their interiors reach no map by any door (holding cells, storage and
 | USKP Storage | Unofficial Skyrim Special Edition Patch.esp | no position |
 | Unowned Cell | Skyrim.esm | no position |
 | WSN Location | Wintersun - Faiths of Skyrim.esp | no position |
-| Warehouse Carry | Skyrim.esm | no position |
-| Warehouse Prefabs | Skyrim.esm | no position |
-| aaaMB Holding Cell | NightmarePlane.esp | no position |
 
 ### A map marker two places claimed (24)
 
@@ -506,13 +497,13 @@ A farm or mill whose location owns exterior cells of its own stands in a field. 
 |---|---|---|---|---|
 | Battle-Born Farm | Whiterun | door | Whiterun 0.2 km | 33889, -4967 |
 | Chillfurrow Farm | Whiterun | door | Whiterun 0.2 km | 31199, -9735 |
-| Hilarius Farmhouse | Markarth | door | Markarth 0.1 km | -163668, 7835 |
-| Katla's Farm | Solitude | door | Solitude 0.3 km | -75489, 96293 |
-| Markarth Mill Maintenance | Markarth | door | Markarth 0.1 km | -163379, 6673 |
-| Merryfair Farm | Riften | door | Riften 0.1 km | 166264, -87441 |
-| Pelagia Farm | Whiterun | door | Whiterun 0.1 km | 18222, -17929 |
+| Hilarius Farmhouse | Markarth | door | Markarth 0.2 km | -163668, 7835 |
+| Katla's Farm | Solitude | door | Solitude 0.2 km | -75489, 96293 |
+| Markarth Mill Maintenance | Markarth | door | Markarth 0.2 km | -163379, 6673 |
+| Merryfair Farm | Riften | door | Riften 0.2 km | 166264, -87441 |
+| Pelagia Farm | Whiterun | door | Whiterun 0.2 km | 18222, -17929 |
 | Salvius Farmhouse | Markarth | door | Markarth 0.1 km | -164439, 6674 |
-| Solitude Sawmill | Solitude | door | Dragon Bridge 0.4 km | -78658, 91650 |
+| Solitude Sawmill | Solitude | door | Solitude 0.3 km | -78658, 91650 |
 
 Farms that stay in their village, with no exterior cells of their own (7; each is 20 to 100 m from its town's marker): Corpselight Farm (Falkreath), Cowflop Farmhouse (Rorikstead), Fellstar Farm (Ivarstead), Gala's Stead (Kynesgrove), Herleif's and Ragna's Farm (Kynesgrove), Lemkil's Farmhouse (Rorikstead), Lod's House (Falkreath).
 

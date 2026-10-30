@@ -47,6 +47,9 @@ PLAIN = [
     (re.compile(r"\b(the )?(enemy )?field co\b\.?", re.I), lambda m: f"{m.group(1) or ''}{m.group(2) or ''}field commander"),
     (re.compile(r"\s*\(\s*\)"), ""),
     (re.compile(r"\bthe the\b", re.I), "the"),
+    # WO-183 Part 3: the editor's "(Balagog is placed in its cellar)" is not a player's note; and "(the journal doesn't name it)" is the reader's aside.
+    (re.compile(r"\s*\([^()]*\bis placed\b[^()]*\)", re.I), ""),
+    (re.compile(r"^the journal doesn't name it\)?$", re.I), ""),
     # A step the reads wrote with the job's role in it (WO-180 Part 6a): the person who gave you the job, not "the quest giver".
     (re.compile(r"^(Return to|Report to|Go back to|Talk to) the quest ?giver\b", re.I), lambda m: f"{m.group(1)} the person who gave you the job"),
     (re.compile(r"^named in the quest's records; role not shown$", re.I), "Has a part in it"),
@@ -102,6 +105,8 @@ def bracket_around(s, pos):
 
 def tidy(text, original):
     t = re.sub(r"\s+", " ", text).strip()
+    # A cut that leaves a sentence ending on its joining word ("around the upper part of Markarth and.") ends before it (WO-183 Part 3).
+    t = re.sub(r"\s+(?:and|or|but)\s*(?=[.!?]?$)", "", t)
     t = re.sub(r"\s*\(\s*\)", "", t)
     t = re.sub(r"\s+([,;.:!?])", r"\1", t)
     t = re.sub(r"[,;:]\s*$", "", t).strip()
@@ -159,6 +164,9 @@ def clean_string(s, hedges=True):
                 break
             out, hit = nxt, True
     out = tidy(out, s) if out != s else out
+    # A split that left a closing bracket with no opening one ("nearest city Solitude)") loses it.
+    if out.count(")") > out.count("(") and "(" not in out:
+        out = out.replace(")", "").strip()
     if re.sub(r"[^A-Za-z0-9]", "", out) == "" or (hit and len(re.sub(r"[^A-Za-z0-9]", "", out)) < 4):
         return None, hit
     return out, hit
@@ -185,6 +193,10 @@ def clean_value(o, flags, top, game=False):
                 continue
             # "Nightgate Inn in where her coffin ends up": a `where` is a place the page puts "in" in front of, not a sentence.
             if k == "where" and isinstance(v, str) and "doing" not in o and re.match(r"where\b", v, re.I):
+                flags.add(top)
+                continue
+            # "Castle Volkihar (nearest city Solitude)" split into a place and a hold of "nearest city Solitude)": a hold is a hold, not a direction (WO-183 Part 3).
+            if k == "hold" and isinstance(v, str) and (re.match(r"(?:nearest|none|not given)\b", v, re.I) or BAD.search(v)):
                 flags.add(top)
                 continue
             c = clean_value(v, flags, top, game or k in GAME)

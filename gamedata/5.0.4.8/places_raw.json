@@ -1490,7 +1490,7 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.8,
+    "km": 0.9,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -1555,7 +1555,7 @@
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.8,
+    "km": 0.9,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -1948,7 +1948,7 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.5,
+    "km": 0.7,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -2066,12 +2066,12 @@
    "hold": "Eastmarch",
    "nearestTown": {
     "town": "Windhelm",
-    "km": 0.1,
+    "km": 0.2,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.1,
+    "km": 0.2,
     "walk": "next to it"
    },
    "inTown": null,
@@ -2153,7 +2153,7 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.7,
+    "km": 0.8,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -2566,7 +2566,7 @@
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.8,
+    "km": 0.9,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -2667,7 +2667,7 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.5,
+    "km": 0.6,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -2751,7 +2751,7 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.5,
+    "km": 0.6,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -2858,7 +2858,7 @@
     "walk": "a short walk"
    },
    "nearestCity": {
-    "town": "Windhelm",
+    "town": "Whiterun",
     "km": 0.9,
     "walk": "a short walk"
    },
@@ -2923,8 +2923,8 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.9,
-    "walk": "a short walk"
+    "km": 1.0,
+    "walk": "half a day"
    },
    "inTown": null,
    "plugin": "Natural Waterfalls.esp",
@@ -4640,7 +4640,7 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.7,
+    "km": 0.9,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -4714,8 +4714,8 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.9,
-    "walk": "a short walk"
+    "km": 1.0,
+    "walk": "half a day"
    },
    "inTown": null,
    "plugin": "Lux Via.esp",
@@ -4796,20 +4796,20 @@
     "count": 22,
     "livesHere": "Vampire",
     "floor": 1,
-    "ceiling": 125,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        1,
-       125
+       100
       ],
-      "words": "from 1, 1 to 125"
+      "words": "from 1, 1 to 100"
      }
     ],
     "boss": {
      "name": "Exiled Volkihar Warlord",
-     "level": "leveled 55-125"
+     "level": "leveled 55-100"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -4834,8 +4834,8 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.2,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "inTown": "Kynesgrove",
    "plugin": "The Great Village of Kynesgrove.esp",
@@ -4972,7 +4972,7 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.6,
+    "km": 0.7,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -5095,12 +5095,12 @@
    "hold": "Eastmarch",
    "nearestTown": {
     "town": "Windhelm",
-    "km": 0.2,
+    "km": 0.1,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.2,
+    "km": 0.1,
     "walk": "next to it"
    },
    "inTown": "Windhelm",
@@ -5806,8 +5806,8 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.9,
-    "walk": "a short walk"
+    "km": 1.0,
+    "walk": "half a day"
    },
    "inTown": null,
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
@@ -5873,12 +5873,12 @@
    "hold": "Eastmarch",
    "nearestTown": {
     "town": "Windhelm",
-    "km": 0.2,
+    "km": 0.3,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.2,
+    "km": 0.3,
     "walk": "next to it"
    },
    "inTown": null,
@@ -6496,7 +6496,7 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.6,
+    "km": 0.7,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -6540,7 +6540,7 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 1.0,
+    "km": 1.1,
     "walk": "half a day"
    },
    "inTown": null,
@@ -6734,8 +6734,8 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.9,
-    "walk": "a short walk"
+    "km": 1.0,
+    "walk": "half a day"
    },
    "inTown": null,
    "plugin": "Lux - Ryn's Mistwatch Folly patch.esp",
@@ -7046,8 +7046,8 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "inTown": null,
    "plugin": "Arena - Markarth Side.esp",
@@ -7169,7 +7169,7 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.7,
+    "km": 0.8,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -7322,7 +7322,7 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.7,
+    "km": 0.9,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -7382,7 +7382,7 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.4,
+    "km": 0.5,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -7756,7 +7756,7 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.4,
+    "km": 0.5,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -8187,7 +8187,7 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.5,
+    "km": 0.7,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -8301,9 +8301,9 @@
     "walk": "a short walk"
    },
    "nearestCity": {
-    "town": "Windhelm",
-    "km": 0.9,
-    "walk": "a short walk"
+    "town": "Riften",
+    "km": 1.0,
+    "walk": "half a day"
    },
    "inTown": null,
    "plugin": "Skyrim.esm",
@@ -8460,7 +8460,7 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.8,
+    "km": 0.9,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -8480,20 +8480,20 @@
      "Vampire"
     ],
     "floor": 6,
-    "ceiling": 125,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        6,
-       125
+       100
       ],
-      "words": "from 1, 6 to 125"
+      "words": "from 1, 6 to 100"
      }
     ],
     "zoneMin": 6,
     "boss": {
-     "level": "leveled 55-125"
+     "level": "leveled 55-100"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -9276,12 +9276,12 @@
    "hold": "Eastmarch",
    "nearestTown": {
     "town": "Windhelm",
-    "km": 0.8,
+    "km": 0.7,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.8,
+    "km": 0.7,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -9360,8 +9360,8 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.5,
+    "walk": "a short walk"
    },
    "inTown": null,
    "plugin": "Dragons Awaken.esp",
@@ -9426,7 +9426,7 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.4,
+    "km": 0.5,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -9905,8 +9905,8 @@
     "walk": "next to it"
    },
    "nearestCity": {
-    "town": "Whiterun",
-    "km": 0.6,
+    "town": "Falkreath",
+    "km": 0.7,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -10467,20 +10467,20 @@
      "Skeleton"
     ],
     "floor": 6,
-    "ceiling": 125,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        6,
-       125
+       100
       ],
-      "words": "from 1, 6 to 125"
+      "words": "from 1, 6 to 100"
      }
     ],
     "zoneMin": 6,
     "boss": {
-     "level": "leveled 55-125"
+     "level": "leveled 55-100"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -10772,7 +10772,7 @@
    "id": "Skyrim.esm:03444E",
    "name": "Dark Brotherhood Sanctuary",
    "edid": "DarkBrotherhoodSanctuaryLocation",
-   "type": "Town",
+   "type": "Guild",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeTown"
@@ -10808,32 +10808,9 @@
    "posFrom": "marker",
    "actors": {
     "count": 40,
-    "livesHere": "Bandit",
-    "alsoHere": [
-     "Spider",
-     "Skeleton"
-    ],
-    "floor": 8,
-    "ceiling": 78,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       8,
-       78
-      ],
-      "words": "from 1, 8 to 78"
-     }
-    ],
-    "zoneMin": 8,
-    "boss": {
-     "name": "Penitus Oculatus Agent",
-     "level": "level 19"
-    }
+    "hostile": false
    },
    "respawns": "never",
-   "clearXp": 100,
-   "discoveryXp": 10,
    "worthGoingFor": {
     "wordWall": [
      "Marked for Death"
@@ -11234,7 +11211,7 @@
     "walk": "next to it"
    },
    "nearestCity": {
-    "town": "Whiterun",
+    "town": "Falkreath",
     "km": 0.7,
     "walk": "a short walk"
    },
@@ -12241,9 +12218,7 @@
      "level": "leveled 19-24"
     }
    },
-   "respawns": "never",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "shrines": [
      "Shrine of Arkay"
@@ -12414,7 +12389,7 @@
    },
    "nearestCity": {
     "town": "Whiterun",
-    "km": 1.1,
+    "km": 1.2,
     "walk": "half a day"
    },
    "inTown": null,
@@ -12436,20 +12411,20 @@
      "Troll"
     ],
     "floor": 6,
-    "ceiling": 125,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        6,
-       125
+       100
       ],
-      "words": "from 1, 6 to 125"
+      "words": "from 1, 6 to 100"
      }
     ],
     "zoneMin": 6,
     "boss": {
-     "level": "leveled 55-125"
+     "level": "leveled 55-100"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -14329,20 +14304,20 @@
     "count": 8,
     "livesHere": "Necromancer",
     "floor": 6,
-    "ceiling": 120,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        6,
-       120
+       100
       ],
-      "words": "from 1, 6 to 120"
+      "words": "from 1, 6 to 100"
      }
     ],
     "boss": {
      "name": "Aspect of Morihaus",
-     "level": "level 120"
+     "level": "level 100"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -14539,15 +14514,15 @@
      "Draugr"
     ],
     "floor": 6,
-    "ceiling": 125,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        6,
-       125
+       100
       ],
-      "words": "from 1, 6 to 125"
+      "words": "from 1, 6 to 100"
      }
     ],
     "zoneMin": 6,
@@ -17127,7 +17102,7 @@
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.7,
+    "km": 0.6,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -17340,12 +17315,12 @@
    "hold": "Haafingar",
    "nearestTown": {
     "town": "Solitude",
-    "km": 0.7,
+    "km": 0.6,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.7,
+    "km": 0.6,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -17978,7 +17953,7 @@
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.8,
+    "km": 0.7,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -18497,13 +18472,13 @@
    ],
    "hold": "Haafingar",
    "nearestTown": {
-    "town": "Dragon Bridge",
+    "town": "Solitude",
     "km": 0.4,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -18635,12 +18610,12 @@
    "hold": "Haafingar",
    "nearestTown": {
     "town": "Solitude",
-    "km": 0.3,
+    "km": 0.2,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.3,
+    "km": 0.2,
     "walk": "next to it"
    },
    "inTown": null,
@@ -18693,7 +18668,7 @@
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -18828,8 +18803,8 @@
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 1.0,
-    "walk": "half a day"
+    "km": 0.9,
+    "walk": "a short walk"
    },
    "inTown": null,
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
@@ -18986,7 +18961,7 @@
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 1.3,
+    "km": 1.2,
     "walk": "half a day"
    },
    "inTown": null,
@@ -19222,8 +19197,8 @@
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 1.0,
-    "walk": "half a day"
+    "km": 0.9,
+    "walk": "a short walk"
    },
    "inTown": null,
    "plugin": "SaveTheIcerunner.esp",
@@ -19316,7 +19291,7 @@
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 1.2,
+    "km": 1.1,
     "walk": "half a day"
    },
    "inTown": null,
@@ -19376,7 +19351,7 @@
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.9,
+    "km": 0.8,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -19487,20 +19462,20 @@
      "Skeleton"
     ],
     "floor": 6,
-    "ceiling": 125,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        6,
-       125
+       100
       ],
-      "words": "from 1, 6 to 125"
+      "words": "from 1, 6 to 100"
      }
     ],
     "zoneMin": 6,
     "boss": {
-     "level": "leveled 100-125"
+     "level": "level 100"
     }
    },
    "respawns": "never",
@@ -19719,12 +19694,12 @@
    "hold": "Haafingar",
    "nearestTown": {
     "town": "Solitude",
-    "km": 0.6,
+    "km": 0.5,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.6,
+    "km": 0.5,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -19854,7 +19829,7 @@
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 1.2,
+    "km": 1.1,
     "walk": "half a day"
    },
    "inTown": null,
@@ -20204,14 +20179,14 @@
    ],
    "hold": "Haafingar",
    "nearestTown": {
-    "town": "Dragon Bridge",
-    "km": 0.4,
-    "walk": "a short walk"
+    "town": "Solitude",
+    "km": 0.3,
+    "walk": "next to it"
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.4,
-    "walk": "a short walk"
+    "km": 0.3,
+    "walk": "next to it"
    },
    "inTown": null,
    "plugin": "Skyrim.esm",
@@ -20255,12 +20230,12 @@
    "hold": "Haafingar",
    "nearestTown": {
     "town": "Solitude",
-    "km": 0.1,
+    "km": 0.0,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.1,
+    "km": 0.0,
     "walk": "next to it"
    },
    "inTown": null,
@@ -20384,7 +20359,7 @@
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -20456,8 +20431,8 @@
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 1.0,
-    "walk": "half a day"
+    "km": 0.9,
+    "walk": "a short walk"
    },
    "inTown": null,
    "plugin": "Skyrim.esm",
@@ -20720,12 +20695,12 @@
    "hold": "Haafingar",
    "nearestTown": {
     "town": "Solitude",
-    "km": 0.3,
+    "km": 0.2,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.3,
+    "km": 0.2,
     "walk": "next to it"
    },
    "inTown": null,
@@ -21309,13 +21284,13 @@
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": ".\r\n\r\nContinue up the road from the college and you'll reach the courtyard of the Blue Palace, our final destination.\r\n\r\nThe Blue Palace\r\n\r\nThe Blue Palace is home to the Jarls of Solitude, who for centuries have also served as the High Kings and High Queens of Skyrim. The northea",
+     "words": "The city gradually grew to extend across the entire length of the arch. This growth culminated in the building of the Blue Palace, home of the High Kings and Queens of Skyrim. We will visit the palace later.\r\n\r\nThe Gates of Solitude\r\n\r\nEntrance to Solitude is guarded by two gat",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "The city gradually grew to extend across the entire length of the arch. This growth culminated in the building of the Blue Palace, home of the High Kings and Queens of Skyrim. We will visit the palace later.\r\n\r\nThe Gates of Solitude\r\n\r\nEntrance to Solitude is guarded by two gat",
+     "words": ".\r\n\r\nContinue up the road from the college and you'll reach the courtyard of the Blue Palace, our final destination.\r\n\r\nThe Blue Palace\r\n\r\nThe Blue Palace is home to the Jarls of Solitude, who for centuries have also served as the High Kings and High Queens of Skyrim. The northea",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
@@ -21414,12 +21389,12 @@
    "hold": "Haafingar",
    "nearestTown": {
     "town": "Solitude",
-    "km": 0.1,
+    "km": 0.2,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.1,
+    "km": 0.2,
     "walk": "next to it"
    },
    "inTown": "Solitude",
@@ -21500,12 +21475,12 @@
    "hold": "Haafingar",
    "nearestTown": {
     "town": "Solitude",
-    "km": 0.1,
+    "km": 0.2,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.1,
+    "km": 0.2,
     "walk": "next to it"
    },
    "inTown": null,
@@ -21614,7 +21589,7 @@
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.6,
+    "km": 0.5,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -22242,7 +22217,7 @@
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 1.1,
+    "km": 1.0,
     "walk": "half a day"
    },
    "inTown": null,
@@ -22346,7 +22321,7 @@
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.7,
+    "km": 0.6,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -22407,7 +22382,7 @@
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.6,
+    "km": 0.5,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -22606,12 +22581,12 @@
    ],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Solitude",
+    "town": "Morthal",
     "km": 0.4,
     "walk": "a short walk"
    },
    "nearestCity": {
-    "town": "Solitude",
+    "town": "Morthal",
     "km": 0.4,
     "walk": "a short walk"
    },
@@ -22747,8 +22722,8 @@
     "walk": "a short walk"
    },
    "nearestCity": {
-    "town": "Morthal",
-    "km": 0.9,
+    "town": "Solitude",
+    "km": 0.8,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -23209,12 +23184,12 @@
    "hold": "Hjaalmarch",
    "nearestTown": {
     "town": "Solitude",
-    "km": 0.2,
+    "km": 0.3,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.2,
+    "km": 0.3,
     "walk": "next to it"
    },
    "inTown": null,
@@ -23303,8 +23278,8 @@
     "walk": "next to it"
    },
    "nearestCity": {
-    "town": "Morthal",
-    "km": 0.7,
+    "town": "Solitude",
+    "km": 0.6,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -24255,13 +24230,13 @@
    "keywords": [],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Dragon Bridge",
+    "town": "Solitude",
     "km": 0.4,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -24443,21 +24418,21 @@
      "Spider"
     ],
     "floor": 6,
-    "ceiling": 140,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        6,
-       140
+       100
       ],
-      "words": "from 1, 6 to 140"
+      "words": "from 1, 6 to 100"
      }
     ],
     "zoneMin": 6,
     "boss": {
      "name": "Movarth Piquine",
-     "level": "level 140"
+     "level": "level 100"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -24722,7 +24697,7 @@
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -24914,7 +24889,7 @@
    },
    "nearestCity": {
     "town": "Whiterun",
-    "km": 0.8,
+    "km": 0.7,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -25614,12 +25589,12 @@
    ],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Solitude",
+    "town": "Morthal",
     "km": 0.5,
     "walk": "a short walk"
    },
    "nearestCity": {
-    "town": "Solitude",
+    "town": "Morthal",
     "km": 0.5,
     "walk": "a short walk"
    },
@@ -29175,21 +29150,21 @@
      "Skeleton"
     ],
     "floor": 40,
-    "ceiling": 200,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        40,
-       200
+       100
       ],
-      "words": "from 1, 40 to 200"
+      "words": "from 1, 40 to 100"
      }
     ],
     "zoneMin": 40,
     "boss": {
      "name": "Haknir Death-Brand",
-     "level": "level 200"
+     "level": "level 100"
     }
    },
    "respawns": "never",
@@ -29976,15 +29951,15 @@
      "Dragon"
     ],
     "floor": 25,
-    "ceiling": 120,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        25,
-       120
+       100
       ],
-      "words": "from 1, 25 to 120"
+      "words": "from 1, 25 to 100"
      }
     ],
     "zoneMin": 25,
@@ -31584,21 +31559,21 @@
      "DragonPriest"
     ],
     "floor": 30,
-    "ceiling": 120,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        30,
-       120
+       100
       ],
-      "words": "from 1, 30 to 120"
+      "words": "from 1, 30 to 100"
      }
     ],
     "zoneMin": 30,
     "boss": {
      "name": "Zahkriisos",
-     "level": "level 120"
+     "level": "level 100"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -32545,15 +32520,15 @@
      "Bandit"
     ],
     "floor": 30,
-    "ceiling": 120,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        30,
-       120
+       100
       ],
-      "words": "from 1, 30 to 120"
+      "words": "from 1, 30 to 100"
      }
     ],
     "zoneMin": 30,
@@ -33039,21 +33014,21 @@
      "Riekling"
     ],
     "floor": 30,
-    "ceiling": 120,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        30,
-       120
+       100
       ],
-      "words": "from 1, 30 to 120"
+      "words": "from 1, 30 to 100"
      }
     ],
     "zoneMin": 30,
     "boss": {
      "name": "Vahlok the Jailor",
-     "level": "level 120"
+     "level": "level 100"
     }
    },
    "respawns": "never",
@@ -33173,21 +33148,21 @@
      "DragonPriest"
     ],
     "floor": 30,
-    "ceiling": 120,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        30,
-       120
+       100
       ],
-      "words": "from 1, 30 to 120"
+      "words": "from 1, 30 to 100"
      }
     ],
     "zoneMin": 30,
     "boss": {
      "name": "Dukaan",
-     "level": "level 120"
+     "level": "level 100"
     }
    },
    "respawns": "never",
@@ -33335,13 +33310,13 @@
    "hold": "The Pale",
    "nearestTown": {
     "town": "Windhelm",
-    "km": 0.4,
-    "walk": "a short walk"
+    "km": 0.3,
+    "walk": "next to it"
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.4,
-    "walk": "a short walk"
+    "km": 0.3,
+    "walk": "next to it"
    },
    "inTown": null,
    "plugin": "Natural Waterfalls.esp",
@@ -33536,13 +33511,13 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Stonehills",
-    "km": 0.8,
+    "town": "Whiterun",
+    "km": 0.7,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Whiterun",
-    "km": 0.8,
+    "km": 0.7,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -33637,12 +33612,12 @@
    "hold": "The Pale",
    "nearestTown": {
     "town": "Windhelm",
-    "km": 0.8,
+    "km": 0.7,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.8,
+    "km": 0.7,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -33794,7 +33769,7 @@
    "id": "Skyrim.esm:019429",
    "name": "Dawnstar Sanctuary",
    "edid": "DawnstarSanctuaryLocation",
-   "type": "Town",
+   "type": "Guild",
    "keywords": [
     "LocTypeDwelling",
     "LocTypeTown"
@@ -33835,34 +33810,9 @@
    "posFrom": "marker",
    "actors": {
     "count": 36,
-    "livesHere": "Forsworn",
-    "alsoHere": [
-     "Bandit",
-     "Troll",
-     "Vampire",
-     "Thalmor"
-    ],
-    "floor": 8,
-    "ceiling": 100,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       8,
-       100
-      ],
-      "words": "from 1, 8 to 100"
-     }
-    ],
-    "zoneMin": 8,
-    "boss": {
-     "name": "Dark Brotherhood Listener",
-     "level": "matches your level, 50 to 100"
-    }
+    "hostile": false
    },
    "respawns": "never",
-   "clearXp": 100,
-   "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
      "Alteration: Sithis",
@@ -34226,12 +34176,12 @@
    "hold": "The Pale",
    "nearestTown": {
     "town": "Windhelm",
-    "km": 0.8,
+    "km": 0.7,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.8,
+    "km": 0.7,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -34845,13 +34795,13 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Solitude",
-    "km": 0.5,
+    "town": "Stonehills",
+    "km": 0.6,
     "walk": "a short walk"
    },
    "nearestCity": {
-    "town": "Solitude",
-    "km": 0.5,
+    "town": "Morthal",
+    "km": 0.6,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -36424,12 +36374,12 @@
    "hold": "The Pale",
    "nearestTown": {
     "town": "Whiterun",
-    "km": 0.9,
+    "km": 0.8,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Whiterun",
-    "km": 0.9,
+    "km": 0.8,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -36503,12 +36453,12 @@
    "hold": "The Pale",
    "nearestTown": {
     "town": "Whiterun",
-    "km": 0.6,
+    "km": 0.5,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Whiterun",
-    "km": 0.6,
+    "km": 0.5,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -36625,13 +36575,13 @@
    "hold": "The Pale",
    "nearestTown": {
     "town": "Whiterun",
-    "km": 1.0,
-    "walk": "half a day"
+    "km": 0.9,
+    "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Whiterun",
-    "km": 1.0,
-    "walk": "half a day"
+    "km": 0.9,
+    "walk": "a short walk"
    },
    "inTown": null,
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
@@ -37305,7 +37255,7 @@
     "walk": "a short walk"
    },
    "nearestCity": {
-    "town": "Dawnstar",
+    "town": "Whiterun",
     "km": 0.9,
     "walk": "a short walk"
    },
@@ -37666,12 +37616,12 @@
    "hold": "The Pale",
    "nearestTown": {
     "town": "Windhelm",
-    "km": 0.7,
+    "km": 0.6,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.7,
+    "km": 0.6,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -37896,8 +37846,8 @@
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.9,
-    "walk": "a short walk"
+    "km": 1.0,
+    "walk": "half a day"
    },
    "inTown": null,
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
@@ -38111,7 +38061,7 @@
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 1.0,
+    "km": 1.1,
     "walk": "half a day"
    },
    "inTown": null,
@@ -38211,7 +38161,7 @@
     "walk": "a short walk"
    },
    "nearestCity": {
-    "town": "Markarth",
+    "town": "Solitude",
     "km": 1.0,
     "walk": "half a day"
    },
@@ -38945,9 +38895,9 @@
     "walk": "a short walk"
    },
    "nearestCity": {
-    "town": "Morthal",
-    "km": 1.0,
-    "walk": "half a day"
+    "town": "Solitude",
+    "km": 0.9,
+    "walk": "a short walk"
    },
    "inTown": null,
    "plugin": "Skyrim.esm",
@@ -39008,7 +38958,7 @@
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 1.1,
+    "km": 1.2,
     "walk": "half a day"
    },
    "inTown": null,
@@ -39252,7 +39202,7 @@
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 1.1,
+    "km": 1.0,
     "walk": "half a day"
    },
    "inTown": null,
@@ -39343,7 +39293,7 @@
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.8,
+    "km": 0.9,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -39398,7 +39348,7 @@
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.9,
+    "km": 0.8,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -39453,7 +39403,7 @@
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.7,
+    "km": 0.8,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -39640,12 +39590,12 @@
    "hold": "The Reach",
    "nearestTown": {
     "town": "Markarth",
-    "km": 0.5,
+    "km": 0.6,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.5,
+    "km": 0.6,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -40394,7 +40344,7 @@
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 1.1,
+    "km": 1.0,
     "walk": "half a day"
    },
    "inTown": null,
@@ -40762,7 +40712,7 @@
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.8,
+    "km": 0.9,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -40849,12 +40799,12 @@
    "hold": "The Reach",
    "nearestTown": {
     "town": "Markarth",
-    "km": 0.1,
+    "km": 0.2,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.1,
+    "km": 0.2,
     "walk": "next to it"
    },
    "inTown": null,
@@ -41245,7 +41195,7 @@
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.5,
+    "km": 0.6,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -41409,7 +41359,7 @@
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.6,
+    "km": 0.7,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -41464,12 +41414,12 @@
    "hold": "The Reach",
    "nearestTown": {
     "town": "Markarth",
-    "km": 0.7,
+    "km": 0.8,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.7,
+    "km": 0.8,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -41747,13 +41697,13 @@
    "hold": "The Reach",
    "nearestTown": {
     "town": "Markarth",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "inTown": null,
    "plugin": "Skyrim.esm",
@@ -41904,7 +41854,7 @@
     "walk": "next to it"
    },
    "nearestCity": {
-    "town": "Markarth",
+    "town": "Solitude",
     "km": 1.0,
     "walk": "half a day"
    },
@@ -42160,12 +42110,12 @@
    "hold": "The Reach",
    "nearestTown": {
     "town": "Markarth",
-    "km": 0.1,
+    "km": 0.2,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.1,
+    "km": 0.2,
     "walk": "next to it"
    },
    "inTown": null,
@@ -42294,7 +42244,7 @@
     "walk": "a short walk"
    },
    "nearestCity": {
-    "town": "Morthal",
+    "town": "Solitude",
     "km": 2.1,
     "walk": "a long day's road"
    },
@@ -42542,12 +42492,12 @@
    "hold": "The Reach",
    "nearestTown": {
     "town": "Markarth",
-    "km": 0.0,
+    "km": 0.1,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.0,
+    "km": 0.1,
     "walk": "next to it"
    },
    "inTown": null,
@@ -42948,7 +42898,7 @@
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.8,
+    "km": 0.9,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -43034,13 +42984,13 @@
    "hold": "The Reach",
    "nearestTown": {
     "town": "Markarth",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "inTown": null,
    "plugin": "Skyrim.esm",
@@ -43414,13 +43364,13 @@
    "hold": "The Reach",
    "nearestTown": {
     "town": "Markarth",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "inTown": null,
    "plugin": "Dragons Awaken.esp",
@@ -43472,12 +43422,12 @@
    "hold": "The Reach",
    "nearestTown": {
     "town": "Markarth",
-    "km": 0.4,
+    "km": 0.5,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.4,
+    "km": 0.5,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -43564,12 +43514,12 @@
    "hold": "The Reach",
    "nearestTown": {
     "town": "Markarth",
-    "km": 0.5,
+    "km": 0.6,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.5,
+    "km": 0.6,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -43642,8 +43592,8 @@
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.9,
-    "walk": "a short walk"
+    "km": 1.0,
+    "walk": "half a day"
    },
    "inTown": null,
    "plugin": "Lux.esp",
@@ -43716,7 +43666,7 @@
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.6,
+    "km": 0.7,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -43999,7 +43949,7 @@
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.8,
+    "km": 0.9,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -44458,13 +44408,13 @@
    "keywords": [],
    "hold": "The Reach",
    "nearestTown": {
-    "town": "Markarth",
+    "town": "Karthwasten",
     "km": 0.4,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.4,
+    "km": 0.5,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -44794,7 +44744,7 @@
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.7,
+    "km": 0.8,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -44940,14 +44890,14 @@
    "keywords": [],
    "hold": "The Reach",
    "nearestTown": {
-    "town": "Markarth",
-    "km": 0.3,
-    "walk": "next to it"
+    "town": "Karthwasten",
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "inTown": null,
    "plugin": "Ryn's Standing Stones.esp",
@@ -45428,8 +45378,8 @@
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.9,
-    "walk": "a short walk"
+    "km": 1.0,
+    "walk": "half a day"
    },
    "inTown": null,
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
@@ -45932,8 +45882,8 @@
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "inTown": null,
    "plugin": "Skyrim.esm",
@@ -46083,12 +46033,12 @@
    "hold": "The Rift",
    "nearestTown": {
     "town": "Riften",
-    "km": 0.8,
+    "km": 0.7,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.8,
+    "km": 0.7,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -46925,7 +46875,7 @@
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.6,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -46997,13 +46947,13 @@
    "hold": "The Rift",
    "nearestTown": {
     "town": "Riften",
-    "km": 0.4,
-    "walk": "a short walk"
+    "km": 0.3,
+    "walk": "next to it"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.4,
-    "walk": "a short walk"
+    "km": 0.3,
+    "walk": "next to it"
    },
    "inTown": null,
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
@@ -47191,12 +47141,12 @@
    "hold": "The Rift",
    "nearestTown": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -48180,13 +48130,13 @@
    "hold": "The Rift",
    "nearestTown": {
     "town": "Riften",
-    "km": 0.4,
-    "walk": "a short walk"
+    "km": 0.3,
+    "walk": "next to it"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.4,
-    "walk": "a short walk"
+    "km": 0.3,
+    "walk": "next to it"
    },
    "inTown": null,
    "plugin": "Lux Orbis.esp",
@@ -48303,8 +48253,8 @@
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "inTown": null,
    "plugin": "Requiem.esp",
@@ -50431,13 +50381,13 @@
    "hold": "The Rift",
    "nearestTown": {
     "town": "Riften",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "inTown": null,
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
@@ -50500,12 +50450,12 @@
    "hold": "The Rift",
    "nearestTown": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -50616,12 +50566,12 @@
    "hold": "The Rift",
    "nearestTown": {
     "town": "Riften",
-    "km": 0.1,
+    "km": 0.2,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.1,
+    "km": 0.2,
     "walk": "next to it"
    },
    "inTown": null,
@@ -50781,7 +50731,7 @@
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 1.1,
+    "km": 1.2,
     "walk": "half a day"
    },
    "inTown": null,
@@ -50863,7 +50813,7 @@
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.7,
+    "km": 0.8,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -50911,7 +50861,7 @@
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.6,
+    "km": 0.7,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -51791,7 +51741,7 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 1.8,
+    "km": 1.9,
     "walk": "half a day"
    },
    "inTown": "Riften",
@@ -52007,12 +51957,12 @@
    "hold": "The Rift",
    "nearestTown": {
     "town": "Riften",
-    "km": 0.6,
+    "km": 0.5,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.6,
+    "km": 0.5,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -52067,7 +52017,7 @@
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.6,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -52453,7 +52403,7 @@
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.6,
+    "km": 0.7,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -52533,7 +52483,7 @@
    },
    "nearestCity": {
     "town": "Whiterun",
-    "km": 1.1,
+    "km": 1.2,
     "walk": "half a day"
    },
    "inTown": null,
@@ -52737,12 +52687,12 @@
    "hold": "The Rift",
    "nearestTown": {
     "town": "Riften",
-    "km": 0.3,
+    "km": 0.2,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.3,
+    "km": 0.2,
     "walk": "next to it"
    },
    "inTown": null,
@@ -52784,12 +52734,12 @@
    "hold": "The Rift",
    "nearestTown": {
     "town": "Riften",
-    "km": 0.3,
+    "km": 0.2,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.3,
+    "km": 0.2,
     "walk": "next to it"
    },
    "inTown": null,
@@ -52962,12 +52912,12 @@
    "hold": "The Rift",
    "nearestTown": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -52988,21 +52938,21 @@
      "Skeleton"
     ],
     "floor": 6,
-    "ceiling": 250,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        6,
-       250
+       100
       ],
-      "words": "from 1, 6 to 250"
+      "words": "from 1, 6 to 100"
      }
     ],
     "zoneMin": 6,
     "boss": {
      "name": "Molag Bal",
-     "level": "level 250"
+     "level": "level 100"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -53449,15 +53399,15 @@
    "actors": {
     "count": 18,
     "floor": 16,
-    "ceiling": 120,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        16,
-       120
+       100
       ],
-      "words": "from 1, 16 to 120"
+      "words": "from 1, 16 to 100"
      }
     ],
     "zoneMin": 15
@@ -53556,13 +53506,13 @@
     {
      "kind": "book",
      "book": "Uncovering the Aetherium Forge",
-     "words": "Uncovering the Aetherium Forge\r\n\r\n\r\nby Katria\r\n\r\n\r\n\r\n\r\nThe real mind behind \r\nThe Aetherium Wars\r\n\r\n \r\n17th of Sun's Height \r\nDamn that scheming elf! Damn him! He steals my no",
+     "words": "the first to step foot here in thousands of years. More Resonators, easy enough. But the air... it feels different.\r\n \r\nThe Aetherium Forge. We actually found it! The whole area is surrounded by a pool of magma. We'll have to shut off the steam so my friend can breathe down here.",
      "record": "BOOK katriaslegacy.esp:000800 (katriaslegacy.esp)"
     },
     {
      "kind": "book",
      "book": "Uncovering the Aetherium Forge",
-     "words": "the first to step foot here in thousands of years. More Resonators, easy enough. But the air... it feels different.\r\n \r\nThe Aetherium Forge. We actually found it! The whole area is surrounded by a pool of magma. We'll have to shut off the steam so my friend can breathe down here.",
+     "words": "Uncovering the Aetherium Forge\r\n\r\n\r\nby Katria\r\n\r\n\r\n\r\n\r\nThe real mind behind \r\nThe Aetherium Wars\r\n\r\n \r\n17th of Sun's Height \r\nDamn that scheming elf! Damn him! He steals my no",
      "record": "BOOK katriaslegacy.esp:000800 (katriaslegacy.esp)"
     }
    ],
@@ -54032,12 +53982,12 @@
    "hold": "The Rift",
    "nearestTown": {
     "town": "Riften",
-    "km": 0.3,
+    "km": 0.2,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.3,
+    "km": 0.2,
     "walk": "next to it"
    },
    "inTown": null,
@@ -54107,12 +54057,12 @@
    "hold": "The Rift",
    "nearestTown": {
     "town": "Riften",
-    "km": 0.0,
+    "km": 0.1,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.0,
+    "km": 0.1,
     "walk": "next to it"
    },
    "inTown": "Riften",
@@ -54169,7 +54119,7 @@
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.6,
+    "km": 0.7,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -55547,12 +55497,12 @@
    "hold": "Whiterun",
    "nearestTown": {
     "town": "Whiterun",
-    "km": 0.2,
+    "km": 0.1,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Whiterun",
-    "km": 0.2,
+    "km": 0.1,
     "walk": "next to it"
    },
    "inTown": "Whiterun",
@@ -56682,12 +56632,12 @@
    "hold": "Whiterun",
    "nearestTown": {
     "town": "Whiterun",
-    "km": 0.7,
+    "km": 0.6,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Whiterun",
-    "km": 0.7,
+    "km": 0.6,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -57439,12 +57389,12 @@
    "hold": "Whiterun",
    "nearestTown": {
     "town": "Whiterun",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Whiterun",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -57653,7 +57603,7 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Darkwater Crossing",
+    "town": "Whiterun",
     "km": 0.8,
     "walk": "a short walk"
    },
@@ -58213,15 +58163,15 @@
     "count": 6,
     "livesHere": "Troll",
     "floor": 14,
-    "ceiling": 150,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        14,
-       150
+       100
       ],
-      "words": "from 1, 14 to 150"
+      "words": "from 1, 14 to 100"
      }
     ],
     "zoneMin": 8,
@@ -59244,12 +59194,12 @@
    "hold": "Whiterun",
    "nearestTown": {
     "town": "Whiterun",
-    "km": 0.2,
+    "km": 0.1,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Whiterun",
-    "km": 0.2,
+    "km": 0.1,
     "walk": "next to it"
    },
    "inTown": null,
@@ -59436,12 +59386,12 @@
    "hold": "Whiterun",
    "nearestTown": {
     "town": "Whiterun",
-    "km": 0.2,
+    "km": 0.1,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Whiterun",
-    "km": 0.2,
+    "km": 0.1,
     "walk": "next to it"
    },
    "inTown": "Whiterun",
@@ -61117,12 +61067,12 @@
    "hold": "Whiterun",
    "nearestTown": {
     "town": "Whiterun",
-    "km": 0.1,
+    "km": 0.2,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Whiterun",
-    "km": 0.1,
+    "km": 0.2,
     "walk": "next to it"
    },
    "inTown": null,
@@ -61390,7 +61340,7 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Whiterun",
+    "town": "Helgen",
     "km": 0.5,
     "walk": "a short walk"
    },
@@ -63692,8 +63642,8 @@
     "walk": "next to it"
    },
    "nearestCity": {
-    "town": "Markarth",
-    "km": 1.1,
+    "town": "Morthal",
+    "km": 1.2,
     "walk": "half a day"
    },
    "inTown": null,
@@ -63725,7 +63675,7 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Whiterun",
+    "town": "Riverwood",
     "km": 0.4,
     "walk": "a short walk"
    },
@@ -64179,7 +64129,7 @@
    },
    "nearestCity": {
     "town": "Whiterun",
-    "km": 0.8,
+    "km": 0.9,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -64379,15 +64329,15 @@
      "Skeleton"
     ],
     "floor": 6,
-    "ceiling": 150,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        6,
-       150
+       100
       ],
-      "words": "from 1, 6 to 150"
+      "words": "from 1, 6 to 100"
      }
     ],
     "zoneMin": 6,
@@ -65294,12 +65244,12 @@
    "hold": "Whiterun",
    "nearestTown": {
     "town": "Whiterun",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Whiterun",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -65830,7 +65780,7 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Darkwater Crossing",
+    "town": "Whiterun",
     "km": 0.8,
     "walk": "a short walk"
    },
@@ -66376,12 +66326,12 @@
    "hold": "Whiterun",
    "nearestTown": {
     "town": "Whiterun",
-    "km": 0.0,
+    "km": 0.1,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Whiterun",
-    "km": 0.0,
+    "km": 0.1,
     "walk": "next to it"
    },
    "inTown": null,
@@ -66556,13 +66506,13 @@
    "hold": "Whiterun",
    "nearestTown": {
     "town": "Whiterun",
-    "km": 0.4,
-    "walk": "a short walk"
+    "km": 0.3,
+    "walk": "next to it"
    },
    "nearestCity": {
     "town": "Whiterun",
-    "km": 0.4,
-    "walk": "a short walk"
+    "km": 0.3,
+    "walk": "next to it"
    },
    "inTown": null,
    "plugin": "Skyrim.esm",
@@ -67432,75 +67382,6 @@
    ]
   },
   {
-   "id": "Skyrim.esm:01EB74",
-   "name": "Dormitory",
-   "edid": "WinterholdCollegeDormitoryLocation",
-   "type": "Guild",
-   "keywords": [
-    "LocTypeDwelling",
-    "LocTypeGuild"
-   ],
-   "hold": "Winterhold",
-   "nearestTown": null,
-   "nearestCity": null,
-   "inTown": "Winterhold",
-   "plugin": "Skyrim.esm",
-   "marker": null,
-   "alsoRecordedAs": [
-    {
-     "id": "Skyrim.esm:0D16E5",
-     "edid": "WinterholdCollegeDormitory2Location",
-     "plugin": "Skyrim.esm"
-    }
-   ],
-   "actors": {
-    "count": 15,
-    "hostile": false
-   },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "worthGoingFor": {
-    "skillBooks": [
-     "Alchemy: Herbalist's Guide to Skyrim",
-     "Enchanting: Catalogue of Weapon Enchantments",
-     "Illusion: 2920, Vol. 02: Sun's Dawn"
-    ],
-    "crafting": [
-     "an alchemy lab",
-     "an enchanting table"
-    ]
-   },
-   "quests": [
-    {
-     "quest": "Illusion Ritual Spell",
-     "id": "Skyrim.esm:0B3233"
-    },
-    {
-     "quest": "Arniel's Endeavor",
-     "id": "Skyrim.esm:06A119"
-    },
-    {
-     "quest": "Research Thief",
-     "id": "Skyrim.esm:05D2E9"
-    },
-    {
-     "quest": "Out of Balance",
-     "id": "Skyrim.esm:0266F2"
-    },
-    {
-     "quest": "BCSLL Vendor Quest",
-     "id": "Book Covers Skyrim - Lost Library.esp:012C88"
-    },
-    {
-     "quest": "Kagrenac's Tools",
-     "id": "Tools of Kagrenac.esp:21F221"
-    },
-    {
-     "quest": "The Way In",
-     "id": "Meridia.esp:0103B4"
-    }
-   ]
-  },
-  {
    "id": "Skyrim.esm:01916E",
    "name": "Driftshade Sanctuary",
    "edid": "DriftshadeSanctuaryLocation",
@@ -67697,12 +67578,12 @@
    "hold": "Winterhold",
    "nearestTown": {
     "town": "Windhelm",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -67877,6 +67758,94 @@
    "danger": {
     "traps": true
    }
+  },
+  {
+   "id": "Skyrim.esm:01EB74",
+   "name": "Hall of Attainment",
+   "edid": "WinterholdCollegeDormitoryLocation",
+   "type": "Guild",
+   "keywords": [
+    "LocTypeDwelling",
+    "LocTypeGuild"
+   ],
+   "hold": "Winterhold",
+   "nearestTown": null,
+   "nearestCity": null,
+   "inTown": "Winterhold",
+   "plugin": "Skyrim.esm",
+   "marker": null,
+   "alsoRecordedAs": [
+    {
+     "id": "Skyrim.esm:0D16E5",
+     "edid": "WinterholdCollegeDormitory2Location",
+     "plugin": "Skyrim.esm"
+    }
+   ],
+   "recordName": "Dormitory",
+   "actors": {
+    "count": 15,
+    "hostile": false
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy: Herbalist's Guide to Skyrim",
+     "Enchanting: Catalogue of Weapon Enchantments",
+     "Illusion: 2920, Vol. 02: Sun's Dawn"
+    ],
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "pointers": [
+    {
+     "kind": "dialogue",
+     "speaker": "Mirabelle Ervine",
+     "speakerPlace": "Hall of Attainment",
+     "quest": "First Lessons",
+     "words": "Our newest members are housed here in the Hall of Attainment.",
+     "record": "INFO Skyrim.esm:020307 (Skyrim.esm)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "Conjuration Ritual Spell",
+     "words": "Here is the spell you need. Go to the top of the Hall of Attainment; I have prepared a place for you there.",
+     "record": "INFO Skyrim.esm:0DB36A (Unofficial Skyrim Special Edition Patch.esp)"
+    }
+   ],
+   "quests": [
+    {
+     "quest": "Illusion Ritual Spell",
+     "id": "Skyrim.esm:0B3233"
+    },
+    {
+     "quest": "Arniel's Endeavor",
+     "id": "Skyrim.esm:06A119"
+    },
+    {
+     "quest": "Research Thief",
+     "id": "Skyrim.esm:05D2E9"
+    },
+    {
+     "quest": "Out of Balance",
+     "id": "Skyrim.esm:0266F2"
+    },
+    {
+     "quest": "BCSLL Vendor Quest",
+     "id": "Book Covers Skyrim - Lost Library.esp:012C88"
+    },
+    {
+     "quest": "Kagrenac's Tools",
+     "id": "Tools of Kagrenac.esp:21F221"
+    },
+    {
+     "quest": "The Way In",
+     "id": "Meridia.esp:0103B4"
+    }
+   ]
   },
   {
    "id": "Skyrim.esm:01EB7A",
@@ -70051,12 +70020,12 @@
    "hold": "Winterhold",
    "nearestTown": {
     "town": "Windhelm",
-    "km": 0.7,
+    "km": 0.5,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.7,
+    "km": 0.5,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -70324,13 +70293,13 @@
    "hold": "Winterhold",
    "nearestTown": {
     "town": "Windhelm",
-    "km": 0.4,
-    "walk": "a short walk"
+    "km": 0.3,
+    "walk": "next to it"
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.4,
-    "walk": "a short walk"
+    "km": 0.3,
+    "walk": "next to it"
    },
    "inTown": null,
    "plugin": "Skyrim.esm",
@@ -70402,12 +70371,12 @@
    "hold": "Winterhold",
    "nearestTown": {
     "town": "Windhelm",
-    "km": 0.6,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.6,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -71849,9 +71818,7 @@
      "level": "leveled 44-55"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "skillBooks": [
      "Enchanting: A Tragedy in Black",
@@ -71931,9 +71898,7 @@
      "level": "leveled 6-24"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "bossChest": true
    },
@@ -71987,25 +71952,23 @@
      "Falmer"
     ],
     "floor": 6,
-    "ceiling": 125,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        6,
-       125
+       100
       ],
-      "words": "from 1, 6 to 125"
+      "words": "from 1, 6 to 100"
      }
     ],
     "zoneMin": 6,
     "boss": {
-     "level": "leveled 55-125"
+     "level": "leveled 55-100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "skillBooks": [
      "Heavy Armor: The Knights of the Nine"
@@ -72073,9 +72036,7 @@
      "level": "level 70"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "bossChest": true
    }
@@ -72128,7 +72089,7 @@
     478.5
    ],
    "posFrom": "door",
-   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "shrines": [
      "Shrine of Mara",
@@ -72195,9 +72156,7 @@
      "level": "matches your level, 10 to 25"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "crafting": [
      "a sharpening wheel",
@@ -72303,9 +72262,7 @@
      "level": "level 28"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "bossChest": true
    },
@@ -72386,9 +72343,7 @@
      "level": "leveled 19-24"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "skillBooks": [
      "Alchemy: Herbalist's Guide to Skyrim"
@@ -72470,9 +72425,7 @@
      "level": "leveled 44-55"
     }
    },
-   "respawns": "never",
-   "clearXp": 200,
-   "discoveryXp": 10,
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "bossChest": true
    },
@@ -72595,9 +72548,7 @@
      }
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 200,
-   "discoveryXp": 10,
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "bossChest": true
    },
@@ -72732,9 +72683,7 @@
      "level": "matches your level, 6 to 30"
     }
    },
-   "respawns": "never",
-   "clearXp": 200,
-   "discoveryXp": 10,
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "bossChest": true,
     "crafting": [
@@ -72935,9 +72884,7 @@
      "level": "matches your level, 20 to 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 200,
-   "discoveryXp": 10,
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "skillBooks": [
      "Alchemy: Herbalist's Guide to Skyrim"
@@ -73029,9 +72976,7 @@
      }
     }
    },
-   "respawns": "never",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "bossChest": true,
     "shrines": [
@@ -73120,9 +73065,7 @@
      "level": "leveled 24-55"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "bossChest": true,
     "crafting": [
@@ -73197,9 +73140,7 @@
      "level": "level 45"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "bossChest": true
    }
@@ -73252,9 +73193,7 @@
      "level": "leveled 24-55"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 200,
-   "discoveryXp": 10,
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "bossChest": true,
     "shrines": [
@@ -73352,9 +73291,7 @@
      "level": "level 50"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "bossChest": true,
     "crafting": [
@@ -73563,9 +73500,7 @@
      "level": "level 35"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "skillBooks": [
      "Block: A Dance in Fire, Vol. 2"
@@ -73633,9 +73568,7 @@
      "level": "level 35"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "bossChest": true,
     "crafting": [
@@ -74092,9 +74025,7 @@
      "level": "level 51"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "bossChest": true,
     "crafting": [
@@ -74152,9 +74083,7 @@
      "level": "leveled 19-24"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "crafting": [
      "a tanning rack"
@@ -74205,9 +74134,7 @@
      "level": "leveled 6-24"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "Wyrmstooth"
   },
   {
    "id": "Wyrmstooth.esp:00E53B",
@@ -74261,9 +74188,7 @@
      "level": "level 51"
     }
    },
-   "respawns": "never",
-   "clearXp": 200,
-   "discoveryXp": 10,
+   "realm": "Wyrmstooth",
    "worthGoingFor": {
     "skillBooks": [
      "Alchemy: De Rerum Dirennis",
@@ -74712,12 +74637,12 @@
    "hold": null,
    "nearestTown": {
     "town": "Riften",
-    "km": 0.1,
+    "km": 0.0,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.1,
+    "km": 0.0,
     "walk": "next to it"
    },
    "inTown": null,
@@ -74834,9 +74759,7 @@
     3424.0
    ],
    "posFrom": "marker",
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "pointers": [
     {
      "kind": "dialogue",
@@ -74986,8 +74909,8 @@
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.9,
-    "walk": "a short walk"
+    "km": 1.0,
+    "walk": "half a day"
    },
    "inTown": null,
    "plugin": "HLIORemi.esp",
@@ -75372,9 +75295,7 @@
      }
     ]
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "Coldharbour"
   },
   {
    "id": "Vigilant.esm:385D92",
@@ -75398,25 +75319,23 @@
    "actors": {
     "count": 16,
     "floor": 16,
-    "ceiling": 200,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        16,
-       200
+       100
       ],
-      "words": "from 1, 16 to 200"
+      "words": "from 1, 16 to 100"
      }
     ],
     "boss": {
      "name": "Pelinal Whitestrake",
-     "level": "level 200"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "Coldharbour"
   },
   {
    "id": "Vigilant.esm:385D90",
@@ -75437,9 +75356,7 @@
     2416.0
    ],
    "posFrom": "marker",
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "Coldharbour"
   },
   {
    "id": "Vigilant.esm:385D22",
@@ -75469,26 +75386,24 @@
    "actors": {
     "count": 8,
     "floor": 10,
-    "ceiling": 175,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        10,
-       175
+       100
       ],
-      "words": "from 1, 10 to 175"
+      "words": "from 1, 10 to 100"
      }
     ],
     "zoneMin": 10,
     "boss": {
      "name": "Mary the Dark Maiden",
-     "level": "level 175"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "Coldharbour"
   },
   {
    "id": "Vigilant.esm:3678E3",
@@ -75585,15 +75500,15 @@
    "actors": {
     "count": 43,
     "floor": 1,
-    "ceiling": 18000,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        1,
-       18000
+       100
       ],
-      "words": "from 1, 1 to 18000"
+      "words": "from 1, 1 to 100"
      }
     ],
     "boss": {
@@ -75601,9 +75516,7 @@
      "level": "matches your level, 24 to 48"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 200,
-   "discoveryXp": 10,
+   "realm": "The Shivering Isles",
    "worthGoingFor": {
     "crafting": [
      "a tanning rack",
@@ -75664,24 +75577,22 @@
    "actors": {
     "count": 15,
     "floor": 4,
-    "ceiling": 18000,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        4,
-       18000
+       100
       ],
-      "words": "from 1, 4 to 18000"
+      "words": "from 1, 4 to 100"
      }
     ],
     "boss": {
      "level": "leveled 21-46"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "The Shivering Isles"
   },
   {
    "id": "Vigilant.esm:385D80",
@@ -75850,20 +75761,20 @@
    "actors": {
     "count": 3,
     "floor": 16,
-    "ceiling": 681,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        16,
-       681
+       100
       ],
-      "words": "from 1, 16 to 681"
+      "words": "from 1, 16 to 100"
      }
     ],
     "boss": {
      "name": "Heather",
-     "level": "level 681"
+     "level": "level 100"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -75924,15 +75835,15 @@
    "actors": {
     "count": 13,
     "floor": 1,
-    "ceiling": 114,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        1,
-       114
+       100
       ],
-      "words": "from 1, 1 to 114"
+      "words": "from 1, 1 to 100"
      }
     ],
     "boss": {
@@ -75994,9 +75905,7 @@
      }
     ]
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "worthGoingFor": {
     "shrines": [
      "Shrine of Akatosh",
@@ -76083,7 +75992,7 @@
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 1.8,
+    "km": 1.7,
     "walk": "half a day"
    },
    "inTown": null,
@@ -76308,7 +76217,7 @@
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.4,
+    "km": 0.5,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -76393,27 +76302,25 @@
    "posFrom": "door",
    "actors": {
     "count": 1,
-    "floor": 105,
-    "ceiling": 105,
+    "floor": 100,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
-       105,
-       105
+       100,
+       100
       ],
-      "words": "from 1, 105 to 105"
+      "words": "from 1, 100 to 100"
      }
     ],
     "zoneMin": 20,
     "boss": {
      "name": "Sir Torolf",
-     "level": "level 105"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "worthGoingFor": {
     "shrines": [
      "Shrine of Arkay"
@@ -76450,26 +76357,24 @@
    "actors": {
     "count": 11,
     "floor": 10,
-    "ceiling": 120,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        10,
-       120
+       100
       ],
-      "words": "from 1, 10 to 120"
+      "words": "from 1, 10 to 100"
      }
     ],
     "zoneMin": 10,
     "boss": {
      "name": "Dinok the Gray",
-     "level": "level 120"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "quests": [
     {
      "quest": "Johan the Fool",
@@ -76523,9 +76428,7 @@
      "level": "level 26"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "Coldharbour"
   },
   {
    "id": "ForgottenCity.esp:01AC64",
@@ -77386,9 +77289,7 @@
      "level": "level 75"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "Coldharbour"
   },
   {
    "id": "Meridia.esp:006F2C",
@@ -77604,12 +77505,12 @@
    "hold": null,
    "nearestTown": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -77652,12 +77553,12 @@
    "hold": null,
    "nearestTown": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -77794,9 +77695,7 @@
      "level": "level 80"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "worthGoingFor": {
     "bossChest": true,
     "crafting": [
@@ -77827,26 +77726,24 @@
    "actors": {
     "count": 19,
     "floor": 6,
-    "ceiling": 130,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        6,
-       130
+       100
       ],
-      "words": "from 1, 6 to 130"
+      "words": "from 1, 6 to 100"
      }
     ],
     "zoneMin": 6,
     "boss": {
      "name": "The King of Leeches",
-     "level": "level 130"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "Coldharbour"
   },
   {
    "id": "Ryn's Snazzy Last Vigil.esp:09E0BB",
@@ -77861,13 +77758,13 @@
    "hold": null,
    "nearestTown": {
     "town": "Riften",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "inTown": null,
    "plugin": "Ryn's Snazzy Last Vigil.esp",
@@ -77949,26 +77846,24 @@
    "actors": {
     "count": 2,
     "floor": 20,
-    "ceiling": 150,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        20,
-       150
+       100
       ],
-      "words": "from 1, 20 to 150"
+      "words": "from 1, 20 to 100"
      }
     ],
     "zoneMin": 20,
     "boss": {
      "name": "Gallant Specter of Emperor Gorieus",
-     "level": "level 150"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "Coldharbour"
   },
   {
    "id": "HeartOfTheReach.esp:03952C",
@@ -77979,13 +77874,13 @@
    "hold": null,
    "nearestTown": {
     "town": "Markarth",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "inTown": null,
    "plugin": "HeartOfTheReach.esp",
@@ -78050,13 +77945,13 @@
    "hold": null,
    "nearestTown": {
     "town": "Markarth",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "inTown": null,
    "plugin": "HeartOfTheReach.esp",
@@ -78112,13 +78007,13 @@
    "hold": null,
    "nearestTown": {
     "town": "Markarth",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "inTown": null,
    "plugin": "HeartOfTheReach.esp",
@@ -78181,13 +78076,13 @@
    "hold": null,
    "nearestTown": {
     "town": "Markarth",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "inTown": null,
    "plugin": "HeartOfTheReach.esp",
@@ -78252,13 +78147,13 @@
    "hold": null,
    "nearestTown": {
     "town": "Markarth",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "inTown": null,
    "plugin": "HeartOfTheReach.esp",
@@ -78317,13 +78212,13 @@
    "hold": null,
    "nearestTown": {
     "town": "Markarth",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Markarth",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "inTown": null,
    "plugin": "HeartOfTheReach.esp",
@@ -78505,12 +78400,12 @@
    "hold": null,
    "nearestTown": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -78743,12 +78638,12 @@
    "hold": null,
    "nearestTown": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -78766,7 +78661,7 @@
    "homeOf": [
     "Malevolent Commander",
     "Meridia",
-    "Orthelos"
+    "Undead Spider"
    ],
    "world": "Tamriel",
    "pos": [
@@ -79013,9 +78908,7 @@
      "level": "level 80"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "worthGoingFor": {
     "crafting": [
      "a sharpening wheel",
@@ -79070,9 +78963,7 @@
      "level": "level 80"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 200,
-   "discoveryXp": 10
+   "realm": "Coldharbour"
   },
   {
    "id": "Vigilant.esm:26C064",
@@ -79114,9 +79005,7 @@
      "level": "level 75"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "pointers": [
     {
      "kind": "dialogue",
@@ -79151,7 +79040,6 @@
    ],
    "homeOf": [
     "Sir Gregory",
-    "Sir Henrik",
     "Sir Juncan"
    ],
    "world": "zCHMolagWorld",
@@ -79164,26 +79052,24 @@
    "actors": {
     "count": 3,
     "floor": 55,
-    "ceiling": 120,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        55,
-       120
+       100
       ],
-      "words": "from 1, 55 to 120"
+      "words": "from 1, 55 to 100"
      }
     ],
     "zoneMin": 8,
     "boss": {
      "name": "Sir Juncan",
-     "level": "level 120"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "worthGoingFor": {
     "shrines": [
      "Shrine of Dibella"
@@ -79216,12 +79102,12 @@
    "hold": null,
    "nearestTown": {
     "town": "Solitude",
-    "km": 0.0,
+    "km": 0.1,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.0,
+    "km": 0.1,
     "walk": "next to it"
    },
    "inTown": null,
@@ -79303,9 +79189,7 @@
     3408.0
    ],
    "posFrom": "marker",
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "Coldharbour"
   },
   {
    "id": "Skyrim Extended Cut - Saints and Seducers.esp:0A5170",
@@ -79334,15 +79218,15 @@
     "count": 12,
     "livesHere": "Bandit",
     "floor": 1,
-    "ceiling": 18000,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        1,
-       18000
+       100
       ],
-      "words": "from 1, 1 to 18000"
+      "words": "from 1, 1 to 100"
      }
     ],
     "boss": {
@@ -79350,9 +79234,7 @@
      "level": "matches your level, 25 to 50"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "The Shivering Isles",
    "danger": {
     "traps": true
    }
@@ -79390,26 +79272,24 @@
    "actors": {
     "count": 10,
     "floor": 18,
-    "ceiling": 200,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        18,
-       200
+       100
       ],
-      "words": "from 1, 18 to 200"
+      "words": "from 1, 18 to 100"
      }
     ],
     "zoneMin": 15,
     "boss": {
      "name": "Pope Megus",
-     "level": "level 200"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "quests": [
     {
      "quest": "Temptation of Marukh",
@@ -79426,12 +79306,12 @@
    "hold": null,
    "nearestTown": {
     "town": "Riften",
-    "km": 0.2,
+    "km": 0.3,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.2,
+    "km": 0.3,
     "walk": "next to it"
    },
    "inTown": null,
@@ -79514,12 +79394,12 @@
    "hold": null,
    "nearestTown": {
     "town": "Riften",
-    "km": 0.2,
+    "km": 0.3,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.2,
+    "km": 0.3,
     "walk": "next to it"
    },
    "inTown": null,
@@ -79727,7 +79607,7 @@
     "walk": "a short walk"
    },
    "nearestCity": {
-    "town": "Windhelm",
+    "town": "Whiterun",
     "km": 1.1,
     "walk": "half a day"
    },
@@ -80039,15 +79919,15 @@
    "actors": {
     "count": 17,
     "floor": 20,
-    "ceiling": 215,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        20,
-       215
+       100
       ],
-      "words": "from 1, 20 to 215"
+      "words": "from 1, 20 to 100"
      }
     ]
    },
@@ -80086,25 +79966,23 @@
    "actors": {
     "count": 32,
     "floor": 20,
-    "ceiling": 140,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        20,
-       140
+       100
       ],
-      "words": "from 1, 20 to 140"
+      "words": "from 1, 20 to 100"
      }
     ],
     "boss": {
      "name": "Abbot Cosmas",
-     "level": "level 140"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "quests": [
     {
      "quest": "Coldharbour",
@@ -80311,9 +80189,7 @@
     ],
     "zoneMin": 8
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "worthGoingFor": {
     "bossChest": true
    }
@@ -80340,25 +80216,23 @@
    "actors": {
     "count": 70,
     "floor": 10,
-    "ceiling": 150,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        10,
-       150
+       100
       ],
-      "words": "from 1, 10 to 150"
+      "words": "from 1, 10 to 100"
      }
     ],
     "boss": {
-     "name": "Baptist Menelion",
-     "level": "level 150"
+     "name": "Festering Ogrim Lord",
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 200,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "worthGoingFor": {
     "crafting": [
      "a tanning rack"
@@ -80403,26 +80277,24 @@
    "actors": {
     "count": 14,
     "floor": 5,
-    "ceiling": 150,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        5,
-       150
+       100
       ],
-      "words": "from 1, 5 to 150"
+      "words": "from 1, 5 to 100"
      }
     ],
     "zoneMin": 5,
     "boss": {
      "name": "Bartholo",
-     "level": "level 150"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "Coldharbour"
   },
   {
    "id": "Update.esm:002F9C",
@@ -80432,13 +80304,13 @@
    "keywords": [],
    "hold": null,
    "nearestTown": {
-    "town": "Dragon Bridge",
+    "town": "Solitude",
     "km": 0.4,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -80500,12 +80372,12 @@
    "hold": null,
    "nearestTown": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -80560,12 +80432,12 @@
    "hold": null,
    "nearestTown": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -80628,12 +80500,12 @@
    "hold": null,
    "nearestTown": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -80698,12 +80570,12 @@
    "hold": null,
    "nearestTown": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -80758,12 +80630,12 @@
    "hold": null,
    "nearestTown": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.5,
+    "km": 0.4,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -80942,9 +80814,7 @@
      "level": "level 80"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "worthGoingFor": {
     "crafting": [
      "an alchemy lab",
@@ -81232,9 +81102,7 @@
      "level": "level 80"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "danger": {
     "traps": true
    }
@@ -81332,27 +81200,25 @@
    "posFrom": "door",
    "actors": {
     "count": 2,
-    "floor": 105,
-    "ceiling": 150,
+    "floor": 100,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
-       105,
-       150
+       100,
+       100
       ],
-      "words": "from 1, 105 to 150"
+      "words": "from 1, 100 to 100"
      }
     ],
     "zoneMin": 10,
     "boss": {
      "name": "Laza of Order",
-     "level": "level 150"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "danger": {
     "traps": true
    },
@@ -81394,27 +81260,25 @@
    "posFrom": "door",
    "actors": {
     "count": 1,
-    "floor": 150,
-    "ceiling": 150,
+    "floor": 100,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
-       150,
-       150
+       100,
+       100
       ],
-      "words": "from 1, 150 to 150"
+      "words": "from 1, 100 to 100"
      }
     ],
     "zoneMin": 10,
     "boss": {
      "name": "Arch-Selective Caliburn",
-     "level": "level 150"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "Coldharbour"
   },
   {
    "id": "Vigilant.esm:26C069",
@@ -81456,9 +81320,7 @@
      "level": "level 60"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "quests": [
     {
      "quest": "The Mad King",
@@ -81534,9 +81396,7 @@
      }
     ]
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "pointers": [
     {
      "kind": "dialogue",
@@ -81742,25 +81602,23 @@
      "Imperial"
     ],
     "floor": 1,
-    "ceiling": 1199,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        1,
-       1199
+       100
       ],
-      "words": "from 1, 1 to 1199"
+      "words": "from 1, 1 to 100"
      }
     ],
     "boss": {
-     "name": "Umaril the Unfeathered",
-     "level": "level 250"
+     "name": "Mash, the Second Dawn",
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "worthGoingFor": {
     "crafting": [
      "a sharpening wheel",
@@ -82010,7 +81868,7 @@
    },
    "nearestCity": {
     "town": "Solitude",
-    "km": 1.2,
+    "km": 1.1,
     "walk": "half a day"
    },
    "inTown": null,
@@ -82296,26 +82154,24 @@
    "actors": {
     "count": 19,
     "floor": 10,
-    "ceiling": 150,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        10,
-       150
+       100
       ],
-      "words": "from 1, 10 to 150"
+      "words": "from 1, 10 to 100"
      }
     ],
     "zoneMin": 8,
     "boss": {
      "name": "Inquisitor Narfin",
-     "level": "level 150"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "pointers": [
     {
      "kind": "dialogue",
@@ -82379,9 +82235,7 @@
      "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "Coldharbour"
   },
   {
    "id": "Skyrim.esm:039AA9",
@@ -86108,12 +85962,12 @@
    "hold": null,
    "nearestTown": {
     "town": "Windhelm",
-    "km": 0.2,
+    "km": 0.1,
     "walk": "next to it"
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.2,
+    "km": 0.1,
     "walk": "next to it"
    },
    "inTown": null,
@@ -86183,26 +86037,24 @@
    "actors": {
     "count": 24,
     "floor": 10,
-    "ceiling": 105,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        10,
-       105
+       100
       ],
-      "words": "from 1, 10 to 105"
+      "words": "from 1, 10 to 100"
      }
     ],
     "zoneMin": 10,
     "boss": {
      "name": "Sir Casimir",
-     "level": "level 105"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "Coldharbour"
   },
   {
    "id": "Gray Fox Cowl.esm:015AAA",
@@ -86285,9 +86137,7 @@
      "level": "level 70"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "Coldharbour"
   },
   {
    "id": "Vigilant.esm:26D3B7",
@@ -86357,26 +86207,24 @@
     "count": 43,
     "livesHere": "Skeleton",
     "floor": 8,
-    "ceiling": 175,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        8,
-       175
+       100
       ],
-      "words": "from 1, 8 to 175"
+      "words": "from 1, 8 to 100"
      }
     ],
     "zoneMin": 8,
     "boss": {
      "name": "Warden Uighool",
-     "level": "level 175"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "danger": {
     "traps": true
    },
@@ -86457,7 +86305,7 @@
    },
    "nearestCity": {
     "town": "Windhelm",
-    "km": 0.7,
+    "km": 0.8,
     "walk": "a short walk"
    },
    "inTown": null,
@@ -86549,8 +86397,8 @@
    },
    "nearestCity": {
     "town": "Riften",
-    "km": 0.3,
-    "walk": "next to it"
+    "km": 0.4,
+    "walk": "a short walk"
    },
    "inTown": null,
    "plugin": "RuneDreamstrides.esp",
@@ -86582,20 +86430,20 @@
      "Warlock"
     ],
     "floor": 3,
-    "ceiling": 120,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        3,
-       120
+       100
       ],
-      "words": "from 1, 3 to 120"
+      "words": "from 1, 3 to 100"
      }
     ],
     "boss": {
      "name": "Nightstrider's Manifestation",
-     "level": "level 120"
+     "level": "level 100"
     }
    },
    "respawns": "never",
@@ -86699,9 +86547,7 @@
      "level": "level 60"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "The Shivering Isles",
    "pointers": [
     {
      "kind": "dialogue",
@@ -86774,9 +86620,7 @@
      "level": "level 1"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "The Shivering Isles"
   },
   {
    "id": "Journey to Baan Malur.esp:0FDE41",
@@ -86848,22 +86692,20 @@
    "posFrom": "door",
    "actors": {
     "count": 1,
-    "floor": 115,
-    "ceiling": 115,
+    "floor": 100,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
-       115,
-       115
+       100,
+       100
       ],
-      "words": "from 1, 115 to 115"
+      "words": "from 1, 100 to 100"
      }
     ]
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "worthGoingFor": {
     "crafting": [
      "a sharpening wheel",
@@ -87081,26 +86923,24 @@
    "actors": {
     "count": 57,
     "floor": 8,
-    "ceiling": 150,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        8,
-       150
+       100
       ],
-      "words": "from 1, 8 to 150"
+      "words": "from 1, 8 to 100"
      }
     ],
     "zoneMin": 8,
     "boss": {
      "name": "Dregas the Foolkiller",
-     "level": "level 150"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "Coldharbour"
   },
   {
    "id": "Vigilant.esm:393695",
@@ -87131,25 +86971,23 @@
    "actors": {
     "count": 9,
     "floor": 1,
-    "ceiling": 175,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        1,
-       175
+       100
       ],
-      "words": "from 1, 1 to 175"
+      "words": "from 1, 1 to 100"
      }
     ],
     "boss": {
      "name": "Volar the Deathbringer",
-     "level": "level 175"
+     "level": "level 100"
     }
    },
-   "respawns": "never",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "danger": {
     "traps": true
    }
@@ -87189,9 +87027,7 @@
     ],
     "zoneMin": 8
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "danger": {
     "traps": true
    }
@@ -87237,9 +87073,7 @@
     ],
     "zoneMin": 8
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "Coldharbour"
   },
   {
    "id": "Vigilant.esm:382303",
@@ -87268,27 +87102,25 @@
    "posFrom": "door",
    "actors": {
     "count": 1,
-    "floor": 150,
-    "ceiling": 150,
+    "floor": 100,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
-       150,
-       150
+       100,
+       100
       ],
-      "words": "from 1, 150 to 150"
+      "words": "from 1, 100 to 100"
      }
     ],
     "zoneMin": 20,
     "boss": {
      "name": "Melus Petilius",
-     "level": "level 150"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "Coldharbour"
   },
   {
    "id": "Undeath.esp:125096",
@@ -87398,26 +87230,24 @@
    "actors": {
     "count": 13,
     "floor": 10,
-    "ceiling": 150,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        10,
-       150
+       100
       ],
-      "words": "from 1, 10 to 150"
+      "words": "from 1, 10 to 100"
      }
     ],
     "zoneMin": 6,
     "boss": {
      "name": "Maram the Slaughterer",
-     "level": "level 150"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "worthGoingFor": {
     "shrines": [
      "Shrine of Mara"
@@ -87458,9 +87288,7 @@
      }
     ]
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "The Shivering Isles",
    "danger": {
     "traps": true
    }
@@ -87548,9 +87376,7 @@
      "level": "level 50"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "The Shivering Isles",
    "worthGoingFor": {
     "crafting": [
      "an alchemy lab",
@@ -87886,21 +87712,21 @@
    "actors": {
     "count": 68,
     "floor": 25,
-    "ceiling": 1250,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        25,
-       1250
+       100
       ],
-      "words": "from 1, 25 to 1250"
+      "words": "from 1, 25 to 100"
      }
     ],
     "zoneMin": 25,
     "boss": {
      "name": "Imperfect Centurion Sentinel",
-     "level": "level 1250"
+     "level": "level 100"
     }
    },
    "respawns": "never",
@@ -87948,25 +87774,23 @@
    "actors": {
     "count": 21,
     "floor": 15,
-    "ceiling": 130,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        15,
-       130
+       100
       ],
-      "words": "from 1, 15 to 130"
+      "words": "from 1, 15 to 100"
      }
     ],
     "boss": {
      "name": "Hrelvesuu",
-     "level": "level 130"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "Coldharbour"
   },
   {
    "id": "Vigilant.esm:385D7D",
@@ -88033,26 +87857,24 @@
    "actors": {
     "count": 32,
     "floor": 8,
-    "ceiling": 120,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        8,
-       120
+       100
       ],
-      "words": "from 1, 8 to 120"
+      "words": "from 1, 8 to 100"
      }
     ],
     "zoneMin": 8,
     "boss": {
      "name": "Beggar Chief",
-     "level": "level 120"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "danger": {
     "traps": true
    },
@@ -88115,15 +87937,15 @@
      "Draugr"
     ],
     "floor": 13,
-    "ceiling": 150,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        13,
-       150
+       100
       ],
-      "words": "from 1, 13 to 150"
+      "words": "from 1, 13 to 100"
      }
     ],
     "zoneMin": 13,
@@ -88640,26 +88462,24 @@
    "actors": {
     "count": 11,
     "floor": 20,
-    "ceiling": 150,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        20,
-       150
+       100
       ],
-      "words": "from 1, 20 to 150"
+      "words": "from 1, 20 to 100"
      }
     ],
     "zoneMin": 20,
     "boss": {
      "name": "Aredhel",
-     "level": "level 150"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "quests": [
     {
      "quest": "Adabal",
@@ -88798,15 +88618,15 @@
     "count": 14,
     "livesHere": "Imperial",
     "floor": 10,
-    "ceiling": 215,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        10,
-       215
+       100
       ],
-      "words": "from 1, 10 to 215"
+      "words": "from 1, 10 to 100"
      }
     ],
     "boss": {
@@ -88814,9 +88634,7 @@
      "level": "level 40"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "worthGoingFor": {
     "bossChest": true,
     "crafting": [
@@ -89094,9 +88912,7 @@
      "level": "level 55"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "worthGoingFor": {
     "crafting": [
      "an alchemy lab"
@@ -89133,27 +88949,25 @@
    "posFrom": "door",
    "actors": {
     "count": 1,
-    "floor": 200,
-    "ceiling": 200,
+    "floor": 100,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
-       200,
-       200
+       100,
+       100
       ],
-      "words": "from 1, 200 to 200"
+      "words": "from 1, 100 to 100"
      }
     ],
     "zoneMin": 30,
     "boss": {
      "name": "Jyggalag",
-     "level": "level 200"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "Coldharbour"
   },
   {
    "id": "Dragonborn.esm:01F288",
@@ -89284,26 +89098,24 @@
    "actors": {
     "count": 10,
     "floor": 8,
-    "ceiling": 150,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        8,
-       150
+       100
       ],
-      "words": "from 1, 8 to 150"
+      "words": "from 1, 8 to 100"
      }
     ],
     "zoneMin": 8,
     "boss": {
      "name": "Count Lead",
-     "level": "level 150"
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "Coldharbour"
   },
   {
    "id": "ForgottenCity.esp:072356",
@@ -89415,9 +89227,7 @@
      "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10
+   "realm": "Coldharbour"
   },
   {
    "id": "ForgottenCity.esp:01E38C",
@@ -89530,25 +89340,23 @@
    "actors": {
     "count": 48,
     "floor": 5,
-    "ceiling": 120,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        5,
-       120
+       100
       ],
-      "words": "from 1, 5 to 120"
+      "words": "from 1, 5 to 100"
      }
     ],
     "boss": {
-     "name": "Dionin",
-     "level": "level 120"
+     "name": "Mountain Eater",
+     "level": "level 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "Coldharbour",
    "danger": {
     "traps": true
    },
@@ -89754,15 +89562,15 @@
    "actors": {
     "count": 40,
     "floor": 1,
-    "ceiling": 18000,
+    "ceiling": 100,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        1,
-       18000
+       100
       ],
-      "words": "from 1, 1 to 18000"
+      "words": "from 1, 1 to 100"
      }
     ],
     "boss": {
@@ -89770,9 +89578,7 @@
      "level": "level 50"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
+   "realm": "The Shivering Isles",
    "worthGoingFor": {
     "crafting": [
      "an alchemy lab",
