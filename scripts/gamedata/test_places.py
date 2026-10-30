@@ -698,5 +698,30 @@ class BuiltIndex(unittest.TestCase):
         self.assertIn("floor", self.by["Helgen"]["actors"])  # a town with a real fight keeps its levels
 
 
+class StartsHere(unittest.TestCase):
+    """WO-183 Part 6 (Bob's ruling): quests that start here are those whose starting person is placed here or in the town, or whose start is a marker in it."""
+
+    def test_the_starting_person_places_the_quest(self):
+        places = [{"name": "Riverwood", "type": "Town"}, {"name": "Riverwood Trader", "type": "Store"}, {"name": "Dragonsreach", "type": "Castle"}, {"name": "Whiterun", "type": "City"}]
+        people = [{"name": "Lucan Valerius", "cell": "Riverwood Trader", "inTown": "Riverwood"}, {"name": "Balgruuf the Greater", "cell": "Dragonsreach", "inTown": "Whiterun"},
+                  {"name": "Mercenary", "cell": "Riverwood Trader", "inTown": "Riverwood", "generic": True}]
+        lines = [{"quests": [
+            {"name": "The Golden Claw", "start": {"who": "Lucan Valerius", "ways": [{"how": "Ask", "who": "Lucan Valerius"}]}},
+            {"name": "Dragon Rising", "start": {"then": "Talk to Jarl Balgruuf", "thenWho": "Balgruuf the Greater", "thenWhere": "Dragonsreach"}},
+            {"name": "Boethiah's Bidding", "noStart": True, "start": {"who": "Lucan Valerius"}},
+            {"name": "Fix Handler", "start": {"who": "Lucan Valerius"}},
+            {"name": "College Objective Quest", "start": {"who": "Lucan Valerius"}},
+            {"name": "Hear a Rumour", "start": {"who": "Mercenary"}},
+        ]}, {"radiant": {"name": "The war's radiant jobs"}, "quests": [
+            {"name": "Siege One", "start": {"who": "Lucan Valerius"}}, {"name": "Siege Two", "start": {"who": "Lucan Valerius"}},
+        ]}]
+        self.assertEqual(pl.starts_here(places, people, lines), 4)
+        by = {p["name"]: p.get("startsHere") for p in places}
+        self.assertEqual(by["Riverwood"], ["The Golden Claw", "The war's radiant jobs"])  # a town has its people's quests, a radiant job once for its kind
+        self.assertEqual(by["Riverwood Trader"], ["The Golden Claw", "The war's radiant jobs"])
+        self.assertEqual(by["Dragonsreach"], ["Dragon Rising"])  # a quest another quest starts begins with the person it sends you to
+        self.assertEqual(by["Whiterun"], ["Dragon Rising"])
+
+
 if __name__ == "__main__":
     unittest.main()

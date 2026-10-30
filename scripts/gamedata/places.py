@@ -1742,6 +1742,60 @@ def build_site(rows):
     return out
 
 
+NOT_STARTED_BY_A_PERSON = re.compile(r"Objective Quest$")  # the college's own quests-in-waiting: a helper the game runs, not a job anyone gives
+
+
+def starts_here(places, people, lines):
+    """
+    WO-183 Part 6 (Bob's ruling): "Quests that start here" are the quests whose starting person is placed in this place or its town, or whose start is a
+    marker in it ("It starts by itself when you enter High Hrothgar"). `quests` (the quests whose own aliases or markers fill the place, which send you
+    there) stays apart, and the page lists the two under their own headings. A radiant job that can start anywhere is counted once per kind, under the
+    town that gives it: the line's class (a board's kind, a radiant class), never each job. Sets `startsHere` on each place (quest names, sorted) and
+    returns the number of places that got any.
+    """
+    by_name = collections.defaultdict(list)
+    for p in people:
+        if p.get("name") and not p.get("generic"):
+            by_name[p["name"]].append(p)
+    here = collections.defaultdict(set)  # a cell's name, or a town's name -> the quests that start there
+    for line in lines:
+        kind = (line.get("radiant") or {}).get("name") or (line.get("board") or {}).get("name")
+        for q in line["quests"]:
+            s = q.get("start") or {}
+            if q.get("noStart") or (s.get("board") and not kind) or HELPER.search(q["name"]) or NOT_STARTED_BY_A_PERSON.search(q["name"]):
+                continue
+            label = kind or q["name"]
+            speakers = {s["who"]} if s.get("who") else set()
+            wheres = {s["where"]} if s.get("where") else set()
+            for w in s.get("ways") or []:
+                if w.get("who"):
+                    speakers.add(w["who"])
+                if w.get("where"):
+                    wheres.add(w["where"])
+            if not speakers and not wheres:  # a quest another quest starts: the person it sends you to is where it begins (Dragon Rising: Balgruuf, in Dragonsreach)
+                speakers = {s["thenWho"]} if s.get("thenWho") else set()
+                wheres = {s["thenWhere"]} if s.get("thenWhere") else set()
+            for who in speakers:
+                for p in by_name.get(who, ()):
+                    if p.get("cell"):
+                        here[("cell", p["cell"])].add(label)
+                    if p.get("inTown"):
+                        here[("town", p["inTown"])].add(label)
+            for t in s.get("towns") or []:
+                here[("town", t)].add(label)
+            for w in wheres:
+                here[("cell", w)].add(label)
+    n = 0
+    for r in places:
+        got = set(here.get(("cell", r["name"]), ())) | set(here.get(("cell", r.get("recordName")), ()))
+        if r.get("type") in ("City", "Town", "Settlement"):
+            got |= here.get(("town", r["name"]), set())
+        if got:
+            r["startsHere"] = sorted(got)
+            n += 1
+    return n
+
+
 def main():
     version = sys.argv[1] if len(sys.argv) > 1 else "5.0.4.8"
     places, xp_from, cities, roads = build(version)

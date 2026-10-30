@@ -136,8 +136,13 @@ export interface Place {
   /** What the people who live there say to a stranger at the door (an Orc stronghold), in the game's words. */
   enters?: { words: string; from?: string };
   pointers?: PlacePointer[];
-  /** Named quests that go there. */
+  /** Named quests that go there: "Quests that send you here" (their own aliases or markers fill this place). */
   quests?: string[];
+  /**
+   * "Quests that start here" (WO-183 Part 6): the quests whose starting person is placed in this place, or in this town when it is one, or whose start is a marker in it.
+   * A radiant job is one entry per kind (the line's class), never each job. A quest can be in both this and `quests` (The Golden Claw in Riverwood): the page says it once.
+   */
+  startsHere?: string[];
   /** XP for finding it, and the number of times it comes back (WO-144). */
   discoveryXp?: number;
   respawns?: string;

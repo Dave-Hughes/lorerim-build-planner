@@ -485,7 +485,9 @@ def main():
         pages = build_quests(lines, quests_raw, givers_raw, checks, raw_file.get("globals", {}), towns, wording, overrides.get("questNames", {}), readables, truth, overrides.get("questClasses", {}), overrides.get("questRewards", {}),
                             [e for e in overrides.get("questBackground", {}) if not e.startswith("_")], {k: v for k, v in overrides.get("questTemplates", {}).items() if not k.startswith("_")})
         # WO-183 Part 3: a gate nobody checked is read from the opening quest's start where that says it; the rest stay unchecked, and the page says it isn't sure.
-        from quest_pages import derive_gates
+        from quest_pages import derive_gates, shell_starts
+
+        print(f"{shell_starts(pages)} Thieves Guild city jobs start by Delvin Mallory after five jobs in the city")
 
         print(f"{derive_gates(pages)} line gates read from their opening quest's start")
         # WO-126: hand-kept wording for a start the records get wrong; one whose words have gone is stale.
@@ -515,7 +517,10 @@ def main():
             for q in l["quests"]:
                 if q.get("read"):
                     q["read"] = fill_read(q["read"], read_fills.get(q["edid"], {}), raw_file.get("globals", {}))
-        from quest_pages import fix_rewards, mark_unstarted
+        from quest_pages import choice_rewards, fix_rewards, mark_unstarted
+
+        _choices = load("choice_rewards_raw.json")["quests"] if os.path.exists(os.path.join(RAW, "choice_rewards_raw.json")) else {}
+        print(f"{choice_rewards(pages, _choices)} quests whose reward is a choice of abilities")
 
         print(f"{fix_rewards(pages)} quests gained their leveled gold; {mark_unstarted(pages)} quests no record starts")
         print(f"{with_read} quests read and checked, {without_read} on the older rules" + (f"; {len(unmatched)} reads match no quest on the pages: {', '.join(unmatched[:8])}" if unmatched else ""))
@@ -674,6 +679,17 @@ def main():
             json.dump({"people": rows}, f, separators=(",", ":"), ensure_ascii=False)
             f.write("\n")
         print(f"{len(rows)} people, {sum(1 for r in rows if r.get('read'))} read -> people.json")
+        # WO-183 Part 6: which quests start in each place, from where their starting person is placed (places.json is written above, people here).
+        if os.path.exists(os.path.join(OUT, "places.json")) and locals().get("pages"):
+            from places import starts_here
+
+            with open(os.path.join(OUT, "places.json"), encoding="utf-8") as f:
+                site = json.load(f)
+            n = starts_here(site["places"], rows, pages)
+            with open(os.path.join(OUT, "places.json"), "w", encoding="utf-8") as f:
+                json.dump(site, f, separators=(",", ":"), ensure_ascii=False)
+                f.write("\n")
+            print(f"{n} places with quests that start there -> places.json")
     for p in problems:
         print("note:", p)
 

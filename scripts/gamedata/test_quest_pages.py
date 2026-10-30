@@ -983,5 +983,38 @@ class TriggerWordsAndDoorsTest(unittest.TestCase):
         self.assertFalse(qp.door_on_the_way("A door into the quest's place stays hidden.", ["Igna's Basement"]))
 
 
+class Wo183Part6Test(unittest.TestCase):
+    """WO-183 Part 6: a Thieves Guild city job says who gives it and when; a talk's own state is not a condition; a reward that is a choice names each one."""
+
+    def test_the_guilds_city_jobs_start_by_delvins_word_after_five_jobs(self):
+        start = {"checked": "uesp", "needs": ["Another quest starts it, one the planner can't name yet"], "ways": [{"how": "Another quest starts it, one the planner can't name yet"}], "who": "Delvin Mallory"}
+        pages = [{"quests": [{"edid": "TGTQ03", "name": "Imitation Amnesty", "start": dict(start)}, {"edid": "OTHER", "name": "Other", "start": dict(start)}]}]
+        self.assertEqual(qp.shell_starts(pages), 1)
+        s = pages[0]["quests"][0]["start"]
+        self.assertEqual(s["needs"], ["Talk to Delvin Mallory once you have done five Thieves Guild jobs in Whiterun"])
+        self.assertEqual(s["ways"][0]["who"], "Delvin Mallory")
+        self.assertEqual(pages[0]["quests"][1]["start"]["needs"], start["needs"])
+
+    def test_a_dialogue_helpers_stage_is_the_talk_and_a_real_quest_stage_is_not(self):
+        words = qp.Words()
+        self.assertIsNone(words.part("DialogueHighHrothgar stage 10 done", "FreeformHighHrothgarA"))
+        self.assertEqual(words.part("MSNStart stage 10 done", "X"), qp.UNSAID)
+
+    def test_a_choice_of_rewards_is_named_on_the_quest_and_its_read(self):
+        of = [{"name": "Scholar's Insight", "says": "an extra Skill Point"}, {"name": "Companion's Insight", "says": "no damage to followers"}, {"name": "Lover's Insight", "says": "better prices"}]
+        pages = [{"quests": [{"edid": "DLC2BlackBook04Quest", "name": "Black Book: The Winds of Change", "read": {"rewards": [{"what": "a Black Book power"}]}}, {"edid": "X", "name": "X"}]}]
+        self.assertEqual(qp.choice_rewards(pages, {"DLC2BlackBook04Quest": {"pick": 1, "of": of}}), 1)
+        q = pages[0]["quests"][0]
+        self.assertEqual([c["name"] for c in q["rewards"]["choice"]["of"]], ["Scholar's Insight", "Companion's Insight", "Lover's Insight"])
+        self.assertEqual(q["read"]["rewards"], [{"what": "Your pick of three abilities: Scholar's Insight, Companion's Insight or Lover's Insight", "when": "in Apocrypha, after you uncover the knowledge"}])
+        self.assertNotIn("rewards", pages[0]["quests"][1])
+
+    def test_a_prompt_splits_into_its_ability_and_what_it_does(self):
+        import choice_rewards as cr
+
+        text = "Seeker of Might: Enemy weapon attacks inflict 15%% less damage.\n\nYou may only accept one ability from this book at a time. | Accept | Cancel"
+        self.assertEqual(cr.split_prompt(text), ("Seeker of Might", "Enemy weapon attacks inflict 15% less damage."))
+
+
 if __name__ == "__main__":
     unittest.main()

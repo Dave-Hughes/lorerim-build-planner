@@ -92,7 +92,13 @@ export interface Quest {
   objectives: string[];
   /** Each objective with the stage that shows it (WO-134), for the quest log. */
   steps?: { stage: number; text: string }[];
-  rewards?: { gold?: "small" | "medium" | "large"; items?: string[]; endings?: RunChange[] };
+  rewards?: {
+    gold?: "small" | "medium" | "large";
+    items?: string[];
+    endings?: RunChange[];
+    /** A reward that is one of several (WO-183 Part 6): a Black Book's three abilities, each named with what it does, in the game's words. */
+    choice?: { pick: number; of: { name: string; says: string }[] };
+  };
   /** How this quest starts (WO-115 Part 2): the start check's answer in plain words, or "not yet". */
   start?: QuestStart;
   /** No record starts it (the start check found nothing at all): the page says it isn't started in normal play (WO-183 Part 3). Boethiah's Bidding is one; UESP lists it as unfinished. */

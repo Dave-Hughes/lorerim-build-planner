@@ -873,7 +873,8 @@ class Words:
             if name == own:  # its own stage only guards a repeat or its own flow
                 return None
             if not plain_name(name):
-                return UNSAID
+                # WO-183 Part 6: a stage test on a conversation's own helper ("DialogueHighHrothgar stage 10 done": the topic Arngeir answers) is that talk's state; the way in already says the talk.
+                return None if re.match(r"Dialogue[A-Z]\w+$", name) else UNSAID
             if m.re.pattern.startswith("(.+?) (not completed"):
                 return {"completed": f"After {name}", "not completed": f"Before you finish {name}", "hasn't started": f"Before {name} starts"}[m.group(2)]
             if m.group(3) in ("done", "not done"):
@@ -1993,6 +1994,29 @@ def fix_rewards(pages):
     return n
 
 
+def choice_rewards(pages, choices):
+    """
+    WO-183 Part 6 (Bob: a reward that is a choice names each one): the Black Books end in Apocrypha with three abilities and "You may only accept one ability from this book at a
+    time". choice_rewards.py reads the three from the reward book's prompts, in the words the game (and a LoreRim patch that rewords one) shows. The quest gets
+    `rewards.choice` {pick, of: [{name, says}]}, and its read says it as one reward: "Your pick of three: A, B or C". Returns how many quests got one.
+    """
+    n = 0
+    for l in pages:
+        for q in l["quests"]:
+            c = (choices or {}).get(q.get("edid"))
+            if not c:
+                continue
+            q.setdefault("rewards", {})["choice"] = {"pick": c["pick"], "of": [{"name": x["name"], "says": x["says"]} for x in c["of"]]}
+            names = [x["name"] for x in c["of"]]
+            word = {2: "two", 3: "three", 4: "four"}.get(len(names), str(len(names)))
+            read = q.get("read")
+            if read is not None:
+                read["rewards"] = [x for x in read.get("rewards", []) if not re.search(r"black book power|ability|insight", x.get("what") or "", re.I)]
+                read["rewards"].append({"what": f"Your pick of {word} abilities: " + ", ".join(names[:-1]) + f" or {names[-1]}", "when": "in Apocrypha, after you uncover the knowledge"})
+            n += 1
+    return n
+
+
 def mark_unstarted(pages):
     """
     WO-183 Part 3: a quest no record starts (no dialogue, event, script or other quest sets its first stage, and no person gives it) is `noStart`. UESP lists Boethiah's
@@ -2011,6 +2035,31 @@ def mark_unstarted(pages):
 
 
 _LEVEL_TEXT = re.compile(r"\(?\bLevel (\d+)\b", re.I)
+
+
+# WO-183 Part 6 (Bob: the story-manager starts say who gives them): the Thieves Guild's four city jobs are started by TGRShell, the Guild's radiant shell, which a story node
+# and a script reach (TGRShell is no quest a player knows). The PC traced each by hand for the answer key (quest_truth.json, WO-138 Part 1): Delvin Mallory's line sets TGRShell
+# to the job's stage once the five jobs in that city are done (TGRadiantCount), and the stage's fragment starts the quest.
+SHELL_STARTS = {"TGTQ01": "Markarth", "TGTQ02": "Solitude", "TGTQ03": "Whiterun", "TGTQ04": "Windhelm"}
+SHELL_GIVER = ("Delvin Mallory", "The Ragged Flagon")
+
+
+def shell_starts(pages):
+    """The Thieves Guild's city jobs start by Delvin Mallory's word once five of the Guild's jobs in the city are done; the start says that, not "another quest starts it". Returns the count."""
+    n = 0
+    who, where = SHELL_GIVER
+    for l in pages:
+        for q in l["quests"]:
+            city = SHELL_STARTS.get(q.get("edid"))
+            s = q.get("start")
+            if not city or not s or s.get("checked") not in ("files", "uesp"):
+                continue
+            how = f"Talk to {who} once you have done five Thieves Guild jobs in {city}"
+            s["ways"] = [{"how": how, "who": who, "where": where}]
+            s["needs"] = [how]
+            s["who"], s["where"] = who, where
+            n += 1
+    return n
 
 
 def derive_gates(pages):

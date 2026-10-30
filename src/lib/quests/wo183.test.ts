@@ -26,6 +26,32 @@ describe("a gate is known or the page says it isn't (WO-183 Part 3)", () => {
   });
 });
 
+describe("story-manager starts, choices and Thieves Guild jobs say what the records say (WO-183 Part 6)", () => {
+  it("the Guild's four city jobs start by Delvin Mallory's word after five jobs in the city, not by 'another quest'", () => {
+    for (const [name, city] of [["Imitation Amnesty", "Whiterun"], ["Silver Lining", "Markarth"], ["The Dainty Sload", "Solitude"], ["Summerset Shadows", "Windhelm"]]) {
+      const s = quest(name).start!;
+      expect(s.needs, name).toEqual([`Talk to Delvin Mallory once you have done five Thieves Guild jobs in ${city}`]);
+      expect(s.who).toBe("Delvin Mallory");
+      expect(JSON.stringify(s.ways), name).not.toMatch(/Another quest starts it/);
+    }
+  });
+  it("The Words of Power: Arngeir, after the previous quest, with no condition left unsaid", () => {
+    const s = quest("The Words of Power").start!;
+    expect(s.who).toBe("Arngeir");
+    expect((s.needs ?? []).join(" ")).toMatch(/After "Speak to Arngeir for further training" in The Way of the Voice/);
+    expect(JSON.stringify(s)).not.toMatch(/can't put in words/);
+  });
+  it("a Black Book's reward is one of three named abilities, in the game's words", () => {
+    const of = (n: string) => (quest(n).rewards?.choice?.of ?? []).map((c) => c.name);
+    expect(of("Black Book: The Winds of Change")).toEqual(["Scholar's Insight", "Companion's Insight", "Lover's Insight"]);
+    expect(of("Black Book: Untold Legends")).toEqual(["Black Market", "Secret Servant", "Bardic Knowledge"]);
+    expect(of("Black Book: The Hidden Twilight")).toEqual(["Mora's Agony", "Mora's Grasp", "Mora's Boon"]);
+    expect(quest("Black Book: The Winds of Change").rewards?.choice?.pick).toBe(1);
+    expect((quest("Black Book: The Winds of Change").read?.rewards ?? []).map((r) => r.what)).toEqual(["Your pick of three abilities: Scholar's Insight, Companion's Insight or Lover's Insight"]);
+    for (const c of lines().flatMap((l) => l.quests).flatMap((q) => q.rewards?.choice?.of ?? [])) expect(c.says, c.name).toMatch(/\S/);
+  });
+});
+
 describe("rewards, starts and ways are what the records say (WO-183 Part 3)", () => {
   it("a contract pays its leveled gold", () => {
     expect((quest("Contract: Kill Nazeem").read?.rewards ?? []).map((r) => r.what)).toContain("Gold, by your level");

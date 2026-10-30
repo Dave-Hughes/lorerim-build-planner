@@ -1,0 +1,212 @@
+{
+ "quests": {
+  "DLC2BlackBook03Quest": {
+   "pick": 1,
+   "of": [
+    {
+     "name": "Black Market",
+     "says": "Summons a Dremora merchant to trade with you."
+    },
+    {
+     "name": "Secret Servant",
+     "says": "Summons a Dremora butler to carry your excess items."
+    },
+    {
+     "name": "Bardic Knowledge",
+     "says": "Summons a spectral drum that plays for you, increasing Stamina Regeneration, Weapon Damage and Movement Speed for you and nearby allies."
+    }
+   ],
+   "set": "B"
+  },
+  "DLC2BlackBook04Quest": {
+   "pick": 1,
+   "of": [
+    {
+     "name": "Scholar's Insight",
+     "says": "Reading Skill Books gives you an extra Skill Point."
+    },
+    {
+     "name": "Companion's Insight",
+     "says": "Your attacks, shouts, and destruction spells do no damage to your followers."
+    },
+    {
+     "name": "Lover's Insight",
+     "says": "Do 10% more damage and get 10% better prices from people of the opposite sex."
+    }
+   ],
+   "set": "A"
+  },
+  "DLC2BlackBook05Quest": {
+   "pick": 1,
+   "of": [
+    {
+     "name": "Seeker of Might",
+     "says": "Enemy weapon attacks inflict 15% less damage."
+    },
+    {
+     "name": "Seeker of Sorcery",
+     "says": "All spells are 10% more powerful or longer lasting."
+    },
+    {
+     "name": "Seeker of Shadows",
+     "says": "Stealth skills are all 10% more effective, movement speed increased by 10 %."
+    }
+   ],
+   "set": "D"
+  },
+  "DLC2BlackBook06Quest": {
+   "pick": 1,
+   "of": [
+    {
+     "name": "Secret of Strength",
+     "says": "Weapon attacks cause 25% more damage, Stamina recovers faster for 30 seconds."
+    },
+    {
+     "name": "Secret of Arcana",
+     "says": "Spells are 25% stronger, and magicka recovers faster for 30 seconds."
+    },
+    {
+     "name": "Secret of Protection",
+     "says": "attacks are 25% stronger and you regenerate stamina much faster for 30 seconds."
+    }
+   ],
+   "set": "F"
+  },
+  "DLC2BlackBook07Quest": {
+   "pick": 1,
+   "of": [
+    {
+     "name": "Mora's Agony",
+     "says": "Summons a field of writhing tentacles that poison foes."
+    },
+    {
+     "name": "Mora's Grasp",
+     "says": "Freezes the target between Oblivion and Tamriel for 30 seconds, making them immune to all damage."
+    },
+    {
+     "name": "Mora's Boon",
+     "says": "Fully restores your Health, Magicka, and Stamina."
+    }
+   ],
+   "set": "E"
+  },
+  "HYORBlackBook08Quest": {
+   "pick": 1,
+   "of": [
+    {
+     "name": "Omen of Warding",
+     "says": "When used, you take no fall damage for 15 seconds."
+    },
+    {
+     "name": "Omen of Immobility",
+     "says": "Cast on a nearby surface, it explodes and freezes the target in place for 10 seconds."
+    },
+    {
+     "name": "Omen of Gluttony",
+     "says": "Food is significantly more effective for 10 seconds."
+    }
+   ],
+   "set": "G"
+  }
+ },
+ "sets": {
+  "A": [
+   {
+    "name": "Scholar's Insight",
+    "says": "Reading Skill Books gives you an extra Skill Point."
+   },
+   {
+    "name": "Companion's Insight",
+    "says": "Your attacks, shouts, and destruction spells do no damage to your followers."
+   },
+   {
+    "name": "Lover's Insight",
+    "says": "Do 10% more damage and get 10% better prices from people of the opposite sex."
+   }
+  ],
+  "B": [
+   {
+    "name": "Black Market",
+    "says": "Summons a Dremora merchant to trade with you."
+   },
+   {
+    "name": "Secret Servant",
+    "says": "Summons a Dremora butler to carry your excess items."
+   },
+   {
+    "name": "Bardic Knowledge",
+    "says": "Summons a spectral drum that plays for you, increasing Stamina Regeneration, Weapon Damage and Movement Speed for you and nearby allies."
+   }
+  ],
+  "C": [
+   {
+    "name": "Dragonborn Force",
+    "says": "Your Unrelenting Force Shout does more damage and may disintegrate enemies."
+   },
+   {
+    "name": "Dragonborn Flame",
+    "says": "When your Fire Breath Shout kills an enemy, a fire wyrm emerges from their corpse to fight for you for 60 seconds."
+   },
+   {
+    "name": "Dragonborn Frost",
+    "says": "Your Frost Breath Shout encases foes in ice."
+   }
+  ],
+  "D": [
+   {
+    "name": "Seeker of Might",
+    "says": "Enemy weapon attacks inflict 15% less damage."
+   },
+   {
+    "name": "Seeker of Sorcery",
+    "says": "All spells are 10% more powerful or longer lasting."
+   },
+   {
+    "name": "Seeker of Shadows",
+    "says": "Stealth skills are all 10% more effective, movement speed increased by 10 %."
+   }
+  ],
+  "E": [
+   {
+    "name": "Mora's Agony",
+    "says": "Summons a field of writhing tentacles that poison foes."
+   },
+   {
+    "name": "Mora's Grasp",
+    "says": "Freezes the target between Oblivion and Tamriel for 30 seconds, making them immune to all damage."
+   },
+   {
+    "name": "Mora's Boon",
+    "says": "Fully restores your Health, Magicka, and Stamina."
+   }
+  ],
+  "F": [
+   {
+    "name": "Secret of Strength",
+    "says": "Weapon attacks cause 25% more damage, Stamina recovers faster for 30 seconds."
+   },
+   {
+    "name": "Secret of Arcana",
+    "says": "Spells are 25% stronger, and magicka recovers faster for 30 seconds."
+   },
+   {
+    "name": "Secret of Protection",
+    "says": "attacks are 25% stronger and you regenerate stamina much faster for 30 seconds."
+   }
+  ],
+  "G": [
+   {
+    "name": "Omen of Warding",
+    "says": "When used, you take no fall damage for 15 seconds."
+   },
+   {
+    "name": "Omen of Immobility",
+    "says": "Cast on a nearby surface, it explodes and freezes the target in place for 10 seconds."
+   },
+   {
+    "name": "Omen of Gluttony",
+    "says": "Food is significantly more effective for 10 seconds."
+   }
+  ]
+ }
+}

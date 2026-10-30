@@ -9,6 +9,13 @@ import { peopleAt } from "@/lib/places/people";
  */
 const one = (name: string) => personByName(name);
 
+describe("a person's sex is what the winning record says (WO-183 Part 6)", () => {
+  it("Hjorunn's record is male in every plugin that changes it (male flag, male head parts, no template); Sybille Stentor's is female", () => {
+    expect(one("Hjorunn")?.sex).toBe("male");
+    expect(one("Sybille Stentor")?.sex).toBe("female");
+  });
+});
+
 describe("generic and leveled actors are not people (WO-183 Part 1)", () => {
   it("the audit's examples have no page, no search result and no address", () => {
     for (const n of ["Mercenary", "Goblin", "Frost Troll", "Jumping Shock Spider", "Dark Brotherhood Assassin", "Imperial Commander"]) {
