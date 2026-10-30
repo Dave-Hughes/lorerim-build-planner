@@ -5338,7 +5338,7 @@ Decisions and reasons:
 - **A place with little known** (Moss Mother Cavern, Northwind Mine) shows one short "What is known" block (what it is, where, what finding it pays, traps, and that its danger is not known); its contents menu shows only with two or more entries. A lone "! Traps" is in the block.
 
 ## WO-179  A character is one shell: its build, its guide and its playthrough (Mac, 28 Oct 2026)
-Status: for Bob
+Status: queued (Mac: run the backfill with Dave's yes, then WO-181)
 
 **Why.** Dave, 28 Oct: "A character is a shell that can hold: Build, Guide, Playthrough." Bob walked the whole flow signed in on staging (made "TEST: Bob walk": race, details, What next, Plan a playthrough, an act, an objective, ticked it, the Build tab, the Story editor; read Kyria's story). Underneath it is still two records joined by a dropdown, and it shows.
 
@@ -5380,8 +5380,18 @@ These don't hold:
   - Kyria's run on no build became `/b/mgf6t6a64y` only when its owner opened it. Until then visitors saw the old page, and `/characters?run=1` linked to `/p/`. On production every such run stays on the old page until its owner visits.
   - [ ] The fix is `scripts/backfill-characters.ts --apply`, which writes to the database, so **Dave says yes first** and Mac runs it on staging, then production. **Dave said yes (29 Oct, 18:38): run it on staging, check Kyria's and the other runs, then production.**
   - [x] A character made from a run with nothing planned says "Planned to level 1" and "LV 1" and offers "Copy to my builds": say nothing about a plan, and don't offer the copy.
-- [ ] **Not fixed here**: the reader bar overlapping at 390, the name twice in the reader bar and on the story card, "Her story" fixed for every pronoun, and the done stories' `/p/` links. All are in the Story, which WO-181 Part 3 retires.
-- [ ] Screenshots of each fix at 1440 and 390, then `for Bob`. Bob walks it again.
+- [x] **Not fixed here**: the reader bar overlapping at 390, the name twice in the reader bar and on the story card, "Her story" fixed for every pronoun, and the done stories' `/p/` links. All are in the Story, which WO-181 Part 3 retires.
+- [x] Screenshots of each fix at 1440 and 390, then `for Bob`. Bob walks it again.
+  - Bob, 29 Oct, 18:45, signed in on staging. Every Part 2 item holds:
+    - the editor is at `/b/<id>/edit/play`;
+    - one visibility, and a visitor with the link sees the playthrough;
+    - What to do offers people, closes on pick and on Escape, and fills Quest;
+    - the creation rail ticks Details on What next, and the text uses her pronoun at full width;
+    - the planner's mark on a card with no race and no cover, with no LV or plan;
+    - "Level 1";
+    - the birthsign said once.
+
+    One leftover, not blocking: the address stays `?step=name` on What next. The order is done once the backfill has run on staging and production.
 
 - [x] Bob walks it again signed in (make a character, plan a playthrough, edit, the story, the redirects from Kyria's old `/p/` links); screenshots of each step at 1440 and 390; then `for Bob`.
 
