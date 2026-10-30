@@ -75,7 +75,7 @@ const bySlug = () => new Map(mapPlaces().map((p) => [p.slug, p]));
  * A place on the map by the name the words use. A name more than one place has (the Imperial Military Camp) is the one the quest goes to,
  * when `quest` says which quest and only one of them is its place; otherwise none.
  */
-const mapPlaceNamed = (name: string, quest?: string): MapPlace | null => {
+export const mapPlaceNamed = (name: string, quest?: string): MapPlace | null => {
   const named = placeByName(name) ?? (quest ? (placesNamed(name).filter((p) => p.quests?.includes(quest)).length === 1 ? placesNamed(name).find((p) => p.quests?.includes(quest)) : null) : null);
   return named ? (bySlug().get(placeSlug(named)) ?? null) : null;
 };
@@ -125,6 +125,20 @@ export function questRoute(slug: string): { name: string; href: string; stops: {
     stops.push({ slug: p.slug, name: p.name, why: t.why ? t.why.charAt(0).toUpperCase() + t.why.slice(1) : null });
   }
   return { name: hit.quest.name, href: questHref(hit.quest.edid) ?? `/quests/q/${slug}`, stops };
+}
+
+/** A route made of places by their slugs, in order (an act's stops, WO-181): the ones on the map, each once. */
+export function stopsRoute(slugs: string[], name: string): { name: string; href: string; stops: { slug: string; name: string; why: string | null }[] } | null {
+  const on = bySlug();
+  const seen = new Set<string>();
+  const stops: { slug: string; name: string; why: string | null }[] = [];
+  for (const slug of slugs.slice(0, 20)) {
+    const p = on.get(slug);
+    if (!p || seen.has(slug)) continue;
+    seen.add(slug);
+    stops.push({ slug, name: p.name, why: null });
+  }
+  return stops.length ? { name: name.slice(0, 80), href: "/map", stops } : null;
 }
 
 /** Where a person is: the place they are in most of the day (their read), else where they are placed. */

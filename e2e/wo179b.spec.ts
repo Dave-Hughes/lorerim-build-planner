@@ -28,19 +28,17 @@ test("the playthrough's editor is under its character: every old address lands t
   await signIn(context);
   await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/play`);
   await expect(page).toHaveURL(new RegExp(`/b/${KYRIA_BUILD_ID}/edit/play$`));
-  for (const name of ["Playthrough", "Build", "Guide", "Character", "Story"]) await expect(editTab(page, name)).toHaveAttribute("href", new RegExp(`^/b/${KYRIA_BUILD_ID}/`));
+  for (const name of ["Playthrough", "Build", "Guide", "Character"]) await expect(editTab(page, name)).toHaveAttribute("href", new RegExp(`^/b/${KYRIA_BUILD_ID}/`));
   await expect(editTab(page, "Playthrough")).toHaveAttribute("href", `/b/${KYRIA_BUILD_ID}/edit/play`);
-  await expect(editTab(page, "Story")).toHaveAttribute("href", `/b/${KYRIA_BUILD_ID}/edit/story/title`);
-  await editTab(page, "Story").click();
-  await expect(page).toHaveURL(new RegExp(`/b/${KYRIA_BUILD_ID}/edit/story/title$`));
   await editTab(page, "Playthrough").click();
   await expect(page).toHaveURL(new RegExp(`/b/${KYRIA_BUILD_ID}/edit/play$`));
   // The old addresses, and the character page's own way of naming the tab.
   const lands = new Map([
     [`/p/${KYRIA_PLAYTHROUGH_ID}/edit`, `/b/${KYRIA_BUILD_ID}/edit/play`],
-    [`/p/${KYRIA_PLAYTHROUGH_ID}/edit?tale=1`, `/b/${KYRIA_BUILD_ID}/edit/story/title`],
-    [`/p/${KYRIA_PLAYTHROUGH_ID}/edit/story`, `/b/${KYRIA_BUILD_ID}/edit/story/title`],
-    [`/p/${KYRIA_PLAYTHROUGH_ID}/edit/story/title`, `/b/${KYRIA_BUILD_ID}/edit/story/title`],
+    [`/p/${KYRIA_PLAYTHROUGH_ID}/edit?tale=1`, `/b/${KYRIA_BUILD_ID}/edit/play`],
+    [`/p/${KYRIA_PLAYTHROUGH_ID}/edit/story`, `/b/${KYRIA_BUILD_ID}/edit/play`],
+    [`/p/${KYRIA_PLAYTHROUGH_ID}/edit/story/title`, `/b/${KYRIA_BUILD_ID}/edit/play`],
+    [`/b/${KYRIA_BUILD_ID}/edit/story/title`, `/b/${KYRIA_BUILD_ID}/edit/play`],
     [`/b/${KYRIA_BUILD_ID}/edit?tab=playthrough`, `/b/${KYRIA_BUILD_ID}/edit/play`],
     [`/b/${KYRIA_BUILD_ID}/play`, `/b/${KYRIA_BUILD_ID}/edit/play`],
   ]);
@@ -48,10 +46,6 @@ test("the playthrough's editor is under its character: every old address lands t
     await page.goto(from);
     await expect(page, from).toHaveURL(new RegExp(`${to.replace(/[?]/g, "\\?")}$`));
   }
-  // A chapter's page, the link in the Story tab, stays under the character.
-  await page.goto(`/b/${KYRIA_BUILD_ID}/edit/story/title`);
-  const first = page.getByRole("complementary", { name: "Contents" }).getByRole("link").nth(1);
-  await expect(first).toHaveAttribute("href", new RegExp(`^/b/${KYRIA_BUILD_ID}/edit/story/`));
   // Someone who isn't the owner is sent to the character's page.
   await context.clearCookies();
   await page.goto(`/b/${KYRIA_BUILD_ID}/edit/play`);

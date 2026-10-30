@@ -18,9 +18,9 @@ describe("the map's credit", () => {
     expect(view).toMatch(/Map: /);
   });
 
-  it("is drawn by every component that loads the map's pictures: the band and whole map, the Map page and the home page's map strip", () => {
+  it("is drawn by every component that loads the map's pictures: the band and whole map, the Map page, the home page's map strip and an act's map", () => {
     const users = src.filter((f) => /entry\.(tiles|image)\b|\/maps\/tamriel/.test(readFileSync(f, "utf8"))).map((f) => path.relative(process.cwd(), f).split(path.sep).join("/"));
-    expect(users.sort()).toEqual(["src/components/home/map-strip.tsx", "src/components/map/map-page.tsx", "src/components/places/map-view.tsx"]);
+    expect(users.sort()).toEqual(["src/components/home/map-strip.tsx", "src/components/map/map-page.tsx", "src/components/places/map-view.tsx", "src/components/playthrough/act-map.tsx"]);
     for (const f of users) {
       const text = readFileSync(path.join(process.cwd(), f), "utf8");
       expect(text, f).toMatch(/entry\.credit\.url/);

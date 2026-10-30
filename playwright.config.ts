@@ -8,11 +8,13 @@ const port = 3123;
 const launchPort = 3125;
 /** A third with WO-84's coming soon page on, for wo84-soon.spec.ts. */
 const soonPort = 3127;
+/** A fourth with progress tracking back on (WO-181), for wo181-tracking.spec.ts: ticks, done counts, where she is in the game. */
+const trackingPort = 3129;
 
 /** Every test starts with Tapps' tours done (WO-61); the tour tests start from a fresh browser. */
 export const TOURS_DONE = {
   cookies: [],
-  origins: [port, launchPort, soonPort].map((p) => ({
+  origins: [port, launchPort, soonPort, trackingPort].map((p) => ({
     origin: `http://localhost:${p}`,
     localStorage: [
       { name: "planner.tour.reader", value: "done" },
@@ -40,13 +42,15 @@ export default defineConfig({
   },
   projects: [
     // Story and the site guide on (WO-81), so their tests keep running.
-    { name: "all", testIgnore: /wo81-launch\.spec\.ts|wo84-soon\.spec\.ts|wo92-off\.spec\.ts|wo96-soon\.spec\.ts|wo100-off\.spec\.ts|wo108-off\.spec\.ts|wo109-off\.spec\.ts|wo111-off\.spec\.ts/ },
+    { name: "all", testIgnore: /wo81-launch\.spec\.ts|wo84-soon\.spec\.ts|wo92-off\.spec\.ts|wo96-soon\.spec\.ts|wo100-off\.spec\.ts|wo108-off\.spec\.ts|wo109-off\.spec\.ts|wo111-off\.spec\.ts|wo112\.spec\.ts|wo181-tracking\.spec\.ts/ },
     // Both off, as they launch.
     { name: "launch", testMatch: /wo81-launch\.spec\.ts|wo92-off\.spec\.ts|wo100-off\.spec\.ts|wo108-off\.spec\.ts|wo109-off\.spec\.ts|wo111-off\.spec\.ts/, use: { baseURL: `http://localhost:${launchPort}` } },
     // The coming soon page in front of everything (WO-84).
+    // Progress tracking on (WO-181): everything the main server turns off.
+    { name: "tracking", testMatch: /wo181-tracking\.spec\.ts|wo112\.spec\.ts/, use: { baseURL: `http://localhost:${trackingPort}` } },
     { name: "soon", testMatch: /wo84-soon\.spec\.ts|wo96-soon\.spec\.ts/, use: { baseURL: `http://localhost:${soonPort}` } },
   ],
-  webServer: [port, launchPort, soonPort].map((p) => ({
+  webServer: [port, launchPort, soonPort, trackingPort].map((p) => ({
     // Run `npm run build` first; this serves the production build.
     command: `npx next start -p ${p}`,
     url: `http://localhost:${p}/b/sample`,
@@ -78,6 +82,10 @@ export default defineConfig({
       OAUTH_ALLOW_LOCAL_CLIENTS: "1",
       // FEATURE_COMING_SOON: on for the third server only.
       FEATURE_COMING_SOON: p === soonPort ? "on" : "off",
+      // PROGRESS_TRACKING (WO-181): on for the fourth server only; off everywhere else, as it ships.
+      PROGRESS_TRACKING: p === trackingPort ? "on" : "off",
+      // The fourth server has every switch the main one has.
+      ...(p === trackingPort ? { FEATURE_STORY: "on", FEATURE_SITE_GUIDE: "on", FEATURE_GEAR: "on", FEATURE_QUESTS: "on", FEATURE_MCP: "on", FEATURE_PLAYTHROUGHS: "on" } : {}),
     },
   })),
 });

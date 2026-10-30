@@ -1,14 +1,8 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { storyOn } from "@/lib/features";
-import BuildPage, { generateMetadata as buildMetadata } from "../page";
+import { redirect } from "next/navigation";
 
 type Params = Promise<{ id: string }>;
 
-export const generateMetadata = ({ params }: { params: Params }): Promise<Metadata> => buildMetadata({ params });
-
-/** A build's Story in the reader (WO-116): the build's page with the reader open on it. Held back with the Story (WO-81). */
-export default async function BuildStoryPage({ params, searchParams }: { params: Params; searchParams: Promise<Record<string, string | undefined>> }) {
-  if (!storyOn()) notFound();
-  return BuildPage({ params, searchParams });
+/** The Story is retired (WO-181): its address goes to the character's page. */
+export default async function BuildStoryPage({ params }: { params: Params }) {
+  redirect(`/b/${(await params).id}?tab=playthrough`);
 }

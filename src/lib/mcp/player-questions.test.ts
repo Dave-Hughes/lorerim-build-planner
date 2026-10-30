@@ -1,6 +1,8 @@
 import { afterAll, describe, expect, it } from "vitest";
 import { FactsError, getPerson, getQuest, getRules, playerState, searchFacts, withQuestLink } from "./facts";
-import { modsOf, placesAt, suggestFrom, suggestQuests } from "./playthroughs";
+import { modsOf, placesAt, playthroughOut, suggestFrom, suggestQuests } from "./playthroughs";
+import type { PlaythroughRecord } from "@/lib/playthroughs/queries";
+import { assemble } from "@/lib/playthroughs/view";
 import { modIndex, readGuide } from "@/lib/game-guide/guide";
 import { styleGuide } from "./facts";
 import { registerBuildTools } from "./build-tools";
@@ -54,6 +56,44 @@ const has = (text: string, w: Want) => (typeof w === "string" ? text.toLowerCase
 const readThis = () =>
   questsData().lines.flatMap((l) => l.quests.flatMap((q) => (q.start?.ways ?? []).filter((w) => /^(Read|Get a note) /.test(w.how)).map((w) => ({ q, how: w.how }))));
 
+/** Kyria's playthrough as the database holds it, enough for get_playthrough to answer from (question 40). */
+function kyria(): PlaythroughRecord {
+  const act = (id: number, position: number, name: string, levelFrom: number, levelTo: number, place: string, goal: string, route: { place: string; why: string; by?: "foot" | "carriage" }[]) => ({ id, position, name, levelFrom, levelTo, place, goal, standingRule: null, route });
+  const view = assemble({
+    acts: [
+      act(1, 1, "The Sister's House", 1, 6, "Riften", "Earn a bed and coin in Riften as a bard and a worker.", [{ place: "Riften", why: "Her base." }, { place: "Lake Honrich", why: "Hides for her first clothes." }]),
+      act(2, 2, "The Bard's Road", 6, 8, "Riften to Solitude", "On foot, a song at every inn.", [{ place: "Riften", why: "She leaves from the Bee and Barb." }, { place: "Whiterun", why: "The Bannered Mare." }, { place: "Solitude", why: "The Winking Skeever.", by: "carriage" }]),
+    ],
+    objectives: [],
+    chapters: [],
+    snapshot: null,
+    link: () => null,
+  });
+  return {
+    id: "e2ekyrya22",
+    name: "Kyria Severa",
+    line: "A knight of Stendarr, hiding as a bard in Riften.",
+    visibility: "private",
+    build: null,
+    buildId: null,
+    draftedBy: "Claude",
+    answers: null,
+    never: [{ what: "Steal from homes, farms or shops" }],
+    mods: null,
+    snapshot: null,
+    gameVersion: "5.0.4.8",
+    theme: {
+      backstory: "Kyria was left as a baby at Dibella's chapel in Anvil and raised by its priestesses.",
+      from: "Anvil, raised at Dibella's chapel",
+      gods: "Stendarr, and Dibella",
+      goal: "Find Pia, and the man with the rings",
+      will: ["Work inn shifts and play for coin"],
+      grey: ["Loots bandit camps and keeps the gold"],
+    },
+    view,
+  } as unknown as PlaythroughRecord;
+}
+
 /** A tool's description as the door registers it (question 19). */
 function described(tool: string): string {
   let out = "";
@@ -73,6 +113,21 @@ const NEVER_DB_MQ = [
 ];
 
 const QUESTIONS: Question[] = [
+  {
+    n: 39,
+    asks: "Help me write who my character is for the planner.",
+    // The tools' own names are what the guide teaches; they are not what a player is told.
+    ask: () => [styleGuide().replace(/\b[a-z]+(?:_[a-z]+)+\b/g, "(tool)")],
+    must: ["events, in order, in flat sentences", "No sayings or lessons", "No riddles or teases", "From, Gods and Goal are a plain fact each", "She will, She won't and Grey areas", "in the game's words", "What does she do that she isn't proud of?"],
+    never: [/\bTale\b/, /\bchapters?\b/i, /\bread time\b/i, /minutes to read/i],
+  },
+  {
+    n: 40,
+    asks: "Show me Kyria's playthrough.",
+    ask: () => [playthroughOut({ origin: "https://planner.example", userId: "u", clientName: "test" } as never, kyria())],
+    must: ["Anvil, raised at Dibella's chapel", "Stendarr, and Dibella", "Find Pia", "Work inn shifts and play for coin", "Steal from homes, farms or shops", "Loots bandit camps and keeps the gold", "The Bard's Road", "Solitude", '"by":"carriage"'],
+    never: [/\bchapters?\b/i, /\bTale\b/, /\bdone\b/i, /\bday \d/i, /\bLevel \d+, day/i],
+  },
   {
     n: 1,
     asks: "In LoreRim, how do I start the quest called Palonimo?",

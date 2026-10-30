@@ -27,7 +27,7 @@ describe("a 401 that starts sign-in (WO-109b)", () => {
   it("asks for sign-in for whoami and the write tools with no token", () => {
     expect(gateOf(call("whoami"), null)).toEqual({ refuse: "sign-in" });
     expect(gateOf(call("create_build"), null)).toEqual({ refuse: "sign-in" });
-    expect(gateOf(call("write_chapter"), null)).toEqual({ refuse: "sign-in" });
+    expect(gateOf(call("set_theme"), null)).toEqual({ refuse: "sign-in" });
   });
   it("lets the facts tools, initialize and tools/list through", () => {
     expect(gateOf(call("search_facts"), null)).toBeNull();

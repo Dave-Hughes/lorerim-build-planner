@@ -64,7 +64,6 @@ for (const width of [1440, 390]) {
     await page.goto(`/p/${pid}?act=1`);
     const row = page.locator(".obj, [id^='o']").filter({ hasText: "Clear Embershard Mine" }).first();
     await expect(row).toBeVisible();
-    await expect(row).toContainText("Place");
     await expect(row).toContainText("Alvor says the village needs the mine's iron back.");
     await page.screenshot({ path: `test-results/wo128-place-${width}.png`, fullPage: true });
     await page.goto(`/p/${pid}?act=2`);

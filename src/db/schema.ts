@@ -16,7 +16,7 @@ import type { GuideDoc } from "@/lib/guide/doc";
 import type { Mod } from "@/lib/mods";
 import type { Decision, PlayerWay, Proposal, ReportFields, ReportKind } from "@/lib/quests/player-types";
 import type { BuildPlan } from "@/lib/rules/types";
-import type { Answer, ChapterKind, Detect, DoneBy, ObjectiveKind, ObjectiveLink, ObjectiveStatus, Never, PassedBy, Reach, RouteStop, SnapshotSource } from "@/lib/playthroughs/types";
+import type { Answer, ChapterKind, Theme, Detect, DoneBy, ObjectiveKind, ObjectiveLink, ObjectiveStatus, Never, PassedBy, Reach, RouteStop, SnapshotSource } from "@/lib/playthroughs/types";
 
 /* ---------- Auth.js tables (shape required by @auth/drizzle-adapter) ---------- */
 
@@ -362,6 +362,8 @@ export const playthroughs = pgTable(
     never: jsonb("never").$type<Never[]>(),
     /** Mods the character needs that LoreRim doesn't ship (WO-139 Part 4). */
     mods: jsonb("mods").$type<Mod[]>(),
+    /** Who she is (WO-181): her backstory, where she is from, her gods and goal, and what she will and won't do (that is `never`) and the grey areas. */
+    theme: jsonb("theme").$type<Theme>(),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true })
       .notNull()

@@ -66,15 +66,15 @@ The guide teaches the game in the order a player meets it: chapters, then sectio
 
 ## Playthroughs
 
-A playthrough is a character's whole run: acts, objectives, and the tale written alongside (WO-111, 19 Oct 2026). These rules are the same as rules 12 to 18 of the assistants' style guide (`content/mcp/style.md`), numbered here after the rules above.
+A playthrough is a character's whole run: who she is, and acts with objectives (WO-111, 19 Oct 2026; WO-181 retired the Story). These rules are the same as rules 12 to 18 of the assistants' style guide (`content/mcp/style.md`), numbered here after the rules above; the style guide's Who she is rules (38 to 41) govern what is written under Who she is.
 
-23. Two kinds of text, kept apart. **Tale** is the story: what the character sees, wants and does, as a story, with no numbers or instructions in it. **Play** is the game: what the player does, where, with which quest or item, in plain instructions. A chapter is Tale only. An act's goal, an objective and its why line are Play only.
+23. Everything on an act is Play: what the player does, where, with which quest or item, in plain instructions. An act's goal, an objective and its why line say what to do and why. Who she is is written once, under Who she is, and never inside an act.
 24. An act is a stretch of the game with a goal and a place: a name, a level range, a place, the goal in one line ("Earn a bed and coin in Riften as a bard and a worker"), and, if there is one, what the player keeps doing throughout the act ("Play the Bee and Barb most nights"). Throughout the act is not an objective.
 25. An objective is one thing the player can know is done. Either **done once** (a quest or one of its stages, a person met, a place reached, an item in hand, one act they will tick: "Sing for the children at Honorhall") or **reach a number** (a level, a skill at a number, a count the save or the player can give: "Read 10 books"). "Read every new book", "keep playing", anything with every, each, always or whenever, belongs in throughout the act, and the planner refuses it as an objective. Each objective has one why line.
 26. An objective links to a planner quest, quest line, spell, item or follower when one exists; the rest is the player's own words. Never invent a quest. Quest facts in a why line come from the planner (the checked start, the giver, the place) and say "not checked yet" when the planner does.
-27. The story is made of chapters. A chapter sits in the Prologue or in an act; any chapter can unlock when an objective is done. The first chapter of an act opens its card on Play. Assistants can't add images. When you finish a draft, give the player the addCover link; they can add images to the story in its Story tab.
+27. There is no story to write: the Story is retired. Assistants can't add images. When you finish a draft, give the player the addCover link.
 28. Suggestions are proposals: an assistant's suggested objective shows as suggested with Accept and Skip, and nothing counts until the player accepts it.
-29. Where you stand (level, day, place, skills) comes from the player's save, read on their PC, or from the player by hand. Never from an estimate.
+29. Where you stand (level, day, place, skills) comes from the player's save, read on their PC, or from the player by hand. Never from an estimate. Paused while progress tracking is off (WO-181).
 
 ## Visual system
 

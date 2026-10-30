@@ -19,7 +19,6 @@ const playthrough = z.string().min(1).max(80).describe("The playthrough's id, fr
 // JSON schema before sending and don't always get an anyOf right.
 const act = z.string().min(1).max(60).describe('The act: its number as a string ("2"), "Act II", or its name.');
 const objective = z.string().min(1).max(160).describe("The objective: its id from get_playthrough, as a string, or its words.");
-const chapter = z.string().min(1).max(60).describe("The chapter: its id from get_playthrough, as a string, or its title.");
 const linkSchema = z.object({ kind: z.enum(LINK_KINDS), name: z.string().min(1).max(160) }).describe('What it links to in the planner, by name: a quest ("Name (Line)" when two lines have one of that name), a quest line, a spell, an item, a follower, a person from the people pages, or a place from suggest_places ("Reach <place>" or "Clear <place>", its hook in the why line). Leave it out for the player\'s own aims; never invent a quest or a place.');
 /**
  * What the save reads, as flat fields: quest (and stage), or reachKey and reachTarget. Every objective can also be
@@ -81,6 +80,22 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
     }),
     (p, a: Parameters<typeof t.setPlaythrough>[1]) => t.setPlaythrough(p, a),
   );
+  tool(
+    "set_theme",
+    "Write who she is",
+    "Write who the character is, for the Playthrough tab's first view (all optional; what you give replaces what was there; an empty string or list takes it away): backstory (events in order in flat sentences, up to 3,000 characters, paragraphs apart with a blank line), from, gods and goal (a plain fact each, 80 characters), and three lists of up to 6 lines of 90 characters: will (what she does), never (what she won't do) and grey (what she does and isn't proud of). Each list line is one thing the player does or avoids in the game, in the game's words, with no colon. An em dash, \" · \" or an emoji anywhere is refused, and so is a line over its length; nothing is cut for you. never is the same list set_details keeps, and the quest tools keep to it. Read the style guide's Who she is section first.",
+    z.object({
+      playthrough,
+      backstory: z.string().max(3200).optional().describe("Where she's from, who raised her, what happened, and why she is in Skyrim, in order, in flat sentences. No sayings, no riddles, nothing the player can't use. Up to 3,000 characters."),
+      from: z.string().max(100).optional().describe("Where she is from, one plain fact (80 characters)."),
+      gods: z.string().max(100).optional().describe("The gods she follows, one plain fact (80 characters)."),
+      goal: z.string().max(100).optional().describe("What she is in Skyrim for, one plain fact (80 characters)."),
+      will: z.array(z.string().max(120)).max(8).optional().describe("What she will do, up to 6 lines of 90 characters."),
+      never: z.array(z.string().max(120)).max(8).optional().describe("What she won't do, up to 6 lines of 90 characters. The quest tools keep to it."),
+      grey: z.array(z.string().max(120)).max(8).optional().describe("What she does that she isn't proud of, up to 6 lines of 90 characters."),
+    }),
+    (p, a: Parameters<typeof t.setTheme>[1]) => t.setTheme(p, a),
+  );
   const actFields = {
     name: z.string().min(1).max(60),
     levels: z.string().max(30).describe('"1 to 6", or "40 and up".'),
@@ -93,7 +108,11 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
       .optional()
       .describe("The places she leaves alone on purpose in this act, each with one line on why (rule 20). The whole list each time; an empty list takes them away."),
     route: z
-      .array(z.object({ place: z.string().min(1).max(80).describe("A town, or a place from suggest_places."), why: z.string().max(200).describe("Why she goes there next, in one line, Play only.") }))
+      .array(z.object({
+          place: z.string().min(1).max(80).describe("A town, or a place from suggest_places."),
+          why: z.string().max(200).describe("Why she goes there next, in one line, Play only."),
+          by: z.enum(["foot", "carriage"]).optional().describe('How she gets here from the stop before it: "foot" (the default) or "carriage". The act\'s map draws a carriage leg as a gold dotted line.'),
+        }))
       .max(12)
       .optional()
       .describe("The act's road (rule 21): its stops in the order she reaches them, each with why she goes there next. Set it before writing the act's objectives; each objective then takes one of these places as its stop. The whole route each time: a stop left out goes, and its objectives go On the road."),
@@ -106,7 +125,7 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
     z.object({ playthrough, act, name: actFields.name.optional(), levels: actFields.levels.optional(), place: actFields.place.optional(), goal: actFields.goal.optional(), standingRule: z.string().max(200).optional().describe("Throughout the act: what the player keeps doing all through it; an empty string takes it away."), passedBy: actFields.passedBy, route: actFields.route }),
     (p, a: Parameters<typeof t.setAct>[1]) => t.setAct(p, a),
   );
-  tool("remove_act", "Remove an act", "Remove an act, its objectives and chapters; the last act stays.", z.object({ playthrough, act }), (p, a: Parameters<typeof t.removeAct>[1]) => t.removeAct(p, a));
+  tool("remove_act", "Remove an act", "Remove an act and its objectives; the last act stays.", z.object({ playthrough, act }), (p, a: Parameters<typeof t.removeAct>[1]) => t.removeAct(p, a));
   tool("move_act", "Move an act", "Move an act to a position (1 is first).", z.object({ playthrough, act, to: z.number().int().min(1) }), (p, a: Parameters<typeof t.moveAct>[1]) => t.moveAct(p, a));
   tool(
     "add_objective",
@@ -144,28 +163,6 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
     z.object({ playthrough, objective, status: z.enum(["todo", "doing", "done", "later"]) }),
     (p, a: Parameters<typeof t.setStatus>[1]) => t.setStatus(p, a),
   );
-  tool(
-    "write_chapter",
-    "Write a chapter",
-    "Write a chapter of the story, Tale only (rule 12). A chapter sits in the Prologue (no `act`: the story before the first act) or in an act (`act`); any chapter can unlock when one of its act's objectives is done (`unlocksWhen`, rule 16). The first chapter of an act opens its card on Play. Text in Markdown: paragraphs, a heading, a quote, bold and italic; no images, which the author adds on the site. The Story's limits hold.",
-    z.object({
-      playthrough,
-      title: z.string().min(1).max(60),
-      text: z.string().min(1).max(60_000),
-      act: act.optional().describe("The act the chapter sits in; none, the Prologue."),
-      unlocksWhen: objective.optional().describe("The objective that unlocks it; until it's done readers see its title and what unlocks it. It puts the chapter in that objective's act."),
-      fromSave: z.string().max(60).optional().describe('Written after play from a save: the save, "Save 7, 19 Oct 2026".'),
-    }),
-    (p, a: Parameters<typeof t.writeChapter>[1]) => t.writeChapter(p, a),
-  );
-  tool(
-    "set_chapter",
-    "Change a chapter",
-    "Change a chapter's title, its text (Markdown, as write_chapter), the objective that unlocks it (unlocksWhen; \"none\" for none), or the save it was written from.",
-    z.object({ playthrough, chapter, title: z.string().min(1).max(60).optional(), text: z.string().min(1).max(60_000).optional(), unlocksWhen: objective.optional(), fromSave: z.string().max(60).optional() }),
-    (p, a: Parameters<typeof t.setChapter>[1]) => t.setChapter(p, a),
-  );
-  tool("remove_chapter", "Remove a chapter", "Remove a chapter.", z.object({ playthrough, chapter }), (p, a: Parameters<typeof t.removeChapter>[1]) => t.removeChapter(p, a));
   tool(
     "set_snapshot",
     "Where the player stands, from the save",

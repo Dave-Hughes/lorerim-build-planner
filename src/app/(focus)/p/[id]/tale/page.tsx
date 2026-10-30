@@ -1,18 +1,13 @@
 import { notFound, redirect } from "next/navigation";
-import { auth } from "@/auth";
 import { playthroughsOn } from "@/lib/features";
-import { getPlaythrough } from "@/lib/playthroughs/queries";
-
-export const dynamic = "force-dynamic";
+import { buildOfRun } from "@/lib/playthroughs/queries";
 
 type Params = Promise<{ id: string }>;
 
-/** The Tale page is gone (WO-116): the story opens in the reader, from its beginning. */
+/** The Story is retired (WO-181): the Tale's old address goes to the character's Playthrough tab. */
 export default async function TalePage({ params }: { params: Params }) {
   if (!playthroughsOn()) notFound();
-  const [{ id }, session] = await Promise.all([params, auth()]);
-  const p = await getPlaythrough(id, session?.user?.id ?? null);
-  if (!p) notFound();
-  const first = p.view.chapters[0];
-  redirect(p.build ? (first ? `/b/${p.build.id}/story/${first.id}` : `/b/${p.build.id}?tab=playthrough`) : `/p/${id}`);
+  const { id } = await params;
+  const bid = await buildOfRun(id);
+  redirect(bid ? `/b/${bid}?tab=playthrough` : `/p/${id}`);
 }

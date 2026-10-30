@@ -10,7 +10,8 @@ import { placeByName, placeLabel, placesData, placesNamed, placeType } from "@/l
 import { holdNamed, whereTerms } from "@/lib/places/holds";
 import { citiesOf } from "@/lib/places/inside";
 import { actTowns, placesNear, townsIn, unmeasured } from "@/lib/places/suggest";
-import { docToMarkdown, markdownToDoc, MarkdownError } from "@/lib/playthroughs/markdown";
+import { progressTracking } from "@/lib/features";
+import { MarkdownError } from "@/lib/playthroughs/markdown";
 import { getPlaythrough, listMyPlaythroughs, type PlaythroughRecord } from "@/lib/playthroughs/queries";
 import { reviewPlaythrough } from "@/lib/playthroughs/review";
 import { reviewGates, type GateWorld } from "@/lib/playthroughs/gate-review";
@@ -109,14 +110,6 @@ function objectiveOf(pt: PlaythroughRecord, ref: string, act?: ReturnType<typeof
   throw new FactsError(`No objective ${ref} in ${act ? `Act ${act.n}` : "the playthrough"}. get_playthrough lists them with their ids.`);
 }
 
-/** A chapter, entry or beat by its id or title. */
-function chapterOf(pt: PlaythroughRecord, ref: string) {
-  const id = /^\d+$/.test(String(ref).trim()) ? Number(ref) : null;
-  const hit = id !== null ? pt.view.chapters.filter((c) => c.id === id) : pt.view.chapters.filter((c) => norm(c.title) === norm(String(ref)));
-  if (hit.length === 1) return hit[0];
-  if (hit.length > 1) throw new FactsError(`More than one piece of the tale is called ${ref}. Use its id: ${hit.map((c) => c.id).join(", ")}.`);
-  throw new FactsError(`No chapter ${ref}. get_playthrough lists them with their ids.`);
-}
 
 /**
  * A link's name to { kind, id }, as names.ts does for builds: a quest by its name, "Name (Line)" when
@@ -329,6 +322,37 @@ export async function setAbout(p: Player, input: { playthrough?: string; build?:
   return { playthrough: pt.id, about: aboutOf(now), ...(now.mods?.length ? { mods: now.mods } : {}), ...(nevers?.items.some((n) => n.kind === "state" || n.kind === "own") ? { neverNote: NEVER_NOTE } : {}) };
 }
 
+/**
+ * Who she is (WO-181): backstory, from, gods, goal, what she will and won't do and the grey areas. What is given replaces what was there; an
+ * empty string or list takes it away. Refused with the reason when a line breaks a writing rule; nothing is cut.
+ */
+export async function setTheme(p: Player, input: { playthrough: string; backstory?: string; from?: string; gods?: string; goal?: string; will?: string[]; never?: string[]; grey?: string[] }) {
+  await writeGuard(p);
+  const pt = await mine(p, input.playthrough);
+  const { playthrough: _playthrough, ...theme } = input;
+  void _playthrough;
+  await writes(() => w.setTheme(p.userId, pt.id, theme));
+  revalidatePath(`/b/${pt.build?.id ?? ""}`);
+  revalidatePath(`/p/${pt.id}`);
+  const now = (await getPlaythrough(pt.id, p.userId))!;
+  return { playthrough: pt.id, who: themeOf(now), link: characterLink(p, pt.build?.id ?? null, pt.id) };
+}
+
+/** Who she is as get_playthrough and set_theme give it: only what is filled in; she won't is the never list in the player's words. */
+export function themeOf(pt: Pick<PlaythroughRecord, "theme" | "never">) {
+  const t = pt.theme ?? {};
+  const wont = (pt.never ?? []).map((n) => n.words ?? n.what);
+  return {
+    ...(t.backstory ? { backstory: t.backstory } : {}),
+    ...(t.from ? { from: t.from } : {}),
+    ...(t.gods ? { gods: t.gods } : {}),
+    ...(t.goal ? { goal: t.goal } : {}),
+    ...(t.will?.length ? { will: t.will } : {}),
+    ...(wont.length ? { never: wont } : {}),
+    ...(t.grey?.length ? { grey: t.grey } : {}),
+  };
+}
+
 const NEVER_NOTE = "The planner keeps to quest lines, stories, sides and kill (a quest whose objectives need a kill): suggest_quests and suggest_objective leave them out, get_quest says locked for this character, and get_playthrough warns. A state or the player's own line is kept and said back; keep to it yourself.";
 const NEVER_KIND = { line: "a quest line", side: "a side in the war", state: "a state", kill: "never killing, read from each quest's objectives", own: "the player's own words" } as const;
 
@@ -471,6 +495,7 @@ export async function moveObjective(p: Player, input: { playthrough: string; obj
 
 /** Any objective, when the player says (WO-123): one the save reads is done from the save as well, either counts. */
 export async function setStatus(p: Player, input: { playthrough: string; objective: string; status: ObjectiveStatus }) {
+  if (!progressTracking()) throw new FactsError("Progress tracking is off for now.");
   await writeGuard(p);
   const pt = await mine(p, input.playthrough);
   const o = objectiveOf(pt, input.objective);
@@ -478,37 +503,9 @@ export async function setStatus(p: Player, input: { playthrough: string; objecti
   return { playthrough: pt.id, objective: o.id, status: input.status };
 }
 
-/** A chapter (WO-118): in the Prologue or an act, unlocking when an objective is done or not. */
-export async function writeChapter(p: Player, input: { playthrough: string; title: string; text: string; act?: string; unlocksWhen?: string; fromSave?: string }) {
-  await writeGuard(p);
-  const pt = await mine(p, input.playthrough);
-  const a = input.act !== undefined ? actOf(pt, input.act) : null;
-  const after = input.unlocksWhen !== undefined ? objectiveOf(pt, input.unlocksWhen, a ?? undefined).id : null;
-  const doc = await writes(async () => markdownToDoc(input.text));
-  const id = await writes(() => w.addChapter(p.userId, pt.id, { title: input.title, doc, actId: a?.id ?? null, unlocksWhen: after, fromSave: input.fromSave ?? null }, p.clientName.slice(0, 80)));
-  return { playthrough: pt.id, chapter: String(id), link: characterLink(p, pt.build?.id ?? null, pt.id, `/story/${id}`) };
-}
-
-export async function setChapter(p: Player, input: { playthrough: string; chapter: string; title?: string; text?: string; unlocksWhen?: string; fromSave?: string }) {
-  await writeGuard(p);
-  const pt = await mine(p, input.playthrough);
-  const c = chapterOf(pt, input.chapter);
-  const doc = input.text !== undefined ? await writes(async () => markdownToDoc(input.text!)) : undefined;
-  const after = input.unlocksWhen === undefined ? undefined : input.unlocksWhen.toLowerCase() === "none" ? null : objectiveOf(pt, input.unlocksWhen).id;
-  await writes(() => w.setChapter(p.userId, pt.id, c.id, { title: input.title, doc, unlocksWhen: after, fromSave: input.fromSave }, p.clientName.slice(0, 80)));
-  return { playthrough: pt.id, chapter: c.id, saved: true };
-}
-
-export async function removeChapter(p: Player, input: { playthrough: string; chapter: string }) {
-  await writeGuard(p);
-  const pt = await mine(p, input.playthrough);
-  const c = chapterOf(pt, input.chapter);
-  await writes(() => w.removeChapter(p.userId, pt.id, c.id));
-  return { playthrough: pt.id, removed: c.title };
-}
-
 /** Only from the save (WO-112's helper): rule 18 forbids a value the assistant estimated. */
 export async function setSnapshot(p: Player, input: { playthrough: string; source: "save"; label: string; level: number; xp?: number; day?: number; place?: string; skills: Record<string, number>; questStages?: Record<string, number>; counts?: Record<string, number> }) {
+  if (!progressTracking()) throw new FactsError("Progress tracking is off for now.");
   await writeGuard(p);
   if (input.source !== "save") throw new FactsError("Only a save can set where the player stands, read on their PC. The player enters it by hand on the site.");
   const pt = await mine(p, input.playthrough);
@@ -656,7 +653,11 @@ export async function getQuestLog(p: Player, input: { playthrough: string }) {
 }
 
 export async function getPlaythroughTool(p: Player, input: { playthrough: string }) {
-  const pt = await mine(p, input.playthrough);
+  return playthroughOut(p, await mine(p, input.playthrough));
+}
+
+/** A playthrough as get_playthrough gives it, in the plain shape the inputs use. Pure of the database, so the player's questions can read it. */
+export function playthroughOut(p: Player, pt: PlaythroughRecord) {
   const v = pt.view;
   const warnings = warningsOf(pt);
   const shown = { save: "done, from the save", hand: "done, ticked by the player", doing: "under way", todo: "to do", later: "later", suggested: "suggested, waiting for the player" } as const;
@@ -671,9 +672,11 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
     draftedByAnAssistant: !!pt.draftedBy,
     // Before you design (WO-139): the player's answers and what she will never do.
     ...(pt.answers?.length || pt.never?.length ? { about: aboutOf(pt) } : {}),
+    // Who she is (WO-181): backstory, from, gods, goal, what she will and won't do, the grey areas.
+    ...(Object.keys(themeOf(pt)).length ? { who: themeOf(pt) } : {}),
     // The mods this character needs (WO-139 Part 4), required first.
     ...(pt.mods?.length ? { mods: modsOf(pt.mods) } : {}),
-    done: `${v.done} of ${v.total}`,
+    ...(progressTracking() ? { done: `${v.done} of ${v.total}` } : {}),
     whereYouStand: pt.snapshot
       ? {
           from: pt.snapshot.source === "save" ? pt.snapshot.label : "the player, by hand",
@@ -695,9 +698,7 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
       // The places she leaves alone on purpose (WO-128).
       ...(a.passedBy?.length ? { passedBy: a.passedBy.map((b) => ({ place: b.place, why: b.why })) } : {}),
       // Its road (WO-129): the stops in order, each with why she goes there next.
-      ...(a.route?.length ? { route: a.route.map((r, i) => ({ place: r.place, why: r.why, ...(missivesAt(r.place, a.route![i + 1]?.place) ? { missives: missivesAt(r.place, a.route![i + 1]?.place) } : {}) })) } : {}),
-      // The act's first chapter (WO-118): it opens the act's card on Play.
-      firstChapter: a.chapter !== null ? chapterLine(v.chapters.find((c) => c.id === a.chapter)!) : null,
+      ...(a.route?.length ? { route: a.route.map((r, i) => ({ place: r.place, why: r.why, ...(r.by === "carriage" ? { by: r.by } : {}), ...(missivesAt(r.place, a.route![i + 1]?.place) ? { missives: missivesAt(r.place, a.route![i + 1]?.place) } : {}) })) } : {}),
       objectives: a.objectives.map((o) => ({
         objective: String(o.id),
         text: o.text,
@@ -711,21 +712,8 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
         fromSave: o.doneBy === "save",
         ...(o.why ? { why: o.why } : {}),
         ...(o.stop ? { stop: o.stop } : {}),
-        status: shown[o.worked.shown],
-        // The chapters that hang off it: its Story markers (WO-116).
-        chapters: o.tale.map((t) => ({ chapter: String(t.id), title: t.title, open: t.open })),
+        ...(progressTracking() ? { status: shown[o.worked.shown] } : {}),
       })),
-    })),
-    // The story's chapters in reading order (WO-118): the Prologue's, then each act's.
-    chapters: v.chapters.map((c) => ({
-      chapter: String(c.id),
-      title: c.title,
-      act: c.actId === null ? "Prologue" : String(v.acts.findIndex((a) => a.id === c.actId) + 1),
-      ...(c.kind === "beat" && c.inGame ? { unlocksWhen: { objective: String(c.inGame.id), text: c.inGame.text }, unlocked: c.open } : {}),
-      ...(c.kind !== "beat" && c.inGame ? { tells: c.inGame.text } : {}),
-      ...(c.fromSave ? { fromSave: c.fromSave } : {}),
-      // As it was written, paragraphs kept (WO-142 item 7), so it can go back through set_chapter unchanged.
-      text: docToMarkdown(c.doc),
     })),
     ...(warnings.length ? { warnings } : {}),
   };
@@ -744,9 +732,6 @@ export function missivesAt(place: string, next: string | undefined): string | nu
   return here && there ? `Read ${here}'s board for notes addressed to ${there}.` : null;
 }
 
-/** A chapter as get_playthrough names it: its id and title. */
-const chapterLine = (c: { id: number; title: string }) => ({ chapter: String(c.id), title: c.title });
-
 export async function listMine(p: Player) {
   const rows = await listMyPlaythroughs(p.userId);
   return rows.map((r) => ({ playthrough: r.id, name: r.name, visibility: r.visibility, build: r.buildId ? { id: r.buildId, name: r.buildName } : null, acts: r.acts, updated: r.updatedAt.toISOString(), draftedByAnAssistant: !!r.draftedBy, link: link(p, r.id) }));
@@ -758,7 +743,6 @@ export async function finishDraft(p: Player, input: { playthrough: string }) {
   const issues: string[] = [];
   if (!pt.view.acts.length) issues.push("The playthrough has no acts yet.");
   for (const a of pt.view.acts) if (!a.objectives.length) issues.push(`Act ${a.n} ${a.name} has no objective.`);
-  for (const c of pt.view.chapters) if (c.kind === "beat" && c.opensAfter === null) issues.push(`The chapter ${c.title} unlocks from an objective that's gone: set unlocksWhen again, or "none".`);
   // Assistants can't add images (WO-118): the player adds a cover from this link, at the cover in Details;
   // the story's images are theirs too, in its Story tab.
   const addCover = pt.buildId ? `${p.origin}/b/${pt.buildId}/setup?step=name#cover` : null;

@@ -34,6 +34,21 @@ export interface PassedBy {
 export interface RouteStop {
   place: string;
   why: string;
+  /** How she gets here from the stop before (WO-181): on foot, which is the default, or by carriage (a gold dotted leg on the act's map). */
+  by?: "foot" | "carriage";
+}
+
+/**
+ * Who she is (WO-181), all optional: a backstory in plain paragraphs, where she is from, her gods and her goal in a line each, and what
+ * she will do and the grey areas, a short list of lines each. What she won't do is `never`, kept beside the answers.
+ */
+export interface Theme {
+  backstory?: string;
+  from?: string;
+  gods?: string;
+  goal?: string;
+  will?: string[];
+  grey?: string[];
 }
 
 /** One of the Before you design questions (WO-139) and the player's answer, in their words. */
@@ -79,6 +94,11 @@ export const PLAYTHROUGH_LIMITS = {
   /** What the character will never do (WO-139). */
   nevers: 20,
   never: 120,
+  /** Who she is (WO-181): the backstory, a line each for from, gods and goal, and the lists of what she will, won't and the grey areas. */
+  backstory: 3000,
+  themeLine: 80,
+  themeLines: 6,
+  themeItem: 90,
   chapterTitle: 60,
   label: 60,
   acts: 20,

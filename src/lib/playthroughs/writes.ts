@@ -9,8 +9,8 @@ import { checkGuideDoc, docText, imageUrls, isEmptyDoc, lineDoc, type GuideDoc }
 import { isOurImage } from "@/lib/guide/images";
 import type { BuildVisibility } from "@/lib/builds/validate";
 import { newAccountHold } from "@/lib/moderation/limits";
-import { actSchema, answersSchema, chapterTitleSchema, detailsSchema, neverSchema, firstIssue, stopKey, taleSchema, objectiveSchema, snapshotSchema, type ActInput, type ObjectiveInput, type SnapshotInput } from "./validate";
-import { PLAYTHROUGH_LIMITS, type Answer, type ChapterKind, type Never, type ObjectiveStatus, type RouteStop } from "./types";
+import { actSchema, answersSchema, checkTheme, type ThemeInput, chapterTitleSchema, detailsSchema, neverSchema, firstIssue, stopKey, taleSchema, objectiveSchema, snapshotSchema, type ActInput, type ObjectiveInput, type SnapshotInput } from "./validate";
+import { PLAYTHROUGH_LIMITS, type Theme, type Answer, type ChapterKind, type Never, type ObjectiveStatus, type RouteStop } from "./types";
 import { storyOrder } from "./view";
 import { unplanned } from "./unplanned";
 
@@ -162,6 +162,29 @@ export async function setDetails(
       .set({ ...(input.name !== undefined ? { name: d.data!.name } : {}), ...(input.line !== undefined ? { description: d.data!.line } : {}) })
       .where(and(eq(schema.builds.id, (build?.id ?? p.buildId)!), eq(schema.builds.ownerId, userId)));
   }
+}
+
+/**
+ * Who she is (WO-181): what is given replaces what was there (a list is the whole list; an empty line or list takes it away). She won't is
+ * `never`, the list the quest tools keep to, so each line is written there as the player's own words. Refused with the reason, never cut.
+ */
+export async function setTheme(userId: string, id: string, input: ThemeInput) {
+  const p = await ownedPlaythrough(userId, id);
+  const r = checkTheme(input);
+  if ("error" in r) return fail(r.error);
+  const now = { ...(p.theme ?? {}) } as Record<string, unknown>;
+  for (const [k, v] of Object.entries(r.theme)) {
+    if (v === "" || (Array.isArray(v) && !v.length)) delete now[k];
+    else now[k] = v;
+  }
+  await db()
+    .update(schema.playthroughs)
+    .set({
+      theme: Object.keys(now).length ? (now as Theme) : null,
+      ...(r.never ? { never: r.never.length ? r.never.map((what) => ({ what })) : null } : {}),
+    })
+    .where(eq(schema.playthroughs.id, p.id));
+  await touch(p.id);
 }
 
 /**

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { progressTracking } from "@/lib/features";
 import { roman } from "@/lib/playthroughs/view";
 import { levelsLine } from "@/lib/rules/stretches";
 import { Heart, likesLabel } from "./heart";
@@ -38,7 +39,7 @@ export function BuildCard({ build, mine, likedAt, featured, run }: { build: Buil
             <DestinyStar /> Featured
           </span>
         )}
-        {(build.videoId || build.hasStory || (run && run !== "none")) && (
+        {(build.videoId || (run && run !== "none")) && (
           <span className={styles.badges}>
             {build.videoId && (
               <span className={styles.videoBadge}>
@@ -46,7 +47,6 @@ export function BuildCard({ build, mine, likedAt, featured, run }: { build: Buil
               </span>
             )}
             {run && run !== "none" && <span className={styles.videoBadge}>Run</span>}
-            {build.hasStory && <span className={styles.videoBadge}>Story</span>}
           </span>
         )}
       </div>
@@ -100,6 +100,8 @@ export function BuildCard({ build, mine, likedAt, featured, run }: { build: Buil
 }
 
 function RunBox({ build, run }: { build: BuildSummary; run: CardRun }) {
+  // Where she is in your game, the bar and "x of y done" come back only with progress tracking (WO-181).
+  const tracking = progressTracking();
   if (run === "none")
     return (
       <div className={`${styles.run} ${styles.runNone}`}>
@@ -107,23 +109,27 @@ function RunBox({ build, run }: { build: BuildSummary; run: CardRun }) {
         <Link href={`/b/${build.id}/run`} className={styles.runLink}>
           Plan a playthrough ›
         </Link>
-        <span>{build.hasStory ? "Shared as a build, with its Story" : "No acts, objectives or tale yet"}</span>
+        <span>{build.hasStory ? "Shared as a build" : "No acts or objectives yet"}</span>
       </div>
     );
-  const where = [run.act ? `Act ${roman(run.act)} ${run.actName ?? ""}`.trim() : "No acts yet", run.place, run.level !== null ? `Level ${run.level}${run.day !== null ? `, day ${run.day}` : ""}` : null].filter(Boolean).join(" | ");
+  const where = [run.act ? `Act ${roman(run.act)} ${run.actName ?? ""}`.trim() : "No acts yet", run.place, tracking && run.level !== null ? `Level ${run.level}${run.day !== null ? `, day ${run.day}` : ""}` : null].filter(Boolean).join(" | ");
   return (
     <div className={styles.run}>
-      <b>Where the run stands</b>
+      <b>{tracking ? "Where the run stands" : "Her playthrough"}</b>
       <Link href={`/b/${build.id}?tab=playthrough`} className={styles.runLink}>
         Play ›
       </Link>
       <span>{where}</span>
-      <span className={styles.runBar} aria-hidden="true">
-        <i style={{ width: `${run.total ? Math.round((run.done / run.total) * 100) : 0}%` }} />
-      </span>
-      <span className={styles.runCount}>
-        {run.done} of {run.total} done
-      </span>
+      {tracking && (
+        <>
+          <span className={styles.runBar} aria-hidden="true">
+            <i style={{ width: `${run.total ? Math.round((run.done / run.total) * 100) : 0}%` }} />
+          </span>
+          <span className={styles.runCount}>
+            {run.done} of {run.total} done
+          </span>
+        </>
+      )}
     </div>
   );
 }

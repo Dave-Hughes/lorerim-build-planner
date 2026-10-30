@@ -1,6 +1,4 @@
 import { firstPlate, type GuideDoc } from "@/lib/guide/doc";
-import { editStoryHref } from "./hrefs";
-import type { ActView, ChapterView, PlaythroughView } from "./view";
 
 /**
  * The reader's stops (WO-116): every story as the pages it opens to, in reading order. A run's are
@@ -46,45 +44,6 @@ export interface ReaderBack {
   label: string;
 }
 
-/** A run's tale, in reading order. `cover` is the character's cover. */
-/** With the character's build id the stops are at the character's own address, `/b/<id>/story/<chapter>` (WO-179); a run on no build keeps its own. */
-export function runStops(p: { id: string; buildId?: string | null; taleLine: string | null; view: PlaythroughView; cover: string | null; coverFocus?: { x: number; y: number } | null; isOwner: boolean; titlePicture?: string | null }): ReaderStop[] {
-  const v = p.view;
-  const base = p.buildId ? `/b/${p.buildId}` : `/p/${p.id}`;
-  const actOf = new Map(v.acts.map((a, i) => [a.id, { a, n: i + 1 }]));
-  const rowHref = (oid: number) => {
-    const n = v.acts.findIndex((a) => a.objectives.some((o) => o.id === oid)) + 1;
-    return p.buildId ? `/b/${p.buildId}?tab=playthrough&act=${n}#o${oid}` : `/p/${p.id}?act=${n}#o${oid}`;
-  };
-  return v.chapters.map((c, i) => {
-    const act = c.actId !== null ? actOf.get(c.actId) : undefined;
-    // Its own image (WO-117), else the text's first image, else the act's.
-    const own = c.imageUrl ?? null;
-    const fromText = own ? null : c.open ? firstPlate(c.doc) : null;
-    const actImage = act ? actImageOf(v, act.a) : null;
-    const title = i === 0 ? (p.titlePicture ?? null) : null;
-    return {
-      key: String(c.id),
-      href: `${base}/story/${c.id}`,
-      kicker: act ? `Act ${act.a.n}` : "Prologue",
-      title: c.title,
-      line: i === 0 && p.taleLine ? p.taleLine : c.fromSave ? `From ${c.fromSave.toLowerCase()}` : null,
-      place: placeOf(c, act?.a),
-      plate: own ?? fromText ?? actImage?.url ?? title ?? p.cover,
-      plateFocus: own ? (c.imageFocus ?? null) : fromText ? null : actImage ? actImage.focus : title ? null : (p.coverFocus ?? null),
-      plateFromText: !!fromText,
-      doc: c.doc,
-      cap: true,
-      entry: false,
-      waiting: c.open ? null : waitingText(v, c),
-      chapterId: c.id,
-      game: c.inGame ? { text: c.inGame.text, href: rowHref(c.inGame.id) } : null,
-      edit: p.isOwner ? editStoryHref(p, c.id) : null,
-      readAt: p.isOwner && c.readAt ? new Date(c.readAt).getTime() : null,
-    };
-  });
-}
-
 /** A build alone's Story (WO-79) as the reader's one stop. */
 export function storyStop(b: { id: string; title: string; line: string; doc: GuideDoc; cover: string | null; isOwner: boolean }): ReaderStop {
   const fromText = firstPlate(b.doc);
@@ -104,33 +63,9 @@ export function storyStop(b: { id: string; title: string; line: string; doc: Gui
     waiting: null,
     chapterId: null,
     game: null,
-    edit: b.isOwner ? `/b/${b.id}/edit/story` : null,
+    edit: null,
     readAt: null,
   };
-}
-
-/** An act's image (WO-116): its own, else its first chapter's (WO-118: the image, else the text's first), with what stays in view. The cover comes after. */
-export function actImageOf(v: PlaythroughView, a: ActView): { url: string; focus: { x: number; y: number } | null } | null {
-  if (a.imageUrl) return { url: a.imageUrl, focus: a.imageFocus ?? null };
-  const c = v.chapters.find((x) => x.id === a.chapter);
-  if (c?.imageUrl) return { url: c.imageUrl, focus: c.imageFocus ?? null };
-  const fromText = c?.open ? firstPlate(c.doc) : null;
-  return fromText ? { url: fromText, focus: null } : null;
-}
-export const actPictureOf = (v: PlaythroughView, a: ActView): string | null => actImageOf(v, a)?.url ?? null;
-
-function placeOf(c: ChapterView, a: ActView | undefined): string {
-  if (!a) return "Prologue";
-  return [`Act ${a.n}`, c.fromSave ? `from ${c.fromSave.toLowerCase()}` : null].filter(Boolean).join(" | ");
-}
-
-/** "This chapter opens when Hunt and tan her first hides is done." (WO-124), with the number so far for one to reach. */
-function waitingText(v: PlaythroughView, c: ChapterView): string {
-  const w = c.waitsOn;
-  if (!w) return "Not unlocked yet.";
-  const o = v.acts.flatMap((a) => a.objectives).find((x) => x.id === w.id);
-  const now = w.reach ? o?.worked.meter?.value : null;
-  return `This chapter opens when ${w.text} is done.${now !== undefined && now !== null && w.reach ? ` ${w.reach.replace(/\s\d+$/, "")} ${now} now.` : ""}`;
 }
 
 /** The stop a path opens, if it's one of these. */

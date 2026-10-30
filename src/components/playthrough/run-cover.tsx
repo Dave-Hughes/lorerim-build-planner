@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { ReadTheStory } from "@/components/reader/reader";
 import { CopyLinkButton } from "@/components/ui/copy-link-button";
 import { drawnTheme, themeStyle } from "@/lib/themes";
 import { editPlayHref } from "@/lib/playthroughs/hrefs";
@@ -45,7 +44,6 @@ export function RunCover({ p, isOwner }: { p: PlaythroughRecord; isOwner: boolea
             </div>
           </div>
           <div className={`on-image ${styles.actions} ${styles.heroIn} ${styles.heroIn4}`}>
-            <ReadTheStory />
             <CopyLinkButton path={`/p/${p.id}`} className="btn" />
             {isOwner && (
               <Link href={editPlayHref(p)} className="btn btn-primary">

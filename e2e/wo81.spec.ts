@@ -5,12 +5,13 @@ import { HEALER_BUILD_ID } from "./seed";
 
 test.use({ viewport: { width: 1440, height: 900 } });
 
-test("with both on: the healer's Story in the reader, the Story page and the site guide are there", async ({ page, context }) => {
+test("with both on: no Story reader or tab, and the site guide is there", async ({ page, context }) => {
   await signIn(context);
+  // WO-181: the Story is retired, with the switch on too: no reader, no Story tab.
   await page.goto(`/b/${HEALER_BUILD_ID}/story`);
-  await expect(page.getByRole("region", { name: /^Reading: / }).getByRole("heading", { name: "The Mender" })).toBeVisible();
+  await expect(page.getByRole("region", { name: /^Reading: / })).toHaveCount(0);
   await page.goto(`/b/${HEALER_BUILD_ID}/edit`);
-  await expect(editTab(page, "Story")).toHaveAttribute("href", `/b/${HEALER_BUILD_ID}/edit/story`);
+  await expect(editTab(page, "Story")).toHaveCount(0);
   expect((await page.goto("/guide"))?.status()).toBe(200);
   await expect(page.getByRole("navigation", { name: "Site" }).getByRole("link", { name: "Guide" })).toBeVisible();
 });

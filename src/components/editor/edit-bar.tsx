@@ -10,7 +10,7 @@ import type { BuildVisibility } from "@/lib/builds/validate";
 import { InfoTip } from "@/components/ui/info-tip";
 import type { EditFrameData } from "@/lib/edit/frame";
 import { saveDetails } from "@/lib/playthroughs/actions";
-import { editPlayHref, editStoryHref } from "@/lib/playthroughs/hrefs";
+import { editPlayHref } from "@/lib/playthroughs/hrefs";
 import styles from "./edit-bar.module.css";
 import f from "./edit-frame.module.css";
 
@@ -237,7 +237,7 @@ function tabsOf(f: EditFrameData | null, buildId: string): Tab[] {
   const r = f?.run;
   const out: Tab[] = [];
   const id = b?.id ?? buildId;
-  // The same tabs, in the same order, as the character's page (WO-179): Playthrough, Build, Guide. Character (Set up) and the Story follow.
+  // The same tabs, in the same order, as the character's page (WO-179): Playthrough, Build, Guide. Character (Set up) follows.
   // The page's own address, never one that redirects (WO-124 Part 4): a redirect during a tab change made Next load the whole document again.
   if (r) out.push({ key: "play", label: "Playthrough", href: editPlayHref(r) });
   else if (f?.playOn && b) out.push({ key: "play", label: "Playthrough", href: `/b/${b.id}/edit/play` });
@@ -246,8 +246,6 @@ function tabsOf(f: EditFrameData | null, buildId: string): Tab[] {
     out.push({ key: "guide", label: "Guide", href: `/b/${id}/guide` });
     out.push({ key: "setup", label: "Character", href: `/b/${id}/setup?step=name` });
   }
-  if (r) out.push({ key: "story", label: "Story", href: editStoryHref(r) });
-  else if (f?.storyOn && b) out.push({ key: "story", label: "Story", href: `/b/${b.id}/edit/story` });
   return out;
 }
 
@@ -264,7 +262,7 @@ export function helpLine(tab: EditPage, character: boolean): string {
     ],
     guide: ["How to play her, in your words. Readers find it under Guide.", "How to play the build, in your words. Readers find it under Guide."],
     story: ["Her story in chapters. A chapter tied to an objective stays locked until that objective is done.", "The build's story, in your words. Readers find it under Story."],
-    play: ["Her run through the game: acts, and the objectives in each. An objective linked to a quest ticks from your save.", "The build's run through the game: acts, and the objectives in each."],
+    play: ["Who she is and how she plays, then her run through the game: acts, and the objectives in each.", "The build's run through the game: acts, and the objectives in each."],
   };
   return lines[tab][character ? 0 : 1];
 }

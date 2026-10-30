@@ -5023,20 +5023,20 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-181  Who she is, and acts with their own maps; the Story and progress tracking retire (Mac, 29 Oct 2026)
-Status: building (Mac)
+Status: for Bob
 
 **Why.** Dave's decision of 28 Oct (backlog, "No grand narrative"): a character has a theme, not a tale. A player reads who she is and how she plays, then follows acts that fit her, and each act has a map of where she goes. The long-form Story retires; Dave keeps Kyria's tale himself. On the board he also turned off progress tracking for now ("Maybe we bring it back later but for now we can kill this functionality"), took read times off the page, and called the first draft's writing "hyper cringe". This order also writes the rules that stop the connector from writing that way.
 
 **The design is two frames on the canvas** (row "A character's playthrough", 1 of 2 and 2 of 2: `CharacterTheme.dc.html` and `CharacterThemeAct.dc.html`). Dave's comments on them are settled there. Build from the frames; where this order and a frame disagree, the frame wins and the notes say so. The page keeps WO-179's shell (hero, tabs, rail). This order changes only what the Playthrough tab holds.
 
 ### Part 1. Who she is (data, page, editor, tools)
-- [ ] **Fields.** The character gets, all optional:
+- [x] **Fields.** The character gets, all optional:
   - `backstory`: plain paragraphs, at most 3,000 characters, in the guide document format with text only (no images, no headings).
   - `from`, `gods`, `goal`: one line each, at most 80 characters.
   - `will` and `grey`: lists of up to 6 lines, each at most 90 characters.
   - "She won't" is the existing `never` list, so the quest tools keep to it as they do now. Its cap and line length match `will`.
   - They live wherever WO-179 put the character's own fields (the build record), or on the playthrough beside `answers` and `never` if that is simpler. Say which in the notes. Schema through `npm run db:generate`, with no drops.
-- [ ] **The Playthrough tab opens on Who she is.**
+- [x] **The Playthrough tab opens on Who she is.**
   - The rail's top card reads "Who she is", with the line "Where she's from, and how she plays ›" (his, them for no pronoun, per WO-179). It is lit orange while its view is open.
   - The view, as frame 1:
     - The heading.
@@ -5046,38 +5046,38 @@ Status: building (Mac)
     - The **Begin Act I** panel, below.
   - `?act=N` opens act N, and the rail switches views without leaving the page (as tabs do in WO-179).
   - A character with no backstory and no How she plays opens on Act I. The rail then shows no Who she is card to visitors, and shows the owner "Write who she is ›".
-- [ ] **The Begin Act I panel** is the loudest thing on the page, as frame 1 draws it:
+- [x] **The Begin Act I panel** is the loudest thing on the page, as frame 1 draws it:
   - Full width, with an orange border.
   - Act I's map crop behind it (Part 2), darkened on the left.
   - The roman numeral and the act's name large; the act's goal as its line; Levels (red), Where (teal), With her (orange) and the objective count.
   - A big primary "Begin Act I ›" button.
   - The whole panel is the click.
   - At 390 the map sits above the text and the button is full width.
-- [ ] **The editor** gets the same fields in WO-179's tabs, under Playthrough.
+- [x] **The editor** gets the same fields in WO-179's tabs, under Playthrough.
   - Backstory is a plain text area with paragraphs and a character count. The count shows characters, not minutes.
   - She will, She won't and Grey areas are line lists you add, edit and reorder.
   - The refusals below show as you type.
-- [ ] **Tools.**
+- [x] **Tools.**
   - `set_theme({ playthrough, backstory?, from?, gods?, goal?, will?, never?, grey? })` writes them.
   - `get_playthrough` returns them.
   - `set_details never` keeps working and writes the same list.
   - Refused, with the reason in plain words, on the site and in the tool: an em dash, " · ", emoji, and a will, won't or grey line with a colon in it. A line over its length is refused too, never cut.
 
 ### Part 2. An act, with its own map (frame 2)
-- [ ] **The act view**, top to bottom:
+- [x] **The act view**, top to bottom:
   - The header: roman numeral, name, and the objective count.
   - The act's At a glance band:
     - **Levels** (red): the act's range.
     - **Where it takes her** (teal): the route's first stop, and "to" its last when they differ. The stops between go in the small line, "By Ivarstead and Whiterun".
     - **With her** (orange): the followers linked in this act's objectives, each linked. The cell isn't drawn when there are none.
   - The act's goal in the serif as its intro, then its throughout-the-act line when it has one.
-- [ ] **The steps** use the line page's run:
+- [x] **The steps** use the line page's run:
   - A numbered teal disc per route stop, shared by the steps at that stop. "On the road" steps get no number.
   - The objective's text with names linked where the planner knows them: the objective's own link, the stop's place, and people and places matched by exact name as the quest pages match them. People are orange, places teal, and an unknown name stays plain.
   - Follower and Quest line chips from the link's kind.
   - The why line under each step.
   - No ticks, no done counts, no Accept and Skip for visitors (suggestions stay the owner's, as now).
-- [ ] **The map** sits beside the steps and stays in view while they scroll (sticky, as frame 2).
+- [x] **The map** sits beside the steps and stays in view while they scroll (sticky, as frame 2).
   - **What it draws:**
     - The paper map, cropped to the act's stops with a margin, using the Map page's tiles and positions (WO-166/169).
     - A numbered pin per stop, matching the steps.
@@ -5090,18 +5090,18 @@ Status: building (Mac)
     - An act with no route draws its objectives' linked places in order, as far as the planner knows them.
     - With nothing to draw there is no map, and the steps take the full width.
   - **At 390:** the map goes above the steps, full width, 320 high, and isn't sticky.
-- [ ] **Also nearby** is the line page's Along the way list, subtitled "Quests and places on her route":
+- [x] **Also nearby** is the line page's Along the way list, subtitled "Quests and places on her route":
   - up to 6 quests that start at a stop, and places within a short walk of one;
   - nothing already in the act;
   - nothing the character's `never` rules out;
   - nothing above the act's top level (by the quest tools' own checks).
   
   It isn't drawn when empty.
-- [ ] Act I's crop is the one the Begin panel uses.
+- [x] Act I's crop is the one the Begin panel uses.
 
 ### Part 3. What retires
 Nothing is dropped from the database: the columns and tables stay (CLAUDE.md, no destructive changes without Dave). Pages, editor and tools stop using them.
-- [ ] **The Story.** These go:
+- [x] **The Story.** These go:
   - the Story tab and Story editor;
   - the reader at `/b/<id>/story/…`, which redirects to the Playthrough tab;
   - "Read the story";
@@ -5111,7 +5111,7 @@ Nothing is dropped from the database: the columns and tables stay (CLAUDE.md, no
   In the tools: `write_chapter`, `set_chapter` and `remove_chapter` are removed, and `get_playthrough` no longer returns chapters or the Tale. The home page and Characters cards no longer mention a story.
 
   First, count on production which characters have chapters, and whose. If any belong to someone other than Dave, their owners get "Download your story" on `/me` (Markdown, one file per character) for 60 days. Put the count in the notes.
-- [ ] **Progress tracking**, behind one setting, `PROGRESS_TRACKING`, off. These go:
+- [x] **Progress tracking**, behind one setting, `PROGRESS_TRACKING`, off. These go:
   - the "Level 15, day 22, Solitude. From Save 131 … Update ›" line;
   - "Where is she in your game?" and Read save;
   - the character's pin on maps;
@@ -5123,10 +5123,10 @@ Nothing is dropped from the database: the columns and tables stay (CLAUDE.md, no
   In the tools, `set_snapshot` and objective status writes answer "Progress tracking is off for now." The save connector's playthrough update does the same. `get_quest_log` still reads a save for the player's questions, without storing anything.
 
   With the setting on, everything comes back as it was. A test covers both states.
-- [ ] **No read times anywhere** (WO-179's box): check the Playthrough tab and the rail card too.
+- [x] **No read times anywhere** (WO-179's box): check the Playthrough tab and the rail card too.
 
 ### Part 4. The writing rules (what the connector is told)
-- [ ] **`content/mcp/style.md` and `docs/design-rules.md`:**
+- [x] **`content/mcp/style.md` and `docs/design-rules.md`:**
   - **Remove** the Tale rules: 12's Tale half, 16 and 19's "write it once in the Tale". Rule 18 (snapshots) is paused while tracking is off.
   - **Add a section, "Who she is":**
     - **Backstory:** events, in order, in flat sentences. Where she's from, who raised her, what happened, and why she is in Skyrim. No sayings or lessons ("care is a kind of love"). No line written to land at the end of a paragraph ("She kept the scar."). No riddles or teases ("a reason she tells no one"). No feelings narrated as fact, and nothing the player can't use. At most 3,000 characters, never described by how long it takes to read.
@@ -5134,19 +5134,19 @@ Nothing is dropped from the database: the columns and tables stay (CLAUDE.md, no
     - **She will, She won't, Grey areas:** each line is something the player does or avoids in the game, in the game's words: steal from homes, take Dark Brotherhood contracts, loot bandit camps, use Speech. No "X, never Y", no reveal after a colon, no feelings ("and doesn't like how easy it is").
     - **Story details:** an act's goal and why lines are Play only. A story detail the player didn't give, and the game doesn't have, isn't added ("he heckles her until she hires him").
   - **Before you design:** question 30 fills She won't. Add "What does she do that she isn't proud of?" for Grey areas, "Where is she from?", and "What is she in Skyrim for?" for Goal.
-- [ ] **`docs/player-questions.md` questions 39 and 40** (Bob added them): add them to `player-questions.test.ts`, make them pass, and take their "fails today" marks off.
+- [x] **`docs/player-questions.md` questions 39 and 40** (Bob added them): add them to `player-questions.test.ts`, make them pass, and take their "fails today" marks off.
 
 ### Part 5. Kyria, and the check
 - [ ] On staging, Kyria gets the frames' text through `set_theme`: backstory, From, Gods, Goal, will, won't, grey.
   - Her acts get `by: "carriage"` on Act II's Whiterun to Solitude leg.
   - Production waits for Dave.
-- [ ] The checks in CLAUDE.md, and `test:e2e` extended:
+- [x] The checks in CLAUDE.md, and `test:e2e` extended:
   - opens on Who she is, Begin Act I opens Act I, the rail switches;
   - a character with no theme opens on Act I;
   - an act's map pins match its steps;
   - the old story URLs redirect;
   - no "done" text with tracking off.
-- [ ] Screenshots at 1440 and 390, compared with the two frames:
+- [x] Screenshots at 1440 and 390, compared with the two frames:
   - Kyria's Who she is, closed and with Read all of it open;
   - Act I, and Act II with a step hovered;
   - a character with no theme;
@@ -5156,7 +5156,32 @@ Nothing is dropped from the database: the columns and tables stay (CLAUDE.md, no
 
 ### Jeff's notes
 
----
+Mac's notes (30 Oct). Everything is built and checked except Kyria's text on staging, which is a write to the database and waits for Dave's yes (below). Checks: typecheck, lint (the same 2 old warnings), `npm test` (818 passed, 7 expected fail), `npm run build`, and the full `npm run test:e2e`: 564 passed (it was 573; the difference is the tests of the Story and of ticking, below). Screenshots at 1440 and 390 are `test-results/wo181-*.png` from `e2e/wo181.spec.ts`: Kyria's Who she is closed and with Read all of it open, Act I, Act II (a step is hovered in the test, and the map is there at both widths), a character with no theme, and an act with no route.
+
+**Part 1**
+- **Where the fields live:** on the playthrough, in one new jsonb column `theme` (`backstory`, `from`, `gods`, `goal`, `will`, `grey`), beside `answers` and `never`. Migration `0030_ordinary_firebrand.sql` adds the one nullable column and drops nothing; run on dev, and Vercel's build runs it on staging and production. She won't is the existing `never` list: `set_theme never` writes each line as the player's own words, and the page and tools read it back as the words.
+- **Backstory** is kept as plain text with a blank line between paragraphs, not as a guide document, since it is text only with no images or headings; the page splits it into paragraphs.
+- **Caps:** the backstory 3,000; From, Gods and Goal 80; will, won't and grey up to 6 lines of 90, in `set_theme` and the editor. `set_details never` keeps its older cap (20 lines of 120), since it also takes ids, and the page shows every line there is; say if its cap should be 6 and 90 too.
+- **`set_theme`** takes any of the fields; what is given replaces what was there, an empty string or list takes it away. It refuses, with the reason in plain words and never cutting: an em dash, " · ", an emoji, a line over its length, a list over 6 lines, and a colon in a will, won't or grey line. The editor shows the same words as you type (`checkTheme` is the one function). `get_playthrough` returns `who`.
+- **The tab opens on Who she is** when anything is written (a backstory, From, Gods, Goal, a will or grey line, or a won't); otherwise on Act I, where the owner sees "Write who she is ›" in the rail and visitors see no card. The rail card, the view (drop cap, two paragraphs, Read all of it, the fact row, the band with a column left out when it has no lines) and the Begin Act I panel follow the frame. The whole panel is one link; Act I's map is its backdrop, and on a phone it sits above the text and the button is full width. The words follow the character's pronoun ("Who they are", "Write who they are ›" for none).
+- **The editor** has Write who she is at the top of the Playthrough tab: the backstory with its character count, the three one-liners, and the three lists (add, edit, reorder, remove).
+- **About her** (the Before you design answers) is no longer on the page, since the frames have no place for it; the answers are kept, edited in the editor as before, and read through `get_playthrough`. Say if it should come back under Who she is.
+
+**Part 2**
+- **The act view** is the frame: the header, the band (Levels, Where it takes her with "to" the last stop and "By" the ones between, With her when a follower is linked), the goal, Throughout the act, then the steps and the map. Names in a step and its why line are linked as the quest pages link them (people orange, places teal); an objective's own link links the whole line. Chips for a follower and a quest line only. Steps at a stop carry its number; the road has a small diamond, not a number. A suggestion shows to the owner with Accept and Skip. The place's "Passed by" line stays, one muted line under the goal.
+- **The map** (`act-map.tsx`, from the Map page's tiles and positions): cropped to the stops with room for the key above and the credit below, its height follows the stops (up to 600; 320 on a phone, above the steps, not sticky), numbered pins that open their place's card, the road in order (orange dashed on foot, gold dotted by carriage), the key, zoom and drag, "Open on the map ›" (the Map page takes `?stops=` and shows them as a route), the credit. Hovering a step lights its pin and the other way. A stop with no position is listed "Not on the map yet:", never guessed; an act with no route draws the places its objectives link; with nothing to draw there is no map and the steps take the width. `RouteStop.by` is "foot" or "carriage" and says how she gets to that stop from the one before; `set_act` takes it, the editor has a By carriage box on each stop, and `get_playthrough` returns it when it is a carriage.
+- **Also nearby** is up to six quests that start at a stop (`suggest_quests`' own checks, her never list, her act's top level) and places within 2 km of a stop that fit the act, none already in the act and none she passes by. Not drawn when empty.
+
+**Part 3**
+- **Production has no playthrough tables at all** (checked read-only on the production branch), so no character there has chapters and nobody gets "Download your story". I tried to count staging's and the query was denied, so that count is not here.
+- **The Story:** the tab, the editor, the reader, "Read the story", the act images, the Tale title and line, and the Story tag on cards are gone; every old address (`/b/<id>/story…`, `/p/<id>/story…`, `/p/<id>/tale`, the `edit/story` and `edit/tale` addresses) goes to the Playthrough tab or its editor. This includes the held-back Story of a build alone (the `FEATURE_STORY` one, never shipped): the editor component it shared is deleted. `write_chapter`, `set_chapter` and `remove_chapter` are gone, and `get_playthrough` no longer gives chapters, firstChapter, per-objective chapters or the Tale. Nothing is dropped from the database.
+- **Progress tracking** is `PROGRESS_TRACKING` (`progressTracking()` in `features.ts`), off unless set to on, whatever the environment. Off: no ticks or done marks, no "x of y done" (the tab says "5 acts", the rail "12 steps", the cards "Her playthrough"), no Where is she in your game, Read a save, Where you stand or Ticks from your save in the editor, no pin on the maps (`?character=` is ignored and its API says it is off); `set_status`, `set_snapshot`, and the site's tick and Read a save actions answer "Progress tracking is off for now."; `get_playthrough` leaves out `done` and each `status`. `get_quest_log` still reads a save without storing it. On: all of it returns as it was (tested on a fourth e2e server, `wo181-tracking.spec.ts`, which also holds the tests that were of ticking: the tick that holds, Where is she, Ticks from your save, the tools, the pin, and `wo112.spec.ts`, the save reader, now runs there). No read time is on any page.
+
+**Part 4:** `content/mcp/style.md` and `docs/design-rules.md`: the Tale half of rule 12, rule 16 and 19's "write it once in the Tale" are replaced; rule 18 says it is paused; a Who she is section (rules 38 to 41) and the three questions (42 to 44; 30 now says it fills She won't). `docs/player-questions.md` 39 and 40 are in `player-questions.test.ts` and pass; their marks are off (40 reads a playthrough built from Kyria's rows, since the test has no database).
+
+**Part 5:** Kyria's text and her carriage leg: `scripts/kyria-theme.ts <playthrough id>` (dry run) and `--apply` write the frame's text through `setTheme` and set Solitude on her road act to `by: carriage`. It is not run: it writes to staging, and the guard needs staging's environment. **Dave: yes to running it on staging?** I left out the frame's last backstory sentence, "She tells no one why she came.", since rule 38 forbids a tease; Bob can put it back. Production waits for Dave. The seed's Kyria has a theme and routes, so the e2e shows the frames' look.
+
+**Tests that went:** the Story's (wo79 author and reader, wo114's first chapter, wo116's reader, Read Act I, markers and previous/next, wo117's Story tab and chapters, wo118's reader and image position, wo124's story card, wo142's chapter paragraphs, wo111's reader), and the ticking ones that moved to the tracking server. The "About them" display test became "the page has none".
 
 ## WO-180  Junk text out of the pages, and the last map faults (Mac and PC, 28 Oct 2026)
 Status: queued (PC: Part 6a; Mac: Part 6b after PC)

@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { objectiveRefusal } from "./status";
-import { LINK_KINDS, PLAYTHROUGH_LIMITS as L } from "./types";
+import { LINK_KINDS, PLAYTHROUGH_LIMITS as L, type Theme } from "./types";
 
 /**
  * A playthrough's inputs (WO-111), checked the same way for the edit page and the assistants' tools:
@@ -79,7 +79,7 @@ export const actSchema = z.object({
     .optional()
     .nullable(),
   route: z
-    .array(z.object({ place: line(L.place, "Name the stop: a town or a place."), why: line(L.stopWhy) }))
+    .array(z.object({ place: line(L.place, "Name the stop: a town or a place."), why: line(L.stopWhy), by: z.enum(["foot", "carriage"]).optional() }))
     .max(L.stops, `An act's route has ${L.stops} stops at most.`)
     .superRefine((r, ctx) => {
       const seen = new Set<string>();
@@ -159,3 +159,70 @@ export function startObjective(q: { edid: string; name: string; xp?: number }): 
 
 /** The first issue's message, for refusals and forms. */
 export const firstIssue = (e: z.ZodError) => e.issues[0]?.message ?? "Check the fields.";
+
+/**
+ * Who she is (WO-181), checked the same way for the edit page and the assistants' tool. A line is refused, never cut: an em dash, " · ", an
+ * emoji, a line over its length, and, in what she will do, won't do and the grey areas, a colon (a line is one thing the player does or avoids,
+ * with no reveal after it). The reason comes back in plain words.
+ */
+export interface ThemeInput {
+  backstory?: string;
+  from?: string;
+  gods?: string;
+  goal?: string;
+  will?: string[];
+  never?: string[];
+  grey?: string[];
+}
+export type ThemeChecked = { theme: Theme; never?: string[] };
+
+const refusedWords = (what: string, text: string): string | null => {
+  if (/\u2014/.test(text)) return `${what}: an em dash (\u2014) isn't used here. Write it as two sentences, or with a comma.`;
+  if (/ \u00b7 /.test(text)) return `${what}: a " \u00b7 " between two things isn't used here. Write it as a sentence.`;
+  if (/\p{Extended_Pictographic}/u.test(text)) return `${what}: no emoji.`;
+  return null;
+};
+const LISTS = { will: "She will", never: "She won't", grey: "Grey areas" } as const;
+
+export function checkTheme(input: ThemeInput): ThemeChecked | { error: string } {
+  const out: Theme = {};
+  const one = (key: "from" | "gods" | "goal", label: string) => {
+    const v = input[key];
+    if (v === undefined) return null;
+    const t = v.trim().replace(/\s+/g, " ");
+    if (t.length > L.themeLine) return `${label} is ${t.length} characters; the most is ${L.themeLine}. Shorten it, it isn't cut for you.`;
+    const r = refusedWords(label, t);
+    if (r) return r;
+    out[key] = t;
+    return null;
+  };
+  if (input.backstory !== undefined) {
+    const t = input.backstory.replace(/\r\n?/g, "\n").split("\n").map((l) => l.trim()).filter(Boolean).join("\n\n");
+    if (t.length > L.backstory) return { error: `The backstory is ${t.length} characters; the most is ${L.backstory}. Shorten it, it isn't cut for you.` };
+    const r = refusedWords("The backstory", t);
+    if (r) return { error: r };
+    out.backstory = t;
+  }
+  for (const [key, label] of [["from", "From"], ["gods", "Gods"], ["goal", "Goal"]] as const) {
+    const r = one(key, label);
+    if (r) return { error: r };
+  }
+  const lists: Partial<Record<keyof typeof LISTS, string[]>> = {};
+  for (const key of Object.keys(LISTS) as (keyof typeof LISTS)[]) {
+    const v = input[key];
+    if (v === undefined) continue;
+    const label = LISTS[key];
+    const lines = v.map((x) => x.trim().replace(/\s+/g, " ")).filter(Boolean);
+    if (lines.length > L.themeLines) return { error: `${label} has ${lines.length} lines; the most is ${L.themeLines}.` };
+    for (const t of lines) {
+      if (t.length > L.themeItem) return { error: `${label}: "${t.slice(0, 40)}..." is ${t.length} characters; the most is ${L.themeItem}. Shorten it, it isn't cut for you.` };
+      const r = refusedWords(label, t);
+      if (r) return { error: r };
+      if (t.includes(":")) return { error: `${label}: "${t}" has a colon in it. A line is one thing she does or avoids, in the game's words, with nothing revealed after a colon.` };
+    }
+    lists[key] = lines;
+  }
+  if (lists.will) out.will = lists.will;
+  if (lists.grey) out.grey = lists.grey;
+  return { theme: out, ...(lists.never ? { never: lists.never } : {}) };
+}

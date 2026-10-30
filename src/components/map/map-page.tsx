@@ -19,6 +19,8 @@ export interface MapInitial {
   character: string | null;
   types: string[];
   onlyQuests: boolean;
+  /** An act's stops, in order, as a route (WO-181: "Open on the map" from the Playthrough tab). */
+  stops?: Route | null;
   zoom: number | null;
   x: number | null;
   y: number | null;
@@ -200,11 +202,8 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
     };
   }, [selected]);
 
-  const loadRoute = useCallback(
-    async (slug: string) => {
-      const r = await fetch(`/api/map/quest?slug=${encodeURIComponent(slug)}`);
-      if (!r.ok) return;
-      const d = (await r.json()) as Route;
+  const showRouteOf = useCallback(
+    (d: Route) => {
       setRoute(d);
       setShowRoute(true);
       setSelected(null);
@@ -226,14 +225,27 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
     },
     [bySlug, fly, size.w, size.h, panelOpen],
   );
+  const loadRoute = useCallback(
+    async (slug: string) => {
+      const r = await fetch(`/api/map/quest?slug=${encodeURIComponent(slug)}`);
+      if (!r.ok) return;
+      showRouteOf((await r.json()) as Route);
+    },
+    [showRouteOf],
+  );
   const firstRoute = useRef(initial.quest);
+  const firstStops = useRef(initial.stops ?? null);
   // Once, from the address, and once the box is measured: the fit and the furthest zoom-out are worked out from the real window (WO-177 Part 5).
   useEffect(() => {
-    if (firstRoute.current && measured) {
+    if (!measured) return;
+    if (firstRoute.current) {
       void loadRoute(firstRoute.current);
       firstRoute.current = null;
+    } else if (firstStops.current) {
+      showRouteOf(firstStops.current);
+      firstStops.current = null;
     }
-  }, [measured, loadRoute]);
+  }, [measured, loadRoute, showRouteOf]);
 
   useEffect(() => {
     if (!characterId) return;
@@ -285,7 +297,10 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
       const u = new URL(window.location.href);
       const set = (key: string, v: string | null) => (v === null || v === "" ? u.searchParams.delete(key) : u.searchParams.set(key, v));
       set("place", selected);
-      set("quest", route ? (route.href.split("/").pop() ?? null) : null);
+      const ofQuest = route?.href.startsWith("/quests/") ?? false;
+      set("quest", route && ofQuest ? (route.href.split("/").pop() ?? null) : null);
+      set("stops", route && !ofQuest ? route.stops.map((x) => x.slug).join(",") : null);
+      set("route", route && !ofQuest ? route.name : null);
       set("character", characterId);
       set("types", types.join(","));
       set("quests", onlyQuests ? "1" : null);

@@ -76,15 +76,13 @@ test("an assistant keeps the answers and the never list, and the quest tools kee
 });
 
 for (const width of [1440, 390]) {
-  test(`Play shows the answers as About her at ${width}`, async ({ page, context }) => {
+  // WO-181: the Playthrough tab opens on who she is, not on the answers; they are kept and edited, and an assistant reads them.
+  test(`the answers are in the editor at ${width}, and the page has no About her`, async ({ page, context }) => {
     await signIn(context);
     await page.setViewportSize({ width, height: 900 });
     await page.goto(`/p/${pid}`);
-    const about = page.getByRole("region", { name: "About them" });
-    await expect(about.locator("dt")).toHaveText(ANSWERS.map((a) => a.question));
-    await expect(about.locator("dd").first()).toHaveText(ANSWERS[0].answer);
+    await expect(page.getByRole("region", { name: "About them" })).toHaveCount(0);
     expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
-    await page.screenshot({ path: `test-results/wo139-about-${width}.png`, fullPage: true });
     await page.goto(`/p/${pid}/edit/play`);
     await expect(page.getByLabel("Answer 3")).toHaveValue(ANSWERS[2].answer);
     await page.getByLabel("Question 1").scrollIntoViewIfNeeded();
@@ -106,9 +104,9 @@ test("the edit page edits, adds and removes an answer", async ({ page, context }
   await page.getByLabel("Answer 3").fill("She walks.");
   await Promise.all([saved(), page.getByLabel("Answer 3").blur()]);
   await savedInBand(page);
-  await page.goto(`/p/${pid}`);
-  await expect(page.getByRole("region", { name: "About them" }).locator("dt")).toHaveText([ANSWERS[1].question, ANSWERS[2].question, "Do they want a mount?"]);
-  await expect(page.getByRole("region", { name: "About them" })).toContainText("A bow, always.");
+  await page.reload();
+  await expect(page.getByLabel("Question 3")).toHaveValue("Do they want a mount?");
+  await expect(page.getByLabel("Answer 1")).toHaveValue("A bow, always.");
 });
 
 for (const width of [1440, 390]) {

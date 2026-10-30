@@ -39,29 +39,3 @@ test("the door: rules, level 1, gear by name, Solitude and a quest open in a pla
   expect(running.openForYou.says).toBe("open for you");
 });
 
-test("a chapter written with blank lines keeps its paragraphs, through the door and in the reader", async ({ page, context, baseURL }) => {
-  await signIn(context);
-  const token = (await tokenFor(page, context, baseURL!, from)).access_token;
-  const go = (name: string, args: object) => call(baseURL!, from, token, name, args);
-
-  const pid = (await go("create_playthrough", { name: "E2E Paragraphs" })).json().playthrough;
-  const text = "She came down the road at dusk.\n\nThe inn was shut.\nA light burned upstairs.\n\nShe knocked twice.";
-  const wrote = await go("write_chapter", { playthrough: pid, title: "At dusk", text });
-  expect(wrote.isError, wrote.text).toBe(false);
-  const read = (await go("get_playthrough", { playthrough: pid })).json();
-  expect(read.chapters[0].text).toBe(text);
-  const id = read.chapters[0].chapter;
-  // What it gives back goes in again unchanged.
-  expect((await go("set_chapter", { playthrough: pid, chapter: id, text: read.chapters[0].text })).isError).toBe(false);
-  expect((await go("get_playthrough", { playthrough: pid })).json().chapters[0].text).toBe(text);
-
-  for (const width of [1440, 390]) {
-    await page.setViewportSize({ width, height: 900 });
-    await page.goto(`/p/${pid}/story/${id}`);
-    const reader = page.getByRole("region", { name: /^Reading: / });
-    await expect(reader.getByText("She came down the road at dusk.")).toBeVisible();
-    const paras = reader.locator("p", { hasText: /dusk|inn was shut|knocked/ });
-    await expect(paras).toHaveCount(3);
-    await page.screenshot({ path: `test-results/wo142-chapter-${width}.png`, fullPage: true });
-  }
-});

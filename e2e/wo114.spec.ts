@@ -9,7 +9,7 @@ import { MENDER_BUILD_ID } from "./seed";
 
 test.describe.configure({ mode: "serial" });
 
-test("Start a run on a build alone's card: its Story becomes the run's first chapter", async ({ page, context }) => {
+test("Start a run on a build alone's card", async ({ page, context }) => {
   await signIn(context);
   await page.goto("/me");
   const card = page.getByRole("article").filter({ has: page.getByRole("link", { name: "The Mender", exact: true }) });
@@ -20,17 +20,9 @@ test("Start a run on a build alone's card: its Story becomes the run's first cha
   // WO-179: the run is the character's Playthrough tab; its id is in the Edit link.
   await page.getByRole("region", { name: "Build" }).getByRole("link", { name: "Edit", exact: true }).click();
   await expect(page).toHaveURL(/\/b\/[a-z0-9]{10}\/edit\/play$/);
-
-  // The Story is the run's first chapter, in the reader (WO-116).
+  // WO-181: the Story is retired, so a build's Story is not read from its run.
   await page.goto(`/b/${MENDER_BUILD_ID}`);
-  await page.getByRole("link", { name: /^Read the story/ }).first().click();
-  const reader = page.getByRole("region", { name: /^Reading: / });
-  await expect(reader.getByRole("heading", { level: 1, name: "The Mender" })).toBeVisible();
-  await expect(reader.getByText("Every wound in Skyrim is somebody's business.")).toBeVisible();
-  await expect(reader.getByText("She came north with a satchel of herbs")).toBeVisible();
-  // The build's own page reads the run's tale from the beginning.
-  await page.goto(`/b/${MENDER_BUILD_ID}`);
-  await expect(page.getByRole("link", { name: /^Read the story/ }).first()).toHaveAttribute("href", new RegExp(`/b/${MENDER_BUILD_ID}/story/\\d+$`));
+  await expect(page.getByRole("link", { name: /^Read the story/ })).toHaveCount(0);
 });
 
 test("/me is one grid: characters with a run and builds alone", async ({ page, context }) => {

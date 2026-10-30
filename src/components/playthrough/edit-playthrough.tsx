@@ -13,11 +13,10 @@ import { Report, useSave, type EditData } from "./edit-parts";
 import { PlayEdit } from "./play-edit";
 import s from "./edit.module.css";
 
-export type { EditAct, EditChapter, EditData, EditObjective } from "./edit-parts";
+export type { EditAct, EditData, EditObjective } from "./edit-parts";
 
 /**
- * Editing a playthrough by hand (WO-111): the Play tab in edit mode (WO-117, PlayEdit), and until the
- * Story is written in the reader, the Story tab's chapters list. Every change goes through the same
+ * Editing a playthrough by hand (WO-111): the Playthrough tab in edit mode (WO-117, PlayEdit). Every change goes through the same
  * writes the assistants' tools use, and shows their refusal where it was made.
  */
 
@@ -67,7 +66,7 @@ function Details({ data, onSaved }: { data: EditData; onSaved: () => void }) {
         className="btn btn-sm"
         style={{ alignSelf: "flex-start" }}
         onClick={() => {
-          if (!window.confirm(`Delete ${data.name}? Its acts, objectives and tale go with it.`)) return;
+          if (!window.confirm(`Delete ${data.name}? Its acts and objectives go with it.`)) return;
           save(async () => {
             const r = await act.removePlaythrough(data.id);
             if (r.ok) router.push("/me#playthroughs");

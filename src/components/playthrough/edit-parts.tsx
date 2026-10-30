@@ -8,7 +8,7 @@ import type { useGameData } from "@/components/game-data";
 import { searchWithExtras, type ExtraMention } from "@/lib/guide/mention";
 import { useItems } from "@/lib/items/items";
 import type { BuildVisibility } from "@/lib/builds/validate";
-import type { Answer, ChapterKind, Detect, DoneBy, ObjectiveKind, ObjectiveLink, Reach, RouteStop } from "@/lib/playthroughs/types";
+import type { Theme, Answer, Detect, DoneBy, ObjectiveKind, ObjectiveLink, Reach, RouteStop } from "@/lib/playthroughs/types";
 import s from "./edit.module.css";
 
 /**
@@ -45,17 +45,7 @@ export interface EditAct {
   /** The act's image on its story card (WO-116), and what stays in view of it (WO-118). */
   imageUrl: string | null;
   imageFocus: { x: number; y: number } | null;
-  /** The act's first chapter (WO-118), if written. */
-  chapterId: number | null;
   objectives: EditObjective[];
-}
-export interface EditChapter {
-  id: number;
-  kind: ChapterKind;
-  title: string;
-  actId: number | null;
-  opensAfter: number | null;
-  firstLine: string;
 }
 export interface EditData {
   id: string;
@@ -69,15 +59,16 @@ export interface EditData {
   coverImageUrl: string | null;
   /** The character's pronouns, when set (WO-179). */
   pronoun: "she" | "he" | "they" | null;
-  /** The Tale page's title and epigraph (WO-114). */
-  taleTitle: string;
-  taleLine: string;
   /** The Before you design answers (WO-139), in the player's words. */
   answers: Answer[];
   /** The mods the character needs (WO-139 Part 4). */
   mods: Mod[];
+  /** Who she is (WO-181), and what she won't do (the never list, in the player's words). */
+  theme: Theme;
+  never: string[];
+  /** Progress tracking is on (WO-181): where she stands and ticking from the save are in the editor only then. */
+  tracking: boolean;
   acts: EditAct[];
-  chapters: EditChapter[];
   builds: { id: string; name: string }[];
   /** Where you stand (WO-118): its one line on Play, and what Enter it by hand starts from. */
   /** The character's names, the run's (its own) then the build's, for Read a save's check (WO-112). */

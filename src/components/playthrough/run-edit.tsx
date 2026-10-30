@@ -6,9 +6,8 @@ import { EditFrameProvider } from "@/components/editor/edit-bar";
 import { SiteHeader } from "@/components/site-header";
 import { EditPlaythrough, type EditData } from "@/components/playthrough/edit-playthrough";
 import { editFrameForRun } from "@/lib/edit/frame";
-import { docText } from "@/lib/guide/doc";
 import { standLine } from "@/lib/playthroughs/view";
-import { playthroughsOn } from "@/lib/features";
+import { playthroughsOn, progressTracking } from "@/lib/features";
 import { personLinkables, placeLinkables, questLinkables } from "@/lib/playthroughs/links";
 import { getPlaythrough, myBuildChoices } from "@/lib/playthroughs/queries";
 import { clientVersion, currentVersion, isKnownVersion } from "@/lib/rules/server";
@@ -37,10 +36,11 @@ export async function RunEdit({ id, act }: { id: string; act?: string }) {
     showDrafted: p.showDrafted,
     coverImageUrl: p.build?.coverImageUrl ?? null,
     pronoun: p.build?.pronoun ?? null,
-    taleTitle: p.taleTitle ?? "",
-    taleLine: p.taleLine ?? "",
     answers: p.answers ?? [],
     mods: p.mods ?? [],
+    tracking: progressTracking(),
+    theme: p.theme ?? {},
+    never: (p.never ?? []).map((n) => n.words ?? n.what),
     builds,
     characters: [...new Set([p.name, p.build?.name].filter((n): n is string => !!n))],
     stand: (() => {
@@ -65,7 +65,6 @@ export async function RunEdit({ id, act }: { id: string; act?: string }) {
       route: a.route ?? [],
       imageUrl: a.imageUrl ?? null,
       imageFocus: a.imageFocus ?? null,
-      chapterId: a.chapter,
       objectives: a.objectives.map((o) => ({
         id: o.id,
         text: o.text,
@@ -81,8 +80,6 @@ export async function RunEdit({ id, act }: { id: string; act?: string }) {
         accepted: o.accepted,
       })),
     })),
-    // The scene's first lines only; the whole of it is in the Story editor.
-    chapters: p.view.chapters.map((c) => ({ id: c.id, kind: c.kind, title: c.title, actId: c.actId, opensAfter: c.opensAfter, firstLine: docText(c.doc).slice(0, 200) })),
   };
   const linkables = [...questLinkables(), ...placeLinkables(), ...personLinkables()].map(({ kind, id: lid, name, where }) => ({ kind, id: lid, name, where }));
   return (

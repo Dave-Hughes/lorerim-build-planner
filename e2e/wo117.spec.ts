@@ -5,7 +5,6 @@
  * redirect.
  */
 import { expect, test } from "@playwright/test";
-import { readFileSync } from "node:fs";
 import { call, editTab, ip, savedInBand, signIn, tokenFor } from "./helpers";
 import { FRESH_BUILD_ID, KYRIA_BUILD_ID, KYRIA_PLAYTHROUGH_ID } from "./seed";
 
@@ -27,16 +26,16 @@ test("Edit opens the editor of the tab open, for a character and a build alone",
   await expect(editTab(page, "Build")).toHaveAttribute("aria-current", "page");
 });
 
-test("five tabs on a character, and the same five on a build with no run yet, and the band's Done is the one ember button", async ({ page, context }) => {
+test("four tabs on a character, and the same four on a build with no run yet, and the band's Done is the one ember button", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/b/${KYRIA_BUILD_ID}/setup?step=name`);
   // WO-124: named for what's in them.
-  await expect(tabNames(page)).toHaveText(["Playthrough", "Build", "Guide", "Character", "Story"]);
+  await expect(tabNames(page)).toHaveText(["Playthrough", "Build", "Guide", "Character"]);
   await expect(page.getByRole("region", { name: "Edit bar" })).toContainText("EditingKyria, Knight of Stendarr");
   await expect(page.getByRole("link", { name: "Change the cover" })).toHaveAttribute("href", `/b/${KYRIA_BUILD_ID}/setup?step=name#cover`);
   await page.goto(`/b/${FRESH_BUILD_ID}/edit`);
   // A character with no run yet still shows Playthrough to its owner (WO-159), which opens the page that plans one.
-  await expect(tabNames(page)).toHaveText(["Playthrough", "Build", "Guide", "Character", "Story"]);
+  await expect(tabNames(page)).toHaveText(["Playthrough", "Build", "Guide", "Character"]);
   // Below the site header (its New character is the site's), Done is the one ember button.
   await expect(page.locator(".btn-primary:visible:not(header .btn-primary)")).toHaveCount(1);
   await expect(page.getByRole("region", { name: "Edit bar" }).getByRole("link", { name: "Done" })).toHaveClass(/btn-primary/);
@@ -74,31 +73,27 @@ test("the old edit addresses go to their tabs", async ({ page, context }) => {
   await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit`);
   await expect(page).toHaveURL(new RegExp(`/b/${KYRIA_BUILD_ID}/edit/play$`));
   await expect(editTab(page, "Playthrough")).toHaveAttribute("aria-current", "page");
-  await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit?tale=1`);
-  await expect(page).toHaveURL(new RegExp(`/b/${KYRIA_BUILD_ID}/edit/story/title$`));
-  await expect(editTab(page, "Story")).toHaveAttribute("aria-current", "page");
-  const chapter = page.getByRole("complementary", { name: "Contents" }).getByRole("link", { name: /The Mark of Dibella/ });
-  const href = (await chapter.getAttribute("href"))!;
-  const cid = href.split("/").pop();
-  await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/tale/${cid}`);
-  await expect(page).toHaveURL(new RegExp(`/b/${KYRIA_BUILD_ID}/edit/story/${cid}$`));
-  await expect(editTab(page, "Story")).toHaveAttribute("aria-current", "page");
+  // WO-181: the Story is retired, and its editor's addresses go to the Playthrough tab.
+  for (const old of [`/p/${KYRIA_PLAYTHROUGH_ID}/edit?tale=1`, `/p/${KYRIA_PLAYTHROUGH_ID}/edit/story`, `/p/${KYRIA_PLAYTHROUGH_ID}/edit/story/title`, `/p/${KYRIA_PLAYTHROUGH_ID}/edit/tale/1`, `/b/${KYRIA_BUILD_ID}/edit/story`, `/b/${KYRIA_BUILD_ID}/edit/story/title`]) {
+    await page.goto(old);
+    await expect(page, old).toHaveURL(new RegExp(`/b/${KYRIA_BUILD_ID}/edit/play$`));
+  }
   await page.goto(`/b/${FRESH_BUILD_ID}/story/edit`);
-  await expect(page).toHaveURL(new RegExp(`/b/${FRESH_BUILD_ID}/edit/story$`));
+  await expect(page).toHaveURL(new RegExp(`/b/${FRESH_BUILD_ID}/edit/play$`));
 });
 
 test("Play in edit: an objective row opens and closes, one at a time, and its buttons are quiet", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/play`);
-  await expect(page.getByRole("region", { name: "Act I's card" }).getByRole("textbox", { name: "The act's name" })).toHaveValue("The Sister's House");
+  await expect(page.getByRole("region", { name: "Act I's name" }).getByRole("textbox", { name: "The act's name" })).toHaveValue("The Sister's House");
   const what = page.getByRole("combobox", { name: "Objective" });
   await expect(what).toHaveCount(0);
   await page.getByRole("button", { name: "Edit Warn Haelga, or expose her" }).click();
   await expect(what).toHaveCount(1);
   await expect(what).toHaveValue("Warn Haelga, or expose her");
-  // WO-123: no Done when; a quest objective ticks from the save, on by default.
+  // WO-181: no Done when, and no ticking from the save while progress tracking is off.
   await expect(page.getByRole("group", { name: "Done when" })).toHaveCount(0);
-  await expect(page.getByRole("switch", { name: /Ticks from your save/ })).toBeChecked();
+  await expect(page.getByRole("switch", { name: /Ticks from your save/ })).toHaveCount(0);
   // Another opens in its place.
   await page.getByRole("button", { name: "Edit Hunt and tan her first hides" }).click();
   await expect(what).toHaveCount(1);
@@ -107,95 +102,6 @@ test("Play in edit: an objective row opens and closes, one at a time, and its bu
   await expect(what).toHaveCount(0);
   await expect(page.locator("main .btn-primary")).toHaveCount(0);
   await expect(page.getByRole("button", { name: "+ Add an objective" })).toBeVisible();
-});
-
-test("the act card's Write it in the Story opens that act's chapter", async ({ page, context }) => {
-  await signIn(context);
-  await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/play`);
-  await page.getByRole("link", { name: /The Bard's Road/ }).click();
-  const card = page.getByRole("region", { name: "Act II's card" });
-  await expect(card).toContainText("No chapter for this act yet.");
-  await expect(card.getByText("Add an image")).toBeVisible();
-  await card.getByRole("link", { name: "Write it in the Story ›" }).click();
-  // Its place in the Story; the chapter is made by its first word (Part 4).
-  await expect(page).toHaveURL(new RegExp(`/b/${KYRIA_BUILD_ID}/edit/story/act-\\d+$`));
-  await expect(editTab(page, "Story")).toHaveAttribute("aria-current", "page");
-  await expect(page.getByLabel("Title")).toHaveValue("The Bard's Road");
-});
-
-test("the Story in edit: a chapter is added in an act from Contents, Preview hides the controls", async ({ page, context }) => {
-  await signIn(context);
-  await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/story`);
-  await expect(page).toHaveURL(new RegExp(`/edit/story/title$`));
-  const contents = page.getByRole("complementary", { name: "Contents" });
-  await expect(contents.getByRole("link", { name: "The title page" })).toHaveAttribute("aria-current", "page");
-  // Act III has nothing yet: + Add a chapter makes one there (WO-118).
-  const act3 = contents.getByRole("group", { name: "Act III The Winking Skeever" });
-  await expect(act3.getByText("Nothing written yet.")).toBeVisible();
-  await act3.getByRole("button", { name: "+ Add a chapter" }).click();
-  await expect(page).toHaveURL(/\/edit\/story\/\d+$/);
-  await expect(page.getByLabel("Title")).toHaveValue("A new chapter");
-  await expect(act3.getByRole("link", { name: "A new chapter" })).toHaveAttribute("aria-current", "page");
-  await page.getByRole("textbox", { name: "Text" }).click();
-  await page.keyboard.type("Solitude had a college for bards and a hall for the dead, and she wanted the first.");
-  await savedInBand(page);
-  await page.reload();
-  await expect(page.getByText("Solitude had a college for bards")).toBeVisible();
-
-  // Preview: no inputs, no image slot, no insert row, Contents dimmed.
-  await page.getByRole("button", { name: "Preview" }).click();
-  await expect(page.getByLabel("Title")).toHaveCount(0);
-  await expect(page.getByRole("button", { name: "Add an image" })).toHaveCount(0);
-  await expect(page.getByRole("button", { name: "+ Image" })).toHaveCount(0);
-  await expect(page.getByRole("heading", { level: 1, name: "A new chapter" })).toBeVisible();
-  await page.getByRole("button", { name: "Write" }).click();
-  page.once("dialog", (d) => void d.accept());
-  await page.getByRole("button", { name: "Remove this chapter" }).click();
-  await expect(page).toHaveURL(/\/edit\/story\/title$/);
-});
-
-test("a chapter's Unlocks when locks it in Contents until its objective is done", async ({ page, context }) => {
-  await signIn(context);
-  await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/story`);
-  const contents = page.getByRole("complementary", { name: "Contents" });
-  const act4 = contents.getByRole("group", { name: "Act IV The Knight Returns" });
-  await act4.getByRole("button", { name: "+ Add a chapter" }).click();
-  await expect(page).toHaveURL(/\/edit\/story\/\d+$/);
-  const unlocks = page.getByRole("combobox", { name: "Unlocks when" });
-  await expect(unlocks).toHaveValue("");
-  await unlocks.selectOption({ label: "Reach level 35" });
-  await savedInBand(page);
-  await page.reload();
-  await expect(page.getByRole("combobox", { name: "Unlocks when" })).not.toHaveValue("");
-  await expect(act4.getByRole("link", { name: /A new chapter/ })).toContainText("Unlocks when: Reach level 35");
-  await expect(act4.getByRole("link", { name: /A new chapter/ }).getByRole("img", { name: "Locked" })).toBeVisible();
-  page.once("dialog", (d) => void d.accept());
-  await page.getByRole("button", { name: "Remove this chapter" }).click();
-  await expect(page).toHaveURL(/\/edit\/story\/title$/);
-});
-
-test("Images is on the Story tab only, with no count, and a row stays put when it's filled (WO-118)", async ({ page, context }) => {
-  test.setTimeout(90_000);
-  await signIn(context);
-  await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/play`);
-  await expect(page.getByRole("button", { name: /^Images/ })).toHaveCount(0);
-  await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/story/title?images=1`);
-  const panel = page.getByRole("dialog", { name: "Images" });
-  await expect(panel).toBeVisible();
-  await expect(page.getByRole("button", { name: "Images ▾" })).toBeVisible();
-  for (const label of ["The title page", "Chapter One: The Chapel by the Sea", "The Mark of Dibella"]) await expect(panel.getByText(label, { exact: true })).toBeVisible();
-  // The cover stays in Details, act images on the act cards.
-  for (const label of ["The cover", "Act I's card"]) await expect(panel.getByText(label, { exact: true })).toHaveCount(0);
-  const rows = () => panel.locator('input[type="file"]').evaluateAll((els) => els.map((e) => e.getAttribute("aria-label")!.replace(/^(Add|Change) /, "")));
-  const before = await rows();
-  await panel.getByLabel("Add Chapter Two: The Night of Lanterns").setInputFiles({ name: "monk.webp", mimeType: "image/webp", buffer: readFileSync("public/traits/monk.webp") });
-  await expect(panel.getByLabel("Change Chapter Two: The Night of Lanterns")).toBeAttached({ timeout: 60_000 });
-  expect(await rows()).toEqual(before);
-  await panel.getByRole("button", { name: "× Close" }).click();
-  await expect(panel).toHaveCount(0);
-  await page.getByRole("button", { name: "Images ▾" }).click();
-  await page.keyboard.press("Escape");
-  await expect(panel).toHaveCount(0);
 });
 
 test("a drafted character with no cover asks for one, not for a reader; the connector gives addCover", async ({ page, context, baseURL, browser }) => {

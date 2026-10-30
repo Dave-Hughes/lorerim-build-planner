@@ -91,7 +91,6 @@ export default async function MyBuilds() {
                   <>
                     <span className={recent.underMeta}>
                       <span className="tag tag-sm">{b.visibility === "public" ? "Listed" : b.visibility === "unlisted" ? "Link only" : "Only you"}</span>
-                      {b.hasStory && <span className="tag tag-sm">Story</span>}
                       {b.draftedBy && (
                         <span className="muted">
                           <AiAssisted author={b.author.name} />

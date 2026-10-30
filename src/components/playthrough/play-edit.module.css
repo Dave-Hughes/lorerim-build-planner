@@ -442,7 +442,7 @@
 }
 .stopRow {
   display: grid;
-  grid-template-columns: 22px minmax(0, 14rem) minmax(0, 1fr) auto;
+  grid-template-columns: 22px minmax(0, 14rem) minmax(0, 1fr) auto auto;
   gap: 10px;
   align-items: center;
   padding: 10px 0;
@@ -465,7 +465,18 @@
     grid-template-columns: 22px minmax(0, 1fr);
   }
   .stopRow > :nth-child(3),
+  .stopRow > .carriage,
   .stopRow > .stopTools {
     grid-column: 2;
   }
+}
+
+/* How she gets to a stop from the one before: on foot, or by carriage (the act's map draws a carriage leg as a gold dotted line). */
+.carriage {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  color: var(--soft);
+  white-space: nowrap;
 }

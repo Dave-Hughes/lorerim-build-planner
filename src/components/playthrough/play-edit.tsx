@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { useGameData } from "@/components/game-data";
-import { ImageSlot } from "@/components/ui/image-slot";
 import { HandEntry } from "./play-controls";
 import { ReadSave } from "./read-save";
 import { InfoTip } from "@/components/ui/info-tip";
@@ -12,8 +11,9 @@ import type { ExtraMention } from "@/lib/guide/mention";
 import * as act from "@/lib/playthroughs/actions";
 import { objectiveRefusal } from "@/lib/playthroughs/status";
 import type { Detect, DoneBy, ObjectiveKind, ObjectiveLink, Reach, RouteStop } from "@/lib/playthroughs/types";
-import { editPlayHref, editStoryHref } from "@/lib/playthroughs/hrefs";
-import { LINK_LABEL, MentionInput, QuestStage, ReachPick, useSave, type EditAct, type EditChapter, type EditData, type EditObjective } from "./edit-parts";
+import { editPlayHref } from "@/lib/playthroughs/hrefs";
+import { ThemeEdit } from "./theme-edit";
+import { LINK_LABEL, MentionInput, QuestStage, ReachPick, useSave, type EditAct, type EditData, type EditObjective } from "./edit-parts";
 import e from "./edit.module.css";
 import s from "./play-edit.module.css";
 
@@ -27,7 +27,8 @@ import s from "./play-edit.module.css";
 export function PlayEdit({ data, current, linkables, details }: { data: EditData; current: EditAct | null; linkables: ExtraMention[]; details: React.ReactNode }) {
   return (
     <main className={`page ${s.main}`}>
-      {/* Where you stand, and Enter it by hand (WO-118: moved here from Play). */}
+      {/* Where you stand, and Enter it by hand (WO-118: moved here from Play). Progress tracking only (WO-181). */}
+      {data.tracking && (
       <section className={s.stand} aria-label="Where you stand">
         <span className="label">Where you stand</span>
         <span className="muted">{data.stand.line ?? "No save read yet."}</span>
@@ -39,11 +40,13 @@ export function PlayEdit({ data, current, linkables, details }: { data: EditData
         />
         <HandEntry id={data.id} initial={data.stand.initial} skills={data.stand.skills} counts={data.stand.counts} />
       </section>
+      )}
       <aside className={s.aside}>
         <ActsList data={data} current={current} />
         {details}
       </aside>
       <div className={s.col}>
+        <ThemeEdit data={data} />
         {current ? (
           <>
             <ActCard key={`c${current.id}`} data={data} a={current} />
@@ -154,41 +157,12 @@ function ActsList({ data, current }: { data: EditData; current: EditAct | null }
 
 const levelsOf = (a: { levelFrom: number; levelTo: number | null }) => (a.levelTo === null ? `${a.levelFrom} and up` : `${a.levelFrom} to ${a.levelTo}`);
 
-/** The act's card as readers see it: its picture or a dashed slot for one, its name in place, its chapter. */
+/** The act's card: its number and its name, edited in place (the act's picture and chapter went with the Story, WO-181). */
 function ActCard({ data, a }: { data: EditData; a: EditAct }) {
   const { error, save } = useSave(() => {});
   const [name, setName] = useState(a.name);
-  const [uploading, setUploading] = useState(false);
-  const [upError, setUpError] = useState<string | null>(null);
-  const chapter = a.chapterId !== null ? data.chapters.find((c) => c.id === a.chapterId) : undefined;
-  const story = editStoryHref(data, chapter ? chapter.id : `act-${a.id}`);
-  const upload = async (file: File) => {
-    setUploading(true);
-    setUpError(null);
-    const form = new FormData();
-    form.append("file", file);
-    const res = await fetch(`/api/playthroughs/${data.id}/images`, { method: "POST", body: form }).catch(() => null);
-    const body = (await res?.json().catch(() => ({}))) as { url?: string; error?: string } | undefined;
-    setUploading(false);
-    if (body?.url) save(() => act.saveActImage(data.id, a.id, body.url!), true);
-    else setUpError(body?.error ?? "The upload didn't finish. Try again.");
-  };
   return (
-    <section aria-label={`Act ${a.n}'s card`} className={`${s.card} ${a.imageUrl ? "" : s.cardEmpty}`}>
-      {/* Change, Position and Remove over its image (WO-118), as on every image. */}
-      <ImageSlot
-        url={a.imageUrl}
-        focus={a.imageFocus}
-        label={`Act ${a.n}'s image`}
-        busy={uploading}
-        onFile={(file) => void upload(file)}
-        onRemove={() => save(() => act.saveActImage(data.id, a.id, null), true)}
-        onFocus={(focus) => save(() => act.saveActFocus(data.id, a.id, focus), true)}
-        imageClassName={s.cardImage}
-        toolsClassName={s.cardPicture}
-      >
-        {a.imageUrl && <div className={s.cardFade} aria-hidden="true" />}
-      </ImageSlot>
+    <section aria-label={`Act ${a.n}'s name`} className={`${s.card} ${s.cardEmpty}`}>
       <div className={s.cardIn}>
         <span className={s.kicker}>Act {a.n}</span>
         <input
@@ -199,18 +173,9 @@ function ActCard({ data, a }: { data: EditData; a: EditAct }) {
           onChange={(ev) => setName(ev.target.value)}
           onBlur={() => name.trim() && name !== a.name && save(() => act.saveAct(data.id, a.id, { name: name.trim() }), true)}
         />
-        {chapter ? (
-          <span className={s.cardLines}>
-            {chapter.firstLine ? <span className={s.firstLine}>{chapter.firstLine}</span> : null} <Link href={story}>Edit it in the Story ›</Link>
-          </span>
-        ) : (
-          <span className={s.cardNone}>
-            No chapter for this act yet. <Link href={story}>Write it in the Story ›</Link>
-          </span>
-        )}
-        {(error || upError) && (
+        {error && (
           <span role="alert" className={e.error}>
-            {error || upError}
+            {error}
           </span>
         )}
       </div>
@@ -280,7 +245,7 @@ function ActFields({ pid, run, a, last }: { pid: string; run: { id: string; buil
             type="button"
             className={s.remove}
             onClick={() => {
-              if (!window.confirm(`Remove Act ${a.n}, its objectives and chapters?`)) return;
+              if (!window.confirm(`Remove Act ${a.n} and its objectives?`)) return;
               save(async () => {
                 const r = await act.removeAct(pid, a.id);
                 if (r.ok) router.push(editPlayHref(run));
@@ -330,6 +295,10 @@ function Route({ pid, a }: { pid: string; a: EditAct }) {
           </span>
           <input className={`input ${e.in}`} aria-label={`Stop ${i + 1}`} value={r.place} maxLength={80} placeholder="[A town or a place]" onChange={(ev) => edit(i, { place: ev.target.value })} onBlur={() => put(stops)} />
           <input className={`input ${e.in}`} aria-label={`Why she goes to stop ${i + 1}`} value={r.why} maxLength={200} placeholder="[Why she goes there next]" onChange={(ev) => edit(i, { why: ev.target.value })} onBlur={() => put(stops)} />
+          <label className={s.carriage}>
+            <input type="checkbox" checked={r.by === "carriage"} disabled={i === 0} onChange={(ev) => put(stops.map((x, j) => (j === i ? { ...x, by: ev.target.checked ? ("carriage" as const) : ("foot" as const) } : x)))} />
+            By carriage
+          </label>
           <span className={s.stopTools}>
             <button type="button" className="btn btn-sm btn-icon" aria-label={`Move ${r.place || `stop ${i + 1}`} up`} disabled={i === 0} onClick={() => move(i, -1)}>
               ↑
@@ -427,7 +396,6 @@ function ObjectiveRow({
   onHandleKey?: (e: React.KeyboardEvent) => void;
 }) {
   const d = useGameData();
-  const router = useRouter();
   const pid = data.id;
   const { error, save, setError } = useSave(() => {});
   const [text, setText] = useState(o?.text ?? "");
@@ -440,7 +408,6 @@ function ObjectiveRow({
   const [why, setWhy] = useState(o?.why ?? "");
   const [stop, setStop] = useState(o?.stop ?? "");
   const quests = useMemo(() => linkables.filter((x) => x.kind === "quest"), [linkables]);
-  const tale: EditChapter[] = o ? data.chapters.filter((c) => c.opensAfter === o.id) : [];
   // The rule shows as you type, from the same words the save refuses.
   const refused = text.trim() ? objectiveRefusal(text, kind, kind === "reach" ? reach : null) : null;
 
@@ -473,13 +440,6 @@ function ObjectiveRow({
   const live = (patch: Parameters<typeof values>[0] = {}) => {
     if (o) commit(patch);
   };
-  const addBeat = () =>
-    o &&
-    save(async () => {
-      const r = await act.newChapter(pid, { title: "A new chapter", actId: a.id, unlocksWhen: o.id });
-      if (r.ok) router.push(editStoryHref(data, r.value));
-      return r;
-    });
   const others = data.acts.filter((x) => x.id !== a.id);
 
   return (
@@ -493,11 +453,6 @@ function ObjectiveRow({
             {o.why && <span className={s.obWhy}>{o.why}</span>}
           </button>
           <span className={s.obSide}>
-            {tale.map((c) => (
-              <Link key={c.id} href={editStoryHref(data, c.id)} className={s.obStory}>
-                Story: {c.title}
-              </Link>
-            ))}
             {o.accepted ? (
               <button type="button" className="btn btn-sm" onClick={onToggle} aria-expanded={open} aria-label={`${open ? "Close" : "Edit"} ${o.text}`}>
                 {open ? "Close" : "Edit"}
@@ -606,7 +561,7 @@ function ObjectiveRow({
               <ReachPick d={d.skills} reach={reach} onChange={(r) => (setReach(r), live({ reach: r }))} />
             </div>
           )}
-          {(kind === "reach" || detect || link?.link.kind === "quest") && (
+          {data.tracking && (kind === "reach" || detect || link?.link.kind === "quest") && (
             <label className={s.fromSave}>
               <input
                 type="checkbox"
@@ -648,25 +603,6 @@ function ObjectiveRow({
             <span className="label">Why</span>
             <input className={`input ${e.in}`} value={why} maxLength={300} onChange={(ev) => setWhy(ev.target.value)} onBlur={() => o && why.trim() !== (o.why ?? "") && commit()} />
           </label>
-          {o && (
-            <div className={s.field}>
-              <span className="label">Story</span>
-              {tale.length ? (
-                tale.map((c) => (
-                  <span key={c.id} className={s.storyLine}>
-                    {c.title}{c.kind === "beat" ? ", unlocks when this is done" : ""}. <Link href={editStoryHref(data, c.id)}>Open it in the Story ›</Link>
-                  </span>
-                ))
-              ) : (
-                <span className={s.storyLine}>
-                  No chapter.{" "}
-                  <button type="button" className={s.linkButton} onClick={addBeat}>
-                    Add a chapter that unlocks when this is done ›
-                  </button>
-                </span>
-              )}
-            </div>
-          )}
           <span className={s.obFoot}>
             {o ? (
               <>

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ReadTheStory } from "@/components/reader/reader";
 import { AiAssisted } from "@/components/ui/ai-assisted";
 import { CopyLinkButton } from "@/components/ui/copy-link-button";
 import { editPlayHref } from "@/lib/playthroughs/hrefs";
@@ -35,8 +34,6 @@ export function RunHero({ p, isOwner }: { p: PlaythroughRecord; isOwner: boolean
       <CopyLinkButton path={`/p/${p.id}`} className="btn" />
     </span>
   );
-  // The story, one click away (WO-118), where a build's page has its tab row.
-  const read = <ReadTheStory className={s.heroRead} />;
   if (!cover)
     return (
       <div className={`frame ${s.band}`}>
@@ -46,7 +43,6 @@ export function RunHero({ p, isOwner }: { p: PlaythroughRecord; isOwner: boolean
         </div>
         {p.line && <span className={s.lineText}>{p.line}</span>}
         <Byline p={p} />
-        {read}
       </div>
     );
   return (
@@ -57,7 +53,6 @@ export function RunHero({ p, isOwner }: { p: PlaythroughRecord; isOwner: boolean
         <h1 className={s.name}>{p.name}</h1>
         {p.line && <span className={s.lineText}>{p.line}</span>}
         <Byline p={p} />
-        {read}
       </div>
       <span className={s.heroActions}>{actions}</span>
     </div>

@@ -45,7 +45,7 @@ test("a run with no build has the same hero: the full-width band, the name and l
   await expect(page.locator(".frame").filter({ has: page.getByRole("heading", { level: 1 }) })).toHaveCount(0);
   // No cover: the cards' fallback, the night scene's blues (a character with no race has no icon on them), not an empty hatched band.
   expect(await hero.locator("[class*='overNight']").evaluate((el) => getComputedStyle(el).backgroundImage)).toContain("linear-gradient");
-  await expect(page.getByRole("heading", { name: "Objectives" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "The first days" })).toBeVisible();
   // The hero's words rise in over half a second.
   await page.waitForTimeout(1000);
   await page.screenshot({ path: "test-results/wo164-nobuild-1440.png", fullPage: true });

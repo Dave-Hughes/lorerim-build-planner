@@ -48,16 +48,17 @@ test("an assistant gives an act a route and puts its objectives on it", async ({
   expect(done.warnings.map((w: { code: string }) => w.code)).toEqual(expect.arrayContaining(["route-backtrack", "route-no-stop"]));
 });
 
+// WO-181: the steps are the line page's run, a numbered disc per route stop shared by the steps at it, and none for the road.
+const disc = (page: import("@playwright/test").Page, text: string) => page.locator("[id^=o]").filter({ hasText: text }).locator("span").first();
 for (const width of [1440, 390]) {
-  test(`Play lists the act's objectives under its stops at ${width}`, async ({ page, context }) => {
+  test(`the act's steps carry their stop's number at ${width}`, async ({ page, context }) => {
     await signIn(context);
     await page.setViewportSize({ width, height: 900 });
-    await page.goto(`/p/${pid}`);
-    const stops = page.locator("section[aria-label]").filter({ has: page.locator("[class*=stopName]") });
-    await expect(stops.locator("[class*=stopName]")).toHaveText(["Ivarstead", "Whiterun", "On the road"]);
-    await expect(stops.first()).toContainText("Fastred's parents asked after her.");
-    await expect(stops.first()).toContainText("Bring Fastred home");
-    await expect(stops.last()).toContainText("Clear Redoran's Retreat");
+    await page.goto(`/p/${pid}?act=1`);
+    // The route is Riften, Ivarstead, Whiterun: Ivarstead is stop 2, Whiterun 3, and an objective at no stop is on the road.
+    await expect(disc(page, "Bring Fastred home")).toHaveText("2");
+    await expect(disc(page, "Clear Redoran's Retreat")).toHaveText("");
+    await expect(page.locator("[id^=o]").filter({ hasText: "Bring Fastred home" })).toContainText("Asked by her parents in Ivarstead.");
     await page.screenshot({ path: `test-results/wo129-play-${width}.png`, fullPage: true });
   });
 }
@@ -75,6 +76,7 @@ test("the act editor adds a stop and puts an objective at it", async ({ page, co
   await page.getByRole("button", { name: "Edit Clear Redoran's Retreat" }).click();
   // The band says Saved at rest, so wait for the save itself before leaving.
   await Promise.all([page.waitForResponse((r) => r.request().method() === "POST" && r.url().includes("/edit/play")), page.getByLabel("Stop", { exact: true }).selectOption("Markarth")]);
-  await page.goto(`/p/${pid}`);
-  await expect(page.locator("[class*=stopName]")).toHaveText(["Ivarstead", "Markarth", "Whiterun"]);
+  await page.goto(`/p/${pid}?act=1`);
+  // Riften, Ivarstead, Markarth, Whiterun: the objective put at Markarth is at stop 3.
+  await expect(disc(page, "Clear Redoran's Retreat")).toHaveText("3");
 });

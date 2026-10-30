@@ -5,10 +5,10 @@ import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
 import type { ActionResult } from "@/lib/builds/actions";
 import type { BuildVisibility } from "@/lib/builds/validate";
-import { playthroughsOn } from "@/lib/features";
+import { playthroughsOn, progressTracking } from "@/lib/features";
 import { BOT_MESSAGE, looksLikeBot } from "@/lib/moderation/bot";
 import { currentVersion } from "@/lib/rules/server";
-import type { ActInput, ObjectiveInput, SnapshotInput } from "./validate";
+import type { ActInput, ObjectiveInput, SnapshotInput, ThemeInput } from "./validate";
 import type { Answer, ObjectiveStatus } from "./types";
 import * as w from "./writes";
 
@@ -45,6 +45,8 @@ export async function newPlaythrough(input: { name: string; line?: string; build
 export const saveDetails = async (id: string, input: { name?: string; line?: string; buildId?: string | null; visibility?: BuildVisibility; showDrafted?: boolean; taleTitle?: string; taleLine?: string; answers?: Answer[]; mods?: Mod[] }) =>
   run(id, (u) => w.setDetails(u, id, input));
 /** The character's cover, set on the build (WO-114). */
+/** Who she is (WO-181): what is given replaces what was there; refused with the reason when a line breaks a writing rule. */
+export const saveTheme = async (id: string, input: ThemeInput) => run(id, (u) => w.setTheme(u, id, input));
 export const saveCover = async (id: string, url: string | null) => run(id, (u) => w.setCover(u, id, url));
 export const removePlaythrough = async (id: string) => run(null, (u) => w.deletePlaythrough(u, id));
 
@@ -59,7 +61,7 @@ export const saveObjective = async (id: string, objectiveId: number, input: Part
 export const removeObjective = async (id: string, objectiveId: number) => run(id, (u) => w.removeObjective(u, id, objectiveId));
 /** Up, down, to a place (1-based), or with `toAct` to the end of another act (WO-117). */
 export const moveObjective = async (id: string, objectiveId: number, to: "up" | "down" | number, toAct?: number) => run(id, (u) => w.moveObjective(u, id, objectiveId, to, toAct));
-export const tick = async (id: string, objectiveId: number, status: ObjectiveStatus) => run(id, (u) => w.setStatus(u, id, objectiveId, status));
+export const tick = async (id: string, objectiveId: number, status: ObjectiveStatus) => !progressTracking() ? ({ ok: false, error: "Progress tracking is off for now." } as const) : run(id, (u) => w.setStatus(u, id, objectiveId, status));
 export const answer = async (id: string, objectiveId: number, accept: boolean) => run(id, (u) => w.answerSuggestion(u, id, objectiveId, accept));
 
 export const newChapter = async (id: string, input: { title: string; actId?: number | null; unlocksWhen?: number | null }) => run(id, (u) => w.addChapter(u, id, input));
@@ -74,11 +76,11 @@ export const saveTalePicture = async (id: string, url: string | null) => run(id,
 export const writeActChapter = async (id: string, actId: number, input: { title?: string; doc?: unknown }) => run(id, (u) => w.writeActChapter(u, id, actId, input));
 
 /** Enter it by hand: level, day, place and the skills the objectives name. */
-export const enterByHand = async (id: string, input: Omit<SnapshotInput, "source" | "readBy">) => run(id, (u) => w.setSnapshot(u, id, { ...input, source: "hand", readBy: null }));
+export const enterByHand = async (id: string, input: Omit<SnapshotInput, "source" | "readBy">) => !progressTracking() ? ({ ok: false, error: "Progress tracking is off for now." } as const) : run(id, (u) => w.setSnapshot(u, id, { ...input, source: "hand", readBy: null }));
 
 /** Read a save (WO-112): what the reader found in the browser, saved as the snapshot. The save itself never comes here. */
 export const readFromSave = async (id: string, input: Omit<SnapshotInput, "source" | "readBy">) =>
-  run(id, (u) => w.setSnapshot(u, id, { ...input, source: "save", readBy: "Read a save" }));
+  !progressTracking() ? ({ ok: false, error: "Progress tracking is off for now." } as const) : run(id, (u) => w.setSnapshot(u, id, { ...input, source: "save", readBy: "Read a save" }));
 
 /** The owner read a beat before it opened; kept, and nothing is ticked. */
 export const readEarly = async (id: string, chapterId: number) =>

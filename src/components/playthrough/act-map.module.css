@@ -1,0 +1,207 @@
+/* An act's own map (WO-181), from the canvas board CharacterThemeAct: the paper map cut to the act's stops, numbered pins, the road between them. */
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.map {
+  position: relative;
+  width: 100%;
+  height: var(--ah, 600px);
+  overflow: hidden;
+  border: 1px solid #3a2c1c;
+  background: #2a2016;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+}
+.map:active {
+  cursor: grabbing;
+}
+.frame {
+  position: absolute;
+  overflow: hidden;
+  pointer-events: none;
+}
+.base,
+.tile {
+  position: absolute;
+  display: block;
+  max-width: none;
+  pointer-events: none;
+}
+.svg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.pin {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.pinLink {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  text-decoration: none;
+  color: inherit;
+}
+.pin i {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #74bfd2;
+  border: 2px solid #10161d;
+  color: #0b0f14;
+  font-style: normal;
+  font-family: var(--font-pixel), "Jersey 10", var(--font-title), monospace;
+  font-size: 21px;
+  line-height: 1;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.hot i {
+  transform: scale(1.18);
+  box-shadow: 0 0 0 6px rgba(116, 191, 210, 0.4);
+}
+.plate {
+  position: absolute;
+  top: -12px;
+  left: 22px;
+  white-space: nowrap;
+  padding: 3px 8px;
+  background: rgba(14, 19, 25, 0.88);
+  border: 1px solid #b9a173;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #f4ead2;
+}
+.plateLeft {
+  left: auto;
+  right: 22px;
+}
+.plate small {
+  margin-left: 6px;
+  font-size: 12px;
+  color: #c3cdd6;
+}
+.top {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+.top > * {
+  pointer-events: auto;
+}
+.key {
+  display: flex;
+  gap: 12px;
+  padding: 5px 10px;
+  background: rgba(14, 19, 25, 0.88);
+  border: 1px solid #2a3442;
+  font-size: 12.5px;
+  color: #c3cdd6;
+}
+.key b {
+  display: inline-block;
+  width: 18px;
+  height: 0;
+  border-top: 3px dashed #f0913f;
+  vertical-align: 4px;
+  margin-right: 6px;
+}
+.key b.dots {
+  border-top: 3px dotted #e8c987;
+}
+.onMap {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 12px;
+  background: rgba(14, 19, 25, 0.88);
+  border: 1px solid #3a4658;
+  color: #e4ebf0;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  font-size: 13px;
+  text-decoration: none;
+}
+.onMap:hover {
+  border-color: var(--ember);
+  color: var(--ember);
+}
+.ctl {
+  position: absolute;
+  right: 10px;
+  bottom: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ctl button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  background: rgba(14, 19, 25, 0.88);
+  border: 1px solid #3a4658;
+  color: #e4ebf0;
+  font-size: 18px;
+  cursor: pointer;
+}
+.ctl button:hover {
+  border-color: var(--ember);
+}
+.credit {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 3px 8px;
+  background: rgba(18, 13, 8, 0.88);
+  border: 1px solid rgba(201, 162, 90, 0.55);
+  font-size: 12px;
+  color: #f4ead2;
+  text-decoration: none;
+}
+.credit:hover {
+  border-color: #e3c382;
+  color: #fff;
+}
+.missing {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+/* The Begin Act I panel's backdrop: only the picture and the road, filling the panel. */
+.still .map {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  border: 0;
+  cursor: default;
+  pointer-events: none;
+}
+.still {
+  position: absolute;
+  inset: 0;
+}
+@media (max-width: 760px) {
+  .map {
+    height: 320px;
+  }
+  .still .map {
+    height: 100%;
+  }
+}

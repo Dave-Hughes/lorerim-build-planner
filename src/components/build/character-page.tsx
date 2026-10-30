@@ -4,17 +4,18 @@ import likeStyles from "@/components/build/like-button.module.css";
 import { BuildView, type BuildTab } from "@/components/build/build-view";
 import { RetiredBuild } from "@/components/build/retired-build";
 import { GameDataProvider } from "@/components/game-data";
-import { PlayBody, playSub } from "@/components/playthrough/play-view";
+import { CharacterPlay } from "@/components/playthrough/character-play";
+import { playSub } from "@/components/playthrough/play-view";
 import { ReaderProvider } from "@/components/reader/reader";
 import { SignInButton } from "@/components/site-header";
 import { isAdmin } from "@/lib/users/admin";
 import { imageHold } from "@/lib/builds/queries";
 import type { BuildRecord } from "@/lib/builds/types";
-import { imageUrls, storyOf, withHiddenImages } from "@/lib/guide/doc";
+import { imageUrls, withHiddenImages } from "@/lib/guide/doc";
 import { getGuide } from "@/lib/guide/queries";
 import { playthroughsOn, storyOn } from "@/lib/features";
 import type { PlaythroughRecord } from "@/lib/playthroughs/queries";
-import { runStops, storyStop } from "@/lib/playthroughs/reader";
+import type { ReaderStop } from "@/lib/playthroughs/reader";
 import { clientVersion, isKnownVersion } from "@/lib/rules/server";
 
 /**
@@ -60,20 +61,14 @@ export async function CharacterPage({
   if (!isKnownVersion(build.gameVersion)) return <RetiredBuild build={{ ...rest, updatedAt: updatedAt.toISOString() }} isOwner={isOwner} />;
   const id = build.id;
   const shownDocs = hold ? Object.fromEntries(Object.entries(docs).map(([k, d]) => [k, withHiddenImages(d, held)])) : docs;
-  const cover = coverHeld ? null : build.coverImageUrl;
-  // The reader (WO-116): a character's tale is its run's; a build alone's, its Story.
-  const told = run ? null : storyOf(shownDocs);
-  const stops = run
-    ? runStops({ id: run.id, buildId: build.id, taleLine: run.taleLine, view: run.view, cover, coverFocus: build.plan.coverFocus ?? null, isOwner: viewerId === run.ownerId, titlePicture: run.coverImageUrl })
-    : told
-      ? [storyStop({ id, title: told.title, line: told.line, doc: told.doc, cover, isOwner })]
-      : [];
+  // The Story is retired (WO-181), a build alone's held-back one too: the reader has nothing to open.
+  const stops: ReaderStop[] = [];
   // The reader's way back (WO-124): "‹ Kyria Severa's playthrough".
   const back = run ? { href: `/b/${id}?tab=playthrough`, label: `${build.name}'s playthrough` } : { href: `/b/${id}`, label: `${build.name}'s build` };
   // A draft asks for one thing (WO-118): the owner's box on a drafted character with no cover.
   const nudge = run && isOwner && run.draftedBy && !build.coverImageUrl ? `/b/${id}/setup?step=name#cover` : null;
   return (
-    <ReaderProvider stops={stops} back={back} runId={run?.id ?? null} title={run ? run.taleTitle || build.name : (told?.title ?? build.name)}>
+    <ReaderProvider stops={stops} back={back} runId={run?.id ?? null} title={build.name}>
     <GameDataProvider version={build.gameVersion} serverVersion={clientVersion(build.gameVersion)}>
       <BuildView
         // One name, line and cover (WO-179): the character's, whether or not it has a run.
@@ -96,7 +91,7 @@ export async function CharacterPage({
         }
         autoCopy={copy}
         admin={admin ? { featured: !!featuredAt, imported } : null}
-        playTab={run ? { node: <PlayBody p={run} isOwner={viewerId === run.ownerId} actIndex={actIndex} />, sub: playSub(run), here: run.snapshot?.level ?? null } : null}
+        playTab={run ? { node: <CharacterPlay p={run} isOwner={viewerId === run.ownerId} actIndex={actIndex} />, sub: playSub(run), here: run.snapshot?.level ?? null } : null}
         startRun={!run && isOwner && playthroughsOn() && !build.isSample ? `/b/${id}/run` : null}
         nudge={nudge}
         tabLinks={run && buildLinks ? { levels: `/b/${id}?tab=levels`, guide: `/b/${id}?tab=guide` } : undefined}

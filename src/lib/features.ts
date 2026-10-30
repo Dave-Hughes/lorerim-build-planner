@@ -47,6 +47,15 @@ export const playthroughsOn = (env: Record<string, string | undefined> = process
   return v === "on" || v === "1" || v === "true";
 };
 
+/**
+ * Progress tracking (WO-181 Part 3): ticks and done marks on objectives, "x of y done", where she is in your game, her pin on the maps and the tools
+ * that write them. Off for now, whatever the environment; turn it back on with PROGRESS_TRACKING=on and everything returns as it was.
+ */
+export const progressTracking = (env: Record<string, string | undefined> = process.env) => {
+  const v = env.PROGRESS_TRACKING?.trim().toLowerCase();
+  return v === "on" || v === "1" || v === "true";
+};
+
 export interface Features {
   story: boolean;
   siteGuide: boolean;

@@ -14,7 +14,7 @@ test("changing tab in edit never drops the edit tabs, and says how long each too
   const tabs = page.getByRole("navigation", { name: "Edit tabs" });
   await tabs.waitFor();
   const times: string[] = [];
-  for (const name of ["Story", "Character", "Guide", "Story", "Playthrough", "Story", "Build"]) {
+  for (const name of ["Character", "Guide", "Playthrough", "Build"]) {
     await page.evaluate(() => {
       const w = window as unknown as { gaps: number[]; t0: number; on: boolean };
       w.gaps = [];
@@ -47,8 +47,7 @@ test("the slim bar: the tabs named for what's in them, one help line each, and o
     [`/b/${KYRIA_BUILD_ID}/setup?step=name`, "Character", /^Who she is at level 1: race, birthsign, traits and starting skills/],
     [`/b/${KYRIA_BUILD_ID}/edit`, "Build", /^Each level: where the skill points go and which perks she takes\./],
     [`/b/${KYRIA_BUILD_ID}/guide`, "Guide", /^How to play her, in your words\. Readers find it under Guide\.$/],
-    [`/p/${KYRIA_PLAYTHROUGH_ID}/edit/story/title`, "Story", /^Her story in chapters\. A chapter tied to an objective stays locked until that objective is done\.$/],
-    [`/p/${KYRIA_PLAYTHROUGH_ID}/edit/play`, "Playthrough", /^Her run through the game: acts, and the objectives in each\./],
+    [`/p/${KYRIA_PLAYTHROUGH_ID}/edit/play`, "Playthrough", /^Who she is and how she plays, then her run through the game: acts, and the objectives in each\./],
   ];
   for (const [path, tab, line] of help) {
     await page.goto(path);
@@ -84,20 +83,4 @@ test("the step you're on is lit, a step that needs you is brass with !, and ever
     return Math.round(circle.left - word.right);
   });
   expect(gap).toBe(6);
-});
-
-test("Play shows her story's card at the top of the rail, and the reader on a phone folds its contents into a button", async ({ page, context }) => {
-  await signIn(context);
-  await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}`);
-  const card = page.getByRole("link", { name: /^Her story: / });
-  await expect(card).toContainText("Her story");
-  // Continue, Start reading before any is read, or Read it again once every open one is.
-  await expect(card).toContainText(/Continue: .+ ›|Start reading ›|Read it again ›/);
-  await card.click();
-  await expect(page.getByRole("region", { name: /^Reading: / })).toBeVisible();
-  await page.setViewportSize({ width: 390, height: 844 });
-  const contents = page.getByRole("navigation", { name: "Contents" });
-  await expect(contents).toBeHidden();
-  await page.getByRole("button", { name: "Contents" }).click();
-  await expect(contents).toBeVisible();
 });

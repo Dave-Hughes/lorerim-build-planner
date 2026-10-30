@@ -576,6 +576,20 @@ async function seedKyria(db: any) {
     gameVersion: "5.0.4.8",
     visibility: "private",
     draftedBy: "Claude",
+    // Who she is (WO-181): a backstory of three paragraphs, the fact row, and the three lists.
+    theme: {
+      backstory: [
+        "Kyria was left as a baby at Dibella's chapel in Anvil and raised by its priestesses. She learned the lute there before she could read.",
+        "She grew up tall and learned early that people treated her better when she smiled at them. Mother Valeria, who ran the chapel, warned her that people would want things from her because of it.",
+        "At nineteen, slavers from a Stros M'Kai galley raided the chapel for its novices. Kyria held a door long enough for nine of them to get out. Four girls were taken. One of them was Pia, a red-haired novice Kyria had taught to play.",
+      ].join("\n\n"),
+      from: "Anvil, raised at Dibella's chapel",
+      gods: "Stendarr, and Dibella",
+      goal: "Find Pia, and the man with the rings",
+      will: ["Work inn shifts and play for coin", "Free captives she finds held by bandits", "Let an enemy who yields go"],
+      grey: ["Gives a false name to anyone who asks", "Loots bandit camps and keeps the gold"],
+    },
+    never: [{ what: "Steal from homes, farms or shops" }, { what: "Kill anyone who has yielded" }],
   });
   await db.insert(schema.playthroughs).values({ id: NOBUILD_PLAYTHROUGH_ID, ownerId: TEST_USER_ID, buildId: null, name: "Nora Nobuild", line: "A run planned before the character was.", gameVersion: "5.0.4.8", visibility: "private" });
   const [nora]: { id: number }[] = await db.insert(schema.playthroughActs).values({ playthroughId: NOBUILD_PLAYTHROUGH_ID, position: 1, name: "The first days", levelFrom: 1, levelTo: 5, place: "Riverwood", goal: "Get to Riverwood alive." }).returning({ id: schema.playthroughActs.id });
@@ -583,8 +597,8 @@ async function seedKyria(db: any) {
   const acts: { id: number }[] = await db
     .insert(schema.playthroughActs)
     .values([
-      { playthroughId: KYRIA_PLAYTHROUGH_ID, position: 1, name: "The Sister's House", levelFrom: 1, levelTo: 6, place: "Riften", goal: "Earn a bed and coin in Riften as a bard and a worker. Keep the sword wrapped until Act III.", standingRule: "Play the Bee and Barb most nights; read the books you find." },
-      { playthroughId: KYRIA_PLAYTHROUGH_ID, position: 2, name: "The Bard's Road", levelFrom: 6, levelTo: 8, place: "Ivarstead and Whiterun", goal: "On foot, a song at every inn." },
+      { playthroughId: KYRIA_PLAYTHROUGH_ID, position: 1, name: "The Sister's House", levelFrom: 1, levelTo: 6, place: "Riften", goal: "Earn a bed and coin in Riften as a bard and a worker. Keep the sword wrapped until Act III.", route: [{ place: "Riften", why: "Her base." }, { place: "Lake Honrich", why: "Hides for her first clothes." }], standingRule: "Play the Bee and Barb most nights; read the books you find." },
+      { playthroughId: KYRIA_PLAYTHROUGH_ID, position: 2, name: "The Bard's Road", levelFrom: 6, levelTo: 8, place: "Ivarstead and Whiterun", goal: "On foot, a song at every inn.", route: [{ place: "Riften", why: "She leaves from the Bee and Barb." }, { place: "Ivarstead", why: "The Vilemyr Inn." }, { place: "Whiterun", why: "The Bannered Mare." }, { place: "Solitude", why: "The Winking Skeever.", by: "carriage" }] },
       { playthroughId: KYRIA_PLAYTHROUGH_ID, position: 3, name: "The Winking Skeever", levelFrom: 8, levelTo: 20, place: "Solitude", goal: "Join the Bards College and take the sword out." },
       { playthroughId: KYRIA_PLAYTHROUGH_ID, position: 4, name: "The Knight Returns", levelFrom: 20, levelTo: 35, place: "The Reach and Riften", goal: "Take Stendarr's work to the Reach." },
       { playthroughId: KYRIA_PLAYTHROUGH_ID, position: 5, name: "King Olaf's Verse", levelFrom: 40, levelTo: null, place: "Dead Men's Respite", goal: "Finish the verse." },
@@ -597,17 +611,17 @@ async function seedKyria(db: any) {
     .values([
       o(a1, 1, { text: "Walk out of the Temple of Mara", why: "The start quest. 200 XP.", status: "done" }),
       o(a1, 2, { text: "Warn Haelga, or expose her", link: { kind: "quest", id: "FreeformRiften11" }, doneBy: "save", detect: { quest: "FreeformRiften11", stage: 12 }, why: "Caught Red Handed, from Svana at the bunkhouse. Stage 12: Haelga was warned." }),
-      o(a1, 3, { text: "Take a room at the Bee and Barb", status: "done" }),
+      o(a1, 3, { text: "Take a room at the Bee and Barb", stop: "Riften", status: "done" }),
       o(a1, 4, { text: "Get a lute, then a spare", status: "doing", why: "Riften's general goods merchant stocks instruments some of the time. Not checked yet." }),
       o(a1, 5, { text: "Play the Bee and Barb until Speech 40", kind: "reach", doneBy: "save", reach: { key: "skill:Speech", target: 40 }, why: "Tips start at Speech 40. Playing most nights is the act's standing rule, not a box to tick." }),
       o(a1, 6, { text: "Reach level 6", kind: "reach", doneBy: "save", reach: { key: "level", target: 6 } }),
       o(a1, 7, { text: "Bring bread to the cells and meet Inigo", link: { kind: "follower", id: "inigo" }, why: "Her first companion. The Khajiit in Riften's jail talks his way into her service." }),
-      o(a1, 8, { text: "Hunt and tan her first hides", why: "Deer or elk around Lake Honrich, tanned at a tanning rack." }),
+      o(a1, 8, { text: "Hunt and tan her first hides", stop: "Lake Honrich", why: "Deer or elk around Lake Honrich, tanned at a tanning rack." }),
       o(a1, 9, { text: "Sing for the children at Honorhall", why: "Maramal asked her to. Grelod the Kind runs the place." }),
       o(a1, 10, { text: "Spread the Love", link: { kind: "quest", id: "FreeformRiften05" }, doneBy: "save", detect: { quest: "FreeformRiften05" }, why: "Mara's errand, from Dinya Balu at the temple. No fighting." }),
       o(a1, 11, { text: "The Book of Love", link: { kind: "line", id: "the-book-of-love" }, why: "Mara's temple sends her to Fastred in Ivarstead, on the road Act II takes.", suggestedBy: "Claude", accepted: false }),
       o(a1, 12, { text: "Hire Marcurio for the road", status: "later", why: "Not needed. Inigo doesn't use the follower slot." }),
-      o(a2, 1, { text: "Sing at the Vilemyr Inn" }),
+      o(a2, 1, { text: "Sing at the Vilemyr Inn", stop: "Ivarstead", why: "The first song at each inn pays a bonus." }),
       o(a2, 2, { text: "Reach level 8", kind: "reach", doneBy: "save", reach: { key: "level", target: 8 } }),
       o(a3, 1, { text: "Join the Bards College" }),
       o(a4, 1, { text: "Reach level 35", kind: "reach", doneBy: "save", reach: { key: "level", target: 35 } }),

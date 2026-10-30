@@ -158,17 +158,13 @@ test("a place page's map band links to the map opened on that place", async ({ p
   await expect(page.getByRole("link", { name: "Open on the map ›" })).toHaveAttribute("href", "/map?place=bleak-falls-barrow");
 });
 
-test("a character's pin sits where its latest save puts it, from the address; the panel no longer offers it (WO-174)", async ({ page, context }) => {
+// WO-181: a character's pin is progress tracking, off for now (wo181-tracking.spec.ts has it back).
+test("a character's pin is not drawn, and its address is ignored, while progress tracking is off", async ({ page, context }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await signIn(context);
-  await open(page);
-  await expect(page.getByLabel("Where my character is")).toHaveCount(0);
   await open(page, `/map?character=${KYRIA_PLAYTHROUGH_ID}`);
-  await expect(page.getByTestId("my-character")).toContainText("Kyria Severa");
-  await page.waitForTimeout(900);
-  await page.screenshot({ path: "test-results/wo169-character-1440.png" });
+  await expect(page.getByTestId("my-character")).toHaveCount(0);
 });
-
 test("on a phone a picked place has its pin in the part of the map above the sheet, its name on its plate", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/map?place=riverwood");
