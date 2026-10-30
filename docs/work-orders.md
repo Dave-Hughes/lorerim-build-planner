@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-181  Who she is, and acts with their own maps; the Story and progress tracking retire (Mac, 29 Oct 2026)
-Status: for Bob
+Status: queued (Mac: Part 6; Kyria's text waits for Dave)
 
 **Why.** Dave's decision of 28 Oct (backlog, "No grand narrative"): a character has a theme, not a tale. A player reads who she is and how she plays, then follows acts that fit her, and each act has a map of where she goes. The long-form Story retires; Dave keeps Kyria's tale himself. On the board he also turned off progress tracking for now ("Maybe we bring it back later but for now we can kill this functionality"), took read times off the page, and called the first draft's writing "hyper cringe". This order also writes the rules that stop the connector from writing that way.
 
@@ -5153,6 +5153,50 @@ Nothing is dropped from the database: the columns and tables stay (CLAUDE.md, no
   - an act with no route.
 
   Then `for Bob`.
+
+### Part 6. The cold review (Bob's reviewer, 29 Oct, 22:00, signed out; Bob confirmed items 1 to 3, 5, 6 and 8 in the code)
+These hold:
+- The Story is gone, and every old story address redirects.
+- No ticks or save line on character pages.
+- The act view's header, band, steps and Also nearby match frame 2.
+- A character with no theme opens on Act I.
+- `/map?stops=` draws the route.
+- The new writing rules say what Part 4 asked.
+
+No visible act has a route, so the reviewer tested the map with the real `ActMap` code, positions and fonts in a harness.
+- [ ] **The act map is never taller than 320 at 1440.** In `act-map.tsx`, `maxH = size.w < 700 ? 320 : 600` measures the map box itself, which is 520 wide beside the steps, so the phone height always applies. The minimum height has the same fault. Choose by the viewport (or the layout), not the box. At 1440, Act II's map is the frame's 520 by up to 600.
+- [ ] **After a drag, moving the pointer with no button held pans the map to the paper's corner.** `onUp` keeps the gesture with `x: 0, y: 0` so the click after a drag can be stopped, and `onMove` then pans from 0. On release, end the drag and keep only a "just dragged" flag for the click.
+- [ ] **The Begin Act I panel is a link with a link inside it.** Its `ActMap still` backdrop draws the credit `<a>`. The browser closes the panel's link at the inner one, so as the page first loads the panel isn't a link, and React reports a hydration mismatch. The credit link can also take keyboard focus inside an `aria-hidden` area. A still map draws no credit link: the panel's own credit line is plain text, or the credit sits outside the link.
+- [ ] **Names run under pins and under the controls:**
+  - "Riften, 2 steps here" runs under pin 2 at both widths.
+  - At 1440, Solitude's pin touches the key.
+  - At 390, pin 1 sits under −, Solitude's name is under the key, and there's a 28 px dark band below the paper.
+
+  Use WO-180's label rules here: try both sides, then above and below, never under another stop or a control, and keep the paper filling the box.
+- [ ] **Cards still show progress.** On home, `/characters` and `?run=1`, Kyria's card says "Act 1 of 5: The Sister's House" over a 5-segment bar, and the act comes from ticks (`character-card.tsx` `actLine`, `playthrough/cards.tsx`). With tracking off, a card says "5 acts" or the first act's name, with no bar.
+- [ ] **Promises of the save, in copy:**
+  - "Your save says where you stand." on the home page (`home/sections.tsx`) and in Plan a playthrough (`plan-run.tsx`).
+  - The Build tab's "You are here" (`character-page.tsx` passes `run.snapshot?.level`).
+  - `runOf()` takes the card's place from the snapshot.
+
+  All of these go behind `PROGRESS_TRACKING`.
+- [ ] **What the connector is told** (CLAUDE.md: an order that changes this isn't done until it's right):
+  - `get_playthrough`'s description still promises chapters, the story's reading order and where the player stands.
+  - `finish_draft_playthrough` checks "every chapter that unlocks".
+  - `add_objective`, `set_objective` and `set_status` describe ticking from the save.
+  - `finishDraft` says "tick what's done and publish".
+  - In `style.md`, rule 14 says "Link quest objectives so the save can tick them", and rule 7 says "outside the story".
+  - Questions 42 to 44 sit between 34 and 35: renumber or move them.
+  - "Paragraphs are apart by a blank line" should read "Put a blank line between paragraphs".
+
+  Add a player question that fails if any tool description mentions chapters, the Tale or ticking while tracking is off.
+- [ ] **Small:**
+  - Build cards' run box says "Her playthrough" for every pronoun (`build-card.tsx`).
+  - The route's name on `/map?stops=` links to `/map`. It should link back to the act.
+- [ ] **The e2e checks the map as it is used:** its height at 1440 and 390, a drag then a pointer move with no button, no name under a pin or a control, and the Begin panel's link as served (not after React fixes it).
+- [ ] Screenshots at 1440 and 390. Then Bob walks it signed in on Kyria once her text is on staging.
+
+**Kyria's text (Part 5) and WO-179's backfill:** Dave said yes to the backfill (29 Oct, 18:38). Both need staging's database string, which is a hidden secret in Vercel. Dave pastes it into Mac's terminal himself, never into a chat or a file in the repo. Kyria's script waits for Dave's yes. Bob agrees with leaving out "She tells no one why she came."
 
 ### Jeff's notes
 
