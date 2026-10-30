@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-183  Data you can trust: fix the causes the accuracy audit found (PC, then Mac, 30 Oct 2026)
-Status: for Bob (PC: Parts 1 to 3 pushed, the open boxes and why are in the notes; Mac: Part 4 after WO-182)
+Status: building (Mac: Part 4; PC: Parts 1 to 3 pushed, what is open is in the notes)
 
 **Why.** Dave, 30 Oct: "With us cutting playthroughs we're going to want to double down on quests, locations, NPCs… make sure the pages are BULLET proof, the data must be as solid as we can get it."
 
