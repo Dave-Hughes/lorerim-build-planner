@@ -484,6 +484,10 @@ def main():
         truth = load("quest_truth.json")["quests"] if os.path.exists(os.path.join(RAW, "quest_truth.json")) else []
         pages = build_quests(lines, quests_raw, givers_raw, checks, raw_file.get("globals", {}), towns, wording, overrides.get("questNames", {}), readables, truth, overrides.get("questClasses", {}), overrides.get("questRewards", {}),
                             [e for e in overrides.get("questBackground", {}) if not e.startswith("_")], {k: v for k, v in overrides.get("questTemplates", {}).items() if not k.startswith("_")})
+        # WO-183 Part 3: a gate nobody checked is read from the opening quest's start where that says it; the rest stay unchecked, and the page says it isn't sure.
+        from quest_pages import derive_gates
+
+        print(f"{derive_gates(pages)} line gates read from their opening quest's start")
         # WO-126: hand-kept wording for a start the records get wrong; one whose words have gone is stale.
         said = {q["edid"]: json.dumps(q["start"].get("ways", []), ensure_ascii=False) for l in pages for q in l["quests"]}
         for edid, words in wording.items():
@@ -511,6 +515,9 @@ def main():
             for q in l["quests"]:
                 if q.get("read"):
                     q["read"] = fill_read(q["read"], read_fills.get(q["edid"], {}), raw_file.get("globals", {}))
+        from quest_pages import fix_rewards, mark_unstarted
+
+        print(f"{fix_rewards(pages)} quests gained their leveled gold; {mark_unstarted(pages)} quests no record starts")
         print(f"{with_read} quests read and checked, {without_read} on the older rules" + (f"; {len(unmatched)} reads match no quest on the pages: {', '.join(unmatched[:8])}" if unmatched else ""))
         # WO-154 Part 2: the ways through a quest, the line reads, and the mods that changed each quest.
         from quest_pages import quest_mod, source_name
@@ -520,7 +527,9 @@ def main():
         from quest_pages import fill_all
 
         fills = {q["edid"]: q.get("fills", {}) for q in quests_raw}
-        ways = {e: fill_all(w, fills.get(e, {}), raw_file.get("globals", {})) for e, w in load_ways(os.path.join(RAW, "quest_reads", "ways")).items()}
+        from quest_reads import only_finishing
+
+        ways = only_finishing({e: fill_all(w, fills.get(e, {}), raw_file.get("globals", {})) for e, w in load_ways(os.path.join(RAW, "quest_reads", "ways")).items()})
         line_reads = load_line_reads(os.path.join(RAW, "quest_reads", "lines", "checked"))
         plugin_map = load("plugins_raw.json")["plugins"] if os.path.exists(os.path.join(RAW, "plugins_raw.json")) else {}
         unmapped = set()

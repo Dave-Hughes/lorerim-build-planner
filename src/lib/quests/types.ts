@@ -95,6 +95,8 @@ export interface Quest {
   rewards?: { gold?: "small" | "medium" | "large"; items?: string[]; endings?: RunChange[] };
   /** How this quest starts (WO-115 Part 2): the start check's answer in plain words, or "not yet". */
   start?: QuestStart;
+  /** No record starts it (the start check found nothing at all): the page says it isn't started in normal play (WO-183 Part 3). Boethiah's Bidding is one; UESP lists it as unfinished. */
+  noStart?: true;
   /** Who its records fill it with, its giver among them, by name (WO-133): Running Wild's Palonimo, Joslin. */
   people?: string[];
   /** What players call it that the records don't hold (WO-133, overrides.json questNames): "Palomino". */

@@ -125,6 +125,23 @@ def load_line_reads(folder):
     return out
 
 
+_FAILS = re.compile(r"\bfail", re.I)
+
+
+def only_finishing(ways):
+    """
+    WO-183 Part 3: the ways to finish a quest come from the stages that complete it, not from the ones that fail it. A way whose end is the job failing ("Turn down Drevis's
+    class": the quest fails and the lesson is skipped; "Tell the job-giver you quit") is a way to lose it, and the page's "ways to finish it" never lists one; a quest left
+    with no way has none listed. Returns the ways without the failing ones.
+    """
+    out = {}
+    for edid, w in ways.items():
+        keep = [x for x in w.get("ways", []) if not _FAILS.search(f"{x.get('ends') or ''} {x.get('title') or ''}")]
+        if keep:
+            out[edid] = {**w, "ways": keep}
+    return out
+
+
 def attach_extras(lines, ways, line_reads, changed_by):
     """
     Each read quest gets its ways (`read.ways`) and, whatever its source, the mods that changed it (`changedBy`); each line with a

@@ -1962,6 +1962,88 @@ def from_key(start, row):
     return out
 
 
+# WO-183 Part 3: an item you need is not one you are given. The records hand the Amulet of Mara over in The Bonds of Matrimony's stages, but it is what you wear to propose.
+NOT_A_REWARD = {"The Bonds of Matrimony": {"Amulet of Mara"}}
+GOLD_BY_LEVEL = "Gold, by your level"
+
+
+def fix_rewards(pages):
+    """
+    WO-183 Part 3: what a quest pays, from its data and its read together. A contract or a radiant job pays leveled gold by a script (`rewards.gold` small, medium or
+    large): a read that names only "a random item from the quest-reward list" leaves the gold out, and the page then says it pays none. An item the quest only asks you to have
+    is never a reward. Returns how many quests gained their gold.
+    """
+    n = 0
+    for l in pages:
+        for q in l["quests"]:
+            drop = NOT_A_REWARD.get(q.get("name"), set())
+            r = q.get("rewards") or {}
+            if drop and r.get("items"):
+                r["items"] = [i for i in r["items"] if i not in drop]
+                if not r["items"]:
+                    del r["items"]
+            read = q.get("read")
+            if not read:
+                continue
+            items = [x for x in read.get("rewards", []) if x.get("what") not in drop]
+            if r.get("gold") and not any(re.search(r"\bgold\b", x.get("what") or "", re.I) for x in items):
+                items.append({"what": GOLD_BY_LEVEL})
+                n += 1
+            read["rewards"] = items
+    return n
+
+
+def mark_unstarted(pages):
+    """
+    WO-183 Part 3: a quest no record starts (no dialogue, event, script or other quest sets its first stage, and no person gives it) is `noStart`. UESP lists Boethiah's
+    Bidding under Unfinished Quests; its page said "Starts by itself" with a giver, from the read's guess. The start check found nothing for it, so the page says it isn't
+    started in normal play, rather than something nothing in the game does. Only a quest whose start check found nothing at all ("not yet") is marked: one the check read whole
+    but found no dialogue for may be started by an item or an activator (a Black Book is read to begin), which the check doesn't see. Returns the count.
+    """
+    n = 0
+    for l in pages:
+        for q in l["quests"]:
+            s = q.get("start") or {}
+            if s.get("checked") == "not yet" and not (s.get("needs") or s.get("ways") or s.get("who") or s.get("sentBy") or s.get("board")):
+                q["noStart"] = True
+                n += 1
+    return n
+
+
+_LEVEL_TEXT = re.compile(r"\(?\bLevel (\d+)\b", re.I)
+
+
+def derive_gates(pages):
+    """
+    WO-183 Part 3: a line's gate is what its start conditions say, or the page does not say it. A line whose gate nobody checked (109 of 151) printed "Any level"
+    as if it had been. Its opening quest's start was read from the files: when a condition names a level, that is the line's minimum level (Belethor's Sister,
+    "as you travel (Level 20)"); when the start is read whole and asks for nothing, the gate is none; a start with a condition the planner can't put in words, or one that
+    waits on an earlier quest, stays unchecked and the page says it isn't sure. Returns how many gates were read.
+    """
+    n = 0
+    for l in pages:
+        if (l.get("checked") or {}).get("gate"):
+            continue
+        op = next((q for q in l["quests"] if q["edid"] == l.get("opening")), None)
+        s = (op or {}).get("start") or {}
+        if not op or s.get("checked") != "files" or s.get("board"):
+            continue
+        parts = [*s.get("needs", []), *(x for w in s.get("ways", []) or [] for x in [w.get("how", ""), *w.get("needs", [])])]
+        text = " | ".join(parts)
+        if "can't put in words" in text:
+            continue
+        m = _LEVEL_TEXT.search(text)
+        if m:
+            l["minLevel"], l["gate"] = int(m.group(1)), f"Level {m.group(1)}."
+        elif not [x for x in s.get("needs", []) if not x.startswith("It starts by itself")]:
+            l["gate"] = "None."
+        else:
+            continue
+        l.setdefault("checked", {})["gate"] = "files"
+        n += 1
+    return n
+
+
 def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, towns=None, wording=None, called=None, readables=None, truth=None, classes=None, changes=None, background=None, templates=None):
     """
     The curated lines (questlines.curate) -> the quests.json lines, in curation order, tags filled. Each start is in a

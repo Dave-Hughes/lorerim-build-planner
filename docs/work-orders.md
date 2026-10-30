@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-183  Data you can trust: fix the causes the accuracy audit found (PC, then Mac, 30 Oct 2026)
-Status: building (PC: Parts 1 to 3; Mac: Part 4 after WO-182)
+Status: for Bob (PC: Parts 1 to 3 pushed, the open boxes and why are in the notes; Mac: Part 4 after WO-182)
 
 **Why.** Dave, 30 Oct: "With us cutting playthroughs we're going to want to double down on quests, locations, NPCs… make sure the pages are BULLET proof, the data must be as solid as we can get it."
 
@@ -5102,7 +5102,7 @@ Unknown is fine when the page says so. Wrong is not.
 - [x] **Nearest town by distance** in the same worldspace: Solitude Sawmill is nearer Solitude than Dragon Bridge.
 
 ### Part 3. Quests (PC data, Mac page)
-- [ ] **A gate the start conditions don't spell out is "Not sure yet", never "Any level".**
+- [x] **A gate the start conditions don't spell out is "Not sure yet", never "Any level".**
   - Known gates come from LoreRim's own text where it states them: the Daedric shelf says level 20, Hircine 25.
   - Read the records for the rest. The audit's misses: Restoration 90, the Horn of Jurgen Windcaller, wearing an Amulet of Mara, The Final Descent, Destruction 40, Spirits Away, and The Whispering Door (UESP: level 20 and Dragon Rising; check what the Quest Expansion changes).
 - [ ] **Rewards**:
@@ -5110,7 +5110,7 @@ Unknown is fine when the page says so. Wrong is not.
   - choices offered as one of several (Black Book: one of three Insights, each named);
   - the word "gold" kept when the data says `gold: "medium"`;
   - an item you need, not one you're given, is never a reward. The Amulet of Mara is what you wear to propose in The Bonds of Matrimony.
-- [ ] **No start record, no playable page.** Boethiah's Bidding has no start record, and UESP lists it under Unfinished Quests, yet it shows as "Starts by itself" with a giver.
+- [x] **No start record, no playable page.** Boethiah's Bidding has no start record, and UESP lists it under Unfinished Quests, yet it shows as "Starts by itself" with a giver.
   - A quest no record starts is either hidden or marked "Not started in normal play".
   - The PC checks whether a LoreRim mod restores it, and says so in the notes.
 - [ ] **Story-manager starts say what sets them off**, from the event node:
@@ -5126,7 +5126,7 @@ Unknown is fine when the page says so. Wrong is not.
   - "Each is a short delivery" isn't said on kill and gather jobs;
   - "Collect bounty from the jarl" isn't said on a Solstheim job;
   - `/quests/missives` says 384 quests and links none: link them, or say what they are and how to find them on a board.
-- [ ] **Ways to finish come from completing stages, not fail stages.** Back-Stabbing Rodents' only way is "Turn down Drevis's class".
+- [x] **Ways to finish come from completing stages, not fail stages.** Back-Stabbing Rodents' only way is "Turn down Drevis's class".
 
 ### Part 4. The pages (Mac)
 - [ ] A default never prints as a fact: no "Any level", "Lives in", "Starts by itself" or "Talk to someone to start it" unless the data says so. The page-text test fails on a default posing as a fact.
@@ -5157,6 +5157,16 @@ Unknown is fine when the page says so. Wrong is not.
 - **Cut and split text** (`read_clean.py`): a cut that left a sentence on its joining word is cut before it ("around the upper part of Markarth and."); a `hold` the records could not give ("none in the records (...nearest city Solitude)", "not given...") is no hold, so "Castle Volkiharnearest city Solitude)" is gone; the editor's "(Balagog is placed in its cellar)" and the reader's "(the journal doesn't name it)" are out. `wo183.test.ts` (places) walks every quest and person read for an unmatched bracket or a sentence ending on and/or/but, and for "is placed" in a place a quest takes you.
 - **Part 3 otherwise: not done in this push.** The gates ("Any level" where the start wasn't read), the rewards (leveled gold, one of three, "gold", the Amulet of Mara), the quests no record starts (Boethiah's Bidding), the story-manager starts, the missives and the ways from fail stages each need the quest pages' start and gate data read afresh; they are the next pushes. Part 5 (the fresh sample) is Bob's reviewer's.
 - **Generated files:** `places_raw.json`, `places.json` (new `realm` and `recordName`; `nearestTown` for many places; `type` for four; no key dropped), `quests.json` (read strings only), `people*.json` as in Part 1. Checks: python unittest (477), typecheck, lint, vitest: every test passes but the three that fail on staging without my changes.
+
+**Part 3, quests (PC, 30 Oct; second push)**
+- **A gate nobody read is not "Any level"** (`derive_gates` in `quest_pages.py`). A line's `gate` and `minLevel` already show only when `checked.gate` is "files"; 109 of 151 lines had no checked gate, and the page printed "Any level" for them. The opening quest's start (read from the files) now gives the gate where it can: a condition that names a level is the line's minimum level (Belethor's Sister 20, The Cause 46, Unfathomable Depths 14), a start read whole that asks for nothing is "None.", and a start with a condition the planner can't put in words, or one that waits on an earlier quest, stays unchecked. 43 gates read; 66 lines stay unchecked, and **the page's rule is Mac's (Part 4): a line without `checked.gate` says "Not sure yet", never "Any level"** (`wo183.test.ts` says a line with a gate or a minimum level always has it checked). The Whispering Door's gate is "Level 20." (curated, checked), so its "Any level" is the page ignoring `minLevel` where `line.level` is empty. I did not check what the Quest Expansion changes about Dragon Rising for it.
+- **Rewards** (`fix_rewards`): 18 quests whose read said "a random item from the quest-reward list" and left the gold out now also say "Gold, by your level" (the data's `rewards.gold` is small, medium or large; every contract is among them). An item a quest only asks you to have is no reward (`NOT_A_REWARD`: The Bonds of Matrimony's Amulet of Mara, which you wear to propose). **Not done:** a choice offered as one of several (Black Book: one of three Insights, each named): the choice is in the stage text and each Insight is a perk the reads don't name; and "the word gold kept when the data says medium", which I took to mean the same fix as the first.
+- **No start record** (`mark_unstarted`, `noStart` on the quest): a quest whose start check found nothing at all ("not yet", no way, no giver) is `noStart`: 17, among them Boethiah's Bidding (UESP lists it as unfinished), a few Civil War templates and handlers, "On Hogithum" and "A Grand Venture". Mac's page says "Not started in normal play" and never "Starts by itself"; the read's `starts` guess ("As her champion, Boethiah orders you...") should not print for one. I did not check whether a LoreRim mod restores Boethiah's Bidding: no record of any mod in this load order sets DA02KillObj's first stage, which is why it is marked. A quest the start check read whole but found no dialogue for (a Black Book is read to begin it) is not marked.
+- **Ways to finish** (`only_finishing`): a way whose end is the job failing, or whose title says so, is not a way to finish: 12 quests lose all their ways (Back-Stabbing Rodents, None Escape The Light, the Thieves Guild jobs' "quit" and "get arrested") and 38 lose the failing one. 216 quests have ways, not 228.
+- **Not done, with the cause:** (1) **Story-manager starts** (The Words of Power's Arngeir "after the previous quest"; Imitation Amnesty and Silver Lining, started by the Thieves Guild's radiant shell): the start check sees the event node's name ("Through TGRShell") but the conditions on it are in the node's own records, which `quest_starts.py` reads only as far as the node's name. The next push, if Bob wants it, reads the SMQN/SMEN conditions. Imitation Amnesty and Silver Lining no longer say "Talk to someone to start it" on their start's own words ("Another quest starts it, one the planner can't name yet"); their read's text is the reader's. (2) **Missives**: the kind and gather jobs' "Each is a short delivery" and the Solstheim job's "Collect bounty from the jarl", and `/quests/missives`' 384 unlinked quests, are page text (Mac, Part 4); the data has the board shape (`start.board`) for it.
+- **Part 5**: the fresh sample, the 24 blocked base quests and the 15 mod quests are the reviewer's and Bob's; I have not touched them. `docs/player-questions.md` is not changed: the questions ("Where is Neloth?", "Who trains Enchanting on Solstheim?", "How do I start The Whispering Door?", "What do I need to marry?") need the Mac's assistant side (Part 4) to pass.
+- **What Mac needs from the data (Part 4):** `person.generic` (left out of `peopleData()`; a place page wants them as enemies or residents by kind), `place.realm`, `place.recordName` (old address redirect: Dormitory), `quest.noStart`, `line.checked.gate`, `person.trainer.cap` (50, 75 or 90) and `skill`, `innkeeper` only for the keeper, and the shop/inn helpers `shopsOf` and `innsOf` from Part 6a.
+- **Generated files:** `quests.json` (gate, minLevel and checked.gate for 43 lines; gold in 18 reads; `noStart`; fewer ways), `people*.json`, `places*.json` as above. No key re-typed or dropped. Checks: python unittest (477), typecheck, lint (no new warning), vitest (858 pass, 3 fail on staging without my changes: WO-182's style-guide tests).
 
 ---
 
