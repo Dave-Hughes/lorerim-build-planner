@@ -129,8 +129,8 @@ describe("the second check (WO-180 Part 5a)", () => {
   it("a step has its blanks filled: no tag, no 'the the', no 'the actor', no 'The one'", () => {
     expect(stepBad(/<[^<>]+>/)).toEqual([]);
     expect(stepBad(/the the|the actor|^The one has/i)).toEqual([]);
-    expect(stepStrings().some(([n, s]) => n === "Cultists vs Player" && s === "Search the person")).toBe(true);
-    expect(stepStrings().some(([n, s]) => n === "Maggot" && /^The victim has been dazzled/.test(s))).toBe(true);
+    expect(stepStrings().some(([n, s]) => n === "Cultists vs Player" && s === "Search the cultists' bodies")).toBe(true);
+    expect(stepStrings().some(([n, s]) => n === "Maggot" && /^The person the job names has been dazzled/.test(s))).toBe(true);
   });
   it("Hunter's Mark names its two jobs as what they are and says where each takes you once", () => {
     const line = questsData().lines.find((l) => l.id === "hunters-mark")!;

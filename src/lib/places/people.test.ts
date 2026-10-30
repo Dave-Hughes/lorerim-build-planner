@@ -16,7 +16,9 @@ describe("who a town's page lists (WO-162 Part 5)", () => {
 
   it("gives Sven the chips his record has from either of his placements, and a seller a kind", () => {
     const sven = named("Riverwood").find((p) => p.name === "Sven")!;
-    expect(sven.chips.map((c) => c.kind)).toEqual(expect.arrayContaining(["sells", "follower"]));
+    // A bard the record flags as a vendor is not a shopkeeper, so no "Sells" tag (WO-180 Part 6a).
+    expect(sven.chips.map((c) => c.kind)).toEqual(expect.arrayContaining(["follower"]));
+    expect(sven.chips.map((c) => c.kind)).not.toContain("sells");
     const alvor = named("Riverwood").find((p) => p.name === "Alvor")!;
     expect(alvor.sells).toBe("blacksmith");
   });

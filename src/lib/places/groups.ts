@@ -12,7 +12,7 @@ export interface PlaceGroup {
 
 export const PLACE_GROUPS: PlaceGroup[] = [
   { key: "cities", label: "Cities and towns", all: "cities and towns", types: ["City", "Town", "Settlement"] },
-  { key: "inns", label: "Inns and shops", all: "inns and shops", types: ["Inn", "Store", "Stables"] },
+  { key: "inns", label: "Inns and shops", all: "inns and shops", types: ["Inn", "Store", "Stables", "Meadery"] },
   { key: "homes", label: "Homes", all: "homes", types: ["House", "PlayerHouse", "Shack", "NordicDwelling", "Building", "Farm", "Mill"] },
   { key: "temples", label: "Temples and guilds", all: "temples and guilds", types: ["Temple", "Guild", "Monastery"] },
   { key: "forts", label: "Forts and keeps", all: "forts and keeps", types: ["Fort", "Keep", "Castle", "ImperialTower", "NordicTower", "Barracks", "Jail", "OrcStronghold"] },

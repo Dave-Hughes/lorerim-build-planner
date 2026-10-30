@@ -34,6 +34,12 @@ JOBS = {
     "Hunter Marks Animal Den": "Mark an animal den",
     "Hunter Marks Animal Den 02": "Mark an animal den (second job)",
 }
+# A step the reads wrote with a role the job picks in it (WO-180 Part 6a); only the strings copied from the game (GAME) are changed this way.
+GAME_PLAIN = [
+    (re.compile(r"\bthe bounty location\b", re.I), "the place the job names"),
+    (re.compile(r"\bthe vampire at the dungeon\b", re.I), "the vampire at the place the job names"),
+    (re.compile(r"\bthe target\b(?!['\u2019]s| (?:house|town|location))", re.I), "the person the job names"),
+]
 # A phrase the reads wrote around a thing the game fills in, said as what it is.
 PLAIN = [
     (re.compile(r"\bthe riverwood friend\b", re.I), "your friend from Helgen"),
@@ -41,6 +47,8 @@ PLAIN = [
     (re.compile(r"\b(the )?(enemy )?field co\b\.?", re.I), lambda m: f"{m.group(1) or ''}{m.group(2) or ''}field commander"),
     (re.compile(r"\s*\(\s*\)"), ""),
     (re.compile(r"\bthe the\b", re.I), "the"),
+    # A step the reads wrote with the job's role in it (WO-180 Part 6a): the person who gave you the job, not "the quest giver".
+    (re.compile(r"^(Return to|Report to|Go back to|Talk to) the quest ?giver\b", re.I), lambda m: f"{m.group(1)} the person who gave you the job"),
     (re.compile(r"^named in the quest's records; role not shown$", re.I), "Has a part in it"),
     (re.compile(r"^also in the quest's records; ", re.I), "Also at "),
     (re.compile(r"^in the quest's records at ", re.I), "At "),
@@ -141,6 +149,9 @@ def clean_string(s, hedges=True):
             return plain + s[len(job):], False
     for pat, rep in PLAIN:
         out = pat.sub(rep, out)
+    if not hedges:  # a string copied from the game
+        for pat, rep in GAME_PLAIN:
+            out = pat.sub(rep, out)
     if hedges:
         for _ in range(8):
             nxt = cut_once(out)

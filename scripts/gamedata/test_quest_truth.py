@@ -66,13 +66,50 @@ def t_norm(s):
 
 
 # WO-180 Part 4a: the pages say the game's role names in a player's words; UESP's objective is the game's own.
-SAID = {"the riverwood friend": "your friend from Helgen", "search the one": "search the person"}
+SAID = {"the riverwood friend": "your friend from Helgen", "search the one": "search the person the job names"}
 
 
 def said(s):
     out = (s or "").lower()
     for game, plain in SAID.items():
         out = out.replace(game, plain)
+    return out
+
+
+def _roles():
+    """
+    WO-180 Part 6a: a role the game fills in when the job is given reads one way in UESP ("the dungeon", "the giver") and another on the
+    page ("the place the job names"). Every phrase either side can use for one, from the aliases the records' objectives name, longest first.
+    """
+    import sys
+
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import quest_pages as qp
+
+    raw = os.path.join(ROOT, "gamedata", VERSION, "quests_raw.json")
+    with open(raw, encoding="utf-8") as f:
+        quests = json.load(f)["quests"]
+    names = {m.group(3).strip().partition(".")[0] for q in quests for o in q.get("objectives", []) for m in qp.TAG.finditer(o.get("text") or "") if m.group(1).lower() == "alias"}
+    phrases = set(qp.ROLE_PHRASES)
+    for name in names:
+        phrases.add(qp.plain_alias(name))
+        # What the page said before the role phrases (the alias's own name split into words), which UESP's wording matches.
+        stripped = re.sub(r"^[A-Za-z]{0,6}\d+(?=[A-Za-z])", "", name)
+        words = [w.lower() for w in re.findall(r"[A-Z]+(?![a-z])|[A-Z]?[a-z]+|\d+", stripped.replace("_", " ")) if not any(ch.isdigit() for ch in w)]
+        words = [w for w in words if w not in ("alias", "ref", "quest")]
+        if words:
+            phrases.add("the " + " ".join(words))
+    return sorted((p for p in phrases if p), key=len, reverse=True)
+
+
+ROLES = _roles()
+
+
+def roleless(s):
+    """A step with every role phrase in it said as one word, for comparing the page's wording with UESP's."""
+    out = (s or "").lower()
+    for p in ROLES:
+        out = out.replace(p.lower(), "role")
     return out
 
 
@@ -120,7 +157,7 @@ class QuestTruth(unittest.TestCase):
             # G1: UESP's giver agrees as the page's who, or as sentBy, the person who sends you to the page's who (Reluctant Steward).
             elif norm(who) not in {norm(s) for s in row["startsWith"]} and norm(start.get("sentBy")) not in {norm(s) for s in row["startsWith"]}:
                 wrong.append(f"{row['quest']}: the page names {who or 'no one'}; UESP: {', '.join(row['startsWith'])}")
-            if norm(start.get("then")) != norm(said(row["firstObjective"])):
+            if norm(roleless(start.get("then"))) != norm(roleless(said(row["firstObjective"]))):
                 wrong.append(f"{row['quest']}: then is {start.get('then')!r}; UESP: {row['firstObjective']!r}")
         self.assertEqual(wrong, [], "\n".join(wrong))
 
@@ -135,7 +172,7 @@ class QuestTruth(unittest.TestCase):
             row, q = truth[edid], quests.get(edid.lower())
             start = (q or {}).get("start") or {}
             person_ok = not start.get("who") if row.get("noGiver") else {t_norm(person_of(start)), t_norm(start.get("sentBy"))} & {t_norm(x) for x in row["startsWith"]}
-            if not q or not person_ok or t_norm(start.get("then")) != t_norm(said(row["firstObjective"])) or any("records don't name" in w["how"] for w in start.get("ways", [])):
+            if not q or not person_ok or t_norm(roleless(start.get("then"))) != t_norm(roleless(said(row["firstObjective"]))) or any("records don't name" in w["how"] for w in start.get("ways", [])):
                 wrong.append(f"{row['quest']} ({edid})")
         self.assertEqual(wrong, [])
         self.assertFalse(set(LOOP_WAITING) & set(DIFFERS) | set(LOOP_WAITING) & set(WAITING_ON_BOB))

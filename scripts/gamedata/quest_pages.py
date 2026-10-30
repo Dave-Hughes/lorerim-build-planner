@@ -22,6 +22,7 @@ don't fill in plain words ("the item").
 import json
 import os
 import re
+from difflib import SequenceMatcher
 
 # LoreRim's Experience.ini: the XP a finished quest gives, by its type in the records.
 QUEST_XP = {
@@ -309,7 +310,7 @@ def endings_of(stages):
 
 # The game's text tags (WO-115): <Alias=Item>, <Alias.PronounObj=Target>, <Global=RoomCost>, <Global.Day=Deadline>.
 TAG = re.compile(r"<(Alias|Global)(?:\.(\w+))?=([^<>]+)>", re.IGNORECASE)
-_OPEN = re.compile(r"<((?:Alias|Global)(?:\.\w+)?=\w+)(?=[\s,.;:!?)]|$)", re.IGNORECASE)
+_OPEN = re.compile(r"<((?:Alias|Global)(?:\.\w+)?=\w+)(?=[\s,.;:!?)]|$)(?!\.\w+>)", re.IGNORECASE)  # (not "<Alias=Enemy.PronounObj>": the record's own odd spelling)
 _DATE = re.compile(r"<Global\.Day=[^<>]+>\s*(?:of\s+)?<Global\.MonthWord=[^<>]+>", re.IGNORECASE)
 _NEUTRAL = {"pronoun": "they", "pronouncap": "They", "pronounobj": "them", "pronounobjcap": "Them", "pronounpos": "their",
             "pronounposcap": "Their", "pronounposobj": "theirs", "pronounposobjcap": "Theirs"}
@@ -319,16 +320,60 @@ _NEUTRAL = {"pronoun": "they", "pronouncap": "They", "pronounobj": "them", "pron
 # WO-180 Part 5a: the two Hunter's Mark jobs are called by the editor's title in the records; a list says them as what they are.
 JOB_NAMES = {"Hunter Marks Animal Den": "Mark an animal den", "Hunter Marks Animal Den 02": "Mark an animal den (second job)"}
 ALIAS_SAID = {"riverwoodfriend": "your friend from Helgen", "factionfriend": "your friend from Helgen", "fieldco": "the field commander",
-              "enemyfieldco": "the enemy field commander", "cwfieldco": "the field commander", "actor": "the person"}
+              "enemyfieldco": "the enemy field commander", "cwfieldco": "the field commander", "actor": "the person the job names",
+              # things the job gives a name to that a player knows by it (UESP says them the same way)
+              "samplepelt": "the sample pelt", "gewgaw": "the gewgaw", "evidence": "the evidence", "chief": "the chief", "client": "the client"}
+
+
+# WO-180 Part 6a: an alias that is a word the game itself uses for the thing (a title, a kind of place) is said as that word. Every other
+# alias is a role the job picks at run time, and is said by what it is (a person, a place, a thing) with "the job names", never by its
+# editor name split into words ("the target location").
+TITLES = {"jarl": "the jarl", "steward": "the steward", "innkeeper": "the innkeeper", "alchemist": "the alchemist", "general": "the general",
+          "vampire": "the vampire", "fort": "the fort", "city": "the city", "town": "the town", "hold": "the hold", "inn": "the inn",
+          "otherhold": "another hold", "player": "you", "book": "the book", "beast": "the beast"}
+_GIVER = re.compile(r"giver$|requester$")
+_PLACE = re.compile(r"location|place|dungeon|den$|camp|home|lair|house|business|cave|mine$|barrow|ruin|keep$|tower|shrine|temple|farm|mill$|hold$|town$|city$|fort$|inn$|point$")
+_THING = re.compile(r"item|book|note|scroll|letter|package|artifact|relic|weapon|armou?r|amulet|ring$|gem|potion|key$|goods|remains|tome|heirloom|contraband")
+ROLE_GIVER = "the person who gave you the job"
+ROLE_PERSON = "the person the job names"
+ROLE_PLACE = "the place the job names"
+ROLE_THING = "the item"
+ROLE_OTHER = "the one the job names"
+ROLE_PHRASES = (ROLE_GIVER, ROLE_PERSON, ROLE_PLACE, ROLE_OTHER)  # the phrases that say the job picks it; "the item" is just the word
 
 
 def plain_alias(name):
-    """An alias the records fill only at run time, in plain words: Item -> "the item", TargetLocation -> "the target location"."""
-    key = re.sub(r"\d+$", "", name.strip().lower())
+    """An alias the records fill only at run time, in plain words: Item -> "the item", TargetLocation -> "the place the job names"."""
+    name, _, part = name.strip().partition(".")  # "Enemy.PronounObj": a pronoun for it, written the wrong way round
+    if _NEUTRAL.get(part.lower()):
+        return _NEUTRAL[part.lower()]
+    key = re.sub(r"\d+$", "", name.lower())
     said = ALIAS_SAID.get(key) or ALIAS_SAID.get(re.sub(r"^[a-z]{0,6}\d+", "", key)) or ("the enemy field commander" if key.startswith("enemy") and key.endswith("fieldco") else "the field commander" if key.endswith("fieldco") or "fieldco" in key else None)
     if said:
         return said
     name = re.sub(r"^[A-Za-z]{0,6}\d+(?=[A-Za-z])", "", name)  # an EDID-like prefix: MS11TargetLocation -> TargetLocation (Victim01 is a name and a number, not a prefix)
+    stem = re.sub(r"\d+$", "", re.sub(r"alias$", "", name.lower()))
+    if stem in TITLES:
+        return TITLES[stem]
+    if _GIVER.search(stem):
+        return ROLE_GIVER
+    if _PLACE.search(stem):
+        return ROLE_PLACE
+    if _THING.search(stem):
+        return ROLE_THING
+    if re.search(r"victim|target|enemy|owner|actor|npc|person|recipient|courier|friend|spouse|candidate|prisoner|observer|figure|boss|leader|child|brute|co$|beast|creature|lamae|jarl|mark$|vamp|kill$|isit$", stem):
+        return ROLE_PERSON
+    return ROLE_OTHER
+
+
+def legacy_alias(name):
+    """What plain_alias said before WO-180 Part 6a (the alias's own name split into words): the text the reads and ways were written from."""
+    name = name.strip().partition(".")[0]
+    key = re.sub(r"\d+$", "", name.lower())
+    said = ALIAS_SAID.get(key) or ALIAS_SAID.get(re.sub(r"^[a-z]{0,6}\d+", "", key)) or ("the enemy field commander" if key.startswith("enemy") and key.endswith("fieldco") else "the field commander" if key.endswith("fieldco") or "fieldco" in key else None)
+    if said:
+        return said
+    name = re.sub(r"^[A-Za-z]{0,6}\d+(?=[A-Za-z])", "", name)
     words = [w for w in re.findall(r"[A-Z]+(?![a-z])|[A-Z]?[a-z]+|\d+", name.replace("_", " ")) if not any(ch.isdigit() for ch in w)]
     words = [w.lower() for w in words if w.lower() not in ("alias", "ref", "quest")] or ["one"]
     return "the " + " ".join(words)
@@ -337,7 +382,7 @@ def plain_alias(name):
 _COUNTER = re.compile(r"\s*\(<Global=[^<>]+>\s*/\s*<Global=([^<>]+)>\)", re.IGNORECASE)
 
 
-def fill_text(text, fills, globals_):
+def fill_text(text, fills, globals_, alias=None):
     """
     A text with its tags filled: the quest's own fills (quests.py, from the records), a global's value by its EDID, a
     date the game sets at run time as "the set date", and an alias the records don't fill in plain words.
@@ -358,7 +403,7 @@ def fill_text(text, fills, globals_):
             value = globals_.get(name.lower())
             out = {"day": "the set day", "monthword": "the set month"}.get(part) or (f"{value:g}" if isinstance(value, (int, float)) else "the amount the game sets")
         else:
-            out = _NEUTRAL.get(part) or plain_alias(name)
+            out = _NEUTRAL.get(part) or (alias or plain_alias)(name)
         before = m.string[:m.start()].rstrip()
         if out.startswith("the ") and re.search(r"\b(the|a|an|your|my)$", before, re.IGNORECASE):
             out = out[4:]  # "Kill the <Alias=Beast>": the text has its own article
@@ -374,6 +419,93 @@ def fill_all(obj, fills, globals_):
     if isinstance(obj, list):
         return [fill_all(v, fills, globals_) for v in obj]
     return fill_text(obj, fills, globals_)
+
+
+def role_steps(rq, globals_):
+    """The quest's objectives (filled) that hold a fill plain_alias made, not one the records gave, each with the text the same objective had before Part 6a changed the fill (WO-180 Part 6a)."""
+    fills = rq.get("fills", {})
+    out = {}
+    for o in rq.get("objectives", []):
+        text = o.get("text") or ""
+        if any(m.group(1).lower() == "alias" and m.group(0) not in fills and not _NEUTRAL.get((m.group(2) or "").lower()) for m in TAG.finditer(text)):
+            out[fill_text(text, fills, globals_).strip()] = fill_text(text, fills, globals_, legacy_alias).strip()  # {as filled now: as filled before}
+    return out
+
+
+def _words(s):
+    return re.sub(r"[^a-z0-9 ]", "", s.lower())
+
+
+def _like(a, b):
+    """Whether b is a's step said another way: the same verb or most of the same words."""
+    wa, wb = _words(a).split(), _words(b).split()
+    return bool(wa and wb and (wa[0] == wb[0] or SequenceMatcher(None, _words(a), _words(b)).ratio() >= 0.5))
+
+
+def read_worded(q, role):
+    """
+    WO-180 Part 6a, rules 1 and 2: a step the records leave a blank in is the read's own words when the read has them. The read's steps
+    are the quest's objectives in the same order ("Escort the captive back home" for "Escort the victim back to the victim home"), so a
+    read with as many steps as the quest takes them by place; a read that kept the record's blank says it in its first step ("the person
+    the quest names, in the place it names"). Returns {the step as the records fill it: the read's words}.
+    """
+    read = q.get("read") or {}
+    branches = [b.get("objectives") or [] for b in read.get("steps") or [] if isinstance(b, dict)]
+    objs = [o for o in q.get("objectives") or [] if isinstance(o, str)]
+    swap = {}
+    before = set(role.values()) if isinstance(role, dict) else set()  # the text these steps had before Part 6a: a read that copied it has no words of its own
+    for i, f in enumerate(objs):
+        if f not in role or f in swap:
+            continue
+        same = next((b for b in branches if len(b) == len(objs)), None)
+        r = same[i] if same and _like(f, same[i]) else None
+        if not r or r == f:
+            others = [x for b in branches for x in b if x != f and _like(f, x) and SequenceMatcher(None, _words(f), _words(x)).ratio() >= 0.6]
+            r = max(others, key=lambda x: SequenceMatcher(None, _words(f), _words(x)).ratio(), default=None)
+        first = read.get("firstStep")
+        if (not r or r == f) and i == 0 and isinstance(first, str) and not any(p in first for p in ROLE_PHRASES) and SequenceMatcher(None, _words(f), _words(first)).ratio() >= 0.5:
+            r = first
+        # (a read that adds a note in brackets to a step the records give plain is not a better step)
+        if r and r != f and r not in before and not any(p in r for p in ROLE_PHRASES) and not ("(" in r and "(" not in f):
+            swap[f] = r
+    return swap
+
+
+def _swap(o, swap):
+    if isinstance(o, dict):
+        return {k: _swap(v, swap) for k, v in o.items()}
+    if isinstance(o, list):
+        return [_swap(v, swap) for v in o]
+    return swap.get(o, o) if isinstance(o, str) else o
+
+
+def _once(items):
+    """A list of steps without a step said twice in a row ("The victim has been dazzled" for each of three victims)."""
+    out = []
+    for x in items:
+        if not out or out[-1] != x:
+            out.append(x)
+    return out
+
+
+def _onceall(o):
+    if isinstance(o, dict):
+        return {k: (_once([_onceall(x) for x in v]) if k in ("objectives", "steps", "shared") and isinstance(v, list) else _onceall(v)) for k, v in o.items()}
+    if isinstance(o, list):
+        return [_onceall(v) for v in o]
+    return o
+
+
+def in_read_words(q, role):
+    """A quest page with its steps in the read's own words where it has them, and no step said twice in a row (WO-180 Part 6a)."""
+    swap = read_worded(q, role) if role else {}
+    # A read or a ways file written from the text as it was filled before says the old words: they get the new ones, or the read's.
+    for now, before in (role or {}).items():
+        if before != now:
+            swap.setdefault(before, swap.get(now, now))
+    # The start check's `then` stays the records' first objective: the answer key (test_quest_truth) holds it to UESP's, whatever the read says.
+    out = {k: (_swap(v, swap) if swap and k != "start" else v) for k, v in q.items()}
+    return _onceall(out)
 
 
 def load_checks(folder):
@@ -1936,11 +2068,12 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
             if (raw.get("needs") or raw.get("ways")) and not start.get("board"):
                 start["raw"] = {"needs": raw.get("needs", []), **({"ways": [{k: w[k] for k in ("how", "needs") if k in w} for w in raw["ways"]]} if raw.get("ways") else {})}
             raws[q["edid"]] = raw
+            # A record whose name is its editor id ("MyrwatchTNE_Quest") opens its line under the line's name.
+            name_raw = line["name"] if q["edid"] == line["opening"] and _RECORD_FORM.search(q["name"] or "") else JOB_NAMES.get(q["name"], q["name"])
             quests.append(fill_all(
                 {
                     "edid": q["edid"],
-                    # A record whose name is its editor id ("MyrwatchTNE_Quest") opens its line under the line's name.
-                    "name": line["name"] if q["edid"] == line["opening"] and _RECORD_FORM.search(q["name"] or "") else JOB_NAMES.get(q["name"], q["name"]),
+                    "name": name_raw,
                     "type": q.get("type"),
                     # The mod the quest itself is from (WO-154 Part 1b), not its line's: a base-game quest in a line mods add to.
                     "mod": quest_mod(q),
@@ -1957,6 +2090,8 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
                     **({"calledBy": called[q["edid"]]["names"]} if isinstance(called.get(q["edid"]), dict) else {}),
                 }, q.get("fills", {}), globals_)
             )
+            # A quest's name is its address and its title in the game's own list ("Contract: Kill the Target"): it keeps the words it had (WO-180 Part 6a).
+            quests[-1]["name"] = fill_text(name_raw, q.get("fills", {}), globals_, legacy_alias)
         # G5 (WO-138): handlers and helpers with no UESP page aren't quests a player starts: off the page, and the quest log
         # counts them as background. A line's radiant templates named by alias text (Bob, 23 Oct 08:30: the Civil War's fort
         # sieges, city battles, rescues) are one class under the line, as the boards are, and off the per-quest list too.

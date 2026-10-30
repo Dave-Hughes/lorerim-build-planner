@@ -9,7 +9,7 @@ import { PlaceMapBand } from "./place-map";
 import { linkable } from "@/lib/pages/names";
 import { personHref } from "@/lib/people/data";
 import { placeHref, placeHrefOf, placeLabel, placeType, rangeOf, type Place } from "@/lib/places/data";
-import { closeBy, peopleAt, shopsOf, type PlacePerson } from "@/lib/places/people";
+import { closeBy, innsOf, peopleAt, shopsOf, type PlacePerson, type Shop } from "@/lib/places/people";
 import type { PlaceKind } from "@/lib/places/kind";
 import { saidAbout } from "@/lib/places/said";
 import { questHref } from "@/lib/quests/slugs";
@@ -96,6 +96,8 @@ function Person({ p }: { p: PlacePerson }) {
   );
 }
 
+const NUMBER_WORD: Record<number, string> = { 2: "two", 3: "three", 4: "four", 5: "five", 6: "six" };
+
 const list = (xs: string[]) => (xs.length <= 1 ? (xs[0] ?? "") : `${xs.slice(0, -1).join(", ")} and ${xs.at(-1)}`);
 
 /**
@@ -110,7 +112,9 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
   const everyone = houses.flatMap((h) => h.people);
   const keepers = everyone.filter((p) => p.keeper).sort((a, b) => b.keeperRank - a.keeperRank);
   const shops = shopsOf(houses);
-  const inns = houses.filter((h) => h.people.some((p) => p.keeper));
+  const inns = innsOf(houses);
+  // A town has beds when one of its inns does; an inn, temple or hall has them when its keeper does.
+  const beds = inside ? keepers.length : inns.length;
   const trainers = everyone.filter((p) => p.trains);
   const followers = everyone.filter((p) => p.follower);
   const names = linkable();
@@ -133,10 +137,10 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
   const shrines = worth?.shrines ?? [];
 
   // The page's own words: a summary from what is known.
-  const typeWords = placeType(place.type).toLowerCase();
+  const typeWords = placeType(place.type).toLowerCase().replace(/^stables$/, "stable");
   const bits = [
     shops.length ? list([...new Set(shops.map((s) => s.kind).filter((x) => x !== "goods"))].slice(0, 2)) : "",
-    keepers.length ? (inside ? "rooms to rent" : "an inn") : "",
+    beds ? (inside ? "rooms to rent" : inns.length > 1 ? `${NUMBER_WORD[inns.length] ?? inns.length} inns` : "an inn") : "",
     trainers.length ? `${list([...new Set(trainers.map((x) => x.trains!.toLowerCase()))])} trainers` : "",
   ].filter(Boolean);
   const pitch = [
@@ -156,6 +160,19 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
       {sub ? <span className={l.s}>{sub}</span> : null}
     </div>
   );
+  const shopLine = (s: Shop) => (
+    <span key={s.name} style={{ display: "block" }}>
+      {s.noun ? (
+        <>
+          <Link href={s.keeper.href}>{s.keeper.name}</Link>&apos;s {s.noun}: {s.kind}
+        </>
+      ) : (
+        <>
+          {s.href ? <Link href={s.href}>{s.name}</Link> : s.name}: <Link href={s.keeper.href}>{s.keeper.name}</Link>, {s.kind}
+        </>
+      )}
+    </span>
+  );
   const nameLinks = (ps: PlacePerson[], max = 3) =>
     ps.slice(0, max).map((p, i) => (
       <span key={p.name}>
@@ -166,23 +183,24 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
   const cells: ReactNode[] = [
     cell("where", "quest-travel", l.cTeal, "Where", inside ? (place.inTown ?? place.hold ?? "In a town") : place.hold ? `${holdWords(place.hold)}` : placeType(place.type), inside ? (upHref && place.inTown ? <PreviewLink href={upHref}>{`In ${place.inTown}`}</PreviewLink> : place.hold ? `${holdWords(place.hold)}` : null) : near ? cap(near) : null),
     ...(total ? [cell("people", "quest-people", l.cOrange, "People", String(total), houses.length === 1 ? undefined : `in ${houses.filter((h) => h.name !== place.name).length || houses.length} homes and buildings`)] : []),
-    ...(shops.length || keepers.length
+    ...(shops.length || beds
       ? [
           cell(
             "shops",
             "quest-rewards",
             l.cGold,
             "Shops and beds",
-            cap(list([shops.length ? `${shops.length} ${shops.length === 1 ? "shop" : "shops"}` : "", keepers.length ? (inns.length > 1 ? `${inns.length} inns with rooms` : "an inn with rooms") : ""].filter(Boolean))),
-            // One line per shop: its name, its keeper and what it sells; then the inn and who keeps it.
+            cap(list([shops.length ? `${shops.length} ${shops.length === 1 ? "shop" : "shops"}` : "", beds ? (inns.length > 1 ? `${inns.length} inns with rooms` : "an inn with rooms") : ""].filter(Boolean))),
+            // One line per shop: its name, its keeper and what it sells (the rest open under "and N more"); then the inns and who keeps each.
             <>
-              {shops.slice(0, 6).map((s) => (
-                <span key={s.name} style={{ display: "block" }}>
-                  {s.href ? <Link href={s.href}>{s.name}</Link> : s.name}: <Link href={s.keeper.href}>{s.keeper.name}</Link>, {s.kind}
-                </span>
-              ))}
-              {shops.length > 6 && <span style={{ display: "block" }}>and {shops.length - 6} more</span>}
-              {inns.slice(0, 2).map((h) => {
+              {shops.slice(0, 6).map((s) => shopLine(s))}
+              {shops.length > 6 && (
+                <details>
+                  <summary>and {shops.length - 6} more</summary>
+                  {shops.slice(6).map((s) => shopLine(s))}
+                </details>
+              )}
+              {inns.map((h) => {
                 const keeper = h.people.find((p) => p.keeper)!;
                 return (
                   <span key={h.name} style={{ display: "block" }}>
@@ -205,7 +223,7 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
             list([...new Set(trainers.map((x) => x.trains!))]) || "Followers",
             // Who does what: "Faendal trains Marksman" and, apart, "Followers: Faendal, Sven" (WO-177: a list of names under a skill read as all training it).
             <>
-              {trainers.slice(0, 3).map((x) => (
+              {trainers.map((x) => (
                 <span key={x.name} style={{ display: "block" }}>
                   <Link href={x.href}>{x.name}</Link> trains {x.trains}.
                 </span>

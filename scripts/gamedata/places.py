@@ -248,6 +248,8 @@ BIG_CITIES = {"Whiterun", "Windhelm", "Riften", "Solitude", "Markarth"}  # citie
 # Bob's rulings (WO-180 Part 4): these stand outside Whiterun's walls. The door search finds more that open on Tamriel (listed in the report as candidates, not moved:
 # a city mod can open a house in the walls onto Tamriel), so a building moves only when it is named here and its door says so too.
 OUTSIDE_RULED = {"Honningbrew Meadery", "Whiterun Stables"}
+# Bob's ruling (WO-180 Part 6a): the record calls Honningbrew Meadery a house; it is a meadery.
+TYPE_RULED = {"Honningbrew Meadery": "Meadery"}
 OUTSIDE_CANDIDATES = []  # (id, name, the city its record sits under): found by the door search, not ruled; for the report
 FARMS_IN = []  # (name, town): WO-171, farms that stay in their village (no exterior cells of their own); for the report
 DOOR_NAMED = []  # (the record's name, the name on the door, kind): WO-171; for the report
@@ -1135,6 +1137,8 @@ def build(version):
     for p in places.values():
         if p["name"] in CASTLE_NAMES:
             p["type"] = "Castle"  # WO-178: see CASTLE_NAMES
+        if p["name"] in TYPE_RULED:
+            p["type"] = TYPE_RULED[p["name"]]  # WO-180 Part 6a
     # WO-178: the Soul Cairn is another plane. Its door out is Castle Volkihar's, so the door search put it in the Sea of Ghosts on the map.
     for p in places.values():
         if p["name"] in OTHER_PLANES and p.get("pos"):

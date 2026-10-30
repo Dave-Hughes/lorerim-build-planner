@@ -185,11 +185,76 @@ class TagsTest(unittest.TestCase):
         self.assertEqual(qp.fill_text("<alias=item>", {}, g), "The item")
         self.assertEqual(qp.fill_text("Kill the <Alias=Beast>", {}, g), "Kill the beast")
         self.assertEqual(qp.fill_text("Deliver <Alias=Item by noon", {}, g), "Deliver the item by noon")  # never closed in the record
-        self.assertEqual(qp.fill_text("Find <Alias=MS11TargetLocation>", {}, g), "Find the target location")
+        self.assertEqual(qp.fill_text("Find <Alias=MS11TargetLocation>", {}, g), "Find the place the job names")
 
     def test_every_string_in_a_quest(self):
         out = qp.fill_all({"objectives": ["Find <Alias=Item>"], "start": {"needs": ["Pay <Global=Cost> gold"]}, "xp": 100}, {}, {"cost": 10})
         self.assertEqual(out, {"objectives": ["Find the item"], "start": {"needs": ["Pay 10 gold"]}, "xp": 100})
+
+
+class RoleWordsTest(unittest.TestCase):
+    """WO-180 Part 6a: a step never says an alias by its editor name split into words; the read's own words come first."""
+
+    def test_a_role_is_a_person_a_place_or_a_thing_the_job_names(self):
+        g = {}
+        say = lambda name: qp.fill_text(f"<Alias={name}>", {}, g)  # noqa: E731
+        self.assertEqual(say("Victim01"), "The person the job names")
+        self.assertEqual(say("TargetLocation"), "The place the job names")
+        self.assertEqual(say("BountyLocation"), "The place the job names")
+        self.assertEqual(say("QuestGiver"), "The person who gave you the job")
+        self.assertEqual(say("Questgiver"), "The person who gave you the job")
+        self.assertEqual(say("Actor1"), "The person the job names")
+        self.assertEqual(say("QuestItem"), "The item")
+        self.assertEqual(say("Jarl"), "The jarl")  # the game's own word for who it is
+        self.assertEqual(say("Enemy.PronounObj"), "Them")
+
+    def test_no_alias_comes_out_as_its_own_name_split_up(self):
+        import json
+        import re
+
+        root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        with open(os.path.join(root, "gamedata", "5.0.4.8", "quests_raw.json"), encoding="utf-8") as f:
+            quests = json.load(f)["quests"]
+        names = {m.group(3).strip() for q in quests for o in q.get("objectives", []) for m in qp.TAG.finditer(o.get("text") or "") if m.group(1).lower() == "alias"}
+        bad = sorted(n for n in names if re.search(r"\b(?:location|obj|to get|is it|kill|alias)\b", qp.plain_alias(n)))
+        self.assertEqual(bad, [])
+
+    def test_a_step_is_the_reads_words_when_the_read_has_them(self):
+        # Rescue Mission: the read says "captive" and "Return to Vilkas"; the records' blanks said victim and questgiver.
+        rec = ["Rescue the person the job names from the place the job names", "Talk to the person the job names", "Return to the person who gave you the job"]
+        q = {"edid": "CR08", "objectives": rec, "steps": [{"stage": 10 * (i + 1), "text": t} for i, t in enumerate(rec)],
+             "start": {"then": rec[0]},
+             "read": {"steps": [{"branch": "main", "objectives": ["Rescue the captive from the lair", "Talk to the captive", "Return to Vilkas"]}],
+                      "ways": {"ways": [{"title": "Keep them alive", "steps": list(rec)}]}}}
+        out = qp.in_read_words(q, {t: t for t in rec})
+        self.assertEqual(out["objectives"], ["Rescue the captive from the lair", "Talk to the captive", "Return to Vilkas"])
+        self.assertEqual([s["text"] for s in out["steps"]], out["objectives"])
+        self.assertEqual(out["read"]["ways"]["ways"][0]["steps"], out["objectives"])
+        self.assertEqual(out["start"]["then"], rec[0])  # the answer key holds the start's first step to the records
+
+    def test_a_blank_the_read_kept_takes_the_first_step_the_read_gives(self):
+        # Maggot: the read's steps are the records' own, but its first step says who and where in words.
+        rec = ["Take back your name from the person the job names in the place the job names"]
+        q = {"edid": "zzzCHqSAExile", "objectives": list(rec), "steps": [{"stage": 10, "text": rec[0]}],
+             "read": {"firstStep": "Take back your name from the person the quest names, in the place it names",
+                      "steps": [{"branch": "main", "objectives": list(rec)}]}}
+        out = qp.in_read_words(q, {rec[0]: rec[0]})
+        self.assertEqual(out["objectives"], ["Take back your name from the person the quest names, in the place it names"])
+
+    def test_a_step_said_twice_in_a_row_is_one(self):
+        same = "The person the job names has been dazzled by the Radiance of Life"
+        q = {"edid": "x", "objectives": ["Take it back", same, same, same], "steps": [{"stage": 10, "text": t} for t in ("Take it back", same, same, same)],
+             "read": {"steps": [{"branch": "main", "objectives": ["Take it back", same, same, same]}]}}
+        out = qp.in_read_words(q, {})
+        self.assertEqual(out["objectives"], ["Take it back", same])
+        self.assertEqual(len(out["steps"]), 2)
+        self.assertEqual(out["read"]["steps"][0]["objectives"], ["Take it back", same])
+
+    def test_a_read_written_from_the_old_fill_gets_the_new_words(self):
+        q = {"edid": "x", "objectives": ["Kill the person the job names"], "steps": [{"stage": 1, "text": "Kill the person the job names"}],
+             "read": {"steps": [{"branch": "main", "objectives": ["Kill the target"]}]}}
+        out = qp.in_read_words(q, {"Kill the person the job names": "Kill the target"})
+        self.assertEqual(out["read"]["steps"][0]["objectives"], ["Kill the person the job names"])
 
 
 class StartTest(unittest.TestCase):

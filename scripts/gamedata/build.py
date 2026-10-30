@@ -526,6 +526,15 @@ def main():
         unmapped = set()
         changed = {q["edid"]: changed_by_of(q, plugin_map, quest_mod(q), source_name, unmapped) for q in quests_raw}
         tied, read_lines, no_line = attach_extras(pages, ways, line_reads, changed)
+        # WO-180 Part 6a: a step the records leave a blank in says what the read says (the quest's steps, its ways, its start), not a role word.
+        from quest_pages import in_read_words, role_steps
+
+        raw_of = {q["edid"]: q for q in quests_raw}
+        for l in pages:
+            for q in l["quests"]:
+                new = in_read_words(q, role_steps(raw_of.get(q["edid"], {}), raw_file.get("globals", {})))
+                q.clear()
+                q.update(new)
         print(f"{tied} quests with their ways, {read_lines} lines with a read" + (f"; {len(no_line)} line reads match no line: {', '.join(no_line[:8])}" if no_line else ""))
         if unmapped:
             print(f"note: {len(unmapped)} plugins that change quests aren't in plugins_raw.json; named from their file, unlinked (for the PC): {', '.join(sorted(unmapped)[:12])}{' ...' if len(unmapped) > 12 else ''}")

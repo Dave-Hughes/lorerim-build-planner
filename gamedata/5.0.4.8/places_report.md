@@ -13,7 +13,7 @@ All nine found with an exterior position.
 
 | Type | Places | With a pointer | With a quest |
 |---|---|---|---|
-| House | 180 | 9 | 24 |
+| House | 179 | 8 | 23 |
 | Landmark | 154 | 43 | 79 |
 | Cave | 107 | 60 | 48 |
 | NordicRuin | 54 | 42 | 34 |
@@ -52,6 +52,7 @@ All nine found with an exterior position.
 | Lighthouse | 4 | 2 | 1 |
 | Settlement | 4 | 4 | 3 |
 | Mill | 4 | 3 | 0 |
+| Meadery | 1 | 1 | 1 |
 
 ## By hold
 
@@ -98,7 +99,7 @@ All nine found with an exterior position.
 
 | Kind | Places | Positioned | In a town | Not placed |
 |---|---|---|---|---|
-| House | 180 | 25 | 155 | 0 |
+| House | 179 | 24 | 155 | 0 |
 | Landmark | 154 | 138 | 10 | 6 |
 | Cave | 107 | 105 | 0 | 2 |
 | NordicRuin | 54 | 53 | 0 | 1 |
@@ -137,6 +138,7 @@ All nine found with an exterior position.
 | Lighthouse | 4 | 4 | 0 | 0 |
 | Settlement | 4 | 4 | 0 | 0 |
 | Mill | 4 | 4 | 0 | 0 |
+| Meadery | 1 | 1 | 0 | 0 |
 
 ### Not placed, and why
 
@@ -173,7 +175,7 @@ Every location a named quest points at (a location alias, or the cell a forced r
 
 | Kind | Added | In a town | On a map |
 |---|---|---|---|
-| House | 180 | 155 | 25 |
+| House | 179 | 155 | 24 |
 | Landmark | 83 | 10 | 72 |
 | Store | 51 | 43 | 8 |
 | Farm | 24 | 8 | 16 |
@@ -201,6 +203,7 @@ Every location a named quest points at (a location alias, or the cell a forced r
 | City | 1 | 0 | 1 |
 | DaedricShrine | 1 | 0 | 1 |
 | Lighthouse | 1 | 0 | 1 |
+| Meadery | 1 | 0 | 1 |
 | Guild | 1 | 1 | 0 |
 
 | Plugin | Added |
@@ -261,6 +264,7 @@ The places that are not a house, shop, barracks, jail or building (those are onl
 | Dark Brotherhood Sanctuary | Town | Tamriel | GORE.esp | BCSLL Vendor Quest, Death Incarnate, Destroy the Dark Brotherhood! |
 | Dayspring Canyon | Landmark | Tamriel | GORE.esp | Dawnguard, Destroying the Dawnguard |
 | Esbern's Vault | Landmark | Riften | GORE.esp | A Cornered Rat, Champion's Choice, MQ Reserved Locations |
+| Honningbrew Meadery | Meadery | Tamriel | GORE.esp | Dampened Spirits |
 | Thalmor Embassy | Landmark | Tamriel | GORE.esp | Diplomatic Immunity, MQ201DossiersQuest, No Stone Unturned |
 | Coldharbour | Landmark | mannyGFDesert | Gray Fox Cowl.esm | Memories of the Umbranox |
 | Fortress of Ben Erai | Fort | Ben Erai | Gray Fox Cowl.esm | Dragonguard Archives: Book 4 |
