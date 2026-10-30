@@ -5316,7 +5316,7 @@ Unknown is fine when the page says so. Wrong is not.
 ---
 
 ## WO-182  Launch without playthroughs (Mac, 30 Oct 2026)
-Status: for Bob (one box for Dave: the Vercel variable)
+Status: queued (Mac: Part 5)
 
 **Why.** Dave, 30 Oct: "Lets look at the entire site and remove everything related to playthroughs; it's just still kind of not working." The launch is four things:
 - quests you can trust;
@@ -5386,6 +5386,26 @@ Playthroughs come back later, if at all, so this order **turns them off, not out
   - a quest page.
 
   Then `for Bob`. Bob sends the reviewer over the whole site, then Dave tests.
+
+### Part 5. The cold review (Bob's reviewer, 30 Oct, 14:00)
+The rest holds:
+- every playthrough address answers 404;
+- the run-made character is on no list;
+- builds show the build only;
+- home, `/new`, the menus, the tour, `/changes` and the map have no trace;
+- the door lists 25 tools and no playthrough tool;
+- `get_style_guide` has no playthrough rules.
+
+Still to fix:
+- [ ] **The door still mentions acts.**
+  - `suggest_places`' `where` input says "Instead of a stored act…" (`playthrough-tools.ts:238`, outside the `runs ?` switch).
+  - With no arguments it answers "…or a playthrough and an act." (`playthroughs.ts:631`).
+  - With the flag off, neither mentions acts or playthroughs.
+  - Add "act" (as a word, outside a quest's own name) and "playthrough" to the e2e's door word check.
+- [ ] `/b/<id>/edit?tab=playthrough` redirects to `/b/<id>/edit/play`, which then shows 404, for any id: with the flag off it opens the editor's Build tab.
+- [ ] The playthrough addresses' 404 says "That build doesn't exist, or its author keeps it private." even on `/playthroughs`, and its tab title is "LoreRim Planner". Use the site's own not-found page and title.
+- [ ] **`npm test` is red**: `contract.test.ts` "search_facts finds a sample of every kind…" takes 9.1 s against the 5 s limit, alone too. Make the search fast enough, or give that test its own timeout with the reason in a comment. No order is done on a red run.
+- [ ] Dave's box (the Vercel variable) stays optional: the code's default is off.
 
 ### Jeff's notes (Mac, 30 Oct)
 
@@ -5619,7 +5639,7 @@ Mac's notes (30 Oct). Everything is built and checked except Kyria's text on sta
 **Tests that went:** the Story's (wo79 author and reader, wo114's first chapter, wo116's reader, Read Act I, markers and previous/next, wo117's Story tab and chapters, wo118's reader and image position, wo124's story card, wo142's chapter paragraphs, wo111's reader), and the ticking ones that moved to the tracking server. The "About them" display test became "the page has none".
 
 ## WO-180  Junk text out of the pages, and the last map faults (Mac and PC, 28 Oct 2026)
-Status: for Bob (Part 6b)
+Status: queued (PC: Part 7a; Mac: Part 7b)
 
 **Why.** The fourth cold review (Bob's reviewer, 3,721 pages crawled, 51 walked at both widths) passed WO-176 to WO-178, and named what would still hit Dave in his first ten minutes: old text from the game files that was never cleaned. Bob confirmed the holes and Web Mother by hand. No order is done until a page-text test fails on each of these.
 ### Part 1. Quotes (PC writes the cleaner; Mac's test fails on any page)
@@ -5857,6 +5877,54 @@ Jeff's notes on Part 6a (PC, 30 Oct):
 - **The rest of Whiterun:** the lede says "two inns" (an inn is a building the places call an Inn with a keeper, not any keeper: Wilhelm and the Iron Halls' keeper are not inns); the Trainers cell lists every trainer, so four skills have four lines; the "Sells" tag is for a shopkeeper only (Aela, Farkas, Vilkas, Lydia, Lucia and Mikael lose it; `wo180-6a.test.ts` checks the six by name); Honningbrew Meadery is type "Meadery" (`TYPE_RULED` in `places.py`, a ruling; the Inns and shops group and Close by take it); the page says "A stable", not "A stables".
 - **Not in this part:** the 55 outside-wall candidates, the Castle Volkihar pin and the four map rules are still open for Bob. The college's five spell sellers each show as "<name>'s spells" in Winterhold; say if they should be one line.
 - **Generated files:** `quests.json` (strings only: steps, objectives, ways and reads; no key added or dropped), `places_raw.json` and `places.json` (Honningbrew's type). The PlacePerson and Shop types in `places/people.ts` gained fields (`shopRank`, `stall`, `workplace`, `noun`); they are not generated. Checks: python unittest (477), typecheck, lint (no new warning), `npm test` (829 passed, 7 expected fail). Nothing was viewed in a browser, and e2e was not run on the PC: the cell's `<details>` and the two-inns lede are Mac's to see in Part 6b's screenshots.
+
+### Part 7. The fourth check (Bob's reviewer, 30 Oct, 14:00; Bob confirmed A False Front, Blood on the Ice and Solitude on staging)
+These hold now:
+- the steps on every named page;
+- "Where it takes you" capitalised on all 3,521 pages;
+- the Golden Claw and Forbidden Legend at 390;
+- no name over another on Homes;
+- Whiterun's trainers, inns, Sells tags, the Meadery and "A stable";
+- every small item.
+
+Mathies shows twice on Ill Met By Moonlight's People: once unlinked ("Mathies and Indara Caerellia, the dead girl's parents"), once linked.
+
+**Part 7a (PC)**
+- [ ] **A fill that ignores the read, or breaks the sentence:**
+  - A False Front: "Find the person the job names", "Retrieve the person the job names's package". The read names the courier.
+  - Rare Gifts: "Bring one the item the job names to Torbjorn".
+  - Blood on the Ice, twice, and The Frozen Heart: "the person the job names". These are story quests with named people.
+
+  The fallback phrase is only for a radiant job whose target really is picked when it's given. A story quest always has its person: from the alias's forced or unique reference, or the read. Possessives and articles read right ("the courier's package"; "Bring a … to Torbjorn").
+- [ ] **Role words in the People sections**:
+  - "the quest giver": Hunting the Monster, Cleansing Light, Preemptive Strike, Hide and Seek;
+  - "the target": The Hunt;
+  - "the captive": Rescue Mission;
+  - "the troublemaker": Hired Muscle.
+
+  A person filled at run time is said as what the job picks ("A Dawnguard member who gives out jobs", "the person you're sent to kill"), in a sentence, with a capital. A role name never stands as a person's name. Merge Mathies's two entries.
+- [ ] **Shops and beds, the fourth time: change the source.** Today the shop is guessed from the keeper's home cell, so:
+  - a home stands in for the shop (Morthal's "Falion's House"; Solitude's Bits and Pieces is Beirand's bed, while Sayma keeps it);
+  - the wrong town appears (Winterhold's Frida, Windhelm's Iron Halls);
+  - shops are missed: Sayma, Jala, Addvar, Fralia, Grelka, Niranye, Aval Atheron, Hillevi, Kerah, Ghorza, Bothela;
+  - the wrong kind is shown (Audmund's Axes "general goods", Endon "blacksmith" where he is a silversmith, Anton Virane is the castle cook, The Hag's Cure is Bothela's).
+
+  The fix:
+  - The shop is the vendor faction's own data: its vendor location, chest and hours, and its members.
+  - The kind is what its buy and sell lists take, in a word players use.
+  - A stall is "<keeper>'s stall in the market".
+  - Check 20 shops across five cities against UESP before pushing, and list them in the notes with the source for each.
+
+**Part 7b (Mac)**
+- [ ] **Whiterun has no label on `/map?types=homes`** at the opening view or any zoom-out, at both widths; two "2" badges sit where it should be. A city's own label wins over a cluster badge. Fix the badge sitting on a badge after zoom-outs, and Anga's Mill's pin on "Windhelm, 24" after one zoom-in.
+- [ ] **Capitals everywhere a phrase stands alone** (Bob's call: the sub-lines too):
+  - the How it starts headline (28 pages, for example Hunting the Monster);
+  - the How it starts place line (about 330, for example The Golden Claw's "the Riverwood Trader, Riverwood").
+
+  The test checks every band cell's first letter.
+- [ ] **Pronouns in Not sure yet**: "Where they are through the day…" and "How to recruit or marry them" on 1,425 pages that say he or she. Use the person's pronoun.
+- [ ] **The Dwemer Specialist** numbers "Then as the main branch" as a step. A branch joiner is never a step. Untick the box until it's right; coordinate with the PC if it's in the data.
+- [ ] Screenshots at 1440 and 390, then `for Bob`.
 
 Jeff's notes on WO-180 (PC, 28 Oct):
 - **Quotes** (`places.py`, `build.py`): one cleaner, `game_text()`, runs on a book's whole text and on every dialogue line before a quote is cut: `<Alias=Player>` is "you"; any other `<Alias…>`, `<Global…>` or `<Token…>` leaves a hole mark and a quote with one in what is cut around it is left out (the next mention of the place in that book is tried; the Lakeview and Windstad charters have no mention without a hole, so they are not quoted); every other tag (`<font …>`, `<img …>`) and `[pagebreak]` goes before the cut, so no `size="18">` stub is left. A quote names a quest only when it is a quest on the Quests pages by that name; the game's own dialogue quest ("Riften Dialogue") moves to a new field, `dialogue`, which no page shows. Why keep it: the assistant's town gossip (`suggest.ts`, WO-151) reads it to say which town a line with no speaker is about (`wo151.test.ts` caught the first try, which dropped it). A dialogue line with no speaker stays in the data for the same reason; `saidAbout()` leaves it off the pages (one line in `said.ts`: "no speaker, no quote"). 4,761 pointers became 4,741: twenty had a hole in them and went (Lakeview and Windstad Manors no longer quote their charters; Hendraheim, Rorikstead and the rest have none left with markup). The Mac's page-text test is mine too: `wo180.test.ts` runs `saidAbout()` on every place and fails on markup, a hole, a speakerless line or a quest no player has.
