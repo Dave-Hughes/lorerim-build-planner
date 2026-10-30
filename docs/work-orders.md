@@ -5133,7 +5133,7 @@ Additive migrations only.
 ---
 
 ## WO-183  Data you can trust: fix the causes the accuracy audit found (PC, then Mac, 30 Oct 2026)
-Status: queued (PC: Part 6, Bob's rulings; then Bob runs the fresh sample)
+Status: building (PC: Part 6, Bob's rulings; then Bob runs the fresh sample)
 
 **Why.** Dave, 30 Oct: "With us cutting playthroughs we're going to want to double down on quests, locations, NPCs… make sure the pages are BULLET proof, the data must be as solid as we can get it."
 
