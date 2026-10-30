@@ -53,6 +53,11 @@ REPO = os.path.dirname(os.path.dirname(HERE))
 ESSENTIAL, PROTECTED = 0x2, 0x800
 TRAINER_EDID = re.compile(r"^Trainer([A-Za-z]+?)(Novice|Apprentice|Journeyman|Expert|Master)$")
 TRAINER_CAP = {"Novice": 25, "Apprentice": 50, "Journeyman": 75, "Expert": 100, "Master": None}
+# WO-183 Part 1: a CLAS record's DATA says what the class teaches (byte 4: the skill, in the game's own order) and up to what level (byte 5). This load order's trainers are
+# Journeyman 50, Expert 75 and Master 90 (the vanilla convention above is not this list's); a class that teaches nothing has 0 or the default 100.
+SKILL_AV = ["OneHanded", "TwoHanded", "Marksman", "Block", "Smithing", "HeavyArmor", "LightArmor", "Pickpocket", "Lockpick", "Sneak", "Alchemy",
+            "Speechcraft", "Alteration", "Conjuration", "Destruction", "Illusion", "Restoration", "Enchanting"]
+TIER_OF_CAP = {50: "Journeyman", 75: "Expert", 90: "Master"}
 
 
 def form_id(key):
@@ -119,7 +124,8 @@ def read_classes(lo, pp, wanted):
                 continue
             subs = subrecs(d)
             edid = next((v.rstrip(b"\0").decode("latin1") for s, v in subs if s == "EDID"), "")
-            out[key] = edid
+            data = next((v for s, v in subs if s == "DATA" and len(v) >= 6), b"")
+            out[key] = {"edid": edid, "teaches": data[4] if data else 0, "max": data[5] if data else 0}  # the winning copy: a later plugin (Requiem's trainer classes) overrides
     return out
 
 
@@ -341,12 +347,17 @@ def build(version):
     classes = read_classes(lo, pp, {f["class"] for f in facts.values() if f.get("class")})
     fact_vendors = read_faction_vendors(lo, pp, {ff["faction"] for f in facts.values() for ff in f.get("factions", [])})
 
-    def trainer_of(class_key):
-        edid = classes.get(class_key)
-        m = edid and TRAINER_EDID.match(edid)
-        if not m:
+    def trainer_of(class_key, factions=()):
+        """The skill a person trains and up to what level, from their class record's own DATA (a Requiem class, "REQ_Class_Trainer_Aela", is no pattern)."""
+        c = classes.get(class_key)
+        if not c:
             return None
-        return {"skill": m.group(1), "tier": m.group(2), "levelCap": TRAINER_CAP[m.group(2)]}
+        cap, skill = c["max"], SKILL_AV[c["teaches"]] if c["teaches"] < len(SKILL_AV) else None
+        # A class that teaches is named for it, or its person is in the trainers' faction; a combat class with leftover bytes is neither.
+        if cap in TIER_OF_CAP and skill and ("Trainer" in c["edid"] or any(x and x.startswith("JobTrainer") for x in factions)):
+            return {"skill": skill, "tier": TIER_OF_CAP[cap], "levelCap": cap}
+        m = TRAINER_EDID.match(c["edid"])
+        return {"skill": m.group(1), "tier": m.group(2), "levelCap": TRAINER_CAP[m.group(2)]} if m else None
 
     def vendor_of(faction_keys):
         for fk in faction_keys:
@@ -374,7 +385,7 @@ def build(version):
                          for pk in f.get("pkids", []) if pk in packs],
             "factions": [{"faction": ff["faction"], "edid": fact.get(ff["faction"]), "rank": ff["rank"]} for ff in f.get("factions", [])],
             "class": f.get("class"),
-            "trainer": trainer_of(f.get("class")),
+            "trainer": trainer_of(f.get("class"), faction_edids),
             "vendor": vendor_of(faction_keys),
             "outfit": f.get("outfit"),
             "sleepOutfit": f.get("sleepOutfit"),

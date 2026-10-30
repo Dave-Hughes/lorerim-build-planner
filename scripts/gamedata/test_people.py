@@ -106,7 +106,8 @@ class PeopleReads(unittest.TestCase):
             self.skipTest("people.json not built")
         rows = json.load(open(path, encoding="utf-8"))["people"]
         read = [r for r in rows if r.get("read")]
-        self.assertGreaterEqual(len(read), 553)
+        # 553 reads; the one person two records made (Alara and High Priestess Alara, WO-183 Part 1) has one page and keeps the one read.
+        self.assertGreaterEqual(len(read), 552)
         jaree = next(r for r in rows if r.get("name") == "Jaree-Ra")["read"]
         self.assertIn("Winking Skeever", jaree["firstMeet"])
         self.assertNotIn("docks", json.dumps(jaree["day"]))

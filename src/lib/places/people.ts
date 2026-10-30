@@ -112,7 +112,7 @@ function personOf(p: Person): PlacePerson {
   const work = shopkeeper ? workOf(p) : null;
   const shopName = shopkeeper && read?.sells ? shopNameOf(read.sells) : null;
   const sells = shopkeeper ? kindOf(shopName ?? p.cell, read?.sells, read?.role, SHOP[p.role ?? ""]) : "";
-  const readKeeper = !!read && /\binnkeeper\b|rents rooms/i.test(read.role ?? "");
+  const readKeeper = !!read && /\binnkeeper\b|rents rooms/i.test(read.role ?? "") && !/stand-in|\bbard\b|barmaid|\bserver\b/i.test(read.role ?? "");
   const keeper = !!p.innkeeper || readKeeper;
   const trainsSkill = read ? (read.trains ? (p.trainer?.skill ?? read.trains.split(/[\s(,]/)[0]) : null) : (p.trainer?.skill ?? null);
   const gives = questsOf(p.name).filter((q) => q.gives).length;

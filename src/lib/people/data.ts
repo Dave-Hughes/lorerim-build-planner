@@ -72,6 +72,8 @@ export interface PersonRow {
   cell?: string;
   inTown?: string;
   role?: string;
+  /** A generic or leveled actor, not a person: no page (WO-183 Part 1). */
+  generic?: true;
   /** What they are to a player, from the records' own fields (the WO-156 dump, joined in build.py): essential, a follower, a spouse, a merchant, a trainer. */
   essential?: true;
   follower?: true;
@@ -156,7 +158,9 @@ export function peopleData() {
     // Not built yet.
   }
   const grouped = new Map<string, PersonRow[]>();
-  for (const r of rows) if (r.name?.trim()) grouped.set(nameKey(r.name), [...(grouped.get(nameKey(r.name)) ?? []), r]);
+  // A generic or leveled actor (Mercenary, Goblin, Frost Troll) is no person (WO-183 Part 1): no page, no search result, no address.
+  // (A name some of whose records are generic and some a person's keeps only the person's.)
+  for (const r of rows) if (r.name?.trim() && !r.generic) grouped.set(nameKey(r.name), [...(grouped.get(nameKey(r.name)) ?? []), r]);
   const all: Person[] = [];
   const bySlug = new Map<string, Person>();
   const byName = new Map<string, Person>();

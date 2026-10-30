@@ -39,9 +39,20 @@ from read_clean import clean_read  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
+# WO-183 Part 1: a role is what a person is to a player. A farmer, a miner, a lumberjack and a hunter are what the AI has them do at work, kept on many NPCs for their
+# packages (Neloth carries JobFarmer for his mushrooms), so they are no role and no badge.
 JOBS = {"JobInnkeeper", "JobPriest", "JobJarl", "JobSteward", "JobHousecarl", "JobMerchant", "JobBlacksmith",
         "JobApothecary", "JobCourtWizard", "JobOrcChief", "JobOrcWiseWoman", "JobHostler", "JobSpellVendor",
-        "JobFletcher", "JobMiner", "JobMinstrel", "JobHireling", "JobHunter", "JobLumberjack", "JobFarmer"}
+        "JobFletcher", "JobMinstrel", "JobHireling"}
+# A developer's cell, never a place a player can go (the audit found DLC2 WarehouseSpiders): a person placed only there has no place to find them.
+TEST_CELL = re.compile(r"^(?:Marker Storage Unit|Actor Room|Quick Test Cell|You're not supposed to be here|Do Not Delete.*|DLC\d+ Warehouse.*|Warehouse (?:Carry|Prefabs|Ambushes|Traps|Basement)|Test\w*|SBSoapContainerCell|.*Holding Cell)$", re.I)
+# A race whose only sex is female by the lore, though the record's flag is the default.
+RACE_SEX = {"Hagraven": "female"}
+# A record for the old-age models: the person's own race is not in this record, so it is not said.
+RACE_DROP = {"Elder"}
+MERGED = []  # (the copy's name, the record it is a copy of): for the report
+OPEN_WORLDS = {"Tamriel", "DLC2SolstheimWorld"}  # the open world's worldspaces, as places.py names them
+HUMANOID = {"Nord", "Imperial", "Breton", "Redguard", "Dunmer", "Altmer", "Bosmer", "Orsimer", "Khajiit", "Argonian"}
 
 
 def form_id(key):
@@ -56,6 +67,8 @@ RACE_RULED = {"0Asy1um_OthrielSnowElfRace": "Snow Elf"}
 def race_words(full):
     if full in RACE_RULED:
         return RACE_RULED[full]
+    if re.search(r" Race$", full):
+        full = full[:-5]  # "Arpen Buro Race": the race is Arpen Buro
     if " " in full or not re.search(r"_|[a-z][A-Z]", full):
         return full
     part = re.sub(r"Race$", "", full.rsplit("_", 1)[-1])
@@ -82,7 +95,7 @@ def scan_races():
             subs = subrecs(d)
             key = form_id(resolve(fid, masters, n))
             full = next((v.rstrip(b"\0").decode("utf-8", "replace") for s, v in subs if s == "FULL" and len(v) != 4), "")
-            if full:
+            if full and full not in RACE_DROP:
                 races[key] = race_words(full)
     return races
 
@@ -123,9 +136,18 @@ def build(version):
         up = chain(loc_key)
         i = next((i for i, x in enumerate(up) if locs[x].get("name") in (pl.CAPITALS | pl.SETTLEMENTS | pl.STRONGHOLDS)), None)
         # (A demo's or cut content's leftover location, "E3 Bleak Falls Barrow", is no place in the index and no part of Falkreath either.)
-        if i is None or any(x in own_place or pl.LEFTOVER.search(locs[x].get("edid") or "") for x in up[:i]):
+        # (A dungeon a mod hung from a town's location with no name of its own, Gromm's Pass under Riften, is no part of the town either: WO-183 Part 1.)
+        if i is None or any(x in own_place or pl.LEFTOVER.search(locs[x].get("edid") or "")
+                            or (not locs[x].get("name") and "LocTypeDungeon" in kname(locs[x].get("keywords") or [])) for x in up[:i]):
             return None
         return locs[up[i]]["name"]
+
+    def sex_of(base, depth=0):
+        """The record's sex, following the template when the record uses its traits (Use Traits, template flag 0x1), as the game does."""
+        n = npcs[base]
+        if depth < 6 and n.get("tflags", 0) & 1 and n.get("template") in npcs:
+            return sex_of(n["template"], depth + 1)
+        return n.get("sex")
 
     people = {}
     for a in actors.values():
@@ -139,9 +161,36 @@ def build(version):
         if not n.get("name") and not job:
             continue  # neither named nor a meaningful generic role
         c = cells.get(a["cell"]) or {}
-        people[base] = {"id": base, "name": n.get("name"), "race": races.get(n.get("race"), None),
-                         "sex": n.get("sex"), "cell": c.get("name"), "inTown": in_town(c.get("location")),
+        cell_name, town = c.get("name"), in_town(c.get("location"))
+        # A city is a worldspace of its own: a cell out in Tamriel whose location hangs from it (Gromm's Pass under Riften) is not in the city (WO-183 Part 1).
+        if town in pl.BIG_CITIES and c.get("grid") and c.get("worldEdid") in OPEN_WORLDS:
+            town = None
+        # A developer's cell is no place a player can go.
+        if cell_name and TEST_CELL.match(cell_name):
+            cell_name, town = None, None
+        race = races.get(n.get("race"), None)
+        people[base] = {"id": base, "name": n.get("name"), "race": race,
+                         "sex": RACE_SEX.get(race) or sex_of(base), "cell": cell_name, "inTown": town,
                          "role": job, "plugin": locs.get(c.get("location"), {}).get("plugin")}
+    # One person, one record (WO-183 Part 1): "Alara" is a copy of "High Priestess Alara" that takes her template; both are unique and the same woman.
+    for base, n in [(b, npcs[b]) for b in list(people)]:
+        t = n.get("template")
+        if t in people and t != base and n.get("unique") and npcs[t].get("unique") and n.get("name") and npcs[t].get("name") \
+                and (n["name"] in npcs[t]["name"] or npcs[t]["name"] in n["name"]) and n.get("tflags", 0) & 1:
+            MERGED.append((people[base]["name"], npcs[t]["name"]))
+            people[t].setdefault("alsoIds", []).append(base)  # what was read or found about the copy is the person's
+            del people[base]
+    # A generic or leveled actor is no person (WO-183 Part 1): not a unique record, and either leveled to the player, a name more than one record shares, a copy
+    # of a template, or a creature. A unique record is always a person, whatever else it is. (This is the candidate: build_site keeps the ones a player asks about --
+    # a read, a follower, a spouse, a trainer, an essential actor with a name of their own -- since many mods' named people lack the flag.)
+    names = collections.Counter(p["name"] for p in people.values() if p["name"])
+    for base, p in people.items():
+        n = npcs[base]
+        if n.get("unique") or not p["name"]:
+            continue
+        creature = bool(p["race"]) and p["race"] not in HUMANOID
+        if n.get("scaled") or names[p["name"]] > 1 or n.get("template") or creature:
+            p["generic"] = True
     return people
 
 
@@ -157,6 +206,12 @@ def report(people):
     out += ["", "## By town", "", "| Town | People |", "|---|---|"]
     for t, c in by_town.most_common(15):
         out.append(f"| {t} | {c} |")
+    generic = sorted({p["name"] for p in rows if p.get("generic")})
+    out += ["", f"## Not people ({len(generic)} names)", "",
+            "A generic or leveled actor (not a unique record: leveled to the player, a name more than one record shares, a copy of a template, or a creature) has `generic` set and no person page.", "",
+            ", ".join(generic[:300]) + (" ..." if len(generic) > 300 else "")]
+    if MERGED:
+        out += ["", "## One person, one record", "", "\n".join(f"- {a} is {b}'s copy: one person" for a, b in MERGED)]
     return "\n".join(out) + "\n"
 
 
@@ -180,7 +235,9 @@ def person_facts(dump):
             f["marriage"] = True
         if d.get("vendor"):
             f["sells"] = True
-        if any(x.get("edid") == "JobInnkeeperFaction" for x in d.get("factions", [])):
+        # WO-183 Part 1: the innkeepers' faction also holds the inn's bard and its server (Mikael, Saadia): only the keeper rents rooms.
+        eds = {x.get("edid") for x in d.get("factions", [])}
+        if "JobInnkeeperFaction" in eds and not (eds & {"JobBardFaction", "JobInnServer"}):
             f["innkeeper"] = True
         t = d.get("trainer")
         if t and t.get("skill"):
@@ -291,14 +348,20 @@ def build_site(rows, facts=None, reads=None, rulings=None):
     same way, and `rulings` the overrides' `people` by name (WO-159).
     """
     out = []
+    counts = collections.Counter(p.get("name") for p in rows)
     for p in rows:
-        r = {k: p[k] for k in ("name", "race", "sex", "cell", "inTown", "role") if p.get(k) is not None}
-        r.update((facts or {}).get(p.get("id"), {}))
+        r = {k: p[k] for k in ("name", "race", "sex", "cell", "inTown", "role", "generic") if p.get(k) is not None}
+        for i in [p.get("id"), *p.get("alsoIds", [])]:
+            for k, v in ((facts or {}).get(i) or {}).items():
+                r.setdefault(k, v)
+        # Someone a player asks about is a person, unique flag or not: they have a read, follow you, marry you, train you, or are essential with a name of their own.
+        if r.get("generic") and (any(i in (reads or {}) for i in [p.get("id"), *p.get("alsoIds", [])]) or r.get("follower") or r.get("marriage") or r.get("trainer") or (r.get("essential") and counts[p.get("name")] == 1)):
+            del r["generic"]
         # A job the records don't carry (Alvor is Riverwood's smith: WO-162 Part 5) comes from the overrides' `jobs`.
         jobs = ((rulings or {}).get(p.get("name")) or {}).get("jobs")
         if jobs and not r.get("role"):
             r["role"] = jobs
-        read = (reads or {}).get(p.get("id"))
+        read = next((reads[i] for i in [p.get("id"), *p.get("alsoIds", [])] if i in (reads or {})), None)
         if read:
             read = json.loads(json.dumps(read))
             ruling = (rulings or {}).get(p.get("name"))

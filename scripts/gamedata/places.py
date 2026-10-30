@@ -414,6 +414,8 @@ def scan():
                                  "keywords": [form_id(resolve(struct.unpack_from("<I", kwda, i)[0], masters, n)) for i in range(0, len(kwda) - 3, 4)],
                                  "race": next((res(v) for s, v in subs if s == "RNAM" and len(v) >= 4), None),
                                  "sex": "female" if acbs_flags & 1 else "male",
+                                 # WO-183 Part 1: the record's own flags: Unique (0x20) and PC Level Mult (0x80, a leveled actor); the template flags say which parts follow the template
+                                 "unique": bool(acbs_flags & 0x20), "tflags": tflags, "flags": acbs_flags,
                                  "factions": [form_id(resolve(struct.unpack_from("<I", v, i)[0], masters, n)) for s, v in subs if s == "SNAM"
                                               for i in range(0, len(v) - 7, 8)]}
                 elif grp == "LVLN":
