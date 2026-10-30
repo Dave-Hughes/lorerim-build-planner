@@ -2,8 +2,10 @@
  * WO-181 Part 5: Kyria's text from the design canvas frames (CharacterTheme), written through the same set_theme write the tool uses, and her
  * Act II's Whiterun to Solitude leg set to go by carriage. Dry run by default: says what it would write and changes nothing.
  *
- *   npx tsx scripts/kyria-theme.ts <playthrough id>           (say what it would do)
- *   npx tsx scripts/kyria-theme.ts <playthrough id> --apply   (do it)
+ *   npx tsx --conditions react-server scripts/kyria-theme.ts <playthrough id>           (say what it would do)
+ *   npx tsx --conditions react-server scripts/kyria-theme.ts <playthrough id> --apply   (do it)
+ *
+ * On staging: DATABASE_URL set to the staging branch's own string (a hidden secret in Vercel: copy it from the Neon console) and VERCEL_ENV=preview.
  *
  * The environment guard applies: it refuses a DATABASE_URL that does not match the environment. Production waits for Dave.
  * One sentence of the frame's backstory is left out: its last, which says she tells no one why she came, is a tease and the writing rules (Who she
