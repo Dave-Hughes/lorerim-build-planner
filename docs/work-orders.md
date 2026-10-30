@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-184  Players make it right: screenshots, I know this, Help fill the gaps, one review list (Mac, 30 Oct 2026)
-Status: waiting for Dave (30 Oct, 17:34: option 1 needs too much scrolling; he is choosing between the three place-page layouts on canvas row 40). Mac: nothing to build here until Bob writes Part 8
+Status: queued (Mac: Part 8, the place and person page top Dave chose)
 
 **Why.** Dave, 30 Oct: with playthroughs cut, double down on quests, places and people, and "accelerate the ideas for community confirmation of quest info, the admin review section, and of course the image collection work for locations and NPCs." These are the backlog's 23 Oct, 28 Oct and 28 Oct items, decided.
 
@@ -5149,6 +5149,34 @@ Dave: "I don't think the screenshot should live beside the map. Let's make this 
   - The map opens over the whole window: a top bar with the name, its key, "Open on the Map page ›" and Close (Esc closes too); the same pins, labels and route with room round them; zoom, drag and the credit.
   - On a phone it fills the screen the same way.
 - [x] Screenshots at 1440 and 390 against the redrawn boards, then `for Bob`.
+
+### Part 8. The page top Dave chose: one frame, Screenshot or Map (30 Oct, 17:43: "Ok sold lets do option 2")
+Option 1 (Part 7's hero background, the full map band, then the Screenshots section) put the real content about 1,250 px down at 1440 × 900. Dave: "won't be usable having to scroll past the hero and the map and the screenshots grid to get to the real content." **The design is `PlaceOptB` on canvas row 40** (click Screenshot and Map). It replaces Part 7's layout on place pages and person pages. Part 7's Full screen and the review rules stand.
+- [ ] **The top of the page is two columns** at 1440:
+  - **Left**: the title, the tags, the lede, the key facts as a two-column list (on a place: Danger, The boss, Rewards, Nearest town; on a person: the band's own cells), then Getting there in one line.
+  - **Right, 640 wide**: one 16:9 frame, with **Screenshot | Map** buttons at its top left and **Full screen** at its top right.
+    - Under the frame: a row of thumbnails, with the lead one marked, then a "+" tile, then "<n> screenshots. Add yours" on the right.
+  - Worth going for (or the page's first section) starts on the first screen, about 610 px down at 1440 × 900. The test measures it.
+- [ ] **What the frame shows:**
+  - With an approved screenshot, it opens on the lead screenshot, with "Screenshot by <Discord name>" and the avatar at its foot. Map switches to the paper map, cropped to the place with its neighbours and labels, as the band does today.
+  - With none, it opens on the Map. Screenshot shows "No screenshot of <name> yet" with "+ Add a screenshot" (or "Sign in to add one").
+  - A thumbnail puts that screenshot in the frame.
+  - On a person, Map shows where they are found when the planner knows it. When it doesn't, there's no Map button, never a guessed pin.
+  - Full screen opens the screenshot whole on its own (letterboxed, with the others to page through), or the map as `MapFull`, whichever the frame is showing.
+- [ ] **The full map band and the Screenshots section from Part 7 go.**
+  - The thumbnails are the gallery. With more than 6, the row ends in "+<n> more", which opens them all full screen.
+  - Your own screenshot under review is a thumbnail with its flag, never the one the frame opens on for anyone else.
+  - An admin's Approve, Make it lead, Remove and Delete (with a confirm) show under the frame for the screenshot in it.
+- [ ] **The rail of section links** stays on the right of the content below, as today.
+- [ ] **At 390**: the title, tags and lede first, then the frame full width with its thumbnails, then the facts, then the content. The frame's buttons stay reachable at 44 px.
+- [ ] Screenshots at 1440 and 390 of:
+  - Bleak Falls Barrow with its screenshot, in both views;
+  - a place with none;
+  - a town;
+  - a person, with and without a known place;
+  - the admin and the uploader views.
+
+  Then `for Bob`.
 
 ### Jeff's notes
 
