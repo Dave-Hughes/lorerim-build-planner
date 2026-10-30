@@ -106,7 +106,8 @@ export function InformationConfidence({ id, line, sources, unsure, actions }: { 
     const why = u.why ? playerReason(u.why) : null;
     return { field: playerField(u.field), ...(why ? { why } : {}) };
   });
-  const fields = [...new Set(clean.map((u) => u.field))];
+  // One place is not two (WO-180 Part 6b): "Where" and "Where it takes you" are the same doubt, said once as the longer.
+  const fields = [...new Set(clean.map((u) => u.field))].filter((f, _, all) => !(f.toLowerCase() === "where" && all.some((g) => g.toLowerCase() === "where it takes you")));
   // One reason once, as a whole sentence with a capital and no field label in front of it (WO-180).
   const reasons = [...new Set(clean.filter((u) => u.why).map((u) => u.why as string))];
   return (

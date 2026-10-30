@@ -282,7 +282,7 @@ export default async function QuestPage({
         <Panel id="can-title" title="Can I do it?">
           <p className={styles.canDo}>
             {askedCanDo.label}
-            {askedCanDo.why ? `: ${askedCanDo.why}` : ""}
+            {askedCanDo.why ? `. ${askedCanDo.why.charAt(0).toUpperCase()}${askedCanDo.why.slice(1)}` : ""}
           </p>
         </Panel>
       )}

@@ -1,4 +1,5 @@
 import "server-only";
+import { capFirst } from "@/lib/pages/player-words";
 import { afterWar, isGarrison, placeByName, placesNamed, rangeOf, hasLevels, type Place } from "@/lib/places/data";
 import { GOLD, RUN_CHANGE } from "./run-change";
 import { questHref } from "./slugs";
@@ -227,13 +228,14 @@ function viaReads(q: Quest, r: QuestRead): QuestPage {
     ...(r.firstStep ? { firstStep: r.firstStep } : {}),
     takesYou: (r.takesYou ?? []).map((t) => {
       const danger = dangerOf(placeNamed(t.place, q.name));
-      return { place: t.place, ...(!blank(t.hold) ? { hold: t.hold } : {}), ...(t.why ? { why: t.why } : {}), ...(danger ? { danger } : {}) };
+      return { place: capFirst(t.place), ...(!blank(t.hold) ? { hold: t.hold } : {}), ...(t.why ? { why: t.why } : {}), ...(danger ? { danger } : {}) };
     }),
     choices: r.choices ?? [],
     gets: { xp: q.xp, ...(q.type ? { type: q.type } : {}), rewards: r.rewards ?? [] },
     opens: (r.opens ?? []).map(linkFor),
     closes: r.closes ?? [],
-    steps: (r.steps ?? []).map((s) => ({ ...(s.branch && s.branch !== "main" ? { branch: s.branch } : {}), objectives: s.objectives ?? [] })).filter((s) => s.objectives.length),
+    // A branch label and a step start with a capital (WO-180 Part 6b: "you had already killed Nimhe", "then as the main branch").
+    steps: (r.steps ?? []).map((s) => ({ ...(s.branch && s.branch !== "main" ? { branch: capFirst(s.branch) } : {}), objectives: (s.objectives ?? []).map(capFirst) })).filter((s) => s.objectives.length),
     ...(r.ways?.ways?.length ? { ways: r.ways } : {}),
     changedBy: q.changedBy ?? [],
     people: (r.people ?? []).filter((p) => !blank(p.name)),

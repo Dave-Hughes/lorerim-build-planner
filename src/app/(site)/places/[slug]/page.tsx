@@ -217,18 +217,11 @@ export default async function PlacePage({ params }: { params: Params }) {
 
       <div className={`page ${styles.cols}`} style={{ paddingTop: 52 }}>
         <div className={styles.body}>
-          {/* A place with little known says what is known in one short block, not an empty page (WO-180). */}
-          {!levels && a?.hostile !== false && !hasWorth && quests.length === 0 && !place.pointers?.length && (
+          {/* A place with little known says what the lede and the band don't, in one short block, not an empty page (WO-180); the kind, the hold and the
+              XP for finding it are theirs already (WO-180 Part 6b: Moss Mother Cavern's block said the lede again). */}
+          {!levels && a?.hostile !== false && !hasWorth && quests.length === 0 && !place.pointers?.length && place.danger?.traps && (
             <section id="known" className={styles.sec} aria-label="What is known">
-              <p className={styles.way}>
-                {[
-                  `${/^[AEIOU]/i.test(type) ? "An" : "A"} ${kind}${place.hold ? ` in ${holdWords(place.hold)}` : ""}${near ? `, ${near}` : ""}.`,
-                  place.discoveryXp ? `Finding it gives ${place.discoveryXp} XP.` : "",
-                  place.danger?.traps ? "It has traps." : "",
-                ]
-                  .filter(Boolean)
-                  .join(" ")}
-              </p>
+              <p className={styles.way}>It has traps.</p>
             </section>
           )}
           {(levels || a?.hostile === false || (place.danger?.traps && !dangerUnsure && (hasWorth || quests.length > 0))) && (

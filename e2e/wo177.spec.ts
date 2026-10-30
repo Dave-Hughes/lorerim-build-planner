@@ -517,7 +517,8 @@ test("WO-176 Part 2 (Mac): a reward is said once, and an unknown danger is a cel
   await page.goto("/places/moss-mother-cavern");
   // The one short block says what is known (WO-180); how dangerous it is, when nobody knows, is said once, under Not sure yet (Part 5b).
   await expect(page.getByRole("region", { name: "At a glance" })).not.toContainText("Not known yet");
-  await expect(page.getByRole("region", { name: "What is known" })).not.toContainText("isn't known yet");
+  // WO-180 Part 6b: the block said the lede and the Rewards cell again, so a place with nothing more to say has none.
+  await expect(page.getByRole("region", { name: "What is known" })).toHaveCount(0);
   await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("How dangerous it is");
   await expect(page.getByRole("region", { name: "Information Confidence" })).not.toContainText("Nothing is flagged");
 });

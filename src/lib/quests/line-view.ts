@@ -1,3 +1,4 @@
+import { capFirst } from "@/lib/pages/player-words";
 import "server-only";
 import { townsIn } from "@/lib/places/suggest";
 import { gateOf, homeName, questsData } from "./data";
@@ -84,7 +85,7 @@ const short = (s: string) => s.length <= 64;
 /** What a quest's who and where leave on the page: the places they name (for Where it takes you) and, when long, a line of words. No chips (WO-160 Part 5): the sentence links the names. */
 function whereOf(where: string | null | undefined): { places: string[]; note: string | null } {
   if (!where) return { places: [], note: null };
-  return short(where) ? { places: [where], note: null } : { places: [], note: where };
+  return short(where) ? { places: [capFirst(where)], note: null } : { places: [], note: where };
 }
 
 /** "200" a quest when every paying quest pays the same. */
@@ -282,7 +283,7 @@ export function lineView(line: QuestLine): LineView {
       .filter((q) => q.xp === 0 && !listed.has(q.name))
       .map((q) => {
         const r = rows.get(q.edid)!;
-        return { key: q.edid, name: q.name, href: questHref(q.edid), task: r.summary, note: null, places: r.where && short(r.where) ? [r.where] : [], chips: [], xp: 0 };
+        return { key: q.edid, name: q.name, href: questHref(q.edid), task: r.summary, note: null, places: r.where && short(r.where) ? [capFirst(r.where)] : [], chips: [], xp: 0 };
       });
     jobsNote = `${jobs.length} job${jobs.length === 1 ? "" : "s"} and bount${jobs.length === 1 ? "y" : "ies"} that open as you go. They pay no quest XP.`;
   }
@@ -321,7 +322,7 @@ export function lineView(line: QuestLine): LineView {
     jobsNote,
     opens,
     glance: {
-      start: { value: shelf ? "Each job on its own" : (story?.chapters[0]?.name ?? first0?.name ?? opening?.name ?? "Not read yet"), sub: shelf ? "Open one for how it starts" : startText, more: shelf ? [] : startLines.slice(1) },
+      start: { value: shelf ? "Each job on its own" : (story?.chapters[0]?.name ?? first0?.name ?? opening?.name ?? "Not read yet"), sub: shelf ? (chapters.some((c) => c.quests.some((q) => q.href)) || jobs.some((j) => j.href) ? "Open one for how it starts" : null) : startText, more: shelf ? [] : startLines.slice(1) },
       level: line.minLevel ? { value: `Level ${line.minLevel}`, sub: line.level ?? null } : { value: "Any level", sub: line.level ?? null },
       length: {
         value: `${storyQuests.length || quests.length - skipped.size} ${(storyQuests.length || quests.length - skipped.size) === 1 ? "quest" : "quests"}`,

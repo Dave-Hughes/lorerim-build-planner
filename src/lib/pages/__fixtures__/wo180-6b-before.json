@@ -1,0 +1,24 @@
+{
+ "Rescue Mission": [
+  "Rescue the captive from the lair",
+  "Talk to the captive",
+  "Escort the captive back home",
+  "Take your leave of the captive",
+  "Return to Vilkas",
+  "Rescue the victim from the lair",
+  "Talk to the victim",
+  "Escort the victim back to the victim home",
+  "Take your leave of the victim",
+  "Return to the questgiver",
+  "Rescue the victim from the lair"
+ ],
+ "Maggot": [
+  "Take back your name from the owner in the target location",
+  "The victim has been dazzled by the Radiance of Life",
+  "The victim has been dazzled by the Radiance of Life",
+  "The victim has been dazzled by the Radiance of Life"
+ ],
+ "Feral Soul-Shriven": [
+  "Defeat the enemy"
+ ]
+}

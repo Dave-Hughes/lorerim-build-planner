@@ -39,13 +39,47 @@ interface Route {
 const K_MAX = 1.6;
 const KIND_COLOUR = { city: "city", town: "town", danger: "danger", other: "other" } as const;
 
-/** How wide a name's plate is drawn, a little over: measured at 12.5px, 77px for Folgunthur, 111 for Reachwater Rock, 63 for Saarthal (WO-180 Part 5b: 7.4 a letter dropped names that had room). */
-const plateWidth = (name: string) => name.length * 6.5 + 15;
+type Side = "right" | "left" | "above" | "below";
+
+/**
+ * How wide a name's plate is drawn, a little over: the name measured in the page's own font at the plate's 12.5px, plus its 16 px of padding and
+ * 2 of border and 3 more to spare (WO-180 Part 6b: 6.5 a letter ran under for Reachwater Rock and Whiterun and over for others; 7.4 dropped names
+ * that had room). Before the font is known, or with no canvas, 7 a letter.
+ */
+let canvas: CanvasRenderingContext2D | null | undefined;
+const widths = new Map<string, number>();
+function plateOf(name: string): number {
+  const hit = widths.get(name);
+  if (hit !== undefined) return hit;
+  if (canvas === undefined) canvas = typeof document === "undefined" ? null : document.createElement("canvas").getContext("2d");
+  let text = name.length * 7;
+  if (canvas) {
+    canvas.font = `12.5px ${getComputedStyle(document.body).fontFamily}`;
+    text = canvas.measureText(name).width;
+  }
+  const w = Math.ceil(text) + 16 + 2 + 3;
+  widths.set(name, w);
+  return w;
+}
+const plateWidth = (name: string) => plateOf(name);
+
+/** Where a plate goes round its pin (WO-180 Part 6b: above and below too): beside it on either side, or centred over or under it. */
+type Box = [number, number, number, number];
+const boxAt = (x: number, y: number, w: number, side: Side): Box =>
+  side === "right" ? [x + 8, y - 12, x + 14 + w, y + 12] : side === "left" ? [x - 14 - w, y - 12, x - 8, y + 12] : side === "above" ? [x - w / 2, y - 35, x + w / 2, y - 7] : [x - w / 2, y + 7, x + w / 2, y + 35];
 
 export function MapPage({ entry, places, initial }: { entry: MapEntry; places: MapPlace[]; initial: MapInitial }) {
   const box = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ w: 1440, h: 800 });
   const [measured, setMeasured] = useState(false);
+  // The names are measured again once the page's font has loaded (WO-180 Part 6b).
+  const [fontTick, setFontTick] = useState(0);
+  useEffect(() => {
+    document.fonts?.ready.then(() => {
+      widths.clear();
+      setFontTick((n) => n + 1);
+    });
+  }, []);
   useLayoutEffect(() => {
     const el = box.current;
     if (!el) return;
@@ -334,7 +368,6 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
 
   // What sits over the map, in its own pixels: the panel, the drawer, the zoom buttons and the credit (WO-177). A pin under the panel or the drawer
   // is not drawn at all, with its name or its badge; a name is never drawn under any of them.
-  type Box = [number, number, number, number];
   const covered = useMemo<{ over: Box[]; sheet: Box[] }>(() => {
     const wide = size.w >= 700;
     const shift = selected && wide ? 352 : 0;
@@ -351,48 +384,22 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
   // place, a route's stops, the cities, then the towns) and the lesser one is dropped.
   const items = useMemo(() => {
     const blockedBox = (b: Box) => b[0] < 6 || b[2] > size.w - 6 || [...covered.sheet, ...covered.over].some((o) => b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1]);
-    const out: { p: MapPlace; x: number; y: number; named: boolean; side: "right" | "left"; rightOk: boolean; leftOk: boolean; members?: string[] }[] = [];
+    type Item = { p: MapPlace; x: number; y: number; named: boolean; side: Side; label: string; picked: boolean; ok: Record<Side, boolean>; members?: string[] };
+    const out: Item[] = [];
     for (const p of places) {
       const { x, y } = toScreen(p.px, p.py);
       if (x < -60 || y < -40 || x > size.w + 60 || y > size.h + 40) continue;
       if (!shows(p)) continue;
       const picked = selected === p.slug || inRoute.has(p.slug) || lit.has(p.slug);
       if (!picked && underSheet(x, y)) continue;
-      const w = plateWidth(p.name);
-      // A name goes on the pin's right, or its left when the right is under a control, the panel or the drawer, or off the edge; with neither
-      // side clear it is not drawn (WO-177). The picked place is always named.
-      const rightBox: Box = [x + 8, y - 12, x + 14 + w, y + 12];
-      const leftBox: Box = [x - 14 - w, y - 12, x - 8, y + 12];
-      const blocked = blockedBox;
-      const side = !blocked(rightBox) ? "right" : !blocked(leftBox) ? "left" : "right";
-      const clear = side === "left" || !blocked(rightBox);
-      out.push({ p, x, y, named: (picked || clear) && (picked || p.kind === "city" || (p.kind === "town" && k >= 0.28) || k >= 0.85), side, rightOk: !blocked(rightBox), leftOk: !blocked(leftBox) });
+      out.push({ p, x, y, named: false, side: "right", label: p.name, picked, ok: { right: true, left: true, above: true, below: true } });
     }
-    const rank = (it: (typeof out)[number]) => (selected === it.p.slug || inRoute.has(it.p.slug) || lit.has(it.p.slug) ? 0 : it.p.kind === "city" ? 1 : it.p.kind === "town" ? 2 : 3);
-    const taken: [number, number, number, number][] = [];
-    // Within a rank the name with only one side to go on is placed first, so a stop at the edge keeps the side it has (WO-180 Part 5b: Saarthal).
-    const sidesLeft = (it: (typeof out)[number]) => Number(it.rightOk) + Number(it.leftOk);
-    for (const it of [...out].sort((a, b) => rank(a) - rank(b) || sidesLeft(a) - sidesLeft(b))) {
-      if (!it.named) continue;
-      const w = plateWidth(it.p.name);
-      const boxAt = (side: "right" | "left"): Box => (side === "right" ? [it.x + 8, it.y - 12, it.x + 14 + w, it.y + 12] : [it.x - 14 - w, it.y - 12, it.x - 8, it.y + 12]);
-      // A route's stops come first; two that would overlap show their numbers only (WO-180). A name never runs under another stop's number
-      // either (WO-180 Part 4b: Saarthal's 3 under "Folgunthur" once zoomed out), at every zoom, since this is worked out again with each.
-      const free = (box: Box) => !out.some((o) => o !== it && inRoute.has(o.p.slug) && box[0] < o.x + 12 && box[2] > o.x - 12 && box[1] < o.y + 12 && box[3] > o.y - 12) && !taken.some((t) => box[0] < t[2] && box[2] > t[0] && box[1] < t[3] && box[3] > t[1]);
-      // The other side is tried before a name is dropped (WO-180 Part 5b: both stops of The Golden Claw lost theirs with room left and right).
-      const sides = (it.side === "right" ? ["right", "left"] : ["left", "right"]) as ("right" | "left")[];
-      const side = sides.find((sd) => (sd === it.side || (sd === "right" ? it.rightOk : it.leftOk)) && free(boxAt(sd)));
-      if (!side) it.named = false;
-      else {
-        it.side = side;
-        taken.push(boxAt(side));
-      }
-    }
-    // Places inside one town are one pin, a count on the town's plate (WO-178): "Whiterun, 5 places".
+    // Places inside one town are one pin, a count on the town's plate (WO-178): "Whiterun, 5 places". The plate is the label's width from the start,
+    // so every name is placed around it (WO-180 Part 6b: Anga's Mill sat on "Windhelm, 24").
     const folded = new Map<string, string[]>();
     for (const it of out) if (it.p.inTown && selected !== it.p.slug && !inRoute.has(it.p.slug)) folded.set(it.p.inTown.slug, [...(folded.get(it.p.inTown.slug) ?? []), it.p.name]);
     const seenTown = new Set<string>();
-    return out.flatMap((it) => {
+    const drawn = out.flatMap((it): Item[] => {
       const t = it.p.inTown;
       if (!t || selected === it.p.slug || inRoute.has(it.p.slug)) return [it];
       const names = folded.get(t.slug) ?? [it.p.name];
@@ -400,14 +407,40 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
       seenTown.add(t.slug);
       // At every zoom the town's pin carries its count, and hovering it lists the places of the picked kind (WO-178 Part 3).
       const label = names.length > 1 ? `${t.name}, ${names.length}` : names[0];
-      // Its label goes where it is clear of the panel, the drawer and the controls, as every name does (WO-180: "arkarth, 3" under the panel).
-      const lw = plateWidth(label);
-      const clearR = !blockedBox([it.x + 8, it.y - 12, it.x + 14 + lw, it.y + 12]);
-      const clearL = !blockedBox([it.x - 14 - lw, it.y - 12, it.x - 8, it.y + 12]);
-      return [{ ...it, named: clearR || clearL, side: clearR ? ("right" as const) : ("left" as const), members: names, p: { ...it.p, slug: t.slug, name: label } }];
+      return [{ ...it, label, members: names, p: { ...it.p, slug: t.slug, name: label } }];
     });
+    for (const it of drawn) {
+      const w = plateWidth(it.label);
+      for (const sd of ["right", "left", "above", "below"] as Side[]) it.ok[sd] = !blockedBox(boxAt(it.x, it.y, w, sd));
+      // A name goes on the pin's right, or its left when the right is under a control, the panel or the drawer, or off the edge; above or below
+      // when neither is clear; with none clear it is not drawn (WO-177). The picked place is always named.
+      it.side = it.ok.right ? "right" : it.ok.left ? "left" : it.ok.above ? "above" : it.ok.below ? "below" : "right";
+      const any = it.ok.right || it.ok.left || it.ok.above || it.ok.below;
+      it.named = it.members ? any : (it.picked || any) && (it.picked || it.p.kind === "city" || (it.p.kind === "town" && k >= 0.28) || k >= 0.85);
+    }
+    const rank = (it: Item) => (it.picked ? 0 : it.p.kind === "city" ? 1 : it.members || it.p.kind === "town" ? 2 : 3);
+    const taken: Box[] = [];
+    // Within a rank the name with fewest sides to go on is placed first, so a stop at the edge keeps the side it has (WO-180 Part 5b: Saarthal).
+    const sidesLeft = (it: Item) => Object.values(it.ok).filter(Boolean).length;
+    for (const it of [...drawn].sort((a, b) => rank(a) - rank(b) || sidesLeft(a) - sidesLeft(b))) {
+      if (!it.named) continue;
+      const w = plateWidth(it.label);
+      // A route's stops come first; two that would overlap show their numbers only (WO-180). A name never runs under another stop's number
+      // either (WO-180 Part 4b: Saarthal's 3 under "Folgunthur" once zoomed out), at every zoom, since this is worked out again with each.
+      const free = (box: Box) => !drawn.some((o) => o !== it && inRoute.has(o.p.slug) && box[0] < o.x + 12 && box[2] > o.x - 12 && box[1] < o.y + 12 && box[3] > o.y - 12) && !taken.some((t) => box[0] < t[2] && box[2] > t[0] && box[1] < t[3] && box[3] > t[1]);
+      // The other side is tried before a name is dropped (WO-180 Part 5b: both stops of The Golden Claw lost theirs with room left and right), and
+      // then above and below (Part 6b: a 1 to 4 px collision dropped both at 390).
+      const order = (it.side === "left" ? ["left", "right", "above", "below"] : ["right", "left", "above", "below"]) as Side[];
+      const side = order.find((sd) => it.ok[sd] && free(boxAt(it.x, it.y, w, sd)));
+      if (!side) it.named = false;
+      else {
+        it.side = side;
+        taken.push(boxAt(it.x, it.y, w, side));
+      }
+    }
+    return drawn;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [places, toScreen, size.w, size.h, k, selected, types, onlyQuests, inRoute, lit, covered]);
+  }, [places, toScreen, size.w, size.h, k, selected, types, onlyQuests, inRoute, lit, covered, fontTick]);
   // Counts only where pins really pile up (WO-169 review): places less than about 14 px apart (their diamonds touch) are one count, so the opening view is diamonds with
   // the cities named. What a filter took out is not counted, and the picked place, a route's stops and a character's act never are.
   const { singles, clusters } = useMemo(() => {
@@ -437,6 +470,8 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
       if (underSheet(c.x, c.y)) return false;
       // A badge is not drawn under a control either: the zoom buttons, the N, the search (WO-180 Part 4b: a count poking out behind the N on a phone).
       if (covered.over.some((o) => c.x + 14 > o[0] && c.x - 14 < o[2] && c.y + 14 > o[1] && c.y - 14 < o[3])) return false;
+      // Nor behind a name's plate (WO-180 Part 6b: a "2" poking out behind "Markarth, 17").
+      if (singles.some((it) => it.named && (() => { const b = boxAt(it.x, it.y, plateWidth(it.p.name), it.side); return c.x + 16 > b[0] && c.x - 16 < b[2] && c.y + 16 > b[1] && c.y - 16 < b[3]; })())) return false;
       const city = singles.find((it) => it.p.kind === "city" && Math.abs(it.x - c.x) < 90 && Math.abs(it.y - c.y) < 20);
       // With no kind picked a city's label has no number (WO-180: it was the nearby cluster, and changed with the zoom): the badge is not drawn.
       if (city) return false;
@@ -523,6 +558,7 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
           const PinLink = members && members.length > 1 ? Link : PreviewLink;
           // A name near the window's right edge goes on the pin's left, so it is never cut off.
           const flip = named && side === "left";
+          const sideClass = named && side === "above" ? s.above : named && side === "below" ? s.below : "";
           return (
           <div
             key={p.slug}
@@ -543,7 +579,7 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
                 {members.length > 12 ? <span>and {members.length - 12} more</span> : null}
               </span>
             )}
-            <PinLink href={`/places/${p.slug}`} className={`${s.pin} ${s[KIND_COLOUR[p.kind]]} ${selected === p.slug ? s.picked : ""} ${flip ? s.flip : ""}`}>
+            <PinLink href={`/places/${p.slug}`} className={`${s.pin} ${s[KIND_COLOUR[p.kind]]} ${selected === p.slug ? s.picked : ""} ${flip ? s.flip : ""} ${sideClass}`}>
               <i aria-hidden="true">{inRoute.get(p.slug) ?? ""}</i>
               {named ? (
                 <span className={s.plate}>

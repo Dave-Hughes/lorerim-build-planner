@@ -15,7 +15,7 @@ const read: QuestRead = {
   firstStep: "Meet Mercer Frey outside Snow Veil Sanctum",
   takesYou: [{ place: "Largashbur", hold: "The Rift", why: "ask Chief Yamarz" }, { place: "A Place Nobody Mapped", why: "somewhere" }],
   choices: [{ choice: "Help Jaree-Ra", leadsTo: "the Icerunner's loot" }],
-  steps: [{ branch: "main", objectives: ["Meet Mercer"] }, { branch: "turn him in", objectives: ["Report to the guard captain"] }],
+  steps: [{ branch: "main", objectives: ["Meet Mercer"] }, { branch: "Turn him in", objectives: ["Report to the guard captain"] }],
   rewards: [{ what: "Karliah's Invisibility (spell)", when: "at the end" }],
   opens: ["Scoundrel's Folly"],
   closes: ["the Thieves Guild"],
@@ -37,7 +37,7 @@ describe("a quest with a read", () => {
     expect(p.closes).toEqual(["the Thieves Guild"]);
   });
   it("groups steps by branch, the main one without a heading", () => {
-    expect(p.steps).toEqual([{ objectives: ["Meet Mercer"] }, { branch: "turn him in", objectives: ["Report to the guard captain"] }]);
+    expect(p.steps).toEqual([{ objectives: ["Meet Mercer"] }, { branch: "Turn him in", objectives: ["Report to the guard captain"] }]);
   });
   it("gives a place its danger from the places index, and none for a place it doesn't know", () => {
     expect(p.takesYou[0]).toMatchObject({ place: "Largashbur", hold: "The Rift", why: "ask Chief Yamarz" });

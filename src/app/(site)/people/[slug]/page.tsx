@@ -172,39 +172,14 @@ export default async function PersonPage({ params }: { params: Params }) {
       offers.push({ title: "Protected", body: killer === "protected" ? "Other characters can't kill " + they + ". You can." : cap(dies) + "." });
     }
   } else {
-    if (role)
-      offers.push({
-        title: role,
-        body: (
-          <>
-            <em className={styles.nk}>What they do for you isn&apos;t known yet.</em>
-          </>
-        ),
-      });
-    if (person.follower)
-      offers.push({
-        title: "Follower",
-        body: (
-          <>
-            {can} can join you. <em className={styles.nk}>How to recruit {they} isn&apos;t known yet.</em>
-          </>
-        ),
-      });
-    if (person.marriage)
-      offers.push({
-        title: "Marriage",
-        body: (
-          <>
-            You can marry {they}. <em className={styles.nk}>What {can.toLowerCase()} needs first isn&apos;t known yet.</em>
-          </>
-        ),
-      });
-    if (person.sells)
-      offers.push({
-        title: "Sells goods",
-        body: <em className={styles.nk}>What {can.toLowerCase()} sells isn&apos;t known yet.</em>,
-      });
-    if (person.trainer) offers.push({ title: `Trains ${person.trainer.skill}`, body: person.trainer.cap ? `Up to ${person.trainer.cap}.` : "How far isn't known yet." });
+    // Said once for the person, in their pronoun (WO-180 Part 6b: Belrand said "isn't known yet" six times, and "they" on a page that says "he").
+    const does = subject === "they" ? "do" : "does";
+    const unknown = <em className={styles.nk}>What {subject} {does} for you isn&apos;t known yet.</em>;
+    if (role) offers.push({ title: role, body: unknown });
+    if (person.follower) offers.push({ title: "Follower", body: <>{can} can join you.</> });
+    if (person.marriage) offers.push({ title: "Marriage", body: <>You can marry {they}.</> });
+    if (person.sells) offers.push({ title: "Sells goods", body: "" });
+    if (person.trainer) offers.push({ title: `Trains ${person.trainer.skill}`, body: person.trainer.cap ? `Up to ${person.trainer.cap}.` : "" });
     if (person.essential)
       offers.push({
         title: "Can't be killed",
@@ -214,6 +189,7 @@ export default async function PersonPage({ params }: { params: Params }) {
           </>
         ),
       });
+    if (!role && offers.length) offers[0] = { ...offers[0], body: <>{offers[0].body} {unknown}</> };
   }
 
   // The day as 24 hours, for the strip and for where they are most of it.
@@ -232,12 +208,13 @@ export default async function PersonPage({ params }: { params: Params }) {
       tone: "teal" as const,
       label: `Where to find ${they}`,
       value: L(mostly?.main ?? person.inTown ?? person.cell ?? "Not known yet"),
-      sub: L(read?.firstMeet ? `First met: ${short(read.firstMeet.replace(/\.$/, ""), 90)}` : mostly && mostly.places.length > 1 ? `Also ${mostly.places.slice(1, 3).join(", ")}` : `Where ${subject} ${subject === "they" ? "are" : "is"} through the day isn't known yet`),
+      // With no read the page says what it doesn't know once, under What they offer (WO-180 Part 6b), not under each cell.
+      sub: read?.firstMeet || (mostly && mostly.places.length > 1) || read ? L(read?.firstMeet ? `First met: ${short(read.firstMeet.replace(/\.$/, ""), 90)}` : mostly && mostly.places.length > 1 ? `Also ${mostly.places.slice(1, 3).join(", ")}` : `Where ${subject} ${subject === "they" ? "are" : "is"} through the day isn't known yet`) : undefined,
       small: true,
     },
     ...(roleText ? [{ key: "role", icon: "quest-people", tone: "orange" as const, label: `What ${subject} ${subject === "they" ? "are" : "is"}`, value: L(roleText ?? ""), small: roleText.length > 22 }] : []),
     ...(trainer ? [{ key: "trains", icon: "tab-levels", tone: "green" as const, label: "Trains", value: trainer.skill, sub: trainer.cap ? `Up to ${trainer.cap}` : undefined }] : sellsText ? [{ key: "sells", icon: "quest-rewards", tone: "gold" as const, label: "Sells", value: sellsText, sub: read?.sells ? short(read.sells.replace(/^[^,;(]*[,;(]\s*/, ""), 70) || undefined : undefined, small: sellsText.length > 20 }] : []),
-    ...(person.follower ? [{ key: "follows", icon: "quest-followers", tone: "orange" as const, label: "Follows you", value: notSure.has("joins") ? "Not sure yet" : "Yes", small: notSure.has("joins"), sub: L(read?.joins ? short(read.joins, 110) : "How to recruit isn't known yet") }] : []),
+    ...(person.follower ? [{ key: "follows", icon: "quest-followers", tone: "orange" as const, label: "Follows you", value: notSure.has("joins") ? "Not sure yet" : "Yes", small: notSure.has("joins"), sub: read?.joins ? L(short(read.joins, 110)) : read ? L("How to recruit isn't known yet") : undefined }] : []),
     ...(quests.length ? [{ key: "quests", icon: "quest-side-stories", tone: "violet" as const, label: "Quests", value: gives.length ? `Gives ${plural(gives.length)}` : `In ${plural(quests.length)}`, sub: [alsoIn && gives.length ? `and is in ${alsoIn} more` : "", (gives.length ? gives : quests).slice(0, 2).map((q) => q.name).join("; ")].filter(Boolean).join(". ") }] : []),
   ].slice(0, 5);
   // On a phone the sections are the first screen: the cells that repeat one (where, what they sell or train, whether they follow, their quests) are left out, and the role stays.

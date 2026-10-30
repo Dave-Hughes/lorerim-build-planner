@@ -134,3 +134,6 @@ export const SAID_NAMES: Record<string, string> = { "DA02 Hook": "Boethiah's Cal
 
 /** A job template with a placeholder name ("Delivery for the npc", "Hunter Marks Animal Den 02"): not a quest a player has a page for, nor a change (WO-180). */
 export const isTemplateName = (name: string) => /\bthe npc\b/i.test(name) || /^Hunter Marks Animal Den(?: \d+)?$/i.test(name.trim()) || /^The item$/i.test(name.trim()) || /^Mark an animal den(?: \(second job\))?$/i.test(name.trim());
+
+/** A phrase that stands alone starts with a capital (WO-180 Part 6b): "the town Farkas names" is "The town Farkas names". Only the first letter changes. */
+export const capFirst = (text: string) => text.replace(/^(\s*)([a-z])/, (_, space: string, c: string) => space + c.toUpperCase());

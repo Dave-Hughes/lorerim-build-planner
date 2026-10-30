@@ -83,6 +83,18 @@ a.plate:hover {
   flex-direction: row-reverse;
   transform: translate(calc(-100% + 7px), -50%);
 }
+.above,
+.below {
+  flex-direction: column-reverse;
+  gap: 4px;
+}
+.above {
+  transform: translate(-50%, calc(-100% + 6px));
+}
+.below {
+  flex-direction: column;
+  transform: translate(-50%, -6px);
+}
 .picked.flip {
   transform: translate(calc(-100% + 13px), -50%);
 }
