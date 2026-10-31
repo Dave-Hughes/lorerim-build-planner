@@ -5799,7 +5799,7 @@ Mac's notes (30 Oct). Everything is built and checked except Kyria's text on sta
 **Tests that went:** the Story's (wo79 author and reader, wo114's first chapter, wo116's reader, Read Act I, markers and previous/next, wo117's Story tab and chapters, wo118's reader and image position, wo124's story card, wo142's chapter paragraphs, wo111's reader), and the ticking ones that moved to the tracking server. The "About them" display test became "the page has none".
 
 ## WO-180  Junk text out of the pages, and the last map faults (Mac and PC, 28 Oct 2026)
-Status: queued (PC: Part 9a; Mac: Part 9b and Part 7b)
+Status: building (PC: Part 9a; Mac: Part 9b and Part 7b)
 
 **Why.** The fourth cold review (Bob's reviewer, 3,721 pages crawled, 51 walked at both widths) passed WO-176 to WO-178, and named what would still hit Dave in his first ten minutes: old text from the game files that was never cleaned. Bob confirmed the holes and Web Mother by hand. No order is done until a page-text test fails on each of these.
 ### Part 1. Quotes (PC writes the cleaner; Mac's test fails on any page)
