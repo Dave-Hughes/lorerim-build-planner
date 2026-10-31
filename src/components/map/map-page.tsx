@@ -1,5 +1,6 @@
 "use client";
 
+import { BUTTON_STEP, wheelFactor } from "@/lib/map/zoom";
 import Link from "next/link";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { PreviewLink } from "@/components/pages/preview-link";
@@ -152,6 +153,8 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
   const pointers = useRef(new Map<number, { x: number; y: number }>());
   const gesture = useRef<{ x: number; y: number; cx: number; cy: number; dist: number; k: number; moved: number } | null>(null);
   const onDown = (e: React.PointerEvent) => {
+    // A press on a pin or a button starts no drag, and an earlier drag's mark is gone: left in place it made every pin click after a pan read as the end of that drag (WO-185 Part 2).
+    gesture.current = null;
     if ((e.target as HTMLElement).closest("a, button, input, select, [data-nodrag]")) return;
     cancelAnimationFrame(raf.current);
     pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
@@ -194,7 +197,7 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
       if ((e.target as HTMLElement).closest("[data-scroll]")) return;
       e.preventDefault();
       const rect = el.getBoundingClientRect();
-      zoomAt(k * (e.deltaY < 0 ? 1.2 : 1 / 1.2), e.clientX - rect.left, e.clientY - rect.top);
+      zoomAt(k * wheelFactor(e), e.clientX - rect.left, e.clientY - rect.top);
     };
     el.addEventListener("wheel", wheel, { passive: false });
     return () => el.removeEventListener("wheel", wheel);
@@ -761,10 +764,10 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
       )}
 
       <div className={s.controls} data-nodrag="">
-        <button type="button" className={s.plate} aria-label="Zoom in" onClick={() => zoomAt(k * 1.5, size.w / 2, size.h / 2)}>
+        <button type="button" className={s.plate} aria-label="Zoom in" onClick={() => zoomAt(k * BUTTON_STEP, size.w / 2, size.h / 2)}>
           +
         </button>
-        <button type="button" className={s.plate} aria-label="Zoom out" onClick={() => zoomAt(k / 1.5, size.w / 2, size.h / 2)}>
+        <button type="button" className={s.plate} aria-label="Zoom out" onClick={() => zoomAt(k / BUTTON_STEP, size.w / 2, size.h / 2)}>
           −
         </button>
         <button type="button" className={s.plate} aria-label="North, and the whole map" onClick={resetNorth}>

@@ -6,6 +6,7 @@ import { homeName, questsData } from "@/lib/quests/data";
 import { questHref } from "@/lib/quests/slugs";
 import { fuzzyScore, words } from "./fuzzy";
 import { holdWords } from "@/lib/places/hold-words";
+import { jobKind, kindSlug } from "@/lib/quests/job-kind";
 
 /** What a result is (WO-161), as its tag says it. */
 export type FoundKind = "Quest" | "Quest line" | "Person" | "Place" | "Character" | "Guide";
@@ -66,8 +67,29 @@ export function searchEverything(query: string, limit = 20): { quests: Found[]; 
       const href = byName.has(n) ? questHref(byName.get(n)!.edid) : null;
       add(href, n, (href && whereOf.get(href)) || "", `Goes to ${p.name}`, s + 3);
     }
+  // One row per thing (WO-185 Part 3): "di" listed Deliver a Letter Distant once for every board's copy. Copies that share a name are one row; when they are one line's, the row opens that
+  // line (at the kind of job, on a board line), and its quiet line says how many there are.
+  const lineOf = new Map<string, { id: string; name: string; board: boolean }>();
+  for (const line of questsData().lines) for (const quest of line.quests) {
+    const h = questHref(quest.edid);
+    if (h) lineOf.set(h, { id: line.id, name: line.name, board: !!line.board });
+  }
+  const sorted = [...quests.values()].sort((a, b) => a.score - b.score || a.name.localeCompare(b.name));
+  const groups = new Map<string, typeof sorted>();
+  for (const q of sorted) groups.set(q.name, [...(groups.get(q.name) ?? []), q]);
+  const oneEach: Found[] = [...groups.values()].map((copies) => {
+    const first = copies[0];
+    if (copies.length === 1) return { kind: first.kind, name: first.name, href: first.href, note: first.note, why: first.why };
+    const lines = new Set(copies.map((c) => lineOf.get(c.href)?.id));
+    const line = lineOf.get(first.href);
+    if (lines.size === 1 && line) {
+      const href = line.board ? `/quests/${line.id}#${kindSlug(jobKind(first.name))}` : `/quests/${line.id}`;
+      return { kind: first.kind, name: first.name, href, note: `${line.name}, ${line.board ? `on ${copies.length} boards` : `${copies.length} quests of this name`}`, why: first.why };
+    }
+    return { kind: first.kind, name: first.name, href: first.href, note: `${copies.length} quests of this name`, why: first.why };
+  });
   return {
-    quests: [...quests.values()].sort((a, b) => a.score - b.score || a.name.localeCompare(b.name)).slice(0, limit * 2).map(({ kind, name, href, note, why }) => ({ kind, name, href, note, why })),
+    quests: oneEach.slice(0, limit * 2),
     // People who give or are in quests come before the many soldiers and guards nobody asks about.
     people: people
       .sort((a, b) => a.s - b.s || b.mine.length - a.mine.length)

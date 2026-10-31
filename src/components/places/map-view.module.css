@@ -369,3 +369,19 @@ a.pin:focus-visible {
 .framed .legend {
   display: none;
 }
+
+/* A pin is a target at least 32 px across, not the 12 px diamond (WO-185 Part 2); the name is part of the same link, so it opens the pin too. */
+a.pin::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  width: 32px;
+  height: 32px;
+  transform: translateY(-50%);
+}
+.flip::before,
+a.pin.flip::before {
+  left: auto;
+  right: -10px;
+}

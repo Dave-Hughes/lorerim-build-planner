@@ -5023,31 +5023,31 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-185  Dave's notes from using the app (Mac, PC for Part 4, 30 Oct 2026)
-Status: building (Mac: Parts 1 to 3 and 5; PC: Part 4 pushed for Bob, notes below)
+Status: for Bob (Mac: Parts 1 to 3 and 5, except the staging upload and its screenshot; PC: Part 4 pushed for Bob, notes below)
 
 **Why.** Dave used staging on 30 Oct (18:35) and sent these. They are small, and each one is something a player meets in the first minutes. **This is the last order before launch that adds anything.** After it, the launch list is closed: these orders pass the reviewer, Dave tests once, and Bob moves production.
 
 ### Part 1. Screenshot upload is refused as a bot (Mac, first)
-- [ ] Uploading a screenshot says "That didn't look like a person. Reload the page and try again."
+- [x] Uploading a screenshot says "That didn't look like a person. Reload the page and try again."
   - Cause (Bob read the code): `src/instrumentation-client.ts` lists the paths whose POSTs carry the BotID token, and WO-184's `/api/screenshots` and `/api/tips` aren't on it. BotID reads an unlisted POST as a bot. Add them, and add `/places/*` and `/people/*` if a server action posts from those pages.
   - This is the third time a new write route was missed (sign-in and Import a build were the first two). **Add a test that fails when any route or action that calls `looksLikeBot()` isn't covered by the `protect` list.**
-- [ ] Upload a screenshot on staging as a signed-in player and say in the notes that it worked.
+- [ ] Upload a screenshot on staging as a signed-in player and say in the notes that it worked. (Not done: needs a signed-in Discord session, which I can't make; see the notes.)
 
 ### Part 2. The map (Mac)
-- [ ] **Zoom is too sensitive.** One wheel notch or a small trackpad pinch jumps too far.
+- [x] **Zoom is too sensitive.** One wheel notch or a small trackpad pinch jumps too far.
   - One notch zooms by a small fixed step (about 1.2×).
   - A trackpad pinch zooms in proportion to the gesture.
   - The + and − buttons move one level.
   - Zoom goes toward the pointer.
   - The same everywhere a map is drawn (the Map page, place and quest maps, full screen).
-- [ ] **Clicking a pin rarely opens its panel.**
+- [x] **Clicking a pin rarely opens its panel.**
   - The hit area is at least 32 px round the pin, and the pin's label opens it too.
   - A click that moves less than 5 px is a click, not a drag.
   - The test clicks ten pins at 1440 and 390, each by its diamond and by its label, and each opens.
 
 ### Part 3. Search (Mac)
-- [ ] **Each row says what it is**: a small, quiet label on the right of every row (Quest, Quest line, Place, Person, Book, Item, Spell, Perk). The section headings stay.
-- [ ] **One row per thing.** "di" lists "Deliver a Letter Distant" again and again, once per board's copy.
+- [x] **Each row says what it is**: a small, quiet label on the right of every row (Quest, Quest line, Place, Person, Book, Item, Spell, Perk). The section headings stay.
+- [x] **One row per thing.** "di" lists "Deliver a Letter Distant" again and again, once per board's copy.
   - Copies that share a name and a kind are one row, which opens the kind (`/quests/missives` and its section for that job), with the count in its quiet line ("Missives, on 12 boards").
   - The test: no two rows in any result list share a name and a kind.
 
@@ -5068,7 +5068,7 @@ Status: building (Mac: Parts 1 to 3 and 5; PC: Part 4 pushed for Bob, notes belo
 - [x] Find the page Dave quoted ("During A New Day…") and show it before and after in the notes.
 
 ### Part 5. The check
-- [ ] The checks in CLAUDE.md.
+- [x] The checks in CLAUDE.md.
 - [ ] Screenshots at 1440 and 390:
   - an upload on staging;
   - the map's zoom and a pin click;
@@ -5090,6 +5090,18 @@ Jeff's notes on Part 4 (PC, 30 Oct). The status says Part 4 is the PC's, so I di
 - **Contract:** additive only. `places.json` gains `actors.kinds` (and `afterTheWar.kinds`); `people.json` gains `moves` on 104 rows; `Actors`, `afterWar()` and `PersonRow` have the types. `npm test` (904 passed, 7 expected fail, and the same three MCP style-guide tests failing on this checkout without my changes), python unittest (497), typecheck, lint (the same two old warnings).
 - **Not changed:** the assistant's person tool (`fact-tools.ts`) still says "what changes it" and returns the read's `changes`; the order names the page. Say if the assistant should get `moves` too.
 
+
+
+### Jeff's notes, Mac (Parts 1 to 3 and 5, 30 Oct)
+
+**Part 1. BotID.** The cause is what Bob read: `/api/screenshots` and `/api/tips` weren't on the protect list. But the list was short in a second way, which I found writing the test: it listed `/`, `/new`, `/me`, `/b/*`, `/u/*`, `/admin`, `/quests/*` and a few more, while a server action posts to the page that shows it, and **every page's header has the sign-in button**. So sign-in, Confirm, Report a mistake and the consent page's Allow, on `/places/*`, `/people/*`, `/map`, `/guide/*`, `/gear/*`, `/characters`, `/search`, `/p/*`, `/playthroughs`, `/oauth/authorize` and the rest, were all posts BotID would read as a bot (the sign-in button just returns when `looksLikeBot()` says so, so it would do nothing). The list is now `src/lib/moderation/protect.ts` (the client's `instrumentation-client.ts` reads it): every page, and the routes a page posts to that ask `looksLikeBot()`. **`src/lib/moderation/bot-protect.test.ts` walks `src/app`**: it fails when any page, or any `route.ts` that mentions `looksLikeBot`, doesn't match the list, and when the guide's autosave (`/api/builds/*/guide`, sent with keepalive, which BotID can't sign) is matched. A route that calls `looksLikeBot()` through a helper in another file would not be seen by it; none does today. I did not widen the list to `/*` for that reason.
+- **The staging upload is not done.** It needs a signed-in Discord session on staging, and I can't sign in as a player (Dave: it is a one-minute check on staging: add a screenshot on a place page; if it still says "That didn't look like a person", the preview didn't redeploy or BotID's token isn't being sent, and the Vercel runtime log for `/api/screenshots` will say which).
+
+**Part 2. Map.** `src/lib/map/zoom.ts` (`wheelFactor`, `BUTTON_STEP`), used by the Map page and by every `MapView` (the place's frame map, Full screen and the Places page's map): one mouse notch (100 px, or 3 lines in Firefox) is 1.2; a trackpad pinch (Ctrl with small deltas) is in proportion to the gesture; no single event goes past 1.25; zoom is toward the pointer as before; the + and − buttons are 1.5 on both maps. A plain wheel on the Places page's map still scrolls the page (it did before); Full screen zooms with the plain wheel. **Pins: the cause was a stale mark, not the size.** After any drag the map kept the mark that says "this click is the end of a drag" (`gesture.current`, moved over 5 px) until the next press on bare map, and a press on a pin never cleared it, so after one pan every pin click was thrown away. Both maps now clear it on every press. The hit area is also 32 px round the pin, and the name is inside the same link. `e2e/wo185.spec.ts` drags the map, then clicks ten pins at 1440 (and the pins that were in the free area at 390) each by its diamond and each named one by its name, and every one opens its panel; I checked it fails without the fix (it did, at the first pin). It skips a pin whose diamond another pin's target covers (two places a few pixels apart): a person would hit the other one. A second test checks one notch is a 1.1 to 1.35 change in the spacing of two pins and a small scroll under 1.1.
+
+**Part 3. Search.** Every row has its kind, quiet, on the right (Quest, Quest line, Place, Person, Character, Guide), in the suggestions and on the results page. There is no Book, Item, Spell or Perk row because the site search doesn't search them. **One row per thing**: quests that share a name are one row; when they are one line's it opens the line (a board line at the kind of job: `/quests/missives#kind-deliver-a-letter`, the page's list of kinds now has those ids) with "Missives, on 12 boards"; a non-board line says "N quests of this name"; copies in different lines open the best one and say "N quests of this name". `wo185.test.ts` runs 20 queries and fails if any list has two rows with one name and kind; "di" now has one "Deliver a Letter Distant". I also fixed the suggestions list opening off the right edge of the page when its box is near the edge (it hid the new labels).
+
+**Part 5.** Screenshots in `test-results/`: `wo185-search-di-1440.png`, `wo185-search-dawn-1440.png`, `wo185-map-zoom-before-1440.png` and `wo185-map-zoom-after-one-notch-1440.png`, `wo185-map-pin-1440.png` and `-390.png`, `wo185-place-worth-*` and `wo185-person-where-*` (Bleak Falls Barrow and Arch-Paladin Laracin, at 1440 and 390). Not taken: an upload on staging (above). Typecheck, lint (the two old warnings), `npm test` (945 passed, 7 expected fail), build and the full e2e (610) pass.
 
 ---
 

@@ -226,3 +226,22 @@
     max-height: none;
   }
 }
+
+/* What each row is, quiet, on the right (WO-185 Part 3). */
+.top {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.top .name {
+  flex: 1;
+  min-width: 0;
+}
+.kind {
+  flex: none;
+  font-family: var(--font-title);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+}

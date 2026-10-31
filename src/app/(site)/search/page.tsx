@@ -43,8 +43,8 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
               <div key={h.href} className={styles.result}>
                 <span className={styles.resultHead}>
                   {h.kind && <img className={styles.px} src={`/icons/${KIND_ICON[h.kind]}.svg`} alt="" width={20} height={20} />}
-                  {h.kind && <span className={styles.kind}>{h.kind}</span>}
                   <Link href={h.href}>{h.name}</Link>
+                  {h.kind && <span className={styles.kindQuiet}>{h.kind}</span>}
                 </span>
                 {h.note ? <span className={styles.src}>{h.note}</span> : null}
                 <span className={styles.why}>{h.why}</span>

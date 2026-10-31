@@ -2,6 +2,7 @@
 import { loadPlayerFacts } from "@/lib/quests/player-facts";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { jobKind, kindSlug } from "@/lib/quests/job-kind";
 import { pageExtras } from "@/components/pages/page-extras";
 import { notFound, redirect } from "next/navigation";
 import { auth } from "@/auth";
@@ -244,13 +245,13 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                 const kinds = new Map<string, { label: string; href: string | null }[]>();
                 for (const q of line.quests) {
                   const m = /^(.*?)\s+(Near|Medium|Distant|Far|Med)$/.exec(q.name);
-                  const kind = (m ? m[1] : q.name).replace(/\s+Board$/i, "");
+                  const kind = jobKind(q.name);
                   kinds.set(kind, [...(kinds.get(kind) ?? []), { label: m ? m[2] : q.name === kind ? "The job" : "The board", href: questHref(q.edid) }]);
                 }
                 return (
                   <ul className={l.body} style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: 4 }}>
                     {[...kinds].map(([kind, qs]) => (
-                      <li key={kind}>
+                      <li key={kind} id={kindSlug(kind)}>
                         <b>{kind}</b>{" "}
                         {[...new Map(qs.map((x) => [x.label, { ...x, n: qs.filter((y) => y.label === x.label).length }])).values()].map((x, i) => (
                           <span key={`${x.label}-${i}`}>

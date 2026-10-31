@@ -1156,6 +1156,18 @@ a.tag:hover {
   font-size: 13px;
   color: var(--text);
 }
+/* What the row is: a small, quiet label on the right (WO-185 Part 3). */
+.kindQuiet {
+  margin-left: auto;
+  font-family: var(--font-title);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.resultHead {
+  flex-wrap: nowrap;
+}
 .result a {
   font-size: 18px;
   font-weight: 600;

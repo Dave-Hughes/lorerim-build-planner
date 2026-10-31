@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import styles from "./search.module.css";
 
-type Hit = { name: string; href: string; note?: string; why: string };
+type Hit = { kind?: string; name: string; href: string; note?: string; why: string };
 type Results = Record<"quests" | "people" | "places" | "builds" | "guide", Hit[]>;
 const GROUPS: [keyof Results, string][] = [
   ["quests", "Quests"],
@@ -28,6 +28,12 @@ export function SearchBox({ placeholder = "Search quests, people, places", initi
   // A question that has been out for a moment with nothing back: the list says it is searching (WO-159).
   const [slow, setSlow] = useState(false);
   const box = useRef<HTMLDivElement>(null);
+  // A box near the right edge opens its list towards the left, so a row's label is never cut off (WO-185 Part 3).
+  const [flip, setFlip] = useState(false);
+  const measure = () => {
+    const r = box.current?.getBoundingClientRect();
+    if (r) setFlip(r.left + 420 > window.innerWidth - 16);
+  };
   // Suggestions show only while there is enough typed to ask for them.
   const live = q.trim().length >= 2 ? results : null;
   const flat = live ? GROUPS.flatMap(([k]) => live[k]) : [];
@@ -106,9 +112,13 @@ export function SearchBox({ placeholder = "Search quests, people, places", initi
             placeholder={placeholder}
             onChange={(e) => {
               setQ(e.target.value);
+              measure();
               setOpen(true);
             }}
-            onFocus={() => setOpen(true)}
+            onFocus={() => {
+              measure();
+              setOpen(true);
+            }}
             onKeyDown={(e) => {
               if (e.key === "ArrowDown" && flat.length) {
                 e.preventDefault();
@@ -123,7 +133,7 @@ export function SearchBox({ placeholder = "Search quests, people, places", initi
         </label>
       </form>
       {shown && (
-        <div id={`${id}-list`} role="listbox" aria-label="Suggestions" className={styles.list}>
+        <div id={`${id}-list`} role="listbox" aria-label="Suggestions" className={styles.list} style={flip ? { left: "auto", right: 0 } : undefined}>
           {searching && (
             <div role="status" className={styles.searching}>
               <span className={styles.embers} aria-hidden="true">
@@ -142,7 +152,10 @@ export function SearchBox({ placeholder = "Search quests, people, places", initi
                   const mine = at.get(h.href) ?? -1;
                   return (
                     <div key={h.href} id={`${id}-o${mine}`} role="option" aria-selected={active === mine} className={`${styles.opt} ${active === mine ? styles.on : ""}`} onMouseEnter={() => setActive(mine)} onMouseDown={(e) => { e.preventDefault(); go(h.href); }}>
-                      <span className={styles.name}>{h.name}</span>
+                      <span className={styles.top}>
+                        <span className={styles.name}>{h.name}</span>
+                        {h.kind ? <span className={styles.kind}>{h.kind}</span> : null}
+                      </span>
                       {h.note ? <small>{h.note}</small> : null}
                     </div>
                   );

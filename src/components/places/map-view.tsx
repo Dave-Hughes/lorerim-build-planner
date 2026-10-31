@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { BUTTON_STEP, wheelFactor } from "@/lib/map/zoom";
 import { PreviewLink } from "@/components/pages/preview-link";
 import type { MapEntry, Pin } from "@/lib/places/map";
 import s from "./map-view.module.css";
@@ -139,6 +140,8 @@ function MapCore({ entry, pins, here, hereLabel, labelled = 0, mode, className, 
   const pointers = useRef(new Map<number, { x: number; y: number }>());
   const gesture = useRef<{ start: { x: number; y: number }; origin: { x: number; y: number }; dist: number; zoom: number; moved: number } | null>(null);
   const onDown = (e: React.PointerEvent) => {
+    // An earlier drag's mark goes with the next press, wherever it lands, so a pin clicked after a pan still opens (WO-185 Part 2).
+    gesture.current = null;
     if ((e.target as HTMLElement).closest("a, button")) return;
     pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
     (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
@@ -182,7 +185,7 @@ function MapCore({ entry, pins, here, hereLabel, labelled = 0, mode, className, 
     const wheel = (e: WheelEvent) => {
       if (!e.ctrlKey && !overlay) return;
       e.preventDefault();
-      zoomTo(Math.min(fit * 6, Math.max(fit, z * (e.deltaY < 0 ? 1.18 : 1 / 1.18))), { x: e.clientX, y: e.clientY });
+      zoomTo(Math.min(fit * 6, Math.max(fit, z * wheelFactor(e))), { x: e.clientX, y: e.clientY });
     };
     el.addEventListener("wheel", wheel, { passive: false });
     return () => el.removeEventListener("wheel", wheel);
@@ -303,10 +306,10 @@ function MapCore({ entry, pins, here, hereLabel, labelled = 0, mode, className, 
       )}
       {mode === "whole" && (
         <span className={`${s.zoomBtns} ${onFull ? s.zoomLow : ""}`}>
-          <button type="button" className={s.plate} aria-label="Zoom in" onClick={() => zoomTo(Math.min(fit * 6, z * 1.4), null)}>
+          <button type="button" className={s.plate} aria-label="Zoom in" onClick={() => zoomTo(Math.min(fit * 6, z * BUTTON_STEP), null)}>
             +
           </button>
-          <button type="button" className={s.plate} aria-label="Zoom out" onClick={() => zoomTo(Math.max(fit, z / 1.4), null)}>
+          <button type="button" className={s.plate} aria-label="Zoom out" onClick={() => zoomTo(Math.max(fit, z / BUTTON_STEP), null)}>
             −
           </button>
         </span>
