@@ -17,11 +17,16 @@ export function placeFrameMap(place: Place): { node: ReactNode; there: string | 
   };
 }
 
-/** A person's map: where they are found, when the planner knows it: the town they are placed in. */
-export function personFrameMap(person: { name: string; inTown?: string | null }): ReactNode | null {
-  const town = person.inTown ? placeByName(person.inTown) : null;
-  if (!town) return null;
-  const m = placeMap(town);
-  if (!m) return null;
-  return <MapView entry={m.entry} pins={m.around} here={m.here} labelled={6} mode="band" framed title={`${person.name}, in ${placeLabel(town)}`} sub={town.hold ? holdWords(town.hold) : undefined} mapHref={`/map?place=${placeSlug(town)}`} />;
+/**
+ * A person's map: where the planner can place them (WO-184 Part 9), the town they are in or else the place of the cell they are placed in (Arch-Paladin Laracin's is Meridia's Sanctum, which
+ * has a pin). Not a guess: with no place the map can show, there is no Map button.
+ */
+export function personFrameMap(person: { name: string; inTown?: string | null; cell?: string | null; cells?: string[] }): ReactNode | null {
+  for (const name of [person.inTown, person.cell, ...(person.cells ?? [])]) {
+    const place = name ? placeByName(name) : null;
+    const m = place ? placeMap(place) : null;
+    if (!place || !m) continue;
+    return <MapView entry={m.entry} pins={m.around} here={m.here} labelled={6} mode="band" framed title={`${person.name}, in ${placeLabel(place)}`} sub={place.hold ? holdWords(place.hold) : undefined} mapHref={`/map?place=${placeSlug(place)}`} />;
+  }
+  return null;
 }

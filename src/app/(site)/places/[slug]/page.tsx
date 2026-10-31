@@ -11,7 +11,7 @@ import { LineToc } from "@/components/quests/line-parts";
 import { GettingThere, TopFrame } from "@/components/screenshots/top-frame";
 import { placeFrameMap } from "@/components/screenshots/frame-maps";
 import { GlanceList, type GlanceCell } from "@/components/pages/glance";
-import { personHref } from "@/lib/people/data";
+import { isNamedPerson, personHref } from "@/lib/people/data";
 import { questsData } from "@/lib/quests/data";
 import { afterWar, hasLevels, isGarrison, placeByRecordName, placeBySlug, placeHrefOf, placeLabel, placesSharingSlug, placeType, rangeOf, type Place } from "@/lib/places/data";
 import { PlaceTown, levelRange } from "@/components/places/place-town";
@@ -114,10 +114,10 @@ export default async function PlacePage({ params }: { params: Params }) {
   const garrison = isGarrison(a) && !!war;
   const levels = garrison ? war!.range : hasLevels(a) && a.hostile !== false ? rangeOf(a!) : null;
   const bossFrom = garrison ? war!.boss : a?.boss;
-  const boss = bossFrom?.name ? { name: bossFrom.name, range: bossRange(bossFrom.level), words: levelWords(bossFrom.level) } : null;
+  // A boss is said only when it is someone: a named person with a page, never a generic soldier (WO-184 Part 9: Fort Hraggstad's boss was "Imperial Soldier").
+  const boss = bossFrom?.name && isNamedPerson(bossFrom.name) ? { name: bossFrom.name, range: bossRange(bossFrom.level), words: levelWords(bossFrom.level) } : null;
   const livesHere = garrison ? war!.livesHere : a?.livesHere;
   const foes = garrison ? "After the war" : livesHere ? (PLURAL[livesHere] ?? `${livesHere}s`) : "Enemies";
-  const alsoHere = garrison ? war!.alsoHere : a?.alsoHere;
   const inAll = garrison ? war!.count : a?.count;
   const town = place.nearestTown;
   const origin = originOf(place.id);
@@ -183,8 +183,15 @@ export default async function PlacePage({ params }: { params: Params }) {
   // The Danger section (its gauge, the boss, traps and when it comes back) sits after the quests, where the board puts it; when it isn't drawn, Comes back is a fact at the top.
   const dangerShown = !!(levels || a?.hostile === false || (place.danger?.traps && !dangerUnsure && (hasWorth || quests.length > 0)));
   // At a glance (WO-162, the colours of rule 34): danger in red, the boss and people in orange, what it pays in gold, when it comes back, and the nearest town in teal.
+  // The enemies are said once and linked to their rows: "Draugr and 4 more kinds ›" (the passing "Bandits, Skeletons, Trolls too" line is gone, WO-184 Part 9).
+  const dangerSub: React.ReactNode = levels ? (
+    <a href="#danger">
+      {foeRows[0]?.name ?? foes}
+      {foeRows.length > 1 ? ` and ${foeRows.length - 1} more ${foeRows.length - 1 === 1 ? "kind" : "kinds"}` : ""} ›
+    </a>
+  ) : undefined;
   const glance: GlanceCell[] = [
-    ...(levels ? [{ key: "danger", icon: "tab-levels", tone: "red" as const, label: "Danger", value: levelRange(levels), sub: `${foes}${alsoHere?.length ? `, ${alsoHere.map((x) => PLURAL[x] ?? `${x}s`).join(", ")} too` : ""}` }] : a?.hostile === false ? [{ key: "danger", icon: "tab-levels", tone: "red" as const, label: "Danger", value: "None", sub: "Nobody here is hostile" }] : dangerUnsure ? (place.danger?.traps ? [{ key: "danger", icon: "tab-levels", tone: "red" as const, label: "Danger", value: "Traps", sub: undefined }] : []) : [{ key: "danger", icon: "tab-levels", tone: "red" as const, label: "Danger", value: "Not known yet", sub: undefined }]),
+    ...(levels ? [{ key: "danger", icon: "tab-levels", tone: "red" as const, label: "Danger", value: levelRange(levels), sub: dangerSub }] : a?.hostile === false ? [{ key: "danger", icon: "tab-levels", tone: "red" as const, label: "Danger", value: "None", sub: "Nobody here is hostile" }] : dangerUnsure ? (place.danger?.traps ? [{ key: "danger", icon: "tab-levels", tone: "red" as const, label: "Danger", value: "Traps", sub: undefined }] : []) : [{ key: "danger", icon: "tab-levels", tone: "red" as const, label: "Danger", value: "Not known yet", sub: undefined }]),
     ...(boss ? [{ key: "boss", icon: "quest-people", tone: "orange" as const, label: "The boss", value: personHref(boss.name) ? <PreviewLink href={personHref(boss.name)!}>{boss.name}</PreviewLink> : boss.name, sub: boss.words ? `Level ${boss.words}` : undefined }] : []),
     ...(place.clearXp || place.discoveryXp ? [{ key: "xp", icon: "quest-rewards", tone: "gold" as const, label: "Rewards", value: `${place.clearXp || place.discoveryXp} XP`, sub: [place.clearXp ? "For clearing it" : "", place.discoveryXp && place.clearXp ? `${place.discoveryXp} XP for finding it` : place.discoveryXp ? "For finding it" : ""].filter(Boolean).join("; ") }] : []),
     ...(place.respawns && !dangerShown ? [{ key: "back", icon: "tab-set-up", tone: "orange" as const, label: "Comes back", value: respawnWords(place.respawns), sub: undefined }] : []),

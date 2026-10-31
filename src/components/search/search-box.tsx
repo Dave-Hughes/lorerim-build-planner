@@ -29,10 +29,11 @@ export function SearchBox({ placeholder = "Search quests, people, places", initi
   const [slow, setSlow] = useState(false);
   const box = useRef<HTMLDivElement>(null);
   // A box near the right edge opens its list towards the left, so a row's label is never cut off (WO-185 Part 3).
-  const [flip, setFlip] = useState(false);
+  const [place, setPlace] = useState<"wide" | "flip" | "box">("wide");
   const measure = () => {
     const r = box.current?.getBoundingClientRect();
-    if (r) setFlip(r.left + 420 > window.innerWidth - 16);
+    // On a phone the list is the box's own width, so it lines up with it (WO-184 Part 9: it opened from x=0 with the box at 32).
+    if (r) setPlace(window.innerWidth < 480 ? "box" : r.left + 420 > window.innerWidth - 16 ? "flip" : "wide");
   };
   // Suggestions show only while there is enough typed to ask for them.
   const live = q.trim().length >= 2 ? results : null;
@@ -133,7 +134,7 @@ export function SearchBox({ placeholder = "Search quests, people, places", initi
         </label>
       </form>
       {shown && (
-        <div id={`${id}-list`} role="listbox" aria-label="Suggestions" className={styles.list} style={flip ? { left: "auto", right: 0 } : undefined}>
+        <div id={`${id}-list`} role="listbox" aria-label="Suggestions" className={styles.list} style={place === "flip" ? { left: "auto", right: 0 } : place === "box" ? { minWidth: 0 } : undefined}>
           {searching && (
             <div role="status" className={styles.searching}>
               <span className={styles.embers} aria-hidden="true">

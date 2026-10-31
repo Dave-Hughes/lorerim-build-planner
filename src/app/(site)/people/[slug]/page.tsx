@@ -8,6 +8,7 @@ import { TopFrame } from "@/components/screenshots/top-frame";
 import { personFrameMap } from "@/components/screenshots/frame-maps";
 import { pageExtras } from "@/components/pages/page-extras";
 import { ReportMistake } from "@/components/pages/report-mistake";
+import { placeHref } from "@/lib/places/data";
 import { personBySlug, personUnsure, roleWords, unsureFields } from "@/lib/people/data";
 import { playersWords } from "@/lib/quests/reads";
 import { GlanceList, type GlanceCell } from "@/components/pages/glance";
@@ -212,6 +213,10 @@ export default async function PersonPage({ params }: { params: Params }) {
   const short = (t: string, n = 100) => (t.length > n ? `${t.slice(0, n - 1).trimEnd()}…` : t);
   // The person themself is not linked in their own words: skipped at the match, so one compiled pattern serves every page (a pattern for each person leaked memory, WO-177 Part 5).
   const L = (t: string) => <Linked text={t} names={linkable()} skip={`/people/${person.slug}`} />;
+  const wholePlace = (t: string) => {
+    const href = placeHref(t);
+    return href ? <PreviewLink href={href}>{t}</PreviewLink> : t;
+  };
   // What they are comes from what the records say they do, before their race (WO-183 Part 4: 82% of pages had the race where a trainer, a merchant or a follower was known).
   const roleText = read?.role ? cap(read.role.split(";")[0].trim()) : (role ?? (trainer ? `${trainer.skill} trainer` : person.follower ? "Follower" : sells ? "Merchant" : (person.race ?? null)));
   // A person with a shop sells what the shop sells, in the word the town page uses (WO-180 Part 8: Carlotta's page said "general 'misc'", her town "food").
@@ -223,7 +228,8 @@ export default async function PersonPage({ params }: { params: Params }) {
       icon: "quest-travel",
       tone: "teal" as const,
       label: `Where to find ${they}`,
-      value: L(mostly?.main ?? person.inTown ?? person.cell ?? "Not known yet"),
+      // The place as a whole, or as plain words when the planner has no page for it: never a piece of its name linked to someone else ("Marukh's Underground Priory" linked only Marukh).
+      value: wholePlace(mostly?.main ?? person.inTown ?? person.cell ?? "Not known yet"),
       // With no read the page says what it doesn't know once, under What they offer (WO-180 Part 6b), not under each cell.
       sub: read?.firstMeet || (mostly && mostly.places.length > 1) || read ? L(read?.firstMeet ? `First met: ${short(read.firstMeet.replace(/\.$/, ""), 90)}` : mostly && mostly.places.length > 1 ? `Also ${mostly.places.slice(1, 3).join(", ")}` : `Where ${subject} ${subject === "they" ? "are" : "is"} through the day isn't known yet`) : undefined,
       small: true,
@@ -234,7 +240,9 @@ export default async function PersonPage({ params }: { params: Params }) {
     ...(quests.length ? [{ key: "quests", icon: "quest-side-stories", tone: "violet" as const, label: "Quests", value: gives.length ? `Gives ${plural(gives.length)}` : `In ${plural(quests.length)}`, sub: [alsoIn && gives.length ? `and is in ${alsoIn} more` : "", (gives.length ? gives : quests).slice(0, 2).map((q) => q.name).join("; ")].filter(Boolean).join(". ") }] : []),
   ].slice(0, 5);
   // On a phone the sections are the first screen: the cells that repeat one (where, what they sell or train, whether they follow, their quests) are left out, and the role stays.
-  if (cells.some((c) => c.key === "role")) for (const c of cells) if (c.key !== "role") c.hidePhone = true;
+  // Where to find them stays on a phone when no section says it (WO-185 Part 6b: Abbot Cosmas had no place at all on a phone).
+  const whereSection = !!((read && (read.firstMeet || read.day.length > 0)) || moves.length > 0 || where.day || where.night || (person.shop && !person.follower));
+  if (cells.some((c) => c.key === "role")) for (const c of cells) if (c.key !== "role") c.hidePhone = c.key === "where" ? whereSection : true;
 
   return (
     <main className={l.root}>
@@ -272,7 +280,7 @@ export default async function PersonPage({ params }: { params: Params }) {
       <div className={`page ${styles.main}`} style={{ paddingTop: 44 }}>
       <div className={styles.cols}>
         <div className={styles.body}>
-          {read && (read.firstMeet || read.day.length > 0) && (
+          {whereSection && (
             <Section id="where" icon="quest-travel" title={`Where to find ${they}`}>
               {person.shop && !person.follower && (
                 <p className={styles.byDay}>
@@ -309,13 +317,13 @@ export default async function PersonPage({ params }: { params: Params }) {
                   )}
                 </p>
               )}
-              {read.firstMeet && (
+              {read?.firstMeet && (
                 <p className={styles.firstMeet}>
                   <b>First meeting.</b> {L(cap(read.firstMeet))}
                   {sure("firstMeet")}
                 </p>
               )}
-              {hours && read.day.length > 1 && (
+              {hours && read && read.day.length > 1 && (
                 <div className={styles.strip} role="img" aria-label={`Through the day: ${[...new Set(hours.filter(Boolean))].join(", ")}`}>
                   <div className={styles.stripBar}>
                     {hours.map((h, i) => (
@@ -338,7 +346,7 @@ export default async function PersonPage({ params }: { params: Params }) {
                   </div>
                 </div>
               )}
-              {read.day.length > 0 && (
+              {read && read.day.length > 0 && (
                 <div className={styles.dayList} role="list" aria-label="Through the day">
                   {read.day.map((d, i) => {
                     const w = whenWords(d.from, d.for);

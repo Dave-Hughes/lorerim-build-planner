@@ -18,7 +18,7 @@ const THUMBS = 6;
  * or on the map when there is none. A reader's own screenshot under review is a thumbnail with its flag, never what the frame opens on. An admin's Approve, Make it lead,
  * Remove and Delete show under it for the screenshot in the frame.
  */
-export function Frame({ kind, pageKey, name, data, map, signInPlus, signInText }: { kind: ShotKind; pageKey: string; name: string; data: { shots: ShotData[]; signedIn: boolean; admin: boolean }; map: ReactNode | null; signInPlus: ReactNode; signInText: ReactNode }) {
+export function Frame({ kind, pageKey, name, data, map, signInPlus, signInText, signInOne }: { kind: ShotKind; pageKey: string; name: string; data: { shots: ShotData[]; signedIn: boolean; admin: boolean }; map: ReactNode | null; signInPlus: ReactNode; signInText: ReactNode; signInOne: ReactNode }) {
   const router = useRouter();
   const { shots, signedIn, admin } = data;
   const firstLive = shots.findIndex((x) => x.status === "live");
@@ -78,7 +78,7 @@ export function Frame({ kind, pageKey, name, data, map, signInPlus, signInText }
                 + Add a screenshot
               </button>
             ) : (
-              signInText
+              signInOne
             )}
           </div>
         )}
@@ -138,9 +138,9 @@ export function Frame({ kind, pageKey, name, data, map, signInPlus, signInText }
             <button type="button" className={s.link} onClick={() => setAdding(true)}>
               Add yours
             </button>
-          ) : (
+          ) : live ? (
             signInText
-          )}
+          ) : null}
         </span>
       </div>
 

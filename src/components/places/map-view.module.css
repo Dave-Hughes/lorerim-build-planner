@@ -348,8 +348,11 @@ a.pin:focus-visible {
   border: 0 !important;
 }
 @media (max-width: 700px) {
+  /* The key stays on a phone, on a row of its own under the name (WO-184 Part 9). */
   .fullKey {
-    display: none;
+    order: 5;
+    flex-basis: 100%;
+    margin-left: 0;
   }
   .fullOpen {
     margin-left: 0;
@@ -384,4 +387,15 @@ a.pin::before {
 a.pin.flip::before {
   left: auto;
   right: -10px;
+}
+
+/* 44 px targets on a phone, and the scale bar above the credit, not under it (WO-184 Part 9: "0.2 kr"). */
+@media (max-width: 700px) {
+  .fullBtn,
+  .fullClose {
+    height: 44px;
+  }
+  .scale {
+    bottom: 44px;
+  }
 }

@@ -131,3 +131,27 @@ for (const width of [1440, 390]) {
     await page.screenshot({ path: `test-results/wo185-person-where-${width}.png`, fullPage: true });
   });
 }
+
+/** WO-185 Part 6b: a person with `moves` shows them whatever else they have, and a person with no Where to find section still says where on a phone. */
+test("Part 6b: ten people with moves and no day show their After and During lines", async ({ page, request }) => {
+  for (const name of ["Neski", "Ernanthil", "Lynea", "Rhiada", "Gian", "Herluin", "Syndus", "Vanryth", "Kematu", "Arnskar"]) {
+    const found = (await (await request.get(`/api/search?q=${encodeURIComponent(name)}`)).json()) as { people: { name: string; href: string }[] };
+    const hit = found.people.find((p) => p.name.startsWith(name));
+    expect(hit, name).toBeTruthy();
+    await page.goto(hit!.href);
+    const moves = page.getByRole("list", { name: "Where a quest moves them" });
+    await expect(moves, `${hit!.name} shows where a quest moves them`).toBeVisible();
+    await expect(moves.locator("li").first()).toContainText(/^(After|During) /);
+  }
+});
+
+test("Part 6b: Abbot Cosmas says where he is on a phone, the place as a whole or as plain words", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/people/abbot-cosmas");
+  const where = page.getByRole("region", { name: "At a glance" }).locator("> div").filter({ hasText: /Where to find/ }).first();
+  await expect(where).toBeVisible();
+  await expect(where).toContainText("Marukh's Underground Priory");
+  // The whole name, never a piece of it linked to a person.
+  expect(await where.getByRole("link", { name: "Marukh", exact: true }).count()).toBe(0);
+  await page.screenshot({ path: "test-results/wo185-6b-abbot-cosmas-390.png", fullPage: true });
+});

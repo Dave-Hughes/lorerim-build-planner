@@ -18,6 +18,8 @@ export interface GlanceCell {
   small?: boolean;
   /** The section under the band says this again: on a phone the cell is left out. */
   hidePhone?: boolean;
+  /** What is too long for a list beside the frame (who keeps each shop, who trains what): folded under the fact, opened by its label (WO-184 Part 9). */
+  more?: { label: string; node: ReactNode };
 }
 
 const TONE: Record<Tone, string> = { green: l.cGreen, red: l.cRed, teal: l.cTeal, orange: l.cOrange, gold: l.cGold, violet: l.cViolet };
@@ -58,6 +60,12 @@ export function GlanceList({ cells }: { cells: GlanceCell[] }) {
           </span>
           <span className={g.v}>{c.value}</span>
           {c.sub ? <span className={g.s}>{c.sub}</span> : null}
+          {c.more && (
+            <details className={g.more}>
+              <summary>{c.more.label}</summary>
+              <div className={g.moreBody}>{c.more.node}</div>
+            </details>
+          )}
         </div>
       ))}
     </section>

@@ -282,6 +282,16 @@ export function roleOfName(name: string): string | null {
   return raw || null;
 }
 export const personBySlug = (slug: string) => peopleData().bySlug.get(slug) ?? null;
+/**
+ * Whether a name is someone, not a kind of actor (WO-184 Part 9: Fort Hraggstad's boss was "Imperial Soldier"). A name many records share, or one that is only a rank or a trade
+ * ("Marauder", "Stormcloak Soldier", "Black Hand"), is a kind; any other name is a person, with a page or not (Captain Hargar).
+ */
+const KIND_WORDS = /^(?:(?:imperial|stormcloak|redoran|thalmor|legion|bandit|forsworn|dawnguard|vigilant|black)\s+)?(?:soldier|guard|marauder|prisoner|skeleton|battlemage|mage|warrior|archer|mercenary|hunter|hand|werebear|guardian|officer|captain|conjurer|necromancer|priest|cultist)$/i;
+export function isNamedPerson(name: string): boolean {
+  const p = personByName(name);
+  if (KIND_WORDS.test(name.trim().replace(/^the\s+/i, ""))) return false;
+  return !p || p.rows.length <= 2;
+}
 export const personHref = (name: string): string | null => {
   const p = personByName(name);
   return p ? `/people/${p.slug}` : null;

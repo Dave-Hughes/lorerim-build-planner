@@ -28,12 +28,13 @@ export function NotSureList({ kind, pageKey, fields, signedIn, sent, answered, s
     const frame = requestAnimationFrame(() => {
       const m = /^#know-(\d+)$/.exec(window.location.hash);
       if (m && Number(m[1]) < fields.length) {
-        setOpen(Number(m[1]));
+        // Signed out, the link scrolls to the line and offers sign-in, nothing more: a form would lose what was typed on Send (WO-184 Part 9).
+        if (signedIn) setOpen(Number(m[1]));
         root.current?.scrollIntoView({ block: "center" });
       }
     });
     return () => cancelAnimationFrame(frame);
-  }, [fields.length]);
+  }, [fields.length, signedIn]);
   const said = (f: string) => answered.find((a) => a.field.toLowerCase() === f.toLowerCase().replace(/\.$/, ""));
 
   return (

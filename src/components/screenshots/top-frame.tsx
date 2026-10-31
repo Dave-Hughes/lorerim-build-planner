@@ -31,6 +31,7 @@ export async function TopFrame({ kind, slug, name, back, head, facts, map }: { k
             map={map}
             signInPlus={<SignInButton redirectTo={home} className={f.tadd} label={<span aria-label="Sign in to add a screenshot">+</span>} />}
             signInText={<SignInButton redirectTo={home} className={f.link} label="Sign in to add yours" />}
+            signInOne={<SignInButton redirectTo={home} className={f.link} label="Sign in to add one" />}
           />
         </div>
         <div className={s.facts}>{facts}</div>

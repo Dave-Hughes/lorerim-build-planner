@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-185  Dave's notes from using the app (Mac, PC for Part 4, 30 Oct 2026)
-Status: building (PC: Part 6a; Mac: Part 6b. Parts 1 to 3 pass; the staging upload is Bob's, signed in)
+Status: for Bob (Part 6b built; Part 6a is the PC's; Parts 1 to 3 pass; the staging upload is Bob's, signed in)
 
 **Why.** Dave used staging on 30 Oct (18:35) and sent these. They are small, and each one is something a player meets in the first minutes. **This is the last order before launch that adds anything.** After it, the launch list is closed: these orders pass the reviewer, Dave tests once, and Bob moves production.
 
@@ -5106,11 +5106,13 @@ The rest:
 - [ ] **Twenty people against UESP before pushing**, the list and verdict in the notes.
 
 **Part 6b (Mac)**
-- [ ] **Moves never shown**: a person with `moves` and no Where to find section shows nothing. 10 of 31 in the sample: Neski, Ernanthil, Lynea, Rhiada, Gian, Herluin, Syndus, Vanryth, Kematu and Arnskar. Draw the After and During lines whatever else the person has.
-- [ ] Abbot Cosmas has no place at all on a phone: the fact is `hidePhone` and he has no Where to find section. "Marukh's Underground Priory" links only "Marukh", to a person. Link the place as a whole, and show where to find someone on phones.
+- [x] **Moves never shown**: a person with `moves` and no Where to find section shows nothing. 10 of 31 in the sample: Neski, Ernanthil, Lynea, Rhiada, Gian, Herluin, Syndus, Vanryth, Kematu and Arnskar. Draw the After and During lines whatever else the person has.
+- [x] Abbot Cosmas has no place at all on a phone: the fact is `hidePhone` and he has no Where to find section. "Marukh's Underground Priory" links only "Marukh", to a person. Link the place as a whole, and show where to find someone on phones.
 - [ ] The staging upload (Part 1) is Bob's, signed in. Untick nothing.
 
 ### Jeff's notes
+
+Jeff's notes on Part 6b (Mac, 30 Oct). The person page draws **Where to find** whenever there is something to say there: a first meeting, a day or night place, a shop (and not a follower), or moves. A person with moves and nothing else (Neski, Ernanthil, Lynea, Rhiada, Gian, Herluin, Syndus, Vanryth, Kematu, Arnskar) now has the section, with only the After and During lines; the read-only parts (first meeting, the day strip) are guarded so a person with no read doesn't get them. Abbot Cosmas: the Where fact shows on a phone whenever the page draws no Where to find section, and the place in it ("Marukh's Underground Priory") links the place as a whole when it has a page (`wholePlace()`), else it's plain text. `e2e/wo185.spec.ts` "Part 6b" has two tests (a moves-only person; Cosmas at 390). The staging upload box is still Bob's.
 
 Jeff's notes on Part 4 (PC, 30 Oct). The status says Part 4 is the PC's, so I did the pages as well as the data (they are small, and a data change nobody renders shows nothing); Mac: this touched `places/[slug]/page.tsx`, `people/[slug]/page.tsx`, `place-town.tsx`, `page-kit.module.css` and `map/data.ts`, so Part 8 of WO-184 may need a rebase over the place page. **I viewed nothing in a browser** (no database on the PC); the screenshots in Part 5 are Mac's.
 - **"What people say about it" is gone** from both kinds of place page: the section, its link in the section list, and the `PlaceSaid` component. `pointers` stays in `places.json`: the map, the tips and the assistant still read it.
@@ -5138,7 +5140,7 @@ Jeff's notes on Part 4 (PC, 30 Oct). The status says Part 4 is the PC's, so I di
 ---
 
 ## WO-184  Players make it right: screenshots, I know this, Help fill the gaps, one review list (Mac, 30 Oct 2026)
-Status: queued (Mac: Part 9; Bob: the signed-in walk and the Tapps uploads)
+Status: building (Mac: Part 9's "After an upload" box; the rest of Part 9 is built; Bob: the signed-in walk and the Tapps uploads)
 
 **Why.** Dave, 30 Oct: with playthroughs cut, double down on quests, places and people, and "accelerate the ideas for community confirmation of quest info, the admin review section, and of course the image collection work for locations and NPCs." These are the backlog's 23 Oct, 28 Oct and 28 Oct items, decided.
 
@@ -5303,13 +5305,13 @@ These pass:
 - Sign in to tell us; Help fill the gaps with its filters, counts and Show more; no "picture" or "image" anywhere.
 
 The rest (Mac):
-- [ ] **Map for anyone the planner can place**, not only `inTown`. Arch-Paladin Laracin's cell is Meridia's Sanctum, which has a pin, yet he gets no Map button. 982 people are like that.
-- [ ] **44 px at 390**: the frame's Full screen and the full-screen Close are 36 px tall.
-- [ ] **At 390 the scale bar runs under the credit** ("0.2 kr").
-- [ ] **Towns** (Bob's call): the left column's facts replace the At a glance band under the top, so Who lives here starts on the first screen. Today it's at 895 px on Riverwood. The facts a town has (people, shops and beds, trainers, finding it) move into the left list.
-- [ ] **The frame's map zooms**: small + and − on the frame. The wheel still scrolls the page.
-- [ ] **A signed-out visitor never gets the form.** Help fill the gaps' "I know this ›" (`#know-N`) opens the full form beside "Sign in to tell us", so their typing is lost on Send. Signed out, the link scrolls to the line and offers sign-in, nothing more.
-- [ ] **Small:**
+- [x] **Map for anyone the planner can place**, not only `inTown`. Arch-Paladin Laracin's cell is Meridia's Sanctum, which has a pin, yet he gets no Map button. 982 people are like that.
+- [x] **44 px at 390**: the frame's Full screen and the full-screen Close are 36 px tall.
+- [x] **At 390 the scale bar runs under the credit** ("0.2 kr").
+- [x] **Towns** (Bob's call): the left column's facts replace the At a glance band under the top, so Who lives here starts on the first screen. Today it's at 895 px on Riverwood. The facts a town has (people, shops and beds, trainers, finding it) move into the left list.
+- [x] **The frame's map zooms**: small + and − on the frame. The wheel still scrolls the page.
+- [x] **A signed-out visitor never gets the form.** Help fill the gaps' "I know this ›" (`#know-N`) opens the full form beside "Sign in to tell us", so their typing is lost on Send. Signed out, the link scrolls to the line and offers sign-in, nothing more.
+- [x] **Small:**
   - Full screen at 390 keeps the key and opens at the same zoom as the page, with labels that don't overlap.
   - "Sign in to add yours" is said twice in the empty frame; say it once, as "Sign in to add one".
   - The search suggestions at 390 line up with the box (they open from x=0, the box at 32).
@@ -5323,6 +5325,14 @@ The rest (Mac):
 - [ ] Then `for Bob`.
 
 ### Jeff's notes
+
+**Mac, 30 Oct: Part 9.** Typecheck, lint (the old warnings; `alsoHere` removed), `npm test` (961 passed, 7 expected fail), build and the full e2e (612 passed, then the 3 stale ones fixed: wo154's boss, wo177's "In Where" read across two headings, wo184's "add yours") pass; `e2e/wo184-9.spec.ts` is its own check (7 tests). Screenshots: `test-results/wo184-9-town-1440.png`, `wo184-9-map-full-390.png`.
+- **Map for anyone placeable.** `personFrameMap` (`frame-maps.tsx`) tries the person's `inTown`, then their `cell`, then `cells`, through the same place lookup the pages use. Arch-Paladin Laracin (Meridia's Sanctum) now has a Map button.
+- **44 px at 390.** The frame's Full screen and the full screen's Close are 44 px at 390; the scale bar sits above the credit (`bottom: 44px`) so "0.2 km" is whole.
+- **Towns.** The At a glance band is gone; the town's facts are the left list under the top (Where, People, Shops and beds, Trainers and followers, Finding it, then Getting there). The shops and trainers lists fold under their fact ("Who keeps what", "Who trains what"). Riverwood's Who lives here starts at 824 px at 1440×900 (it was 895).
+- **The frame's map** has + and − (the band's zoom, two levels; the wheel still scrolls the page).
+- **Signed out**, `#know-N` scrolls to the line and offers "Sign in to tell us"; the form is never drawn.
+- **Small.** Full screen at 390 keeps its key (it wraps to its own row) and opens at the page's zoom, and the labels are placed so they don't overlap (here's plate first; each other side chosen against those placed). "Sign in to add one" once. The search suggestions at 390 open from the box's own edge. The Danger fact says "Draugr and N more kinds ›" and links to the Danger section. A boss is said only when it's a named person (`isNamedPerson` in `people/data.ts`: not a name many records share, not a bare rank or trade; a named boss with no page of its own, Captain Hargar, is still said); Fort Hraggstad's lede no longer says "Its boss is Imperial Soldier". Player homes' crafting panel: no change.
 
 **Mac, 30 Oct: everything but the Tapps uploads is built.** Typecheck, lint (the two old warnings), `npm test` (879 passed, 7 expected fail), `npm run build` and the full e2e are green; `e2e/wo184.spec.ts` is the order's own check (11 tests). Screenshots of every board's screen are in `test-results/wo184-*-1440.png` and `-390.png`.
 

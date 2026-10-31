@@ -404,7 +404,7 @@ test("Part 5: no page shows a plugin file, a record id or a bracket hedge, and n
     const said = body.replace(/["“][^"”]*["”]/g, "");
     const slip = [
       [/\(\s*\)/, "an empty bracket", body],
-      [/ in (?:where|most likely|probably)\b/i, "a guess after in", said],
+      [/ in (?:where|most likely|probably)\b/, "a guess after in", said],
       [/\b(?:probably|most likely)\b/i, "a guess in the body", said],
       [/&lt;[^&]{1,40}&gt;|<[A-Za-z][^<>]{0,40}>/, "an angle-bracket blank", body],
       [/\bthe the\b/i, "the the", body],

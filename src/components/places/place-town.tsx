@@ -5,6 +5,7 @@ import { Linked } from "@/components/pages/linked";
 import { TitleBox } from "@/components/pages/page-kit";
 import { PreviewLink } from "@/components/pages/preview-link";
 import { LineToc } from "@/components/quests/line-parts";
+import { GlanceList, type GlanceCell, type Tone } from "@/components/pages/glance";
 import { GettingThere, TopFrame } from "@/components/screenshots/top-frame";
 import { placeFrameMap } from "@/components/screenshots/frame-maps";
 import { linkable } from "@/lib/pages/names";
@@ -101,16 +102,10 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
     .filter(Boolean)
     .join(" ");
 
-  const cell = (key: string, icon: string, tone: string, label: string, value: ReactNode, sub?: ReactNode, small?: boolean) => (
-    <div key={key} className={l.gl}>
-      <span className={`${l.k} ${tone}`}>
-        <img className={l.px} src={`/icons/${icon}.svg`} alt="" width={18} height={18} />
-        {label}
-      </span>
-      <span className={`${l.v} ${small ? l.vSmall : ""}`}>{value}</span>
-      {sub ? <span className={l.s}>{sub}</span> : null}
-    </div>
-  );
+  // The facts of a town are the left column's list beside the frame (WO-184 Part 9, Bob's call), so Who lives here starts on the first screen: each is its label, a short value and a line;
+  // what is long (who keeps each shop, who trains what) is folded under it.
+  const TONES: Record<string, Tone> = { [l.cTeal]: "teal", [l.cOrange]: "orange", [l.cGold]: "gold", [l.cGreen]: "green", [l.cRed]: "red" };
+  const cell = (key: string, icon: string, tone: string, label: string, value: ReactNode, sub?: ReactNode, small?: boolean, more?: { label: string; node: ReactNode }): GlanceCell => ({ key, icon, tone: TONES[tone] ?? "teal", label, value, ...(sub ? { sub } : {}), ...(small ? { small } : {}), ...(more ? { more } : {}) });
   const staffLinks = (s: Shop) =>
     s.staff.slice(0, 2).map((x, i) => (
       <span key={x.name}>
@@ -145,7 +140,7 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
         <Link href={p.href}>{p.name}</Link>
       </span>
     ));
-  const cells: ReactNode[] = [
+  const cells: GlanceCell[] = [
     cell("where", "quest-travel", l.cTeal, "Where", inside ? (place.inTown ?? place.hold ?? "In a town") : place.hold ? `${holdWords(place.hold)}` : placeType(place.type), inside ? (upHref && place.inTown ? <PreviewLink href={upHref}>{`In ${place.inTown}`}</PreviewLink> : place.hold ? `${holdWords(place.hold)}` : null) : near ? cap(near) : null),
     ...(total ? [cell("people", "quest-people", l.cOrange, "People", String(total), houses.length === 1 ? undefined : `in ${houses.filter((h) => h.name !== place.name).length || houses.length} homes and buildings`)] : []),
     ...(shops.length || beds
@@ -156,7 +151,10 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
             l.cGold,
             "Shops and beds",
             cap(list([shops.length ? `${shops.length} ${shops.length === 1 ? "shop" : "shops"}` : "", beds ? (inns.length > 1 ? `${inns.length} inns with rooms` : "an inn with rooms") : ""].filter(Boolean))),
+            undefined,
+            true,
             // One line per shop: its name, its keeper and what it sells (the rest open under "and N more"); then the inns and who keeps each.
+            { label: "Who keeps what", node: (
             <>
               {shops.slice(0, 6).map((s) => shopLine(s))}
               {shops.length > 6 && (
@@ -173,8 +171,8 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
                   </span>
                 );
               })}
-            </>,
-            true,
+            </>
+            ) },
           ),
         ]
       : []),
@@ -186,7 +184,10 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
             l.cGreen,
             "Trainers and followers",
             list([...new Set(trainers.map((x) => x.trains!))]) || "Followers",
+            undefined,
+            true,
             // Who does what: "Faendal trains Marksman" and, apart, "Followers: Faendal, Sven" (WO-177: a list of names under a skill read as all training it).
+            { label: "Who trains what", node: (
             <>
               {trainers.map((x) => (
                 <span key={x.name} style={{ display: "block" }}>
@@ -199,8 +200,8 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
                   {nameLinks(followers, 3)}
                 </span>
               )}
-            </>,
-            true,
+            </>
+            ) },
           ),
         ]
       : []),
@@ -243,14 +244,13 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
             <p className={l.pitch}>{pitch}</p>
           </>
         }
-        facts={frameMap?.there ? <GettingThere text={frameMap.there} /> : null}
+        facts={
+          <>
+            <GlanceList cells={cells} />
+            {frameMap?.there && <GettingThere text={frameMap.there} />}
+          </>
+        }
       />
-
-      <section className={l.band} aria-label="At a glance">
-        <div className={`page ${l.glance}`} style={{ "--cols": cells.length } as React.CSSProperties}>
-          {cells}
-        </div>
-      </section>
 
       <div className={`page ${l.cols}`}>
         <div className={l.main}>

@@ -100,15 +100,17 @@ function MapCore({ entry, pins, here, hereLabel, labelled = 0, mode, className, 
   }, []);
 
   // On a phone the band uses the half-size tiles (zoom 0), so the nearest town is in view beside the place (WO-167 review).
-  const bandK = mode === "band" && size.w < 700 ? 0.5 : 1;
+  // The frame's + and − step between the two tile sizes the map has (WO-184 Part 9); otherwise a phone-wide band uses the half-size ones.
+  const [level, setLevel] = useState<0.5 | 1 | null>(null);
+  const bandK = mode === "band" ? (level ?? (size.w < 700 ? 0.5 : 1)) : 1;
   const [x0, y0, x1, y1] = entry.border;
   const kWhole = entry.image.width / (x1 - x0);
   // `zoom`: css pixels for each pixel of the 8192 texture (band: 1) or of the whole picture (whole map).
   const fit = size.w / entry.image.width;
   const [zoom, setZoom] = useState(mode === "band" ? 1 : 0);
-  // The full screen map opens zoomed in on its place; every other whole map opens at the whole picture.
-  const boost = overlay && here ? 2.6 : 1;
-  const z = mode === "band" ? 1 : Math.max(fit, zoom || fit * boost);
+  // The full screen map opens at the zoom the page's own map has (WO-184 Part 9: half-size tiles in the frame), centred on its place; every other whole map opens at the whole picture.
+  const opening = overlay && here ? 0.5 / kWhole : fit;
+  const z = mode === "band" ? 1 : Math.max(fit, zoom || opening);
   // The view: where the picture's origin sits in the box.
   const toPix = useCallback((px: number, py: number) => (mode === "band" ? { x: px * bandK, y: py * bandK } : { x: (px - x0) * kWhole * z, y: (py - y0) * kWhole * z }), [mode, bandK, kWhole, z, x0, y0]);
   const centre = here ?? null;
@@ -228,6 +230,33 @@ function MapCore({ entry, pins, here, hereLabel, labelled = 0, mode, className, 
   const underControl = (x0_: number, x1_: number, y: number) => controls.some(([a, b, c, d]) => x1_ > a && x0_ < c && y + 13 > b && y - 13 < d);
   // The bar is as long as 1 km, or the part of a km that fits beside the credit.
   const cap = Math.min(220, size.w * 0.26);
+  // Which side of its pin each name goes on, and never over another name (WO-184 Part 9: the full screen map's labels overlapped): the place itself is named first, then the nearest pins.
+  const sides = new Map<number, "right" | "left" | "none">();
+  {
+    type B = [number, number, number, number];
+    const taken: B[] = [];
+    const hit = (b: B) => taken.some((t) => b[0] < t[2] && b[2] > t[0] && b[1] < t[3] && b[3] > t[1]);
+    if (hereAt) {
+      const w = (hereLabel ?? here!.name).length * 7.4 + 22;
+      taken.push([hereAt.x + at.x + 8, hereAt.y + at.y - 13, hereAt.x + at.x + 14 + w, hereAt.y + at.y + 13]);
+    }
+    for (const { p, i, x, y } of visible) {
+      if (i >= labelled) continue;
+      const w = p.name.length * 7.4 + 22;
+      const sx = x + at.x;
+      const sy = y + at.y;
+      if (sy < 16 || sy > size.h - 16) continue;
+      const right: B = [sx + 8, sy - 13, sx + 14 + w, sy + 13];
+      const left: B = [sx - 14 - w, sy - 13, sx - 8, sy + 13];
+      const okRight = right[2] <= size.w - 6 && !underControl(right[0], right[2], sy) && !hit(right);
+      const okLeft = left[0] >= 6 && !underControl(left[0], left[2], sy) && !hit(left);
+      const side = okRight ? "right" : okLeft ? "left" : "none";
+      if (side !== "none") {
+        sides.set(i, side);
+        taken.push(side === "right" ? right : left);
+      }
+    }
+  }
 
   return (
     <div
@@ -254,13 +283,7 @@ function MapCore({ entry, pins, here, hereLabel, labelled = 0, mode, className, 
           <img src={entry.image.url} alt="" width={entry.image.width * z} height={entry.image.height * z} draggable={false} className={s.whole_img} />
         )}
         {visible.map(({ p, i, x, y }) => {
-          // A name never shows half a plate: one that would cross the band's edge goes on the pin's other side, or is not drawn.
-          const w = p.name.length * 7.4 + 22;
-          const sx = x + at.x;
-          const sy = y + at.y;
-          const right = sx + 14 + w <= size.w - 6 && !underControl(sx + 8, sx + 14 + w, sy);
-          const left = sx - 14 - w >= 6 && !underControl(sx - 14 - w, sx - 8, sy);
-          const side = i >= labelled ? "none" : sy < 16 || sy > size.h - 16 ? "none" : right ? "right" : left ? "left" : "none";
+          const side = sides.get(i) ?? "none";
           return (
             <div key={`${p.name}-${i}`} className={s.pinBox} style={{ left: x, top: y }}>
               <PreviewLink href={p.href} className={`${s.pin} ${s[p.kind]} ${side === "left" ? s.flip : ""}`}>
@@ -303,6 +326,32 @@ function MapCore({ entry, pins, here, hereLabel, labelled = 0, mode, className, 
           </svg>
           Full screen
         </button>
+      )}
+      {mode === "band" && framed && (
+        <span className={`${s.zoomBtns} ${s.zoomLow}`}>
+          <button
+            type="button"
+            className={s.plate}
+            aria-label="Zoom in"
+            onClick={() => {
+              setLevel(1);
+              setPan(null);
+            }}
+          >
+            +
+          </button>
+          <button
+            type="button"
+            className={s.plate}
+            aria-label="Zoom out"
+            onClick={() => {
+              setLevel(0.5);
+              setPan(null);
+            }}
+          >
+            −
+          </button>
+        </span>
       )}
       {mode === "whole" && (
         <span className={`${s.zoomBtns} ${onFull ? s.zoomLow : ""}`}>
