@@ -5533,7 +5533,7 @@ The audit sampled what the planner has. It never asked what it doesn't have. Thi
 ---
 
 ## WO-182  Launch without playthroughs (Mac, 30 Oct 2026)
-Status: queued (Mac: Part 5)
+Status: building (Mac: Part 5)
 
 **Why.** Dave, 30 Oct: "Lets look at the entire site and remove everything related to playthroughs; it's just still kind of not working." The launch is four things:
 - quests you can trust;
