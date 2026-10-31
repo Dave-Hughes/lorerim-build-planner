@@ -49,6 +49,42 @@ export function dayHours(rows: DayRow[]): (string | null)[] | null {
   return laid ? hours : null;
 }
 
+/** What a read's place says when it names no place: a spot, "around", "wherever". */
+const NO_PLACE = /^(?:around|about|near|by|wherever|somewhere|anywhere)\b|\b(?:a|some|any)\s+(?:set\s+)?(?:spot|place|point)\b|\bwherever\b|\bsomewhere\b/i;
+/** Their bed, their room, their post, in a place: the place ("her bed in Meridia's Sanctum" is "Meridia's Sanctum"). */
+const OWN_SPOT = /^(?:her|his|their|its)\s+(?:own\s+)?(?:bed|beds|room|rooms|quarters|house|home|cell|chambers?|post|stall|desk|corner|spot|table|chair)\s+(?:in|at|of|inside)\s+(?:the\s+)?/i;
+
+/** The named place a read's words give ("her bed in Meridia's Sanctum" is "Meridia's Sanctum"), or null when they name none ("around a spot by Riften"). */
+export function placeOnly(where: string): string | null {
+  const first = where.split(",")[0].trim();
+  if (!first) return null;
+  const t = first.replace(OWN_SPOT, "").replace(/^(?:the\s+)/i, "").trim();
+  return !t || NO_PLACE.test(first) || NO_PLACE.test(t) ? null : t.charAt(0).toUpperCase() + t.slice(1);
+}
+
+/**
+ * Where a person is by day (8 am to 6 pm) and at night (10 pm to 6 am), each the place the read puts them in most of those hours (WO-185 Part 4):
+ * said plainly, one of them left out when the read doesn't say it, never "around a spot by".
+ */
+export function dayAndNight(rows: DayRow[]): { day: string | null; night: string | null } {
+  const laid: (string | null)[] = Array.from({ length: 24 }, () => null);
+  for (const r of rows) {
+    const at = /^any hour$/i.test(r.from) ? 0 : hourOf(r.from);
+    const len = /^any hour$/i.test(r.from) ? 24 : spanOf(r.for);
+    if (at === null || len === null || len <= 0) continue;
+    for (let i = 0; i < Math.min(24, Math.ceil(len)); i++) {
+      const h = (at + i) % 24;
+      if (laid[h] === null) laid[h] = placeOnly(r.where) ?? "";
+    }
+  }
+  const most = (hrs: number[]) => {
+    const counts = new Map<string, number>();
+    for (const h of hrs) if (laid[h]) counts.set(laid[h]!, (counts.get(laid[h]!) ?? 0) + 1);
+    return [...counts].sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;
+  };
+  return { day: most([8, 9, 10, 11, 12, 13, 14, 15, 16, 17]), night: most([22, 23, 0, 1, 2, 3, 4, 5]) };
+}
+
 /** The place a person is in most hours of the day, and the places in the order they first appear. */
 export function mainPlace(hours: (string | null)[]): { main: string; places: string[] } | null {
   const counts = new Map<string, number>();

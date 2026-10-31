@@ -75,6 +75,13 @@ export interface SellerShop {
   world?: string;
 }
 
+/** A quest stage that moves a person to a named place (WO-185 Part 4, people_moves.py): "After The Ritual: Fort Justice", "During Infiltration: Meridia's Sanctum". */
+export interface PersonMove {
+  when: "after" | "during";
+  quest: string;
+  place: string;
+}
+
 export interface PersonRow {
   name: string;
   race?: string;
@@ -91,6 +98,8 @@ export interface PersonRow {
   sells?: true;
   /** The shop the vendor faction puts them in (WO-180 Part 7a, shops.py): what it sells, its hours, and where the vendor chest stands: an interior (`cell`), a stall in a city's market, or the open (their forge). */
   shop?: SellerShop;
+  /** Where a quest's stage moves them to, in the order the quests go. */
+  moves?: PersonMove[];
   innkeeper?: true;
   trainer?: { skill: string; cap?: number };
   /** The people read (WO-155 by way of WO-159), when this person has been read and checked. */
@@ -187,6 +196,7 @@ export function peopleData() {
       ...(group.some((g) => g.marriage) ? { marriage: true as const } : {}),
       ...(group.some((g) => g.sells) ? { sells: true as const } : {}),
       ...(group.some((g) => g.shop) ? { shop: group.find((g) => g.shop)!.shop } : {}),
+      ...(group.some((g) => g.moves?.length) ? { moves: group.find((g) => g.moves?.length)!.moves } : {}),
       ...(group.some((g) => g.innkeeper) ? { innkeeper: true as const } : {}),
       ...(!base.trainer && group.some((g) => g.trainer) ? { trainer: group.find((g) => g.trainer)!.trainer } : {}),
     };

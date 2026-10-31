@@ -62,6 +62,24 @@
     "alsoHere": [
      "Wolf"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 14,
+      "range": [
+       20,
+       80
+      ]
+     },
+     {
+      "kind": "Wolf",
+      "count": 3,
+      "range": [
+       10,
+       10
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 80,
     "atLevel": [
@@ -522,6 +540,16 @@
    "actors": {
     "count": 85,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 65,
+      "range": [
+       1,
+       1
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 15,
     "atLevel": [
@@ -567,6 +595,16 @@
    "actors": {
     "count": 9,
     "livesHere": "Wolf",
+    "kinds": [
+     {
+      "kind": "Wolf",
+      "count": 4,
+      "range": [
+       10,
+       10
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 20,
     "atLevel": [
@@ -649,6 +687,16 @@
    "actors": {
     "count": 92,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 66,
+      "range": [
+       1,
+       1
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 30,
     "atLevel": [
@@ -783,6 +831,16 @@
    "actors": {
     "count": 14,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       1,
+       1
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 50,
     "atLevel": [
@@ -880,6 +938,16 @@
    "actors": {
     "count": 56,
     "livesHere": "Draugr",
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 36,
+      "range": [
+       15,
+       25
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 60,
     "atLevel": [
@@ -1413,6 +1481,16 @@
    "actors": {
     "count": 13,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 4,
+      "range": [
+       15,
+       15
+      ]
+     }
+    ],
     "floor": 15,
     "ceiling": 40,
     "atLevel": [
@@ -1510,6 +1588,32 @@
      "Skeleton",
      "Draugr"
     ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 11,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 9,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 2,
+      "range": [
+       23,
+       23
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 24,
     "atLevel": [
@@ -1576,6 +1680,48 @@
      "Warlock",
      "Necromancer",
      "Spider"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 43,
+      "range": [
+       8,
+       49
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 15,
+      "range": [
+       8,
+       12
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 11,
+      "range": [
+       19,
+       50
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 4,
+      "range": [
+       35,
+       53
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 2,
+      "range": [
+       8,
+       8
+      ]
+     }
     ],
     "floor": 8,
     "ceiling": 53,
@@ -1969,6 +2115,40 @@
      "Bear",
      "Hagraven"
     ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 4,
+      "range": [
+       1,
+       50
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     },
+     {
+      "kind": "Bear",
+      "count": 1,
+      "range": [
+       1,
+       14
+      ]
+     },
+     {
+      "kind": "Hagraven",
+      "count": 1,
+      "range": [
+       35,
+       35
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 79,
     "atLevel": [
@@ -2169,6 +2349,16 @@
    "actors": {
     "count": 6,
     "livesHere": "Giant",
+    "kinds": [
+     {
+      "kind": "Giant",
+      "count": 4,
+      "range": [
+       70,
+       70
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 70,
     "atLevel": [
@@ -2517,6 +2707,24 @@
     "alsoHere": [
      "Warlock"
     ],
+    "kinds": [
+     {
+      "kind": "Giant",
+      "count": 2,
+      "range": [
+       3,
+       70
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       2,
+       2
+      ]
+     }
+    ],
     "floor": 2,
     "ceiling": 70,
     "atLevel": [
@@ -2582,6 +2790,16 @@
    "actors": {
     "count": 12,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 10,
+      "range": [
+       6,
+       28
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 28,
     "atLevel": [
@@ -2686,6 +2904,24 @@
     "alsoHere": [
      "Draugr"
     ],
+    "kinds": [
+     {
+      "kind": "Warlock",
+      "count": 9,
+      "range": [
+       19,
+       50
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 2,
+      "range": [
+       6,
+       40
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 50,
     "atLevel": [
@@ -2771,6 +3007,40 @@
      "Bandit",
      "Vampire",
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Spider",
+      "count": 54,
+      "range": [
+       6,
+       60
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 7,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Vampire",
+      "count": 4,
+      "range": [
+       20,
+       50
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 60,
@@ -2878,6 +3148,24 @@
     "alsoHere": [
      "Bandit"
     ],
+    "kinds": [
+     {
+      "kind": "Troll",
+      "count": 22,
+      "range": [
+       6,
+       32
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 3,
+      "range": [
+       6,
+       6
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 32,
     "atLevel": [
@@ -2939,6 +3227,16 @@
    "actors": {
     "count": 18,
     "livesHere": "Giant",
+    "kinds": [
+     {
+      "kind": "Giant",
+      "count": 1,
+      "range": [
+       3,
+       3
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 30,
     "atLevel": [
@@ -2958,6 +3256,16 @@
     "afterTheWar": {
      "count": 4,
      "livesHere": "Imperial",
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 4,
+       "range": [
+        25,
+        30
+       ]
+      }
+     ],
      "floor": 25,
      "ceiling": 30,
      "atLevel": [
@@ -4736,6 +5044,24 @@
      "alsoHere": [
       "Warlock"
      ],
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 72,
+       "range": [
+        22,
+        47
+       ]
+      },
+      {
+       "kind": "Warlock",
+       "count": 14,
+       "range": [
+        35,
+        50
+       ]
+      }
+     ],
      "floor": 6,
      "ceiling": 50,
      "atLevel": [
@@ -4795,6 +5121,16 @@
    "actors": {
     "count": 22,
     "livesHere": "Vampire",
+    "kinds": [
+     {
+      "kind": "Vampire",
+      "count": 19,
+      "range": [
+       1,
+       100
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 100,
     "atLevel": [
@@ -4889,6 +5225,24 @@
     "livesHere": "Bandit",
     "alsoHere": [
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 31,
+      "range": [
+       6,
+       45
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       6,
+       6
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 50,
@@ -5285,6 +5639,48 @@
      "Bandit",
      "Spider",
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 37,
+      "range": [
+       6,
+       40
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       45,
+       50
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 50,
@@ -5824,6 +6220,16 @@
     "afterTheWar": {
      "count": 12,
      "livesHere": "Imperial",
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 10,
+       "range": [
+        1,
+        47
+       ]
+      }
+     ],
      "floor": 1,
      "ceiling": 47,
      "atLevel": [
@@ -5915,6 +6321,16 @@
     "afterTheWar": {
      "count": 6,
      "livesHere": "Imperial",
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 6,
+       "range": [
+        25,
+        30
+       ]
+      }
+     ],
      "floor": 25,
      "ceiling": 30,
      "atLevel": [
@@ -6560,6 +6976,32 @@
      "Bear",
      "Wolf"
     ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 38,
+      "range": [
+       6,
+       40
+      ]
+     },
+     {
+      "kind": "Bear",
+      "count": 1,
+      "range": [
+       12,
+       12
+      ]
+     },
+     {
+      "kind": "Wolf",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 40,
     "atLevel": [
@@ -6652,6 +7094,40 @@
      "Vampire",
      "Necromancer",
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 4,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Vampire",
+      "count": 3,
+      "range": [
+       20,
+       50
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 3,
+      "range": [
+       26,
+       26
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 50,
@@ -6753,6 +7229,32 @@
     "alsoHere": [
      "Bandit",
      "Necromancer"
+    ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 29,
+      "range": [
+       6,
+       12
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 16,
+      "range": [
+       6,
+       35
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 4,
+      "range": [
+       19,
+       55
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 55,
@@ -6891,6 +7393,32 @@
     "alsoHere": [
      "Necromancer",
      "Draugr"
+    ],
+    "kinds": [
+     {
+      "kind": "Warlock",
+      "count": 17,
+      "range": [
+       8,
+       46
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 2,
+      "range": [
+       19,
+       46
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 2,
+      "range": [
+       8,
+       40
+      ]
+     }
     ],
     "floor": 8,
     "ceiling": 46,
@@ -7065,6 +7593,24 @@
     "alsoHere": [
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 27,
+      "range": [
+       10,
+       40
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       10,
+       10
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 40,
     "atLevel": [
@@ -7189,6 +7735,40 @@
      "Chaurus",
      "Skeleton",
      "Warlock"
+    ],
+    "kinds": [
+     {
+      "kind": "Falmer",
+      "count": 55,
+      "range": [
+       22,
+       55
+      ]
+     },
+     {
+      "kind": "Chaurus",
+      "count": 14,
+      "range": [
+       16,
+       32
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       16,
+       16
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       36,
+       36
+      ]
+     }
     ],
     "floor": 16,
     "ceiling": 60,
@@ -7340,6 +7920,24 @@
     "livesHere": "Skeleton",
     "alsoHere": [
      "Dragon"
+    ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       1,
+       1
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     }
     ],
     "floor": 1,
     "ceiling": 79,
@@ -7713,6 +8311,16 @@
    "actors": {
     "count": 4,
     "livesHere": "Bear",
+    "kinds": [
+     {
+      "kind": "Bear",
+      "count": 3,
+      "range": [
+       5,
+       22
+      ]
+     }
+    ],
     "floor": 2,
     "ceiling": 22,
     "atLevel": [
@@ -7772,6 +8380,16 @@
    "actors": {
     "count": 5,
     "livesHere": "Bear",
+    "kinds": [
+     {
+      "kind": "Bear",
+      "count": 2,
+      "range": [
+       6,
+       12
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 15,
     "atLevel": [
@@ -7939,6 +8557,16 @@
    "actors": {
     "count": 10,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 10,
+      "range": [
+       12,
+       24
+      ]
+     }
+    ],
     "floor": 12,
     "ceiling": 24,
     "atLevel": [
@@ -7997,6 +8625,32 @@
     "alsoHere": [
      "Spider",
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 29,
+      "range": [
+       10,
+       40
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 13,
+      "range": [
+       10,
+       10
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       10,
+       10
+      ]
+     }
     ],
     "floor": 10,
     "ceiling": 40,
@@ -8206,6 +8860,24 @@
     "alsoHere": [
      "Wolf"
     ],
+    "kinds": [
+     {
+      "kind": "Giant",
+      "count": 2,
+      "range": [
+       70,
+       70
+      ]
+     },
+     {
+      "kind": "Wolf",
+      "count": 1,
+      "range": [
+       2,
+       2
+      ]
+     }
+    ],
     "floor": 2,
     "ceiling": 70,
     "atLevel": [
@@ -8320,6 +8992,24 @@
     "livesHere": "Bandit",
     "alsoHere": [
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 10,
+      "range": [
+       6,
+       36
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 5,
+      "range": [
+       6,
+       6
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 36,
@@ -8478,6 +9168,24 @@
     "livesHere": "Warlock",
     "alsoHere": [
      "Vampire"
+    ],
+    "kinds": [
+     {
+      "kind": "Warlock",
+      "count": 3,
+      "range": [
+       6,
+       46
+      ]
+     },
+     {
+      "kind": "Vampire",
+      "count": 1,
+      "range": [
+       55,
+       100
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 100,
@@ -8831,6 +9539,16 @@
    "actors": {
     "count": 5,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 5,
+      "range": [
+       5,
+       24
+      ]
+     }
+    ],
     "floor": 5,
     "ceiling": 24,
     "atLevel": [
@@ -8933,6 +9651,16 @@
    "actors": {
     "count": 22,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 20,
+      "range": [
+       6,
+       25
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 30,
     "atLevel": [
@@ -9297,6 +10025,16 @@
    "actors": {
     "count": 6,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 4,
+      "range": [
+       6,
+       24
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 37,
     "atLevel": [
@@ -9379,6 +10117,24 @@
     "alsoHere": [
      "Dragon"
     ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 3,
+      "range": [
+       3,
+       24
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     }
+    ],
     "floor": 3,
     "ceiling": 79,
     "atLevel": [
@@ -9442,6 +10198,16 @@
    "actors": {
     "count": 2,
     "livesHere": "Hagraven",
+    "kinds": [
+     {
+      "kind": "Hagraven",
+      "count": 1,
+      "range": [
+       14,
+       14
+      ]
+     }
+    ],
     "floor": 4,
     "ceiling": 11,
     "atLevel": [
@@ -9569,6 +10335,16 @@
    "actors": {
     "count": 11,
     "livesHere": "Draugr",
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 10,
+      "range": [
+       6,
+       51
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 51,
     "atLevel": [
@@ -9678,6 +10454,16 @@
    "actors": {
     "count": 1,
     "livesHere": "Wolf",
+    "kinds": [
+     {
+      "kind": "Wolf",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 6,
     "atLevel": [
@@ -9777,6 +10563,24 @@
     "livesHere": "Bear",
     "alsoHere": [
      "Dragon"
+    ],
+    "kinds": [
+     {
+      "kind": "Bear",
+      "count": 2,
+      "range": [
+       5,
+       22
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     }
     ],
     "floor": 5,
     "ceiling": 79,
@@ -9922,6 +10726,16 @@
    "actors": {
     "count": 2,
     "livesHere": "Hagraven",
+    "kinds": [
+     {
+      "kind": "Hagraven",
+      "count": 2,
+      "range": [
+       8,
+       11
+      ]
+     }
+    ],
     "floor": 8,
     "ceiling": 11,
     "atLevel": [
@@ -10000,6 +10814,48 @@
      "Skeleton",
      "Bear",
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Falmer",
+      "count": 24,
+      "range": [
+       23,
+       38
+      ]
+     },
+     {
+      "kind": "Chaurus",
+      "count": 15,
+      "range": [
+       16,
+       32
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 6,
+      "range": [
+       16,
+       16
+      ]
+     },
+     {
+      "kind": "Bear",
+      "count": 1,
+      "range": [
+       16,
+       16
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       16,
+       16
+      ]
+     }
     ],
     "floor": 16,
     "ceiling": 60,
@@ -10094,6 +10950,16 @@
    "actors": {
     "count": 7,
     "livesHere": "Bear",
+    "kinds": [
+     {
+      "kind": "Bear",
+      "count": 2,
+      "range": [
+       12,
+       12
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 63,
     "atLevel": [
@@ -10152,6 +11018,16 @@
    "actors": {
     "count": 6,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 5,
+      "range": [
+       6,
+       24
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 24,
     "atLevel": [
@@ -10235,6 +11111,24 @@
     "livesHere": "Bandit",
     "alsoHere": [
      "Warlock"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 30,
+      "range": [
+       6,
+       26
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 26,
@@ -10334,6 +11228,32 @@
      "Skeleton",
      "Dragon"
     ],
+    "kinds": [
+     {
+      "kind": "Spider",
+      "count": 2,
+      "range": [
+       1,
+       6
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       1,
+       1
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 79,
     "atLevel": [
@@ -10395,6 +11315,32 @@
     "alsoHere": [
      "Spriggan",
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Wolf",
+      "count": 7,
+      "range": [
+       6,
+       12
+      ]
+     },
+     {
+      "kind": "Spriggan",
+      "count": 4,
+      "range": [
+       8,
+       30
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 2,
+      "range": [
+       6,
+       7
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 30,
@@ -10465,6 +11411,40 @@
      "Bandit",
      "Wolf",
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Vampire",
+      "count": 10,
+      "range": [
+       20,
+       100
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 8,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Wolf",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 100,
@@ -10545,6 +11525,32 @@
     "alsoHere": [
      "Skeleton",
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Bear",
+      "count": 4,
+      "range": [
+       5,
+       22
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       2,
+       2
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       3,
+       3
+      ]
+     }
     ],
     "floor": 2,
     "ceiling": 22,
@@ -10711,6 +11717,24 @@
     "livesHere": "Bandit",
     "alsoHere": [
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 15,
+      "range": [
+       6,
+       40
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       6,
+       6
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 40,
@@ -11145,6 +12169,32 @@
      "Skeleton",
      "Bandit"
     ],
+    "kinds": [
+     {
+      "kind": "Wolf",
+      "count": 21,
+      "range": [
+       5,
+       24
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 7,
+      "range": [
+       5,
+       5
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       5,
+       24
+      ]
+     }
+    ],
     "floor": 5,
     "ceiling": 36,
     "atLevel": [
@@ -11230,6 +12280,24 @@
     "livesHere": "Bandit",
     "alsoHere": [
      "Wolf"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 33,
+      "range": [
+       6,
+       10
+      ]
+     },
+     {
+      "kind": "Wolf",
+      "count": 2,
+      "range": [
+       6,
+       6
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 10,
@@ -11347,6 +12415,24 @@
     "alsoHere": [
      "Spriggan"
     ],
+    "kinds": [
+     {
+      "kind": "Wolf",
+      "count": 4,
+      "range": [
+       8,
+       12
+      ]
+     },
+     {
+      "kind": "Spriggan",
+      "count": 3,
+      "range": [
+       8,
+       30
+      ]
+     }
+    ],
     "floor": 8,
     "ceiling": 30,
     "atLevel": [
@@ -11417,6 +12503,16 @@
    "actors": {
     "count": 1,
     "livesHere": "Dragon",
+    "kinds": [
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     }
+    ],
     "floor": 30,
     "ceiling": 79,
     "atLevel": [
@@ -11577,6 +12673,16 @@
    "actors": {
     "count": 3,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       6,
+       12
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 12,
     "atLevel": [
@@ -11640,6 +12746,24 @@
      "livesHere": "Imperial",
      "alsoHere": [
       "Bandit"
+     ],
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 76,
+       "range": [
+        22,
+        47
+       ]
+      },
+      {
+       "kind": "Bandit",
+       "count": 20,
+       "range": [
+        6,
+        24
+       ]
+      }
      ],
      "floor": 6,
      "ceiling": 47,
@@ -11750,6 +12874,24 @@
     "livesHere": "Hagraven",
     "alsoHere": [
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Hagraven",
+      "count": 20,
+      "range": [
+       14,
+       55
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 9,
+      "range": [
+       30,
+       50
+      ]
+     }
     ],
     "floor": 14,
     "ceiling": 55,
@@ -11919,6 +13061,16 @@
     "afterTheWar": {
      "count": 8,
      "livesHere": "Imperial",
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 8,
+       "range": [
+        25,
+        30
+       ]
+      }
+     ],
      "floor": 25,
      "ceiling": 30,
      "atLevel": [
@@ -12098,6 +13250,24 @@
     "alsoHere": [
      "Dragon"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 25,
+      "range": [
+       10,
+       40
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       50,
+       50
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 50,
     "atLevel": [
@@ -12200,6 +13370,16 @@
    "actors": {
     "count": 9,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       19,
+       24
+      ]
+     }
+    ],
     "floor": 8,
     "ceiling": 24,
     "atLevel": [
@@ -12350,6 +13530,24 @@
     "alsoHere": [
      "Bandit"
     ],
+    "kinds": [
+     {
+      "kind": "Bear",
+      "count": 11,
+      "range": [
+       5,
+       22
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 2,
+      "range": [
+       3,
+       3
+      ]
+     }
+    ],
     "floor": 2,
     "ceiling": 22,
     "atLevel": [
@@ -12409,6 +13607,40 @@
      "Vampire",
      "Spider",
      "Troll"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 12,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Vampire",
+      "count": 11,
+      "range": [
+       20,
+       100
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 4,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Troll",
+      "count": 1,
+      "range": [
+       14,
+       14
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 100,
@@ -12610,6 +13842,24 @@
     "alsoHere": [
      "Bandit"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 21,
+      "range": [
+       6,
+       52
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 3,
+      "range": [
+       6,
+       24
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 63,
     "atLevel": [
@@ -12697,6 +13947,48 @@
      "Imperial",
      "Bear"
     ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 13,
+      "range": [
+       6,
+       30
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 11,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 11,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Imperial",
+      "count": 5,
+      "range": [
+       27,
+       27
+      ]
+     },
+     {
+      "kind": "Bear",
+      "count": 3,
+      "range": [
+       6,
+       14
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 30,
     "atLevel": [
@@ -12717,6 +14009,16 @@
     "afterTheWar": {
      "count": 57,
      "livesHere": "Imperial",
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 41,
+       "range": [
+        6,
+        42
+       ]
+      }
+     ],
      "floor": 6,
      "ceiling": 42,
      "atLevel": [
@@ -13828,6 +15130,56 @@
      "Bandit",
      "Wolf"
     ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 36,
+      "range": [
+       8,
+       12
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 11,
+      "range": [
+       19,
+       46
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 3,
+      "range": [
+       23,
+       23
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 2,
+      "range": [
+       42,
+       50
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 2,
+      "range": [
+       8,
+       24
+      ]
+     },
+     {
+      "kind": "Wolf",
+      "count": 1,
+      "range": [
+       8,
+       8
+      ]
+     }
+    ],
     "floor": 8,
     "ceiling": 50,
     "atLevel": [
@@ -13915,6 +15267,16 @@
     "afterTheWar": {
      "count": 9,
      "livesHere": "Imperial",
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 9,
+       "range": [
+        1,
+        47
+       ]
+      }
+     ],
      "floor": 1,
      "ceiling": 47,
      "atLevel": [
@@ -14032,6 +15394,24 @@
     "livesHere": "Bandit",
     "alsoHere": [
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 14,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 60,
@@ -14303,6 +15683,16 @@
    "actors": {
     "count": 8,
     "livesHere": "Necromancer",
+    "kinds": [
+     {
+      "kind": "Necromancer",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 100,
     "atLevel": [
@@ -14404,6 +15794,32 @@
     "alsoHere": [
      "Necromancer",
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 28,
+      "range": [
+       2,
+       40
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 8,
+      "range": [
+       19,
+       50
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 5,
+      "range": [
+       3,
+       3
+      ]
+     }
     ],
     "floor": 2,
     "ceiling": 50,
@@ -14513,6 +15929,40 @@
      "Bandit",
      "Draugr"
     ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 21,
+      "range": [
+       6,
+       12
+      ]
+     },
+     {
+      "kind": "Vampire",
+      "count": 12,
+      "range": [
+       20,
+       100
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 8,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 7,
+      "range": [
+       6,
+       60
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 100,
     "atLevel": [
@@ -14613,6 +16063,24 @@
     "alsoHere": [
      "Spider"
     ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 16,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 1,
+      "range": [
+       55,
+       55
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 55,
     "atLevel": [
@@ -14681,6 +16149,16 @@
    "actors": {
     "count": 51,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       13,
+       13
+      ]
+     }
+    ],
     "floor": 13,
     "ceiling": 100,
     "atLevel": [
@@ -14764,6 +16242,40 @@
      "Skeleton",
      "Bandit",
      "Spriggan"
+    ],
+    "kinds": [
+     {
+      "kind": "Hagraven",
+      "count": 5,
+      "range": [
+       8,
+       45
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       1,
+       1
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       3,
+       3
+      ]
+     },
+     {
+      "kind": "Spriggan",
+      "count": 1,
+      "range": [
+       8,
+       8
+      ]
+     }
     ],
     "floor": 1,
     "ceiling": 45,
@@ -14850,6 +16362,16 @@
    "actors": {
     "count": 1,
     "livesHere": "Spriggan",
+    "kinds": [
+     {
+      "kind": "Spriggan",
+      "count": 1,
+      "range": [
+       8,
+       30
+      ]
+     }
+    ],
     "floor": 8,
     "ceiling": 30,
     "atLevel": [
@@ -14907,6 +16429,32 @@
     "alsoHere": [
      "Draugr",
      "Wolf"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 32,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 6,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Wolf",
+      "count": 1,
+      "range": [
+       6,
+       12
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 24,
@@ -15015,6 +16563,24 @@
     "alsoHere": [
      "Wolf"
     ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 2,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Wolf",
+      "count": 2,
+      "range": [
+       6,
+       12
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 12,
     "atLevel": [
@@ -15098,6 +16664,24 @@
     "alsoHere": [
      "Bandit"
     ],
+    "kinds": [
+     {
+      "kind": "Bear",
+      "count": 2,
+      "range": [
+       5,
+       22
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       3,
+       24
+      ]
+     }
+    ],
     "floor": 3,
     "ceiling": 24,
     "atLevel": [
@@ -15116,6 +16700,16 @@
     "afterTheWar": {
      "count": 16,
      "livesHere": "Imperial",
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 13,
+       "range": [
+        22,
+        27
+       ]
+      }
+     ],
      "floor": 1,
      "ceiling": 27,
      "atLevel": [
@@ -15189,6 +16783,16 @@
    "actors": {
     "count": 1,
     "livesHere": "Necromancer",
+    "kinds": [
+     {
+      "kind": "Necromancer",
+      "count": 1,
+      "range": [
+       19,
+       19
+      ]
+     }
+    ],
     "floor": 19,
     "ceiling": 19,
     "atLevel": [
@@ -15253,6 +16857,32 @@
     "alsoHere": [
      "Warlock",
      "Necromancer"
+    ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 20,
+      "range": [
+       2,
+       12
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 11,
+      "range": [
+       2,
+       50
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 3,
+      "range": [
+       19,
+       46
+      ]
+     }
     ],
     "floor": 2,
     "ceiling": 50,
@@ -15394,6 +17024,24 @@
     "livesHere": "Bandit",
     "alsoHere": [
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 3,
+      "range": [
+       8,
+       8
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       8,
+       8
+      ]
+     }
     ],
     "floor": 8,
     "ceiling": 45,
@@ -15589,6 +17237,64 @@
      "DragonPriest",
      "Chaurus",
      "Spider"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 6,
+      "range": [
+       1,
+       30
+      ]
+     },
+     {
+      "kind": "Spriggan",
+      "count": 1,
+      "range": [
+       8,
+       30
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       1,
+       1
+      ]
+     },
+     {
+      "kind": "Falmer",
+      "count": 1,
+      "range": [
+       24,
+       32
+      ]
+     },
+     {
+      "kind": "DragonPriest",
+      "count": 1,
+      "range": [
+       55,
+       55
+      ]
+     },
+     {
+      "kind": "Chaurus",
+      "count": 1,
+      "range": [
+       12,
+       20
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 1,
+      "range": [
+       1,
+       60
+      ]
+     }
     ],
     "floor": 1,
     "ceiling": 60,
@@ -16394,13 +18100,13 @@
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "ng beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as the flame burns, the college will stand.\r\n\r\nThe Bards College\r\n\r\nLooking up from the Bards College steps, you can see that the college stands taller than the Blue Palace itself. The bards who train here c",
+     "words": "stle Dour and the Temple and you'll get your first sight of the Blue Palace. Along the way, be sure to stop outside the Bards College, a large building on your left marked by the Flame of Callisos burning beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as th",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "stle Dour and the Temple and you'll get your first sight of the Blue Palace. Along the way, be sure to stop outside the Bards College, a large building on your left marked by the Flame of Callisos burning beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as th",
+     "words": "ng beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as the flame burns, the college will stand.\r\n\r\nThe Bards College\r\n\r\nLooking up from the Bards College steps, you can see that the college stands taller than the Blue Palace itself. The bards who train here c",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
@@ -16652,6 +18358,24 @@
     "livesHere": "Bandit",
     "alsoHere": [
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 34,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 3,
+      "range": [
+       6,
+       6
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 24,
@@ -17121,6 +18845,24 @@
     "alsoHere": [
      "Wolf"
     ],
+    "kinds": [
+     {
+      "kind": "Spriggan",
+      "count": 2,
+      "range": [
+       8,
+       30
+      ]
+     },
+     {
+      "kind": "Wolf",
+      "count": 1,
+      "range": [
+       8,
+       20
+      ]
+     }
+    ],
     "floor": 8,
     "ceiling": 30,
     "atLevel": [
@@ -17187,6 +18929,16 @@
    "actors": {
     "count": 7,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 7,
+      "range": [
+       8,
+       24
+      ]
+     }
+    ],
     "floor": 8,
     "ceiling": 24,
     "atLevel": [
@@ -17974,6 +19726,24 @@
      "alsoHere": [
       "Bandit"
      ],
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 76,
+       "range": [
+        22,
+        47
+       ]
+      },
+      {
+       "kind": "Bandit",
+       "count": 17,
+       "range": [
+        6,
+        24
+       ]
+      }
+     ],
      "floor": 6,
      "ceiling": 47,
      "atLevel": [
@@ -18494,6 +20264,16 @@
    "actors": {
     "count": 4,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 4,
+      "range": [
+       6,
+       24
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 24,
     "atLevel": [
@@ -18688,6 +20468,32 @@
      "Draugr",
      "Necromancer"
     ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 82,
+      "range": [
+       24,
+       35
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 1,
+      "range": [
+       65,
+       65
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 1,
+      "range": [
+       24,
+       46
+      ]
+     }
+    ],
     "floor": 24,
     "ceiling": 65,
     "atLevel": [
@@ -18822,6 +20628,32 @@
     "alsoHere": [
      "Chaurus",
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Falmer",
+      "count": 13,
+      "range": [
+       24,
+       55
+      ]
+     },
+     {
+      "kind": "Chaurus",
+      "count": 4,
+      "range": [
+       11,
+       32
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       8,
+       8
+      ]
+     }
     ],
     "floor": 8,
     "ceiling": 60,
@@ -18979,6 +20811,24 @@
     "livesHere": "Thalmor",
     "alsoHere": [
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Thalmor",
+      "count": 29,
+      "range": [
+       17,
+       50
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       12,
+       12
+      ]
+     }
     ],
     "floor": 12,
     "ceiling": 50,
@@ -19216,6 +21066,24 @@
     "alsoHere": [
      "Bandit"
     ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       6,
+       24
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 24,
     "atLevel": [
@@ -19312,6 +21180,40 @@
      "Necromancer",
      "Bandit"
     ],
+    "kinds": [
+     {
+      "kind": "Bear",
+      "count": 5,
+      "range": [
+       6,
+       22
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 4,
+      "range": [
+       6,
+       12
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 3,
+      "range": [
+       19,
+       46
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 2,
+      "range": [
+       6,
+       24
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 46,
     "atLevel": [
@@ -19370,6 +21272,32 @@
     "alsoHere": [
      "Wolf",
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Vampire",
+      "count": 7,
+      "range": [
+       20,
+       50
+      ]
+     },
+     {
+      "kind": "Wolf",
+      "count": 4,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 2,
+      "range": [
+       6,
+       24
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 50,
@@ -19460,6 +21388,32 @@
     "alsoHere": [
      "Vampire",
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 39,
+      "range": [
+       6,
+       90
+      ]
+     },
+     {
+      "kind": "Vampire",
+      "count": 5,
+      "range": [
+       20,
+       100
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 3,
+      "range": [
+       6,
+       12
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 100,
@@ -19719,6 +21673,32 @@
      "Bandit",
      "Spriggan"
     ],
+    "kinds": [
+     {
+      "kind": "Hagraven",
+      "count": 5,
+      "range": [
+       14,
+       55
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 4,
+      "range": [
+       14,
+       24
+      ]
+     },
+     {
+      "kind": "Spriggan",
+      "count": 1,
+      "range": [
+       14,
+       14
+      ]
+     }
+    ],
     "floor": 14,
     "ceiling": 55,
     "atLevel": [
@@ -19850,6 +21830,48 @@
      "Necromancer",
      "Troll",
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 10,
+      "range": [
+       6,
+       12
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 2,
+      "range": [
+       45,
+       50
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 2,
+      "range": [
+       19,
+       46
+      ]
+     },
+     {
+      "kind": "Troll",
+      "count": 1,
+      "range": [
+       14,
+       14
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       6,
+       24
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 50,
@@ -20254,6 +22276,24 @@
     "alsoHere": [
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       60,
+       60
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       1,
+       1
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 60,
     "atLevel": [
@@ -20377,6 +22417,16 @@
     "afterTheWar": {
      "count": 15,
      "livesHere": "Imperial",
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 13,
+       "range": [
+        22,
+        27
+       ]
+      }
+     ],
      "floor": 4,
      "ceiling": 27,
      "atLevel": [
@@ -20450,6 +22500,32 @@
     "alsoHere": [
      "Troll",
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Wolf",
+      "count": 7,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Troll",
+      "count": 6,
+      "range": [
+       2,
+       22
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       2,
+       2
+      ]
+     }
     ],
     "floor": 2,
     "ceiling": 22,
@@ -20740,6 +22816,32 @@
     "alsoHere": [
      "Troll",
      "Warlock"
+    ],
+    "kinds": [
+     {
+      "kind": "Thalmor",
+      "count": 30,
+      "range": [
+       4,
+       75
+      ]
+     },
+     {
+      "kind": "Troll",
+      "count": 1,
+      "range": [
+       22,
+       22
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       2,
+       2
+      ]
+     }
     ],
     "floor": 2,
     "ceiling": 80,
@@ -21284,13 +23386,13 @@
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "The city gradually grew to extend across the entire length of the arch. This growth culminated in the building of the Blue Palace, home of the High Kings and Queens of Skyrim. We will visit the palace later.\r\n\r\nThe Gates of Solitude\r\n\r\nEntrance to Solitude is guarded by two gat",
+     "words": ".\r\n\r\nContinue up the road from the college and you'll reach the courtyard of the Blue Palace, our final destination.\r\n\r\nThe Blue Palace\r\n\r\nThe Blue Palace is home to the Jarls of Solitude, who for centuries have also served as the High Kings and High Queens of Skyrim. The northea",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": ".\r\n\r\nContinue up the road from the college and you'll reach the courtyard of the Blue Palace, our final destination.\r\n\r\nThe Blue Palace\r\n\r\nThe Blue Palace is home to the Jarls of Solitude, who for centuries have also served as the High Kings and High Queens of Skyrim. The northea",
+     "words": "The city gradually grew to extend across the entire length of the arch. This growth culminated in the building of the Blue Palace, home of the High Kings and Queens of Skyrim. We will visit the palace later.\r\n\r\nThe Gates of Solitude\r\n\r\nEntrance to Solitude is guarded by two gat",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
@@ -21509,6 +23611,16 @@
    "actors": {
     "count": 17,
     "livesHere": "Spider",
+    "kinds": [
+     {
+      "kind": "Spider",
+      "count": 9,
+      "range": [
+       8,
+       8
+      ]
+     }
+    ],
     "floor": 8,
     "ceiling": 75,
     "atLevel": [
@@ -22238,6 +24350,40 @@
      "Spider",
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 41,
+      "range": [
+       24,
+       55
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 24,
+      "range": [
+       24,
+       24
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 20,
+      "range": [
+       24,
+       24
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       24,
+       24
+      ]
+     }
+    ],
     "floor": 24,
     "ceiling": 55,
     "atLevel": [
@@ -22337,6 +24483,16 @@
    "actors": {
     "count": 1,
     "livesHere": "Hagraven",
+    "kinds": [
+     {
+      "kind": "Hagraven",
+      "count": 1,
+      "range": [
+       8,
+       11
+      ]
+     }
+    ],
     "floor": 8,
     "ceiling": 11,
     "atLevel": [
@@ -22403,6 +24559,48 @@
      "Bandit",
      "Skeleton",
      "Warlock"
+    ],
+    "kinds": [
+     {
+      "kind": "Necromancer",
+      "count": 16,
+      "range": [
+       10,
+       50
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 12,
+      "range": [
+       8,
+       40
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 8,
+      "range": [
+       8,
+       24
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 5,
+      "range": [
+       8,
+       12
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 2,
+      "range": [
+       8,
+       46
+      ]
+     }
     ],
     "floor": 8,
     "ceiling": 50,
@@ -22684,6 +24882,16 @@
    "actors": {
     "count": 10,
     "livesHere": "Bear",
+    "kinds": [
+     {
+      "kind": "Bear",
+      "count": 7,
+      "range": [
+       2,
+       14
+      ]
+     }
+    ],
     "floor": 2,
     "ceiling": 15,
     "atLevel": [
@@ -22744,6 +24952,48 @@
      "Chaurus",
      "Bandit",
      "Bear"
+    ],
+    "kinds": [
+     {
+      "kind": "Falmer",
+      "count": 15,
+      "range": [
+       22,
+       35
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 13,
+      "range": [
+       18,
+       18
+      ]
+     },
+     {
+      "kind": "Chaurus",
+      "count": 6,
+      "range": [
+       18,
+       32
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 4,
+      "range": [
+       18,
+       24
+      ]
+     },
+     {
+      "kind": "Bear",
+      "count": 1,
+      "range": [
+       18,
+       18
+      ]
+     }
     ],
     "floor": 18,
     "ceiling": 35,
@@ -22822,6 +25072,40 @@
      "Skeleton",
      "Draugr",
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Troll",
+      "count": 4,
+      "range": [
+       8,
+       22
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 3,
+      "range": [
+       8,
+       12
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 2,
+      "range": [
+       8,
+       40
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       8,
+       8
+      ]
+     }
     ],
     "floor": 8,
     "ceiling": 40,
@@ -22948,6 +25232,32 @@
      "Spider",
      "Bandit"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 44,
+      "range": [
+       6,
+       85
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 8,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       6,
+       81
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 85,
     "atLevel": [
@@ -23066,6 +25376,32 @@
     "alsoHere": [
      "Skeleton",
      "Dragon"
+    ],
+    "kinds": [
+     {
+      "kind": "Troll",
+      "count": 7,
+      "range": [
+       22,
+       22
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 3,
+      "range": [
+       1,
+       1
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     }
     ],
     "floor": 1,
     "ceiling": 79,
@@ -23209,6 +25545,40 @@
      "Bandit",
      "Spider",
      "Warlock"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 59,
+      "range": [
+       6,
+       45
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 4,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 2,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       6,
+       25
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 45,
@@ -23355,6 +25725,48 @@
       "Warlock",
       "Bandit",
       "Necromancer"
+     ],
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 74,
+       "range": [
+        22,
+        47
+       ]
+      },
+      {
+       "kind": "Skeleton",
+       "count": 15,
+       "range": [
+        6,
+        6
+       ]
+      },
+      {
+       "kind": "Warlock",
+       "count": 8,
+       "range": [
+        19,
+        46
+       ]
+      },
+      {
+       "kind": "Bandit",
+       "count": 4,
+       "range": [
+        6,
+        6
+       ]
+      },
+      {
+       "kind": "Necromancer",
+       "count": 2,
+       "range": [
+        27,
+        46
+       ]
+      }
      ],
      "floor": 6,
      "ceiling": 47,
@@ -23621,6 +26033,16 @@
    "actors": {
     "count": 4,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 4,
+      "range": [
+       30,
+       50
+      ]
+     }
+    ],
     "floor": 30,
     "ceiling": 50,
     "atLevel": [
@@ -23642,6 +26064,24 @@
      "livesHere": "Imperial",
      "alsoHere": [
       "Skeleton"
+     ],
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 9,
+       "range": [
+        1,
+        47
+       ]
+      },
+      {
+       "kind": "Skeleton",
+       "count": 2,
+       "range": [
+        1,
+        1
+       ]
+      }
      ],
      "floor": 1,
      "ceiling": 47,
@@ -23802,6 +26242,24 @@
     "alsoHere": [
      "Dragon"
     ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 6,
+      "range": [
+       1,
+       1
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 79,
     "atLevel": [
@@ -23896,6 +26354,48 @@
      "Troll",
      "DragonPriest",
      "Dragon"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 53,
+      "range": [
+       24,
+       55
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 14,
+      "range": [
+       24,
+       24
+      ]
+     },
+     {
+      "kind": "Troll",
+      "count": 5,
+      "range": [
+       24,
+       24
+      ]
+     },
+     {
+      "kind": "DragonPriest",
+      "count": 3,
+      "range": [
+       55,
+       55
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       100,
+       100
+      ]
+     }
     ],
     "floor": 24,
     "ceiling": 100,
@@ -24158,6 +26658,32 @@
      "Troll",
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 6,
+      "range": [
+       6,
+       40
+      ]
+     },
+     {
+      "kind": "Troll",
+      "count": 4,
+      "range": [
+       6,
+       22
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 40,
     "atLevel": [
@@ -24417,6 +26943,32 @@
      "Bandit",
      "Spider"
     ],
+    "kinds": [
+     {
+      "kind": "Vampire",
+      "count": 9,
+      "range": [
+       20,
+       100
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 9,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 4,
+      "range": [
+       6,
+       6
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 100,
     "atLevel": [
@@ -24538,6 +27090,16 @@
    "actors": {
     "count": 8,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 8,
+      "range": [
+       2,
+       30
+      ]
+     }
+    ],
     "floor": 2,
     "ceiling": 30,
     "atLevel": [
@@ -24623,6 +27185,16 @@
    "actors": {
     "count": 14,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 10,
+      "range": [
+       6,
+       28
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 28,
     "atLevel": [
@@ -24755,6 +27327,32 @@
      "Bandit",
      "Dragon"
     ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       10,
+       10
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       10,
+       10
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 79,
     "atLevel": [
@@ -24835,6 +27433,24 @@
      "alsoHere": [
       "Skeleton"
      ],
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 13,
+       "range": [
+        22,
+        27
+       ]
+      },
+      {
+       "kind": "Skeleton",
+       "count": 1,
+       "range": [
+        1,
+        1
+       ]
+      }
+     ],
      "floor": 1,
      "ceiling": 27,
      "atLevel": [
@@ -24905,6 +27521,16 @@
    "actors": {
     "count": 8,
     "livesHere": "Giant",
+    "kinds": [
+     {
+      "kind": "Giant",
+      "count": 8,
+      "range": [
+       70,
+       70
+      ]
+     }
+    ],
     "floor": 70,
     "ceiling": 70,
     "atLevel": [
@@ -24990,6 +27616,16 @@
     "afterTheWar": {
      "count": 2,
      "livesHere": "Imperial",
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 2,
+       "range": [
+        25,
+        30
+       ]
+      }
+     ],
      "floor": 25,
      "ceiling": 30,
      "atLevel": [
@@ -25120,6 +27756,16 @@
    "actors": {
     "count": 6,
     "livesHere": "Giant",
+    "kinds": [
+     {
+      "kind": "Giant",
+      "count": 4,
+      "range": [
+       70,
+       80
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 80,
     "atLevel": [
@@ -25187,6 +27833,16 @@
    "actors": {
     "count": 4,
     "livesHere": "Warlock",
+    "kinds": [
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       35,
+       46
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 46,
     "atLevel": [
@@ -25450,6 +28106,56 @@
      "Warlock",
      "Necromancer"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 45,
+      "range": [
+       6,
+       75
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 19,
+      "range": [
+       6,
+       55
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 19,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 12,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 5,
+      "range": [
+       6,
+       46
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 3,
+      "range": [
+       19,
+       46
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 75,
     "atLevel": [
@@ -25674,6 +28380,16 @@
    "actors": {
     "count": 2,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       1,
+       1
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 2,
     "atLevel": [
@@ -25769,6 +28485,32 @@
      "Bandit",
      "Warlock"
     ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 36,
+      "range": [
+       24,
+       40
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 2,
+      "range": [
+       24,
+       24
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       50,
+       50
+      ]
+     }
+    ],
     "floor": 24,
     "ceiling": 50,
     "atLevel": [
@@ -25857,6 +28599,16 @@
    "actors": {
     "count": 5,
     "livesHere": "Draugr",
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 4,
+      "range": [
+       6,
+       24
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 24,
     "atLevel": [
@@ -25904,6 +28656,16 @@
    "actors": {
     "count": 20,
     "livesHere": "Draugr",
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 18,
+      "range": [
+       12,
+       40
+      ]
+     }
+    ],
     "floor": 12,
     "ceiling": 40,
     "atLevel": [
@@ -25995,6 +28757,16 @@
    "actors": {
     "count": 7,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       1,
+       1
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 3,
     "atLevel": [
@@ -26078,6 +28850,24 @@
     "alsoHere": [
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 13,
+      "range": [
+       18,
+       80
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       18,
+       18
+      ]
+     }
+    ],
     "floor": 18,
     "ceiling": 80,
     "atLevel": [
@@ -26138,6 +28928,32 @@
     "alsoHere": [
      "Skeleton",
      "DragonPriest"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 22,
+      "range": [
+       30,
+       40
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 7,
+      "range": [
+       30,
+       30
+      ]
+     },
+     {
+      "kind": "DragonPriest",
+      "count": 2,
+      "range": [
+       55,
+       55
+      ]
+     }
     ],
     "floor": 30,
     "ceiling": 55,
@@ -26275,6 +29091,24 @@
     "livesHere": "Draugr",
     "alsoHere": [
      "Warlock"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 11,
+      "range": [
+       35,
+       50
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 2,
+      "range": [
+       35,
+       35
+      ]
+     }
     ],
     "floor": 35,
     "ceiling": 50,
@@ -26535,6 +29369,32 @@
      "Skeleton",
      "Wolf"
     ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 28,
+      "range": [
+       18,
+       32
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 3,
+      "range": [
+       1,
+       1
+      ]
+     },
+     {
+      "kind": "Wolf",
+      "count": 1,
+      "range": [
+       13,
+       23
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 32,
     "atLevel": [
@@ -26606,6 +29466,32 @@
      "Skeleton",
      "Warlock"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 8,
+      "range": [
+       35,
+       50
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 3,
+      "range": [
+       1,
+       1
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 2,
+      "range": [
+       35,
+       35
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 50,
     "atLevel": [
@@ -26670,6 +29556,16 @@
    "actors": {
     "count": 16,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       1,
+       1
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 18,
     "atLevel": [
@@ -26746,6 +29642,32 @@
      "Skeleton",
      "Wolf"
     ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 27,
+      "range": [
+       3,
+       24
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       1,
+       1
+      ]
+     },
+     {
+      "kind": "Wolf",
+      "count": 1,
+      "range": [
+       13,
+       23
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 24,
     "atLevel": [
@@ -26813,6 +29735,16 @@
    "actors": {
     "count": 31,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       1,
+       1
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 35,
     "atLevel": [
@@ -26899,6 +29831,16 @@
    "actors": {
     "count": 7,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 7,
+      "range": [
+       3,
+       24
+      ]
+     }
+    ],
     "floor": 3,
     "ceiling": 24,
     "atLevel": [
@@ -27001,6 +29943,16 @@
    "actors": {
     "count": 9,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 6,
+      "range": [
+       3,
+       24
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 24,
     "atLevel": [
@@ -27056,6 +30008,16 @@
    "actors": {
     "count": 5,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       1,
+       1
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 18,
     "atLevel": [
@@ -27112,6 +30074,24 @@
     "livesHere": "Bandit",
     "alsoHere": [
      "Wolf"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 7,
+      "range": [
+       15,
+       15
+      ]
+     },
+     {
+      "kind": "Wolf",
+      "count": 1,
+      "range": [
+       13,
+       23
+      ]
+     }
     ],
     "floor": 12,
     "ceiling": 23,
@@ -27211,6 +30191,16 @@
    "actors": {
     "count": 3,
     "livesHere": "Thalmor",
+    "kinds": [
+     {
+      "kind": "Thalmor",
+      "count": 3,
+      "range": [
+       17,
+       38
+      ]
+     }
+    ],
     "floor": 17,
     "ceiling": 38,
     "atLevel": [
@@ -27276,6 +30266,24 @@
     "livesHere": "Bandit",
     "alsoHere": [
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 8,
+      "range": [
+       10,
+       24
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       13,
+       30
+      ]
+     }
     ],
     "floor": 10,
     "ceiling": 30,
@@ -27344,6 +30352,32 @@
     "alsoHere": [
      "Hagraven",
      "Warlock"
+    ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 6,
+      "range": [
+       30,
+       50
+      ]
+     },
+     {
+      "kind": "Hagraven",
+      "count": 3,
+      "range": [
+       35,
+       35
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       10,
+       10
+      ]
+     }
     ],
     "floor": 10,
     "ceiling": 50,
@@ -27452,6 +30486,48 @@
      "Bandit",
      "DragonPriest"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 56,
+      "range": [
+       10,
+       80
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 47,
+      "range": [
+       10,
+       30
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 10,
+      "range": [
+       12,
+       12
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 7,
+      "range": [
+       10,
+       24
+      ]
+     },
+     {
+      "kind": "DragonPriest",
+      "count": 1,
+      "range": [
+       25,
+       60
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 80,
     "atLevel": [
@@ -27529,6 +30605,32 @@
     "alsoHere": [
      "Skeleton",
      "Wolf"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 13,
+      "range": [
+       25,
+       35
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 4,
+      "range": [
+       25,
+       25
+      ]
+     },
+     {
+      "kind": "Wolf",
+      "count": 3,
+      "range": [
+       25,
+       30
+      ]
+     }
     ],
     "floor": 25,
     "ceiling": 40,
@@ -27612,6 +30714,16 @@
    "actors": {
     "count": 1,
     "livesHere": "DragonPriest",
+    "kinds": [
+     {
+      "kind": "DragonPriest",
+      "count": 1,
+      "range": [
+       14,
+       60
+      ]
+     }
+    ],
     "floor": 14,
     "ceiling": 60,
     "atLevel": [
@@ -27664,6 +30776,24 @@
     "livesHere": "Riekling",
     "alsoHere": [
      "Troll"
+    ],
+    "kinds": [
+     {
+      "kind": "Riekling",
+      "count": 37,
+      "range": [
+       7,
+       35
+      ]
+     },
+     {
+      "kind": "Troll",
+      "count": 1,
+      "range": [
+       22,
+       22
+      ]
+     }
     ],
     "floor": 7,
     "ceiling": 35,
@@ -27736,6 +30866,16 @@
    "actors": {
     "count": 26,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 24,
+      "range": [
+       10,
+       24
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 24,
     "atLevel": [
@@ -27808,6 +30948,32 @@
      "Bandit",
      "Troll"
     ],
+    "kinds": [
+     {
+      "kind": "Riekling",
+      "count": 64,
+      "range": [
+       7,
+       35
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 2,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Troll",
+      "count": 1,
+      "range": [
+       22,
+       22
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 35,
     "atLevel": [
@@ -27861,6 +31027,16 @@
    "actors": {
     "count": 6,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 6,
+      "range": [
+       10,
+       24
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 24,
     "atLevel": [
@@ -27931,6 +31107,40 @@
      "Skeleton",
      "Bandit",
      "Troll"
+    ],
+    "kinds": [
+     {
+      "kind": "Riekling",
+      "count": 8,
+      "range": [
+       18,
+       27
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Troll",
+      "count": 1,
+      "range": [
+       22,
+       22
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 27,
@@ -28043,6 +31253,32 @@
      "Troll",
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Riekling",
+      "count": 25,
+      "range": [
+       7,
+       27
+      ]
+     },
+     {
+      "kind": "Troll",
+      "count": 3,
+      "range": [
+       22,
+       22
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       6,
+       6
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 50,
     "atLevel": [
@@ -28106,6 +31342,16 @@
    "actors": {
     "count": 16,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 9,
+      "range": [
+       20,
+       20
+      ]
+     }
+    ],
     "floor": 20,
     "ceiling": 60,
     "atLevel": [
@@ -28166,6 +31412,32 @@
     "alsoHere": [
      "Skeleton",
      "Wolf"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 28,
+      "range": [
+       10,
+       30
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 8,
+      "range": [
+       10,
+       10
+      ]
+     },
+     {
+      "kind": "Wolf",
+      "count": 2,
+      "range": [
+       17,
+       30
+      ]
+     }
     ],
     "floor": 10,
     "ceiling": 30,
@@ -28264,6 +31536,24 @@
     "alsoHere": [
      "Dragon"
     ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       1,
+       1
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 79,
     "atLevel": [
@@ -28318,6 +31608,16 @@
    "actors": {
     "count": 73,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 4,
+      "range": [
+       1,
+       1
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 60,
     "atLevel": [
@@ -28524,6 +31824,16 @@
    "actors": {
     "count": 10,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 5,
+      "range": [
+       25,
+       30
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 30,
     "atLevel": [
@@ -28689,6 +31999,40 @@
      "Bandit",
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Spider",
+      "count": 11,
+      "range": [
+       25,
+       25
+      ]
+     },
+     {
+      "kind": "Riekling",
+      "count": 8,
+      "range": [
+       25,
+       27
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 3,
+      "range": [
+       25,
+       60
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       25,
+       25
+      ]
+     }
+    ],
     "floor": 25,
     "ceiling": 60,
     "atLevel": [
@@ -28753,6 +32097,24 @@
     "livesHere": "Spider",
     "alsoHere": [
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Spider",
+      "count": 7,
+      "range": [
+       20,
+       20
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       20,
+       20
+      ]
+     }
     ],
     "floor": 20,
     "ceiling": 60,
@@ -28929,6 +32291,24 @@
     "alsoHere": [
      "Bandit"
     ],
+    "kinds": [
+     {
+      "kind": "Riekling",
+      "count": 24,
+      "range": [
+       7,
+       27
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       6,
+       24
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 27,
     "atLevel": [
@@ -29096,6 +32476,24 @@
     "alsoHere": [
      "Troll"
     ],
+    "kinds": [
+     {
+      "kind": "Riekling",
+      "count": 6,
+      "range": [
+       18,
+       27
+      ]
+     },
+     {
+      "kind": "Troll",
+      "count": 1,
+      "range": [
+       22,
+       22
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 27,
     "atLevel": [
@@ -29148,6 +32546,24 @@
     "livesHere": "Bandit",
     "alsoHere": [
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 23,
+      "range": [
+       40,
+       100
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       40,
+       40
+      ]
+     }
     ],
     "floor": 40,
     "ceiling": 100,
@@ -29216,6 +32632,16 @@
    "actors": {
     "count": 7,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 5,
+      "range": [
+       10,
+       24
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 50,
     "atLevel": [
@@ -29327,6 +32753,32 @@
      "Skeleton",
      "Warlock"
     ],
+    "kinds": [
+     {
+      "kind": "Spider",
+      "count": 6,
+      "range": [
+       20,
+       20
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 4,
+      "range": [
+       20,
+       20
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       43,
+       43
+      ]
+     }
+    ],
     "floor": 20,
     "ceiling": 60,
     "atLevel": [
@@ -29435,6 +32887,24 @@
     "alsoHere": [
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 5,
+      "range": [
+       10,
+       24
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 3,
+      "range": [
+       10,
+       10
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 60,
     "atLevel": [
@@ -29496,6 +32966,16 @@
    "actors": {
     "count": 6,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 3,
+      "range": [
+       10,
+       24
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 60,
     "atLevel": [
@@ -29607,6 +33087,16 @@
    "actors": {
     "count": 2,
     "livesHere": "Dragon",
+    "kinds": [
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 79,
     "atLevel": [
@@ -29671,6 +33161,24 @@
     "livesHere": "Bandit",
     "alsoHere": [
      "Warlock"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       25,
+       25
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       25,
+       25
+      ]
+     }
     ],
     "floor": 25,
     "ceiling": 60,
@@ -29774,6 +33282,32 @@
     "alsoHere": [
      "Spider",
      "DragonPriest"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 57,
+      "range": [
+       30,
+       40
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 3,
+      "range": [
+       30,
+       30
+      ]
+     },
+     {
+      "kind": "DragonPriest",
+      "count": 1,
+      "range": [
+       55,
+       55
+      ]
+     }
     ],
     "floor": 30,
     "ceiling": 55,
@@ -29887,6 +33421,40 @@
      "Bear",
      "Troll"
     ],
+    "kinds": [
+     {
+      "kind": "Riekling",
+      "count": 10,
+      "range": [
+       18,
+       27
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       10,
+       10
+      ]
+     },
+     {
+      "kind": "Bear",
+      "count": 1,
+      "range": [
+       10,
+       22
+      ]
+     },
+     {
+      "kind": "Troll",
+      "count": 1,
+      "range": [
+       22,
+       22
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 27,
     "atLevel": [
@@ -29949,6 +33517,24 @@
     "livesHere": "Bandit",
     "alsoHere": [
      "Dragon"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 7,
+      "range": [
+       25,
+       25
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       40,
+       79
+      ]
+     }
     ],
     "floor": 25,
     "ceiling": 100,
@@ -30154,6 +33740,24 @@
     "alsoHere": [
      "Necromancer"
     ],
+    "kinds": [
+     {
+      "kind": "Thalmor",
+      "count": 3,
+      "range": [
+       17,
+       38
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 1,
+      "range": [
+       19,
+       46
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 46,
     "atLevel": [
@@ -30247,6 +33851,16 @@
    "actors": {
     "count": 66,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 15,
+      "range": [
+       20,
+       50
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 100,
     "atLevel": [
@@ -31558,6 +35172,40 @@
      "Spider",
      "DragonPriest"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 18,
+      "range": [
+       30,
+       40
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 5,
+      "range": [
+       30,
+       30
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 4,
+      "range": [
+       30,
+       30
+      ]
+     },
+     {
+      "kind": "DragonPriest",
+      "count": 1,
+      "range": [
+       100,
+       100
+      ]
+     }
+    ],
     "floor": 30,
     "ceiling": 100,
     "atLevel": [
@@ -31692,6 +35340,24 @@
     "livesHere": "Draugr",
     "alsoHere": [
      "Dragon"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 7,
+      "range": [
+       25,
+       45
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     }
     ],
     "floor": 25,
     "ceiling": 79,
@@ -32144,6 +35810,16 @@
    "actors": {
     "count": 6,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 4,
+      "range": [
+       10,
+       25
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 25,
     "atLevel": [
@@ -32202,6 +35878,32 @@
     "alsoHere": [
      "Skeleton",
      "Warlock"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 6,
+      "range": [
+       10,
+       35
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 5,
+      "range": [
+       10,
+       10
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       10,
+       10
+      ]
+     }
     ],
     "floor": 10,
     "ceiling": 35,
@@ -32271,6 +35973,16 @@
    "actors": {
     "count": 9,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 6,
+      "range": [
+       10,
+       10
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 20,
     "atLevel": [
@@ -32519,6 +36231,40 @@
      "DragonPriest",
      "Bandit"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 33,
+      "range": [
+       30,
+       45
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 25,
+      "range": [
+       30,
+       60
+      ]
+     },
+     {
+      "kind": "DragonPriest",
+      "count": 17,
+      "range": [
+       30,
+       60
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 5,
+      "range": [
+       30,
+       30
+      ]
+     }
+    ],
     "floor": 30,
     "ceiling": 100,
     "atLevel": [
@@ -32748,6 +36494,24 @@
     "livesHere": "Riekling",
     "alsoHere": [
      "Troll"
+    ],
+    "kinds": [
+     {
+      "kind": "Riekling",
+      "count": 11,
+      "range": [
+       18,
+       27
+      ]
+     },
+     {
+      "kind": "Troll",
+      "count": 1,
+      "range": [
+       22,
+       22
+      ]
+     }
     ],
     "floor": 18,
     "ceiling": 28,
@@ -33013,6 +36777,40 @@
      "DragonPriest",
      "Riekling"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 21,
+      "range": [
+       30,
+       60
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 16,
+      "range": [
+       30,
+       35
+      ]
+     },
+     {
+      "kind": "DragonPriest",
+      "count": 1,
+      "range": [
+       100,
+       100
+      ]
+     },
+     {
+      "kind": "Riekling",
+      "count": 1,
+      "range": [
+       30,
+       30
+      ]
+     }
+    ],
     "floor": 30,
     "ceiling": 100,
     "atLevel": [
@@ -33082,6 +36880,24 @@
     "alsoHere": [
      "Riekling"
     ],
+    "kinds": [
+     {
+      "kind": "DragonPriest",
+      "count": 1,
+      "range": [
+       14,
+       60
+      ]
+     },
+     {
+      "kind": "Riekling",
+      "count": 1,
+      "range": [
+       10,
+       10
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 60,
     "atLevel": [
@@ -33146,6 +36962,48 @@
      "Draugr",
      "Skeleton",
      "DragonPriest"
+    ],
+    "kinds": [
+     {
+      "kind": "Spider",
+      "count": 33,
+      "range": [
+       30,
+       30
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 18,
+      "range": [
+       30,
+       30
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 5,
+      "range": [
+       30,
+       30
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 3,
+      "range": [
+       30,
+       30
+      ]
+     },
+     {
+      "kind": "DragonPriest",
+      "count": 1,
+      "range": [
+       100,
+       100
+      ]
+     }
     ],
     "floor": 30,
     "ceiling": 100,
@@ -33533,6 +37391,16 @@
    "actors": {
     "count": 7,
     "livesHere": "Giant",
+    "kinds": [
+     {
+      "kind": "Giant",
+      "count": 5,
+      "range": [
+       70,
+       80
+      ]
+     }
+    ],
     "floor": 60,
     "ceiling": 80,
     "atLevel": [
@@ -33633,6 +37501,16 @@
    "actors": {
     "count": 2,
     "livesHere": "Bear",
+    "kinds": [
+     {
+      "kind": "Bear",
+      "count": 2,
+      "range": [
+       2,
+       14
+      ]
+     }
+    ],
     "floor": 2,
     "ceiling": 14,
     "atLevel": [
@@ -33935,6 +37813,64 @@
      "Bandit",
      "Warlock"
     ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 29,
+      "range": [
+       6,
+       35
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 15,
+      "range": [
+       6,
+       40
+      ]
+     },
+     {
+      "kind": "Vampire",
+      "count": 12,
+      "range": [
+       20,
+       55
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 5,
+      "range": [
+       6,
+       14
+      ]
+     },
+     {
+      "kind": "Bear",
+      "count": 3,
+      "range": [
+       6,
+       22
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 55,
     "atLevel": [
@@ -34129,6 +38065,32 @@
      "Bandit",
      "Chaurus"
     ],
+    "kinds": [
+     {
+      "kind": "Falmer",
+      "count": 9,
+      "range": [
+       23,
+       55
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 7,
+      "range": [
+       18,
+       24
+      ]
+     },
+     {
+      "kind": "Chaurus",
+      "count": 7,
+      "range": [
+       18,
+       32
+      ]
+     }
+    ],
     "floor": 18,
     "ceiling": 55,
     "atLevel": [
@@ -34200,6 +38162,32 @@
     "alsoHere": [
      "Bear",
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 41,
+      "range": [
+       6,
+       50
+      ]
+     },
+     {
+      "kind": "Bear",
+      "count": 6,
+      "range": [
+       6,
+       22
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 50,
@@ -34309,6 +38297,40 @@
       "Bandit",
       "Skeleton",
       "Warlock"
+     ],
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 66,
+       "range": [
+        22,
+        47
+       ]
+      },
+      {
+       "kind": "Bandit",
+       "count": 27,
+       "range": [
+        6,
+        24
+       ]
+      },
+      {
+       "kind": "Skeleton",
+       "count": 3,
+       "range": [
+        6,
+        6
+       ]
+      },
+      {
+       "kind": "Warlock",
+       "count": 1,
+       "range": [
+        6,
+        6
+       ]
+      }
      ],
      "floor": 6,
      "ceiling": 47,
@@ -34464,6 +38486,32 @@
      "Bear",
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 20,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Bear",
+      "count": 1,
+      "range": [
+       6,
+       22
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 24,
     "atLevel": [
@@ -34606,6 +38654,16 @@
    "actors": {
     "count": 42,
     "livesHere": "Vampire",
+    "kinds": [
+     {
+      "kind": "Vampire",
+      "count": 4,
+      "range": [
+       20,
+       50
+      ]
+     }
+    ],
     "floor": 5,
     "ceiling": 100,
     "atLevel": [
@@ -34822,6 +38880,40 @@
      "Bandit",
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 36,
+      "range": [
+       24,
+       45
+      ]
+     },
+     {
+      "kind": "DragonPriest",
+      "count": 1,
+      "range": [
+       77,
+       77
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       30,
+       30
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       24,
+       24
+      ]
+     }
+    ],
     "floor": 24,
     "ceiling": 77,
     "atLevel": [
@@ -34898,6 +38990,16 @@
    "actors": {
     "count": 4,
     "livesHere": "Draugr",
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 2,
+      "range": [
+       1,
+       30
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 30,
     "atLevel": [
@@ -34916,6 +39018,16 @@
     "afterTheWar": {
      "count": 14,
      "livesHere": "Imperial",
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 10,
+       "range": [
+        1,
+        47
+       ]
+      }
+     ],
      "floor": 1,
      "ceiling": 47,
      "atLevel": [
@@ -35017,6 +39129,48 @@
      "Chaurus",
      "Spider",
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Falmer",
+      "count": 39,
+      "range": [
+       12,
+       55
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 13,
+      "range": [
+       12,
+       24
+      ]
+     },
+     {
+      "kind": "Chaurus",
+      "count": 4,
+      "range": [
+       12,
+       32
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 3,
+      "range": [
+       12,
+       12
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       12,
+       12
+      ]
+     }
     ],
     "floor": 12,
     "ceiling": 60,
@@ -35240,6 +39394,32 @@
      "Bandit",
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 13,
+      "range": [
+       12,
+       80
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 7,
+      "range": [
+       12,
+       24
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       12,
+       12
+      ]
+     }
+    ],
     "floor": 12,
     "ceiling": 80,
     "atLevel": [
@@ -35260,6 +39440,16 @@
     "afterTheWar": {
      "count": 40,
      "livesHere": "Imperial",
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 40,
+       "range": [
+        27,
+        27
+       ]
+      }
+     ],
      "floor": 27,
      "ceiling": 27,
      "atLevel": [
@@ -35514,6 +39704,32 @@
      "Bandit",
      "Chaurus"
     ],
+    "kinds": [
+     {
+      "kind": "Falmer",
+      "count": 36,
+      "range": [
+       22,
+       60
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 18,
+      "range": [
+       16,
+       24
+      ]
+     },
+     {
+      "kind": "Chaurus",
+      "count": 3,
+      "range": [
+       16,
+       32
+      ]
+     }
+    ],
     "floor": 16,
     "ceiling": 60,
     "atLevel": [
@@ -35733,6 +39949,32 @@
     "alsoHere": [
      "Bandit",
      "Spider"
+    ],
+    "kinds": [
+     {
+      "kind": "Warlock",
+      "count": 33,
+      "range": [
+       35,
+       50
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 18,
+      "range": [
+       19,
+       32
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 3,
+      "range": [
+       18,
+       22
+      ]
+     }
     ],
     "floor": 18,
     "ceiling": 50,
@@ -36005,6 +40247,24 @@
     "alsoHere": [
      "Warlock"
     ],
+    "kinds": [
+     {
+      "kind": "Vampire",
+      "count": 2,
+      "range": [
+       20,
+       50
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       25,
+       25
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 75,
     "atLevel": [
@@ -36102,6 +40362,32 @@
     "alsoHere": [
      "Bandit",
      "Chaurus"
+    ],
+    "kinds": [
+     {
+      "kind": "Falmer",
+      "count": 19,
+      "range": [
+       22,
+       55
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 14,
+      "range": [
+       12,
+       24
+      ]
+     },
+     {
+      "kind": "Chaurus",
+      "count": 3,
+      "range": [
+       12,
+       32
+      ]
+     }
     ],
     "floor": 12,
     "ceiling": 60,
@@ -36221,6 +40507,16 @@
    "actors": {
     "count": 5,
     "livesHere": "Giant",
+    "kinds": [
+     {
+      "kind": "Giant",
+      "count": 4,
+      "range": [
+       70,
+       70
+      ]
+     }
+    ],
     "floor": 60,
     "ceiling": 70,
     "atLevel": [
@@ -36337,6 +40633,24 @@
     "alsoHere": [
      "Dragon"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 4,
+      "range": [
+       1,
+       55
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 79,
     "atLevel": [
@@ -36395,6 +40709,16 @@
    "actors": {
     "count": 1,
     "livesHere": "Dragon",
+    "kinds": [
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     }
+    ],
     "floor": 30,
     "ceiling": 79,
     "atLevel": [
@@ -36478,6 +40802,32 @@
      "Bear",
      "Dragon"
     ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 3,
+      "range": [
+       1,
+       1
+      ]
+     },
+     {
+      "kind": "Bear",
+      "count": 2,
+      "range": [
+       2,
+       14
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 79,
     "atLevel": [
@@ -36532,6 +40882,16 @@
    "actors": {
     "count": 14,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 5,
+      "range": [
+       1,
+       1
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 75,
     "atLevel": [
@@ -36598,6 +40958,24 @@
     "livesHere": "Wolf",
     "alsoHere": [
      "Spriggan"
+    ],
+    "kinds": [
+     {
+      "kind": "Wolf",
+      "count": 5,
+      "range": [
+       8,
+       20
+      ]
+     },
+     {
+      "kind": "Spriggan",
+      "count": 2,
+      "range": [
+       8,
+       30
+      ]
+     }
     ],
     "floor": 8,
     "ceiling": 30,
@@ -36700,6 +41078,32 @@
      "Bandit",
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 25,
+      "range": [
+       6,
+       60
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 12,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 60,
     "atLevel": [
@@ -36772,6 +41176,24 @@
      "livesHere": "Imperial",
      "alsoHere": [
       "Skeleton"
+     ],
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 12,
+       "range": [
+        22,
+        27
+       ]
+      },
+      {
+       "kind": "Skeleton",
+       "count": 2,
+       "range": [
+        1,
+        1
+       ]
+      }
      ],
      "floor": 1,
      "ceiling": 27,
@@ -37028,6 +41450,16 @@
    "actors": {
     "count": 10,
     "livesHere": "Giant",
+    "kinds": [
+     {
+      "kind": "Giant",
+      "count": 5,
+      "range": [
+       70,
+       70
+      ]
+     }
+    ],
     "floor": 2,
     "ceiling": 70,
     "atLevel": [
@@ -37118,6 +41550,24 @@
     "livesHere": "Draugr",
     "alsoHere": [
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 22,
+      "range": [
+       14,
+       55
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       14,
+       14
+      ]
+     }
     ],
     "floor": 14,
     "ceiling": 55,
@@ -37467,6 +41917,24 @@
     "alsoHere": [
      "Draugr"
     ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 4,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 3,
+      "range": [
+       23,
+       30
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 30,
     "atLevel": [
@@ -37637,6 +42105,16 @@
    "actors": {
     "count": 12,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 10,
+      "range": [
+       5,
+       40
+      ]
+     }
+    ],
     "floor": 5,
     "ceiling": 40,
     "atLevel": [
@@ -37808,6 +42286,16 @@
    "actors": {
     "count": 1,
     "livesHere": "Forsworn",
+    "kinds": [
+     {
+      "kind": "Forsworn",
+      "count": 1,
+      "range": [
+       25,
+       39
+      ]
+     }
+    ],
     "floor": 25,
     "ceiling": 39,
     "atLevel": [
@@ -37865,6 +42353,24 @@
     "alsoHere": [
      "Hagraven"
     ],
+    "kinds": [
+     {
+      "kind": "Forsworn",
+      "count": 3,
+      "range": [
+       25,
+       46
+      ]
+     },
+     {
+      "kind": "Hagraven",
+      "count": 1,
+      "range": [
+       45,
+       45
+      ]
+     }
+    ],
     "floor": 2,
     "ceiling": 46,
     "atLevel": [
@@ -37884,6 +42390,16 @@
     "afterTheWar": {
      "count": 2,
      "livesHere": "Imperial",
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 2,
+       "range": [
+        22,
+        47
+       ]
+      }
+     ],
      "floor": 22,
      "ceiling": 47,
      "atLevel": [
@@ -37951,6 +42467,24 @@
     "livesHere": "Forsworn",
     "alsoHere": [
      "Hagraven"
+    ],
+    "kinds": [
+     {
+      "kind": "Forsworn",
+      "count": 12,
+      "range": [
+       25,
+       46
+      ]
+     },
+     {
+      "kind": "Hagraven",
+      "count": 2,
+      "range": [
+       20,
+       45
+      ]
+     }
     ],
     "floor": 20,
     "ceiling": 46,
@@ -38077,6 +42611,16 @@
    "actors": {
     "count": 27,
     "livesHere": "Forsworn",
+    "kinds": [
+     {
+      "kind": "Forsworn",
+      "count": 27,
+      "range": [
+       25,
+       51
+      ]
+     }
+    ],
     "floor": 25,
     "ceiling": 51,
     "atLevel": [
@@ -38178,6 +42722,16 @@
    "actors": {
     "count": 21,
     "livesHere": "Forsworn",
+    "kinds": [
+     {
+      "kind": "Forsworn",
+      "count": 19,
+      "range": [
+       25,
+       52
+      ]
+     }
+    ],
     "floor": 14,
     "ceiling": 52,
     "atLevel": [
@@ -38268,6 +42822,16 @@
    "actors": {
     "count": 110,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       16,
+       16
+      ]
+     }
+    ],
     "floor": 16,
     "ceiling": 80,
     "atLevel": [
@@ -38912,6 +43476,16 @@
    "actors": {
     "count": 4,
     "livesHere": "Bear",
+    "kinds": [
+     {
+      "kind": "Bear",
+      "count": 2,
+      "range": [
+       12,
+       12
+      ]
+     }
+    ],
     "floor": 12,
     "ceiling": 15,
     "atLevel": [
@@ -38974,6 +43548,16 @@
    "actors": {
     "count": 2,
     "livesHere": "Hagraven",
+    "kinds": [
+     {
+      "kind": "Hagraven",
+      "count": 1,
+      "range": [
+       45,
+       45
+      ]
+     }
+    ],
     "floor": 8,
     "ceiling": 45,
     "atLevel": [
@@ -39065,6 +43649,24 @@
     "alsoHere": [
      "Hagraven"
     ],
+    "kinds": [
+     {
+      "kind": "Forsworn",
+      "count": 13,
+      "range": [
+       25,
+       60
+      ]
+     },
+     {
+      "kind": "Hagraven",
+      "count": 1,
+      "range": [
+       14,
+       55
+      ]
+     }
+    ],
     "floor": 14,
     "ceiling": 60,
     "atLevel": [
@@ -39147,6 +43749,16 @@
    "actors": {
     "count": 11,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       8,
+       8
+      ]
+     }
+    ],
     "floor": 8,
     "ceiling": 60,
     "atLevel": [
@@ -39222,6 +43834,40 @@
      "Skeleton",
      "Bandit",
      "Troll"
+    ],
+    "kinds": [
+     {
+      "kind": "Forsworn",
+      "count": 30,
+      "range": [
+       25,
+       52
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       14,
+       14
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       14,
+       14
+      ]
+     },
+     {
+      "kind": "Troll",
+      "count": 1,
+      "range": [
+       22,
+       22
+      ]
+     }
     ],
     "floor": 14,
     "ceiling": 52,
@@ -39364,6 +44010,16 @@
    "actors": {
     "count": 4,
     "livesHere": "Forsworn",
+    "kinds": [
+     {
+      "kind": "Forsworn",
+      "count": 4,
+      "range": [
+       25,
+       39
+      ]
+     }
+    ],
     "floor": 25,
     "ceiling": 39,
     "atLevel": [
@@ -39423,6 +44079,40 @@
      "Forsworn",
      "Dragon",
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Hagraven",
+      "count": 2,
+      "range": [
+       45,
+       45
+      ]
+     },
+     {
+      "kind": "Forsworn",
+      "count": 2,
+      "range": [
+       25,
+       39
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       3,
+       3
+      ]
+     }
     ],
     "floor": 1,
     "ceiling": 79,
@@ -39519,6 +44209,24 @@
     "livesHere": "Forsworn",
     "alsoHere": [
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Forsworn",
+      "count": 12,
+      "range": [
+       25,
+       51
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       14,
+       14
+      ]
+     }
     ],
     "floor": 14,
     "ceiling": 51,
@@ -39890,6 +44598,32 @@
       "Forsworn",
       "Bandit"
      ],
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 64,
+       "range": [
+        22,
+        47
+       ]
+      },
+      {
+       "kind": "Forsworn",
+       "count": 17,
+       "range": [
+        25,
+        39
+       ]
+      },
+      {
+       "kind": "Bandit",
+       "count": 1,
+       "range": [
+        6,
+        6
+       ]
+      }
+     ],
      "floor": 6,
      "ceiling": 47,
      "atLevel": [
@@ -40005,6 +44739,24 @@
     "alsoHere": [
      "Bandit"
     ],
+    "kinds": [
+     {
+      "kind": "Thalmor",
+      "count": 7,
+      "range": [
+       17,
+       39
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 5,
+      "range": [
+       8,
+       24
+      ]
+     }
+    ],
     "floor": 8,
     "ceiling": 39,
     "atLevel": [
@@ -40075,6 +44827,48 @@
      "Chaurus",
      "Bandit",
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Falmer",
+      "count": 20,
+      "range": [
+       23,
+       55
+      ]
+     },
+     {
+      "kind": "Bear",
+      "count": 6,
+      "range": [
+       18,
+       18
+      ]
+     },
+     {
+      "kind": "Chaurus",
+      "count": 4,
+      "range": [
+       18,
+       18
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       18,
+       18
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       18,
+       18
+      ]
+     }
     ],
     "floor": 18,
     "ceiling": 55,
@@ -40178,6 +44972,24 @@
     "livesHere": "Forsworn",
     "alsoHere": [
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Forsworn",
+      "count": 20,
+      "range": [
+       25,
+       52
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       14,
+       14
+      ]
+     }
     ],
     "floor": 14,
     "ceiling": 52,
@@ -40364,6 +45176,40 @@
      "Forsworn",
      "Spider",
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Hagraven",
+      "count": 12,
+      "range": [
+       14,
+       60
+      ]
+     },
+     {
+      "kind": "Forsworn",
+      "count": 5,
+      "range": [
+       25,
+       50
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 3,
+      "range": [
+       14,
+       22
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       14,
+       14
+      ]
+     }
     ],
     "floor": 14,
     "ceiling": 60,
@@ -40732,6 +45578,32 @@
      "Warlock",
      "Bandit"
     ],
+    "kinds": [
+     {
+      "kind": "Spider",
+      "count": 38,
+      "range": [
+       8,
+       60
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       45,
+       50
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       8,
+       24
+      ]
+     }
+    ],
     "floor": 8,
     "ceiling": 60,
     "atLevel": [
@@ -40867,6 +45739,32 @@
      "alsoHere": [
       "Skeleton",
       "Bear"
+     ],
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 9,
+       "range": [
+        1,
+        47
+       ]
+      },
+      {
+       "kind": "Skeleton",
+       "count": 1,
+       "range": [
+        1,
+        1
+       ]
+      },
+      {
+       "kind": "Bear",
+       "count": 1,
+       "range": [
+        12,
+        12
+       ]
+      }
      ],
      "floor": 1,
      "ceiling": 47,
@@ -41211,6 +46109,16 @@
    "actors": {
     "count": 41,
     "livesHere": "Forsworn",
+    "kinds": [
+     {
+      "kind": "Forsworn",
+      "count": 41,
+      "range": [
+       25,
+       52
+      ]
+     }
+    ],
     "floor": 25,
     "ceiling": 52,
     "atLevel": [
@@ -41377,6 +46285,24 @@
     "livesHere": "Forsworn",
     "alsoHere": [
      "Dragon"
+    ],
+    "kinds": [
+     {
+      "kind": "Forsworn",
+      "count": 2,
+      "range": [
+       25,
+       51
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     }
     ],
     "floor": 25,
     "ceiling": 79,
@@ -41728,6 +46654,16 @@
    "actors": {
     "count": 12,
     "livesHere": "Forsworn",
+    "kinds": [
+     {
+      "kind": "Forsworn",
+      "count": 12,
+      "range": [
+       24,
+       52
+      ]
+     }
+    ],
     "floor": 24,
     "ceiling": 52,
     "atLevel": [
@@ -41876,6 +46812,40 @@
      "Spider",
      "Chaurus"
     ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 18,
+      "range": [
+       18,
+       24
+      ]
+     },
+     {
+      "kind": "Falmer",
+      "count": 14,
+      "range": [
+       23,
+       55
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 5,
+      "range": [
+       18,
+       18
+      ]
+     },
+     {
+      "kind": "Chaurus",
+      "count": 3,
+      "range": [
+       18,
+       32
+      ]
+     }
+    ],
     "floor": 18,
     "ceiling": 55,
     "atLevel": [
@@ -41940,6 +46910,32 @@
     "alsoHere": [
      "Draugr",
      "DragonPriest"
+    ],
+    "kinds": [
+     {
+      "kind": "Forsworn",
+      "count": 32,
+      "range": [
+       25,
+       51
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 9,
+      "range": [
+       14,
+       55
+      ]
+     },
+     {
+      "kind": "DragonPriest",
+      "count": 1,
+      "range": [
+       55,
+       55
+      ]
+     }
     ],
     "floor": 14,
     "ceiling": 55,
@@ -42200,6 +47196,32 @@
      "Forsworn",
      "Draugr"
     ],
+    "kinds": [
+     {
+      "kind": "Spider",
+      "count": 5,
+      "range": [
+       1,
+       8
+      ]
+     },
+     {
+      "kind": "Forsworn",
+      "count": 1,
+      "range": [
+       35,
+       35
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 1,
+      "range": [
+       23,
+       23
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 35,
     "atLevel": [
@@ -42349,6 +47371,32 @@
     "alsoHere": [
      "Vampire",
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 3,
+      "range": [
+       1,
+       1
+      ]
+     },
+     {
+      "kind": "Vampire",
+      "count": 2,
+      "range": [
+       35,
+       50
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 2,
+      "range": [
+       3,
+       24
+      ]
+     }
     ],
     "floor": 1,
     "ceiling": 50,
@@ -42517,6 +47565,40 @@
      "Spider",
      "Warlock",
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Falmer",
+      "count": 52,
+      "range": [
+       22,
+       55
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 34,
+      "range": [
+       16,
+       55
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 4,
+      "range": [
+       16,
+       16
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       19,
+       19
+      ]
+     }
     ],
     "floor": 16,
     "ceiling": 60,
@@ -43101,6 +48183,32 @@
      "DragonPriest",
      "Bandit"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 57,
+      "range": [
+       24,
+       45
+      ]
+     },
+     {
+      "kind": "DragonPriest",
+      "count": 1,
+      "range": [
+       75,
+       75
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       24,
+       24
+      ]
+     }
+    ],
     "floor": 24,
     "ceiling": 75,
     "atLevel": [
@@ -43204,6 +48312,16 @@
    "actors": {
     "count": 3,
     "livesHere": "Dragon",
+    "kinds": [
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 79,
     "atLevel": [
@@ -43264,6 +48382,24 @@
     "livesHere": "Draugr",
     "alsoHere": [
      "Necromancer"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 15,
+      "range": [
+       6,
+       40
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 2,
+      "range": [
+       6,
+       6
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 40,
@@ -43385,6 +48521,16 @@
    "actors": {
     "count": 1,
     "livesHere": "Dragon",
+    "kinds": [
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     }
+    ],
     "floor": 30,
     "ceiling": 79,
     "atLevel": [
@@ -43446,6 +48592,32 @@
     "alsoHere": [
      "Skeleton",
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 19,
+      "range": [
+       6,
+       50
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 50,
@@ -43535,6 +48707,16 @@
    "actors": {
     "count": 2,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       19,
+       24
+      ]
+     }
+    ],
     "floor": 8,
     "ceiling": 24,
     "atLevel": [
@@ -43612,6 +48794,32 @@
      "Bandit",
      "Draugr"
     ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 8,
+      "range": [
+       14,
+       14
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       14,
+       24
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 1,
+      "range": [
+       80,
+       80
+      ]
+     }
+    ],
     "floor": 14,
     "ceiling": 80,
     "atLevel": [
@@ -43682,6 +48890,16 @@
    "actors": {
     "count": 19,
     "livesHere": "Forsworn",
+    "kinds": [
+     {
+      "kind": "Forsworn",
+      "count": 16,
+      "range": [
+       25,
+       50
+      ]
+     }
+    ],
     "floor": 14,
     "ceiling": 50,
     "atLevel": [
@@ -43821,6 +49039,16 @@
    "actors": {
     "count": 4,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 3,
+      "range": [
+       3,
+       24
+      ]
+     }
+    ],
     "floor": 3,
     "ceiling": 25,
     "atLevel": [
@@ -43885,6 +49113,24 @@
     "livesHere": "Forsworn",
     "alsoHere": [
      "Hagraven"
+    ],
+    "kinds": [
+     {
+      "kind": "Forsworn",
+      "count": 18,
+      "range": [
+       25,
+       52
+      ]
+     },
+     {
+      "kind": "Hagraven",
+      "count": 1,
+      "range": [
+       45,
+       45
+      ]
+     }
     ],
     "floor": 25,
     "ceiling": 52,
@@ -44766,6 +50012,16 @@
    "actors": {
     "count": 17,
     "livesHere": "Draugr",
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 16,
+      "range": [
+       1,
+       40
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 40,
     "atLevel": [
@@ -44846,6 +50102,16 @@
     "afterTheWar": {
      "count": 16,
      "livesHere": "Imperial",
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 13,
+       "range": [
+        22,
+        27
+       ]
+      }
+     ],
      "floor": 4,
      "ceiling": 27,
      "atLevel": [
@@ -44912,6 +50178,16 @@
    "actors": {
     "count": 3,
     "livesHere": "Hagraven",
+    "kinds": [
+     {
+      "kind": "Hagraven",
+      "count": 1,
+      "range": [
+       45,
+       45
+      ]
+     }
+    ],
     "floor": 15,
     "ceiling": 45,
     "atLevel": [
@@ -45400,6 +50676,48 @@
      "Bandit",
      "DragonPriest"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 47,
+      "range": [
+       24,
+       55
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 14,
+      "range": [
+       24,
+       60
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 4,
+      "range": [
+       24,
+       24
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       24,
+       24
+      ]
+     },
+     {
+      "kind": "DragonPriest",
+      "count": 1,
+      "range": [
+       65,
+       65
+      ]
+     }
+    ],
     "floor": 24,
     "ceiling": 65,
     "atLevel": [
@@ -45608,6 +50926,24 @@
     "alsoHere": [
      "Bear"
     ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 4,
+      "range": [
+       13,
+       13
+      ]
+     },
+     {
+      "kind": "Bear",
+      "count": 1,
+      "range": [
+       13,
+       14
+      ]
+     }
+    ],
     "floor": 13,
     "ceiling": 63,
     "atLevel": [
@@ -45735,6 +51071,16 @@
    "actors": {
     "count": 60,
     "livesHere": "Draugr",
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 56,
+      "range": [
+       6,
+       75
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 75,
     "atLevel": [
@@ -45831,6 +51177,48 @@
      "Forsworn",
      "Dragon"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 22,
+      "range": [
+       6,
+       55
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 14,
+      "range": [
+       6,
+       12
+      ]
+     },
+     {
+      "kind": "Bear",
+      "count": 2,
+      "range": [
+       6,
+       22
+      ]
+     },
+     {
+      "kind": "Forsworn",
+      "count": 2,
+      "range": [
+       25,
+       46
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 79,
     "atLevel": [
@@ -45900,6 +51288,24 @@
     "livesHere": "Wolf",
     "alsoHere": [
      "Spriggan"
+    ],
+    "kinds": [
+     {
+      "kind": "Wolf",
+      "count": 3,
+      "range": [
+       14,
+       14
+      ]
+     },
+     {
+      "kind": "Spriggan",
+      "count": 3,
+      "range": [
+       14,
+       30
+      ]
+     }
     ],
     "floor": 14,
     "ceiling": 30,
@@ -45984,6 +51390,32 @@
      "Skeleton",
      "Dragon"
     ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 4,
+      "range": [
+       3,
+       24
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       1,
+       1
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 79,
     "atLevel": [
@@ -46056,6 +51488,24 @@
     "livesHere": "Draugr",
     "alsoHere": [
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 2,
+      "range": [
+       23,
+       30
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       16,
+       16
+      ]
+     }
     ],
     "floor": 16,
     "ceiling": 60,
@@ -46894,6 +52344,24 @@
     "alsoHere": [
      "Necromancer"
     ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 4,
+      "range": [
+       6,
+       12
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 2,
+      "range": [
+       35,
+       50
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 50,
     "atLevel": [
@@ -46968,6 +52436,16 @@
    "actors": {
     "count": 13,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 9,
+      "range": [
+       6,
+       24
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 24,
     "atLevel": [
@@ -47086,6 +52564,24 @@
     "alsoHere": [
      "Bandit"
     ],
+    "kinds": [
+     {
+      "kind": "Bear",
+      "count": 6,
+      "range": [
+       2,
+       14
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 3,
+      "range": [
+       4,
+       24
+      ]
+     }
+    ],
     "floor": 2,
     "ceiling": 24,
     "atLevel": [
@@ -47166,6 +52662,40 @@
      "Draugr",
      "Skeleton",
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Hagraven",
+      "count": 22,
+      "range": [
+       24,
+       81
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 6,
+      "range": [
+       24,
+       30
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       24,
+       24
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       24,
+       24
+      ]
+     }
     ],
     "floor": 24,
     "ceiling": 81,
@@ -47796,6 +53326,24 @@
     "alsoHere": [
      "Wolf"
     ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 33,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Wolf",
+      "count": 6,
+      "range": [
+       6,
+       6
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 24,
     "atLevel": [
@@ -48156,6 +53704,40 @@
      "Bandit",
      "Spider"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 93,
+      "range": [
+       24,
+       45
+      ]
+     },
+     {
+      "kind": "DragonPriest",
+      "count": 2,
+      "range": [
+       55,
+       66
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       24,
+       24
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 1,
+      "range": [
+       24,
+       24
+      ]
+     }
+    ],
     "floor": 24,
     "ceiling": 66,
     "atLevel": [
@@ -48277,6 +53859,40 @@
       "Bandit",
       "Spider",
       "Warlock"
+     ],
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 72,
+       "range": [
+        22,
+        47
+       ]
+      },
+      {
+       "kind": "Bandit",
+       "count": 18,
+       "range": [
+        6,
+        24
+       ]
+      },
+      {
+       "kind": "Spider",
+       "count": 3,
+       "range": [
+        6,
+        6
+       ]
+      },
+      {
+       "kind": "Warlock",
+       "count": 1,
+       "range": [
+        6,
+        6
+       ]
+      }
      ],
      "floor": 6,
      "ceiling": 47,
@@ -48442,6 +54058,32 @@
      "Spider",
      "Bandit"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 17,
+      "range": [
+       6,
+       40
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 4,
+      "range": [
+       6,
+       55
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       10,
+       10
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 55,
     "atLevel": [
@@ -48529,6 +54171,24 @@
     "livesHere": "Draugr",
     "alsoHere": [
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 2,
+      "range": [
+       23,
+       30
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       24,
+       24
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 30,
@@ -49381,6 +55041,32 @@
      "Bandit",
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Bear",
+      "count": 4,
+      "range": [
+       12,
+       12
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       3,
+       3
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       2,
+       2
+      ]
+     }
+    ],
     "floor": 2,
     "ceiling": 12,
     "atLevel": [
@@ -49522,6 +55208,24 @@
      "livesHere": "Imperial",
      "alsoHere": [
       "Skeleton"
+     ],
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 10,
+       "range": [
+        1,
+        47
+       ]
+      },
+      {
+       "kind": "Skeleton",
+       "count": 1,
+       "range": [
+        1,
+        1
+       ]
+      }
      ],
      "floor": 1,
      "ceiling": 47,
@@ -50475,6 +56179,32 @@
      "Dragon",
      "Necromancer"
     ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 4,
+      "range": [
+       1,
+       12
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 1,
+      "range": [
+       19,
+       46
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 79,
     "atLevel": [
@@ -50750,6 +56480,24 @@
     "alsoHere": [
      "Bandit"
     ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 3,
     "atLevel": [
@@ -50879,6 +56627,24 @@
     "livesHere": "Skeleton",
     "alsoHere": [
      "Dragon"
+    ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 4,
+      "range": [
+       1,
+       1
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     }
     ],
     "floor": 1,
     "ceiling": 79,
@@ -51016,6 +56782,16 @@
    "actors": {
     "count": 6,
     "livesHere": "Bear",
+    "kinds": [
+     {
+      "kind": "Bear",
+      "count": 4,
+      "range": [
+       12,
+       12
+      ]
+     }
+    ],
     "floor": 12,
     "ceiling": 15,
     "atLevel": [
@@ -51113,6 +56889,16 @@
    "actors": {
     "count": 6,
     "livesHere": "Spider",
+    "kinds": [
+     {
+      "kind": "Spider",
+      "count": 6,
+      "range": [
+       1,
+       6
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 6,
     "atLevel": [
@@ -51189,6 +56975,56 @@
      "Warlock",
      "Draugr",
      "Imperial"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 20,
+      "range": [
+       1,
+       24
+      ]
+     },
+     {
+      "kind": "Vampire",
+      "count": 15,
+      "range": [
+       20,
+       100
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 3,
+      "range": [
+       1,
+       12
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       1,
+       1
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 1,
+      "range": [
+       1,
+       1
+      ]
+     },
+     {
+      "kind": "Imperial",
+      "count": 1,
+      "range": [
+       1,
+       1
+      ]
+     }
     ],
     "floor": 1,
     "ceiling": 100,
@@ -51304,6 +57140,16 @@
    "actors": {
     "count": 17,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 12,
+      "range": [
+       6,
+       50
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 50,
     "atLevel": [
@@ -51907,6 +57753,16 @@
    "actors": {
     "count": 3,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 3,
+      "range": [
+       6,
+       24
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 24,
     "atLevel": [
@@ -51978,6 +57834,16 @@
    "actors": {
     "count": 2,
     "livesHere": "Hagraven",
+    "kinds": [
+     {
+      "kind": "Hagraven",
+      "count": 2,
+      "range": [
+       8,
+       11
+      ]
+     }
+    ],
     "floor": 8,
     "ceiling": 11,
     "atLevel": [
@@ -52033,6 +57899,16 @@
    "actors": {
     "count": 19,
     "livesHere": "Warlock",
+    "kinds": [
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       55,
+       55
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 55,
     "atLevel": [
@@ -52434,6 +58310,16 @@
     "afterTheWar": {
      "count": 8,
      "livesHere": "Imperial",
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 4,
+       "range": [
+        27,
+        27
+       ]
+      }
+     ],
      "floor": 6,
      "ceiling": 27,
      "atLevel": [
@@ -52502,6 +58388,32 @@
     "alsoHere": [
      "Skeleton",
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 31,
+      "range": [
+       6,
+       60
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 17,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       6,
+       24
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 60,
@@ -52614,6 +58526,40 @@
      "Hagraven",
      "Warlock",
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Spider",
+      "count": 19,
+      "range": [
+       14,
+       60
+      ]
+     },
+     {
+      "kind": "Hagraven",
+      "count": 11,
+      "range": [
+       14,
+       55
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       14,
+       14
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       14,
+       14
+      ]
+     }
     ],
     "floor": 14,
     "ceiling": 60,
@@ -52867,6 +58813,16 @@
     "afterTheWar": {
      "count": 12,
      "livesHere": "Imperial",
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 12,
+       "range": [
+        22,
+        27
+       ]
+      }
+     ],
      "floor": 22,
      "ceiling": 27,
      "atLevel": [
@@ -52936,6 +58892,32 @@
     "alsoHere": [
      "Bear",
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Thalmor",
+      "count": 2,
+      "range": [
+       17,
+       38
+      ]
+     },
+     {
+      "kind": "Bear",
+      "count": 1,
+      "range": [
+       6,
+       14
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 100,
@@ -54007,6 +59989,32 @@
      "Skeleton",
      "Draugr"
     ],
+    "kinds": [
+     {
+      "kind": "Warlock",
+      "count": 2,
+      "range": [
+       19,
+       46
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 1,
+      "range": [
+       6,
+       40
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 46,
     "atLevel": [
@@ -54142,6 +60150,56 @@
      "Skeleton",
      "Bandit"
     ],
+    "kinds": [
+     {
+      "kind": "Falmer",
+      "count": 41,
+      "range": [
+       22,
+       35
+      ]
+     },
+     {
+      "kind": "Chaurus",
+      "count": 10,
+      "range": [
+       18,
+       32
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 6,
+      "range": [
+       18,
+       18
+      ]
+     },
+     {
+      "kind": "Bear",
+      "count": 5,
+      "range": [
+       18,
+       22
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 3,
+      "range": [
+       18,
+       18
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       18,
+       18
+      ]
+     }
+    ],
     "floor": 18,
     "ceiling": 35,
     "atLevel": [
@@ -54227,6 +60285,16 @@
    "actors": {
     "count": 39,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 34,
+      "range": [
+       6,
+       24
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 24,
     "atLevel": [
@@ -54740,6 +60808,48 @@
      "Spider",
      "Troll"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 91,
+      "range": [
+       6,
+       20
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 31,
+      "range": [
+       6,
+       20
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 18,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 14,
+      "range": [
+       6,
+       20
+      ]
+     },
+     {
+      "kind": "Troll",
+      "count": 1,
+      "range": [
+       20,
+       20
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 20,
     "atLevel": [
@@ -55095,6 +61205,24 @@
     "alsoHere": [
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Giant",
+      "count": 4,
+      "range": [
+       3,
+       70
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       2,
+       12
+      ]
+     }
+    ],
     "floor": 2,
     "ceiling": 70,
     "atLevel": [
@@ -55301,6 +61429,32 @@
     "alsoHere": [
      "Skeleton",
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Vampire",
+      "count": 5,
+      "range": [
+       20,
+       50
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 3,
+      "range": [
+       6,
+       30
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 3,
+      "range": [
+       6,
+       24
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 50,
@@ -56428,6 +62582,24 @@
     "alsoHere": [
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       35,
+       46
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       12,
+       12
+      ]
+     }
+    ],
     "floor": 12,
     "ceiling": 46,
     "atLevel": [
@@ -56658,6 +62830,40 @@
      "Spider",
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 57,
+      "range": [
+       6,
+       55
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 32,
+      "range": [
+       6,
+       35
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 7,
+      "range": [
+       6,
+       60
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       6,
+       6
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 60,
     "atLevel": [
@@ -56837,6 +63043,56 @@
      "Spider",
      "Wolf"
     ],
+    "kinds": [
+     {
+      "kind": "Warlock",
+      "count": 32,
+      "range": [
+       8,
+       50
+      ]
+     },
+     {
+      "kind": "Vampire",
+      "count": 11,
+      "range": [
+       20,
+       50
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 9,
+      "range": [
+       8,
+       8
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 4,
+      "range": [
+       19,
+       46
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 2,
+      "range": [
+       8,
+       8
+      ]
+     },
+     {
+      "kind": "Wolf",
+      "count": 2,
+      "range": [
+       8,
+       8
+      ]
+     }
+    ],
     "floor": 8,
     "ceiling": 75,
     "atLevel": [
@@ -56988,6 +63244,32 @@
      "Skeleton",
      "DragonPriest"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 26,
+      "range": [
+       25,
+       40
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 16,
+      "range": [
+       25,
+       30
+      ]
+     },
+     {
+      "kind": "DragonPriest",
+      "count": 1,
+      "range": [
+       50,
+       50
+      ]
+     }
+    ],
     "floor": 25,
     "ceiling": 50,
     "atLevel": [
@@ -57053,6 +63335,16 @@
    "actors": {
     "count": 14,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 3,
+      "range": [
+       6,
+       24
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 24,
     "atLevel": [
@@ -57076,6 +63368,40 @@
       "Bandit",
       "Skeleton",
       "Troll"
+     ],
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 87,
+       "range": [
+        22,
+        47
+       ]
+      },
+      {
+       "kind": "Bandit",
+       "count": 33,
+       "range": [
+        6,
+        24
+       ]
+      },
+      {
+       "kind": "Skeleton",
+       "count": 1,
+       "range": [
+        6,
+        6
+       ]
+      },
+      {
+       "kind": "Troll",
+       "count": 1,
+       "range": [
+        14,
+        14
+       ]
+      }
      ],
      "floor": 6,
      "ceiling": 47,
@@ -57320,6 +63646,16 @@
    "actors": {
     "count": 15,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 8,
+      "range": [
+       1,
+       50
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 50,
     "atLevel": [
@@ -57414,6 +63750,40 @@
      "Bandit",
      "Skeleton",
      "Necromancer"
+    ],
+    "kinds": [
+     {
+      "kind": "Troll",
+      "count": 8,
+      "range": [
+       2,
+       40
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 7,
+      "range": [
+       3,
+       24
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       2,
+       2
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 1,
+      "range": [
+       19,
+       46
+      ]
+     }
     ],
     "floor": 2,
     "ceiling": 46,
@@ -57528,6 +63898,24 @@
     "alsoHere": [
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Bear",
+      "count": 3,
+      "range": [
+       2,
+       12
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       2,
+       2
+      ]
+     }
+    ],
     "floor": 2,
     "ceiling": 15,
     "atLevel": [
@@ -57627,6 +64015,24 @@
     "livesHere": "Giant",
     "alsoHere": [
      "Troll"
+    ],
+    "kinds": [
+     {
+      "kind": "Giant",
+      "count": 4,
+      "range": [
+       51,
+       70
+      ]
+     },
+     {
+      "kind": "Troll",
+      "count": 4,
+      "range": [
+       14,
+       14
+      ]
+     }
     ],
     "floor": 2,
     "ceiling": 70,
@@ -57941,6 +64347,16 @@
    "actors": {
     "count": 31,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 28,
+      "range": [
+       6,
+       10
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 10,
     "atLevel": [
@@ -58019,6 +64435,24 @@
     "livesHere": "Skeleton",
     "alsoHere": [
      "Draugr"
+    ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 3,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 1,
+      "range": [
+       13,
+       30
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 30,
@@ -58162,6 +64596,16 @@
    "actors": {
     "count": 6,
     "livesHere": "Troll",
+    "kinds": [
+     {
+      "kind": "Troll",
+      "count": 1,
+      "range": [
+       14,
+       14
+      ]
+     }
+    ],
     "floor": 14,
     "ceiling": 100,
     "atLevel": [
@@ -58913,6 +65357,24 @@
     "alsoHere": [
      "Bandit"
     ],
+    "kinds": [
+     {
+      "kind": "Spider",
+      "count": 5,
+      "range": [
+       8,
+       8
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       19,
+       19
+      ]
+     }
+    ],
     "floor": 8,
     "ceiling": 19,
     "atLevel": [
@@ -59215,6 +65677,16 @@
    "actors": {
     "count": 3,
     "livesHere": "Warlock",
+    "kinds": [
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       1,
+       1
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 50,
     "atLevel": [
@@ -59300,6 +65772,24 @@
      "livesHere": "Imperial",
      "alsoHere": [
       "Skeleton"
+     ],
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 9,
+       "range": [
+        1,
+        47
+       ]
+      },
+      {
+       "kind": "Skeleton",
+       "count": 2,
+       "range": [
+        1,
+        1
+       ]
+      }
      ],
      "floor": 1,
      "ceiling": 47,
@@ -60954,6 +67444,24 @@
     "alsoHere": [
      "Dragon"
     ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       1,
+       1
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 79,
     "atLevel": [
@@ -61008,6 +67516,16 @@
    "actors": {
     "count": 8,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       12,
+       24
+      ]
+     }
+    ],
     "floor": 12,
     "ceiling": 24,
     "atLevel": [
@@ -61153,6 +67671,32 @@
      "Draugr",
      "Warlock"
     ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 29,
+      "range": [
+       8,
+       24
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 5,
+      "range": [
+       8,
+       8
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       50,
+       50
+      ]
+     }
+    ],
     "floor": 8,
     "ceiling": 50,
     "atLevel": [
@@ -61279,6 +67823,16 @@
    "actors": {
     "count": 12,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 12,
+      "range": [
+       6,
+       24
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 24,
     "atLevel": [
@@ -63697,6 +70251,16 @@
    "actors": {
     "count": 5,
     "livesHere": "Giant",
+    "kinds": [
+     {
+      "kind": "Giant",
+      "count": 5,
+      "range": [
+       70,
+       70
+      ]
+     }
+    ],
     "floor": 70,
     "ceiling": 70,
     "atLevel": [
@@ -63817,6 +70381,48 @@
      "Skeleton",
      "Bandit",
      "Spider"
+    ],
+    "kinds": [
+     {
+      "kind": "Falmer",
+      "count": 18,
+      "range": [
+       23,
+       60
+      ]
+     },
+     {
+      "kind": "Chaurus",
+      "count": 10,
+      "range": [
+       18,
+       32
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 5,
+      "range": [
+       18,
+       18
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 3,
+      "range": [
+       18,
+       18
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 1,
+      "range": [
+       18,
+       55
+      ]
+     }
     ],
     "floor": 18,
     "ceiling": 60,
@@ -63958,6 +70564,16 @@
    "actors": {
     "count": 28,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 28,
+      "range": [
+       6,
+       35
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 35,
     "atLevel": [
@@ -64149,6 +70765,32 @@
      "Bandit",
      "Wolf"
     ],
+    "kinds": [
+     {
+      "kind": "Giant",
+      "count": 5,
+      "range": [
+       70,
+       70
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       3,
+       24
+      ]
+     },
+     {
+      "kind": "Wolf",
+      "count": 1,
+      "range": [
+       2,
+       2
+      ]
+     }
+    ],
     "floor": 2,
     "ceiling": 70,
     "atLevel": [
@@ -64223,6 +70865,24 @@
      "livesHere": "Imperial",
      "alsoHere": [
       "Skeleton"
+     ],
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 12,
+       "range": [
+        22,
+        27
+       ]
+      },
+      {
+       "kind": "Skeleton",
+       "count": 1,
+       "range": [
+        1,
+        1
+       ]
+      }
      ],
      "floor": 1,
      "ceiling": 27,
@@ -64327,6 +70987,24 @@
     "livesHere": "Bandit",
     "alsoHere": [
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 39,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       100,
+       100
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 100,
@@ -65268,6 +71946,24 @@
     "alsoHere": [
      "Draugr"
     ],
+    "kinds": [
+     {
+      "kind": "Necromancer",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 1,
+      "range": [
+       6,
+       40
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 40,
     "atLevel": [
@@ -65411,6 +72107,16 @@
    "actors": {
     "count": 3,
     "livesHere": "Dragon",
+    "kinds": [
+     {
+      "kind": "Dragon",
+      "count": 3,
+      "range": [
+       75,
+       77
+      ]
+     }
+    ],
     "floor": 75,
     "ceiling": 77,
     "atLevel": [
@@ -65802,6 +72508,16 @@
    "actors": {
     "count": 25,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 25,
+      "range": [
+       6,
+       40
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 40,
     "atLevel": [
@@ -66033,6 +72749,16 @@
     "afterTheWar": {
      "count": 14,
      "livesHere": "Imperial",
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 9,
+       "range": [
+        25,
+        30
+       ]
+      }
+     ],
      "floor": 25,
      "ceiling": 30,
      "atLevel": [
@@ -66138,6 +72864,32 @@
     "alsoHere": [
      "Wolf",
      "Bear"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 19,
+      "range": [
+       6,
+       10
+      ]
+     },
+     {
+      "kind": "Wolf",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Bear",
+      "count": 1,
+      "range": [
+       6,
+       10
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 10,
@@ -66529,6 +73281,16 @@
     "afterTheWar": {
      "count": 6,
      "livesHere": "Imperial",
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 6,
+       "range": [
+        25,
+        30
+       ]
+      }
+     ],
      "floor": 25,
      "ceiling": 30,
      "atLevel": [
@@ -66767,6 +73529,48 @@
      "Bandit",
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Falmer",
+      "count": 26,
+      "range": [
+       22,
+       35
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 3,
+      "range": [
+       16,
+       16
+      ]
+     },
+     {
+      "kind": "Chaurus",
+      "count": 3,
+      "range": [
+       16,
+       32
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 2,
+      "range": [
+       16,
+       24
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       16,
+       16
+      ]
+     }
+    ],
     "floor": 16,
     "ceiling": 35,
     "atLevel": [
@@ -66954,6 +73758,32 @@
     "alsoHere": [
      "Spider",
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Falmer",
+      "count": 23,
+      "range": [
+       23,
+       45
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 9,
+      "range": [
+       18,
+       18
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 3,
+      "range": [
+       18,
+       18
+      ]
+     }
     ],
     "floor": 18,
     "ceiling": 60,
@@ -67328,6 +74158,32 @@
      "Warlock",
      "Bandit"
     ],
+    "kinds": [
+     {
+      "kind": "Troll",
+      "count": 4,
+      "range": [
+       22,
+       22
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       2,
+       2
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       3,
+       3
+      ]
+     }
+    ],
     "floor": 2,
     "ceiling": 22,
     "atLevel": [
@@ -67415,6 +74271,16 @@
    "actors": {
     "count": 55,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 51,
+      "range": [
+       6,
+       45
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 50,
     "atLevel": [
@@ -67497,6 +74363,16 @@
    "actors": {
     "count": 15,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 15,
+      "range": [
+       6,
+       24
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 24,
     "atLevel": [
@@ -67605,6 +74481,40 @@
       "Skeleton",
       "Necromancer",
       "Warlock"
+     ],
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 75,
+       "range": [
+        22,
+        47
+       ]
+      },
+      {
+       "kind": "Skeleton",
+       "count": 10,
+       "range": [
+        6,
+        12
+       ]
+      },
+      {
+       "kind": "Necromancer",
+       "count": 7,
+       "range": [
+        19,
+        46
+       ]
+      },
+      {
+       "kind": "Warlock",
+       "count": 1,
+       "range": [
+        19,
+        46
+       ]
+      }
      ],
      "floor": 6,
      "ceiling": 47,
@@ -67724,6 +74634,32 @@
     "alsoHere": [
      "Falmer",
      "Spider"
+    ],
+    "kinds": [
+     {
+      "kind": "Chaurus",
+      "count": 29,
+      "range": [
+       18,
+       50
+      ]
+     },
+     {
+      "kind": "Falmer",
+      "count": 7,
+      "range": [
+       22,
+       35
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 4,
+      "range": [
+       18,
+       18
+      ]
+     }
     ],
     "floor": 18,
     "ceiling": 50,
@@ -68046,6 +74982,48 @@
      "Bandit",
      "Bear"
     ],
+    "kinds": [
+     {
+      "kind": "Necromancer",
+      "count": 15,
+      "range": [
+       19,
+       60
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 6,
+      "range": [
+       8,
+       12
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 3,
+      "range": [
+       45,
+       50
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 3,
+      "range": [
+       8,
+       24
+      ]
+     },
+     {
+      "kind": "Bear",
+      "count": 1,
+      "range": [
+       8,
+       22
+      ]
+     }
+    ],
     "floor": 8,
     "ceiling": 100,
     "atLevel": [
@@ -68188,6 +75166,32 @@
       "Wolf",
       "Skeleton"
      ],
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 10,
+       "range": [
+        1,
+        47
+       ]
+      },
+      {
+       "kind": "Wolf",
+       "count": 2,
+       "range": [
+        6,
+        6
+       ]
+      },
+      {
+       "kind": "Skeleton",
+       "count": 1,
+       "range": [
+        1,
+        1
+       ]
+      }
+     ],
      "floor": 1,
      "ceiling": 47,
      "atLevel": [
@@ -68261,6 +75265,32 @@
     "alsoHere": [
      "Spider",
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 13,
+      "range": [
+       6,
+       70
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 10,
+      "range": [
+       6,
+       55
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 8,
+      "range": [
+       6,
+       12
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 70,
@@ -68389,6 +75419,16 @@
    "actors": {
     "count": 2,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       6,
+       24
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 24,
     "atLevel": [
@@ -68656,6 +75696,24 @@
     "alsoHere": [
      "Dragon"
     ],
+    "kinds": [
+     {
+      "kind": "Warlock",
+      "count": 2,
+      "range": [
+       35,
+       50
+      ]
+     },
+     {
+      "kind": "Dragon",
+      "count": 1,
+      "range": [
+       30,
+       79
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 79,
     "atLevel": [
@@ -68796,6 +75854,16 @@
    "actors": {
     "count": 1,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       6,
+       24
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 24,
     "atLevel": [
@@ -68928,6 +75996,24 @@
     "livesHere": "Draugr",
     "alsoHere": [
      "Warlock"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 14,
+      "range": [
+       6,
+       46
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       35,
+       35
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 46,
@@ -69892,6 +76978,32 @@
      "Spider",
      "Bandit"
     ],
+    "kinds": [
+     {
+      "kind": "Falmer",
+      "count": 26,
+      "range": [
+       22,
+       55
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 10,
+      "range": [
+       18,
+       55
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 3,
+      "range": [
+       18,
+       18
+      ]
+     }
+    ],
     "floor": 18,
     "ceiling": 80,
     "atLevel": [
@@ -69980,6 +77092,32 @@
      "Necromancer",
      "Draugr"
     ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 10,
+      "range": [
+       6,
+       40
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 3,
+      "range": [
+       19,
+       50
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 1,
+      "range": [
+       6,
+       30
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 50,
     "atLevel": [
@@ -70043,6 +77181,24 @@
     "livesHere": "Draugr",
     "alsoHere": [
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 46,
+      "range": [
+       6,
+       62
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 62,
@@ -70171,6 +77327,32 @@
      "Spider",
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 73,
+      "range": [
+       5,
+       24
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 12,
+      "range": [
+       5,
+       60
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 9,
+      "range": [
+       5,
+       5
+      ]
+     }
+    ],
     "floor": 5,
     "ceiling": 60,
     "atLevel": [
@@ -70190,6 +77372,16 @@
     "afterTheWar": {
      "count": 5,
      "livesHere": "Imperial",
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 5,
+       "range": [
+        22,
+        47
+       ]
+      }
+     ],
      "floor": 22,
      "ceiling": 47,
      "atLevel": [
@@ -70319,6 +77511,24 @@
      "alsoHere": [
       "Skeleton"
      ],
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 12,
+       "range": [
+        22,
+        27
+       ]
+      },
+      {
+       "kind": "Skeleton",
+       "count": 1,
+       "range": [
+        1,
+        1
+       ]
+      }
+     ],
      "floor": 1,
      "ceiling": 27,
      "atLevel": [
@@ -70395,6 +77605,32 @@
     "alsoHere": [
      "Chaurus",
      "Spider"
+    ],
+    "kinds": [
+     {
+      "kind": "Falmer",
+      "count": 7,
+      "range": [
+       23,
+       55
+      ]
+     },
+     {
+      "kind": "Chaurus",
+      "count": 3,
+      "range": [
+       18,
+       32
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 1,
+      "range": [
+       18,
+       55
+      ]
+     }
     ],
     "floor": 18,
     "ceiling": 55,
@@ -70924,6 +78160,24 @@
     "alsoHere": [
      "Draugr"
     ],
+    "kinds": [
+     {
+      "kind": "Bear",
+      "count": 1,
+      "range": [
+       6,
+       22
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 1,
+      "range": [
+       24,
+       55
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 55,
     "atLevel": [
@@ -70977,6 +78231,16 @@
    "actors": {
     "count": 8,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       18,
+       18
+      ]
+     }
+    ],
     "floor": 18,
     "ceiling": 60,
     "atLevel": [
@@ -71075,6 +78339,24 @@
     "livesHere": "Draugr",
     "alsoHere": [
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 20,
+      "range": [
+       1,
+       55
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 2,
+      "range": [
+       2,
+       3
+      ]
+     }
     ],
     "floor": 1,
     "ceiling": 55,
@@ -71471,6 +78753,16 @@
    "actors": {
     "count": 4,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 3,
+      "range": [
+       12,
+       24
+      ]
+     }
+    ],
     "floor": 12,
     "ceiling": 24,
     "atLevel": [
@@ -71545,6 +78837,32 @@
     "alsoHere": [
      "Bandit",
      "Necromancer"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 10,
+      "range": [
+       8,
+       40
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 7,
+      "range": [
+       8,
+       24
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 1,
+      "range": [
+       40,
+       40
+      ]
+     }
     ],
     "floor": 8,
     "ceiling": 40,
@@ -71662,6 +78980,32 @@
     "alsoHere": [
      "Spider",
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 37,
+      "range": [
+       45,
+       55
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 12,
+      "range": [
+       6,
+       60
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 8,
+      "range": [
+       30,
+       50
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 70,
@@ -71801,6 +79145,48 @@
      "Warlock",
      "Draugr"
     ],
+    "kinds": [
+     {
+      "kind": "Hagraven",
+      "count": 8,
+      "range": [
+       8,
+       45
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 4,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Falmer",
+      "count": 2,
+      "range": [
+       24,
+       55
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 55,
     "atLevel": [
@@ -71880,6 +79266,16 @@
    "actors": {
     "count": 20,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 7,
+      "range": [
+       6,
+       24
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 30,
     "atLevel": [
@@ -71951,6 +79347,64 @@
      "Hagraven",
      "Falmer"
     ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 8,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Vampire",
+      "count": 7,
+      "range": [
+       20,
+       100
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 5,
+      "range": [
+       6,
+       70
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 2,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Hagraven",
+      "count": 1,
+      "range": [
+       45,
+       45
+      ]
+     },
+     {
+      "kind": "Falmer",
+      "count": 1,
+      "range": [
+       32,
+       32
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 100,
     "atLevel": [
@@ -72019,6 +79473,16 @@
    "actors": {
     "count": 2,
     "livesHere": "Giant",
+    "kinds": [
+     {
+      "kind": "Giant",
+      "count": 1,
+      "range": [
+       70,
+       70
+      ]
+     }
+    ],
     "floor": 60,
     "ceiling": 70,
     "atLevel": [
@@ -72139,6 +79603,16 @@
    "actors": {
     "count": 4,
     "livesHere": "Imperial",
+    "kinds": [
+     {
+      "kind": "Imperial",
+      "count": 2,
+      "range": [
+       10,
+       25
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 25,
     "atLevel": [
@@ -72244,6 +79718,32 @@
      "Bandit",
      "Warlock"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 4,
+      "range": [
+       28,
+       28
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 28,
     "atLevel": [
@@ -72324,6 +79824,48 @@
      "Hagraven",
      "Thalmor",
      "Imperial"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 22,
+      "range": [
+       6,
+       80
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 2,
+      "range": [
+       35,
+       46
+      ]
+     },
+     {
+      "kind": "Hagraven",
+      "count": 1,
+      "range": [
+       20,
+       20
+      ]
+     },
+     {
+      "kind": "Thalmor",
+      "count": 1,
+      "range": [
+       17,
+       38
+      ]
+     },
+     {
+      "kind": "Imperial",
+      "count": 1,
+      "range": [
+       6,
+       30
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 80,
@@ -72407,6 +79949,32 @@
     "alsoHere": [
      "Skeleton",
      "Chaurus"
+    ],
+    "kinds": [
+     {
+      "kind": "Falmer",
+      "count": 38,
+      "range": [
+       24,
+       55
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 11,
+      "range": [
+       24,
+       50
+      ]
+     },
+     {
+      "kind": "Chaurus",
+      "count": 2,
+      "range": [
+       24,
+       24
+      ]
+     }
     ],
     "floor": 24,
     "ceiling": 79,
@@ -72509,6 +80077,16 @@
    "actors": {
     "count": 7,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 7,
+      "range": [
+       6,
+       24
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 24,
     "atLevel": [
@@ -72529,6 +80107,16 @@
     "afterTheWar": {
      "count": 9,
      "livesHere": "Imperial",
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 9,
+       "range": [
+        10,
+        40
+       ]
+      }
+     ],
      "floor": 10,
      "ceiling": 40,
      "atLevel": [
@@ -72664,6 +80252,32 @@
     "alsoHere": [
      "Hagraven",
      "Imperial"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 8,
+      "range": [
+       29,
+       29
+      ]
+     },
+     {
+      "kind": "Hagraven",
+      "count": 3,
+      "range": [
+       8,
+       11
+      ]
+     },
+     {
+      "kind": "Imperial",
+      "count": 1,
+      "range": [
+       6,
+       30
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 37,
@@ -72866,6 +80480,48 @@
      "Falmer",
      "Hagraven"
     ],
+    "kinds": [
+     {
+      "kind": "Troll",
+      "count": 6,
+      "range": [
+       22,
+       22
+      ]
+     },
+     {
+      "kind": "Spriggan",
+      "count": 2,
+      "range": [
+       8,
+       8
+      ]
+     },
+     {
+      "kind": "Thalmor",
+      "count": 1,
+      "range": [
+       18,
+       18
+      ]
+     },
+     {
+      "kind": "Falmer",
+      "count": 1,
+      "range": [
+       32,
+       32
+      ]
+     },
+     {
+      "kind": "Hagraven",
+      "count": 1,
+      "range": [
+       20,
+       100
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 100,
     "atLevel": [
@@ -72938,6 +80594,32 @@
      "Bandit",
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Spriggan",
+      "count": 7,
+      "range": [
+       8,
+       18
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 5,
+      "range": [
+       10,
+       10
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       6,
+       6
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 21,
     "atLevel": [
@@ -72958,6 +80640,16 @@
     "afterTheWar": {
      "count": 1,
      "livesHere": "Imperial",
+     "kinds": [
+      {
+       "kind": "Imperial",
+       "count": 1,
+       "range": [
+        22,
+        47
+       ]
+      }
+     ],
      "floor": 22,
      "ceiling": 47,
      "atLevel": [
@@ -73048,6 +80740,40 @@
      "Thalmor",
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 8,
+      "range": [
+       6,
+       55
+      ]
+     },
+     {
+      "kind": "Troll",
+      "count": 8,
+      "range": [
+       22,
+       22
+      ]
+     },
+     {
+      "kind": "Thalmor",
+      "count": 7,
+      "range": [
+       17,
+       50
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       6,
+       6
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 55,
     "atLevel": [
@@ -73123,6 +80849,24 @@
     "alsoHere": [
      "Hagraven"
     ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 2,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Hagraven",
+      "count": 1,
+      "range": [
+       45,
+       45
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 45,
     "atLevel": [
@@ -73175,6 +80919,40 @@
      "Skeleton",
      "Warlock",
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 40,
+      "range": [
+       6,
+       55
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 18,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       10,
+       50
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       40,
+       40
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 55,
@@ -73273,6 +81051,88 @@
      "Hagraven",
      "Falmer",
      "Thalmor"
+    ],
+    "kinds": [
+     {
+      "kind": "Warlock",
+      "count": 17,
+      "range": [
+       6,
+       50
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 8,
+      "range": [
+       6,
+       80
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 7,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Spriggan",
+      "count": 4,
+      "range": [
+       8,
+       8
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 3,
+      "range": [
+       6,
+       55
+      ]
+     },
+     {
+      "kind": "Vampire",
+      "count": 2,
+      "range": [
+       24,
+       50
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       16,
+       16
+      ]
+     },
+     {
+      "kind": "Hagraven",
+      "count": 1,
+      "range": [
+       45,
+       45
+      ]
+     },
+     {
+      "kind": "Falmer",
+      "count": 1,
+      "range": [
+       32,
+       32
+      ]
+     },
+     {
+      "kind": "Thalmor",
+      "count": 1,
+      "range": [
+       18,
+       18
+      ]
+     }
     ],
     "floor": 6,
     "ceiling": 80,
@@ -73483,6 +81343,24 @@
     "alsoHere": [
      "Thalmor"
     ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 3,
+      "range": [
+       6,
+       24
+      ]
+     },
+     {
+      "kind": "Thalmor",
+      "count": 1,
+      "range": [
+       35,
+       35
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 35,
     "atLevel": [
@@ -73550,6 +81428,40 @@
      "Imperial",
      "Spider",
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 8,
+      "range": [
+       10,
+       10
+      ]
+     },
+     {
+      "kind": "Imperial",
+      "count": 6,
+      "range": [
+       35,
+       35
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 1,
+      "range": [
+       1,
+       1
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       1,
+       1
+      ]
+     }
     ],
     "floor": 1,
     "ceiling": 35,
@@ -74007,6 +81919,40 @@
      "Warlock",
      "Bandit"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 8,
+      "range": [
+       6,
+       55
+      ]
+     },
+     {
+      "kind": "DragonPriest",
+      "count": 1,
+      "range": [
+       51,
+       51
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 55,
     "atLevel": [
@@ -74065,6 +82011,16 @@
    "actors": {
     "count": 4,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 4,
+      "range": [
+       6,
+       24
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 24,
     "atLevel": [
@@ -74116,6 +82072,16 @@
    "actors": {
     "count": 2,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 2,
+      "range": [
+       6,
+       24
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 24,
     "atLevel": [
@@ -74169,6 +82135,64 @@
      "Spider",
      "Warlock",
      "Falmer"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 75,
+      "range": [
+       24,
+       51
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 17,
+      "range": [
+       24,
+       24
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 7,
+      "range": [
+       24,
+       24
+      ]
+     },
+     {
+      "kind": "Thalmor",
+      "count": 4,
+      "range": [
+       24,
+       24
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 3,
+      "range": [
+       24,
+       60
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 2,
+      "range": [
+       30,
+       37
+      ]
+     },
+     {
+      "kind": "Falmer",
+      "count": 1,
+      "range": [
+       32,
+       32
+      ]
+     }
     ],
     "floor": 24,
     "ceiling": 60,
@@ -74298,6 +82322,24 @@
     "livesHere": "Skeleton",
     "alsoHere": [
      "Spider"
+    ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 27,
+      "range": [
+       1,
+       40
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 2,
+      "range": [
+       1,
+       6
+      ]
+     }
     ],
     "floor": 1,
     "ceiling": 100,
@@ -74719,6 +82761,16 @@
    "actors": {
     "count": 5,
     "livesHere": "Draugr",
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 5,
+      "range": [
+       15,
+       50
+      ]
+     }
+    ],
     "floor": 15,
     "ceiling": 50,
     "atLevel": [
@@ -74937,6 +82989,16 @@
    "actors": {
     "count": 40,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       1,
+       1
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 81,
     "atLevel": [
@@ -75447,6 +83509,16 @@
    "actors": {
     "count": 14,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 2,
+      "range": [
+       16,
+       16
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 90,
     "atLevel": [
@@ -76236,6 +84308,32 @@
     "alsoHere": [
      "Skeleton",
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 14,
+      "range": [
+       12,
+       40
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 11,
+      "range": [
+       12,
+       12
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 3,
+      "range": [
+       12,
+       100
+      ]
+     }
     ],
     "floor": 12,
     "ceiling": 100,
@@ -77339,6 +85437,40 @@
      "Necromancer",
      "Warlock"
     ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 4,
+      "range": [
+       1,
+       12
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       3,
+       3
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 1,
+      "range": [
+       19,
+       46
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       1,
+       1
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 80,
     "atLevel": [
@@ -77415,6 +85547,32 @@
     "alsoHere": [
      "Troll",
      "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Spider",
+      "count": 11,
+      "range": [
+       10,
+       55
+      ]
+     },
+     {
+      "kind": "Troll",
+      "count": 11,
+      "range": [
+       14,
+       14
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       10,
+       10
+      ]
+     }
     ],
     "floor": 10,
     "ceiling": 55,
@@ -77909,6 +86067,32 @@
      "Forsworn",
      "Hagraven"
     ],
+    "kinds": [
+     {
+      "kind": "Spriggan",
+      "count": 5,
+      "range": [
+       18,
+       18
+      ]
+     },
+     {
+      "kind": "Forsworn",
+      "count": 2,
+      "range": [
+       25,
+       25
+      ]
+     },
+     {
+      "kind": "Hagraven",
+      "count": 1,
+      "range": [
+       35,
+       35
+      ]
+     }
+    ],
     "floor": 18,
     "ceiling": 35,
     "atLevel": [
@@ -77972,6 +86156,16 @@
    "actors": {
     "count": 5,
     "livesHere": "Forsworn",
+    "kinds": [
+     {
+      "kind": "Forsworn",
+      "count": 5,
+      "range": [
+       25,
+       39
+      ]
+     }
+    ],
     "floor": 25,
     "ceiling": 39,
     "atLevel": [
@@ -78038,6 +86232,16 @@
    "actors": {
     "count": 55,
     "livesHere": "Spider",
+    "kinds": [
+     {
+      "kind": "Spider",
+      "count": 55,
+      "range": [
+       1,
+       55
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 55,
     "atLevel": [
@@ -78105,6 +86309,24 @@
     "livesHere": "Forsworn",
     "alsoHere": [
      "Spider"
+    ],
+    "kinds": [
+     {
+      "kind": "Forsworn",
+      "count": 9,
+      "range": [
+       25,
+       52
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 1,
+      "range": [
+       10,
+       10
+      ]
+     }
     ],
     "floor": 1,
     "ceiling": 52,
@@ -78177,6 +86399,24 @@
     "alsoHere": [
      "Hagraven"
     ],
+    "kinds": [
+     {
+      "kind": "Forsworn",
+      "count": 2,
+      "range": [
+       25,
+       39
+      ]
+     },
+     {
+      "kind": "Hagraven",
+      "count": 1,
+      "range": [
+       35,
+       35
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 39,
     "atLevel": [
@@ -78239,6 +86479,16 @@
    "actors": {
     "count": 3,
     "livesHere": "Forsworn",
+    "kinds": [
+     {
+      "kind": "Forsworn",
+      "count": 3,
+      "range": [
+       31,
+       31
+      ]
+     }
+    ],
     "floor": 31,
     "ceiling": 31,
     "atLevel": [
@@ -78303,6 +86553,16 @@
    "actors": {
     "count": 10,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 7,
+      "range": [
+       3,
+       81
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 81,
     "atLevel": [
@@ -78360,6 +86620,56 @@
      "Troll",
      "Giant",
      "Spider"
+    ],
+    "kinds": [
+     {
+      "kind": "Falmer",
+      "count": 63,
+      "range": [
+       22,
+       55
+      ]
+     },
+     {
+      "kind": "Chaurus",
+      "count": 12,
+      "range": [
+       13,
+       50
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 10,
+      "range": [
+       13,
+       13
+      ]
+     },
+     {
+      "kind": "Troll",
+      "count": 2,
+      "range": [
+       13,
+       22
+      ]
+     },
+     {
+      "kind": "Giant",
+      "count": 1,
+      "range": [
+       80,
+       80
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 1,
+      "range": [
+       13,
+       55
+      ]
+     }
     ],
     "floor": 13,
     "ceiling": 80,
@@ -78677,6 +86987,32 @@
      "Spider",
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Necromancer",
+      "count": 8,
+      "range": [
+       19,
+       46
+      ]
+     },
+     {
+      "kind": "Spider",
+      "count": 2,
+      "range": [
+       1,
+       6
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       1,
+       12
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 100,
     "atLevel": [
@@ -78945,6 +87281,16 @@
    "actors": {
     "count": 17,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 3,
+      "range": [
+       6,
+       6
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 80,
     "atLevel": [
@@ -78987,6 +87333,16 @@
    "actors": {
     "count": 22,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 4,
+      "range": [
+       10,
+       10
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 75,
     "atLevel": [
@@ -79217,6 +87573,16 @@
    "actors": {
     "count": 12,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       25,
+       50
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 100,
     "atLevel": [
@@ -79336,6 +87702,24 @@
     "alsoHere": [
      "Draugr"
     ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 13,
+      "range": [
+       3,
+       24
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 1,
+      "range": [
+       1,
+       1
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 24,
     "atLevel": [
@@ -79424,6 +87808,24 @@
     "alsoHere": [
      "Warlock"
     ],
+    "kinds": [
+     {
+      "kind": "Necromancer",
+      "count": 2,
+      "range": [
+       19,
+       46
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       45,
+       50
+      ]
+     }
+    ],
     "floor": 19,
     "ceiling": 50,
     "atLevel": [
@@ -79497,6 +87899,24 @@
     "alsoHere": [
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Giant",
+      "count": 16,
+      "range": [
+       10,
+       70
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 11,
+      "range": [
+       1,
+       1
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 70,
     "atLevel": [
@@ -79562,6 +87982,16 @@
    "actors": {
     "count": 29,
     "livesHere": "DragonPriest",
+    "kinds": [
+     {
+      "kind": "DragonPriest",
+      "count": 1,
+      "range": [
+       20,
+       20
+      ]
+     }
+    ],
     "floor": 8,
     "ceiling": 40,
     "atLevel": [
@@ -80100,6 +88530,24 @@
     "alsoHere": [
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Thalmor",
+      "count": 6,
+      "range": [
+       10,
+       10
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       1,
+       1
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 10,
     "atLevel": [
@@ -80332,6 +88780,16 @@
    "actors": {
     "count": 1,
     "livesHere": "Troll",
+    "kinds": [
+     {
+      "kind": "Troll",
+      "count": 1,
+      "range": [
+       22,
+       22
+      ]
+     }
+    ],
     "floor": 22,
     "ceiling": 22,
     "atLevel": [
@@ -81084,6 +89542,16 @@
    "actors": {
     "count": 28,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
+     }
+    ],
     "floor": 6,
     "ceiling": 80,
     "atLevel": [
@@ -81302,6 +89770,16 @@
    "actors": {
     "count": 26,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 6,
+      "range": [
+       8,
+       12
+      ]
+     }
+    ],
     "floor": 8,
     "ceiling": 60,
     "atLevel": [
@@ -81601,6 +90079,24 @@
     "alsoHere": [
      "Imperial"
     ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 19,
+      "range": [
+       3,
+       100
+      ]
+     },
+     {
+      "kind": "Imperial",
+      "count": 4,
+      "range": [
+       50,
+       50
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 100,
     "atLevel": [
@@ -81775,6 +90271,16 @@
    "actors": {
     "count": 5,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 4,
+      "range": [
+       15,
+       24
+      ]
+     }
+    ],
     "floor": 15,
     "ceiling": 24,
     "atLevel": [
@@ -81900,6 +90406,32 @@
     "alsoHere": [
      "Skeleton",
      "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Necromancer",
+      "count": 2,
+      "range": [
+       19,
+       46
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       1,
+       12
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       3,
+       24
+      ]
+     }
     ],
     "floor": 1,
     "ceiling": 80,
@@ -82100,6 +90632,24 @@
     "alsoHere": [
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       15,
+       15
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       1,
+       1
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 20,
     "atLevel": [
@@ -82218,6 +90768,16 @@
    "actors": {
     "count": 28,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 4,
+      "range": [
+       1,
+       12
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 100,
     "atLevel": [
@@ -85990,6 +94550,16 @@
    "actors": {
     "count": 21,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       5,
+       5
+      ]
+     }
+    ],
     "floor": 5,
     "ceiling": 65,
     "atLevel": [
@@ -86206,6 +94776,16 @@
    "actors": {
     "count": 43,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 4,
+      "range": [
+       8,
+       12
+      ]
+     }
+    ],
     "floor": 8,
     "ceiling": 100,
     "atLevel": [
@@ -86331,6 +94911,24 @@
     "alsoHere": [
      "Skeleton"
     ],
+    "kinds": [
+     {
+      "kind": "Necromancer",
+      "count": 3,
+      "range": [
+       19,
+       46
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 3,
+      "range": [
+       1,
+       1
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 46,
     "atLevel": [
@@ -86429,6 +95027,64 @@
      "Skeleton",
      "Warlock"
     ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 28,
+      "range": [
+       6,
+       13
+      ]
+     },
+     {
+      "kind": "Falmer",
+      "count": 18,
+      "range": [
+       26,
+       26
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 8,
+      "range": [
+       3,
+       24
+      ]
+     },
+     {
+      "kind": "Bear",
+      "count": 3,
+      "range": [
+       12,
+       12
+      ]
+     },
+     {
+      "kind": "DragonPriest",
+      "count": 2,
+      "range": [
+       55,
+       60
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       100,
+       100
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       40,
+       50
+      ]
+     }
+    ],
     "floor": 3,
     "ceiling": 100,
     "atLevel": [
@@ -86482,6 +95138,16 @@
    "actors": {
     "count": 12,
     "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 11,
+      "range": [
+       15,
+       40
+      ]
+     }
+    ],
     "floor": 15,
     "ceiling": 40,
     "atLevel": [
@@ -86604,6 +95270,16 @@
    "actors": {
     "count": 34,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       1,
+       1
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 81,
     "atLevel": [
@@ -87150,6 +95826,48 @@
      "Bandit",
      "DragonPriest"
     ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 40,
+      "range": [
+       30,
+       35
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 16,
+      "range": [
+       30,
+       80
+      ]
+     },
+     {
+      "kind": "Troll",
+      "count": 2,
+      "range": [
+       30,
+       30
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       30,
+       30
+      ]
+     },
+     {
+      "kind": "DragonPriest",
+      "count": 1,
+      "range": [
+       75,
+       75
+      ]
+     }
+    ],
     "floor": 30,
     "ceiling": 80,
     "atLevel": [
@@ -87359,6 +96077,16 @@
    "actors": {
     "count": 65,
     "livesHere": "Warlock",
+    "kinds": [
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       26,
+       100
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 100,
     "atLevel": [
@@ -87935,6 +96663,24 @@
     "livesHere": "Skeleton",
     "alsoHere": [
      "Draugr"
+    ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 5,
+      "range": [
+       13,
+       100
+      ]
+     },
+     {
+      "kind": "Draugr",
+      "count": 4,
+      "range": [
+       13,
+       40
+      ]
+     }
     ],
     "floor": 13,
     "ceiling": 100,
@@ -88529,6 +97275,32 @@
      "Skeleton",
      "Warlock"
     ],
+    "kinds": [
+     {
+      "kind": "Necromancer",
+      "count": 3,
+      "range": [
+       19,
+       46
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       1,
+       12
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 2,
+      "range": [
+       1,
+       37
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 46,
     "atLevel": [
@@ -88617,6 +97389,16 @@
    "actors": {
     "count": 14,
     "livesHere": "Imperial",
+    "kinds": [
+     {
+      "kind": "Imperial",
+      "count": 4,
+      "range": [
+       40,
+       40
+      ]
+     }
+    ],
     "floor": 10,
     "ceiling": 100,
     "atLevel": [
@@ -88771,6 +97553,16 @@
    "actors": {
     "count": 1,
     "livesHere": "Necromancer",
+    "kinds": [
+     {
+      "kind": "Necromancer",
+      "count": 1,
+      "range": [
+       36,
+       36
+      ]
+     }
+    ],
     "floor": 36,
     "ceiling": 36,
     "atLevel": [
@@ -89428,6 +98220,16 @@
    "actors": {
     "count": 2,
     "livesHere": "Skeleton",
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       1,
+       1
+      ]
+     }
+    ],
     "floor": 1,
     "ceiling": 1,
     "atLevel": [

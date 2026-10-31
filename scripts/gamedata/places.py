@@ -1295,6 +1295,25 @@ def build(version):
             others = [w for w, _ in kinds.most_common()[1:]]
             if others:
                 actors_out["alsoHere"] = others
+            # WO-185 Part 4: every kind of enemy has a row of its own with its own level range, most numerous first (the boss is a row of its own, last, and
+            # the page says how many in all once). The range is the kind's weakest to strongest, the zone applied as for the whole place.
+            by_kind = collections.defaultdict(list)
+            for a in acts:
+                k2 = kind_of(resolve_npc(a["base"], npcs, lvln), npcs, lvln, fact)
+                if k2:
+                    by_kind[k2].append(a)
+            rows = []
+            for k2, _ in kinds.most_common():
+                row = {"kind": k2, "count": len(by_kind[k2])}
+                ents = [e for a in by_kind[k2] for e in level_entries(a["base"], npcs, lvln, cache=level_cache)]
+                if ents:
+                    lo, hi = clamp(min(e[1] for e in ents), max(e[2] for e in ents), zone)
+                    # (the zone raises every actor in it to its minimum: a level 1 skeleton in a zone for level 6 and up is a level 6 one, as the place's own range says)
+                    if zone and zone["minLevel"]:
+                        lo, hi = max(lo, zone["minLevel"]), max(hi, zone["minLevel"])
+                    row["range"] = [lo, hi]
+                rows.append(row)
+            actors_out["kinds"] = rows
         if entries:
             lo, hi = clamp(min(e[1] for e in entries), max(e[2] for e in entries), zone)
             actors_out["floor"], actors_out["ceiling"] = lo, hi
@@ -1375,7 +1394,7 @@ def build(version):
             why = None
         if why:
             STRAY_ACTORS.append((p["name"], p.get("hold") or "", a["count"], f"{a['floor']} to {a['ceiling']}", why))
-            for f in ("floor", "ceiling", "atLevel", "boss", "afterTheWar") if p["type"] in ("Town", "Settlement") else ("floor", "ceiling", "atLevel", "boss"):
+            for f in ("floor", "ceiling", "atLevel", "boss", "kinds", "afterTheWar") if p["type"] in ("Town", "Settlement") else ("floor", "ceiling", "atLevel", "boss", "kinds"):
                 a.pop(f, None)
     for k, p in places.items():
         if p["type"] == "City" or p["type"] in NOT_A_FIGHT:

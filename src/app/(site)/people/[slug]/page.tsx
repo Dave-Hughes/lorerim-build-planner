@@ -16,11 +16,10 @@ import { Linked } from "@/components/pages/linked";
 import { linkable } from "@/lib/pages/names";
 import { questsData } from "@/lib/quests/data";
 import { questHref } from "@/lib/quests/slugs";
-import { dayHours, mainPlace } from "@/lib/people/day";
+import { dayAndNight, dayHours, mainPlace } from "@/lib/people/day";
 import l from "@/components/quests/line-page.module.css";
 import { questsOf } from "@/lib/people/quests";
 import { questCountSentence } from "@/lib/people/quest-count";
-import { playerWords } from "@/lib/pages/player-words";
 import { siteMetadata } from "@/lib/og/metadata";
 import styles from "@/components/pages/page-kit.module.css";
 
@@ -61,12 +60,14 @@ export default async function PersonPage({ params }: { params: Params }) {
   const notSure = read ? unsureFields(read) : new Set<string>();
   // What the read is not sure of is said as a plain muted sentence, never as a bracket in the body; Not sure yet has the reason (WO-177 Part 5).
   const sure = (f: string) => (notSure.has(f) ? <em className={styles.nk}> Not sure yet.</em> : null);
-  // The read's own hedges ("(presumably once you own Breezehome)") come out of its sentences and go to Not sure yet (personUnsure).
-  const changes = (read?.changes ?? []).map((c) => playerWords(c).text);
+  // Where they are by day and at night, said plainly, and the changes a player can act on: a quest's stage that moves them to a named place (WO-185 Part 4, people_moves.py).
+  // The read's own list of what changes it (a prose line for each stage) is not shown: "During A New Day: around a spot by Riften" connected to nothing a player could do.
+  const where = read ? dayAndNight(read.day) : { day: null, night: null };
   // The quests the read lists with how each touches them, linked where the planner has the quest; those only the quest pages name follow.
   const byName = new Map(found.map((q) => [q.name.toLowerCase(), q]));
   // A quest the read names that the quest pages don't list this person in still has a page by its name.
   const pageOfName = new Map(questsData().lines.flatMap((x) => x.quests.map((q) => [q.name.toLowerCase(), questHref(q.edid)] as const)).filter(([, h]) => !!h));
+  const moves = (person.moves ?? []).map((m) => ({ ...m, href: pageOfName.get(m.quest.toLowerCase()) ?? null }));
   const givesIt = (how: string) => /^(gives it|can start it)\b/i.test(how);
   const quests: { name: string; href: string | null; gives: boolean; how: string }[] = read
     ? [
@@ -255,6 +256,31 @@ export default async function PersonPage({ params }: { params: Params }) {
         <div className={styles.body}>
           {read && (read.firstMeet || read.day.length > 0) && (
             <Section id="where" icon="quest-travel" title={`Where to find ${they}`}>
+              {(where.day || where.night) && (
+                <p className={styles.byDay}>
+                  {where.day && where.day === where.night ? (
+                    <span>
+                      <b>By day and at night: </b>
+                      {L(where.day)}
+                    </span>
+                  ) : (
+                    <>
+                      {where.day && (
+                        <span>
+                          <b>By day: </b>
+                          {L(where.day)}
+                        </span>
+                      )}
+                      {where.night && (
+                        <span>
+                          <b>At night: </b>
+                          {L(where.night)}
+                        </span>
+                      )}
+                    </>
+                  )}
+                </p>
+              )}
               {read.firstMeet && (
                 <p className={styles.firstMeet}>
                   <b>First meeting.</b> {L(cap(read.firstMeet))}
@@ -304,16 +330,17 @@ export default async function PersonPage({ params }: { params: Params }) {
                   {sure("day") && <p className={styles.dayNote}>Where {subject} {subject === "they" ? "are" : "is"} through the day: not sure.</p>}
                 </div>
               )}
-              {changes.length > 0 && (
-                <div className={styles.changes}>
-                  <h3 className={styles.h3}>What changes it</h3>
-                  <ul>
-                    {changes.map((c) => (
-                      <li key={c}>{L(c)}</li>
-                    ))}
-                  </ul>
-                  {sure("changes") && <p className={styles.dayNote}>What changes it: not sure yet.</p>}
-                </div>
+              {moves.length > 0 && (
+                <ul className={styles.moves} aria-label="Where a quest moves them">
+                  {moves.map((m) => (
+                    <li key={`${m.when}|${m.quest}|${m.place}`}>
+                      <b>{m.when === "after" ? "After " : "During "}</b>
+                      {m.href ? <PreviewLink href={m.href}>{m.quest}</PreviewLink> : m.quest}
+                      <b>: </b>
+                      {L(m.place)}
+                    </li>
+                  ))}
+                </ul>
               )}
             </Section>
           )}

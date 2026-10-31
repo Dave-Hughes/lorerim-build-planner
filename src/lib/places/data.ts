@@ -45,6 +45,8 @@ export interface Actors {
   /** What mainly lives there, and what else ("Bandit", ["Skeleton"]). */
   livesHere?: string;
   alsoHere?: string[];
+  /** Every kind of enemy with how many and its own levels, most numerous first (WO-185 Part 4). */
+  kinds?: { kind: string; count: number; range?: [number, number] }[];
   /** Who the war's garrisons put here later, in this same shape (WO-144 Part 1e-4). A camp with one guard before the war has a dozen after it (WO-172). */
   afterTheWar?: Omit<Actors, "afterTheWar">;
   boss?: { name?: string; level?: string };
@@ -64,10 +66,10 @@ export function rangeOf(a: Actors): [number, number] {
 }
 
 /** What the war's garrisons put at a place, as its levels: null when the place has no "after the war" set with levels. */
-export function afterWar(a: Actors | undefined): { range: [number, number]; count: number; livesHere?: string; alsoHere?: string[]; boss?: Actors["boss"] } | null {
+export function afterWar(a: Actors | undefined): { range: [number, number]; count: number; livesHere?: string; alsoHere?: string[]; kinds?: Actors["kinds"]; boss?: Actors["boss"] } | null {
   const w = a?.afterTheWar;
   if (!w || !hasLevels(w as Actors)) return null;
-  return { range: rangeOf(w as Actors), count: w.count, livesHere: w.livesHere, alsoHere: w.alsoHere, boss: w.boss };
+  return { range: rangeOf(w as Actors), count: w.count, livesHere: w.livesHere, alsoHere: w.alsoHere, kinds: w.kinds, boss: w.boss };
 }
 
 /**

@@ -15,7 +15,7 @@ import { ShotsSection } from "@/components/screenshots/shots-section";
 import { personHref } from "@/lib/people/data";
 import { questsData } from "@/lib/quests/data";
 import { afterWar, hasLevels, isGarrison, placeByRecordName, placeBySlug, placeHrefOf, placeLabel, placesSharingSlug, placeType, rangeOf, type Place } from "@/lib/places/data";
-import { PlaceSaid, PlaceTown, levelRange } from "@/components/places/place-town";
+import { PlaceTown, levelRange } from "@/components/places/place-town";
 import { placeKind } from "@/lib/places/kind";
 import { playerFacing } from "@/lib/places/said";
 import l from "@/components/quests/line-page.module.css";
@@ -123,7 +123,11 @@ export default async function PlacePage({ params }: { params: Params }) {
   const town = place.nearestTown;
   const origin = originOf(place.id);
   const worth = place.worthGoingFor;
-  const hasWorth = !!(worth?.skillBooks?.length || worth?.wordWall?.length || worth?.bossChest || worth?.crafting?.length);
+  // A crafting station (an alchemy lab, an enchanting table, a forge, a tanning rack) is everywhere: it is not a reason to go (WO-185 Part 4). Towns say theirs under Crafting and shrines.
+  const hasWorth = !!(worth?.skillBooks?.length || worth?.wordWall?.length || worth?.bossChest || worth?.shrines?.length);
+  // Every kind of enemy has a row of its own with its own levels, most numerous first; a place whose enemies have no kind in the records has the one row (WO-185 Part 4).
+  const kinds = garrison ? war!.kinds : a?.kinds;
+  const foeRows = levels ? (kinds?.length ? kinds.map((k) => ({ name: PLURAL[k.kind] ?? `${k.kind}s`, range: k.range ?? levels })) : [{ name: foes, range: levels }]) : [];
 
   // The quests that go here, with what each one says about it.
   const byName = new Map(questsData().lines.flatMap((l) => l.quests.map((q) => [q.name, q] as const)));
@@ -228,7 +232,7 @@ export default async function PlacePage({ params }: { params: Params }) {
         <div className={styles.body}>
           {/* A place with little known says what the lede and the band don't, in one short block, not an empty page (WO-180); the kind, the hold and the
               XP for finding it are theirs already (WO-180 Part 6b: Moss Mother Cavern's block said the lede again). */}
-          {!levels && a?.hostile !== false && !hasWorth && quests.length === 0 && !place.pointers?.length && place.danger?.traps && (
+          {!levels && a?.hostile !== false && !hasWorth && quests.length === 0 && place.danger?.traps && (
             <section id="known" className={styles.sec} aria-label="What is known">
               <p className={styles.way}>It has traps.</p>
             </section>
@@ -239,12 +243,19 @@ export default async function PlacePage({ params }: { params: Params }) {
               <>
                 {!realm && (
                   <>
-                <div className={styles.gauge} role="img" aria-label={`${foes} from level ${levels[0]} to ${levels[1]}${boss?.range ? `; the boss from level ${boss.range[0]} to ${boss.range[1]}` : ""}, on a scale of 1 to 50`}>
-                  <span className={`${styles.band} ${levels[1] > 36 ? styles.bandLeft : ""}`} style={{ gridColumn: `${Math.min(levels[0], 50)} / ${Math.min(levels[1], 50) + 1}`, gridRow: 1 }}>
-                    {foes} {levels[0] === levels[1] ? levels[0] : `${levels[0]} to ${levels[1]}`}
-                  </span>
+                <div
+                  className={styles.gauge}
+                  style={{ gridTemplateRows: `repeat(${foeRows.length + (boss?.range ? 1 : 0)}, 26px)` }}
+                  role="img"
+                  aria-label={`${foeRows.map((r) => `${r.name} from level ${r.range[0]} to ${r.range[1]}`).join("; ")}${boss?.range ? `; the boss from level ${boss.range[0]} to ${boss.range[1]}` : ""}, on a scale of 1 to 50`}
+                >
+                  {foeRows.map((r, i) => (
+                    <span key={r.name} className={`${styles.band} ${r.range[1] > 36 ? styles.bandLeft : ""}`} style={{ gridColumn: `${Math.min(r.range[0], 50)} / ${Math.min(r.range[1], 50) + 1}`, gridRow: i + 1 }}>
+                      {r.name} {r.range[0] === r.range[1] ? r.range[0] : `${r.range[0]} to ${r.range[1]}`}
+                    </span>
+                  ))}
                   {boss?.range && (
-                    <span className={`${styles.band} ${styles.bandBoss} ${boss.range[1] > 36 ? styles.bandLeft : ""}`} style={{ gridColumn: `${Math.min(boss.range[0], 50)} / ${Math.min(boss.range[1], 50) + 1}`, gridRow: 2 }}>
+                    <span className={`${styles.band} ${styles.bandBoss} ${boss.range[1] > 36 ? styles.bandLeft : ""}`} style={{ gridColumn: `${Math.min(boss.range[0], 50)} / ${Math.min(boss.range[1], 50) + 1}`, gridRow: foeRows.length + 1 }}>
                       Boss {boss.range[0] === boss.range[1] ? boss.range[0] : `${boss.range[0]} to ${boss.range[1]}`}
                     </span>
                   )}
@@ -260,16 +271,12 @@ export default async function PlacePage({ params }: { params: Params }) {
                   </>
                 )}
                 <div style={{ paddingTop: 8 }}>
-                  <div className={styles.foe}>
-                    <b>{foes}</b>
-                    <span className={styles.lv}>{levels[0] === levels[1] ? `Level ${levels[0]}` : `Level ${levels[0]} to ${levels[1]}`}</span>
-                    {(alsoHere?.length || inAll) && (
-                      <small>
-                        {alsoHere?.length ? `${alsoHere.map((x) => PLURAL[x] ?? `${x}s`).join(", ")} too. ` : ""}
-                        {inAll ? `${inAll} in all.` : ""}
-                      </small>
-                    )}
-                  </div>
+                  {foeRows.map((r) => (
+                    <div key={r.name} className={styles.foe}>
+                      <b>{r.name}</b>
+                      <span className={styles.lv}>{r.range[0] === r.range[1] ? `Level ${r.range[0]}` : `Level ${r.range[0]} to ${r.range[1]}`}</span>
+                    </div>
+                  ))}
                   {war && !garrison && (
                     <div className={styles.foe}>
                       <b>After the war</b>
@@ -285,6 +292,7 @@ export default async function PlacePage({ params }: { params: Params }) {
                       {boss.words ? <span className={styles.lv}>Level {boss.words}</span> : null}
                     </div>
                   )}
+                  {inAll ? <p className={styles.way}>{inAll} in all.</p> : null}
                 </div>
               </>
             ) : a?.hostile === false ? (
@@ -321,13 +329,13 @@ export default async function PlacePage({ params }: { params: Params }) {
                   <b>A boss chest</b>
                 </div>
               )}
-              {worth?.crafting?.length ? (
-                <div className={styles.worth}>
-                  <Icon name="smithing" />
-                  <b>{worth.crafting.join(", ").replace(/, ([^,]*)$/, " and $1").replace(/^./, (c) => c.toUpperCase())}</b>
-                  <small>For crafting and improving gear</small>
+              {worth?.shrines?.map((s) => (
+                <div key={s} className={styles.worth}>
+                  <Icon name="quest-sure" />
+                  <b>{s}</b>
+                  <small>A shrine</small>
                 </div>
-              ) : null}
+              ))}
             </Section>
           )}
 
@@ -342,7 +350,6 @@ export default async function PlacePage({ params }: { params: Params }) {
             </Section>
           )}
 
-          <PlaceSaid place={place} />
         </div>
 
         <aside className={styles.side}>
@@ -350,7 +357,6 @@ export default async function PlacePage({ params }: { params: Params }) {
             items={[
               ...(hasWorth ? [{ id: "worth", label: "Worth going for", icon: "mark-skill-book" }] : []),
               ...(quests.length ? [{ id: "quests", label: "Quests that bring you here", icon: "tab-play" }] : []),
-              ...(place.pointers?.length ? [{ id: "said", label: "What people say about it", icon: "speech" }] : []),
               { id: "shots", label: "Screenshots", icon: "tab-play" },
               { id: "sure", label: "Information Confidence", icon: "quest-sure" },
             ]}

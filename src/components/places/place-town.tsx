@@ -9,11 +9,9 @@ import { PlaceMapBand } from "./place-map";
 import { ShotHero } from "@/components/screenshots/shot-hero";
 import { ShotsSection } from "@/components/screenshots/shots-section";
 import { linkable } from "@/lib/pages/names";
-import { personHref } from "@/lib/people/data";
 import { placeHref, placeHrefOf, placeLabel, placeSlug, placeType, rangeOf, type Place } from "@/lib/places/data";
 import { closeBy, innsOf, peopleAt, shopsOf, type PlacePerson, type Shop } from "@/lib/places/people";
 import type { PlaceKind } from "@/lib/places/kind";
-import { saidAbout } from "@/lib/places/said";
 import { questHref } from "@/lib/quests/slugs";
 import { questsData } from "@/lib/quests/data";
 import { pageOf } from "@/lib/quests/reads";
@@ -30,58 +28,6 @@ export const levelRange = ([lo, hi]: [number, number]) => (hi >= 100 ? `Level ${
 const PLURAL: Record<string, string> = { Bandit: "Bandits", Draugr: "Draugr", Skeleton: "Skeletons", Falmer: "Falmer", Forsworn: "Forsworn", Giant: "Giants", Warlock: "Warlocks", Spider: "Spiders", Wolf: "Wolves", Vampire: "Vampires", Troll: "Trolls" };
 
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
-
-/** What people say about a place (WO-162 Part 2), for either kind of page: only the lines tied to a quest and the books and notes, five at most. */
-export function PlaceSaid({ place }: { place: Place }) {
-  const { shown, all } = saidAbout(place.pointers);
-  if (!all.length) return null;
-  const byName = new Map(questsData().lines.flatMap((x) => x.quests.map((q) => [q.name, q] as const)));
-  const who = (p: (typeof all)[number]) => (p.kind === "book" ? p.book : p.speaker);
-  const line = (p: (typeof all)[number], i: number) => {
-    const q = p.quest ? byName.get(p.quest) : null;
-    // A line credited to a quest uses its name; a record's id is never shown (WO-177 Part 5).
-    // Only a quest a player has a page for is named; a game file's name ("Whiterun City Dialogue", "CH Generic") is not a quest (WO-180).
-    const questWords = p.quest && q && questHref(q.edid) && playerFacing(p.quest) ? p.quest : null;
-    const qhref = q ? questHref(q.edid) : null;
-    const href = p.speaker ? personHref(p.speaker) : null;
-    return (
-      <div key={i} className={t.said}>
-        {(who(p) || questWords) && (
-          <b>
-            {who(p) ? href ? <Link href={href}>{who(p)}</Link> : who(p) : null}
-            {questWords && p.kind !== "book" ? (
-              <small>
-                {" "}
-                in {qhref && playerFacing(questWords) ? <Link href={qhref}>{questWords}</Link> : questWords}
-              </small>
-            ) : null}
-          </b>
-        )}
-        <p className={t.quote}>{p.words.replace(/\r\n?/g, "\n")}</p>
-      </div>
-    );
-  };
-  return (
-    <section className={l.sec} id="said" aria-labelledby="said-h">
-      <div className={l.sechd}>
-        <h2 id="said-h" className={l.h2}>
-          <img className={l.px} src="/icons/speech.svg" alt="" width={30} height={30} />
-          What people say about it
-        </h2>
-        <span className={l.cap}>The lines tied to a quest, and its books and notes</span>
-      </div>
-      {shown.map(line)}
-      {all.length > shown.length && (
-        <details className={t.more}>
-          <summary>
-            All {all.length} line{all.length === 1 ? "" : "s"}, greetings included ›
-          </summary>
-          {all.map(line)}
-        </details>
-      )}
-    </section>
-  );
-}
 
 function Person({ p }: { p: PlacePerson }) {
   return (
@@ -256,7 +202,6 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
     ...(quests.length ? [{ id: "quests", label: "Quests that bring you here", icon: "tab-play" }] : []),
     ...(close.length ? [{ id: "close", label: "Close by", icon: "quest-ways" }] : []),
     ...(crafting.length || shrines.length || books.length || walls.length ? [{ id: "craft", label: "Books, crafting and shrines", icon: "quest-rewards" }] : []),
-    ...(place.pointers?.length ? [{ id: "said", label: "What people say about it", icon: "speech" }] : []),
     { id: "shots", label: "Screenshots", icon: "tab-play" },
     { id: "sure", label: "Information Confidence", icon: "quest-sure" },
   ];
@@ -411,7 +356,6 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
             </section>
           )}
 
-          <PlaceSaid place={place} />
         </div>
 
         <aside className={l.rail}>

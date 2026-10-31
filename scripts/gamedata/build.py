@@ -681,7 +681,22 @@ def main():
         reads = load_reads(os.path.join(RAW, "people_reads", "checked"))
         rulings = {k: v for k, v in overrides.get("people", {}).items() if not k.startswith("_")}
         vendors = load("shops_raw.json")["vendors"] if os.path.exists(os.path.join(RAW, "shops_raw.json")) else {}
-        rows = build_people_site(load("people_raw.json")["people"], person_facts(dump, vendors), reads, rulings)
+        facts = person_facts(dump, vendors)
+        # WO-185 Part 4: where a quest's stage moves a person to, in a place with a name (at most five a person: the page keeps it to one short list).
+        if dump and locals().get("pages") and os.path.exists(os.path.join(OUT, "places.json")):
+            from people_moves import moves_of
+
+            with open(os.path.join(OUT, "places.json"), encoding="utf-8") as f:
+                _place_names = {}
+                for _p in json.load(f)["places"]:
+                    for _n in (_p["name"], _p.get("recordName")):
+                        if _n:
+                            _place_names.setdefault(_n.lower(), _p["name"])
+            _moves = moves_of(dump, quests_raw, _place_names, {q["name"] for l in pages for q in l["quests"]})
+            for _pid, _m in _moves.items():
+                facts.setdefault(_pid, {})["moves"] = _m[:5]
+            print(f"{sum(len(m[:5]) for m in _moves.values())} quest-stage moves for {len(_moves)} people")
+        rows = build_people_site(load("people_raw.json")["people"], facts, reads, rulings)
         with open(os.path.join(OUT, "people.json"), "w", encoding="utf-8") as f:
             json.dump({"people": rows}, f, separators=(",", ":"), ensure_ascii=False)
             f.write("\n")

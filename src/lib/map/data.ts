@@ -241,7 +241,8 @@ export function placeDrawer(slug: string): Drawer | null {
   const worth = [
     ...(p.worthGoingFor?.skillBooks ?? []).map((b) => (b.includes(": ") ? `${b.split(": ")[1]} (${b.split(": ")[0]} skill book)` : b)),
     ...(p.worthGoingFor?.bossChest ? ["A boss chest"] : []),
-    ...(p.worthGoingFor?.crafting?.length ? [p.worthGoingFor.crafting.join(", ")] : []),
+    // (a crafting station is worth a mention in a town, not a reason to go to a dungeon: WO-185 Part 4)
+    ...(lived && p.worthGoingFor?.crafting?.length ? [p.worthGoingFor.crafting.join(", ")] : []),
     ...(p.worthGoingFor?.shrines ?? []),
   ];
   const rewards = [p.discoveryXp ? `${p.discoveryXp} XP for finding it` : "", !lived && p.clearXp ? `${p.clearXp} XP for clearing it` : ""].filter(Boolean);

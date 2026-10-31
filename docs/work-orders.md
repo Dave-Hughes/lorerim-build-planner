@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-185  Dave's notes from using the app (Mac, PC for Part 4, 30 Oct 2026)
-Status: queued (Mac: Parts 1 to 3 and 5, after WO-184 Part 8; PC: Part 4, building)
+Status: queued (Mac: Parts 1 to 3 and 5, after WO-184 Part 8; PC: Part 4 pushed for Bob, notes below)
 
 **Why.** Dave used staging on 30 Oct (18:35) and sent these. They are small, and each one is something a player meets in the first minutes. **This is the last order before launch that adds anything.** After it, the launch list is closed: these orders pass the reviewer, Dave tests once, and Bob moves production.
 
@@ -5052,20 +5052,20 @@ Status: queued (Mac: Parts 1 to 3 and 5, after WO-184 Part 8; PC: Part 4, buildi
   - The test: no two rows in any result list share a name and a kind.
 
 ### Part 4. Places and people (PC data, Mac page)
-- [ ] **"What people say about it" goes** from place pages (Dave: "useless"): the section and its link in the section list.
-- [ ] **Crafting stations aren't "worth going for"**: an alchemy lab, an enchanting table, a forge or a tanning rack is everywhere.
+- [x] **"What people say about it" goes** from place pages (Dave: "useless"): the section and its link in the section list.
+- [x] **Crafting stations aren't "worth going for"**: an alchemy lab, an enchanting table, a forge or a tanning rack is everywhere.
   - Worth going for keeps word walls, skill books, unique items, the boss chest and shrines.
   - Crafting stations show only on towns, under Crafting and shrines, as today.
-- [ ] **Enemies, one way.** Today some enemy kinds get a row with a level range and the rest are a passing line ("Spiders, Skeletons too. 16 in all.").
+- [x] **Enemies, one way.** Today some enemy kinds get a row with a level range and the rest are a passing line ("Spiders, Skeletons too. 16 in all.").
   - Every kind gets its own row with its level range, most numerous first, then the boss row last, then "16 in all" once under the list.
   - The bar chart above draws the same rows.
-- [ ] **Where to find someone, said plainly.** Today "Where to find him" sits apart from a "What changes it" list whose entries a player can't connect to anything ("During A New Day: around a spot by Riften all day").
+- [x] **Where to find someone, said plainly.** Today "Where to find him" sits apart from a "What changes it" list whose entries a player can't connect to anything ("During A New Day: around a spot by Riften all day").
   - The "What changes it" label goes.
   - The person's place is said as **By day**: <place>, **At night**: <place>. Leave one out when it isn't known; never say "around a spot by".
   - Under it, only changes a player can act on: "**After <quest, linked>**: <a named place>" or "**During <quest, linked>**: <a named place>". Each comes from a quest stage that moves them to a place with a name. Leave the rest out.
   - The PC reads which stage moves them. The page keeps it to one short list.
   - The reviewer will check 20 people against UESP.
-- [ ] Find the page Dave quoted ("During A New Day…") and show it before and after in the notes.
+- [x] Find the page Dave quoted ("During A New Day…") and show it before and after in the notes.
 
 ### Part 5. The check
 - [ ] The checks in CLAUDE.md.
@@ -5079,6 +5079,17 @@ Status: queued (Mac: Parts 1 to 3 and 5, after WO-184 Part 8; PC: Part 4, buildi
   Then `for Bob`.
 
 ### Jeff's notes
+
+Jeff's notes on Part 4 (PC, 30 Oct). The status says Part 4 is the PC's, so I did the pages as well as the data (they are small, and a data change nobody renders shows nothing); Mac: this touched `places/[slug]/page.tsx`, `people/[slug]/page.tsx`, `place-town.tsx`, `page-kit.module.css` and `map/data.ts`, so Part 8 of WO-184 may need a rebase over the place page. **I viewed nothing in a browser** (no database on the PC); the screenshots in Part 5 are Mac's.
+- **"What people say about it" is gone** from both kinds of place page: the section, its link in the section list, and the `PlaceSaid` component. `pointers` stays in `places.json`: the map, the tips and the assistant still read it.
+- **Crafting stations are not "worth going for".** The dungeon page's Worth going for and a dungeon's map panel no longer list them (`map/data.ts` says them only for a place people live in). Towns and inside places say theirs under "Books, crafting and shrines" and "What you can make", as before. **The shrines now show** in Worth going for ("A shrine"; they were in the data and the order keeps them, but the page never drew them). "Unique items" is still not built: no record marks one (WO-144 Part 1e).
+- **Enemies, one way** (`places.py`, `Actors.kinds`). Every place with enemies has `actors.kinds`: `[{kind, count, range}]`, most numerous first (395 places, and inside `afterTheWar`). The range is that kind's weakest to strongest with the zone applied the way the place's own range is, **and a zone's minimum raises a kind that falls under it**: Bleak Falls Barrow is Draugr 91 (6 to 20), Bandits 31 (6 to 20), Skeletons 18 (6), Spiders 14 (6 to 20), Trolls 1 (20); the records' level 1 skeleton is a level 6 one in a zone for 6 and up, which is what the place's own range already says. The page draws one row per kind, then the boss row, then "177 in all." once; the bar chart above draws the same rows (one bar per kind, the boss last). `livesHere` and `alsoHere` stay (the assistant and the glance read them); a place whose enemies have no kind in the records keeps its one "Enemies" row. A test checks every place: kinds run most numerous first, the first is `livesHere`, and each range sits inside the place's own levels.
+- **Where to find someone** (`people_moves.py`, `PersonRow.moves`, `dayAndNight` in `lib/people/day.ts`). **By day** and **At night** are the place the read has them in most of 8 am to 6 pm and of 10 pm to 6 am ("her bed in Meridia's Sanctum" is "Meridia's Sanctum"; "around a spot by" is never a place; one is left out when the read doesn't say it; the same place both ways is "By day and at night"). The "What changes it" label and the read's prose list are gone from the page. **The changes come from the records**, not the read: a person's AI packages that hold only while one quest is at a stage (every condition a GetStage, GetStageDone or GetQuestCompleted on that one quest) and put them in a place with a page (the package's place, else its cell). "After <quest>" is from the quest's finishing stage on or once it is complete; "During <quest>" is a window that opens and shuts inside it, or one that opens at a stage and the quest finishes later. Left out: follow and force-greet packages, a spot with no cell or place (the "around a spot by Riften" kind), any package with another condition (a time, a faction, a global), a window with no start, a quest without a page. One place for each window, the first package (the game's priority) winning; at most five a person. **136 moves on 104 people (100 names), 53 of them read**; they link the quest and the place.
+- **UESP check of 20 people: not done by me** (the order gives it to the reviewer). Some to start with, from the data: Erandur (after Waking Nightmare: Nightcaller Temple), Esbern (during The Throat of the World: Sky Haven Temple), Delphine (during A Blade in the Dark: Sleeping Giant Inn), Tolfdir (during Good Intentions: Hall of the Elements), Idina (during The Dark Dawn: Windpeak Inn), Greta and Kirsta (after Return to Grace: Temple of the Divines), Arnskar Ember-Master (during Loud and Clear: The Ragged Flagon), Aina the Wench (after Lazy Afternoon: Candlehearth Hall).
+- **The page Dave quoted: Arch-Paladin Laracin.** *Before:* "Where to find him" (first meeting, the day strip and list), then **What changes it** with eight lines, among them "During A New Day: around a spot by Riften all day." *After:* **By day and at night: Meridia's Sanctum** (the read has him there 4 am to midnight and midnight to 4 am), the strip and day list as before, then one line, **During The Ritual: Fort Justice**. His "A New Day" line goes: the package that sends him there has no cell the place pages name, so the records give no place to say. Acolyte Una has the same one line.
+- **Contract:** additive only. `places.json` gains `actors.kinds` (and `afterTheWar.kinds`); `people.json` gains `moves` on 104 rows; `Actors`, `afterWar()` and `PersonRow` have the types. `npm test` (904 passed, 7 expected fail, and the same three MCP style-guide tests failing on this checkout without my changes), python unittest (497), typecheck, lint (the same two old warnings).
+- **Not changed:** the assistant's person tool (`fact-tools.ts`) still says "what changes it" and returns the read's `changes`; the order names the page. Say if the assistant should get `moves` too.
+
 
 ---
 
