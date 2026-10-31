@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-185  Dave's notes from using the app (Mac, PC for Part 4, 30 Oct 2026)
-Status: for Bob (Mac: Parts 1 to 3 and 5, except the staging upload and its screenshot; PC: Part 4 pushed for Bob, notes below)
+Status: queued (PC: Part 6a; Mac: Part 6b. Parts 1 to 3 pass; the staging upload is Bob's, signed in)
 
 **Why.** Dave used staging on 30 Oct (18:35) and sent these. They are small, and each one is something a player meets in the first minutes. **This is the last order before launch that adds anything.** After it, the launch list is closed: these orders pass the reviewer, Dave tests once, and Bob moves production.
 
@@ -5078,6 +5078,37 @@ Status: for Bob (Mac: Parts 1 to 3 and 5, except the staging upload and its scre
 
   Then `for Bob`.
 
+### Part 6. The review (Bob's reviewer, 30 Oct, 23:30; Bob confirmed Pavo Attius and Arch-Paladin Laracin on staging)
+**Parts 1 to 3 pass:**
+- BotID covers every page and write route, with a test.
+- The wheel zooms 1.2× toward the pointer, and the buttons zoom 1.5×.
+- 41 of 41 pin clicks opened their panel at both widths.
+- Search labels every row and repeats nothing.
+- Places: no What people say, crafting stations only on towns, one enemy row per kind.
+
+The rest:
+
+**Part 6a (PC): where people are, against UESP.** About a third of the new lines checked are wrong or unsupported.
+- [ ] **"During" where the move outlasts the quest.** A window that opens at a stage and is still open at the quest's end is **After**, not During:
+  - Pavo Attius, Kolskeggr Mine: his own day list says "until … cleared";
+  - Drovas Relvi, Reluctant Steward: UESP says he lives in the Steward's House after it;
+  - Babette: Dawnstar Sanctuary after Death Incarnate, not During Hail Sithis!.
+- [ ] **Lines UESP contradicts.** Check each against the records. Keep a line only if the records show it, and if so mark it as differing, maybe LoreRim.
+  - Gaston Bellefort "After Destroy the Dark Brotherhood!: Bards College" (UESP: his bones are in the Sanctuary).
+  - Illia "After Repentance: Bee and Barb" (UESP: back to Darklight Tower).
+  - Hadvar and Ralof "During Message to Whiterun: Sleeping Giant Inn" (UESP: only after the civil war ends).
+  - Ancano "During First Lessons: Hall of Attainment" (he is at the debate; he sleeps there).
+  - Delphine's "During A Blade in the Dark: Sleeping Giant Inn" is her home, not a move.
+  - Esbern and Delphine's Sky Haven Temple starts before The Throat of the World.
+- [ ] **A day list that leaves night empty.** Greta's read has "Any hour: a spot in Solitude", which fills every hour before her specific rows. The specific rows win; "any hour" fills only what's left.
+- [ ] **Named places only**: "At night: Her room" (Brelyna: UESP says the Hall of Attainment), "By day: Cellar" (Alva). Use the place's name, or leave the line out.
+- [ ] **Twenty people against UESP before pushing**, the list and verdict in the notes.
+
+**Part 6b (Mac)**
+- [ ] **Moves never shown**: a person with `moves` and no Where to find section shows nothing. 10 of 31 in the sample: Neski, Ernanthil, Lynea, Rhiada, Gian, Herluin, Syndus, Vanryth, Kematu and Arnskar. Draw the After and During lines whatever else the person has.
+- [ ] Abbot Cosmas has no place at all on a phone: the fact is `hidePhone` and he has no Where to find section. "Marukh's Underground Priory" links only "Marukh", to a person. Link the place as a whole, and show where to find someone on phones.
+- [ ] The staging upload (Part 1) is Bob's, signed in. Untick nothing.
+
 ### Jeff's notes
 
 Jeff's notes on Part 4 (PC, 30 Oct). The status says Part 4 is the PC's, so I did the pages as well as the data (they are small, and a data change nobody renders shows nothing); Mac: this touched `places/[slug]/page.tsx`, `people/[slug]/page.tsx`, `place-town.tsx`, `page-kit.module.css` and `map/data.ts`, so Part 8 of WO-184 may need a rebase over the place page. **I viewed nothing in a browser** (no database on the PC); the screenshots in Part 5 are Mac's.
@@ -5106,7 +5137,7 @@ Jeff's notes on Part 4 (PC, 30 Oct). The status says Part 4 is the PC's, so I di
 ---
 
 ## WO-184  Players make it right: screenshots, I know this, Help fill the gaps, one review list (Mac, 30 Oct 2026)
-Status: for Bob (Mac: Parts 1 to 8; the Tapps uploads are open, see the notes)
+Status: queued (Mac: Part 9; Bob: the signed-in walk and the Tapps uploads)
 
 **Why.** Dave, 30 Oct: with playthroughs cut, double down on quests, places and people, and "accelerate the ideas for community confirmation of quest info, the admin review section, and of course the image collection work for locations and NPCs." These are the backlog's 23 Oct, 28 Oct and 28 Oct items, decided.
 
@@ -5260,6 +5291,30 @@ Option 1 (Part 7's hero background, the full map band, then the Screenshots sect
   - the admin and the uploader views.
 
   Then `for Bob`.
+
+### Part 9. The review of Parts 7 and 8 (Bob's reviewer, 30 Oct, 23:30)
+These pass:
+- Two columns at 1440; the right order at 390.
+- A place with no screenshot opens on the Map.
+- Worth going for is on the first screen (Bleak Falls Barrow at 688 px, other places 632 to 668).
+- Full screen with Close, Esc, zoom, drag and the credit.
+- Sign in to tell us; Help fill the gaps with its filters, counts and Show more; no "picture" or "image" anywhere.
+
+The rest (Mac):
+- [ ] **Map for anyone the planner can place**, not only `inTown`. Arch-Paladin Laracin's cell is Meridia's Sanctum, which has a pin, yet he gets no Map button. 982 people are like that.
+- [ ] **44 px at 390**: the frame's Full screen and the full-screen Close are 36 px tall.
+- [ ] **At 390 the scale bar runs under the credit** ("0.2 kr").
+- [ ] **Towns** (Bob's call): the left column's facts replace the At a glance band under the top, so Who lives here starts on the first screen. Today it's at 895 px on Riverwood. The facts a town has (people, shops and beds, trainers, finding it) move into the left list.
+- [ ] **The frame's map zooms**: small + and − on the frame. The wheel still scrolls the page.
+- [ ] **A signed-out visitor never gets the form.** Help fill the gaps' "I know this ›" (`#know-N`) opens the full form beside "Sign in to tell us", so their typing is lost on Send. Signed out, the link scrolls to the line and offers sign-in, nothing more.
+- [ ] **Small:**
+  - Full screen at 390 keeps the key and opens at the same zoom as the page, with labels that don't overlap.
+  - "Sign in to add yours" is said twice in the empty frame; say it once, as "Sign in to add one".
+  - The search suggestions at 390 line up with the box (they open from x=0, the box at 32).
+  - The Danger fact: "Level 6 to 20" with "Draugr and 4 more kinds ›" linking to the enemies, not the passing line Dave disliked.
+  - Fort Hraggstad's lede: "Its boss is Imperial Soldier" (a generic name as a boss; say the boss only when it's a named one).
+  - A player home's map panel may list its crafting stations (it's a home); no change.
+- [ ] Then `for Bob`.
 
 ### Jeff's notes
 
