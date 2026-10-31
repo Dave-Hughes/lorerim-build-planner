@@ -248,50 +248,6 @@ export default async function PlacePage({ params }: { params: Params }) {
                   <b>A boss chest</b>
                 </div>
               )}
-              {worth?.crafting?.length ? (
-                <div className={styles.worth}>
-                  <Icon name="smithing" />
-                  <b>{worth.crafting.join(", ").replace(/, ([^,]*)$/, " and $1").replace(/^./, (c) => c.toUpperCase())}</b>
-                  <small>For crafting and improving gear</small>
-                </div>
-              ) : null}
-            </Section>
-          )}
-
-          {quests.length > 0 && (
-            <Section id="quests" icon="tab-play" title="Quests that bring you here">
-              {quests.map((q) => (
-                <div key={q.href} className={styles.qrow} style={{ gridTemplateColumns: "minmax(0, 1fr)" }}>
-                  <PreviewLink href={q.href}>{q.name}</PreviewLink>
-                  {q.says ? <span>{q.says.charAt(0).toUpperCase() + q.says.slice(1)}{q.says.endsWith(".") ? "" : "."}</span> : null}
-                </div>
-              ))}
-            </Section>
-          )}
-
-
-          {hasWorth && (
-            <Section id="worth" icon="mark-skill-book" title="Worth going for">
-              {worth?.skillBooks?.map((b) => (
-                <div key={b} className={styles.worth}>
-                  <Icon name="mark-skill-book" />
-                  <b>{b.includes(": ") ? b.split(": ")[1] : b}</b>
-                  <small>{b.includes(": ") ? `${/^[aeiou]/i.test(b) ? "An" : "A"} ${b.split(": ")[0]} skill book` : "A skill book"}</small>
-                </div>
-              ))}
-              {worth?.wordWall?.map((w) => (
-                <div key={w} className={styles.worth}>
-                  <Icon name="quest-sure" />
-                  <b>{w}</b>
-                  <small>A word wall</small>
-                </div>
-              ))}
-              {worth?.bossChest && (
-                <div className={styles.worth}>
-                  <Icon name="quest-chest" />
-                  <b>A boss chest</b>
-                </div>
-              )}
               {worth?.shrines?.map((s) => (
                 <div key={s} className={styles.worth}>
                   <Icon name="quest-sure" />

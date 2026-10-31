@@ -74,16 +74,10 @@ for (const width of [1440, 390]) {
   });
 }
 
-test("what people say about it shows what is tied to a quest and its books and notes, five at most, and the rest behind All N lines", async ({ page }) => {
+test("what people say about it is not on a place page (WO-185 Part 4)", async ({ page }) => {
   await page.goto("/places/riverwood");
-  const said = page.getByRole("region", { name: "What people say about it" });
-  await expect(said.locator("blockquote, p[class*=quote]")).toHaveCount(await said.locator("p[class*=quote]").count());
-  const shown = await said.locator(":scope > div[class*=said]").count();
-  expect(shown).toBeGreaterThan(0);
-  expect(shown).toBeLessThanOrEqual(5);
-  await expect(said.getByText(/All \d+ lines?, greetings included/)).toBeVisible();
-  await expect(said.getByRole("link", { name: "Delphine" }).first()).toHaveAttribute("href", "/people/delphine");
-  await expect(said.getByText("in ").first()).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "Riverwood" })).toBeVisible();
+  await expect(page.getByRole("region", { name: "What people say about it" })).toHaveCount(0);
 });
 
 test("review: Riverwood lists everyone who sleeps there, names every kind of shop, and gives Delphine the Rents rooms chip", async ({ page }) => {

@@ -158,12 +158,9 @@ test.describe("at 1440", () => {
     await expect(main).not.toContainText(/level level/i);
     await expect(main).toContainText("In 30 days, or 300 days once cleared");
     expect(await main.innerText()).not.toContain("\ufffd");
-    const hear = page.getByRole("region", { name: "What people say about it" });
-    await expect(hear).toContainText("What’s this about his court wizards");
-    await expect(hear).toContainText("Arvel");
-    await expect(hear.getByText(/^All \d+ lines?, greetings included/)).toBeVisible();
-    // The Arvel journal ends on a sentence, not in the middle of "keep th".
-    await expect(hear).not.toContainText(/keep th\b/);
+    // WO-185 Part 4: What people say about it is gone from place pages, and with it the quotes.
+    await expect(page.getByRole("region", { name: "What people say about it" })).toHaveCount(0);
+    await expect(main).not.toContainText(/keep th\b/);
   });
 
   test("Part 8: a place is said once, a person's offers don't repeat their quests, rewards start with a capital", async ({ page }) => {

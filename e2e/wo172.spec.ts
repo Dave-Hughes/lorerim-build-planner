@@ -56,8 +56,9 @@ test("a camp says its levels after the war, not the one guard's", async ({ page 
   await page.goto("/places/sons-of-skyrim-military-camp-the-reach");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Sons of Skyrim Military Camp, the Reach");
   const danger = page.getByRole("region", { name: "Danger" });
-  await expect(danger.getByText("After the war").first()).toBeVisible();
-  await expect(danger.getByText("Level 4 to 27")).toBeVisible();
+  // WO-185 Part 4: every kind of enemy has its own row; the camp's garrison is Imperials at 22 to 27, not the one guard's.
+  await expect(danger.getByText("Imperials").first()).toBeVisible();
+  await expect(danger.getByText("Level 22 to 27").first()).toBeVisible();
   await expect(danger).not.toContainText(/Level 1 to 2\b/);
   await page.screenshot({ path: "test-results/wo172-camp-1440.png" });
 });
