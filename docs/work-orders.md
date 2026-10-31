@@ -5533,7 +5533,7 @@ The audit sampled what the planner has. It never asked what it doesn't have. Thi
 ---
 
 ## WO-182  Launch without playthroughs (Mac, 30 Oct 2026)
-Status: building (Mac: Part 5)
+Status: for Bob (Mac: Part 5; the Vercel variable is still Dave's, optional)
 
 **Why.** Dave, 30 Oct: "Lets look at the entire site and remove everything related to playthroughs; it's just still kind of not working." The launch is four things:
 - quests you can trust;
@@ -5614,15 +5614,15 @@ The rest holds:
 - `get_style_guide` has no playthrough rules.
 
 Still to fix:
-- [ ] **The door still mentions acts.**
+- [x] **The door still mentions acts.**
   - `suggest_places`' `where` input says "Instead of a stored act…" (`playthrough-tools.ts:238`, outside the `runs ?` switch).
   - With no arguments it answers "…or a playthrough and an act." (`playthroughs.ts:631`).
   - With the flag off, neither mentions acts or playthroughs.
   - Add "act" (as a word, outside a quest's own name) and "playthrough" to the e2e's door word check.
-- [ ] `/b/<id>/edit?tab=playthrough` redirects to `/b/<id>/edit/play`, which then shows 404, for any id: with the flag off it opens the editor's Build tab.
-- [ ] The playthrough addresses' 404 says "That build doesn't exist, or its author keeps it private." even on `/playthroughs`, and its tab title is "LoreRim Planner". Use the site's own not-found page and title.
-- [ ] **`npm test` is red**: `contract.test.ts` "search_facts finds a sample of every kind…" takes 9.1 s against the 5 s limit, alone too. Make the search fast enough, or give that test its own timeout with the reason in a comment. No order is done on a red run.
-- [ ] Dave's box (the Vercel variable) stays optional: the code's default is off.
+- [x] `/b/<id>/edit?tab=playthrough` redirects to `/b/<id>/edit/play`, which then shows 404, for any id: with the flag off it opens the editor's Build tab.
+- [x] The playthrough addresses' 404 says "That build doesn't exist, or its author keeps it private." even on `/playthroughs`, and its tab title is "LoreRim Planner". Use the site's own not-found page and title.
+- [x] **`npm test` is red**: `contract.test.ts` "search_facts finds a sample of every kind…" takes 9.1 s against the 5 s limit, alone too. Make the search fast enough, or give that test its own timeout with the reason in a comment. No order is done on a red run.
+- [x] Dave's box (the Vercel variable) stays optional: the code's default is off.
 
 ### Jeff's notes (Mac, 30 Oct)
 
@@ -5647,6 +5647,15 @@ Still to fix:
 
 **Not done, on purpose.** No table or column was dropped. WO-179's backfill and Kyria's text script were not run. WO-181 Part 6 waits.
 
+
+
+**Part 5 (Mac, 30 Oct, cold review)**
+- **The door's acts.** `suggest_places`' `where` and `levels` descriptions say "Instead of a stored act" and "With where" only when playthroughs are on; off, they say what the input is. `placesAt`'s no-arguments answer says "or a playthrough and an act" only on. `wo182.spec.ts` now checks every tool's title, description and input words for the word act (outside "act of", a quest's own name pattern) and playthrough, and calls `suggest_places` with no arguments and checks the answer.
+- **`/b/<id>/edit?tab=playthrough` and `?tab=story`** open the editor's Build tab with the flag off (they redirected to addresses that are 404 then); on, they redirect as before. Tested for both tabs.
+- **The 404.** The playthrough addresses are rewritten to a path that does not exist, which shows the site's own `not-found`; that page said "That build doesn't exist, or its author keeps it private." for every address and its tab was "LoreRim Planner". Both `not-found` pages now say "There is no page at this address, or it is a character its author keeps private." and carry the title "Nothing here". Tested on `/playthroughs`, `/p/abc` and a build's `/play`.
+- **`npm test` is green** (952 passed, 7 expected fail, nothing else). The slow test was `search_facts finds a sample of every kind…`: it ran about 250 searches and each one normalised every record's name and text again. `searchFacts` now remembers its normalised strings (`remembered()` in `facts.ts`, capped at 300,000), which took the test from 2.3 s to 1.2 s here; it also has its own 30 s limit with the reason in a comment, since the reviewer's machine took 9 s.
+- **One more thing the full run found, not in the order:** `wo163.spec.ts` "filters apply as you pick them" failed because the PC's Creation Club data (WO-183 Part 7) has a one-quest line with no quest page ("A Dying Wish"), which the table lists as a line, and the "Lines of several quests" pill counted it. The pill (count and filter) now means a line of more than one quest (`several()` in `quest-table.tsx`).
+- The Vercel variable is still Dave's and optional: the code's default is off. Checks: typecheck, lint (the two old warnings), `npm test`, build, and the full e2e (611 plus the wo163 fix, 9 of 9 in its file).
 
 ---
 

@@ -1,5 +1,9 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Brand } from "@/components/ui/brand";
+
+/** The site's own 404 (WO-182 Part 5): its tab says so, and its words fit any address, a build's or a page's. */
+export const metadata: Metadata = { title: "Nothing here" };
 
 export default function NotFound() {
   return (
@@ -13,7 +17,7 @@ export default function NotFound() {
         <h1 className="title" style={{ fontSize: 44 }}>
           Nothing here
         </h1>
-        <p className="muted">That build doesn&apos;t exist, or its author keeps it private.</p>
+        <p className="muted">There is no page at this address, or it is a character its author keeps private.</p>
         <p>
           <Link href="/characters">Browse characters</Link>
         </p>

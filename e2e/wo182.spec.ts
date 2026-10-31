@@ -95,6 +95,23 @@ test.describe("playthroughs off: the pages", () => {
     const tabs = page.getByRole("navigation", { name: "Edit tabs" });
     await page.goto(`/b/${KYRIA_BUILD_ID}/edit`);
     await expect(tabs.getByRole("link")).toHaveText([/^Build/, /^Guide/, /^Character/]);
+    // WO-182 Part 5: the old tab addresses open the editor's Build tab, not a 404.
+    for (const tab of ["playthrough", "story"]) {
+      const res = await page.goto(`/b/${KYRIA_BUILD_ID}/edit?tab=${tab}`);
+      expect(res?.status(), tab).toBe(200);
+      await expect(page).toHaveURL(new RegExp(`/b/${KYRIA_BUILD_ID}/edit\\?tab=${tab}$`));
+      await expect(tabs.getByRole("link").first()).toContainText("Build");
+    }
+  });
+
+  test("a playthrough address is the site's own not found: its tab says Nothing here and its words fit a page", async ({ page }) => {
+    for (const path of ["/playthroughs", "/p/abc", `/b/${KYRIA_BUILD_ID}/play`]) {
+      const res = await page.goto(path);
+      expect(res?.status(), path).toBe(404);
+      await expect(page).toHaveTitle(/Nothing here/);
+      await expect(page.getByRole("heading", { level: 1, name: "Nothing here" })).toBeVisible();
+      await expect(page.locator("main")).not.toContainText(/That build doesn't exist/);
+    }
   });
 
   test("a new character ends at Details with Finish, in seven steps", async ({ page, context }) => {
@@ -245,6 +262,23 @@ test.describe("playthroughs off: the door", () => {
       for (const w of OURS) expect(said, `${t.name} says ${w}`).not.toMatch(w);
       if (!QUEST_TOOLS.test(t.name)) for (const w of ALSO) expect(said, `${t.name} says ${w}`).not.toMatch(w);
     }
+  });
+
+  // WO-182 Part 5: suggest_places is a tool that stays, and it still said "a stored act" and "a playthrough and an act".
+  test("suggest_places says nothing of acts or playthroughs, in what it lists or in what it answers", async ({ request }) => {
+    const { data } = await rpc(request, "tools/list");
+    const tools = data.result.tools as { name: string; title?: string; description?: string; inputSchema?: { properties?: Record<string, { description?: string }> } }[];
+    for (const t of tools) {
+      const props = t.inputSchema?.properties ?? {};
+      const said = [t.title, t.description, ...Object.entries(props).flatMap(([k, v]) => [k, v.description])].join("\n");
+      // "act" as a word, outside a quest's own name, and "playthrough".
+      expect(said, `${t.name} says act`).not.toMatch(/\bacts?\b(?!\s+of\b)/i);
+      expect(said, `${t.name} says playthrough`).not.toMatch(/playthrough/i);
+    }
+    const { data: called } = await rpc(request, "tools/call", { name: "suggest_places", arguments: {} });
+    const text = JSON.stringify(called.result ?? called);
+    expect(text).toMatch(/Give where/);
+    expect(text).not.toMatch(/\bacts?\b|playthrough/i);
   });
 
   test("answers a playthrough tool as no such tool, and starts no sign-in", async ({ request }) => {

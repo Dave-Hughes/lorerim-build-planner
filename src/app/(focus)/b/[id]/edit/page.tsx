@@ -8,6 +8,7 @@ import { editFrameForBuild } from "@/lib/edit/frame";
 import { SiteHeader } from "@/components/site-header";
 import { getBuild } from "@/lib/builds/queries";
 import { clientVersion, isKnownVersion } from "@/lib/rules/server";
+import { playthroughsOn } from "@/lib/features";
 import { getGuide } from "@/lib/guide/queries";
 
 type Params = Promise<{ id: string }>;
@@ -19,8 +20,11 @@ export const dynamic = "force-dynamic";
 export default async function EditPage({ params, searchParams }: { params: Params; searchParams: Search }) {
   const [{ id }, { level, from, dropped, tab, act }, session] = await Promise.all([params, searchParams, auth()]);
   // The character's page names its tabs ?tab=playthrough; the editor's are paths (WO-179 Part 2).
-  if (tab === "playthrough") redirect(`/b/${id}/edit/play${act ? `?act=${encodeURIComponent(act)}` : ""}`);
-  if (tab === "story") redirect(`/b/${id}/edit/story`);
+  // With playthroughs off (WO-182 Part 5) those addresses are 404, so the tab names nothing: the editor opens on its Build tab.
+  if (playthroughsOn()) {
+    if (tab === "playthrough") redirect(`/b/${id}/edit/play${act ? `?act=${encodeURIComponent(act)}` : ""}`);
+    if (tab === "story") redirect(`/b/${id}/edit/story`);
+  }
   const userId = session?.user?.id ?? null;
   const build = await getBuild(id, userId);
   if (!build) notFound();

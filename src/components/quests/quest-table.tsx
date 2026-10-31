@@ -22,6 +22,9 @@ const known = (s: string | null) => (s ?? "").toLowerCase();
  * with real counts, and one sortable table with a sticky header. On a phone each row is two lines. `across` adds the category as a column
  * (the Quests home's table across every category).
  */
+/** A line of several quests: a line of one has a page of its own (or none), and is not one of the lines the pill counts (a Creation Club line of one quest without a page was). */
+const several = (r: { kind: string; length: number }) => r.kind === "line" && r.length > 1;
+
 export function QuestTable({ rows, across = false, defaultSort = "name", q = "", label = "Quests" }: { rows: TableRow[]; across?: boolean; defaultSort?: Key; q?: string; label?: string }) {
   const [text, setText] = useState(q);
   const [hold, setHold] = useState("");
@@ -30,11 +33,11 @@ export function QuestTable({ rows, across = false, defaultSort = "name", q = "",
   const [lines, setLines] = useState(false);
   const [sort, setSort] = useState<{ key: Key; dir: 1 | -1 }>({ key: defaultSort, dir: 1 });
   const holds = useMemo(() => [...new Set(rows.map((r) => r.hold).filter((h): h is string => !!h))].sort(), [rows]);
-  const counts = useMemo(() => ({ all: rows.length, base: rows.filter((r) => r.from.kind === "base").length, cc: rows.filter((r) => r.from.kind === "cc").length, mod: rows.filter((r) => r.from.kind === "mod").length, lines: rows.filter((r) => r.kind === "line").length }), [rows]);
+  const counts = useMemo(() => ({ all: rows.length, base: rows.filter((r) => r.from.kind === "base").length, cc: rows.filter((r) => r.from.kind === "cc").length, mod: rows.filter((r) => r.from.kind === "mod").length, lines: rows.filter(several).length }), [rows]);
   const shown = useMemo(() => {
     const words = text.toLowerCase().split(/\s+/).filter(Boolean);
     const got = rows.filter(
-      (r) => (!hold || r.hold === hold) && inLevel(r, level) && (!from || r.from.kind === from) && (!lines || r.kind === "line") && words.every((w) => [r.name, r.who, r.where].some((f) => known(f).includes(w))),
+      (r) => (!hold || r.hold === hold) && inLevel(r, level) && (!from || r.from.kind === from) && (!lines || several(r)) && words.every((w) => [r.name, r.who, r.where].some((f) => known(f).includes(w))),
     );
     const val = (r: TableRow): string | number => {
       switch (sort.key) {

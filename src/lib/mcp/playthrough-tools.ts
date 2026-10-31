@@ -235,8 +235,8 @@ export function registerSuggestionTools(server: Server, guarded: Guarded, origin
         : "The caves, mines, forts, ruins, camps, lairs and landmarks near a town, a hold or a place at a range of levels, from the planner's places index: each with its type, hold, nearest town, levels and boss, clear XP, what in the game points at it (who says what and where they stand, or the book), and when against those levels (fits now; plant now, pay off later; too high). Never a stop (a town, inn, temple, keep, stable or home). It changes nothing.",
       inputSchema: z.object({
         ...(runs ? { playthrough: playthrough.optional().describe("With act: the stored act to read."), act: act.optional().describe("With playthrough: the stored act to read.") } : {}),
-        where: z.string().min(1).max(80).optional().describe('Instead of a stored act: a town, a hold (every town in it) or a place, "Solitude", "Haafingar", "Embershard Mine".'),
-        levels: z.string().min(1).max(20).optional().describe('With where: the levels, "15 to 20".'),
+        where: z.string().min(1).max(80).optional().describe(runs ? 'Instead of a stored act: a town, a hold (every town in it) or a place, "Solitude", "Haafingar", "Embershard Mine".' : 'A town, a hold (every town in it) or a place: "Solitude", "Haafingar", "Embershard Mine".'),
+        levels: z.string().min(1).max(20).optional().describe(runs ? 'With where: the levels, "15 to 20".' : 'The levels, "15 to 20".'),
       }),
     },
     async (raw: unknown, ctx: Ctx) => {

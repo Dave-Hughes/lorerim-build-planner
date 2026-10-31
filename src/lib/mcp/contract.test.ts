@@ -106,7 +106,8 @@ describe("the other generated files, through the tools that read them", () => {
   it("search_facts finds a sample of every kind by name, items included", () => {
     const items = JSON.parse(readFileSync(path.join(process.cwd(), "src", "data", `lorerim-${DEFAULT_VERSION}`, "items.json"), "utf8")) as { name: string }[];
     for (const name of [...d.perks.slice(0, 40).map((p) => p.name), ...d.spells.slice(0, 40).map((s) => s.name), ...d.traits.map((t) => t.name), ...d.races.map((r) => r.name), ...items.filter((_, i) => i % 150 === 0).map((i) => i.name)]) clean(name, searchFacts(name));
-  });
+    // About 250 searches, each over every record: 2 s here, 9 s on a loaded machine (WO-182 Part 5), so it has its own limit; searchFacts remembers its normalised strings to keep it near the first.
+  }, 30_000);
   it("check_progression on a drafted build", () => {
     const build = JSON.parse(readFileSync(path.join(process.cwd(), "src", "lib", "mcp", "__fixtures__", "kyria-drafted.json"), "utf8"));
     clean("check", checkProgression(build));

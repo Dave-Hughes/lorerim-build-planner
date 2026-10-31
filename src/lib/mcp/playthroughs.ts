@@ -628,7 +628,7 @@ export async function suggestPlaces(p: Player, input: { playthrough?: string; ac
  * place (the town nearest it); levels is "15 to 20". The same places, pointers and fit as for an act; nothing is used yet.
  */
 export function placesAt(where: string | undefined, levels: string | undefined, runs = true) {
-  if (!where?.trim()) throw new FactsError('Give where (a town, a hold or a place: "Solitude", "Haafingar") and levels ("15 to 20"), or a playthrough and an act.');
+  if (!where?.trim()) throw new FactsError(`Give where (a town, a hold or a place: "Solitude", "Haafingar") and levels ("15 to 20")${runs ? ", or a playthrough and an act" : ""}.`);
   const lv = parseLevels(levels ?? "");
   if (typeof lv === "string") throw new FactsError(levels ? lv : 'Give the levels too: "15 to 20".');
   const hold = holdNamed(where);

@@ -40,7 +40,21 @@ function questsFor(version: string) {
   return questsData();
 }
 
-const norm = (s: string) => s.toLowerCase().replace(/[’']/g, "'").trim();
+/**
+ * A string function remembered by its input (WO-182 Part 5): a search runs `norm` and `wordsOf` over every record's name and text, and the same records come round for every
+ * search, so the second search found the same strings again and spent most of its time re-normalising them. The data is a fixed set of strings; the cache is capped anyway.
+ */
+const remembered = (f: (s: string) => string): ((s: string) => string) => {
+  const seen = new Map<string, string>();
+  return (s) => {
+    const had = seen.get(s);
+    if (had !== undefined) return had;
+    const v = f(s);
+    if (seen.size < 300_000) seen.set(s, v);
+    return v;
+  };
+};
+const norm = remembered((s) => s.toLowerCase().replace(/[’']/g, "'").trim());
 
 function byIdOrName<T extends { id?: string; name: string }>(list: T[], what: string, id?: string, name?: string): T {
   if (!id && !name) throw new FactsError(`Give the ${what}'s id or name.`);
@@ -76,7 +90,7 @@ export const NO_MATCH = "No quest matched. Ask the player where they saw it or w
 // Words a player puts round a quest's name that no quest is found by: "the horse quest", "how do I start Palonimo".
 const FILLER = new Set(["the", "a", "an", "quest", "quests", "in", "of", "on", "at", "to", "for", "with", "called", "named", "how", "do", "i", "start", "lorerim", "skyrim", "about", "one"]);
 /** A text's words, case and punctuation aside ("Joslin's horse" -> "joslin's horse"). */
-const wordsOf = (t: string) => norm(t).replace(/[^a-z0-9' ]+/g, " ").replace(/\s+/g, " ").trim();
+const wordsOf = remembered((t) => norm(t).replace(/[^a-z0-9' ]+/g, " ").replace(/\s+/g, " ").trim());
 /** Whether a word starts a word of the text: "horse" in "horses", not "no" in "Dragonstone". */
 const holds = (text: string, w: string) => ` ${text}`.includes(` ${w}`);
 // What get_quest takes for a name (WO-133): what players call it, who's in it, what starts it; never an objective's words.
