@@ -5788,7 +5788,7 @@ Mac's notes (30 Oct). Everything is built and checked except Kyria's text on sta
 **Tests that went:** the Story's (wo79 author and reader, wo114's first chapter, wo116's reader, Read Act I, markers and previous/next, wo117's Story tab and chapters, wo118's reader and image position, wo124's story card, wo142's chapter paragraphs, wo111's reader), and the ticking ones that moved to the tracking server. The "About them" display test became "the page has none".
 
 ## WO-180  Junk text out of the pages, and the last map faults (Mac and PC, 28 Oct 2026)
-Status: queued (Mac: Part 7b; PC: Part 7a pushed for Bob, notes below)
+Status: queued (PC: Part 8; Mac: Part 7b)
 
 **Why.** The fourth cold review (Bob's reviewer, 3,721 pages crawled, 51 walked at both widths) passed WO-176 to WO-178, and named what would still hit Dave in his first ten minutes: old text from the game files that was never cleaned. Bob confirmed the holes and Web Mother by hand. No order is done until a page-text test fails on each of these.
 ### Part 1. Quotes (PC writes the cleaner; Mac's test fails on any page)
@@ -6087,6 +6087,35 @@ Jeff's notes on Part 7a (PC, 30 Oct):
   - **Checked against UESP** (the "People" tables of the city pages, 30 Oct; a dagger or [a] means "only sells goods at the market"), 26 sellers in five cities, all as UESP has them: *Whiterun* Carlotta Valentia, Fralia Gray-Mane and Anoriath (market stalls, UESP's dagger), Belethor (Belethor's General Goods), Arcadia (Arcadia's Cauldron), Adrianne Avenicci (Warmaiden's); *Solitude* Addvar, Evette San and Jala (stalls, [a]), Sayma (Bits and Pieces, and Beirand's shop is Solitude Blacksmith, not Bits and Pieces where he sleeps), Taarie (Radiant Raiment), Angeline Morrard (Angeline's Aromatics); *Windhelm* Aval Atheron, Hillevi Cruel-Sea and Niranye (stalls, [a]), Revyn Sadri (Sadri's Used Wares), Nurelion (The White Phial); *Riften* Brand-Shei, Grelka and Marise Aravel (Grand Plaza street vendors, [a]), Hafjorg (Elgrim's Elixirs), Bersi Honey-Hand (The Pawned Prawn); *Markarth* Kerah and Hogni Red-Arm (stalls, dagger), Lisbet (Arnleif and Sons Trading Company), Muiri (The Hag's Cure). `wo180-7a.test.ts` holds them.
   - **Where the data and UESP differ:** *Ghorza gra-Bagol*: UESP's footnote says she offers services at the forge outside the castle, just north of The Hag's Cure; her faction's chest stands in the Understone Keep cell, so the page says "smithy in Understone Keep". Which is right in game I cannot tell from the records (it may be the forge's own chest sharing the faction). *Audmund's Axes* is a LoreRim Windhelm addition and not on UESP's table. *Eorlund* is the Skyforge's, not a market seller.
 - **Generated files:** `quests.json` (steps, objectives, reads and ways of the ruled quests; People lists), `people.json` (new `shop` on 423 people), `gamedata/5.0.4.8/shops_raw.json` (new), `overrides.json` (`questAliases`). Types: `SellerShop` and `PersonRow.shop`; `PlacePerson` loses `shopName`, `shopRank`, `stall` and `workplace` (the read-based guess) for `shop`; `Shop` gains `hours`. Checks: python unittest (487), typecheck, lint (the two old warnings), `npm test` (888 passed, 7 expected fail, and the same three MCP style-guide tests failing on this checkout without my changes). Nothing was viewed in a browser; e2e not run on the PC.
+
+### Part 8. The shops, checked against UESP (Bob's reviewer, 30 Oct, 19:30; Bob confirmed Falkreath's and Riften's on staging)
+The vendor-faction source is much better. Across ten towns, 52 shops are right, 12 wrong and 10 missing, and 37 more differ from UESP in ways that look like LoreRim's own changes. No home stands in for a shop now. The story-quest fills hold (A False Front, The Frozen Heart), and the role words are gone from People sections. The full list is in the reviewer's report: `/tmp/claude-0/-home-claude/969323fd-f0e5-5fc7-8db6-cfa833e9ed5a/scratchpad/rex/shops10.out` (Bob will copy what you need into the notes if you can't read it).
+
+**What causes the 22 (PC):**
+- [ ] **A shop is one vendor faction.** Today it's keyed by building, or by cell and kind. So separate factions in one room merge, and one faction shows as two shops.
+  - Merged: Riften's Ragged Flagon swallows Arnskar, Syndus, Vanryth and Herluin; the College's Hall of Countenance swallows Drevis, Faralda and Phinis into Colette's; Understone Keep swallows Moth gro-Bagol into Ghorza's.
+  - Split: Hermir and Oengul, Seren and Rustleif, and Vittoria Vici and Aquillius Aeresius each show as two shops.
+- [ ] **The keeper is the faction's owner**, not whoever sleeps there: Bothela at The Hag's Cure (Muiri is her assistant), Beirand at the Solitude Blacksmith (Heimvar is his apprentice).
+- [ ] **Orphans and urchins aren't shops.** Kidmer's adoptable children sell from Sofie's flower list, and the filter only skips factions named "BYOH…". So Elandra (Falkreath), Brundil (Markarth), Urshug (Winterhold) and Terlan (Windhelm) show as market stalls in towns with no market, with a chest in WindhelmWorld.
+  - Filter by the vendor list, not the faction's name.
+  - Never show a stall in a town whose worldspace isn't the chest's.
+  - Decide Sofie by the same rule. UESP lists her at the Windhelm gate, so if she's a seller in the records, list her.
+- [ ] **A seller with no town placement still has a shop** where the chest stands. Madesi's stall is in Riften's market.
+- [ ] **The kind comes from what the list buys, not the first keyword.** The Drunken Huntsman is "fletcher" or "hunting goods", not "weapons". Sofie's list isn't "apothecary".
+- [ ] **People merged by name are separate.** Wilhelm (Windhelm's warehouse) links to the Vilemyr Inn's keeper; Adara (Kerah's daughter) to the Stonehills girl; Brurid (the Iron Halls) to a wizard at Treva's Watch.
+  - A person is a base record. Two with one name get two pages: "Wilhelm (Windhelm)" and "Wilhelm (Ivarstead)", each linked from its own place.
+  - Adara isn't a seller: UESP says she has no trade dialogue, and her stall is Kerah's.
+- [ ] **A person page and the town agree**:
+  - Carlotta: food, and no "'misc'" on her page.
+  - Endon: where he trades, said once, as "Endon, silversmith" (not "Endon's silversmith").
+  - Madesi and Drevis show in their towns' shops.
+- [ ] **Two fills, by name**:
+  - Blood on the Ice reads "Talk to Jorleif, the steward (Captain Lonely-Gale if the Empire holds Windhelm)", in both steps.
+  - Rare Gifts reads "Bring a <item> to Torbjorn" on all six pages, not "one of the requested item".
+- [ ] **Small**:
+  - Ill Met By Moonlight copied a group's line onto each person (Indara alone is "The dead girl's parents"). Each person gets their own words, or the group stays one row.
+  - Hunting the Monster's "The vampire's last known contact in the town" repeats itself as its own description.
+- [ ] **Before pushing**: Whiterun, Solitude, Windhelm, Riften, Markarth and Winterhold shop by shop against UESP's Merchants table, the right and wrong counts in the notes, and every difference you keep said with its reason. UESP's API answers through curl at `content1.uesp.net/w/api.php?action=parse&page=Skyrim:Merchants&prop=wikitext`. Then `for Bob`.
 
 Jeff's notes on WO-180 (PC, 28 Oct):
 - **Quotes** (`places.py`, `build.py`): one cleaner, `game_text()`, runs on a book's whole text and on every dialogue line before a quote is cut: `<Alias=Player>` is "you"; any other `<Alias…>`, `<Global…>` or `<Token…>` leaves a hole mark and a quote with one in what is cut around it is left out (the next mention of the place in that book is tried; the Lakeview and Windstad charters have no mention without a hole, so they are not quoted); every other tag (`<font …>`, `<img …>`) and `[pagebreak]` goes before the cut, so no `size="18">` stub is left. A quote names a quest only when it is a quest on the Quests pages by that name; the game's own dialogue quest ("Riften Dialogue") moves to a new field, `dialogue`, which no page shows. Why keep it: the assistant's town gossip (`suggest.ts`, WO-151) reads it to say which town a line with no speaker is about (`wo151.test.ts` caught the first try, which dropped it). A dialogue line with no speaker stays in the data for the same reason; `saidAbout()` leaves it off the pages (one line in `said.ts`: "no speaker, no quote"). 4,761 pointers became 4,741: twenty had a hole in them and went (Lakeview and Windstad Manors no longer quote their charters; Hendraheim, Rorikstead and the rest have none left with markup). The Mac's page-text test is mine too: `wo180.test.ts` runs `saidAbout()` on every place and fails on markup, a hole, a speakerless line or a quest no player has.
