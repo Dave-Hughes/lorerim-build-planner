@@ -130,3 +130,5 @@ Items 10 to 60 from Dave's play-testing of Kyria, copied into [playthrough-findi
 
 - **Ordered (Dave, 30 Oct 2026): players make it right.** Screenshots of places and people (Dave: "They aren't pictures, lets call them screenshots"; 16:9, black bars when a screenshot isn't), I know this on every Not sure yet line for quests, places and people, a public Help fill the gaps page ordered by page views (a counter with no cookies or ids), Recently confirmed on home, "This screenshot isn't this place" in Report a mistake, and one review list in /admin with approved players. Boards: canvas row 39. Order: WO-184.
 
+- **Decided (Bob, 30 Oct 2026, after Dave: "feels like we're 9-10 years away from launching"): the launch list is closed.** Nothing new goes in. What's left: WO-180 Parts 7a and 7b, WO-182 Part 5, WO-183 (the page fixes and the fresh sample under 2% wrong), WO-184 Part 8, and WO-185 (Dave's notes of 30 Oct). Each passes the reviewer, Dave tests once, and Bob moves production. Anything found after that that isn't wrong or broken goes to the backlog for after launch.
+

@@ -5022,6 +5022,66 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-185  Dave's notes from using the app (Mac, PC for Part 4, 30 Oct 2026)
+Status: queued (Mac: Parts 1 to 3 and 5, after WO-184 Part 8; PC: Part 4)
+
+**Why.** Dave used staging on 30 Oct (18:35) and sent these. They are small, and each one is something a player meets in the first minutes. **This is the last order before launch that adds anything.** After it, the launch list is closed: these orders pass the reviewer, Dave tests once, and Bob moves production.
+
+### Part 1. Screenshot upload is refused as a bot (Mac, first)
+- [ ] Uploading a screenshot says "That didn't look like a person. Reload the page and try again."
+  - Cause (Bob read the code): `src/instrumentation-client.ts` lists the paths whose POSTs carry the BotID token, and WO-184's `/api/screenshots` and `/api/tips` aren't on it. BotID reads an unlisted POST as a bot. Add them, and add `/places/*` and `/people/*` if a server action posts from those pages.
+  - This is the third time a new write route was missed (sign-in and Import a build were the first two). **Add a test that fails when any route or action that calls `looksLikeBot()` isn't covered by the `protect` list.**
+- [ ] Upload a screenshot on staging as a signed-in player and say in the notes that it worked.
+
+### Part 2. The map (Mac)
+- [ ] **Zoom is too sensitive.** One wheel notch or a small trackpad pinch jumps too far.
+  - One notch zooms by a small fixed step (about 1.2×).
+  - A trackpad pinch zooms in proportion to the gesture.
+  - The + and − buttons move one level.
+  - Zoom goes toward the pointer.
+  - The same everywhere a map is drawn (the Map page, place and quest maps, full screen).
+- [ ] **Clicking a pin rarely opens its panel.**
+  - The hit area is at least 32 px round the pin, and the pin's label opens it too.
+  - A click that moves less than 5 px is a click, not a drag.
+  - The test clicks ten pins at 1440 and 390, each by its diamond and by its label, and each opens.
+
+### Part 3. Search (Mac)
+- [ ] **Each row says what it is**: a small, quiet label on the right of every row (Quest, Quest line, Place, Person, Book, Item, Spell, Perk). The section headings stay.
+- [ ] **One row per thing.** "di" lists "Deliver a Letter Distant" again and again, once per board's copy.
+  - Copies that share a name and a kind are one row, which opens the kind (`/quests/missives` and its section for that job), with the count in its quiet line ("Missives, on 12 boards").
+  - The test: no two rows in any result list share a name and a kind.
+
+### Part 4. Places and people (PC data, Mac page)
+- [ ] **"What people say about it" goes** from place pages (Dave: "useless"): the section and its link in the section list.
+- [ ] **Crafting stations aren't "worth going for"**: an alchemy lab, an enchanting table, a forge or a tanning rack is everywhere.
+  - Worth going for keeps word walls, skill books, unique items, the boss chest and shrines.
+  - Crafting stations show only on towns, under Crafting and shrines, as today.
+- [ ] **Enemies, one way.** Today some enemy kinds get a row with a level range and the rest are a passing line ("Spiders, Skeletons too. 16 in all.").
+  - Every kind gets its own row with its level range, most numerous first, then the boss row last, then "16 in all" once under the list.
+  - The bar chart above draws the same rows.
+- [ ] **Where to find someone, said plainly.** Today "Where to find him" sits apart from a "What changes it" list whose entries a player can't connect to anything ("During A New Day: around a spot by Riften all day").
+  - The "What changes it" label goes.
+  - The person's place is said as **By day**: <place>, **At night**: <place>. Leave one out when it isn't known; never say "around a spot by".
+  - Under it, only changes a player can act on: "**After <quest, linked>**: <a named place>" or "**During <quest, linked>**: <a named place>". Each comes from a quest stage that moves them to a place with a name. Leave the rest out.
+  - The PC reads which stage moves them. The page keeps it to one short list.
+  - The reviewer will check 20 people against UESP.
+- [ ] Find the page Dave quoted ("During A New Day…") and show it before and after in the notes.
+
+### Part 5. The check
+- [ ] The checks in CLAUDE.md.
+- [ ] Screenshots at 1440 and 390:
+  - an upload on staging;
+  - the map's zoom and a pin click;
+  - search for "di" and "dawn";
+  - a place's Worth going for and enemies;
+  - a person's Where to find him, before and after.
+
+  Then `for Bob`.
+
+### Jeff's notes
+
+---
+
 ## WO-184  Players make it right: screenshots, I know this, Help fill the gaps, one review list (Mac, 30 Oct 2026)
 Status: building (Mac: Part 8)
 
