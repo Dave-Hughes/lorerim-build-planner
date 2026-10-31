@@ -34,7 +34,8 @@ export const placeKeyOf = (where: string) => where.split(",")[0].trim().replace(
 export function dayHours(rows: DayRow[]): (string | null)[] | null {
   const hours: (string | null)[] = Array.from({ length: 24 }, () => null);
   let laid = 0;
-  for (const r of rows) {
+  // (the rows that name their hours first; an "any hour" row fills only the hours they leave: WO-185 Part 6a, Greta's night)
+  for (const r of [...rows.filter((x) => !/^any hour$/i.test(x.from)), ...rows.filter((x) => /^any hour$/i.test(x.from))]) {
     const at = /^any hour$/i.test(r.from) ? 0 : hourOf(r.from);
     const len = /^any hour$/i.test(r.from) ? 24 : spanOf(r.for);
     if (at === null || len === null || len <= 0) continue;
@@ -55,26 +56,32 @@ const NO_PLACE = /^(?:around|about|near|by|wherever|somewhere|anywhere)\b|\b(?:a
 const OWN_SPOT = /^(?:her|his|their|its)\s+(?:own\s+)?(?:bed|beds|room|rooms|quarters|house|home|cell|chambers?|post|stall|desk|corner|spot|table|chair)\s+(?:in|at|of|inside)\s+(?:the\s+)?/i;
 
 /** The named place a read's words give ("her bed in Meridia's Sanctum" is "Meridia's Sanctum"), or null when they name none ("around a spot by Riften"). */
-export function placeOnly(where: string): string | null {
-  const first = where.split(",")[0].trim();
-  if (!first) return null;
-  const t = first.replace(OWN_SPOT, "").replace(/^(?:the\s+)/i, "").trim();
-  return !t || NO_PLACE.test(first) || NO_PLACE.test(t) ? null : t.charAt(0).toUpperCase() + t.slice(1);
+export function placeOnly(where: string, isPlace?: (name: string) => boolean): string | null {
+  // The first part of the words that is a place's name: "her room, Hall of Attainment" is the Hall of Attainment (WO-185 Part 6a). With no list of places, the first part.
+  for (const part of where.split(",")) {
+    const first = part.trim();
+    if (!first) continue;
+    const t = first.replace(OWN_SPOT, "").replace(/^(?:the\s+)/i, "").trim();
+    if (!t || NO_PLACE.test(first) || NO_PLACE.test(t)) continue;
+    const name = t.charAt(0).toUpperCase() + t.slice(1);
+    if (!isPlace || isPlace(name) || isPlace(first) || isPlace(t)) return name;
+  }
+  return null;
 }
 
 /**
  * Where a person is by day (8 am to 6 pm) and at night (10 pm to 6 am), each the place the read puts them in most of those hours (WO-185 Part 4):
  * said plainly, one of them left out when the read doesn't say it, never "around a spot by".
  */
-export function dayAndNight(rows: DayRow[]): { day: string | null; night: string | null } {
+export function dayAndNight(rows: DayRow[], isPlace?: (name: string) => boolean): { day: string | null; night: string | null } {
   const laid: (string | null)[] = Array.from({ length: 24 }, () => null);
-  for (const r of rows) {
+  for (const r of [...rows.filter((x) => !/^any hour$/i.test(x.from)), ...rows.filter((x) => /^any hour$/i.test(x.from))]) {
     const at = /^any hour$/i.test(r.from) ? 0 : hourOf(r.from);
     const len = /^any hour$/i.test(r.from) ? 24 : spanOf(r.for);
     if (at === null || len === null || len <= 0) continue;
     for (let i = 0; i < Math.min(24, Math.ceil(len)); i++) {
       const h = (at + i) % 24;
-      if (laid[h] === null) laid[h] = placeOnly(r.where) ?? "";
+      if (laid[h] === null) laid[h] = placeOnly(r.where, isPlace) ?? "";
     }
   }
   const most = (hrs: number[]) => {

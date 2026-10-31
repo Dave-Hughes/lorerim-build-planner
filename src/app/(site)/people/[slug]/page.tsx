@@ -10,6 +10,7 @@ import { pageExtras } from "@/components/pages/page-extras";
 import { ReportMistake } from "@/components/pages/report-mistake";
 import { placeHref } from "@/lib/places/data";
 import { personBySlug, personUnsure, roleWords, unsureFields } from "@/lib/people/data";
+import { placesNamed } from "@/lib/places/data";
 import { playersWords } from "@/lib/quests/reads";
 import { GlanceList, type GlanceCell } from "@/components/pages/glance";
 import { AutoToc } from "@/components/pages/auto-toc";
@@ -63,7 +64,7 @@ export default async function PersonPage({ params }: { params: Params }) {
   const sure = (f: string) => (notSure.has(f) ? <em className={styles.nk}> Not sure yet.</em> : null);
   // Where they are by day and at night, said plainly, and the changes a player can act on: a quest's stage that moves them to a named place (WO-185 Part 4, people_moves.py).
   // The read's own list of what changes it (a prose line for each stage) is not shown: "During A New Day: around a spot by Riften" connected to nothing a player could do.
-  const where = read ? dayAndNight(read.day) : { day: null, night: null };
+  const where = read ? dayAndNight(read.day, (n) => placesNamed(n).length > 0) : { day: null, night: null };
   // Where they trade, the way their town says it (WO-180 Part 9a: Endon's page and Markarth's line agree): from the shop's own data.
   const shopAt = person.shop
     ? person.shop.cell
@@ -374,6 +375,7 @@ export default async function PersonPage({ params }: { params: Params }) {
                       {m.href ? <PreviewLink href={m.href}>{m.quest}</PreviewLink> : m.quest}
                       <b>: </b>
                       {L(m.place)}
+                      {m.maybeLoreRim && <small className={styles.nk}> (UESP differs; maybe LoreRim&apos;s own change)</small>}
                     </li>
                   ))}
                 </ul>

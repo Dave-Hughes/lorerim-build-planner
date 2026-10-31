@@ -701,7 +701,9 @@ def main():
                     for _n in (_p["name"], _p.get("recordName")):
                         if _n:
                             _place_names.setdefault(_n.lower(), _p["name"])
-            _moves = moves_of(dump, quests_raw, _place_names, {q["name"] for l in pages for q in l["quests"]})
+            _moves = moves_of(dump, quests_raw, _place_names, {q["name"] for l in pages for q in l["quests"]},
+                              {k: v for k, v in overrides.get("movesDrop", {}).items() if not k.startswith("_")},
+                              {k: v for k, v in overrides.get("movesDiffer", {}).items() if not k.startswith("_")})
             for _pid, _m in _moves.items():
                 facts.setdefault(_pid, {})["moves"] = _m[:5]
             print(f"{sum(len(m[:5]) for m in _moves.values())} quest-stage moves for {len(_moves)} people")

@@ -87,8 +87,8 @@ describe("what a quest does to where someone is (WO-185 Part 4)", () => {
       }
     expect(bad).toEqual([]);
   });
-  it("Arch-Paladin Laracin is at Fort Justice during The Ritual (the page used to say 'During A New Day: around a spot by Riften')", () => {
-    expect(personByName("Arch-Paladin Laracin")?.moves).toEqual([{ when: "during", quest: "The Ritual", place: "Fort Justice" }]);
+  it("Arch-Paladin Laracin is at Fort Justice after The Ritual (the page used to say 'During A New Day: around a spot by Riften'; his window is still open when the quest ends: Part 6a)", () => {
+    expect(personByName("Arch-Paladin Laracin")?.moves).toEqual([{ when: "after", quest: "The Ritual", place: "Fort Justice" }]);
   });
   it("no page says what changes it any more", () => {
     expect(readFileSync("src/app/(site)/people/[slug]/page.tsx", "utf8")).not.toMatch(/What changes it/);

@@ -219,7 +219,20 @@ export function placeByName(name: string): Place | null {
   if (hit) return hit;
   if (named.has(key(name))) return null;
   const labelled = labels().get(key(name));
-  return labelled ?? null;
+  return labelled ?? aliased().get(key(name)) ?? null;
+}
+
+/**
+ * The places by another name the records give them (WO-185 Part 7: a person's cell, "Marukh's Underground Priory", is a part of "Holy Brothers of Marukh Priory"): an alias only one
+ * place has, and no place has as its name.
+ */
+let byAlias: Map<string, Place> | null = null;
+function aliased(): Map<string, Place> {
+  if (byAlias) return byAlias;
+  const seen = new Map<string, Place[]>();
+  for (const p of placesData().places) for (const a of p.aliases ?? []) seen.set(key(a), [...(seen.get(key(a)) ?? []), p]);
+  byAlias = new Map([...seen].filter(([k, ps]) => ps.length === 1 && !placesData().named.has(k)).map(([k, ps]) => [k, ps[0]]));
+  return byAlias;
 }
 
 /** What tells places that share a name apart: the town a building stands in, else its hold, else what kind of place it is. */

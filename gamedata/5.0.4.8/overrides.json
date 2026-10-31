@@ -687,6 +687,12 @@
       "_why": "Another plane, with no position on Tamriel's map: what it is and how you get there.",
       "type": "Realm",
       "gettingThere": "Through the portal in Castle Volkihar"
+    },
+    "Holy Brothers of Marukh Priory": {
+      "_source": "Bob, 31 Oct 2026 (WO-185 Part 7)",
+      "_why": "Abbot Cosmas's cell is its basement, 'Marukh's Underground Priory' (Vigilant.esm:26C06A, a child location of this one), so the cell's name finds the page. The marker types it Altar; a priory of holy brothers with a charnel cave under it is a monastery. It stands in Coldharbour (the realm field), which is no hold.",
+      "aliases": ["Marukh's Underground Priory"],
+      "type": "Monastery"
     }
   },
   "people": {
@@ -859,6 +865,23 @@
   "notSellers": {
     "_note": "WO-180 Part 8 (Bob, 30 Oct): people the records put in a vendor faction who do not trade, by record id, with the reason. UESP: Adara, Kerah's child at the Markarth jewelry stall, has no trade dialogue; the stall is Kerah's.",
     "Skyrim.esm:013385": "Adara, Kerah's child: the stall is Kerah's"
+  },
+  "movesDrop": {
+    "_note": "WO-185 Part 6a (Bob's reviewer, 30 Oct): a package that is the person's own home or bed is no move. {person: [quest names]}.",
+    "Delphine": ["A Blade in the Dark"],
+    "Ancano": ["First Lessons"]
+  },
+  "movesDiffer": {
+    "_note": "WO-185 Part 6a (Bob's reviewer, 30 Oct): lines the records show and UESP contradicts are kept and marked 'maybe LoreRim'. {person: [quest names]}. A mod's own package for a person the game made is marked without a line here.",
+    "Babette": ["Hail Sithis!"],
+    "Drovas Relvi": ["Reluctant Steward"],
+    "Rhiada": ["The Forsworn Conspiracy"],
+    "Tolfdir": ["Good Intentions"],
+    "Gaston Bellefort": ["Destroy the Dark Brotherhood!"],
+    "Hadvar": ["Message to Whiterun"],
+    "Ralof": ["Message to Whiterun"],
+    "Esbern": ["The Throat of the World"],
+    "Delphine": ["The Throat of the World"]
   },
   "shopKeepers": {
     "_note": "WO-180 Part 8: a vendor faction whose members the records rank alike has the keeper UESP names, by the faction's editor id. The rule is the chest's owner, the cell's owner, a rank of their own in a Job faction, the name the faction carries, and else the first made.",

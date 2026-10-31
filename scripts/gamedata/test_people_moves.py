@@ -62,6 +62,20 @@ class Moves(unittest.TestCase):
         dump = {"P.esp:000010": {"name": "Someone", "packages": [self.pack([cond("GetStage", ">=", 25), cond("GetStage", "<", 60)], cell="Fort Justice")]}}
         self.assertEqual(pm.moves_of(dump, self.QUESTS, self.PLACES, set()), {})
 
+    def test_a_window_still_open_when_the_quest_ends_is_after_and_a_last_stage_is_the_end(self):
+        # opens at 25 and nothing shuts it before the quest ends at 70: After (Pavo, Drovas, Babette)
+        self.assertEqual(self.moves(self.pack([cond("GetStage", ">=", 25)], cell="Fort Justice")), [{"when": "after", "quest": "The Ritual", "place": "Fort Justice"}])
+        # a quest with no completing stage ends at its last: stage 70 is the end
+        quests = [{"id": "Q.esp:000001", "name": "The Ritual", "stages": [{"index": 10}, {"index": 70}]}]
+        dump = {"P.esp:000010": {"name": "Someone", "packages": [self.pack([cond("GetStage", "==", 70)], cell="Fort Justice")]}}
+        self.assertEqual(pm.moves_of(dump, quests, self.PLACES, self.NAMES)["P.esp:000010"][0]["when"], "after")
+
+    def test_a_drop_and_a_differs_ruling(self):
+        dump = {"P.esp:000010": {"name": "Someone", "packages": [self.pack([cond("GetStage", ">=", 25), cond("GetStage", "<", 60)], cell="Fort Justice")]}}
+        self.assertEqual(pm.moves_of(dump, self.QUESTS, self.PLACES, self.NAMES, {"Someone": ["The Ritual"]}), {})
+        got = pm.moves_of(dump, self.QUESTS, self.PLACES, self.NAMES, None, {"Someone": ["The Ritual"]})
+        self.assertTrue(got["P.esp:000010"][0]["maybeLoreRim"])
+
     def test_one_place_for_each_window_the_first_package_wins(self):
         window = [cond("GetStage", ">=", 25), cond("GetStage", "<", 60)]
         got = self.moves(self.pack(window, cell="Fort Justice"), self.pack(window, place="Riften"))

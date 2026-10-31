@@ -84,6 +84,8 @@ export interface PersonMove {
   when: "after" | "during";
   quest: string;
   place: string;
+  /** The records show it and UESP says otherwise (or a mod's own package moves a person the game made): kept, and said to be maybe LoreRim's own change (WO-185 Part 6a). */
+  maybeLoreRim?: true;
 }
 
 export interface PersonRow {

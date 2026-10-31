@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-185  Dave's notes from using the app (Mac, PC for Part 4, 30 Oct 2026)
-Status: building (PC: Part 6a and Part 7's data line; Mac: Part 7. Parts 1 to 3 and 6b pass; the staging upload passes)
+Status: queued (Mac: Part 7's two boxes; PC: Part 6a and Part 7's data line pushed, notes below)
 
 **Why.** Dave used staging on 30 Oct (18:35) and sent these. They are small, and each one is something a player meets in the first minutes. **This is the last order before launch that adds anything.** After it, the launch list is closed: these orders pass the reviewer, Dave tests once, and Bob moves production.
 
@@ -5090,20 +5090,20 @@ Status: building (PC: Part 6a and Part 7's data line; Mac: Part 7. Parts 1 to 3 
 The rest:
 
 **Part 6a (PC): where people are, against UESP.** About a third of the new lines checked are wrong or unsupported.
-- [ ] **"During" where the move outlasts the quest.** A window that opens at a stage and is still open at the quest's end is **After**, not During:
+- [x] **"During" where the move outlasts the quest.** A window that opens at a stage and is still open at the quest's end is **After**, not During:
   - Pavo Attius, Kolskeggr Mine: his own day list says "until … cleared";
   - Drovas Relvi, Reluctant Steward: UESP says he lives in the Steward's House after it;
   - Babette: Dawnstar Sanctuary after Death Incarnate, not During Hail Sithis!.
-- [ ] **Lines UESP contradicts.** Check each against the records. Keep a line only if the records show it, and if so mark it as differing, maybe LoreRim.
+- [x] **Lines UESP contradicts.** Check each against the records. Keep a line only if the records show it, and if so mark it as differing, maybe LoreRim.
   - Gaston Bellefort "After Destroy the Dark Brotherhood!: Bards College" (UESP: his bones are in the Sanctuary).
   - Illia "After Repentance: Bee and Barb" (UESP: back to Darklight Tower).
   - Hadvar and Ralof "During Message to Whiterun: Sleeping Giant Inn" (UESP: only after the civil war ends).
   - Ancano "During First Lessons: Hall of Attainment" (he is at the debate; he sleeps there).
   - Delphine's "During A Blade in the Dark: Sleeping Giant Inn" is her home, not a move.
   - Esbern and Delphine's Sky Haven Temple starts before The Throat of the World.
-- [ ] **A day list that leaves night empty.** Greta's read has "Any hour: a spot in Solitude", which fills every hour before her specific rows. The specific rows win; "any hour" fills only what's left.
-- [ ] **Named places only**: "At night: Her room" (Brelyna: UESP says the Hall of Attainment), "By day: Cellar" (Alva). Use the place's name, or leave the line out.
-- [ ] **Twenty people against UESP before pushing**, the list and verdict in the notes.
+- [x] **A day list that leaves night empty.** Greta's read has "Any hour: a spot in Solitude", which fills every hour before her specific rows. The specific rows win; "any hour" fills only what's left.
+- [x] **Named places only**: "At night: Her room" (Brelyna: UESP says the Hall of Attainment), "By day: Cellar" (Alva). Use the place's name, or leave the line out.
+- [x] **Twenty people against UESP before pushing**, the list and verdict in the notes.
 
 **Part 6b (Mac)**
 - [x] **Moves never shown**: a person with `moves` and no Where to find section shows nothing. 10 of 31 in the sample: Neski, Ernanthil, Lynea, Rhiada, Gian, Herluin, Syndus, Vanryth, Kematu and Arnskar. Draw the After and During lines whatever else the person has.
@@ -5113,12 +5113,20 @@ The rest:
 ### Part 7. The review of 6b (Bob's reviewer, 31 Oct, 08:00; Bob confirmed the place records)
 **6b passes.** All ten moves-only people have Where to find with their After or During line at 1440 and 390, the quests and places link, and Abbot Cosmas's place shows on a phone without the wrong link to Marukh.
 
-- [ ] **PC: Abbot Cosmas's place has no page.** His cell is "Marukh's Underground Priory"; the place record is Vigilant's "Holy Brothers of Marukh Priory" (`Vigilant.esm:3870E4`), typed Altar with no hold. Tie the cell to its location so the cell's name finds the page, and give the place its real kind and hold from the records.
+- [x] **PC: Abbot Cosmas's place has no page.** His cell is "Marukh's Underground Priory"; the place record is Vigilant's "Holy Brothers of Marukh Priory" (`Vigilant.esm:3870E4`), typed Altar with no hold. Tie the cell to its location so the cell's name finds the page, and give the place its real kind and hold from the records.
 - [ ] **Mac: Neski's "The Pit" is plain text.** Two places share the name and `/places/the-pit` is the page that lists both; link that, as other shared names do.
 - [ ] **Mac: Not sure yet repeats what the page now says.** Neski's still lists "What changes where she is." under Not sure yet while Where to find shows "During The Pit: The Pit". When a person has `moves`, drop that line. Check the ten.
 - [ ] Then `for Bob`.
 
 ### Jeff's notes
+
+Jeff's notes on Part 6a and Part 7's data line (PC, 31 Oct). **I viewed nothing in a browser.**
+- **After or During** (`people_moves.py`): a window still open when the quest ends is **After**; one that opens and shuts before it ends is During. A quest with no completing stage ends at its last (Kolskeggr Mine's 100): Pavo Attius is "After Kolskeggr Mine: Pavo's House". Drovas Relvi is After Reluctant Steward; Babette is After Hail Sithis! at the Dawnstar Sanctuary (and During Death Incarnate in the Brotherhood's, her wait at the attack). Laracin is now After The Ritual: Fort Justice. 153 moves on 116 people (was 136 on 104: the last-stage rule adds quests that had no completing stage).
+- **Lines UESP contradicts** (`overrides.json` `movesDrop`, `movesDiffer`): **kept and marked "(UESP differs; maybe LoreRim's own change)"** when the records show them, dropped when they are a bed. Dropped: Delphine's Sleeping Giant Inn (her home) and Ancano's Hall of Attainment (his bed: `WCollegeAncanoSleepPackage`). Marked: Gaston Bellefort (a quest mod's package), Illia (After Repentance: Bee and Barb is the mod "Illia leaves darklight tower.esp"), Hadvar and Ralof (the package is `CWHangoutInRiverwoodInn`, gated on Message to Whiterun stage 10; UESP says only after the war: the war's end is a script this scan does not read), Esbern and Delphine at Sky Haven (the records put them there from Throat of the World; UESP has them move earlier), and from the 30 I checked: Babette (UESP: after Death Incarnate; the package is Hail Sithis!), Tolfdir (UESP: the Hall of the Elements after Hitting the Books; the package is Good Intentions), Rhiada (UESP keeps her in the Treasury House), Drovas Relvi (UESP: the Steward's House; the package is the Tel Mithryn apothecary). A move a mod's package makes for a person the game made is marked without a ruling (Illia's); ten lines are marked in all.
+- **Greta's night, and named places** (`lib/people/day.ts`): "any hour" fills only the hours the specific rows leave, in `dayHours` (the strip) and `dayAndNight`. By day and At night take the first part of the read's words that is **a place the index has**: "her room, Hall of Attainment" is the Hall of Attainment (Brelyna), "Cellar" is no place and the line is left out (Alva). The strip itself still names the first part.
+- **Thirty people against UESP** (`curl content1.uesp.net/w/api.php?action=parse&page=Skyrim:<Name>`; the page names the place or the quest): **right (place on the page):** Pavo Attius, Babette (Dawnstar Sanctuary), Erandur (Nightcaller Temple), Brelyna (Hall of the Elements, during First Lessons), Alva (Movarth's Lair later), Lynea (Silver-Blood Inn), Amaund Motierre (Volunruud), Arnskar, Herluin, Syndus, Vanryth (the Ragged Flagon is their store), Atar (Silver-Blood Inn after the dispute), Bralsa Drel, Neski (during The Pit), Delphine and Esbern (Sky Haven Temple, earlier than the line says). **Differ, marked:** Babette's quest, Tolfdir, Rhiada, Drovas Relvi, Hadvar, Ralof, Gaston, Illia. **Not on UESP's page, left as the records have them:** Greta, Gian, Belchimac, Enmon, Silver-Blood Mercenary, College Guard, Curate Melita, Ernanthil's quest. **No UESP page by that name:** Kirsta, Idina, Gwilym, Aina the Wench, Fiya, Alia, Sato, Dooley.
+- **Part 7, Abbot Cosmas:** his cell "Marukh's Underground Priory" (`Vigilant.esm:26C06A`) is a child location of "Holy Brothers of Marukh Priory" (`Vigilant.esm:3870E4`, a district of Coldharbour). `overrides.json` `places` gives the priory that alias and the type Monastery (the marker says Altar, the child's keywords are a charnel cave; "priory of holy brothers" is a monastery: **my reading of the name, the records say no more**). **It has no hold: it stands in Coldharbour**, which is its `realm`, as the Soul Cairn's places are. `placeByName` now also finds a place by an alias that only one place has and no place has as its name, so `placeHref("Marukh's Underground Priory")` is the priory's page for any caller (it adds links for other places' aliases the same way).
+- `PersonMove.maybeLoreRim` is drawn on the person page (a small "(UESP differs; maybe LoreRim's own change)" after the line). **Not mine, new from the last pull: `bot-protect.test.ts` fails on this PC (`covers every route that asks looksLikeBot()`: 0 routes found, probably Windows path separators).** `npm test` otherwise: 963 passed, 7 expected fail, and the same three MCP style-guide tests. Python unittest 509, typecheck, lint (the same two warnings).
 
 Jeff's notes on Part 6b (Mac, 30 Oct). The person page draws **Where to find** whenever there is something to say there: a first meeting, a day or night place, a shop (and not a follower), or moves. A person with moves and nothing else (Neski, Ernanthil, Lynea, Rhiada, Gian, Herluin, Syndus, Vanryth, Kematu, Arnskar) now has the section, with only the After and During lines; the read-only parts (first meeting, the day strip) are guarded so a person with no read doesn't get them. Abbot Cosmas: the Where fact shows on a phone whenever the page draws no Where to find section, and the place in it ("Marukh's Underground Priory") links the place as a whole when it has a page (`wholePlace()`), else it's plain text. `e2e/wo185.spec.ts` "Part 6b" has two tests (a moves-only person; Cosmas at 390). The staging upload box is still Bob's.
 

@@ -13,6 +13,8 @@ import re
 # The conditions that only ask where a quest is. Anything else on a package (a time of day, a faction, a global, who is speaking) makes it not a quest's move.
 STAGE_FNS = ("GetStage", "GetStageDone", "GetQuestCompleted")
 INF = 10 ** 6
+# The masters the game ships: a package one of these made is the game's.
+VANILLA = {"skyrim.esm", "update.esm", "dawnguard.esm", "hearthfires.esm", "dragonborn.esm"}
 
 
 def window(conds):
@@ -69,11 +71,13 @@ def named_place(loc, places):
     return None
 
 
-def moves_of(dump, quests, places, quest_names):
+def moves_of(dump, quests, places, quest_names, drop=None, differ=None):
     """
-    {record id: [{"when": "after" | "during", "quest": <name>, "place": <name>}]} for every person a quest's stage moves to a named place, in the order the
-    quest goes (and the place named after the quest it comes from). `quests` is quests_raw's list, `places` {lower-case name: name} of the place pages and
-    `quest_names` the names of the quests that have a page (a move for one that doesn't would link nowhere).
+    {record id: [{"when": "after" | "during", "quest": <name>, "place": <name>, "maybeLoreRim"?: true}]} for every person a quest's stage moves to a named place, in the
+    order the quest goes (and the place named after the quest it comes from). `quests` is quests_raw's list, `places` {lower-case name: name} of the place pages and
+    `quest_names` the names of the quests that have a page (a move for one that doesn't would link nowhere). `drop` is {person's name: [quest names]}: a package that is their
+    own home or bed and no move (WO-185 Part 6a: Delphine's inn, Ancano's bed). `differ` is {person's name: [quest names]}: moves the records show and UESP
+    contradicts, kept and marked `maybeLoreRim`; so is any move a mod's own package makes for a person the game made.
     """
     by_id = {q["id"]: q for q in quests}
     out = {}
@@ -83,29 +87,34 @@ def moves_of(dump, quests, places, quest_names):
             w = window(pk.get("conditions"))
             place = named_place(pk.get("location"), places)
             q = by_id.get(w[0]) if w else None
-            if not w or not place or not q or q.get("name") not in quest_names:
+            if not w or not place or not q or q.get("name") not in quest_names or q.get("name") in (drop or {}).get(d.get("name"), []):
                 continue
             _, lo, hi = w
-            finish = min((s["index"] for s in q.get("stages", []) if s.get("completes")), default=None)
-            if lo >= INF or (finish is not None and lo >= finish):
+            stages = [s["index"] for s in q.get("stages", [])]
+            # (a quest with no completing stage ends at its last: Kolskeggr Mine's 100)
+            finish = min((s["index"] for s in q.get("stages", []) if s.get("completes")), default=max(stages, default=None))
+            # A window still open when the quest ends is After; one that opens and shuts before it ends is During (WO-185 Part 6a: Pavo Attius, Drovas Relvi, Babette).
+            if lo >= INF or (finish is not None and (lo >= finish or hi > finish)):
                 when = "after"
             elif hi < INF and lo > 0:
                 when = "during"
-            elif lo > 0 and finish is not None:
-                when = "during"  # from a stage on, and the quest finishes later: while it is under way they are there
             else:
                 continue
+            plugin = (pk.get("plugin") or "").lower()
+            ours = plugin in VANILLA or plugin.startswith(("cc", "unofficial"))  # (the game's, its Creation Club's, and the Unofficial patches that mend them)
+            maybe = (pid.split(":")[0].lower() in VANILLA and not ours) or q["name"] in (differ or {}).get(d.get("name"), [])
             # (one place for each window of a quest: the package listed first is the one that wins; a person who is in the kitchen by day and the tower by night
             # while the quest is at one stage is at the quest's place, said once)
-            rows.setdefault((q["name"], when, lo, hi), (place, len(rows)))
+            rows.setdefault((q["name"], when, lo, hi), (place, len(rows), maybe))
         if rows:
             order = {}
-            for (name, when, lo, hi), (place, i) in rows.items():
+            for (name, when, lo, hi), (place, i, maybe) in rows.items():
                 order.setdefault(name, i)
             said, lines = set(), []
-            for (name, when, lo, hi), (place, i) in sorted(rows.items(), key=lambda kv: (order[kv[0][0]], kv[0][1] != "during", kv[0][2], kv[1][1])):
+            for (name, when, lo, hi), (place, i, maybe) in sorted(rows.items(), key=lambda kv: (order[kv[0][0]], kv[0][1] != "during", kv[0][2], kv[1][1])):
                 if (name, when, place) not in said:  # (the same place in two windows of one quest is said once)
                     said.add((name, when, place))
-                    lines.append({"when": when, "quest": name, "place": place})
-            out[pid] = lines
+                    lines.append({"when": when, "quest": name, "place": place, **({"maybeLoreRim": True} if maybe else {})})
+            if lines:
+                out[pid] = lines
     return out
