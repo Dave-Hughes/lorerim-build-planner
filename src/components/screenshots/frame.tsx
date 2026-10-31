@@ -38,6 +38,15 @@ export function Frame({ kind, pageKey, name, data, map, signInPlus, signInText, 
     setView("shot");
     setSent({ ...sent, select: false });
   }
+  // A screenshot gone (an admin's Delete or Remove): the frame goes back to the lead one, or to the map when none is left, as a fresh page does (WO-184 Part 10).
+  const [seen, setSeen] = useState(shots.length);
+  if (seen !== shots.length) {
+    setSeen(shots.length);
+    if (shots.length < seen) {
+      setAt(firstLive);
+      if (firstLive < 0 && map) setView("map");
+    }
+  }
   const cur = at >= 0 ? shots[at] : undefined;
   const live = shots.filter((x) => x.status === "live").length;
   const waiting = shots.length - live;
@@ -92,7 +101,7 @@ export function Frame({ kind, pageKey, name, data, map, signInPlus, signInText, 
           </div>
         )}
         {map && (
-          <div className={s.fl} role="group" aria-label="What the frame shows">
+          <div className={s.fl} role="group" aria-label="What the frame shows" data-ctl>
             <button type="button" className={`${s.vt} ${view === "shot" ? s.on : ""}`} aria-pressed={view === "shot"} onClick={() => setView("shot")}>
               Screenshot
             </button>

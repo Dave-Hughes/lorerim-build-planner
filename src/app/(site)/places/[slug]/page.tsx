@@ -12,6 +12,7 @@ import { GettingThere, TopFrame } from "@/components/screenshots/top-frame";
 import { placeFrameMap } from "@/components/screenshots/frame-maps";
 import { GlanceList, type GlanceCell } from "@/components/pages/glance";
 import { isNamedPerson, personHref } from "@/lib/people/data";
+import { kindPlural } from "@/lib/places/kinds";
 import { questsData } from "@/lib/quests/data";
 import { afterWar, hasLevels, isGarrison, placeByRecordName, placeBySlug, placeHrefOf, placeLabel, placesSharingSlug, placeType, rangeOf, type Place } from "@/lib/places/data";
 import { PlaceTown, levelRange } from "@/components/places/place-town";
@@ -29,7 +30,6 @@ export const dynamic = "force-dynamic";
 
 type Params = Promise<{ slug: string }>;
 
-const PLURAL: Record<string, string> = { Bandit: "Bandits", Draugr: "Draugr", Skeleton: "Skeletons", Falmer: "Falmer", Forsworn: "Forsworn", Giant: "Giants", Warlock: "Warlocks", Spider: "Spiders", Wolf: "Wolves", Vampire: "Vampires", Troll: "Trolls" };
 
 /** The levels a boss's words give: "leveled 19-24" is 19 to 24; "45" is 45 to 45. */
 /** Where it is from the town: "next to Riverwood", "a short walk from Whiterun", else "near Riverwood". */
@@ -117,7 +117,7 @@ export default async function PlacePage({ params }: { params: Params }) {
   // A boss is said only when it is someone: a named person with a page, never a generic soldier (WO-184 Part 9: Fort Hraggstad's boss was "Imperial Soldier").
   const boss = bossFrom?.name && isNamedPerson(bossFrom.name) ? { name: bossFrom.name, range: bossRange(bossFrom.level), words: levelWords(bossFrom.level) } : null;
   const livesHere = garrison ? war!.livesHere : a?.livesHere;
-  const foes = garrison ? "After the war" : livesHere ? (PLURAL[livesHere] ?? `${livesHere}s`) : "Enemies";
+  const foes = garrison ? "After the war" : livesHere ? kindPlural(livesHere) : "Enemies";
   const inAll = garrison ? war!.count : a?.count;
   const town = place.nearestTown;
   const origin = originOf(place.id);
@@ -126,7 +126,7 @@ export default async function PlacePage({ params }: { params: Params }) {
   const hasWorth = !!(worth?.skillBooks?.length || worth?.wordWall?.length || worth?.bossChest || worth?.shrines?.length);
   // Every kind of enemy has a row of its own with its own levels, most numerous first; a place whose enemies have no kind in the records has the one row (WO-185 Part 4).
   const kinds = garrison ? war!.kinds : a?.kinds;
-  const foeRows = levels ? (kinds?.length ? kinds.map((k) => ({ name: PLURAL[k.kind] ?? `${k.kind}s`, range: k.range ?? levels })) : [{ name: foes, range: levels }]) : [];
+  const foeRows = levels ? (kinds?.length ? kinds.map((k) => ({ name: kindPlural(k.kind), range: k.range ?? levels })) : [{ name: foes, range: levels }]) : [];
 
   // The quests that go here, with what each one says about it.
   const byName = new Map(questsData().lines.flatMap((l) => l.quests.map((q) => [q.name, q] as const)));

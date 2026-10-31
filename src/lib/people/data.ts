@@ -4,6 +4,7 @@ import path from "node:path";
 import { EDITOR_BODY, mapStrings, mend, playerWords, RECORD, REASON_KEYS } from "@/lib/pages/player-words";
 import type { Unsure } from "@/lib/pages/unsure";
 import { currentVersion } from "@/lib/rules/server";
+import { looksLikeSomeone } from "./someone";
 
 /**
  * The people index (WO-144 Part 2), as scripts/gamedata/people.py and build.py write people.json: every named person a design touches,
@@ -285,14 +286,11 @@ export function roleOfName(name: string): string | null {
 }
 export const personBySlug = (slug: string) => peopleData().bySlug.get(slug) ?? null;
 /**
- * Whether a name is someone, not a kind of actor (WO-184 Part 9: Fort Hraggstad's boss was "Imperial Soldier"). A name many records share, or one that is only a rank or a trade
- * ("Marauder", "Stormcloak Soldier", "Black Hand"), is a kind; any other name is a person, with a page or not (Captain Hargar).
+ * Whether a name is someone, not a kind of actor (WO-184 Parts 9 and 10: a boss was "Imperial Soldier", "Kagouti", "Frost Troll"). A someone has a name that says so (`looksLikeSomeone`: Captain Hargar,
+ * Krilqolaasdaan, Warlord Gathrik; not Kagouti, Pirate, Ghost); a page of its own is not what makes one, and a name many records share is a kind.
  */
-const KIND_WORDS = /^(?:(?:imperial|stormcloak|redoran|thalmor|legion|bandit|forsworn|dawnguard|vigilant|black)\s+)?(?:soldier|guard|marauder|prisoner|skeleton|battlemage|mage|warrior|archer|mercenary|hunter|hand|werebear|guardian|officer|captain|conjurer|necromancer|priest|cultist)$/i;
 export function isNamedPerson(name: string): boolean {
-  const p = personByName(name);
-  if (KIND_WORDS.test(name.trim().replace(/^the\s+/i, ""))) return false;
-  return !p || p.rows.length <= 2;
+  return looksLikeSomeone(name);
 }
 export const personHref = (name: string): string | null => {
   const p = personByName(name);
@@ -306,10 +304,12 @@ export const personHref = (name: string): string | null => {
 export function personUnsure(person: Person): Unsure[] {
   const read = person.read;
   const say = (u: Unsure): Unsure => ({ ...u, field: pronounField(u.field, person.sex) });
-  if (!read) return [{ field: "where they are through the day and night" }, { field: "what changes where they are" }, ...(person.follower || person.marriage ? [{ field: "how to recruit or marry them" }] : [])].map(say);
+  // A person whose moves the records give (WO-185 Part 4) has them said on the page, After and During: "what changes where they are" is not a doubt (WO-185 Part 7).
+  const moved = (u: Unsure) => !(person.moves?.length && u.field.toLowerCase() === "what changes where they are");
+  if (!read) return [{ field: "where they are through the day and night" }, { field: "what changes where they are" }, ...(person.follower || person.marriage ? [{ field: "how to recruit or marry them" }] : [])].filter(moved).map(say);
   const hedged: Unsure[] = [];
   for (const c of read.changes ?? []) for (const why of playerWords(c).unsure) hedged.push({ field: "What changes where they are", why });
-  return [...notSureOf(read), ...hedged].map(say);
+  return [...notSureOf(read), ...hedged].filter(moved).map(say);
 }
 
 /**

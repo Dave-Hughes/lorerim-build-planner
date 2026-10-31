@@ -89,15 +89,28 @@ function FullScreen({ title, sub, mapHref, onClose, ...rest }: MapViewProps & { 
 function MapCore({ entry, pins, here, hereLabel, labelled = 0, mode, className, onFull, overlay, framed }: MapViewProps & { onFull?: () => void; overlay?: boolean }) {
   const box = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ w: mode === "band" ? 1440 : 1000, h: mode === "band" ? 400 : 707 });
+  // What the map's controls cover, measured: the map's own plates and, in the page's frame, the frame's Screenshot | Map switch beside them (WO-184 Part 10: a name never sits under one).
+  const [covered, setCovered] = useState<[number, number, number, number][] | null>(null);
   useLayoutEffect(() => {
     const el = box.current;
     if (!el) return;
-    const measure = () => setSize({ w: el.clientWidth, h: el.clientHeight });
+    const found = () => [...el.querySelectorAll<HTMLElement>("[data-ctl]"), ...(framed ? [...(el.parentElement?.querySelectorAll<HTMLElement>("[data-ctl]") ?? [])] : [])];
+    const measure = () => {
+      setSize({ w: el.clientWidth, h: el.clientHeight });
+      const b = el.getBoundingClientRect();
+      const out: [number, number, number, number][] = [];
+      for (const c of found()) {
+        const q = c.getBoundingClientRect();
+        if (q.width > 0 && q.height > 0) out.push([Math.round(q.left - b.left) - 6, Math.round(q.top - b.top) - 4, Math.round(q.right - b.left) + 6, Math.round(q.bottom - b.top) + 4]);
+      }
+      setCovered((prev) => (prev && prev.length === out.length && prev.every((r, i) => r.every((v, j) => v === out[i][j])) ? prev : out));
+    };
     measure();
     const ro = new ResizeObserver(measure);
     ro.observe(el);
+    for (const c of found()) ro.observe(c);
     return () => ro.disconnect();
-  }, []);
+  }, [framed]);
 
   // On a phone the band uses the half-size tiles (zoom 0), so the nearest town is in view beside the place (WO-167 review).
   // The frame's + and − step between the two tile sizes the map has (WO-184 Part 9); otherwise a phone-wide band uses the half-size ones.
@@ -220,16 +233,20 @@ function MapCore({ entry, pins, here, hereLabel, labelled = 0, mode, className, 
   const kmPx = (70000 / entry.texture.unitsPerPixel) * (mode === "band" ? bandK : kWhole * z);
   // What the corner controls cover, in the box's own pixels: a name never sits under one (WO-167 review).
   const phoneBox = size.w < 700;
-  const controls: [number, number, number, number][] = [
+  const guessed: [number, number, number, number][] = [
     [0, 0, 56, 60],
     [0, size.h - 44, Math.min(kmPx, 220) + 96, size.h],
     ...(phoneBox ? [] : [[0, size.h - 82, 270, size.h - 40] as [number, number, number, number]]),
     [size.w - (phoneBox ? Math.min(size.w - 130, 230) : 250), size.h - 44, size.w, size.h],
     ...(mode === "whole" ? [[size.w - 56, 0, size.w, 90] as [number, number, number, number]] : []),
   ];
+  const controls = covered ?? guessed;
   const underControl = (x0_: number, x1_: number, y: number) => controls.some(([a, b, c, d]) => x1_ > a && x0_ < c && y + 13 > b && y - 13 < d);
-  // The bar is as long as 1 km, or the part of a km that fits beside the credit.
+  // The bar is a round length (a km, 500 m, 200 m ...) as long as fits beside the credit, so its number follows the zoom (WO-184 Part 10).
   const cap = Math.min(220, size.w * 0.26);
+  const roundKm = [50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01].find((k) => k * kmPx <= cap) ?? 0.01;
+  const barPx = roundKm * kmPx;
+  const barWords = roundKm >= 0.1 ? `${roundKm} km` : `${Math.round(roundKm * 1000)} m`;
   // Which side of its pin each name goes on, and never over another name (WO-184 Part 9: the full screen map's labels overlapped): the place itself is named first, then the nearest pins.
   const sides = new Map<number, "right" | "left" | "none">();
   {
@@ -303,15 +320,15 @@ function MapCore({ entry, pins, here, hereLabel, labelled = 0, mode, className, 
         )}
       </div>
 
-      <span className={`${s.plate} ${s.compass}`} aria-label="North is up">
+      <span className={`${s.plate} ${s.compass}`} aria-label="North is up" data-ctl>
         <b aria-hidden="true">N</b>
         <i aria-hidden="true" />
       </span>
-      <span className={`${s.plate} ${s.scale}`}>
-        <i style={{ width: Math.max(24, Math.min(kmPx, cap)) }} aria-hidden="true" />
-        {kmPx > cap ? `${Math.round((cap / kmPx) * 10) / 10} km` : kmPx < 24 ? `${Math.round((24 / kmPx) * 10) / 10} km` : "1 km"}
+      <span className={`${s.plate} ${s.scale}`} data-ctl>
+        <i style={{ width: Math.max(8, barPx) }} aria-hidden="true" />
+        {barWords}
       </span>
-      <span className={`${s.plate} ${s.legend}`} aria-label="Pin colours">
+      <span className={`${s.plate} ${s.legend}`} aria-label="Pin colours" data-ctl>
         {(["town", "danger", "other"] as const).map((k) => (
           <span key={k} className={s[k]}>
             <i aria-hidden="true" />
@@ -320,7 +337,7 @@ function MapCore({ entry, pins, here, hereLabel, labelled = 0, mode, className, 
         ))}
       </span>
       {onFull && (
-        <button type="button" className={`${s.plate} ${s.fullBtn}`} aria-label="Open the map full screen" onClick={onFull}>
+        <button type="button" className={`${s.plate} ${s.fullBtn}`} aria-label="Open the map full screen" onClick={onFull} data-ctl>
           <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.6">
             <path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4" />
           </svg>
@@ -328,11 +345,12 @@ function MapCore({ entry, pins, here, hereLabel, labelled = 0, mode, className, 
         </button>
       )}
       {mode === "band" && framed && (
-        <span className={`${s.zoomBtns} ${s.zoomLow}`}>
+        <span className={`${s.zoomBtns} ${s.zoomLow}`} data-ctl>
           <button
             type="button"
             className={s.plate}
             aria-label="Zoom in"
+            disabled={bandK >= 1}
             onClick={() => {
               setLevel(1);
               setPan(null);
@@ -344,6 +362,7 @@ function MapCore({ entry, pins, here, hereLabel, labelled = 0, mode, className, 
             type="button"
             className={s.plate}
             aria-label="Zoom out"
+            disabled={bandK <= 0.5}
             onClick={() => {
               setLevel(0.5);
               setPan(null);
@@ -354,17 +373,17 @@ function MapCore({ entry, pins, here, hereLabel, labelled = 0, mode, className, 
         </span>
       )}
       {mode === "whole" && (
-        <span className={`${s.zoomBtns} ${onFull ? s.zoomLow : ""}`}>
-          <button type="button" className={s.plate} aria-label="Zoom in" onClick={() => zoomTo(Math.min(fit * 6, z * BUTTON_STEP), null)}>
+        <span className={`${s.zoomBtns} ${onFull ? s.zoomLow : ""}`} data-ctl>
+          <button type="button" className={s.plate} aria-label="Zoom in" disabled={z >= fit * 6 - 0.001} onClick={() => zoomTo(Math.min(fit * 6, z * BUTTON_STEP), null)}>
             +
           </button>
-          <button type="button" className={s.plate} aria-label="Zoom out" onClick={() => zoomTo(Math.max(fit, z / BUTTON_STEP), null)}>
+          <button type="button" className={s.plate} aria-label="Zoom out" disabled={z <= fit + 0.001} onClick={() => zoomTo(Math.max(fit, z / BUTTON_STEP), null)}>
             −
           </button>
         </span>
       )}
       {/* The credit its author asked for, on every instance of the map. */}
-      <a className={`${s.plate} ${s.credit}`} href={entry.credit.url} target="_blank" rel="noreferrer">
+      <a className={`${s.plate} ${s.credit}`} data-ctl href={entry.credit.url} target="_blank" rel="noreferrer">
         Map: {entry.credit.text} <span aria-hidden="true">↗</span>
       </a>
     </div>

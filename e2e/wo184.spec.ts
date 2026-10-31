@@ -193,10 +193,24 @@ test("after an admin's upload: the dialog says it is live at once, the strip sho
   const thumb = page.locator("[data-view] ~ div img, button[aria-label^='Screenshot 1'] img").first();
   await expect(thumb).toBeVisible();
   expect(await thumb.evaluate((i: HTMLImageElement) => i.complete && i.naturalWidth > 0), "the new thumbnail is not a blank box").toBe(true);
+  // Delete its only screenshot: the frame goes back to the Map, as a fresh page opens; add another with no reload and it shows (WO-184 Part 10).
+  const drop = async () => {
+    await page.getByRole("group", { name: "Admin: this screenshot" }).getByRole("button", { name: "Delete", exact: true }).click();
+    await page.getByRole("alertdialog").getByRole("button", { name: "Delete", exact: true }).click();
+    await expect(page.getByText("No screenshots yet.")).toBeVisible();
+  };
+  await drop();
+  await expect(frame).toHaveAttribute("data-view", "map");
+  await page.getByRole("button", { name: "Add a screenshot of Riverwood" }).click();
+  await dialog.getByLabel("Screenshot file").setInputFiles({ name: "again.png", mimeType: "image/png", buffer: await png("#2a5a7a") });
+  await dialog.getByLabel(/This is my own screenshot/).check();
+  await dialog.getByRole("button", { name: "Add the screenshot" }).click();
+  await expect(dialog).toBeHidden();
+  await expect(frame).toHaveAttribute("data-view", "shot");
+  await expect(frame.locator("img").first()).toBeVisible();
+  expect(await frame.locator("img").first().evaluate((i: HTMLImageElement) => i.complete && i.naturalWidth > 0), "the second upload shows in the frame").toBe(true);
   // Leave nothing behind.
-  await page.getByRole("group", { name: "Admin: this screenshot" }).getByRole("button", { name: "Delete", exact: true }).click();
-  await page.getByRole("alertdialog").getByRole("button", { name: "Delete", exact: true }).click();
-  await expect(page.getByText("No screenshots yet.")).toBeVisible();
+  await drop();
 });
 
 test("\"This screenshot isn't this place\" puts it back on the review list with the report", async ({ page, context }) => {

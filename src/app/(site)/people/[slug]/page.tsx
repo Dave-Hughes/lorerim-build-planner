@@ -374,7 +374,7 @@ export default async function PersonPage({ params }: { params: Params }) {
                       <b>{m.when === "after" ? "After " : "During "}</b>
                       {m.href ? <PreviewLink href={m.href}>{m.quest}</PreviewLink> : m.quest}
                       <b>: </b>
-                      {L(m.place)}
+                      {placeHref(m.place) ? wholePlace(m.place) : L(m.place)}
                       {m.maybeLoreRim && <small className={styles.nk}> (UESP differs; maybe LoreRim&apos;s own change)</small>}
                     </li>
                   ))}

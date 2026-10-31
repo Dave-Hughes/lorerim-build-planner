@@ -19,13 +19,13 @@ import { playerFacing } from "@/lib/places/said";
 import l from "@/components/quests/line-page.module.css";
 import t from "./place-town.module.css";
 import { holdWords } from "@/lib/places/hold-words";
+import { kindPlural } from "@/lib/places/kinds";
 
 const ICON = { sells: "quest-rewards", trains: "tab-levels", follower: "quest-people", rents: "quest-travel", quests: "quest-side-stories" } as const;
 
 /** "Level 6 to 20", or "Level 14 and up" when the records give no top (a leveled creature with no ceiling). */
 export const levelRange = ([lo, hi]: [number, number]) => (hi >= 100 ? `Level ${lo} and up` : lo === hi ? `Level ${lo}` : `Level ${lo} to ${hi}`);
 
-const PLURAL: Record<string, string> = { Bandit: "Bandits", Draugr: "Draugr", Skeleton: "Skeletons", Falmer: "Falmer", Forsworn: "Forsworn", Giant: "Giants", Warlock: "Warlocks", Spider: "Spiders", Wolf: "Wolves", Vampire: "Vampires", Troll: "Trolls" };
 
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -153,16 +153,10 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
             cap(list([shops.length ? `${shops.length} ${shops.length === 1 ? "shop" : "shops"}` : "", beds ? (inns.length > 1 ? `${inns.length} inns with rooms` : "an inn with rooms") : ""].filter(Boolean))),
             undefined,
             true,
-            // One line per shop: its name, its keeper and what it sells (the rest open under "and N more"); then the inns and who keeps each.
+            // One line per shop: its name, its keeper and what it sells, all under the one fold (WO-184 Part 10: not a fold inside a fold); then the inns and who keeps each.
             { label: "Who keeps what", node: (
             <>
-              {shops.slice(0, 6).map((s) => shopLine(s))}
-              {shops.length > 6 && (
-                <details>
-                  <summary>and {shops.length - 6} more</summary>
-                  {shops.slice(6).map((s) => shopLine(s))}
-                </details>
-              )}
+              {shops.map((s) => shopLine(s))}
               {inns.map((h) => {
                 const keeper = h.people.find((p) => p.keeper)!;
                 return (
@@ -176,14 +170,14 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
           ),
         ]
       : []),
-    ...(trainers.length || followers.length
+    ...(trainers.length
       ? [
           cell(
             "trainers",
             "tab-levels",
             l.cGreen,
-            "Trainers and followers",
-            list([...new Set(trainers.map((x) => x.trains!))]) || "Followers",
+            followers.length ? "Trainers and followers" : "Trainers",
+            list([...new Set(trainers.map((x) => x.trains!))]),
             undefined,
             true,
             // Who does what: "Faendal trains Marksman" and, apart, "Followers: Faendal, Sven" (WO-177: a list of names under a skill read as all training it).
@@ -196,17 +190,18 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
               ))}
               {followers.length > 0 && (
                 <span style={{ display: "block" }}>
-                  {trainers.length > 0 ? `${followers.length === 1 ? "Follower" : "Followers"}: ` : ""}
-                  {nameLinks(followers, 3)}
+                  {followers.length === 1 ? "Follower" : "Followers"}: {nameLinks(followers, 3)}
                 </span>
               )}
             </>
             ) },
           ),
         ]
-      : []),
+      : followers.length
+        ? [cell("trainers", "tab-levels", l.cGreen, followers.length === 1 ? "Follower" : "Followers", <>{nameLinks(followers, 3)}</>, followers.length > 3 ? `and ${followers.length - 3} more` : undefined, true)]
+        : []),
     ...(!inside && place.actors?.livesHere && place.actors.hostile !== false
-      ? [cell("path", "tab-levels", l.cRed, "On the way up", `${PLURAL[place.actors.livesHere] ?? `${place.actors.livesHere}s`} on the path up`, place.actors.floor !== undefined || place.actors.atLevel?.length ? levelRange(rangeOf(place.actors)).toLowerCase() : null, true)]
+      ? [cell("path", "tab-levels", l.cRed, "On the way up", `${kindPlural(place.actors.livesHere)} on the path up`, place.actors.floor !== undefined || place.actors.atLevel?.length ? levelRange(rangeOf(place.actors)).toLowerCase() : null, true)]
       : []),
     ...(crafting.length && inside ? [cell("make", "smithing", l.cGold, "What you can make", cap(crafting.join(", ").replace(/, ([^,]*)$/, " and $1").replace(/\ban? /g, "")), null, true)] : []),
     ...(place.discoveryXp ? [cell("xp", "quest-rewards", l.cGold, "Finding it", `${place.discoveryXp} XP`, "For finding it")] : []),

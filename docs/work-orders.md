@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-185  Dave's notes from using the app (Mac, PC for Part 4, 30 Oct 2026)
-Status: building (Mac: Part 7's two boxes; PC: Part 6a and Part 7's data line pushed, notes below)
+Status: for Bob (Part 7 built: Neski's link and the repeated doubt; the PC's data line is pushed too)
 
 **Why.** Dave used staging on 30 Oct (18:35) and sent these. They are small, and each one is something a player meets in the first minutes. **This is the last order before launch that adds anything.** After it, the launch list is closed: these orders pass the reviewer, Dave tests once, and Bob moves production.
 
@@ -5114,11 +5114,13 @@ The rest:
 **6b passes.** All ten moves-only people have Where to find with their After or During line at 1440 and 390, the quests and places link, and Abbot Cosmas's place shows on a phone without the wrong link to Marukh.
 
 - [x] **PC: Abbot Cosmas's place has no page.** His cell is "Marukh's Underground Priory"; the place record is Vigilant's "Holy Brothers of Marukh Priory" (`Vigilant.esm:3870E4`), typed Altar with no hold. Tie the cell to its location so the cell's name finds the page, and give the place its real kind and hold from the records.
-- [ ] **Mac: Neski's "The Pit" is plain text.** Two places share the name and `/places/the-pit` is the page that lists both; link that, as other shared names do.
-- [ ] **Mac: Not sure yet repeats what the page now says.** Neski's still lists "What changes where she is." under Not sure yet while Where to find shows "During The Pit: The Pit". When a person has `moves`, drop that line. Check the ten.
-- [ ] Then `for Bob`.
+- [x] **Mac: Neski's "The Pit" is plain text.** Two places share the name and `/places/the-pit` is the page that lists both; link that, as other shared names do.
+- [x] **Mac: Not sure yet repeats what the page now says.** Neski's still lists "What changes where she is." under Not sure yet while Where to find shows "During The Pit: The Pit". When a person has `moves`, drop that line. Check the ten.
+- [x] Then `for Bob`.
 
 ### Jeff's notes
+
+Jeff's notes on Part 7's two Mac boxes (Mac, 31 Oct). **The Pit** in a person's After and During lines is now linked as a whole place, as Abbot Cosmas's is: a name two places share goes to the page that lists both (`/places/the-pit`), and a name with no page is still read for the places it holds. **"What changes where she is" is no longer under Not sure yet** for a person who has `moves`: `personUnsure` (the one place the page, the doubt count and Help fill the gaps read) drops that field for them, whether the read flagged it or the person has no read. Neski, Ernanthil, Lynea, Rhiada, Gian, Herluin, Syndus, Vanryth, Kematu and Arnskar are checked by `e2e/wo184-10.spec.ts` (the last test). Part 7's data line (Abbot Cosmas's priory) is the PC's, below; the page of it shows with the fix there.
 
 Jeff's notes on Part 6a and Part 7's data line (PC, 31 Oct). **I viewed nothing in a browser.**
 - **After or During** (`people_moves.py`): a window still open when the quest ends is **After**; one that opens and shuts before it ends is During. A quest with no completing stage ends at its last (Kolskeggr Mine's 100): Pavo Attius is "After Kolskeggr Mine: Pavo's House". Drovas Relvi is After Reluctant Steward; Babette is After Hail Sithis! at the Dawnstar Sanctuary (and During Death Incarnate in the Brotherhood's, her wait at the attack). Laracin is now After The Ritual: Fort Justice. 153 moves on 116 people (was 136 on 104: the last-stage rule adds quests that had no completing stage).
@@ -5156,7 +5158,7 @@ Jeff's notes on Part 4 (PC, 30 Oct). The status says Part 4 is the PC's, so I di
 ---
 
 ## WO-184  Players make it right: screenshots, I know this, Help fill the gaps, one review list (Mac, 30 Oct 2026)
-Status: building (Mac: Part 10)
+Status: for Bob (Part 10 built; Bob: the boss names, and the frame at 390)
 
 **Why.** Dave, 30 Oct: with playthroughs cut, double down on quests, places and people, and "accelerate the ideas for community confirmation of quest info, the admin review section, and of course the image collection work for locations and NPCs." These are the backlog's 23 Oct, 28 Oct and 28 Oct items, decided.
 
@@ -5344,17 +5346,28 @@ The rest (Mac):
 **These pass:** a Map for people placed by cell (Laracin and 11 more at random), 44 px at 390, the scale bar clear of the credit, the towns' facts beside the frame (Who lives here at 825, 720 and 663 px on Riverwood, Whiterun and Dawnstar), the frame's + and − with the wheel still scrolling, no form signed out, the full screen at 390, "Sign in to add one" once, search suggestions lined up, the Danger fact. Signed in: a new upload on a page with none shows in the strip and the frame within seconds, no reload; the admin's sentence and "Choose another" are right.
 
 The rest (Mac):
-- [ ] **A generic boss is still said.** `isNamedPerson` returns true for any name with no person row, so creatures and ranks pass: "Its boss is Kagouti." (Saxhleel Camp), "Pirate." (Haknir's Shoal), "Troll." (Darkshade Copse), "Frost Troll." (Steepfall Burrow), "Ghost.", "Spellsword.", "First Mate.", "Silver Hand.", "Malevolent Necromancer.", "Northwatch Interrogator.", and "Warehouse Traps Reset Test Guy." (Warehouses). About 30 names. Say a boss only when the name has a person page of its own or is a named actor in the records (a unique actor with a full name: Captain Hargar). A name with no row is not a person. Add a test over every place's boss.
-- [ ] **At 390 the frame's controls cover pin names**: − over "Riverwood" (Bleak Falls Barrow), Full screen over "Igna's Basement" (Whiterun), the scale bar cuts "Nightcaller Temple" (Dawnstar). Place labels clear of the controls, as the full screen does.
-- [ ] **The frame's + and − are 34 px at 390**; make them 44. At the zoom limit, show the button as off.
-- [ ] **The frame's scale reads wrong after +**: the pins double apart and the label goes from 0.3 km to 0.2 km with the bar the same length. The bar or its number follows the zoom.
-- [ ] **Whiterun: a fold inside a fold.** "Who keeps what" opens six shops, then "and 7 more". One fold, all of them.
-- [ ] **Dawnstar: "Trainers and followers" reads "Followers"**, and its fold lists "Erandur, Gregor" with no "Followers:" label. Same shape as Whiterun's.
-- [ ] **"Thalmors and 1 more kind ›"** (Northwatch Keep): Thalmor is its own plural. Use the records' plural, or a list of words that don't take an s.
-- [ ] **After a delete, as admin**: deleting a place's only screenshot leaves the frame on an empty Screenshot view (it should go back to the Map, as a fresh page does), and adding one again without a reload shows nothing until the reload (it is saved).
-- [ ] Then `for Bob`.
+- [x] **A generic boss is still said.** `isNamedPerson` returns true for any name with no person row, so creatures and ranks pass: "Its boss is Kagouti." (Saxhleel Camp), "Pirate." (Haknir's Shoal), "Troll." (Darkshade Copse), "Frost Troll." (Steepfall Burrow), "Ghost.", "Spellsword.", "First Mate.", "Silver Hand.", "Malevolent Necromancer.", "Northwatch Interrogator.", and "Warehouse Traps Reset Test Guy." (Warehouses). About 30 names. Say a boss only when the name has a person page of its own or is a named actor in the records (a unique actor with a full name: Captain Hargar). A name with no row is not a person. Add a test over every place's boss.
+- [x] **At 390 the frame's controls cover pin names**: − over "Riverwood" (Bleak Falls Barrow), Full screen over "Igna's Basement" (Whiterun), the scale bar cuts "Nightcaller Temple" (Dawnstar). Place labels clear of the controls, as the full screen does.
+- [x] **The frame's + and − are 34 px at 390**; make them 44. At the zoom limit, show the button as off.
+- [x] **The frame's scale reads wrong after +**: the pins double apart and the label goes from 0.3 km to 0.2 km with the bar the same length. The bar or its number follows the zoom.
+- [x] **Whiterun: a fold inside a fold.** "Who keeps what" opens six shops, then "and 7 more". One fold, all of them.
+- [x] **Dawnstar: "Trainers and followers" reads "Followers"**, and its fold lists "Erandur, Gregor" with no "Followers:" label. Same shape as Whiterun's.
+- [x] **"Thalmors and 1 more kind ›"** (Northwatch Keep): Thalmor is its own plural. Use the records' plural, or a list of words that don't take an s.
+- [x] **After a delete, as admin**: deleting a place's only screenshot leaves the frame on an empty Screenshot view (it should go back to the Map, as a fresh page does), and adding one again without a reload shows nothing until the reload (it is saved).
+- [x] Then `for Bob`.
 
-Bob's rulings on the reviewer's questions: the search list keeps the kind on every row as Dave asked (30 Oct), and the group headings stay. The data faults the reviewer saw (editor names as places, "???") are the PC's, in WO-183 Part 8.
+Bob's rulings on the reviewer's questions: the search list keeps the kind on every row as Dave asked (30 Oct), and the group headings stay. The data faults the reviewer saw (editor names as place### Jeff's notes
+
+**Mac, 31 Oct: Part 10.** Typecheck, lint (the two old warnings), `npm test` (970 passed, 7 expected fail), build and the full e2e (628 passed; six tests in the character, perk-tree and build-report specs timed out in the full run, which took 1.2 hours because the machine stalled, and pass alone). `e2e/wo184-10.spec.ts` is the part's own check (6 tests; the screenshot is `test-results/wo184-10-frame-map-390.png`); `wo184.spec.ts`'s admin test now deletes the only screenshot, expects the Map, and adds one again without a reload.
+- **A boss is someone** (`src/lib/people/someone.ts`, `isNamedPerson`). The cause was what you said: the records have no flag that tells a unique actor from a kind (Captain Hargar and Pirate are both `generic`, both "leveled"), and any name with no page passed. The name is now what decides: a boss is said when it has a word that is not a creature, a rank, a trade or a faction (Hargar, Gathrik, Krilqolaasdaan, Piquine), with a title in front (Captain, Warlord, King, Sir) or who they are after (the Drunk, of Order) allowed, and a creature or rank word anywhere else makes it a kind (Ghost Captain, Frostbite Spider, Imperial Soldier). A page of its own no longer makes a name someone: "Ghost" has one. Of the 242 names, 167 are said and 75 are not; I read both lists. **Unsaid, and you may want them said:** The King of Leeches, The Lost Paladin, Yngol's Shade, Kodlak's Werewolf Spirit, Butcher. **Said, and may be a kind:** Count Lead (a giant), Ritual Master. The vocabulary is `KINDS` and `TITLES` in that file; `wo184-10.test.ts` checks your list stays unsaid and Captain Hargar stays said, and the 242 count has a floor. A PC fix would be a `unique` flag on the boss from the record's own flag (`places.py`); then the names list goes.
+- **Names clear of the controls.** The labels were placed against a guess at where each control sits. They are now placed against the controls' own boxes, measured (the map's compass, scale, credit, Full screen, + and −, and the frame's Screenshot | Map switch beside them) and kept up to date as they move (a resize observer), so the guess is only the first paint. `wo184-10.spec.ts` checks Bleak Falls Barrow, Whiterun, Dawnstar and Riverwood at 390: no drawn name overlaps any control.
+- **+ and −** are 44 px at 390 (below Full screen, with the compass moved down to match). **At the end of the zoom the button is off** (`disabled`, dimmed): a phone opens at the small tiles, so − is off there and + is on; the whole map's buttons go off at the picture's width and six times it.
+- **The scale** says a round length (50 km down to 10 m) that fits beside the credit, and draws the bar that long. One step of + doubles the pins' spacing and the bar's number halves; the test reads the bar's pixels against its words and wants the ratio between 1.8 and 2.2.
+- **Whiterun**: "Who keeps what" is one fold with every shop in it. **Dawnstar** has no trainers, so the cell is "Followers" with the names, no fold; with trainers it is "Trainers and followers" and the fold labels "Followers:" as before.
+- **Plurals** (`src/lib/places/kinds.ts`): every kind the records have (21), so Thalmor, Draugr, Falmer and Forsworn take no s and Dragon Priest, Wolf, Giant are right. The place page and a town both use it.
+- **After a delete as admin** the frame goes back to the lead screenshot or, with none left, to the Map (as a fresh page does). I could not make "adding one again shows nothing until the reload" happen locally: the second upload shows in the frame at once (it is in the test). If it still does on staging after this, tell me which page.
+
+ PC's, in WO-183 Part 8.
 
 ### Jeff's notes
 
