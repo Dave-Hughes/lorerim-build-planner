@@ -5293,7 +5293,7 @@ Option 1 (Part 7's hero background, the full map band, then the Screenshots sect
 ---
 
 ## WO-183  Data you can trust: fix the causes the accuracy audit found (PC, then Mac, 30 Oct 2026)
-Status: for Bob (PC: Part 6 pushed, notes below; Mac: render `startsHere` and `rewards.choice`; then Bob runs the fresh sample)
+Status: queued (PC: Part 7 first, then Mac renders; then Bob runs the fresh sample)
 
 **Why.** Dave, 30 Oct: "With us cutting playthroughs we're going to want to double down on quests, locations, NPCs… make sure the pages are BULLET proof, the data must be as solid as we can get it."
 
@@ -5422,6 +5422,30 @@ Unknown is fine when the page says so. Wrong is not.
 - [x] **Missives**: leave Kill Some Marauders and Kill Some Forsworn as they are.
 - [ ] **Mathies**: the reviewer will say where the second one showed.
 - [ ] Then `for Bob`. Bob runs the fresh sample (Part 5) when this part is in.
+
+### Part 7. What's missing altogether (Dave, 30 Oct, 20:08)
+Dave has **"Blue in the Face"** in his quest log, and it sends him to **Gromm's Pass**. Neither is on the planner. Bob looked:
+- The quest isn't in `quests_raw.json` at all.
+- Gromm's Pass has no place. Its people are in `people_raw.json` ("Blue God", Avanessa Calladius and the goblins, cell "Gromm's Pass"), all from `ccbgssse040-advobgobs.esl`, a Creation Club plugin in `plugins_raw.json`.
+- `places_raw.json` knows the plugin only through a book ("Blue God's Journal").
+- Other Creation Club quests are in the data (148 `ccbgssse` mentions in `quests_raw.json`), so something in the scan drops this plugin's quests and locations.
+
+The audit sampled what the planner has. It never asked what it doesn't have. This part does.
+- [ ] **Find why**, and say it in the notes: the plugin's QUST records, its LCTN or map markers, and which filter or step drops them.
+- [ ] **A coverage check across the whole load order**, written to `quests_report.md`, with three lists:
+  - for each plugin: its QUST records with a name and journal stages, against the quests in `quests_raw.json`;
+  - its map markers and named locations, against `places_raw.json`;
+  - its unique named NPCs, against `people.json`.
+
+  For each plugin, list what's missing, or why it's left out on purpose (a handler with no journal, a test cell, a cut quest).
+- [ ] **Bring back what's missing for no reason**:
+  - Blue in the Face and the rest of that plugin's quests;
+  - Gromm's Pass on the map and as a place page;
+  - anything else the check finds.
+
+  Read through the same reads as the rest, with "Not sure yet" where the reads can't say.
+- [ ] **Dave's save as a second check.** Every quest in Save 295's quest log with a name a player sees must have a page. List any that don't, by editor id and plugin.
+- [ ] Then the fresh sample (Part 5) counts a missing quest or place the same as a wrong one.
 
 ### Jeff's notes
 
