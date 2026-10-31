@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-185  Dave's notes from using the app (Mac, PC for Part 4, 30 Oct 2026)
-Status: queued (Mac: Parts 1 to 3 and 5, after WO-184 Part 8; PC: Part 4 pushed for Bob, notes below)
+Status: building (Mac: Parts 1 to 3 and 5; PC: Part 4 pushed for Bob, notes below)
 
 **Why.** Dave used staging on 30 Oct (18:35) and sent these. They are small, and each one is something a player meets in the first minutes. **This is the last order before launch that adds anything.** After it, the launch list is closed: these orders pass the reviewer, Dave tests once, and Bob moves production.
 
