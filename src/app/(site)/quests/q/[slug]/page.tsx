@@ -6,6 +6,7 @@ import { notFound, permanentRedirect } from "next/navigation";
 import { ConfirmButton } from "@/components/pages/confirm-button";
 import { Linked } from "@/components/pages/linked";
 import { PreviewLink } from "@/components/pages/preview-link";
+import { startCell } from "@/lib/quests/start-cell";
 import { pageExtras } from "@/components/pages/page-extras";
 import {
   Gold,
@@ -125,11 +126,12 @@ export default async function QuestPage({
     ).values(),
   ];
   // Mods first, so a place or a person of the same name wins the link.
+  // The people first among the names, each the one this quest's records name (WO-180 Part 9b: two Wilhelms are two pages).
   const names = [
     ...modNames(),
+    ...personNames(people.map((p) => p.name), quest.edid),
     ...linkable(),
     ...ownPlaceNames([quest.name]),
-    ...personNames(people.map((p) => p.name)),
   ];
 
   const ways = page.ways;
@@ -197,9 +199,7 @@ export default async function QuestPage({
   const sureLine = page.sure.replace(/\.?\s*Unsure: .*$/, "");
 
   // At a glance (WO-165, the colours of rule 34): how it starts (green), level and danger (red), where it takes you (teal), what it pays (gold), and the ways to finish it (violet).
-  const first = page.starts[0];
-  const startWho = first?.who;
-  const startPlace = first && !vaguePlace(first.where) ? placeOnly(first.where) : undefined;
+  const startAt = startCell(page);
   const levelNeed = page.needs.map((n) => /\bLevel (\d+)/i.exec(n.text)?.[1]).find(Boolean);
   const danger = page.takesYou.find((t) => t.danger);
   const wayCount = ways && !choicesOnly ? ways.ways.length : 0;
@@ -210,9 +210,9 @@ export default async function QuestPage({
       icon: "quest-sure",
       tone: "green",
       label: "How it starts",
-      value: startWho ? <Linked names={names} text={startWho} /> : (page.canDo?.label ?? "Not known yet"),
-      sub: startPlace ? <Linked names={names} text={startPlace} /> : first?.how && first.how.length <= 110 ? <Linked names={names} text={first.how} /> : undefined,
-      small: !startWho,
+      value: startAt.who ? <Linked names={names} text={startAt.who} /> : startAt.value,
+      sub: startAt.sub ? <Linked names={names} text={startAt.sub} /> : undefined,
+      small: !startAt.who,
     }),
     cell({ key: "level", icon: "tab-levels", tone: "red", label: "Level and danger", value: levelNeed ? `Level ${levelNeed}` : lineLevelText(line), sub: danger ? `${danger.place}: ${danger.danger}` : undefined }),
     page.takesYou.length
@@ -521,6 +521,7 @@ export default async function QuestPage({
                           <Linked key={j} names={names} text={t} />
                         ))}
                       />
+                      {st.then && <p className={styles.way}>{st.then}.</p>}
                     </div>
                   </div>
                 ))}

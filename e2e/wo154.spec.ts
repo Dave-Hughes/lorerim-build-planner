@@ -80,7 +80,7 @@ test("a person's page: race, town, the cell they are placed in, their quests, an
   for (const chip of ["Follower", "Can marry", "Gives quests", "Can't be killed"]) await expect(page.locator("main").getByText(chip, { exact: true }).first()).toBeVisible();
   // Nothing about the hours is known, so there is no section for them (WO-157); Information Confidence says what isn't sure.
   await expect(page.getByRole("heading", { name: /Where to find/ })).toHaveCount(0);
-  await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("Where they are through the day and night");
+  await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("Where she is through the day and night");
   await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("A second reader hasn't checked this page yet");
   expect((await page.goto("/people/not-a-person"))?.status()).toBe(404);
 });

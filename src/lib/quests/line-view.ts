@@ -310,7 +310,8 @@ export function lineView(line: QuestLine): LineView {
           ...(!line.giver ? (waysIn ?? []).map((w) => w.how) : []),
           !line.giver && !line.start && line.firstObjective ? `First step: ${line.firstObjective}` : "",
         ].filter(Boolean);
-  const startText = startLines[0] ?? null;
+  // A phrase that stands alone starts with a capital (WO-180 Part 7b).
+  const startText = startLines[0] ? capFirst(startLines[0]) : null;
   const chapterCount = story ? story.chapters.length : 0;
   const xpTotal = story ? story.chapters.flatMap((c) => c.quests).reduce((n, q) => n + q.xp, 0) : line.xpTotal;
   return {
@@ -323,7 +324,7 @@ export function lineView(line: QuestLine): LineView {
     jobsNote,
     opens,
     glance: {
-      start: { value: shelf ? "Each job on its own" : (story?.chapters[0]?.name ?? first0?.name ?? opening?.name ?? "Not read yet"), sub: shelf ? (chapters.some((c) => c.quests.some((q) => q.href)) || jobs.some((j) => j.href) ? "Open one for how it starts" : null) : startText, more: shelf ? [] : startLines.slice(1) },
+      start: { value: shelf ? "Each job on its own" : (story?.chapters[0]?.name ?? first0?.name ?? opening?.name ?? "Not read yet"), sub: shelf ? (chapters.some((c) => c.quests.some((q) => q.href)) || jobs.some((j) => j.href) ? "Open one for how it starts" : null) : startText, more: shelf ? [] : startLines.slice(1).map(capFirst) },
       level: { value: lineLevelText(line), sub: line.level ?? null },
       length: {
         value: `${storyQuests.length || quests.length - skipped.size} ${(storyQuests.length || quests.length - skipped.size) === 1 ? "quest" : "quests"}`,

@@ -5951,7 +5951,7 @@ Mac's notes (30 Oct). Everything is built and checked except Kyria's text on sta
 **Tests that went:** the Story's (wo79 author and reader, wo114's first chapter, wo116's reader, Read Act I, markers and previous/next, wo117's Story tab and chapters, wo118's reader and image position, wo124's story card, wo142's chapter paragraphs, wo111's reader), and the ticking ones that moved to the tracking server. The "About them" display test became "the page has none".
 
 ## WO-180  Junk text out of the pages, and the last map faults (Mac and PC, 28 Oct 2026)
-Status: queued (PC: Part 10; Mac: Part 9b and Part 7b)
+Status: queued (PC: Part 10; Mac: Parts 7b and 9b are for Bob)
 
 **Why.** The fourth cold review (Bob's reviewer, 3,721 pages crawled, 51 walked at both widths) passed WO-176 to WO-178, and named what would still hit Dave in his first ten minutes: old text from the game files that was never cleaned. Bob confirmed the holes and Web Mother by hand. No order is done until a page-text test fails on each of these.
 ### Part 1. Quotes (PC writes the cleaner; Mac's test fails on any page)
@@ -6228,15 +6228,15 @@ Mathies shows twice on Ill Met By Moonlight's People: once unlinked ("Mathies an
   - Check 20 shops across five cities against UESP before pushing, and list them in the notes with the source for each.
 
 **Part 7b (Mac)**
-- [ ] **Whiterun has no label on `/map?types=homes`** at the opening view or any zoom-out, at both widths; two "2" badges sit where it should be. A city's own label wins over a cluster badge. Fix the badge sitting on a badge after zoom-outs, and Anga's Mill's pin on "Windhelm, 24" after one zoom-in.
-- [ ] **Capitals everywhere a phrase stands alone** (Bob's call: the sub-lines too):
+- [x] **Whiterun has no label on `/map?types=homes`** at the opening view or any zoom-out, at both widths; two "2" badges sit where it should be. A city's own label wins over a cluster badge. Fix the badge sitting on a badge after zoom-outs, and Anga's Mill's pin on "Windhelm, 24" after one zoom-in.
+- [x] **Capitals everywhere a phrase stands alone** (Bob's call: the sub-lines too):
   - the How it starts headline (28 pages, for example Hunting the Monster);
   - the How it starts place line (about 330, for example The Golden Claw's "the Riverwood Trader, Riverwood").
 
   The test checks every band cell's first letter.
-- [ ] **Pronouns in Not sure yet**: "Where they are through the day…" and "How to recruit or marry them" on 1,425 pages that say he or she. Use the person's pronoun.
-- [ ] **The Dwemer Specialist** numbers "Then as the main branch" as a step. A branch joiner is never a step. Untick the box until it's right; coordinate with the PC if it's in the data.
-- [ ] Screenshots at 1440 and 390, then `for Bob`.
+- [x] **Pronouns in Not sure yet**: "Where they are through the day…" and "How to recruit or marry them" on 1,425 pages that say he or she. Use the person's pronoun.
+- [x] **The Dwemer Specialist** numbers "Then as the main branch" as a step. A branch joiner is never a step. Untick the box until it's right; coordinate with the PC if it's in the data.
+- [x] Screenshots at 1440 and 390, then `for Bob`. (`test-results/wo180-7b-*.png`.)
 
 Jeff's notes on Part 7a (PC, 30 Oct):
 - **A story quest says its person** (`overrides.json` `questAliases`, `alias_rulings` in `quest_pages.py`). The records leave some people as an alias filled at run time and `plain_alias` then said "the person the job names". Bob's rule (a story quest always has its person, from the record or the read) is a small ruling table, by editor id and alias, in the read's own words: A False Front's Courier is "the enemy courier" ("Find the enemy courier", "Retrieve the enemy courier's package"), Blood on the Ice's AuthorityFigure is "the steward" (the read: "Talk to the steward"; all three steps, and the read's), The Frozen Heart's WaifuKill is Othriel ("Kill Othriel."), and every Rare Gifts town job's QuestItem is "of the requested item" ("Bring one of the requested item to Torbjorn", as Dawnstar's already read). The reads and ways that copied the old text are mapped to the new (`ruled`). I checked the rest of the 288 quests that hold a job phrase: they are radiant jobs, bounties and Missives (the job really picks), and the three story-ish ones left ("Clear the place the job names with Aerin and Mjoll", Harsh Master's bandit camp, Amulet of the Moon's dungeon) are places the game picks when it is given. The answer-key test counts a ruled word as a role (UESP says "the courier").
@@ -6318,9 +6318,9 @@ Jeff's notes on Part 8 (PC, 30 Oct). I did the pages as well as the data again (
   - No line has two brackets in a row ("Sybille Stentor, spells (The Blue Palace) (with Melaran)").
 
 **Part 9b (Mac)**
-- [ ] A person page's quests come from that person's record, not `questsOf(person.name)` (`people/[slug]/page.tsx`). A quest page links each person to their own page.
-- [ ] `contract.test.ts` "search_facts finds a sample…" still times out at about 5.3 s under load. It was already slow before Part 8. This is WO-182 Part 5's box; it's restated here so it isn't missed.
-- [ ] Then `for Bob`.
+- [x] A person page's quests come from that person's record, not `questsOf(person.name)` (`people/[slug]/page.tsx`). A quest page links each person to their own page.
+- [x] `contract.test.ts` "search_facts finds a sample…" still times out at about 5.3 s under load. It was already slow before Part 8. This is WO-182 Part 5's box; it's restated here so it isn't missed.
+- [x] Then `for Bob`.
 
 Jeff's notes on Part 9a (PC, 30 Oct). **I viewed nothing in a browser.**
 - **Each quest's people, by base record** (`people.py` `quest_links`, `people.json` `questIds`, `Person.rows[].questIds`). A row gets the editor ids of the quests that fill an alias with that record (the dump's ALUA links) and of those that start with it or name it in their giver data (`quest_givers_raw.json`: `people`, `giver`, `namedGiver`, `others`). The page's own list is `questsOfPerson(person)` in `lib/people/quests.ts` (I changed the one line in `people/[slug]/page.tsx`; Mac: the rest of 9b is yours): a name only one person has is as before; a name two people have is, for each, the quests tied to their record, and the ones that name the name and no record only for the one with the bare address. `PersonQuest` has `edid` now so a quest page can find the record's person the same way (`questsOfPeople()` is by name; the reverse index is `rows[].questIds`). Checked: Wilhelm of Windhelm has A Simple Delivery and not Lifting the Shroud; Wilhelm of Ivarstead has his innkeeper's and not A Simple Delivery; Brurid (Windhelm) gives no Infiltration; Adara (Markarth) is no one's escort; no quest is on two of a name's people (Frida, Jacob).
@@ -7991,6 +7991,15 @@ How it runs. Bob runs it from the chat session, since it's agents reading, not a
 - **WO-152** parked: its measure is done (793cb11) and it told us the size. The audit is replaced by WO-153's bake-off and checks; Part 1 (reading packages by rule) by WO-156 (dump) and WO-155 (read).
 - **WO-140** closed: the reads write every start in words; there are no conditions left to name by rule.
 - **WO-144 Part 2 (people)** replaced by WO-156 and WO-155. Parts 1e-4 (places) and 3 (where books are) go on: they're structured data, not reading.
+
+
+**Jeff's notes, Mac (Parts 7b and 9b, 31 Oct)**
+- **The map.** Three causes, each fixed in `map-page.tsx`: (1) a town's folded pin ("Whiterun, 21") was grouped into a count with whatever lay within 14 px, so on the homes view it vanished under two "2"s; a folded town pin now keeps its own plate like a city, and a city's folded pin ranks with the cities when names compete (it was losing to a smaller town's when zoomed out); (2) two counts could end up on each other, because a group's middle moves as pins join it: counts closer than a badge is wide (28 px) are now one (a lone pin only joins a count as near as pins group at all: a first try that merged lone pins too made 85 counts where there had been 41, and wo169's "fewer than 55" caught it); (3) a name could cover another pin's diamond (Anga's Mill under "Windhelm, 24"): a plate now keeps off other pins' diamonds, and a city, a town or a folded town with no such side takes one that is only clear of other names. On `/map?types=homes`, "Whiterun, 21" is named at the opening view and after two zoom-outs at 1440 and 390 and no two counts overlap (`e2e/wo180-7b.spec.ts`), and after one zoom-in no name covers Windhelm's or Anga's Mill's diamond.
+- **Capitals.** `startCell()` (`lib/quests/start-cell.ts`) is the How it starts cell of a quest page: who, then the place or how, each through `capFirst`; the line page's How it starts text and its further lines too. `start-cell.test.ts` checks the first letter of the headline and the sub-line of every quest page and of every cell of every line's band.
+- **Pronouns.** `pronounField()` (`lib/people/data.ts`): Not sure yet says "Where she is through the day and night", "How to recruit or marry him", "What she trains", "How she joins you" for a person the data gives a sex; a person of no known sex keeps "they". It runs in `personUnsure`, so Help fill the gaps and the page agree. The Information Confidence's sources line still says "Their race, where they are placed and their quests" (not a Not sure yet line; say if it should follow).
+- **The Dwemer Specialist.** "Then as the main branch" is `then` on its branch, said under the steps as a sentence, never numbered (`BRANCH_JOINER` in `reads.ts`; the only one in the data). If the PC would rather it left the data, the page no longer needs it to.
+- **Part 9b.** A person's quests are the ones that name them plus the ones the records tie to their record, for every person (270 pages gain some, 341 in all; Aela gains Proving Honor, "is in 4 more" now); two people of one name keep their own lists as 9a made them. A quest page links each person to the one its records name (`personHrefForQuest`, tried first among the page's names), so Wilhelm of Ivarstead's quest does not link Windhelm's. `wo180-9b.test.ts`. The contract test is WO-182 Part 5's box and is done there.
+- Specs changed with this: wo154, wo159 and wo165 (she, not they, in Not sure yet; Aela's four more). Checks: typecheck, lint (the two old warnings), `npm test`, build, and the full e2e (613 passed on the last full run, then the specs above and the map count fix rerun).
 
 ---
 

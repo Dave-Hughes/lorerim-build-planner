@@ -387,7 +387,7 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
   // place, a route's stops, the cities, then the towns) and the lesser one is dropped.
   const items = useMemo(() => {
     const blockedBox = (b: Box) => b[0] < 6 || b[2] > size.w - 6 || [...covered.sheet, ...covered.over].some((o) => b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1]);
-    type Item = { p: MapPlace; x: number; y: number; named: boolean; side: Side; label: string; picked: boolean; ok: Record<Side, boolean>; members?: string[] };
+    type Item = { p: MapPlace; x: number; y: number; named: boolean; side: Side; label: string; picked: boolean; ok: Record<Side, boolean>; members?: string[]; city?: boolean };
     const out: Item[] = [];
     for (const p of places) {
       const { x, y } = toScreen(p.px, p.py);
@@ -410,7 +410,7 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
       seenTown.add(t.slug);
       // At every zoom the town's pin carries its count, and hovering it lists the places of the picked kind (WO-178 Part 3).
       const label = names.length > 1 ? `${t.name}, ${names.length}` : names[0];
-      return [{ ...it, label, members: names, p: { ...it.p, slug: t.slug, name: label } }];
+      return [{ ...it, label, members: names, city: bySlug.get(t.slug)?.kind === "city", p: { ...it.p, slug: t.slug, name: label } }];
     });
     for (const it of drawn) {
       const w = plateWidth(it.label);
@@ -421,7 +421,8 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
       const any = it.ok.right || it.ok.left || it.ok.above || it.ok.below;
       it.named = it.members ? any : (it.picked || any) && (it.picked || it.p.kind === "city" || (it.p.kind === "town" && k >= 0.28) || k >= 0.85);
     }
-    const rank = (it: Item) => (it.picked ? 0 : it.p.kind === "city" ? 1 : it.members || it.p.kind === "town" ? 2 : 3);
+    // A city's folded pin is the city's own name: it ranks with the cities (WO-180 Part 7b: Whiterun, 21 lost its plate to a smaller town's when zoomed out).
+    const rank = (it: Item) => (it.picked ? 0 : it.p.kind === "city" || it.city ? 1 : it.members || it.p.kind === "town" ? 2 : 3);
     const taken: Box[] = [];
     // Within a rank the name with fewest sides to go on is placed first, so a stop at the edge keeps the side it has (WO-180 Part 5b: Saarthal).
     const sidesLeft = (it: Item) => Object.values(it.ok).filter(Boolean).length;
@@ -434,7 +435,10 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
       // The other side is tried before a name is dropped (WO-180 Part 5b: both stops of The Golden Claw lost theirs with room left and right), and
       // then above and below (Part 6b: a 1 to 4 px collision dropped both at 390).
       const order = (it.side === "left" ? ["left", "right", "above", "below"] : ["right", "left", "above", "below"]) as Side[];
-      const side = order.find((sd) => it.ok[sd] && free(boxAt(it.x, it.y, w, sd)));
+      // A name does not cover another pin's diamond (WO-180 Part 7b: Anga's Mill's pin sat on "Windhelm, 24"). A city, a town or a folded town that has no side clear of diamonds takes one that
+      // is only clear of other names, as before: its name matters more than a lesser pin's spot.
+      const offPins = (box: Box) => !drawn.some((o) => o !== it && box[0] < o.x + 9 && box[2] > o.x - 9 && box[1] < o.y + 9 && box[3] > o.y - 9);
+      const side = order.find((sd) => it.ok[sd] && free(boxAt(it.x, it.y, w, sd)) && offPins(boxAt(it.x, it.y, w, sd))) ?? (rank(it) <= 2 ? order.find((sd) => it.ok[sd] && free(boxAt(it.x, it.y, w, sd))) : undefined);
       if (!side) it.named = false;
       else {
         it.side = side;
@@ -451,7 +455,8 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
     const singles: typeof items = [];
     const groups: { x: number; y: number; members: typeof items }[] = [];
     for (const it of items) {
-      if (it.p.kind === "city" || selected === it.p.slug || inRoute.has(it.p.slug) || lit.has(it.p.slug)) {
+      // A city, and a town's folded pin ("Whiterun, 21"), keep their own plates: a count never takes their place (WO-180 Part 7b: Whiterun had no label on the homes view, two 2s where it stood).
+      if (it.p.kind === "city" || it.members || selected === it.p.slug || inRoute.has(it.p.slug) || lit.has(it.p.slug)) {
         singles.push(it);
         continue;
       }
@@ -461,6 +466,20 @@ export function MapPage({ entry, places, initial }: { entry: MapEntry; places: M
         g.x = g.members.reduce((a, m) => a + m.x, 0) / g.members.length;
         g.y = g.members.reduce((a, m) => a + m.y, 0) / g.members.length;
       } else groups.push({ x: it.x, y: it.y, members: [it] });
+    }
+    // A group's middle moves as pins join it, so two groups can end up on each other: they are one count (WO-180 Part 7b: a badge on a badge after zooming out).
+    const reach = size.w < 700 ? 22 : 14;
+    for (let merged = true; merged; ) {
+      merged = false;
+      for (let i = 0; i < groups.length && !merged; i++)
+        for (let j = i + 1; j < groups.length && !merged; j++)
+          // Two counts closer than a badge is wide are one; a lone pin joins a count only as near as pins group at all (merging two lone pins would make a count where none was).
+          if (Math.hypot(groups[i].x - groups[j].x, groups[i].y - groups[j].y) < (groups[i].members.length > 1 && groups[j].members.length > 1 ? 28 : reach)) {
+            const m = [...groups[i].members, ...groups[j].members];
+            groups.splice(j, 1);
+            groups[i] = { x: m.reduce((a, q) => a + q.x, 0) / m.length, y: m.reduce((a, q) => a + q.y, 0) / m.length, members: m };
+            merged = true;
+          }
     }
     const clusters: { x: number; y: number; n: number; px: number; py: number }[] = [];
     for (const g of groups) {

@@ -47,9 +47,27 @@ export const questsOf = (name: string): PersonQuest[] => questsOfPeople().get(na
  */
 export function questsOfPerson(person: Person): PersonQuest[] {
   const named = questsOf(person.name);
-  if (!person.label) return named;
   const mine = new Set(person.rows.flatMap((r) => r.questIds ?? []));
+  // The quests the records tie to this person's own record come from that record (WO-180 Part 9b), whether or not the page's words name the name.
+  const tied = tiedQuests([...mine]).filter((q) => !named.some((n) => n.edid === q.edid));
+  if (!person.label) return [...named, ...tied];
   const others = new Set(peopleData().all.filter((p) => p !== person && nameKey(p.name) === nameKey(person.name)).flatMap((p) => p.rows.flatMap((r) => r.questIds ?? [])));
   const main = peopleData().byName.get(nameKey(person.name)) === person;
-  return named.filter((q) => mine.has(q.edid) || (main && !others.has(q.edid)));
+  return [...named.filter((q) => mine.has(q.edid) || (main && !others.has(q.edid))), ...tied];
+}
+
+let byEdid: Map<string, { name: string; href: string }> | null = null;
+/** The quests with these editor ids that have a page, in the order given. */
+function tiedQuests(ids: string[]): PersonQuest[] {
+  if (!byEdid) {
+    byEdid = new Map();
+    for (const line of questsData().lines) for (const q of line.quests) {
+      const href = questHref(q.edid);
+      if (href && q.name) byEdid.set(q.edid, { name: q.name, href });
+    }
+  }
+  return ids.flatMap((id) => {
+    const q = byEdid!.get(id);
+    return q ? [{ name: q.name, edid: id, href: q.href, gives: false }] : [];
+  });
 }

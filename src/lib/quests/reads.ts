@@ -46,7 +46,8 @@ export interface QuestPage {
   opens: PageLink[];
   closes: string[];
   /** Section 9: the journal's objectives, by branch when it branches. */
-  steps: { branch?: string; objectives: string[] }[];
+  /** `then`: where a branch goes on from ("Then as the main branch"): said under its steps, never one of them. */
+  steps: { branch?: string; objectives: string[]; then?: string }[];
   /** The choices tied to their steps ("N ways to finish it"), for a read quest that has them. */
   ways?: QuestWays;
   /** The mods that changed it, beyond its own. */
@@ -188,6 +189,9 @@ const playerWays = (q: Quest) => (q.start?.ways ?? []).filter((w) => w.checked =
  */
 const blank = (t: string | undefined) => !t?.trim() || /^(not\b[^.]*\b(records|files|given|named|placed|listed|known|recorded)|none\b|no one\b|nobody\b|unknown\b|n\/a\b)/i.test(t.trim());
 
+/** What a branch does after its last step ("Then as the main branch", "Continue as the main branch"): not a step. */
+export const BRANCH_JOINER = /^(?:then|and then|now|continue)?\s*(?:as|like|on|with|follow)?\s*(?:the )?(?:main|other|first) branch\.?$/i;
+
 /** The read's field names as a player says them. */
 const FIELD_WORDS: Record<string, string> = { canDo: "can I do it", needs: "what you need", starts: "how to start", firstStep: "first step", takesYou: "where it takes you", choices: "choices", rewards: "what you get", opens: "what it opens", closes: "what it closes", steps: "steps", people: "people", where: "where", who: "who", hold: "hold" };
 
@@ -241,7 +245,15 @@ function viaReads(q: Quest, r: QuestRead): QuestPage {
     opens: (r.opens ?? []).map(linkFor),
     closes: r.closes ?? [],
     // A branch label and a step start with a capital (WO-180 Part 6b: "you had already killed Nimhe", "then as the main branch").
-    steps: (r.steps ?? []).map((s) => ({ ...(s.branch && s.branch !== "main" ? { branch: capFirst(s.branch) } : {}), objectives: (s.objectives ?? []).map(capFirst) })).filter((s) => s.objectives.length),
+    steps: (r.steps ?? [])
+      .map((s) => {
+        // A branch joiner ("Then as the main branch") is where the branch goes on from, never a step (WO-180 Part 7b: it was numbered as one on The Dwemer Specialist).
+        const all = (s.objectives ?? []).map(capFirst);
+        const join = all.filter((o) => BRANCH_JOINER.test(o.trim()));
+        const objectives = all.filter((o) => !BRANCH_JOINER.test(o.trim()));
+        return { ...(s.branch && s.branch !== "main" ? { branch: capFirst(s.branch) } : {}), objectives, ...(join.length ? { then: join[0].trim().replace(/\.$/, "") } : {}) };
+      })
+      .filter((s) => s.objectives.length),
     ...(r.ways?.ways?.length ? { ways: r.ways } : {}),
     changedBy: q.changedBy ?? [],
     people: (r.people ?? []).filter((p) => !blank(p.name)),

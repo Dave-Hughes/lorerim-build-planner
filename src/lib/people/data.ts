@@ -263,6 +263,17 @@ export const skillWords = (skill: string) => SKILLS[skill] ?? skill.replace(/([a
 /** A person by their name, case and spacing aside; null when the index has none. */
 export const personByName = (name: string) => peopleData().byName.get(nameKey(name)) ?? null;
 
+/**
+ * A person's own address for a quest (WO-180 Part 9b): two people can share a name (Wilhelm of Windhelm and Wilhelm of Ivarstead), and a quest names the one its records tie it
+ * to. With none tied, the bare address, the one players mean.
+ */
+export const personHrefForQuest = (name: string, edid: string): string | null => {
+  const same = peopleData().all.filter((p) => nameKey(p.name) === nameKey(name));
+  const tied = same.find((p) => p.rows.some((r) => r.questIds?.includes(edid)));
+  const p = tied ?? same[0];
+  return p ? `/people/${p.slug}` : null;
+};
+
 /** What a person is, in a few words, from their own page: the read's role, else the records' job (WO-177: a quest's People gave a role to some and none to the rest). */
 export function roleOfName(name: string): string | null {
   const p = personByName(name);
@@ -282,8 +293,25 @@ export const personHref = (name: string): string | null => {
  */
 export function personUnsure(person: Person): Unsure[] {
   const read = person.read;
-  if (!read) return [{ field: "where they are through the day and night" }, { field: "what changes where they are" }, ...(person.follower || person.marriage ? [{ field: "how to recruit or marry them" }] : [])];
+  const say = (u: Unsure): Unsure => ({ ...u, field: pronounField(u.field, person.sex) });
+  if (!read) return [{ field: "where they are through the day and night" }, { field: "what changes where they are" }, ...(person.follower || person.marriage ? [{ field: "how to recruit or marry them" }] : [])].map(say);
   const hedged: Unsure[] = [];
   for (const c of read.changes ?? []) for (const why of playerWords(c).unsure) hedged.push({ field: "What changes where they are", why });
-  return [...notSureOf(read), ...hedged];
+  return [...notSureOf(read), ...hedged].map(say);
+}
+
+/**
+ * A Not sure yet field in the person's own pronoun (WO-180 Part 7b): "Where they are through the day and night" on a page that says he or she says "Where she is through the day and
+ * night". Written once with "they"; a person of no known sex keeps it.
+ */
+export function pronounField(field: string, sex: string | undefined | null): string {
+  const subject = sex === "female" ? "she" : sex === "male" ? "he" : null;
+  if (!subject) return field;
+  const object = subject === "she" ? "her" : "him";
+  const cap = (w: string, at: string) => (at === at.toUpperCase() && at !== at.toLowerCase() ? w.charAt(0).toUpperCase() + w.slice(1) : w);
+  return field
+    .replace(/\b(they) (are)\b/gi, (_m, t: string) => `${cap(subject, t)} is`)
+    .replace(/\b(they) (can|will|must|may)\b/gi, (_m, t: string, v: string) => `${cap(subject, t)} ${v}`)
+    .replace(/\b(they) (\w+)\b/gi, (_m, t: string, v: string) => `${cap(subject, t)} ${/(s|x|z|ch|sh)$/.test(v) ? `${v}es` : v === "have" ? "has" : `${v}s`}`)
+    .replace(/\bthem\b/gi, (m) => cap(object, m));
 }

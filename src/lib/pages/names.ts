@@ -1,7 +1,7 @@
 import "server-only";
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import { peopleData, personHref } from "@/lib/people/data";
+import { peopleData, personHref, personHrefForQuest } from "@/lib/people/data";
 import { currentVersion } from "@/lib/rules/server";
 import { questHref } from "@/lib/quests/slugs";
 import { linkNames } from "./link-names";
@@ -75,13 +75,14 @@ export function ownPlaceNames(quests: string[]): NameLink[] {
 }
 
 /** The people a page names, as links: only those the index has, by the exact name the read gives. */
-export function personNames(names: (string | undefined)[]): NameLink[] {
+export function personNames(names: (string | undefined)[], quest?: string): NameLink[] {
   const seen = new Set<string>();
   const out: NameLink[] = [];
   for (const n of names) {
     if (!n || seen.has(n)) continue;
     seen.add(n);
-    const href = personHref(n);
+    // On a quest's page, each person is the one the quest's records name (WO-180 Part 9b), not whoever has the bare address for that name.
+    const href = quest ? personHrefForQuest(n, quest) : personHref(n);
     if (href) out.push({ text: n, href });
   }
   return out;

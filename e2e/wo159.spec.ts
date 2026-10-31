@@ -140,7 +140,7 @@ test.describe("the people reads", () => {
     const ic = page.getByRole("region", { name: "Information Confidence" });
     await expect(ic).toContainText("Read from the game files and checked by a second reader");
     await expect(ic.getByText("Second reader", { exact: true }).locator("xpath=preceding-sibling::span[1]")).toHaveText("✓");
-    await expect(ic).toContainText("What changes where they are");
+    await expect(ic).toContainText("What changes where she is");
     await expect(page.locator("main")).not.toContainText(/extracts?\b/i);
     for (const width of [1440, 390]) {
       await page.setViewportSize({ width, height: 900 });
