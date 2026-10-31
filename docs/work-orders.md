@@ -5316,7 +5316,7 @@ Option 1 (Part 7's hero background, the full map band, then the Screenshots sect
 ---
 
 ## WO-183  Data you can trust: fix the causes the accuracy audit found (PC, then Mac, 30 Oct 2026)
-Status: queued (PC: Part 7 pushed, notes below; Mac renders; then Bob runs the fresh sample)
+Status: queued (PC: Part 8; Mac renders Parts 6 to 8; then Bob runs the fresh sample)
 
 **Why.** Dave, 30 Oct: "With us cutting playthroughs we're going to want to double down on quests, locations, NPCs… make sure the pages are BULLET proof, the data must be as solid as we can get it."
 
@@ -5470,6 +5470,37 @@ The audit sampled what the planner has. It never asked what it doesn't have. Thi
 - [x] **Dave's save as a second check.** Every quest in Save 295's quest log with a name a player sees must have a page. List any that don't, by editor id and plugin.
 - [ ] Then the fresh sample (Part 5) counts a missing quest or place the same as a wrong one.
 
+### Part 8. The coverage check, reviewed (Bob's reviewer, 30 Oct, 23:00; Bob confirmed Blue in the Face and Deadlands on staging)
+These hold:
+- Blue in the Face has a page, and its steps match UESP.
+- Gromm's Pass is on the map in the right spot.
+- The coverage report runs plugin by plugin.
+- Dave's save leaves 13 named quests with no page. The same 13 show against Save 301.
+
+**PC:**
+- [ ] **"No record starts it in normal play" is false on the new Creation Club quests.** This push marked all 44 new ones `noStart`, which took the total from 17 to 61. Blue in the Face is in Dave's quest log, and UESP says it starts by itself.
+  - A quest whose start the scan couldn't read is "Not sure yet", never "not started in normal play". `noStart` is only for a quest proven unstarted: cut, with no start record and no story-manager node anywhere.
+  - Re-check all 61.
+- [ ] **Gromm's Pass and Blue in the Face:**
+  - The danger block is "Skeletons, Rieklings, Wolves". UESP has goblins, the Blue God and Gogh, and the skeletons are bodies.
+  - No people are shown. Gogh, a follower placed there, is missing.
+  - Avanessa Calladius is a body to find, not a person to meet.
+  - The quest's rewards are "No XP", where UESP has the Goblin Totem Staff and Gogh as a follower.
+  - Fix these from the records. This is Part 2's danger rule failing on a new plugin, so check the rule on every Creation Club place.
+- [ ] **Creation Club places** (2 of 5 sampled were wrong, 1 doubtful):
+  - Deadlands is "A cave" with 100 XP and a 30-day respawn. It's a plane of Oblivion, so the realm rule applies.
+  - `iron-tusk-cave-location` has the editor's "Location" in its name and is typed "Imperial tower". UESP says it's a cave on Giant's Tooth.
+  - Blackbone Isle is "Cave", "Bandits 1 to 60", with no hold. UESP says a haunted island in Haafingar, with undead.
+  - "DragonPriests" is printed as one word.
+  - Five "Find Horse 01" pages share one name.
+- [ ] **The coverage report's reasons**, where they don't hold:
+  - Frostroot Cave is a cave with bandits, not a homestead.
+  - Ashfall's Tear, Varlais Cavern and Crowstooth's Camp are a cave, a cave and a camp, and the first two belong to quests that now have pages.
+  - Runoff Caverns is on the planner as Vardnknd. Say so and add the other name to search.
+  - CC Pets' "Hide Quest Logs" only hides them from the log; it doesn't remove them.
+- [ ] **The 13 quests in Dave's save with no page** (Wizard Duel, Meeting Katana, The Pilgrimage and the rest): **Bob's call**, a quest with a name the player sees in the journal gets a page, follower mods' quests included. Add them.
+- [ ] Then `for Bob`. Mac then renders Parts 6 to 8, and Bob runs the fresh sample.
+
 ### Jeff's notes
 
 **Part 7 (PC, 31 Oct). I viewed nothing in a browser; e2e did not run on the PC.**
@@ -5533,7 +5564,7 @@ The audit sampled what the planner has. It never asked what it doesn't have. Thi
 ---
 
 ## WO-182  Launch without playthroughs (Mac, 30 Oct 2026)
-Status: for Bob (Mac: Part 5; the Vercel variable is still Dave's, optional)
+Status: done (Bob, 30 Oct, 23:10: the reviewer passed Part 5; the Vercel variable stays optional, Dave's)
 
 **Why.** Dave, 30 Oct: "Lets look at the entire site and remove everything related to playthroughs; it's just still kind of not working." The launch is four things:
 - quests you can trust;
@@ -5865,7 +5896,7 @@ Mac's notes (30 Oct). Everything is built and checked except Kyria's text on sta
 **Tests that went:** the Story's (wo79 author and reader, wo114's first chapter, wo116's reader, Read Act I, markers and previous/next, wo117's Story tab and chapters, wo118's reader and image position, wo124's story card, wo142's chapter paragraphs, wo111's reader), and the ticking ones that moved to the tracking server. The "About them" display test became "the page has none".
 
 ## WO-180  Junk text out of the pages, and the last map faults (Mac and PC, 28 Oct 2026)
-Status: building (Mac: Part 9b and Part 7b; PC: Part 9a pushed for Bob, notes below)
+Status: queued (PC: Part 10; Mac: Part 9b and Part 7b)
 
 **Why.** The fourth cold review (Bob's reviewer, 3,721 pages crawled, 51 walked at both widths) passed WO-176 to WO-178, and named what would still hit Dave in his first ten minutes: old text from the game files that was never cleaned. Bob confirmed the holes and Web Mother by hand. No order is done until a page-text test fails on each of these.
 ### Part 1. Quotes (PC writes the cleaner; Mac's test fails on any page)
@@ -6245,6 +6276,30 @@ Jeff's notes on Part 9a (PC, 30 Oct). **I viewed nothing in a browser.**
 - **Sofie:** "Sofie's basket on the streets: flowers" in Windhelm's shops, and "Sells: Flowers on the streets" on her page.
 - **Small:** an inn names the game's own innkeeper first (the innkeepers' faction, who rents the rooms: Orgnar, Corpulus Vinius, Keerava; the audit's Kleppr at the Silver-Blood Inn too), then the one the read names; Delphine keeps her Rents rooms chip and comes second. **Not done: "with the owner after if they differ"** — the files have no inn owner I can read (Delphine owns the Sleeping Giant only in the read's words), so the owner is not named. No line has two brackets in a row: a shop's cell and its assistants are one ("Sybille Stentor, spells (The Blue Palace, with Melaran)").
 - **Contract:** additive: `people.json` rows gain `questIds` and `vanilla`; `Person.label`/slug order change for the six split names (Sven, Wilhelm...). `npm test` (930 passed, 7 expected fail, and the same three MCP style-guide tests failing on this checkout without my changes), python unittest (503), typecheck, lint (the same two old warnings). Three tests of mine from earlier parts say the new things (Rare Gifts, Delphine/Orgnar).
+
+### Part 10. The third shop check (Bob's reviewer, 30 Oct, 23:00; Bob confirmed Rare Gifts on staging)
+These hold:
+- Wilhelm, Brurid, Adara, Frida and Sven each have their own quests, and `/people/sven` is Riverwood's again.
+- One Dark Brotherhood Initiate.
+- Endon agrees with Markarth.
+- Sofie's basket.
+- The inns name Orgnar, Corpulus, Keerava and Kleppr.
+- No double brackets in shop lines.
+
+**PC:**
+- [ ] **Rare Gifts: the records fix the item for each giver.** `quest_scripts_raw.json` shows each start dialogue turning on one alias (Rustleif `OneHandBook`, Lami `AlchemyBook`, Aldis `BlockBook`). UESP names the same: Night Falls on Sentinel, Song of the Alchemists, The Mirror.
+  - Name each giver's item, reading Torbjorn's, Siddgeir's and Ysolda's too.
+  - **The rewards are wrong**: all six say "Gold". Siddgeir gives potions (`FavorRewardPotion`). UESP has Ysolda, Lami and Rustleif giving a skill point (Speech, Alchemy, Smithing), and the records have no item. Read the fragment for what each gives.
+  - The cut original `/quests/q/rare-gifts` still reads "Bring one of the item asked for…": mark it not started in normal play.
+- [ ] **Jacob (`/people/jacob`) is two records on one page.** A skeleton in Matron's Chamber gives the title, and the Vigilant elder gives the rest. So the page reads "Where to find him: Not known yet" under a place-name title, "An Old People" as the race, and "Gives 1 quest" beside a quest Taranis starts. Separate them. The skeleton is generic.
+- [ ] **Sigrid (`/people/sigrid`)** has Riverwood's Sigrid merged with the Crossroads Goods shopkeeper's trade. Split by record, as Part 9a did.
+- [ ] **"An Old People"** prints as a race on 54 person pages (Frida, Tolfdir, Esbern). It's the old-age race record. Print the person's own race, as WO-183 Part 1 asked.
+- [ ] **Double brackets outside shops**: 30 on 13 pages ("Lydia as your housecarl (can follow you) (when you are named thane)", "Scourge (mace) (from one of the Dremora champions…)"). Join them into one bracket or a sentence. The test covers every page, not just shop lines.
+- [ ] **Small**:
+  - Endon's "market / Also market, Silver-Blood Inn" says the market twice, in lower case.
+  - Sofie's page has no Sells, though the notes said it would.
+  - The inn's owner after the keeper is still open.
+- [ ] Then `for Bob`.
 
 Jeff's notes on WO-180 (PC, 28 Oct):
 - **Quotes** (`places.py`, `build.py`): one cleaner, `game_text()`, runs on a book's whole text and on every dialogue line before a quote is cut: `<Alias=Player>` is "you"; any other `<Alias…>`, `<Global…>` or `<Token…>` leaves a hole mark and a quote with one in what is cut around it is left out (the next mention of the place in that book is tried; the Lakeview and Windstad charters have no mention without a hole, so they are not quoted); every other tag (`<font …>`, `<img …>`) and `[pagebreak]` goes before the cut, so no `size="18">` stub is left. A quote names a quest only when it is a quest on the Quests pages by that name; the game's own dialogue quest ("Riften Dialogue") moves to a new field, `dialogue`, which no page shows. Why keep it: the assistant's town gossip (`suggest.ts`, WO-151) reads it to say which town a line with no speaker is about (`wo151.test.ts` caught the first try, which dropped it). A dialogue line with no speaker stays in the data for the same reason; `saidAbout()` leaves it off the pages (one line in `said.ts`: "no speaker, no quote"). 4,761 pointers became 4,741: twenty had a hole in them and went (Lakeview and Windstad Manors no longer quote their charters; Hendraheim, Rorikstead and the rest have none left with markup). The Mac's page-text test is mine too: `wo180.test.ts` runs `saidAbout()` on every place and fails on markup, a hole, a speakerless line or a quest no player has.
