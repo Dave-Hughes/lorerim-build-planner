@@ -5293,7 +5293,7 @@ Option 1 (Part 7's hero background, the full map band, then the Screenshots sect
 ---
 
 ## WO-183  Data you can trust: fix the causes the accuracy audit found (PC, then Mac, 30 Oct 2026)
-Status: queued (PC: Part 7 first, then Mac renders; then Bob runs the fresh sample)
+Status: building (PC: Part 7; then Mac renders; then Bob runs the fresh sample)
 
 **Why.** Dave, 30 Oct: "With us cutting playthroughs we're going to want to double down on quests, locations, NPCs… make sure the pages are BULLET proof, the data must be as solid as we can get it."
 
