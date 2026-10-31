@@ -5799,7 +5799,7 @@ Mac's notes (30 Oct). Everything is built and checked except Kyria's text on sta
 **Tests that went:** the Story's (wo79 author and reader, wo114's first chapter, wo116's reader, Read Act I, markers and previous/next, wo117's Story tab and chapters, wo118's reader and image position, wo124's story card, wo142's chapter paragraphs, wo111's reader), and the ticking ones that moved to the tracking server. The "About them" display test became "the page has none".
 
 ## WO-180  Junk text out of the pages, and the last map faults (Mac and PC, 28 Oct 2026)
-Status: queued (Mac: Part 7b; PC: Part 8 pushed for Bob, notes below)
+Status: queued (PC: Part 9a; Mac: Part 9b and Part 7b)
 
 **Why.** The fourth cold review (Bob's reviewer, 3,721 pages crawled, 51 walked at both widths) passed WO-176 to WO-178, and named what would still hit Dave in his first ten minutes: old text from the game files that was never cleaned. Bob confirmed the holes and Web Mother by hand. No order is done until a page-text test fails on each of these.
 ### Part 1. Quotes (PC writes the cleaner; Mac's test fails on any page)
@@ -6143,6 +6143,32 @@ Jeff's notes on Part 8 (PC, 30 Oct). I did the pages as well as the data again (
   - **Differs from UESP, kept (44 against the town tables, 37 once the College's table is read):** the shops LoreRim adds that UESP does not list: Whiterun's Brightflour Bakery, Happy Homestead General Goods, Witch's Wisdoms and Quintus's stall; Solitude's Riverside Apothecary, The Empire Trader, Jytte, Aksel Trodirson; Windhelm's Audmund's Axes, Battle-Brew Meadery, Delmon, Mathendi's Magic and Imports, Tormund's Tales, The Bakeshop Valand, Old Hjolf, Olfand, Wilhelm's Winter Warehouse; Riften's East Empire Company Outpost, the Soderbergs, Plants-Dreams, Smells-like-Guar, Verel Doran; Markarth's Brangar, Hjrrm, East Empire Goods, the Old Observatory, the Waste Collector, Sillia's Cookhouse; Winterhold's Skadi and Magnar Frost-Vein and Vonos Dreloth. **Kind:** Aval Atheron and Marise Aravel are "General" on UESP and food in LoreRim's lists. Ghorza's chest is still in Understone Keep's cell (UESP: the forge near The Hag's Cure); I can't tell from the records which is right in game.
 - **Not done:** the Wilhelm/Adara/Brurid pages and the town lines were not looked at in a browser; the e2e suite did not run on the PC. The search and the assistant's person tool still find a name by `personByName` (the better-known of two). The assistant's `fact-tools` still describe a person's read; `Person.label` and `Shop.staff` are not in them.
 - **Contract:** additive. `people.json` shops gain `faction` and `keeper`; 415 people have a `shop` (423 before: the urchins and the orphans are out); `shops_raw.json` cells gain `owner` and `chestOwner`; `Person.label`, `Shop.staff` and `Shop.cell` are new. `npm test` (920 passed, 7 expected fail, and the same three MCP style-guide tests failing on this checkout without my changes), python unittest (503), typecheck, lint (the same two old warnings).
+
+### Part 9. The shops pass; the same-name split doesn't yet (Bob's reviewer, 30 Oct, 20:30; Bob confirmed Rare Gifts and Sven on staging)
+**The shops: across ten towns, 67 right, 0 wrong, 0 missing**, and 37 that differ the way LoreRim does. The details are in `docs/audits/2026-10-30-shops-2.md`. All 22 items from Part 8 are fixed: the orphans, the keepers, the split pairs, the Flagon, the College, Madesi, Moth, Sofie and the Huntsman. Blood on the Ice names Jorleif. Ill Met By Moonlight and Hunting the Monster are fixed. Well done.
+
+**Part 9a (PC)**
+- [ ] **Same name, different people: the split leaks.** The pages now have separate addresses, but each shows the quests of everyone with that name:
+  - Wilhelm (Windhelm) lists the Ivarstead innkeeper's quests, and A Simple Delivery links to the Ivarstead one.
+  - Brurid (Windhelm) "gives Infiltration".
+  - Adara (Markarth) is "Gretolde's daughter".
+  - Frida and Jacob show the same leak.
+
+  Give the PC's data what the page needs: each quest's people by base record, not by name. Mac's Part 9b uses it.
+- [ ] **Riverwood's Sven gets `/people/sven` back.** The Kynesgrove Sven took it, and A Lovely Letter now opens him. Where two share a name, the bare address goes to the one players mean: a follower, a quest's own person, the vanilla one. The other gets the town in brackets.
+- [ ] **Nameless names stay one page**, as your notes say: the Dark Brotherhood Initiate is five pages now, three titled the same.
+- [ ] **Rare Gifts on the five other pages**: Whiterun, Solitude, Morthal, Dawnstar and Falkreath still read "Bring one of the requested item to …", and "they ask you to find one of a rare item". The test checked `objectives`, but the page shows the read's steps. Fix the steps too, and test the text the page shows.
+  - Bob's call on the wording: UESP names a fixed item per giver (Torbjorn the Amulet of Arkay, Ysolda the Mammoth Tusk, and so on). If the records fix the item per giver, name it ("Bring an Amulet of Arkay to Torbjorn"). If LoreRim makes it random, say "the rare item they ask for", with the person's pronoun.
+- [ ] **Endon**: his page and Markarth's line agree on where he trades. His Sells line loses "a merchant with a jeweller's job, no shared buy list)" (the editor's words and a stray bracket).
+- [ ] **Sofie** sells flowers on the streets, not from "a stall in the market".
+- [ ] **Small**:
+  - Inns name the person who rents the rooms (UESP: Orgnar, Corpulus, Keerava, Kleppr), with the owner after if they differ.
+  - No line has two brackets in a row ("Sybille Stentor, spells (The Blue Palace) (with Melaran)").
+
+**Part 9b (Mac)**
+- [ ] A person page's quests come from that person's record, not `questsOf(person.name)` (`people/[slug]/page.tsx`). A quest page links each person to their own page.
+- [ ] `contract.test.ts` "search_facts finds a sample…" still times out at about 5.3 s under load. It was already slow before Part 8. This is WO-182 Part 5's box; it's restated here so it isn't missed.
+- [ ] Then `for Bob`.
 
 Jeff's notes on WO-180 (PC, 28 Oct):
 - **Quotes** (`places.py`, `build.py`): one cleaner, `game_text()`, runs on a book's whole text and on every dialogue line before a quote is cut: `<Alias=Player>` is "you"; any other `<Alias…>`, `<Global…>` or `<Token…>` leaves a hole mark and a quote with one in what is cut around it is left out (the next mention of the place in that book is tried; the Lakeview and Windstad charters have no mention without a hole, so they are not quoted); every other tag (`<font …>`, `<img …>`) and `[pagebreak]` goes before the cut, so no `size="18">` stub is left. A quote names a quest only when it is a quest on the Quests pages by that name; the game's own dialogue quest ("Riften Dialogue") moves to a new field, `dialogue`, which no page shows. Why keep it: the assistant's town gossip (`suggest.ts`, WO-151) reads it to say which town a line with no speaker is about (`wo151.test.ts` caught the first try, which dropped it). A dialogue line with no speaker stays in the data for the same reason; `saidAbout()` leaves it off the pages (one line in `said.ts`: "no speaker, no quote"). 4,761 pointers became 4,741: twenty had a hole in them and went (Lakeview and Windstad Manors no longer quote their charters; Hendraheim, Rorikstead and the rest have none left with markup). The Mac's page-text test is mine too: `wo180.test.ts` runs `saidAbout()` on every place and fails on markup, a hole, a speakerless line or a quest no player has.
