@@ -182,8 +182,8 @@ test("Part 2: a place with one building lists its people from the left edge, an 
   const head = (await people.getByRole("heading", { level: 2 }).boundingBox())!;
   const first = (await people.getByRole("link").first().boundingBox())!;
   expect(Math.abs(first.x - head.x)).toBeLessThan(50);
-  await expect(page.getByRole("region", { name: "Map" })).toContainText("Getting there");
-  await expect(page.getByRole("region", { name: "Map" })).toContainText("In Riverwood");
+  await expect(page.getByText("Getting there", { exact: true })).toBeVisible();
+  await expect(page.getByText(/^Getting there\s+In Riverwood\.$/)).toBeVisible();
   await expect(page.getByRole("region", { name: "At a glance" })).not.toContainText("in 1 place");
   await expect(page.locator("main")).toContainText("Whiterun hold");
   await expect(page.locator("main")).not.toContainText("Vanilla");
@@ -276,7 +276,7 @@ test("Part 3: search says a result once, Aela's cells say Yes and how it isn't s
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/people/lydia");
   // On a phone the band keeps the cell the sections do not repeat.
-  const cells = page.getByRole("region", { name: "At a glance" }).locator("> div > div");
+  const cells = page.getByRole("region", { name: "At a glance" }).locator("> div");
   const visible: string[] = [];
   for (const c of await cells.all()) if (await c.isVisible()) visible.push((await c.innerText()).split("\n")[0].trim());
   expect(visible).toEqual(["WHAT SHE IS"].map((s) => expect.stringMatching(new RegExp(s, "i"))));

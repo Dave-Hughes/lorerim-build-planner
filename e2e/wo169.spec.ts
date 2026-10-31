@@ -153,9 +153,10 @@ test("the address keeps the view: a place, the filters and the zoom come back fr
   await expect(map(page).getByText("Bleak Falls Barrow", { exact: true }).first()).toBeVisible();
 });
 
-test("a place page's map band links to the map opened on that place", async ({ page }) => {
+test("a place page's map links to the map opened on that place, from its full screen bar", async ({ page }) => {
   await page.goto("/places/bleak-falls-barrow");
-  await expect(page.getByRole("link", { name: "Open on the map ›" })).toHaveAttribute("href", "/map?place=bleak-falls-barrow");
+  await page.getByRole("button", { name: "Open the map full screen" }).click();
+  await expect(page.getByRole("link", { name: "Open on the Map page ›" })).toHaveAttribute("href", "/map?place=bleak-falls-barrow");
 });
 
 // WO-181: a character's pin is progress tracking, off for now (wo181-tracking.spec.ts has it back).

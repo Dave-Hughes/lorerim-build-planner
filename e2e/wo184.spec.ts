@@ -1,5 +1,5 @@
 /**
- * WO-184 (and Part 7's layout): players make it right. Two players and an admin: a screenshot goes up under review, is hidden from the other player, is approved by the admin and
+ * WO-184 (and Part 8's page top): players make it right. Two players and an admin: a screenshot goes up under review, is hidden from the other player, is approved by the admin and
  * seen by both; the admin trusts the first player, whose next one is live at once; "This screenshot isn't this place" puts one back on the list; "I know this" on a
  * person page is read, approved, and shown as a player's report; Help fill the gaps lists the page until then; Recently confirmed shows a confirmation; and
  * every board's screen is photographed at 1440 and 390.
@@ -19,7 +19,7 @@ const as = async (context: BrowserContext, token: string) => {
 const png = (colour: string, w = 1280, h = 720) => sharp({ create: { width: w, height: h, channels: 3, background: colour } }).png().toBuffer();
 
 async function upload(page: Page, colour: string, opts: { w?: number; h?: number; name?: string } = {}) {
-  await page.getByRole("button", { name: /^\+ Add a screenshot/ }).first().click();
+  await page.getByRole("button", { name: "Add a screenshot of Bleak Falls Barrow" }).click();
   const dialog = page.getByRole("dialog", { name: /Add a screenshot of/ });
   await dialog.getByLabel("Screenshot file").setInputFiles({ name: opts.name ?? "shot.png", mimeType: "image/png", buffer: await png(colour, opts.w, opts.h) });
   await dialog.getByLabel(/This is my own screenshot/).check();
@@ -37,17 +37,21 @@ const shot = async (page: Page, name: string, full = true) => {
   await page.setViewportSize({ width: 1440, height: 900 });
 };
 
-test("a place with no screenshot says so, signed out it asks to sign in, and a bad file or an unticked box is refused", async ({ page, context }) => {
+test("a place with no screenshot opens its frame on the map; Screenshot says so; signed out it asks to sign in; a bad file or an unticked box is refused", async ({ page, context }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto(PLACE);
-  // No screenshot: the hero is the page's plain one, and the Screenshots section says so.
-  await expect(page.locator("[data-hero]")).toHaveCount(0);
-  const section = page.getByRole("region", { name: "Screenshots" });
-  await expect(section).toContainText("None yet");
-  await expect(section.getByRole("button", { name: /Sign in to add a screenshot/ })).toBeVisible();
+  const frame = page.locator("[data-view]");
+  await expect(frame).toHaveAttribute("data-view", "map");
+  await expect(frame.getByRole("group", { name: "Map around this place" })).toBeVisible();
+  await expect(page.getByText("No screenshots yet.")).toBeVisible();
+  await expect(page.getByRole("button", { name: "Sign in to add yours" }).first()).toBeVisible();
+  await frame.getByRole("button", { name: "Screenshot", exact: true }).click();
+  await expect(frame).toContainText("No screenshot of Bleak Falls Barrow yet");
+  await expect(frame.getByRole("button", { name: "Sign in to add yours" })).toBeVisible();
   await shot(page, "pic-place-empty");
   await as(context, REPORTER_TOKENS[0]);
   await page.goto(PLACE);
-  await page.getByRole("button", { name: "+ Add a screenshot of Bleak Falls Barrow" }).click();
+  await page.getByRole("button", { name: "Add a screenshot of Bleak Falls Barrow" }).click();
   const dialog = page.getByRole("dialog", { name: "Add a screenshot of Bleak Falls Barrow" });
   await dialog.getByLabel("Screenshot file").setInputFiles({ name: "notes.txt", mimeType: "text/plain", buffer: Buffer.from("not a screenshot") });
   await expect(dialog.getByRole("alert")).toContainText("PNG or JPG");
@@ -56,28 +60,32 @@ test("a place with no screenshot says so, signed out it asks to sign in, and a b
   await shot(page, "pic-add");
 });
 
-test("a player's screenshot waits under review: they see it, flagged; another player does not", async ({ page, context }) => {
+test("a player's screenshot waits under review: a thumbnail with its flag, never what the frame opens on; another player sees nothing", async ({ page, context }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
   await as(context, REPORTER_TOKENS[0]);
   await page.goto(PLACE);
   await upload(page, "#3a5a40");
-  const section = page.getByRole("region", { name: "Screenshots" });
-  await expect(section.getByText("Under review")).toBeVisible();
-  await expect(section.getByText("Only you can see this until an admin approves it.")).toBeVisible();
-  await expect(section.getByRole("button", { name: "Remove it" })).toBeVisible();
-  // A screenshot under review is never the hero.
-  await expect(page.locator("[data-hero]")).toHaveCount(0);
+  const frame = page.locator("[data-view]");
+  // The frame still opens on the map: a screenshot under review is never what it opens on.
+  await expect(frame).toHaveAttribute("data-view", "map");
+  const thumb = page.getByRole("button", { name: "Screenshot 1, under review" });
+  await expect(thumb).toContainText("Review");
+  await thumb.click();
+  await expect(frame).toHaveAttribute("data-view", "shot");
+  await expect(frame.getByText("Under review")).toBeVisible();
+  await expect(page.getByText("Only you can see this until an admin approves it.")).toBeVisible();
+  await expect(page.getByRole("button", { name: "Remove it" })).toBeVisible();
   await shot(page, "pic-yours");
-  // The first player's /me says what happened to it.
   await page.goto("/me");
   await expect(page.getByRole("region", { name: "What you sent" })).toContainText("Waiting on an admin");
-  // A second player sees nothing.
   await as(context, REPORTER_TOKENS[1]);
   await page.goto(PLACE);
-  await expect(page.getByRole("region", { name: "Screenshots" })).toContainText("None yet");
+  await expect(page.getByText("No screenshots yet.")).toBeVisible();
   await expect(page.getByText("Under review")).toHaveCount(0);
 });
 
-test("the admin approves it, and trusts the player; both players then see it, and the player's next one is live at once", async ({ page, context }) => {
+test("the admin approves it and trusts the player; both players then see it in the frame, and the player's next one is live at once", async ({ page, context }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
   await signIn(context);
   await page.goto("/admin");
   await expect(page.getByRole("link", { name: "The review list" })).toBeVisible();
@@ -93,44 +101,71 @@ test("the admin approves it, and trusts the player; both players then see it, an
   await expect(page.getByText("Reporter 1")).toBeVisible();
   await expect(page.getByText("Admin", { exact: true })).toBeVisible();
   await shot(page, "admin-review-players");
-  // Both players see it: it is the hero's background, credited, and the first tile, which Leads the page.
+  // Both players see it: the frame opens on it, credited, with its thumbnail and the count.
   for (const token of [REPORTER_TOKENS[0], REPORTER_TOKENS[1]]) {
     await as(context, token);
     await page.goto(PLACE);
-    const hero = page.locator("[data-hero='shot']");
-    await expect(hero).toBeVisible();
-    await expect(hero.getByRole("heading", { level: 1, name: "Bleak Falls Barrow" })).toBeVisible();
-    await expect(hero.getByRole("link", { name: "Screenshot by Reporter 1" })).toHaveAttribute("href", "#shots");
-    const box = (await hero.boundingBox())!;
-    expect(Math.abs(box.height - 600)).toBeLessThan(2);
-    await expect(page.getByRole("region", { name: "Screenshots" }).getByText("Leads the page")).toBeVisible();
+    const frame = page.locator("[data-view]");
+    await expect(frame).toHaveAttribute("data-view", "shot");
+    await expect(frame.getByText("Screenshot by Reporter 1")).toBeVisible();
+    const box = (await frame.boundingBox())!;
+    expect(Math.abs(box.width - 640)).toBeLessThan(2);
+    expect(Math.abs(box.width / box.height - 16 / 9)).toBeLessThan(0.02);
+    await expect(page.getByText("1 screenshot.")).toBeVisible();
     await expect(page.getByText("Under review")).toHaveCount(0);
+    // The page's first section starts on the first screen (about 610 down at 1440 by 900).
+    const first = (await page.getByRole("heading", { level: 2 }).first().boundingBox())!;
+    expect(first.y).toBeLessThan(760);
   }
   // Their next one is live at once, and a screenshot that is not 16:9 is letterboxed in black, never cropped.
   await as(context, REPORTER_TOKENS[0]);
   await page.goto(PLACE);
   await upload(page, "#8a4a42", { w: 800, h: 800, name: "square.png" });
-  const section = page.getByRole("region", { name: "Screenshots" });
-  await expect(section).toContainText("2 so far");
-  await expect(section.getByText("Under review")).toHaveCount(0);
-  const fit = await section.locator("figure img").nth(1).evaluate((el) => getComputedStyle(el).objectFit);
-  expect(fit).toBe("contain");
-  // A tile opens the screenshot whole.
-  await section.getByRole("button", { name: /Open the screenshot by Reporter 1 whole/ }).nth(1).click();
-  await expect(page.getByRole("dialog", { name: "Screenshot" })).toBeVisible();
-  await page.getByRole("dialog", { name: "Screenshot" }).getByRole("button", { name: "Close" }).click();
+  await expect(page.getByText("2 screenshots.")).toBeVisible();
+  await expect(page.getByText("Under review")).toHaveCount(0);
+  await page.getByRole("button", { name: /^Screenshot 2, by Reporter 1/ }).click();
+  const frame = page.locator("[data-view='shot']");
+  expect(await frame.locator("img").first().evaluate((el) => getComputedStyle(el).objectFit)).toBe("contain");
+  // Full screen opens the screenshot whole, with the others to page through.
+  await frame.getByRole("button", { name: "Open the screenshot full screen" }).click();
+  const whole = page.getByRole("dialog", { name: "Bleak Falls Barrow, screenshots full screen" });
+  await expect(whole).toContainText("2 of 2");
+  await whole.getByRole("button", { name: "Next ›" }).click();
+  await expect(whole).toContainText("1 of 2");
+  await page.keyboard.press("Escape");
+  await expect(whole).toBeHidden();
   await shot(page, "pic-place");
 });
 
-test("the admin on a place: Make it lead changes the hero, and Delete asks first", async ({ page, context }) => {
+test("the frame's Screenshot and Map buttons switch what it shows, and the map keeps its credit", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto(PLACE);
+  const frame = page.locator("[data-view]");
+  await expect(frame).toHaveAttribute("data-view", "shot");
+  await frame.getByRole("button", { name: "Map", exact: true }).click();
+  await expect(frame).toHaveAttribute("data-view", "map");
+  await expect(frame.getByRole("link", { name: /Map: Skyrim Paper Map by Caro Tuts/ })).toBeVisible();
+  await expect(frame.getByText("Bleak Falls Barrow", { exact: true })).toBeVisible();
+  await shot(page, "pic-place-map");
+  await frame.getByRole("button", { name: "Screenshot", exact: true }).click();
+  await expect(frame).toHaveAttribute("data-view", "shot");
+});
+
+test("the admin under the frame: Make it lead changes what the frame opens on, and Delete asks first", async ({ page, context }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
   await signIn(context);
   await page.goto(PLACE);
-  const section = page.getByRole("region", { name: "Screenshots" });
-  await expect(section.getByText("Leads the page")).toBeVisible();
-  const heroSrc = await page.locator("[data-hero='shot'] img").first().getAttribute("src");
-  await section.getByRole("button", { name: "Make it lead" }).click();
-  await expect.poll(async () => page.locator("[data-hero='shot'] img").first().getAttribute("src")).not.toBe(heroSrc);
-  await section.getByRole("button", { name: "Delete", exact: true }).first().click();
+  const frame = page.locator("[data-view]");
+  const firstSrc = await frame.locator("img").first().getAttribute("src");
+  await page.getByRole("button", { name: /^Screenshot 2, by Reporter 1/ }).click();
+  const tools = page.getByRole("group", { name: "Admin: this screenshot" });
+  await tools.getByRole("button", { name: "Make it lead" }).click();
+  await expect.poll(async () => {
+    await page.goto(PLACE);
+    return page.locator("[data-view] img").first().getAttribute("src");
+  }).not.toBe(firstSrc);
+  await page.getByRole("button", { name: /^Screenshot 1, by Reporter 1/ }).click();
+  await page.getByRole("group", { name: "Admin: this screenshot" }).getByRole("button", { name: "Delete", exact: true }).click();
   await expect(page.getByRole("alertdialog", { name: "Delete this screenshot?" })).toContainText("It goes from the page for everyone");
   await shot(page, "pic-admin");
   await page.getByRole("button", { name: "Keep it" }).click();
@@ -291,19 +326,28 @@ test("the sixth board: Help fill the gaps filters and shows more; nothing a play
   expect(text).not.toMatch(/\b(picture|image)s?\b/i);
 });
 
-test("a person with no screenshot: the plain hero, and the Screenshots section with its add tile", async ({ page }) => {
+test("a person: the frame is on the map when the planner knows where they are, and has no Map button when it doesn't", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/people/mjoll-the-lioness");
-  await expect(page.locator("[data-hero]")).toHaveCount(0);
-  const section = page.getByRole("region", { name: "Screenshots" });
-  await expect(section).toContainText("None yet");
-  await expect(section.getByRole("button", { name: /Sign in to add a screenshot/ })).toBeVisible();
+  const frame = page.locator("[data-view]");
+  await expect(frame).toHaveAttribute("data-view", "map");
+  await expect(frame.getByRole("button", { name: "Map", exact: true })).toBeVisible();
+  await expect(frame.getByRole("group", { name: "Map around this place" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "Mjoll the Lioness" })).toBeVisible();
   await shot(page, "pic-person");
+  await page.goto("/people/abbot-cosmas");
+  const none = page.locator("[data-view]");
+  await expect(none).toHaveAttribute("data-view", "shot");
+  await expect(none.getByRole("button", { name: "Map", exact: true })).toHaveCount(0);
+  await expect(none).toContainText("No screenshot of Abbot Cosmas yet");
+  await shot(page, "pic-person-no-map");
 });
 
 test("Full screen on every map: the bar, the key, Open on the Map page, Close and Esc, zoom and the credit", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   for (const [url, name] of [[PLACE, "Bleak Falls Barrow"], ["/places", "Skyrim"]] as const) {
     await page.goto(url);
+    if (url === PLACE) await page.locator("[data-view]").getByRole("button", { name: "Map", exact: true }).click();
     await page.getByRole("button", { name: "Open the map full screen" }).click();
     const full = page.getByRole("dialog", { name: `${name}, full screen map` });
     await expect(full).toBeVisible();
@@ -325,6 +369,7 @@ test("Full screen on every map: the bar, the key, Open on the Map page, Close an
   }
   await page.setViewportSize({ width: 390, height: 800 });
   await page.goto(PLACE);
+  await page.locator("[data-view]").getByRole("button", { name: "Map", exact: true }).click();
   await page.getByRole("button", { name: "Open the map full screen" }).click();
   const phone = page.getByRole("dialog", { name: "Bleak Falls Barrow, full screen map" });
   const pb = (await phone.boundingBox())!;

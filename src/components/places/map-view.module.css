@@ -355,3 +355,17 @@ a.pin:focus-visible {
     margin-left: 0;
   }
 }
+
+/* In the page's 16:9 frame (WO-184 Part 8). */
+.framed {
+  position: absolute !important;
+  inset: 0;
+  height: 100% !important;
+  border: 0 !important;
+}
+.framed .compass {
+  top: 56px;
+}
+.framed .legend {
+  display: none;
+}

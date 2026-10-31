@@ -25,6 +25,8 @@ export interface MapViewProps {
   title?: string;
   sub?: string;
   mapHref?: string;
+  /** In a frame that is already 16:9 (WO-184 Part 8): fills it, and the compass moves below the frame's own buttons. */
+  framed?: boolean;
 }
 
 /**
@@ -78,12 +80,12 @@ function FullScreen({ title, sub, mapHref, onClose, ...rest }: MapViewProps & { 
           <span aria-hidden="true">✕ </span>Close
         </button>
       </div>
-      <MapCore {...rest} mode="whole" labelled={rest.here ? 14 : 0} overlay className={s.fullMap} />
+      <MapCore {...rest} mode="whole" labelled={rest.here ? 14 : 0} overlay framed={false} className={s.fullMap} />
     </div>
   );
 }
 
-function MapCore({ entry, pins, here, hereLabel, labelled = 0, mode, className, onFull, overlay }: MapViewProps & { onFull?: () => void; overlay?: boolean }) {
+function MapCore({ entry, pins, here, hereLabel, labelled = 0, mode, className, onFull, overlay, framed }: MapViewProps & { onFull?: () => void; overlay?: boolean }) {
   const box = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ w: mode === "band" ? 1440 : 1000, h: mode === "band" ? 400 : 707 });
   useLayoutEffect(() => {
@@ -227,7 +229,7 @@ function MapCore({ entry, pins, here, hereLabel, labelled = 0, mode, className, 
   return (
     <div
       ref={box}
-      className={`${s.map} ${mode === "band" ? s.band : s.whole} ${overlay ? s.noLegend : ""} ${className ?? ""}`}
+      className={`${s.map} ${mode === "band" ? s.band : s.whole} ${overlay ? s.noLegend : ""} ${framed ? s.framed : ""} ${className ?? ""}`}
       role="group"
       aria-label={overlay ? "Map, full screen" : mode === "band" ? "Map around this place" : "Map of Skyrim"}
       onPointerDown={onDown}

@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
@@ -9,9 +8,9 @@ import { ReportMistake } from "@/components/pages/report-mistake";
 import { PreviewLink } from "@/components/pages/preview-link";
 import { InformationConfidence, Icon, PageTop, Section, TitleBox } from "@/components/pages/page-kit";
 import { LineToc } from "@/components/quests/line-parts";
-import { PlaceMapBand } from "@/components/places/place-map";
-import { ShotHero } from "@/components/screenshots/shot-hero";
-import { ShotsSection } from "@/components/screenshots/shots-section";
+import { GettingThere, TopFrame } from "@/components/screenshots/top-frame";
+import { placeFrameMap } from "@/components/screenshots/frame-maps";
+import { GlanceList, type GlanceCell } from "@/components/pages/glance";
 import { personHref } from "@/lib/people/data";
 import { questsData } from "@/lib/quests/data";
 import { afterWar, hasLevels, isGarrison, placeByRecordName, placeBySlug, placeHrefOf, placeLabel, placesSharingSlug, placeType, rangeOf, type Place } from "@/lib/places/data";
@@ -178,58 +177,142 @@ export default async function PlacePage({ params }: { params: Params }) {
     ];
     return <PlaceTown place={place} kind={pkind} origin={origin} near={near} ic={ic} goodToKnow={goodToKnow} />;
   }
+  const frameMap = placeFrameMap(place);
   const tick = (n: number) => (n === 1 ? "Level 1" : String(n));
 
+  // The Danger section (its gauge, the boss, traps and when it comes back) sits after the quests, where the board puts it; when it isn't drawn, Comes back is a fact at the top.
+  const dangerShown = !!(levels || a?.hostile === false || (place.danger?.traps && !dangerUnsure && (hasWorth || quests.length > 0)));
   // At a glance (WO-162, the colours of rule 34): danger in red, the boss and people in orange, what it pays in gold, when it comes back, and the nearest town in teal.
-  const glance: { key: string; icon: string; tone: string; label: string; value: React.ReactNode; sub?: React.ReactNode }[] = [
-    ...(levels ? [{ key: "danger", icon: "tab-levels", tone: l.cRed, label: "Danger", value: levelRange(levels), sub: `${foes}${alsoHere?.length ? `, ${alsoHere.map((x) => PLURAL[x] ?? `${x}s`).join(", ")} too` : ""}` }] : a?.hostile === false ? [{ key: "danger", icon: "tab-levels", tone: l.cRed, label: "Danger", value: "None", sub: "Nobody here is hostile" }] : dangerUnsure ? (place.danger?.traps ? [{ key: "danger", icon: "tab-levels", tone: l.cRed, label: "Danger", value: "Traps", sub: undefined }] : []) : [{ key: "danger", icon: "tab-levels", tone: l.cRed, label: "Danger", value: "Not known yet", sub: undefined }]),
-    ...(boss ? [{ key: "boss", icon: "quest-people", tone: l.cOrange, label: "The boss", value: personHref(boss.name) ? <PreviewLink href={personHref(boss.name)!}>{boss.name}</PreviewLink> : boss.name, sub: boss.words ? `Level ${boss.words}` : undefined }] : []),
-    ...(place.clearXp || place.discoveryXp ? [{ key: "xp", icon: "quest-rewards", tone: l.cGold, label: "Rewards", value: `${place.clearXp || place.discoveryXp} XP`, sub: [place.clearXp ? "For clearing it" : "", place.discoveryXp && place.clearXp ? `${place.discoveryXp} XP for finding it` : place.discoveryXp ? "For finding it" : ""].filter(Boolean).join("; ") }] : []),
-    ...(place.respawns ? [{ key: "back", icon: "tab-set-up", tone: l.cOrange, label: "Comes back", value: respawnWords(place.respawns), sub: undefined }] : []),
-    ...(town ? [{ key: "town", icon: "quest-travel", tone: l.cTeal, label: "Nearest town", value: town.town, sub: town.walk ? town.walk.charAt(0).toUpperCase() + town.walk.slice(1) : undefined }] : []),
+  const glance: GlanceCell[] = [
+    ...(levels ? [{ key: "danger", icon: "tab-levels", tone: "red" as const, label: "Danger", value: levelRange(levels), sub: `${foes}${alsoHere?.length ? `, ${alsoHere.map((x) => PLURAL[x] ?? `${x}s`).join(", ")} too` : ""}` }] : a?.hostile === false ? [{ key: "danger", icon: "tab-levels", tone: "red" as const, label: "Danger", value: "None", sub: "Nobody here is hostile" }] : dangerUnsure ? (place.danger?.traps ? [{ key: "danger", icon: "tab-levels", tone: "red" as const, label: "Danger", value: "Traps", sub: undefined }] : []) : [{ key: "danger", icon: "tab-levels", tone: "red" as const, label: "Danger", value: "Not known yet", sub: undefined }]),
+    ...(boss ? [{ key: "boss", icon: "quest-people", tone: "orange" as const, label: "The boss", value: personHref(boss.name) ? <PreviewLink href={personHref(boss.name)!}>{boss.name}</PreviewLink> : boss.name, sub: boss.words ? `Level ${boss.words}` : undefined }] : []),
+    ...(place.clearXp || place.discoveryXp ? [{ key: "xp", icon: "quest-rewards", tone: "gold" as const, label: "Rewards", value: `${place.clearXp || place.discoveryXp} XP`, sub: [place.clearXp ? "For clearing it" : "", place.discoveryXp && place.clearXp ? `${place.discoveryXp} XP for finding it` : place.discoveryXp ? "For finding it" : ""].filter(Boolean).join("; ") }] : []),
+    ...(place.respawns && !dangerShown ? [{ key: "back", icon: "tab-set-up", tone: "orange" as const, label: "Comes back", value: respawnWords(place.respawns), sub: undefined }] : []),
+    ...(town ? [{ key: "town", icon: "quest-travel", tone: "teal" as const, label: "Nearest town", value: town.town, sub: town.walk ? town.walk.charAt(0).toUpperCase() + town.walk.slice(1) : undefined }] : []),
   ];
 
   return (
     <main className={l.root}>
-      <ShotHero kind="place" slug={slug}>
-      <div className={`page ${l.top}`}>
-      <PageTop back={{ href: "/places", label: "Places" }} />
-
-      <TitleBox
-        title={placeLabel(place)}
-        tags={
+      <TopFrame
+        kind="place"
+        slug={slug}
+        name={placeLabel(place)}
+        back={{ href: "/places", label: "Places" }}
+        map={frameMap?.node ?? null}
+        head={
           <>
-            <span className={l.tagPlain}>{placeType(place.type)}</span>
-            {place.hold && <span className={l.tagPlace}>{holdWords(place.hold)}</span>}
-            {place.realm && !place.hold && <span className={l.tagPlace}>{place.realm}</span>}
-            {origin && <span className={l.tagPlain}>{origin}</span>}
+            <TitleBox
+              title={placeLabel(place)}
+              tags={
+                <>
+                  <span className={l.tagPlain}>{placeType(place.type)}</span>
+                  {place.hold && <span className={l.tagPlace}>{holdWords(place.hold)}</span>}
+                  {place.realm && !place.hold && <span className={l.tagPlace}>{place.realm}</span>}
+                  {origin && <span className={l.tagPlain}>{origin}</span>}
+                </>
+              }
+            />
+            <p className={styles.lede}>{lede}</p>
+          </>
+        }
+        facts={
+          <>
+            <GlanceList cells={glance} />
+            {frameMap?.there && <GettingThere text={frameMap.there} />}
           </>
         }
       />
 
-      <p className={styles.lede}>{lede}</p>
-      </div>
-      </ShotHero>
-
-      <PlaceMapBand place={place} />
-
-      <section className={l.band} aria-label="At a glance">
-        <div className={`page ${l.glance}`} style={{ "--cols": glance.length } as React.CSSProperties}>
-          {glance.map((c) => (
-            <div key={c.key} className={l.gl}>
-              <span className={`${l.k} ${c.tone}`}>
-                <img className={l.px} src={`/icons/${c.icon}.svg`} alt="" width={18} height={18} />
-                {c.label}
-              </span>
-              <span className={`${l.v} ${typeof c.value === "string" && c.value.length > 18 ? l.vSmall : ""}`}>{c.value}</span>
-              {c.sub ? <span className={l.s}>{c.sub}</span> : null}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <div className={`page ${styles.cols}`} style={{ paddingTop: 52 }}>
+      <div className={`page ${styles.cols}`} style={{ paddingTop: 28 }}>
         <div className={styles.body}>
+
+          {hasWorth && (
+            <Section id="worth" icon="mark-skill-book" title="Worth going for">
+              {worth?.skillBooks?.map((b) => (
+                <div key={b} className={styles.worth}>
+                  <Icon name="mark-skill-book" />
+                  <b>{b.includes(": ") ? b.split(": ")[1] : b}</b>
+                  <small>{b.includes(": ") ? `${/^[aeiou]/i.test(b) ? "An" : "A"} ${b.split(": ")[0]} skill book` : "A skill book"}</small>
+                </div>
+              ))}
+              {worth?.wordWall?.map((w) => (
+                <div key={w} className={styles.worth}>
+                  <Icon name="quest-sure" />
+                  <b>{w}</b>
+                  <small>A word wall</small>
+                </div>
+              ))}
+              {worth?.bossChest && (
+                <div className={styles.worth}>
+                  <Icon name="quest-chest" />
+                  <b>A boss chest</b>
+                </div>
+              )}
+              {worth?.crafting?.length ? (
+                <div className={styles.worth}>
+                  <Icon name="smithing" />
+                  <b>{worth.crafting.join(", ").replace(/, ([^,]*)$/, " and $1").replace(/^./, (c) => c.toUpperCase())}</b>
+                  <small>For crafting and improving gear</small>
+                </div>
+              ) : null}
+            </Section>
+          )}
+
+          {quests.length > 0 && (
+            <Section id="quests" icon="tab-play" title="Quests that bring you here">
+              {quests.map((q) => (
+                <div key={q.href} className={styles.qrow} style={{ gridTemplateColumns: "minmax(0, 1fr)" }}>
+                  <PreviewLink href={q.href}>{q.name}</PreviewLink>
+                  {q.says ? <span>{q.says.charAt(0).toUpperCase() + q.says.slice(1)}{q.says.endsWith(".") ? "" : "."}</span> : null}
+                </div>
+              ))}
+            </Section>
+          )}
+
+
+          {hasWorth && (
+            <Section id="worth" icon="mark-skill-book" title="Worth going for">
+              {worth?.skillBooks?.map((b) => (
+                <div key={b} className={styles.worth}>
+                  <Icon name="mark-skill-book" />
+                  <b>{b.includes(": ") ? b.split(": ")[1] : b}</b>
+                  <small>{b.includes(": ") ? `${/^[aeiou]/i.test(b) ? "An" : "A"} ${b.split(": ")[0]} skill book` : "A skill book"}</small>
+                </div>
+              ))}
+              {worth?.wordWall?.map((w) => (
+                <div key={w} className={styles.worth}>
+                  <Icon name="quest-sure" />
+                  <b>{w}</b>
+                  <small>A word wall</small>
+                </div>
+              ))}
+              {worth?.bossChest && (
+                <div className={styles.worth}>
+                  <Icon name="quest-chest" />
+                  <b>A boss chest</b>
+                </div>
+              )}
+              {worth?.shrines?.map((s) => (
+                <div key={s} className={styles.worth}>
+                  <Icon name="quest-sure" />
+                  <b>{s}</b>
+                  <small>A shrine</small>
+                </div>
+              ))}
+            </Section>
+          )}
+
+          {quests.length > 0 && (
+            <Section id="quests" icon="tab-play" title="Quests that bring you here">
+              {quests.map((q) => (
+                <div key={q.href} className={styles.qrow} style={{ gridTemplateColumns: "minmax(0, 1fr)" }}>
+                  <PreviewLink href={q.href}>{q.name}</PreviewLink>
+                  {q.says ? <span>{q.says.charAt(0).toUpperCase() + q.says.slice(1)}{q.says.endsWith(".") ? "" : "."}</span> : null}
+                </div>
+              ))}
+            </Section>
+          )}
+
           {/* A place with little known says what the lede and the band don't, in one short block, not an empty page (WO-180); the kind, the hold and the
               XP for finding it are theirs already (WO-180 Part 6b: Moss Mother Cavern's block said the lede again). */}
           {!levels && a?.hostile !== false && !hasWorth && quests.length === 0 && place.danger?.traps && (
@@ -304,50 +387,12 @@ export default async function PlacePage({ params }: { params: Params }) {
                 <span>Traps</span>
               </div>
             )}
+            {place.respawns && (
+              <p className={styles.way}>
+                <b>Comes back</b> {respawnWords(place.respawns)}
+              </p>
+            )}
           </section>
-          )}
-
-          {hasWorth && (
-            <Section id="worth" icon="mark-skill-book" title="Worth going for">
-              {worth?.skillBooks?.map((b) => (
-                <div key={b} className={styles.worth}>
-                  <Icon name="mark-skill-book" />
-                  <b>{b.includes(": ") ? b.split(": ")[1] : b}</b>
-                  <small>{b.includes(": ") ? `${/^[aeiou]/i.test(b) ? "An" : "A"} ${b.split(": ")[0]} skill book` : "A skill book"}</small>
-                </div>
-              ))}
-              {worth?.wordWall?.map((w) => (
-                <div key={w} className={styles.worth}>
-                  <Icon name="quest-sure" />
-                  <b>{w}</b>
-                  <small>A word wall</small>
-                </div>
-              ))}
-              {worth?.bossChest && (
-                <div className={styles.worth}>
-                  <Icon name="quest-chest" />
-                  <b>A boss chest</b>
-                </div>
-              )}
-              {worth?.shrines?.map((s) => (
-                <div key={s} className={styles.worth}>
-                  <Icon name="quest-sure" />
-                  <b>{s}</b>
-                  <small>A shrine</small>
-                </div>
-              ))}
-            </Section>
-          )}
-
-          {quests.length > 0 && (
-            <Section id="quests" icon="tab-play" title="Quests that bring you here">
-              {quests.map((q) => (
-                <div key={q.href} className={styles.qrow} style={{ gridTemplateColumns: "minmax(0, 1fr)" }}>
-                  <PreviewLink href={q.href}>{q.name}</PreviewLink>
-                  {q.says ? <span>{q.says.charAt(0).toUpperCase() + q.says.slice(1)}{q.says.endsWith(".") ? "" : "."}</span> : null}
-                </div>
-              ))}
-            </Section>
           )}
 
         </div>
@@ -357,15 +402,11 @@ export default async function PlacePage({ params }: { params: Params }) {
             items={[
               ...(hasWorth ? [{ id: "worth", label: "Worth going for", icon: "mark-skill-book" }] : []),
               ...(quests.length ? [{ id: "quests", label: "Quests that bring you here", icon: "tab-play" }] : []),
-              { id: "shots", label: "Screenshots", icon: "tab-play" },
+              ...(dangerShown ? [{ id: "danger", label: "Danger", icon: "tab-levels" }] : []),
               { id: "sure", label: "Information Confidence", icon: "quest-sure" },
             ]}
           />
         </aside>
-      </div>
-
-      <div className="page">
-        <ShotsSection kind="place" slug={slug} name={placeLabel(place)} back={`/places/${slug}`} />
       </div>
 
       <div className={`page ${l.foot}`}>{ic}</div>

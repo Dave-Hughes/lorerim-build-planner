@@ -15,7 +15,7 @@ describe("what a player reads about screenshots", () => {
     for (const w of words) expect(w, w).not.toMatch(/\b(pictures?|images?)\b/i);
   });
   it("the components' text has none either", () => {
-    const files = ["src/components/screenshots/shot-section.tsx", "src/components/screenshots/shot-hero.tsx", "src/components/screenshots/shots-section.tsx", "src/components/places/map-view.tsx", "src/components/pages/report-mistake.tsx", "src/components/pages/not-sure.tsx", "src/components/account/sent.tsx", "src/components/admin/review-cards.tsx", "src/components/home/confirmed.tsx", "src/app/(site)/help-fill-the-gaps/page.tsx"];
+    const files = ["src/components/screenshots/frame.tsx", "src/components/screenshots/add-dialog.tsx", "src/components/screenshots/top-frame.tsx", "src/components/places/map-view.tsx", "src/components/pages/report-mistake.tsx", "src/components/pages/not-sure.tsx", "src/components/account/sent.tsx", "src/components/admin/review-cards.tsx", "src/components/home/confirmed.tsx", "src/app/(site)/help-fill-the-gaps/page.tsx"];
     for (const f of files) {
       const src = readFileSync(f, "utf8").replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/.*$/gm, "");
       // JSX text between tags, and double-quoted or backticked strings that are not attributes of the code (paths, types, class names).

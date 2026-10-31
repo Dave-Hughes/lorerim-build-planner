@@ -19,13 +19,13 @@ for (const width of [1440, 390]) {
     const map = page.getByRole("group", { name: "Map around this place" });
     await expect(map).toBeVisible();
     const box = (await map.boundingBox())!;
-    expect(Math.abs(box.height - (width === 1440 ? 400 : 240))).toBeLessThan(2);
-    expect(box.width).toBeGreaterThanOrEqual(width - 2);
-    // Under the title and tags, above At a glance.
-    const title = (await page.getByRole("heading", { level: 1 }).boundingBox())!;
-    expect(box.y).toBeGreaterThan(title.y);
+    // WO-184 Part 8: the map is the page's 16:9 frame (640 wide beside the title at 1440, the page's width on a phone), not a band.
+    expect(Math.abs(box.width / box.height - 16 / 9)).toBeLessThan(0.03);
+    if (width === 1440) expect(Math.abs(box.width - 638)).toBeLessThan(6);
+    else expect(box.width).toBeGreaterThanOrEqual(width - 60);
     // Tiles, not the whole map: a handful of pictures, each a 512 px tile.
-    await expect.poll(async () => map.locator(`img[src^='/maps/tamriel/${width === 1440 ? 1 : 0}/']`).count()).toBeGreaterThan(width === 1440 ? 1 : 0);
+    // (The frame is under 700 wide, so it uses the half-size tiles, as a phone did.)
+    await expect.poll(async () => map.locator("img[src^='/maps/tamriel/0/']").count()).toBeGreaterThan(0);
     expect(await map.locator("img[src='/maps/tamriel.webp']").count()).toBe(0);
     await expect(map.getByText("Bleak Falls Barrow", { exact: true })).toBeVisible();
     // The places around it are pins that link, with names on the nearest few, every name on a dark plate.
@@ -59,7 +59,7 @@ for (const width of [1440, 390]) {
     await expect(map.getByText("In Riverwood", { exact: true })).toBeVisible();
     // WO-177: the row has its label like any other place's.
     await expect(page.getByText("Getting there", { exact: true })).toHaveCount(1);
-    await expect(page.getByRole("region", { name: "Map" })).toContainText("In Riverwood.");
+    await expect(page.getByText(/^Getting there\s+In Riverwood\.$/)).toBeVisible();
     await creditOk(page, map);
     await page.waitForTimeout(600);
     await page.screenshot({ path: `test-results/wo167-sleeping-giant-inn-${width}.png`, fullPage: false });
@@ -111,9 +111,9 @@ test("the band pans when dragged, and the places around it stay in step", async 
   const here = map.getByText("Bleak Falls Barrow", { exact: true });
   const before = (await here.boundingBox())!;
   const b = (await map.boundingBox())!;
-  await page.mouse.move(b.x + 700, b.y + 200);
+  await page.mouse.move(b.x + b.width * 0.8, b.y + b.height * 0.8);
   await page.mouse.down();
-  await page.mouse.move(b.x + 500, b.y + 200, { steps: 6 });
+  await page.mouse.move(b.x + b.width * 0.35, b.y + b.height * 0.8, { steps: 6 });
   await page.mouse.up();
   const after = (await here.boundingBox())!;
   expect(before.x - after.x).toBeGreaterThan(150);

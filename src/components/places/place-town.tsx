@@ -2,12 +2,11 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { Linked } from "@/components/pages/linked";
-import { PageTop, TitleBox } from "@/components/pages/page-kit";
+import { TitleBox } from "@/components/pages/page-kit";
 import { PreviewLink } from "@/components/pages/preview-link";
 import { LineToc } from "@/components/quests/line-parts";
-import { PlaceMapBand } from "./place-map";
-import { ShotHero } from "@/components/screenshots/shot-hero";
-import { ShotsSection } from "@/components/screenshots/shots-section";
+import { GettingThere, TopFrame } from "@/components/screenshots/top-frame";
+import { placeFrameMap } from "@/components/screenshots/frame-maps";
 import { linkable } from "@/lib/pages/names";
 import { placeHref, placeHrefOf, placeLabel, placeSlug, placeType, rangeOf, type Place } from "@/lib/places/data";
 import { closeBy, innsOf, peopleAt, shopsOf, type PlacePerson, type Shop } from "@/lib/places/people";
@@ -217,30 +216,35 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
     ...(quests.length ? [{ id: "quests", label: "Quests that bring you here", icon: "tab-play" }] : []),
     ...(close.length ? [{ id: "close", label: "Close by", icon: "quest-ways" }] : []),
     ...(crafting.length || shrines.length || books.length || walls.length ? [{ id: "craft", label: "Books, crafting and shrines", icon: "quest-rewards" }] : []),
-    { id: "shots", label: "Screenshots", icon: "tab-play" },
     { id: "sure", label: "Information Confidence", icon: "quest-sure" },
   ];
 
+  const frameMap = placeFrameMap(place);
   return (
     <main className={l.root}>
-      <ShotHero kind="place" slug={placeSlug(place)}>
-      <div className={`page ${l.top}`}>
-        <PageTop back={inside && upHref && place.inTown ? { href: upHref, label: place.inTown } : { href: "/places", label: "Places" }} />
-        <TitleBox
-          title={placeLabel(place)}
-          tags={
-            <>
-              <span className={l.tagPlain}>{placeType(place.type)}</span>
-              {place.hold && <span className={l.tagPlace}>{holdWords(place.hold)}</span>}
-              {origin && <span className={l.tagPlain}>{origin}</span>}
-            </>
-          }
-        />
-        <p className={l.pitch}>{pitch}</p>
-      </div>
-      </ShotHero>
-
-      <PlaceMapBand place={place} />
+      <TopFrame
+        kind="place"
+        slug={placeSlug(place)}
+        name={placeLabel(place)}
+        back={inside && upHref && place.inTown ? { href: upHref, label: place.inTown } : { href: "/places", label: "Places" }}
+        map={frameMap?.node ?? null}
+        head={
+          <>
+            <TitleBox
+              title={placeLabel(place)}
+              tags={
+                <>
+                  <span className={l.tagPlain}>{placeType(place.type)}</span>
+                  {place.hold && <span className={l.tagPlace}>{holdWords(place.hold)}</span>}
+                  {origin && <span className={l.tagPlain}>{origin}</span>}
+                </>
+              }
+            />
+            <p className={l.pitch}>{pitch}</p>
+          </>
+        }
+        facts={frameMap?.there ? <GettingThere text={frameMap.there} /> : null}
+      />
 
       <section className={l.band} aria-label="At a glance">
         <div className={`page ${l.glance}`} style={{ "--cols": cells.length } as React.CSSProperties}>
@@ -384,10 +388,6 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
             </div>
           )}
         </aside>
-      </div>
-
-      <div className="page">
-        <ShotsSection kind="place" slug={placeSlug(place)} name={placeLabel(place)} back={`/places/${placeSlug(place)}`} />
       </div>
 
       <div className={`page ${l.foot}`}>

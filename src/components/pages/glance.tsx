@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import type { CSSProperties, ReactNode } from "react";
 import l from "@/components/quests/line-page.module.css";
+import g from "./glance-list.module.css";
 
 /**
  * At a glance (WO-165, the band the line page and a place's page have): five or fewer facts under the title, each its own colour, the colours
@@ -37,6 +38,28 @@ export function GlanceBand({ cells }: { cells: GlanceCell[] }) {
           </div>
         ))}
       </div>
+    </section>
+  );
+}
+
+/**
+ * The same facts as a two-column list (WO-184 Part 8, board PlaceOptB): under the title, beside the frame, so the page's first section starts on the first screen. Each
+ * fact keeps its colour and its icon; a fact with nothing to say is not drawn.
+ */
+export function GlanceList({ cells }: { cells: GlanceCell[] }) {
+  if (!cells.length) return null;
+  return (
+    <section className={g.list} aria-label="At a glance">
+      {cells.map((c) => (
+        <div key={c.key} className={`${g.cell} ${c.hidePhone ? g.hidePhone : ""}`}>
+          <span className={`${g.k} ${TONE[c.tone]}`}>
+            <img className={g.px} src={`/icons/${c.icon}.svg`} alt="" width={16} height={16} />
+            {c.label}
+          </span>
+          <span className={g.v}>{c.value}</span>
+          {c.sub ? <span className={g.s}>{c.sub}</span> : null}
+        </div>
+      ))}
     </section>
   );
 }

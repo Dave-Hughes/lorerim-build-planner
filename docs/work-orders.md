@@ -5094,7 +5094,7 @@ Jeff's notes on Part 4 (PC, 30 Oct). The status says Part 4 is the PC's, so I di
 ---
 
 ## WO-184  Players make it right: screenshots, I know this, Help fill the gaps, one review list (Mac, 30 Oct 2026)
-Status: building (Mac: Part 8)
+Status: for Bob (Mac: Parts 1 to 8; the Tapps uploads are open, see the notes)
 
 **Why.** Dave, 30 Oct: with playthroughs cut, double down on quests, places and people, and "accelerate the ideas for community confirmation of quest info, the admin review section, and of course the image collection work for locations and NPCs." These are the backlog's 23 Oct, 28 Oct and 28 Oct items, decided.
 
@@ -5223,24 +5223,24 @@ Dave: "I don't think the screenshot should live beside the map. Let's make this 
 
 ### Part 8. The page top Dave chose: one frame, Screenshot or Map (30 Oct, 17:43: "Ok sold lets do option 2")
 Option 1 (Part 7's hero background, the full map band, then the Screenshots section) put the real content about 1,250 px down at 1440 × 900. Dave: "won't be usable having to scroll past the hero and the map and the screenshots grid to get to the real content." **The design is `PlaceOptB` on canvas row 40** (click Screenshot and Map). It replaces Part 7's layout on place pages and person pages. Part 7's Full screen and the review rules stand.
-- [ ] **The top of the page is two columns** at 1440:
+- [x] **The top of the page is two columns** at 1440:
   - **Left**: the title, the tags, the lede, the key facts as a two-column list (on a place: Danger, The boss, Rewards, Nearest town; on a person: the band's own cells), then Getting there in one line.
   - **Right, 640 wide**: one 16:9 frame, with **Screenshot | Map** buttons at its top left and **Full screen** at its top right.
     - Under the frame: a row of thumbnails, with the lead one marked, then a "+" tile, then "<n> screenshots. Add yours" on the right.
   - Worth going for (or the page's first section) starts on the first screen, about 610 px down at 1440 × 900. The test measures it.
-- [ ] **What the frame shows:**
+- [x] **What the frame shows:**
   - With an approved screenshot, it opens on the lead screenshot, with "Screenshot by <Discord name>" and the avatar at its foot. Map switches to the paper map, cropped to the place with its neighbours and labels, as the band does today.
   - With none, it opens on the Map. Screenshot shows "No screenshot of <name> yet" with "+ Add a screenshot" (or "Sign in to add one").
   - A thumbnail puts that screenshot in the frame.
   - On a person, Map shows where they are found when the planner knows it. When it doesn't, there's no Map button, never a guessed pin.
   - Full screen opens the screenshot whole on its own (letterboxed, with the others to page through), or the map as `MapFull`, whichever the frame is showing.
-- [ ] **The full map band and the Screenshots section from Part 7 go.**
+- [x] **The full map band and the Screenshots section from Part 7 go.**
   - The thumbnails are the gallery. With more than 6, the row ends in "+<n> more", which opens them all full screen.
   - Your own screenshot under review is a thumbnail with its flag, never the one the frame opens on for anyone else.
   - An admin's Approve, Make it lead, Remove and Delete (with a confirm) show under the frame for the screenshot in it.
-- [ ] **The rail of section links** stays on the right of the content below, as today.
-- [ ] **At 390**: the title, tags and lede first, then the frame full width with its thumbnails, then the facts, then the content. The frame's buttons stay reachable at 44 px.
-- [ ] Screenshots at 1440 and 390 of:
+- [x] **The rail of section links** stays on the right of the content below, as today.
+- [x] **At 390**: the title, tags and lede first, then the frame full width with its thumbnails, then the facts, then the content. The frame's buttons stay reachable at 44 px.
+- [x] Screenshots at 1440 and 390 of:
   - Bleak Falls Barrow with its screenshot, in both views;
   - a place with none;
   - a town;
@@ -5289,6 +5289,16 @@ Option 1 (Part 7's hero background, the full map band, then the Screenshots sect
 - **What I did not find to add Full screen to**: the order says "the quest and quest line maps", but no quest or line page draws a map today; they link to `/map` ("Where it takes you"), which is the whole map already. The home page's map strip is a decorative picture (aria-hidden) with its own Open the map link. If you mean a map I haven't seen, tell me which page.
 - Tests: `e2e/wo184.spec.ts` now has 12 (the hero is not the hero until a screenshot is live; Make it lead moves the hero; Full screen at 1440 and 390 and on /places). `wo167.spec.ts` is back to what it was. Screenshots: `test-results/wo184-*-1440.png` and `-390.png`, `wo184-map-full-place-*.png`.
 - In a full-suite run `wo184.spec.ts`'s "I know this" test failed twice for the same reason, other specs leaving quest reports waiting (so "Nothing waiting." and the count of 1 were wrong); both assertions now look for the card, and the spec passes alone and after the others.
+
+
+**Part 8 (Mac, 30 Oct): option 2, one frame**
+- `TopFrame` (`src/components/screenshots/top-frame.tsx`) is the top of a place and of a person, and of a town too. Two columns at 1440 (the frame 640 wide, 16:9, 48 apart), one column at 390 in the order title, tags and lede, the frame with its thumbnails, the facts. `Frame` (`frame.tsx`) is the frame: Screenshot | Map at its top left, Full screen at its top right, thumbnails under it with the lead one marked "Lead", a "+" tile, "<n> screenshots. Add yours", and "+<n> more" past six (it opens them all full screen, arrow keys and Esc work). The frame opens on the lead screenshot, else the map; a screenshot under review is a flagged thumbnail and never what it opens on. Admin's Approve, Make it lead, Remove and Delete (with a confirm) sit under the frame for the screenshot in it; the reader's own gets "Only you can see this until an admin approves it. Remove it."
+- Part 7's hero background, map band and Screenshots section are gone (`shot-hero`, `shots-section`, `shot-section`, `place-map` deleted); the rail has no Screenshots link. Part 7's Full screen stands: the map in the frame has its own Full screen button (the whole paper map over the window, zoomed on the place), and in Screenshot view the button opens the screenshot whole.
+- **Facts list** (`GlanceList`): Danger, The boss, Rewards, Nearest town as a two-column list under the lede, then Getting there in one line. Two things I changed to get the first section onto the first screen, say if you disagree: (1) **Comes back** is no longer a fact at the top; it is a line in the Danger section (it stays a fact at the top only when the page has no Danger section); (2) the **Danger section** (gauge, boss, traps) now follows Quests that bring you here, as the board's rail has it (Worth going for, Quests, Danger, What people say, Information Confidence), so Worth going for is the first section. It starts at about 590 px at 1440 × 900 (the test asserts under 760).
+- **A town** (`PlaceTown`) gets the same top, but keeps its At a glance band below it: its cells hold the shops, inns and trainers with their keepers, which don't fit a list of short facts, so the band is its content. Its first section is therefore lower than on a dangerous place.
+- **A person**: the same top with the band's own cells as the list. Map shows the town they are placed in (that is what the planner knows: `inTown`), labelled with their name and the town; with no known town there is no Map button and no pin (checked on Abbot Cosmas).
+- Tests: `e2e/wo184.spec.ts` is 13 (the frame opens on the map with no screenshots; a screenshot under review is a flagged thumbnail and the frame stays on the map; approve and trust; the frame is 640 wide at 16:9 and opens on the lead; "2 screenshots."; letterboxed; Full screen pages through; Screenshot and Map switch; admin Make it lead and Delete confirm; person with and without a map; Full screen on every map). Older specs changed with the page: wo162 (Comes back is in Danger), wo167 (the map is the 16:9 frame, half-size tiles under 700 wide, drag inside it), wo169 (the Map page link is in the full screen bar), wo177 (Getting there text, the list's cells). Screenshots: `test-results/wo184-pic-place-*`, `pic-place-map-*`, `pic-place-empty-*`, `pic-yours-*`, `pic-admin-*`, `pic-person-*`, `pic-person-no-map-*` at 1440 and 390; no screenshot of a town in this set (a town's top uses the same component).
+- One older spec, `player.spec.ts` "My builds links to My page", timed out once in the full run and passes alone.
 
 ---
 

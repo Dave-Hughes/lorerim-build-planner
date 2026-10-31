@@ -62,7 +62,9 @@ for (const width of [1440, 390]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/places/bleak-falls-barrow");
     const glance = page.getByRole("region", { name: "At a glance" });
-    for (const w of ["Danger", "The boss", "Rewards", "Comes back", "Nearest town"]) await expect(glance).toContainText(w);
+    // WO-184 Part 8: Comes back moved to the Danger section below the quests, to keep the facts to four beside the frame.
+    for (const w of ["Danger", "The boss", "Rewards", "Nearest town"]) await expect(glance).toContainText(w);
+    await expect(page.getByRole("region", { name: "Danger" })).toContainText("Comes back");
     await expect(glance).toContainText("Level 6 to 20");
     await expect(glance).toContainText("Zulakaroth");
     await expect(glance).toContainText("200 XP");

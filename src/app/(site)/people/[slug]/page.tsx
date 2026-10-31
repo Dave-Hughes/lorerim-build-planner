@@ -3,14 +3,14 @@ import { notFound } from "next/navigation";
 import { ConfirmButton } from "@/components/pages/confirm-button";
 import { SignInButton } from "@/components/site-header";
 import { PreviewLink } from "@/components/pages/preview-link";
-import { InformationConfidence, PageTop, Panel, Section, TitleBox } from "@/components/pages/page-kit";
-import { ShotHero } from "@/components/screenshots/shot-hero";
-import { ShotsSection } from "@/components/screenshots/shots-section";
+import { InformationConfidence, Panel, Section, TitleBox } from "@/components/pages/page-kit";
+import { TopFrame } from "@/components/screenshots/top-frame";
+import { personFrameMap } from "@/components/screenshots/frame-maps";
 import { pageExtras } from "@/components/pages/page-extras";
 import { ReportMistake } from "@/components/pages/report-mistake";
 import { personBySlug, personUnsure, roleWords, unsureFields } from "@/lib/people/data";
 import { playersWords } from "@/lib/quests/reads";
-import { GlanceBand, type GlanceCell } from "@/components/pages/glance";
+import { GlanceList, type GlanceCell } from "@/components/pages/glance";
 import { AutoToc } from "@/components/pages/auto-toc";
 import { Linked } from "@/components/pages/linked";
 import { linkable } from "@/lib/pages/names";
@@ -238,33 +238,36 @@ export default async function PersonPage({ params }: { params: Params }) {
 
   return (
     <main className={l.root}>
-      <ShotHero kind="person" slug={person.slug}>
-      <div className={`page ${l.top}`}>
-      <PageTop back={{ href: "/people", label: "People" }} />
-
-      <TitleBox
-        title={person.label ?? person.name}
-        tags={
+      <TopFrame
+        kind="person"
+        slug={person.slug}
+        name={person.label ?? person.name}
+        back={{ href: "/people", label: "People" }}
+        map={personFrameMap(person)}
+        head={
           <>
-            {person.race && <span className={styles.tag}>{person.race}</span>}
-            {person.inTown && <span className={styles.tag}>{person.inTown}</span>}
-            {role && <span className={styles.role}>{role}</span>}
-            {person.follower && !notSure.has("joins") && <span className={styles.role}>Follower</span>}
-            {/* A tag says only what the page is sure of (WO-177): a marriage the read is not sure of is in Not sure yet, not in a tag. */}
-            {person.marriage && !notSure.has("marries") && <span className={styles.role}>Can marry</span>}
-            {gives.length > 0 && <span className={styles.role}>Gives quests</span>}
-            {sells && <span className={styles.role}>Sells goods</span>}
-            {trainer && <span className={styles.role}>Trains {trainer.skill}</span>}
-            {person.essential && <span className={styles.tag}>Can&apos;t be killed</span>}
+      <TitleBox
+            title={person.label ?? person.name}
+            tags={
+              <>
+                {person.race && <span className={styles.tag}>{person.race}</span>}
+                {person.inTown && <span className={styles.tag}>{person.inTown}</span>}
+                {role && <span className={styles.role}>{role}</span>}
+                {person.follower && !notSure.has("joins") && <span className={styles.role}>Follower</span>}
+                {/* A tag says only what the page is sure of (WO-177): a marriage the read is not sure of is in Not sure yet, not in a tag. */}
+                {person.marriage && !notSure.has("marries") && <span className={styles.role}>Can marry</span>}
+                {gives.length > 0 && <span className={styles.role}>Gives quests</span>}
+                {sells && <span className={styles.role}>Sells goods</span>}
+                {trainer && <span className={styles.role}>Trains {trainer.skill}</span>}
+                {person.essential && <span className={styles.tag}>Can&apos;t be killed</span>}
+              </>
+            }
+          />
+            {lede && <p className={styles.lede}>{lede}</p>}
           </>
         }
+        facts={<GlanceList cells={cells} />}
       />
-
-      {lede && <p className={styles.lede}>{lede}</p>}
-      </div>
-      </ShotHero>
-
-      <GlanceBand cells={cells} />
 
       <div className={`page ${styles.main}`} style={{ paddingTop: 44 }}>
       <div className={styles.cols}>
@@ -400,8 +403,6 @@ export default async function PersonPage({ params }: { params: Params }) {
           )}
         </aside>
       </div>
-
-      <ShotsSection kind="person" slug={person.slug} name={person.name} back={`/people/${person.slug}`} />
 
       <InformationConfidence
         id="sure"
