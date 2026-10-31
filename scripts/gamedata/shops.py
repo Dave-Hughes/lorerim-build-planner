@@ -29,9 +29,13 @@ LIST_KIND = {
     "vendoritemshunterwilhelm": "hunting goods", "vendoritemsjeweler": "jewelry", "vendoritemstailor": "clothing", "vendoritemsfoodwithingrediants": "food",
     "vendoritemsfletcher": "fletcher", "vendoritemslumberjack": "firewood", "vendoritemsbakery": "baked goods", "vendoritemslightarmourer": "armor",
     "vendoritemssilversmith": "silversmith", "vendoritemsfisherman": "fish", "vendoritemsdb": "alchemist",
+    # (WO-180 Part 8) Sofie's flowers, which the Hearthfire urchins share; and the Drunken Huntsman, a fletcher who also takes armor, food, gems, tools and weapons
+    "byohurchinsofievendorlist": "flowers", "vendoritemsdrunkenhuntsman": "fletcher",
 }
 # A list with its own name (BYOHUrchin_SofieVendorList) that no table knows: by the keywords it takes.
 KEYWORD_KIND = [
+    # (WO-180 Part 8: the kind is what the list is about, not the first keyword it has: a list that takes arrows is a fletcher's, one that takes hides and parts a hunter's)
+    (re.compile(r"VendorItemArrow|WeapTypeBow|Arrow"), "fletcher"), (re.compile(r"VendorItemAnimal(?:Hide|Part)"), "hunting goods"),
     (re.compile(r"WeapType|VendorItemWeapon"), "weapons"), (re.compile(r"VendorItemPotion|VendorItemIngredient"), "apothecary"), (re.compile(r"SpellTome|VendorItemBook"), "books and spells"),
     (re.compile(r"VendorItemFood"), "food"), (re.compile(r"VendorItemJewelry|VendorItemGem"), "jewelry"), (re.compile(r"VendorItemClothing"), "clothing"),
 ]
@@ -122,7 +126,9 @@ def scan():
                     if cur:
                         key = fk(resolve(struct.unpack_from("<I", buf, o + 12)[0], masters, n))
                         if key in wanted:
-                            where[key] = cur
+                            # (WO-180 Part 8: who owns the chest, for the keeper of the shop)
+                            owner = next((v for k, v in subrecs(rec_data(buf, o)[3]) if k == "XOWN" and len(v) >= 4), None)
+                            where[key] = {**cur, **({"chestOwner": fk(resolve(struct.unpack("<I", owner[:4])[0], masters, n))} if owner else {})}
                     continue
                 if tt not in (b"CELL", b"WRLD"):
                     continue
@@ -135,7 +141,9 @@ def scan():
                 full = next((v for k, v in subs if k == "FULL"), None)
                 name = strings.get(struct.unpack("<I", full)[0]) if full and len(full) == 4 and loc else (full.rstrip(b"\0").decode("utf-8", "replace") if full else None)
                 data = next((v for k, v in subs if k == "DATA"), b"\0\0")
-                cur = {"name": name, "edid": edid, "interior": bool(data[0] & 1), "world": world if top == "WRLD" else None}
+                own = next((v for k, v in subs if k == "XOWN" and len(v) >= 4), None)
+                cur = {"name": name, "edid": edid, "interior": bool(data[0] & 1), "world": world if top == "WRLD" else None,
+                       **({"owner": fk(resolve(struct.unpack("<I", own[:4])[0], masters, n))} if own else {})}
     return facts, flst, kywd, where
 
 

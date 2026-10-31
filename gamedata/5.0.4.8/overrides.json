@@ -717,8 +717,17 @@
   "questAliases": {
     "_note": "WO-180 Part 7a (Bob, 30 Oct): a story quest always has its person; the records leave some of them as an alias filled at run time (a courier spawned at a marker, an authority figure found by condition, a copy of the follower alias). plain_alias would say 'the person the job names' for them. These say them as the quest's read does, by editor id (a trailing * is a prefix) and alias name: {edid: {alias: words}}.",
     "CWMission03": { "Courier": "the enemy courier" },
-    "MS11": { "AuthorityFigure": "the steward" },
+    "MS11": { "AuthorityFigure": "Jorleif, the steward (Captain Lonely-Gale if the Empire holds Windhelm)" },
     "ksws07MainQuest": { "WaifuKill": "Othriel" },
-    "Favor110*": { "QuestItem": "of the requested item" }
+    "Favor110*": { "QuestItem": "rare item" }
+  },
+  "notSellers": {
+    "_note": "WO-180 Part 8 (Bob, 30 Oct): people the records put in a vendor faction who do not trade, by record id, with the reason. UESP: Adara, Kerah's child at the Markarth jewelry stall, has no trade dialogue; the stall is Kerah's.",
+    "Skyrim.esm:013385": "Adara, Kerah's child: the stall is Kerah's"
+  },
+  "shopKeepers": {
+    "_note": "WO-180 Part 8: a vendor faction whose members the records rank alike has the keeper UESP names, by the faction's editor id. The rule is the chest's owner, the cell's owner, a rank of their own in a Job faction, the name the faction carries, and else the first made.",
+    "ServicesMarkarthArnleifandSons": "Lisbet",
+    "ServicesRiftenRaggedFlagon": "Vekel the Man"
   }
 }

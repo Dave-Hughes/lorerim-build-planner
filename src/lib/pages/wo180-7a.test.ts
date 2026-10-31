@@ -47,7 +47,7 @@ describe("shops from the vendor factions (WO-180 Part 7a)", () => {
     expect(kind("Markarth", "Endon")).toBe("silversmith");
     expect(kind("Markarth", "Anton Virane")).toBe("food");
     expect(kind("Markarth", "Ghorza gra-Bagol")).toBe("blacksmith");
-    expect(kind("Markarth", "Muiri")).toBe("apothecary");
+    expect(kind("Markarth", "Bothela")).toBe("apothecary");  // (the keeper; Muiri is her assistant: WO-180 Part 8)
     expect(kind("Whiterun", "Fralia Gray-Mane")).toBe("jewelry");
   });
   it("a shop has its hours when it closes, and no mod's nameless 'Worker' is a shopkeeper", () => {
@@ -66,7 +66,7 @@ describe("a story quest says its person, and a role is never a name (WO-180 Part
   const quest = (edid: string) => questsData().lines.flatMap((l) => l.quests).find((q) => q.edid === edid)!;
   it("the steps of A False Front, Rare Gifts, Blood on the Ice and The Frozen Heart say the courier, the steward, Othriel and the requested item", () => {
     expect(quest("CWMission03").objectives.slice(0, 2)).toEqual(["Find the enemy courier", "Retrieve the enemy courier's package"]);
-    expect(quest("Favor110Windhelm").objectives).toEqual(["Bring one of the requested item to Torbjorn"]);
+    expect(quest("Favor110Windhelm").objectives).toEqual(["Bring one rare item to Torbjorn"]);
     expect(quest("MS11").objectives.filter((o) => /steward/.test(o)).length).toBeGreaterThan(2);
     expect(quest("ksws07MainQuest").objectives.at(-1)).toBe("Kill Othriel.");
     for (const e of ["CWMission03", "Favor110Windhelm", "MS11", "MS11b", "ksws07MainQuest"]) expect(JSON.stringify([quest(e).objectives, quest(e).read?.steps]), e).not.toMatch(/job names|who gave you the job/);

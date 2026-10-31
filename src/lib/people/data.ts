@@ -68,6 +68,10 @@ export const unsureFields = (read: PersonRead) => new Set(Object.entries(read.ve
 
 export interface SellerShop {
   kind: string;
+  /** The vendor faction the shop is (WO-180 Part 8): one faction, one shop, however many people belong to it. */
+  faction?: string;
+  /** This seller keeps the shop; the others in its faction are its assistants. */
+  keeper?: true;
   hours?: string;
   cell?: string;
   stall?: true;
@@ -108,6 +112,8 @@ export interface PersonRow {
 
 export interface Person extends PersonRow {
   slug: string;
+  /** Set when more than one person has the name ("Wilhelm (Windhelm)"): each is a person of their own, a base record, with their own page (WO-180 Part 8). */
+  label?: string;
   /** Every cell the name is placed in, the base row's first. */
   cells: string[];
   /** Every placement of the name (a person can be placed in more than one town, or twice in one). */
@@ -151,6 +157,21 @@ export const nameKey = (s: string) => s.toLowerCase().replace(/[’']/g, "'").re
 /** Which of two placements of one name is the better base: one that has been read says most, then one with a town and a cell and a race. */
 const score = (r: PersonRow) => (r.read ? 8 : 0) + (r.inTown ? 4 : 0) + (r.cell ? 2 : 0) + (r.race ? 1 : 0);
 
+/** A name that is a job, not a person: the many of it are one page. */
+const JOB_NAME = /^(?:worker|courier|nobleman|pilgrim|refugee|adventurer|attendant|assassin|vendor|merchant|servant|customer|guard|soldier|farmer|miner|priest|patron|traveler|traveller)$|(?:initiate|guard)$/i;
+
+/** A placement of someone a player can look up: read, a seller, a follower, a spouse, a trainer or an innkeeper. A "Worker" at a brothel in every city is not one. */
+const known = (r: PersonRow) => !!(r.read || r.shop || r.follower || r.marriage || r.trainer || r.innkeeper);
+/** A named person at home in a town: the other Adara, the girl at Endon's, is one though the records give her nothing else. */
+const athome = (r: PersonRow) => !!(r.inTown && r.cell && !JOB_NAME.test(r.name));
+
+/**
+ * Whether two placements of one name can be one person (WO-180 Part 8: Wilhelm of Windhelm is not Wilhelm of Ivarstead, nor Adara of Markarth the girl at Stonehills). Two people a
+ * player can look up who differ in town, race or sex, where both say it, are two; the many nameless of one name (a Worker, a Courier) are one page, as they were.
+ */
+const sameOne = (a: PersonRow, b: PersonRow) =>
+  !((known(a) && (known(b) || athome(b))) || (known(b) && athome(a))) || ((!a.inTown || !b.inTown || a.inTown === b.inTown) && (!a.race || !b.race || a.race === b.race) && (!a.sex || !b.sex || a.sex === b.sex));
+
 let cached: { all: Person[]; byName: Map<string, Person>; bySlug: Map<string, Person> } | null = null;
 
 export function peopleData() {
@@ -185,9 +206,19 @@ export function peopleData() {
   const all: Person[] = [];
   const bySlug = new Map<string, Person>();
   const byName = new Map<string, Person>();
-  for (const [key, group] of grouped) {
+  for (const [key, whole] of grouped) {
+    // The placements that can be one person are one; the ones that cannot are each a person of their own, the better-known first.
+    const clusters: PersonRow[][] = [];
+    for (const r of [...whole].sort((a, b) => score(b) - score(a))) {
+      const home = clusters.find((c) => c.every((m) => sameOne(r, m)));
+      if (home) home.push(r);
+      else clusters.push([r]);
+    }
+    const labelOf = (c: PersonRow[]) => c.find((r) => r.inTown)?.inTown ?? c.find((r) => r.cell)?.cell ?? c.find((r) => r.race)?.race ?? "";
+    const labels = clusters.map(labelOf);
+    clusters.forEach((group, ci) => {
     const base = [...group].sort((a, b) => score(b) - score(a))[0];
-    let slug = slugOf(base.name) || "person";
+    let slug = slugOf(ci === 0 ? base.name : `${base.name}-${labels[ci] || ci + 1}`) || "person";
     // A different name that makes the same slug ("Tolfdir" and "Tolfdir!"): the later one takes a number.
     for (let n = 2; bySlug.has(slug); n++) slug = `${slugOf(base.name) || "person"}-${n}`;
     // What a name is to a player is true wherever it is placed: Sven follows you from either of his two placements.
@@ -200,10 +231,18 @@ export function peopleData() {
       ...(group.some((g) => g.innkeeper) ? { innkeeper: true as const } : {}),
       ...(!base.trainer && group.some((g) => g.trainer) ? { trainer: group.find((g) => g.trainer)!.trainer } : {}),
     };
-    const person: Person = { ...base, ...flags, slug, rows: group, cells: [...new Set([base.cell, ...group.map((g) => g.cell)].filter((c): c is string => !!c))] };
+    const person: Person = {
+      ...base,
+      ...flags,
+      slug,
+      ...(clusters.length > 1 && labels[ci] ? { label: `${base.name} (${labels[ci]})` } : {}),
+      rows: group,
+      cells: [...new Set([base.cell, ...group.map((g) => g.cell)].filter((c): c is string => !!c))],
+    };
     all.push(person);
     bySlug.set(slug, person);
-    byName.set(key, person);
+    if (ci === 0) byName.set(key, person);
+    });
   }
   cached = { all, byName, bySlug };
   return cached;

@@ -225,15 +225,19 @@ def shop_of(d, vendors):
     (the shop, or the home or keep the seller works from); a chest in the open is a `stall` in the market of `world`. A person in more than one vendor faction takes the services
     faction (ServicesWhiterunWarmaidens), which is the shop's own; none with a chest placed and a kind gives no shop.
     """
-    # (Hearthfire's urchins you adopt share one vendor list and a chest in Windhelm: they are children, not sellers in the city they stand in)
-    mine = [(x.get("faction"), x.get("edid") or "") for x in d.get("factions", []) if (vendors or {}).get(x.get("faction"), {}).get("kind") and not (x.get("edid") or "").startswith("BYOH")]
-    mine.sort(key=lambda fe: (not fe[1].startswith("Services"), not (vendors[fe[0]].get("cell") or {}).get("name") and not (vendors[fe[0]].get("cell") or {}).get("world")))
+    # (WO-180 Part 8: Hearthfire's urchins, and the adoptable children a mod adds, share Sofie's vendor list and a chest in Windhelm: they are children, not sellers in the city they stand in.
+    # Judged by the list, not by a faction's name: only Sofie, whose own services faction has it, sells from it.)
+    def urchin(x):
+        v = (vendors or {}).get(x.get("faction"), {})
+        return (v.get("list") or "").startswith("BYOHUrchin") and "Services" not in (x.get("edid") or "")
+    mine = [(x.get("faction"), x.get("edid") or "") for x in d.get("factions", []) if (vendors or {}).get(x.get("faction"), {}).get("kind") and not urchin(x)]
+    mine.sort(key=lambda fe: (not fe[1].startswith("Services"), 0 if (vendors[fe[0]].get("cell") or {}).get("name") else 1 if (vendors[fe[0]].get("cell") or {}).get("world") else 2))
     for fk, _ in mine:
         v = vendors[fk]
         c = v.get("cell")
         if not c:
             continue
-        shop = {"kind": v["kind"]}
+        shop = {"kind": v["kind"], "faction": v.get("edid") or fk}
         if v.get("hours"):
             shop["hours"] = v["hours"]
         if c.get("interior") and c.get("name"):
@@ -249,10 +253,42 @@ def shop_of(d, vendors):
     return None
 
 
-def person_facts(dump, vendors=None):
+def job_rank(d):
+    """The best rank a person has in a Job faction (Adrianne is rank 0 in the blacksmiths', Ulfberth 255, which is no rank at all), 255 for none."""
+    return min([x.get("rank", 255) for x in (d or {}).get("factions", []) if (x.get("edid") or "").startswith("Job") and x.get("rank", 255) != 255] or [255])
+
+
+def keeper_of(vendor, members, dump=None):
+    """
+    WO-180 Part 8: the member of a vendor faction who keeps its shop, the rest being its assistants. In the order the records can tell it: the owner of the vendor chest (Oengul's, in
+    Windhelm), the owner of the cell it stands in, the member whose first name the faction's own name carries (ServicesDawnstarRustleifSmithy), and else the first made (the master file's
+    record with the lowest id: Bothela before Muiri, Beirand before Heimvar). `members` is [(record id, name)].
+    """
+    if len(members) == 1:
+        return members[0][0]
+    cell = (vendor or {}).get("cell") or {}
+    ids = {m[0] for m in members}
+    for who in (cell.get("chestOwner"), cell.get("owner")):
+        if who in ids:
+            return who
+    # whoever has a rank of their own in a Job faction when the others have none
+    ranks = {m[0]: job_rank((dump or {}).get(m[0])) for m in members}
+    best = [i for i, r in ranks.items() if r == min(ranks.values())]
+    if min(ranks.values()) < 255 and len(best) == 1:
+        return best[0]
+    tail = ((vendor or {}).get("edid") or "").lower()
+    named = [m[0] for m in members if len((m[1] or "").split(" ")[0]) >= 4 and (m[1] or "").split(" ")[0].lower() in tail]
+    if len(named) == 1:
+        return named[0]
+    return sorted(ids, key=lambda i: (not i.lower().startswith("skyrim.esm"), i.split(":")[0].lower(), i.split(":")[-1].rjust(8, "0")))[0]
+
+
+def person_facts(dump, vendors=None, not_sellers=None, keepers=None):
     """
     What a person is to a player, from the WO-156 dump's record fields (not their AI packages): `essential`, `follower`, `marriage`,
-    `sells` (has a vendor list), `shop` (the vendor faction's shop, shop_of), `innkeeper` (in the innkeepers' faction) and `trainer` ({skill, cap}). Keyed by record id; a person with none of them has no entry.
+    `sells` (has a vendor list), `shop` (the vendor faction's shop, shop_of; `keeper` when they keep it), `innkeeper` (in the innkeepers' faction) and `trainer` ({skill, cap}). Keyed by record id; a person with none of them has no entry.
+    `not_sellers` ({record id: why}) are people the records give a vendor faction who do not trade (UESP: Adara, Kerah's child). `keepers` ({faction edid: name}) settles a
+    faction whose members the records rank alike (Arnleif and Sons: Imedhnain and Lisbet), by UESP.
     """
     out = {}
     for pid, d in (dump or {}).items():
@@ -263,7 +299,10 @@ def person_facts(dump, vendors=None):
             f["follower"] = True
         if d.get("marriageable"):
             f["marriage"] = True
-        if d.get("vendor"):
+        # (a child who only has the urchins' list, which Sofie sells from, is no merchant: WO-180 Part 8)
+        only_urchins = all((vendors or {}).get(x.get("faction"), {}).get("list", "").startswith("BYOHUrchin") and "Services" not in (x.get("edid") or "")
+                           for x in d.get("factions", []) if (vendors or {}).get(x.get("faction"), {}).get("kind")) and any((vendors or {}).get(x.get("faction"), {}).get("kind") for x in d.get("factions", []))
+        if d.get("vendor") and pid not in (not_sellers or {}) and not only_urchins:
             f["sells"] = True
             shop = shop_of(d, vendors)
             if shop:
@@ -277,6 +316,15 @@ def person_facts(dump, vendors=None):
             f["trainer"] = {"skill": SKILL_SHOWN.get(t["skill"], t["skill"]), **({"cap": t["levelCap"]} if t.get("levelCap") else {})}
         if f:
             out[pid] = f
+    # one keeper for each vendor faction; the rest of its members are its assistants
+    by_faction = {}
+    for pid, f in out.items():
+        if f.get("shop"):
+            by_faction.setdefault(f["shop"]["faction"], []).append(pid)
+    by_edid = {v.get("edid"): v for v in (vendors or {}).values()}
+    for edid, pids in by_faction.items():
+        keeper = next((i for i in pids if (dump.get(i) or {}).get("name") == (keepers or {}).get(edid)), None) or keeper_of(by_edid.get(edid), [(i, (dump.get(i) or {}).get("name")) for i in pids], dump)
+        out[keeper]["shop"]["keeper"] = True
     return out
 
 
@@ -324,6 +372,9 @@ def tidy_person_read(read):
     for k in ("firstMeet", "role", "sells", "trains", "joins", "marries", "fightsWith", "canDie"):
         if k in read:
             read[k] = tidy_read(read[k])
+    # (WO-180 Part 8: the editors' word for a general trader, "general 'misc' merchant", is no one's words)
+    if read.get("sells"):
+        read["sells"] = re.sub(r"\s*\([^)]*['\u2018\u2019]misc['\u2018\u2019][^)]*\)", "", read["sells"]).replace("  ", " ").strip()
     read["changes"] = [c for c in (tidy_read(c) for c in read.get("changes", [])) if c]
     read["day"] = [{**d, "where": tidy_read(d.get("where", "")), "doing": tidy_read(d.get("doing", ""))} for d in read.get("day", [])]
     read["quests"] = [{**q, "how": tidy_read(q.get("how", ""))} for q in read.get("quests", [])]

@@ -30,7 +30,7 @@ type Params = Promise<{ slug: string }>;
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const p = personBySlug((await params).slug);
   if (!p) return {};
-  return { title: p.name, ...siteMetadata(`/people/${p.slug}`, p.name, [p.race, p.inTown].filter(Boolean).join(" in ")) };
+  return { title: p.label ?? p.name, ...siteMetadata(`/people/${p.slug}`, p.label ?? p.name, [p.race, p.inTown].filter(Boolean).join(" in ")) };
 }
 
 /** One colour for each place on the day strip. */
@@ -200,7 +200,8 @@ export default async function PersonPage({ params }: { params: Params }) {
   const L = (t: string) => <Linked text={t} names={linkable()} skip={`/people/${person.slug}`} />;
   // What they are comes from what the records say they do, before their race (WO-183 Part 4: 82% of pages had the race where a trainer, a merchant or a follower was known).
   const roleText = read?.role ? cap(read.role.split(";")[0].trim()) : (role ?? (trainer ? `${trainer.skill} trainer` : person.follower ? "Follower" : sells ? "Merchant" : (person.race ?? null)));
-  const sellsText = read?.sells ? cap(read.sells.split(/[;(]|,\s*\d/)[0].trim().replace(/\.$/, "")) : sells ? "Goods" : null;
+  // A person with a shop sells what the shop sells, in the word the town page uses (WO-180 Part 8: Carlotta's page said "general 'misc'", her town "food").
+  const sellsText = person.shop ? cap(person.shop.kind) : read?.sells ? cap(read.sells.split(/[;(]|,\s*\d/)[0].trim().replace(/\.$/, "")) : sells ? "Goods" : null;
   // At a glance (WO-165, rule 34): where to find them (teal), what they are (orange), what they sell (gold) or train (green), that they follow you (orange), and their quests (violet).
   const cells: GlanceCell[] = [
     {
@@ -228,7 +229,7 @@ export default async function PersonPage({ params }: { params: Params }) {
       <PageTop back={{ href: "/people", label: "People" }} />
 
       <TitleBox
-        title={person.name}
+        title={person.label ?? person.name}
         tags={
           <>
             {person.race && <span className={styles.tag}>{person.race}</span>}

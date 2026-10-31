@@ -439,6 +439,9 @@ ROLE_PEOPLE = {
     "the vampire": lambda role: "The vampire who took them" if re.search(r"(?i)kidnap", role or "") else "The vampire you're sent to kill",
 }
 _AND = re.compile(r"\s*,\s*|\s+and\s+")
+# A role said of a group ("the dead girl's parents", "hunters at Bloated Man's Grotto"): each person of it is one of them, not the whole group (WO-180 Part 8).
+_GROUP = re.compile(r"(?i)^(?:the |your |a )?[\w' -]*\b(?:parents|hunters|guards|brothers|sisters|friends|members|siblings|soldiers|bandits|priests|children|twins|witches|mercenaries|assassins|thugs|guardians|sons|daughters)\b")
+_same = lambda a, b: re.sub(r"(?i)^the\s+|[.\s]+$", "", a or "") == re.sub(r"(?i)^the\s+|[.\s]+$", "", b or "")  # noqa: E731
 
 
 def role_people(pages):
@@ -460,7 +463,10 @@ def role_people(pages):
                     continue
                 parts = [x.strip() for x in _AND.split(name) if x.strip()]
                 if len(parts) > 1 and not re.search(r"(?i)^(the|a|an|your|any)\b|[():]", name) and all(x[:1].isupper() for x in parts):
-                    out.extend({**p, "name": x} for x in parts)
+                    role = p.get("role") or ""
+                    if _GROUP.match(role) and not re.match(r"(?i)one of\b", role):
+                        role = "one of " + (role if re.match(r"(?i)(the|your)\b", role) else "the " + role)
+                    out.extend({**p, "name": x, **({"role": role} if role else {})} for x in parts)
                     n += 1
                 else:
                     out.append({**p, "name": name[:1].upper() + name[1:]} if name[:1].islower() else p)  # a sentence, with a capital
@@ -468,7 +474,8 @@ def role_people(pages):
             for p in out:
                 if p["name"].lower() not in seen:
                     seen.add(p["name"].lower())
-                    deduped.append(p)
+                    # (a role that only says the name again is no description: "The vampire's last known contact in the town", twice)
+                    deduped.append({k: v for k, v in p.items() if not (k == "role" and _same(v, p["name"]))})
             read["people"] = deduped
     return n
 

@@ -681,7 +681,8 @@ def main():
         reads = load_reads(os.path.join(RAW, "people_reads", "checked"))
         rulings = {k: v for k, v in overrides.get("people", {}).items() if not k.startswith("_")}
         vendors = load("shops_raw.json")["vendors"] if os.path.exists(os.path.join(RAW, "shops_raw.json")) else {}
-        facts = person_facts(dump, vendors)
+        facts = person_facts(dump, vendors, {k: v for k, v in overrides.get("notSellers", {}).items() if not k.startswith("_")},
+                             {k: v for k, v in overrides.get("shopKeepers", {}).items() if not k.startswith("_")})
         # WO-185 Part 4: where a quest's stage moves a person to, in a place with a name (at most five a person: the page keeps it to one short list).
         if dump and locals().get("pages") and os.path.exists(os.path.join(OUT, "places.json")):
             from people_moves import moves_of

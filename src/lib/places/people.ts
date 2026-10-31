@@ -84,6 +84,9 @@ const placeOfType = (name: string | null | undefined, type: string) => !!name &&
 /** A seller in the open at a forge the places do not list: UESP's "Eorlund works at the Skyforge" (the chest stands beside it). */
 const FORGES: Record<string, string> = { "Eorlund Gray-Mane": "The Skyforge" };
 
+/** The worldspace a city's own market is in: Riften is RiftenWorld. */
+const worldOfTown = (town: string) => `${town.replace(/[^A-Za-z]/g, "")}World`.toLowerCase();
+
 /** A mod's nameless worker ("Worker", at a brothel in every city) is no shopkeeper a player can look for. */
 const GENERIC_SELLER = /^(?:worker|vendor|merchant|shopkeeper|clerk|servant|customer)$/i;
 
@@ -131,12 +134,16 @@ export interface Shop {
   name: string;
   href: string | null;
   keeper: PlacePerson;
+  /** The others who belong to the shop's vendor faction: the keeper's assistants (Muiri, at Bothela's Hag's Cure). */
+  staff: PlacePerson[];
   /** What it sells in a word players use ("blacksmith", "general goods", "apothecary", "food"). */
   kind: string;
   /** Set when the shop has no name of its own: the page says "<keeper>'s <noun>" ("stall in the market", "smithy in Understone Keep"). */
   noun: string | null;
   /** When it is open, in words ("8 am to 8 pm"); null when it never closes. */
   hours: string | null;
+  /** The home, keep or hall a seller without a shop of their own works from ("Understone Keep", "Endon's House"); null otherwise. */
+  cell?: string | null;
 }
 
 /**
@@ -146,43 +153,65 @@ export interface Shop {
  * ("Ghorza's smithy in Understone Keep"), never the home as a shop. What it sells is what the vendor list takes, and the hours are the faction's. One shop each; the keeper
  * is who sleeps there, else the better-known seller, and the ones who sell from another's chest (Ysolda, from Belethor's) are in that shop.
  */
-export function shopsOf(houses: House[]): Shop[] {
-  const out = new Map<string, Shop & { rank: number }>();
+export function shopsOf(houses: House[], town?: string): Shop[] {
+  // One vendor faction is one shop (WO-180 Part 8): the people in it are its keeper (the faction's owner, who the data names) and its assistants. A shop was keyed by its building,
+  // or its cell and kind, which merged four factions in the Ragged Flagon and split one faction in the open into two.
+  type Member = { p: PlacePerson; h: House };
+  const groups = new Map<string, Member[]>();
   for (const h of houses) {
     for (const p of h.people) {
       const s = p.shop;
       if (!s || !p.shopkeeper) continue;
-      const cell = s.cell ? officialName(s.cell) : null;
-      // (a house the places call a Store is still a house: Falion sells from his, he doesn't keep a shop called "Falion's House")
-      const building = !!cell && !HOMELY.test(cell) && (placeOfType(cell, "Store") || placeOfType(cell, "Meadery") || (SHOPPY.test(cell) && !placeOfType(cell, "Inn")));
-      let name: string | null = null;
-      let href: string | null = null;
-      let noun: string | null = null;
-      let key: string;
-      if (building) {
-        name = cell;
-        href = placeHref(cell!);
-        key = cell!.toLowerCase();
-      } else if (s.stall && FORGES[p.name]) {
-        name = FORGES[p.name];
-        href = placeHref(name);
-        key = name.toLowerCase();
-      } else if (s.stall) {
-        // a smith in the open in a city works at a forge (the Skyforge), not a stall in its market
-        noun = s.kind === "blacksmith" ? "forge" : "stall in the market";
-        key = `stall|${p.name}`;
-      } else {
-        const base = NOUN[s.kind] ?? "shop";
-        noun = cell ? `${base} in ${cell}` : base;
-        href = cell ? placeHref(cell) : null;
-        key = cell ? `${cell}|${s.kind}`.toLowerCase() : `own|${p.name}`;
-      }
-      const rank = (cell && h.name === cell ? 4 : 0) + (p.read ? 1 : 0);
-      const had = out.get(key);
-      if (!had || rank > had.rank) out.set(key, { name: name ?? `${p.name}'s ${noun}`, href, keeper: p, kind: s.kind, noun, hours: s.hours ?? null, rank });
+      // a stall is in the market of the city whose worldspace the chest stands in: never a stall in a town with no such market
+      if (s.stall && town && s.world && s.world.toLowerCase() !== worldOfTown(town)) continue;
+      const key = s.faction ?? `${s.cell ?? ""}|${s.kind}|${p.name}`;
+      groups.set(key, [...(groups.get(key) ?? []), { p, h }]);
     }
   }
-  return [...out.values()].map((s): Shop => ({ name: s.name, href: s.href, keeper: s.keeper, kind: s.kind, noun: s.noun, hours: s.hours })).sort((a, b) => a.name.localeCompare(b.name));
+  type Built = Shop & { building: boolean };
+  const built: Built[] = [];
+  for (const members of groups.values()) {
+    // the keeper the data names; else the one who sleeps in the shop's building, then the better-known
+    const rank = (m: Member) => (m.p.shop?.keeper ? 8 : 0) + (m.p.shop?.cell && m.h.name === officialName(m.p.shop.cell) ? 4 : 0) + (m.p.read ? 1 : 0);
+    const sorted = [...members].sort((a, b) => rank(b) - rank(a));
+    const { p } = sorted[0];
+    const s = p.shop!;
+    const cell = s.cell ? officialName(s.cell) : null;
+    // (a house the places call a Store is still a house: Falion sells from his, he doesn't keep a shop called "Falion's House")
+    const building = !!cell && !HOMELY.test(cell) && (placeOfType(cell, "Store") || placeOfType(cell, "Meadery") || (SHOPPY.test(cell) && !placeOfType(cell, "Inn")));
+    let name: string | null = null;
+    let href: string | null = null;
+    let noun: string | null = null;
+    if (building) {
+      name = cell;
+      href = placeHref(cell!);
+    } else if (s.stall && FORGES[p.name]) {
+      name = FORGES[p.name];
+      href = placeHref(name);
+    } else if (s.stall) {
+      // a smith in the open in a city works at a forge (the Skyforge), not a stall in its market
+      noun = s.kind === "blacksmith" ? "forge" : "stall in the market";
+    } else {
+      const base = NOUN[s.kind] ?? "shop";
+      noun = cell ? `${base} in ${cell}` : base;
+      href = cell ? placeHref(cell) : null;
+    }
+    built.push({ name: name ?? `${p.name}'s ${noun}`, href, keeper: p, staff: sorted.slice(1).map((m) => m.p), kind: s.kind, noun, cell: noun && cell ? cell : null, hours: s.hours ?? null, building });
+  }
+  // Two factions in one building are two shops, each its keeper's, not both "the building" (the Ragged Flagon holds a smith and an apothecary of its own).
+  const named = new Map<string, number>();
+  for (const b of built) if (b.building) named.set(b.name.toLowerCase(), (named.get(b.name.toLowerCase()) ?? 0) + 1);
+  return built
+    .map((b): Shop => {
+      if (b.building && (named.get(b.name.toLowerCase()) ?? 0) > 1) {
+        const base = NOUN[b.kind] ?? "shop";
+        return { name: `${b.keeper.name}'s ${base} in ${b.name}`, href: b.href, keeper: b.keeper, staff: b.staff, kind: b.kind, noun: `${base} in ${b.name}`, cell: b.name, hours: b.hours };
+      }
+      const { building: _building, ...shop } = b;
+      void _building;
+      return shop;
+    })
+    .sort((a, b) => a.name.localeCompare(b.name));
 }
 
 /** The inns among a place's houses: a building the places call an Inn, or one whose keeper the read names; a keeper in a shop is not an inn. */
@@ -204,6 +233,15 @@ export function peopleAt(place: Place): { houses: House[]; total: number } {
     const row = p.rows.find(placed)!;
     const home = row.cell && !named(row.cell) ? row.cell : place.name;
     groups.set(home, [...(groups.get(home) ?? []), personOf(p, row)]);
+  }
+  // A seller the records place in no town still has a shop where the chest stands (WO-180 Part 8: Madesi's stall is in Riften's market).
+  if (!inside) {
+    const world = worldOfTown(place.name);
+    for (const p of peopleData().all) {
+      const row = p.rows.find((r) => !r.inTown && !r.cell && r.shop?.stall && r.shop.world?.toLowerCase() === world);
+      if (!row || here.includes(p) || p.follower || !lives(p) || GENERIC_SELLER.test(p.name)) continue;
+      groups.set(place.name, [...(groups.get(place.name) ?? []), personOf(p, row)]);
+    }
   }
   // A building whose name is in more than one town (a Hall of the Dead) is the one in this town.
   const town = inside ? place.inTown : place.name;

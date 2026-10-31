@@ -86,7 +86,8 @@ describe("what a place says of its shops and its books (WO-180 Part 4a)", () => 
   const whiterun = () => placesData().places.find((p) => p.name === "Whiterun" && p.type === "City")!;
   it("Whiterun's shops are a few kinds, each said once, not a run of the reads' pieces", () => {
     const kinds = [...new Set(peopleAt(whiterun()).houses.flatMap((h) => h.people.flatMap((x) => (x.sells ? [x.sells] : []))))];
-    expect(kinds.length).toBeLessThanOrEqual(8);
+    // (WO-180 Part 8: a shop's kind is what its list is about, so a fletcher, a hunter and a jeweler are their own words)
+    expect(kinds.length).toBeLessThanOrEqual(10);
     expect(kinds.filter((k) => k.length > 30 || /\bat\b|,/.test(k))).toEqual([]);
   });
   it("Whiterun does not count Honningbrew Meadery or Whiterun Stables, which stand outside the walls", () => {

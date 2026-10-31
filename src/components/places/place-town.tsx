@@ -59,7 +59,7 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
   const { houses, total } = peopleAt(place);
   const everyone = houses.flatMap((h) => h.people);
   const keepers = everyone.filter((p) => p.keeper).sort((a, b) => b.keeperRank - a.keeperRank);
-  const shops = shopsOf(houses);
+  const shops = shopsOf(houses, inside ? place.inTown : place.name);
   const inns = innsOf(houses);
   // A town has beds when one of its inns does; an inn, temple or hall has them when its keeper does.
   const beds = inside ? keepers.length : inns.length;
@@ -113,13 +113,31 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
   );
   const shopLine = (s: Shop) => (
     <span key={s.name} style={{ display: "block" }}>
-      {s.noun ? (
+      {s.noun && s.cell ? (
+        // a seller who works from a home, a keep or a hall: said once, "Endon, silversmith (Endon's House)"
+        <>
+          <Link href={s.keeper.href}>{s.keeper.name}</Link>, {s.kind} ({s.href ? <Link href={s.href}>{s.cell}</Link> : s.cell})
+        </>
+      ) : s.noun ? (
         <>
           <Link href={s.keeper.href}>{s.keeper.name}</Link>&apos;s {s.noun}: {s.kind}
         </>
       ) : (
         <>
           {s.href ? <Link href={s.href}>{s.name}</Link> : s.name}: <Link href={s.keeper.href}>{s.keeper.name}</Link>, {s.kind}
+        </>
+      )}
+      {s.staff.length > 0 && (
+        <>
+          {" "}
+          (with{" "}
+          {s.staff.slice(0, 2).map((x, i) => (
+            <span key={x.name}>
+              {i ? ", " : ""}
+              <Link href={x.href}>{x.name}</Link>
+            </span>
+          ))}
+          )
         </>
       )}
     </span>

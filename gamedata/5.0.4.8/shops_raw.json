@@ -8,7 +8,8 @@
    "cell": {
     "name": "The Resting Pilgrim",
     "edid": "APHelgenInn",
-    "interior": true
+    "interior": true,
+    "owner": "AlternatePerspective.esp:04C925"
    }
   },
   "AlternatePerspective.esp:1B53B9": {
@@ -28,7 +29,8 @@
    "cell": {
     "name": "Skalei's Scrap",
     "edid": "APSkaleisJunk",
-    "interior": true
+    "interior": true,
+    "owner": "AlternatePerspective.esp:1CEAF7"
    }
   },
   "AlternatePerspective.esp:20165A": {
@@ -38,7 +40,8 @@
    "cell": {
     "name": "Vilod's Meadery",
     "edid": "APVilodMeadery",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:01363E"
    }
   },
   "Andrealphus Jobs Overhaul - MASTER.esp:000BBA": {
@@ -49,7 +52,8 @@
    "cell": {
     "name": "Moorside Inn",
     "edid": "MorthalMoorsideInn",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0135ED"
    }
   },
   "AnimatedShips.esl:00080B": {
@@ -235,7 +239,8 @@
    "kind": "hunting goods",
    "hours": "8 am to 8 pm",
    "cell": {
-    "world": "Tamriel"
+    "world": "Tamriel",
+    "chestOwner": "Arena - Markarth Side.esp:05230D"
    }
   },
   "Arena - Markarth Side.esp:05C6CC": {
@@ -246,7 +251,8 @@
    "cell": {
     "name": "The Splended Spool",
     "edid": "aaaMarkarthSideClothingShopInterior",
-    "interior": true
+    "interior": true,
+    "owner": "Arena - Markarth Side.esp:05C6CB"
    }
   },
   "Arena - Markarth Side.esp:080333": {
@@ -257,7 +263,9 @@
    "cell": {
     "name": "Healers and Dealers",
     "edid": "aaaMarkarthSideAlchemyShopInterior",
-    "interior": true
+    "interior": true,
+    "owner": "Arena - Markarth Side.esp:136ED5",
+    "chestOwner": "Arena - Markarth Side.esp:136ED5"
    }
   },
   "Arena - Markarth Side.esp:080334": {
@@ -268,7 +276,8 @@
    "cell": {
     "name": "The Boiling Cauldron",
     "edid": "aaaMarkarthSideMagicShop",
-    "interior": true
+    "interior": true,
+    "owner": "Arena - Markarth Side.esp:080333"
    }
   },
   "Arena - Markarth Side.esp:0A8E2B": {
@@ -289,7 +298,9 @@
    "cell": {
     "name": "Healers and Dealers",
     "edid": "aaaMarkarthSideAlchemyShopInterior",
-    "interior": true
+    "interior": true,
+    "owner": "Arena - Markarth Side.esp:136ED5",
+    "chestOwner": "Arena - Markarth Side.esp:136ED5"
    }
   },
   "Arena - Markarth Side.esp:109803": {
@@ -301,7 +312,9 @@
    "cell": {
     "name": "The Silverspoon Trading Company",
     "edid": "aaaMarkarthSideGeneralStore",
-    "interior": true
+    "interior": true,
+    "owner": "Arena - Markarth Side.esp:109802",
+    "chestOwner": "Arena - Markarth Side.esp:109803"
    }
   },
   "Arena - Markarth Side.esp:127BC9": {
@@ -312,7 +325,8 @@
    "cell": {
     "name": "The Kings Rest",
     "edid": "aaaMarkarthSideInnInterior",
-    "interior": true
+    "interior": true,
+    "owner": "Arena - Markarth Side.esp:127BC6"
    }
   },
   "Arena - Markarth Side.esp:136ED5": {
@@ -323,7 +337,9 @@
    "cell": {
     "name": "Healers and Dealers",
     "edid": "aaaMarkarthSideAlchemyShopInterior",
-    "interior": true
+    "interior": true,
+    "owner": "Arena - Markarth Side.esp:136ED5",
+    "chestOwner": "Arena - Markarth Side.esp:136ED5"
    }
   },
   "Arena - Markarth Side.esp:13BFF0": {
@@ -334,7 +350,9 @@
    "cell": {
     "name": "Healers and Dealers",
     "edid": "aaaMarkarthSideAlchemyShopInterior",
-    "interior": true
+    "interior": true,
+    "owner": "Arena - Markarth Side.esp:136ED5",
+    "chestOwner": "Arena - Markarth Side.esp:136ED5"
    }
   },
   "Arena - Markarth Side.esp:13BFF6": {
@@ -345,7 +363,9 @@
    "cell": {
     "name": "Healers and Dealers",
     "edid": "aaaMarkarthSideAlchemyShopInterior",
-    "interior": true
+    "interior": true,
+    "owner": "Arena - Markarth Side.esp:136ED5",
+    "chestOwner": "Arena - Markarth Side.esp:136ED5"
    }
   },
   "Arena - Markarth Side.esp:13BFF7": {
@@ -356,7 +376,8 @@
    "cell": {
     "name": "Iron Maidens",
     "edid": "aaaMarkarthSideBlacksmithInterior",
-    "interior": true
+    "interior": true,
+    "owner": "Arena - Markarth Side.esp:13BFF6"
    }
   },
   "Arena - Markarth Side.esp:141131": {
@@ -367,7 +388,8 @@
    "cell": {
     "name": "Iron Maidens",
     "edid": "aaaMarkarthSideBlacksmithInterior",
-    "interior": true
+    "interior": true,
+    "owner": "Arena - Markarth Side.esp:13BFF6"
    }
   },
   "Armors of the Velothi Pt2.esl:00098F": {
@@ -384,7 +406,8 @@
    "kind": "apothecary",
    "hours": "9 am to 9 pm",
    "cell": {
-    "world": "mannyGFDesert"
+    "world": "mannyGFDesert",
+    "chestOwner": "BetalillesHammerfellQuestBundle.esp:000CBD"
    }
   },
   "BetalillesHammerfellQuestBundle.esp:00129A": {
@@ -392,7 +415,8 @@
    "list": "VendorItemsJeweler",
    "kind": "jewelry",
    "cell": {
-    "world": "mannyGFDesert"
+    "world": "mannyGFDesert",
+    "chestOwner": "BetalillesHammerfellQuestBundle.esp:00129A"
    }
   },
   "BetalillesHammerfellQuestBundle.esp:0016CC": {
@@ -402,7 +426,8 @@
    "cell": {
     "name": "Salas Kazas' Inn",
     "edid": "ASHGInn",
-    "interior": true
+    "interior": true,
+    "owner": "BetalillesHammerfellQuestBundle.esp:0016C8"
    }
   },
   "BetalillesHammerfellQuestBundle.esp:001736": {
@@ -430,7 +455,8 @@
    "cell": {
     "name": "Goldenhills Plantation",
     "edid": "ccVSVSSE004FarmhouseInterior",
-    "interior": true
+    "interior": true,
+    "owner": "CC Farming - Tweaks and Enhancements.esp:000A12"
    }
   },
   "CC Farming - Tweaks and Enhancements.esp:000B0A": {
@@ -441,7 +467,8 @@
    "cell": {
     "name": "Goldenhills Plantation",
     "edid": "ccVSVSSE004FarmhouseInterior",
-    "interior": true
+    "interior": true,
+    "owner": "CC Farming - Tweaks and Enhancements.esp:000A12"
    }
   },
   "Dawnguard.esm:00F1A7": {
@@ -451,7 +478,8 @@
    "cell": {
     "name": "Fort Dawnguard",
     "edid": "DLC1DawnguardHQ01",
-    "interior": true
+    "interior": true,
+    "chestOwner": "Dawnguard.esm:00336B"
    }
   },
   "Dawnguard.esm:00F827": {
@@ -461,13 +489,14 @@
    "cell": {
     "name": "Fort Dawnguard",
     "edid": "DLC1DawnguardHQ01",
-    "interior": true
+    "interior": true,
+    "chestOwner": "Dawnguard.esm:00336C"
    }
   },
   "Dawnguard.esm:00F82D": {
    "edid": "DLC1ServicesFlorentius",
    "list": "DLC1FlorentiusVendorItems",
-   "kind": "apothecary",
+   "kind": "hunting goods",
    "cell": {
     "name": "Fort Dawnguard",
     "edid": "DLC1DawnguardHQ01",
@@ -481,7 +510,8 @@
    "cell": {
     "name": "Volkihar Keep",
     "edid": "DLC1VampireCastleGuildhall",
-    "interior": true
+    "interior": true,
+    "chestOwner": "Dawnguard.esm:003366"
    }
   },
   "Dawnguard.esm:01047E": {
@@ -491,7 +521,8 @@
    "cell": {
     "name": "Volkihar Keep",
     "edid": "DLC1VampireCastleGuildhall",
-    "interior": true
+    "interior": true,
+    "chestOwner": "Dawnguard.esm:003365"
    }
   },
   "Dawnguard.esm:01047F": {
@@ -501,7 +532,8 @@
    "cell": {
     "name": "Volkihar Keep",
     "edid": "DLC1VampireCastleGuildhall",
-    "interior": true
+    "interior": true,
+    "chestOwner": "Dawnguard.esm:003367"
    }
   },
   "Dawnguard.esm:01393F": {
@@ -523,7 +555,9 @@
    "cell": {
     "name": "Tel Mithryn Apothecary",
     "edid": "DLC2TelMithrynApothecary",
-    "interior": true
+    "interior": true,
+    "owner": "Dragonborn.esm:017775",
+    "chestOwner": "Dragonborn.esm:0177C5"
    }
   },
   "Dragonborn.esm:0177C6": {
@@ -534,7 +568,9 @@
    "cell": {
     "name": "Tel Mithryn",
     "edid": "DLC2TelMithryn",
-    "interior": true
+    "interior": true,
+    "owner": "Dragonborn.esm:017775",
+    "chestOwner": "Dragonborn.esm:017777"
    }
   },
   "Dragonborn.esm:0177C7": {
@@ -545,15 +581,18 @@
    "cell": {
     "name": "Tel Mithryn",
     "edid": "DLC2TelMithryn",
-    "interior": true
+    "interior": true,
+    "owner": "Dragonborn.esm:017775",
+    "chestOwner": "Dragonborn.esm:01773A"
    }
   },
   "Dragonborn.esm:01DC62": {
    "edid": "DLC2dunFrostmoonWerewolvesVendorFaction",
    "list": "TVR_DLC2VendorItemsMajni",
-   "kind": "apothecary",
+   "kind": "hunting goods",
    "cell": {
-    "world": "DLC2SolstheimWorld"
+    "world": "DLC2SolstheimWorld",
+    "chestOwner": "Dragonborn.esm:01DC61"
    }
   },
   "Dragonborn.esm:01EEC4": {
@@ -574,7 +613,9 @@
    "cell": {
     "name": "Edla's House",
     "edid": "DLC2SVEdlasHouse",
-    "interior": true
+    "interior": true,
+    "owner": "Dragonborn.esm:018FBC",
+    "chestOwner": "Dragonborn.esm:01F88C"
    }
   },
   "Dragonborn.esm:01F899": {
@@ -585,7 +626,9 @@
    "cell": {
     "name": "Baldor Iron-Shaper's House",
     "edid": "DLC2SVBaldorIronShapersHouse",
-    "interior": true
+    "interior": true,
+    "owner": "Dragonborn.esm:018FB6",
+    "chestOwner": "Dragonborn.esm:01F899"
    }
   },
   "Dragonborn.esm:02501A": {
@@ -595,7 +638,8 @@
    "name": "Raven Rock Milore Services Faction",
    "hours": "7 am to 8 pm",
    "cell": {
-    "world": "DLC2SolstheimWorld"
+    "world": "DLC2SolstheimWorld",
+    "chestOwner": "Dragonborn.esm:0182A1"
    }
   },
   "Dragonborn.esm:025025": {
@@ -605,7 +649,8 @@
    "name": "Raven Rock Fethis Services Faction",
    "hours": "7 am to 8 pm",
    "cell": {
-    "world": "DLC2SolstheimWorld"
+    "world": "DLC2SolstheimWorld",
+    "chestOwner": "Dragonborn.esm:018292"
    }
   },
   "Dragonborn.esm:025026": {
@@ -615,7 +660,8 @@
    "name": "Raven Rock Garyn Services Faction",
    "hours": "7 am to 8 pm",
    "cell": {
-    "world": "DLC2SolstheimWorld"
+    "world": "DLC2SolstheimWorld",
+    "chestOwner": "Dragonborn.esm:01829F"
    }
   },
   "Dragonborn.esm:025027": {
@@ -627,7 +673,9 @@
    "cell": {
     "name": "Glover Mallory's House",
     "edid": "DLC2RRGloverMalloryHouse",
-    "interior": true
+    "interior": true,
+    "owner": "Dragonborn.esm:018423",
+    "chestOwner": "Dragonborn.esm:01828E"
    }
   },
   "Dragonborn.esm:025028": {
@@ -639,7 +687,9 @@
    "cell": {
     "name": "The Retching Netch",
     "edid": "DLC2RRTheRetchingNetch",
-    "interior": true
+    "interior": true,
+    "owner": "Dragonborn.esm:018421",
+    "chestOwner": "Dragonborn.esm:018290"
    }
   },
   "Dragonborn.esm:027107": {
@@ -649,7 +699,8 @@
    "name": "Halbarn Services",
    "hours": "8 am to 8 pm",
    "cell": {
-    "world": "DLC2SolstheimWorld"
+    "world": "DLC2SolstheimWorld",
+    "chestOwner": "Dragonborn.esm:01A514"
    }
   },
   "Dragonborn.esm:027E12": {
@@ -666,7 +717,8 @@
    "kind": "general goods",
    "hours": "midnight to 5 am",
    "cell": {
-    "world": "DLC2SolstheimWorld"
+    "world": "DLC2SolstheimWorld",
+    "chestOwner": "Dragonborn.esm:031862"
    }
   },
   "Dragonborn.esm:03572D": {
@@ -678,7 +730,8 @@
    "cell": {
     "name": "Thirsk Mead Hall",
     "edid": "DLC2ThirskMeadHallInterior01",
-    "interior": true
+    "interior": true,
+    "chestOwner": "Dragonborn.esm:03572D"
    }
   },
   "Environs - Riften Warehouse.esp:000A2C": {
@@ -690,7 +743,9 @@
    "cell": {
     "name": "East Empire Company Outpost",
     "edid": "ENVCell006",
-    "interior": true
+    "interior": true,
+    "owner": "Environs - Riften Warehouse.esp:0008E1",
+    "chestOwner": "Environs - Riften Warehouse.esp:000A2C"
    }
   },
   "Evolving Locations - Riverside Shack.esp:0000E4": {
@@ -768,7 +823,8 @@
    "cell": {
     "name": "The Ratway Arena",
     "edid": "FOFMissileRatwayArena",
-    "interior": true
+    "interior": true,
+    "owner": "Fists of Fury - Skyrim.esp:024098"
    }
   },
   "ForgottenCity.esp:02623C": {
@@ -790,7 +846,8 @@
    "cell": {
     "name": "Vernon's Fresh Produce",
     "edid": "000ForgottenCityB0412",
-    "interior": true
+    "interior": true,
+    "chestOwner": "ForgottenCity.esp:0278F4"
    }
   },
   "ForgottenCity.esp:0278F4": {
@@ -812,7 +869,8 @@
    "cell": {
     "name": "Luki's chambers",
     "edid": "000ForgottenCityB0417",
-    "interior": true
+    "interior": true,
+    "owner": "ForgottenCity.esp:02CC62"
    }
   },
   "ForgottenCity.esp:088B5F": {
@@ -835,7 +893,9 @@
    "cell": {
     "name": "Fort Dunstad Trader",
     "edid": "FortDunstadTrader",
-    "interior": true
+    "interior": true,
+    "owner": "Fort Dunstad.esp:0001A4",
+    "chestOwner": "Fort Dunstad.esp:0001A4"
    }
   },
   "Fort Dunstad.esp:000095": {
@@ -845,7 +905,8 @@
    "name": "Fort Dunstad Blacksmith Services",
    "hours": "7 am to 8 pm",
    "cell": {
-    "world": "Tamriel"
+    "world": "Tamriel",
+    "chestOwner": "Fort Dunstad.esp:0001A6"
    }
   },
   "Fort Dunstad.esp:0001A4": {
@@ -857,7 +918,9 @@
    "cell": {
     "name": "Fort Dunstad Trader",
     "edid": "FortDunstadTrader",
-    "interior": true
+    "interior": true,
+    "owner": "Fort Dunstad.esp:0001A4",
+    "chestOwner": "Fort Dunstad.esp:0001A4"
    }
   },
   "Fort Dunstad.esp:0001A6": {
@@ -867,7 +930,8 @@
    "name": "Fort Dunstad Blacksmith Faction",
    "hours": "7 am to 8 pm",
    "cell": {
-    "world": "Tamriel"
+    "world": "Tamriel",
+    "chestOwner": "Fort Dunstad.esp:0001A6"
    }
   },
   "Fort Dunstad.esp:00034F": {
@@ -878,7 +942,9 @@
    "cell": {
     "name": "The Stumbling Sabrecat",
     "edid": "FortDunstadInnWorking",
-    "interior": true
+    "interior": true,
+    "owner": "Fort Dunstad.esp:00034F",
+    "chestOwner": "Fort Dunstad.esp:00034F"
    }
   },
   "Fort Dunstad.esp:000350": {
@@ -889,7 +955,9 @@
    "cell": {
     "name": "The Stumbling Sabrecat",
     "edid": "FortDunstadInnWorking",
-    "interior": true
+    "interior": true,
+    "owner": "Fort Dunstad.esp:00034F",
+    "chestOwner": "Fort Dunstad.esp:00034F"
    }
   },
   "Fort Greymoor.esp:0008EE": {
@@ -920,7 +988,9 @@
    "cell": {
     "name": "The Ragged Flagon - Cistern",
     "edid": "RiftenThievesGuildHeadquarters",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:029DA9",
+    "chestOwner": "GG's Thieves Guild Headquarters.esp:000FBC"
    }
   },
   "GG's Thieves Guild Headquarters.esp:000FBF": {
@@ -931,7 +1001,9 @@
    "cell": {
     "name": "The Ragged Flagon - Cistern",
     "edid": "RiftenThievesGuildHeadquarters",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:029DA9",
+    "chestOwner": "GG's Thieves Guild Headquarters.esp:000FC1"
    }
   },
   "Gonz - Stonehills ReRe-imagined.esp:000090": {
@@ -940,7 +1012,8 @@
    "kind": "food",
    "name": "Stonehills Tavern Faction",
    "cell": {
-    "world": "Tamriel"
+    "world": "Tamriel",
+    "chestOwner": "Gonz - Stonehills ReRe-imagined.esp:000090"
    }
   },
   "Gray Fox Cowl.esm:0167FF": {
@@ -952,7 +1025,8 @@
    "cell": {
     "name": "Three Peaks Staff and Magic",
     "edid": "mannyGFIntThreePeaks",
-    "interior": true
+    "interior": true,
+    "owner": "Gray Fox Cowl.esm:016805"
    }
   },
   "Gray Fox Cowl.esm:03E05A": {
@@ -964,7 +1038,8 @@
    "cell": {
     "name": "Last Sentinel Emporium",
     "edid": "mannyGFIntLastSentinelEmporium",
-    "interior": true
+    "interior": true,
+    "owner": "Gray Fox Cowl.esm:03E05B"
    }
   },
   "Gray Fox Cowl.esm:03ECB5": {
@@ -976,7 +1051,8 @@
    "cell": {
     "name": "Malpenix and Isobel House",
     "edid": "mannyGFIntMalpenixIsobelHouse",
-    "interior": true
+    "interior": true,
+    "owner": "Gray Fox Cowl.esm:03ECB3"
    }
   },
   "Gray Fox Cowl.esm:042FF0": {
@@ -987,7 +1063,8 @@
    "cell": {
     "name": "Black Mesa Inn",
     "edid": "mannyGFIntBlackMesaInn",
-    "interior": true
+    "interior": true,
+    "owner": "Gray Fox Cowl.esm:03CFE2"
    }
   },
   "HLIORemi.esp:04C77A": {
@@ -998,7 +1075,8 @@
    "cell": {
     "name": "Silver-Blood Inn",
     "edid": "MarkarthSilverBloodInn",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:06566F"
    }
   },
   "HearthFires.esm:000DF0": {
@@ -1729,7 +1807,7 @@
   "HearthFires.esm:003F55": {
    "edid": "BYOHUrchin_BlaiseJobFaction",
    "list": "BYOHUrchin_SofieVendorList",
-   "kind": "apothecary",
+   "kind": "flowers",
    "cell": {
     "world": "WindhelmWorld"
    }
@@ -1737,7 +1815,7 @@
   "HearthFires.esm:003F5D": {
    "edid": "BYOHUrchin_LuciaJobFaction",
    "list": "BYOHUrchin_SofieVendorList",
-   "kind": "apothecary",
+   "kind": "flowers",
    "cell": {
     "world": "WindhelmWorld"
    }
@@ -1745,7 +1823,7 @@
   "HearthFires.esm:003F61": {
    "edid": "BYOHDisallowGamesFaction",
    "list": "BYOHUrchin_SofieVendorList",
-   "kind": "apothecary",
+   "kind": "flowers",
    "cell": {
     "world": "WindhelmWorld"
    }
@@ -1753,7 +1831,7 @@
   "HearthFires.esm:003F62": {
    "edid": "BYOHUrchin_AlesanJobFaction",
    "list": "BYOHUrchin_SofieVendorList",
-   "kind": "apothecary",
+   "kind": "flowers",
    "cell": {
     "world": "WindhelmWorld"
    }
@@ -1761,7 +1839,7 @@
   "HearthFires.esm:004033": {
    "edid": "BYOHUrchin_SofieJobFaction",
    "list": "BYOHUrchin_SofieVendorList",
-   "kind": "apothecary",
+   "kind": "flowers",
    "cell": {
     "world": "WindhelmWorld"
    }
@@ -1769,7 +1847,7 @@
   "HearthFires.esm:00403A": {
    "edid": "BYOHServicesWindhelmSofie",
    "list": "BYOHUrchin_SofieVendorList",
-   "kind": "apothecary",
+   "kind": "flowers",
    "name": "Sofie's Flowers",
    "hours": "8 am to 8 pm",
    "cell": {
@@ -1934,7 +2012,8 @@
    "cell": {
     "name": "Hendraheim",
     "edid": "ccEEJSSE004Interior01",
-    "interior": true
+    "interior": true,
+    "owner": "Hendraheim - Tweaks and Enhancements.esp:000854"
    }
   },
   "Hunters Sell Fish And More Animal Parts.esp:00090A": {
@@ -1967,7 +2046,8 @@
    "cell": {
     "name": "The Bubbling Pot",
     "edid": "BaanSDBubblingPot",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:01A35E"
    }
   },
   "Journey to Baan Malur.esp:03327F": {
@@ -1983,7 +2063,8 @@
    "cell": {
     "name": "The Brass Brewery",
     "edid": "BaanEDBrewery",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:033E92"
    }
   },
   "Journey to Baan Malur.esp:039122": {
@@ -1993,7 +2074,8 @@
    "cell": {
     "name": "Ganner's House",
     "edid": "BaanWDDockhouseLarge09",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:039121"
    }
   },
   "Journey to Baan Malur.esp:03DDD8": {
@@ -2004,7 +2086,8 @@
    "cell": {
     "name": "Arena Market",
     "edid": "BaanEDInnerMarket",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:193201"
    }
   },
   "Journey to Baan Malur.esp:03DDDB": {
@@ -2015,7 +2098,8 @@
    "cell": {
     "name": "Arena Market",
     "edid": "BaanEDInnerMarket",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:193201"
    }
   },
   "Journey to Baan Malur.esp:03DDDF": {
@@ -2035,7 +2119,8 @@
    "cell": {
     "name": "Arena Market",
     "edid": "BaanEDInnerMarket",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:193201"
    }
   },
   "Journey to Baan Malur.esp:03DE09": {
@@ -2046,7 +2131,8 @@
    "cell": {
     "name": "Arena Market",
     "edid": "BaanEDInnerMarket",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:193201"
    }
   },
   "Journey to Baan Malur.esp:03E4F1": {
@@ -2057,7 +2143,8 @@
    "cell": {
     "name": "The Chipped Chitin",
     "edid": "BaanABChippedChitin",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:03E4F1"
    }
   },
   "Journey to Baan Malur.esp:042E0A": {
@@ -2068,7 +2155,8 @@
    "cell": {
     "name": "Cormar Crossing Cornerclub",
     "edid": "CrossroadsCornerclub01",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:042E0A"
    }
   },
   "Journey to Baan Malur.esp:04CF77": {
@@ -2079,7 +2167,8 @@
    "cell": {
     "name": "Reaver's Regret Cornerclub",
     "edid": "CormarisCornerclub",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:04CF77"
    }
   },
   "Journey to Baan Malur.esp:04DF2D": {
@@ -2090,7 +2179,8 @@
    "cell": {
     "name": "The Crisp Loaf",
     "edid": "BaanEDBakery",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:04DF2D"
    }
   },
   "Journey to Baan Malur.esp:04DF73": {
@@ -2101,7 +2191,8 @@
    "cell": {
     "name": "The Crisp Loaf",
     "edid": "BaanEDBakery",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:04DF2D"
    }
   },
   "Journey to Baan Malur.esp:04DF7C": {
@@ -2120,7 +2211,8 @@
    "cell": {
     "name": "The House of Grounded Pleasures",
     "edid": "BaanEDHouseofGroundedPleasures",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:04E041"
    }
   },
   "Journey to Baan Malur.esp:057440": {
@@ -2131,7 +2223,8 @@
    "cell": {
     "name": "Border Bakes",
     "edid": "CormarisBakery",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:057440"
    }
   },
   "Journey to Baan Malur.esp:06BAC8": {
@@ -2140,7 +2233,8 @@
    "kind": "general goods",
    "hours": "8 am to 9 pm",
    "cell": {
-    "world": "DLC2SolstheimWorld"
+    "world": "DLC2SolstheimWorld",
+    "chestOwner": "Journey to Baan Malur.esp:2B90DF"
    }
   },
   "Journey to Baan Malur.esp:085389": {
@@ -2151,7 +2245,8 @@
    "cell": {
     "name": "Oddities of Tamriel",
     "edid": "CormarisGeneralGoods",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:085389"
    }
   },
   "Journey to Baan Malur.esp:085434": {
@@ -2180,7 +2275,8 @@
    "cell": {
     "name": "The Telvanni Tearoom",
     "edid": "BaanSDTelvanniTearoom",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:0BF483"
    }
   },
   "Journey to Baan Malur.esp:0D6A43": {
@@ -2189,7 +2285,8 @@
    "kind": "general goods",
    "hours": "8 am to 9 pm",
    "cell": {
-    "world": "DLC2SolstheimWorld"
+    "world": "DLC2SolstheimWorld",
+    "chestOwner": "Journey to Baan Malur.esp:0D6A43"
    }
   },
   "Journey to Baan Malur.esp:0EDB99": {
@@ -2200,7 +2297,8 @@
    "cell": {
     "name": "The Underoot",
     "edid": "BaanSDUnderoot",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:0EDB99"
    }
   },
   "Journey to Baan Malur.esp:0F810E": {
@@ -2211,7 +2309,8 @@
    "cell": {
     "name": "The Vexed Stone",
     "edid": "BaanABVexedStone",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:0F810E"
    }
   },
   "Journey to Baan Malur.esp:1243DD": {
@@ -2231,7 +2330,8 @@
    "cell": {
     "name": "Arena Market",
     "edid": "BaanEDInnerMarket",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:193201"
    }
   },
   "Journey to Baan Malur.esp:129708": {
@@ -2241,7 +2341,8 @@
    "cell": {
     "name": "The Cliffracer's Demise",
     "edid": "BaanWDCliffracersDemise",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:129708"
    }
   },
   "Journey to Baan Malur.esp:135AC3": {
@@ -2260,7 +2361,8 @@
    "cell": {
     "name": "Pryai Cornerclub",
     "edid": "STPCornerclub",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:1528D5"
    }
   },
   "Journey to Baan Malur.esp:15CFDC": {
@@ -2270,7 +2372,8 @@
    "cell": {
     "name": "The Keremissu",
     "edid": "RavenRockKeremissu",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:10F3BE"
    }
   },
   "Journey to Baan Malur.esp:1776E5": {
@@ -2292,7 +2395,8 @@
    "cell": {
     "name": "The Spiced Yam",
     "edid": "BaanABSpicedYam",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:1DF6F1"
    }
   },
   "Journey to Baan Malur.esp:202F9F": {
@@ -2303,7 +2407,8 @@
    "cell": {
     "name": "Corkbulb Crock",
     "edid": "BaanHSArchery",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:202F9F"
    }
   },
   "Journey to Baan Malur.esp:208208": {
@@ -2314,7 +2419,8 @@
    "cell": {
     "name": "The Sepia Pages",
     "edid": "BaanHSBookstore",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:208208"
    }
   },
   "Journey to Baan Malur.esp:20D368": {
@@ -2325,7 +2431,8 @@
    "cell": {
     "name": "Bevolni Bakery",
     "edid": "BaanHSBakery",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:20D368"
    }
   },
   "Journey to Baan Malur.esp:20D3FC": {
@@ -2336,7 +2443,8 @@
    "cell": {
     "name": "Bevolni Bakery",
     "edid": "BaanHSBakery",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:20D368"
    }
   },
   "Journey to Baan Malur.esp:221B02": {
@@ -2347,7 +2455,8 @@
    "cell": {
     "name": "Gretian's Goods",
     "edid": "BaanHSGeneralStore",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:221B02"
    }
   },
   "Journey to Baan Malur.esp:226DB0": {
@@ -2357,7 +2466,8 @@
    "cell": {
     "name": "The Scrambling Scrib",
     "edid": "BaanHSScramblingScrib",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:226DB0"
    }
   },
   "Journey to Baan Malur.esp:230EC7": {
@@ -2367,7 +2477,8 @@
    "cell": {
     "name": "The Scrappy Mudcrab",
     "edid": "BaanEDScrappyMudcrab",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:230EC7"
    }
   },
   "Journey to Baan Malur.esp:2362BD": {
@@ -2378,7 +2489,8 @@
    "cell": {
     "name": "Baan Malur Brews",
     "edid": "BaanHSAlchemists",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:2362BD"
    }
   },
   "Journey to Baan Malur.esp:23B777": {
@@ -2389,7 +2501,8 @@
    "cell": {
     "name": "Drol Smithy",
     "edid": "BaanRPSmithy",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:193202"
    }
   },
   "Journey to Baan Malur.esp:25EB55": {
@@ -2400,7 +2513,8 @@
    "cell": {
     "name": "Fine Cladding",
     "edid": "BaanHSClothier",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:25EB55"
    }
   },
   "Journey to Baan Malur.esp:2A783A": {
@@ -2411,7 +2525,8 @@
    "cell": {
     "name": "The Bonesmith",
     "edid": "BaanEDBoneshop",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:2A783A"
    }
   },
   "Journey to Baan Malur.esp:2B90DF": {
@@ -2420,7 +2535,8 @@
    "kind": "general goods",
    "hours": "8 am to 9 pm",
    "cell": {
-    "world": "DLC2SolstheimWorld"
+    "world": "DLC2SolstheimWorld",
+    "chestOwner": "Journey to Baan Malur.esp:2B90DF"
    }
   },
   "Journey to Baan Malur.esp:2C63EB": {
@@ -2439,7 +2555,8 @@
    "cell": {
     "name": "The Scrappy Mudcrab",
     "edid": "BaanDrScrappyMudcrab",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:2C9782"
    }
   },
   "Journey to Baan Malur.esp:30DBA7": {
@@ -2449,7 +2566,8 @@
    "cell": {
     "name": "The Moist Tankard",
     "edid": "LlethrinFelCornerclub",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:30DBA7"
    }
   },
   "Journey to Baan Malur.esp:35DCB2": {
@@ -2469,7 +2587,8 @@
    "cell": {
     "name": "Arena Market",
     "edid": "BaanEDInnerMarket",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:193201"
    }
   },
   "Journey to Baan Malur.esp:35DCE5": {
@@ -2498,7 +2617,8 @@
    "cell": {
     "name": "Suri's Wares",
     "edid": "BaanWDGeneralStore",
-    "interior": true
+    "interior": true,
+    "owner": "Journey to Baan Malur.esp:36D0F0"
    }
   },
   "Journey to Baan Malur.esp:3A2378": {
@@ -2520,7 +2640,7 @@
   "Kidmer - Adoptable Elf Children 1_2.esp:000D6A": {
    "edid": "urshug_OrcOrphanFaction",
    "list": "BYOHUrchin_SofieVendorList",
-   "kind": "apothecary",
+   "kind": "flowers",
    "cell": {
     "world": "WindhelmWorld"
    }
@@ -2542,7 +2662,8 @@
    "cell": {
     "name": "Bards College",
     "edid": "SolitudeBardsCollege",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0C13C7"
    }
   },
   "Lux Via - Markarth Entrance and Farm Overhaul.esp:000B90": {
@@ -2558,7 +2679,8 @@
    "cell": {
     "name": "Markarth East Empire Dormitory",
     "edid": "MarkarthEntranceDormitory",
-    "interior": true
+    "interior": true,
+    "owner": "Lux Via - Markarth Entrance and Farm Overhaul.esp:0437F5"
    }
   },
   "Lux Via - Markarth Entrance and Farm Overhaul.esp:0E14D3": {
@@ -2569,7 +2691,8 @@
    "cell": {
     "name": "Markarth East Empire Goods",
     "edid": "MarkarthEntranceShop",
-    "interior": true
+    "interior": true,
+    "owner": "Lux Via - Markarth Entrance and Farm Overhaul.esp:0E14D0"
    }
   },
   "Lux Via - Markarth Entrance and Farm Overhaul.esp:0E14D4": {
@@ -2580,7 +2703,8 @@
    "cell": {
     "name": "Markarth Waste Collector",
     "edid": "MarkarthEntranceWasteCollection",
-    "interior": true
+    "interior": true,
+    "owner": "Lux Via - Markarth Entrance and Farm Overhaul.esp:0E14D1"
    }
   },
   "Lux Via - Markarth Entrance and Farm Overhaul.esp:0E14D5": {
@@ -2591,7 +2715,8 @@
    "cell": {
     "name": "Markarth Old Observatory",
     "edid": "MarkarthEntranceOldObservatory",
-    "interior": true
+    "interior": true,
+    "owner": "Lux Via - Markarth Entrance and Farm Overhaul.esp:0E14D6"
    }
   },
   "Lux Via - Markarth Entrance and Farm Overhaul.esp:0E14D9": {
@@ -2601,7 +2726,8 @@
    "cell": {
     "name": "Old Dam",
     "edid": "MarkarthEntranceOldDam",
-    "interior": true
+    "interior": true,
+    "owner": "Lux Via - Markarth Entrance and Farm Overhaul.esp:0E14D8"
    }
   },
   "Meridia.esp:02CD7F": {
@@ -2631,7 +2757,8 @@
    "cell": {
     "name": "Meridia's Sanctum",
     "edid": "NMeridiasSanctum",
-    "interior": true
+    "interior": true,
+    "owner": "Meridia.esp:0014D2"
    }
   },
   "Orc Strongholds - All In One.esp:0005F8": {
@@ -2678,7 +2805,8 @@
    "kind": "hunting goods",
    "name": "Skaal Fishermen",
    "cell": {
-    "world": "DLC2SolstheimWorld"
+    "world": "DLC2SolstheimWorld",
+    "chestOwner": "SkaalFishingCamp.esp:000846"
    }
   },
   "Sky City.esp:007C13": {
@@ -2689,7 +2817,8 @@
    "cell": {
     "name": "Sillia's Cookhouse",
     "edid": "SKYCITYHouse01",
-    "interior": true
+    "interior": true,
+    "owner": "Sky City.esp:018A5A"
    }
   },
   "Skyrim Extended Cut - Saints and Seducers.esp:033AF1": {
@@ -2699,7 +2828,8 @@
    "cell": {
     "name": "The Near Corgi Shop",
     "edid": "ECSSTheNearCorgiShop",
-    "interior": true
+    "interior": true,
+    "chestOwner": "Skyrim Extended Cut - Saints and Seducers.esp:02E879"
    }
   },
   "Skyrim Extended Cut - Saints and Seducers.esp:033AF3": {
@@ -2729,7 +2859,9 @@
    "cell": {
     "name": "Riverwood Trader",
     "edid": "RiverwoodRiverwoodTrader",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:035D42",
+    "chestOwner": "Skyrim.esm:035D42"
    }
   },
   "Skyrim.esm:05A666": {
@@ -2738,7 +2870,8 @@
    "kind": "blacksmith",
    "name": "Alvor Services",
    "cell": {
-    "world": "Tamriel"
+    "world": "Tamriel",
+    "chestOwner": "Skyrim.esm:035D3F"
    }
   },
   "Skyrim.esm:05C84E": {
@@ -2753,7 +2886,8 @@
    "cell": {
     "name": "Understone Keep",
     "edid": "MarkarthUnderStoneKeep",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0656EB"
    }
   },
   "Skyrim.esm:0647A1": {
@@ -2763,7 +2897,8 @@
    "cell": {
     "name": "Understone Keep",
     "edid": "MarkarthUnderStoneKeep",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0656EB"
    }
   },
   "Skyrim.esm:065C3B": {
@@ -2773,7 +2908,9 @@
    "cell": {
     "name": "The Bee and Barb",
     "edid": "RiftenBeeandBarb",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0A2528",
+    "chestOwner": "Skyrim.esm:013373"
    }
   },
   "Skyrim.esm:06A879": {
@@ -2784,7 +2921,9 @@
    "cell": {
     "name": "Grave Concoctions",
     "edid": "FalkreathGraveConcoctions",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0C1398",
+    "chestOwner": "Skyrim.esm:06A879"
    }
   },
   "Skyrim.esm:07277B": {
@@ -2795,7 +2934,8 @@
    "cell": {
     "name": "Lod's House",
     "edid": "FalkreathLodsHouse",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:013650"
    }
   },
   "Skyrim.esm:074351": {
@@ -2830,7 +2970,9 @@
    "cell": {
     "name": "Sleeping Giant Inn",
     "edid": "RiverwoodSleepingGiantInn",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:035D44",
+    "chestOwner": "Skyrim.esm:035D44"
    }
   },
   "Skyrim.esm:093B16": {
@@ -2842,7 +2984,9 @@
    "cell": {
     "name": "Arcadia's Cauldron",
     "edid": "WhiterunArcadiasCauldron",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:093B16",
+    "chestOwner": "Skyrim.esm:093B16"
    }
   },
   "Skyrim.esm:093B22": {
@@ -2854,7 +2998,8 @@
    "cell": {
     "name": "Warmaiden's",
     "edid": "WhiterunWarmaidens",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:093B22"
    }
   },
   "Skyrim.esm:094375": {
@@ -2865,7 +3010,8 @@
    "cell": {
     "name": "Arnleif and Sons Trading Company",
     "edid": "MarkarthArnleifandSonsTradingCompany",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:06566D"
    }
   },
   "Skyrim.esm:09437E": {
@@ -2894,7 +3040,8 @@
    "cell": {
     "name": "The Hag's Cure",
     "edid": "MarkarthHagsCure",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:065677"
    }
   },
   "Skyrim.esm:094386": {
@@ -2904,7 +3051,8 @@
    "cell": {
     "name": "Silver-Blood Inn",
     "edid": "MarkarthSilverBloodInn",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:06566F"
    }
   },
   "Skyrim.esm:09438B": {
@@ -2914,7 +3062,8 @@
    "cell": {
     "name": "Understone Keep",
     "edid": "MarkarthUnderStoneKeep",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0656EB"
    }
   },
   "Skyrim.esm:094390": {
@@ -2925,7 +3074,8 @@
    "cell": {
     "name": "Understone Keep",
     "edid": "MarkarthUnderStoneKeep",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0656EB"
    }
   },
   "Skyrim.esm:096F82": {
@@ -2935,7 +3085,8 @@
    "name": "Whiterun Services Faction - Anoriath",
    "hours": "8 am to 8 pm",
    "cell": {
-    "world": "WhiterunWorld"
+    "world": "WhiterunWorld",
+    "chestOwner": "Skyrim.esm:013B97"
    }
   },
   "Skyrim.esm:098BA0": {
@@ -2946,7 +3097,8 @@
    "cell": {
     "name": "Hall of Countenance",
     "edid": "WinterholdCollegeHallofCountenance",
-    "interior": true
+    "interior": true,
+    "chestOwner": "Skyrim.esm:01C198"
    }
   },
   "Skyrim.esm:098BA8": {
@@ -2957,7 +3109,8 @@
    "cell": {
     "name": "Hall of Countenance",
     "edid": "WinterholdCollegeHallofCountenance",
-    "interior": true
+    "interior": true,
+    "chestOwner": "Skyrim.esm:01C19A"
    }
   },
   "Skyrim.esm:098BA9": {
@@ -2968,7 +3121,8 @@
    "cell": {
     "name": "Hall of Countenance",
     "edid": "WinterholdCollegeHallofCountenance",
-    "interior": true
+    "interior": true,
+    "chestOwner": "Skyrim.esm:01C197"
    }
   },
   "Skyrim.esm:098BAA": {
@@ -2979,7 +3133,8 @@
    "cell": {
     "name": "Hall of Countenance",
     "edid": "WinterholdCollegeHallofCountenance",
-    "interior": true
+    "interior": true,
+    "chestOwner": "Skyrim.esm:01C199"
    }
   },
   "Skyrim.esm:098BAB": {
@@ -2990,7 +3145,8 @@
    "cell": {
     "name": "Hall of Attainment",
     "edid": "WinterholdCollegeHallofAttainment",
-    "interior": true
+    "interior": true,
+    "chestOwner": "Skyrim.esm:01C19E"
    }
   },
   "Skyrim.esm:09CAF5": {
@@ -3002,7 +3158,8 @@
    "cell": {
     "name": "Belethor's General Goods",
     "edid": "WhiterunBelethorsGeneralGoods",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:093B17"
    }
   },
   "Skyrim.esm:09CAFC": {
@@ -3013,7 +3170,9 @@
    "cell": {
     "name": "The Bannered Mare",
     "edid": "WhiterunBanneredMare",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:09E1B4",
+    "chestOwner": "Skyrim.esm:05091B"
    }
   },
   "Skyrim.esm:09CAFF": {
@@ -3025,7 +3184,8 @@
    "cell": {
     "name": "Warmaiden's",
     "edid": "WhiterunWarmaidens",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:093B22"
    }
   },
   "Skyrim.esm:09CD47": {
@@ -3036,7 +3196,9 @@
    "cell": {
     "name": "Arcadia's Cauldron",
     "edid": "WhiterunArcadiasCauldron",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:093B16",
+    "chestOwner": "Skyrim.esm:093B16"
    }
   },
   "Skyrim.esm:09DA2C": {
@@ -3052,7 +3214,8 @@
    "cell": {
     "name": "The Mortar and Pestle",
     "edid": "DawnstarMortarandPestle",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:013614"
    }
   },
   "Skyrim.esm:09DA3E": {
@@ -3071,7 +3234,8 @@
    "cell": {
     "name": "Windpeak Inn",
     "edid": "DawnstarWindpeakInn",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:09DA2C"
    }
   },
   "Skyrim.esm:09DA55": {
@@ -3082,7 +3246,8 @@
    "cell": {
     "name": "Moorside Inn",
     "edid": "MorthalMoorsideInn",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0135ED"
    }
   },
   "Skyrim.esm:09DA58": {
@@ -3094,7 +3259,8 @@
    "cell": {
     "name": "Falion's House",
     "edid": "MorthalFalionsHouse",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:09E295"
    }
   },
   "Skyrim.esm:09DA5B": {
@@ -3106,7 +3272,9 @@
    "cell": {
     "name": "Thaumaturgist's Hut",
     "edid": "MorthalThaumaturgistsHut",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:09DA5B",
+    "chestOwner": "Skyrim.esm:0135EF"
    }
   },
   "Skyrim.esm:09DA61": {
@@ -3117,7 +3285,8 @@
    "cell": {
     "name": "The Frozen Hearth",
     "edid": "WinterholdTheFrozenHearth",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0CD698"
    }
   },
   "Skyrim.esm:09DA62": {
@@ -3129,7 +3298,9 @@
    "cell": {
     "name": "Birna's Oddments",
     "edid": "WinterholdRanmirshouse",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:09E28D",
+    "chestOwner": "Skyrim.esm:01C187"
    }
   },
   "Skyrim.esm:09E12B": {
@@ -3140,7 +3311,8 @@
    "cell": {
     "name": "Burguk's Longhouse",
     "edid": "DushnikhYalLonghouse",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0284B1"
    }
   },
   "Skyrim.esm:09E12C": {
@@ -3149,7 +3321,8 @@
    "kind": "blacksmith",
    "hours": "8 am to 8 pm",
    "cell": {
-    "world": "Tamriel"
+    "world": "Tamriel",
+    "chestOwner": "Skyrim.esm:0284B1"
    }
   },
   "Skyrim.esm:09E461": {
@@ -3159,7 +3332,8 @@
    "cell": {
     "name": "Old Hroldan Inn",
     "edid": "OldHroldanInn",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0695C6"
    }
   },
   "Skyrim.esm:09E46B": {
@@ -3170,7 +3344,8 @@
    "cell": {
     "name": "Larak's Longhouse",
     "edid": "MorKhazgurLaraksLonghouse",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0284B2"
    }
   },
   "Skyrim.esm:09E46C": {
@@ -3189,18 +3364,20 @@
    "cell": {
     "name": "Frostfruit Inn",
     "edid": "RoriksteadFrostfruitInn",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:09F252"
    }
   },
   "Skyrim.esm:09F259": {
    "edid": "ServicesWhiterunDrunkenHuntsman",
    "list": "VendorItemsDrunkenHuntsman",
-   "kind": "weapons",
+   "kind": "fletcher",
    "name": "Whiterun Drunken Huntsman Vendor",
    "cell": {
     "name": "The Drunken Huntsman",
     "edid": "WhiterunDrunkenHuntsman",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0CD069"
    }
   },
   "Skyrim.esm:09F25A": {
@@ -3209,7 +3386,8 @@
    "kind": "jewelry",
    "hours": "8 am to 8 pm",
    "cell": {
-    "world": "WhiterunWorld"
+    "world": "WhiterunWorld",
+    "chestOwner": "Skyrim.esm:09F25A"
    }
   },
   "Skyrim.esm:09F25B": {
@@ -3228,7 +3406,9 @@
    "cell": {
     "name": "The Bee and Barb",
     "edid": "RiftenBeeandBarb",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0A2528",
+    "chestOwner": "Skyrim.esm:05091B"
    }
   },
   "Skyrim.esm:0A0708": {
@@ -3238,7 +3418,9 @@
    "cell": {
     "name": "Vilemyr Inn",
     "edid": "IvarsteadVilemyrInn",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:08440A",
+    "chestOwner": "Skyrim.esm:0A0708"
    }
   },
   "Skyrim.esm:0A31C2": {
@@ -3250,7 +3432,9 @@
    "cell": {
     "name": "The Scorched Hammer",
     "edid": "RiftenBlacksmith",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0A2514",
+    "chestOwner": "Skyrim.esm:0A2514"
    }
   },
   "Skyrim.esm:0A31C3": {
@@ -3260,7 +3444,9 @@
    "cell": {
     "name": "Black-Briar Meadery",
     "edid": "RiftenBlackBriarMeadery",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:016C2F",
+    "chestOwner": "Skyrim.esm:01337E"
    }
   },
   "Skyrim.esm:0A31C4": {
@@ -3270,7 +3456,8 @@
    "cell": {
     "name": "Elgrim's Elixirs",
     "edid": "RiftenElgrimsElixirs",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0A2518"
    }
   },
   "Skyrim.esm:0A31C5": {
@@ -3281,7 +3468,8 @@
    "cell": {
     "name": "Pawned Prawn",
     "edid": "RiftenPawnedPrawn",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0A2521"
    }
   },
   "Skyrim.esm:0A31C6": {
@@ -3291,7 +3479,9 @@
    "cell": {
     "name": "The Ragged Flagon",
     "edid": "RiftenRaggedFlagon",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0A2522",
+    "chestOwner": "Skyrim.esm:051596"
    }
   },
   "Skyrim.esm:0A31C7": {
@@ -3300,7 +3490,8 @@
    "kind": "general goods",
    "hours": "7 am to 8 pm",
    "cell": {
-    "world": "RiftenWorld"
+    "world": "RiftenWorld",
+    "chestOwner": "Skyrim.esm:01334F"
    }
   },
   "Skyrim.esm:0A31C8": {
@@ -3309,7 +3500,8 @@
    "kind": "jewelry",
    "hours": "6 am to 8 pm",
    "cell": {
-    "world": "RiftenWorld"
+    "world": "RiftenWorld",
+    "chestOwner": "Skyrim.esm:01B072"
    }
   },
   "Skyrim.esm:0A31C9": {
@@ -3318,7 +3510,8 @@
    "kind": "general goods",
    "hours": "7 am to 8 pm",
    "cell": {
-    "world": "RiftenWorld"
+    "world": "RiftenWorld",
+    "chestOwner": "Skyrim.esm:0136C5"
    }
   },
   "Skyrim.esm:0A31CA": {
@@ -3327,7 +3520,8 @@
    "kind": "food",
    "hours": "7 am to 8 pm",
    "cell": {
-    "world": "RiftenWorld"
+    "world": "RiftenWorld",
+    "chestOwner": "Skyrim.esm:013369"
    }
   },
   "Skyrim.esm:0A3F01": {
@@ -3338,7 +3532,8 @@
    "cell": {
     "name": "Candlehearth Hall",
     "edid": "WindhelmCandlehearthHall",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:045F5E"
    }
   },
   "Skyrim.esm:0A3F04": {
@@ -3350,7 +3545,8 @@
    "cell": {
     "name": "Braidwood Inn",
     "edid": "KynesgroveBraidwoodInn",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:089977"
    }
   },
   "Skyrim.esm:0A3F07": {
@@ -3380,7 +3576,8 @@
    "name": "Hillevi Cruel-Sea Services",
    "hours": "8 am to 7 pm",
    "cell": {
-    "world": "WindhelmWorld"
+    "world": "WindhelmWorld",
+    "chestOwner": "Skyrim.esm:01411F"
    }
   },
   "Skyrim.esm:0A3F12": {
@@ -3392,7 +3589,8 @@
    "cell": {
     "name": "Sadri's Used Wares",
     "edid": "WindhelmSadrisUsedWares",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:045F64"
    }
   },
   "Skyrim.esm:0A3F16": {
@@ -3403,7 +3601,8 @@
    "cell": {
     "name": "New Gnisis Cornerclub",
     "edid": "WindhelmNewGnisisCornerclub",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:045F63"
    }
   },
   "Skyrim.esm:0A3F1A": {
@@ -3413,7 +3612,8 @@
    "name": "Windhelm Blacksmith Services",
    "hours": "8 am to 7 pm",
    "cell": {
-    "world": "WindhelmWorld"
+    "world": "WindhelmWorld",
+    "chestOwner": "Skyrim.esm:014142"
    }
   },
   "Skyrim.esm:0A3F1E": {
@@ -3425,7 +3625,8 @@
    "cell": {
     "name": "Palace of the Kings",
     "edid": "WindhelmPalaceoftheKings",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0FF0AB"
    }
   },
   "Skyrim.esm:0A3F21": {
@@ -3443,7 +3644,8 @@
    "cell": {
     "name": "Braidwood Inn",
     "edid": "KynesgroveBraidwoodInn",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:089977"
    }
   },
   "Skyrim.esm:0A6BF5": {
@@ -3454,7 +3656,8 @@
    "cell": {
     "name": "Four Shields Tavern",
     "edid": "DragonBridgeFourShieldsTavern",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0F49BC"
    }
   },
   "Skyrim.esm:0A6BF9": {
@@ -3465,7 +3668,8 @@
    "cell": {
     "name": "The Winking Skeever",
     "edid": "SolitudeWinkingSkeever",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0C1403"
    }
   },
   "Skyrim.esm:0A6BFB": {
@@ -3476,7 +3680,8 @@
    "cell": {
     "name": "Dead Man's Drink",
     "edid": "FalkreathDeadMansDrink",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0C1396"
    }
   },
   "Skyrim.esm:0A6BFE": {
@@ -3488,7 +3693,8 @@
    "cell": {
     "name": "Gray Pine Goods",
     "edid": "FalkreathGrayPineGoods",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0C1399"
    }
   },
   "Skyrim.esm:0A6BFF": {
@@ -3500,7 +3706,8 @@
    "cell": {
     "name": "Angeline's Aromatics",
     "edid": "SolitudeAngelinesAromatics",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0C13C4"
    }
   },
   "Skyrim.esm:0A6C00": {
@@ -3512,7 +3719,9 @@
    "cell": {
     "name": "Radiant Raiment",
     "edid": "SolitudeRadiantRaiment",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0C13F1",
+    "chestOwner": "Skyrim.esm:0C13F1"
    }
   },
   "Skyrim.esm:0A6C01": {
@@ -3523,7 +3732,8 @@
    "cell": {
     "name": "Solitude Stables",
     "edid": "SolitudeStables",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0C13F7"
    }
   },
   "Skyrim.esm:0A6C02": {
@@ -3534,7 +3744,8 @@
    "cell": {
     "name": "Bits and Pieces",
     "edid": "SolitudeBitsandPieces",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0C13CA"
    }
   },
   "Skyrim.esm:0A6C03": {
@@ -3545,7 +3756,8 @@
    "cell": {
     "name": "Solitude Blacksmith",
     "edid": "SolitudeBlackSmith",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0C13CD"
    }
   },
   "Skyrim.esm:0A6C11": {
@@ -3586,7 +3798,9 @@
    "cell": {
     "name": "Riverwood Trader",
     "edid": "RiverwoodRiverwoodTrader",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:035D42",
+    "chestOwner": "Skyrim.esm:035D42"
    }
   },
   "Skyrim.esm:0ABB43": {
@@ -3597,7 +3811,8 @@
    "cell": {
     "name": "Dragonsreach",
     "edid": "WhiterunDragonsreach",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:065794"
    }
   },
   "Skyrim.esm:0ABD9C": {
@@ -3619,7 +3834,9 @@
    "cell": {
     "name": "The White Hall",
     "edid": "DawnstarTheWhiteHall",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:09DA45",
+    "chestOwner": "Skyrim.esm:01361D"
    }
   },
   "Skyrim.esm:0AC9C2": {
@@ -3641,7 +3858,8 @@
    "cell": {
     "name": "Mistveil Keep",
     "edid": "RiftenMistveilKeep",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0A251F"
    }
   },
   "Skyrim.esm:0AC9D0": {
@@ -3661,7 +3879,9 @@
    "cell": {
     "name": "The Ragged Flagon",
     "edid": "RiftenRaggedFlagon",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0A2522",
+    "chestOwner": "Skyrim.esm:029DAD"
    }
   },
   "Skyrim.esm:0AC9DF": {
@@ -3671,7 +3891,9 @@
    "cell": {
     "name": "The Ragged Flagon",
     "edid": "RiftenRaggedFlagon",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0A2522",
+    "chestOwner": "Skyrim.esm:029DAA"
    }
   },
   "Skyrim.esm:0AC9E0": {
@@ -3681,7 +3903,9 @@
    "cell": {
     "name": "The Ragged Flagon",
     "edid": "RiftenRaggedFlagon",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0A2522",
+    "chestOwner": "Skyrim.esm:029DAE"
    }
   },
   "Skyrim.esm:0AC9E1": {
@@ -3691,7 +3915,9 @@
    "cell": {
     "name": "The Ragged Flagon",
     "edid": "RiftenRaggedFlagon",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0A2522",
+    "chestOwner": "Skyrim.esm:029DAF"
    }
   },
   "Skyrim.esm:0ACB6E": {
@@ -3702,7 +3928,8 @@
    "cell": {
     "name": "Largashbur Longhouse",
     "edid": "LargashburShagrolsLonghouse",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:02C005"
    }
   },
   "Skyrim.esm:0AF631": {
@@ -3714,7 +3941,8 @@
    "cell": {
     "name": "The White Phial",
     "edid": "WindhelmWhitePhial",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:045F67"
    }
   },
   "Skyrim.esm:0B2036": {
@@ -3725,7 +3953,8 @@
    "cell": {
     "name": "Blue Palace",
     "edid": "SolitudeBluePalace",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0C13D0"
    }
   },
   "Skyrim.esm:0B2037": {
@@ -3737,7 +3966,8 @@
    "cell": {
     "name": "Fletcher",
     "edid": "SolitudeFletcher",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0C13E5"
    }
   },
   "Skyrim.esm:0B298B": {
@@ -3747,7 +3977,8 @@
    "cell": {
     "name": "Honningbrew Meadery",
     "edid": "HonningbrewMeadery01",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0B2981"
    }
   },
   "Skyrim.esm:0B31E7": {
@@ -3757,7 +3988,8 @@
    "cell": {
     "name": "Honningbrew Meadery",
     "edid": "HonningbrewMeadery01",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0B2981"
    }
   },
   "Skyrim.esm:0B3FDF": {
@@ -3769,7 +4001,8 @@
    "cell": {
     "name": "Mauhulakh's Longhouse",
     "edid": "NarzulburMauhulakhsLonghouse",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:02C006"
    }
   },
   "Skyrim.esm:0B3FE3": {
@@ -3781,7 +4014,8 @@
    "cell": {
     "name": "Mauhulakh's Longhouse",
     "edid": "NarzulburMauhulakhsLonghouse",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:02C006"
    }
   },
   "Skyrim.esm:0B5D55": {
@@ -4063,7 +4297,8 @@
    "cell": {
     "name": "Warmaiden's",
     "edid": "WhiterunWarmaidens",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:093B22"
    }
   },
   "Skyrim.esm:0D54C4": {
@@ -4073,7 +4308,9 @@
    "cell": {
     "name": "The Ragged Flagon",
     "edid": "RiftenRaggedFlagon",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0A2522",
+    "chestOwner": "Skyrim.esm:0B8827"
    }
   },
   "Skyrim.esm:0D6AC5": {
@@ -4083,7 +4320,8 @@
    "name": "East Empire Company",
    "hours": "8 am to 8 pm",
    "cell": {
-    "world": "Tamriel"
+    "world": "Tamriel",
+    "chestOwner": "Skyrim.esm:0D6AC5"
    }
   },
   "Skyrim.esm:0D8842": {
@@ -4093,7 +4331,9 @@
    "cell": {
     "name": "Endon's House",
     "edid": "MarkarthEndonsHouse",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:065671",
+    "chestOwner": "Skyrim.esm:013395"
    }
   },
   "Skyrim.esm:0D8843": {
@@ -4103,7 +4343,9 @@
    "cell": {
     "name": "Niranye's House",
     "edid": "WindhelmNiranyesHouse",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:014123",
+    "chestOwner": "Skyrim.esm:014123"
    }
   },
   "Skyrim.esm:0D8844": {
@@ -4113,7 +4355,8 @@
    "cell": {
     "name": "Hall of Attainment",
     "edid": "WinterholdCollegeHallofAttainment",
-    "interior": true
+    "interior": true,
+    "chestOwner": "Skyrim.esm:01C19C"
    }
   },
   "Skyrim.esm:0D8845": {
@@ -4123,7 +4366,9 @@
    "cell": {
     "name": "The Winking Skeever",
     "edid": "SolitudeWinkingSkeever",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0C1403",
+    "chestOwner": "Skyrim.esm:013284"
    }
   },
   "Skyrim.esm:0D8846": {
@@ -4133,7 +4378,8 @@
    "cell": {
     "name": "Honningbrew Meadery",
     "edid": "HonningbrewMeadery01",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0B2981"
    }
   },
   "Skyrim.esm:0D8E52": {
@@ -4143,7 +4389,8 @@
    "cell": {
     "name": "Do Not Delete - Not A Test Cell",
     "edid": "ThievesGuildHoldingCell",
-    "interior": true
+    "interior": true,
+    "chestOwner": "Skyrim.esm:01B1D5"
    }
   },
   "Skyrim.esm:0D8E53": {
@@ -4153,7 +4400,8 @@
    "cell": {
     "name": "Do Not Delete - Not A Test Cell",
     "edid": "ThievesGuildHoldingCell",
-    "interior": true
+    "interior": true,
+    "chestOwner": "Skyrim.esm:01B1DA"
    }
   },
   "Skyrim.esm:0D8E54": {
@@ -4163,7 +4411,8 @@
    "cell": {
     "name": "Do Not Delete - Not A Test Cell",
     "edid": "ThievesGuildHoldingCell",
-    "interior": true
+    "interior": true,
+    "chestOwner": "Skyrim.esm:01B1D0"
    }
   },
   "Skyrim.esm:0DA688": {
@@ -4174,7 +4423,8 @@
    "cell": {
     "name": "Nightgate Inn",
     "edid": "NightgateInn",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:013627"
    }
   },
   "Skyrim.esm:0E7BCF": {
@@ -4185,7 +4435,9 @@
    "cell": {
     "name": "The Frozen Hearth",
     "edid": "WinterholdTheFrozenHearth",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0CD698",
+    "chestOwner": "Skyrim.esm:01E7D5"
    }
   },
   "Skyrim.esm:0EE9F6": {
@@ -4196,7 +4448,8 @@
    "cell": {
     "name": "Hall of Attainment",
     "edid": "WinterholdCollegeHallofAttainment",
-    "interior": true
+    "interior": true,
+    "chestOwner": "Skyrim.esm:01C19C"
    }
   },
   "Skyrim.esm:0FE47C": {
@@ -4228,7 +4481,9 @@
    "cell": {
     "name": "The Arcanaeum",
     "edid": "WinterholdCollegeArcanaeum",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:01C193",
+    "chestOwner": "Skyrim.esm:01C193"
    }
   },
   "Skyrim.esm:10FDE8": {
@@ -4237,7 +4492,8 @@
    "kind": "blacksmith",
    "name": "Eorlund Gray-Mane",
    "cell": {
-    "world": "WhiterunWorld"
+    "world": "WhiterunWorld",
+    "chestOwner": "Skyrim.esm:013B9D"
    }
   },
   "Snazzy Interiors - Markarth AIO.esp:000EBE": {
@@ -4248,7 +4504,8 @@
    "cell": {
     "name": "Endon's House",
     "edid": "MarkarthEndonsHouse",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:065671"
    }
   },
   "SurWR.esp:04D689": {
@@ -4260,7 +4517,8 @@
    "cell": {
     "name": "Witch's Wisdoms",
     "edid": "0WRSurWitchHouse",
-    "interior": true
+    "interior": true,
+    "owner": "SurWR.esp:02952F"
    }
   },
   "SurWR.esp:076F8B": {
@@ -4272,7 +4530,8 @@
    "cell": {
     "name": "Brightflour Bakery",
     "edid": "0WRBakery",
-    "interior": true
+    "interior": true,
+    "owner": "SurWR.esp:076F5A"
    }
   },
   "SurWR.esp:09054A": {
@@ -4293,7 +4552,8 @@
    "cell": {
     "name": "Happy Homestead General Goods",
     "edid": "0WRSurBigShackShop",
-    "interior": true
+    "interior": true,
+    "owner": "SurWR.esp:0C8849"
    }
   },
   "SurWR.esp:14C80F": {
@@ -4304,7 +4564,8 @@
    "cell": {
     "name": "The Roadhouse",
     "edid": "0WRExtRoadhouse",
-    "interior": true
+    "interior": true,
+    "owner": "SurWR.esp:14C7FF"
    }
   },
   "SurWR.esp:14C810": {
@@ -4316,7 +4577,8 @@
    "cell": {
     "name": "The Roadhouse",
     "edid": "0WRExtRoadhouse",
-    "interior": true
+    "interior": true,
+    "owner": "SurWR.esp:14C7FF"
    }
   },
   "SurWR.esp:18991F": {
@@ -4336,7 +4598,8 @@
    "cell": {
     "name": "House Steel-Arm",
     "edid": "0WRSurNobleHouse",
-    "interior": true
+    "interior": true,
+    "owner": "SurWR.esp:039085"
    }
   },
   "The Great City of Dawnstar.esp:023223": {
@@ -4358,7 +4621,8 @@
    "cell": {
     "name": "Bjorn's House",
     "edid": "DragonBridgeBjornHouse",
-    "interior": true
+    "interior": true,
+    "owner": "The Great City of Dragon Bridge.esp:00254A"
    }
   },
   "The Great City of Morthal.esp:0041F1": {
@@ -4379,7 +4643,8 @@
    "cell": {
     "name": "The Empire Trader",
     "edid": "SolitudeTheEmpireTrader",
-    "interior": true
+    "interior": true,
+    "owner": "The Great City of Solitude.esp:00800E"
    }
   },
   "The Great City of Solitude.esp:008C57": {
@@ -4391,7 +4656,8 @@
    "cell": {
     "name": "Aksel's House",
     "edid": "SolitudeAkselsHouse",
-    "interior": true
+    "interior": true,
+    "owner": "The Great City of Solitude.esp:008C56"
    }
   },
   "The Great City of Solitude.esp:00D58E": {
@@ -4403,7 +4669,8 @@
    "cell": {
     "name": "Riverside Apothecary",
     "edid": "SolitudeSwampsideApothecary",
-    "interior": true
+    "interior": true,
+    "owner": "The Great City of Solitude.esp:00D58B"
    }
   },
   "The Great City of Solitude.esp:01AA43": {
@@ -4424,7 +4691,8 @@
    "cell": {
     "name": "House of Clan Frost-Vein",
     "edid": "WinterholdHouseFrostVeinTGCoWH",
-    "interior": true
+    "interior": true,
+    "owner": "The Great City of Winterhold v4.esp:00FB72"
    }
   },
   "The Great City of Winterhold v4.esp:44F700": {
@@ -4435,7 +4703,8 @@
    "cell": {
     "name": "Hall of Runes",
     "edid": "WinterholdLibraryTGC",
-    "interior": true
+    "interior": true,
+    "owner": "The Great City of Winterhold v4.esp:143086"
    }
   },
   "The Great Town of Ivarstead.esp:000427": {
@@ -4447,7 +4716,9 @@
    "cell": {
     "name": "Pilgrim's Needs",
     "edid": "IvarsteadKynehearthsHouseTGCoI",
-    "interior": true
+    "interior": true,
+    "owner": "The Great Town of Ivarstead.esp:000405",
+    "chestOwner": "The Great Town of Ivarstead.esp:000104"
    }
   },
   "The Great Town of Karthwasten.esp:005D0C": {
@@ -4458,7 +4729,8 @@
    "cell": {
     "name": "Sleepy Hags Inn",
     "edid": "KarthwastenSleepyHagsInnTGCoKW",
-    "interior": true
+    "interior": true,
+    "owner": "The Great Town of Karthwasten.esp:005D0C"
    }
   },
   "The Great Town of Karthwasten.esp:0066F2": {
@@ -4469,7 +4741,8 @@
    "cell": {
     "name": "The Trusty Witch",
     "edid": "KarthwastenTheTrustyWitchTGCoKW",
-    "interior": true
+    "interior": true,
+    "owner": "The Great Town of Karthwasten.esp:005094"
    }
   },
   "The Great Town of Karthwasten.esp:0066F8": {
@@ -4489,7 +4762,8 @@
    "cell": {
     "name": "Sleepy Hags Inn",
     "edid": "KarthwastenSleepyHagsInnTGCoKW",
-    "interior": true
+    "interior": true,
+    "owner": "The Great Town of Karthwasten.esp:005D0C"
    }
   },
   "The Great Town of Shor's Stone.esp:0668CB": {
@@ -4499,7 +4773,9 @@
    "cell": {
     "name": "The Sly Fox",
     "edid": "ShorsStoneTheSlyFoxTGCoSS",
-    "interior": true
+    "interior": true,
+    "owner": "The Great Town of Shor's Stone.esp:066836",
+    "chestOwner": "The Great Town of Shor's Stone.esp:0668CB"
    }
   },
   "The Great Village of Kynesgrove.esp:118190": {
@@ -4529,7 +4805,8 @@
    "cell": {
     "name": "Bards College",
     "edid": "SolitudeBardsCollege",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:0C13C7"
    }
   },
   "Tools of Kagrenac.esp:019E1A": {
@@ -4540,7 +4817,9 @@
    "cell": {
     "name": "The Arcanaeum",
     "edid": "WinterholdCollegeArcanaeum",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:01C193",
+    "chestOwner": "Tools of Kagrenac.esp:00AA08"
    }
   },
   "Triumvirate - Mage Archetypes.esp:43D32E": {
@@ -4655,7 +4934,9 @@
    "cell": {
     "name": "The Broker's Shack",
     "edid": "NecromancerMerchantShack",
-    "interior": true
+    "interior": true,
+    "owner": "Undeath.esp:0BB038",
+    "chestOwner": "Undeath.esp:0BB038"
    }
   },
   "Undeath.esp:0EAB85": {
@@ -4665,7 +4946,9 @@
    "cell": {
     "name": "The Broker's Shack",
     "edid": "NecromancerMerchantShack",
-    "interior": true
+    "interior": true,
+    "owner": "Undeath.esp:0BB038",
+    "chestOwner": "Undeath.esp:0EAB85"
    }
   },
   "Unofficial Skyrim Special Edition Patch.esp:00F6BB": {
@@ -4685,7 +4968,8 @@
    "cell": {
     "name": "Matron's Chamber",
     "edid": "zzzBMMatronBedRoom",
-    "interior": true
+    "interior": true,
+    "chestOwner": "Vigilant.esm:03AE1A"
    }
   },
   "Vigilant.esm:051E77": {
@@ -4694,7 +4978,8 @@
    "kind": "general goods",
    "name": "Vigilant Merchant Faction",
    "cell": {
-    "world": "zCOBruiantWorld"
+    "world": "zCOBruiantWorld",
+    "chestOwner": "Vigilant.esm:048B6D"
    }
   },
   "Vigilant.esm:0A6BF1": {
@@ -4705,7 +4990,8 @@
    "cell": {
     "name": "Temple of Stendarr",
     "edid": "zzzAoMTempleOfStendarr",
-    "interior": true
+    "interior": true,
+    "owner": "Vigilant.esm:000D63"
    }
   },
   "Vigilant.esm:0B1627": {
@@ -4716,7 +5002,8 @@
    "cell": {
     "name": "Highwayman's General Store",
     "edid": "zzzCHWaterfrontHouse09",
-    "interior": true
+    "interior": true,
+    "owner": "Vigilant.esm:0B1627"
    }
   },
   "Vigilant.esm:0B57E1": {
@@ -4727,7 +5014,8 @@
    "cell": {
     "name": "Rusty Blacksmith",
     "edid": "zzzCHWaterfrontHouse06",
-    "interior": true
+    "interior": true,
+    "owner": "Vigilant.esm:0B57E1"
    }
   },
   "Vigilant.esm:0C1A26": {
@@ -4738,7 +5026,8 @@
    "cell": {
     "name": "Thrassian Apothecary",
     "edid": "zzzCHDrugStore",
-    "interior": true
+    "interior": true,
+    "owner": "Vigilant.esm:0C1A26"
    }
   },
   "Vigilant.esm:0DF11C": {
@@ -4749,7 +5038,8 @@
    "cell": {
     "name": "Witch's House",
     "edid": "zzzCHWaterfrontHouse14",
-    "interior": true
+    "interior": true,
+    "owner": "Vigilant.esm:0DC68D"
    }
   },
   "Vigilant.esm:0F4777": {
@@ -4760,7 +5050,8 @@
    "cell": {
     "name": "Beggar's Path",
     "edid": "zzzCHSlumToSewer",
-    "interior": true
+    "interior": true,
+    "chestOwner": "Vigilant.esm:0F4777"
    }
   },
   "Vigilant.esm:1273E7": {
@@ -4782,7 +5073,8 @@
    "cell": {
     "name": "Silorn's Priory",
     "edid": "zzzCHPriorySilorn01",
-    "interior": true
+    "interior": true,
+    "chestOwner": "Vigilant.esm:12906D"
    }
   },
   "Vigilant.esm:244BCC": {
@@ -4804,7 +5096,9 @@
    "cell": {
     "name": "Chestnut Handy Stables",
     "edid": "zzzCHFGStable",
-    "interior": true
+    "interior": true,
+    "owner": "Vigilant.esm:24724F",
+    "chestOwner": "Vigilant.esm:24724E"
    }
   },
   "Vigilant.esm:25D8BD": {
@@ -4826,7 +5120,8 @@
    "cell": {
     "name": "Dried Well",
     "edid": "zzzCHSewerDriedWell",
-    "interior": true
+    "interior": true,
+    "chestOwner": "Vigilant.esm:27350A"
    }
   },
   "Vigilant.esm:2D4913": {
@@ -4835,7 +5130,8 @@
    "kind": "general goods",
    "name": "Jazhan Shop Faction",
    "cell": {
-    "world": "Tamriel"
+    "world": "Tamriel",
+    "chestOwner": "Vigilant.esm:2D4913"
    }
   },
   "Vigilant.esm:36182A": {
@@ -4879,7 +5175,9 @@
    "cell": {
     "name": "Wilhelm's Winter Warehouse",
     "edid": "0WHMarketWinterWares",
-    "interior": true
+    "interior": true,
+    "owner": "WindhelmSSE.esp:04D546",
+    "chestOwner": "WindhelmSSE.esp:04D546"
    }
   },
   "WindhelmSSE.esp:04D58E": {
@@ -4890,7 +5188,9 @@
    "cell": {
     "name": "Bread and Salt",
     "edid": "0WHMarketBakery",
-    "interior": true
+    "interior": true,
+    "owner": "WindhelmSSE.esp:04D58E",
+    "chestOwner": "WindhelmSSE.esp:04D58E"
    }
   },
   "WindhelmSSE.esp:06C709": {
@@ -4901,7 +5201,9 @@
    "cell": {
     "name": "The Rooftop",
     "edid": "0GrayQuarterThievesGuild",
-    "interior": true
+    "interior": true,
+    "owner": "Skyrim.esm:029DA9",
+    "chestOwner": "WindhelmSSE.esp:052E80"
    }
   },
   "WindhelmSSE.esp:06C731": {
@@ -4912,7 +5214,9 @@
    "cell": {
     "name": "Mathendi's Magic and Imports",
     "edid": "0GrayQuarterMerchant",
-    "interior": true
+    "interior": true,
+    "owner": "WindhelmSSE.esp:06C72F",
+    "chestOwner": "WindhelmSSE.esp:06C72F"
    }
   },
   "WindhelmSSE.esp:14EC71": {
@@ -4923,7 +5227,8 @@
    "cell": {
     "name": "Audmund's Axes",
     "edid": "0WHIronAxes",
-    "interior": true
+    "interior": true,
+    "owner": "WindhelmSSE.esp:135226"
    }
   },
   "WindhelmSSE.esp:15CFD2": {
@@ -4934,7 +5239,8 @@
    "cell": {
     "name": "Tormund's Tales",
     "edid": "0WHMarketBookshop",
-    "interior": true
+    "interior": true,
+    "owner": "WindhelmSSE.esp:15CFCC"
    }
   },
   "WindhelmSSE.esp:16857C": {
@@ -4945,7 +5251,8 @@
    "cell": {
     "name": "Battle-Brew Meadery",
     "edid": "0WHIronMeadry",
-    "interior": true
+    "interior": true,
+    "owner": "WindhelmSSE.esp:16857C"
    }
   },
   "WindhelmSSE.esp:18BFD3": {
@@ -4956,7 +5263,8 @@
    "cell": {
     "name": "Wallside Inn",
     "edid": "0WHExtTavern",
-    "interior": true
+    "interior": true,
+    "owner": "WindhelmSSE.esp:0A4983"
    }
   },
   "WindhelmSSE.esp:1EE38F": {
@@ -4967,7 +5275,8 @@
    "cell": {
     "name": "Delmon's Shack",
     "edid": "0GQExtGrayShackSmith",
-    "interior": true
+    "interior": true,
+    "owner": "WindhelmSSE.esp:172CA6"
    }
   },
   "WindhelmSSE.esp:211D53": {
@@ -4977,7 +5286,8 @@
    "cell": {
     "name": "The Iron Halls",
     "edid": "0WHIronHall",
-    "interior": true
+    "interior": true,
+    "owner": "WindhelmSSE.esp:1B6242"
    }
   },
   "WindhelmSSE.esp:22152C": {
@@ -4988,7 +5298,8 @@
    "cell": {
     "name": "The Bakeshop Valand",
     "edid": "0WHTsunBakery",
-    "interior": true
+    "interior": true,
+    "owner": "WindhelmSSE.esp:2214DD"
    }
   },
   "Wintersun - Faiths of Skyrim.esp:03820C": {
@@ -5061,7 +5372,8 @@
    "cell": {
     "name": "The Handsome Hermit",
     "edid": "WyrmstoothTheHermit",
-    "interior": true
+    "interior": true,
+    "owner": "Wyrmstooth.esp:12297D"
    }
   },
   "Wyrmstooth.esp:541F50": {
@@ -5101,7 +5413,8 @@
    "cell": {
     "name": "The Handsome Hermit",
     "edid": "WyrmstoothTheHermit",
-    "interior": true
+    "interior": true,
+    "owner": "Wyrmstooth.esp:12297D"
    }
   },
   "Wyrmstooth.esp:BE98E4": {
@@ -5111,7 +5424,8 @@
    "cell": {
     "name": "Cragwater Cavern",
     "edid": "WyrmstoothCragwaterCavern",
-    "interior": true
+    "interior": true,
+    "owner": "Wyrmstooth.esp:BE56E4"
    }
   },
   "Wyrmstooth.esp:BE98E5": {
@@ -5121,7 +5435,8 @@
    "cell": {
     "name": "Cragwater Cavern",
     "edid": "WyrmstoothCragwaterCavern",
-    "interior": true
+    "interior": true,
+    "owner": "Wyrmstooth.esp:BE56E4"
    }
   },
   "Wyrmstooth.esp:BEB9D1": {
@@ -5131,7 +5446,8 @@
    "cell": {
     "name": "Cragwater Cavern",
     "edid": "WyrmstoothCragwaterCavern",
-    "interior": true
+    "interior": true,
+    "owner": "Wyrmstooth.esp:BE56E4"
    }
   },
   "aaaGraniteHill.esp:005C12": {
@@ -5152,7 +5468,8 @@
    "cell": {
     "name": "Oddities & Curiosities",
     "edid": "aaaOdditiesandCuriosities",
-    "interior": true
+    "interior": true,
+    "owner": "aaaGraniteHill.esp:005D15"
    }
   },
   "aaaGraniteHill.esp:0078F3": {
@@ -5163,7 +5480,8 @@
    "cell": {
     "name": "Sheepshead Inn",
     "edid": "aaaGraniteHillSheepsHeadInn",
-    "interior": true
+    "interior": true,
+    "owner": "aaaGraniteHill.esp:0078F3"
    }
   },
   "aaaGraniteHill.esp:00846D": {
@@ -5174,7 +5492,8 @@
    "cell": {
     "name": "Potent Potables",
     "edid": "aaaGraniteHillPotentPotables",
-    "interior": true
+    "interior": true,
+    "owner": "aaaGraniteHill.esp:00846D"
    }
   },
   "aaaGraniteHill.esp:00E16D": {
@@ -5204,7 +5523,8 @@
    "cell": {
     "name": "Crossroads Goods",
     "edid": "aaaGraniteHillGeneralGoods",
-    "interior": true
+    "interior": true,
+    "owner": "aaaGraniteHill.esp:02160E"
    }
   },
   "aaaGraniteHill.esp:03FCC9": {
