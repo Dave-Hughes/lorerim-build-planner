@@ -23,11 +23,12 @@ describe("who a town's page lists (WO-162 Part 5)", () => {
     expect(alvor.sells).toBe("blacksmith");
   });
 
-  it("puts the keeper the read gives first, and gives her the Rents rooms chip", () => {
+  it("puts the innkeeper the game names first, who rents the rooms (UESP: Orgnar), and the one the read names after, both with the Rents rooms chip", () => {
     const inn = placeByName("Sleeping Giant Inn")!;
     const people = peopleAt(inn).houses.flatMap((h) => h.people);
-    expect(people[0].name).toBe("Delphine");
+    expect(people[0].name).toBe("Orgnar");
     expect(people[0].chips.map((c) => c.text)).toContain("Rents rooms");
+    expect(people.find((p) => p.name === "Delphine")?.chips.map((c) => c.text)).toContain("Rents rooms");
     expect(people.find((p) => p.name === "Orgnar")?.keeper).toBe(true);
   });
 

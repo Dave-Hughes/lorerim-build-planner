@@ -721,6 +721,141 @@
     "ksws07MainQuest": { "WaifuKill": "Othriel" },
     "Favor110*": { "QuestItem": "rare item" }
   },
+  "questText": {
+    "_note": "WO-180 Part 9a (Bob, 30 Oct): Rare Gifts. The records fill the requested item at run time (Favor110GiftList* are empty lists in the files; nothing fixes one per giver), so the page says the rare item the giver asks for, with the giver's pronoun. [was, now] pairs over every string of the quest's page.",
+    "Favor110Dawnstar": [
+        [
+          "Bring one of the requested item to ",
+          "Bring the rare item he asks for to "
+        ],
+        [
+          "Bring one rare item to ",
+          "Bring the rare item he asks for to "
+        ],
+        [
+          "; they want a rare item brought to them.",
+          "; he wants a rare item brought to him."
+        ],
+        [
+          " and they ask you to find one of a rare item for them.",
+          " and he asks you to find a rare item for him."
+        ],
+        [
+          " asks for and bring one to them",
+          " asks for and bring it to him"
+        ]
+      ],
+      "Favor110Falkreath": [
+        [
+          "Bring one of the requested item to ",
+          "Bring the rare item he asks for to "
+        ],
+        [
+          "Bring one rare item to ",
+          "Bring the rare item he asks for to "
+        ],
+        [
+          "; they want a rare item brought to them.",
+          "; he wants a rare item brought to him."
+        ],
+        [
+          " and they ask you to find one of a rare item for them.",
+          " and he asks you to find a rare item for him."
+        ],
+        [
+          " asks for and bring one to them",
+          " asks for and bring it to him"
+        ]
+      ],
+      "Favor110Morthal": [
+        [
+          "Bring one of the requested item to ",
+          "Bring the rare item she asks for to "
+        ],
+        [
+          "Bring one rare item to ",
+          "Bring the rare item she asks for to "
+        ],
+        [
+          "; they want a rare item brought to them.",
+          "; she wants a rare item brought to her."
+        ],
+        [
+          " and they ask you to find one of a rare item for them.",
+          " and she asks you to find a rare item for her."
+        ],
+        [
+          " asks for and bring one to them",
+          " asks for and bring it to her"
+        ]
+      ],
+      "Favor110Solitude": [
+        [
+          "Bring one of the requested item to ",
+          "Bring the rare item he asks for to "
+        ],
+        [
+          "Bring one rare item to ",
+          "Bring the rare item he asks for to "
+        ],
+        [
+          "; they want a rare item brought to them.",
+          "; he wants a rare item brought to him."
+        ],
+        [
+          " and they ask you to find one of a rare item for them.",
+          " and he asks you to find a rare item for him."
+        ],
+        [
+          " asks for and bring one to them",
+          " asks for and bring it to him"
+        ]
+      ],
+      "Favor110Whiterun": [
+        [
+          "Bring one of the requested item to ",
+          "Bring the rare item she asks for to "
+        ],
+        [
+          "Bring one rare item to ",
+          "Bring the rare item she asks for to "
+        ],
+        [
+          "; they want a rare item brought to them.",
+          "; she wants a rare item brought to her."
+        ],
+        [
+          " and they ask you to find one of a rare item for them.",
+          " and she asks you to find a rare item for her."
+        ],
+        [
+          " asks for and bring one to them",
+          " asks for and bring it to her"
+        ]
+      ],
+      "Favor110Windhelm": [
+        [
+          "Bring one of the requested item to ",
+          "Bring the rare item he asks for to "
+        ],
+        [
+          "Bring one rare item to ",
+          "Bring the rare item he asks for to "
+        ],
+        [
+          "; they want a rare item brought to them.",
+          "; he wants a rare item brought to him."
+        ],
+        [
+          " and they ask you to find one of a rare item for them.",
+          " and he asks you to find a rare item for him."
+        ],
+        [
+          " asks for and bring one to them",
+          " asks for and bring it to him"
+        ]
+      ]
+  },
   "notSellers": {
     "_note": "WO-180 Part 8 (Bob, 30 Oct): people the records put in a vendor faction who do not trade, by record id, with the reason. UESP: Adara, Kerah's child at the Markarth jewelry stall, has no trade dialogue; the stall is Kerah's.",
     "Skyrim.esm:013385": "Adara, Kerah's child: the stall is Kerah's"

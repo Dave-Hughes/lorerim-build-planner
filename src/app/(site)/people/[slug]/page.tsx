@@ -18,7 +18,7 @@ import { questsData } from "@/lib/quests/data";
 import { questHref } from "@/lib/quests/slugs";
 import { dayAndNight, dayHours, mainPlace } from "@/lib/people/day";
 import l from "@/components/quests/line-page.module.css";
-import { questsOf } from "@/lib/people/quests";
+import { questsOfPerson } from "@/lib/people/quests";
 import { questCountSentence } from "@/lib/people/quest-count";
 import { siteMetadata } from "@/lib/og/metadata";
 import styles from "@/components/pages/page-kit.module.css";
@@ -51,7 +51,7 @@ export default async function PersonPage({ params }: { params: Params }) {
   const x = await pageExtras("person", person.slug, `/people/${person.slug}`);
   const { userId, confirmed } = x;
   const reporters = person.read?.reports ?? 0;
-  const found = questsOf(person.name);
+  const found = questsOfPerson(person);
   const read = person.read ?? null;
   // What they sell and train: a read person says so by the read (a follower's vendor entry in the records is only trading with you).
   const sells = read ? !!read.sells : !!person.sells;
@@ -63,6 +63,20 @@ export default async function PersonPage({ params }: { params: Params }) {
   // Where they are by day and at night, said plainly, and the changes a player can act on: a quest's stage that moves them to a named place (WO-185 Part 4, people_moves.py).
   // The read's own list of what changes it (a prose line for each stage) is not shown: "During A New Day: around a spot by Riften" connected to nothing a player could do.
   const where = read ? dayAndNight(read.day) : { day: null, night: null };
+  // Where they trade, the way their town says it (WO-180 Part 9a: Endon's page and Markarth's line agree): from the shop's own data.
+  const shopAt = person.shop
+    ? person.shop.cell
+      ? `at ${person.shop.cell}`
+      : person.shop.stall
+        ? person.name === "Sofie"
+          ? "on the streets"
+          : person.shop.kind === "blacksmith"
+            ? "at their forge"
+            : "at a stall in the market"
+        : person.shop.outdoors
+          ? "at their forge"
+          : ""
+    : "";
   // The quests the read lists with how each touches them, linked where the planner has the quest; those only the quest pages name follow.
   const byName = new Map(found.map((q) => [q.name.toLowerCase(), q]));
   // A quest the read names that the quest pages don't list this person in still has a page by its name.
@@ -257,6 +271,16 @@ export default async function PersonPage({ params }: { params: Params }) {
         <div className={styles.body}>
           {read && (read.firstMeet || read.day.length > 0) && (
             <Section id="where" icon="quest-travel" title={`Where to find ${they}`}>
+              {person.shop && !person.follower && (
+                <p className={styles.byDay}>
+                  <span>
+                    <b>Sells: </b>
+                    {cap(person.shop.kind)}
+                    {shopAt ? ` ${shopAt}` : ""}
+                    {person.shop.hours ? `, ${person.shop.hours}` : ""}
+                  </span>
+                </p>
+              )}
               {(where.day || where.night) && (
                 <p className={styles.byDay}>
                   {where.day && where.day === where.night ? (

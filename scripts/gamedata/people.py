@@ -258,6 +258,35 @@ def job_rank(d):
     return min([x.get("rank", 255) for x in (d or {}).get("factions", []) if (x.get("edid") or "").startswith("Job") and x.get("rank", 255) != 255] or [255])
 
 
+def quest_links(dump, givers, quests_raw):
+    """
+    WO-180 Part 9a: the quests each base record is in, by record (not by name): the quests that fill an alias with them (the dump's ALUA links) and the ones that start with them or
+    name them in their giver data. {record id: sorted quest editor ids}. Two people with one name (Wilhelm of Windhelm and of Ivarstead) get their own.
+    """
+    edid = {q["id"]: q["edid"] for q in quests_raw}
+    out = {}
+
+    def put(pid, qid):
+        if pid and qid in edid:
+            out.setdefault(pid, set()).add(edid[qid])
+
+    for pid, d in (dump or {}).items():
+        for q in d.get("quests", []):
+            put(pid, q.get("quest"))
+    for q in givers or []:
+        for p in q.get("people") or []:
+            put(p.get("npcId"), q.get("id"))
+        for g in (q.get("giver") or {}, q.get("namedGiver") or {}):
+            put(g.get("npc"), q.get("id"))
+            for o in g.get("others") or []:
+                put(o.get("npc"), q.get("id"))
+    return {k: sorted(v) for k, v in out.items()}
+
+
+# The masters the game ships: a name two records share belongs first to the one made by these (WO-180 Part 9a: the bare address goes to the one players mean).
+VANILLA = {"skyrim.esm", "update.esm", "dawnguard.esm", "hearthfires.esm", "dragonborn.esm"}
+
+
 def keeper_of(vendor, members, dump=None):
     """
     WO-180 Part 8: the member of a vendor faction who keeps its shop, the rest being its assistants. In the order the records can tell it: the owner of the vendor chest (Oengul's, in
@@ -375,6 +404,8 @@ def tidy_person_read(read):
     # (WO-180 Part 8: the editors' word for a general trader, "general 'misc' merchant", is no one's words)
     if read.get("sells"):
         read["sells"] = re.sub(r"\s*\([^)]*['\u2018\u2019]misc['\u2018\u2019][^)]*\)", "", read["sells"]).replace("  ", " ").strip()
+        # (and the editors' "(a merchant with a jeweller's job, no shared buy list)": WO-180 Part 9a)
+        read["sells"] = re.sub(r"\s*\([^)]*(?:buy list|vendor list|shared)[^)]*\)", "", read["sells"]).replace("  ", " ").strip()
     read["changes"] = [c for c in (tidy_read(c) for c in read.get("changes", [])) if c]
     read["day"] = [{**d, "where": tidy_read(d.get("where", "")), "doing": tidy_read(d.get("doing", ""))} for d in read.get("day", [])]
     read["quests"] = [{**q, "how": tidy_read(q.get("how", ""))} for q in read.get("quests", [])]
@@ -438,6 +469,9 @@ def build_site(rows, facts=None, reads=None, rulings=None):
         for i in [p.get("id"), *p.get("alsoIds", [])]:
             for k, v in ((facts or {}).get(i) or {}).items():
                 r.setdefault(k, v)
+        # a name more than one record has: the one the game makes is marked, so the bare address can go to the one players mean
+        if counts[p.get("name")] > 1 and str(p.get("id", "")).split(":")[0].lower() in VANILLA:
+            r["vanilla"] = True
         # Someone a player asks about is a person, unique flag or not: they have a read, follow you, marry you, train you, or are essential with a name of their own.
         if r.get("generic") and (any(i in (reads or {}) for i in [p.get("id"), *p.get("alsoIds", [])]) or r.get("follower") or r.get("marriage") or r.get("trainer") or (r.get("essential") and counts[p.get("name")] == 1)):
             del r["generic"]

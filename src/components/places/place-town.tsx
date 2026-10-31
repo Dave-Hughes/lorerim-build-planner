@@ -58,7 +58,8 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
   const inside = kind === "inside";
   const { houses, total } = peopleAt(place);
   const everyone = houses.flatMap((h) => h.people);
-  const keepers = everyone.filter((p) => p.keeper).sort((a, b) => b.keeperRank - a.keeperRank);
+  // (the game's own innkeeper first, who rents the rooms; then the one the read names)
+  const keepers = everyone.filter((p) => p.keeper).sort((a, b) => Number(b.recordKeeper) - Number(a.recordKeeper) || b.keeperRank - a.keeperRank);
   const shops = shopsOf(houses, inside ? place.inTown : place.name);
   const inns = innsOf(houses);
   // A town has beds when one of its inns does; an inn, temple or hall has them when its keeper does.
@@ -111,12 +112,20 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
       {sub ? <span className={l.s}>{sub}</span> : null}
     </div>
   );
+  const staffLinks = (s: Shop) =>
+    s.staff.slice(0, 2).map((x, i) => (
+      <span key={x.name}>
+        {i ? ", " : ""}
+        <Link href={x.href}>{x.name}</Link>
+      </span>
+    ));
   const shopLine = (s: Shop) => (
     <span key={s.name} style={{ display: "block" }}>
       {s.noun && s.cell ? (
-        // a seller who works from a home, a keep or a hall: said once, "Endon, silversmith (Endon's House)"
+        // a seller who works from a home, a keep or a hall: said once, "Endon, silversmith (Endon's House)"; the assistants in the same bracket
         <>
-          <Link href={s.keeper.href}>{s.keeper.name}</Link>, {s.kind} ({s.href ? <Link href={s.href}>{s.cell}</Link> : s.cell})
+          <Link href={s.keeper.href}>{s.keeper.name}</Link>, {s.kind} ({s.href ? <Link href={s.href}>{s.cell}</Link> : s.cell}
+          {s.staff.length > 0 && <>, with {staffLinks(s)}</>})
         </>
       ) : s.noun ? (
         <>
@@ -127,19 +136,7 @@ export function PlaceTown({ place, kind, origin, near, ic, goodToKnow }: { place
           {s.href ? <Link href={s.href}>{s.name}</Link> : s.name}: <Link href={s.keeper.href}>{s.keeper.name}</Link>, {s.kind}
         </>
       )}
-      {s.staff.length > 0 && (
-        <>
-          {" "}
-          (with{" "}
-          {s.staff.slice(0, 2).map((x, i) => (
-            <span key={x.name}>
-              {i ? ", " : ""}
-              <Link href={x.href}>{x.name}</Link>
-            </span>
-          ))}
-          )
-        </>
-      )}
+      {s.staff.length > 0 && !(s.noun && s.cell) && <> (with {staffLinks(s)})</>}
     </span>
   );
   const nameLinks = (ps: PlacePerson[], max = 3) =>

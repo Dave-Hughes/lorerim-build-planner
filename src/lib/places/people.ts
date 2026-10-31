@@ -25,6 +25,10 @@ export interface PlacePerson {
   keeper: boolean;
   /** 2 when the read names them the keeper, 1 when only the record does, so the keeper the read gives comes first. */
   keeperRank: number;
+  /** The game's own innkeeper (the innkeepers' faction), who rents the rooms: first in an inn, ahead of the read's mention of an owner (WO-180 Part 9a). */
+  recordKeeper: boolean;
+  /** Keeps the shop their vendor faction is (the others are its assistants): the better of two innkeepers. */
+  shopKeeper: boolean;
   gives: number;
   read: boolean;
   /** Runs a shop (WO-180 Part 7a): the vendor faction they belong to has a vendor chest placed and a list of what it takes. The record's "sells" flag alone is not that (a Companion, a bard and a housecarl have it). An innkeeper's food is the inn's. */
@@ -81,6 +85,9 @@ const HOMELY = /\b(?:house|home|residence|lodging|quarters|bunkhouse|shack|hall|
 const officialName = (name: string) => placesNamed(name)[0]?.name ?? placesNamed(`The ${name}`)[0]?.name ?? name;
 /** Whether the place of this name is of this type; the people's cells say "The Bee and Barb" where the places say "Bee and Barb". */
 const placeOfType = (name: string | null | undefined, type: string) => !!name && [name, name.replace(/^the\s+/i, "")].some((n) => placesNamed(n).some((x) => x.type === type));
+/** Sellers who walk the streets with their goods, not a stall in the market (UESP: Sofie's flower basket at the Windhelm gate). */
+const STREET: Record<string, string> = { Sofie: "basket on the streets" };
+
 /** A seller in the open at a forge the places do not list: UESP's "Eorlund works at the Skyforge" (the chest stands beside it). */
 const FORGES: Record<string, string> = { "Eorlund Gray-Mane": "The Skyforge" };
 
@@ -122,6 +129,8 @@ function personOf(p: Person, row?: Person["rows"][number]): PlacePerson {
     follower: !!p.follower,
     keeper,
     keeperRank: readKeeper ? 2 : p.innkeeper ? 1 : 0,
+    recordKeeper: !!p.innkeeper,
+    shopKeeper: !!mine?.keeper,
     gives,
     read: !!read,
     shopkeeper,
@@ -190,7 +199,7 @@ export function shopsOf(houses: House[], town?: string): Shop[] {
       href = placeHref(name);
     } else if (s.stall) {
       // a smith in the open in a city works at a forge (the Skyforge), not a stall in its market
-      noun = s.kind === "blacksmith" ? "forge" : "stall in the market";
+      noun = STREET[p.name] ?? (s.kind === "blacksmith" ? "forge" : "stall in the market");
     } else {
       const base = NOUN[s.kind] ?? "shop";
       noun = cell ? `${base} in ${cell}` : base;
@@ -254,7 +263,7 @@ export function peopleAt(place: Place): { houses: House[]; total: number } {
       name,
       href: name === place.name ? null : homeHref(name),
       // The keeper first, then the ones with something for a player, then the rest.
-      people: people.sort((a, b) => b.keeperRank - a.keeperRank || b.chips.length - a.chips.length || Number(b.read) - Number(a.read) || a.name.localeCompare(b.name)),
+      people: people.sort((a, b) => Number(b.recordKeeper) - Number(a.recordKeeper) || Number(b.recordKeeper && b.shopKeeper) - Number(a.recordKeeper && a.shopKeeper) || b.keeperRank - a.keeperRank || b.chips.length - a.chips.length || Number(b.read) - Number(a.read) || a.name.localeCompare(b.name)),
     }))
     .sort((a, b) => b.people.length - a.people.length || a.name.localeCompare(b.name));
   return { houses, total: here.length };

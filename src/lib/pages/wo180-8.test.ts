@@ -123,10 +123,10 @@ describe("two fills, by name, and the People sections (WO-180 Part 8)", () => {
     expect(steps.length).toBeGreaterThan(2);
     for (const s of steps) expect(s).toContain(text);
   });
-  it("Rare Gifts reads 'Bring one rare item to <person>' on all six pages", () => {
+  it("Rare Gifts names its person on all six pages (the wording is Part 9a's: the rare item they ask for)", () => {
     const six = all.filter((q) => /^Favor110[A-Z]/.test(q.edid));
     expect(six.length).toBe(6);
-    for (const q of six) expect(q.objectives[0], q.edid).toMatch(/^Bring one rare item to \w/);
+    for (const q of six) expect(q.objectives[0], q.edid).toMatch(/^Bring the rare item (?:he|she) asks for to \w/);
   });
   it("Ill Met By Moonlight gives each of a group its own words, and Hunting the Monster's contact is not described by itself", () => {
     const ill = all.find((q) => q.name === "Ill Met By Moonlight")!.read!.people!;

@@ -104,6 +104,10 @@ export interface PersonRow {
   shop?: SellerShop;
   /** Where a quest's stage moves them to, in the order the quests go. */
   moves?: PersonMove[];
+  /** The quests this base record is in (editor ids), by record and not by name (WO-180 Part 9a). */
+  questIds?: string[];
+  /** Made by the game, on a name more than one record has: the bare address goes to the one players mean. */
+  vanilla?: true;
   innkeeper?: true;
   trainer?: { skill: string; cap?: number };
   /** The people read (WO-155 by way of WO-159), when this person has been read and checked. */
@@ -158,7 +162,7 @@ export const nameKey = (s: string) => s.toLowerCase().replace(/[’']/g, "'").re
 const score = (r: PersonRow) => (r.read ? 8 : 0) + (r.inTown ? 4 : 0) + (r.cell ? 2 : 0) + (r.race ? 1 : 0);
 
 /** A name that is a job, not a person: the many of it are one page. */
-const JOB_NAME = /^(?:worker|courier|nobleman|pilgrim|refugee|adventurer|attendant|assassin|vendor|merchant|servant|customer|guard|soldier|farmer|miner|priest|patron|traveler|traveller)$|(?:initiate|guard)$/i;
+const JOB_NAME = /^(?:worker|courier|nobleman|pilgrim|refugee|adventurer|attendant|assassin|vendor|merchant|servant|customer|guard|soldier|farmer|miner|priest|patron|traveler|traveller)$|\b(?:initiate|guard)$/i;
 
 /** A placement of someone a player can look up: read, a seller, a follower, a spouse, a trainer or an innkeeper. A "Worker" at a brothel in every city is not one. */
 const known = (r: PersonRow) => !!(r.read || r.shop || r.follower || r.marriage || r.trainer || r.innkeeper);
@@ -170,6 +174,7 @@ const athome = (r: PersonRow) => !!(r.inTown && r.cell && !JOB_NAME.test(r.name)
  * player can look up who differ in town, race or sex, where both say it, are two; the many nameless of one name (a Worker, a Courier) are one page, as they were.
  */
 const sameOne = (a: PersonRow, b: PersonRow) =>
+  JOB_NAME.test(a.name) ||
   !((known(a) && (known(b) || athome(b))) || (known(b) && athome(a))) || ((!a.inTown || !b.inTown || a.inTown === b.inTown) && (!a.race || !b.race || a.race === b.race) && (!a.sex || !b.sex || a.sex === b.sex));
 
 let cached: { all: Person[]; byName: Map<string, Person>; bySlug: Map<string, Person> } | null = null;
@@ -214,6 +219,9 @@ export function peopleData() {
       if (home) home.push(r);
       else clusters.push([r]);
     }
+    // The bare address goes to the one players mean: a follower, a quest's own person, the one the game made (WO-180 Part 9a); the others take their town in brackets.
+    const meant = (c: PersonRow[]) => (c.some((r) => r.follower) ? 32 : 0) + (c.some((r) => r.questIds?.length) ? 16 : 0) + (c.some((r) => r.vanilla) ? 8 : 0);
+    clusters.sort((a, b) => meant(b) - meant(a));
     const labelOf = (c: PersonRow[]) => c.find((r) => r.inTown)?.inTown ?? c.find((r) => r.cell)?.cell ?? c.find((r) => r.race)?.race ?? "";
     const labels = clusters.map(labelOf);
     clusters.forEach((group, ci) => {

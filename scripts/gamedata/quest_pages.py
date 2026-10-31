@@ -480,6 +480,38 @@ def role_people(pages):
     return n
 
 
+def text_rulings(pages, rulings):
+    """
+    WO-180 Part 9a: words the records and the reads give a quest that a player should read another way, by editor id (a trailing * is a prefix): overrides.json `questText`,
+    {edid: [[was, now], ...]}, applied to every string of the quest's page (its steps, its reads, its start). Returns how many strings changed.
+    """
+    rules = {k: v for k, v in (rulings or {}).items() if not k.startswith("_")}
+    n = 0
+
+    def fix(o, pairs):
+        nonlocal n
+        if isinstance(o, str):
+            new = o
+            for was, now in pairs:
+                new = new.replace(was, now)
+            n += new != o
+            return new
+        if isinstance(o, list):
+            return [fix(x, pairs) for x in o]
+        if isinstance(o, dict):
+            return {k: fix(v, pairs) for k, v in o.items()}
+        return o
+
+    for l in pages:
+        for q in l["quests"]:
+            pairs = [tuple(p) for key, ps in rules.items() if q["edid"] == key or (key.endswith("*") and q["edid"].startswith(key[:-1])) for p in ps]
+            if pairs:
+                new = fix(q, pairs)
+                q.clear()
+                q.update(new)
+    return n
+
+
 def alias_rulings(quests_raw, rulings, globals_=None):
     """
     WO-180 Part 7a: a story quest says its person, never "the person the job names". overrides.json `questAliases` ({edid or prefix*: {alias: words}}) puts the read's words in

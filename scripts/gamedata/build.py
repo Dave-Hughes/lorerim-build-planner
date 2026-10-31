@@ -555,6 +555,9 @@ def main():
         from quest_pages import role_people
 
         print(f"{role_people(pages)} People entries said as what the job picks, or split into the people they name")
+        from quest_pages import text_rulings
+
+        print(f"{text_rulings(pages, overrides.get('questText'))} strings of quest pages said as the rulings say them")
         print(f"{tied} quests with their ways, {read_lines} lines with a read" + (f"; {len(no_line)} line reads match no line: {', '.join(no_line[:8])}" if no_line else ""))
         if unmapped:
             print(f"note: {len(unmapped)} plugins that change quests aren't in plugins_raw.json; named from their file, unlinked (for the PC): {', '.join(sorted(unmapped)[:12])}{' ...' if len(unmapped) > 12 else ''}")
@@ -681,8 +684,13 @@ def main():
         reads = load_reads(os.path.join(RAW, "people_reads", "checked"))
         rulings = {k: v for k, v in overrides.get("people", {}).items() if not k.startswith("_")}
         vendors = load("shops_raw.json")["vendors"] if os.path.exists(os.path.join(RAW, "shops_raw.json")) else {}
+        from people import quest_links
+
         facts = person_facts(dump, vendors, {k: v for k, v in overrides.get("notSellers", {}).items() if not k.startswith("_")},
                              {k: v for k, v in overrides.get("shopKeepers", {}).items() if not k.startswith("_")})
+        # WO-180 Part 9a: the quests each base record is in (so two people with one name each have their own).
+        for _pid, _qs in quest_links(dump, locals().get("givers_raw") or [], locals().get("quests_raw") or []).items():
+            facts.setdefault(_pid, {})["questIds"] = _qs
         # WO-185 Part 4: where a quest's stage moves a person to, in a place with a name (at most five a person: the page keeps it to one short list).
         if dump and locals().get("pages") and os.path.exists(os.path.join(OUT, "places.json")):
             from people_moves import moves_of
