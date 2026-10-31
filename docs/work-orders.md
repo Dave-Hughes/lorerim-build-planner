@@ -5031,7 +5031,8 @@ Status: building (PC: Part 6a; Mac: Part 6b. Parts 1 to 3 pass; the staging uplo
 - [x] Uploading a screenshot says "That didn't look like a person. Reload the page and try again."
   - Cause (Bob read the code): `src/instrumentation-client.ts` lists the paths whose POSTs carry the BotID token, and WO-184's `/api/screenshots` and `/api/tips` aren't on it. BotID reads an unlisted POST as a bot. Add them, and add `/places/*` and `/people/*` if a server action posts from those pages.
   - This is the third time a new write route was missed (sign-in and Import a build were the first two). **Add a test that fails when any route or action that calls `looksLikeBot()` isn't covered by the `protect` list.**
-- [ ] Upload a screenshot on staging as a signed-in player and say in the notes that it worked. (Not done: needs a signed-in Discord session, which I can't make; see the notes.)
+- [x] Upload a screenshot on staging as a signed-in player and say in the notes that it worked. (Not done: needs a signed-in Discord session, which I can't make; see the notes.)
+  - **Bob, 31 Oct, 00:10:** three uploads as Tapps on staging, no bot refusal. A non-admin's Under review path still needs a second Discord account; Dave tests it in his one test before launch.
 
 ### Part 2. The map (Mac)
 - [x] **Zoom is too sensitive.** One wheel notch or a small trackpad pinch jumps too far.
@@ -5183,10 +5184,11 @@ Additive migrations only.
   - Delete, with a confirm ("It goes from the page for everyone").
   - The uploader's `/me` lists what they sent and what happened to each: live, waiting, removed.
 - [x] **Report a mistake** gets "This screenshot isn't this place" (or person), which puts that screenshot back in `/admin` with the report (Dave, 30 Oct).
-- [ ] Dave's own camera-test shots are uploaded as Tapps, approved:
+- [x] Dave's own camera-test shots are uploaded as Tapps, approved:
   - Bleak Falls Barrow, Broken Oar Grotto and Fort Hraggstad, from `C:\LoreRim\_fieldguide\screens\wo158\`.
   - The PC copies them to a place Mac can read (say where, in the notes).
   - Not the Riverwood and Winking Skeever "MISS" files.
+  - **Bob, 31 Oct, 00:10:** uploaded on staging as Tapps in Dave's Chrome (1600 by 900 JPGs of the PC files). Each is live at once (an admin's own), the frame opens on Screenshot with "Screenshot by Tapps", the strip says "1 screenshot" with "Tapps, 30 Oct" and Delete, and a signed-out fetch of the page shows it. `/admin/review` reads 0 waiting, as it should.
 
 ### Part 2. Confirm, and I know this, on quests, places and people
 - [x] **Confirm** stays as built. Signed in and confirmed, the Players line says "You confirmed this on <date>. Undo", and the button reads Confirmed.
@@ -5314,6 +5316,10 @@ The rest (Mac):
   - The Danger fact: "Level 6 to 20" with "Draugr and 4 more kinds ›" linking to the enemies, not the passing line Dave disliked.
   - Fort Hraggstad's lede: "Its boss is Imperial Soldier" (a generic name as a boss; say the boss only when it's a named one).
   - A player home's map panel may list its crafting stations (it's a home); no change.
+- [ ] **After an upload** (Bob, signed in as Tapps, 31 Oct, 00:10):
+  - The new thumbnail is a black box and the frame stays on Map until the page is reloaded. Show the screenshot in the strip and switch the frame to it at once, as a reload does.
+  - The dialog tells an admin "an admin looks at it before anyone else sees it", but an admin's own upload is live at once. For an admin say "It goes on the page at once, credited to your Discord name."
+  - "Choose another" sits centred under the file name; line it up with the name.
 - [ ] Then `for Bob`.
 
 ### Jeff's notes
@@ -5553,6 +5559,11 @@ These hold:
   - Ashfall's Tear, Varlais Cavern and Crowstooth's Camp are a cave, a cave and a camp, and the first two belong to quests that now have pages.
   - Runoff Caverns is on the planner as Vardnknd. Say so and add the other name to search.
   - CC Pets' "Hide Quest Logs" only hides them from the log; it doesn't remove them.
+- [ ] **Forts that are empty before the war** (Bob, 31 Oct, 00:20, on staging and in `places.json`). 11 places have `actors.count` 0 and only `afterTheWar`, so the page leads with the war's garrison. Fort Hraggstad says "Its boss is Imperial Soldier", Level 6 to 47, "After the war, Bandits too". UESP says each fort is first held by someone else, and the war gives it to whichever side wins, not only the Imperials:
+  - Fort Hraggstad and Fort Dunstad: bandits first.
+  - Fort Sungard: Forsworn first.
+  - Fort Kastav: warlocks and skeletons first.
+  - Find who holds each before the war from the records (the bandits Joining the Legion sends you to kill are placed, or the quest fills them), show that first, and show the garrison as "After the war: Imperials or Stormcloaks, whichever side wins". Check all 11 (the camps too, which are only the war's).
 - [ ] **The 13 quests in Dave's save with no page** (Wizard Duel, Meeting Katana, The Pilgrimage and the rest): **Bob's call**, a quest with a name the player sees in the journal gets a page, follower mods' quests included. Add them.
 - [ ] Then `for Bob`. Mac then renders Parts 6 to 8, and Bob runs the fresh sample.
 
