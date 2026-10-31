@@ -29,6 +29,15 @@ export function Frame({ kind, pageKey, name, data, map, signInPlus, signInText, 
   const [confirming, setConfirming] = useState(false);
   const [error, setError] = useState("");
   const [pending, start] = useTransition();
+  // A screenshot just sent: the file the player chose shows in the strip and the frame at once, and a live one is selected as soon as the page has it.
+  const [sent, setSent] = useState<{ id: number; preview: string; select: boolean } | null>(null);
+  const srcOf = (x: ShotData, own: string) => (sent && sent.id === x.id ? sent.preview : own);
+  const arrived = sent?.select ? shots.findIndex((x) => x.id === sent.id) : -1;
+  if (sent && arrived >= 0) {
+    setAt(arrived);
+    setView("shot");
+    setSent({ ...sent, select: false });
+  }
   const cur = at >= 0 ? shots[at] : undefined;
   const live = shots.filter((x) => x.status === "live").length;
   const waiting = shots.length - live;
@@ -63,7 +72,7 @@ export function Frame({ kind, pageKey, name, data, map, signInPlus, signInText, 
           map
         ) : cur ? (
           <>
-            <img className={s.fi} src={cur.url} alt={`${name}, a screenshot by ${cur.byName ?? "a player"}`} />
+            <img className={s.fi} src={srcOf(cur, cur.url)} alt={`${name}, a screenshot by ${cur.byName ?? "a player"}`} />
             <span className={s.credit}>
               {cur.byImage ? <img className={s.av} src={cur.byImage} alt="" /> : <span className={s.av} />}
               {cur.mine && cur.status === "review" ? "Your screenshot" : shotCaption(cur.byName)}
@@ -115,7 +124,7 @@ export function Frame({ kind, pageKey, name, data, map, signInPlus, signInText, 
               setView("shot");
             }}
           >
-            <img src={x.thumbUrl} alt="" />
+            <img src={srcOf(x, x.thumbUrl)} alt="" />
             {x.status === "review" && <span className={s.flagSm}>Review</span>}
             {i === firstLive && x.status === "live" && shots.filter((y) => y.status === "live").length > 1 && <span className={s.leadMark}>Lead</span>}
           </button>
@@ -230,9 +239,11 @@ export function Frame({ kind, pageKey, name, data, map, signInPlus, signInText, 
           pageKey={pageKey}
           name={name}
           what={what}
+          admin={admin}
           onClose={() => setAdding(false)}
-          onDone={() => {
+          onDone={(done) => {
             setAdding(false);
+            setSent({ id: done.id, preview: done.preview, select: done.status === "live" });
             router.refresh();
           }}
         />

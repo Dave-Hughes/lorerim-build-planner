@@ -372,6 +372,10 @@
   line-height: 1.45;
   overflow-wrap: anywhere;
 }
+.dropText .link {
+  align-self: flex-start;
+  text-align: left;
+}
 .choose {
   align-self: flex-start;
 }

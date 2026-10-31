@@ -171,6 +171,34 @@ test("the admin under the frame: Make it lead changes what the frame opens on, a
   await expect(page.getByRole("alertdialog")).toBeHidden();
 });
 
+test("after an admin's upload: the dialog says it is live at once, the strip shows the file and the frame switches to it without a reload", async ({ page, context }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await signIn(context);
+  await page.goto("/places/riverwood");
+  const frame = page.locator("[data-view]");
+  await expect(frame).toHaveAttribute("data-view", "map");
+  await page.getByRole("button", { name: "Add a screenshot of Riverwood" }).click();
+  const dialog = page.getByRole("dialog", { name: /Add a screenshot of/ });
+  await dialog.getByLabel("Screenshot file").setInputFiles({ name: "shot.png", mimeType: "image/png", buffer: await png("#7a3a2a") });
+  // The file name and "Choose another" start at the same edge.
+  const name = await dialog.getByText(/^shot\.png/).boundingBox();
+  const another = await dialog.getByRole("button", { name: "Choose another" }).boundingBox();
+  expect(Math.abs(name!.x - another!.x)).toBeLessThan(2);
+  await expect(dialog).toContainText("It goes on the page at once, credited to your Discord name.");
+  await expect(dialog).not.toContainText("an admin looks at it");
+  await dialog.getByLabel(/This is my own screenshot/).check();
+  await dialog.getByRole("button", { name: "Add the screenshot" }).click();
+  await expect(dialog).toBeHidden();
+  await expect(frame).toHaveAttribute("data-view", "shot");
+  const thumb = page.locator("[data-view] ~ div img, button[aria-label^='Screenshot 1'] img").first();
+  await expect(thumb).toBeVisible();
+  expect(await thumb.evaluate((i: HTMLImageElement) => i.complete && i.naturalWidth > 0), "the new thumbnail is not a blank box").toBe(true);
+  // Leave nothing behind.
+  await page.getByRole("group", { name: "Admin: this screenshot" }).getByRole("button", { name: "Delete", exact: true }).click();
+  await page.getByRole("alertdialog").getByRole("button", { name: "Delete", exact: true }).click();
+  await expect(page.getByText("No screenshots yet.")).toBeVisible();
+});
+
 test("\"This screenshot isn't this place\" puts it back on the review list with the report", async ({ page, context }) => {
   await as(context, REPORTER_TOKENS[1]);
   await page.goto(PLACE);

@@ -6,7 +6,7 @@ import { SHOT_BYTES, SHOT_WORDS, type ShotKind } from "@/lib/screenshots/words";
 import s from "./frame.module.css";
 
 /** The dialog that adds one (board PicAdd): choose a file, say it is yours, send. */
-export function AddDialog({ kind, pageKey, name, what, onClose, onDone }: { kind: ShotKind; pageKey: string; name: string; what: string; onClose: () => void; onDone: () => void }) {
+export function AddDialog({ kind, pageKey, name, what, admin, onClose, onDone }: { kind: ShotKind; pageKey: string; name: string; what: string; admin: boolean; onClose: () => void; onDone: (sent: { id: number; status: "live" | "review"; preview: string }) => void }) {
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState("");
   const [size, setSize] = useState("");
@@ -53,9 +53,10 @@ export function AddDialog({ kind, pageKey, name, what, onClose, onDone }: { kind
     form.set("file", file);
     try {
       const res = await fetch("/api/screenshots", { method: "POST", body: form });
-      const body = (await res.json().catch(() => ({}))) as { error?: string };
+      const body = (await res.json().catch(() => ({}))) as { error?: string; id?: number; status?: "live" | "review" };
       if (!res.ok) return setError(body.error ?? "That didn't send. Try again.");
-      onDone();
+      // The file the player chose stands in for the new thumbnail until the page has its own copy, so the strip never shows a blank while it loads.
+      onDone({ id: body.id ?? 0, status: body.status ?? "review", preview });
     } finally {
       setBusy(false);
     }
@@ -89,7 +90,11 @@ export function AddDialog({ kind, pageKey, name, what, onClose, onDone }: { kind
           <input type="checkbox" checked={own} onChange={(e) => setOwn(e.target.checked)} />
           This is my own screenshot, and it shows {name}.
         </label>
-        <p className={s.dp}>Every screenshot is checked automatically, and an admin looks at it before anyone else sees it. Until then it shows on the page for you, marked Under review. It&apos;s credited to your Discord name.</p>
+        <p className={s.dp}>
+          {admin
+            ? "Every screenshot is checked automatically. It goes on the page at once, credited to your Discord name."
+            : "Every screenshot is checked automatically, and an admin looks at it before anyone else sees it. Until then it shows on the page for you, marked Under review. It's credited to your Discord name."}
+        </p>
         {error && (
           <p role="alert" className={s.err}>
             {error}

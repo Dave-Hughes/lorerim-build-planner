@@ -5140,7 +5140,7 @@ Jeff's notes on Part 4 (PC, 30 Oct). The status says Part 4 is the PC's, so I di
 ---
 
 ## WO-184  Players make it right: screenshots, I know this, Help fill the gaps, one review list (Mac, 30 Oct 2026)
-Status: building (Mac: Part 9's "After an upload" box; the rest of Part 9 is built; Bob: the signed-in walk and the Tapps uploads)
+Status: for Bob (Part 9 built, with the three after-upload faults; Bob: the signed-in walk and the Tapps uploads)
 
 **Why.** Dave, 30 Oct: with playthroughs cut, double down on quests, places and people, and "accelerate the ideas for community confirmation of quest info, the admin review section, and of course the image collection work for locations and NPCs." These are the backlog's 23 Oct, 28 Oct and 28 Oct items, decided.
 
@@ -5318,15 +5318,16 @@ The rest (Mac):
   - The Danger fact: "Level 6 to 20" with "Draugr and 4 more kinds ›" linking to the enemies, not the passing line Dave disliked.
   - Fort Hraggstad's lede: "Its boss is Imperial Soldier" (a generic name as a boss; say the boss only when it's a named one).
   - A player home's map panel may list its crafting stations (it's a home); no change.
-- [ ] **After an upload** (Bob, signed in as Tapps, 31 Oct, 00:10):
+- [x] **After an upload** (Bob, signed in as Tapps, 31 Oct, 00:10):
   - The new thumbnail is a black box and the frame stays on Map until the page is reloaded. Show the screenshot in the strip and switch the frame to it at once, as a reload does.
   - The dialog tells an admin "an admin looks at it before anyone else sees it", but an admin's own upload is live at once. For an admin say "It goes on the page at once, credited to your Discord name."
   - "Choose another" sits centred under the file name; line it up with the name.
-- [ ] Then `for Bob`.
+- [x] Then `for Bob`.
 
 ### Jeff's notes
 
-**Mac, 30 Oct: Part 9.** Typecheck, lint (the old warnings; `alsoHere` removed), `npm test` (961 passed, 7 expected fail), build and the full e2e (612 passed, then the 3 stale ones fixed: wo154's boss, wo177's "In Where" read across two headings, wo184's "add yours") pass; `e2e/wo184-9.spec.ts` is its own check (7 tests). Screenshots: `test-results/wo184-9-town-1440.png`, `wo184-9-map-full-390.png`.
+**Mac, 30 Oct: Part 9.** Typecheck, lint (the old warnings; `alsoHere` removed), `npm test` (961 passed, 7 expected fail), build and the full e2e (628 passed) pass; `e2e/wo184-9.spec.ts` is its own check (7 tests). Screenshots: `test-results/wo184-9-town-1440.png`, `wo184-9-map-full-390.png`.
+- **After an upload** (`frame.tsx`, `add-dialog.tsx`). The dialog hands back the new screenshot's id, its status and the file the player chose; the strip and the frame use that file for the new one until the page has its own copy, so there is no black box, and a live one (an admin's, a trusted player's) is selected and the frame switches to Screenshot at once, with no reload. One under review still leaves the frame on the map (the rule from Part 1). For an admin the dialog says "Every screenshot is checked automatically. It goes on the page at once, credited to your Discord name."; a player still reads the review sentence. "Choose another" sits on the file name's left edge (`.dropText .link`). `wo184.spec.ts` has an admin-upload test for all three (it deletes its screenshot after). I could not repeat the black box locally (the local store serves the thumbnail at once); the cause on staging may be the thumbnail not yet served when the page first asks for it, which the local file covers; Bob: if a thumbnail is still black after a reload on staging, that is a different fault.
 - **Map for anyone placeable.** `personFrameMap` (`frame-maps.tsx`) tries the person's `inTown`, then their `cell`, then `cells`, through the same place lookup the pages use. Arch-Paladin Laracin (Meridia's Sanctum) now has a Map button.
 - **44 px at 390.** The frame's Full screen and the full screen's Close are 44 px at 390; the scale bar sits above the credit (`bottom: 44px`) so "0.2 km" is whole.
 - **Towns.** The At a glance band is gone; the town's facts are the left list under the top (Where, People, Shops and beds, Trainers and followers, Finding it, then Getting there). The shops and trainers lists fold under their fact ("Who keeps what", "Who trains what"). Riverwood's Who lives here starts at 824 px at 1440×900 (it was 895).
