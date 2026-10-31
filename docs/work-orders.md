@@ -5951,7 +5951,7 @@ Mac's notes (30 Oct). Everything is built and checked except Kyria's text on sta
 **Tests that went:** the Story's (wo79 author and reader, wo114's first chapter, wo116's reader, Read Act I, markers and previous/next, wo117's Story tab and chapters, wo118's reader and image position, wo124's story card, wo142's chapter paragraphs, wo111's reader), and the ticking ones that moved to the tracking server. The "About them" display test became "the page has none".
 
 ## WO-180  Junk text out of the pages, and the last map faults (Mac and PC, 28 Oct 2026)
-Status: queued (PC: Part 10; Mac: Parts 7b and 9b are for Bob)
+Status: queued (PC: Part 10; Mac: Part 11)
 
 **Why.** The fourth cold review (Bob's reviewer, 3,721 pages crawled, 51 walked at both widths) passed WO-176 to WO-178, and named what would still hit Dave in his first ten minutes: old text from the game files that was never cleaned. Bob confirmed the holes and Web Mother by hand. No order is done until a page-text test fails on each of these.
 ### Part 1. Quotes (PC writes the cleaner; Mac's test fails on any page)
@@ -6355,6 +6355,33 @@ These hold:
   - Sofie's page has no Sells, though the notes said it would.
   - The inn's owner after the keeper is still open.
 - [ ] Then `for Bob`.
+
+### Part 11. The review of 7b and 9b (Bob's reviewer, 31 Oct, 00:30; Bob confirmed A Lovely Letter on staging: 9 links to Kynesgrove's Sven, 1 to Riverwood's)
+These pass:
+- Capitals on all 1,347 How it starts cells.
+- Pronouns in Not sure yet on all 1,644 person pages.
+- The Dwemer Specialist's joiner is no longer a step.
+- Whiterun's label and no badge over a badge on Homes.
+- A person page's quests come from their own record.
+- `npm test` is green.
+
+(Mac's notes for 7b and 9b landed inside WO-152's section, around line 7996. Move them under this order.)
+
+**Mac:**
+- [ ] **Body links pick the wrong person of a shared name.** In `link-names.ts`, `compile()` builds a Map by text, so when two links share a name the last one wins. `peopleNames()` adds both Svens after the page's own `personNames(…, quest.edid)`, so the town-suffixed one takes every body link.
+  - Wrong on A Lovely Letter, The Heart Will Go On, Investigate the Bard's College, Lifting the Shroud, The Straw that Broke, Under the Table, Infiltration, Enchanted to Meet You, Jacob's four and Frida's Dungeon Delving pages.
+  - Also wrong: the line pages (Odd Jobs Whiterun and The Rift, Bards College, Vigilants), Hunting Trip and Kyne's Trial (Frida the Younger), and person pages (Faendal, Romlyn Dreth, Stalleo, Gretolde, Taranis).
+  - The fix: the page's own person links win. With no quest in play, a shared name goes to the bare address, the one players mean.
+  - Test the rendered page, not the function: every Sven on A Lovely Letter goes to `/people/sven`, and every Wilhelm on Lifting the Shroud to `/people/wilhelm`.
+- [ ] **Homes map, past the first zoom.** After three zoom-outs and one zoom-in, Anga's Mill's diamond is back on "Windhelm, 24" at both widths. At 390, the second and third zoom-outs put pins over 16 to 18 names ("Marka◆, 17").
+  - The fallback in `map-page.tsx` takes a side that only clears names, not pins.
+  - Draw labels above other pins' diamonds, and drop or move the lesser pin rather than cover it.
+  - The e2e checks every label against every diamond, for 3 out then 1 in, and for each zoom-out, at both widths.
+  - Small: "Dragon Bridge, 3" on "Morthal, 4" (390, one wheel out); "Markarth, 17" and "Winterhold, 7" hanging off the paper.
+- [ ] **Small:**
+  - The Information Confidence sources line says "Their race, where they are placed and their quests" on he and she pages.
+  - Frida (Dawnstar)'s page lists only the generic Dungeon Delving (Caves), not the Dawnstar one her record also has.
+- [ ] Untick 7b's map box and 9b's until these land. Then `for Bob`.
 
 Jeff's notes on WO-180 (PC, 28 Oct):
 - **Quotes** (`places.py`, `build.py`): one cleaner, `game_text()`, runs on a book's whole text and on every dialogue line before a quote is cut: `<Alias=Player>` is "you"; any other `<Alias…>`, `<Global…>` or `<Token…>` leaves a hole mark and a quote with one in what is cut around it is left out (the next mention of the place in that book is tried; the Lakeview and Windstad charters have no mention without a hole, so they are not quoted); every other tag (`<font …>`, `<img …>`) and `[pagebreak]` goes before the cut, so no `size="18">` stub is left. A quote names a quest only when it is a quest on the Quests pages by that name; the game's own dialogue quest ("Riften Dialogue") moves to a new field, `dialogue`, which no page shows. Why keep it: the assistant's town gossip (`suggest.ts`, WO-151) reads it to say which town a line with no speaker is about (`wo151.test.ts` caught the first try, which dropped it). A dialogue line with no speaker stays in the data for the same reason; `saidAbout()` leaves it off the pages (one line in `said.ts`: "no speaker, no quote"). 4,761 pointers became 4,741: twenty had a hole in them and went (Lakeview and Windstad Manors no longer quote their charters; Hendraheim, Rorikstead and the rest have none left with markup). The Mac's page-text test is mine too: `wo180.test.ts` runs `saidAbout()` on every place and fails on markup, a hole, a speakerless line or a quest no player has.
