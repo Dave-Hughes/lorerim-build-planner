@@ -1039,6 +1039,17 @@
    "generic": true
   },
   {
+   "id": "ccBGSSSE001-Fish.esm:000BBD",
+   "name": "Falkreath Guard",
+   "race": "Nord",
+   "sex": "male",
+   "cell": "Falkreath Barracks",
+   "inTown": "Falkreath",
+   "role": null,
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "generic": true
+  },
+  {
    "id": "CFTO.esp:0CB329",
    "name": "Gunjar",
    "race": "Nord",
@@ -1164,6 +1175,17 @@
    "id": "cckrtsse001_altar.esl:000985",
    "name": "Pit Bandit",
    "race": null,
+   "sex": "male",
+   "cell": "The Pit",
+   "inTown": "Falkreath",
+   "role": null,
+   "plugin": "cckrtsse001_altar.esl",
+   "generic": true
+  },
+  {
+   "id": "cckrtsse001_altar.esl:000809",
+   "name": "Pit Fighter",
+   "race": "Orsimer",
    "sex": "male",
    "cell": "The Pit",
    "inTown": "Falkreath",
@@ -2800,6 +2822,16 @@
    "inTown": "Markarth",
    "role": null,
    "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "ccbgssse010-petdwarvenarmoredmudcrab.esl:000D62",
+   "name": "Dwarven Armored Mudcrab",
+   "race": "Dwarven Mudcrab Pet",
+   "sex": "male",
+   "cell": "Understone Keep",
+   "inTown": "Markarth",
+   "role": null,
+   "plugin": "GORE.esp"
   },
   {
    "id": "Skyrim.esm:013394",
@@ -4781,6 +4813,17 @@
    "plugin": "Lux - JK's Mistveil Keep patch.esp"
   },
   {
+   "id": "ccbgssse055-ba_orcishscaled.esl:00081E",
+   "name": "Armor Collector",
+   "race": "Altmer",
+   "sex": "female",
+   "cell": "The Bee and Barb",
+   "inTown": "Riften",
+   "role": "JobHostler",
+   "plugin": "Lux - JK's Bee and Barb patch.esp",
+   "generic": true
+  },
+  {
    "id": "Skyrim.esm:029DAD",
    "name": "Arnskar Ember-Master",
    "race": "Nord",
@@ -6071,16 +6114,6 @@
    "inTown": "Riften",
    "role": null,
    "plugin": "Lux - JK's Mistveil Keep patch.esp"
-  },
-  {
-   "id": "ccbgssse055-ba_orcishscaled.esl:00081E",
-   "name": null,
-   "race": "Altmer",
-   "sex": "female",
-   "cell": "The Bee and Barb",
-   "inTown": "Riften",
-   "role": "JobHostler",
-   "plugin": "Lux - JK's Bee and Barb patch.esp"
   },
   {
    "id": "Skyrim.esm:013475",
@@ -9093,7 +9126,7 @@
    "sex": "female",
    "cell": "Witch's Wisdoms",
    "inTown": "Whiterun",
-   "role": "JobApothecary",
+   "role": "JobSpellVendor",
    "plugin": "SurWR.esp"
   },
   {
@@ -10958,39 +10991,6 @@
    "generic": true
   },
   {
-   "id": "ccbgssse005-goldbrand.esl:000810",
-   "name": "Boethiah Cultist",
-   "race": "Dunmer",
-   "sex": "female",
-   "cell": "Sivdur's Respite",
-   "inTown": "Winterhold",
-   "role": null,
-   "plugin": "unofficial skyrim creation club content patch.esl",
-   "generic": true
-  },
-  {
-   "id": "ccbgssse005-goldbrand.esl:000813",
-   "name": "Boethiah Cultist",
-   "race": "Redguard",
-   "sex": "male",
-   "cell": "Sivdur's Respite",
-   "inTown": "Winterhold",
-   "role": null,
-   "plugin": "unofficial skyrim creation club content patch.esl",
-   "generic": true
-  },
-  {
-   "id": "ccbgssse005-goldbrand.esl:000811",
-   "name": "Boethiah Cultist",
-   "race": "Nord",
-   "sex": "male",
-   "cell": "Sivdur's Respite",
-   "inTown": "Winterhold",
-   "role": null,
-   "plugin": "unofficial skyrim creation club content patch.esl",
-   "generic": true
-  },
-  {
    "id": "ccbgssse005-goldbrand.esl:000814",
    "name": "Boethiah Cultist",
    "race": "Dunmer",
@@ -11417,17 +11417,6 @@
    "inTown": "Winterhold",
    "role": null,
    "plugin": "Skyrim.esm"
-  },
-  {
-   "id": "Trad_AE_CC_Collection_Requiem_Patch.esp:20BF94",
-   "name": "Sivdur",
-   "race": "Nord",
-   "sex": "male",
-   "cell": "Sivdur's Respite",
-   "inTown": "Winterhold",
-   "role": null,
-   "plugin": "unofficial skyrim creation club content patch.esl",
-   "generic": true
   },
   {
    "id": "The Great City of Winterhold v4.esp:4E767A",
@@ -13338,6 +13327,16 @@
    "plugin": "Vigilant.esm"
   },
   {
+   "id": "ccbgssse055-ba_orcishscaled.esl:00081D",
+   "name": "Antonius",
+   "race": "Old People",
+   "sex": "male",
+   "cell": "Cragslane Cavern",
+   "inTown": null,
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
    "id": "Meridia.esp:0069C7",
    "name": "Anvaril",
    "race": "Altmer",
@@ -14421,6 +14420,28 @@
    "generic": true
   },
   {
+   "id": "ccbgssse004-ruinsedge.esl:000813",
+   "name": "Bandit Chief",
+   "race": null,
+   "sex": "male",
+   "cell": "Stony Creek Cave",
+   "inTown": null,
+   "role": null,
+   "plugin": "Skyrim.esm",
+   "generic": true
+  },
+  {
+   "id": "ccbgssse061-ba_dwarven.esl:000803",
+   "name": "Bandit Chief",
+   "race": null,
+   "sex": "male",
+   "cell": "Reachwind Eyrie",
+   "inTown": null,
+   "role": null,
+   "plugin": "Skyrim.esm",
+   "generic": true
+  },
+  {
    "id": "ccbgssse068-bloodfall.esl:000805",
    "name": "Bandit Chief",
    "race": null,
@@ -14504,6 +14525,28 @@
    "inTown": null,
    "role": null,
    "plugin": "Requiem.esp"
+  },
+  {
+   "id": "cceejsse005-cave.esm:0D1095",
+   "name": "Bard",
+   "race": "Imperial",
+   "sex": "male",
+   "cell": "Bloodchill Cavern",
+   "inTown": null,
+   "role": null,
+   "plugin": "cceejsse005-cave.esm",
+   "generic": true
+  },
+  {
+   "id": "cceejsse005-cave.esm:0B7B36",
+   "name": "Bard",
+   "race": "Nord",
+   "sex": "female",
+   "cell": "Bloodchill Cavern",
+   "inTown": null,
+   "role": null,
+   "plugin": "cceejsse005-cave.esm",
+   "generic": true
   },
   {
    "id": "Skyrim.esm:0D823D",
@@ -14706,6 +14749,16 @@
    "id": "Journey to Baan Malur.esp:3179B7",
    "name": "Beem Pa",
    "race": "Argonian",
+   "sex": "male",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": null
+  },
+  {
+   "id": "ccbgssse063-ba_ebony.esl:000823",
+   "name": "Beggar",
+   "race": "Old People",
    "sex": "male",
    "cell": null,
    "inTown": null,
@@ -15647,6 +15700,39 @@
    "plugin": null
   },
   {
+   "id": "ccbgssse005-goldbrand.esl:000810",
+   "name": "Boethiah Cultist",
+   "race": "Dunmer",
+   "sex": "female",
+   "cell": "Sivdur's Respite",
+   "inTown": null,
+   "role": null,
+   "plugin": "unofficial skyrim creation club content patch.esl",
+   "generic": true
+  },
+  {
+   "id": "ccbgssse005-goldbrand.esl:000813",
+   "name": "Boethiah Cultist",
+   "race": "Redguard",
+   "sex": "male",
+   "cell": "Sivdur's Respite",
+   "inTown": null,
+   "role": null,
+   "plugin": "unofficial skyrim creation club content patch.esl",
+   "generic": true
+  },
+  {
+   "id": "ccbgssse005-goldbrand.esl:000811",
+   "name": "Boethiah Cultist",
+   "race": "Nord",
+   "sex": "male",
+   "cell": "Sivdur's Respite",
+   "inTown": null,
+   "role": null,
+   "plugin": "unofficial skyrim creation club content patch.esl",
+   "generic": true
+  },
+  {
    "id": "Wyrmstooth.esp:546770",
    "name": "Boethiah Cultist",
    "race": null,
@@ -16573,6 +16659,17 @@
    "plugin": null
   },
   {
+   "id": "ccbgssse031-advcyrus.esm:000815",
+   "name": "Captain",
+   "race": "Skeleton",
+   "sex": "male",
+   "cell": "Dead Man's Dread",
+   "inTown": null,
+   "role": null,
+   "plugin": "ccbgssse031-advcyrus.esm",
+   "generic": true
+  },
+  {
    "id": "Andrealphus Jobs Overhaul - MASTER.esp:000B75",
    "name": "Captain Arrald Frozen-Heart",
    "race": "Nord",
@@ -17460,6 +17557,17 @@
    "generic": true
   },
   {
+   "id": "cctwbsse001-puzzledungeon.esm:0008F0",
+   "name": "Chicken",
+   "race": "Chicken",
+   "sex": "male",
+   "cell": "Autumn's Bells",
+   "inTown": null,
+   "role": null,
+   "plugin": "cctwbsse001-puzzledungeon.esm",
+   "generic": true
+  },
+  {
    "id": "AnimatedShips.esl:000A73",
    "name": "Chicken",
    "race": "Chicken",
@@ -17479,6 +17587,17 @@
    "inTown": null,
    "role": null,
    "plugin": "Dragonborn.esm"
+  },
+  {
+   "id": "ccvsvsse004-beafarmer.esl:000858",
+   "name": "Child's Skeleton",
+   "race": "Skeleton",
+   "sex": "male",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": null,
+   "generic": true
   },
   {
    "id": "Journey to Baan Malur.esp:48C721",
@@ -18281,6 +18400,28 @@
    "generic": true
   },
   {
+   "id": "ccbgssse013-dawnfang.esl:000847",
+   "name": "Cursed Smuggler",
+   "race": "Skeleton",
+   "sex": "male",
+   "cell": "The Guardian Vault",
+   "inTown": null,
+   "role": null,
+   "plugin": "ccbgssse013-dawnfang.esl",
+   "generic": true
+  },
+  {
+   "id": "ccbgssse013-dawnfang.esl:00083E",
+   "name": "Cursed Smuggler",
+   "race": "Skeleton",
+   "sex": "male",
+   "cell": "The Guardian Vault",
+   "inTown": null,
+   "role": null,
+   "plugin": "ccbgssse013-dawnfang.esl",
+   "generic": true
+  },
+  {
    "id": "Trad_AE_CC_Collection_Requiem_Patch.esp:0C6203",
    "name": "Cursed Spectre",
    "race": "Dragon Priest",
@@ -18786,6 +18927,28 @@
    "inTown": null,
    "role": null,
    "plugin": "Journey to Baan Malur.esp"
+  },
+  {
+   "id": "ccBGSSSE001-Fish.esm:06BBC8",
+   "name": "Dawnstar Guard",
+   "race": null,
+   "sex": "male",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": null,
+   "generic": true
+  },
+  {
+   "id": "ccBGSSSE001-Fish.esm:10DF82",
+   "name": "Dawnstar Guard",
+   "race": null,
+   "sex": "male",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": null,
+   "generic": true
   },
   {
    "id": "AnimatedShips.esl:000867",
@@ -20394,6 +20557,17 @@
    "plugin": "Skyrim.esm"
   },
   {
+   "id": "cceejsse005-cave.esm:0B7B1A",
+   "name": "Durian",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Bloodchill Cavern",
+   "inTown": null,
+   "role": null,
+   "plugin": "cceejsse005-cave.esm",
+   "generic": true
+  },
+  {
    "id": "Dawnguard.esm:0030D8",
    "name": "Durnehviir",
    "race": "Dragon",
@@ -20750,6 +20924,17 @@
    "plugin": "ccafdsse001-dwesanctuary.esm"
   },
   {
+   "id": "ccafdsse001-dwesanctuary.esm:000841",
+   "name": "Dwarven Spider Renovator",
+   "race": "Dwarven Spider",
+   "sex": "male",
+   "cell": "Nchuanthumz",
+   "inTown": null,
+   "role": null,
+   "plugin": "ccafdsse001-dwesanctuary.esm",
+   "generic": true
+  },
+  {
    "id": "ForgottenCity.esp:0C6F29",
    "name": "Dwarven Spider Worker",
    "race": "Dwarven Spider",
@@ -20900,6 +21085,17 @@
    "generic": true
   },
   {
+   "id": "ccbgssse056-ba_silver.esl:000821",
+   "name": "East Empire Warden",
+   "race": null,
+   "sex": "male",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": null,
+   "generic": true
+  },
+  {
    "id": "Dragonborn.esm:0285C3",
    "name": "Ebony Warrior",
    "race": "Redguard",
@@ -20968,6 +21164,17 @@
    "inTown": null,
    "role": null,
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "generic": true
+  },
+  {
+   "id": "ccmtysse001-knightsofthenine.esl:000825",
+   "name": "Eigorn",
+   "race": null,
+   "sex": "male",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": null,
    "generic": true
   },
   {
@@ -21072,6 +21279,17 @@
    "inTown": null,
    "role": null,
    "plugin": "GORE.esp"
+  },
+  {
+   "id": "cceejsse002-tower.esl:000FE0",
+   "name": "Elianora",
+   "race": "Rabbit",
+   "sex": "male",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": null,
+   "generic": true
   },
   {
    "id": "FDE Elisif.esp:000969",
@@ -21897,6 +22115,17 @@
    "inTown": null,
    "role": null,
    "plugin": null
+  },
+  {
+   "id": "ccBGSSSE001-Fish.esm:000B25",
+   "name": "Faldrin",
+   "race": "Nord",
+   "sex": "male",
+   "cell": "Alftand Ruined Tower",
+   "inTown": null,
+   "role": null,
+   "plugin": "Skyrim.esm",
+   "generic": true
   },
   {
    "id": "Dragonborn.esm:0369EE",
@@ -23534,6 +23763,16 @@
    "generic": true
   },
   {
+   "id": "cceejsse005-cave.esm:0B7B0F",
+   "name": "Galtius",
+   "race": "Imperial",
+   "sex": "male",
+   "cell": "Bloodchill Cavern",
+   "inTown": null,
+   "role": null,
+   "plugin": "cceejsse005-cave.esm"
+  },
+  {
    "id": "Katana.esp:A117D5",
    "name": "Galtun Bold-Thief",
    "race": "Breton",
@@ -23863,10 +24102,43 @@
    "plugin": "Natural Waterfalls - Dragonborn.esp"
   },
   {
+   "id": "ccbgssse016-umbra.esm:003B01",
+   "name": "Ghost",
+   "race": "Imperial",
+   "sex": "male",
+   "cell": "Champion's Rest Amphitheater",
+   "inTown": null,
+   "role": null,
+   "plugin": "LoreRim - World Fixes.esp",
+   "generic": true
+  },
+  {
    "id": "ccvsvsse004-beafarmer.esl:000856",
    "name": "Ghost",
    "race": "Nord",
    "sex": "female",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": null,
+   "generic": true
+  },
+  {
+   "id": "ccvsvsse004-beafarmer.esl:00085C",
+   "name": "Ghost",
+   "race": "Nord",
+   "sex": "female",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": null,
+   "generic": true
+  },
+  {
+   "id": "ccvsvsse004-beafarmer.esl:00085B",
+   "name": "Ghost",
+   "race": "Nord",
+   "sex": "male",
    "cell": null,
    "inTown": null,
    "role": null,
@@ -23987,6 +24259,17 @@
    "id": "ccbgssse031-advcyrus.esm:00080F",
    "name": "Ghost Sailor",
    "race": "Redguard",
+   "sex": "female",
+   "cell": "Blackbone Isle Grotto",
+   "inTown": null,
+   "role": null,
+   "plugin": "ccbgssse031-advcyrus.esm",
+   "generic": true
+  },
+  {
+   "id": "ccbgssse031-advcyrus.esm:000814",
+   "name": "Ghost Sailor",
+   "race": "Bosmer",
    "sex": "female",
    "cell": "Blackbone Isle Grotto",
    "inTown": null,
@@ -25737,6 +26020,17 @@
    "plugin": null
   },
   {
+   "id": "ccbgssse013-dawnfang.esl:000D13",
+   "name": "Guild Mage",
+   "race": "Skeleton",
+   "sex": "male",
+   "cell": "The Guardian Vault",
+   "inTown": null,
+   "role": null,
+   "plugin": "ccbgssse013-dawnfang.esl",
+   "generic": true
+  },
+  {
    "id": "ForgottenCity.esp:01C4BB",
    "name": "Gulvar",
    "race": "Nord",
@@ -26415,6 +26709,17 @@
    "inTown": null,
    "role": null,
    "plugin": null
+  },
+  {
+   "id": "cceejsse002-tower.esl:000FDF",
+   "name": "Hans",
+   "race": "Nord",
+   "sex": "male",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": null,
+   "generic": true
   },
   {
    "id": "ccmtysse002-ve.esl:00092B",
@@ -27599,6 +27904,16 @@
    "inTown": null,
    "role": null,
    "plugin": null
+  },
+  {
+   "id": "cceejsse005-cave.esm:0B7B14",
+   "name": "Igrit",
+   "race": "Nord",
+   "sex": "female",
+   "cell": "Bloodchill Cavern",
+   "inTown": null,
+   "role": null,
+   "plugin": "cceejsse005-cave.esm"
   },
   {
    "id": "Skyrim.esm:0D5046",
@@ -29017,6 +29332,17 @@
    "inTown": null,
    "role": null,
    "plugin": "CC Farming - Tweaks and Enhancements.esp"
+  },
+  {
+   "id": "ccBGSSSE001-Fish.esm:000AD8",
+   "name": "Jorid",
+   "race": "Nord",
+   "sex": "male",
+   "cell": "Alftand Ruined Tower",
+   "inTown": null,
+   "role": null,
+   "plugin": "Skyrim.esm",
+   "generic": true
   },
   {
    "id": "Vigilant.esm:031117",
@@ -30666,6 +30992,16 @@
    "generic": true
   },
   {
+   "id": "cceejsse005-cave.esm:0B7B19",
+   "name": "Leyathil",
+   "race": "Altmer",
+   "sex": "female",
+   "cell": "Bloodchill Cavern",
+   "inTown": null,
+   "role": null,
+   "plugin": "cceejsse005-cave.esm"
+  },
+  {
    "id": "Arena - Markarth Side.esp:150E3F",
    "name": "Lianna",
    "race": "Breton",
@@ -32131,6 +32467,16 @@
    "generic": true
   },
   {
+   "id": "cceejsse005-cave.esm:0B7B10",
+   "name": "Marina",
+   "race": "Imperial",
+   "sex": "female",
+   "cell": "Bloodchill Cavern",
+   "inTown": null,
+   "role": null,
+   "plugin": "cceejsse005-cave.esm"
+  },
+  {
    "id": "ForgottenCity.esp:031AF8",
    "name": "Marius",
    "race": "Imperial",
@@ -32747,6 +33093,28 @@
    "plugin": "Vigilant.esm"
   },
   {
+   "id": "cctwbsse001-puzzledungeon.esm:0008FB",
+   "name": "Mercenary",
+   "race": null,
+   "sex": "male",
+   "cell": "Vardnknd Gallery",
+   "inTown": null,
+   "role": null,
+   "plugin": "cctwbsse001-puzzledungeon.esm",
+   "generic": true
+  },
+  {
+   "id": "cctwbsse001-puzzledungeon.esm:195D53",
+   "name": "Mercenary",
+   "race": "Nord",
+   "sex": "male",
+   "cell": "Runoff Caverns",
+   "inTown": null,
+   "role": null,
+   "plugin": "cctwbsse001-puzzledungeon.esm",
+   "generic": true
+  },
+  {
    "id": "AnimatedShips.esl:000A76",
    "name": "Mercenary",
    "race": null,
@@ -32956,6 +33324,28 @@
    "generic": true
   },
   {
+   "id": "cctwbsse001-puzzledungeon.esm:0008FC",
+   "name": "Mercenary Archer",
+   "race": null,
+   "sex": "male",
+   "cell": "Vardnknd Gallery",
+   "inTown": null,
+   "role": null,
+   "plugin": "cctwbsse001-puzzledungeon.esm",
+   "generic": true
+  },
+  {
+   "id": "cctwbsse001-puzzledungeon.esm:000902",
+   "name": "Mercenary Archer",
+   "race": null,
+   "sex": "male",
+   "cell": "Runoff Caverns",
+   "inTown": null,
+   "role": null,
+   "plugin": "cctwbsse001-puzzledungeon.esm",
+   "generic": true
+  },
+  {
    "id": "AnimatedShips.esl:000877",
    "name": "Mercenary Mage",
    "race": null,
@@ -32964,6 +33354,39 @@
    "inTown": null,
    "role": null,
    "plugin": null,
+   "generic": true
+  },
+  {
+   "id": "cctwbsse001-puzzledungeon.esm:000900",
+   "name": "Mercenary Warrior",
+   "race": null,
+   "sex": "male",
+   "cell": "Vardnknd Gallery",
+   "inTown": null,
+   "role": null,
+   "plugin": "cctwbsse001-puzzledungeon.esm",
+   "generic": true
+  },
+  {
+   "id": "cctwbsse001-puzzledungeon.esm:0008FE",
+   "name": "Mercenary Wizard",
+   "race": null,
+   "sex": "male",
+   "cell": "Vardnknd Gallery",
+   "inTown": null,
+   "role": null,
+   "plugin": "cctwbsse001-puzzledungeon.esm",
+   "generic": true
+  },
+  {
+   "id": "cctwbsse001-puzzledungeon.esm:0008ED",
+   "name": "Mercenary Wizard",
+   "race": null,
+   "sex": "male",
+   "cell": "Runoff Caverns",
+   "inTown": null,
+   "role": null,
+   "plugin": "cctwbsse001-puzzledungeon.esm",
    "generic": true
   },
   {
@@ -35449,6 +35872,16 @@
    "generic": true
   },
   {
+   "id": "ccbgssse067-daedinv.esm:000826",
+   "name": "Orc Adventurer",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Rielle",
+   "inTown": null,
+   "role": null,
+   "plugin": "ccbgssse067-daedinv.esm"
+  },
+  {
    "id": "Skyrim.esm:0D1FBA",
    "name": "Orc Marauder",
    "race": null,
@@ -35757,6 +36190,16 @@
    "generic": true
   },
   {
+   "id": "ccbgssse052-ba_iron.esl:00081C",
+   "name": "Pale-Eyes",
+   "race": "Argonian",
+   "sex": "male",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": null
+  },
+  {
    "id": "Dragonborn.esm:02782D",
    "name": "Palevius Lex",
    "race": "Old People",
@@ -35826,6 +36269,17 @@
    "inTown": null,
    "role": null,
    "plugin": null
+  },
+  {
+   "id": "cceejsse005-cave.esm:0EA5DB",
+   "name": "Parven",
+   "race": "Breton",
+   "sex": "male",
+   "cell": "Bloodchill Cavern",
+   "inTown": null,
+   "role": null,
+   "plugin": "cceejsse005-cave.esm",
+   "generic": true
   },
   {
    "id": "Journey to Baan Malur.esp:1FC299",
@@ -37215,6 +37669,72 @@
    "generic": true
   },
   {
+   "id": "cctwbsse001-puzzledungeon.esm:000907",
+   "name": "Rabbit",
+   "race": "Rabbit",
+   "sex": "male",
+   "cell": "Spring's Symphony",
+   "inTown": null,
+   "role": null,
+   "plugin": "cctwbsse001-puzzledungeon.esm",
+   "generic": true
+  },
+  {
+   "id": "cctwbsse001-puzzledungeon.esm:0008EF",
+   "name": "Rabbit",
+   "race": "Rabbit",
+   "sex": "male",
+   "cell": "Autumn's Bells",
+   "inTown": null,
+   "role": null,
+   "plugin": "cctwbsse001-puzzledungeon.esm",
+   "generic": true
+  },
+  {
+   "id": "cctwbsse001-puzzledungeon.esm:0008F3",
+   "name": "Rabbit",
+   "race": "Rabbit",
+   "sex": "male",
+   "cell": "Autumn's Bells",
+   "inTown": null,
+   "role": null,
+   "plugin": "cctwbsse001-puzzledungeon.esm",
+   "generic": true
+  },
+  {
+   "id": "cctwbsse001-puzzledungeon.esm:0008F6",
+   "name": "Rabbit",
+   "race": "Rabbit",
+   "sex": "male",
+   "cell": "Autumn's Bells",
+   "inTown": null,
+   "role": null,
+   "plugin": "cctwbsse001-puzzledungeon.esm",
+   "generic": true
+  },
+  {
+   "id": "cctwbsse001-puzzledungeon.esm:0008F5",
+   "name": "Rabbit",
+   "race": "Rabbit",
+   "sex": "male",
+   "cell": "Autumn's Bells",
+   "inTown": null,
+   "role": null,
+   "plugin": "cctwbsse001-puzzledungeon.esm",
+   "generic": true
+  },
+  {
+   "id": "cctwbsse001-puzzledungeon.esm:0008F4",
+   "name": "Rabbit",
+   "race": "Rabbit",
+   "sex": "male",
+   "cell": "Autumn's Bells",
+   "inTown": null,
+   "role": null,
+   "plugin": "cctwbsse001-puzzledungeon.esm",
+   "generic": true
+  },
+  {
    "id": "Requiem.esp:094B3B",
    "name": "Rabbit",
    "race": "Rabbit",
@@ -37546,6 +38066,28 @@
    "inTown": null,
    "role": null,
    "plugin": "00Taliesin.esp"
+  },
+  {
+   "id": "ccedhsse001-norjewel.esl:000823",
+   "name": "Reaver",
+   "race": null,
+   "sex": "male",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": null,
+   "generic": true
+  },
+  {
+   "id": "ccedhsse001-norjewel.esl:000824",
+   "name": "Reaver",
+   "race": null,
+   "sex": "male",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": null,
+   "generic": true
   },
   {
    "id": "Journey to Baan Malur.esp:0F06EB",
@@ -37905,6 +38447,28 @@
    "generic": true
   },
   {
+   "id": "ccmtysse001-knightsofthenine.esl:000844",
+   "name": "Remy",
+   "race": null,
+   "sex": "male",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": "Skyrim.esm",
+   "generic": true
+  },
+  {
+   "id": "cctwbsse001-puzzledungeon.esm:0008E7",
+   "name": "Repair Spider",
+   "race": "Dwarven Spider",
+   "sex": "male",
+   "cell": "Summer's Chords",
+   "inTown": null,
+   "role": null,
+   "plugin": "cctwbsse001-puzzledungeon.esm",
+   "generic": true
+  },
+  {
    "id": "Journey to Baan Malur.esp:20D3F6",
    "name": "Resla Bevolni",
    "race": "Dunmer",
@@ -38101,6 +38665,39 @@
    "generic": true
   },
   {
+   "id": "ccbgssse041-netchleather.esl:00088E",
+   "name": "Riekling",
+   "race": null,
+   "sex": "male",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": null,
+   "generic": true
+  },
+  {
+   "id": "ccbgssse041-netchleather.esl:00088B",
+   "name": "Riekling",
+   "race": null,
+   "sex": "male",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": null,
+   "generic": true
+  },
+  {
+   "id": "ccbgssse041-netchleather.esl:00088A",
+   "name": "Riekling",
+   "race": null,
+   "sex": "male",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": null,
+   "generic": true
+  },
+  {
    "id": "Dragonborn.esm:017F47",
    "name": "Riekling",
    "race": null,
@@ -38114,6 +38711,17 @@
   {
    "id": "Dragonborn.esm:03CBA3",
    "name": "Riekling",
+   "race": null,
+   "sex": "male",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": null,
+   "generic": true
+  },
+  {
+   "id": "ccbgssse041-netchleather.esl:000890",
+   "name": "Riekling Rider",
    "race": null,
    "sex": "male",
    "cell": null,
@@ -38244,6 +38852,17 @@
    "id": "Skyrim.esm:0458A7",
    "name": "Riften Jailor",
    "race": null,
+   "sex": "male",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": null,
+   "generic": true
+  },
+  {
+   "id": "ccvsvsse004-beafarmer.esl:000855",
+   "name": "Rin",
+   "race": "Nord",
    "sex": "male",
    "cell": null,
    "inTown": null,
@@ -39970,6 +40589,16 @@
    "plugin": null
   },
   {
+   "id": "ccbgssse068-bloodfall.esl:000804",
+   "name": "Shogarz gro-Batul",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Lost Knife Hideout",
+   "inTown": null,
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
    "id": "Wyrmstooth.esp:274F39",
    "name": "Shomara",
    "race": "Khajiit",
@@ -40573,6 +41202,17 @@
    "plugin": "LoreRim - World Fixes.esp"
   },
   {
+   "id": "Trad_AE_CC_Collection_Requiem_Patch.esp:20BF94",
+   "name": "Sivdur",
+   "race": "Nord",
+   "sex": "male",
+   "cell": "Sivdur's Respite",
+   "inTown": null,
+   "role": null,
+   "plugin": "unofficial skyrim creation club content patch.esl",
+   "generic": true
+  },
+  {
    "id": "ksws07_quest.esm:000E7D",
    "name": "Siwe",
    "race": "High Elf",
@@ -40884,6 +41524,17 @@
    "inTown": null,
    "role": null,
    "plugin": "Lux.esp",
+   "generic": true
+  },
+  {
+   "id": "ccbgssse013-dawnfang.esl:00083F",
+   "name": "Skeleton",
+   "race": "Skeleton",
+   "sex": "male",
+   "cell": "The Guardian Vault",
+   "inTown": null,
+   "role": null,
+   "plugin": "ccbgssse013-dawnfang.esl",
    "generic": true
   },
   {
@@ -41501,6 +42152,16 @@
    "generic": true
   },
   {
+   "id": "ccbgssse020-graycowl.esl:000851",
+   "name": "Smaref Ice-Blade",
+   "race": "Nord",
+   "sex": "male",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": null
+  },
+  {
    "id": "Skyrim.esm:0DC4E6",
    "name": "Smuggler",
    "race": "Redguard",
@@ -41509,6 +42170,28 @@
    "inTown": null,
    "role": null,
    "plugin": "Skyrim.esm",
+   "generic": true
+  },
+  {
+   "id": "ccbgssse013-dawnfang.esl:000D3C",
+   "name": "Smuggler",
+   "race": "Skeleton",
+   "sex": "male",
+   "cell": "The Guardian Vault",
+   "inTown": null,
+   "role": null,
+   "plugin": "ccbgssse013-dawnfang.esl",
+   "generic": true
+  },
+  {
+   "id": "ccbgssse013-dawnfang.esl:000848",
+   "name": "Smuggler",
+   "race": "Skeleton",
+   "sex": "male",
+   "cell": "The Guardian Vault",
+   "inTown": null,
+   "role": null,
+   "plugin": "ccbgssse013-dawnfang.esl",
    "generic": true
   },
   {
@@ -42724,6 +43407,16 @@
    "plugin": "Missives - Wyrmstooth.esp"
   },
   {
+   "id": "ccbgssse020-graycowl.esl:000862",
+   "name": "Stranger",
+   "race": "Nord",
+   "sex": "male",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": null
+  },
+  {
    "id": "RuneDreamstrides.esp:17D923",
    "name": "Straw Knight",
    "race": "Straw Servant",
@@ -42890,6 +43583,16 @@
    "role": null,
    "plugin": "Vigilant.esm",
    "generic": true
+  },
+  {
+   "id": "ccbgssse067-daedinv.esm:08AAE4",
+   "name": "Sune",
+   "race": "Nord",
+   "sex": "male",
+   "cell": "Mythic Dawn Temple",
+   "inTown": null,
+   "role": null,
+   "plugin": "unofficial skyrim creation club content patch.esl"
   },
   {
    "id": "FalkreathShades.esp:2AE340",
@@ -44117,6 +44820,17 @@
    "inTown": null,
    "role": null,
    "plugin": null
+  },
+  {
+   "id": "ccbgssse020-graycowl.esl:00080C",
+   "name": "Thief",
+   "race": "Nord",
+   "sex": "male",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": null,
+   "generic": true
   },
   {
    "id": "ccvsvsse002-pets.esl:00082A",
@@ -45806,6 +46520,28 @@
    "generic": true
   },
   {
+   "id": "ccmtysse002-ve.esl:000971",
+   "name": "Vampire Thrall",
+   "race": null,
+   "sex": "male",
+   "cell": "Quicksilver Mine",
+   "inTown": null,
+   "role": null,
+   "plugin": "Skyrim.esm",
+   "generic": true
+  },
+  {
+   "id": "ccmtysse002-ve.esl:000970",
+   "name": "Vampire Thrall",
+   "race": null,
+   "sex": "male",
+   "cell": "Quicksilver Mine",
+   "inTown": null,
+   "role": null,
+   "plugin": "Skyrim.esm",
+   "generic": true
+  },
+  {
    "id": "Skyrim.esm:02EED7",
    "name": "Vampire's Thrall",
    "race": null,
@@ -46206,6 +46942,16 @@
    "plugin": "Skyrim.esm"
   },
   {
+   "id": "cceejsse005-cave.esm:0B7B18",
+   "name": "Verin",
+   "race": "Dunmer",
+   "sex": "male",
+   "cell": "Bloodchill Cavern",
+   "inTown": null,
+   "role": null,
+   "plugin": "cceejsse005-cave.esm"
+  },
+  {
    "id": "Journey to Baan Malur.esp:0F2EAE",
    "name": "Verith Dres",
    "race": "Dunmer",
@@ -46528,6 +47274,17 @@
    "plugin": null
   },
   {
+   "id": "ccmtysse001-knightsofthenine.esl:000843",
+   "name": "Viparth",
+   "race": null,
+   "sex": "male",
+   "cell": null,
+   "inTown": null,
+   "role": null,
+   "plugin": "Skyrim.esm",
+   "generic": true
+  },
+  {
    "id": "Requiem - More Unique Enemies.esp:000815",
    "name": "Vipjorg The Shackled",
    "race": "Nord",
@@ -46827,6 +47584,17 @@
    "inTown": null,
    "role": null,
    "plugin": null
+  },
+  {
+   "id": "cceejsse005-cave.esm:0B7B27",
+   "name": "Waiter",
+   "race": "Bosmer",
+   "sex": "male",
+   "cell": "Bloodchill Cavern",
+   "inTown": null,
+   "role": null,
+   "plugin": "cceejsse005-cave.esm",
+   "generic": true
   },
   {
    "id": "FalkreathShades.esp:05BCEF",

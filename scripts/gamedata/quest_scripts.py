@@ -579,7 +579,7 @@ def main():
     by_edid = {q["edid"]: q for q in kept}
     kept_ids = {q["id"] for q in kept}
 
-    pp, lo = plugin_paths(), load_order()
+    pp, lo = plugin_paths(), load_order(cc=True)
     quests, infos, names = {}, {}, {}
     ref_plugins = []
     for n in lo:

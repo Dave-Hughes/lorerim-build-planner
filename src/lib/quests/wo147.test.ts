@@ -68,7 +68,8 @@ describe("Part 2: grab-bags as shelves", () => {
 
   it("the rule the list follows: a side-story line with more than one quest is a story only if one of its quests' starts names another", () => {
     // Dark Ancestor is one quest twice and The Book of Love is a quest and its sequel: kept as lines by judgement (logged in WO-147).
-    const kept = new Set(["dark-ancestor", "the-book-of-love"]);
+    // The Creation Club lines that gained their sibling quests when their plugins' own string tables were read (WO-183 Part 7) are one story each: a quest and what follows it.
+    const kept = new Set(["dark-ancestor", "the-book-of-love", "relics-of-the-crusader", "the-cause", "a-dying-wish", "the-unquiet-dead", "ghosts-of-the-tribunal", "forgotten-seasons", "a-soul-divided", "the-restless", "myrwatch"]);
     const named = (l: (typeof lines)[number]) => {
       const names = l.quests.map((q) => [q.edid, q.name] as const).filter(([, n]) => n);
       const need = (re: string) => new RegExp(`(?:After|Through)\\s+"?${re}"?|${re}\\s+(?:stage|completed|not completed)`);

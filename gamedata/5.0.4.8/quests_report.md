@@ -4,15 +4,15 @@ Written by `scripts/gamedata/quests.py` from the winning QUST records in the Ult
 
 ## Counts
 
-read 5852 -> named 3729 -> with text 1520 -> lead-ins 3 -> kept 1343
+read 5984 -> named 3813 -> with text 1567 -> lead-ins 3 -> kept 1387
 
 ## Kept by type
 
 | Type | Quests |
 | --- | --- |
-| Side Quest | 634 |
-| Misc | 342 |
-| None | 82 |
+| Side Quest | 637 |
+| Misc | 357 |
+| None | 108 |
 | Dark Brotherhood | 72 |
 | Main Quest | 44 |
 | Dawnguard | 35 |
@@ -183,14 +183,17 @@ radiant work (Missives, bounties) or a mod that uses objectives alone (Vigilant)
 | Gore - A Companion Mod | mod | Gore - A Companion Mod (Nexus 85298) | 12 | 12 | Side Quest 11, None 1 | I should speak to Gore about upgrading his personal equipment. |
 | Katana - Journey in the Shadows | mod | Katana - Journey in the Shadows (Nexus 69622) | 12 | 8 | Side Quest 6, Misc 4, None 2 | Megara mentioned a carrot at Chillfurrow Farm. I wonder what's so special about it. I suppose I should find out. |
 | Penitus Oculatus | mod | Penitus Oculatus (Nexus 21061) | 11 | 11 | Dark Brotherhood 11 | I've joined the Penitus Oculatus, The Empire's security and law enforcers, as well the Emperor's bodyguards. I should speak to Commander Maro for assignments. |
+| ccBGSSSE025-AdvDSGS | mod | Creation Club | 10 | 2 | Misc 8, None 2 | I've heard a rumor that a Khajiit caravan merchant has been running into trouble with bandits along the road, and is in need of assistance. I should speak to him if we ever cross paths. |
 | Journey to Baan Malur and Morrowind | mod | Journey to Baan Malur and Morrowind (Nexus 114518) | 10 | 7 | Side Quest 5, Misc 3, Daedric 1, None 1 | finished quest |
 | Remiel-Custom Voiced Follower | mod | Remiel-Custom Voiced Follower (Nexus 51874) | 10 | 10 | Side Quest 9, Misc 1 | I was attacked by an assassin. I should investigate the body for any clues as to why. |
 | ACDB - Additional Contracts for the Dark Brotherhood | mod | ACDB - Additional Contracts for the Dark Brotherhood (Nexus 59211) | 9 | 9 | Dark Brotherhood 9 | I have accepted an additional contract to kill Braith in Whiterun. |
+| ccbgssse034-mntuni | mod | Creation Club | 9 | 8 | Misc 7, None 2 | A wildlife scholar is rumored to have tracked down a legendary Unicorn. The last of these creatures was supposed to have been slain long ago. I should investigate and see what I can find. |
 | College of Winterhold - Quest Expansion | mod | College of Winterhold - Quest Expansion (Nexus 66666) | 8 | 8 | Mages Guild 8 | After learning the Waterbreathing spell from Tolfdir, I have been instructed to talk to Arniel Gane. |
 | Rob's Bug Fixes - Capital Whiterun Expansion | mod | Rob's Bug Fixes - Capital Whiterun Expansion (Nexus 63355) | 8 | 8 | None 5, Side Quest 3 | I've bought the deed to Bluesky Hall in the town of Whiterun, and all accompanying goods. The hall is located in Whiterun, in the city district behind the Hall of the Dead. I should probably pay my new property a visit. |
 | The Gray Cowl of Nocturnal - 10th anniversary | mod | The Gray Cowl of Nocturnal - 10th anniversary (Nexus 141327) | 8 | 7 | Side Quest 6, Misc 1, Daedric 1 | I had a strange vision in my mind. Also I know where to go now. |
 | Dragonborn | story | Skyrim | 7 | 7 | Dragonborn 7 | I've been attacked by a group of cultists. I need to see if they have any evidence of what prompted this assault. |
 | Undeath Remastered - CLEANED ESMIFIED | mod | Undeath Remastered - CLEANED ESMIFIED (Nexus 6180) | 7 | 7 | Dark Brotherhood 7 | I have found and read the Black Book called "Whispers of the Veil" deep within Scourg Barrow, and found myself in Hermaeus Mora's realm of Apocrypha. The forbidden knowledge hidden here may be the secrets of the ritual the necromancer Antioch was seeking. I should press on to uncover it, or read the book again to escape. |
+| ccasvsse001-almsivi | mod | Creation Club | 6 | 5 | None 6 | Look for clues at the Temple in Raven Rock |
 | INIGO | mod | INIGO (Nexus 1461) | 6 | 5 | None 4, Side Quest 2 | Inigo has been suffering from strange and painful visions. He believes that Snowpoint Beacon is near the source of these visions. We are going there to investigate. |
 | Listen - Dark Brotherhood Radiant Quests | mod | Listen - Dark Brotherhood Radiant Quests (Nexus 59659) | 6 | 6 | Dark Brotherhood 6 | Startup stage |
 | The Gift Of Saturalia | mod | The Gift Of Saturalia (Nexus 105697) | 6 | 6 | Side Quest 6 | I've agreed to help Niklas the Trader with his Saturalia celebrations. He has five tasks for me to help people around Skyrim. |
@@ -205,12 +208,26 @@ radiant work (Missives, bounties) or a mod that uses objectives alone (Vigilant)
 | The Frozen Heart - Quest Mod | mod | The Frozen Heart - Quest Mod (Nexus 159911) | 4 | 4 | Side Quest 4 | I purchased a strange Snow Elf mirror from Belethor's General Goods. I should investigate the nature of this mirror. |
 | The Welkynar Knight - Quest | mod | The Welkynar Knight - Quest (Nexus 89510) | 4 | 3 | Side Quest 3, Misc 1 | I received a mysterious note requesting a secret meeting at the Bannered Mare in Whiterun. |
 | (BEST EVIL FOLLOWER) Follower Dialogue Expansion - Fura Bloodmouth | mod | (BEST EVIL FOLLOWER) Follower Dialogue Expansion - Fura Bloodmouth (Nexus 165839) | 3 | 3 | None 2, Dawnguard 1 | I will accompany Fura Bloodmouth to Solitude and meet her mother. |
+| cckrtsse001_altar | mod | Creation Club | 3 | 3 | None 2, Side Quest 1 | <font face='$SkyrimBooks'>I, Cassipia Sagnus, Vigilant of Stendarr, do hereby issue this report on my investigation into the reports of a "dark presence" within Champion's Rest.
+ 
+ Champion's Rest is the site of an ancient battle arena where Nords would test their mettle in gladiatorial combat. Long believed to be lost to time, it was recently uncovered by mining prospectors near Shor's Stone after discovering a new deposit of silver.
+ 
+ Upon discovery, the miners say they witnessed a "ghost, clad head to toe in armor." While this alone was cause for concern, what they said next was even more foreboding: the spirit wielded a massive blade which seemed to "whisper" to them in their minds. This hints at the workings of a powerful Daedric artifact.
+ 
+ The only relic that matches this description is Umbra, once believed to be lost or, by some accounts, destroyed. Umbra is a sentient weapon who corrupts its bearer and compels them to kill so that the blade may feast on the souls of those it slays. It appears to have resurfaced here, though why I cannot say.
+ 
+ If the apparition that haunts this site truly is the resurgence of Umbra, then it has grown very powerful, and Shor's Stone is in grave danger.</font> |
+| cctwbsse001-puzzledungeon | mod | Creation Club | 3 | 2 | None 2, Side Quest 1 | I've encountered a wizard wearing a strange looking Dwarven Crown. The slots in the facing suggest a separate piece can be attached. |
 | Fists of Fury - Skyrim | mod | Fists of Fury - Skyrim (Nexus 73835) | 3 | 3 | Side Quest 3 | I've talked to Falion about the brawling tournament. He told me to go to the Summoning Stones outside of Morthal. |
 | Gravewind - ESMIFIED | mod | Gravewind - ESMIFIED (Nexus 129582) | 3 | 3 | Side Quest 3 | I touched a light left by Richter, letting Gravewind fall into the abyss and freeing the souls enthralled within. I have to escape before I disappear with the rest of the realm. |
 | More to do in the Soul Cairn | mod | More to do in the Soul Cairn (Nexus 115962) | 3 | 3 | Side Quest 3 | A soul in the Soul Cairn wants me to get their soul gem back. I'm not so sure about who he is, but maybe I should help him. |
 | Arena - Markarth Side Town | mod | Arena - Markarth Side Town (Nexus 114252) | 2 | 2 | Side Quest 2 | I've met a strange Khajiit named Grit-dar in Markarth Side who has asked me to retrieve something for him from Morvunskar Crypts that resides near Windhelm. |
-| ccbgssse025-advdsgs | mod | Creation Club | 2 | 0 | Misc 2 | Free the Elytra Nymph |
+| ccbgssse013-dawnfang | mod | Creation Club | 2 | 0 | None 1, Misc 1 | Investigate rumors of ghosts in the Riften Ratway |
+| ccbgssse031-advcyrus | mod | Creation Club | 2 | 1 | Misc 1, None 1 | I've heard stories of lost shipwrecks strewn across the Sea of Ghosts. If I head to the Winking Skeever in Solitude, I may be able to find more information on there whereabouts. |
+| ccbgssse067-daedinv | mod | Creation Club | 2 | 2 | None 2 | I found the Oblivion Gate and defeated the leader of the Mythic Dawn, Vonos. It appears this was an elaborate ritual designed to deceive me, and killing Vonos was the final step. I have become an unwitting instrument of Mehrunes Dagon, and my actions have opened the Oblivion Gate. |
 | ccffbsse001-imperialdragon | mod | Creation Club | 2 | 2 | None 1, Misc 1 | Stormbear |
+| ccmtysse001-knightsofthenine | mod | Creation Club | 2 | 2 | Side Quest 1, None 1 | I've discovered the whereabouts of a powerful artifact that the once belonged to the fabled Divine Crusader. I should try and reunite all the missing relics. |
+| ccvsvsse004-beafarmer | mod | Creation Club | 2 | 2 | Side Quest 2 | Now that I've laid the ghosts haunting <Alias=FarmLocation> to rest and claimed it for my own, I should see about getting my new homestead restored to its former glory. First I should get some crops in the ground. |
 | Follower Dialogue Expansion - Faralda | mod | Follower Dialogue Expansion - Faralda (Nexus 155510) | 2 | 2 | None 2 | Faralda, the Professor of Destruction School in the College of Winterhold, wants  me to bring a letter from her to Vekel the Man in the Ragged Flagon in Riften. He will help deliver it to her aunt Eilonwy. |
 | Hunters Mark Animal Den on Map | mod | Hunters Mark Animal Den on Map (Nexus 128450) | 2 | 0 | Misc 2 | Hunt down animals at <Alias=AnimalDenLocation> |
 | Miasma | mod | Miasma (Nexus 149879) | 2 | 2 | Side Quest 1, None 1 | I met an Argonian called Haj-Xul at The Retching Netch in Raven Rock. He claims he is a member of the An-Xileel clan in Black Marsh and has hired me to assist him in capturing a criminal from House Telvanni who might have recently arrived in Solstheim. |
@@ -225,17 +242,22 @@ radiant work (Missives, bounties) or a mod that uses objectives alone (Vigilant)
 | Boethiah's Calling - Alternate Questline | mod | Boethiah's Calling - Alternate Questline (Nexus 121499) | 1 | 1 | Daedric 1 | I have agreed to help Rudin Filaro, a Dark Elf intent on visiting the Temple of Mara located in the mountains northeast of Kynesgrove. He has hired to escort him as the road is known to be dangerous. |
 | Caught Red Handed - Quest Expansion | mod | Caught Red Handed - Quest Expansion (Nexus 65708) | 1 | 0 | Misc 1 | Talk to Tythis |
 | CC Tundra Homestead - Tweaks and Enhancements | mod | Creation Club | 1 | 1 | Side Quest 1 | I have found a Thalmor Dossier mentioning Nazeem and Ahlam. Accourding to the Dossier, the couple are informants to the Thalmor, to spy on Whiterun and its Jarl. I should bring this information to the Jarl. |
+| ccafdsse001-dwesanctuary | mod | Creation Club | 1 | 1 | None 1 | Travelers throughout Skyrim have discovered ancient Dwemer ruins full of perilous traps and buried treasure. I've heard rumors, however, of one such sanctuary being used as a home. I should check the surrounding inns for clues on its whereabouts. |
 | ccbgssse002-exoticarrows | mod | Creation Club | 1 | 0 | None 1 | Read the Letter from Calcelmo |
+| ccbgssse005-goldbrand | mod | Creation Club | 1 | 1 | None 1 | I've heard a rumor that a historian researching the whereabouts of lost daedric artifacts has recently gone missing. She was last seen in the mountains east of Windhelm. |
 | ccbgssse014-spellpack01 | mod | Creation Club | 1 | 1 | None 1 | I've heard tales of a long-lost ancient library of spell tomes, rumored to be somewhere in the area of Winterhold.  I should explore the area and see what I can find. |
 | ccbgssse018-shadowrend | mod | Creation Club | 1 | 1 | Misc 1 | An inner voice is telling me I must confront a darkness within myself. I am drawn toward a geyser pool in Eastmarch. Perhaps answers lie there. |
 | ccbgssse038-bowofshadows | mod | Creation Club | 1 | 1 | None 1 | With the death of King Torygg, it seems not even the Jarls are safe in Skyrim, and security comes at a premium. Given the need for capable warriors, I should speak with the steward and see if he has any work for me. |
-| ccbgssse067-daedinv | mod | Creation Club | 1 | 1 | None 1 | I found the Oblivion Gate and defeated the leader of the Mythic Dawn, Vonos. It appears this was an elaborate ritual designed to deceive me, and killing Vonos was the final step. I have become an unwitting instrument of Mehrunes Dagon, and my actions have opened the Oblivion Gate. |
+| ccbgssse040-advobgobs | mod | Creation Club | 1 | 1 | None 1 | I traveled to Gromm's Pass and proceeded to investigate the cave's interior. Inside I found an arena pit and several goblins, as well as an Orc who served as their shaman. I killed the Orc and read the journal on his person. |
+| ccbgssse045-hasedoki | mod | Creation Club | 1 | 1 | None 1 | On the road west of Whiterun I encountered and killed a hostile Orc besieged by bandits. On his body was a ledger that offered additional clues. According to the ledger, the current owners of the staff are two necromancers holed up in Brittleshin Pass. |
+| ccbgssse068-bloodfall | mod | Creation Club | 1 | 1 | None 1 | Talking to innkeepers has always been a good way to find work. I should head to the local inn and see if there's anything worthwhile. |
+| ccbgssse069-contest | mod | Creation Club | 1 | 1 | None 1 | I traveled to Candlehearth Hall and read a journal about two warriors, who traveled to Cronvangr Cave to defeat a dangerous Web Mother. I traveled to Cronvangr Cave and found the spider's lair, defeating the Web Mother. I spoke to the heroes who bequeathed me their treasures before fading away. |
+| cceejsse002-tower | mod | Creation Club | 1 | 1 | None 1 | I've heard rumors of a mysterious tower somewhere east of Morthal. If it's abandoned, I may be able to make of use of it. When I reached the tower, I found a journal that may provide clues on how to enter it. |
+| cceejsse003-hollow | mod | Creation Club | 1 | 1 | None 1 | Not every home in Skyrim is built above ground. If I'm ever in the need of a more discreet hideout, I should head over to Riften and talk to those in the know. |
 | cceejsse004-hall | mod | Creation Club | 1 | 1 | Side Quest 1 | Couriers often deliver notices to travelers across Skyrim. If I head to a major hold, perhaps I will receive information that may concern me. |
 | cceejsse005-cave | mod | Creation Club | 1 | 1 | None 1 | I received a letter from a courier mentioning a banquet feast is happening at a large manor south of Frostflow Lighthouse. I arrived at the home and spoke to the waiter, who gave me a menu. The feast appears to be an elaborate trap to feed on a handful of noble guests. After finishing the guests and a surprise group of Dawnguard members, I should now speak to the waiter. |
-| cckrtsse001_altar | mod | Creation Club | 1 | 1 | Side Quest 1 | In my travels, I've heard strange tales about hagravens performing rituals near Falkreath. I should head to the inn there and see what information I can turn up. |
-| ccmtysse001-knightsofthenine | mod | Creation Club | 1 | 1 | Side Quest 1 | I've discovered the whereabouts of a powerful artifact that the once belonged to the fabled Divine Crusader. I should try and reunite all the missing relics. |
 | ccrmssse001-necrohouse | mod | Creation Club | 1 | 1 | None 1 | I've heard rumors of necromancer activity in one of the old abandoned forts. I should investigate to see what I can find. |
-| ccvsvsse004-beafarmer | mod | Creation Club | 1 | 1 | Side Quest 1 | <Alias=FarmLocation> near Rorikstead is reportedly haunted by ghosts that harass travelers on the road. The Jarl of Whiterun Hold is offering the plantation itself as a reward for anyone who can lay the spirits to rest. I should head to <Alias=FarmLocation> to investigate. |
+| ccvsvsse001-winter | mod | Creation Club | 1 | 1 | Side Quest 1 | startup |
 | Civil War Champions - Reduced Cut | mod | Civil War Champions - Reduced Cut (Nexus 94999) | 1 | 0 | Misc 1 | Pick up champion armor from your commanding officer |
 | Defeat the Dragon Cult | mod | Defeat the Dragon Cult (Nexus 86625) | 1 | 1 | Main Quest 1 | Esbern has noted the location of several Dragon Priests, whose loyalty to Alduin means they must be killed before I face Alduin, less they join their strength with his. |
 | Destroy the Acolyte Priests | mod | Destroy the Acolyte Priests (Nexus 145580) | 1 | 1 | Dragonborn 1 | <Alias.ShortName=Storn> has said that to ensure the land is completely cleansed of Miraak's influence, I should seek out and destroy his three Acolyte Priests, who are each sealed within different tombs around the island of Solstheim. |
@@ -281,3 +303,344 @@ radiant work (Missives, bounties) or a mod that uses objectives alone (Vigilant)
 | Trad - AE - CC - Collection - Requiem Patch | mod | Trad - AE - CC - Collection - Requiem Patch (Nexus 64829) | 1 | 1 | None 1 | In my search for the secrets behind the divine power of the Tribunal and Dagoth Ur I have conducted a profane ritual twisting my flesh with corpus, removing my very heart with the tools of Kagrenac and infusing it with the power of heartstones and the lingering power of the masks of the Tribunal and Daogth Ur. Without a heart I will surely die there is no way forward but to place my tainted heart back in its place. |
 | Vittorias Alternate Wedding | mod | Vittorias Alternate Wedding (Nexus 62466) | 1 | 1 | Side Quest 1 | I have been invited to attend the wedding reception of Vittoria Vici and Asgeir Snow-Shod, at the Temple of the Divines in Solitude. |
 | Waking Nightmare | daedric | Skyrim | 1 | 1 | Daedric 1 | I've overheard two citizens of Dawnstar complaining about horrible nightmares. They seem to be relying on a priest of Mara named Erandur for assistance. |
+
+## Coverage across the load order (WO-183 Part 7)
+
+Each plugin's own records against the data: quests = named, with a journal entry or objective, against `quests_raw.json`; places = named locations and map markers against `places_raw.json`; people = unique named NPCs against `people_raw.json` (one never placed in a cell is spawned by a script, and left out on purpose). Only plugins with something missing are listed.
+
+**Whole load order (3514 plugins):** quests 1376 of 1414 named with text are in the data (38 dropped as lead-ins or machinery); places 1752 of 2212 named locations and markers (183 of them a part of a place the index has: an interior or an exterior); people 2619 of 3085 unique named NPCs (463 never placed in a cell, left out on purpose; 3 placed and missing).
+
+### 00Taliesin.esp
+- places missing (1; a location the index does not keep (unexplained)): 00NaomiHoldingCell (00NaomiCell)
+
+### 018Auri.esp
+- places missing (1; a map marker whose kind or location the index does not keep): Auri's Pod
+
+### 1TheWreckOfTheArgentRaptor.esp
+- places missing (1; a map marker whose kind or location the index does not keep): The Argent Raptor
+
+### Alternate Perspective -- New Beginnings.esp
+- places missing (1; a map marker whose kind or location the index does not keep): Destroyed Shack
+
+### Apocalypse - Magic of Skyrim.esp
+- places missing (2; a location the index does not keep (unexplained)): Quagmire (WB_Quagmire_Location), Evergloam (WB_Dreamscape_Location)
+
+### Arena - Markarth Side.esp
+- places missing (3; a house, a homestead, a town or a shop: the index leaves them out; a map marker whose kind or location the index does not keep): Markarth Side (MarkarthSideLocation), Cliffside Manor (MarkarthSidePlayerHomeLocation), Markarth Side
+
+### Ascend - Hidden Peaks of Skyrim.esp
+- places missing (5; a map marker whose kind or location the index does not keep): Mount Anthor Peak, Skyborn Range Peak, Brittleshin Peak, Forelhost Peak, Monahven Peak
+
+### BetalillesHammerfellQuestBundle.esp
+- places missing (9; a map marker whose kind or location the index does not keep): Ancient Library, Azzin's Hideout, Cyrodilic Collections, Desert Altar, Necromancer Camp, Vulstad, Wind Scour Temple, Alik'r Desert Sanctuary, Penitus Oculatus Outpost
+
+### BIG [REDACTED] BOSS (BFB).esp
+- people missing (1; placed in a cell, not in people_raw.json): Keeper of the Dragonstone (BFB_EncDragonPriestAmbushSarc)
+
+### Bittercup - Tweaks and Enhancements.esp
+- places missing (1; a map marker whose kind or location the index does not keep): Giant's Tooth
+
+### ccafdsse001-dwesanctuary.esm
+- places missing (2; a house, a homestead, a town or a shop: the index leaves them out; a map marker whose kind or location the index does not keep): Frostroot Cave (ccMDRSSE001DweSanctuaryKlogircCaveLocation), Frostroot Cave
+
+### ccasvsse001-almsivi.esm
+- places missing (1; a map marker whose kind or location the index does not keep): Ashfall's Tear
+
+### ccBGSSSE001-Fish.esm
+- places missing (2; a location the index does not keep (unexplained)): Emperor's Homestead (ccBGSSSE001_CrabHouseInteriorLocation), Emperor's Homestead (ccBGSSSE001_CrabHouseExteriorLocation)
+
+### ccbgssse002-exoticarrows.esl
+- quests missing (1; LoreRim - Arrow Tweaks.esp replaces it with a record that has no name or journal: removed from the game): Swift as an Arrow (ccBGSSSE002_TelekinesisArrowQuest)
+
+### ccbgssse003-zombies.esl
+- quests missing (1; LoreRim - Global Modifiers.esp replaces it with a record that has no name or journal: removed from the game): The Rising Dead (ccBGSSSE003_ZombieQuestStartEncounter)
+
+### ccbgssse004-ruinsedge.esl
+- quests missing (1; ECSS - Ruin's Edge Patch.esp replaces it with a record that has no name or journal: removed from the game): The Edge of Ruin (ccBGSSSE004_Quest)
+
+### ccbgssse006-stendarshammer.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): If I had a Hammer (ccBGSSSE006_Quest)
+
+### ccbgssse007-chrysamere.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): The Lost Paladin (ccBGSSSE007_Quest)
+
+### ccbgssse008-wraithguard.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): Legends Lost (ccBGSSSE008_Quest)
+
+### ccbgssse010-petdwarvenarmoredmudcrab.esl
+- quests missing (1; CC Pets - Hide Quest Logs.esp replaces it with a record that has no name or journal: removed from the game): My Pet Mudcrab (ccBGSSSE010_PetPurchaseQuest)
+
+### ccbgssse016-umbra.esm
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): Vile Whispers (ccBGSSSE016_UmbraMainQuest)
+
+### ccbgssse019-staffofsheogorath.esl
+- quests missing (1; ECSS - Staff of Sheogorath Patch.esp replaces it with a record that has no name or journal: removed from the game): Put A Fork In It (ccBGSSSE019_StaffOfSheogorathQuest)
+
+### ccbgssse020-graycowl.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): The Gray Cowl of Nocturnal (ccBGSSSE020_Quest)
+
+### ccbgssse021-lordsmail.esl
+- quests missing (1; MorihausRefugeStandalone.esp replaces it with a record that has no name or journal: removed from the game): Gift of Kynareth (ccBGSSSE021_LordsMailQuest)
+
+### ccbgssse035-petnhound.esl
+- quests missing (1; CC Pets - Hide Quest Logs.esp replaces it with a record that has no name or journal: removed from the game): My Pet Nix-Hound (ccBGSSSE035_PetAcquireQuest)
+
+### ccbgssse036-petbwolf.esl
+- quests missing (1; CC Pets - Hide Quest Logs - Sleeping Wolves Requirement.esp replaces it with a record that has no name or journal: removed from the game): Let Sleeping Wolves Lie (ccBGSSSE036_PetBWolfAcquisitionQuest)
+
+### ccbgssse041-netchleather.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): More than you can Chew (ccBGSSSE041_Quest)
+
+### ccbgssse043-crosselv.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): Night Hunter (ccBGSSSE043_VampireHunterQuest)
+
+### ccbgssse050-ba_daedric.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): Beyond the Grave (ccBGSSSE050_Quest)
+
+### ccbgssse051-ba_daedricmail.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): Missing Merchant (ccBGSSSE051_Quest)
+
+### ccbgssse052-ba_iron.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): Brothers in Irons (ccBGSSSE052_Quest)
+
+### ccbgssse053-ba_leather.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): Double-Edged (ccBGSSSE053_Quest)
+
+### ccbgssse054-ba_orcish.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): Smith 'N Slash (ccBGSSSE054_Quest)
+
+### ccbgssse055-ba_orcishscaled.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): Gambler's Edge (ccBGSSSE055_Quest)
+
+### ccbgssse056-ba_silver.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): When the Cat's Away (ccBGSSSE056_Quest)
+
+### ccbgssse057-ba_stalhrim.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): Ancient Ice (ccBGSSSE057_Quest)
+
+### ccbgssse058-ba_steel.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): Over the Edge (ccBGSSSE058_Quest)
+
+### ccbgssse059-ba_dragonplate.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): Bones for a Crow (ccBGSSSE059_Quest)
+- places missing (1; a map marker whose kind or location the index does not keep): Crowstooth's Camp
+
+### ccbgssse060-ba_dragonscale.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): Tilted Scales (ccBGSSSE060_Quest)
+
+### ccbgssse061-ba_dwarven.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): Mightier than the Sword (ccBGSSSE061_Quest)
+
+### ccbgssse062-ba_dwarvenmail.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): Fan Favorite (ccBGSSSE062_Quest)
+
+### ccbgssse063-ba_ebony.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): Heart of Crimson (ccBGSSSE063_Quest)
+
+### ccbgssse064-ba_elven.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): Once a Hunter (ccBGSSSE064_Quest)
+
+### ccbgssse067-daedinv.esm
+- places missing (1; a map marker whose kind or location the index does not keep): Varlais Cavern
+
+### ccedhsse001-norjewel.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): Nordic Jewelry (ccEDHSSE001_CraftsmanEncounterQuest)
+
+### ccedhsse002-splkntset.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): Crypt of the Heart (ccEDHSSE002_Quest)
+
+### ccedhsse003-redguard.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): Interception (ccEDHSSE003_Quest)
+
+### cceejsse002-tower.esl
+- places missing (1; a map marker whose kind or location the index does not keep): Myrwatch
+
+### cceejsse003-hollow.esl
+- places missing (1; a map marker whose kind or location the index does not keep): Riften Docks
+
+### cceejsse005-cave.esm
+- places missing (1; a map marker whose kind or location the index does not keep): Bloodchill Cavern
+
+### cckrtsse001_altar.esl
+- places missing (1; a map marker whose kind or location the index does not keep): Giant's Tooth
+
+### ccmtysse002-ve.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): Unholy Vigil (ccMTYSSE002_Quest)
+
+### ccpewsse002-armsofchaos.esl
+- quests missing (1; LoreRim - World Fixes.esp replaces it with a record that has no name or journal: removed from the game): The Arms of Chaos (ccPEWSSE002_Quest)
+
+### ccqdrsse002-firewood.esl
+- places missing (3; a map marker whose kind or location the index does not keep): Campsite, Campsite, Campsite
+
+### cctwbsse001-puzzledungeon.esm
+- places missing (1; a map marker whose kind or location the index does not keep): Runoff Caverns
+
+### ccvsvsse002-pets.esl
+- quests missing (1; CC Pets - Hide Quest Logs.esp replaces it with a record that has no name or journal: removed from the game): Pets of Skyrim (ccVSVSSE002_MainQuest)
+
+### CoMAP - KhajiitCaravans.esp
+- places missing (6; a map marker whose kind or location the index does not keep): Whiterun Khajiit Caravan, Markarth Khajiit Caravan, Solitude Khajiit Caravan, Windhelm Khajiit Caravan, Riften Khajiit Caravan, Dawnstar Khajiit Caravan
+
+### COTN - Falkreath.esp
+- places missing (1; a map marker whose kind or location the index does not keep): Hakkvild's High Hall
+
+### Dawnguard.esm
+- places missing (7; a location the index does not keep (unexplained); a map marker whose kind or location the index does not keep): Icewater Jetty (DLC1IcewaterJettyLocation), Darkfall Passage (DLC1DarkfallPassageLocation), Icewater Jetty, Castle Volkihar Balcony, Windhelm Docks, Ferry Drop off Marker, Dawnstar Docks
+
+### DLC1MapMarkerEnabler.esp
+- places missing (2; a map marker whose kind or location the index does not keep): Dawnguard, Skyrim
+
+### Dragonborn.esm
+- places missing (34; a house, a homestead, a town or a shop: the index leaves them out; a location the index does not keep (unexplained); a map marker whose kind or location the index does not keep): Bard Holding Cell (DLC2HoldingCellBardLocation), Apocrypha (DLC2ApocrypaMiraaksTowerLocation), Apocrypha (DLC2ApoIslandALocation), Ebony Warrior's Camp (DLC2POIFallForest28Location), Dremora Shop Location (DLC2DremoraShopLocation), Apocrypha (DLC2Book02DungeonLocationNEW), Apocrypha (DLC2Book06DungeonLocation), Apocrypha (DLC2Book04DungeonLocation), POI 5 (DLC2POI8Location), Ashland (DLC2RegionGlacierLocation), Ashland (DLC2RegionNorthLocation), Ashland (DLC2RegionAshlandLocation), and 22 more
+
+### Dragons Awaken.esp
+- places missing (3; a location the index does not keep (unexplained)): Lost Tongue Pass (DragonMound06LocationUNUSED), Autumnwatch Woods (DragonMound07LocationUNUSED), Labyrinthian Peaks (DragonMound15LocationUNUSED)
+
+### Dustman's Cairn Boss - Requiem.esp
+- people missing (1; placed in a cell, not in people_raw.json): Thohild the Inferno (DustmansCairnBossNPC_Req)
+
+### Eli_Dovah Vault.esp
+- places missing (1; a map marker whose kind or location the index does not keep): Dovahdein
+
+### FalkreathShades.esp
+- places missing (3; a location the index does not keep (unexplained); a map marker whose kind or location the index does not keep): Gravewind Depths (GRVEDungeonLocation), Pine-shrouded Cemetery (GRVECemeteryLocation), Cemetery Homestead
+
+### Fists of Fury - Skyrim.esp
+- places missing (1; a map marker whose kind or location the index does not keep): Windhelm Brawler's Camp
+
+### FWMF - Ultimate Patch.esp
+- places missing (1; a map marker whose kind or location the index does not keep): To Skyrim
+
+### GORE.esp
+- places missing (1; a location the index does not keep (unexplained)): Gorse Dimension (HD1GorsePrisonLoc)
+
+### Gray Fox Cowl.esm
+- places missing (18; a house, a homestead, a town or a shop: the index leaves them out; a location the index does not keep (unexplained); a map marker whose kind or location the index does not keep): Wild Oasis (manny_GF_L_WildOasis), Service Room - Get off from here! (manny_GF_L_ServiceRoom), Alik'r Desert (manny_GF_L_AlikrDesert), House of the Ancient Alik'r Warrior (manny_GF_L_HouseAncientAlikr), Teleport to Ben Erai, Eye of Cyrodiil, Shrine of Lamae Beolfag, Tower of Hollow Fires, Ben Erai Fortress, Ben Erai Outpost, Lantern of the North, Arenar's Camp, and 6 more
+
+### HeartOfTheReach.esp
+- places missing (1; a map marker whose kind or location the index does not keep): Ever-Bog
+
+### HLIORemi.esp
+- places missing (1; a map marker whose kind or location the index does not keep): Remi's Home
+
+### Journey to Baan Malur.esp
+- places missing (14; a house, a homestead, a town or a shop: the index leaves them out; a location the index does not keep (unexplained); a map marker whose kind or location the index does not keep): Morrowind (MorrowindLocation), Pryai (PryaiTownLocation), Western Kalbthurz, Eastern Kalbthurz, Dunmeth Pass, Cormar Crossing, Forth Isle, Llerush Kwama Mine, Maldbthamz, Red Mountain Crater, Ink Lagoon, The Rootspire, and 2 more
+
+### Katana Raven LoreCut - Reqtificated.esp
+- places missing (1; a location the index does not keep (unexplained)): River's Camp (AK69RiverCampLocation)
+
+### Katana.esp
+- places missing (2; a location the index does not keep (unexplained); a map marker whose kind or location the index does not keep): The Garden (AK69CozyLocation), Dunpar Wall Ruins
+
+### Keep It Clean.esp
+- places missing (1; a house, a homestead, a town or a shop: the index leaves them out): Shower Room (ShowersInInnsLocation)
+
+### ksws04_quest.esp
+- places missing (2; a location the index does not keep (unexplained)): Solitude Observaton Station (ksws04DungeonLocation), ksws04ArtifactLocation (ksws04ArtifactLocation)
+
+### ksws07_quest.esm
+- places missing (7; a house, a homestead, a town or a shop: the index leaves them out; a location the index does not keep (unexplained); a map marker whose kind or location the index does not keep): Crag Spire Wastes (ksws07WorldLocation), Othriel's Cabin (ksws07WorldHouseLocation), Gallery of Mirrors (ksws07Dungeon05Location), Wilderness (ksws07UnknownLocation), Othriel's Cabin, Siwe's Grave, Labyrinthian Tunnels
+
+### Laintar Dale Church.esp
+- places missing (1; a map marker whose kind or location the index does not keep): Laintar Dale
+
+### LegendsOfAetherium.esp
+- places missing (1; a map marker whose kind or location the index does not keep): Itharzel Excavation Site
+
+### Lorerim - Dunpar Wall.esp
+- places missing (1; a map marker whose kind or location the index does not keep): Dunpar Wall
+
+### LoreRim - World Additions.esp
+- places missing (2; a map marker whose kind or location the index does not keep): Vernim Wood Ruins, Reich Corigate Ruins
+
+### man_DaedricShrines.esp
+- places missing (7; a map marker whose kind or location the index does not keep): Shrine of Namira, Shrine of Sheogorath, Shrine of Mephala, Shrine of Sanguine, Shrine of Hircine, Altar of Azura, Shrine of Hermaeus Mora
+
+### Meridia.esp
+- places missing (2; a map marker whose kind or location the index does not keep): Aradil's Shack, Deep Moon Lookout
+
+### mihailseagiants.esp
+- places missing (3; a map marker whose kind or location the index does not keep): Grulgjauddang Camp, Draugrmidyr Camp, Gomgralmaulgr Camp
+
+### NewArmoury.esp
+- places missing (1; a map marker whose kind or location the index does not keep): Lost Beacon
+
+### NightmarePlane.esp
+- places missing (1; a map marker whose kind or location the index does not keep): Frozen Steps
+
+### Nimalten Ruins.esp
+- places missing (1; a map marker whose kind or location the index does not keep): Nimalten Ruins
+
+### Oakwood Church.esp
+- places missing (1; a map marker whose kind or location the index does not keep): Oakwood Temple
+
+### Ordinator - Perks of Skyrim.esp
+- places missing (1; a map marker whose kind or location the index does not keep): Anchor
+
+### Paragliding.esp
+- places missing (1; a map marker whose kind or location the index does not keep): Flight Platform
+
+### Pargran Village Church.esp
+- places missing (1; a map marker whose kind or location the index does not keep): Pargran Temple
+
+### Respawn - Death Overhaul.esp
+- places missing (21; a map marker whose kind or location the index does not keep): Campfire, Campfire, Campfire, Player campfire, Campfire, Campfire, Campfire, Campfire, Campfire, Campfire, Campfire, Campfire, and 9 more
+
+### Ruins of Ryn's Lainalten.esp
+- places missing (1; a map marker whose kind or location the index does not keep): Lainalten Ruins
+
+### RuneDreamstrides.esp
+- places missing (1; a location the index does not keep (unexplained)): Dreamer Dwelling (NTMRDreamerLairs)
+
+### Ryn's Snazzy Last Vigil.esp
+- places missing (1; a map marker whose kind or location the index does not keep): The Ebony Keep
+
+### Siege at Icemoth.esp
+- places missing (15; a location the index does not keep (unexplained); a map marker whose kind or location the index does not keep): Hjorkvild Isles (HYORHjorkvildIslesLocation), Old Wooden Jetty (HYOROldWoodenJettyLocation), Fjolgen (HYORFjolgenLocation), Apocrypha (HYORBook08DungeonLocation), Hjorkvild Isles, Old Wooden Jetty, Freezewater Plunge, Sailboat, Sailboat, Sailboat, Sailboat, Wreck of The Northern Grace, and 3 more
+
+### SkaalFishingCamp.esp
+- places missing (1; a map marker whose kind or location the index does not keep): Skaal Fishing Camp
+
+### Skyrim Extended Cut - Saints and Seducers.esp
+- places missing (9; a map marker whose kind or location the index does not keep): The Asylum, Stopgap, Doors of Denial, Tower of Xedex, The Near Corgi Shop, Grove of Insanity, Drowned Ruin, Skyrim, Stopgap Penitentiary
+
+### Skyrim.esm
+- places missing (131; a house, a homestead, a town or a shop: the index leaves them out; a location the index does not keep (unexplained); a map marker whose kind or location the index does not keep): Bromjunaar Sancutary (DragonPriestSanctuaryLocation), Hall of Heroes (SovngardeHallofHeroesLocation), Whiterun Tundra (e3DemoTundraLocation), The Warrior Doomstone (DoomstoneWarriorLocation), The Mage Doomstone (DoomstoneMageLocation), Liberation of Skyrim (CWQuestNameLocationSons), Reunification of Skyrim (CWQuestNameLocationImperial), Frost River Farm (FrostRiverFarmInteriorLocation), East Empire Warehouse (SolitudeEastEmpireWarehouseLocation), Location for things that need a location (VirtualLocation), Worker's House (MixwaterMillWorkersHouseLocation), East Empire Company Warehouse (EastEmpireWarehouseLocation), and 119 more
+- people missing (1; placed in a cell, not in people_raw.json): Skeletal Dragon (dunLabyrinthianUndeadDragon)
+
+### The Great City of Solitude.esp
+- places missing (2; a map marker whose kind or location the index does not keep): Solitude East Gate, Solitude Estuary Fortress
+
+### Tools of Kagrenac.esp
+- places missing (1; a location the index does not keep (unexplained)): Silent Passage (TOK_LCTN_MountainPass)
+
+### Undeath.esp
+- places missing (2; a location the index does not keep (unexplained); a map marker whose kind or location the index does not keep): Apocrypha (NecroBook01DungeonLocation), Dragontail Mountains
+
+### UndeathFixes.esp
+- places missing (1; a location the index does not keep (unexplained)): Dragontail Mountains (NecroDragontailMountainsLocation)
+
+### Unique Border Gates - Fixes.esp
+- places missing (4; a map marker whose kind or location the index does not keep): Talos Pass, Silgrad Pass, Dunmeth Pass, Pale Pass
+
+### Unofficial Skyrim Modders Patch.esp
+- places missing (1; a location the index does not keep (unexplained)): Red Wave (SolitudeDocksRedWaveLocation)
+
+### Unofficial Skyrim Special Edition Patch.esp
+- places missing (1; a map marker whose kind or location the index does not keep): The Chill
+
+### Vigilant.esm
+- quests missing (2; Vigilant Immersion Tweaks - All in One.esp replaces it with a record that has no name or journal: removed from the game): Spinner's Needle 1 (zzzAoMqOwl), Spinner's Needle 2 (zzzCOqOwl)
+
+### Vigilant.esm
+- places missing (40; a location the index does not keep (unexplained); a map marker whose kind or location the index does not keep): White Wasteland (zzzCHWorWasteland), Elder Field (zzzCHWorTrueEnd), Solitary Cell (zzzBMLocSecretPrison01), Old Forest (zzzCHWorOldForest), Whale Graveyard (zzzCHWorWhaleGraveyard), Basement (zzzCOLocBruiantMansionBasement), Blood Curse of Shivers (zzzCOLocBloodCurse01), Blood Curse of Corruption (zzzCOLocBloodCurse02), Enchantress' Palace (zzzBMLocPalaceOfVamp), Blood Curse of Chains (zzzCOLocBloodCurse04), Hidden Room (zzzCOLocBruiantMansionHidden), Bruiant Mansion (zzzCOLocBruiantMansion03), and 28 more
+
+### WindhelmSSE.esp
+- places missing (2; a map marker whose kind or location the index does not keep): Windhelm Eastern Gate, Viewpoint
+
+### Wintersun - Faiths of Skyrim.esp
+- places missing (22; a map marker whose kind or location the index does not keep): Shrine of Trinimac, Sunken Shrine, Altar to Z'en, Statue of Xarxes, Altar to the Magna-Ge, Shrine of Saint Alessia, Statue of Phynaster, Altar to Mannimarco, Jephre's Stones, Altar to Ebonarm, Altar to Baan Dar, Altar to the Riddle'Thar, and 10 more
+
+### Wyrmstooth.esp
+- places missing (34; a house, a homestead, a town or a shop: the index leaves them out; a location the index does not keep (unexplained); a map marker whose kind or location the index does not keep): Wyrmstooth (WTWyrmstoothLocation), Dockmaster's House (WTDockmasterHouseLocation), Abandoned Lighthouse (WTAbandonedLighthouseLocation), Stendarr's Outpost (WTStendarrsOutpostLocation), Kazmalgur, Dunyick's Camp, Abandoned Camp, Wanderer's Camp, Imperial Docks, Coldwave Crescent, Hunter's Shack, Imperial Camp, and 22 more

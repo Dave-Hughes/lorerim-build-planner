@@ -1382,6 +1382,12 @@
     },
     {
      "kind": "book",
+     "book": "Prisoner's Note",
+     "words": "my freedom, or get sold to slavers.\r\n\r\nI'm not sure who or what it is I have to fight, but I doubt it's gonna be fair. The Pit Champion's got this big, powerful meat cutter on her back. Meanwhile they left me an iron sword so old it had mushrooms growing on it.\r\n\r\nMaybe one of t",
+     "record": "BOOK cckrtsse001_altar.esl:000D64 (cckrtsse001_altar.esl)"
+    },
+    {
+     "kind": "book",
      "book": "Rules of The Pit",
      "words": "The Pit\r\n\r\n- Rules -\r\n \r\nWelcome to the Pit where men are men and prove their valor by sparring each other with bare hands.\r\n\r\nIf you want to be part of us ther",
      "record": "BOOK Gray Fox Cowl.esm:07178C (Gray Fox Cowl.esm)"
@@ -2612,6 +2618,12 @@
     },
     {
      "kind": "book",
+     "book": "Adonato Leotelli's Journal",
+     "words": "It's not uncommon these days to see warriors of great renown pass through Candlehearth Hall, beckoned by the clarion call of war. Many of them seat themselves by the fire, order their spirit of choice, and regale the patrons with stor",
+     "record": "BOOK ccbgssse069-contest.esl:000803 (ccbgssse069-contest.esl)"
+    },
+    {
+     "kind": "book",
      "book": "Pilgrimages in Skyrim",
      "words": "rom his birthplace in Atmora. \r\n\r\nThis pilgrimage begins in Windhelm, the city founded by Ysgramor in the Merethic era. Candlehearth Hall, the city's largest public drinking establishment, hosts travellers from across Skyrim, and those who seek to walk Ysmir's March are always we",
      "record": "BOOK LB_ApocryphaBooks.esp:0000C2 (LB_ApocryphaBooks.esp)"
@@ -2627,6 +2639,10 @@
     {
      "quest": "A False Front",
      "id": "Skyrim.esm:03BCC4"
+    },
+    {
+     "quest": "Caught in a Web",
+     "id": "ccbgssse069-contest.esl:000805"
     },
     {
      "quest": "A Dying Wish",
@@ -3079,6 +3095,10 @@
     {
      "quest": "Pets of Skyrim",
      "id": "ccvsvsse002-pets.esl:0008C8"
+    },
+    {
+     "quest": "Caught in a Web",
+     "id": "ccbgssse069-contest.esl:000805"
     }
    ]
   },
@@ -4826,6 +4846,18 @@
     },
     {
      "kind": "book",
+     "book": "The Crimson Dirks, v9",
+     "words": "on's worth of silks from the desert palaces of Dune. Maybe it was when they burrowed a tunnel into the warehouse of the East Empire Company, siphoning crate after crate while the wardens stood mindlessly at the door. Or it could be she preferred the more violent raids, like the s",
+     "record": "BOOK ccbgssse061-ba_dwarven.esl:00081A (ccbgssse061-ba_dwarven.esl)"
+    },
+    {
+     "kind": "book",
+     "book": "The Crimson Dirks, v7",
+     "words": "s and the Gold Coast. It was the first sign of charity Stendarr had showed them in months, ever since the guard and the East Empire Company had taken a special interest in squashing their operations. With all their leads dried up, the Crimson Dirks were left to sacking caravans a",
+     "record": "BOOK ccbgssse064-ba_elven.esl:000828 (ccbgssse064-ba_elven.esl)"
+    },
+    {
+     "kind": "book",
      "book": "Letter from Tyra Blood-Fire",
      "words": "ocent.\r\n\r\nI know your story. If there's going to be a judge for me, I don't want it to be them. Not the Empire, not the East Empire Company, and not the guards. Just you and the Divines.\r\n\r\nBut first I want you to prove you're a worthy judge. \r\n\r\nGo to the docks in Windhelm. Ther",
      "record": "BOOK ccbgssse063-ba_ebony.esl:000819 (LoreRim - World Fixes.esp)"
@@ -4835,6 +4867,30 @@
      "book": "M'Sharra's Diary",
      "words": "ends to be a dog. No, M'Sharra used to be a bandit warrior, a member of the Crimson Dirks - famous rogues wanted by the East Empire Company, the Clan Mothers of Elsweyr, and lawbringers from here to the Summerset Isles. If the guards only knew, they would come kill her. That is w",
      "record": "BOOK ccbgssse056-ba_silver.esl:000816 (LoreRim - World Fixes.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "The Crimson Dirks, v6",
+     "words": ", but it was the target that worried him still, even now after it was complete. After all, unlike some enterprises, the East Empire Company was a machine that counted every coin to its last, and weighed every commodity to the gram. Their employees were punctual, their accountants",
+     "record": "BOOK ccbgssse055-ba_orcishscaled.esl:000839 (ccbgssse055-ba_orcishscaled.esl)"
+    },
+    {
+     "kind": "book",
+     "book": "Ehlhiel's Journal",
+     "words": "lize it. The Crimson Dirks were done. They knew our names and our faces. If the city guard didn't catch us, it'd be The East Empire Company, or any of the other guilds and Great Houses we pissed off along the way. The way I see it, I just gave them a head start.\r\n\r\nMy job was to",
+     "record": "BOOK ccbgssse053-ba_leather.esl:00081B (ccbgssse053-ba_leather.esl)"
+    },
+    {
+     "kind": "book",
+     "book": "Guard's Dossier: Ehlhiel",
+     "words": "ping the Imperial City guard expunge the Crimson Dirks from Cyrodiil.\r\n\r\nCurrently, Ehlhiel continues to serve both the East Empire Company and the guard captains in Skyrim by providing information on fugitives that fled north after the purge. Meetings can be set up by placing a",
+     "record": "BOOK ccbgssse053-ba_leather.esl:00081C (ccbgssse053-ba_leather.esl)"
+    },
+    {
+     "kind": "book",
+     "book": "The Crimson Dirks, v5",
+     "words": "hat threatened their livelihood. There was the coin drying up, new guard patrols at the usual haunts, and word that the East Empire Company had taken notice of their works. All told it augured a slow, tumbling march toward the end of the Crimson Dirks.\r\n\r\nKnowing this, a smart pe",
+     "record": "BOOK ccbgssse051-ba_daedricmail.esl:000847 (ccbgssse051-ba_daedricmail.esl)"
     },
     {
      "kind": "book",
@@ -5190,6 +5246,81 @@
    }
   },
   {
+   "id": "ccrmssse001-necrohouse.esl:0009B1",
+   "name": "Gallows Hall",
+   "edid": "ccRMSSSE001_HouseIntLocation",
+   "type": "PlayerHouse",
+   "keywords": [
+    "LocTypeDwelling",
+    "LocTypeHouse",
+    "LocTypePlayerHouse"
+   ],
+   "hold": "Eastmarch",
+   "nearestTown": {
+    "town": "Kynesgrove",
+    "km": 0.4,
+    "walk": "a short walk"
+   },
+   "nearestCity": {
+    "town": "Windhelm",
+    "km": 0.5,
+    "walk": "a short walk"
+   },
+   "inTown": null,
+   "plugin": "ccrmssse001-necrohouse.esl",
+   "marker": "ccrmssse001-necrohouse.esl:000CFB",
+   "namedBy": [
+    "homes",
+    "quests"
+   ],
+   "namedByQuest": [
+    "Dreams of the Dead",
+    "Torch Names"
+   ],
+   "homeOf": [
+    "Arch Necromancer",
+    "Bone Colossus",
+    "Naara"
+   ],
+   "world": "Tamriel",
+   "pos": [
+    109060.2,
+    11309.7,
+    -9226.0
+   ],
+   "posFrom": "marker",
+   "actors": {
+    "count": 16,
+    "hostile": false
+   },
+   "worthGoingFor": {
+    "skillBooks": [
+     "Enchanting: A Tragedy in Black"
+    ],
+    "crafting": [
+     "a sharpening wheel",
+     "a tanning rack",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench",
+     "an enchanting table"
+    ],
+    "shrines": [
+     "Shrine of Vaermina"
+    ]
+   },
+   "quests": [
+    {
+     "quest": "Dreams of the Dead",
+     "id": "ccrmssse001-necrohouse.esl:000CC4"
+    },
+    {
+     "quest": "Torch Names",
+     "id": "ccrmssse001-necrohouse.esl:000D3B"
+    }
+   ]
+  },
+  {
    "id": "Skyrim.esm:019187",
    "name": "Gallows Rock",
    "edid": "GallowsRockLocation",
@@ -5530,6 +5661,12 @@
      "book": "Gaius Maro's Schedule",
      "words": "- Solitude, the Emperor's Tower\r\n- Morndas evening - Solitude, Castle Dour (food and sleep)\r\n\r\n- Tirdas - Windhelm, the Palace of the Kings\r\n- Tirdas evening - Windhelm, Barracks (food and sleep)\r\n\r\n- Middas - Riften, Mistveil Keep\r\n\r\n- Turdas - Whiterun, Dragonsreach\r\n- Turdas e",
      "record": "BOOK Skyrim.esm:015475 (Book Covers Skyrim.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Letter from the Stormcloaks",
+     "words": "mpire can hardly lay claim to such a title.\r\n\r\nThat is why we ask you to put these fools in their place. Find me in the Palace of the Kings, and I will provide you with the armor of a true champion. Once equipped, you will meet with a garrison of our finest soldiers and put an en",
+     "record": "BOOK ccffbsse001-imperialdragon.esl:000862 (ccffbsse001-imperialdragon.esl)"
     },
     {
      "kind": "book",
@@ -5950,6 +6087,12 @@
      "quest": "Delivery",
      "words": "Everything you see is grown at my family's own Hollyfrost Farm. Fresh and filling.",
      "record": "INFO Skyrim.esm:0CD868 (Skyrim.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Wild Horse Notes",
+     "words": "es.\r\n\r\nSpotted White - Lower Eastmarch, in the cliffs north of Shore's Stone.\r\n\r\nPale Mare - East of Windhelm, north of Hollyfrost Farm, in the forest nearing the shoreline.\r\n\r\nBlack - West of Falkreath, past the nearby ruins.\r\n\r\nIf I had the coin, I'd hire a wizard to use Detect",
+     "record": "BOOK ccbgssse034-mntuni.esl:00086C (ccbgssse034-mntuni.esl)"
     }
    ]
   },
@@ -6263,6 +6406,102 @@
     {
      "quest": "<Alias=QuestNameLocation>",
      "id": "Skyrim.esm:029940"
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0233EE",
+   "name": "Kagrenzel",
+   "edid": "KagrenzelLocation",
+   "type": "DwemerRuin",
+   "keywords": [
+    "LocTypeClearable",
+    "LocTypeDungeon",
+    "LocTypeFalmerHive"
+   ],
+   "hold": "Eastmarch",
+   "nearestTown": {
+    "town": "Shor's Stone",
+    "km": 0.6,
+    "walk": "a short walk"
+   },
+   "nearestCity": {
+    "town": "Riften",
+    "km": 1.0,
+    "walk": "half a day"
+   },
+   "inTown": null,
+   "plugin": "ccafdsse001-dwesanctuary.esm",
+   "marker": "Skyrim.esm:080E56",
+   "world": "Tamriel",
+   "pos": [
+    191763.4,
+    -29428.8,
+    8280.3
+   ],
+   "posFrom": "marker",
+   "actors": {
+    "count": 9,
+    "livesHere": "Falmer",
+    "alsoHere": [
+     "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Falmer",
+      "count": 6,
+      "range": [
+       23,
+       55
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 2,
+      "range": [
+       18,
+       18
+      ]
+     }
+    ],
+    "floor": 18,
+    "ceiling": 55,
+    "atLevel": [
+     {
+      "from": 1,
+      "meets": [
+       18,
+       55
+      ],
+      "words": "from 1, 18 to 55"
+     }
+    ],
+    "zoneMin": 18,
+    "boss": {
+     "level": "leveled 44-55"
+    }
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
+   "pointers": [
+    {
+     "kind": "book",
+     "book": "Curate Melita's Plea",
+     "words": "I clip my toenails with a fork\" mad. You get what I mean.\r\n\r\nPoint is, I think I've found it. The Mask of Sotha Sil, in Kagrenzel, a Dwarven labyrinth with a surprsingly high vowel count. It's high up on the Velothi Mountains, and you're a Velothi too! Funny how that works out.",
+     "record": "BOOK ccasvsse001-almsivi.esm:000EE5 (ccasvsse001-almsivi.esm)"
+    }
+   ],
+   "quests": [
+    {
+     "quest": "Careless Curation",
+     "id": "ccasvsse001-almsivi.esm:000F1A"
     }
    ]
   },
@@ -6861,6 +7100,12 @@
     },
     {
      "kind": "book",
+     "book": "Battle of Champions",
+     "words": "nting, rumor has it that a warrior named Klija Wolf-Claw of Bruma has already slain the beasts, and has made her way to Kynesgrove.\r\n\r\nFor their side, Legate Adventus Caesennius has made no mention of any ritual in selecting their champion. It makes you wonder if any willing sold",
+     "record": "BOOK ccffbsse001-imperialdragon.esl:000860 (ccffbsse001-imperialdragon.esl)"
+    },
+    {
+     "kind": "book",
      "book": "Kalpa Akashicorprus, vol.2",
      "words": "ns 'save' some of the kalpa in order to survive the world's destruction. According to Eltra Mist-Widow, Clever-woman of Kynesgrove:\r\n\r\n\"The world-eater comes at the end of every kalpa - this is a truth known to all Nords, and even the Greybeards I have spoken to agree. Shor does",
      "record": "BOOK LB_ApocryphaBooks.esp:0000B8 (LB_ApocryphaBooks.esp)"
@@ -7053,6 +7298,12 @@
      "quest": "JR27LucienHeadmansCleaver",
      "words": "Well, this is Lost Knife Hideout. Let's show these Greencap Bandits a thing or two, shall we?",
      "record": "INFO Lucien-AnniversaryEdition-Patch.esp:270806 (Lucien-AnniversaryEdition-Patch.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Letter from Shogarz gro-Batul",
+     "words": "ndits, who have been a thorn in the Queen's side from the day she was born. \r\n\r\nOur sources tell us they're holed up in Lost Knife Hideout, and as the Queen's strongest knight, I have been tasked with retrieving it. However, if I don't survive, I ask that you eliminate these band",
+     "record": "BOOK ccbgssse068-bloodfall.esl:000801 (ccbgssse068-bloodfall.esl)"
     }
    ]
   },
@@ -7313,6 +7564,12 @@
      "quest": "EGD_DialogueGuardsGeneral",
      "words": "The ruins of Mistwatch are empty again. Here's hoping those bandits don't return.",
      "record": "INFO Extended Guard Dialogue.esp:00087E (Extended Guard Dialogue.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Note on Amber and Madness Ore",
+     "words": "now, that is. I shall have the Seducers deliver her a sample of each. With any luck, she still hones her craft north of Mistwatch even after all these years.",
+     "record": "BOOK ccBGSSSE025-AdvDSGS.esm:054047 (ccBGSSSE025-AdvDSGS.esm)"
     },
     {
      "kind": "book",
@@ -8135,6 +8392,140 @@
     {
      "quest": "BCSLL Vendor Quest",
      "id": "Book Covers Skyrim - Lost Library.esp:012C88"
+    }
+   ]
+  },
+  {
+   "id": "ccafdsse001-dwesanctuary.esm:001186",
+   "name": "Nchuanthumz",
+   "edid": "ccMDRSSE001DweSanctuaryKlogircHomeLocation",
+   "type": "PlayerHouse",
+   "keywords": [
+    "LocTypeDwelling",
+    "LocTypeHouse",
+    "LocTypePlayerHouse"
+   ],
+   "hold": "Eastmarch",
+   "nearestTown": {
+    "town": "Shor's Stone",
+    "km": 0.7,
+    "walk": "a short walk"
+   },
+   "nearestCity": {
+    "town": "Riften",
+    "km": 1.1,
+    "walk": "half a day"
+   },
+   "inTown": null,
+   "plugin": "ccafdsse001-dwesanctuary.esm",
+   "marker": null,
+   "namedBy": [
+    "homes",
+    "quests"
+   ],
+   "namedByQuest": [
+    "The Sanctuary and the Manufactory"
+   ],
+   "homeOf": [
+    "Dwarven Spider Renovator"
+   ],
+   "world": "Tamriel",
+   "pos": [
+    192265.3,
+    -24536.3,
+    8218.1
+   ],
+   "posFrom": "door",
+   "actors": {
+    "count": 23,
+    "hostile": false
+   },
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy: A Game at Dinner"
+    ],
+    "crafting": [
+     "a forge",
+     "a sharpening wheel",
+     "a smelter",
+     "a tanning rack",
+     "an alchemy lab",
+     "an armor workbench",
+     "an enchanting table"
+    ]
+   },
+   "pointers": [
+    {
+     "kind": "book",
+     "book": "Seeks-Ancient-Artifacts' Journal, v2",
+     "words": "Expedition - Day 19\r\nWe have spent two whole days stumbling almost blindly in the dark, and then suddenly there it was! Nchuanthumz! It is here that Klorgic and Duramac built their home! It was once a grand palace, but time and negligence have humbled its mechanical splendor. Nev",
+     "record": "BOOK ccafdsse001-dwesanctuary.esm:000818 (ccafdsse001-dwesanctuary.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Seeks-Ancient-Artifacts' Journal, v1",
+     "words": "Skyrim Expedition - Day 1\r\nI have arrived in Skyrim to solve a single mystery, to find the lost sanctuary of Nchuanthumz. According to legend, it was built by the famed Dwemer architects, Klorgic and Duramac, the latter of whom is said to be a distant relative of the g",
+     "record": "BOOK ccafdsse001-dwesanctuary.esm:0008C4 (ccafdsse001-dwesanctuary.esm)"
+    }
+   ],
+   "quests": [
+    {
+     "quest": "The Sanctuary and the Manufactory",
+     "id": "ccafdsse001-dwesanctuary.esm:000A39"
+    }
+   ]
+  },
+  {
+   "id": "ccafdsse001-dwesanctuary.esm:000A3A",
+   "name": "Nchuanthumz Manufactory",
+   "edid": "ccAARSSE001ManufactoryLocation",
+   "type": "DwemerRuin",
+   "keywords": [
+    "LocTypeDwarvenAutomatons"
+   ],
+   "hold": "Eastmarch",
+   "nearestTown": {
+    "town": "Shor's Stone",
+    "km": 0.7,
+    "walk": "a short walk"
+   },
+   "nearestCity": {
+    "town": "Riften",
+    "km": 1.1,
+    "walk": "half a day"
+   },
+   "inTown": null,
+   "plugin": "ccafdsse001-dwesanctuary.esm",
+   "marker": null,
+   "world": "Tamriel",
+   "pos": [
+    192265.3,
+    -24536.3,
+    8218.1
+   ],
+   "posFrom": "door",
+   "actors": {
+    "count": 7,
+    "floor": 12,
+    "ceiling": 60,
+    "atLevel": [
+     {
+      "from": 1,
+      "meets": [
+       12,
+       60
+      ],
+      "words": "from 1, 12 to 60"
+     }
+    ]
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10,
+   "quests": [
+    {
+     "quest": "The Sanctuary and the Manufactory",
+     "id": "ccafdsse001-dwesanctuary.esm:000A39"
     }
    ]
   },
@@ -9061,6 +9452,10 @@
     {
      "quest": "No Stone Unturned",
      "id": "Skyrim.esm:09DD77"
+    },
+    {
+     "quest": "Careless Curation",
+     "id": "ccasvsse001-almsivi.esm:000F1A"
     },
     {
      "quest": "Bounty Hunter",
@@ -10332,10 +10727,30 @@
     -13372.5
    ],
    "posFrom": "marker",
+   "alsoRecordedAs": [
+    {
+     "id": "ccasvsse001-almsivi.esm:000C82",
+     "edid": "ccASVSSE001_TempleLocation",
+     "plugin": "ccasvsse001-almsivi.esm"
+    }
+   ],
    "actors": {
-    "count": 11,
-    "livesHere": "Draugr",
+    "count": 50,
+    "livesHere": "Bandit",
+    "alsoHere": [
+     "Draugr",
+     "Warlock",
+     "Skeleton"
+    ],
     "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 31,
+      "range": [
+       18,
+       75
+      ]
+     },
      {
       "kind": "Draugr",
       "count": 10,
@@ -10343,18 +10758,34 @@
        6,
        51
       ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 4,
+      "range": [
+       25,
+       80
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       6,
+       6
+      ]
      }
     ],
     "floor": 6,
-    "ceiling": 51,
+    "ceiling": 80,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        6,
-       51
+       80
       ],
-      "words": "from 1, 6 to 51"
+      "words": "from 1, 6 to 80"
      }
     ],
     "zoneMin": 6,
@@ -10367,7 +10798,13 @@
    "clearXp": 200,
    "discoveryXp": 10,
    "worthGoingFor": {
-    "bossChest": true
+    "bossChest": true,
+    "crafting": [
+     "a forge",
+     "an alchemy lab",
+     "an anvil",
+     "an enchanting table"
+    ]
    },
    "danger": {
     "traps": true
@@ -10421,6 +10858,18 @@
     {
      "quest": "Yngol's Barrow",
      "id": "Skyrim.esm:0434A3"
+    },
+    {
+     "quest": "Ghosts of the Tribunal",
+     "id": "ccasvsse001-almsivi.esm:000CC3"
+    },
+    {
+     "quest": "Ashen Heart",
+     "id": "ccasvsse001-almsivi.esm:00117A"
+    },
+    {
+     "quest": "Trueflame",
+     "id": "ccasvsse001-almsivi.esm:0990EF"
     }
    ]
   },
@@ -12081,6 +12530,12 @@
     },
     {
      "kind": "book",
+     "book": "Bounty Hunter's Note",
+     "words": "I first met the Breton at Dead Man's Drink. Said it was poetic, given what was inside his bottle of wine.\r\n\r\nI ain't much for poetry myself. I wanted to know what it paid. And pay it did",
+     "record": "BOOK ccbgssse050-ba_daedric.esl:000826 (ccbgssse050-ba_daedric.esl)"
+    },
+    {
+     "kind": "book",
      "book": "Athir's Note",
      "words": "has an unpredictable streak so approach her with caution.\r\n\r\nI will provide the necessary funds for your lodging at the Dead Man's Drink in Falkreath. Assuming my plan comes to fruition you are to meet with the Dragonborn and travel together to wherever that troublesome dragon is",
      "record": "BOOK Wyrmstooth.esp:60B793 (Wyrmstooth.esp)"
@@ -12362,6 +12817,12 @@
     },
     {
      "kind": "book",
+     "book": "Fishing Mastery, v4",
+     "words": "th wild animals that sometimes reside in its cool depths, so pack something sharp to go along with your fishing rod.\r\n\r\nEmbershard Mine near the sleepy town of Riverwood is said to be flooded deep within, and may be a hidden gem for subterranean fish seekers. It is too bad that b",
+     "record": "BOOK ccBGSSSE001-Fish.esm:000ABA (ccBGSSSE001-Fish.esm)"
+    },
+    {
+     "kind": "book",
      "book": "Guard's Dossier: Yakhtu gra-Orkulg",
      "words": "e actually traveled with another agent to Skyrim. Reports of unusually well made weapons and armor being peddled out of Embershard Mine may be related. This information should be forwarded to Commander Caius in Whiterun as the mine falls under his jurisdiction.",
      "record": "BOOK ccbgssse054-ba_orcish.esl:00081A (LoreRim - World Fixes.esp)"
@@ -12561,13 +13022,10 @@
    ],
    "posFrom": "marker",
    "actors": {
-    "count": 64,
+    "count": 20,
     "hostile": false
    },
    "worthGoingFor": {
-    "skillBooks": [
-     "Two-Handed: The Legendary Sancre Tor"
-    ],
     "crafting": [
      "a forge",
      "a sharpening wheel",
@@ -12587,6 +13045,37 @@
      "id": "Vigilant.esm:4E2530"
     }
    ]
+  },
+  {
+   "id": "Skyrim.esm:1033AE",
+   "name": "Falkreath Barracks",
+   "edid": "FalkreathBarracksLocation",
+   "type": "Barracks",
+   "keywords": [
+    "LocTypeBarracks",
+    "LocTypeDwelling"
+   ],
+   "hold": "Falkreath",
+   "nearestTown": null,
+   "nearestCity": null,
+   "inTown": "Falkreath",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "marker": null,
+   "namedBy": [
+    "homes"
+   ],
+   "homeOf": [
+    "Falkreath Guard"
+   ],
+   "actors": {
+    "count": 1,
+    "hostile": false
+   },
+   "worthGoingFor": {
+    "skillBooks": [
+     "Two-Handed: The Legendary Sancre Tor"
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:1033AF",
@@ -13345,6 +13834,12 @@
      "quest": "HLIORemiFollower",
      "words": "Grave Concoctions... What a great name.",
      "record": "INFO HLIORemi.esp:08436B (HLIORemi.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Bounty: Glassfish",
+     "words": ", so I have no choice but to request that someone else acquire this fish for me.\r\n\r\n Please see me at my establishment, Grave Concoctions, in Falkreath once you have the glassfish. A reward of 100 gold will be granted, plus an additional reward for any who might be willing to ass",
+     "record": "BOOK ccBGSSSE001-Fish.esm:000BE4 (ccBGSSSE001-Fish.esm)"
     }
    ]
   },
@@ -13796,6 +14291,12 @@
      "quest": "JRLucienCCSaintsAndSeducers",
      "words": "Sounds like we ought to head over to Half Moon Mill when we have time. Can't have the secrets of this armor falling into the wrong hands. Again.",
      "record": "INFO Lucien-AnniversaryEdition-Patch.esp:140826 (Lucien-AnniversaryEdition-Patch.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Notes on the Blacksmith",
+     "words": "e bridge,\" like he were still a child. \"That's where I always hid my toys,\" he said. I know his kin used to live around Half Moon Mill. We should round up some folks to have a look.",
+     "record": "BOOK ccBGSSSE025-AdvDSGS.esm:000CD5 (ccBGSSSE025-AdvDSGS.esm)"
     },
     {
      "kind": "book",
@@ -14867,6 +15368,12 @@
     },
     {
      "kind": "book",
+     "book": "Wild Horse Notes",
+     "words": "s Farm.\r\n\r\nDapple Brown - Near Solitude, across the river from Katla's Farm, near a Dragon Mound.\r\n\r\nChestnut - East of Helgen, not far from the roadside.\r\n\r\nRed - West of Whiterun, in the open planes.\r\n\r\nSpotted White - Lower Eastmarch, in the cliffs north of Shore's Stone.\r\n\r\nP",
+     "record": "BOOK ccbgssse034-mntuni.esl:00086C (ccbgssse034-mntuni.esl)"
+    },
+    {
+     "kind": "book",
      "book": "Vampire Clans of Skyrim",
      "words": "cus Vile, patron of the Order. No cases of Porphyric Haemophilia have been reported in the region between Ivarstead and Helgen, so either this is a separate, smaller clan with no affiliation to the Order, or they have allowed themselves to become infected with Sanguinare Vampiris",
      "record": "BOOK LB_ApocryphaBooks.esp:000817 (LB_ApocryphaBooks.esp)"
@@ -15469,6 +15976,12 @@
     },
     {
      "kind": "book",
+     "book": "Khajiit's Note",
+     "words": "ll be out there.\r\n\r\nTo that end, this one has heard rumors of a bandit wearing Daedric Plate, plying his blood trade at Knifepoint Ridge. Originally Khajiit did not think Edward the type to live in an abandoned mine. But now he is not so sure.\r\n\r\nEdward may have fooled the guard,",
+     "record": "BOOK ccbgssse050-ba_daedric.esl:00081B (ccbgssse050-ba_daedric.esl)"
+    },
+    {
+     "kind": "book",
      "book": "Bloodstained Note",
      "words": "even a second later, I felt that elf's blade in my back.\r\n\r\nAs I lay dying, I heard Boethiah command him next to go to Knifepoint Ridge.\r\n\r\nHad I the strength, I would go there too and kill that bastard.\r\n\r\nBut there are other worlds than these. In the next one, I will see to it",
      "record": "BOOK BoethiahCalling_AlternativeQuest.esp:000894 (BoethiahCalling_AlternativeQuest.esp)"
@@ -15886,6 +16399,18 @@
      "quest": "0WRDialogue",
      "words": "Looking to do some hunting? Avoid Brittleshin Pass. It's southeast of here",
      "record": "INFO SurWR.esp:1423A9 (SurWR.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Smuggler's Ledger",
+     "words": "Items: \r\nStaff of Hasedoki, void salts, soul gems, bonemeal\r\n\r\nDelivered to: \r\nIvara of Olenveld and Lushak gra-Ragdam, Brittleshin Pass\r\n\r\nSmuggler's Fee:\r\nJust gold and gems for now. It was tough sneaking in some of the items on the list, but the zombie lovers were happy with t",
+     "record": "BOOK ccbgssse045-hasedoki.esl:000803 (ccbgssse045-hasedoki.esl)"
+    },
+    {
+     "kind": "book",
+     "book": "Ri'saad's Note on Bandit Attacks",
+     "words": "eapons and wear gleaming armor. Ri'saad has read of such things only in stories. Their encampment is found just west of North Brittleshin Pass.\r\n\r\nEach time they set upon us, they shout, \"The Saints would like to browse your wares today.\" The brutes steal mostly trinkets and oddi",
+     "record": "BOOK ccBGSSSE025-AdvDSGS.esm:000879 (ccBGSSSE025-AdvDSGS.esm)"
     }
    ]
   },
@@ -16605,7 +17130,15 @@
     "skillBooks": [
      "Enchanting: Catalogue of Weapon Enchantments"
     ]
-   }
+   },
+   "pointers": [
+    {
+     "kind": "book",
+     "book": "Mysterious Altar",
+     "words": "loth it would distract me from the pain, but eventually my joints could bear the weight no longer. \r\n\r\nI stopped at the Roadside Ruins looking for a place to rest. It was there, in the briars of an autumn fog, that I came across a strange altar rooted in the ground. Beside it sto",
+     "record": "BOOK cckrtsse001_altar.esl:000D62 (cckrtsse001_altar.esl)"
+    }
+   ]
   },
   {
    "id": "aaaGraniteHill.esp:1939BB",
@@ -16935,6 +17468,12 @@
      "book": "Guard Dossier: Aesrael",
      "words": "to our informant, he's done the opposite. He's stripped his armor and gone native, hunting game in the forests south of Sunderstone Gorge. He should still be considered dangerous, however, and it would be wise to put up a bounty when his identity is confirmed.",
      "record": "BOOK ccbgssse064-ba_elven.esl:00081C (LoreRim - World Fixes.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Sirayar's Note",
+     "words": "rink and found out a wagon was headed up toward Skyrim along the southwestern border from Hammerfell. He should pass by Sunderstone Gorge on his way through.\r\n\r\n Not a lot of folks on that road these days. Still, he didn't say how many there were or what they looked like. We need",
+     "record": "BOOK ccedhsse003-redguard.esl:000813 (ccedhsse003-redguard.esl)"
     }
    ],
    "quests": [
@@ -16991,6 +17530,154 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "respawns": "after 300 days once cleared, 30 ordinarily"
+  },
+  {
+   "id": "cckrtsse001_altar.esl:000F54",
+   "name": "The Pit",
+   "edid": "ccKRTSSE001_PitLocation",
+   "type": "ImperialTower",
+   "keywords": [
+    "LocTypeDwelling",
+    "LocTypeJail"
+   ],
+   "hold": "Falkreath",
+   "nearestTown": null,
+   "nearestCity": null,
+   "inTown": "Falkreath",
+   "plugin": "cckrtsse001_altar.esl",
+   "marker": null,
+   "namedBy": [
+    "homes",
+    "quests"
+   ],
+   "namedByQuest": [
+    "The Pit"
+   ],
+   "homeOf": [
+    "Neski Skull-Sabre",
+    "Pit Bandit",
+    "Pit Fighter"
+   ],
+   "actors": {
+    "count": 43,
+    "livesHere": "Bandit",
+    "alsoHere": [
+     "Skeleton",
+     "Warlock",
+     "Forsworn",
+     "Wolf",
+     "Vampire"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 18,
+      "range": [
+       15,
+       40
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 7,
+      "range": [
+       15,
+       15
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       15,
+       15
+      ]
+     },
+     {
+      "kind": "Forsworn",
+      "count": 1,
+      "range": [
+       25,
+       25
+      ]
+     },
+     {
+      "kind": "Wolf",
+      "count": 1,
+      "range": [
+       15,
+       15
+      ]
+     },
+     {
+      "kind": "Vampire",
+      "count": 1,
+      "range": [
+       50,
+       50
+      ]
+     }
+    ],
+    "floor": 15,
+    "ceiling": 50,
+    "atLevel": [
+     {
+      "from": 1,
+      "meets": [
+       15,
+       50
+      ],
+      "words": "from 1, 15 to 50"
+     }
+    ],
+    "zoneMin": 15,
+    "boss": {
+     "level": "level 50"
+    }
+   },
+   "respawns": "never",
+   "clearXp": 100,
+   "discoveryXp": 10,
+   "pointers": [
+    {
+     "kind": "dialogue",
+     "speaker": "The Pit Keeper",
+     "speakerPlace": "The Pit Keeper",
+     "quest": "manny_GF_ThePit",
+     "words": "Welcome to The Pit, my dear. This is the place where men are men and prove their valor by sparring with bare hands.",
+     "record": "INFO Gray Fox Cowl.esm:06AE5A (Gray Fox Cowl.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Mythic Dawn Commentaries, Vol. 4",
+     "words": "in a single night of day and shall it be again under the time of Gates.\r\n\r\n \r\nothing but woe for NIRN which has become The Pit and seven curses on its Dreugh, the Vermae NI-MOHK! But for it the Crusades would be as my lord's Creation, Get by the Ge and do as thou wilt, of no fet",
+     "record": "BOOK Skyrim.esm:086EFB (Book Covers Skyrim.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Prisoner's Note",
+     "words": "my freedom, or get sold to slavers.\r\n\r\nI'm not sure who or what it is I have to fight, but I doubt it's gonna be fair. The Pit Champion's got this big, powerful meat cutter on her back. Meanwhile they left me an iron sword so old it had mushrooms growing on it.\r\n\r\nMaybe one of t",
+     "record": "BOOK cckrtsse001_altar.esl:000D64 (cckrtsse001_altar.esl)"
+    },
+    {
+     "kind": "book",
+     "book": "Rules of The Pit",
+     "words": "The Pit\r\n\r\n- Rules -\r\n \r\nWelcome to the Pit where men are men and prove their valor by sparring each other with bare hands.\r\n\r\nIf you want to be part of us ther",
+     "record": "BOOK Gray Fox Cowl.esm:07178C (Gray Fox Cowl.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Pit Fighter's Oath",
+     "words": "A Pit Fighter follows the rules.\r\n\r\n1. Upon agreement with the Pit Matron.The Pit Fighters will enter the Pit.\r\n\r\n2. The Pit Fighters will take up position at each end of the pit.\r\n\r\n3. The Pit Fighters will not engage in battle until",
+     "record": "BOOK WindhelmSSE.esp:1F66FE (WindhelmSSE.esp)"
+    }
+   ],
+   "quests": [
+    {
+     "quest": "The Pit",
+     "id": "cckrtsse001_altar.esl:000A5E"
+    }
+   ]
   },
   {
    "id": "Skyrim.esm:01914B",
@@ -18673,6 +19360,12 @@
     },
     {
      "kind": "book",
+     "book": "The Restless",
+     "words": "man who claimed to know its location was a pirate by the name of Kevon. Yet as a wanted man of little clout, he died in Castle Dour Dungeon, taking the fate of the treasure with him. \r\n\r\nA strange end to a great tale, but who knows if the writing's done. For a man's hunt for gold",
+     "record": "BOOK ccbgssse031-advcyrus.esm:000809 (ccbgssse031-advcyrus.esm)"
+    },
+    {
+     "kind": "book",
      "book": "Letter From General Tullius",
      "words": "the people of Skyrim have given you.\r\nI am General Tullius, Commanding Officer of the Imperial garrison from Solitude's Castle Dour. I have been informed of the hero you have been to Skyrim's people, and my advisors believe that you would make a fine addition to the Imperial Legi",
      "record": "BOOK Ryn's Snazzy Last Vigil.esp:00FB7A (Ryn's Snazzy Last Vigil.esp)"
@@ -18722,6 +19415,10 @@
     {
      "quest": "Corpse Check",
      "id": "ccffbsse001-imperialdragon.esl:00086B"
+    },
+    {
+     "quest": "The Restless",
+     "id": "ccbgssse031-advcyrus.esm:000FDC"
     },
     {
      "quest": "Solitude guards with prisoner (imperial)",
@@ -19569,9 +20266,27 @@
     },
     {
      "kind": "book",
+     "book": "Fishing Mastery, v4",
+     "words": "oing from its entrance. It may be best to fish elsewhere for now.\r\n\r\nFor the truly brave, Chillwind Depths south of the Dragon Bridge is rumored to have dark waters that ripple with life. Take care not to venture far from the entrance, as this cave is known to be infested with fr",
+     "record": "BOOK ccBGSSSE001-Fish.esm:000ABA (ccBGSSSE001-Fish.esm)"
+    },
+    {
+     "kind": "book",
      "book": "Suicide at Dragon Bridge",
      "words": ". I was about to tell the innkeeper to report it to the guard, but Aldepius said he saw the person in question leap off Dragon Bridge. \r\n\r\nA sad state of affairs, but not our concern.",
      "record": "BOOK ccbgssse058-ba_steel.esl:00081B (LoreRim - World Fixes.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Aldepius' Confession",
+     "words": "aim I had to it, the day I joined Tyra's crew. \r\n\r\nThen again, maybe I can still have an honorable death.\r\n\r\nMeet me at Dragon Bridge. We can settle this there.",
+     "record": "BOOK ccbgssse058-ba_steel.esl:000825 (ccbgssse058-ba_steel.esl)"
+    },
+    {
+     "kind": "book",
+     "book": "Guard's Note on Aldepius",
+     "words": "and no one by the name Aldepius is on it. I don't know who he is, but he's not a member of the guard. He's stationed at Dragon Bridge at the moment, when my shift is over I'm going to confront him about it.",
+     "record": "BOOK ccbgssse058-ba_steel.esl:00081A (ccbgssse058-ba_steel.esl)"
     },
     {
      "kind": "book",
@@ -19660,6 +20375,14 @@
    },
    "aliases": [
     "Erikur House"
+   ],
+   "pointers": [
+    {
+     "kind": "book",
+     "book": "Stranger's Instructions",
+     "words": "named Gisli in Solitude. On her should be the real document. You'll relieve her of this burden, then place the fake in Erikur's House. She'll think she misplaced it.\r\n\r\nWhen the job is done, find the barrel behind the Winking Skeever for further instructions.\r\n\r\n-- A Stranger",
+     "record": "BOOK ccbgssse020-graycowl.esl:000836 (ccbgssse020-graycowl.esl)"
+    }
    ]
   },
   {
@@ -19809,6 +20532,12 @@
      "quest": "Joining the Legion",
      "words": "I trust you'll be finished with Fort Hraggstad soon?",
      "record": "INFO Skyrim.esm:0D6613 (Skyrim.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Crafting with Netch Leather",
+     "words": "Cascabel Hall. Yet while the castle no longer stands, some say leftover crates of netch leather armor were sent over to Fort Hraggstad after the battle. You may even be able to take the armor apart and learn a thing or two about the process.",
+     "record": "BOOK ccbgssse041-netchleather.esl:0008C4 (ccbgssse041-netchleather.esl)"
     }
    ],
    "quests": [
@@ -20428,6 +21157,12 @@
      "quest": "The Dark Brotherhood Forever",
      "words": "So you're the one from the... Dark Brotherhood? I need you to kill the Big Laborer at Katla's Farm. Here's the gold for the kill. Make it painful.",
      "record": "INFO Skyrim.esm:087B7C (Skyrim.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Wild Horse Notes",
+     "words": "Spotted Grey - Near Markarth, north of Salvius Farm.\r\n\r\nDapple Brown - Near Solitude, across the river from Katla's Farm, near a Dragon Mound.\r\n\r\nChestnut - East of Helgen, not far from the roadside.\r\n\r\nRed - West of Whiterun, in the open planes.\r\n\r\nSpotted White - Lo",
+     "record": "BOOK ccbgssse034-mntuni.esl:00086C (ccbgssse034-mntuni.esl)"
     }
    ]
   },
@@ -20690,6 +21425,12 @@
      "book": "Zaharia's Note",
      "words": "g a note at the Temple of the Divines, underneath a vase of tundra cotton. I'll place one there and have him meet me at Lost Echo Cave. Then I'll gut the lying little weasel and show him just how much of an asset he really is.",
      "record": "BOOK ccbgssse053-ba_leather.esl:000819 (LoreRim - World Fixes.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Note to Ehlhiel",
+     "words": "Something's come up. Meet me at Lost Echo Cave. \r\n\r\nCome alone.",
+     "record": "BOOK ccbgssse053-ba_leather.esl:00081A (ccbgssse053-ba_leather.esl)"
     }
    ]
   },
@@ -20929,6 +21670,12 @@
      "book": "Missive from General Tullius",
      "words": "Mane.\r\n\r\nIt is my duty to inform you that Thalmor agents have taken possession of the prisoner and have escorted him to Northwatch Keep.\r\n\r\nI don't think I need to elaborate. It is in everyone's best interest if the matter is dropped entirely. I trust there will be no further inq",
      "record": "BOOK Skyrim.esm:039C8E (Book Covers Skyrim.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Undercover Guard's Journal",
+     "words": "t any information he provides should be vetted thoroughly. Supposedly, the Argonian is camped on the shoreline, west of Northwatch Keep. We can alert our Thalmor friends to take care of the matter. They won't like having a wanted criminal loitering so close to their stronghold.",
+     "record": "BOOK ccbgssse052-ba_iron.esl:000827 (ccbgssse052-ba_iron.esl)"
     },
     {
      "kind": "book",
@@ -22321,7 +23068,17 @@
     "crafting": [
      "an enchanting table"
     ]
-   }
+   },
+   "quests": [
+    {
+     "quest": "Staada Quest",
+     "id": "ccBGSSSE025-AdvDSGS.esm:198277"
+    },
+    {
+     "quest": "Restoring Order",
+     "id": "ccBGSSSE025-AdvDSGS.esm:000913"
+    }
+   ]
   },
   {
    "id": "Skyrim.esm:07046A",
@@ -23056,6 +23813,12 @@
      "quest": "Taliesin Main Quest",
      "words": "Delphine is sending you into the Thalmor Embassy, did I hear that right?",
      "record": "INFO 00Taliesin.esp:418ACF (00Taliesin.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Kragrash's Letter",
+     "words": "So now, on what should be my final day as a mortal, I pen this letter, and walk to my favorite overlook south of the Thalmor Embassy to watch the morning sunrise one last time.\r\n\r\nI now pass the torch to you, dear reader. Seek out my remains. Among my effects you should find a",
+     "record": "BOOK ccbgssse043-crosselv.esl:000804 (ccbgssse043-crosselv.esl)"
     }
    ],
    "quests": [
@@ -24063,6 +24826,18 @@
      "quest": "KmodFastTravelQuest",
      "words": "If you need it, you can get a room for a fair price at the Winking Skeever, just inside the main gate.",
      "record": "INFO CFTO.esp:0E48CE (CFTO.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Wanted: A Seafood Feast",
+     "words": "so I find myself suddenly flush with coin. I've decided to celebrate with a feast!\r\n\r\n Of course, the innkeeper at the Winking Skeever possesses neither the ingredients nor the skill to prepare what I desire. I seek a cooked arctic char, steamed crab legs, and a helping of crab",
+     "record": "BOOK ccBGSSSE001-Fish.esm:000B91 (ccBGSSSE001-Fish.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Stranger's Instructions",
+     "words": "en place the fake in Erikur's House. She'll think she misplaced it.\r\n\r\nWhen the job is done, find the barrel behind the Winking Skeever for further instructions.\r\n\r\n-- A Stranger",
+     "record": "BOOK ccbgssse020-graycowl.esl:000836 (ccbgssse020-graycowl.esl)"
     }
    ],
    "quests": [
@@ -24077,6 +24852,10 @@
     {
      "quest": "The Ultimate Feast",
      "id": "ccBGSSSE001-Fish.esm:0009E3"
+    },
+    {
+     "quest": "The Restless",
+     "id": "ccbgssse031-advcyrus.esm:000FDC"
     },
     {
      "quest": "A Dying Wish",
@@ -24911,7 +25690,15 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "pointers": [
+    {
+     "kind": "book",
+     "book": "Fishing Mastery, v4",
+     "words": "Before we get to the fish, we should first discuss the places one can go that are suitable for fishing in the dark.\r\n\r\nBrood Cavern, in the mountains south of Morthal, is well known by hunters as a place of shelter and hungry fish eager to bite your hook. You may have to contend",
+     "record": "BOOK ccBGSSSE001-Fish.esm:000ABA (ccBGSSSE001-Fish.esm)"
+    }
+   ]
   },
   {
    "id": "Skyrim.esm:019154",
@@ -25032,6 +25819,12 @@
      "quest": "Carriage system dialogue",
      "words": "I wouldn't wander here alone at night. Folk go missing around Chillwind Depths, the cave just over those falls.",
      "record": "INFO Skyrim.esm:0DD75D (Skyrim.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Fishing Mastery, v4",
+     "words": "been seen by many coming and going from its entrance. It may be best to fish elsewhere for now.\r\n\r\nFor the truly brave, Chillwind Depths south of the Dragon Bridge is rumored to have dark waters that ripple with life. Take care not to venture far from the entrance, as this cave i",
+     "record": "BOOK ccBGSSSE001-Fish.esm:000ABA (ccBGSSSE001-Fish.esm)"
     }
    ]
   },
@@ -30687,6 +31480,79 @@
    ]
   },
   {
+   "id": "Dragonborn.esm:01BFE4",
+   "name": "Attius Farm Location",
+   "edid": "DLC2RR01AttiusFarmLocation",
+   "type": "Landmark",
+   "keywords": [],
+   "hold": "Solstheim",
+   "nearestTown": {
+    "town": "Raven Rock",
+    "km": 0.2,
+    "walk": "next to it"
+   },
+   "nearestCity": null,
+   "inTown": null,
+   "plugin": "ccasvsse001-almsivi.esm",
+   "marker": null,
+   "namedBy": [
+    "homes",
+    "quests"
+   ],
+   "namedByQuest": [
+    "March of the Dead"
+   ],
+   "homeOf": [
+    "Buyer"
+   ],
+   "world": "DLC2SolstheimWorld",
+   "pos": [
+    34816.0,
+    22528.0,
+    null
+   ],
+   "posFrom": "cells",
+   "actors": {
+    "count": 2,
+    "livesHere": "Bandit",
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 1,
+      "range": [
+       25,
+       30
+      ]
+     }
+    ],
+    "floor": 4,
+    "ceiling": 30,
+    "atLevel": [
+     {
+      "from": 1,
+      "meets": [
+       4,
+       30
+      ],
+      "words": "from 1, 4 to 30"
+     }
+    ],
+    "boss": {
+     "name": "Redoran Guard",
+     "level": "leveled 25-30"
+    }
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10,
+   "quests": [
+    {
+     "quest": "March of the Dead",
+     "id": "Dragonborn.esm:018B13"
+    }
+   ]
+  },
+  {
    "id": "Dragonborn.esm:014296",
    "name": "Beast Stone",
    "edid": "DLC2StoneBeastLocation",
@@ -32059,10 +32925,26 @@
    "danger": {
     "traps": true
    },
+   "pointers": [
+    {
+     "kind": "book",
+     "book": "Heretic Dossier: Blacksmith's Confessional",
+     "words": "'m not sure if that's a joke, seeing as I run the forge. \r\n\r\nWhen I ask him which smith, he tells me, a Dwarven one. In Fahlbtharz.\r\n\r\nMy face goes white. Kenro says, \"You look like you've seen a ghost.\" \r\n\r\nI say to him, \"No, have you?\" And he just smiles.",
+     "record": "BOOK ccasvsse001-almsivi.esm:00082E (ccasvsse001-almsivi.esm)"
+    }
+   ],
    "quests": [
     {
      "quest": "Init quest",
      "id": "Dragonborn.esm:016E02"
+    },
+    {
+     "quest": "Ghosts of the Tribunal",
+     "id": "ccasvsse001-almsivi.esm:000CC3"
+    },
+    {
+     "quest": "Trueflame",
+     "id": "ccasvsse001-almsivi.esm:0990EF"
     }
    ]
   },
@@ -35103,6 +35985,36 @@
     },
     {
      "kind": "book",
+     "book": "Masks of the Tribunal",
+     "words": "o recover the artifacts of her fellow God-Kings. We have received word that the Mask of Vivec is being transported from Raven Rock to an unknown ship at the dock. We don't know the destination, only that to ensure secrecy, multiple couriers are being used to hide the identity of",
+     "record": "BOOK ccasvsse001-almsivi.esm:000FEF (ccasvsse001-almsivi.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Hand Kenro's Note",
+     "words": "as Her chosen, she will guide me to them.\r\n\r\nFor now, I will return to the temple. The entrance sits above the mine in Raven Rock, perched atop cliffs of basalt. But even if one finds the cave, only the devout know the way inside the temple. I spin the words and the way opens.",
+     "record": "BOOK ccasvsse001-almsivi.esm:00082C (ccasvsse001-almsivi.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Masks of the Tribunal",
+     "words": "o recover the artifacts of her fellow God-Kings. We have received word that the Mask of Vivec is being transported from Raven Rock to an unknown ship at the dock. We don't know the destination, only that to ensure secrecy, multiple couriers are being used to hide the identity of",
+     "record": "BOOK ccasvsse001-almsivi.esm:00082D (ccasvsse001-almsivi.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Notice of Sale - Nix-Hound",
+     "words": "t, and can even help take some of the load off your back during your travels.\r\n\r\nPlease see me at the Retching Netch in Raven Rock if you are interested.\r\n\r\nSigned,\r\nGeldis Sadri\r\nThe Retching Netch Corner Club",
+     "record": "BOOK ccbgssse035-petnhound.esl:000803 (ccbgssse035-petnhound.esl)"
+    },
+    {
+     "kind": "book",
+     "book": "Certificate of Authenticity",
+     "words": "al affinity. Guaranteed to retain its luster and resist weathering for years to come.\r\n\r\nCrafted by Hugin Ice-Shaper of Raven Rock, Master Artisan",
+     "record": "BOOK ccedhsse001-norjewel.esl:000820 (ccedhsse001-norjewel.esl)"
+    },
+    {
+     "kind": "book",
      "book": "History of Wyrmstooth",
      "words": "arce in quantity and as such the island never garnered the same attention from the Empire that the mining settlement of Raven Rock on Solstheim enjoyed.\r\n\r\nDue to waning interest, Fort Moonwatch now serves as the Empire's primary garrison on the island. Fort Valus was originally",
      "record": "BOOK Wyrmstooth.esp:30EC1D (Wyrmstooth.esp)"
@@ -35134,6 +36046,10 @@
     {
      "quest": "Clean Sweep",
      "id": "Dragonborn.esm:024DFC"
+    },
+    {
+     "quest": "Ghosts of the Tribunal",
+     "id": "ccasvsse001-almsivi.esm:000CC3"
     }
    ]
   },
@@ -36454,6 +37370,18 @@
      "quest": "ACFMoretoSayRavenRockGuardsQuest",
      "words": "They serve the best sujamma I've ever tasted over at the Retching Netch. Worth every coin.",
      "record": "INFO moretosaycityguards.esp:000948 (moretosaycityguards.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Notice of Sale - Nix-Hound",
+     "words": "hey make a good pet, and can even help take some of the load off your back during your travels.\r\n\r\nPlease see me at the Retching Netch in Raven Rock if you are interested.\r\n\r\nSigned,\r\nGeldis Sadri\r\nThe Retching Netch Corner Club",
+     "record": "BOOK ccbgssse035-petnhound.esl:000803 (ccbgssse035-petnhound.esl)"
+    },
+    {
+     "kind": "book",
+     "book": "Notice of Sale - Nix-Hound",
+     "words": "ing your travels.\r\n\r\nPlease see me at the Retching Netch in Raven Rock if you are interested.\r\n\r\nSigned,\r\nGeldis Sadri\r\nThe Retching Netch Corner Club",
+     "record": "BOOK ccbgssse035-petnhound.esl:000803 (ccbgssse035-petnhound.esl)"
     }
    ],
    "quests": [
@@ -37534,6 +38462,14 @@
    "worthGoingFor": {
     "bossChest": true
    },
+   "pointers": [
+    {
+     "kind": "book",
+     "book": "Bounty: Dwarven Investigation",
+     "words": "Bounty\r\n\r\n Fishermen have rumored that at the mouth of Bronze Water Cave lies a strange mechanism, undoubtedly of Dwarven make, whose purpose is yet unknown. As my research leaves me too preoccupied, I seek a reliab",
+     "record": "BOOK ccBGSSSE001-Fish.esm:000B2F (ccBGSSSE001-Fish.esm)"
+    }
+   ],
    "quests": [
     {
      "quest": "Blindsighted",
@@ -38402,6 +39338,12 @@
      "quest": "BYOHHousePale",
      "words": "Just follow the road south from Dawnstar, past Fort Dunstad, then head south.",
      "record": "INFO HearthFires.esm:01770B (HearthFires.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Arch Necromancer's First Clue",
+     "words": "the Nightgate Inn, where they cooked themselves a meal before snuffing the light there.\r\n\r\nFinally, they head north to Fort Dunstad, where their journey ends.\r\n\r\nOnly when they had gathered the light of four souls did they receive the blessing from the King of Worms. \r\n\r\nTrace t",
+     "record": "BOOK ccrmssse001-necrohouse.esl:000CDE (ccrmssse001-necrohouse.esl)"
     }
    ],
    "quests": [
@@ -40097,14 +41039,13 @@
    ]
   },
   {
-   "id": "Skyrim.esm:020054",
+   "id": "Skyrim.esm:018A4F",
    "name": "Nightgate Inn",
-   "edid": "NightgateInnLocation",
+   "edid": "NightgateInnExteriorLocation",
    "type": "Inn",
    "keywords": [
-    "LocTypeDwelling",
-    "LocTypeHouse",
-    "LocTypeInn"
+    "LocTypeHabitation",
+    "LocTypeHabitationHasInn"
    ],
    "hold": "The Pale",
    "nearestTown": {
@@ -40118,21 +41059,13 @@
     "walk": "a short walk"
    },
    "inTown": null,
-   "plugin": "Skyrim.esm",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:017785",
    "namedBy": [
-    "homes",
     "quests"
    ],
    "namedByQuest": [
-    "A False Front",
-    "BCSLL Vendor Quest",
-    "Recipe for Disaster"
-   ],
-   "homeOf": [
-    "Balagog gro-Nolob",
-    "Fultheim",
-    "Hadring"
+    "Revenge, Hired Thugs"
    ],
    "world": "Tamriel",
    "pos": [
@@ -40141,14 +41074,24 @@
     -6135.3
    ],
    "posFrom": "marker",
+   "alsoRecordedAs": [
+    {
+     "id": "Skyrim.esm:020054",
+     "edid": "NightgateInnLocation",
+     "plugin": "Skyrim.esm"
+    }
+   ],
    "actors": {
-    "count": 3,
+    "count": 4,
     "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
      "Sneak: Legend of Krately House"
+    ],
+    "crafting": [
+     "a tanning rack"
     ]
    },
    "pointers": [
@@ -40192,9 +41135,27 @@
     },
     {
      "kind": "book",
+     "book": "Fishing Mastery, v3",
+     "words": "er off the docks of Windhelm. Fishing from the sea near the ships in Dawnstar should also lead to a few bites. Finally, Nightgate Inn has a small lake that visitors have been known to enjoy casting their lines into during their stays.\r\n \r\n \r\nngler Larvae\r\n\r\nCaught in Freezing Wat",
+     "record": "BOOK ccBGSSSE001-Fish.esm:0009AF (ccBGSSSE001-Fish.esm)"
+    },
+    {
+     "kind": "book",
      "book": "Lost Caravan Guard's Note",
      "words": "ll, we've made it to Windhelm without so much as a papercut. Come morning we're heading out west along the river toward Nightgate Inn. If all goes well we'll reach the mountain pass by midday. Still, we'd get there sooner if not for all the stops.",
      "record": "BOOK ccbgssse008-wraithguard.esl:000819 (LoreRim - World Fixes.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Undercover Guard's Journal",
+     "words": "siness to finish in Solitude but it shouldn't take longer than a week.\r\n\r\n4E 201, 25 Sun's Height\r\nWhile the patrons at Nightgate Inn were uncooperative and brusque, I don't believe any of them are bandits. I've asked our informant to travel to the inn to confirm, but in the mean",
+     "record": "BOOK ccbgssse052-ba_iron.esl:000827 (ccbgssse052-ba_iron.esl)"
+    },
+    {
+     "kind": "book",
+     "book": "Arch Necromancer's First Clue",
+     "words": "to Falkreath, and make use of the alchemist's table.\r\n\r\nNext they travel northeast, past the river, and stopped at the Nightgate Inn, where they cooked themselves a meal before snuffing the light there.\r\n\r\nFinally, they head north to Fort Dunstad, where their journey ends.\r\n\r\nOn",
+     "record": "BOOK ccrmssse001-necrohouse.esl:000CDE (ccrmssse001-necrohouse.esl)"
     }
    ],
    "quests": [
@@ -40205,6 +41166,10 @@
     {
      "quest": "Recipe for Disaster",
      "id": "Skyrim.esm:01EA57"
+    },
+    {
+     "quest": "Revenge, Hired Thugs",
+     "id": "ccBGSSSE025-AdvDSGS.esm:21BD6D"
     },
     {
      "quest": "BCSLL Vendor Quest",
@@ -41137,7 +42102,21 @@
    },
    "danger": {
     "traps": true
-   }
+   },
+   "pointers": [
+    {
+     "kind": "book",
+     "book": "Stranger's Final Instructions",
+     "words": "her pocket was not an option, so you found another way.\r\n\r\nNow you'll need to put those skills to the test and more. In Silverdrift Lair is a tomb that houses an ancient Nord clan. Near a large chest is a corpse with a lantern, its candle still burning. It holds a key. \r\n\r\nWhen y",
+     "record": "BOOK ccbgssse020-graycowl.esl:00084C (ccbgssse020-graycowl.esl)"
+    },
+    {
+     "kind": "book",
+     "book": "Stranger's Final Instructions",
+     "words": "ood. You picked her pockets clean and made the switch. \r\n\r\nNow you'll need to put those skills to the test and more. In Silverdrift Lair is a tomb that houses an ancient Nord clan. Near a large chest is a corpse with a lantern, its candle still burning. It holds a key.\r\n\r\nWhen yo",
+     "record": "BOOK ccbgssse020-graycowl.esl:00084D (ccbgssse020-graycowl.esl)"
+    }
+   ]
   },
   {
    "id": "Skyrim.esm:019278",
@@ -41813,6 +42792,12 @@
      "book": "Request for Help!",
      "words": "ng to describe. There's a priest of Mara that claims he might be able to help us, but so far, he simply sits within the Windpeak Inn scribbling notes. If you could find it in your heart to make the journey to our city and help us, I would forever be in your debt.\r\n\r\nMadena",
      "record": "BOOK Skyrim.esm:0F689C (Book Covers Skyrim.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Tolif's Journal",
+     "words": "22nd of Sun's Height, 4E 201\r\n\r\nSold to Windpeak Inn: \r\nSalmon, 16\r\nArctic Char, 8\r\nCrab Legs, 12\r\n \r\n\r\n30th of Sun's Height, 4E 201\r\n\r\nA traveler came passing through, Seviur. Some kind of wizard. I'",
+     "record": "BOOK ccBGSSSE001-Fish.esm:0F9B3B (ccBGSSSE001-Fish.esm)"
     }
    ],
    "quests": [
@@ -42058,6 +43043,12 @@
      "book": "Atlas of Dragons",
      "words": "ing back to Dragon War era, according to documents recovered from Dragon Cult temples which record his burial near Lake Yorgrim.\r\n\r\nVuljotnaak - Death dating back to Dragon War or just after, according to recovered Dragon Cult documents, which record his burial in a mound near Gr",
      "record": "BOOK Skyrim.esm:0FF227 (Book Covers Skyrim.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Fishing Mastery, v3",
+     "words": "stead.\r\n\r\nAny place with freezing water will do, but if you're looking for a few places to get started, try fishing the Yorgrim River off the docks of Windhelm. Fishing from the sea near the ships in Dawnstar should also lead to a few bites. Finally, Nightgate Inn has a small lak",
+     "record": "BOOK ccBGSSSE001-Fish.esm:0009AF (ccBGSSSE001-Fish.esm)"
     },
     {
      "kind": "book",
@@ -44375,6 +45366,12 @@
     },
     {
      "kind": "book",
+     "book": "Ghost Sighting",
+     "words": "The emptier the bottle, the taller the tale. \r\n\r\nBut what I saw last night changed my mind. I was heading south toward Dushnikh Yal, to set up camp and mine the hills in the morning. I had just crossed the river, when I saw something come out of the fog. \r\n\r\nIt was just like in",
+     "record": "BOOK ccedhsse002-splkntset.esl:000838 (ccedhsse002-splkntset.esl)"
+    },
+    {
+     "kind": "book",
      "book": "Report",
      "words": "en those warriors. For his own exceptional skill in sword and shield, he pointed instead towards the Orc strongholds of Dushnikh Yal and Mor Khazgur respectively. He claims to have begun learning how to move in his heavy armor in Dushnikh Yal, too.\r\n\r\nI was also able to uncover t",
      "record": "BOOK Requiem.esp:AD3757 (Requiem.esp)"
@@ -46236,6 +47233,12 @@
      "quest": "aaJorAthisFarkasMQ203",
      "words": "I saved a fisherman near Karthspire the other day. He told me there were three Forsworn tangled in his nets.",
      "record": "INFO IDE Jorrvaskr.esp:000A28 (IDE Jorrvaskr.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Forsworn Shaman's Note",
+     "words": "We've killed the traitor and given the knight's heart to the mother. She's gone back to Karthspire to perform the ritual.\r\n\r\nWe'll stand watch until she returns, and drain the blood of any knights who interfere.",
+     "record": "BOOK ccedhsse002-splkntset.esl:000855 (ccedhsse002-splkntset.esl)"
     }
    ],
    "quests": [
@@ -46547,6 +47550,18 @@
      "book": "Dawnguard Orders - Lynoit",
      "words": "the small island south of Solitude Sawmill.\r\n - Due east of the entrance to the ruin Volskygge.\r\n - On the east side of Karthwasten Bridge.\r\n \r\nIf these reports are to be believed, the situation may be far more dangerous than you realize. Be cautious.",
      "record": "BOOK Dawnguard.esm:003521 (Book Covers Skyrim.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Saints Bandit Leader's Journal",
+     "words": "st skim a bit off the top each time.\r\n\r\nKinthal should be happy with our latest take. He'll be leaving his camp up near Karthwasten to pay us a visit soon.\r\n\r\nThose damn Seducers were eating into our profits, until we drove them off up north. Other merchants pass through those pa",
+     "record": "BOOK ccBGSSSE025-AdvDSGS.esm:00087A (ccBGSSSE025-AdvDSGS.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Fijeh's Instructions",
+     "words": "intelligence from two Remnants regarding the whereabouts of Rakeed. One should be found behind the Miner's Barracks in Karthwasten. The other should be waiting for you in front of Vilemyr Inn in Ivarstead. They will respond to the phrase, \"The ravens take flight once more.\"",
+     "record": "BOOK ccedhsse003-redguard.esl:000816 (ccedhsse003-redguard.esl)"
     },
     {
      "kind": "book",
@@ -47277,7 +48292,13 @@
     "count": 3,
     "hostile": false
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily"
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "quests": [
+    {
+     "quest": "Revenge, Hired Thugs",
+     "id": "ccBGSSSE025-AdvDSGS.esm:21BD5F"
+    }
+   ]
   },
   {
    "id": "Lux Via - Markarth Entrance and Farm Overhaul.esp:109D41",
@@ -48030,6 +49051,12 @@
     },
     {
      "kind": "book",
+     "book": "Bounty: Lost Wares",
+     "words": "Bounty: Lost Wares\r\n\r\n A tragedy has befallen this one's business. We were set upon by wolves along the road west of Old Hroldan Inn in the Reach. While dealing with the beasts our cart overturned, sending everything tumbling down the hill and into the nearby river below. In t",
+     "record": "BOOK ccBGSSSE001-Fish.esm:000B85 (ccBGSSSE001-Fish.esm)"
+    },
+    {
+     "kind": "book",
      "book": "Letter to the Champion",
      "words": "Dear Champion,\r\n\r\nMeet me at the Old Hroldan Inn. I have some information you will find useful.\r\n\r\nFrom,\r\n A Friend",
      "record": "BOOK Meridia.esp:0088DC (Meridia.esp)"
@@ -48143,7 +49170,21 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "pointers": [
+    {
+     "kind": "book",
+     "book": "Fijeh's Letter to <Alias=Player>",
+     "words": "'s too late.\r\n\r\n I need someone like you who can move freely throughout Skyrim and not arouse suspicion. Speak to me in Purewater Run in the hills of Markarth. I await your arrival.\r\n\r\n--Fijeh",
+     "record": "BOOK ccedhsse003-redguard.esl:000814 (ccedhsse003-redguard.esl)"
+    },
+    {
+     "kind": "book",
+     "book": "Fijeh's Letter to <Alias=Player>",
+     "words": "'s too late.\r\n\r\n I need someone like you who can move freely throughout Skyrim and not arouse suspicion. Speak to me in Purewater Run in the hills of Markarth. I await your arrival.\r\n\r\n--Fijeh",
+     "record": "BOOK ccedhsse003-redguard.esl:000815 (ccedhsse003-redguard.esl)"
+    }
+   ]
   },
   {
    "id": "Skyrim.esm:01928F",
@@ -48731,6 +49772,7 @@
     ],
     "zoneMin": 8,
     "boss": {
+     "name": "Bandit Chief",
      "level": "leveled 19-24"
     }
    },
@@ -49585,6 +50627,18 @@
     },
     {
      "kind": "book",
+     "book": "Wanted: Fishing Tutor",
+     "words": "ch while under your masterful tutelage.\r\n\r\n Be assured that you shall be compensated handsomely. I'll be waiting in the Silver-Blood Inn for all serious inquiries.\r\n\r\n-- Lynea",
+     "record": "BOOK ccBGSSSE001-Fish.esm:000B2C (ccBGSSSE001-Fish.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Rogue's Job Offer",
+     "words": "s around here have it. A bit out of the way, but worth it. \r\n\r\nOnce the sujamma's spiked, convince the innkeeper at the Silver-Blood Inn to sell it. When the two stop by the inn, the drink will turn the Dunmer's insides out, and keep him at the bar for a good long while.\r\n\r\nOnce",
+     "record": "BOOK cckrtsse001_altar.esl:000805 (cckrtsse001_altar.esl)"
+    },
+    {
+     "kind": "book",
      "book": "Thalmor Dossier: Kleppr",
      "words": "us: Asset (cooperative), Emissary Level Approval\r\n\r\nDescription: Male, Nord, late 40s\r\n\r\nBackground: \r\nInnkeeper of the Silver-Blood Inn of Markarth. He has, for now, been receptive to our interests, provided enough gold. He is ready to relay messages and interesting facts we wou",
      "record": "BOOK More Thalmor Dossiers.esp:000A25 (More Thalmor Dossiers.esp)"
@@ -49600,6 +50654,10 @@
     {
      "quest": "The Forsworn Conspiracy",
      "id": "Skyrim.esm:018B4B"
+    },
+    {
+     "quest": "Fortunate Son",
+     "id": "cckrtsse001_altar.esl:000A90"
     },
     {
      "quest": "A Dying Wish",
@@ -50268,6 +51326,7 @@
     "quests"
    ],
    "namedByQuest": [
+    "Fortunate Son",
     "The Forsworn Conspiracy"
    ],
    "homeOf": [
@@ -50352,6 +51411,10 @@
     {
      "quest": "The Forsworn Conspiracy",
      "id": "Skyrim.esm:018B4B"
+    },
+    {
+     "quest": "Fortunate Son",
+     "id": "cckrtsse001_altar.esl:000A90"
     }
    ]
   },
@@ -50603,6 +51666,12 @@
      "book": "Gaius Maro's Schedule",
      "words": "urdas - Whiterun, Dragonsreach\r\n- Turdas evening - Whiterun, the Bannered Mare (food and sleep)\r\n\r\n- Fredas - Markarth, Understone Keep\r\n- Fredas evening - Markarth, guard tower (food and sleep)\r\n\r\n- Loredas & Sundas - To be spent at your discretion\r\n\r\n- Repeat (until I have reca",
      "record": "BOOK Skyrim.esm:015475 (Book Covers Skyrim.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Notice of Sale - Dwarven Mudcrab",
+     "words": "seem to be quite trustworthy. Would you be interested in purchasing him? If so, please meet with me in my laboratory in Understone Keep.\r\n\r\n-Calcelmo",
+     "record": "BOOK ccbgssse010-petdwarvenarmoredmudcrab.esl:000806 (ccbgssse010-petdwarvenarmoredmudcrab.esl)"
     }
    ],
    "quests": [
@@ -50617,6 +51686,10 @@
     {
      "quest": "Hard Answers",
      "id": "Skyrim.esm:021552"
+    },
+    {
+     "quest": "Mudcrab Control Quest",
+     "id": "ccbgssse010-petdwarvenarmoredmudcrab.esl:000803"
     },
     {
      "quest": "Release Ogmund if he's in the stockade in Markarth",
@@ -51244,6 +52317,12 @@
     "traps": true
    },
    "pointers": [
+    {
+     "kind": "book",
+     "book": "Linelle's Note",
+     "words": "At Arcwind Point, the bones of the dead rattle in their stone cages. But the old magic is strong in those mountains, and with the help of the cat who is a rat - a",
+     "record": "BOOK ccbgssse059-ba_dragonplate.esl:000864 (ccbgssse059-ba_dragonplate.esl)"
+    },
     {
      "kind": "book",
      "book": "The War of the Pines",
@@ -52001,12 +53080,22 @@
     },
     {
      "kind": "book",
+     "book": "Antonius' Note",
+     "words": "thar's mother or something, not sure why he hates me so.\r\n\r\nAnyways, I sold the armor to some High Elf collector at the Bee and Barb. I should probably just kill her. I would kill the bandits running the pits, but then where would I get my fix.",
+     "record": "BOOK ccbgssse055-ba_orcishscaled.esl:00081A (ccbgssse055-ba_orcishscaled.esl)"
+    },
+    {
+     "kind": "book",
      "book": "Journal - Book Collector's",
      "words": "lesson but they threatened to shoot me if they ever saw me again.\r\n\r\nI reckon a round dozen of Riften's finest from the Bee and Barb should sort them out. Men who punch first and demand payment afterwards! In fact, with my contacts I should be able to get the sort of folks for wh",
      "record": "BOOK Book Covers Skyrim - Lost Library.esp:26A95E (Book Covers Skyrim - Lost Library.esp)"
     }
    ],
    "quests": [
+    {
+     "quest": "Blue in the Face",
+     "id": "ccbgssse040-advobgobs.esl:0009B6"
+    },
     {
      "quest": "A Dying Wish",
      "id": "cckrtsse001_altar.esl:000D63"
@@ -52528,6 +53617,91 @@
    ]
   },
   {
+   "id": "Skyrim.esm:019157",
+   "name": "Clearspring Tarn",
+   "edid": "ClearspringTarnLocation",
+   "type": "Clearing",
+   "keywords": [
+    "LocTypeAnimalDen",
+    "LocTypeClearable",
+    "LocTypeDungeon"
+   ],
+   "hold": "The Rift",
+   "nearestTown": {
+    "town": "Darkwater Crossing",
+    "km": 0.3,
+    "walk": "next to it"
+   },
+   "nearestCity": {
+    "town": "Riften",
+    "km": 0.8,
+    "walk": "a short walk"
+   },
+   "inTown": null,
+   "plugin": "ccBGSSSE001-Fish.esm",
+   "marker": "Skyrim.esm:016223",
+   "world": "Tamriel",
+   "pos": [
+    133092.9,
+    -54772.0,
+    9102.7
+   ],
+   "posFrom": "marker",
+   "actors": {
+    "count": 8,
+    "livesHere": "Skeleton",
+    "alsoHere": [
+     "Troll"
+    ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 2,
+      "range": [
+       2,
+       2
+      ]
+     },
+     {
+      "kind": "Troll",
+      "count": 1,
+      "range": [
+       14,
+       14
+      ]
+     }
+    ],
+    "floor": 2,
+    "ceiling": 100,
+    "atLevel": [
+     {
+      "from": 1,
+      "meets": [
+       2,
+       100
+      ],
+      "words": "from 1, 2 to 100"
+     }
+    ],
+    "zoneMin": 2,
+    "boss": {
+     "name": "Troll",
+     "level": "level 14"
+    }
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Marksman: Vernaccus and Bourlor"
+    ]
+   },
+   "danger": {
+    "traps": true
+   }
+  },
+  {
    "id": "Skyrim.esm:01915C",
    "name": "Crystaldrift Cave",
    "edid": "CrystaldriftCaveLocation",
@@ -52618,9 +53792,21 @@
     },
     {
      "kind": "book",
+     "book": "Bandit's Note on Hidden Treasure",
+     "words": "An exotic treasure is said to be hidden in Crystaldrift Cave. Heard it from a coinless trader trying to save his own skin. Going to send a few to see if his story checks out.\r\n\r\nIf the story is true, we",
+     "record": "BOOK ccBGSSSE025-AdvDSGS.esm:000C41 (ccBGSSSE025-AdvDSGS.esm)"
+    },
+    {
+     "kind": "book",
      "book": "Hiring Notice",
      "words": "fer. \r\n\r\nIf me and my party have left by the time you have arrived, meet us at the excavation site south of Riften near Crystaldrift Cave.\r\n\r\nAmandia Screvius",
      "record": "BOOK LegendsOfAetherium.esp:0AA54B (LegendsOfAetherium.esp)"
+    }
+   ],
+   "quests": [
+    {
+     "quest": "Nerveshatter",
+     "id": "ccBGSSSE025-AdvDSGS.esm:0010BF"
     }
    ]
   },
@@ -53412,6 +54598,18 @@
      "quest": "EGD_DialogueGuardsGeneral",
      "words": "I can't believe it. All those bandits at Faldar's Tooth are finally gone. Who could've slain them all, I wonder...",
      "record": "INFO Extended Guard Dialogue.esp:000891 (Extended Guard Dialogue.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Verrick's Note",
+     "words": "and the men it was moon sugar. \r\n\r\nThe funny thing is, I don't even have Bloodthirst anymore. I lost it at the pits at Faldar's Tooth, thinking I could just kill the mages and Gatharian once I got my hands on the other one. But when the spell went bad, the guild sealed the capta",
+     "record": "BOOK ccbgssse013-dawnfang.esl:000B91 (ccbgssse013-dawnfang.esl)"
+    }
+   ],
+   "quests": [
+    {
+     "quest": "Bloodthirst",
+     "id": "ccbgssse013-dawnfang.esl:000CA6"
     }
    ]
   },
@@ -54455,6 +55653,119 @@
     {
      "quest": "Loud and Clear",
      "id": "Skyrim.esm:02154E"
+    }
+   ]
+  },
+  {
+   "id": "ccbgssse040-advobgobs.esl:000D13",
+   "name": "Gromm's Pass",
+   "edid": "ccBGSSSE040_GrommsPassLocation",
+   "type": "Cave",
+   "keywords": [
+    "LocTypeClearable",
+    "LocTypeDungeon"
+   ],
+   "hold": "The Rift",
+   "nearestTown": {
+    "town": "Riften",
+    "km": 0.4,
+    "walk": "a short walk"
+   },
+   "nearestCity": {
+    "town": "Riften",
+    "km": 0.4,
+    "walk": "a short walk"
+   },
+   "inTown": null,
+   "plugin": "ccbgssse040-advobgobs.esl",
+   "marker": "ccbgssse040-advobgobs.esl:000BDF",
+   "world": "Tamriel",
+   "pos": [
+    180710.9,
+    -126062.9,
+    12583.2
+   ],
+   "posFrom": "marker",
+   "actors": {
+    "count": 36,
+    "livesHere": "Skeleton",
+    "alsoHere": [
+     "Riekling",
+     "Wolf"
+    ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 22,
+      "range": [
+       14,
+       14
+      ]
+     },
+     {
+      "kind": "Riekling",
+      "count": 8,
+      "range": [
+       14,
+       30
+      ]
+     },
+     {
+      "kind": "Wolf",
+      "count": 1,
+      "range": [
+       14,
+       14
+      ]
+     }
+    ],
+    "floor": 14,
+    "ceiling": 30,
+    "atLevel": [
+     {
+      "from": 1,
+      "meets": [
+       14,
+       30
+      ],
+      "words": "from 1, 14 to 30"
+     }
+    ],
+    "zoneMin": 14,
+    "boss": {
+     "name": "Blue God",
+     "level": "level 30"
+    }
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
+   "pointers": [
+    {
+     "kind": "dialogue",
+     "speaker": "Lucien Flavius",
+     "speakerPlace": "Dead Man's Drink",
+     "quest": "JR17LucienCCGoblins",
+     "words": "Well, this is Gromm's Pass! So tantalisingly close to home... anyway, watch out for A, goblins and B, terrible manifestations of Daedric Princes. Joy.",
+     "record": "INFO Lucien-AnniversaryEdition-Patch.esp:170803 (Lucien-AnniversaryEdition-Patch.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Letter to Clexius",
+     "words": "?\r\n\r\nRegardless, if some Daedric being has found its way to this realm, this is a cause for concern. I'll be heading to Gromm's Pass in the morning to investigate.\r\n\r\nFaithfully yours, \r\nAvanessa Calladius",
+     "record": "BOOK ccbgssse040-advobgobs.esl:000A4B (ccbgssse040-advobgobs.esl)"
+    }
+   ],
+   "quests": [
+    {
+     "quest": "Blue in the Face",
+     "id": "ccbgssse040-advobgobs.esl:0009B6"
     }
    ]
   },
@@ -55799,9 +57110,33 @@
     },
     {
      "kind": "book",
+     "book": "Fishing Mastery, v1",
+     "words": "ch.\r\n\r\nOnce you've had your fill of lake fish, head west to try your hand at fishing from the river that runs alongside Ivarstead. End your journey at Vilemyr Inn with aching arms and a full belly.\r\n\r\n \r\n \r\narp\r\n\r\nCaught in Temperate Lakes and Streams\r\nLarge in Size\r\nUncommonly C",
+     "record": "BOOK ccBGSSSE001-Fish.esm:000E7F (ccBGSSSE001-Fish.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Eranya's Research Notes",
+     "words": "r's brother over rightful ownership of a silver mine. He is said to have been laid to rest in Shroud Hearth Barrow near Ivarstead.\r\n\r\nI will now return to Sivdur's Respite, take some additional notes, and then travel east to Windhelm where a few good sellswords might be found tha",
+     "record": "BOOK ccbgssse005-goldbrand.esl:00080E (ccbgssse005-goldbrand.esl)"
+    },
+    {
+     "kind": "book",
+     "book": "Excavation Leader's Journal",
+     "words": "e have no time to waste. I have selected only our most trusted disciples to set up a base camp in the mountains west of Ivarstead. We will operate under the darkness of night to excavate our own pathway through the Jerall Mountains and into Rielle. It will take time, but it is th",
+     "record": "BOOK ccbgssse067-daedinv.esm:076275 (ccbgssse067-daedinv.esm)"
+    },
+    {
+     "kind": "book",
      "book": "Skorvild's Journal",
      "words": "en the gate. What that artifact might be, I do not know. I heard something about an excavation camp to the southwest of Ivarstead, near a mountain pass. Perhaps more information can be found there.\r\n\r\nLastly, in order to keep its location secret, all but the highest priests in th",
      "record": "BOOK ccbgssse067-daedinv.esm:000B6F (CauseTweakAlternateStart.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Fijeh's Instructions",
+     "words": "uld be found behind the Miner's Barracks in Karthwasten. The other should be waiting for you in front of Vilemyr Inn in Ivarstead. They will respond to the phrase, \"The ravens take flight once more.\"\r\n\r\n Report back to me when the job is done. We've no time to waste.\r\n\r\n--Fijeh",
+     "record": "BOOK ccedhsse003-redguard.esl:000816 (ccedhsse003-redguard.esl)"
     },
     {
      "kind": "book",
@@ -56041,6 +57376,12 @@
      "quest": "The Cursed Tribe",
      "words": "Yes, at Largashbur. Here, take a look.",
      "record": "INFO The Cursed Tribe - Quest Expansion.esp:000089 (The Cursed Tribe - Quest Expansion.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Blue God's Journal",
+     "words": "hem. If I come back with a full stomach maybe I can convince the others we don't need to hunt.\r\n\r\nDay 7\r\nI came back to Largashbur with my sack full of mushrooms and one by one they spit them out and mocked my hunting skills.\r\n\r\nIf that wasn't humiliating enough, Chief Yamarz too",
+     "record": "BOOK ccbgssse040-advobgobs.esl:000887 (ccbgssse040-advobgobs.esl)"
     },
     {
      "kind": "book",
@@ -56858,6 +58199,103 @@
    "discoveryXp": 10
   },
   {
+   "id": "ccbgssse067-daedinv.esm:033F35",
+   "name": "Red Scar Cavern",
+   "edid": "ccBGSSSE067_MythicDawnRedScarCavernLocation",
+   "type": "Cave",
+   "keywords": [
+    "LocTypeClearable",
+    "LocTypeDungeon"
+   ],
+   "hold": "The Rift",
+   "nearestTown": {
+    "town": "Shor's Stone",
+    "km": 0.4,
+    "walk": "a short walk"
+   },
+   "nearestCity": {
+    "town": "Riften",
+    "km": 0.5,
+    "walk": "a short walk"
+   },
+   "inTown": null,
+   "plugin": "unofficial skyrim creation club content patch.esl",
+   "marker": "ccbgssse067-daedinv.esm:1D67E3",
+   "world": "Tamriel",
+   "pos": [
+    188224.9,
+    -63296.2,
+    10015.6
+   ],
+   "posFrom": "marker",
+   "actors": {
+    "count": 36,
+    "livesHere": "Bandit",
+    "alsoHere": [
+     "Warlock",
+     "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 18,
+      "range": [
+       36,
+       50
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 1,
+      "range": [
+       70,
+       70
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       15,
+       15
+      ]
+     }
+    ],
+    "floor": 15,
+    "ceiling": 75,
+    "atLevel": [
+     {
+      "from": 1,
+      "meets": [
+       15,
+       75
+      ],
+      "words": "from 1, 15 to 75"
+     }
+    ],
+    "zoneMin": 15,
+    "boss": {
+     "name": "Vonos",
+     "level": "level 70"
+    }
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "quests": [
+    {
+     "quest": "The Cause",
+     "id": "ccbgssse067-daedinv.esm:06BFC1"
+    }
+   ]
+  },
+  {
    "id": "Skyrim.esm:0226B3",
    "name": "Redbelly Mine",
    "edid": "ShorsStoneRedbellyMineLocation",
@@ -57221,46 +58659,22 @@
    ],
    "posFrom": "marker",
    "actors": {
-    "count": 138,
+    "count": 24,
     "hostile": false
    },
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy: Song of the Alchemists",
-     "Enchanting: Catalogue of Weapon Enchantments",
-     "Pickpocket: Beggar",
      "Speech: A Dance in Fire, Vol. 7"
     ],
-    "bossChest": true,
     "crafting": [
-     "a sharpening wheel",
      "a tanning rack",
-     "an alchemy lab",
-     "an anvil",
-     "an armor workbench",
-     "an enchanting table"
-    ],
-    "shrines": [
-     "Shrine of Akatosh",
-     "Shrine of Kynareth",
-     "Shrine of Mara"
+     "an armor workbench"
     ]
-   },
-   "danger": {
-    "traps": true
    },
    "quests": [
     {
-     "quest": "Bow to the Master",
-     "id": "Skyrim.esm:0E3E9B"
-    },
-    {
      "quest": "A Chance Arrangement",
      "id": "Skyrim.esm:021556"
-    },
-    {
-     "quest": "Pets of Skyrim",
-     "id": "ccvsvsse002-pets.esl:0008C8"
     },
     {
      "quest": "Dine and Dash",
@@ -57277,10 +58691,6 @@
     {
      "quest": "Send the Vigil to Riften",
      "id": "Vigilant.esm:4E2517"
-    },
-    {
-     "quest": "Fists of Fury - The Rift",
-     "id": "Fists of Fury - Skyrim.esp:04C991"
     }
    ]
   },
@@ -57411,6 +58821,36 @@
      "book": "Purchase Agreement from Bolli",
      "words": "greement certifies that Kleppr, owner of the Silver Blood Inn within the City of Markarth, will pay Bolli, owner of the Riften Fishery within the City of Riften, the sum of three septims per bushel of fish. Payment is expected upon delivery and product is guaranteed to be fresh.",
      "record": "BOOK Skyrim.esm:0557EC (Book Covers Skyrim.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Fishing Mastery, v1",
+     "words": "here, but an excellent way to begin one's fishing journey is to start by casting your line right off the docks near the Riften Fishery into Lake Honrich.\r\n\r\nOnce you've had your fill of lake fish, head west to try your hand at fishing from the river that runs alongside Ivarstead.",
+     "record": "BOOK ccBGSSSE001-Fish.esm:000E7F (ccBGSSSE001-Fish.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Line and Lure",
+     "words": "elusive creatures.\r\n \r\nIf you seek the very rarest of fish, special rods are required. Seek the advice of those in the Riften Fishery. Follow their guidance and wisdom, just as you have done with me.\r\n \r\nOf course, not every catch will feed your belly. Some may fill your coin pu",
+     "record": "BOOK ccBGSSSE001-Fish.esm:0008E5 (ccBGSSSE001-Fish.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Bounty: Juvenile Mudcrab",
+     "words": "r hanging up my sword and bow to live a quieter life, I decided to study the lives and habitats of mudcrabs here at the Riften Fishery. It is my hope that one day we might breed mudcrabs much like we do fish. If only everyone else at the Fishery shared my interest...\r\n\r\nI am in s",
+     "record": "BOOK ccBGSSSE001-Fish.esm:0009CC (ccBGSSSE001-Fish.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Bounty: Juvenile Mudcrab",
+     "words": "r hanging up my sword and bow to live a quieter life, I decided to study the lives and habitats of mudcrabs here at the Riften Fishery. It is my hope that one day we might breed mudcrabs much like we do fish. If only everyone else at the Fishery shared my interest...\r\n\r\nI am in s",
+     "record": "BOOK ccBGSSSE001-Fish.esm:0008E9 (ccBGSSSE001-Fish.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Fishing Work",
+     "words": "you, \r\n\r\nI've got more work for you. You're the one who seeks fishing challenges, right? If it was you, come by the Riften Fishery. If it wasn't you... well, that would be embarrassing, wouldn't it?\r\n\r\nSwims-In-Deep-Water",
+     "record": "BOOK ccBGSSSE001-Fish.esm:000EB0 (ccBGSSSE001-Fish.esm)"
     }
    ],
    "quests": [
@@ -57566,6 +59006,133 @@
     {
      "quest": "The Pursuit",
      "id": "Skyrim.esm:021553"
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:03B871",
+   "name": "Riften Ratway",
+   "edid": "RiftenRatwayLocation",
+   "type": "Landmark",
+   "keywords": [
+    "LocTypeHabitation"
+   ],
+   "hold": "The Rift",
+   "nearestTown": null,
+   "nearestCity": null,
+   "inTown": "Riften",
+   "plugin": "unofficial skyrim creation club content patch.esl",
+   "marker": null,
+   "namedBy": [
+    "homes",
+    "quests"
+   ],
+   "namedByQuest": [
+    "A Soul Divided",
+    "Bow to the Master",
+    "Fists of Fury - The Rift"
+   ],
+   "homeOf": [
+    "Brian the Drunk",
+    "Drahff",
+    "Ghostly Apparition"
+   ],
+   "actors": {
+    "count": 33,
+    "livesHere": "Bandit",
+    "alsoHere": [
+     "Thalmor",
+     "Skeleton"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 11,
+      "range": [
+       8,
+       30
+      ]
+     },
+     {
+      "kind": "Thalmor",
+      "count": 9,
+      "range": [
+       8,
+       39
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 1,
+      "range": [
+       8,
+       8
+      ]
+     }
+    ],
+    "floor": 8,
+    "ceiling": 39,
+    "atLevel": [
+     {
+      "from": 1,
+      "meets": [
+       8,
+       39
+      ],
+      "words": "from 1, 8 to 39"
+     }
+    ],
+    "zoneMin": 8,
+    "boss": {
+     "level": "leveled 20-39"
+    }
+   },
+   "respawns": "never",
+   "clearXp": 100,
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy: Song of the Alchemists",
+     "Enchanting: Catalogue of Weapon Enchantments",
+     "Pickpocket: Beggar"
+    ],
+    "crafting": [
+     "a sharpening wheel",
+     "a tanning rack",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench",
+     "an enchanting table"
+    ],
+    "shrines": [
+     "Shrine of Akatosh",
+     "Shrine of Kynareth",
+     "Shrine of Mara"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
+   "quests": [
+    {
+     "quest": "Bow to the Master",
+     "id": "Skyrim.esm:0E3E9B"
+    },
+    {
+     "quest": "Pets of Skyrim",
+     "id": "ccvsvsse002-pets.esl:0008C8"
+    },
+    {
+     "quest": "Shadowfoot Sanctum",
+     "id": "cceejsse003-hollow.esl:00082A"
+    },
+    {
+     "quest": "A Soul Divided",
+     "id": "ccbgssse013-dawnfang.esl:000F18"
+    },
+    {
+     "quest": "Fists of Fury - The Rift",
+     "id": "Fists of Fury - Skyrim.esp:04C991"
     }
    ]
   },
@@ -58052,6 +59619,12 @@
      "book": "Journal - Sinderion's",
      "words": "y who had a small farm near the city of Riften. By bartering my knowledge of nirnroot cultivation, I was able to secure Sarethi Farm as a launching point for my field research. I kept the knowledge of the crimson nirnroot a secret from Avrusa, but imparted everything else I knew",
      "record": "BOOK Skyrim.esm:0E4D6F (Book Covers Skyrim.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "List of Rainy Weather Fish",
+     "words": "rain did wonders for my scales. A high wind blew it off my head and into the water on my last fishing trip just west of Sarethi Farm. Perhaps you could find it?\r\n \r\n\r\nSpeaking of rain, the fish for your next challenge are only found on a rainy day:\r\n\r\nCatfish\r\nPearlfish\r\nPygmy Su",
+     "record": "BOOK ccBGSSSE001-Fish.esm:000A60 (ccBGSSSE001-Fish.esm)"
     }
    ]
   },
@@ -58256,6 +59829,30 @@
      "book": "The Nightingales, Vol. 2",
      "words": "traces of Drayven. After an unknown number of years passed, she finally located him in a small mining community called Shor's Stone. He was quite elderly now... no longer the spry rogue that had seduced Barenziah, but nevertheless he was still Dralsi's father and he treated her",
      "record": "BOOK Skyrim.esm:0F68AD (Wintersun - Reqtificated.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Vigilant's Report",
+     "words": "r mettle in gladiatorial combat. Long believed to be lost to time, it was recently uncovered by mining prospectors near Shor's Stone after discovering a new deposit of silver.\r\n\r\nUpon discovery, the miners say they witnessed a \"ghost, clad head to toe in armor\". While this alone",
+     "record": "BOOK ccbgssse016-umbra.esm:007760 (ccbgssse016-umbra.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Treasure Hunter's Journal",
+     "words": "on halls, glittering with gold and jewels!\r\n\r\nMaps in the Imperial Library place Champion's Rest east of the village of Shor's Stone. I will set out for the eastern mountains at dawn.\r\n\r\n \r\n13th of Sun's Dusk\r\n\r\nShort entry today. Day's hike, little to show for it. Why does Skyri",
+     "record": "BOOK ccbgssse016-umbra.esm:008230 (ccbgssse016-umbra.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Vigilant Enforcer's Journal",
+     "words": ".\r\n\r\nWithin the journal was a torn page, containing the following:\r\n\r\n\"In the shade of Velothi, where rivers run black\r\nShor's Stone at our feet, Whiteshore at our back\r\n\r\nWindhelm on our shoulders, beyond the fair night\r\nBefore the dawn rises, red scars bleed the light\"\r\n\r\nThis",
+     "record": "BOOK ccbgssse067-daedinv.esm:06BFC3 (ccbgssse067-daedinv.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Torn Note",
+     "words": "In the shade of Velothi, where rivers run black\r\nShor's Stone at our feet, Whiteshore at our back\r\n\r\nWindhelm on our shoulders, beyond the fair night\r\nBefore the dawn rises, red scars bleed the light.",
+     "record": "BOOK ccbgssse067-daedinv.esm:14CF0C (ccbgssse067-daedinv.esm)"
     },
     {
      "kind": "book",
@@ -58479,12 +60076,22 @@
      "book": "Journal - Wyndelius'",
      "words": "ll pay dearly for their crimes. Any who set foot within these walls will taste my wrath, my power. I am the guardian of Shroud Hearth Barrow! All who oppose me will fall...",
      "record": "BOOK Skyrim.esm:0D9B6B (Book Covers Skyrim.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Eranya's Research Notes",
+     "words": "seems to have slain Sivdur's brother over rightful ownership of a silver mine. He is said to have been laid to rest in Shroud Hearth Barrow near Ivarstead.\r\n\r\nI will now return to Sivdur's Respite, take some additional notes, and then travel east to Windhelm where a few good sel",
+     "record": "BOOK ccbgssse005-goldbrand.esl:00080E (ccbgssse005-goldbrand.esl)"
     }
    ],
    "quests": [
     {
      "quest": "Lifting the Shroud",
      "id": "Skyrim.esm:0D9B63"
+    },
+    {
+     "quest": "A Matter of Pride",
+     "id": "ccbgssse005-goldbrand.esl:000838"
     }
    ]
   },
@@ -59506,6 +61113,103 @@
    ]
   },
   {
+   "id": "ccbgssse013-dawnfang.esl:000816",
+   "name": "The Guardian Vault",
+   "edid": "ccBGSSSE013_LairLocation",
+   "type": "Landmark",
+   "keywords": [
+    "LocTypeDungeon"
+   ],
+   "hold": "The Rift",
+   "nearestTown": {
+    "town": "Riften",
+    "km": 0.0,
+    "walk": "next to it"
+   },
+   "nearestCity": {
+    "town": "Riften",
+    "km": 0.0,
+    "walk": "next to it"
+   },
+   "inTown": null,
+   "plugin": "ccbgssse013-dawnfang.esl",
+   "marker": null,
+   "world": "Tamriel",
+   "pos": [
+    172800.0,
+    -97160.0,
+    10688.0
+   ],
+   "posFrom": "door",
+   "actors": {
+    "count": 45,
+    "livesHere": "Skeleton",
+    "alsoHere": [
+     "Warlock"
+    ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 38,
+      "range": [
+       1,
+       10
+      ]
+     },
+     {
+      "kind": "Warlock",
+      "count": 5,
+      "range": [
+       75,
+       75
+      ]
+     }
+    ],
+    "floor": 1,
+    "ceiling": 75,
+    "atLevel": [
+     {
+      "from": 1,
+      "meets": [
+       1,
+       75
+      ],
+      "words": "from 1, 1 to 75"
+     }
+    ],
+    "boss": {
+     "name": "The Guardian",
+     "level": "level 75"
+    }
+   },
+   "respawns": "never",
+   "clearXp": 100,
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
+   "quests": [
+    {
+     "quest": "A Soul Divided",
+     "id": "ccbgssse013-dawnfang.esl:000F18"
+    },
+    {
+     "quest": "Dawnfang Control Quest",
+     "id": "ccbgssse013-dawnfang.esl:000F19"
+    },
+    {
+     "quest": "Bloodthirst",
+     "id": "ccbgssse013-dawnfang.esl:000CA6"
+    }
+   ]
+  },
+  {
    "id": "Skyrim.esm:022648",
    "name": "The Pawned Prawn",
    "edid": "RiftenPawnedPrawnLocation",
@@ -59940,6 +61644,12 @@
      "quest": "More to Say Riften Dialogue",
      "words": "Need a blade? There's fine steel at the Scorched Hammer.",
      "record": "INFO moretosayriften.esp:000A35 (moretosayriften.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Business Ledger Copy",
+     "words": "Hrongar\r\nPotion of Enhanced Stamina\r\n341 gold\r\n\r\nPriest of Arkay\r\nVirulent Poison\r\n174 gold\r\n \r\n\r\niddas\r\n\r\nWarmaiden's\r\nBlacksmith's Potion\r\n204 gold\r\n\r\nBreton Ranger\r\nPotion of Resist Cold\r\n292 gold\r\n\r\nFarengar\r\nEnchanter's Potion\r\n164 gold\r\n \r\n\r\nurdas\r\n\r\nBelethor's General Good",
+     "record": "BOOK ccbgssse038-bowofshadows.esl:000817 (ccbgssse038-bowofshadows.esl)"
     },
     {
      "kind": "book",
@@ -60444,6 +62154,18 @@
     },
     {
      "kind": "book",
+     "book": "Fishing Mastery, v1",
+     "words": "l of lake fish, head west to try your hand at fishing from the river that runs alongside Ivarstead. End your journey at Vilemyr Inn with aching arms and a full belly.\r\n\r\n \r\n \r\narp\r\n\r\nCaught in Temperate Lakes and Streams\r\nLarge in Size\r\nUncommonly Caught\r\nSeen in Fair Weather",
+     "record": "BOOK ccBGSSSE001-Fish.esm:000E7F (ccBGSSSE001-Fish.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Fijeh's Instructions",
+     "words": "Rakeed. One should be found behind the Miner's Barracks in Karthwasten. The other should be waiting for you in front of Vilemyr Inn in Ivarstead. They will respond to the phrase, \"The ravens take flight once more.\"\r\n\r\n Report back to me when the job is done. We've no time to wast",
+     "record": "BOOK ccedhsse003-redguard.esl:000816 (ccedhsse003-redguard.esl)"
+    },
+    {
+     "kind": "book",
      "book": "Pilgrimages in Skyrim",
      "words": "village is situated in the eastern foothills of the mountain, and there is a good tavern in town, currently called the Vilemyr Inn, that serves as a hostelry for pilgrims also. \r\n\r\nA bridge from town takes one over the Darkwater River. Here, one shall find the first of ten emble",
      "record": "BOOK LB_ApocryphaBooks.esp:0000C2 (LB_ApocryphaBooks.esp)"
@@ -60610,6 +62332,18 @@
      "book": "A Gentleman's Guide to Whiterun",
      "words": "ound in the Plains district. Belethor's General Goods offers various and sundry wares for the adventurous traveler, and Arcadia's Cauldron offers what tonics and herbs one would expect from an apothecary's shop. \r\n\r\nArcadia herself is an amiable sort. I often visit her to make co",
      "record": "BOOK Skyrim.esm:0ED02E (Book Covers Skyrim.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Business Ledger Copy",
+     "words": "Weekly Business Ledger\r\n\r\n\r\nfor \r\nArcadia's Cauldron\r\n\r\n\r\n\r\n\r\n \r\n\r\nundas\r\n\r\nCommander Caius\r\nStamina Potion\r\n61 gold\r\n\r\nLydia\r\nPotion of Strength\r\n137 gold\r\n\r\nAela the Huntress\r\nPotion of True S",
+     "record": "BOOK ccbgssse038-bowofshadows.esl:000817 (ccbgssse038-bowofshadows.esl)"
+    },
+    {
+     "kind": "book",
+     "book": "Steward's Note",
+     "words": "ything that's happened as of late, I don't have time to investigate this myself. \r\n\r\nThat's why I'd like you to head to Arcadia's Cauldron and check their ledger for any suspicious purchases - in particular, poisons. I've asked Arcadia to leave you a copy on her counter. Look it",
+     "record": "BOOK ccbgssse038-bowofshadows.esl:000814 (ccbgssse038-bowofshadows.esl)"
     }
    ],
    "quests": [
@@ -60737,6 +62471,12 @@
      "book": "A Gentleman's Guide to Whiterun",
      "words": "ll make that feisty beauty mine someday!\r\n\r\nAnd of course, there are other services to be found in the Plains district. Belethor's General Goods offers various and sundry wares for the adventurous traveler, and Arcadia's Cauldron offers what tonics and herbs one would expect from",
      "record": "BOOK Skyrim.esm:0ED02E (Book Covers Skyrim.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Business Ledger Copy",
+     "words": "on\r\n204 gold\r\n\r\nBreton Ranger\r\nPotion of Resist Cold\r\n292 gold\r\n\r\nFarengar\r\nEnchanter's Potion\r\n164 gold\r\n \r\n\r\nurdas\r\n\r\nBelethor's General Goods\r\nPotion of Haggling\r\n140 gold\r\n\r\nNord Warrior\r\nPotion of Healing\r\n109 gold\r\n \r\n\r\nredas\r\n\r\nNord Stable Boy\r\nMalign Lingering Poison\r\n55",
+     "record": "BOOK ccbgssse038-bowofshadows.esl:000817 (ccbgssse038-bowofshadows.esl)"
     },
     {
      "kind": "book",
@@ -61495,9 +63235,31 @@
      "quest": "EGD_DialogueGuardsGeneral",
      "words": "Good thing someone cleared the vampires out of Broken Fang Cave. The western roads are a little bit safer now.",
      "record": "INFO Extended Guard Dialogue.esp:00085F (Extended Guard Dialogue.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Bounty: Juvenile Mudcrab",
+     "words": "be caught in almost all lakes and streams throughout Skyrim, though a breeding ground is said to be in Whiterun west of Broken Fang Cave.\r\n\r\nPlease make haste. I must show progress in my research as soon as possible.\r\n\r\n-- Viriya, Riften Fishery\r\n\r\nNote to self: It's been twelve",
+     "record": "BOOK ccBGSSSE001-Fish.esm:0009CC (ccBGSSSE001-Fish.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Bounty: Juvenile Mudcrab",
+     "words": "be caught in almost all lakes and streams throughout Skyrim, though a breeding ground is said to be in Whiterun west of Broken Fang Cave.\r\n\r\nPlease make haste. I must show progress in my research as soon as possible.\r\n\r\n-- Viriya, Riften Fishery",
+     "record": "BOOK ccBGSSSE001-Fish.esm:0008E9 (ccBGSSSE001-Fish.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Cage Bandit's Note",
+     "words": "Boss found a buyer for that sword we looted going through the crates downstairs. Says we're to deliver it to Broken Fang Cave come morning. \r\n\r\nTruth is the thing creeps me out, I'm glad to be rid of it.",
+     "record": "BOOK ccbgssse013-dawnfang.esl:000CCD (ccbgssse013-dawnfang.esl)"
     }
    ],
    "quests": [
+    {
+     "quest": "Bloodthirst",
+     "id": "ccbgssse013-dawnfang.esl:000CA6"
+    },
     {
      "quest": "A vampire drinking blood",
      "id": "Extended Encounters.esp:0004ED"
@@ -62477,9 +64239,21 @@
     },
     {
      "kind": "book",
+     "book": "Mila's Note on Very Secret Treasure",
+     "words": "'re friends and I want you to have the treasure at my secret hiding spot!\r\n\r\nI have a place where I like to play behind Dragonsreach. I pretend I have my very own vegetable stall, just like mom! That's where I keep my best treasure. I keep it all locked up so Braith can't take it",
+     "record": "BOOK ccBGSSSE001-Fish.esm:0008E8 (ccBGSSSE001-Fish.esm)"
+    },
+    {
+     "kind": "book",
      "book": "Property For Sale",
      "words": "ra Homestead) and its surrounding environs, is available for purchase.\r\n\r\nIf interested, please seek out the steward in Dragonsreach.",
      "record": "BOOK cceejsse001-hstead.esm:093DD3 (CC Tundra Homestead - Tweaks and Enhancements.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Smuggler's Trade Notes",
+     "words": "h. This morning another buyer came by the camp, an Orc with a face so lumpy he must've jumped head first off the top of Dragonsreach.\r\n\r\nTurns out he was looking for the same staff, offering to pay double. I told him we could have something better for him on the next boat from So",
+     "record": "BOOK ccbgssse045-hasedoki.esl:000802 (ccbgssse045-hasedoki.esl)"
     },
     {
      "kind": "book",
@@ -63490,6 +65264,18 @@
     },
     {
      "kind": "book",
+     "book": "Letter to General Tullius",
+     "words": "Redguard mercenaries have stolen it with the aim to sell to the highest bidder. They were last seen traveling south of Fort Greymoor.\r\n\r\nFind these mercenaries, and reclaim The Lord's Mail. Wear it proudly. Show the people that Kynareth favors the realm of the Empire.\r\n\r\nEmperor",
+     "record": "BOOK ccbgssse021-lordsmail.esl:00080D (ccbgssse021-lordsmail.esl)"
+    },
+    {
+     "kind": "book",
+     "book": "Smuggler's Trade Notes",
+     "words": "ngs.\r\n\r\nI told the boys to cut him off on the road west of Whiterun, at the burnt down house between the watchtower and Fort Greymoor. Given how obsessed he was about that staff, it'll be easy to catch him off guard.",
+     "record": "BOOK ccbgssse045-hasedoki.esl:000802 (ccbgssse045-hasedoki.esl)"
+    },
+    {
+     "kind": "book",
      "book": "Stranger's Plea",
      "words": "take.\r\n\r\nIt would be safer for us to speak further in person. Please meet me at the Shrine to Stendarr, located between Fort Greymoor and Rorikstead. I will lay bare my sins in Stendarr's presence. Perhaps he will grant me forgiveness.\r\n\r\n-Skorvild",
      "record": "BOOK ccbgssse067-daedinv.esm:000B66 (CauseTweakAlternateStart.esp)"
@@ -63627,6 +65413,7 @@
     "quests"
    ],
    "namedByQuest": [
+    "A Farmer's Life For Me",
     "The Unquiet Dead"
    ],
    "world": "Tamriel",
@@ -63705,6 +65492,10 @@
     {
      "quest": "The Unquiet Dead",
      "id": "ccvsvsse004-beafarmer.esl:000D28"
+    },
+    {
+     "quest": "A Farmer's Life For Me",
+     "id": "ccvsvsse004-beafarmer.esl:000EB7"
     },
     {
      "quest": "ccVSVSSE004_HauntingQuest",
@@ -67243,6 +69034,12 @@
     },
     {
      "kind": "book",
+     "book": "Bjormund's Diary",
+     "words": "s are special, you should see what this one found yesterday,\" M'Sharra said to me. Her grin was as wide as the Halls of Jorrvaskr as she beckoned me further into the warehouse. Inside a crate, set apart from the others, was a cuirass of Dragonbone Mail! M'Sharra bade me to put it",
+     "record": "BOOK ccbgssse059-ba_dragonplate.esl:00081B (ccbgssse059-ba_dragonplate.esl)"
+    },
+    {
+     "kind": "book",
      "book": "Letter From Kodlak Whitemane",
      "words": "at their camp, \r\nI thought the boy had one too many pints at Honningbrew Meadery. \r\nI was proven wrong when you came to Jorrvaskr yourself, seeking wisdom and counsel from the Harbinger. I have heard many tales of valor and triumph, but the time I spent speaking \r\nto you made me",
      "record": "BOOK Ryn's Snazzy Last Vigil.esp:00FB7D (Ryn's Snazzy Last Vigil.esp)"
@@ -67540,6 +69337,7 @@
     ],
     "zoneMin": 12,
     "boss": {
+     "name": "East Empire Warden",
      "level": "leveled 12-24"
     }
    },
@@ -69018,6 +70816,12 @@
     },
     {
      "kind": "book",
+     "book": "Fishing Mastery, v4",
+     "words": "its cool depths, so pack something sharp to go along with your fishing rod.\r\n\r\nEmbershard Mine near the sleepy town of Riverwood is said to be flooded deep within, and may be a hidden gem for subterranean fish seekers. It is too bad that bandits and thugs have been seen by many",
+     "record": "BOOK ccBGSSSE001-Fish.esm:000ABA (ccBGSSSE001-Fish.esm)"
+    },
+    {
+     "kind": "book",
      "book": "Report",
      "words": "eir art, though nothing to challenge Eorlund.\r\n\r\nThe Stormcloak also told me that he learned his archery from an elf in Riverwood, and indicated that the Companion Aela was not as skilled as everyone believed. He mentioned a name: Angi. Unfortunately at that point in our journey",
      "record": "BOOK Requiem.esp:AD3757 (Requiem.esp)"
@@ -70137,6 +71941,24 @@
     },
     {
      "kind": "book",
+     "book": "Note on Autumn",
+     "words": "t's making my head hurt.\r\n\r\nShor's Bones, this isn't what I signed up for. If I wanted to work on a farm I'd go back to Rorikstead. The treasure better be worth it.",
+     "record": "BOOK cctwbsse001-puzzledungeon.esm:0008A5 (cctwbsse001-puzzledungeon.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "For Sale",
+     "words": "nt of weight to the Throat of the World and back again. Gives good milk. \r\n\r\nIf interested in purchasing, see Halvar in Rorikstead. \r\n\r\n- Halvar",
+     "record": "BOOK ccvsvsse002-pets.esl:00080A (ccvsvsse002-pets.esl)"
+    },
+    {
+     "kind": "book",
+     "book": "M'Sharra's Confession",
+     "words": "and in its heart, the piece Tyra had in her pocket so many moons ago.\r\n\r\nM'Sharra hid the armor in a hut, northwest of Rorikstead. At times, M'Sharra has longed to retrieve it, and wear it proudly. \r\n\r\nBut she must be careful not to let sentiment cloud her judgment. M'Sharra sus",
+     "record": "BOOK ccbgssse056-ba_silver.esl:000815 (ccbgssse056-ba_silver.esl)"
+    },
+    {
+     "kind": "book",
      "book": "Stranger's Plea",
      "words": "be safer for us to speak further in person. Please meet me at the Shrine to Stendarr, located between Fort Greymoor and Rorikstead. I will lay bare my sins in Stendarr's presence. Perhaps he will grant me forgiveness.\r\n\r\n-Skorvild",
      "record": "BOOK ccbgssse067-daedinv.esm:000B66 (CauseTweakAlternateStart.esp)"
@@ -70639,6 +72461,12 @@
      "quest": "JR26LucienCCBowOfShadows",
      "words": "The plot thickens! Not a stable boy, but a bandit in disguise, and apparently not working alone. Sounds like we might find his fellow conspirator at the Silent Moons Camp.",
      "record": "INFO Lucien-AnniversaryEdition-Patch.esp:260805 (Lucien-AnniversaryEdition-Patch.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Stable Hand's Note",
+     "words": "or pretty soon.\r\n\r\nSpeaking of which, I'm supposed to meet my mysterious benefactor back at the stables, and not at the Silent Moons Camp. Not sure why, but he says if I'm followed, it's best I stay in character until I'm well clear of the city gates.\r\n\r\nWell, I hope he doesn't s",
+     "record": "BOOK ccbgssse038-bowofshadows.esl:000824 (ccbgssse038-bowofshadows.esl)"
     }
    ]
   },
@@ -71212,6 +73040,24 @@
      "book": "The Madness of Pelagius",
      "words": "ed as such.\r\n\r\nOn a warm night in Suns Dawn, in his 34th year, Pelagius III died after a brief fever in his cell at the Temple of Kynareth in the Isle of Betony. Katariah I reigned for another forty six years before passing the scepter onto the only child she had with Pelagius, C",
      "record": "BOOK Skyrim.esm:01ACF0 (Book Covers Skyrim.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Note from the Temple of Kynareth",
+     "words": "l adventurers,\r\n\r\nI offer you Kynareth's favor, in exchange for your help. There is a gravely ill man in my care at the Temple of Kynareth. Storms of ataxia have weakened his bones, and I fear their heavy rains will wash his life away.\r\n\r\nHe requires a special soup made of the fr",
+     "record": "BOOK cckrtsse001_altar.esl:000E7D (cckrtsse001_altar.esl)"
+    },
+    {
+     "kind": "book",
+     "book": "Note from the Temple of Kynareth",
+     "words": ",\r\n\r\nThe winds have turned again, and I am in need of your help once more. There is a gravely ill man in my care at the Temple of Kynareth. Storms of ataxia have weakened his bones, and I fear their heavy rains will wash his life away.\r\n\r\nHe requires a special soup made of the fr",
+     "record": "BOOK cckrtsse001_altar.esl:000EB2 (cckrtsse001_altar.esl)"
+    },
+    {
+     "kind": "book",
+     "book": "Note from the Temple of Kynareth",
+     "words": "l adventurers,\r\n\r\nI offer you Kynareth's favor, in exchange for your help. There is a gravely ill man in my care at the Temple of Kynareth. Storms of ataxia have weakened his bones, and I fear their heavy rains will wash his life away.\r\n\r\nHe requires a special soup made of the fr",
+     "record": "BOOK cckrtsse001_altar.esl:000F1E (cckrtsse001_altar.esl)"
     },
     {
      "kind": "book",
@@ -72344,6 +74190,12 @@
     },
     {
      "kind": "book",
+     "book": "For Sale",
+     "words": "For Sale\r\n\r\nOne tamed mountain goat. Able to carry a hefty amount of weight to the Throat of the World and back again. Gives good milk. \r\n\r\nIf interested in purchasing, see Halvar in Rorikstead. \r\n\r\n- Halvar",
+     "record": "BOOK ccvsvsse002-pets.esl:00080A (ccvsvsse002-pets.esl)"
+    },
+    {
+     "kind": "book",
      "book": "Sacred Pathways",
      "words": "e path does not lead all the way to the summit; only very few have ever been granted the privilege of standing atop the Throat of the World.\r\n\r\nBut all of Skyrim's wilds are sacred; pathways that lead to the tops of mountains always bring the blessings of Kyne, from the small to",
      "record": "BOOK LB_ApocryphaBooks.esp:00008B (LB_ApocryphaBooks.esp)"
@@ -72694,6 +74546,12 @@
      "book": "A Gentleman's Guide to Whiterun",
      "words": "of advanced years might find in her a worthy companion.\r\n\r\nShould you need your blade sharpened or your armor hammered, Warmaiden's offers smithing services very near the main gate. The smith is a pretty Imperial named Adrianne Avenicci, but she is married to a great hulking brut",
      "record": "BOOK Skyrim.esm:0ED02E (Book Covers Skyrim.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Business Ledger Copy",
+     "words": "irdas\r\n\r\nHrongar\r\nPotion of Enhanced Stamina\r\n341 gold\r\n\r\nPriest of Arkay\r\nVirulent Poison\r\n174 gold\r\n \r\n\r\niddas\r\n\r\nWarmaiden's\r\nBlacksmith's Potion\r\n204 gold\r\n\r\nBreton Ranger\r\nPotion of Resist Cold\r\n292 gold\r\n\r\nFarengar\r\nEnchanter's Potion\r\n164 gold\r\n \r\n\r\nurdas\r\n\r\nBelethor's",
+     "record": "BOOK ccbgssse038-bowofshadows.esl:000817 (ccbgssse038-bowofshadows.esl)"
     }
    ],
    "quests": [
@@ -72995,6 +74853,12 @@
      "quest": "KmodFastTravelQuest",
      "words": "Got keen eyes? Might see nasty old Hajvarr up on White River Watch. Piece of work. Jarl should just run him out and have done with it.",
      "record": "INFO CFTO.esp:0CB305 (CFTO.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Smuggler's Ledger",
+     "words": "o be had inside, it might be a good idea to line up some buyers.\r\n\r\n \r\n\r\nItems:\r\nCane, book\r\n\r\nDelivered to: \r\nBandits, White River Watch\r\n\r\nSmuggler's Fee:\r\nHajvarr paid with a dagger and some farmer clothes with the blood still on it. The cane was a foot short, but it serves th",
+     "record": "BOOK ccbgssse045-hasedoki.esl:000803 (ccbgssse045-hasedoki.esl)"
     },
     {
      "kind": "book",
@@ -73632,6 +75496,12 @@
     },
     {
      "kind": "book",
+     "book": "Fisherman's Journal",
+     "words": "'ll need a Dwarven fishing rod to solve this decidedly Dwarven mystery. Schematics are said to lie in a ruined tower at Alftand, in the mountains up north.\r\n\r\nWhen people speak of me tomorrow, they won't say, \"here comes Faldrin, the fisherman.\" They'll say, \"here comes Faldrin,",
+     "record": "BOOK ccBGSSSE001-Fish.esm:000B11 (ccBGSSSE001-Fish.esm)"
+    },
+    {
+     "kind": "book",
      "book": "The Saga of Laknir Little-Hammer",
      "words": "ord of his uncle Grimr Red-Arm, who had taken the sword from his foe Rhuac Strong-Shield, Dwarf-Champion of the city of Alftand. The blade was of golden brass, a metal that the Dwarves made from the sweat of Kyne and the marrow of Tsun, and he melted it into ingots. He had soon m",
      "record": "BOOK LB_ApocryphaBooks.esp:00000B (LB_ApocryphaBooks.esp)"
@@ -74207,6 +76077,73 @@
    "discoveryXp": 10
   },
   {
+   "id": "cceejsse005-cave.esm:0F47E6",
+   "name": "Bloodchill Cavern Location",
+   "edid": "ccEEJSSE005_InteriorLocation",
+   "type": "PlayerHouse",
+   "keywords": [
+    "LocTypeDwelling",
+    "LocTypeHouse",
+    "LocTypePlayerHouse"
+   ],
+   "hold": "Winterhold",
+   "nearestTown": {
+    "town": "Dawnstar",
+    "km": 0.7,
+    "walk": "a short walk"
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 0.7,
+    "walk": "a short walk"
+   },
+   "inTown": null,
+   "plugin": "cceejsse005-cave.esm",
+   "marker": null,
+   "namedBy": [
+    "homes",
+    "quests"
+   ],
+   "namedByQuest": [
+    "Guests for Dinner"
+   ],
+   "homeOf": [
+    "Bard",
+    "Durian",
+    "Galtius"
+   ],
+   "world": "Tamriel",
+   "pos": [
+    62996.5,
+    66537.1,
+    1941.6
+   ],
+   "posFrom": "door",
+   "actors": {
+    "count": 16,
+    "hostile": false
+   },
+   "worthGoingFor": {
+    "skillBooks": [
+     "Conjuration: The Warrior's Charge",
+     "Smithing: Last Scabbard of Akrash"
+    ],
+    "crafting": [
+     "a sharpening wheel",
+     "a tanning rack",
+     "an alchemy lab",
+     "an armor workbench",
+     "an enchanting table"
+    ]
+   },
+   "quests": [
+    {
+     "quest": "Guests for Dinner",
+     "id": "cceejsse005-cave.esm:0B7AED"
+    }
+   ]
+  },
+  {
    "id": "The Great City of Winterhold v4.esp:40851B",
    "name": "Chayim and Euthymia's House",
    "edid": "WinterholdChayimsHouseLocationTGCoWH",
@@ -74568,6 +76505,12 @@
      "quest": "CWSharedInfos",
      "words": "You're going to Fort Kastav.",
      "record": "INFO Skyrim.esm:017DDE (Skyrim.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Ri'saad's Note on Bandit Attacks",
+     "words": "wn for their menacing, dark armor. Skyrim grows more perilous by the day. They are known to camp along the road west of Fort Kastav.\r\n\r\nThis one would pay handsomely to any who would help. Ri'saad fears for any who might come to harm at the hands of these worrisome pests.",
+     "record": "BOOK ccBGSSSE025-AdvDSGS.esm:000879 (ccBGSSSE025-AdvDSGS.esm)"
     }
    ]
   },
@@ -75884,7 +77827,15 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "pointers": [
+    {
+     "kind": "book",
+     "book": "Loss of the Sea Stallion",
+     "words": "e new route you suggested may help us avoid the pirates, but not the storms. The Sea Stallion now lies at the bottom of Pilgrim's Trench, and its cargo along with it. If I ever find that charlatan of a priest we paid to bless the ships, I'm going to rip the amulet of Kynareth off",
+     "record": "BOOK ccpewsse002-armsofchaos.esl:00081B (ccpewsse002-armsofchaos.esl)"
+    }
+   ]
   },
   {
    "id": "Tools of Kagrenac.esp:0519F6",
@@ -77057,6 +79008,104 @@
    ]
   },
   {
+   "id": "ccbgssse005-goldbrand.esl:0008D1",
+   "name": "Sivdur's Respite",
+   "edid": "ccBGSSSE005_SivdurTombLocation",
+   "type": "NordicRuin",
+   "keywords": [],
+   "hold": "Winterhold",
+   "nearestTown": {
+    "town": "Windhelm",
+    "km": 0.4,
+    "walk": "a short walk"
+   },
+   "nearestCity": {
+    "town": "Windhelm",
+    "km": 0.4,
+    "walk": "a short walk"
+   },
+   "inTown": null,
+   "plugin": "unofficial skyrim creation club content patch.esl",
+   "marker": "ccbgssse005-goldbrand.esl:000B86",
+   "world": "Tamriel",
+   "pos": [
+    138839.8,
+    60932.3,
+    -8752.0
+   ],
+   "posFrom": "marker",
+   "actors": {
+    "count": 12,
+    "livesHere": "Draugr",
+    "alsoHere": [
+     "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 9,
+      "range": [
+       1,
+       80
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 3,
+      "range": [
+       24,
+       24
+      ]
+     }
+    ],
+    "floor": 1,
+    "ceiling": 80,
+    "atLevel": [
+     {
+      "from": 1,
+      "meets": [
+       1,
+       80
+      ],
+      "words": "from 1, 1 to 80"
+     }
+    ],
+    "boss": {
+     "name": "Sivdur",
+     "level": "level 80"
+    }
+   },
+   "respawns": "never",
+   "clearXp": 200,
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
+   "pointers": [
+    {
+     "kind": "book",
+     "book": "Eranya's Research Notes",
+     "words": "ve generously allowed a fellow academic to make use of their vast library. A good thing, as even in the short ride from Sivdur's Respite north of Windhelm, I feel chilled down to my very bones. I now search for the means to gain entrance to Sivdur's tomb using the faint inscripti",
+     "record": "BOOK ccbgssse005-goldbrand.esl:00080E (ccbgssse005-goldbrand.esl)"
+    },
+    {
+     "kind": "book",
+     "book": "Eranya's Journal",
+     "words": "ave originally possessed the blade: Sivdur, an ancient Nord warrior who fought in defense of the dragons. And there, in Sivdur's Respite, is where Goldbrand is said to reside. Mede II was said to have felt that he lacked the right to claim the blade, and that it should return to",
+     "record": "BOOK ccbgssse005-goldbrand.esl:000809 (ccbgssse005-goldbrand.esl)"
+    }
+   ],
+   "quests": [
+    {
+     "quest": "A Matter of Pride",
+     "id": "ccbgssse005-goldbrand.esl:000838"
+    }
+   ]
+  },
+  {
    "id": "Skyrim.esm:0EF0B0",
    "name": "Skytemple Ruins",
    "edid": "SkytempleRuinsLocation",
@@ -77143,7 +79192,15 @@
      "Illusion: Before the Ages of Man"
     ],
     "bossChest": true
-   }
+   },
+   "pointers": [
+    {
+     "kind": "book",
+     "book": "Hyenril's Journal",
+     "words": "ward. I must find a way to summon three Daedra, Guardians of the Sigil Stones. There's an altar on the eastern shore of Skytemple Ruins, bearing a Daedric mark. It may be what I need.\r\n\r\n28th of Rain's Hand, 4E 201\r\nI've hit a snag. The ring used to activate the summoning circle",
+     "record": "BOOK ccpewsse002-armsofchaos.esl:00081A (ccpewsse002-armsofchaos.esl)"
+    }
+   ]
   },
   {
    "id": "Skyrim.esm:0192AF",
@@ -77745,6 +79802,14 @@
      "id": "ccbgssse002-exoticarrows.esl:000835"
     },
     {
+     "quest": "A Matter of Pride",
+     "id": "ccbgssse005-goldbrand.esl:000838"
+    },
+    {
+     "quest": "Creature of Legend",
+     "id": "ccbgssse034-mntuni.esl:000DE8"
+    },
+    {
      "quest": "BCSLL Vendor Quest",
      "id": "Book Covers Skyrim - Lost Library.esp:012C88"
     },
@@ -77991,6 +80056,10 @@
     {
      "quest": "A Dying Wish",
      "id": "cckrtsse001_altar.esl:000D63"
+    },
+    {
+     "quest": "The Sanctuary and the Manufactory",
+     "id": "ccafdsse001-dwesanctuary.esm:000A39"
     },
     {
      "quest": "BCSLL Vendor Quest",
@@ -82867,6 +84936,12 @@
     },
     {
      "kind": "book",
+     "book": "The Light and the Dark",
+     "words": "rk\r\n\r\n\r\nby\r\nIrek Unterge\r\n\r\n\r\n\r\n\r\n \r\n\r\n\"Yes, children, it is no accident that this land of Tamriel has been called 'The Arena'.\" The old man altered his position on the large rock that bore his weight, and straightened his long gray robe. Rheumy eyes lost their focus as they gaze",
+     "record": "BOOK ccbgssse045-hasedoki.esl:000804 (ccbgssse045-hasedoki.esl)"
+    },
+    {
+     "kind": "book",
      "book": "Arena Fan's Note",
      "words": "As a fan of the Imperial Arena and student of history, I was very intrigued when I discovered volume eight of the short story collection, The Crimson Dirks, at a local library in Cheydi",
      "record": "BOOK ccbgssse062-ba_dwarvenmail.esl:00081B (LoreRim - World Fixes.esp)"
@@ -83468,6 +85543,131 @@
    "realm": "Coldharbour"
   },
   {
+   "id": "ccbgssse031-advcyrus.esm:001757",
+   "name": "Blackbone Isle",
+   "edid": "ccBGSSSE031_WorldLocation",
+   "type": "Cave",
+   "keywords": [],
+   "hold": null,
+   "nearestTown": {
+    "town": "Karthwasten",
+    "km": 1.5,
+    "walk": "half a day"
+   },
+   "nearestCity": {
+    "town": "Markarth",
+    "km": 1.7,
+    "walk": "half a day"
+   },
+   "inTown": null,
+   "plugin": "ccbgssse031-advcyrus.esm",
+   "marker": "ccbgssse031-advcyrus.esm:000F6B",
+   "world": "Tamriel",
+   "pos": [
+    -201001.8,
+    117678.9,
+    -13663.4
+   ],
+   "posFrom": "marker",
+   "actors": {
+    "count": 31,
+    "livesHere": "Skeleton",
+    "alsoHere": [
+     "Bandit"
+    ],
+    "kinds": [
+     {
+      "kind": "Skeleton",
+      "count": 23,
+      "range": [
+       1,
+       30
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 4,
+      "range": [
+       1,
+       60
+      ]
+     }
+    ],
+    "floor": 1,
+    "ceiling": 60,
+    "atLevel": [
+     {
+      "from": 1,
+      "meets": [
+       1,
+       60
+      ],
+      "words": "from 1, 1 to 60"
+     }
+    ],
+    "boss": {
+     "name": "Ghost Captain",
+     "level": "matches your level, 25 to 60"
+    }
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Enchanting: A Tragedy in Black"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "a tanning rack",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench",
+     "an enchanting table"
+    ],
+    "shrines": [
+     "Shrine of Arkay"
+    ]
+   },
+   "pointers": [
+    {
+     "kind": "book",
+     "book": "Captain's Journal",
+     "words": "ind land in this barren frost. The men are joyous. Based on the markings inside the grotto, it looks like we've reached Blackbone Isle, an old pirate den of all things. Many of us were corsairs before we pledged ourselves to the Crown, so perhaps coming here was more than luck. E",
+     "record": "BOOK ccbgssse031-advcyrus.esm:000808 (ccbgssse031-advcyrus.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "The Restless",
+     "words": "t the rest of his days on calm waters.\r\n\r\nWhere this fortune is now, is a mystery long forgotten. You'll hear talk of a Blackbone Isle, but you won't find it on any map. The last man who claimed to know its location was a pirate by the name of Kevon. Yet as a wanted man of little",
+     "record": "BOOK ccbgssse031-advcyrus.esm:000809 (ccbgssse031-advcyrus.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Celeste's Note",
+     "words": "bandits?\r\n\r\nAnd I tell them, good point. Maybe we should find us a ship.\r\n\r\nI heard there's a grand old sea cow over at Blackbone Isle. Might even have more loot than the Golden Galleon, the one the old Imperial used to tell stories about when I first joined up.\r\n\r\nFrom what I he",
+     "record": "BOOK ccbgssse031-advcyrus.esm:0008E8 (ccbgssse031-advcyrus.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Kevon's Note",
+     "words": "Fifteen men, a sunken treasure, and a lost ship. That's what I left behind.\r\n\r\nIt took less than a day to sail to Blackbone Isle. Captain said we needn't worry about the cold, so we left the furs and packed the steel.\r\n\r\nSeemed like an odd thing. No one but us knew about th",
+     "record": "BOOK ccbgssse031-advcyrus.esm:00080A (ccbgssse031-advcyrus.esm)"
+    }
+   ],
+   "quests": [
+    {
+     "quest": "Restless Home Quest",
+     "id": "ccbgssse031-advcyrus.esm:001624"
+    },
+    {
+     "quest": "The Restless",
+     "id": "ccbgssse031-advcyrus.esm:000FDC"
+    }
+   ]
+  },
+  {
    "id": "Vigilant.esm:3678E3",
    "name": "Blood Curse of Froth",
    "edid": "zzzCOLocBloodCurse03",
@@ -83992,65 +86192,6 @@
    }
   },
   {
-   "id": "GORE.esp:CC94BA",
-   "name": "Campsite",
-   "edid": "",
-   "type": "Camp",
-   "keywords": [],
-   "hold": null,
-   "nearestTown": {
-    "town": "Winterhold",
-    "km": 2.4,
-    "walk": "a long day's road"
-   },
-   "nearestCity": {
-    "town": "Winterhold",
-    "km": 2.4,
-    "walk": "a long day's road"
-   },
-   "inTown": null,
-   "plugin": "GORE.esp",
-   "marker": "ccQDRSSE002-Firewood.esl:000831",
-   "namedBy": [
-    "homes"
-   ],
-   "homeOf": [
-    "Gore"
-   ],
-   "world": "Tamriel",
-   "pos": [
-    251909.9,
-    198637.7,
-    -30000.0
-   ],
-   "posFrom": "marker",
-   "actors": {
-    "count": 1,
-    "floor": 8,
-    "ceiling": 60,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       8,
-       60
-      ],
-      "words": "from 1, 8 to 60"
-     }
-    ]
-   },
-   "respawns": "after 300 days once cleared, 30 ordinarily",
-   "clearXp": 100,
-   "discoveryXp": 10,
-   "worthGoingFor": {
-    "crafting": [
-     "a sharpening wheel",
-     "a tanning rack",
-     "an anvil"
-    ]
-   }
-  },
-  {
    "id": "Dawnguard.esm:004C20",
    "name": "Castle Volkihar",
    "edid": "DLC1VampireCastleLocation",
@@ -84370,6 +86511,18 @@
      "quest": "JRLucienUmbra",
      "words": "Champion's Rest... but which champion, I wonder? I hope they're not about to wake up.",
      "record": "INFO Lucien-AnniversaryEdition-Patch.esp:030C23 (Lucien-AnniversaryEdition-Patch.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Vigilant's Report",
+     "words": "nus, Vigilant of Stendarr, do hereby issue this report on my investigation into the reports of a \"dark presence\" within Champion's Rest.\r\n\r\nChampion's Rest is the site of an ancient battle arena where Nords would test their mettle in gladiatorial combat. Long believed to be lost",
+     "record": "BOOK ccbgssse016-umbra.esm:007760 (ccbgssse016-umbra.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Treasure Hunter's Journal",
+     "words": "of an ancient arena whose whereabouts have, up until now, remained a mystery. While the original name is lost to time, Champion's Rest is what it's known as today.\r\n\r\nI can see it now: halls upon halls, glittering with gold and jewels!\r\n\r\nMaps in the Imperial Library place Champ",
+     "record": "BOOK ccbgssse016-umbra.esm:008230 (ccbgssse016-umbra.esm)"
     }
    ]
   },
@@ -85773,6 +87926,191 @@
     {
      "quest": "Bloodline",
      "id": "Dawnguard.esm:002F65"
+    }
+   ]
+  },
+  {
+   "id": "ccbgssse067-daedinv.esm:033F39",
+   "name": "Deadlands",
+   "edid": "ccBGSSSE067_DeadlandsLocation",
+   "type": "Cave",
+   "keywords": [],
+   "hold": null,
+   "nearestTown": null,
+   "nearestCity": null,
+   "inTown": null,
+   "plugin": "ccbgssse067-daedinv.esm",
+   "marker": "ccbgssse067-daedinv.esm:1D67E7",
+   "world": "ccBGSSSE067DeadlandsWorld",
+   "pos": [
+    1536.0,
+    -1392.0,
+    80.0
+   ],
+   "posFrom": "marker",
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10,
+   "pointers": [
+    {
+     "kind": "dialogue",
+     "speaker": "Elmera",
+     "speakerPlace": "Wyrmstooth Holder Cell",
+     "quest": "Stickler in the Mud",
+     "words": "In the Deadlands, naturally.",
+     "record": "INFO Wyrmstooth.esp:3A14D6 (Wyrmstooth.esp)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": "Elmera",
+     "speakerPlace": "Wyrmstooth Holder Cell",
+     "quest": "Stickler in the Mud",
+     "words": "I suppose ever since that whole fiasco with Martin and the Dragonfires, travel to the Deadlands and back has been made somewhat more difficult.",
+     "record": "INFO Wyrmstooth.esp:3A14D8 (Wyrmstooth.esp)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "aaRoggi",
+     "words": "And it was exactly as Dravynea described. A burn in the guts like the fires of the Deadlands, and a kick at the soul like the whip of Molag Bal.",
+     "record": "INFO FDE Roggi.esp:0008B8 (FDE Roggi.esp)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "aaMjoll",
+     "words": "I'd brave the Deadlands and Coldharbor if I had to save him from there, as I would anyone who saved my life.",
+     "record": "INFO FDE Mjoll.esp:000808 (FDE Mjoll.esp)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "aaAela8Q",
+     "words": "Whatever the orb in Saarthal is, it can render half of Skyrim into the Deadlands, if not worse.",
+     "record": "INFO FDE Aela Part 2.esp:00095F (FDE Aela Part 2.esp)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "aaIllia3DB",
+     "words": "In her pursuit of power, she summoned the flames of the Deadlands. The entire Forsworn clan burned alive, the Hagraven included.",
+     "record": "INFO FDE Illia.esp:000B6F (FDE Illia.esp)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "aaJenassaAmor5",
+     "words": "Maybe they are now in the Deadlands, or Coldharbor. Though I admit - I have little knowledge of the Nord afterlife.",
+     "record": "INFO FDE Jenassa.esp:000CA7 (FDE Jenassa.esp)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "aaAranea",
+     "words": "I was granted yet another vision - of Mournhold in flames, and the murderer torn apart by beasts from the Deadlands.",
+     "record": "INFO FDE Aranea.esp:000874 (FDE Aranea.esp)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "aaAranea",
+     "words": "I scoured the debris, and found this boy gasping for life. The Daedra had taken his parents to the Deadlands, and he was all alone in his suffering.",
+     "record": "INFO FDE Aranea.esp:00088A (FDE Aranea.esp)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "aaAranea",
+     "words": "Had Azura foreseen his parents' rescue, I would have braved the Deadlands to make it come true.",
+     "record": "INFO FDE Aranea.esp:000894 (FDE Aranea.esp)"
+    },
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "Lucien Main Quest",
+     "words": "But he turned into a giant dragon and kicked Mehrunes Dagon back into the Deadlands, which seems to have confused things.",
+     "record": "INFO Lucien.esp:06FF11 (Lucien.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "The Doors of Oblivion",
+     "words": "ribed the landscape of dark twisted trees, howling spirits, and billowing mist, and I thought he might have entered the Deadlands of Mehrunes Dagon. But then he said quickly, 'No, I am no longer in a forest. There was a flash of lightning, and now I am on a ship. The mast is tatt",
+     "record": "BOOK Skyrim.esm:01AFE7 (Wintersun - Reqtificated.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Vonos' Journal",
+     "words": "have failed. The portal to Oblivion is thin and temporary, as one might expect. I have smelled the sweet sulfur of the Deadlands, but only for fleeting moments of time.\r\n\r\nI have studied all there is to know of the Mysterium Xarxes. I have been to Dawnstar on countless occasions",
+     "record": "BOOK ccbgssse067-daedinv.esm:000B8D (CauseTweakAlternateStart.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "3 Traitors of Nimalten",
+     "words": "he 3 traitors before me. May their demise be a lesson to all daedra worshippers.\r\n\r\nOn the eve of the invasion from the Deadlands, 3 of my closest friends made a pact with the Daedric Prince of Destruction. They had asked if I would join them and when I refused, I was \"given merc",
+     "record": "BOOK Nimalten Ruins.esp:0005D5 (Nimalten Ruins.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "On Fighting Dremora, vol. I",
+     "words": "the Third Era. They count among their number mages and archers, but it is their melee fighters, the dark knights of the Deadlands, the Kynvals and their orders and their betters who require the focus of this book.\r\n\r\nThe arms and armour of Kynval range from relatively crude to ex",
+     "record": "BOOK LB_ApocryphaBooks.esp:000007 (LB_ApocryphaBooks.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "The Siege of Kvatch",
+     "words": "hat Daedric creatures are, but rather it seems to be forged for purpose in the realm of Oblivion where Dagon lurks, the Deadlands. And so a giant mechanical caterpillar reared its head over the walls and spat columns of flame and magma onto the unsuspecting city.\r\n\r\nWith the city",
+     "record": "BOOK LB_ApocryphaBooks.esp:000010 (LB_ApocryphaBooks.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Treatise on Daedric Familiars",
+     "words": "ootsoldiers in the Oblivion Crisis demonstrated how concerning they can be in larger numbers. When not relegated to the Deadlands they might find themselves in the employ of Tamrielic wizards in need of a reliable familiar. They appear similar to a banekin, though with digitigrad",
+     "record": "BOOK LB_ApocryphaBooks.esp:00003D (LB_ApocryphaBooks.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Hierarchical Structure of Dremora",
+     "words": "derlings and are never seen in Tamriel, as they remain by the side of the Daedric ruler - such as Mehrunes Dagon of the Deadlands plane of Oblivion - serving to command grand forces that have caught the ruler's attention.\r\n\r\n[Meeting a Dremora Caitiff was quite sufficient, thank",
+     "record": "BOOK LB_ApocryphaBooks.esp:0000BD (LB_ApocryphaBooks.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Compendium of Lesser Realms",
+     "words": "is a place of pilgrimage for devotees of Almalexia.\r\n\r\naiar Alata is a tomebound realm in the centrifugal orbit of the Deadlands. It is ruled by a mortal Altmer whose name has not been decoded. It has the appearance of ancient Elven ruins in a wide blue sea.\r\n\r\nhe Soul Cairn, wh",
+     "record": "BOOK LB_ApocryphaBooks.esp:0000D3 (LB_ApocryphaBooks.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "The Fate of Vivec",
+     "words": "Scattered reports arrived at the onset of the Oblivion Crisis that Vivec had been abducted by Daedra when gates to the Deadlands opened around the city. The fact that the gates were able to open so close indicates that Vivec's power had already substantially weakened. For want o",
+     "record": "BOOK LB_ApocryphaBooks.esp:0009A0 (LB_ApocryphaBooks.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Mananaut's Guide to the Deadlands",
+     "words": "The Royal Imperial Mananauts Guide to the Daedric Realm of the Deadlands\r\n\r\n\r\nBy Captain Lindia Sevor\r\n3E 107\r\n\r\n \r\n\r\nhe Deadlands are a terrifying realm, and all caution should be taken while journeying there. It is the re",
+     "record": "BOOK LB_ApocryphaBooks.esp:000A1E (LB_ApocryphaBooks.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Mananaut's Guide to the Shivering Isles",
+     "words": "l wealth may be worth it if cautious and well-warded.\r\n\r\nChapter One - Reaching the Shivering Isles\r\n\r\nSimilarly to the Deadlands, it is possible to get there through a slipstream realm. It is also possible to scry, though this affords only limited protection against insanity and",
+     "record": "BOOK LB_ApocryphaBooks.esp:000A20 (LB_ApocryphaBooks.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Thalmor Dossier: Valkyn Methats",
+     "words": "ralds of Mehrunes Dagon, and recently attained the rank of Valkyn (prince and ruler of a small area in Mehrunes Dagon's Deadlands).\r\n\r\nOperational Notes: \r\nLord Methats commands a large number of Dagon's forces and must be preferably engaged within Oblivion. Being a Dremora Lord,",
+     "record": "BOOK More Thalmor Dossiers.esp:000A48 (More Thalmor Dossiers.esp)"
     }
    ]
   },
@@ -88743,6 +91081,59 @@
     }
    },
    "realm": "Coldharbour"
+  },
+  {
+   "id": "cckrtsse001_altar.esl:000F8D",
+   "name": "Iron Tusk Cave Location",
+   "edid": "ccKRTSSE001_FrozenTuskLocation",
+   "type": "ImperialTower",
+   "keywords": [],
+   "hold": null,
+   "nearestTown": null,
+   "nearestCity": null,
+   "inTown": null,
+   "plugin": "cckrtsse001_altar.esl",
+   "marker": null,
+   "noPos": "interior cells whose doors lead nowhere onto a map (looked 3 rooms deep)",
+   "actors": {
+    "count": 4,
+    "livesHere": "Spriggan",
+    "kinds": [
+     {
+      "kind": "Spriggan",
+      "count": 3,
+      "range": [
+       20,
+       30
+      ]
+     }
+    ],
+    "floor": 20,
+    "ceiling": 30,
+    "atLevel": [
+     {
+      "from": 1,
+      "meets": [
+       20,
+       30
+      ],
+      "words": "from 1, 20 to 30"
+     }
+    ],
+    "zoneMin": 20,
+    "boss": {
+     "level": "leveled 20-30"
+    }
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10,
+   "quests": [
+    {
+     "quest": "A Dying Wish",
+     "id": "cckrtsse001_altar.esl:000D63"
+    }
+   ]
   },
   {
    "id": "Update.esm:002F9C",
@@ -92355,7 +94746,7 @@
     },
     {
      "kind": "dialogue",
-     "speaker": null,
+     "speaker": "Marina",
      "speakerPlace": "Bloodchill Cavern",
      "quest": "Guests for Dinner",
      "words": "That bastard tried to have me killed! I hope he rots in Oblivion!",
@@ -93679,9 +96070,21 @@
     },
     {
      "kind": "book",
+     "book": "The Light and the Dark",
+     "words": "ns and trolls come from the Dark, Grandpa?\"\r\n\r\n\"Not exactly, son. The undead evils we know, and the demons that live on Oblivion tend to align with the Dark. Their natures are more akin to it. Humans and the other peoples of Tamriel, even the misunderstood Dark Elves, are more al",
+     "record": "BOOK ccbgssse045-hasedoki.esl:000804 (ccbgssse045-hasedoki.esl)"
+    },
+    {
+     "kind": "book",
      "book": "Vonos' Journal",
      "words": "kin.\r\n\r\nBut I kept moving, ever downward. Fire and smoke, heat and rock. And then I saw it. The very mouth of Dagon. An Oblivion Gate.\r\n\r\nWith a blinding flash I then began to have visions of Akatosh, visions of Dragons. What could be the meaning of this?\r\n\r\nI awoke covered in sw",
      "record": "BOOK ccbgssse067-daedinv.esm:000B8D (CauseTweakAlternateStart.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Vigilant Enforcer's Journal",
+     "words": "her quarters and found red robes bearing the sun symbol of Mehrunes Dagon. We also found a journal which claims than an Oblivion Gate has been reforged, and attempts to open it are underway.\r\n\r\nI have decided to call for reinforcements. If what I read is true, the Vigil of Stenda",
+     "record": "BOOK ccbgssse067-daedinv.esm:06BFC3 (ccbgssse067-daedinv.esm)"
     },
     {
      "kind": "book",
@@ -93694,6 +96097,12 @@
      "book": "Skorvild's Journal",
      "words": "ons, I suppose. \r\n\r\nIf you know of the Mythic Dawn, you may have heard that the cult was eradicated long ago, after the Oblivion Crisis of the 3rd era came to an end. This was true until perhaps one year past.\r\n\r\nAs discord began to sow in the lands of Skyrim, the whispers of Meh",
      "record": "BOOK ccbgssse067-daedinv.esm:000B6F (CauseTweakAlternateStart.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Evethra's Journal",
+     "words": "ill mine the forests and the dead. I will have caravans search the far corners of Tamriel. I will reach into the eye of Oblivion itself, until I find you both again.",
+     "record": "BOOK ccBGSSSE025-AdvDSGS.esm:000B9B (ccBGSSSE025-AdvDSGS.esm)"
     },
     {
      "kind": "book",
@@ -95173,6 +97582,165 @@
    }
   },
   {
+   "id": "ccbgssse067-daedinv.esm:015889",
+   "name": "Rielle",
+   "edid": "ccBGSSSE067_RielleLocation",
+   "type": "Landmark",
+   "keywords": [
+    "LocTypeClearable",
+    "LocTypeDungeon"
+   ],
+   "hold": null,
+   "nearestTown": {
+    "town": "Ivarstead",
+    "km": 0.6,
+    "walk": "a short walk"
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.4,
+    "walk": "half a day"
+   },
+   "inTown": null,
+   "plugin": "ccbgssse067-daedinv.esm",
+   "marker": null,
+   "world": "Tamriel",
+   "pos": [
+    66253.4,
+    -104299.4,
+    16104.5
+   ],
+   "posFrom": "door",
+   "actors": {
+    "count": 98,
+    "livesHere": "Draugr",
+    "alsoHere": [
+     "Skeleton",
+     "Bandit",
+     "Necromancer",
+     "DragonPriest"
+    ],
+    "kinds": [
+     {
+      "kind": "Draugr",
+      "count": 44,
+      "range": [
+       20,
+       40
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 22,
+      "range": [
+       20,
+       40
+      ]
+     },
+     {
+      "kind": "Bandit",
+      "count": 17,
+      "range": [
+       20,
+       50
+      ]
+     },
+     {
+      "kind": "Necromancer",
+      "count": 4,
+      "range": [
+       26,
+       26
+      ]
+     },
+     {
+      "kind": "DragonPriest",
+      "count": 1,
+      "range": [
+       55,
+       55
+      ]
+     }
+    ],
+    "floor": 20,
+    "ceiling": 75,
+    "atLevel": [
+     {
+      "from": 1,
+      "meets": [
+       20,
+       75
+      ],
+      "words": "from 1, 20 to 75"
+     }
+    ],
+    "zoneMin": 20,
+    "boss": {
+     "name": "Norion the Undying",
+     "level": "level 55"
+    }
+   },
+   "respawns": "never",
+   "clearXp": 100,
+   "discoveryXp": 10,
+   "pointers": [
+    {
+     "kind": "book",
+     "book": "Vonos' Journal",
+     "words": "20th Sun's Height, 4E 201\r\n\r\nI have received word from my scouts that a Great Welkynd Stone may be hidden within Rielle, an ancient Ayleid ruin. Could this be the source of power needed to open the gate? It very well may be. How delicious the irony - an object once used ag",
+     "record": "BOOK ccbgssse067-daedinv.esm:000B8D (CauseTweakAlternateStart.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Vigilant Enforcer's Journal",
+     "words": "travelers descended upon Bruma, where they asked a well-known researcher many questions about the Ayleids. The ruins of Rielle specifically. They also asked about Great Welkynd Stones, which haven't been seen for hundreds of years.\r\n\r\nI'm sending a few scouts to the Pale Pass to",
+     "record": "BOOK ccbgssse067-daedinv.esm:06BFC3 (ccbgssse067-daedinv.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Excavation Leader's Journal",
+     "words": "ctly what we need to bring the gate to full power.\r\n\r\nOne researcher has set their sights on the ancient Ayleid ruin of Rielle as such a place where a Great Welkynd Stone may exist. Many have explored its depths through the years, though none have ever found a trace of such a thi",
+     "record": "BOOK ccbgssse067-daedinv.esm:076275 (ccbgssse067-daedinv.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "Janus' Journal",
+     "words": "15th Last Seed, 4E 201\r\n\r\nI was called upon to assist with the Rielle expedition, and have been studying urgently and without rest. I was entrusted with a page from an ancient Ayleid text, retrieved from a researcher in Bru",
+     "record": "BOOK ccbgssse067-daedinv.esm:0762B6 (ccbgssse067-daedinv.esm)"
+    },
+    {
+     "kind": "book",
+     "book": "The Battle of Glenumbria Moors",
+     "words": "ORUS REPRISE\r\nSo children of this Breton land\r\nYe best remember well\r\nAll those who for High Rock stood\r\nBrian, Ancois, Rielle;\r\nMen of the north,\r\nAll who stood forth\r\nTill all oppressors fell.",
+     "record": "BOOK Vigilant.esm:4A8AF6 (Vigilant - Book Covers.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Thalmor Dossier: Vonos",
+     "words": "s orders, he re-discovered an ancient Temple of the Mythic Dawn deep within the Velothi Mountains in the Ayleid city of Rielle. He spent months digging through the buried ruins alone, after which he refounded the cult of the Mythic Dawn and became their new leader and high priest",
+     "record": "BOOK More Thalmor Dossiers.esp:000A46 (More Thalmor Dossiers.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Thalmor Dossier: Norion the Undying",
+     "words": "oval\r\n\r\nDescription: Ayleid Lich, age unknown\r\n\r\nBackground: \r\nNorion is probably the former King of the Ayleid City of Rielle, and is most likely the last \"living\" Ayleid. Vonos, the Founder of the New Cult of the Mythic Dawn, seems to be related to him in some way.\r\n\r\nOperation",
+     "record": "BOOK More Thalmor Dossiers.esp:000A49 (More Thalmor Dossiers.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Letter to Ghrazzan",
+     "words": "ut to me.\r\n\r\nI can wait no longer. We are of Dagons blood and we know his will better than any mortal seer. Go forth to Rielle and retrieve the great welkynd stone. Slaughter any who get in your way. Soon. Yes soon we shall be home.\r\n\r\nKrynsurr",
+     "record": "BOOK Trad_AE_CC_Collection_Requiem_Patch.esp:0E9C6F (Trad_AE_CC_Collection_Requiem_Patch.esp)"
+    }
+   ],
+   "quests": [
+    {
+     "quest": "The Cause",
+     "id": "ccbgssse067-daedinv.esm:06BFC1"
+    }
+   ]
+  },
+  {
    "id": "Skyrim Extended Cut - Saints and Seducers.esp:0A516B",
    "name": "Root Canal",
    "edid": "EC_SS_RootCanalLocation",
@@ -96285,6 +98853,12 @@
     },
     {
      "kind": "book",
+     "book": "Gadnor's Last Wishes",
+     "words": "otherworldly treasure. Shortly before his passing, it was his wish that it be hidden away until \"one who has walked the Shivering Isles\" emerges to retrieve it. I have followed his instructions to the letter, and a powerful illusion spell now obscures it.\r\n\r\nTo break the spell, o",
+     "record": "BOOK ccBGSSSE025-AdvDSGS.esm:000C4C (ccBGSSSE025-AdvDSGS.esm)"
+    },
+    {
+     "kind": "book",
      "book": "Heretical Thoughts",
      "words": "Heretical Thoughts\r\n\r\n\r\n\r\n \r\n\r\nealotry is an abomination that must be wiped from the Shivering Isles. We cannot suffer their beliefs to spread to even one more soul. They name us Heretics for our lack of belief. We gladly accept the name, and wi",
      "record": "BOOK ccBGSSSE025-AdvDSGS.esm:000AEC (ECSS - Book Covers Skyrim Patch.esp)"
@@ -96294,6 +98868,12 @@
      "book": "Saints and Seducers",
      "words": "o catalogue and analyze known, suspected, and rumored facts about the two races that serve to maintain order within the Shivering Isles. It is by no means intended to serve as the authoritative work on the matter; rather, it is a personal effort on the part of the author to bette",
      "record": "BOOK ccBGSSSE025-AdvDSGS.esm:000AEE (ECSS - Book Covers Skyrim Patch.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "A Request to Meet",
+     "words": "elieve you possess something that I am in search of, and I require it before I return home. It is the artifact from the Shivering Isles that served as the focus of Thoron's depraved rituals.\r\n\r\nMeet me beneath the arch of Solitude, upon the shore, so that we might make an exchang",
+     "record": "BOOK ccBGSSSE025-AdvDSGS.esm:19316F (ccBGSSSE025-AdvDSGS.esm)"
     },
     {
      "kind": "book",
@@ -97085,6 +99665,24 @@
      "book": "Journal - Valerica's",
      "words": "s ridiculous crusade.\r\n\r\n28th Last Seed\r\n\r\nI've had a breakthrough today. I was able to attune the portal vessel to the Soul Cairn properly by using a small sample of ingredients. Although the portal opened only for a few seconds, I'm confident that with the proper formula, it ca",
      "record": "BOOK Dawnguard.esm:003C4B (Book Covers Skyrim.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Ivara's Notes",
+     "words": "from Olenveld was long but worth the trip. We'll have a far easier time finding what we need to open the portal to the Soul Cairn.\r\n\r\nThe pass is remote and yet there are no shortage of travelers looking for a shortcut across the mountains. As such, we'll have plenty of blood an",
+     "record": "BOOK ccbgssse045-hasedoki.esl:000801 (ccbgssse045-hasedoki.esl)"
+    },
+    {
+     "kind": "book",
+     "book": "Smuggler's Ledger",
+     "words": "list, but the zombie lovers were happy with the haul. They say they're trying to open a portal to something called the Soul Cairn. If there's loot to be had inside, it might be a good idea to line up some buyers.\r\n\r\n \r\n\r\nItems:\r\nCane, book\r\n\r\nDelivered to: \r\nBandits, White River",
+     "record": "BOOK ccbgssse045-hasedoki.esl:000803 (ccbgssse045-hasedoki.esl)"
+    },
+    {
+     "kind": "book",
+     "book": "Notes on the Bone Forge",
+     "words": "yed.\r\n\r\nI have found that adding frost salts will create a Boneman - a type of undead not normally found outside of the Soul Cairn. They are sturdier than the average skeleton and make for a good companion to assist in the gathering of, well, supplies.",
+     "record": "BOOK ccrmssse001-necrohouse.esl:000D48 (ccrmssse001-necrohouse.esl)"
     },
     {
      "kind": "book",
@@ -97971,6 +100569,150 @@
      "an armor workbench"
     ]
    }
+  },
+  {
+   "id": "cctwbsse001-puzzledungeon.esm:003901",
+   "name": "Vardnknd",
+   "edid": "DLCDwarvenPuzzleDungeonLocation",
+   "type": "DwemerRuin",
+   "keywords": [
+    "LocTypeClearable",
+    "LocTypeDungeon",
+    "LocTypeDwarvenAutomatons"
+   ],
+   "hold": null,
+   "nearestTown": {
+    "town": "Rorikstead",
+    "km": 0.7,
+    "walk": "a short walk"
+   },
+   "nearestCity": {
+    "town": "Markarth",
+    "km": 1.2,
+    "walk": "half a day"
+   },
+   "inTown": null,
+   "plugin": "cctwbsse001-puzzledungeon.esm",
+   "marker": null,
+   "world": "Tamriel",
+   "pos": [
+    -104792.9,
+    -36755.3,
+    1044.2
+   ],
+   "posFrom": "door",
+   "actors": {
+    "count": 199,
+    "livesHere": "Bandit",
+    "alsoHere": [
+     "Skeleton",
+     "Spriggan",
+     "Wolf",
+     "Bear"
+    ],
+    "kinds": [
+     {
+      "kind": "Bandit",
+      "count": 27,
+      "range": [
+       5,
+       30
+      ]
+     },
+     {
+      "kind": "Skeleton",
+      "count": 9,
+      "range": [
+       5,
+       5
+      ]
+     },
+     {
+      "kind": "Spriggan",
+      "count": 9,
+      "range": [
+       8,
+       30
+      ]
+     },
+     {
+      "kind": "Wolf",
+      "count": 3,
+      "range": [
+       5,
+       5
+      ]
+     },
+     {
+      "kind": "Bear",
+      "count": 1,
+      "range": [
+       12,
+       12
+      ]
+     }
+    ],
+    "floor": 5,
+    "ceiling": 75,
+    "atLevel": [
+     {
+      "from": 1,
+      "meets": [
+       5,
+       75
+      ],
+      "words": "from 1, 5 to 75"
+     }
+    ],
+    "zoneMin": 5,
+    "boss": {
+     "name": "The Sky Orchestrator",
+     "level": "level 75"
+    }
+   },
+   "respawns": "never",
+   "clearXp": 200,
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
+   "pointers": [
+    {
+     "kind": "dialogue",
+     "speaker": null,
+     "speakerPlace": null,
+     "quest": "JR21LucienForgottenSeasons",
+     "words": "I wonder how Bartholomew's getting on back in Vardnknd. I miss him.",
+     "record": "INFO Lucien-AnniversaryEdition-Patch.esp:210859 (Lucien-AnniversaryEdition-Patch.esp)"
+    },
+    {
+     "kind": "book",
+     "book": "Forgotten Seasons, v1",
+     "words": "dmirers pointed me in the direction of an old system of caverns. But lo, it was not a simple naturally formed cave, but Vardnknd, a long forgotten Dwarven ruin. \r\n\r\nA storm of great intensity had ravaged the region recently, and the locals all thought that some curse lay upon the",
+     "record": "BOOK cctwbsse001-puzzledungeon.esm:0008A2 (cctwbsse001-puzzledungeon.esm)"
+    }
+   ],
+   "quests": [
+    {
+     "quest": "Forgotten Seasons",
+     "id": "cctwbsse001-puzzledungeon.esm:0038D9"
+    },
+    {
+     "quest": "Book Quest Item",
+     "id": "cctwbsse001-puzzledungeon.esm:126690"
+    },
+    {
+     "quest": "The Dwarven Horse",
+     "id": "cctwbsse001-puzzledungeon.esm:0038DA"
+    },
+    {
+     "quest": "The Dwarven Crown",
+     "id": "cctwbsse001-puzzledungeon.esm:0038DB"
+    }
+   ]
   },
   {
    "id": "Vigilant.esm:390F00",

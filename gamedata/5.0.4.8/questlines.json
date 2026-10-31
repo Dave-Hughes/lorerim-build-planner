@@ -480,7 +480,7 @@
       "prince": "Sheogorath",
       "lines": [
         "Skyrim Extended Cut - Saints and Seducers",
-        "ccbgssse025-advdsgs"
+        "ccBGSSSE025-AdvDSGS"
       ],
       "opening": "EC_SS_MQ101",
       "start": "Carries on Sheogorath's story after The Mind of Madness, in the Shivering Isles.",
@@ -1733,6 +1733,110 @@
       ]
     },
     {
+      "id": "horse-whisperer",
+      "name": "Horse Whisperer",
+      "category": "work",
+      "lines": [
+        "ccbgssse034-mntuni"
+      ]
+    },
+    {
+      "id": "ghosts-of-the-tribunal",
+      "name": "Ghosts of the Tribunal",
+      "category": "side",
+      "lines": [
+        "ccasvsse001-almsivi"
+      ]
+    },
+    {
+      "id": "forgotten-seasons",
+      "name": "Forgotten Seasons",
+      "category": "side",
+      "lines": [
+        "cctwbsse001-puzzledungeon"
+      ]
+    },
+    {
+      "id": "a-soul-divided",
+      "name": "A Soul Divided",
+      "category": "side",
+      "lines": [
+        "ccbgssse013-dawnfang"
+      ]
+    },
+    {
+      "id": "the-restless",
+      "name": "The Restless",
+      "category": "side",
+      "lines": [
+        "ccbgssse031-advcyrus"
+      ]
+    },
+    {
+      "id": "the-sanctuary-and-the-manufactory",
+      "name": "The Sanctuary and the Manufactory",
+      "category": "side",
+      "lines": [
+        "ccafdsse001-dwesanctuary"
+      ]
+    },
+    {
+      "id": "a-matter-of-pride",
+      "name": "A Matter of Pride",
+      "category": "side",
+      "lines": [
+        "ccbgssse005-goldbrand"
+      ]
+    },
+    {
+      "id": "blue-in-the-face",
+      "name": "Blue in the Face",
+      "category": "side",
+      "lines": [
+        "ccbgssse040-advobgobs"
+      ]
+    },
+    {
+      "id": "the-staff-of-hasedoki",
+      "name": "The Staff of Hasedoki",
+      "category": "side",
+      "lines": [
+        "ccbgssse045-hasedoki"
+      ]
+    },
+    {
+      "id": "blood-in-the-water",
+      "name": "Blood in the Water",
+      "category": "side",
+      "lines": [
+        "ccbgssse068-bloodfall"
+      ]
+    },
+    {
+      "id": "caught-in-a-web",
+      "name": "Caught in a Web",
+      "category": "side",
+      "lines": [
+        "ccbgssse069-contest"
+      ]
+    },
+    {
+      "id": "shadowfoot-sanctum",
+      "name": "Shadowfoot Sanctum",
+      "category": "side",
+      "lines": [
+        "cceejsse003-hollow"
+      ]
+    },
+    {
+      "id": "saturalia-preparation",
+      "name": "Saturalia Preparation",
+      "category": "side",
+      "lines": [
+        "ccvsvsse001-winter"
+      ]
+    },
+    {
       "id": "stealer-of-souls",
       "name": "Stealer of Souls",
       "category": "side",
@@ -1766,7 +1870,8 @@
       "name": "Myrwatch",
       "category": "side",
       "lines": [
-        "Myrwatch - Tweaks and Enhancements"
+        "Myrwatch - Tweaks and Enhancements",
+        "cceejsse002-tower"
       ]
     },
     {

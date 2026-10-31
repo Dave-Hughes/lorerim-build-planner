@@ -2,7 +2,7 @@
 
 Written by `scripts/gamedata/places.py` from the winning records across the load order (with the Creation Club plugins). Clear and discovery XP from `LoreRim - MCM and INI Settings`'s Experience.ini.
 
-**997 places.** 421 have a pointer (a line or a book that names them), 384 have a quest that goes there, and 435 have neither.
+**1015 places.** 439 have a pointer (a line or a book that names them), 404 have a quest that goes there, and 427 have neither.
 
 ## The nine capitals
 
@@ -13,41 +13,41 @@ All nine found with an exterior position.
 
 | Type | Places | With a pointer | With a quest |
 |---|---|---|---|
-| House | 179 | 8 | 23 |
-| Landmark | 154 | 43 | 79 |
-| Cave | 107 | 60 | 48 |
-| NordicRuin | 54 | 42 | 34 |
+| House | 179 | 9 | 23 |
+| Landmark | 158 | 44 | 84 |
+| Cave | 111 | 66 | 52 |
+| NordicRuin | 55 | 44 | 35 |
 | Store | 51 | 23 | 20 |
-| Fort | 45 | 38 | 28 |
+| Fort | 45 | 38 | 29 |
 | Shack | 31 | 6 | 7 |
 | Inn | 29 | 20 | 16 |
 | DragonLair | 28 | 9 | 1 |
-| DwemerRuin | 24 | 17 | 19 |
+| DwemerRuin | 27 | 20 | 22 |
 | Farm | 24 | 8 | 4 |
 | Building | 20 | 4 | 5 |
 | Mine | 19 | 11 | 7 |
-| Camp | 16 | 11 | 8 |
+| ImperialTower | 16 | 7 | 7 |
+| Camp | 15 | 11 | 8 |
 | Guild | 15 | 11 | 10 |
-| ImperialTower | 14 | 6 | 5 |
+| PlayerHouse | 15 | 11 | 8 |
 | Temple | 14 | 12 | 7 |
 | GiantCamp | 13 | 12 | 0 |
 | Town | 13 | 13 | 5 |
-| NordicDwelling | 12 | 4 | 1 |
+| NordicDwelling | 12 | 6 | 1 |
 | NordicTower | 12 | 6 | 3 |
-| PlayerHouse | 12 | 10 | 5 |
 | Doomstone | 11 | 0 | 1 |
 | City | 10 | 0 | 10 |
 | Altar | 10 | 4 | 4 |
 | DaedricShrine | 9 | 2 | 3 |
 | Keep | 9 | 9 | 7 |
-| Shipwreck | 9 | 4 | 1 |
+| Shipwreck | 9 | 5 | 1 |
 | Grove | 7 | 4 | 1 |
+| Barracks | 6 | 1 | 3 |
+| Clearing | 5 | 1 | 1 |
 | Pass | 5 | 1 | 1 |
-| Stables | 5 | 1 | 0 |
+| Stables | 5 | 1 | 1 |
 | Castle | 5 | 3 | 3 |
-| Barracks | 5 | 1 | 3 |
 | Jail | 5 | 3 | 5 |
-| Clearing | 4 | 1 | 1 |
 | OrcStronghold | 4 | 4 | 4 |
 | Lighthouse | 4 | 2 | 1 |
 | Settlement | 4 | 4 | 3 |
@@ -58,17 +58,17 @@ All nine found with an exterior position.
 
 | Hold | Places | With a pointer | With a quest |
 |---|---|---|---|
-| (none) | 165 | 45 | 63 |
-| The Rift | 97 | 54 | 37 |
-| Eastmarch | 96 | 40 | 32 |
+| (none) | 169 | 49 | 67 |
+| The Rift | 102 | 55 | 43 |
+| Eastmarch | 100 | 42 | 36 |
 | Whiterun | 95 | 45 | 35 |
-| The Reach | 94 | 43 | 40 |
-| Haafingar | 86 | 28 | 26 |
-| Falkreath | 65 | 36 | 28 |
-| Solstheim | 64 | 25 | 36 |
-| The Pale | 55 | 26 | 23 |
-| Winterhold | 52 | 27 | 27 |
-| Hjaalmarch | 44 | 19 | 14 |
+| The Reach | 94 | 44 | 41 |
+| Haafingar | 86 | 29 | 27 |
+| Falkreath | 67 | 38 | 29 |
+| Solstheim | 65 | 26 | 37 |
+| The Pale | 55 | 28 | 23 |
+| Winterhold | 54 | 30 | 29 |
+| Hjaalmarch | 44 | 20 | 14 |
 | Wyrmstooth | 30 | 16 | 8 |
 | Alik'r Desert | 29 | 9 | 9 |
 | Morrowind | 15 | 7 | 4 |
@@ -76,51 +76,52 @@ All nine found with an exterior position.
 
 ## Positions (WO-166)
 
-**669 of 997 places have a position**; 317 are in a town and have none of their own (`inTown`); 11 could not be placed. A position is `world` and `pos` [x, y, z] in game units, found from the place's own map marker, else the exterior cells it owns (the middle of their grid squares: no height, z is null), else a door out of its interior (up to 3 rooms deep). The five big cities' own worldspaces share Tamriel's coordinates (checked door to door) and are filed as Tamriel.
+**683 of 1015 places have a position**; 320 are in a town and have none of their own (`inTown`); 12 could not be placed. A position is `world` and `pos` [x, y, z] in game units, found from the place's own map marker, else the exterior cells it owns (the middle of their grid squares: no height, z is null), else a door out of its interior (up to 3 rooms deep). The five big cities' own worldspaces share Tamriel's coordinates (checked door to door) and are filed as Tamriel.
 
 | Found from | Places |
 |---|---|
-| marker | 469 |
-| door | 156 |
-| cells | 44 |
+| marker | 476 |
+| door | 162 |
+| cells | 45 |
 
 | World | Places | On a map |
 |---|---|---|
-| Tamriel | 459 | yes |
-| DLC2SolstheimWorld | 71 | yes |
+| Tamriel | 471 | yes |
+| DLC2SolstheimWorld | 72 | yes |
 | zCHMolagWorld | 58 | yes |
 | mannyGFDesert | 32 | yes |
 | WyrmstoothWorld | 25 | yes |
 | BSKHyorkerIsle | 10 | yes |
 | ECSSShiveringIsles | 8 | yes |
 | ksws07World | 4 | yes |
+| ccBGSSSE067DeadlandsWorld | 1 | no (a pocket world: coordinates mean nothing on a map) |
 | NecroDragontailMountains | 1 | no (a pocket world: coordinates mean nothing on a map) |
 | ksws07Dungeon02World | 1 | no (a pocket world: coordinates mean nothing on a map) |
 
 | Kind | Places | Positioned | In a town | Not placed |
 |---|---|---|---|---|
 | House | 179 | 24 | 155 | 0 |
-| Landmark | 154 | 138 | 10 | 6 |
-| Cave | 107 | 105 | 0 | 2 |
-| NordicRuin | 54 | 53 | 0 | 1 |
+| Landmark | 158 | 141 | 11 | 6 |
+| Cave | 111 | 109 | 0 | 2 |
+| NordicRuin | 55 | 54 | 0 | 1 |
 | Store | 51 | 8 | 43 | 0 |
 | Fort | 45 | 43 | 2 | 0 |
 | Shack | 31 | 30 | 0 | 1 |
 | Inn | 29 | 6 | 23 | 0 |
 | DragonLair | 28 | 28 | 0 | 0 |
-| DwemerRuin | 24 | 24 | 0 | 0 |
+| DwemerRuin | 27 | 27 | 0 | 0 |
 | Farm | 24 | 16 | 8 | 0 |
 | Building | 20 | 4 | 16 | 0 |
 | Mine | 19 | 17 | 2 | 0 |
-| Camp | 16 | 16 | 0 | 0 |
+| ImperialTower | 16 | 14 | 1 | 1 |
+| Camp | 15 | 15 | 0 | 0 |
 | Guild | 15 | 2 | 13 | 0 |
-| ImperialTower | 14 | 14 | 0 | 0 |
+| PlayerHouse | 15 | 9 | 6 | 0 |
 | Temple | 14 | 2 | 12 | 0 |
 | GiantCamp | 13 | 13 | 0 | 0 |
 | Town | 13 | 13 | 0 | 0 |
 | NordicDwelling | 12 | 12 | 0 | 0 |
 | NordicTower | 12 | 12 | 0 | 0 |
-| PlayerHouse | 12 | 6 | 6 | 0 |
 | Doomstone | 11 | 10 | 0 | 1 |
 | City | 10 | 10 | 0 | 0 |
 | Altar | 10 | 10 | 0 | 0 |
@@ -128,12 +129,12 @@ All nine found with an exterior position.
 | Keep | 9 | 0 | 9 | 0 |
 | Shipwreck | 9 | 8 | 1 | 0 |
 | Grove | 7 | 7 | 0 | 0 |
+| Barracks | 6 | 1 | 5 | 0 |
+| Clearing | 5 | 5 | 0 | 0 |
 | Pass | 5 | 5 | 0 | 0 |
 | Stables | 5 | 1 | 4 | 0 |
 | Castle | 5 | 1 | 4 | 0 |
-| Barracks | 5 | 1 | 4 | 0 |
 | Jail | 5 | 0 | 5 | 0 |
-| Clearing | 4 | 4 | 0 | 0 |
 | OrcStronghold | 4 | 4 | 0 | 0 |
 | Lighthouse | 4 | 4 | 0 | 0 |
 | Settlement | 4 | 4 | 0 | 0 |
@@ -144,7 +145,7 @@ All nine found with an exterior position.
 
 | Why | Places | Types |
 |---|---|---|
-| interior cells whose doors lead nowhere onto a map (looked 3 rooms deep) | 4 | Landmark, NordicRuin |
+| interior cells whose doors lead nowhere onto a map (looked 3 rooms deep) | 5 | ImperialTower, Landmark, NordicRuin |
 | interior cells with no door at all | 3 | Cave, Landmark, Shack |
 | no cells: a location nothing is placed in | 3 | Cave, Doomstone, Landmark |
 | another plane: the door out of it opens in Castle Volkihar, which has the position | 1 | Landmark |
@@ -162,40 +163,41 @@ All nine found with an exterior position.
 | Warehouses | Shack | Skyrim.esm | interior cells with no door at all |
 | Sanctum of Malacath | Cave | The Cursed Tribe - Quest Expansion.esp | no cells: a location nothing is placed in |
 | Frozen Caverns | Cave | WindhelmSSE.esp | interior cells with no door at all |
+| Iron Tusk Cave Location | ImperialTower | cckrtsse001_altar.esl | interior cells whose doors lead nowhere onto a map (looked 3 rooms deep) |
 
-### Added because a quest, a person's home or a book names them (441)
+### Added because a quest, a person's home or a book names them (447)
 
-Every location a named quest points at (a location alias, or the cell a forced reference stands in), a person's home (their first placed cell, people_raw.json) or a book is read or found in (book_places.json) that no place of the index covers, whatever it is, with a `kind` from its keywords (then its name's word): not a hold, a capital, a demo leftover or a name no map and no town holds. A town or city never covers what is inside it. A room inside another added place is part of it unless two quests name it. What is inside a town has `inTown` and no position; the rest needs one on a map. 48 are cells of no location at all (Green-Tip Cabin), a place of their own keyed by the cell.
+Every location a named quest points at (a location alias, or the cell a forced reference stands in), a person's home (their first placed cell, people_raw.json) or a book is read or found in (book_places.json) that no place of the index covers, whatever it is, with a `kind` from its keywords (then its name's word): not a hold, a capital, a demo leftover or a name no map and no town holds. A town or city never covers what is inside it. A room inside another added place is part of it unless two quests name it. What is inside a town has `inTown` and no position; the rest needs one on a map. 47 are cells of no location at all (Green-Tip Cabin), a place of their own keyed by the cell.
 
 | Named by | Places |
 |---|---|
 | homes | 304 |
-| homes + quests | 96 |
-| quests | 41 |
+| homes + quests | 101 |
+| quests | 42 |
 
 | Kind | Added | In a town | On a map |
 |---|---|---|---|
 | House | 179 | 155 | 24 |
-| Landmark | 83 | 10 | 72 |
+| Landmark | 85 | 11 | 73 |
 | Store | 51 | 43 | 8 |
 | Farm | 24 | 8 | 16 |
 | Building | 20 | 16 | 4 |
-| PlayerHouse | 12 | 6 | 6 |
+| PlayerHouse | 15 | 6 | 9 |
 | Fort | 8 | 2 | 6 |
 | Shack | 8 | 0 | 8 |
+| Barracks | 6 | 5 | 1 |
 | Town | 5 | 0 | 5 |
-| Barracks | 5 | 4 | 1 |
 | Jail | 5 | 5 | 0 |
 | Mine | 5 | 2 | 3 |
 | Cave | 4 | 0 | 4 |
 | Castle | 4 | 4 | 0 |
 | Mill | 4 | 0 | 4 |
-| Camp | 3 | 0 | 3 |
 | Settlement | 3 | 0 | 3 |
 | Guild | 3 | 1 | 2 |
 | DwemerRuin | 2 | 0 | 2 |
-| Shipwreck | 2 | 1 | 1 |
+| Camp | 2 | 0 | 2 |
 | Inn | 2 | 1 | 1 |
+| Shipwreck | 2 | 1 | 1 |
 | NordicRuin | 1 | 0 | 1 |
 | NordicTower | 1 | 0 | 1 |
 | NordicDwelling | 1 | 0 | 1 |
@@ -205,19 +207,20 @@ Every location a named quest points at (a location alias, or the cell a forced r
 | DaedricShrine | 1 | 0 | 1 |
 | Lighthouse | 1 | 0 | 1 |
 | Meadery | 1 | 0 | 1 |
+| ImperialTower | 1 | 1 | 0 |
 
 | Plugin | Added |
 |---|---|
-| Skyrim.esm | 74 |
+| Skyrim.esm | 73 |
 | Vigilant.esm | 42 |
-| Unofficial Skyrim Special Edition Patch.esp | 26 |
+| Unofficial Skyrim Special Edition Patch.esp | 28 |
 | RedBag's Solitude.esp | 23 |
 | WindhelmSSE.esp | 20 |
 | ForgottenCity.esp | 18 |
 | Gray Fox Cowl.esm | 15 |
 | SurWR.esp | 15 |
 | Dragonborn.esm | 13 |
-| GORE.esp | 11 |
+| GORE.esp | 10 |
 | The Great City of Solitude.esp | 10 |
 | The Great City of Winterhold v4.esp | 9 |
 | Journey to Baan Malur.esp | 8 |
@@ -244,7 +247,7 @@ The places that are not a house, shop, barracks, jail or building (those are onl
 | Ben Erai | Town | mannyGFDesert | BetalillesHammerfellQuestBundle.esp | Deliver a Letter Distant, Deliver a Letter Medium, Deliver a Letter Near |
 | Forgotten City | Settlement | mannyGFDesert | BetalillesHammerfellQuestBundle.esp | The Library Lost to the Ages, Weltan the Poet |
 | Salas Kazas | Town | mannyGFDesert | BetalillesHammerfellQuestBundle.esp | Behsharah, Daliah, Sharza |
-| Goldenhills Plantation | Landmark | Tamriel | CC Farming - Tweaks and Enhancements.esp | The Unquiet Dead |
+| Goldenhills Plantation | Landmark | Tamriel | CC Farming - Tweaks and Enhancements.esp | A Farmer's Life For Me, The Unquiet Dead |
 | Dead Drop Falls | Landmark | Tamriel | Dawnguard.esm | Bloodline |
 | Ash Ghoul Ambush Cell Location | Landmark | DLC2SolstheimWorld | Dragonborn.esm | March of the Dead |
 | Northshore Landing | Cave | DLC2SolstheimWorld | Dragonborn.esm | A New Source of Stalhrim, Init quest |
@@ -260,7 +263,6 @@ The places that are not a house, shop, barracks, jail or building (those are onl
 | Luki's Chambers | Landmark | Tamriel | ForgottenCity.esp | Luki |
 | The Forgotten City | Landmark | Tamriel | ForgottenCity.esp | The Forgotten City |
 | Underground Tunnels | Landmark | Tamriel | ForgottenCity.esp | Altrius, Dwarven Spider Worker, Giant Skeever |
-| Campsite | Camp | Tamriel | GORE.esp | Gore |
 | Dark Brotherhood Sanctuary | Guild | Tamriel | GORE.esp | BCSLL Vendor Quest, Death Incarnate, Destroy the Dark Brotherhood! |
 | Dayspring Canyon | Landmark | Tamriel | GORE.esp | Dawnguard, Destroying the Dawnguard |
 | Esbern's Vault | Landmark | Riften | GORE.esp | A Cornered Rat, Champion's Choice, MQ Reserved Locations |
@@ -320,7 +322,6 @@ The places that are not a house, shop, barracks, jail or building (those are onl
 | Mudcrab Den | Landmark | Tamriel | Ryn's Crabber's Shanty.esp | Giant Mudcrab, Titanclaw Caller |
 | Kolskeggr Mine | Mine | Tamriel | Skyrim.esm | Kolskeggr Mine |
 | Misty Grove | Landmark | Tamriel | Skyrim.esm | A Night To Remember |
-| Nightgate Inn | Inn | Tamriel | Skyrim.esm | A False Front, BCSLL Vendor Quest, Recipe for Disaster |
 | Sanurach Mine | Mine | Karthwasten | Skyrim.esm | Sanuarach Mine |
 | Shrine of Talos | Landmark | Markarth | Skyrim.esm | The Forsworn Conspiracy |
 | Steamscorch Gully Mine | Mine | Kynesgrove | Skyrim.esm | Ganna Uriel, Gemma Uriel, Roggi Knot-Beard |
@@ -332,6 +333,7 @@ The places that are not a house, shop, barracks, jail or building (those are onl
 | The Broker's Shack | Shack | Tamriel | Undeath.esp | The Broker |
 | Dainty Sload | Shipwreck | Tamriel | Unofficial Skyrim Modders Patch.esp | No Stone Unturned, The Dainty Sload |
 | Angi's Camp | Shack | Tamriel | Unofficial Skyrim Special Edition Patch.esp | More to Say Find Angi |
+| Nightgate Inn | Inn | Tamriel | Unofficial Skyrim Special Edition Patch.esp | Revenge, Hired Thugs |
 | Solitude Lighthouse | Lighthouse | Tamriel | Unofficial Skyrim Special Edition Patch.esp | Ma'zaka |
 | Soljund's Sinkhole | Mine | Tamriel | Unofficial Skyrim Special Edition Patch.esp | Soljund's Sinkhole |
 | Whistling Mine | Mine | Tamriel | Unofficial Skyrim Special Edition Patch.esp | Angvid, Badnir, Gunding |
@@ -373,10 +375,13 @@ The places that are not a house, shop, barracks, jail or building (those are onl
 | Wallside Inn | Inn | Windhelm | WindhelmSSE.esp | Dumburz, Ingjar |
 | Cragwater Cavern | Camp | WyrmstoothWorld | Wyrmstooth.esp | Donnar, Gundlof Windsinger, Hagraven |
 | Granite Hill | Town | Tamriel | aaaGraniteHill.esp | Aisha, Alex, Jennifer |
+| Attius Farm Location | Landmark | DLC2SolstheimWorld | ccasvsse001-almsivi.esm | March of the Dead |
+| The Pit | ImperialTower | Falkreath | cckrtsse001_altar.esl | The Pit |
 | Honrich Lake Cave | Cave | Tamriel | evgSIRENROOT.esm | Deluge of Deceit |
 | Gomgralmaulgr Cave | Cave | Tamriel | mihailseagiants.esp | Grahl, Grahl Matron, Half-Giant Frostcaller |
+| Riften Ratway | Landmark | Riften | unofficial skyrim creation club content patch.esl | A Soul Divided, Bow to the Master, Fists of Fury - The Rift |
 
-### Named by a quest, a home or a book, and found on no map and in no town (75)
+### Named by a quest, a home or a book, and found on no map and in no town (76)
 
 Not places: their interiors reach no map by any door (holding cells, storage and test cells, Apocrypha, Sovngarde, Meridia's realm, Vigilant's rooms). The quest data still names them.
 
@@ -408,6 +413,7 @@ Not places: their interiors reach no map by any door (holding cells, storage and
 | Bloody Well | Vigilant.esm | no position |
 | Bruiant Mansion | Vigilant.esm | only inside zCOBruiantWorld, which is no map |
 | Burmuk's Shack | Journey to Baan Malur.esp | no position |
+| Campsite | GORE.esp | no position |
 | DLC1 Item Holding Cell | Dawnguard.esm | no position |
 | DLC1LD Holding Cell | Dawnguard.esm | no position |
 | Deep Library | Unmarked Locations Pack - All In One.esp | no position |
@@ -458,7 +464,7 @@ Not places: their interiors reach no map by any door (holding cells, storage and
 | Unowned Cell | Skyrim.esm | no position |
 | WSN Location | Wintersun - Faiths of Skyrim.esp | no position |
 
-### A map marker two places claimed (24)
+### A map marker two places claimed (26)
 
 A record that names another place's map marker as its own (Morvunskar Crypts and Bleak Falls Barrow's) does not get its position: the marker goes to the place it is named for, and the other is placed from its own cells or doors.
 
@@ -470,6 +476,7 @@ A record that names another place's map marker as its own (Morvunskar Crypts and
 | Chillfurrow Farm Interior | Battle-Born Farm | Battle-Born Farm |
 | Cradle Stone Tower | Cliffside Retreat | Cliffside Retreat |
 | Frozen Caverns | Bleakcoast Cave | Bleakcoast Cave |
+| Iron Tusk Cave Location | Falkreath Watchtower | Falkreath Watchtower |
 | Knifepoint Ridge | Robber's Gorge | Robber's Gorge |
 | Morvunskar Crypts | Bleak Falls Barrow | Bleak Falls Barrow |
 | Name TBD | Chillwind Depths | Chillwind Depths |
@@ -483,6 +490,7 @@ A record that names another place's map marker as its own (Morvunskar Crypts and
 | Sanctum of Malacath | Fallowstone Cave | Fallowstone Cave |
 | Shadowgreen Cavern | Shimmermist Cave | Shimmermist Cave |
 | The Aetherium Forge | Ruins of Bthalft | Ruins of Bthalft |
+| The Pit | Falkreath Watchtower | Falkreath Watchtower |
 | The Thief Doomstone | The Shadow Stone | The Shadow Doomstone |
 | Ven Fillaan Miin | Shrine of Azura | Shrine of Azura |
 | Warehouses | Alchemist's Shack | Alchemist's Shack |
@@ -517,7 +525,7 @@ A location the record parents to a city, whose door opens onto Tamriel itself an
 | Honningbrew Meadery | Whiterun | door |
 | Whiterun Stables | Whiterun | door |
 
-Buildings whose door opens on Tamriel too, left inside their city until Bob rules (55): Aksels House (Solitude), Angeline's Aromatics (Solitude), Argonian Assemblage (Windhelm), Black-Briar Lodge (Riften), Black-Briar Meadery (Riften), Clan Shatter-Shield Offices (Windhelm), Daighre's House (Markarth), Digitus Quintus' House (Solitude), Dockmaster's Home (Windhelm), Dorte's Cabin (Solitude), East Empire Company (Windhelm), East Empire Company Outpost (Riften), Esbern's Vault (Riften), Freyja's House (Solitude), Guard Tower (Whiterun), Gunnar's Cabin (Solitude), Hjoldan's House (Solitude), Honeyside (Riften), Jo'vanni's Dream Theater (Whiterun), Kodraug's Cabin (Solitude), Laurircella's Cabin (Solitude), Markarth East Empire Dormitory (Markarth), Markarth East Empire Goods (Markarth), Markarth Old Observatory (Markarth), Markarth Stables (Markarth), Markarth Waste Collector (Markarth), Naspis' Cabin (Solitude), New Gnisis Cornerclub (Windhelm), Old Dam (Markarth), Oyalf's Cabin (Solitude), Qrvar's Cabin (Solitude), Ratway Arena (Riften), Riften Fishery (Riften), Riften Jail (Riften), Riften Stables (Riften), Riften Warehouse (Riften), Shack (Windhelm), Skaggi's House (Markarth), Soderberg's House (Riften), Solitude Stables (Solitude), Sverre's Cabin (Solitude), Tahlen-Ra's House (Solitude), The Katariah (Solitude), The Leaning Cabin (Solitude), The Pawned Prawn (Riften), The Ragged Flagon (Riften), The Roadhouse (Whiterun), Thieves Guild Headquarters (Riften), Tilda's House (Solitude), Torbec's House (Solitude), Toril's House (Solitude), Understone Keep (Markarth), Wallside Inn (Windhelm), Whiterun Underforge (Whiterun), Windhelm Stables (Windhelm).
+Buildings whose door opens on Tamriel too, left inside their city until Bob rules (56): Aksels House (Solitude), Angeline's Aromatics (Solitude), Argonian Assemblage (Windhelm), Black-Briar Lodge (Riften), Black-Briar Meadery (Riften), Clan Shatter-Shield Offices (Windhelm), Daighre's House (Markarth), Digitus Quintus' House (Solitude), Dockmaster's Home (Windhelm), Dorte's Cabin (Solitude), East Empire Company (Windhelm), East Empire Company Outpost (Riften), Esbern's Vault (Riften), Freyja's House (Solitude), Guard Tower (Whiterun), Gunnar's Cabin (Solitude), Hjoldan's House (Solitude), Honeyside (Riften), Jo'vanni's Dream Theater (Whiterun), Kodraug's Cabin (Solitude), Laurircella's Cabin (Solitude), Markarth East Empire Dormitory (Markarth), Markarth East Empire Goods (Markarth), Markarth Old Observatory (Markarth), Markarth Stables (Markarth), Markarth Waste Collector (Markarth), Naspis' Cabin (Solitude), New Gnisis Cornerclub (Windhelm), Old Dam (Markarth), Oyalf's Cabin (Solitude), Qrvar's Cabin (Solitude), Ratway Arena (Riften), Riften Fishery (Riften), Riften Jail (Riften), Riften Ratway (Riften), Riften Stables (Riften), Riften Warehouse (Riften), Shack (Windhelm), Skaggi's House (Markarth), Soderberg's House (Riften), Solitude Stables (Solitude), Sverre's Cabin (Solitude), Tahlen-Ra's House (Solitude), The Katariah (Solitude), The Leaning Cabin (Solitude), The Pawned Prawn (Riften), The Ragged Flagon (Riften), The Roadhouse (Whiterun), Thieves Guild Headquarters (Riften), Tilda's House (Solitude), Torbec's House (Solitude), Toril's House (Solitude), Understone Keep (Markarth), Wallside Inn (Windhelm), Whiterun Underforge (Whiterun), Windhelm Stables (Windhelm).
 
 ### Called by the name on the door (31) (WO-171)
 
@@ -565,7 +573,7 @@ Left as the record has them:
 | Jakob's Farm | Jakob's House | a farm stays a farm: the door is its house |
 | Riften Mercer's House | Riftweald Manor | another place's name holds it (Riftweald Manor Player Home) |
 
-25 more differ only in that one name holds the other (a town's name dropped from the front, a leading "The"): left as they are.
+26 more differ only in that one name holds the other (a town's name dropped from the front, a leading "The"): left as they are.
 
 ### Low actors that are not the place's fight (32) (WO-176)
 
@@ -714,7 +722,7 @@ A different way of writing a place's name (a possessive, a hyphen, a leading "Th
 | Winterhold Library | Hall of Runes |
 | Yngol Barrow | Yngol's Barrow |
 
-### Listed twice or left over, now out (29)
+### Listed twice or left over, now out (31)
 
 | Name | Editor id | Why | Kept as |
 |---|---|---|---|
@@ -736,6 +744,7 @@ A different way of writing a place's name (a possessive, a hyphen, a leading "Th
 | Kynesgrove | KynesgroveFarmsLocationTGCoKG | the same place as the entry kept: inside it | KynesgroveLocation |
 | Name TBD | DLC1HunterRadiantDungeonLocation | a demo or cut-content leftover (its editor id or name says so) | (nothing) |
 | Nenyond's Underground Priory | zzzCHLocPrioryNenyond01 | the same place as the entry kept: inside it | zzzCHDistrictPrioryNenyond |
+| Nightgate Inn | NightgateInnLocation | the same place as the entry kept: inside it | NightgateInnExteriorLocation |
 | Sancre Tor | manny_GF_L_SancreTorA | the same place as the entry kept: inside it | manny_GF_L_SancreTor |
 | Sancre Tor | manny_GF_L_SancreTorB | the same place as the entry kept: inside it | manny_GF_L_SancreTor |
 | Sancre Tor | manny_GF_L_SancreTorC | the same place as the entry kept: inside it | manny_GF_L_SancreTor |
@@ -747,8 +756,9 @@ A different way of writing a place's name (a possessive, a hyphen, a leading "Th
 | Throat of the World | MQ206Location | the same place as the entry kept: the same map marker | ThroatoftheWorldLocation |
 | Watchtower | zzzCHLocWfWatchTower | the same place as the entry kept: the same map marker | zzzCHLocMGWatchTower |
 | Wellspring Cave | zzzCHSubLocWellspringCave01 | the same place as the entry kept: inside it | zzzCHLocWellspringCave |
+| Yngol Barrow | ccASVSSE001_TempleLocation | the same place as the entry kept: the same map marker | YngolBarrowLocation |
 
-### One name, different places, all kept (7 names)
+### One name, different places, all kept (8 names)
 
 Never in the same town or at the same spot: eight Imperial camps, one in each hold; a Hall of the Dead in each of three cities.
 
@@ -761,3 +771,4 @@ Never in the same town or at the same spot: eight Imperial camps, one in each ho
 | Jarl's Longhouse | 2 | Falkreath; Winterhold |
 | Shrine of Talos | 2 | Markarth; Whiterun |
 | Sons of Skyrim Military Camp | 8 | Falkreath; Haafingar; Hjaalmarch; The Pale; The Reach; The Rift; Whiterun; Winterhold |
+| The Pit | 2 | Alik'r Desert; Falkreath |

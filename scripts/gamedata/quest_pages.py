@@ -170,7 +170,7 @@ def giver_of(entry):
     if not g or not g.get("name"):
         return None
     name = g["name"].strip()
-    if is_role(name):
+    if is_role(name) or re.match(r"[A-Za-z0-9]+_[A-Za-z]", name):  # (an NPC with no name of its own comes through as its editor id: no giver a player can name)
         return None
     # Not "a name that's the same as its alias": most quests name a person's alias after them
     # (Meridia, Serana, Neloth, Delphine), so that rule would take 39 of the 114 openings' real
@@ -179,6 +179,10 @@ def giver_of(entry):
     place = place_of(g.get("where"))
     if place:
         out["place"] = place
+    # (WO-183 Part 7: the records name another giver for the other side of the same job: Battle of the Champions' Captain Yrsarald and Legate Adventus; neither is the one giver)
+    also = [o["name"] for o in ((entry or {}).get("giver") or {}).get("others", []) if o.get("name")]
+    if also:
+        out["also"] = also
     return out
 
 
@@ -401,7 +405,8 @@ def fill_text(text, fills, globals_, alias=None):
             out = fills[tag]
         elif kind == "global":
             value = globals_.get(name.lower())
-            out = {"day": "the set day", "monthword": "the set month"}.get(part) or (f"{value:g}" if isinstance(value, (int, float)) else "the amount the game sets")
+            # (a total the records leave at 0 is the game's to set when the job is given: WO-183 Part 7, the Fishing jobs' "Obtain 0 brook bass"; a count that starts at 0 is "(0/10)")
+            out = {"day": "the set day", "monthword": "the set month"}.get(part) or (f"{value:g}" if isinstance(value, (int, float)) and not (value == 0 and name.lower().endswith("total")) else "the amount the game sets")
         else:
             out = _NEUTRAL.get(part) or (alias or plain_alias)(name)
         before = m.string[:m.start()].rstrip()
@@ -1672,7 +1677,7 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
     if shown:
         out["ways"] = shown
     speakers = [] if book else list(dict.fromkeys(direct or [w["who"] for w in shown if w.get("who")]))
-    one = speakers[0] if len(speakers) == 1 else (giver["name"] if giver and giver.get("name") in speakers else None)
+    one = speakers[0] if len(speakers) == 1 else (giver["name"] if giver and giver.get("name") in speakers and not any(a in speakers for a in giver.get("also", [])) else None)
     # G1: a job several people offer through the quest's run-time giver (alias QuestGiver: Ahtar, Annekke, Brunwulf, Fanari)
     # has no single giver. Two people offering it in their own right (Kolskeggr's Skaggi and Pavo) keep the records' giver.
     if len(speakers) > 1 and (edid or "").lower() in _WORK and all("alias questgiver" in (x.get("conditions") or "").lower() for x in starters if x["by"] == "dialogue"):
@@ -2392,7 +2397,7 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
             giver = giver_of(opening)
             # Not someone whose line is only a way with its condition (WO-121b rule 5: Chief Larak, for an Orc).
             if giver and not any(re.match(rf"(Ask|Talk to) {re.escape(giver['name'])}\b", w["how"]) for w in first_start.get("ways", [])):
-                item["giver"] = giver
+                item["giver"] = {k: v for k, v in giver.items() if k != "also"}
         # More than one opening (WO-121b): the Civil War's two sides, the townsfolk's six deliveries. No one giver; the
         # line's ways in are each opening's, its person and place, named by its quest when their names differ.
         openers = [q for q in quests if q["edid"] == line["opening"]] + [q for q in quests if q["edid"] in line.get("alsoOpening", [])]

@@ -490,7 +490,7 @@ def main():
     givers = {r["id"]: r for r in load("quest_givers_raw.json")["quests"]}
     openings = {by_edid[l["opening"]]["id"] for l in lines}
 
-    pp, lo = plugin_paths(), load_order()
+    pp, lo = plugin_paths(), load_order(cc=True)
     qv, iv, gv = {}, {}, {}  # versions in load order: quest, INFO, global
     names, inventories, alias_items, script_targets = {}, {}, {}, {}
     ref_plugins = []

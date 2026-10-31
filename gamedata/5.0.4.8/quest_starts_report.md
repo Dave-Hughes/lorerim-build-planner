@@ -4,25 +4,25 @@ Written by `scripts/gamedata/quest_starts.py` from the records in the Ultra load
 
 ## Counts
 
-152 lines. 70 have a change from a plugin other than their own mod.
+164 lines. 77 have a change from a plugin other than their own mod.
 
 | Kind | Lines |
 | --- | --- |
-| dialogue | 51 |
-| alias | 18 |
-| door: key | 15 |
-| door: hidden | 11 |
+| dialogue | 52 |
+| alias | 21 |
+| door: key | 18 |
+| door: hidden | 13 |
+| condition | 5 |
 | global | 4 |
-| condition | 3 |
-| start game | 3 |
-| door: locked | 3 |
+| door: locked | 4 |
+| start game | 2 |
 | alias items | 2 |
 | door: shown | 1 |
 | door: unlocked | 1 |
 
 Door changes that only move a lock's level (USSEP's Novice fix, Requiem's harder locks) are kept in the raw file as `minor` and not counted.
 
-Lines with a lock on a door into their places (any plugin): 56.
+Lines with a lock on a door into their places (any plugin): 62.
 
 ## Changed by another plugin, worst first
 
@@ -35,6 +35,13 @@ Own mod: Vittorias Alternate Wedding. Plugins: Penitus_Oculatus.esp, Unofficial 
 - A door into the quest's place needs a key it doesn't name.
 - The Dark Brotherhood Sanctuary door stays hidden until its enable parent (Penitus_Oculatus.esp:017747) is enabled.
 
+### A Soul Divided (`ccBGSSSE013_AquisitionQuest`, lock or key)
+
+Own mod: Official Master Files - Cleaned Plugins. Plugins: Snazzy Interiors - Riften AIO.esp.
+
+- The Riftweald Manor door stays hidden until its enable parent (Snazzy Location Resources.esp:0575FF) is enabled.
+- The Riftweald Manor door stays hidden until its enable parent (Snazzy Location Resources.esp:0575FE) is enabled.
+
 ### Blood on the Ice (`MS11`, lock or key)
 
 Own mod: Skyrim. Plugins: Unofficial Skyrim Special Edition Patch.esp, WindhelmSSE.esp.
@@ -45,16 +52,16 @@ Own mod: Skyrim. Plugins: Unofficial Skyrim Special Edition Patch.esp, WindhelmS
 - Unofficial Skyrim Special Edition Patch.esp changes the alias Tova.
 - Unofficial Skyrim Special Edition Patch.esp adds the alias SecondVictimEssential.
 - Unofficial Skyrim Special Edition Patch.esp adds the alias USKPHjerimReplacementKey.
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ fn629 == 1.0; - GetItemCount Skyrim.esm:021683 > 0.0).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsAliasRef == 1.0; + fn629 == 1.0; + Blood on the Ice stage 70 done; - GetIsID Jorleif == 1.0).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ fn629 == 1.0).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ fn629 == 1.0; + Blood on the Ice stage > 100.0).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsAliasRef == 1.0; + fn629 == 1.0; - GetIsID Jorleif == 1.0).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ fn629 == 0.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ Blood on the Ice's USKPButcherFlyerSeen == 1.0; - GetItemCount Skyrim.esm:021683 > 0.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsAliasRef == 1.0; + Blood on the Ice's PlayerReadJournal2 == 1.0; + Blood on the Ice stage 70 done; - GetIsID Jorleif == 1.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ Blood on the Ice's GotRedHerringFromCalixto == 1.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ Blood on the Ice's GotRedHerringFromCalixto == 1.0; + Blood on the Ice stage > 100.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsAliasRef == 1.0; + Blood on the Ice's GotRedHerringFromCalixto == 1.0; - GetIsID Jorleif == 1.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ Blood on the Ice's USLEEPSoldAmulet == 0.0).
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ Blood on the Ice stage <= 90.0; - Blood on the Ice stage < 80.0).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ fn629 == 1.0; + Blood on the Ice stage 70 done).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ fn35 == 1.0).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ fn46 == 1.0; + fn35 == 0.0; - fn46 == 1.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ Blood on the Ice's PlayerReadJournal2 == 1.0; + Blood on the Ice stage 70 done).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetDisabled == 1.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetDead == 1.0; + GetDisabled == 0.0; - GetDead == 1.0).
 
 ### Dawnguard (`DLC1VQ01MiscObjective`, lock or key)
 
@@ -76,6 +83,7 @@ Own mod: Skyrim. Plugins: Unofficial Skyrim Special Edition Patch.esp.
 Own mod: Official Master Files - Cleaned Plugins. Plugins: Creation Club Home Requirements - AIO.esp.
 
 - The Gallows Hall door needs a key it doesn't name.
+- Creation Club Home Requirements - AIO.esp adds a event condition: Conjuration Ritual Spell stage 200 done.
 
 ### Falion's Secret (`FreeformMorthalA`, lock or key)
 
@@ -96,6 +104,13 @@ Own mod: (BEST EVIL FOLLOWER) Follower Dialogue Expansion - Fura Bloodmouth. Plu
 Own mod: Gravewind - ESMIFIED. Plugins: LoreRim Gravewind Start Tweak.esp.
 
 - The Cemetery Homestead door needs the Cemetery Homestead Key, carried by Vighar in Bloodlet Throne.
+
+### In the Shadows (`ccBGSSSE038_Quest`, lock or key)
+
+Own mod: Official Master Files - Cleaned Plugins. Plugins: Bow of Shadows - Reduced Cut.esp, Snazzy Interiors - JKs Dragonsreach.esp.
+
+- The Dragonsreach door is locked (Master).
+- Bow of Shadows - Reduced Cut.esp changes the opening dialogue's conditions (+ GetRandomPercent == 200.0).
 
 ### Kyne's Sacred Trials (`dunHunterQST`, lock or key)
 
@@ -122,7 +137,7 @@ Own mod: Missives. Plugins: WindhelmSSE.esp.
 
 ### Myrwatch (`MyrwatchTNE_Quest`, lock or key)
 
-Own mod: Myrwatch - Tweaks and Enhancements. Plugins: myrwatchhomefixer.esp.
+Own mod: Myrwatch - Tweaks and Enhancements. Plugins: cceejsse002-tower.esl.
 
 - The Myrwatch door needs a key it doesn't name.
 
@@ -131,6 +146,21 @@ Own mod: Myrwatch - Tweaks and Enhancements. Plugins: myrwatchhomefixer.esp.
 Own mod: Skyrim. Plugins: photndawnstar.esp.
 
 - The Breaking Dawn Cottage door needs the Breaking Dawn Cottage Key, carried by Satchel in Nightcaller Temple.
+
+### Promises to Keep (`MS03`, lock or key)
+
+Own mod: Skyrim. Plugins: TheChoiceIsYours.esp, Unofficial Skyrim Special Edition Patch.esp, cceejsse003-hollow.esl.
+
+- The Ratway door needs the Key to Shadowfoot Sanctum, lying in Shadowfoot Sanctum.
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ Promises to Keep stage >= 15.0; - Promises to Keep stage >= 10.0).
+- TheChoiceIsYours.esp changes the opening dialogue's conditions (+ Promises to Keep stage >= 5.0; - Promises to Keep stage >= 10.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ Promises to Keep stage >= 20.0; - Promises to Keep stage >= 10.0).
+
+### Raven Rock (`DLC2RR01`, lock or key)
+
+Own mod: Skyrim. Plugins: ccasvsse001-almsivi.esm.
+
+- The Old Attius Farm Cellar door needs the Attius Farm Cellar Key.
 
 ### Revealing Rune (`Rune01`, lock or key)
 
@@ -151,11 +181,11 @@ Own mod: Skyrim. Plugins: Companions Dialogue Bundle.esp, Companions Radiant Exp
 - Companions Dialogue Bundle.esp changes the opening dialogue's conditions (- GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30.0); - GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30.0); - GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30.0); - GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30.0); - GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150.0); - GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150.0)).
 - LoreRim - Dialogue Patch.esp changes the opening dialogue's conditions (+ GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30.0); + GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30.0); + GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30.0); + GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30.0); + GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150.0); + GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150.0)).
 - Companions Radiant Expansion.esp changes the opening dialogue's conditions (+ fn372 == 0.0).
-- Narrative Gameplay Consistent Dialogue Tweaks.esp changes the opening dialogue's conditions (+ fn629 == 0.0; + GetActorValue < NGCDT_GLOB_Aela_AVMin (now 30.0); + GetActorValue < NGCDT_GLOB_Aela_AVMin (now 30.0); + GetActorValue < NGCDT_GLOB_Aela_AVMin (now 30.0); + GetActorValue < NGCDT_GLOB_Aela_AVMin (now 30.0); + GetActorValue < NGCDT_GLOB_Aela_HMSMin (now 150.0); + GetActorValue < NGCDT_GLOB_Aela_HMSMin (now 150.0); + The Horn of Jurgen Windcaller not completed; + Kindred Judgment not completed; + At the Summit of Apocrypha not completed; + Destroy the Dark Brotherhood! not completed).
+- Narrative Gameplay Consistent Dialogue Tweaks.esp changes the opening dialogue's conditions (+ Take Up Arms's PlayerMetCompanionsAtGiant == 0.0; + GetActorValue < NGCDT_GLOB_Aela_AVMin (now 30.0); + GetActorValue < NGCDT_GLOB_Aela_AVMin (now 30.0); + GetActorValue < NGCDT_GLOB_Aela_AVMin (now 30.0); + GetActorValue < NGCDT_GLOB_Aela_AVMin (now 30.0); + GetActorValue < NGCDT_GLOB_Aela_HMSMin (now 150.0); + GetActorValue < NGCDT_GLOB_Aela_HMSMin (now 150.0); + The Horn of Jurgen Windcaller not completed; + Kindred Judgment not completed; + At the Summit of Apocrypha not completed; + Destroy the Dark Brotherhood! not completed).
 - Vilkas Spar Skip.esp changes the opening dialogue's conditions (- GetIsAliasRef == 1.0; - Take Up Arms stage == 20.0; - GetQuestRunning C00VilkasTrainingQuest == 0.0).
 - Narrative Gameplay Consistent Dialogue Tweaks.esp changes the opening dialogue's conditions (+ GetActorValue < NGCDT_GLOB_Aela_AVMin (now 30.0); + GetActorValue < NGCDT_GLOB_Aela_AVMin (now 30.0); + GetActorValue < NGCDT_GLOB_Aela_AVMin (now 30.0); + GetActorValue < NGCDT_GLOB_Aela_AVMin (now 30.0); + GetActorValue < NGCDT_GLOB_Aela_HMSMin (now 150.0); + GetActorValue < NGCDT_GLOB_Aela_HMSMin (now 150.0); + The Horn of Jurgen Windcaller not completed; + Kindred Judgment not completed; + At the Summit of Apocrypha not completed; + Destroy the Dark Brotherhood! not completed).
-- Companions at Mirmulnir.esp changes the opening dialogue's conditions (+ fn1 <= 500.0; + fn359 == 1.0; + fn1 <= 500.0; + fn359 == 1.0).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ fn629 == 0.0).
+- Companions at Mirmulnir.esp changes the opening dialogue's conditions (+ GetDistance Skyrim.esm:0AA034 <= 500.0; + GetInCurrentLoc Jorrvaskr == 1.0; + GetDistance Skyrim.esm:0AA033 <= 500.0; + GetInCurrentLoc Jorrvaskr == 1.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ Take Up Arms's USKPFarkasIntroDone == 0.0).
 
 ### The Cursed Tribe (`DA06`, lock or key)
 
@@ -191,9 +221,9 @@ Own mod: Skyrim. Plugins: The Cursed Tribe - LoreRim Patch.esp, The Cursed Tribe
 - The Cursed Tribe - LoreRim Patch.esp adds the alias Ghost08.
 - The Cursed Tribe - LoreRim Patch.esp adds the alias Ghost09.
 - The Cursed Tribe - LoreRim Patch.esp adds the alias GhostBoss.
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ fn629 == 1.0).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ fn629 == 1.0; - The Cursed Tribe stage 100 not done).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ fn629 == -1.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ The Cursed Tribe's GiantDead100 == 1.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ The Cursed Tribe's GiantDead100 == 1.0; - The Cursed Tribe stage 100 not done).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ The Cursed Tribe's GiantDead100 == -1.0).
 - The Cursed Tribe - Quest Expansion.esp changes the opening dialogue's conditions (+ The Cursed Tribe stage < 60.0; - The Cursed Tribe stage >= 30.0).
 - The Cursed Tribe - Quest Expansion.esp changes the opening dialogue's conditions (+ The Cursed Tribe stage >= 10.0).
 - The Cursed Tribe - Quest Expansion.esp changes the opening dialogue's conditions (+ The Cursed Tribe stage >= 10.0; + The Cursed Tribe stage < 60.0).
@@ -201,33 +231,33 @@ Own mod: Skyrim. Plugins: The Cursed Tribe - LoreRim Patch.esp, The Cursed Tribe
 - The Cursed Tribe - Quest Expansion.esp changes the opening dialogue's conditions (- The Cursed Tribe stage == 20.0).
 - The Cursed Tribe - Quest Expansion.esp changes the opening dialogue's conditions (+ The Cursed Tribe stage == 10.0; - The Cursed Tribe stage < 20.0).
 - The Cursed Tribe - Quest Expansion.esp changes the opening dialogue's conditions (+ The Cursed Tribe stage == 10.0; + global TRUEGlobal == 0.0 (now 1.0); + fn520 == 1.0; - The Cursed Tribe stage < 20.0).
-- The Cursed Tribe - Quest Expansion.esp changes the opening dialogue's conditions (+ global TCTRC_GLOB_Stage30_IntimidatedYamarz == 1.0 (now 0.0); + GetActorValue >= SpeechEasy (now 25.0); + fn182 == 1.0).
-- The Cursed Tribe - Quest Expansion.esp changes the opening dialogue's conditions (+ GetActorValue >= SpeechAverage (now 50.0); + fn182 == 1.0).
+- The Cursed Tribe - Quest Expansion.esp changes the opening dialogue's conditions (+ global TCTRC_GLOB_Stage30_IntimidatedYamarz == 1.0 (now 0.0); + GetActorValue >= SpeechEasy (now 25.0); + GetEquipped Skyrim.esm:0F759C == 1.0).
+- The Cursed Tribe - Quest Expansion.esp changes the opening dialogue's conditions (+ GetActorValue >= SpeechAverage (now 50.0); + GetEquipped Skyrim.esm:0F759C == 1.0).
 - The Cursed Tribe - Quest Expansion.esp changes the opening dialogue's conditions (+ global TCTRC_GLOB_Stage30_IntimidatedYamarz == 0.0 (now 0.0); + fn655 == 1.0).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsRace Skyrim.esm:013747 == 1.0; + GetIsRace Skyrim.esm:0A82B9 == 1.0; - GetIsRace Skyrim.esm:013747 == 1.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsRace Orsimer == 1.0; + GetIsRace Orsimer == 1.0; - GetIsRace Orsimer == 1.0).
 - The Cursed Tribe - Quest Expansion.esp changes the opening dialogue's conditions (+ The Cursed Tribe stage < 60.0; - The Cursed Tribe stage >= 50.0).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsRace Skyrim.esm:0A82B9 == 0.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsRace Orsimer == 0.0).
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ fn130 == 0.0).
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ fn130 == 1.0; + fn130 == 1.0; - fn130 == 1.0).
 
 ### The Dark Brotherhood (`DB01`, lock or key)
 
-Own mod: Skyrim. Plugins: Innocence Lost - Quest Expansion.esp, LoreRim - Windhelm Fixes.esp, NGCDT - Distance Checks.esp, RTDocks - Shadowfoot.esp.
+Own mod: Skyrim. Plugins: Innocence Lost - Quest Expansion.esp, LoreRim - Windhelm Fixes.esp, NGCDT - Distance Checks.esp, cceejsse003-hollow.esl.
 
 - The Aretino Residence door is no longer locked.
-- The Shadowfoot Sanctum door needs a key (cceejsse003-hollow.esl:000829).
+- The Shadowfoot Sanctum door needs the Key to Shadowfoot Sanctum, lying in Shadowfoot Sanctum.
 - Innocence Lost - Quest Expansion.esp adds the alias Guard.
 - Innocence Lost - Quest Expansion.esp adds the alias Constance.
-- Innocence Lost - Quest Expansion.esp changes the opening dialogue's conditions (+ global ILQE_GrelodsTrip != 1.0 (now 0.0); + fn67 == 1.0).
+- Innocence Lost - Quest Expansion.esp changes the opening dialogue's conditions (+ global ILQE_GrelodsTrip != 1.0 (now 0.0); + GetInCell Skyrim.esm:016BD3 == 1.0).
 - Innocence Lost - Quest Expansion.esp changes the opening dialogue's conditions (+ global ILQE_GrelodsTrip != 1.0 (now 0.0)).
-- Innocence Lost - Quest Expansion.esp changes the opening dialogue's conditions (+ fn67 == 1.0).
-- Innocence Lost - Quest Expansion.esp changes the opening dialogue's conditions (+ fn84 >= 1.0).
+- Innocence Lost - Quest Expansion.esp changes the opening dialogue's conditions (+ GetInCell Skyrim.esm:016BD3 == 1.0).
+- Innocence Lost - Quest Expansion.esp changes the opening dialogue's conditions (+ GetDeadCount Grelod the Kind >= 1.0).
 - Innocence Lost - Quest Expansion.esp changes the opening dialogue's conditions (+ Innocence Lost stage != 198.0).
 - Innocence Lost - Quest Expansion.esp changes the opening dialogue's conditions (+ Innocence Lost stage == 20.0; - Innocence Lost stage == 2000.0).
-- NGCDT - Distance Checks.esp changes the opening dialogue's conditions (+ fn1 >= ANDR_DialogueDistanceCheck_ChildGrelod (now 512.0)).
+- NGCDT - Distance Checks.esp changes the opening dialogue's conditions (+ GetDistance Skyrim.esm:019DE4 >= ANDR_DialogueDistanceCheck_ChildGrelod (now 512.0)).
 - Innocence Lost - Quest Expansion.esp changes the opening dialogue's conditions (+ global ILQE_WinePoisoned != 2.0 (now 0.0); + global ILQE_GrelodsTrip != 2.0 (now 0.0)).
 
-### The Dragonborn (`MQ101`, lock or key)
+### The main quest (`MQ101`, lock or key)
 
 Own mod: Skyrim. Plugins: Additional Contracts For the Dark Brotherhood.esp, AlternatePerspective.esp, Narrative Gameplay Consistent Dialogue Tweaks.esp.
 
@@ -257,20 +287,20 @@ Own mod: Skyrim. Plugins: Additional Contracts For the Dark Brotherhood.esp, Alt
 - AlternatePerspective.esp adds the alias SoldierFortAssistant.
 - AlternatePerspective.esp adds the alias PlayerGearChest.
 - AlternatePerspective.esp changes the opening dialogue's conditions (+ global MQQuickstart < 7.0 (now 7.0)).
-- AlternatePerspective.esp changes the opening dialogue's conditions (+ fn46 == 0.0).
+- AlternatePerspective.esp changes the opening dialogue's conditions (+ GetDead == 0.0).
 - AlternatePerspective.esp changes the opening dialogue's conditions (+ GetIsID Skyrim.esm:0F5E0B == 1.0).
 - AlternatePerspective.esp changes the opening dialogue's conditions (+ Unbound stage >= 250.0).
 - AlternatePerspective.esp changes the opening dialogue's conditions (+ Unbound stage >= 100.0).
-- AlternatePerspective.esp changes the opening dialogue's conditions (+ GetIsRace Skyrim.esm:013746 == 1.0; - fn130 == 1.0).
-- AlternatePerspective.esp changes the opening dialogue's conditions (+ GetIsRace Skyrim.esm:013740 == 1.0; - fn130 == 1.0).
-- AlternatePerspective.esp changes the opening dialogue's conditions (+ GetIsRace Skyrim.esm:013741 == 1.0; - fn130 == 1.0).
-- AlternatePerspective.esp changes the opening dialogue's conditions (+ GetIsRace Skyrim.esm:013742 == 1.0; - fn130 == 1.0).
-- AlternatePerspective.esp changes the opening dialogue's conditions (+ GetIsRace Skyrim.esm:013743 == 1.0; - fn130 == 1.0).
-- AlternatePerspective.esp changes the opening dialogue's conditions (+ GetIsRace Skyrim.esm:013744 == 1.0; - fn130 == 1.0).
-- AlternatePerspective.esp changes the opening dialogue's conditions (+ GetIsRace Skyrim.esm:013745 == 1.0; - fn130 == 1.0).
-- AlternatePerspective.esp changes the opening dialogue's conditions (+ GetIsRace Skyrim.esm:013747 == 1.0; - fn130 == 1.0).
-- AlternatePerspective.esp changes the opening dialogue's conditions (+ GetIsRace Skyrim.esm:013748 == 1.0; - fn130 == 1.0).
-- AlternatePerspective.esp changes the opening dialogue's conditions (+ GetIsRace Skyrim.esm:013749 == 1.0; - fn130 == 1.0).
+- AlternatePerspective.esp changes the opening dialogue's conditions (+ GetIsRace Nord == 1.0; - fn130 == 1.0).
+- AlternatePerspective.esp changes the opening dialogue's conditions (+ GetIsRace Argonian == 1.0; - fn130 == 1.0).
+- AlternatePerspective.esp changes the opening dialogue's conditions (+ GetIsRace Breton == 1.0; - fn130 == 1.0).
+- AlternatePerspective.esp changes the opening dialogue's conditions (+ GetIsRace Dunmer == 1.0; - fn130 == 1.0).
+- AlternatePerspective.esp changes the opening dialogue's conditions (+ GetIsRace Altmer == 1.0; - fn130 == 1.0).
+- AlternatePerspective.esp changes the opening dialogue's conditions (+ GetIsRace Imperial == 1.0; - fn130 == 1.0).
+- AlternatePerspective.esp changes the opening dialogue's conditions (+ GetIsRace Khajiit == 1.0; - fn130 == 1.0).
+- AlternatePerspective.esp changes the opening dialogue's conditions (+ GetIsRace Orsimer == 1.0; - fn130 == 1.0).
+- AlternatePerspective.esp changes the opening dialogue's conditions (+ GetIsRace Redguard == 1.0; - fn130 == 1.0).
+- AlternatePerspective.esp changes the opening dialogue's conditions (+ GetIsRace Bosmer == 1.0; - fn130 == 1.0).
 - AlternatePerspective.esp changes the opening dialogue's conditions (+ global MQQuickstart == 7.0 (now 7.0)).
 - AlternatePerspective.esp changes the opening dialogue's conditions (+ global MQQuickstart == 0.0 (now 7.0)).
 - Narrative Gameplay Consistent Dialogue Tweaks.esp changes the opening dialogue's conditions (+ global TRUEGlobal == 0.0 (now 1.0)).
@@ -286,32 +316,39 @@ Own mod: Skyrim. Plugins: TOCQE - Wintersun.esp, TheOnlyCureQuestExpansion.esp.
 - TheOnlyCureQuestExpansion.esp changes the opening dialogue's conditions (+ global DA13_AltarDestroyed == 2.0 (now 0.0)).
 - TheOnlyCureQuestExpansion.esp changes the opening dialogue's conditions (+ The Only Cure stage 30 done).
 
+### The Staff of Hasedoki (`ccBGSSSE045_Quest`, lock or key)
+
+Own mod: Official Master Files - Cleaned Plugins. Plugins: Environs - Tundra Farmhouse.esp, Vigilant.esm.
+
+- The Winch's House door stays visible until its enable parent (Skyrim.esm:000014) is disabled.
+- The Storm-Hull Farm door stays hidden until its enable parent (Environs - Tundra Farmhouse.esp:000A22) is enabled.
+- The Storm-Hull Farm door stays hidden until its enable parent (Environs - Tundra Farmhouse.esp:000810) is enabled.
+
 ### The Thieves Guild (`TG00`, lock or key)
 
-Own mod: Skyrim. Plugins: Environs - Riften Warehouse.esp, GG's Thieves Guild Headquarters.esp, RTDocks - Shadowfoot.esp, Snazzy Interiors - Riften AIO.esp, Unofficial Skyrim Special Edition Patch.esp.
+Own mod: Skyrim. Plugins: Environs - Riften Warehouse.esp, GG's Thieves Guild Headquarters.esp, Snazzy Interiors - Riften AIO.esp, Unofficial Skyrim Special Edition Patch.esp, cceejsse003-hollow.esl.
 
 - The Riften Warehouse door stays visible until its enable parent (Environs - Riften Warehouse.esp:000998) is disabled.
 - The Riftweald Manor door stays hidden until its enable parent (Snazzy Location Resources.esp:0575FF) is enabled.
+- The Shadowfoot Sanctum door needs the Key to Shadowfoot Sanctum, lying in Shadowfoot Sanctum.
 - The Riftweald Manor door stays hidden until its enable parent (Snazzy Location Resources.esp:0575FE) is enabled.
-- The Shadowfoot Sanctum door needs a key (cceejsse003-hollow.esl:000829).
 - The Riften door stays hidden until its enable parent (Skyrim.esm:0B4081) is enabled.
 - The Ragged Flagon - Cistern door stays hidden until its enable parent (Skyrim.esm:0B4081) is enabled.
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ DialogueRiftenGateGuards stage >= 20.0; - DialogueRiftenGateGuards stage 20 done; - DialogueRiftenGateGuards stage 30 done).
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ DialogueRiftenGateGuards stage >= 30.0; - DialogueRiftenGateGuards stage 20 done; - DialogueRiftenGateGuards stage 30 done).
 
-### The Unquiet Dead (`ccVSVSSE004_MainQuest`, lock or key)
+### The Unquiet Dead (`ccVSVSSE004_RestoreFarmQuest`, lock or key)
 
-Own mod: Official Master Files - Cleaned Plugins. Plugins: CC Farming - Tweaks and Enhancements.esp, Snazzy Interiors - JKs Dragonsreach.esp, Trad_AE_CC_Collection_Requiem_Patch.esp.
+Own mod: Official Master Files - Cleaned Plugins. Plugins: Trad_AE_CC_Collection_Requiem_Patch.esp.
 
-- The Dragonsreach door is locked (Master).
 - The Goldenhills Plantation door is locked (Adept).
-- CC Farming - Tweaks and Enhancements.esp changes the opening dialogue's conditions (+ global TRUEGlobal == 0.0 (now 1.0); + The Unquiet Dead stage == 200.0; + The Unquiet Dead stage == 201.0).
 
 ### The Wintersand Deception (`THTE_Quest_WintersandDeception`, lock or key)
 
-Own mod: CC Tundra Homestead - Tweaks and Enhancements (THTE). Plugins: Snazzy Interiors - JKs Dragonsreach.esp.
+Own mod: CC Tundra Homestead - Tweaks and Enhancements (THTE). Plugins: Snazzy Interiors - JKs Dragonsreach.esp, cceejsse001-hstead.esm.
 
 - The Dragonsreach door is locked (Master).
+- The Wintersand Manor door needs the Key to Wintersand Manor II.
 
 ### The Wolf Queen Awakened (`MS06Start`, lock or key)
 
@@ -321,9 +358,9 @@ Own mod: Skyrim. Plugins: Requiem.esp.
 
 ### Unfathomable Depths (`MS04`, lock or key)
 
-Own mod: Skyrim. Plugins: RTDocks - Shadowfoot.esp, Unofficial Skyrim Special Edition Patch.esp.
+Own mod: Skyrim. Plugins: Unofficial Skyrim Special Edition Patch.esp, cceejsse003-hollow.esl.
 
-- The Shadowfoot Sanctum door needs a key (cceejsse003-hollow.esl:000829).
+- The Shadowfoot Sanctum door needs the Key to Shadowfoot Sanctum, lying in Shadowfoot Sanctum.
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (- Unfathomable Depths stage >= 760.0).
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ level == -1.0).
 
@@ -340,17 +377,19 @@ Own mod: VIGILANT - English Translation (Plus Voiced Addon). Plugins: Environs -
 - The Storm-Hull Farm door stays hidden until its enable parent (Environs - Tundra Farmhouse.esp:000810) is enabled.
 - Vigilant - Delayed Start.esp turns the quest's start-game flag off.
 
-### A Night To Remember (`DA14`, condition)
+### A Daedra's Best Friend (`DA03Start`, condition)
 
-Own mod: Skyrim. Plugins: LoreRim - Skyrim Revoiced Patch.esp, MoiraFollowerMod.esp, SkyrimRevoiced.esp, Unofficial Skyrim Modders Patch.esp, Unofficial Skyrim Special Edition Patch.esp.
+Own mod: Skyrim. Plugins: Bring Meeko to Lod.esp, Requiem.esp, SkyrimRevoiced.esp, Unofficial Skyrim Special Edition Patch.esp, Wintersun - Faiths of Skyrim.esp, Wintersun - Reqtificated.esp.
 
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ A Night To Remember stage >= 100.0; + A Night To Remember stage < 135.0; + GetItemCount Skyrim.esm:01CB34 > 0.0; - A Night To Remember stage == 125.0).
-- Unofficial Skyrim Modders Patch.esp changes the opening dialogue's conditions (+ A Night To Remember stage < 100.0; + A Night To Remember stage >= 84.0; - A Night To Remember stage < 150.0; - A Night To Remember stage >= 10.0).
-- MoiraFollowerMod.esp changes the opening dialogue's conditions (+ 0MoiraFollower stage < 10.0).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (- fn70 == 1.0).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ level < 0.0).
-- SkyrimRevoiced.esp changes the opening dialogue's conditions (+ fn426 == 1.0).
-- LoreRim - Skyrim Revoiced Patch.esp changes the opening dialogue's conditions (+ fn426 == 1.0; - fn426 == 1.0).
+- Requiem.esp adds a dialogue condition: level >= 25.0.
+- Requiem.esp adds a event condition: level >= 25.0.
+- Wintersun - Faiths of Skyrim.esp removes a dialogue condition: level >= 25.0.
+- Wintersun - Faiths of Skyrim.esp removes a event condition: level >= 25.0.
+- Wintersun - Reqtificated.esp adds a dialogue condition: level >= 25.0.
+- Wintersun - Reqtificated.esp adds a event condition: level >= 25.0.
+- Bring Meeko to Lod.esp changes the opening dialogue's conditions (+ global LodOwnsMeeko == 0.0 (now 0.0)).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetDeadCount Lod < 1.0).
+- SkyrimRevoiced.esp changes the opening dialogue's conditions (- global LodOwnsMeeko == 0.0 (now 0.0)).
 
 ### A Scroll For Anska (`dunHighGateRuinsQST`, condition)
 
@@ -364,8 +403,16 @@ Own mod: Skyrim. Plugins: Unofficial Skyrim Special Edition Patch.esp.
 
 Own mod: Skyrim. Plugins: Unofficial Skyrim Special Edition Patch.esp.
 
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsRace Skyrim.esm:013742 == 1.0; + GetIsRace Skyrim.esm:08883D == 1.0; - GetIsRace Skyrim.esm:013742 == 1.0).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsRace Skyrim.esm:08883D != 1.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsRace Dunmer == 1.0; + GetIsRace Dunmer == 1.0; - GetIsRace Dunmer == 1.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsRace Dunmer != 1.0).
+
+### Battle of the Champions (`ccFFBSSE001_Quest`, condition)
+
+Own mod: Official Master Files - Cleaned Plugins. Plugins: Trad_AE_CC_Collection_Requiem_Patch.esp, unofficial skyrim creation club content patch.esl.
+
+- Trad_AE_CC_Collection_Requiem_Patch.esp changes the opening dialogue's conditions (+ GetActorValue >= SpeechAverage (now 50.0)).
+- Trad_AE_CC_Collection_Requiem_Patch.esp changes the opening dialogue's conditions (+ GetActorValue >= SpeechVeryHard (now 100.0); - GetActorValue >= SpeechAverage (now 50.0)).
+- unofficial skyrim creation club content patch.esl changes the opening dialogue's conditions (+ GetIsVoiceType Skyrim.esm:02F9E4 == 1.0; + GetInFaction Skyrim.esm:06B18C == 1.0).
 
 ### Boethiah's Calling (`DA02`, condition)
 
@@ -386,19 +433,20 @@ Own mod: Skyrim. Plugins: Unofficial Skyrim Special Edition Patch.esp.
 
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ Drowned Sorrows stage == 15.0; - Drowned Sorrows stage == 10.0).
 
-### Favours for townsfolk (`Favor001`, condition)
+### Guests for Dinner (`ccEEJSSE005_Quest`, condition)
 
-Own mod: Skyrim. Plugins: Favor Quests Seperated.esp, LoreRim - Dialogue Patch.esp, Scholar's Sting.esp.
+Own mod: Official Master Files - Cleaned Plugins. Plugins: Bloodchill Manor - Voiced.esp, Creation Club Home Requirements - AIO.esp.
 
-- Favor Quests Seperated.esp adds a event condition: global TRUEGlobal == 0.0 (now 1.0).
-- Favor Quests Seperated.esp changes the opening dialogue's conditions (+ global TRUEGlobal == 0.0 (now 1.0)).
-- Scholar's Sting.esp changes the opening dialogue's conditions (- global TRUEGlobal == 0.0 (now 1.0)).
-- LoreRim - Dialogue Patch.esp changes the opening dialogue's conditions (+ global TRUEGlobal == 0.0 (now 1.0)).
+- Creation Club Home Requirements - AIO.esp adds a event condition: Bloodline stage 180 done.
+- Creation Club Home Requirements - AIO.esp adds a event condition: Bloodline stage 190 done.
+- Creation Club Home Requirements - AIO.esp adds a event condition: Bloodline stage 200 done.
+- Bloodchill Manor - Voiced.esp changes the opening dialogue's conditions (+ GetIsVoiceType FemaleCondescending == 1.0).
 
 ### Hendraheim (`ccEEJSSE004_Quest`, condition)
 
-Own mod: Official Master Files - Cleaned Plugins. Plugins: Hendraheim - Tweaks and Enhancements.esp, LoreRim - Dialogue Patch.esp.
+Own mod: Official Master Files - Cleaned Plugins. Plugins: Creation Club Home Requirements - AIO.esp, Hendraheim - Tweaks and Enhancements.esp, LoreRim - Dialogue Patch.esp.
 
+- Creation Club Home Requirements - AIO.esp adds a event condition: The Silver Hand stage 200 done.
 - Hendraheim - Tweaks and Enhancements.esp removes a event condition: The Silver Hand stage 200 done.
 - Hendraheim - Tweaks and Enhancements.esp adds the alias Raerek.
 - Hendraheim - Tweaks and Enhancements.esp adds the alias Reburrus.
@@ -421,7 +469,7 @@ Own mod: Skyrim. Plugins: Infiltration - Quest Expansion.esp.
 
 - Infiltration - Quest Expansion.esp changes the alias Brurid.
 - Infiltration - Quest Expansion.esp changes the opening dialogue's conditions (+ Infiltration stage >= 1.0; + Infiltration stage <= 5.0; - Infiltration stage == 1.0).
-- Infiltration - Quest Expansion.esp changes the opening dialogue's conditions (+ fn46 == 0.0).
+- Infiltration - Quest Expansion.esp changes the opening dialogue's conditions (+ GetDead == 0.0).
 
 ### Lights Out! (`MS07`, condition)
 
@@ -438,21 +486,21 @@ Own mod: Skyrim. Plugins: SaveTheIcerunner.esp, TheChoiceIsYours.esp, Unofficial
 - SaveTheIcerunner.esp adds the alias MS07IcerunnerTreas06.
 - TheChoiceIsYours.esp changes the opening dialogue's conditions (+ Lights Out! stage <= 50.0; + Lights Out! stage >= 8.0; - Lights Out! stage == 50.0).
 - SaveTheIcerunner.esp changes the opening dialogue's conditions (+ Lights Out! stage >= 10.0; - Lights Out! stage >= 8.0).
-- SaveTheIcerunner.esp changes the opening dialogue's conditions (+ fn46 == 0.0).
+- SaveTheIcerunner.esp changes the opening dialogue's conditions (+ GetDead == 0.0).
 - TheChoiceIsYours.esp changes the opening dialogue's conditions (+ Lights Out! stage < 50.0; - Lights Out! stage == 50.0).
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ Lights Out! stage < 50.0; - Lights Out! stage < 60.0).
 - SaveTheIcerunner.esp changes the opening dialogue's conditions (+ Lights Out! stage < 10.0; - Lights Out! stage < 50.0).
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ Lights Out! stage == 50.0; - Lights Out! stage == 60.0).
-- SaveTheIcerunner.esp changes the opening dialogue's conditions (+ Lights Out! stage 50 done; + Lights Out! stage < 90.0; + fn629 == 0.0; + Lights Out! stage 65 done; - Lights Out! stage == 50.0).
-- SaveTheIcerunner.esp changes the opening dialogue's conditions (+ Lights Out! stage == 100.0; + fn46 == 0.0; - Lights Out! stage >= 60.0; - Lights Out! stage <= 100.0).
+- SaveTheIcerunner.esp changes the opening dialogue's conditions (+ Lights Out! stage 50 done; + Lights Out! stage < 90.0; + Lights Out!'s ConfrontedJareeRa == 0.0; + Lights Out! stage 65 done; - Lights Out! stage == 50.0).
+- SaveTheIcerunner.esp changes the opening dialogue's conditions (+ Lights Out! stage == 100.0; + GetDead == 0.0; - Lights Out! stage >= 60.0; - Lights Out! stage <= 100.0).
 - SaveTheIcerunner.esp changes the opening dialogue's conditions (+ Lights Out! stage == 125.0; - Lights Out! stage > 100.0; - Lights Out! stage < 140.0).
 - SaveTheIcerunner.esp changes the opening dialogue's conditions (+ Lights Out! stage 65 not done).
 - SaveTheIcerunner.esp changes the opening dialogue's conditions (+ Lights Out! stage 125 done).
-- SaveTheIcerunner.esp changes the opening dialogue's conditions (+ fn629 == 1.0; + fn46 == 0.0).
-- SaveTheIcerunner.esp changes the opening dialogue's conditions (+ fn629 == 1.0).
+- SaveTheIcerunner.esp changes the opening dialogue's conditions (+ Lights Out!'s ConfrontedJareeRa == 1.0; + GetDead == 0.0).
+- SaveTheIcerunner.esp changes the opening dialogue's conditions (+ Lights Out!'s ConfrontedJareeRa == 1.0).
 - SaveTheIcerunner.esp changes the opening dialogue's conditions (+ Lights Out! stage == 8.0; - Lights Out! stage > 5.0; - Lights Out! stage < 50.0).
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ Lights Out! stage > 5.0; + Lights Out! stage < 50.0).
-- SaveTheIcerunner.esp changes the opening dialogue's conditions (+ Lights Out! stage 50 done; + Lights Out! stage < 90.0; + fn629 == 0.0; + Lights Out! stage 65 done; - Lights Out! stage < 60.0; - Lights Out! stage > 10.0).
+- SaveTheIcerunner.esp changes the opening dialogue's conditions (+ Lights Out! stage 50 done; + Lights Out! stage < 90.0; + Lights Out!'s ConfrontedJareeRa == 0.0; + Lights Out! stage 65 done; - Lights Out! stage < 60.0; - Lights Out! stage > 10.0).
 
 ### Missing In Action (`MS09`, condition)
 
@@ -460,12 +508,12 @@ Own mod: Skyrim. Plugins: IDE Stormcloaks.esp, TheChoiceIsYours.esp, Unofficial 
 
 - Unofficial Skyrim Special Edition Patch.esp adds the alias ThalmorGuard.
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ Missing In Action stage < 45.0).
-- TheChoiceIsYours.esp changes the opening dialogue's conditions (+ Missing In Action stage < 5.0; + fn67 == 0.0; - Missing In Action stage < 10.0).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ fn1 < 800.0; - fn1 < 500.0).
+- TheChoiceIsYours.esp changes the opening dialogue's conditions (+ Missing In Action stage < 5.0; + GetInCell Skyrim.esm:0165B2 == 0.0; - Missing In Action stage < 10.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetDistance Skyrim.esm:01A686 < 800.0; - GetDistance Skyrim.esm:01A686 < 500.0).
 - IDE Stormcloaks.esp changes the opening dialogue's conditions (+ aaSonsMS09 stage < 10.0).
 - IDE Stormcloaks.esp changes the opening dialogue's conditions (+ GetIsID Vidrald == 1.0; - GetIsID Geirlund == 1.0).
 - IDE Stormcloaks.esp changes the opening dialogue's conditions (+ GetIsID Geirlund == 1.0; - GetIsID Vidrald == 1.0).
-- IDE Stormcloaks.esp changes the opening dialogue's conditions (+ fn359 == 1.0).
+- IDE Stormcloaks.esp changes the opening dialogue's conditions (+ GetInCurrentLoc Haafingar == 1.0).
 - TheChoiceIsYours.esp changes the opening dialogue's conditions (+ Missing In Action stage >= 5.0; - Missing In Action stage >= 10.0).
 - Unofficial Skyrim Modders Patch.esp changes the opening dialogue's conditions (+ fn73 < 5.0; - fn73 < 5.0).
 - Unofficial Skyrim Modders Patch.esp changes the opening dialogue's conditions (+ fn73 >= 0.0; - fn73 >= 0.0).
@@ -481,7 +529,7 @@ Own mod: Skyrim. Plugins: Unofficial Skyrim Special Edition Patch.esp.
 
 Own mod: Skyrim. Plugins: Unofficial Skyrim Special Edition Patch.esp.
 
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ fn131 == 1.0; + fn629 >= 2.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ fn131 == 1.0; + CW's PlayerRank >= 2.0).
 
 ### Odd jobs in the north (`FreeformWinterholdA`, condition)
 
@@ -494,34 +542,31 @@ Own mod: Skyrim. Plugins: Unofficial Skyrim Special Edition Patch.esp.
 
 Own mod: Skyrim. Plugins: LovelyLetter.esp, NGCDT - Distance Checks - The Choice Is Yours Patch.esp, NGCDT - Distance Checks.esp, NGCDT - LovelyLetter Patch.esp.
 
-- NGCDT - Distance Checks.esp changes the opening dialogue's conditions (+ A Lovely Letter stage 240 done; + fn1 > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0); - A Lovely Letter stage 240 done).
-- NGCDT - Distance Checks.esp changes the opening dialogue's conditions (+ A Lovely Letter stage 230 done; + fn1 > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0); - A Lovely Letter stage 230 done).
+- NGCDT - Distance Checks.esp changes the opening dialogue's conditions (+ A Lovely Letter stage 240 done; + GetDistance Skyrim.esm:013491 > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0); - A Lovely Letter stage 240 done).
+- NGCDT - Distance Checks.esp changes the opening dialogue's conditions (+ A Lovely Letter stage 230 done; + GetDistance Skyrim.esm:01348C > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0); - A Lovely Letter stage 230 done).
 - LovelyLetter.esp changes the opening dialogue's conditions (+ A Lovely Letter stage 220 not done).
-- NGCDT - Distance Checks.esp changes the opening dialogue's conditions (+ fn1 > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0); - A Lovely Letter stage 220 not done).
+- NGCDT - Distance Checks.esp changes the opening dialogue's conditions (+ GetDistance Skyrim.esm:013491 > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0); - A Lovely Letter stage 220 not done).
 - NGCDT - LovelyLetter Patch.esp changes the opening dialogue's conditions (+ A Lovely Letter stage 220 not done).
-- NGCDT - Distance Checks.esp changes the opening dialogue's conditions (+ fn1 > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0)).
+- NGCDT - Distance Checks.esp changes the opening dialogue's conditions (+ GetDistance Skyrim.esm:01348C > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0); - A Lovely Letter stage 220 not done).
+- NGCDT - Distance Checks.esp changes the opening dialogue's conditions (+ GetDistance Skyrim.esm:013491 > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0)).
+- NGCDT - Distance Checks.esp changes the opening dialogue's conditions (+ GetDistance Skyrim.esm:01348C > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0)).
 - LovelyLetter.esp changes the opening dialogue's conditions (+ fn403 < 4.0).
-- NGCDT - Distance Checks.esp changes the opening dialogue's conditions (+ fn1 > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0); - fn403 < 4.0).
+- NGCDT - Distance Checks.esp changes the opening dialogue's conditions (+ GetDistance Skyrim.esm:01348C > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0); - fn403 < 4.0).
 - NGCDT - Distance Checks - The Choice Is Yours Patch.esp changes the opening dialogue's conditions (+ fn403 < 4.0).
 - LovelyLetter.esp changes the opening dialogue's conditions (+ A Lovely Letter stage 240 not done).
-- NGCDT - Distance Checks.esp changes the opening dialogue's conditions (+ fn1 > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0); - A Lovely Letter stage 240 not done).
+- NGCDT - Distance Checks.esp changes the opening dialogue's conditions (+ GetDistance Skyrim.esm:01348C > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0); - A Lovely Letter stage 240 not done).
 - NGCDT - LovelyLetter Patch.esp changes the opening dialogue's conditions (+ A Lovely Letter stage 240 not done).
+- NGCDT - Distance Checks.esp changes the opening dialogue's conditions (+ GetDistance Skyrim.esm:013491 > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0); - A Lovely Letter stage 240 not done).
+- NGCDT - Distance Checks.esp changes the opening dialogue's conditions (+ GetDistance Skyrim.esm:013491 > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0); - fn403 < 4.0).
 - LovelyLetter.esp changes the opening dialogue's conditions (- A Lovely Letter stage 10 done).
-- NGCDT - Distance Checks.esp changes the opening dialogue's conditions (+ A Lovely Letter stage 10 done; + fn1 > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0)).
+- NGCDT - Distance Checks.esp changes the opening dialogue's conditions (+ A Lovely Letter stage 10 done; + GetDistance Skyrim.esm:013491 > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0)).
 - NGCDT - LovelyLetter Patch.esp changes the opening dialogue's conditions (- A Lovely Letter stage 10 done).
 - LovelyLetter.esp changes the opening dialogue's conditions (- A Lovely Letter stage 110 done).
-- NGCDT - Distance Checks.esp changes the opening dialogue's conditions (+ A Lovely Letter stage 110 done; + fn1 > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0)).
+- NGCDT - Distance Checks.esp changes the opening dialogue's conditions (+ A Lovely Letter stage 110 done; + GetDistance Skyrim.esm:01348C > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0)).
 - NGCDT - LovelyLetter Patch.esp changes the opening dialogue's conditions (- A Lovely Letter stage 110 done).
 - NGCDT - LovelyLetter Patch.esp changes the opening dialogue's conditions (+ fn403 < 4.0).
-- NGCDT - LovelyLetter Patch.esp changes the opening dialogue's conditions (+ fn1 > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0)).
-
-### Promises to Keep (`MS03`, condition)
-
-Own mod: Skyrim. Plugins: TheChoiceIsYours.esp, Unofficial Skyrim Special Edition Patch.esp.
-
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ Promises to Keep stage >= 15.0; - Promises to Keep stage >= 10.0).
-- TheChoiceIsYours.esp changes the opening dialogue's conditions (+ Promises to Keep stage >= 5.0; - Promises to Keep stage >= 10.0).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ Promises to Keep stage >= 20.0; - Promises to Keep stage >= 10.0).
+- NGCDT - LovelyLetter Patch.esp changes the opening dialogue's conditions (+ GetDistance Skyrim.esm:013491 > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0)).
+- NGCDT - LovelyLetter Patch.esp changes the opening dialogue's conditions (+ GetDistance Skyrim.esm:01348C > ANDR_DialogueDistanceCheck_SvenFaendal (now 1024.0)).
 
 ### Rise in the East (`MS10`, condition)
 
@@ -529,7 +574,7 @@ Own mod: Skyrim. Plugins: AI Overhaul.esp, TheChoiceIsYours.esp, Unofficial Skyr
 
 - TheChoiceIsYours.esp changes the opening dialogue's conditions (+ Rise in the East stage == 10.0; + Rise in the East stage == 5.0; - Rise in the East stage == 10.0).
 - TheChoiceIsYours.esp changes the opening dialogue's conditions (+ Rise in the East stage >= 5.0; - Rise in the East stage >= 10.0).
-- AI Overhaul.esp changes the opening dialogue's conditions (+ fn359 == 1.0).
+- AI Overhaul.esp changes the opening dialogue's conditions (+ GetInCurrentLoc East Empire Company == 1.0).
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ Rise in the East stage < 40.0; - Rise in the East stage < 50.0).
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ Rise in the East stage == 40.0; - Rise in the East stage >= 40.0; - Rise in the East stage < 50.0).
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ Rise in the East stage >= 41.0; + Rise in the East stage < 80.0; - Rise in the East stage >= 50.0; - Rise in the East stage < 100.0).
@@ -557,7 +602,7 @@ Own mod: Skyrim. Plugins: RisingAtDawnQuestOverhaul.esp.
 - RisingAtDawnQuestOverhaul.esp adds the alias CurePotion.
 - RisingAtDawnQuestOverhaul.esp changes the opening dialogue's conditions (+ Seeking A Cure stage == 3.0; - Seeking A Cure stage >= 10.0; - Seeking A Cure stage <= 50.0).
 - RisingAtDawnQuestOverhaul.esp changes the opening dialogue's conditions (+ Seeking A Cure stage == 3.0; - Seeking A Cure stage >= 1000.0; - Seeking A Cure stage <= 50.0).
-- RisingAtDawnQuestOverhaul.esp changes the opening dialogue's conditions (+ fn560 == 1.0).
+- RisingAtDawnQuestOverhaul.esp changes the opening dialogue's conditions (+ HasKeyword ActorTypeCow == 1.0).
 - RisingAtDawnQuestOverhaul.esp changes the opening dialogue's conditions (+ Seeking A Cure stage == 3.0; - fn654 == 1.0; - Seeking A Cure stage == 100.0).
 - RisingAtDawnQuestOverhaul.esp changes the opening dialogue's conditions (+ Seeking A Cure stage == 3.0; - Seeking A Cure stage == 100.0).
 - RisingAtDawnQuestOverhaul.esp changes the opening dialogue's conditions (+ Seeking A Cure stage == 3.0; - Seeking A Cure stage == 195.0).
@@ -574,7 +619,6 @@ Own mod: Skyrim. Plugins: IDE Thalmor.esp.
 Own mod: Skyrim. Plugins: Unofficial Skyrim Special Edition Patch.esp.
 
 - Unofficial Skyrim Special Edition Patch.esp changes the alias FourthPuzzleSolveTriggers.
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ fn67 == 1.0; - fn67 == 1.0).
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ fn161 == 1.0; - fn161 == 1.0).
 
 ### Telrav's Request (`dunNilheimQST`, condition)
@@ -593,20 +637,20 @@ Own mod: Skyrim. Plugins: Nilheim_MiscQuestExpansion.esp, Unofficial Skyrim Spec
 
 Own mod: Skyrim. Plugins: Unofficial Skyrim Special Edition Patch.esp.
 
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsRace Skyrim.esm:0A82B9 != 1.0).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsRace Skyrim.esm:0A82B9 == 1.0; + GetIsRace Skyrim.esm:08883A == 1.0; + GetIsRace Skyrim.esm:088845 == 1.0).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsRace Skyrim.esm:08883C != 1.0).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsRace Skyrim.esm:08883C == 1.0; + GetIsRace Skyrim.esm:088794 == 1.0; + GetIsRace Skyrim.esm:088846 == 1.0; + GetIsRace Skyrim.esm:088884 == 1.0; + GetIsRace Skyrim.esm:088840 == 1.0; + GetIsRace Skyrim.esm:08883D == 1.0; + GetIsRace Skyrim.esm:088844 == 1.0).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsRace Skyrim.esm:08883C == 1.0; + GetIsRace Skyrim.esm:013747 == 1.0; + GetIsRace Skyrim.esm:0A82B9 == 1.0; - GetIsRace Skyrim.esm:013747 == 1.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsRace Orsimer != 1.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsRace Orsimer == 1.0; + GetIsRace Argonian == 1.0; + GetIsRace Khajiit == 1.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsRace Breton != 1.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsRace Breton == 1.0; + GetIsRace Nord == 1.0; + GetIsRace Redguard == 1.0; + GetIsRace Bosmer == 1.0; + GetIsRace Altmer == 1.0; + GetIsRace Dunmer == 1.0; + GetIsRace Imperial == 1.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsRace Breton == 1.0; + GetIsRace Orsimer == 1.0; + GetIsRace Orsimer == 1.0; - GetIsRace Orsimer == 1.0).
 
-### The Bards College (`MS05`, condition)
+### The Bards College (`MS05Start`, condition)
 
-Own mod: Skyrim. Plugins: TheGiftofSaturalia.esp, Unofficial Skyrim Special Edition Patch.esp, Vittorias Alternate Wedding.esp.
+Own mod: Skyrim. Plugins: Unofficial Skyrim Special Edition Patch.esp, Vittorias Alternate Wedding.esp.
 
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ fn629 != 3.0; - GetIsID Skyrim.esm:000000 != 3.0).
-- TheGiftofSaturalia.esp changes the opening dialogue's conditions (+ GetQuestRunning A Song in the Dark == 0.0).
-- Vittorias Alternate Wedding.esp changes the opening dialogue's conditions (+ GetQuestRunning Bound Until Death == 0.0; + GetQuestRunning A Healing Wedding == 0.0; - Bound Until Death stage >= 10.0; - Bound Until Death stage <= 20.0).
-- Vittorias Alternate Wedding.esp changes the opening dialogue's conditions (+ A Healing Wedding stage >= 10.0; + A Healing Wedding stage <= 20.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetInCurrentLoc The Bards College == 1.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ MS05Start stage < 10.0; - Tending the Flames stage < 10.0).
+- Vittorias Alternate Wedding.esp changes the opening dialogue's conditions (+ GetQuestRunning A Healing Wedding == 0.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ MS05Start stage < 10.0).
 
 ### The Black Star (`DA01`, condition)
 
@@ -620,12 +664,15 @@ Own mod: Skyrim. Plugins: Missing Follower Dialogue Fix.esp, Unofficial Skyrim S
 Own mod: Skyrim. Plugins: LoreRim - Skyrim Revoiced Patch.esp, NPCs_Wear_Amulets_Of_Mara.esp, Unofficial Skyrim Special Edition Patch.esp.
 
 - NPCs_Wear_Amulets_Of_Mara.esp changes the opening dialogue's conditions (+ fn726 == 0.0).
-- NPCs_Wear_Amulets_Of_Mara.esp changes the opening dialogue's conditions (+ fn726 == 1.0; + The Bonds of Matrimony stage 10 done; + GetIsRace Skyrim.esm:013746 == 1.0; + GetIsRace Skyrim.esm:088794 == 1.0; - The Bonds of Matrimony stage 10 done).
+- NPCs_Wear_Amulets_Of_Mara.esp changes the opening dialogue's conditions (+ fn726 == 1.0; + The Bonds of Matrimony stage 10 done; + GetIsRace Nord == 1.0; + GetIsRace Nord == 1.0; - The Bonds of Matrimony stage 10 done).
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (- GetQuestRunning Skyrim.esm:000000 == 0.0).
 - NPCs_Wear_Amulets_Of_Mara.esp changes the opening dialogue's conditions (+ fn726 == 1.0; - The Bonds of Matrimony stage 5 not done).
-- LoreRim - Skyrim Revoiced Patch.esp changes the opening dialogue's conditions (+ fn426 == 1.0; + fn426 == 1.0).
-- LoreRim - Skyrim Revoiced Patch.esp changes the opening dialogue's conditions (+ fn426 == 1.0).
-- LoreRim - Skyrim Revoiced Patch.esp changes the opening dialogue's conditions (+ fn426 == 1.0; + fn426 == 1.0; + fn426 == 1.0).
+- LoreRim - Skyrim Revoiced Patch.esp changes the opening dialogue's conditions (+ GetIsVoiceType FemaleRedguardAlt == 1.0; + GetIsVoiceType FemaleEvenTonedAlt == 1.0).
+- LoreRim - Skyrim Revoiced Patch.esp changes the opening dialogue's conditions (+ GetIsVoiceType FemaleEvenTonedAlt == 1.0; + GetIsVoiceType FemaleRedguardAlt == 1.0).
+- LoreRim - Skyrim Revoiced Patch.esp changes the opening dialogue's conditions (+ GetIsVoiceType MaleCommAccentAlt == 1.0; + GetIsVoiceType MaleCommAccentAltTwo == 1.0).
+- LoreRim - Skyrim Revoiced Patch.esp changes the opening dialogue's conditions (+ GetIsVoiceType MaleEvenTonedAccAlt == 1.0).
+- LoreRim - Skyrim Revoiced Patch.esp changes the opening dialogue's conditions (+ GetIsVoiceType MaleEvenTonedAlt == 1.0).
+- LoreRim - Skyrim Revoiced Patch.esp changes the opening dialogue's conditions (+ GetIsVoiceType MaleNordAltFour == 1.0; + GetIsVoiceType MaleNordAltThree == 1.0; + GetIsVoiceType MaleNordAltTwo == 1.0).
 
 ### The Book of Love (`t02`, condition)
 
@@ -639,19 +686,19 @@ Own mod: Skyrim. Plugins: Andrealphus Scene Tweaks.esp, TT_FastredsAwakening.esp
 
 Own mod: Skyrim. Plugins: College Of Winterhold - Quest Expansion.esp, CollegeEntry.esp, Requiem.esp, Unofficial Skyrim Special Edition Patch.esp.
 
-- CollegeEntry.esp changes the opening dialogue's conditions (+ GetItemCount Skyrim.esm:0A271E == 0.0; + fn264 == 0.0; - GetItemCount Skyrim.esm:0A2727 == 0.0; - fn264 == 0.0).
+- CollegeEntry.esp changes the opening dialogue's conditions (+ GetItemCount Skyrim.esm:0A271E == 0.0; + HasSpell Skyrim.esm:04D3F2 == 0.0; - GetItemCount Skyrim.esm:0A2727 == 0.0; - HasSpell Skyrim.esm:012FD2 == 0.0).
 - CollegeEntry.esp changes the opening dialogue's conditions (+ global MGI_FaraldaSellsSpells == 1.0 (now 0.0)).
-- CollegeEntry.esp changes the opening dialogue's conditions (+ GetItemCount Skyrim.esm:0A271E == 0.0; + fn264 == 0.0; + global MGI_FaraldaSellsSpells == 1.0 (now 0.0); - GetItemCount Skyrim.esm:0A2727 == 0.0; - fn264 == 0.0).
+- CollegeEntry.esp changes the opening dialogue's conditions (+ GetItemCount Skyrim.esm:0A271E == 0.0; + HasSpell Skyrim.esm:04D3F2 == 0.0; + global MGI_FaraldaSellsSpells == 1.0 (now 0.0); - GetItemCount Skyrim.esm:0A2727 == 0.0; - HasSpell Skyrim.esm:012FD2 == 0.0).
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ fn130 == 0.0; + fn130 == 0.0; + fn130 == 0.0).
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ fn130 == 1.0; + fn130 == 1.0; + fn130 == 1.0; + fn130 == 1.0; + fn130 == 1.0; + fn130 == 1.0; - fn130 == 0.0; - fn130 == 0.0; - fn130 == 0.0).
-- Requiem.esp changes the opening dialogue's conditions (+ fn264 == 0.0).
-- Requiem.esp changes the opening dialogue's conditions (+ fn264 == 1.0; + fn264 == 1.0; - fn264 == 1.0).
+- Requiem.esp changes the opening dialogue's conditions (+ HasSpell Requiem.esp:225F3B == 0.0).
+- Requiem.esp changes the opening dialogue's conditions (+ HasSpell Skyrim.esm:0211F1 == 1.0; + HasSpell Requiem.esp:225F3B == 1.0; - HasSpell Skyrim.esm:0211F1 == 1.0).
 - College Of Winterhold - Quest Expansion.esp changes the opening dialogue's conditions (+ fn237 == 1.0).
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ Seeking Disclosure stage 20 not done; - Seeking Disclosure stage 25 not done).
 - CollegeEntry.esp changes the opening dialogue's conditions (+ fn630 == 1.0; + First Lessons stage < 30.0; - fn630 == 1.0).
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ Elder Knowledge stage >= 50.0; - Elder Knowledge stage == 50.0).
 - CollegeEntry.esp changes the opening dialogue's conditions (+ The Way of the Voice completed; - Elder Knowledge stage >= 50.0).
-- CollegeEntry.esp changes the opening dialogue's conditions (+ fn264 == 0.0; + global MGI_FaraldaSellsSpells == 1.0 (now 0.0); - fn264 == 0.0).
+- CollegeEntry.esp changes the opening dialogue's conditions (+ HasSpell Skyrim.esm:04D3F2 == 0.0; + global MGI_FaraldaSellsSpells == 1.0 (now 0.0); - HasSpell Skyrim.esm:012FD2 == 0.0).
 
 ### The Ebony Warrior (`DLC2EbonyWarriorQuest`, condition)
 
@@ -705,8 +752,8 @@ Own mod: Skyrim. Plugins: The Mind of Madness - Delayed Start.esp, Unofficial Sk
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ DA15Loathing stage 200 done; + DA15Terror stage 200 done; - DA15Loathing completed; - DA15Terror completed).
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ DA15Paranoia stage 200 done; + DA15Terror stage 200 done; - DA15Terror completed; - DA15Paranoia completed).
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (- The Black Star stage < 100.0).
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetActorValue >= SpeechEasy (now 25.0); + fn182 == 1.0).
-- The Mind of Madness - Delayed Start.esp changes the opening dialogue's conditions (+ global ANDR_DA15_Ready == 1.0 (now 0.0); - fn77 <= 10.0; - The Mind of Madness stage == 0.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetActorValue >= SpeechEasy (now 25.0); + GetEquipped Skyrim.esm:0F759C == 1.0).
+- The Mind of Madness - Delayed Start.esp changes the opening dialogue's conditions (+ global ANDR_DA15_Ready == 1.0 (now 0.0); - GetRandomPercent <= 10.0; - The Mind of Madness stage == 0.0).
 
 ### The Taste of Death (`DA11`, condition)
 
@@ -727,7 +774,7 @@ Own mod: Skyrim. Plugins: TWDQE - Wintersun patch.esp, The Whispering Door - Que
 - TWDQE - Wintersun patch.esp adds the alias Vigilant.
 - TWDQE - Wintersun patch.esp adds the alias Alias_DoorJail.
 - TWDQE - Wintersun patch.esp adds the alias Alias_MiniDoorJail.
-- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsID Nelkir == -1.0; + fn629 == 1.0; - GetIsID Nelkir == 1.0).
+- Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ GetIsID Nelkir == -1.0; + CW's OwnerWhiterun == 1.0; - GetIsID Nelkir == 1.0).
 - The Whispering Door - Quest Expansion.esp changes the opening dialogue's conditions (+ global DA08_HelpingJarl == 0.0 (now 0.0); + GetIsID Nelkir == 1.0; + fn606 == CWImperial (now 1.0); - GetIsID Nelkir == -1.0).
 - The Whispering Door QE - USSEP Patch.esp changes the opening dialogue's conditions (+ GetIsID Nelkir == -1.0; - GetIsID Nelkir == 1.0).
 - Unofficial Skyrim Special Edition Patch.esp changes the opening dialogue's conditions (+ The Whispering Door stage == -1.0).
@@ -742,7 +789,7 @@ Own mod: Skyrim. Plugins: NGCDT - Nurelion - The Choice Is Yours Patch.esp, NGCD
 
 - NGCDT - Nurelion Edits.esp changes the opening dialogue's conditions (- fn131 == 1.0).
 - NGCDT - Nurelion Edits.esp changes the opening dialogue's conditions (+ global TRUEGlobal == 0.0 (now 1.0)).
-- TheChoiceIsYours.esp changes the opening dialogue's conditions (+ fn629 != 1.0).
+- TheChoiceIsYours.esp changes the opening dialogue's conditions (+ The White Phial's HeardAboutPhial != 1.0).
 - TheChoiceIsYours.esp changes the opening dialogue's conditions (+ The White Phial stage < 10.0).
 - NGCDT - Nurelion Edits.esp changes the opening dialogue's conditions (- The White Phial stage < 10.0).
 - NGCDT - Nurelion - The Choice Is Yours Patch.esp changes the opening dialogue's conditions (+ The White Phial stage < 10.0).
@@ -765,8 +812,8 @@ Own mod: Skyrim. Plugins: Toying With The Dead mQE.esp, Unofficial Skyrim Specia
 
 Own mod: Skyrim. Plugins: Erandur Dialogue Edits.esp.
 
-- Erandur Dialogue Edits.esp changes the opening dialogue's conditions (- GetIsRace Skyrim.esm:013747 == 1.0).
-- Erandur Dialogue Edits.esp changes the opening dialogue's conditions (- GetIsRace Skyrim.esm:013747 == 0.0).
+- Erandur Dialogue Edits.esp changes the opening dialogue's conditions (- GetIsRace Orsimer == 1.0).
+- Erandur Dialogue Edits.esp changes the opening dialogue's conditions (- GetIsRace Orsimer == 0.0).
 
 ### Discerning the Transmundane (`DA04`, global)
 
@@ -786,11 +833,32 @@ Own mod: Skyrim. Plugins: Finding_Derkeethus.esp.
 
 - Finding_Derkeethus.esp adds the alias Derk_Spot.
 
-### Trius' Trinket (`dunShipwreck04QST`, other)
+### Ghosts of the Tribunal (`ccASVSSE001_Quest`, other)
 
-Own mod: Skyrim. Plugins: Unofficial Skyrim Modders Patch.esp.
+Own mod: Official Master Files - Cleaned Plugins. Plugins: unofficial skyrim creation club content patch.esl.
 
-- Unofficial Skyrim Modders Patch.esp turns the quest's start-game flag off.
+- unofficial skyrim creation club content patch.esl changes the alias MaskA.
+
+### Relics of the Crusader (`ccMTYSSE001_DES_RelicsoftheCrusader`, other)
+
+Own mod: Official Master Files - Cleaned Plugins. Plugins: Knight of the North.esp.
+
+- Knight of the North.esp adds the alias Player.
+- Knight of the North.esp adds the alias CrusaderMace.
+- Knight of the North.esp adds the alias CrusaderSword.
+- Knight of the North.esp adds the alias CrusaderBoots.
+- Knight of the North.esp adds the alias CrusaderArmor.
+- Knight of the North.esp adds the alias CrusaderGloves.
+- Knight of the North.esp adds the alias CrusaderHelm.
+- Knight of the North.esp adds the alias CrusaderShield.
+- Knight of the North.esp adds the alias FalkFirebeard.
+
+### The Cause (`ccBGSSSE067_Quest`, other)
+
+Own mod: Official Master Files - Cleaned Plugins. Plugins: CauseTweakAlternateStart.esp.
+
+- CauseTweakAlternateStart.esp adds the alias NoteFromStrangerSkorvildOrig.
+- CauseTweakAlternateStart.esp adds the alias NoteFromStrangerContainerAlias.
 
 ### Undeath (`NecroQuest01`, other)
 
@@ -802,7 +870,7 @@ Own mod: Undeath Remastered - CLEANED ESMIFIED. Plugins: UndeathFixes.esp.
 
 | Line | Opening | Own mod | Start-game | Doors into its places (locked) | Globals | Changed by another plugin |
 | --- | --- | --- | --- | --- | --- | --- |
-| The Dragonborn | `MQ101` | Skyrim |  | 51 (6) | MQQuickstart=7.0 | alias, condition, dialogue, door: hidden, door: key, door: shown, global |
+| The main quest | `MQ101` | Skyrim |  | 51 (6) | MQQuickstart=7.0 | alias, condition, dialogue, door: hidden, door: key, door: shown, global |
 | Dawnguard | `DLC1VQ01MiscObjective` | Skyrim |  | 14 (2) |  | alias, door: hidden, door: key |
 | Dragonborn | `DLC2MQ01` | Skyrim |  | 10 (2) | DLC2MQ01NelothGlobal=0.0, DLC2MetNelothAtTelMithryn=0.0 |  |
 | The Companions | `C00` | Skyrim | yes | 14 (0) | _JQ_SkjorAdviceGiven=0.0, _JQ_AdviceShouldBeGiven=0.0, NGCDT_GLOB_Aela_AVMin=30.0, NGCDT_GLOB_Aela_HMSMin=150.0, NGCDT_GLOB_AelaGreetingDone=0.0, GameDaysPassed=1.0 | dialogue, door: hidden |
@@ -810,12 +878,12 @@ Own mod: Undeath Remastered - CLEANED ESMIFIED. Plugins: UndeathFixes.esp.
 | The Thieves Guild | `TG00` | Skyrim | yes | 91 (25) | SpeechHard=75.0 | dialogue, door: hidden, door: key |
 | The Dark Brotherhood | `DB01` | Skyrim | yes | 26 (6) | ILQE_GrelodArrested=0.0, ILQE_RoomDiscovered=0.0, ILQE_WinePoisoned=0.0, ILQE_GrelodsTrip=0.0, ANDR_DialogueDistanceCheck_ChildGrelod=512.0 | alias, dialogue, door: key, door: unlocked |
 | The Civil War | `CW01A` | Skyrim |  | 8 (0) |  |  |
-| The Bards College | `MS05` | Skyrim | yes | 20 (0) | SpeechEasy=25.0, SpeechAverage=50.0 | dialogue |
+| The Bards College | `MS05Start` | Skyrim | yes | 4 (0) |  | dialogue |
 | Vigilant | `zzzAoMMq00` | VIGILANT - English Translation (Plus Voiced Addon) |  | 61 (13) |  | door: hidden, door: key, start game |
 | Meridia's Order | `NMeridia01` | Meridia's Order ESMIFIED | yes | 5 (0) |  |  |
 | Penitus Oculatus | `zzzPO00` | Penitus Oculatus | yes | 7 (0) | zzzPOLegionRequirementMet=0.0 |  |
-| A Daedra's Best Friend | `DA03` | Skyrim |  | 3 (0) |  |  |
-| A Night To Remember | `DA14` | Skyrim |  | 10 (3) | SpeechAverage=50.0, SpeechHard=75.0 | dialogue |
+| A Daedra's Best Friend | `DA03Start` | Skyrim | yes | 2 (0) | LodOwnsMeeko=0.0 | condition, dialogue |
+| A Night To Remember | `DA14Start` | Skyrim |  | 5 (1) |  |  |
 | Boethiah's Calling | `DA02` | Skyrim |  | 9 (0) | TRUEGlobal=1.0 | dialogue |
 | Discerning the Transmundane | `DA04` | Skyrim | yes | 10 (0) | DA04MinLevel=20.0 | global |
 | Ill Met By Moonlight | `DA05` | Skyrim | yes | 6 (0) |  |  |
@@ -823,7 +891,7 @@ Own mod: Undeath Remastered - CLEANED ESMIFIED. Plugins: UndeathFixes.esp.
 | The Black Star | `DA01` | Skyrim | yes | 17 (3) | SpeechEasy=25.0 | dialogue |
 | The Break of Dawn | `DA09` | Skyrim |  | 5 (1) |  |  |
 | The Cursed Tribe | `DA06` | Skyrim |  | 4 (0) | TRUEGlobal=1.0, SpeechEasy=25.0, SpeechAverage=50.0, TCTRC_GLOB_Stage30_IntimidatedYamarz=0.0 | alias, alias items, dialogue |
-| The House of Horrors | `DA10` | Skyrim |  | 46 (9) | HOH_Waiting=0.0, HOH_TyranusShutUp=0.0, TRUEGlobal=1.0, PlayerAnimalCount=0.0, SpeechAverage=50.0 | alias, dialogue |
+| The House of Horrors | `DA10` | Skyrim |  | 47 (9) | HOH_Waiting=0.0, HOH_TyranusShutUp=0.0, TRUEGlobal=1.0, PlayerAnimalCount=0.0, SpeechAverage=50.0 | alias, dialogue |
 | The Mind of Madness | `DA15` | Skyrim | yes | 11 (0) | SpeechEasy=25.0, ANDR_DA15_Ready=0.0 | dialogue |
 | Saints and Seducers | `EC_SS_MQ101` | Skyrim Extended Cut - Saints and Seducers |  | 7 (2) |  |  |
 | The Only Cure | `DA13` | Skyrim |  | 4 (0) | DA13_AltarDestroyed=0.0 | alias items, dialogue |
@@ -837,7 +905,7 @@ Own mod: Undeath Remastered - CLEANED ESMIFIED. Plugins: UndeathFixes.esp.
 | The Gray Cowl of Nocturnal | `manny_GF_MQ` | The Gray Cowl of Nocturnal - 10th anniversary | yes | 21 (2) |  |  |
 | The Forgotten City | `000FCQuest01` | The Forgotten City |  | 29 (0) | SpeechAverage=50.0 |  |
 | Gravewind | `GRVEMainQuest01` | Gravewind - ESMIFIED | yes | 2 (1) |  | door: key |
-| Raven Rock | `DLC2RR01` | Skyrim |  | 17 (4) | DLC2RR01Dia01=0.0 |  |
+| Raven Rock | `DLC2RR01` | Skyrim |  | 17 (5) | DLC2RR01Dia01=0.0 | door: key |
 | Thirsk Mead Hall | `DLC2MH01` | Skyrim |  | 2 (0) |  | dialogue |
 | Neloth of Tel Mithryn | `DLC2TT1` | Skyrim |  | 4 (0) |  | dialogue |
 | Skaal Village | `DLC2SV01` | Skyrim |  | 9 (2) | DLC2SV01WallsTranslated=0.0, DLC2TharstanCommentNextAllowed=0.0, DLC2SV01CommentChance=75.0, GameDaysPassed=1.0 | alias, dialogue |
@@ -850,7 +918,7 @@ Own mod: Undeath Remastered - CLEANED ESMIFIED. Plugins: UndeathFixes.esp.
 | Miasma | `RE01MiasmaQst` | Miasma | yes | 3 (1) |  |  |
 | Destroy the Acolyte Priests | `EnoAcolyteQuest` | Destroy the Acolyte Priests |  | 7 (0) |  |  |
 | The Forsworn Conspiracy | `MS01` | Skyrim | yes | 30 (7) | SpeechVeryEasy=10.0, SpeechEasy=25.0, SpeechAverage=50.0 | dialogue |
-| Promises to Keep | `MS03` | Skyrim | yes | 16 (1) | SpeechEasy=25.0 | dialogue |
+| Promises to Keep | `MS03` | Skyrim | yes | 17 (2) | SpeechEasy=25.0 | dialogue, door: key |
 | Unfathomable Depths | `MS04` | Skyrim |  | 24 (6) |  | dialogue, door: key |
 | The Wolf Queen Awakened | `MS06Start` | Skyrim | yes | 16 (1) |  | door: locked |
 | Lights Out! | `MS07` | Skyrim | yes | 19 (0) | SpeechAverage=50.0 | alias, dialogue |
@@ -862,7 +930,7 @@ Own mod: Undeath Remastered - CLEANED ESMIFIED. Plugins: UndeathFixes.esp.
 | The Golden Claw | `MS13` | Skyrim | yes | 17 (4) | ANDR_PlayerHelpingLucanCleanUpStatus=0.0 | dialogue |
 | Laid to Rest | `MS14` | Skyrim | yes | 22 (7) |  | dialogue, door: hidden |
 | A Return To Your Roots | `NN01` | Skyrim | yes | 4 (0) |  |  |
-| The Heart of Dibella | `T01` | Skyrim | yes | 33 (8) | T01_QE_PlayerChoice=0.0, T01_QE_AlternativeLocation=0.0 | alias, dialogue |
+| The Heart of Dibella | `T01` | Skyrim | yes | 34 (8) | T01_QE_PlayerChoice=0.0, T01_QE_AlternativeLocation=0.0 | alias, dialogue |
 | The Blessings of Nature | `T03` | Skyrim | yes | 2 (0) |  |  |
 | The Book of Love | `t02` | Skyrim | yes | 15 (0) |  | dialogue |
 | Seeking A Cure | `VC01` | Skyrim | yes | 5 (1) |  | alias, dialogue |
@@ -875,7 +943,6 @@ Own mod: Undeath Remastered - CLEANED ESMIFIED. Plugins: UndeathFixes.esp.
 | Ancestral Worship | `dunHillgrundsTombQST` | Skyrim |  | 1 (1) |  | dialogue |
 | Kyne's Sacred Trials | `dunHunterQST` | Skyrim |  | 3 (1) |  | dialogue, door: key |
 | The Lost Expedition | `dunNchuandZelQst` | Skyrim |  | 5 (0) |  |  |
-| Trius' Trinket | `dunShipwreck04QST` | Skyrim |  | 0 (0) |  | start game |
 | Infiltration | `dunTrevasWatchQST` | Skyrim |  | 5 (0) | SpeechEasy=25.0, SpeechAverage=50.0, SpeechHard=75.0, SpeechVeryHard=100.0 | alias, dialogue |
 | Evil in Waiting | `dunValthumeQST` | Skyrim |  | 1 (0) |  |  |
 | Silenced Tongues | `dunVolunruudQST` | Skyrim |  | 1 (0) |  |  |
@@ -898,7 +965,7 @@ Own mod: Undeath Remastered - CLEANED ESMIFIED. Plugins: UndeathFixes.esp.
 | Deluge of Deceit | `EVGSirenrootQuest` | SIRENROOT - Deluge of Deceit | yes | 7 (1) | EVGSirenIngunScholar=0.0, EVGSirenCampTilMaormer=0.0, EVGSiren02TilWoke=0.0, EVGSiren02TilDecisionSafety=1.0, EVGSirenCayriceCamp=0.0, EVGSirenTalkedCayrice04a=0.0, EVGSiren04PeletiusDecision=0.0, EVGSirenCayriceBookVar=0.0, EVGSirenDebuff=0.0, EVGSiren05TilaelSaved=0.0, EVGSirenPrePeletiusDecision=0.0, EVGSiren05YineelWarned=0.0, EVGSirenCayriceMain=0.0, EVGSirenPeletiusMain=0.0, EVGSirenTilaelMain=0.0, EVGSirenCayrice3Count=0.0, EVGSirenPeletiusCampQ=0.0, EVGSirenYineelMain=0.0, EVGSiren08FoundC=0.0, EVGSirenCampYineelMerc=0.0, EVGSiren05YineelAfraid=0.0, EVGSirenYineelCampPotion=0.0 |  |
 | Heart of the Reach | `aaaHOTRQuest` | Heart of the Reach - New Quest - Dungeon - Weapons - 3 Creature Variants - Ring - Spell |  | 4 (0) |  |  |
 | The Welkynar Knight | `ksws04MainQuest` | The Welkynar Knight - Quest |  | 6 (0) | ksws04MainQuestThalmorTopicPlayerAsked=0.0, ksws04MainQuestThalmorTopicWaifuAsked=0.0, ksws04MainQuestThalmorTopicWhereAsked=0.0, ksws04MainQuestRescueTopic02BadPick=0.0, ksws04MainQuestRescueTopic02GoodPick=0.0, ksws04MainQuestRescueTopic03LiePick=0.0, ksws04MainQuestRescueTopic03YesPick=0.0, ksws04MainQuestRescueTopic03NoPick=0.0, ksws04MainQuestMeetTopicPick=0.0 |  |
-| Relics of the Crusader | `ccMTYSSE001_DES_RelicsoftheCrusader` | Official Master Files - Cleaned Plugins |  | 6 (0) |  |  |
+| Relics of the Crusader | `ccMTYSSE001_DES_RelicsoftheCrusader` | Official Master Files - Cleaned Plugins |  | 6 (0) |  | alias |
 | Belethor's Sister | `belethorSisterQuest01` | Belethor's Sister - Quest |  | 3 (0) | SpeechAverage=50.0, SpeechHard=75.0 |  |
 | Revealing Rune | `Rune01` | Revealing Rune |  | 6 (0) | TGTalkGate=0.0 | door: hidden |
 | More to do in the Soul Cairn | `MDSCSoulGemQuest` | More to do in the Soul Cairn | yes | 0 (0) |  |  |
@@ -907,23 +974,36 @@ Own mod: Undeath Remastered - CLEANED ESMIFIED. Plugins: UndeathFixes.esp.
 | The Frozen Heart | `ksws07MainQuest` | The Frozen Heart - Quest Mod |  | 2 (0) | ksws07RelationshipTotal=0.0, ksws07RelationshipKnocked=0.0 |  |
 | The Thalmor's Shadow | `00TallyMeet` | The Thalmor's Shadow - Taliesin (Custom Voiced Follower) | yes | 0 (0) |  |  |
 | A Healing Wedding | `DB05Alt` | Vittorias Alternate Wedding |  | 50 (6) | VAW_SpokenToVittoria=0.0 | door: hidden, door: key |
-| Windhelm, expanded | `0WHQuestDeliveryToBro` | Capital Windhelm Expansion | yes | 2 (0) |  |  |
-| Whiterun, expanded | `0WRThaneQ01` | Rob's Bug Fixes - Capital Whiterun Expansion | yes | 14 (3) |  |  |
+| More to do in Windhelm | `0WHQuestDeliveryToBro` | Capital Windhelm Expansion | yes | 2 (0) |  |  |
+| More to do in Whiterun | `0WRThaneQ01` | Rob's Bug Fixes - Capital Whiterun Expansion | yes | 14 (3) |  |  |
 | Markarth Side | `MarkarthSideGritDarQuest` | Arena - Markarth Side Town | yes | 1 (0) |  |  |
 | On Hogithum | `REQ_HOGITHUM` | Requiem - The Roleplaying Overhaul (No Messages ESLIFIED) |  | 4 (0) |  |  |
 | Profane Divinity | `Trad_001_ProfaneDivinityQuest` | Trad - AE - CC - Collection - Requiem Patch |  | 0 (0) |  |  |
 | The Lost Library | `ccBGSSSE014_SpellPack_StartupQuest` | Official Master Files - Cleaned Plugins |  | 0 (0) |  |  |
 | Through a Glass, Darkly | `BGSSSE018_ShadowrendQuest` | Official Master Files - Cleaned Plugins |  | 0 (0) |  |  |
-| In the Shadows | `ccBGSSSE038_Quest` | Official Master Files - Cleaned Plugins |  | 0 (0) |  |  |
-| The Cause | `ccBGSSSE067_Quest` | Official Master Files - Cleaned Plugins |  | 0 (0) |  |  |
-| Hendraheim | `ccEEJSSE004_Quest` | Official Master Files - Cleaned Plugins |  | 18 (5) | cceejsse004_HousePrice=25000.0 | alias, condition |
-| Guests for Dinner | `ccEEJSSE005_Quest` | Official Master Files - Cleaned Plugins |  | 1 (0) |  |  |
-| A Dying Wish | `ccKRTSSE001_zQuest` | Official Master Files - Cleaned Plugins |  | 15 (0) |  |  |
-| Dreams of the Dead | `ccRMSSSE001_Quest` | Official Master Files - Cleaned Plugins |  | 1 (1) |  | door: key |
-| The Unquiet Dead | `ccVSVSSE004_MainQuest` | Official Master Files - Cleaned Plugins |  | 17 (3) | GoldenhillsPlantationPriceGlobal=10000.0, TRUEGlobal=1.0 | dialogue, door: locked |
-| Stealer of Souls | `ccBGSSSE002_SoulStealerQuest` | Official Master Files - Cleaned Plugins |  | 12 (3) |  |  |
-| Battle of the Champions | `ccFFBSSE001_Quest` | Official Master Files - Cleaned Plugins |  | 3 (0) | SpeechAverage=50.0, SpeechVeryHard=100.0 |  |
-| The Wintersand Deception | `THTE_Quest_WintersandDeception` | CC Tundra Homestead - Tweaks and Enhancements (THTE) |  | 15 (5) |  | door: locked |
+| In the Shadows | `ccBGSSSE038_Quest` | Official Master Files - Cleaned Plugins |  | 5 (1) |  | dialogue, door: locked |
+| The Cause | `ccBGSSSE067_Quest` | Official Master Files - Cleaned Plugins |  | 5 (1) |  | alias |
+| Hendraheim | `ccEEJSSE004_Quest` | Official Master Files - Cleaned Plugins |  | 19 (6) | cceejsse004_HousePrice=25000.0 | alias, condition |
+| Guests for Dinner | `ccEEJSSE005_Quest` | Official Master Files - Cleaned Plugins |  | 1 (0) |  | condition, dialogue |
+| A Dying Wish | `ccKRTSSE001_QuestFortune` | Official Master Files - Cleaned Plugins |  | 1 (0) | SpeechVeryEasy=10.0, SpeechEasy=25.0, SpeechAverage=50.0, SpeechHard=75.0, SpeechVeryHard=100.0 |  |
+| Dreams of the Dead | `ccRMSSSE001_Quest` | Official Master Files - Cleaned Plugins |  | 1 (1) |  | condition, door: key |
+| The Unquiet Dead | `ccVSVSSE004_RestoreFarmQuest` | Official Master Files - Cleaned Plugins |  | 6 (2) |  | door: locked |
+| Horse Whisperer | `ccBGSSSE034_UnicornQuest` | Official Master Files - Cleaned Plugins |  | 0 (0) |  |  |
+| Ghosts of the Tribunal | `ccASVSSE001_Quest` | Official Master Files - Cleaned Plugins |  | 2 (0) | SpeechHard=75.0, SpeechVeryHard=100.0, ccASVSSE001_FightGlobalCheck=0.0 | alias |
+| Forgotten Seasons | `DLCDwarvenPuzzleDungeonCrownQuest` | Official Master Files - Cleaned Plugins |  | 6 (0) |  |  |
+| A Soul Divided | `ccBGSSSE013_AquisitionQuest` | Official Master Files - Cleaned Plugins |  | 51 (14) |  | door: hidden |
+| The Restless | `ccBGSSSE031_QUEST` | Official Master Files - Cleaned Plugins |  | 5 (0) | SpeechEasy=25.0 |  |
+| The Sanctuary and the Manufactory | `ccAARSSE001ManufactoryControlQuest` | Official Master Files - Cleaned Plugins |  | 1 (0) |  |  |
+| A Matter of Pride | `ccBGSSSE005_MainQuest` | Official Master Files - Cleaned Plugins | yes | 11 (1) | ccBGSSSE005_PlayerSeekingAmuletFromBattleborns=0.0 |  |
+| Blue in the Face | `ccBGSSSE040_Quest` | Official Master Files - Cleaned Plugins |  | 1 (0) |  |  |
+| The Staff of Hasedoki | `ccBGSSSE045_Quest` | Official Master Files - Cleaned Plugins |  | 8 (2) |  | door: hidden |
+| Blood in the Water | `ccBGSSSE068_Quest` | Official Master Files - Cleaned Plugins |  | 1 (0) |  |  |
+| Caught in a Web | `ccBGSSSE069_Quest` | Official Master Files - Cleaned Plugins |  | 2 (0) |  |  |
+| Shadowfoot Sanctum | `ccEEJSSE003_HouseQuest` | Official Master Files - Cleaned Plugins |  | 6 (1) |  |  |
+| Saturalia Preparation | `ccVSVSSE001_MainQuest` | Official Master Files - Cleaned Plugins |  | 0 (0) |  |  |
+| Stealer of Souls | `ccBGSSSE002_SoulStealerQuest` | Official Master Files - Cleaned Plugins |  | 13 (3) |  |  |
+| Battle of the Champions | `ccFFBSSE001_Quest` | Official Master Files - Cleaned Plugins |  | 3 (0) | SpeechAverage=50.0, SpeechVeryHard=100.0 | dialogue |
+| The Wintersand Deception | `THTE_Quest_WintersandDeception` | CC Tundra Homestead - Tweaks and Enhancements (THTE) |  | 15 (5) |  | door: key, door: locked |
 | Myrwatch | `MyrwatchTNE_Quest` | Myrwatch - Tweaks and Enhancements | yes | 4 (1) | ccEEJSSE002_HousePrice=20000.0, SpeechVeryHard=100.0 | door: key |
 | Return Aegisbane | `ReturnAegisbaneQuest` | Return Aegisbane |  | 3 (0) |  |  |
 | Paragliding in Skyrim | `ParaIntro` | Skyrim's Paraglider - ZERO |  | 0 (0) |  |  |
@@ -942,7 +1022,7 @@ Own mod: Undeath Remastered - CLEANED ESMIFIED. Plugins: UndeathFixes.esp.
 | Erik the Slayer | `aaErikCompanionJoin` | Follower Dialogue Expansion - Erik the Slayer |  | 2 (0) |  |  |
 | Missives | `_M_QuestEastmarchCourierLetterHigh` | Missives |  | 39 (9) |  | door: hidden |
 | Bounties and favours for the jarls | `BQ01Eastmarch` | Favor Quests Separated |  | 0 (0) |  |  |
-| Favours for townsfolk | `Favor001` | Skyrim |  | 0 (0) | TRUEGlobal=1.0 | condition, dialogue |
+| Favours for townsfolk | `Favor001AngasMill` | Favor Quests Separated |  | 3 (0) |  |  |
 | Thane of every hold | `FavorJarlsMakeFriends` | Skyrim | yes | 0 (0) |  |  |
 | Fishing | `ccBGSSSE001_Start_MQ1` | Official Master Files - Cleaned Plugins |  | 0 (0) |  |  |
 | Hunter's Mark | `HMADQ01` | Hunters Mark Animal Den on Map |  | 0 (0) | HMADg=10.0 |  |

@@ -113,6 +113,9 @@ def localized_strings_kinds(plugin_path, name):
                 else:
                     ln = struct.unpack_from('<I', b, o)[0]; s = b[o + 4:o + 4 + ln].rstrip(b'\0')
                 out[kind][sid] = s.decode('utf-8', 'game')
+    if not any(out.values()):
+        from bsa import plugin_strings_kinds  # a Creation Club plugin's own archive (WO-183 Part 7)
+        out = plugin_strings_kinds(plugin_path, name)
     return out
 
 def localized_strings(plugin_path, name):
@@ -134,4 +137,8 @@ def localized_strings(plugin_path, name):
                 else:
                     ln = struct.unpack_from('<I', b, o)[0]; s = b[o + 4:o + 4 + ln].rstrip(b'\0')
                 out[sid] = s.decode('utf-8', 'game')
+    if not out:
+        from bsa import plugin_strings_kinds  # a Creation Club plugin's own archive (WO-183 Part 7)
+        for table in plugin_strings_kinds(plugin_path, name).values():
+            out.update(table)
     return out

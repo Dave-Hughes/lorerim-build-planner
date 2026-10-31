@@ -142,7 +142,8 @@ class BuiltMap(unittest.TestCase):
         W, H = self.m["image"]["width"], self.m["image"]["height"]
         out = [(p["name"], p["pos"][2]) for p in json.load(open(PLACES_JSON, encoding="utf-8"))["places"]
                if p.get("world") == "Tamriel" and not (0 <= maps.to_whole(self.m, *p["pos"][:2])[0] < W and 0 <= maps.to_whole(self.m, *p["pos"][:2])[1] < H)]
-        self.assertEqual(out, [("Campsite", -30000.0)])
+        # (the Creation Club's Campsite markers are named now, so GORE's parked one no longer stands as a place of its own: WO-183 Part 7)
+        self.assertEqual([o for o in out if o[1] != -30000.0], [])
 
 
 if __name__ == "__main__":

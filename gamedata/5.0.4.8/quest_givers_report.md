@@ -8,21 +8,21 @@ giver's place is where the NPC is placed in the world; NPCs with schedules move 
 
 | | Quests |
 | --- | --- |
-| quests | 1340 |
-| likely giver | 550 |
-| giver with a location | 548 |
-| first objective names who or where | 635 |
-| giver or such an objective | 755 |
-| start event | 212 |
-| reward candidate | 920 |
-| reward candidate other than gold | 520 |
-| people (aliases with an NPC) | 2937 |
-| people with a place | 2621 |
-| named giver | 628 |
-| named giver with a place | 619 |
-| story lines | 139 |
-| story-line openings with a named giver | 106 |
-| story-line openings whose named giver has a place | 105 |
+| quests | 1387 |
+| likely giver | 564 |
+| giver with a location | 562 |
+| first objective names who or where | 673 |
+| giver or such an objective | 795 |
+| start event | 213 |
+| reward candidate | 949 |
+| reward candidate other than gold | 547 |
+| people (aliases with an NPC) | 3218 |
+| people with a place | 2911 |
+| named giver | 650 |
+| named giver with a place | 649 |
+| story lines | 144 |
+| story-line openings with a named giver | 107 |
+| story-line openings whose named giver has a place | 106 |
 
 ## The 15 samples
 

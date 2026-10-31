@@ -60,6 +60,35 @@ def parse_strings(b, kind):
 _VANILLA = None
 
 
+_OWN = {}
+
+
+def plugin_strings_kinds(plugin_path, plugin):
+    """
+    WO-183 Part 7: a Creation Club plugin's English string tables, which ship inside its own archive (ccbgssse040-advobgobs.bsa beside ccbgssse040-advobgobs.esl), not loose and not in
+    the base game's. {'STRINGS': {...}, 'DLSTRINGS': {...}, 'ILSTRINGS': {...}}, empty tables when the plugin has no archive of that name.
+    """
+    base = os.path.splitext(os.path.basename(plugin))[0]
+    path = os.path.join(os.path.dirname(plugin_path), base + ".bsa")
+    # Only the Creation Club's (named cc..., and the Unofficial Creation Club Content Patch, which changes their quests): other mods' own archives would change the winner of many a
+    # record the data was checked on (Nightgate Inn, Campsite); six other plugins keep their names in an archive and are not read (WO-183 Part 7).
+    if not (base.lower().startswith("cc") or "creation club" in base.lower()):
+        return {k: {} for k in ("STRINGS", "DLSTRINGS", "ILSTRINGS")}
+    if path not in _OWN:
+        out = {k: {} for k in ("STRINGS", "DLSTRINGS", "ILSTRINGS")}
+        if os.path.exists(path):
+            try:
+                for k, v in read_bsa(path, ["strings\\"]).items():
+                    if "_english." not in k or v is None:
+                        continue
+                    kind = k.rsplit(".", 1)[1]
+                    out[kind.upper()] = parse_strings(v, kind)
+            except ValueError:
+                pass  # not a v105 archive: no strings from it
+        _OWN[path] = out
+    return _OWN[path]
+
+
 _VANILLA_KINDS = None
 
 

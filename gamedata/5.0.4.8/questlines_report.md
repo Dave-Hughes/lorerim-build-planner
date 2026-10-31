@@ -1,6 +1,6 @@
 # Quest lines, curated
 
-151 lines from 1242 quests. Written by `scripts/gamedata/questlines.py` from `questlines.json` (hand-kept) and the raw crawl. Begins is the game's own text: the line's opening journal entry.
+164 lines from 1286 quests. Written by `scripts/gamedata/questlines.py` from `questlines.json` (hand-kept) and the raw crawl. Begins is the game's own text: the line's opening journal entry.
 
 Six categories, each line in one (its home) and maybe others (also). Repeatable work is a shelf of its own, not a category.
 
@@ -10,9 +10,9 @@ Six categories, each line in one (its home) and maybe others (also). Repeatable 
 | Guilds and factions | Join a guild or a side and work your way up | 9 | 3 |
 | Daedric Princes | Quests for the Daedric Princes, most ending in an artifact | 17 | 3 |
 | New lands | Quests that take you to places outside Skyrim | 18 | 4 |
-| Side stories | Shorter quests in towns, ruins and on the road | 73 | 0 |
+| Side stories | Shorter quests in towns, ruins and on the road | 85 | 0 |
 | Followers | Quests that come from your followers | 12 | 2 |
-| Jobs and errands | Notice boards, bounties and favours for townsfolk | 19 | 0 |
+| Jobs and errands | Notice boards, bounties and favours for townsfolk | 20 | 0 |
 
 - **Main stories**: Each runs for many hours. In LoreRim, Miraak's cultists come at level 25 once you've finished The Way of the Voice, and Dawnguard waits for level 30.
 - **Guilds and factions**: The Companions, the College, the Thieves Guild, the Dark Brotherhood, the Bards College and the Civil War, plus orders that mods add, like the Vigilants of Stendarr.
@@ -37,14 +37,15 @@ Six categories, each line in one (its home) and maybe others (also). Repeatable 
 - **Legends of Aetherium**: the opening quest has no plain journal entry; shows its first objective.
 - **Belethor's Sister**: the opening quest has no plain journal entry; shows its first objective.
 - **Revealing Rune**: the opening quest has no plain journal entry; shows its first objective.
-- **The Unquiet Dead**: the opening quest has no plain journal entry; shows its first objective.
+- **Ghosts of the Tribunal**: the opening quest has no plain journal entry; shows its first objective.
+- **A Soul Divided**: the opening quest has no plain journal entry; shows its first objective.
 - **Stealer of Souls**: the opening quest has no plain journal entry; shows its first objective.
 - **Return Aegisbane**: the opening quest has no plain journal entry; shows its first objective.
 - **Leaps Of Faith**: the opening quest has no plain journal entry; shows its first objective.
 - **Erik the Slayer**: the opening quest has no plain journal entry; shows its first objective.
 - **The Bonds of Matrimony**: the opening quest has no plain journal entry; shows its first objective.
 
-**No facts checked yet** (83): The Bards College, Penitus Oculatus, Thirsk Mead Hall, Neloth of Tel Mithryn, Skaal Village, The Black Books, Unearthed, Filial Bonds, The Kagrumez Gauntlet, Destroy the Acolyte Priests, Promises to Keep, Unfathomable Depths, Lights Out!, In My Time Of Need, Missing In Action, Rise in the East, Blood on the Ice, The White Phial, The Golden Claw, Laid to Rest, A Return To Your Roots, The Heart of Dibella, The Blessings of Nature, The Book of Love, Seeking A Cure, Falion's Secret, Repentance, Siege on the Dragon Cult, The Pale Lady, Forbidden Legend, A Scroll For Anska, Ancestral Worship, Kyne's Sacred Trials, The Lost Expedition, Infiltration, Evil in Waiting, Silenced Tongues, Yngol's Barrow, The Affairs of Hagravens, Telrav's Request, Search and Seizure, Toying With The Dead, Extracting an Argonian, Dark Ancestor, Drowned Sorrows, The Forgemaster's Fingers, Lost to the Ages, A Forgotten Blade, Destroy the Dragon Cult, The Frozen Heart, The Thalmor's Shadow, A Healing Wedding, On Hogithum, Profane Divinity, The Lost Library, Through a Glass, Darkly, In the Shadows, The Cause, Hendraheim, Guests for Dinner, A Dying Wish, Dreams of the Dead, The Unquiet Dead, Stealer of Souls, Battle of the Champions, The Wintersand Deception, Myrwatch, Return Aegisbane, Paragliding in Skyrim, Leaps Of Faith, Inigo, Gore, Remiel, Lucien, Serana, Auri, Katana and Megara, Fura Bloodmouth, Faralda, Jenassa, Mjoll the Lioness, Erik the Slayer, The Bonds of Matrimony.
+**No facts checked yet** (95): The Bards College, Penitus Oculatus, Thirsk Mead Hall, Neloth of Tel Mithryn, Skaal Village, The Black Books, Unearthed, Filial Bonds, The Kagrumez Gauntlet, Destroy the Acolyte Priests, Promises to Keep, Unfathomable Depths, Lights Out!, In My Time Of Need, Missing In Action, Rise in the East, Blood on the Ice, The White Phial, The Golden Claw, Laid to Rest, A Return To Your Roots, The Heart of Dibella, The Blessings of Nature, The Book of Love, Seeking A Cure, Falion's Secret, Repentance, Siege on the Dragon Cult, The Pale Lady, Forbidden Legend, A Scroll For Anska, Ancestral Worship, Kyne's Sacred Trials, The Lost Expedition, Infiltration, Evil in Waiting, Silenced Tongues, Yngol's Barrow, The Affairs of Hagravens, Telrav's Request, Search and Seizure, Toying With The Dead, Extracting an Argonian, Dark Ancestor, Drowned Sorrows, The Forgemaster's Fingers, Lost to the Ages, A Forgotten Blade, Destroy the Dragon Cult, The Frozen Heart, The Thalmor's Shadow, A Healing Wedding, On Hogithum, Profane Divinity, The Lost Library, Through a Glass, Darkly, In the Shadows, The Cause, Hendraheim, Guests for Dinner, A Dying Wish, Dreams of the Dead, The Unquiet Dead, Ghosts of the Tribunal, Forgotten Seasons, A Soul Divided, The Restless, The Sanctuary and the Manufactory, A Matter of Pride, Blue in the Face, The Staff of Hasedoki, Blood in the Water, Caught in a Web, Shadowfoot Sanctum, Saturalia Preparation, Stealer of Souls, Battle of the Champions, The Wintersand Deception, Myrwatch, Return Aegisbane, Paragliding in Skyrim, Leaps Of Faith, Inigo, Gore, Remiel, Lucien, Serana, Auri, Katana and Megara, Fura Bloodmouth, Faralda, Jenassa, Mjoll the Lioness, Erik the Slayer, The Bonds of Matrimony.
 
 ## Main stories
 
@@ -290,7 +291,7 @@ Also here: Vigilant, Meridia's Order, The Black Books.
 
 ### Saints and Seducers
 
-7 quests | Skyrim Extended Cut - Saints and Seducers (Nexus 72772), Creation Club | Sheogorath
+15 quests | Skyrim Extended Cut - Saints and Seducers (Nexus 72772), Creation Club | Sheogorath
 
 > Staada told me about a riot in the Shivering Isles' prison. She wants me to travel with her to the Asylum and help fight off the prisoners, before the Root does any more damage to Nirn.
 
@@ -298,7 +299,7 @@ Also here: Vigilant, Meridia's Order, The Black Books.
 - Gate: Level 20, after The Mind of Madness. *(files)*
 - Length: 1–3 hours *(mod page)*
 - After: The Mind of Madness
-- Quests: The Lunatic's Treasure; The Route of Madness; The Isle of Madness; The Roots of Madness; The Merchant's Masterpiece; My Pet Elytra (Dementia); My Pet Elytra (Mania)
+- Quests: The Lunatic's Treasure; The Route of Madness; The Isle of Madness; The Roots of Madness; The Merchant's Masterpiece; My Pet Elytra (Dementia); My Pet Elytra (Mania); Amber and Madness Smithing; Golden and Dark Smithing; Nerveshatter; Balance of Power; Restoring Order; Staada Quest; My Pet Elytra (Dementia); My Pet Elytra (Mania)
 
 ### The Only Cure
 
@@ -953,13 +954,13 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Relics of the Crusader
 
-1 quest | Creation Club
+2 quests | Creation Club
 
 > I've discovered the whereabouts of a powerful artifact that the once belonged to the fabled Divine Crusader. I should try and reunite all the missing relics.
 
 - Length: 2–4 hours *(mod page)*
 - Note: Knight of the North reworks it: the relics are hidden with devoted servants of the Divines. Players report the one at Stendarr's Beacon is a Thalmor ambush. *(players)*
-- Quests: Relics of the Crusader
+- Quests: Relics of the Crusader; The Pilgrim's Path
 
 ### Belethor's Sister
 
@@ -1051,11 +1052,11 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Cause
 
-1 quest | Creation Club
+2 quests | Creation Club
 
 > I found the Oblivion Gate and defeated the leader of the Mythic Dawn, Vonos. It appears this was an elaborate ritual designed to deceive me, and killing Vonos was the final step. I have become an unwitting instrument of Mehrunes Dagon, and my actions have opened the Oblivion Gate.
 
-- Quests: The Cause
+- Quests: The Cause; The Consequences
 
 ### Hendraheim
 
@@ -1075,11 +1076,11 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### A Dying Wish
 
-1 quest | Creation Club | Falkreath
+3 quests | Creation Club | Falkreath
 
-> In my travels, I've heard strange tales about hagravens performing rituals near Falkreath. I should head to the inn there and see what information I can turn up.
+> The Daedric artifact Umbra awaits a new owner. I should take it to prevent it from falling into the wrong hands again.
 
-- Quests: A Dying Wish
+- Quests: Fortunate Son; The Pit; A Dying Wish
 
 ### Dreams of the Dead
 
@@ -1091,11 +1092,107 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Unquiet Dead
 
-1 quest | Creation Club | Near Rorikstead
+2 quests | Creation Club | Near Rorikstead
 
-> Search the plantation for clues
+> I should find a steward to manage the day-to-day operations. Perhaps one of my allies would be willing to take on the job after I show them the place? Or I'm sure my spouse could run the farm, if I make this our home.
 
-- Quests: The Unquiet Dead
+- Quests: The Unquiet Dead; A Farmer's Life For Me
+
+### Ghosts of the Tribunal
+
+6 quests | Creation Club
+
+> Look for clues at the Temple in Raven Rock
+
+- Quests: Ghosts of the Tribunal; Buyer Beware; Her Word Against Theirs; Careless Curation; Ashen Heart; Trueflame
+
+### Forgotten Seasons
+
+3 quests | Creation Club
+
+> I've encountered a wizard wearing a strange looking Dwarven Crown. The slots in the facing suggest a separate piece can be attached.
+
+- Quests: The Dwarven Crown; The Dwarven Horse; Forgotten Seasons
+
+### A Soul Divided
+
+2 quests | Creation Club
+
+> Investigate rumors of ghosts in the Riften Ratway
+
+- Quests: A Soul Divided; Bloodthirst
+
+### The Restless
+
+2 quests | Creation Club
+
+> I've heard stories of lost shipwrecks strewn across the Sea of Ghosts. If I head to the Winking Skeever in Solitude, I may be able to find more information on there whereabouts.
+
+- Quests: Restless Home Quest; The Restless
+
+### The Sanctuary and the Manufactory
+
+1 quest | Creation Club
+
+> Travelers throughout Skyrim have discovered ancient Dwemer ruins full of perilous traps and buried treasure. I've heard rumors, however, of one such sanctuary being used as a home. I should check the surrounding inns for clues on its whereabouts.
+
+- Quests: The Sanctuary and the Manufactory
+
+### A Matter of Pride
+
+1 quest | Creation Club
+
+> I've heard a rumor that a historian researching the whereabouts of lost daedric artifacts has recently gone missing. She was last seen in the mountains east of Windhelm.
+
+- Quests: A Matter of Pride
+
+### Blue in the Face
+
+1 quest | Creation Club
+
+> I traveled to Gromm's Pass and proceeded to investigate the cave's interior. Inside I found an arena pit and several goblins, as well as an Orc who served as their shaman. I killed the Orc and read the journal on his person.
+
+- Quests: Blue in the Face
+
+### The Staff of Hasedoki
+
+1 quest | Creation Club
+
+> On the road west of Whiterun I encountered and killed a hostile Orc besieged by bandits. On his body was a ledger that offered additional clues. According to the ledger, the current owners of the staff are two necromancers holed up in Brittleshin Pass.
+
+- Quests: The Staff of Hasedoki
+
+### Blood in the Water
+
+1 quest | Creation Club
+
+> Talking to innkeepers has always been a good way to find work. I should head to the local inn and see if there's anything worthwhile.
+
+- Quests: Blood in the Water
+
+### Caught in a Web
+
+1 quest | Creation Club
+
+> I traveled to Candlehearth Hall and read a journal about two warriors, who traveled to Cronvangr Cave to defeat a dangerous Web Mother. I traveled to Cronvangr Cave and found the spider's lair, defeating the Web Mother. I spoke to the heroes who bequeathed me their treasures before fading away.
+
+- Quests: Caught in a Web
+
+### Shadowfoot Sanctum
+
+1 quest | Creation Club
+
+> Not every home in Skyrim is built above ground. If I'm ever in the need of a more discreet hideout, I should head over to Riften and talk to those in the know.
+
+- Quests: Shadowfoot Sanctum
+
+### Saturalia Preparation
+
+1 quest | Creation Club
+
+> Saturalia is coming soon, and there are rumors of a new merchant up near Dawnstar who sells very rare and unique wares just for the holiday. I should go look for him.
+
+- Quests: Saturalia Preparation
 
 ### Stealer of Souls
 
@@ -1123,11 +1220,11 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Myrwatch
 
-1 quest | Myrwatch - Tweaks and Enhancements (Nexus 97659)
+2 quests | Myrwatch - Tweaks and Enhancements (Nexus 97659), Creation Club
 
 > As I entered the Vestibule of Myrwatch, I found a strange note. It turns out Myrwatch has been further sealed off and actually needs to be purchased from Tolfdir in the college of Winterhold. For him to deem me worthy for purchasing it, I either need to complete Shalidor's Maze and acquire the Diadem of the Savant, or find some other way of convincing him.
 
-- Quests: MyrwatchTNE_Quest
+- Quests: MyrwatchTNE_Quest; Myrwatch
 
 ### Return Aegisbane
 
@@ -1315,6 +1412,14 @@ Also here: Lost to the Ages, The Thalmor's Shadow.
 2 quests | Arena - Markarth Side Town (Nexus 114252) | South-east of Dragon Bridge
 
 - Quests: The Royal Relic; The Lost Family Relic
+
+### Horse Whisperer
+
+9 quests | Creation Club
+
+> A wildlife scholar is rumored to have tracked down a legendary Unicorn. The last of these creatures was supposed to have been slain long ago. I should investigate and see what I can find.
+
+- Quests: Find Horse 01; Find Horse 02; Find Horse 03; Find Horse 01; Find Horse 01; Find Horse 01; Find Horse 01; Creature of Legend; Horse Whisperer
 
 ### Missives
 

@@ -1588,6 +1588,34 @@
    ]
   },
   {
+   "name": "ccBGSSSE025-AdvDSGS",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccBGSSSE025-AdvDSGS.esm"
+   ],
+   "count": 10,
+   "journal": 2,
+   "types": {
+    "Misc": 8,
+    "None": 2
+   },
+   "opening": "ccBGSSSE025-AdvDSGS.esm:000912",
+   "begins": "I've heard a rumor that a Khajiit caravan merchant has been running into trouble with bandits along the road, and is in need of assistance. I should speak to him if we ever cross paths.",
+   "quests": [
+    "ccBGSSSE025-AdvDSGS.esm:0010C0",
+    "ccBGSSSE025-AdvDSGS.esm:0010C3",
+    "ccBGSSSE025-AdvDSGS.esm:000C4D",
+    "ccBGSSSE025-AdvDSGS.esm:000C4B",
+    "ccBGSSSE025-AdvDSGS.esm:0010BF",
+    "ccBGSSSE025-AdvDSGS.esm:000912",
+    "ccBGSSSE025-AdvDSGS.esm:000913",
+    "ccBGSSSE025-AdvDSGS.esm:198277",
+    "ccbgssse025-advdsgs.esm:0010C0",
+    "ccbgssse025-advdsgs.esm:0010C3"
+   ]
+  },
+  {
    "name": "Journey to Baan Malur and Morrowind",
    "kind": "mod",
    "source": "Journey to Baan Malur and Morrowind",
@@ -1672,6 +1700,33 @@
     "Additional Contracts For the Dark Brotherhood.esp:000E3C",
     "Additional Contracts For the Dark Brotherhood.esp:00082B",
     "Additional Contracts For the Dark Brotherhood.esp:000FDA"
+   ]
+  },
+  {
+   "name": "ccbgssse034-mntuni",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccbgssse034-mntuni.esl"
+   ],
+   "count": 9,
+   "journal": 8,
+   "types": {
+    "Misc": 7,
+    "None": 2
+   },
+   "opening": "ccbgssse034-mntuni.esl:000DE8",
+   "begins": "A wildlife scholar is rumored to have tracked down a legendary Unicorn. The last of these creatures was supposed to have been slain long ago. I should investigate and see what I can find.",
+   "quests": [
+    "ccbgssse034-mntuni.esl:00086D",
+    "ccbgssse034-mntuni.esl:000870",
+    "ccbgssse034-mntuni.esl:000871",
+    "ccbgssse034-mntuni.esl:000872",
+    "ccbgssse034-mntuni.esl:000873",
+    "ccbgssse034-mntuni.esl:000874",
+    "ccbgssse034-mntuni.esl:000875",
+    "ccbgssse034-mntuni.esl:000DE8",
+    "ccbgssse034-mntuni.esl:000D65"
    ]
   },
   {
@@ -1799,6 +1854,29 @@
     "Undeath.esp:26C344",
     "Undeath.esp:26C345",
     "Undeath.esp:2BDBBF"
+   ]
+  },
+  {
+   "name": "ccasvsse001-almsivi",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccasvsse001-almsivi.esm"
+   ],
+   "count": 6,
+   "journal": 5,
+   "types": {
+    "None": 6
+   },
+   "opening": "ccasvsse001-almsivi.esm:000CC3",
+   "begins": "Look for clues at the Temple in Raven Rock",
+   "quests": [
+    "ccasvsse001-almsivi.esm:000CC3",
+    "ccasvsse001-almsivi.esm:000CA0",
+    "ccasvsse001-almsivi.esm:000F19",
+    "ccasvsse001-almsivi.esm:000F1A",
+    "ccasvsse001-almsivi.esm:00117A",
+    "ccasvsse001-almsivi.esm:0990EF"
    ]
   },
   {
@@ -2132,6 +2210,48 @@
    ]
   },
   {
+   "name": "cckrtsse001_altar",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "cckrtsse001_altar.esl"
+   ],
+   "count": 3,
+   "journal": 3,
+   "types": {
+    "None": 2,
+    "Side Quest": 1
+   },
+   "opening": "cckrtsse001_altar.esl:000A90",
+   "begins": "<font face='$SkyrimBooks'>I, Cassipia Sagnus, Vigilant of Stendarr, do hereby issue this report on my investigation into the reports of a \"dark presence\" within Champion's Rest.\r\n\r\nChampion's Rest is the site of an ancient battle arena where Nords would test their mettle in gladiatorial combat. Long believed to be lost to time, it was recently uncovered by mining prospectors near Shor's Stone after discovering a new deposit of silver.\r\n\r\nUpon discovery, the miners say they witnessed a \"ghost, clad head to toe in armor.\" While this alone was cause for concern, what they said next was even more foreboding: the spirit wielded a massive blade which seemed to \"whisper\" to them in their minds. This hints at the workings of a powerful Daedric artifact.\r\n\r\nThe only relic that matches this description is Umbra, once believed to be lost or, by some accounts, destroyed. Umbra is a sentient weapon who corrupts its bearer and compels them to kill so that the blade may feast on the souls of those it slays. It appears to have resurfaced here, though why I cannot say.\r\n\r\nIf the apparition that haunts this site truly is the resurgence of Umbra, then it has grown very powerful, and Shor's Stone is in grave danger.</font>",
+   "quests": [
+    "cckrtsse001_altar.esl:000A90",
+    "cckrtsse001_altar.esl:000A5E",
+    "cckrtsse001_altar.esl:000D63"
+   ]
+  },
+  {
+   "name": "cctwbsse001-puzzledungeon",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "cctwbsse001-puzzledungeon.esm"
+   ],
+   "count": 3,
+   "journal": 2,
+   "types": {
+    "None": 2,
+    "Side Quest": 1
+   },
+   "opening": "cctwbsse001-puzzledungeon.esm:0038DB",
+   "begins": "I've encountered a wizard wearing a strange looking Dwarven Crown. The slots in the facing suggest a separate piece can be attached.",
+   "quests": [
+    "cctwbsse001-puzzledungeon.esm:0038DB",
+    "cctwbsse001-puzzledungeon.esm:0038DA",
+    "cctwbsse001-puzzledungeon.esm:0038D9"
+   ]
+  },
+  {
    "name": "Fists of Fury - Skyrim",
    "kind": "mod",
    "source": "Fists of Fury - Skyrim",
@@ -2215,22 +2335,62 @@
    ]
   },
   {
-   "name": "ccbgssse025-advdsgs",
+   "name": "ccbgssse013-dawnfang",
    "kind": "mod",
    "source": "Creation Club",
    "plugins": [
-    "ccbgssse025-advdsgs.esm"
+    "ccbgssse013-dawnfang.esl"
    ],
    "count": 2,
    "journal": 0,
    "types": {
-    "Misc": 2
+    "None": 1,
+    "Misc": 1
    },
-   "opening": "ccbgssse025-advdsgs.esm:0010C0",
-   "begins": "Free the Elytra Nymph",
+   "opening": "ccbgssse013-dawnfang.esl:000F18",
+   "begins": "Investigate rumors of ghosts in the Riften Ratway",
    "quests": [
-    "ccbgssse025-advdsgs.esm:0010C0",
-    "ccbgssse025-advdsgs.esm:0010C3"
+    "ccbgssse013-dawnfang.esl:000F18",
+    "ccbgssse013-dawnfang.esl:000CA6"
+   ]
+  },
+  {
+   "name": "ccbgssse031-advcyrus",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccbgssse031-advcyrus.esm"
+   ],
+   "count": 2,
+   "journal": 1,
+   "types": {
+    "Misc": 1,
+    "None": 1
+   },
+   "opening": "ccbgssse031-advcyrus.esm:000FDC",
+   "begins": "I've heard stories of lost shipwrecks strewn across the Sea of Ghosts. If I head to the Winking Skeever in Solitude, I may be able to find more information on there whereabouts.",
+   "quests": [
+    "ccbgssse031-advcyrus.esm:001624",
+    "ccbgssse031-advcyrus.esm:000FDC"
+   ]
+  },
+  {
+   "name": "ccbgssse067-daedinv",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccbgssse067-daedinv.esm"
+   ],
+   "count": 2,
+   "journal": 2,
+   "types": {
+    "None": 2
+   },
+   "opening": "ccbgssse067-daedinv.esm:06BFC1",
+   "begins": "I found the Oblivion Gate and defeated the leader of the Mythic Dawn, Vonos. It appears this was an elaborate ritual designed to deceive me, and killing Vonos was the final step. I have become an unwitting instrument of Mehrunes Dagon, and my actions have opened the Oblivion Gate.",
+   "quests": [
+    "ccbgssse067-daedinv.esm:06BFC1",
+    "ccbgssse067-daedinv.esm:19952A"
    ]
   },
   {
@@ -2251,6 +2411,45 @@
    "quests": [
     "ccffbsse001-imperialdragon.esl:00086B",
     "ccffbsse001-imperialdragon.esl:000927"
+   ]
+  },
+  {
+   "name": "ccmtysse001-knightsofthenine",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccmtysse001-knightsofthenine.esl"
+   ],
+   "count": 2,
+   "journal": 2,
+   "types": {
+    "Side Quest": 1,
+    "None": 1
+   },
+   "opening": "ccmtysse001-knightsofthenine.esl:00083C",
+   "begins": "I've discovered the whereabouts of a powerful artifact that the once belonged to the fabled Divine Crusader. I should try and reunite all the missing relics.",
+   "quests": [
+    "ccmtysse001-knightsofthenine.esl:00083C",
+    "ccmtysse001-knightsofthenine.esl:000865"
+   ]
+  },
+  {
+   "name": "ccvsvsse004-beafarmer",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccvsvsse004-beafarmer.esl"
+   ],
+   "count": 2,
+   "journal": 2,
+   "types": {
+    "Side Quest": 2
+   },
+   "opening": "ccvsvsse004-beafarmer.esl:000EB7",
+   "begins": "Now that I've laid the ghosts haunting <Alias=FarmLocation> to rest and claimed it for my own, I should see about getting my new homestead restored to its former glory. First I should get some crops in the ground.",
+   "quests": [
+    "ccvsvsse004-beafarmer.esl:000D28",
+    "ccvsvsse004-beafarmer.esl:000EB7"
    ]
   },
   {
@@ -2512,6 +2711,24 @@
    ]
   },
   {
+   "name": "ccafdsse001-dwesanctuary",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccafdsse001-dwesanctuary.esm"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "None": 1
+   },
+   "opening": "ccafdsse001-dwesanctuary.esm:000A39",
+   "begins": "Travelers throughout Skyrim have discovered ancient Dwemer ruins full of perilous traps and buried treasure. I've heard rumors, however, of one such sanctuary being used as a home. I should check the surrounding inns for clues on its whereabouts.",
+   "quests": [
+    "ccafdsse001-dwesanctuary.esm:000A39"
+   ]
+  },
+  {
    "name": "ccbgssse002-exoticarrows",
    "kind": "mod",
    "source": "Creation Club",
@@ -2527,6 +2744,24 @@
    "begins": "Read the Letter from Calcelmo",
    "quests": [
     "ccbgssse002-exoticarrows.esl:00081E"
+   ]
+  },
+  {
+   "name": "ccbgssse005-goldbrand",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccbgssse005-goldbrand.esl"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "None": 1
+   },
+   "opening": "ccbgssse005-goldbrand.esl:000838",
+   "begins": "I've heard a rumor that a historian researching the whereabouts of lost daedric artifacts has recently gone missing. She was last seen in the mountains east of Windhelm.",
+   "quests": [
+    "ccbgssse005-goldbrand.esl:000838"
    ]
   },
   {
@@ -2584,21 +2819,111 @@
    ]
   },
   {
-   "name": "ccbgssse067-daedinv",
+   "name": "ccbgssse040-advobgobs",
    "kind": "mod",
    "source": "Creation Club",
    "plugins": [
-    "ccbgssse067-daedinv.esm"
+    "ccbgssse040-advobgobs.esl"
    ],
    "count": 1,
    "journal": 1,
    "types": {
     "None": 1
    },
-   "opening": "ccbgssse067-daedinv.esm:06BFC1",
-   "begins": "I found the Oblivion Gate and defeated the leader of the Mythic Dawn, Vonos. It appears this was an elaborate ritual designed to deceive me, and killing Vonos was the final step. I have become an unwitting instrument of Mehrunes Dagon, and my actions have opened the Oblivion Gate.",
+   "opening": "ccbgssse040-advobgobs.esl:0009B6",
+   "begins": "I traveled to Gromm's Pass and proceeded to investigate the cave's interior. Inside I found an arena pit and several goblins, as well as an Orc who served as their shaman. I killed the Orc and read the journal on his person.",
    "quests": [
-    "ccbgssse067-daedinv.esm:06BFC1"
+    "ccbgssse040-advobgobs.esl:0009B6"
+   ]
+  },
+  {
+   "name": "ccbgssse045-hasedoki",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccbgssse045-hasedoki.esl"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "None": 1
+   },
+   "opening": "ccbgssse045-hasedoki.esl:000823",
+   "begins": "On the road west of Whiterun I encountered and killed a hostile Orc besieged by bandits. On his body was a ledger that offered additional clues. According to the ledger, the current owners of the staff are two necromancers holed up in Brittleshin Pass.",
+   "quests": [
+    "ccbgssse045-hasedoki.esl:000823"
+   ]
+  },
+  {
+   "name": "ccbgssse068-bloodfall",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccbgssse068-bloodfall.esl"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "None": 1
+   },
+   "opening": "ccbgssse068-bloodfall.esl:00080D",
+   "begins": "Talking to innkeepers has always been a good way to find work. I should head to the local inn and see if there's anything worthwhile.",
+   "quests": [
+    "ccbgssse068-bloodfall.esl:00080D"
+   ]
+  },
+  {
+   "name": "ccbgssse069-contest",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccbgssse069-contest.esl"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "None": 1
+   },
+   "opening": "ccbgssse069-contest.esl:000805",
+   "begins": "I traveled to Candlehearth Hall and read a journal about two warriors, who traveled to Cronvangr Cave to defeat a dangerous Web Mother. I traveled to Cronvangr Cave and found the spider's lair, defeating the Web Mother. I spoke to the heroes who bequeathed me their treasures before fading away.",
+   "quests": [
+    "ccbgssse069-contest.esl:000805"
+   ]
+  },
+  {
+   "name": "cceejsse002-tower",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "cceejsse002-tower.esl"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "None": 1
+   },
+   "opening": "cceejsse002-tower.esl:000FF3",
+   "begins": "I've heard rumors of a mysterious tower somewhere east of Morthal. If it's abandoned, I may be able to make of use of it. When I reached the tower, I found a journal that may provide clues on how to enter it.",
+   "quests": [
+    "cceejsse002-tower.esl:000FF3"
+   ]
+  },
+  {
+   "name": "cceejsse003-hollow",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "cceejsse003-hollow.esl"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "None": 1
+   },
+   "opening": "cceejsse003-hollow.esl:00082A",
+   "begins": "Not every home in Skyrim is built above ground. If I'm ever in the need of a more discreet hideout, I should head over to Riften and talk to those in the know.",
+   "quests": [
+    "cceejsse003-hollow.esl:00082A"
    ]
   },
   {
@@ -2638,42 +2963,6 @@
    ]
   },
   {
-   "name": "cckrtsse001_altar",
-   "kind": "mod",
-   "source": "Creation Club",
-   "plugins": [
-    "cckrtsse001_altar.esl"
-   ],
-   "count": 1,
-   "journal": 1,
-   "types": {
-    "Side Quest": 1
-   },
-   "opening": "cckrtsse001_altar.esl:000D63",
-   "begins": "In my travels, I've heard strange tales about hagravens performing rituals near Falkreath. I should head to the inn there and see what information I can turn up.",
-   "quests": [
-    "cckrtsse001_altar.esl:000D63"
-   ]
-  },
-  {
-   "name": "ccmtysse001-knightsofthenine",
-   "kind": "mod",
-   "source": "Creation Club",
-   "plugins": [
-    "ccmtysse001-knightsofthenine.esl"
-   ],
-   "count": 1,
-   "journal": 1,
-   "types": {
-    "Side Quest": 1
-   },
-   "opening": "ccmtysse001-knightsofthenine.esl:00083C",
-   "begins": "I've discovered the whereabouts of a powerful artifact that the once belonged to the fabled Divine Crusader. I should try and reunite all the missing relics.",
-   "quests": [
-    "ccmtysse001-knightsofthenine.esl:00083C"
-   ]
-  },
-  {
    "name": "ccrmssse001-necrohouse",
    "kind": "mod",
    "source": "Creation Club",
@@ -2692,21 +2981,21 @@
    ]
   },
   {
-   "name": "ccvsvsse004-beafarmer",
+   "name": "ccvsvsse001-winter",
    "kind": "mod",
    "source": "Creation Club",
    "plugins": [
-    "ccvsvsse004-beafarmer.esl"
+    "ccvsvsse001-winter.esl"
    ],
    "count": 1,
    "journal": 1,
    "types": {
     "Side Quest": 1
    },
-   "opening": "ccvsvsse004-beafarmer.esl:000D28",
-   "begins": "<Alias=FarmLocation> near Rorikstead is reportedly haunted by ghosts that harass travelers on the road. The Jarl of Whiterun Hold is offering the plantation itself as a reward for anyone who can lay the spirits to rest. I should head to <Alias=FarmLocation> to investigate.",
+   "opening": "ccvsvsse001-winter.esl:00082B",
+   "begins": "startup",
    "quests": [
-    "ccvsvsse004-beafarmer.esl:000D28"
+    "ccvsvsse001-winter.esl:00082B"
    ]
   },
   {

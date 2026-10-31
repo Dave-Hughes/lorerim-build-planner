@@ -573,7 +573,7 @@ def main():
     base = os.path.join(REPO, "gamedata", VERSION)
     kept = json.load(open(os.path.join(base, "quests_raw.json"), encoding="utf-8"))["quests"]
     ids = {q["id"] for q in kept}
-    pp, lo = plugin_paths(), load_order()
+    pp, lo = plugin_paths(), load_order(cc=True)
     parts = {"quests": {}, "infos": {}, "nodes": {}, "names": {}}
     bufs = []
     for n in lo:

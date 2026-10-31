@@ -1,20 +1,20 @@
 {
  "coverage": {
-  "quests": 1340,
-  "likely giver": 550,
-  "giver with a location": 548,
-  "first objective names who or where": 635,
-  "giver or such an objective": 755,
-  "start event": 212,
-  "reward candidate": 920,
-  "reward candidate other than gold": 520,
-  "people (aliases with an NPC)": 2937,
-  "people with a place": 2621,
-  "named giver": 628,
-  "named giver with a place": 619,
-  "story lines": 139,
-  "story-line openings with a named giver": 106,
-  "story-line openings whose named giver has a place": 105
+  "quests": 1387,
+  "likely giver": 564,
+  "giver with a location": 562,
+  "first objective names who or where": 673,
+  "giver or such an objective": 795,
+  "start event": 213,
+  "reward candidate": 949,
+  "reward candidate other than gold": 547,
+  "people (aliases with an NPC)": 3218,
+  "people with a place": 2911,
+  "named giver": 650,
+  "named giver with a place": 649,
+  "story lines": 144,
+  "story-line openings with a named giver": 107,
+  "story-line openings whose named giver has a place": 106
  },
  "quests": [
   {
@@ -6354,6 +6354,1033 @@
    ]
   },
   {
+   "id": "ccafdsse001-dwesanctuary.esm:000A39",
+   "edid": "ccAARSSE001ManufactoryControlQuest",
+   "name": "The Sanctuary and the Manufactory",
+   "people": [
+    {
+     "alias": "SeeksAncientArtifacts",
+     "npc": "Seeks-Ancient-Artifacts",
+     "npcId": "ccafdsse001-dwesanctuary.esm:000808",
+     "where": [
+      {
+       "ref": "ccafdsse001-dwesanctuary.esm:000B9B",
+       "cell": "ccafdsse001-dwesanctuary.esm:00080D",
+       "cellName": "Nchuanthumz Manufactory",
+       "location": "Nchuanthumz Manufactory"
+      }
+     ]
+    },
+    {
+     "alias": "Overseer",
+     "npc": "Dwarven Sphere Overseer",
+     "npcId": "ccafdsse001-dwesanctuary.esm:08010B",
+     "where": [
+      {
+       "ref": "ccafdsse001-dwesanctuary.esm:000810",
+       "cell": "ccafdsse001-dwesanctuary.esm:00080D",
+       "cellName": "Nchuanthumz Manufactory",
+       "location": "Nchuanthumz Manufactory"
+      }
+     ]
+    },
+    {
+     "alias": "Spider",
+     "npc": "Dwarven Spider",
+     "npcId": "ccafdsse001-dwesanctuary.esm:00080B",
+     "where": [
+      {
+       "ref": "ccafdsse001-dwesanctuary.esm:0017A1",
+       "cell": "ccafdsse001-dwesanctuary.esm:00080D",
+       "cellName": "Nchuanthumz Manufactory",
+       "location": "Nchuanthumz Manufactory"
+      }
+     ]
+    },
+    {
+     "alias": "Player",
+     "npc": "Prisoner",
+     "npcId": "Skyrim.esm:000007",
+     "where": []
+    },
+    {
+     "alias": "CleanUpSpider01",
+     "npc": "Dwarven Spider Renovator",
+     "npcId": "ccafdsse001-dwesanctuary.esm:000841",
+     "where": [
+      {
+       "ref": "ccafdsse001-dwesanctuary.esm:001491",
+       "cell": "ccafdsse001-dwesanctuary.esm:000A5E",
+       "cellName": "Nchuanthumz",
+       "location": "Nchuanthumz"
+      }
+     ]
+    },
+    {
+     "alias": "CleanUpSpider02",
+     "npc": "Dwarven Spider Renovator",
+     "npcId": "ccafdsse001-dwesanctuary.esm:000841",
+     "where": [
+      {
+       "ref": "ccafdsse001-dwesanctuary.esm:000B1A",
+       "cell": "ccafdsse001-dwesanctuary.esm:000A5E",
+       "cellName": "Nchuanthumz",
+       "location": "Nchuanthumz"
+      }
+     ]
+    },
+    {
+     "alias": "CleanUpSpider03",
+     "npc": "Dwarven Spider Renovator",
+     "npcId": "ccafdsse001-dwesanctuary.esm:000841",
+     "where": [
+      {
+       "ref": "ccafdsse001-dwesanctuary.esm:00156A",
+       "cell": "ccafdsse001-dwesanctuary.esm:000A5E",
+       "cellName": "Nchuanthumz",
+       "location": "Nchuanthumz"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Read the assembly line status report",
+    "filled": "Read the assembly line status report",
+    "namesWhoOrWhere": false
+   },
+   "rewards": [
+    {
+     "id": "ccafdsse001-dwesanctuary.esm:000D1E",
+     "name": "Manufactory Repair Parts",
+     "type": "book",
+     "via": "ccAFDSSE001_QF_Manufactory_05000A39.ccAARSSE001PartBinStatusNote",
+     "kind": "quest script",
+     "script": "ccAFDSSE001_QF_Manufactory_05000A39"
+    },
+    {
+     "id": "ccafdsse001-dwesanctuary.esm:000D3A",
+     "name": "Assembly Line Constructs",
+     "type": "book",
+     "via": "ccAFDSSE001_QF_Manufactory_05000A39.ccAARSSE001ConstructPartsListNote",
+     "kind": "quest script",
+     "script": "ccAFDSSE001_QF_Manufactory_05000A39"
+    }
+   ]
+  },
+  {
+   "id": "ccasvsse001-almsivi.esm:000CC3",
+   "edid": "ccASVSSE001_Quest",
+   "name": "Ghosts of the Tribunal",
+   "people": [
+    {
+     "alias": "Kenro",
+     "npc": "Hand Kenro Hlan",
+     "npcId": "ccasvsse001-almsivi.esm:000842",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:00084B",
+       "cell": "Update.esm:0030E9",
+       "cellName": "Fahlbtharz Forge",
+       "location": "Fahlbtharz"
+      }
+     ]
+    },
+    {
+     "alias": "Ghost",
+     "npc": "Ghost",
+     "npcId": "ccasvsse001-almsivi.esm:00083C",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:00084C",
+       "cell": "Update.esm:0030E9",
+       "cellName": "Fahlbtharz Forge",
+       "location": "Fahlbtharz"
+      }
+     ]
+    },
+    {
+     "alias": "Hand01",
+     "npc": "Hand Kydren Indobar",
+     "npcId": "ccasvsse001-almsivi.esm:00083E",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:0009FB",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "Hand02",
+     "npc": "Hand Ethra Mavandas",
+     "npcId": "ccasvsse001-almsivi.esm:00083F",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:000CAA",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "Hand03",
+     "npc": "Watchman Sindras",
+     "npcId": "ccasvsse001-almsivi.esm:00083D",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:000BCB",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "Hand04",
+     "npc": "Vesparth the Toe",
+     "npcId": "ccasvsse001-almsivi.esm:000841",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:000B8A",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "Elder",
+     "npc": "Matriarch Drevlan",
+     "npcId": "ccasvsse001-almsivi.esm:000840",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:000ACA",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "Ordinator01",
+     "npc": "Ordinator",
+     "npcId": "ccasvsse001-almsivi.esm:000843",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:000A4D",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "Ordinator02",
+     "npc": "Ordinator",
+     "npcId": "ccasvsse001-almsivi.esm:000843",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:000A71",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "Ordinator03",
+     "npc": "Ordinator",
+     "npcId": "ccasvsse001-almsivi.esm:000843",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:03DE45",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "Ordinator04",
+     "npc": "Ordinator",
+     "npcId": "ccasvsse001-almsivi.esm:000843",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:03DE46",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "PriestT",
+     "npc": "Temple Priest",
+     "npcId": "ccasvsse001-almsivi.esm:000E72",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:03DE4A",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "PriestT000",
+     "npc": "Sculptor Visthar",
+     "npcId": "ccasvsse001-almsivi.esm:0EF2B4",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:0EF2B5",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "Aphia",
+     "npc": "Aphia Velothi",
+     "npcId": "Dragonborn.esm:01827C",
+     "where": [
+      {
+       "ref": "Dragonborn.esm:01827D",
+       "cell": "Dragonborn.esm:017EC2",
+       "cellName": "Caerellius House",
+       "location": "Raven Rock"
+      }
+     ]
+    },
+    {
+     "alias": "Othreloth",
+     "npc": "Elder Othreloth",
+     "npcId": "Dragonborn.esm:01828A",
+     "where": [
+      {
+       "ref": "Dragonborn.esm:01828B",
+       "cell": "Dragonborn.esm:017EC3",
+       "cellName": "Temple",
+       "location": "Raven Rock"
+      }
+     ]
+    },
+    {
+     "alias": "Gal",
+     "npc": "Galdrus Hlervu",
+     "npcId": "Dragonborn.esm:01828C",
+     "where": [
+      {
+       "ref": "Dragonborn.esm:01828D",
+       "cell": "Dragonborn.esm:017EC3",
+       "cellName": "Temple",
+       "location": "Raven Rock"
+      }
+     ]
+    },
+    {
+     "alias": "Drureth",
+     "npc": "Priest Drureth",
+     "npcId": "ccasvsse001-almsivi.esm:000F12",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:000F13",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "Mann",
+     "npc": "ccASVSSE001_TempleMannequin04",
+     "npcId": "ccasvsse001-almsivi.esm:000FC5",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:000FE4",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "Mann1A",
+     "npc": "ccASVSSE001_TempleMannequin01",
+     "npcId": "ccasvsse001-almsivi.esm:000BA6",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:000BA8",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "Mann1B",
+     "npc": "ccASVSSE001_TempleMannequin01",
+     "npcId": "ccasvsse001-almsivi.esm:000BA6",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:000BB1",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "Mann2A",
+     "npc": "ccASVSSE001_TempleMannequin02",
+     "npcId": "ccasvsse001-almsivi.esm:000BA3",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:000BAA",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "Mann3A",
+     "npc": "ccASVSSE001_TempleMannequin03",
+     "npcId": "ccasvsse001-almsivi.esm:000BA7",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:000BAC",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "Mann2B",
+     "npc": "ccASVSSE001_TempleMannequin02",
+     "npcId": "ccasvsse001-almsivi.esm:000BA3",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:000BB6",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "Mann3B",
+     "npc": "ccASVSSE001_TempleMannequin03",
+     "npcId": "ccasvsse001-almsivi.esm:000BA7",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:000BAE",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "AshEnable",
+     "npc": "ccASVSSE001_LvlAshZombie",
+     "npcId": "ccasvsse001-almsivi.esm:1CDFD1",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:0C192C",
+       "cell": "Dragonborn.esm:0142EC",
+       "world": "Morrowind"
+      }
+     ]
+    },
+    {
+     "alias": "AshZombie01",
+     "npc": "ccASVSSE001_LvlAshZombie",
+     "npcId": "ccasvsse001-almsivi.esm:1CDFD1",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:1EC5FF",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "AshZombie02",
+     "npc": "ccASVSSE001_LvlAshZombie",
+     "npcId": "ccasvsse001-almsivi.esm:1CDFD1",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:1EC600",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "AshZombie03",
+     "npc": "ccASVSSE001_LvlAshZombie",
+     "npcId": "ccasvsse001-almsivi.esm:1CDFD1",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:1EC601",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "AshZombie04",
+     "npc": "ccASVSSE001_LvlAshZombie",
+     "npcId": "ccasvsse001-almsivi.esm:1CDFD1",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:0B7717",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "AshZombie05",
+     "npc": "ccASVSSE001_LvlAshZombie",
+     "npcId": "ccasvsse001-almsivi.esm:1CDFD1",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:0BC818",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "AshZombie06",
+     "npc": "ccASVSSE001_LvlAshZombie",
+     "npcId": "ccasvsse001-almsivi.esm:1CDFD1",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:0BC819",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "AshZombie07",
+     "npc": "ccASVSSE001_LvlAshZombie",
+     "npcId": "ccasvsse001-almsivi.esm:1CDFD1",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:0BC81A",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "AshZombie08",
+     "npc": "ccASVSSE001_LvlAshZombie",
+     "npcId": "ccasvsse001-almsivi.esm:1CDFD1",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:0BC81B",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "AshZombie09",
+     "npc": "ccASVSSE001_LvlAshZombie",
+     "npcId": "ccasvsse001-almsivi.esm:1CDFD1",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:0BC81C",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "AshZombie10",
+     "npc": "ccASVSSE001_LvlAshZombie",
+     "npcId": "ccasvsse001-almsivi.esm:1CDFD1",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:0BC81D",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    }
+   ],
+   "giver": {
+    "npc": "ccasvsse001-almsivi.esm:000840",
+    "stageBelow": 300,
+    "info": "ccasvsse001-almsivi.esm:00116A",
+    "named": "alias Elder",
+    "name": "Matriarch Drevlan",
+    "where": [
+     {
+      "ref": "ccasvsse001-almsivi.esm:000ACA",
+      "cell": "Update.esm:0030E8",
+      "cellName": "Ashfall's Tear",
+      "location": "Yngol Barrow"
+     }
+    ]
+   },
+   "firstObjective": {
+    "text": "Look for clues at the Temple in Raven Rock",
+    "filled": "Look for clues at the Temple in Raven Rock",
+    "namesWhoOrWhere": true
+   },
+   "namedGiver": {
+    "npc": "ccasvsse001-almsivi.esm:000840",
+    "name": "Matriarch Drevlan",
+    "how": "dialogue",
+    "where": [
+     {
+      "ref": "ccasvsse001-almsivi.esm:000ACA",
+      "cell": "Update.esm:0030E8",
+      "cellName": "Ashfall's Tear",
+      "location": "Yngol Barrow"
+     }
+    ]
+   },
+   "rewards": [
+    {
+     "id": "ccasvsse001-almsivi.esm:000C28",
+     "name": "Hopesfire",
+     "type": "weapon",
+     "via": "alias Hopesfire",
+     "kind": "alias"
+    },
+    {
+     "id": "ccasvsse001-almsivi.esm:000CC4",
+     "name": "Matching Set",
+     "type": "perk",
+     "via": "ccASVSSE001_HerHandTrialScript.ccASVSSE001_MatchingSet",
+     "kind": "quest script",
+     "script": "ccASVSSE001_HerHandTrialScript"
+    },
+    {
+     "id": "ccasvsse001-almsivi.esm:00082D",
+     "name": "Masks of the Tribunal",
+     "type": "book",
+     "via": "ccASVSSE001_Quest_05000CC3.ccASVSSE001_Note01Elder",
+     "kind": "quest script",
+     "script": "ccASVSSE001_Quest_05000CC3"
+    },
+    {
+     "id": "ccasvsse001-almsivi.esm:000CA5",
+     "name": "Matching Set",
+     "type": "perk",
+     "via": "ccASVSSE001_Quest_05000CC3.ccASVSSE001_PuzzlePerk",
+     "kind": "quest script",
+     "script": "ccASVSSE001_Quest_05000CC3"
+    },
+    {
+     "id": "ccasvsse001-almsivi.esm:00083A",
+     "name": "Trueflame",
+     "type": "weapon",
+     "via": "ccASVSSE001_Quest_05000CC3.ccASVSSE001_Trueflame",
+     "kind": "quest script",
+     "script": "ccASVSSE001_Quest_05000CC3"
+    },
+    {
+     "id": "ccasvsse001-almsivi.esm:024944",
+     "name": "Matching Set",
+     "type": "perk",
+     "via": "ccASVSSE001_Quest_05000CC3.ccASVSSE001_MatchingSetREAL",
+     "kind": "quest script",
+     "script": "ccASVSSE001_Quest_05000CC3"
+    },
+    {
+     "id": "ccasvsse001-almsivi.esm:000FEF",
+     "name": "Masks of the Tribunal",
+     "type": "book",
+     "via": "ccASVSSE001_Quest_05000CC3.ccASVSSE001_Note01ElderB",
+     "kind": "quest script",
+     "script": "ccASVSSE001_Quest_05000CC3"
+    }
+   ]
+  },
+  {
+   "id": "ccasvsse001-almsivi.esm:000CA0",
+   "edid": "ccASVSSE001_QuestA",
+   "name": "Buyer Beware",
+   "people": [
+    {
+     "alias": "Guard",
+     "npc": "Redoran Guard",
+     "npcId": "ccasvsse001-almsivi.esm:000F22",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:000F23",
+       "cell": "Dragonborn.esm:0142EC",
+       "world": "Morrowind"
+      }
+     ]
+    },
+    {
+     "alias": "Buyer",
+     "npc": "Buyer",
+     "npcId": "ccasvsse001-almsivi.esm:000F2E",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:000F33",
+       "cell": "Update.esm:0030E7",
+       "cellName": "Old Attius Farm Cellar",
+       "location": "Attius Farm Location"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Read Masks of the Tribunal",
+    "filled": "Read Masks of the Tribunal",
+    "namesWhoOrWhere": true
+   },
+   "rewards": [
+    {
+     "id": "ccasvsse001-almsivi.esm:000822",
+     "name": "Mask of Vivec",
+     "type": "armour",
+     "via": "alias Vivec",
+     "kind": "alias"
+    },
+    {
+     "id": "ccasvsse001-almsivi.esm:000817",
+     "name": "Indoril Boots",
+     "type": "armour",
+     "via": "ccASVSSE001_SeedDLC2Script.ccASVSSE001_ArmorOrdinatorBoots",
+     "kind": "quest script",
+     "script": "ccASVSSE001_SeedDLC2Script"
+    },
+    {
+     "id": "ccasvsse001-almsivi.esm:000818",
+     "name": "Indoril Cuirass",
+     "type": "armour",
+     "via": "ccASVSSE001_SeedDLC2Script.ccASVSSE001_ArmorOrdinatorCuirass",
+     "kind": "quest script",
+     "script": "ccASVSSE001_SeedDLC2Script"
+    },
+    {
+     "id": "ccasvsse001-almsivi.esm:000E37",
+     "name": "Ebony Mace",
+     "type": "weapon",
+     "via": "ccASVSSE001_SeedDLC2Script.ccASVSSE001_EbonyMace",
+     "kind": "quest script",
+     "script": "ccASVSSE001_SeedDLC2Script"
+    },
+    {
+     "id": "ccasvsse001-almsivi.esm:000E38",
+     "name": "Ebony Scimitar",
+     "type": "weapon",
+     "via": "ccASVSSE001_SeedDLC2Script.ccASVSSE001_EbonyScimitar",
+     "kind": "quest script",
+     "script": "ccASVSSE001_SeedDLC2Script"
+    },
+    {
+     "id": "ccasvsse001-almsivi.esm:000819",
+     "name": "Indoril Gauntlets",
+     "type": "armour",
+     "via": "ccASVSSE001_SeedDLC2Script.ccASVSSE001_ArmorOrdinatorGloves",
+     "kind": "quest script",
+     "script": "ccASVSSE001_SeedDLC2Script"
+    },
+    {
+     "id": "ccasvsse001-almsivi.esm:00081A",
+     "name": "Indoril Helmet",
+     "type": "armour",
+     "via": "ccASVSSE001_SeedDLC2Script.ccASVSSE001_ArmorOrdinatorHelmet",
+     "kind": "quest script",
+     "script": "ccASVSSE001_SeedDLC2Script"
+    },
+    {
+     "id": "Skyrim.esm:00000F",
+     "name": "Septim",
+     "type": "gold",
+     "via": "ccASVSSE001_QuestA_05000CA0.Gold001",
+     "kind": "quest script",
+     "script": "ccASVSSE001_QuestA_05000CA0"
+    }
+   ]
+  },
+  {
+   "id": "ccasvsse001-almsivi.esm:000F19",
+   "edid": "ccASVSSE001_QuestB",
+   "name": "Her Word Against Theirs",
+   "people": [
+    {
+     "alias": "RecPriest",
+     "npc": "Reclamation Priest",
+     "npcId": "ccasvsse001-almsivi.esm:1D81DF",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:1D81E1",
+       "cell": "Dragonborn.esm:017EC3",
+       "cellName": "Temple",
+       "location": "Temple Location"
+      }
+     ]
+    },
+    {
+     "alias": "Geldis",
+     "npc": "Geldis Sadri",
+     "npcId": "Dragonborn.esm:018290",
+     "where": [
+      {
+       "ref": "Dragonborn.esm:018291",
+       "cell": "Dragonborn.esm:017EC0",
+       "cellName": "The Retching Netch",
+       "location": "Raven Rock"
+      }
+     ]
+    },
+    {
+     "alias": "Caretaker",
+     "npc": "Caretaker Ineril",
+     "npcId": "ccasvsse001-almsivi.esm:001017",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:00102E",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Pick up the letter from Priest Drureth",
+    "filled": "Pick up the letter from Priest Drureth",
+    "namesWhoOrWhere": true
+   },
+   "rewards": [
+    {
+     "id": "ccasvsse001-almsivi.esm:000FEF",
+     "name": "Masks of the Tribunal",
+     "type": "book",
+     "via": "ccASVSSE001_QuestB_05000F19.ccASVSSE001_Note01ElderB",
+     "kind": "quest script",
+     "script": "ccASVSSE001_QuestB_05000F19"
+    },
+    {
+     "id": "Skyrim.esm:0C0405",
+     "name": "LvlQuestReward02Medium",
+     "type": "leveled list",
+     "via": "ccASVSSE001_QuestB_05000F19.LvlQuestReward02Medium",
+     "kind": "quest script",
+     "script": "ccASVSSE001_QuestB_05000F19"
+    },
+    {
+     "id": "Skyrim.esm:0C0406",
+     "name": "LvlQuestReward03Large",
+     "type": "leveled list",
+     "via": "ccASVSSE001_QuestB_05000F19.LvlQuestReward03Large",
+     "kind": "quest script",
+     "script": "ccASVSSE001_QuestB_05000F19"
+    },
+    {
+     "id": "Skyrim.esm:0C0404",
+     "name": "LvlQuestReward01Small",
+     "type": "leveled list",
+     "via": "ccASVSSE001_QuestB_05000F19.LvlQuestReward01Small",
+     "kind": "quest script",
+     "script": "ccASVSSE001_QuestB_05000F19"
+    }
+   ]
+  },
+  {
+   "id": "ccasvsse001-almsivi.esm:000F1A",
+   "edid": "ccASVSSE001_QuestC",
+   "name": "Careless Curation",
+   "people": [
+    {
+     "alias": "Curate",
+     "npc": "Curate Melita",
+     "npcId": "ccasvsse001-almsivi.esm:001153",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:001156",
+       "cell": "Skyrim.esm:04B8FB",
+       "cellName": "Stony Creek Cave",
+       "location": "Stony Creek Cave"
+      }
+     ]
+    },
+    {
+     "alias": "Drureth",
+     "npc": "Priest Drureth",
+     "npcId": "ccasvsse001-almsivi.esm:000F12",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:000F13",
+       "cell": "Update.esm:0030E8",
+       "cellName": "Ashfall's Tear",
+       "location": "Yngol Barrow"
+      }
+     ]
+    }
+   ],
+   "giver": {
+    "npc": "ccasvsse001-almsivi.esm:001153",
+    "stageBelow": 40,
+    "info": "ccasvsse001-almsivi.esm:00115E",
+    "named": "alias Curate",
+    "name": "Curate Melita",
+    "where": [
+     {
+      "ref": "ccasvsse001-almsivi.esm:001156",
+      "cell": "Skyrim.esm:04B8FB",
+      "cellName": "Stony Creek Cave",
+      "location": "Stony Creek Cave"
+     }
+    ]
+   },
+   "firstObjective": {
+    "text": "Ask about the missing Curate",
+    "filled": "Ask about the missing Curate",
+    "namesWhoOrWhere": true
+   },
+   "namedGiver": {
+    "npc": "ccasvsse001-almsivi.esm:001153",
+    "name": "Curate Melita",
+    "how": "dialogue",
+    "where": [
+     {
+      "ref": "ccasvsse001-almsivi.esm:001156",
+      "cell": "Skyrim.esm:04B8FB",
+      "cellName": "Stony Creek Cave",
+      "location": "Stony Creek Cave"
+     }
+    ]
+   },
+   "rewards": [
+    {
+     "id": "ccasvsse001-almsivi.esm:000820",
+     "name": "Mask of Sotha Sil",
+     "type": "armour",
+     "via": "alias Mask",
+     "kind": "alias"
+    },
+    {
+     "id": "ccasvsse001-almsivi.esm:000EE5",
+     "name": "Curate Melita's Plea",
+     "type": "book",
+     "via": "ccASVSSE001_QuestC_05000F1A.ccASVSSE001_CurateNote",
+     "kind": "quest script",
+     "script": "ccASVSSE001_QuestC_05000F1A"
+    }
+   ]
+  },
+  {
+   "id": "ccasvsse001-almsivi.esm:00117A",
+   "edid": "ccASVSSE001_QuestD",
+   "name": "Ashen Heart",
+   "people": [
+    {
+     "alias": "DagothPriest",
+     "npc": "Erden Relvel",
+     "npcId": "ccasvsse001-almsivi.esm:0C1928",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:0CBB31",
+       "cell": "Dragonborn.esm:0142EC",
+       "world": "Morrowind"
+      }
+     ]
+    },
+    {
+     "alias": "RecPriest",
+     "npc": "Reclamation Priest",
+     "npcId": "ccasvsse001-almsivi.esm:1D81DF",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:1D81E1",
+       "cell": "Dragonborn.esm:017EC3",
+       "cellName": "Temple",
+       "location": "Temple Location"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Read the Matriarch's note",
+    "filled": "Read the Matriarch's note",
+    "namesWhoOrWhere": true
+   }
+  },
+  {
+   "id": "ccasvsse001-almsivi.esm:0990EF",
+   "edid": "ccASVSSE001_QuestE",
+   "name": "Trueflame",
+   "people": [
+    {
+     "alias": "MaskBuyer",
+     "npc": "Buyer",
+     "npcId": "ccasvsse001-almsivi.esm:000F2E",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:000F33",
+       "cell": "Update.esm:0030E7",
+       "cellName": "Old Attius Farm Cellar",
+       "location": "Attius Farm Location"
+      }
+     ]
+    },
+    {
+     "alias": "Erden",
+     "npc": "Erden Relvel",
+     "npcId": "ccasvsse001-almsivi.esm:0C1928",
+     "where": [
+      {
+       "ref": "ccasvsse001-almsivi.esm:0CBB31",
+       "cell": "Dragonborn.esm:0142EC",
+       "world": "Morrowind"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Use the forge to enchant and restore Trueflame",
+    "filled": "Use the forge to enchant and restore Trueflame",
+    "namesWhoOrWhere": true
+   },
+   "rewards": [
+    {
+     "id": "ccasvsse001-almsivi.esm:00083A",
+     "name": "Trueflame",
+     "type": "weapon",
+     "via": "ccASVSSE001_QuestE_050990EF.ccASVSSE001_Trueflame",
+     "kind": "quest script",
+     "script": "ccASVSSE001_QuestE_050990EF"
+    },
+    {
+     "id": "ccasvsse001-almsivi.esm:00083B",
+     "name": "Unenchanted Weapon",
+     "type": "weapon",
+     "via": "ccASVSSE001_QuestE_050990EF.ccASVSSE001_TrueflameUnenchanted",
+     "kind": "quest script",
+     "script": "ccASVSSE001_QuestE_050990EF"
+    }
+   ]
+  },
+  {
    "id": "ccBGSSSE001-Fish.esm:0009D4",
    "edid": "ccBGSSSE001_Crab_MQ1",
    "name": "In A Pinch",
@@ -6362,7 +7389,26 @@
      "alias": "Viriya",
      "npc": "Viriya",
      "npcId": "ccBGSSSE001-Fish.esm:0008F6",
-     "where": []
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:000906",
+       "cell": "Skyrim.esm:016BDB",
+       "cellName": "Riften Fishery",
+       "location": "Riften Fishery"
+      }
+     ]
+    },
+    {
+     "alias": "DeadAdventurer",
+     "npc": "Adventurer",
+     "npcId": "ccBGSSSE001-Fish.esm:0008F7",
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:000960",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
     }
    ],
    "firstObjective": {
@@ -6374,7 +7420,14 @@
     "npc": "ccBGSSSE001-Fish.esm:0008F6",
     "name": "Viriya",
     "how": "named",
-    "where": []
+    "where": [
+     {
+      "ref": "ccBGSSSE001-Fish.esm:000906",
+      "cell": "Skyrim.esm:016BDB",
+      "cellName": "Riften Fishery",
+      "location": "Riften Fishery"
+     }
+    ]
    }
   },
   {
@@ -6386,7 +7439,26 @@
      "alias": "Viriya",
      "npc": "Viriya",
      "npcId": "ccBGSSSE001-Fish.esm:0008F6",
-     "where": []
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:000906",
+       "cell": "Skyrim.esm:016BDB",
+       "cellName": "Riften Fishery",
+       "location": "Riften Fishery"
+      }
+     ]
+    },
+    {
+     "alias": "Necromancer",
+     "npc": "Seviur",
+     "npcId": "ccBGSSSE001-Fish.esm:0F4829",
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:0F482A",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
     }
    ],
    "firstObjective": {
@@ -6398,9 +7470,24 @@
     "npc": "ccBGSSSE001-Fish.esm:0008F6",
     "name": "Viriya",
     "how": "named",
-    "where": []
+    "where": [
+     {
+      "ref": "ccBGSSSE001-Fish.esm:000906",
+      "cell": "Skyrim.esm:016BDB",
+      "cellName": "Riften Fishery",
+      "location": "Riften Fishery"
+     }
+    ]
    },
    "rewards": [
+    {
+     "id": "ccBGSSSE001-Fish.esm:000EB0",
+     "name": "Fishing Work",
+     "type": "book",
+     "via": "QF_ccBGSSSE001_Crab_MQ2_050009DA.ccBGSSSE001_SwimsNote2",
+     "kind": "fragment",
+     "script": "QF_ccBGSSSE001_Crab_MQ2_050009DA"
+    },
     {
      "id": "ccBGSSSE001-Fish.esm:00084D",
      "name": "Alik'ri Fishing Rod",
@@ -6415,22 +7502,103 @@
    "id": "ccBGSSSE001-Fish.esm:0009D6",
    "edid": "ccBGSSSE001_Crab_MQ3",
    "name": "End of the Line",
-   "people": [],
+   "people": [
+    {
+     "alias": "Viriya",
+     "npc": "Viriya",
+     "npcId": "ccBGSSSE001-Fish.esm:0008F6",
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:000906",
+       "cell": "Skyrim.esm:016BDB",
+       "cellName": "Riften Fishery",
+       "location": "Riften Fishery"
+      }
+     ]
+    }
+   ],
+   "giver": {
+    "npc": "ccBGSSSE001-Fish.esm:0008F6",
+    "stageBelow": 21,
+    "info": "ccBGSSSE001-Fish.esm:000EC3",
+    "named": "alias Viriya",
+    "name": "Viriya",
+    "where": [
+     {
+      "ref": "ccBGSSSE001-Fish.esm:000906",
+      "cell": "Skyrim.esm:016BDB",
+      "cellName": "Riften Fishery",
+      "location": "Riften Fishery"
+     }
+    ]
+   },
    "firstObjective": {
     "text": "Obtain <Global=ccBGSSSE001_MQ3WoodTotal> pieces of firewood (<Global=ccBGSSSE001_MQ3WoodCount>/<Global=ccBGSSSE001_MQ3WoodTotal>)",
     "filled": "Obtain <Global=ccBGSSSE001_MQ3WoodTotal> pieces of firewood (<Global=ccBGSSSE001_MQ3WoodCount>/<Global=ccBGSSSE001_MQ3WoodTotal>)",
     "namesWhoOrWhere": true
+   },
+   "namedGiver": {
+    "npc": "ccBGSSSE001-Fish.esm:0008F6",
+    "name": "Viriya",
+    "how": "named",
+    "where": [
+     {
+      "ref": "ccBGSSSE001-Fish.esm:000906",
+      "cell": "Skyrim.esm:016BDB",
+      "cellName": "Riften Fishery",
+      "location": "Riften Fishery"
+     }
+    ]
    }
   },
   {
    "id": "ccBGSSSE001-Fish.esm:0009E9",
    "edid": "ccBGSSSE001_Crab_MQ4",
    "name": "Wave Breaker",
-   "people": [],
+   "people": [
+    {
+     "alias": "Viriya",
+     "npc": "Viriya",
+     "npcId": "ccBGSSSE001-Fish.esm:0008F6",
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:000906",
+       "cell": "Skyrim.esm:016BDB",
+       "cellName": "Riften Fishery",
+       "location": "Riften Fishery"
+      }
+     ]
+    },
+    {
+     "alias": "LocalFisherman",
+     "npc": "Fisherman",
+     "npcId": "Skyrim.esm:097976",
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:047F23",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    }
+   ],
    "firstObjective": {
     "text": "Read Viriya's hastily written letter",
     "filled": "Read Viriya's hastily written letter",
     "namesWhoOrWhere": true
+   },
+   "namedGiver": {
+    "npc": "ccBGSSSE001-Fish.esm:0008F6",
+    "name": "Viriya",
+    "how": "named",
+    "where": [
+     {
+      "ref": "ccBGSSSE001-Fish.esm:000906",
+      "cell": "Skyrim.esm:016BDB",
+      "cellName": "Riften Fishery",
+      "location": "Riften Fishery"
+     }
+    ]
    },
    "rewards": [
     {
@@ -6468,7 +7636,14 @@
      "alias": "SwimsInDeepWaters",
      "npc": "Swims-In-Deep-Water",
      "npcId": "ccBGSSSE001-Fish.esm:0008F8",
-     "where": []
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:00091C",
+       "cell": "Skyrim.esm:016BDB",
+       "cellName": "Riften Fishery",
+       "location": "Riften Fishery"
+      }
+     ]
     }
    ],
    "firstObjective": {
@@ -6480,8 +7655,25 @@
     "npc": "ccBGSSSE001-Fish.esm:0008F8",
     "name": "Swims-In-Deep-Water",
     "how": "named",
-    "where": []
-   }
+    "where": [
+     {
+      "ref": "ccBGSSSE001-Fish.esm:00091C",
+      "cell": "Skyrim.esm:016BDB",
+      "cellName": "Riften Fishery",
+      "location": "Riften Fishery"
+     }
+    ]
+   },
+   "rewards": [
+    {
+     "id": "ccBGSSSE001-Fish.esm:0008E7",
+     "name": "List of Fair Weather Fish",
+     "type": "book",
+     "via": "QF_ccBGSSSE001_Fish_MQ1_050009DE.fishList",
+     "kind": "fragment",
+     "script": "QF_ccBGSSSE001_Fish_MQ1_050009DE"
+    }
+   ]
   },
   {
    "id": "ccBGSSSE001-Fish.esm:0009EB",
@@ -6492,7 +7684,14 @@
      "alias": "SwimsInDeepWaters",
      "npc": "Swims-In-Deep-Water",
      "npcId": "ccBGSSSE001-Fish.esm:0008F8",
-     "where": []
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:00091C",
+       "cell": "Skyrim.esm:016BDB",
+       "cellName": "Riften Fishery",
+       "location": "Riften Fishery"
+      }
+     ]
     }
    ],
    "firstObjective": {
@@ -6504,8 +7703,33 @@
     "npc": "ccBGSSSE001-Fish.esm:0008F8",
     "name": "Swims-In-Deep-Water",
     "how": "named",
-    "where": []
-   }
+    "where": [
+     {
+      "ref": "ccBGSSSE001-Fish.esm:00091C",
+      "cell": "Skyrim.esm:016BDB",
+      "cellName": "Riften Fishery",
+      "location": "Riften Fishery"
+     }
+    ]
+   },
+   "rewards": [
+    {
+     "id": "ccBGSSSE001-Fish.esm:000A6F",
+     "name": "Lucky Fishing Hat",
+     "type": "armour",
+     "via": "QF_ccBGSSSE001_Fish_MQ2_050009EB.FishingHat",
+     "kind": "fragment",
+     "script": "QF_ccBGSSSE001_Fish_MQ2_050009EB"
+    },
+    {
+     "id": "ccBGSSSE001-Fish.esm:000A60",
+     "name": "List of Rainy Weather Fish",
+     "type": "book",
+     "via": "QF_ccBGSSSE001_Fish_MQ2_050009EB.fishList",
+     "kind": "fragment",
+     "script": "QF_ccBGSSSE001_Fish_MQ2_050009EB"
+    }
+   ]
   },
   {
    "id": "ccBGSSSE001-Fish.esm:0009E8",
@@ -6516,7 +7740,14 @@
      "alias": "SwimsInDeepWaters",
      "npc": "Swims-In-Deep-Water",
      "npcId": "ccBGSSSE001-Fish.esm:0008F8",
-     "where": []
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:00091C",
+       "cell": "Skyrim.esm:016BDB",
+       "cellName": "Riften Fishery",
+       "location": "Riften Fishery"
+      }
+     ]
     }
    ],
    "firstObjective": {
@@ -6528,8 +7759,25 @@
     "npc": "ccBGSSSE001-Fish.esm:0008F8",
     "name": "Swims-In-Deep-Water",
     "how": "named",
-    "where": []
-   }
+    "where": [
+     {
+      "ref": "ccBGSSSE001-Fish.esm:00091C",
+      "cell": "Skyrim.esm:016BDB",
+      "cellName": "Riften Fishery",
+      "location": "Riften Fishery"
+     }
+    ]
+   },
+   "rewards": [
+    {
+     "id": "ccBGSSSE001-Fish.esm:000BC7",
+     "name": "List of Arctic Fish",
+     "type": "book",
+     "via": "QF_ccBGSSSE001_Fish_MQ3_050009E8.fishList",
+     "kind": "fragment",
+     "script": "QF_ccBGSSSE001_Fish_MQ3_050009E8"
+    }
+   ]
   },
   {
    "id": "ccBGSSSE001-Fish.esm:0009DD",
@@ -6540,7 +7788,14 @@
      "alias": "SwimsInDeepWaters",
      "npc": "Swims-In-Deep-Water",
      "npcId": "ccBGSSSE001-Fish.esm:0008F8",
-     "where": []
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:00091C",
+       "cell": "Skyrim.esm:016BDB",
+       "cellName": "Riften Fishery",
+       "location": "Riften Fishery"
+      }
+     ]
     }
    ],
    "firstObjective": {
@@ -6552,8 +7807,25 @@
     "npc": "ccBGSSSE001-Fish.esm:0008F8",
     "name": "Swims-In-Deep-Water",
     "how": "named",
-    "where": []
-   }
+    "where": [
+     {
+      "ref": "ccBGSSSE001-Fish.esm:00091C",
+      "cell": "Skyrim.esm:016BDB",
+      "cellName": "Riften Fishery",
+      "location": "Riften Fishery"
+     }
+    ]
+   },
+   "rewards": [
+    {
+     "id": "ccBGSSSE001-Fish.esm:000BCF",
+     "name": "List of Underground Fish",
+     "type": "book",
+     "via": "QF_ccBGSSSE001_Fish_MQ4_050009DD.fishList",
+     "kind": "fragment",
+     "script": "QF_ccBGSSSE001_Fish_MQ4_050009DD"
+    }
+   ]
   },
   {
    "id": "ccBGSSSE001-Fish.esm:0009DC",
@@ -6564,7 +7836,14 @@
      "alias": "SwimsInDeepWaters",
      "npc": "Swims-In-Deep-Water",
      "npcId": "ccBGSSSE001-Fish.esm:0008F8",
-     "where": []
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:00091C",
+       "cell": "Skyrim.esm:016BDB",
+       "cellName": "Riften Fishery",
+       "location": "Riften Fishery"
+      }
+     ]
     }
    ],
    "firstObjective": {
@@ -6576,8 +7855,25 @@
     "npc": "ccBGSSSE001-Fish.esm:0008F8",
     "name": "Swims-In-Deep-Water",
     "how": "named",
-    "where": []
-   }
+    "where": [
+     {
+      "ref": "ccBGSSSE001-Fish.esm:00091C",
+      "cell": "Skyrim.esm:016BDB",
+      "cellName": "Riften Fishery",
+      "location": "Riften Fishery"
+     }
+    ]
+   },
+   "rewards": [
+    {
+     "id": "ccBGSSSE001-Fish.esm:000E66",
+     "name": "List of Rare Fish",
+     "type": "book",
+     "via": "QF_ccBGSSSE001_Fish_MQ5_050009DC.fishList",
+     "kind": "fragment",
+     "script": "QF_ccBGSSSE001_Fish_MQ5_050009DC"
+    }
+   ]
   },
   {
    "id": "ccBGSSSE001-Fish.esm:000AD6",
@@ -6594,6 +7890,30 @@
        "cell": "Skyrim.esm:016DF2",
        "cellName": "Understone Keep",
        "location": "Markarth"
+      }
+     ]
+    },
+    {
+     "alias": "Spider1Ambush1",
+     "npc": "LvlDwarvenSpiderAmbush",
+     "npcId": "Skyrim.esm:10EE4D",
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:000AF0",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "Spider1Ambush2",
+     "npc": "LvlDwarvenSpiderAmbush",
+     "npcId": "Skyrim.esm:10EE4D",
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:000AF4",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
       }
      ]
     }
@@ -6650,6 +7970,19 @@
        "location": "Falkreath"
       }
      ]
+    },
+    {
+     "alias": "Guard",
+     "npc": "Falkreath Guard",
+     "npcId": "ccBGSSSE001-Fish.esm:000BBD",
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:000BC1",
+       "cell": "Skyrim.esm:0EF325",
+       "cellName": "Falkreath Barracks",
+       "location": "Falkreath Barracks"
+      }
+     ]
     }
    ],
    "giver": {
@@ -6657,6 +7990,13 @@
     "stageBelow": 1,
     "info": "ccBGSSSE001-Fish.esm:0009D1",
     "named": "alias Zaria",
+    "others": [
+     {
+      "npc": "ccBGSSSE001-Fish.esm:000BBD",
+      "stageBelow": 41,
+      "name": "Falkreath Guard"
+     }
+    ],
     "name": "Zaria",
     "where": [
      {
@@ -6762,11 +8102,38 @@
    "id": "ccBGSSSE001-Fish.esm:0009DF",
    "edid": "ccBGSSSE001_Misc_Markarth",
    "name": "Private Lessons",
-   "people": [],
+   "people": [
+    {
+     "alias": "Student",
+     "npc": "Lynea",
+     "npcId": "ccBGSSSE001-Fish.esm:000C63",
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:000C64",
+       "cell": "Skyrim.esm:016DFE",
+       "cellName": "Silver-Blood Inn",
+       "location": "Silver-Blood Inn"
+      }
+     ]
+    }
+   ],
    "firstObjective": {
     "text": "Speak to Lynea about private fishing lessons",
     "filled": "Speak to Lynea about private fishing lessons",
     "namesWhoOrWhere": true
+   },
+   "namedGiver": {
+    "npc": "ccBGSSSE001-Fish.esm:000C63",
+    "name": "Lynea",
+    "how": "named",
+    "where": [
+     {
+      "ref": "ccBGSSSE001-Fish.esm:000C64",
+      "cell": "Skyrim.esm:016DFE",
+      "cellName": "Silver-Blood Inn",
+      "location": "Silver-Blood Inn"
+     }
+    ]
    },
    "rewards": [
     {
@@ -6799,11 +8166,60 @@
    "id": "ccBGSSSE001-Fish.esm:0009E4",
    "edid": "ccBGSSSE001_Misc_Morthal",
    "name": "No Contest",
-   "people": [],
+   "people": [
+    {
+     "alias": "OldMan",
+     "npc": "Brutius",
+     "npcId": "ccBGSSSE001-Fish.esm:000B30",
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:000B33",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "AmbushWizard1",
+     "npc": "ccBGSSSE001_LvlVagrantWizard",
+     "npcId": "ccBGSSSE001-Fish.esm:000E54",
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:000B38",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "AmbushWizard2",
+     "npc": "ccBGSSSE001_LvlVagrantWizard",
+     "npcId": "ccBGSSSE001-Fish.esm:000E54",
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:000B3C",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    }
+   ],
    "firstObjective": {
     "text": "Talk to Brutius in Morthal about a fishing contest",
     "filled": "Talk to Brutius in Morthal about a fishing contest",
     "namesWhoOrWhere": true
+   },
+   "namedGiver": {
+    "npc": "ccBGSSSE001-Fish.esm:000B30",
+    "name": "Brutius",
+    "how": "named",
+    "where": [
+     {
+      "ref": "ccBGSSSE001-Fish.esm:000B33",
+      "cell": "Skyrim.esm:000D74",
+      "world": "Skyrim"
+     }
+    ]
    },
    "rewards": [
     {
@@ -6852,7 +8268,25 @@
       "location": "Solitude"
      }
     ]
-   }
+   },
+   "rewards": [
+    {
+     "id": "ccBGSSSE001-Fish.esm:000B9C",
+     "name": "The Fisher Queen",
+     "type": "book",
+     "via": "QF_ccBGSSSE001_Misc_Solitude_050009E3.FishingSongFemale",
+     "kind": "fragment",
+     "script": "QF_ccBGSSSE001_Misc_Solitude_050009E3"
+    },
+    {
+     "id": "ccBGSSSE001-Fish.esm:000B92",
+     "name": "The Fisher King",
+     "type": "book",
+     "via": "QF_ccBGSSSE001_Misc_Solitude_050009E3.FishingSongMale",
+     "kind": "fragment",
+     "script": "QF_ccBGSSSE001_Misc_Solitude_050009E3"
+    }
+   ]
   },
   {
    "id": "ccBGSSSE001-Fish.esm:000E5D",
@@ -6934,11 +8368,36 @@
    "id": "ccBGSSSE001-Fish.esm:0009D5",
    "edid": "ccBGSSSE001_Misc_Windhelm",
    "name": "Tusked Terror",
-   "people": [],
+   "people": [
+    {
+     "alias": "Fangtusk",
+     "npc": "Fangtusk",
+     "npcId": "ccBGSSSE001-Fish.esm:000BF9",
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:000BFA",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    }
+   ],
    "firstObjective": {
     "text": "Obtain an arctic grayling",
     "filled": "Obtain an arctic grayling",
     "namesWhoOrWhere": false
+   },
+   "namedGiver": {
+    "npc": "ccBGSSSE001-Fish.esm:000BF9",
+    "name": "Fangtusk",
+    "how": "named",
+    "where": [
+     {
+      "ref": "ccBGSSSE001-Fish.esm:000BFA",
+      "cell": "Skyrim.esm:000D74",
+      "world": "Skyrim"
+     }
+    ]
    }
   },
   {
@@ -6950,14 +8409,39 @@
      "alias": "Viriya",
      "npc": "Viriya",
      "npcId": "ccBGSSSE001-Fish.esm:0008F6",
-     "where": []
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:000906",
+       "cell": "Skyrim.esm:016BDB",
+       "cellName": "Riften Fishery",
+       "location": "Riften Fishery"
+      }
+     ]
     }
    ],
    "firstObjective": {
     "text": "Read Bounty: Glassfish",
     "filled": "Read Bounty: Glassfish",
     "namesWhoOrWhere": true
-   }
+   },
+   "rewards": [
+    {
+     "id": "ccBGSSSE001-Fish.esm:000B2C",
+     "name": "Wanted: Fishing Tutor",
+     "type": "book",
+     "via": "ccBGSSSE001_MiscQuestScript.BountyLetters",
+     "kind": "quest script",
+     "script": "ccBGSSSE001_MiscQuestScript"
+    },
+    {
+     "id": "ccBGSSSE001-Fish.esm:000B91",
+     "name": "Wanted: A Seafood Feast",
+     "type": "book",
+     "via": "ccBGSSSE001_MiscQuestScript.BountyLetters",
+     "kind": "quest script",
+     "script": "ccBGSSSE001_MiscQuestScript"
+    }
+   ]
   },
   {
    "id": "ccBGSSSE001-Fish.esm:000B98",
@@ -7055,13 +8539,27 @@
      "alias": "Viriya",
      "npc": "Viriya",
      "npcId": "ccBGSSSE001-Fish.esm:0008F6",
-     "where": []
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:000906",
+       "cell": "Skyrim.esm:016BDB",
+       "cellName": "Riften Fishery",
+       "location": "Riften Fishery"
+      }
+     ]
     },
     {
      "alias": "SwimsInDeepWaters",
      "npc": "Swims-In-Deep-Water",
      "npcId": "ccBGSSSE001-Fish.esm:0008F8",
-     "where": []
+     "where": [
+      {
+       "ref": "ccBGSSSE001-Fish.esm:00091C",
+       "cell": "Skyrim.esm:016BDB",
+       "cellName": "Riften Fishery",
+       "location": "Riften Fishery"
+      }
+     ]
     }
    ],
    "firstObjective": {
@@ -7073,7 +8571,14 @@
     "npc": "ccBGSSSE001-Fish.esm:0008F6",
     "name": "Viriya",
     "how": "named",
-    "where": []
+    "where": [
+     {
+      "ref": "ccBGSSSE001-Fish.esm:000906",
+      "cell": "Skyrim.esm:016BDB",
+      "cellName": "Riften Fishery",
+      "location": "Riften Fishery"
+     }
+    ]
    }
   },
   {
@@ -7086,6 +8591,352 @@
     "filled": "Read the Letter from Calcelmo",
     "namesWhoOrWhere": true
    }
+  },
+  {
+   "id": "ccbgssse005-goldbrand.esl:000838",
+   "edid": "ccBGSSSE005_MainQuest",
+   "name": "A Matter of Pride",
+   "people": [
+    {
+     "alias": "scholar",
+     "npc": "EncWarlockStorm04BretonF",
+     "npcId": "Skyrim.esm:045CB3",
+     "where": [
+      {
+       "ref": "ccbgssse005-goldbrand.esl:000EA8",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "lars",
+     "npc": "Lars Battle-Born",
+     "npcId": "Skyrim.esm:013BAF",
+     "where": [
+      {
+       "ref": "Skyrim.esm:01A68C",
+       "cell": "Skyrim.esm:0165AF",
+       "cellName": "House of Clan Battle-Born",
+       "location": "Whiterun"
+      }
+     ]
+    },
+    {
+     "alias": "nemesis",
+     "npc": "REQ_NULL_EncDragonPriestStaff",
+     "npcId": "Skyrim.esm:08DC3E",
+     "where": [
+      {
+       "ref": "ccbgssse005-goldbrand.esl:0009BA",
+       "cell": "Skyrim.esm:06CCBB",
+       "cellName": "Shroud Hearth Barrow",
+       "location": "Shroud Hearth Barrow"
+      }
+     ]
+    },
+    {
+     "alias": "cultistarcanaeum1",
+     "npc": "Boethiah Cultist",
+     "npcId": "ccbgssse005-goldbrand.esl:000812",
+     "where": [
+      {
+       "ref": "ccbgssse005-goldbrand.esl:0008B8",
+       "cell": "Skyrim.esm:013810",
+       "cellName": "The Arcanaeum",
+       "location": "The Arcanaeum"
+      }
+     ]
+    },
+    {
+     "alias": "cultistarcanaeum2",
+     "npc": "Boethiah Cultist",
+     "npcId": "ccbgssse005-goldbrand.esl:000814",
+     "where": [
+      {
+       "ref": "ccbgssse005-goldbrand.esl:0008B9",
+       "cell": "Skyrim.esm:013810",
+       "cellName": "The Arcanaeum",
+       "location": "The Arcanaeum"
+      }
+     ]
+    },
+    {
+     "alias": "honorguard1",
+     "npc": "LvlDraugrAmbushMelee2HBerserkerFemale",
+     "npcId": "Skyrim.esm:0BF7B6",
+     "where": [
+      {
+       "ref": "ccbgssse005-goldbrand.esl:000EA2",
+       "cell": "Update.esm:002FD3",
+       "cellName": "Sivdur's Respite",
+       "location": "Sivdur's Respite"
+      }
+     ]
+    },
+    {
+     "alias": "honorguard2",
+     "npc": "LvlDraugrAmbushMelee1HDefenderMale",
+     "npcId": "Skyrim.esm:06F837",
+     "where": [
+      {
+       "ref": "ccbgssse005-goldbrand.esl:000E9E",
+       "cell": "Update.esm:002FD3",
+       "cellName": "Sivdur's Respite",
+       "location": "Sivdur's Respite"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Locate the missing historian",
+    "filled": "Locate the missing historian",
+    "namesWhoOrWhere": false
+   },
+   "rewards": [
+    {
+     "id": "ccbgssse005-goldbrand.esl:000807",
+     "name": "Sivdur's Amulet",
+     "type": "armour",
+     "via": "QF_ccBGSSSE005_MainQuest_02000838.SivdurAmulet",
+     "kind": "fragment",
+     "script": "QF_ccBGSSSE005_MainQuest_02000838"
+    },
+    {
+     "id": "Skyrim.esm:027EB6",
+     "name": "Invisibility",
+     "type": "spell",
+     "via": "QF_ccBGSSSE005_MainQuest_02000838.InvisibilitySpell",
+     "kind": "fragment",
+     "script": "QF_ccBGSSSE005_MainQuest_02000838"
+    }
+   ]
+  },
+  {
+   "id": "ccbgssse013-dawnfang.esl:000F18",
+   "edid": "ccBGSSSE013_AquisitionQuest",
+   "name": "A Soul Divided",
+   "people": [
+    {
+     "alias": "Vellonus",
+     "npc": "Vellonus",
+     "npcId": "ccbgssse013-dawnfang.esl:000D94",
+     "where": [
+      {
+       "ref": "ccbgssse013-dawnfang.esl:000E95",
+       "cell": "Skyrim.esm:03B698",
+       "cellName": "The Ratway",
+       "location": "Riften Ratway"
+      }
+     ]
+    },
+    {
+     "alias": "GhostWife",
+     "npc": "Ghostly Apparition",
+     "npcId": "ccbgssse013-dawnfang.esl:000840",
+     "where": [
+      {
+       "ref": "ccbgssse013-dawnfang.esl:000F84",
+       "cell": "Skyrim.esm:03B698",
+       "cellName": "The Ratway",
+       "location": "Riften Ratway"
+      }
+     ]
+    },
+    {
+     "alias": "BlueGuardian",
+     "npc": "The Guardian",
+     "npcId": "ccbgssse013-dawnfang.esl:000843",
+     "where": [
+      {
+       "ref": "ccbgssse013-dawnfang.esl:00088F",
+       "cell": "Update.esm:002FCF",
+       "cellName": "The Guardian Vault",
+       "location": "The Guardian Vault"
+      }
+     ]
+    },
+    {
+     "alias": "GuildMember01",
+     "npc": "Guild Mage",
+     "npcId": "ccbgssse013-dawnfang.esl:000D13",
+     "where": [
+      {
+       "ref": "ccbgssse013-dawnfang.esl:000F39",
+       "cell": "Update.esm:002FCF",
+       "cellName": "The Guardian Vault",
+       "location": "The Guardian Vault"
+      }
+     ]
+    },
+    {
+     "alias": "GuildMember02",
+     "npc": "Skeleton",
+     "npcId": "ccbgssse013-dawnfang.esl:00083F",
+     "where": [
+      {
+       "ref": "ccbgssse013-dawnfang.esl:000CC2",
+       "cell": "Update.esm:002FCF",
+       "cellName": "The Guardian Vault",
+       "location": "The Guardian Vault"
+      }
+     ]
+    },
+    {
+     "alias": "Smuggler01",
+     "npc": "Smuggler",
+     "npcId": "ccbgssse013-dawnfang.esl:000D3C",
+     "where": [
+      {
+       "ref": "ccbgssse013-dawnfang.esl:000B0A",
+       "cell": "Update.esm:002FCF",
+       "cellName": "The Guardian Vault",
+       "location": "The Guardian Vault"
+      }
+     ]
+    },
+    {
+     "alias": "GuildMember03",
+     "npc": "Guild Mage",
+     "npcId": "ccbgssse013-dawnfang.esl:000D13",
+     "where": [
+      {
+       "ref": "ccbgssse013-dawnfang.esl:000F10",
+       "cell": "Update.esm:002FCF",
+       "cellName": "The Guardian Vault",
+       "location": "The Guardian Vault"
+      }
+     ]
+    },
+    {
+     "alias": "GuildMember04",
+     "npc": "Guild Mage",
+     "npcId": "ccbgssse013-dawnfang.esl:000D13",
+     "where": [
+      {
+       "ref": "ccbgssse013-dawnfang.esl:0009EB",
+       "cell": "Update.esm:002FCF",
+       "cellName": "The Guardian Vault",
+       "location": "The Guardian Vault"
+      }
+     ]
+    },
+    {
+     "alias": "GuildMember05",
+     "npc": "Guild Mage",
+     "npcId": "ccbgssse013-dawnfang.esl:000D13",
+     "where": [
+      {
+       "ref": "ccbgssse013-dawnfang.esl:000A55",
+       "cell": "Update.esm:002FCF",
+       "cellName": "The Guardian Vault",
+       "location": "The Guardian Vault"
+      }
+     ]
+    },
+    {
+     "alias": "Smuggler02",
+     "npc": "Smuggler",
+     "npcId": "ccbgssse013-dawnfang.esl:000D3C",
+     "where": [
+      {
+       "ref": "ccbgssse013-dawnfang.esl:000DA6",
+       "cell": "Update.esm:002FCF",
+       "cellName": "The Guardian Vault",
+       "location": "The Guardian Vault"
+      }
+     ]
+    },
+    {
+     "alias": "RedGuardian",
+     "npc": "The Guardian",
+     "npcId": "ccbgssse013-dawnfang.esl:000842",
+     "where": [
+      {
+       "ref": "ccbgssse013-dawnfang.esl:0008A9",
+       "cell": "Update.esm:002FCF",
+       "cellName": "The Guardian Vault",
+       "location": "The Guardian Vault"
+      }
+     ]
+    },
+    {
+     "alias": "GreenGuardian",
+     "npc": "The Guardian",
+     "npcId": "ccbgssse013-dawnfang.esl:000845",
+     "where": [
+      {
+       "ref": "ccbgssse013-dawnfang.esl:000858",
+       "cell": "Update.esm:002FCF",
+       "cellName": "The Guardian Vault",
+       "location": "The Guardian Vault"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Investigate rumors of ghosts in the Riften Ratway",
+    "filled": "Investigate rumors of ghosts in the Riften Ratway",
+    "namesWhoOrWhere": true
+   },
+   "rewards": [
+    {
+     "id": "ccbgssse013-dawnfang.esl:00081F",
+     "name": "Guild Mage's Last Words",
+     "type": "book",
+     "via": "alias Note01",
+     "kind": "alias"
+    },
+    {
+     "id": "ccbgssse013-dawnfang.esl:00081E",
+     "name": "Guild Mage's Warning",
+     "type": "book",
+     "via": "alias Note03",
+     "kind": "alias"
+    },
+    {
+     "id": "ccbgssse013-dawnfang.esl:000B07",
+     "name": "Guild Mage's Scribble",
+     "type": "book",
+     "via": "alias Note04",
+     "kind": "alias"
+    },
+    {
+     "id": "ccbgssse013-dawnfang.esl:00099D",
+     "name": "Guild Mage's Missive",
+     "type": "book",
+     "via": "alias Note05",
+     "kind": "alias"
+    },
+    {
+     "id": "Skyrim.esm:02DD29",
+     "name": "Lightning Bolt",
+     "type": "spell",
+     "via": "cc13_QF_ccBGSSSE013_Aquisitio_02000F18.LightningBolt",
+     "kind": "quest script",
+     "script": "cc13_QF_ccBGSSSE013_Aquisitio_02000F18"
+    }
+   ]
+  },
+  {
+   "id": "ccbgssse013-dawnfang.esl:000CA6",
+   "edid": "ccBGSSSE013_BloodthirstQuest",
+   "name": "Bloodthirst",
+   "people": [],
+   "firstObjective": {
+    "text": "Investigate Faldar's Tooth",
+    "filled": "Investigate Faldar's Tooth",
+    "namesWhoOrWhere": true
+   },
+   "rewards": [
+    {
+     "id": "ccbgssse013-dawnfang.esl:000C92",
+     "name": "Bloodthirst",
+     "type": "weapon",
+     "via": "alias Bloodthirst",
+     "kind": "alias"
+    }
+   ]
   },
   {
    "id": "ccbgssse014-spellpack01.esl:00083C",
@@ -7107,6 +8958,426 @@
     "text": "Go to the Grove of Reflection",
     "filled": "Go to the Grove of Reflection",
     "namesWhoOrWhere": true
+   }
+  },
+  {
+   "id": "ccBGSSSE025-AdvDSGS.esm:0010C0",
+   "edid": "ccBGSSSE025_ElytraPetAcquisition_Dementia",
+   "name": "My Pet Elytra (Dementia)",
+   "people": [
+    {
+     "alias": "ElytraDementia",
+     "npc": "Potema",
+     "npcId": "ccBGSSSE025-AdvDSGS.esm:000CB2",
+     "where": [
+      {
+       "ref": "ccBGSSSE025-AdvDSGS.esm:001008",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Free the Elytra Nymph",
+    "filled": "Free the Elytra Nymph",
+    "namesWhoOrWhere": true
+   },
+   "rewards": [
+    {
+     "id": "ccBGSSSE025-AdvDSGS.esm:08BC17",
+     "name": "Teleport Pet: Demented Elytra Nymph",
+     "type": "spell",
+     "via": "QF_ccBGSSSE025_ElytraPetAcqu_050010C0.PetSummonSpell",
+     "kind": "fragment",
+     "script": "QF_ccBGSSSE025_ElytraPetAcqu_050010C0"
+    }
+   ]
+  },
+  {
+   "id": "ccBGSSSE025-AdvDSGS.esm:0010C3",
+   "edid": "ccBGSSSE025_ElytraPetAcquisition_Mania",
+   "name": "My Pet Elytra (Mania)",
+   "people": [
+    {
+     "alias": "ElytraMania",
+     "npc": "Pelagius",
+     "npcId": "ccBGSSSE025-AdvDSGS.esm:000CBB",
+     "where": [
+      {
+       "ref": "ccBGSSSE025-AdvDSGS.esm:001005",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Free the Elytra Nymph",
+    "filled": "Free the Elytra Nymph",
+    "namesWhoOrWhere": true
+   },
+   "rewards": [
+    {
+     "id": "ccBGSSSE025-AdvDSGS.esm:08BC16",
+     "name": "Teleport Pet: Manic Elytra Nymph",
+     "type": "spell",
+     "via": "QF_ccBGSSSE025_ElytraPetAcqu_050010C3.PetSummonSpell",
+     "kind": "fragment",
+     "script": "QF_ccBGSSSE025_ElytraPetAcqu_050010C3"
+    }
+   ]
+  },
+  {
+   "id": "ccBGSSSE025-AdvDSGS.esm:000C4D",
+   "edid": "ccBGSSSE025_MiscQuest_AmberMadnessGear",
+   "name": "Amber and Madness Smithing",
+   "people": [
+    {
+     "alias": "ArcaneBlacksmith",
+     "npc": "Evethra",
+     "npcId": "ccBGSSSE025-AdvDSGS.esm:000CBF",
+     "where": [
+      {
+       "ref": "ccBGSSSE025-AdvDSGS.esm:001004",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Investigate the area north of Mistwatch",
+    "filled": "Investigate the area north of Mistwatch",
+    "namesWhoOrWhere": true
+   }
+  },
+  {
+   "id": "ccBGSSSE025-AdvDSGS.esm:000C4B",
+   "edid": "ccBGSSSE025_MiscQuest_GSDSGearBook",
+   "name": "Golden and Dark Smithing",
+   "people": [
+    {
+     "alias": "BanditWithNote",
+     "npc": "ccBGSSSE025_LvlGoldenBanditMelee1HAggro768",
+     "npcId": "ccBGSSSE025-AdvDSGS.esm:0009CC",
+     "where": [
+      {
+       "ref": "ccBGSSSE025-AdvDSGS.esm:0008BC",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Find Joften's notes on smithing Golden and Dark equipment",
+    "filled": "Find Joften's notes on smithing Golden and Dark equipment",
+    "namesWhoOrWhere": true
+   }
+  },
+  {
+   "id": "ccBGSSSE025-AdvDSGS.esm:0010BF",
+   "edid": "ccBGSSSE025_MiscQuest_Nerveshatter",
+   "name": "Nerveshatter",
+   "people": [
+    {
+     "alias": "Bandit1",
+     "npc": "ccBGSSSE025_LvlSeducerBanditMelee1HAggro768",
+     "npcId": "ccBGSSSE025-AdvDSGS.esm:0009A8",
+     "where": [
+      {
+       "ref": "ccBGSSSE025-AdvDSGS.esm:000FF8",
+       "cell": "Skyrim.esm:0152A0",
+       "cellName": "Crystaldrift Cave",
+       "location": "Crystaldrift Cave"
+      }
+     ]
+    },
+    {
+     "alias": "Bandit2",
+     "npc": "ccBGSSSE025_LvlSeducerBanditMissileAggro768",
+     "npcId": "ccBGSSSE025-AdvDSGS.esm:0009AA",
+     "where": [
+      {
+       "ref": "ccBGSSSE025-AdvDSGS.esm:000FFE",
+       "cell": "Skyrim.esm:0152A0",
+       "cellName": "Crystaldrift Cave",
+       "location": "Crystaldrift Cave"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Find more details on the bandits' new lead",
+    "filled": "Find more details on the bandits' new lead",
+    "namesWhoOrWhere": false
+   }
+  },
+  {
+   "id": "ccBGSSSE025-AdvDSGS.esm:000912",
+   "edid": "ccBGSSSE025_QuestA",
+   "name": "Balance of Power",
+   "people": [
+    {
+     "alias": "RiSaad",
+     "npc": "Ri'saad",
+     "npcId": "Skyrim.esm:01B1DB",
+     "where": [
+      {
+       "ref": "Skyrim.esm:074340",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "SaintsCampBanditWithNote",
+     "npc": "ccBGSSSE025_LvlGoldenBanditMelee1HAggro768",
+     "npcId": "ccBGSSSE025-AdvDSGS.esm:0009CC",
+     "where": [
+      {
+       "ref": "ccBGSSSE025-AdvDSGS.esm:0008BC",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "SaintsCampBandit02",
+     "npc": "ccBGSSSE025_LvlGoldenBanditMelee1HAggro768",
+     "npcId": "ccBGSSSE025-AdvDSGS.esm:0009CC",
+     "where": [
+      {
+       "ref": "ccBGSSSE025-AdvDSGS.esm:0008C3",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "SaintsCampBandit03",
+     "npc": "ccBGSSSE025_LvlGoldenBanditMissileAggro768",
+     "npcId": "ccBGSSSE025-AdvDSGS.esm:0009A9",
+     "where": [
+      {
+       "ref": "ccBGSSSE025-AdvDSGS.esm:0008BA",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "SaintsCampBandit04",
+     "npc": "ccBGSSSE025_LvlGoldenBanditMelee1HAggro768",
+     "npcId": "ccBGSSSE025-AdvDSGS.esm:0009CC",
+     "where": [
+      {
+       "ref": "ccBGSSSE025-AdvDSGS.esm:0008BF",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "SeducersCampBanditWithNote",
+     "npc": "ccBGSSSE025_LvlSeducerBanditMelee1HAggro768",
+     "npcId": "ccBGSSSE025-AdvDSGS.esm:0009A8",
+     "where": [
+      {
+       "ref": "ccBGSSSE025-AdvDSGS.esm:000952",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "SeducersCampBandit02",
+     "npc": "ccBGSSSE025_LvlSeducerBanditMissileAggro768",
+     "npcId": "ccBGSSSE025-AdvDSGS.esm:0009AA",
+     "where": [
+      {
+       "ref": "ccBGSSSE025-AdvDSGS.esm:000950",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "SeducersCampBandit03",
+     "npc": "ccBGSSSE025_LvlSeducerBanditMelee1HAggro768",
+     "npcId": "ccBGSSSE025-AdvDSGS.esm:0009A8",
+     "where": [
+      {
+       "ref": "ccBGSSSE025-AdvDSGS.esm:000953",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "SeducersCampBandit04",
+     "npc": "ccBGSSSE025_LvlSeducerBanditMelee1HAggro768",
+     "npcId": "ccBGSSSE025-AdvDSGS.esm:0009A8",
+     "where": [
+      {
+       "ref": "ccBGSSSE025-AdvDSGS.esm:000951",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "SaintsBanditLeader",
+     "npc": "Kinthal",
+     "npcId": "ccBGSSSE025-AdvDSGS.esm:0009B3",
+     "where": [
+      {
+       "ref": "ccBGSSSE025-AdvDSGS.esm:0008C1",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "SeducersBanditLeader",
+     "npc": "Svarig",
+     "npcId": "ccBGSSSE025-AdvDSGS.esm:0009B4",
+     "where": [
+      {
+       "ref": "ccBGSSSE025-AdvDSGS.esm:0AF337",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    }
+   ],
+   "giver": {
+    "npc": "Skyrim.esm:01B1DB",
+    "stageBelow": 900,
+    "info": "ccBGSSSE025-AdvDSGS.esm:000981",
+    "named": "alias RiSaad",
+    "name": "Ri'saad",
+    "where": [
+     {
+      "ref": "Skyrim.esm:074340",
+      "cell": "Skyrim.esm:000D74",
+      "world": "Skyrim"
+     }
+    ]
+   },
+   "firstObjective": {
+    "text": "Speak to Ri'saad about trouble along the road",
+    "filled": "Speak to Ri'saad about trouble along the road",
+    "namesWhoOrWhere": true
+   },
+   "namedGiver": {
+    "npc": "Skyrim.esm:01B1DB",
+    "name": "Ri'saad",
+    "how": "named",
+    "where": [
+     {
+      "ref": "Skyrim.esm:074340",
+      "cell": "Skyrim.esm:000D74",
+      "world": "Skyrim"
+     }
+    ]
+   },
+   "rewards": [
+    {
+     "id": "ccBGSSSE025-AdvDSGS.esm:21BD6B",
+     "name": "Smithing",
+     "type": "perk",
+     "via": "QF_ccBGSSSE025_QuestA_02000912.ccBGSSSE025_Smithing",
+     "kind": "fragment",
+     "script": "QF_ccBGSSSE025_QuestA_02000912"
+    },
+    {
+     "id": "ccBGSSSE025-AdvDSGS.esm:21BD62",
+     "name": "Matching Set",
+     "type": "perk",
+     "via": "QF_ccBGSSSE025_QuestA_02000912.ccBGSSSE040_MatchingSetHeavy",
+     "kind": "fragment",
+     "script": "QF_ccBGSSSE025_QuestA_02000912"
+    },
+    {
+     "id": "ccBGSSSE025-AdvDSGS.esm:21BD61",
+     "name": "Matching Set",
+     "type": "perk",
+     "via": "QF_ccBGSSSE025_QuestA_02000912.ccBGSSSE040_MatchingSet",
+     "kind": "fragment",
+     "script": "QF_ccBGSSSE025_QuestA_02000912"
+    },
+    {
+     "id": "ccBGSSSE025-AdvDSGS.esm:19D3F9",
+     "name": "Spell Tome (Master): Conjure Staada",
+     "type": "book",
+     "via": "QF_ccBGSSSE025_QuestA_02000912.StaadaTome",
+     "kind": "fragment",
+     "script": "QF_ccBGSSSE025_QuestA_02000912"
+    }
+   ]
+  },
+  {
+   "id": "ccBGSSSE025-AdvDSGS.esm:000913",
+   "edid": "ccBGSSSE025_QuestB",
+   "name": "Restoring Order",
+   "people": [
+    {
+     "alias": "Boss",
+     "npc": "Thoron",
+     "npcId": "ccBGSSSE025-AdvDSGS.esm:000A84",
+     "where": [
+      {
+       "ref": "ccBGSSSE025-AdvDSGS.esm:000C3D",
+       "cell": "ccBGSSSE025-AdvDSGS.esm:00083C",
+       "cellName": "Solitude Sewers",
+       "location": "Solitude Sewers"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Discover the location of the conjurer's lair",
+    "filled": "Discover the location of the conjurer's lair",
+    "namesWhoOrWhere": false
+   },
+   "namedGiver": {
+    "npc": "ccBGSSSE025-AdvDSGS.esm:000A84",
+    "name": "Thoron",
+    "how": "named",
+    "where": [
+     {
+      "ref": "ccBGSSSE025-AdvDSGS.esm:000C3D",
+      "cell": "ccBGSSSE025-AdvDSGS.esm:00083C",
+      "cellName": "Solitude Sewers",
+      "location": "Solitude Sewers"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ccBGSSSE025-AdvDSGS.esm:198277",
+   "edid": "ccBGSSSE025_StaadaQuest",
+   "name": "Staada Quest",
+   "people": [
+    {
+     "alias": "Staada",
+     "npc": "Staada",
+     "npcId": "ccBGSSSE025-AdvDSGS.esm:198273",
+     "where": [
+      {
+       "ref": "ccBGSSSE025-AdvDSGS.esm:19D37A",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Read the request to meet",
+    "filled": "Read the request to meet",
+    "namesWhoOrWhere": false
    }
   },
   {
@@ -7158,10 +9429,416 @@
    }
   },
   {
+   "id": "ccbgssse031-advcyrus.esm:001624",
+   "edid": "ccBGSSSE031_HomeQuest",
+   "name": "Restless Home Quest",
+   "people": [],
+   "firstObjective": {
+    "text": "Read the pirate's note",
+    "filled": "Read the pirate's note",
+    "namesWhoOrWhere": false
+   }
+  },
+  {
+   "id": "ccbgssse031-advcyrus.esm:000FDC",
+   "edid": "ccBGSSSE031_QUEST",
+   "name": "The Restless",
+   "people": [
+    {
+     "alias": "Kevon",
+     "npc": "Kevon",
+     "npcId": "ccbgssse031-advcyrus.esm:000810",
+     "where": [
+      {
+       "ref": "ccbgssse031-advcyrus.esm:0009CE",
+       "cell": "Skyrim.esm:056E88",
+       "cellName": "Castle Dour Dungeon",
+       "location": "Solitude Jail"
+      }
+     ]
+    },
+    {
+     "alias": "Murderer",
+     "npc": "Skeleton",
+     "npcId": "Skyrim.esm:0B9FD8",
+     "where": [
+      {
+       "ref": "ccbgssse031-advcyrus.esm:0009E4",
+       "cell": "ccbgssse031-advcyrus.esm:0009D5",
+       "cellName": "Dead Man's Dread",
+       "location": "Dead Man's Dread"
+      }
+     ]
+    },
+    {
+     "alias": "GuardImperial",
+     "npc": "ccBGSSSE031_GuardImperial",
+     "npcId": "ccbgssse031-advcyrus.esm:000813",
+     "where": [
+      {
+       "ref": "ccbgssse031-advcyrus.esm:0009D1",
+       "cell": "Skyrim.esm:056E88",
+       "cellName": "Castle Dour Dungeon",
+       "location": "Solitude Jail"
+      }
+     ]
+    },
+    {
+     "alias": "GuardStormcloak",
+     "npc": "ccBGSSSE031_GuardStormcloak",
+     "npcId": "ccbgssse031-advcyrus.esm:000811",
+     "where": [
+      {
+       "ref": "ccbgssse031-advcyrus.esm:0009CF",
+       "cell": "Skyrim.esm:056E88",
+       "cellName": "Castle Dour Dungeon",
+       "location": "Solitude Jail"
+      }
+     ]
+    },
+    {
+     "alias": "Brigand01",
+     "npc": "REQ_Bandit_Generic_Missile",
+     "npcId": "Skyrim.esm:01E79E",
+     "where": [
+      {
+       "ref": "Skyrim.esm:02D956",
+       "cell": "Skyrim.esm:000D74",
+       "location": "Orphan's Tear",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "Brigand02",
+     "npc": "REQ_Bandit_Generic_2H",
+     "npcId": "Skyrim.esm:01E79D",
+     "where": [
+      {
+       "ref": "Skyrim.esm:02C7A8",
+       "cell": "Skyrim.esm:000D74",
+       "location": "Orphan's Tear",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "Brigand03",
+     "npc": "REQ_Bandit_Generic_Wizard",
+     "npcId": "Skyrim.esm:01E79F",
+     "where": [
+      {
+       "ref": "Skyrim.esm:05FA2C",
+       "cell": "Skyrim.esm:000D74",
+       "location": "Orphan's Tear",
+       "world": "Skyrim"
+      }
+     ]
+    }
+   ],
+   "giver": {
+    "npc": "ccbgssse031-advcyrus.esm:000811",
+    "stageBelow": 30,
+    "info": "ccbgssse031-advcyrus.esm:000FCB",
+    "named": "alias GuardStormcloak",
+    "others": [
+     {
+      "npc": "ccbgssse031-advcyrus.esm:000813",
+      "stageBelow": 30,
+      "name": "ccBGSSSE031_GuardImperial"
+     }
+    ],
+    "name": "ccBGSSSE031_GuardStormcloak",
+    "where": [
+     {
+      "ref": "ccbgssse031-advcyrus.esm:0009CF",
+      "cell": "Skyrim.esm:056E88",
+      "cellName": "Castle Dour Dungeon",
+      "location": "Solitude Jail"
+     }
+    ]
+   },
+   "firstObjective": {
+    "text": "(Optional) Convince the guard to give you access to the jail cell",
+    "filled": "(Optional) Convince the guard to give you access to the jail cell",
+    "namesWhoOrWhere": true
+   },
+   "namedGiver": {
+    "npc": "ccbgssse031-advcyrus.esm:000811",
+    "name": "ccBGSSSE031_GuardStormcloak",
+    "how": "dialogue",
+    "where": [
+     {
+      "ref": "ccbgssse031-advcyrus.esm:0009CF",
+      "cell": "Skyrim.esm:056E88",
+      "cellName": "Castle Dour Dungeon",
+      "location": "Solitude Jail"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ccbgssse034-mntuni.esl:00086D",
+   "edid": "ccBGSSSE034_Misc_Horse01_Chestnut",
+   "name": "Find Horse 01",
+   "people": [],
+   "firstObjective": {
+    "text": "Find and tame the Chestnut Horse",
+    "filled": "Find and tame the Chestnut Horse",
+    "namesWhoOrWhere": true
+   }
+  },
+  {
+   "id": "ccbgssse034-mntuni.esl:000870",
+   "edid": "ccBGSSSE034_Misc_Horse02_Black",
+   "name": "Find Horse 02",
+   "people": [],
+   "firstObjective": {
+    "text": "Find and tame the Black Horse",
+    "filled": "Find and tame the Black Horse",
+    "namesWhoOrWhere": true
+   }
+  },
+  {
+   "id": "ccbgssse034-mntuni.esl:000871",
+   "edid": "ccBGSSSE034_Misc_Horse03_GreyBlack",
+   "name": "Find Horse 03",
+   "people": [],
+   "firstObjective": {
+    "text": "Find and tame the Grey Spotted Horse",
+    "filled": "Find and tame the Grey Spotted Horse",
+    "namesWhoOrWhere": true
+   }
+  },
+  {
+   "id": "ccbgssse034-mntuni.esl:000872",
+   "edid": "ccBGSSSE034_Misc_Horse04_Pale",
+   "name": "Find Horse 01",
+   "people": [],
+   "firstObjective": {
+    "text": "Find and tame the Pale Mare",
+    "filled": "Find and tame the Pale Mare",
+    "namesWhoOrWhere": true
+   }
+  },
+  {
+   "id": "ccbgssse034-mntuni.esl:000873",
+   "edid": "ccBGSSSE034_Misc_Horse05_RedBrown",
+   "name": "Find Horse 01",
+   "people": [],
+   "firstObjective": {
+    "text": "Find and tame the Red Horse",
+    "filled": "Find and tame the Red Horse",
+    "namesWhoOrWhere": true
+   }
+  },
+  {
+   "id": "ccbgssse034-mntuni.esl:000874",
+   "edid": "ccBGSSSE034_Misc_Horse06_WhiteSpotted",
+   "name": "Find Horse 01",
+   "people": [],
+   "firstObjective": {
+    "text": "Find and tame the White Spotted Horse",
+    "filled": "Find and tame the White Spotted Horse",
+    "namesWhoOrWhere": true
+   }
+  },
+  {
+   "id": "ccbgssse034-mntuni.esl:000875",
+   "edid": "ccBGSSSE034_Misc_Horse07_BrownSpotted",
+   "name": "Find Horse 01",
+   "people": [],
+   "firstObjective": {
+    "text": "Find and tame the Dapple Brown Horse",
+    "filled": "Find and tame the Dapple Brown Horse",
+    "namesWhoOrWhere": true
+   }
+  },
+  {
+   "id": "ccbgssse034-mntuni.esl:000DE8",
+   "edid": "ccBGSSSE034_UnicornQuest",
+   "name": "Creature of Legend",
+   "people": [
+    {
+     "alias": "UnicornREF",
+     "npc": "Unicorn",
+     "npcId": "ccbgssse034-mntuni.esl:000804",
+     "where": [
+      {
+       "ref": "ccbgssse034-mntuni.esl:000D7B",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Find information about the Unicorn",
+    "filled": "Find information about the Unicorn",
+    "namesWhoOrWhere": true
+   },
+   "namedGiver": {
+    "npc": "ccbgssse034-mntuni.esl:000804",
+    "name": "Unicorn",
+    "how": "named",
+    "where": [
+     {
+      "ref": "ccbgssse034-mntuni.esl:000D7B",
+      "cell": "Skyrim.esm:000D74",
+      "world": "Skyrim"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ccbgssse034-mntuni.esl:000D65",
+   "edid": "ccBGSSSE034_WildHorsesQuest",
+   "name": "Horse Whisperer",
+   "people": [
+    {
+     "alias": "HorseWild01_Chestnut",
+     "npc": "Wild Horse",
+     "npcId": "ccbgssse034-mntuni.esl:000D61",
+     "where": [
+      {
+       "ref": "ccbgssse034-mntuni.esl:000829",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "HorseWild02_Black",
+     "npc": "Wild Horse",
+     "npcId": "ccbgssse034-mntuni.esl:00080D",
+     "where": [
+      {
+       "ref": "ccbgssse034-mntuni.esl:00082A",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "HorseWild03_GreyBlack",
+     "npc": "Wild Horse",
+     "npcId": "ccbgssse034-mntuni.esl:00080E",
+     "where": [
+      {
+       "ref": "ccbgssse034-mntuni.esl:00082B",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "HorseWild04_RedBrown",
+     "npc": "Wild Horse",
+     "npcId": "ccbgssse034-mntuni.esl:000810",
+     "where": [
+      {
+       "ref": "ccbgssse034-mntuni.esl:00082C",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "HorseWild05_Pale",
+     "npc": "Wild Horse",
+     "npcId": "ccbgssse034-mntuni.esl:00080F",
+     "where": [
+      {
+       "ref": "ccbgssse034-mntuni.esl:00082D",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "HorseWild06_BrownSpotted",
+     "npc": "Wild Horse",
+     "npcId": "ccbgssse034-mntuni.esl:000821",
+     "where": [
+      {
+       "ref": "ccbgssse034-mntuni.esl:00082E",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "HorseWild07_WhiteSpotted",
+     "npc": "Wild Horse",
+     "npcId": "ccbgssse034-mntuni.esl:000811",
+     "where": [
+      {
+       "ref": "ccbgssse034-mntuni.esl:000D79",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "HorseWild08_UnicornREF",
+     "npc": "Unicorn",
+     "npcId": "ccbgssse034-mntuni.esl:000804",
+     "where": [
+      {
+       "ref": "ccbgssse034-mntuni.esl:000D7B",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Purchase a map of wild horse locations",
+    "filled": "Purchase a map of wild horse locations",
+    "namesWhoOrWhere": false
+   },
+   "rewards": [
+    {
+     "id": "Skyrim.esm:00000F",
+     "name": "Septim",
+     "type": "gold",
+     "via": "QF_ccBGSSSE034_WildHorsesQue_02000D65.Gold001",
+     "kind": "fragment",
+     "script": "QF_ccBGSSSE034_WildHorsesQue_02000D65"
+    }
+   ]
+  },
+  {
    "id": "ccbgssse038-bowofshadows.esl:00080E",
    "edid": "ccBGSSSE038_Quest",
    "name": "In the Shadows",
-   "people": [],
+   "people": [
+    {
+     "alias": "StableBoy",
+     "npc": "Nord",
+     "npcId": "ccbgssse038-bowofshadows.esl:000822",
+     "where": [
+      {
+       "ref": "ccbgssse038-bowofshadows.esl:000821",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "Assassin",
+     "npc": "ccBGSSSE038_AssassinDarkElf",
+     "npcId": "ccbgssse038-bowofshadows.esl:000808",
+     "where": [
+      {
+       "ref": "ccbgssse038-bowofshadows.esl:00082F",
+       "cell": "Skyrim.esm:0165A3",
+       "cellName": "Dragonsreach",
+       "location": "Dragonsreach"
+      }
+     ]
+    }
+   ],
    "firstObjective": {
     "text": "Speak to the Jarl's Steward",
     "filled": "Speak to the Jarl's Steward",
@@ -7176,6 +9853,22 @@
      "kind": "alias"
     },
     {
+     "id": "ccbgssse038-bowofshadows.esl:00080A",
+     "name": "Invisibility",
+     "type": "perk",
+     "via": "ccBGSSSE038_Quest_0500080E.ccBGSSSE038_BowOfShadowsPerkPlayer",
+     "kind": "quest script",
+     "script": "ccBGSSSE038_Quest_0500080E"
+    },
+    {
+     "id": "ccbgssse038-bowofshadows.esl:000817",
+     "name": "Business Ledger Copy",
+     "type": "book",
+     "via": "ccBGSSSE038_Quest_0500080E.ccBGSSSE038_LedgerBook",
+     "kind": "quest script",
+     "script": "ccBGSSSE038_Quest_0500080E"
+    },
+    {
      "id": "Skyrim.esm:04A41B",
      "name": "FavorRewardGoldLarge",
      "type": "leveled list",
@@ -7186,10 +9879,583 @@
    ]
   },
   {
+   "id": "ccbgssse040-advobgobs.esl:0009B6",
+   "edid": "ccBGSSSE040_Quest",
+   "name": "Blue in the Face",
+   "people": [
+    {
+     "alias": "BlueGod",
+     "npc": "Blue God",
+     "npcId": "ccbgssse040-advobgobs.esl:0009A0",
+     "where": [
+      {
+       "ref": "ccbgssse040-advobgobs.esl:0009AD",
+       "cell": "Update.esm:002FD2",
+       "cellName": "Gromm's Pass",
+       "location": "Gromm's Pass"
+      }
+     ]
+    },
+    {
+     "alias": "GoblinFollower",
+     "npc": "Gogh",
+     "npcId": "ccbgssse040-advobgobs.esl:000815",
+     "where": [
+      {
+       "ref": "ccbgssse040-advobgobs.esl:0009E6",
+       "cell": "Update.esm:002FD2",
+       "cellName": "Gromm's Pass",
+       "location": "Gromm's Pass"
+      }
+     ]
+    },
+    {
+     "alias": "PrayingGoblin01",
+     "npc": "Goblin",
+     "npcId": "ccbgssse040-advobgobs.esl:000806",
+     "where": [
+      {
+       "ref": "ccbgssse040-advobgobs.esl:0009B8",
+       "cell": "Update.esm:002FD2",
+       "cellName": "Gromm's Pass",
+       "location": "Gromm's Pass"
+      }
+     ]
+    },
+    {
+     "alias": "PrayingGoblin02",
+     "npc": "Goblin",
+     "npcId": "ccbgssse040-advobgobs.esl:000806",
+     "where": [
+      {
+       "ref": "ccbgssse040-advobgobs.esl:0009B9",
+       "cell": "Update.esm:002FD2",
+       "cellName": "Gromm's Pass",
+       "location": "Gromm's Pass"
+      }
+     ]
+    },
+    {
+     "alias": "ArenaGoblin",
+     "npc": "Goblin",
+     "npcId": "ccbgssse040-advobgobs.esl:000AD4",
+     "where": [
+      {
+       "ref": "ccbgssse040-advobgobs.esl:000AD5",
+       "cell": "Update.esm:002FD2",
+       "cellName": "Gromm's Pass",
+       "location": "Gromm's Pass"
+      }
+     ]
+    },
+    {
+     "alias": "ArenaGoblin02",
+     "npc": "Goblin",
+     "npcId": "ccbgssse040-advobgobs.esl:000AD6",
+     "where": [
+      {
+       "ref": "ccbgssse040-advobgobs.esl:000AD7",
+       "cell": "Update.esm:002FD2",
+       "cellName": "Gromm's Pass",
+       "location": "Gromm's Pass"
+      }
+     ]
+    },
+    {
+     "alias": "PatrolGoblin",
+     "npc": "Goblin",
+     "npcId": "ccbgssse040-advobgobs.esl:000809",
+     "where": [
+      {
+       "ref": "ccbgssse040-advobgobs.esl:000A0F",
+       "cell": "Update.esm:002FD2",
+       "cellName": "Gromm's Pass",
+       "location": "Gromm's Pass"
+      }
+     ]
+    },
+    {
+     "alias": "Corpse",
+     "npc": "Avanessa Calladius",
+     "npcId": "ccbgssse040-advobgobs.esl:000A53",
+     "where": [
+      {
+       "ref": "ccbgssse040-advobgobs.esl:000A65",
+       "cell": "Update.esm:002FD2",
+       "cellName": "Gromm's Pass",
+       "location": "Gromm's Pass"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Look for information at the Bee and Barb",
+    "filled": "Look for information at the Bee and Barb",
+    "namesWhoOrWhere": true
+   },
+   "rewards": [
+    {
+     "id": "Skyrim.esm:01AD12",
+     "name": "The Posting of the Hunt",
+     "type": "book",
+     "via": "alias PostingHunt",
+     "kind": "alias"
+    }
+   ]
+  },
+  {
+   "id": "ccbgssse045-hasedoki.esl:000823",
+   "edid": "ccBGSSSE045_Quest",
+   "name": "The Staff of Hasedoki",
+   "people": [
+    {
+     "alias": "Modig",
+     "npc": "Modig Gilgar",
+     "npcId": "ccbgssse045-hasedoki.esl:00082D",
+     "where": [
+      {
+       "ref": "ccbgssse045-hasedoki.esl:00082F",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "Ivara",
+     "npc": "Ivara of Olenveld",
+     "npcId": "ccbgssse045-hasedoki.esl:000832",
+     "where": [
+      {
+       "ref": "ccbgssse045-hasedoki.esl:000833",
+       "cell": "Skyrim.esm:081DEC",
+       "cellName": "Brittleshin Pass",
+       "location": "Brittleshin Pass"
+      }
+     ]
+    },
+    {
+     "alias": "Necromancer",
+     "npc": "LvlWarlockNecroBossMaleElfHaughty",
+     "npcId": "Skyrim.esm:081EF9",
+     "where": [
+      {
+       "ref": "Skyrim.esm:08226D",
+       "cell": "Skyrim.esm:081DEC",
+       "cellName": "Brittleshin Pass",
+       "location": "Brittleshin Pass"
+      }
+     ]
+    },
+    {
+     "alias": "Skeleton01",
+     "npc": "LvlSkeletonMeleeMixed",
+     "npcId": "Skyrim.esm:0BCCC7",
+     "where": [
+      {
+       "ref": "Skyrim.esm:082278",
+       "cell": "Skyrim.esm:081DEC",
+       "cellName": "Brittleshin Pass",
+       "location": "Brittleshin Pass"
+      }
+     ]
+    },
+    {
+     "alias": "Skeleton02",
+     "npc": "Skeleton",
+     "npcId": "Skyrim.esm:02D1FD",
+     "where": [
+      {
+       "ref": "Skyrim.esm:08227B",
+       "cell": "Skyrim.esm:081DEC",
+       "cellName": "Brittleshin Pass",
+       "location": "Brittleshin Pass"
+      }
+     ]
+    },
+    {
+     "alias": "Skeleton03",
+     "npc": "LvlSkeletonMeleeMixed",
+     "npcId": "Skyrim.esm:0BCCC7",
+     "where": [
+      {
+       "ref": "Skyrim.esm:08227A",
+       "cell": "Skyrim.esm:081DEC",
+       "cellName": "Brittleshin Pass",
+       "location": "Brittleshin Pass"
+      }
+     ]
+    },
+    {
+     "alias": "SoulCairnUndead",
+     "npc": "Boneman",
+     "npcId": "Dawnguard.esm:0071AA",
+     "where": [
+      {
+       "ref": "ccbgssse045-hasedoki.esl:00083E",
+       "cell": "Skyrim.esm:081DEC",
+       "cellName": "Brittleshin Pass",
+       "location": "Brittleshin Pass"
+      }
+     ]
+    },
+    {
+     "alias": "Lushak",
+     "npc": "Lushak gra-Ragdam",
+     "npcId": "ccbgssse045-hasedoki.esl:000835",
+     "where": [
+      {
+       "ref": "ccbgssse045-hasedoki.esl:000836",
+       "cell": "Skyrim.esm:081DEC",
+       "cellName": "Brittleshin Pass",
+       "location": "Brittleshin Pass"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Investigate the Smuggler's Den",
+    "filled": "Investigate the Smuggler's Den",
+    "namesWhoOrWhere": true
+   },
+   "rewards": [
+    {
+     "id": "ccbgssse045-hasedoki.esl:000806",
+     "name": "Staff of Hasedoki",
+     "type": "weapon",
+     "via": "alias Hasedoki",
+     "kind": "alias"
+    },
+    {
+     "id": "ccbgssse045-hasedoki.esl:000803",
+     "name": "Smuggler's Ledger",
+     "type": "book",
+     "via": "alias Journal02",
+     "kind": "alias"
+    }
+   ]
+  },
+  {
    "id": "ccbgssse067-daedinv.esm:06BFC1",
    "edid": "ccBGSSSE067_Quest",
    "name": "The Cause",
    "people": [
+    {
+     "alias": "NPCStrangerSkorvild",
+     "npc": "Skorvild",
+     "npcId": "ccbgssse067-daedinv.esm:000B67",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:000B69",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "NPCMythicDawnAssassin01",
+     "npc": "Mythic Dawn Cultist",
+     "npcId": "ccbgssse067-daedinv.esm:000DC3",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:000B6D",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "NPCMythicDawnAssassin02",
+     "npc": "Mythic Dawn Cultist",
+     "npcId": "ccbgssse067-daedinv.esm:000B6A",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:000B6E",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "NPCVigilantDeadMythicDawnMap",
+     "npc": "Vigil Enforcer",
+     "npcId": "ccbgssse067-daedinv.esm:06BFBF",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:06BFC2",
+       "cell": "Update.esm:0030E5",
+       "cellName": "Rielle",
+       "location": "Rielle"
+      }
+     ]
+    },
+    {
+     "alias": "NPCMythicDawnExplorerDEAD",
+     "npc": "Janus",
+     "npcId": "ccbgssse067-daedinv.esm:0B8A14",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:1943B7",
+       "cell": "Update.esm:0030E5",
+       "cellName": "Rielle",
+       "location": "Rielle"
+      }
+     ]
+    },
+    {
+     "alias": "NPCMythicDawnBossVonos",
+     "npc": "Vonos",
+     "npcId": "ccbgssse067-daedinv.esm:039270",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:039271",
+       "cell": "ccbgssse067-daedinv.esm:08FBF7",
+       "cellName": "Mythic Dawn Temple",
+       "location": "Red Scar Cavern"
+      }
+     ]
+    },
+    {
+     "alias": "NPCDremoraBoss01",
+     "npc": "Valkyn Gatanas",
+     "npcId": "ccbgssse067-daedinv.esm:0392F9",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:04867C",
+       "cell": "ccbgssse067-daedinv.esm:0E16A3",
+       "world": "Deadlands"
+      }
+     ]
+    },
+    {
+     "alias": "NPCDremoraBoss02",
+     "npc": "Valkyn Methats",
+     "npcId": "ccbgssse067-daedinv.esm:0392FB",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:04867D",
+       "cell": "ccbgssse067-daedinv.esm:0E16A3",
+       "world": "Deadlands"
+      }
+     ]
+    },
+    {
+     "alias": "NPCAyleidLichBoss",
+     "npc": "Norion the Undying",
+     "npcId": "ccbgssse067-daedinv.esm:000B73",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:0012B8",
+       "cell": "Update.esm:0030E4",
+       "cellName": "Rielle Crypt",
+       "location": "Rielle"
+      }
+     ]
+    },
+    {
+     "alias": "NPCWightGuardian01",
+     "npc": "Wight Lord",
+     "npcId": "ccbgssse067-daedinv.esm:1B2CC8",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:0762BC",
+       "cell": "Update.esm:0030E5",
+       "cellName": "Rielle",
+       "location": "Rielle"
+      }
+     ]
+    },
+    {
+     "alias": "NPCWightGuardian02",
+     "npc": "Wight Lord",
+     "npcId": "ccbgssse067-daedinv.esm:1B2CC7",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:0762C3",
+       "cell": "Update.esm:0030E5",
+       "cellName": "Rielle",
+       "location": "Rielle"
+      }
+     ]
+    },
+    {
+     "alias": "NPCWightGuardian03",
+     "npc": "Wight Lord",
+     "npcId": "ccbgssse067-daedinv.esm:1B2CC7",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:057A43",
+       "cell": "Update.esm:0030E4",
+       "cellName": "Rielle Crypt",
+       "location": "Rielle"
+      }
+     ]
+    },
+    {
+     "alias": "NPCWightGuardian04",
+     "npc": "Wight Lord",
+     "npcId": "ccbgssse067-daedinv.esm:1B2CC9",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:0762C4",
+       "cell": "Update.esm:0030E4",
+       "cellName": "Rielle Crypt",
+       "location": "Rielle"
+      }
+     ]
+    },
+    {
+     "alias": "NPCVigilantPrisoner01",
+     "npc": "ccBGSSSE067_NPCVigilantOfStendarrPrisoner01",
+     "npcId": "ccbgssse067-daedinv.esm:0A94E6",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:0A94EA",
+       "cell": "ccbgssse067-daedinv.esm:0E16A3",
+       "world": "Deadlands"
+      }
+     ]
+    },
+    {
+     "alias": "NPCVigilantPrisoner02",
+     "npc": "ccBGSSSE067_NPCVigilantOfStendarrPrisoner01",
+     "npcId": "ccbgssse067-daedinv.esm:0A94E6",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:0A94EB",
+       "cell": "ccbgssse067-daedinv.esm:0E16A3",
+       "world": "Deadlands"
+      }
+     ]
+    },
+    {
+     "alias": "NPCVigilantPrisoner03",
+     "npc": "ccBGSSSE067_NPCVigilantOfStendarrPrisoner01",
+     "npcId": "ccbgssse067-daedinv.esm:0A94E6",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:0A94EC",
+       "cell": "ccbgssse067-daedinv.esm:0E16A3",
+       "world": "Deadlands"
+      }
+     ]
+    },
+    {
+     "alias": "NPCMythicDawnDeadShardHolder01",
+     "npc": "Mythic Dawn Explorer",
+     "npcId": "ccbgssse067-daedinv.esm:06BFB8",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:15C398",
+       "cell": "Update.esm:0030E5",
+       "cellName": "Rielle",
+       "location": "Rielle"
+      }
+     ]
+    },
+    {
+     "alias": "Vigilant01",
+     "npc": "ccBGSSSE067_LvlVigilantOfStendarr",
+     "npcId": "ccbgssse067-daedinv.esm:00B660",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:0856AA",
+       "cell": "Update.esm:0030E5",
+       "cellName": "Rielle",
+       "location": "Rielle"
+      }
+     ]
+    },
+    {
+     "alias": "Vigilant02",
+     "npc": "ccBGSSSE067_LvlVigilantOfStendarr",
+     "npcId": "ccbgssse067-daedinv.esm:00B660",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:00B661",
+       "cell": "Update.esm:0030E2",
+       "cellName": "Red Scar Cavern",
+       "location": "Red Scar Cavern"
+      }
+     ]
+    },
+    {
+     "alias": "Vigilant03",
+     "npc": "ccBGSSSE067_LvlVigilantOfStendarr",
+     "npcId": "ccbgssse067-daedinv.esm:00B660",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:00B663",
+       "cell": "Update.esm:0030E2",
+       "cellName": "Red Scar Cavern",
+       "location": "Red Scar Cavern"
+      }
+     ]
+    },
+    {
+     "alias": "Vigilant04",
+     "npc": "ccBGSSSE067_LvlVigilantOfStendarr",
+     "npcId": "ccbgssse067-daedinv.esm:00B660",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:00B664",
+       "cell": "Update.esm:0030E2",
+       "cellName": "Red Scar Cavern",
+       "location": "Red Scar Cavern"
+      }
+     ]
+    },
+    {
+     "alias": "Vigilant05",
+     "npc": "ccBGSSSE067_LvlVigilantOfStendarr",
+     "npcId": "ccbgssse067-daedinv.esm:00B660",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:00B665",
+       "cell": "Update.esm:0030E2",
+       "cellName": "Red Scar Cavern",
+       "location": "Red Scar Cavern"
+      }
+     ]
+    },
+    {
+     "alias": "Vigilant06",
+     "npc": "ccBGSSSE067_LvlVigilantOfStendarr",
+     "npcId": "ccbgssse067-daedinv.esm:00B660",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:00B669",
+       "cell": "Update.esm:0030E2",
+       "cellName": "Red Scar Cavern",
+       "location": "Red Scar Cavern"
+      }
+     ]
+    },
+    {
+     "alias": "Vigilant07",
+     "npc": "ccBGSSSE067_LvlVigilantOfStendarr",
+     "npcId": "ccbgssse067-daedinv.esm:00B660",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:00B66B",
+       "cell": "ccbgssse067-daedinv.esm:08FBF7",
+       "cellName": "Mythic Dawn Temple",
+       "location": "Red Scar Cavern"
+      }
+     ]
+    },
+    {
+     "alias": "Vigilant08",
+     "npc": "ccBGSSSE067_LvlVigilantOfStendarr",
+     "npcId": "ccbgssse067-daedinv.esm:00B660",
+     "where": [
+      {
+       "ref": "ccbgssse067-daedinv.esm:00B66C",
+       "cell": "ccbgssse067-daedinv.esm:08FBF7",
+       "cellName": "Mythic Dawn Temple",
+       "location": "Red Scar Cavern"
+      }
+     ]
+    },
     {
      "alias": "NoteFromStrangerContainerAlias",
      "npc": "REQ_Corpse_Vigilant_NordMale2",
@@ -7207,6 +10473,536 @@
     "text": "Watch for any news",
     "filled": "Watch for any news",
     "namesWhoOrWhere": false
+   },
+   "namedGiver": {
+    "npc": "ccbgssse067-daedinv.esm:039270",
+    "name": "Vonos",
+    "how": "named",
+    "where": [
+     {
+      "ref": "ccbgssse067-daedinv.esm:039271",
+      "cell": "ccbgssse067-daedinv.esm:08FBF7",
+      "cellName": "Mythic Dawn Temple",
+      "location": "Red Scar Cavern"
+     }
+    ]
+   },
+   "rewards": [
+    {
+     "id": "ccbgssse067-daedinv.esm:000B64",
+     "name": "Spell Tome: Conjure Daedric Horse",
+     "type": "book",
+     "via": "alias ObjectSpellbookDaedricHorse",
+     "kind": "alias"
+    },
+    {
+     "id": "ccbgssse067-daedinv.esm:147D93",
+     "name": "Spell Tome: Conjure Ayleid Lich",
+     "type": "book",
+     "via": "ccBGSSSE067_Quest_0506BFC1.ccBGSSSE067_ConjureAyleidLichTome",
+     "kind": "quest script",
+     "script": "ccBGSSSE067_Quest_0506BFC1"
+    },
+    {
+     "id": "ccbgssse067-daedinv.esm:000E84",
+     "name": "Mythic Dawn Faction",
+     "type": "spell",
+     "via": "ccBGSSSE067_Quest_0506BFC1.ccBGSSSE067_AbFactionMythicDawnSneak",
+     "kind": "quest script",
+     "script": "ccBGSSSE067_Quest_0506BFC1"
+    }
+   ]
+  },
+  {
+   "id": "ccbgssse067-daedinv.esm:19952A",
+   "edid": "ccBGSSSE067_Quest2",
+   "name": "The Consequences",
+   "people": [],
+   "firstObjective": {
+    "text": "Retrieve Vonos' Journal",
+    "filled": "Retrieve Vonos' Journal",
+    "namesWhoOrWhere": true
+   }
+  },
+  {
+   "id": "ccbgssse068-bloodfall.esl:00080D",
+   "edid": "ccBGSSSE068_Quest",
+   "name": "Blood in the Water",
+   "people": [
+    {
+     "alias": "Bandit01",
+     "npc": "REQ_Bandit_Generic_1H",
+     "npcId": "Skyrim.esm:03DECB",
+     "where": [
+      {
+       "ref": "Skyrim.esm:01AEA0",
+       "cell": "Skyrim.esm:015251",
+       "cellName": "Lost Knife Cave",
+       "location": "Lost Knife Hideout"
+      }
+     ]
+    },
+    {
+     "alias": "Bandit02",
+     "npc": "REQ_Bandit_Generic_1H",
+     "npcId": "Skyrim.esm:03DECB",
+     "where": [
+      {
+       "ref": "Skyrim.esm:049DCA",
+       "cell": "Skyrim.esm:015251",
+       "cellName": "Lost Knife Cave",
+       "location": "Lost Knife Hideout"
+      }
+     ]
+    },
+    {
+     "alias": "Bandit03",
+     "npc": "REQ_Bandit_Generic_1H",
+     "npcId": "Skyrim.esm:03DECB",
+     "where": [
+      {
+       "ref": "Skyrim.esm:0592EA",
+       "cell": "Skyrim.esm:015251",
+       "cellName": "Lost Knife Cave",
+       "location": "Lost Knife Hideout"
+      }
+     ]
+    },
+    {
+     "alias": "Bandit04",
+     "npc": "REQ_Bandit_Generic_Melee",
+     "npcId": "Skyrim.esm:01E79C",
+     "where": [
+      {
+       "ref": "Skyrim.esm:01AEA1",
+       "cell": "Skyrim.esm:015251",
+       "cellName": "Lost Knife Cave",
+       "location": "Lost Knife Hideout"
+      }
+     ]
+    },
+    {
+     "alias": "Bandit05",
+     "npc": "REQ_Bandit_Generic_Melee",
+     "npcId": "Skyrim.esm:01E79C",
+     "where": [
+      {
+       "ref": "Skyrim.esm:01AEA2",
+       "cell": "Skyrim.esm:015251",
+       "cellName": "Lost Knife Cave",
+       "location": "Lost Knife Hideout"
+      }
+     ]
+    },
+    {
+     "alias": "Bandit06",
+     "npc": "REQ_Bandit_Generic_Melee",
+     "npcId": "Skyrim.esm:01E79C",
+     "where": [
+      {
+       "ref": "Skyrim.esm:01CE7A",
+       "cell": "Skyrim.esm:015251",
+       "cellName": "Lost Knife Cave",
+       "location": "Lost Knife Hideout"
+      }
+     ]
+    },
+    {
+     "alias": "Bandit07",
+     "npc": "REQ_Bandit_Generic_Missile",
+     "npcId": "Skyrim.esm:01E79E",
+     "where": [
+      {
+       "ref": "Skyrim.esm:01AEA3",
+       "cell": "Skyrim.esm:015251",
+       "cellName": "Lost Knife Cave",
+       "location": "Lost Knife Hideout"
+      }
+     ]
+    },
+    {
+     "alias": "Bandit08",
+     "npc": "REQ_Bandit_Generic_Missile",
+     "npcId": "Skyrim.esm:01E79E",
+     "where": [
+      {
+       "ref": "Skyrim.esm:01CE77",
+       "cell": "Skyrim.esm:015251",
+       "cellName": "Lost Knife Cave",
+       "location": "Lost Knife Hideout"
+      }
+     ]
+    },
+    {
+     "alias": "Bandit09",
+     "npc": "REQ_Bandit_Generic_Missile",
+     "npcId": "Skyrim.esm:01E79E",
+     "where": [
+      {
+       "ref": "Skyrim.esm:0592FC",
+       "cell": "Skyrim.esm:015251",
+       "cellName": "Lost Knife Cave",
+       "location": "Lost Knife Hideout"
+      }
+     ]
+    },
+    {
+     "alias": "Bandit10",
+     "npc": "REQ_Bandit_Generic_1H",
+     "npcId": "Skyrim.esm:03DECB",
+     "where": [
+      {
+       "ref": "Skyrim.esm:01AE9D",
+       "cell": "Skyrim.esm:01A337",
+       "cellName": "Lost Knife Hideout",
+       "location": "Lost Knife Hideout"
+      }
+     ]
+    },
+    {
+     "alias": "Bandit11",
+     "npc": "REQ_Bandit_Generic_1H",
+     "npcId": "Skyrim.esm:03DECB",
+     "where": [
+      {
+       "ref": "Skyrim.esm:01C7C0",
+       "cell": "Skyrim.esm:01A337",
+       "cellName": "Lost Knife Hideout",
+       "location": "Lost Knife Hideout"
+      }
+     ]
+    },
+    {
+     "alias": "Bandit12",
+     "npc": "REQ_Bandit_Generic_1H",
+     "npcId": "Skyrim.esm:03DECB",
+     "where": [
+      {
+       "ref": "Skyrim.esm:059309",
+       "cell": "Skyrim.esm:01A337",
+       "cellName": "Lost Knife Hideout",
+       "location": "Lost Knife Hideout"
+      }
+     ]
+    },
+    {
+     "alias": "Bandit13",
+     "npc": "REQ_Bandit_Generic_Melee",
+     "npcId": "Skyrim.esm:01E79C",
+     "where": [
+      {
+       "ref": "Skyrim.esm:01C7B8",
+       "cell": "Skyrim.esm:01A337",
+       "cellName": "Lost Knife Hideout",
+       "location": "Lost Knife Hideout"
+      }
+     ]
+    },
+    {
+     "alias": "Bandit14",
+     "npc": "REQ_Bandit_Generic_Missile",
+     "npcId": "Skyrim.esm:01E79E",
+     "where": [
+      {
+       "ref": "Skyrim.esm:01CD29",
+       "cell": "Skyrim.esm:01A337",
+       "cellName": "Lost Knife Hideout",
+       "location": "Lost Knife Hideout"
+      }
+     ]
+    },
+    {
+     "alias": "Bandit15",
+     "npc": "REQ_Bandit_Generic_Missile",
+     "npcId": "Skyrim.esm:01E79E",
+     "where": [
+      {
+       "ref": "Skyrim.esm:01AE9F",
+       "cell": "Skyrim.esm:01A337",
+       "cellName": "Lost Knife Hideout",
+       "location": "Lost Knife Hideout"
+      }
+     ]
+    },
+    {
+     "alias": "Bandit16",
+     "npc": "REQ_Bandit_Generic_Missile",
+     "npcId": "Skyrim.esm:01E79E",
+     "where": [
+      {
+       "ref": "Skyrim.esm:01AE9C",
+       "cell": "Skyrim.esm:01A337",
+       "cellName": "Lost Knife Hideout",
+       "location": "Lost Knife Hideout"
+      }
+     ]
+    },
+    {
+     "alias": "Bandit17",
+     "npc": "REQ_Bandit_Generic_Missile",
+     "npcId": "Skyrim.esm:01E79E",
+     "where": [
+      {
+       "ref": "Skyrim.esm:01C7B2",
+       "cell": "Skyrim.esm:01A337",
+       "cellName": "Lost Knife Hideout",
+       "location": "Lost Knife Hideout"
+      }
+     ]
+    },
+    {
+     "alias": "Bandit18",
+     "npc": "Halvar the Drunk",
+     "npcId": "Skyrim.esm:01C902",
+     "where": [
+      {
+       "ref": "Skyrim.esm:01AE9B",
+       "cell": "Skyrim.esm:01A337",
+       "cellName": "Lost Knife Hideout",
+       "location": "Lost Knife Hideout"
+      }
+     ]
+    },
+    {
+     "alias": "BanditBoss",
+     "npc": "Bandit Chief",
+     "npcId": "ccbgssse068-bloodfall.esl:000805",
+     "where": [
+      {
+       "ref": "ccbgssse068-bloodfall.esl:000807",
+       "cell": "Skyrim.esm:01A337",
+       "cellName": "Lost Knife Hideout",
+       "location": "Lost Knife Hideout"
+      }
+     ]
+    },
+    {
+     "alias": "DeadOrc",
+     "npc": "Shogarz gro-Batul",
+     "npcId": "ccbgssse068-bloodfall.esl:000804",
+     "where": [
+      {
+       "ref": "ccbgssse068-bloodfall.esl:000808",
+       "cell": "Skyrim.esm:01A337",
+       "cellName": "Lost Knife Hideout",
+       "location": "Lost Knife Hideout"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Ask an innkeeper for work",
+    "filled": "Ask an innkeeper for work",
+    "namesWhoOrWhere": false
+   },
+   "rewards": [
+    {
+     "id": "ccbgssse068-bloodfall.esl:000803",
+     "name": "Headman's Cleaver",
+     "type": "weapon",
+     "via": "alias BloodfallBlade",
+     "kind": "alias"
+    }
+   ]
+  },
+  {
+   "id": "ccbgssse069-contest.esl:000805",
+   "edid": "ccBGSSSE069_Quest",
+   "name": "Caught in a Web",
+   "people": [
+    {
+     "alias": "OldSpider",
+     "npc": "EncFrostbiteSpiderGiantAmbush",
+     "npcId": "Skyrim.esm:02A1DC",
+     "where": [
+      {
+       "ref": "Skyrim.esm:02816A",
+       "cell": "Skyrim.esm:02D5D1",
+       "cellName": "Cronvangr Broodlair",
+       "location": "Cronvangr Hall"
+      }
+     ]
+    },
+    {
+     "alias": "WebMother",
+     "npc": "Web Mother",
+     "npcId": "ccbgssse069-contest.esl:000802",
+     "where": [
+      {
+       "ref": "ccbgssse069-contest.esl:000806",
+       "cell": "Skyrim.esm:02D5D1",
+       "cellName": "Cronvangr Broodlair",
+       "location": "Cronvangr Hall"
+      }
+     ]
+    },
+    {
+     "alias": "Holrik",
+     "npc": "Holrik Frost-Sword",
+     "npcId": "ccbgssse069-contest.esl:00080D",
+     "where": [
+      {
+       "ref": "ccbgssse069-contest.esl:000811",
+       "cell": "Skyrim.esm:02D5D1",
+       "cellName": "Cronvangr Broodlair",
+       "location": "Cronvangr Hall"
+      }
+     ]
+    },
+    {
+     "alias": "Grenwulf",
+     "npc": "Grenwulf the Brawler",
+     "npcId": "ccbgssse069-contest.esl:00080E",
+     "where": [
+      {
+       "ref": "ccbgssse069-contest.esl:000810",
+       "cell": "Skyrim.esm:02D5D1",
+       "cellName": "Cronvangr Broodlair",
+       "location": "Cronvangr Hall"
+      }
+     ]
+    }
+   ],
+   "giver": {
+    "npc": "ccbgssse069-contest.esl:00080E",
+    "stageBelow": 41,
+    "info": "ccbgssse069-contest.esl:00081A",
+    "named": "GetIsID",
+    "others": [
+     {
+      "npc": "ccbgssse069-contest.esl:00080D",
+      "stageBelow": 41,
+      "name": "Holrik Frost-Sword"
+     }
+    ],
+    "name": "Grenwulf the Brawler",
+    "where": [
+     {
+      "ref": "ccbgssse069-contest.esl:000810",
+      "cell": "Skyrim.esm:02D5D1",
+      "cellName": "Cronvangr Broodlair",
+      "location": "Cronvangr Hall"
+     }
+    ]
+   },
+   "firstObjective": {
+    "text": "Investigate Candlehearth Hall",
+    "filled": "Investigate Candlehearth Hall",
+    "namesWhoOrWhere": true
+   },
+   "namedGiver": {
+    "npc": "ccbgssse069-contest.esl:000802",
+    "name": "Web Mother",
+    "how": "named",
+    "where": [
+     {
+      "ref": "ccbgssse069-contest.esl:000806",
+      "cell": "Skyrim.esm:02D5D1",
+      "cellName": "Cronvangr Broodlair",
+      "location": "Cronvangr Hall"
+     }
+    ]
+   },
+   "rewards": [
+    {
+     "id": "ccbgssse069-contest.esl:000813",
+     "name": "Fists of Randagulf",
+     "type": "armour",
+     "via": "ccBGSSSE069_Quest_05000805.ccBGSSSE068_FistsofRandagulf",
+     "kind": "quest script",
+     "script": "ccBGSSSE069_Quest_05000805"
+    },
+    {
+     "id": "ccbgssse069-contest.esl:000815",
+     "name": "Ice Blade of the Monarch",
+     "type": "weapon",
+     "via": "ccBGSSSE069_Quest_05000805.ccBGSSSE068_IceBladeMonarch",
+     "kind": "quest script",
+     "script": "ccBGSSSE069_Quest_05000805"
+    }
+   ]
+  },
+  {
+   "id": "cceejsse002-tower.esl:000FF3",
+   "edid": "ccEEJSSE002_MageTowerQuest",
+   "name": "Myrwatch",
+   "people": [
+    {
+     "alias": "Mage",
+     "npc": "Elianora",
+     "npcId": "cceejsse002-tower.esl:000FE0",
+     "where": [
+      {
+       "ref": "cceejsse002-tower.esl:000FE7",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "DarkElf",
+     "npc": "Hans",
+     "npcId": "cceejsse002-tower.esl:000FDF",
+     "where": [
+      {
+       "ref": "cceejsse002-tower.esl:000FE3",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Read Hans's journal",
+    "filled": "Read Hans's journal",
+    "namesWhoOrWhere": true
+   },
+   "namedGiver": {
+    "npc": "cceejsse002-tower.esl:000FDF",
+    "name": "Hans",
+    "how": "named",
+    "where": [
+     {
+      "ref": "cceejsse002-tower.esl:000FE3",
+      "cell": "Skyrim.esm:000D74",
+      "world": "Skyrim"
+     }
+    ]
+   },
+   "rewards": [
+    {
+     "id": "cceejsse002-tower.esl:000FDC",
+     "name": "Summon Tower Ghost",
+     "type": "spell",
+     "via": "SSE_QF_ccEEJSSE002_MageTowerQ_05000FF3.ccEEJSSE002_SummonGhost",
+     "kind": "quest script",
+     "script": "SSE_QF_ccEEJSSE002_MageTowerQ_05000FF3"
+    }
+   ]
+  },
+  {
+   "id": "cceejsse003-hollow.esl:00082A",
+   "edid": "ccEEJSSE003_HouseQuest",
+   "name": "Shadowfoot Sanctum",
+   "people": [
+    {
+     "alias": "Vekel",
+     "npc": "Vekel the Man",
+     "npcId": "Skyrim.esm:013380",
+     "where": [
+      {
+       "ref": "Skyrim.esm:019DF9",
+       "cell": "Skyrim.esm:016BCF",
+       "cellName": "The Ragged Flagon",
+       "location": "Riften"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Purchase a home in the Riften Ratways",
+    "filled": "Purchase a home in the Riften Ratways",
+    "namesWhoOrWhere": true
    }
   },
   {
@@ -7214,6 +11010,18 @@
    "edid": "ccEEJSSE004_Quest",
    "name": "Hendraheim",
    "people": [
+    {
+     "alias": "Warrior",
+     "npc": "Eydvina Shield-Hearth",
+     "npcId": "cceejsse004-hall.esl:000C55",
+     "where": [
+      {
+       "ref": "cceejsse004-hall.esl:000C88",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
     {
      "alias": "Raerek",
      "npc": "Raerek",
@@ -7242,24 +11050,28 @@
     }
    ],
    "giver": {
-    "npc": "Skyrim.esm:0133B3",
-    "stageBelow": 81,
-    "info": "Hendraheim - Tweaks and Enhancements.esp:00084C",
-    "named": "GetIsID",
+    "npc": "cceejsse004-hall.esl:000C55",
+    "stageBelow": 40,
+    "info": "cceejsse004-hall.esl:000C54",
+    "named": "alias Warrior",
     "others": [
+     {
+      "npc": "Skyrim.esm:0133B3",
+      "stageBelow": 81,
+      "name": "Reburrus Quintilius"
+     },
      {
       "npc": "Skyrim.esm:0133B2",
       "stageBelow": 81,
       "name": "Raerek"
      }
     ],
-    "name": "Reburrus Quintilius",
+    "name": "Eydvina Shield-Hearth",
     "where": [
      {
-      "ref": "Skyrim.esm:0198E4",
-      "cell": "Skyrim.esm:016E00",
-      "cellName": "The Treasury House",
-      "location": "Markarth"
+      "ref": "cceejsse004-hall.esl:000C88",
+      "cell": "Skyrim.esm:000D74",
+      "world": "Skyrim"
      }
     ]
    },
@@ -7269,15 +11081,14 @@
     "namesWhoOrWhere": false
    },
    "namedGiver": {
-    "npc": "Skyrim.esm:0133B3",
-    "name": "Reburrus Quintilius",
+    "npc": "cceejsse004-hall.esl:000C55",
+    "name": "Eydvina Shield-Hearth",
     "how": "dialogue",
     "where": [
      {
-      "ref": "Skyrim.esm:0198E4",
-      "cell": "Skyrim.esm:016E00",
-      "cellName": "The Treasury House",
-      "location": "Markarth"
+      "ref": "cceejsse004-hall.esl:000C88",
+      "cell": "Skyrim.esm:000D74",
+      "world": "Skyrim"
      }
     ]
    },
@@ -7334,11 +11145,274 @@
    "id": "cceejsse005-cave.esm:0B7AED",
    "edid": "ccEEJSSE005_Quest",
    "name": "Guests for Dinner",
-   "people": [],
+   "people": [
+    {
+     "alias": "Steward",
+     "npc": "Waiter",
+     "npcId": "cceejsse005-cave.esm:0B7B27",
+     "where": [
+      {
+       "ref": "cceejsse005-cave.esm:0B7B28",
+       "cell": "Update.esm:002FD1",
+       "cellName": "Bloodchill Cavern",
+       "location": "Bloodchill Cavern Location"
+      }
+     ]
+    },
+    {
+     "alias": "DawnguardReinforce01",
+     "npc": "DLC1LvlDawnguardMelee1H",
+     "npcId": "Dawnguard.esm:014282",
+     "where": [
+      {
+       "ref": "cceejsse005-cave.esm:0B7B20",
+       "cell": "Update.esm:002FD1",
+       "cellName": "Bloodchill Cavern",
+       "location": "Bloodchill Cavern Location"
+      }
+     ]
+    },
+    {
+     "alias": "DawnguardReinforce02",
+     "npc": "DLC1LvlDawnguardMelee1H",
+     "npcId": "Dawnguard.esm:014282",
+     "where": [
+      {
+       "ref": "cceejsse005-cave.esm:0B7B22",
+       "cell": "Update.esm:002FD1",
+       "cellName": "Bloodchill Cavern",
+       "location": "Bloodchill Cavern Location"
+      }
+     ]
+    },
+    {
+     "alias": "DawnguardReinforce03",
+     "npc": "DLC1LvlDawnguardMissile",
+     "npcId": "Dawnguard.esm:003261",
+     "where": [
+      {
+       "ref": "cceejsse005-cave.esm:0B7B21",
+       "cell": "Update.esm:002FD1",
+       "cellName": "Bloodchill Cavern",
+       "location": "Bloodchill Cavern Location"
+      }
+     ]
+    },
+    {
+     "alias": "Bard",
+     "npc": "Bard",
+     "npcId": "cceejsse005-cave.esm:0B7B36",
+     "where": [
+      {
+       "ref": "cceejsse005-cave.esm:0B7B37",
+       "cell": "Update.esm:002FD1",
+       "cellName": "Bloodchill Cavern",
+       "location": "Bloodchill Cavern Location"
+      }
+     ]
+    },
+    {
+     "alias": "Bard2",
+     "npc": "Bard",
+     "npcId": "cceejsse005-cave.esm:0D1095",
+     "where": [
+      {
+       "ref": "cceejsse005-cave.esm:0D1096",
+       "cell": "Update.esm:002FD1",
+       "cellName": "Bloodchill Cavern",
+       "location": "Bloodchill Cavern Location"
+      }
+     ]
+    },
+    {
+     "alias": "Noble01",
+     "npc": "Marina",
+     "npcId": "cceejsse005-cave.esm:0B7B10",
+     "where": [
+      {
+       "ref": "cceejsse005-cave.esm:0B7B12",
+       "cell": "Update.esm:002FD1",
+       "cellName": "Bloodchill Cavern",
+       "location": "Bloodchill Cavern Location"
+      }
+     ]
+    },
+    {
+     "alias": "Noble02",
+     "npc": "Leyathil",
+     "npcId": "cceejsse005-cave.esm:0B7B19",
+     "where": [
+      {
+       "ref": "cceejsse005-cave.esm:0B7B1F",
+       "cell": "Update.esm:002FD1",
+       "cellName": "Bloodchill Cavern",
+       "location": "Bloodchill Cavern Location"
+      }
+     ]
+    },
+    {
+     "alias": "Noble03",
+     "npc": "Igrit",
+     "npcId": "cceejsse005-cave.esm:0B7B14",
+     "where": [
+      {
+       "ref": "cceejsse005-cave.esm:0B7B15",
+       "cell": "Update.esm:002FD1",
+       "cellName": "Bloodchill Cavern",
+       "location": "Bloodchill Cavern Location"
+      }
+     ]
+    },
+    {
+     "alias": "Noble04",
+     "npc": "Galtius",
+     "npcId": "cceejsse005-cave.esm:0B7B0F",
+     "where": [
+      {
+       "ref": "cceejsse005-cave.esm:0B7B11",
+       "cell": "Update.esm:002FD1",
+       "cellName": "Bloodchill Cavern",
+       "location": "Bloodchill Cavern Location"
+      }
+     ]
+    },
+    {
+     "alias": "Noble05",
+     "npc": "Verin",
+     "npcId": "cceejsse005-cave.esm:0B7B18",
+     "where": [
+      {
+       "ref": "cceejsse005-cave.esm:0B7B1C",
+       "cell": "Update.esm:002FD1",
+       "cellName": "Bloodchill Cavern",
+       "location": "Bloodchill Cavern Location"
+      }
+     ]
+    },
+    {
+     "alias": "Noble06",
+     "npc": "Durian",
+     "npcId": "cceejsse005-cave.esm:0B7B1A",
+     "where": [
+      {
+       "ref": "cceejsse005-cave.esm:0B7B1B",
+       "cell": "Update.esm:002FD1",
+       "cellName": "Bloodchill Cavern",
+       "location": "Bloodchill Cavern Location"
+      }
+     ]
+    },
+    {
+     "alias": "Vampire03",
+     "npc": "DLC1LvlGargoyle_Ambush",
+     "npcId": "Dawnguard.esm:003DCF",
+     "where": [
+      {
+       "ref": "cceejsse005-cave.esm:0BCC76",
+       "cell": "Update.esm:002FD1",
+       "cellName": "Bloodchill Cavern",
+       "location": "Bloodchill Cavern Location"
+      }
+     ]
+    },
+    {
+     "alias": "Vampire02",
+     "npc": "Bard",
+     "npcId": "cceejsse005-cave.esm:0D1095",
+     "where": [
+      {
+       "ref": "cceejsse005-cave.esm:0D1096",
+       "cell": "Update.esm:002FD1",
+       "cellName": "Bloodchill Cavern",
+       "location": "Bloodchill Cavern Location"
+      }
+     ]
+    },
+    {
+     "alias": "Vampire04",
+     "npc": "Waiter",
+     "npcId": "cceejsse005-cave.esm:0B7B27",
+     "where": [
+      {
+       "ref": "cceejsse005-cave.esm:0B7B28",
+       "cell": "Update.esm:002FD1",
+       "cellName": "Bloodchill Cavern",
+       "location": "Bloodchill Cavern Location"
+      }
+     ]
+    },
+    {
+     "alias": "Vampire05",
+     "npc": "DLC1LvlGargoyle_Ambush",
+     "npcId": "Dawnguard.esm:003DCF",
+     "where": [
+      {
+       "ref": "cceejsse005-cave.esm:0BCC72",
+       "cell": "Update.esm:002FD1",
+       "cellName": "Bloodchill Cavern",
+       "location": "Bloodchill Cavern Location"
+      }
+     ]
+    },
+    {
+     "alias": "Vampire06",
+     "npc": "Bard",
+     "npcId": "cceejsse005-cave.esm:0B7B36",
+     "where": [
+      {
+       "ref": "cceejsse005-cave.esm:0B7B37",
+       "cell": "Update.esm:002FD1",
+       "cellName": "Bloodchill Cavern",
+       "location": "Bloodchill Cavern Location"
+      }
+     ]
+    },
+    {
+     "alias": "Thrall",
+     "npc": "Parven",
+     "npcId": "cceejsse005-cave.esm:0EA5DB",
+     "where": [
+      {
+       "ref": "cceejsse005-cave.esm:0EA5DA",
+       "cell": "Update.esm:002FD1",
+       "cellName": "Bloodchill Cavern",
+       "location": "Bloodchill Cavern Location"
+      }
+     ]
+    }
+   ],
+   "giver": {
+    "npc": "cceejsse005-cave.esm:0B7B27",
+    "stageBelow": 50,
+    "info": "cceejsse005-cave.esm:0BCC6A",
+    "named": "GetIsID",
+    "name": "Waiter",
+    "where": [
+     {
+      "ref": "cceejsse005-cave.esm:0B7B28",
+      "cell": "Update.esm:002FD1",
+      "cellName": "Bloodchill Cavern",
+      "location": "Bloodchill Cavern Location"
+     }
+    ]
+   },
    "firstObjective": {
     "text": "Await news from a courier",
     "filled": "Await news from a courier",
     "namesWhoOrWhere": false
+   },
+   "namedGiver": {
+    "npc": "cceejsse005-cave.esm:0B7B27",
+    "name": "Waiter",
+    "how": "dialogue",
+    "where": [
+     {
+      "ref": "cceejsse005-cave.esm:0B7B28",
+      "cell": "Update.esm:002FD1",
+      "cellName": "Bloodchill Cavern",
+      "location": "Bloodchill Cavern Location"
+     }
+    ]
    },
    "starts": [
     {
@@ -7348,10 +11422,50 @@
    ],
    "rewards": [
     {
+     "id": "cceejsse005-cave.esm:0B7AEC",
+     "name": "Dinner Invitation",
+     "type": "book",
+     "via": "ccEEJSSE005_Quest_050B7AED.ccEEJSSE005_Note01A",
+     "kind": "quest script",
+     "script": "ccEEJSSE005_Quest_050B7AED"
+    },
+    {
+     "id": "cceejsse005-cave.esm:0EA5D4",
+     "name": "Vampire's Seduction",
+     "type": "spell",
+     "via": "ccEEJSSE005_Quest_050B7AED.VampireCharm",
+     "kind": "quest script",
+     "script": "ccEEJSSE005_Quest_050B7AED"
+    },
+    {
+     "id": "cceejsse005-cave.esm:0B7B4C",
+     "name": "Dinner Menu",
+     "type": "book",
+     "via": "ccEEJSSE005_Quest_050B7AED.ccEEJSSE005_DinnerMenu02A",
+     "kind": "quest script",
+     "script": "ccEEJSSE005_Quest_050B7AED"
+    },
+    {
      "id": "Skyrim.esm:04A41B",
      "name": "FavorRewardGoldLarge",
      "type": "leveled list",
      "via": "ccEEJSSE005_Quest_050B7AED.FavorRewardGoldLarge",
+     "kind": "quest script",
+     "script": "ccEEJSSE005_Quest_050B7AED"
+    },
+    {
+     "id": "cceejsse005-cave.esm:0B7B52",
+     "name": "Dinner Menu",
+     "type": "book",
+     "via": "ccEEJSSE005_Quest_050B7AED.ccEEJSSE005_DinnerMenu02B",
+     "kind": "quest script",
+     "script": "ccEEJSSE005_Quest_050B7AED"
+    },
+    {
+     "id": "cceejsse005-cave.esm:0B7AEE",
+     "name": "Dinner Invitation",
+     "type": "book",
+     "via": "ccEEJSSE005_Quest_050B7AED.ccEEJSSE005_Note01B",
      "kind": "quest script",
      "script": "ccEEJSSE005_Quest_050B7AED"
     }
@@ -7361,7 +11475,68 @@
    "id": "ccffbsse001-imperialdragon.esl:00086B",
    "edid": "ccFFBSSE001_CorpseCheck",
    "name": "Corpse Check",
-   "people": []
+   "people": [
+    {
+     "alias": "Champion01",
+     "npc": "Stormcloak Champion",
+     "npcId": "ccffbsse001-imperialdragon.esl:000957",
+     "where": [
+      {
+       "ref": "ccffbsse001-imperialdragon.esl:000958",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "Champion05",
+     "npc": "Klija Wolf-Claw",
+     "npcId": "ccffbsse001-imperialdragon.esl:00095D",
+     "where": [
+      {
+       "ref": "ccffbsse001-imperialdragon.esl:00095E",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "Champion02",
+     "npc": "Stormcloak Champion",
+     "npcId": "ccffbsse001-imperialdragon.esl:00086C",
+     "where": [
+      {
+       "ref": "ccffbsse001-imperialdragon.esl:000882",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "Champion03",
+     "npc": "Imperial Champion",
+     "npcId": "ccffbsse001-imperialdragon.esl:00086A",
+     "where": [
+      {
+       "ref": "ccffbsse001-imperialdragon.esl:00088A",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "Champion04",
+     "npc": "Imperial Champion",
+     "npcId": "ccffbsse001-imperialdragon.esl:000956",
+     "where": [
+      {
+       "ref": "ccffbsse001-imperialdragon.esl:000959",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    }
+   ]
   },
   {
    "id": "ccffbsse001-imperialdragon.esl:000927",
@@ -7391,13 +11566,685 @@
        "world": "Solitude"
       }
      ]
+    },
+    {
+     "alias": "Klija",
+     "npc": "Klija Wolf-Claw",
+     "npcId": "ccffbsse001-imperialdragon.esl:00095C",
+     "where": [
+      {
+       "ref": "ccffbsse001-imperialdragon.esl:000883",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "CWSonsCaptain01",
+     "npc": "Klija Wolf-Claw",
+     "npcId": "ccffbsse001-imperialdragon.esl:00095D",
+     "where": [
+      {
+       "ref": "ccffbsse001-imperialdragon.esl:00095E",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "CWSonsCaptain02",
+     "npc": "Stormcloak Champion",
+     "npcId": "ccffbsse001-imperialdragon.esl:00086C",
+     "where": [
+      {
+       "ref": "ccffbsse001-imperialdragon.esl:000882",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "CWSonsBackupCaptain",
+     "npc": "Stormcloak Champion",
+     "npcId": "ccffbsse001-imperialdragon.esl:000957",
+     "where": [
+      {
+       "ref": "ccffbsse001-imperialdragon.esl:000958",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "CWSons01",
+     "npc": "ccFFBSSE001_CWSoldierSons01",
+     "npcId": "ccffbsse001-imperialdragon.esl:000871",
+     "where": [
+      {
+       "ref": "ccffbsse001-imperialdragon.esl:000889",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "CWSons02",
+     "npc": "ccFFBSSE001_CWSoldierSons02",
+     "npcId": "ccffbsse001-imperialdragon.esl:000874",
+     "where": [
+      {
+       "ref": "ccffbsse001-imperialdragon.esl:00087E",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "CWSons03",
+     "npc": "ccFFBSSE001_CWSoldierSons01",
+     "npcId": "ccffbsse001-imperialdragon.esl:000871",
+     "where": [
+      {
+       "ref": "ccffbsse001-imperialdragon.esl:000885",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "CWSons04",
+     "npc": "ccFFBSSE001_CWSoldierSonsUseWeaponArcher",
+     "npcId": "ccffbsse001-imperialdragon.esl:00086E",
+     "where": [
+      {
+       "ref": "ccffbsse001-imperialdragon.esl:000884",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "CWSons05",
+     "npc": "ccFFBSSE001_CWSoldierSons02",
+     "npcId": "ccffbsse001-imperialdragon.esl:000874",
+     "where": [
+      {
+       "ref": "ccffbsse001-imperialdragon.esl:000886",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "CWImperialCaptain",
+     "npc": "Imperial Champion",
+     "npcId": "ccffbsse001-imperialdragon.esl:00086A",
+     "where": [
+      {
+       "ref": "ccffbsse001-imperialdragon.esl:00088A",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "CWImperialBackupCaptain",
+     "npc": "Imperial Champion",
+     "npcId": "ccffbsse001-imperialdragon.esl:000956",
+     "where": [
+      {
+       "ref": "ccffbsse001-imperialdragon.esl:000959",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "CWImperial01",
+     "npc": "ccFFBSSE001_CWSoldierImperial01",
+     "npcId": "ccffbsse001-imperialdragon.esl:00086D",
+     "where": [
+      {
+       "ref": "ccffbsse001-imperialdragon.esl:000881",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "CWImperial02",
+     "npc": "ccFFBSSE001_CWSoldierImperial02",
+     "npcId": "ccffbsse001-imperialdragon.esl:000872",
+     "where": [
+      {
+       "ref": "ccffbsse001-imperialdragon.esl:00087F",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "CWImperial03",
+     "npc": "ccFFBSSE001_CWSoldierImperial03",
+     "npcId": "ccffbsse001-imperialdragon.esl:000873",
+     "where": [
+      {
+       "ref": "ccffbsse001-imperialdragon.esl:00088B",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "CWImperial04",
+     "npc": "ccFFBSSE001_CWSoldierImperial01",
+     "npcId": "ccffbsse001-imperialdragon.esl:00086D",
+     "where": [
+      {
+       "ref": "ccffbsse001-imperialdragon.esl:000880",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "CWImperial05",
+     "npc": "ccFFBSSE001_CWSoldierImperialUseWeaponArcher",
+     "npcId": "ccffbsse001-imperialdragon.esl:00086F",
+     "where": [
+      {
+       "ref": "ccffbsse001-imperialdragon.esl:000887",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
     }
    ],
+   "giver": {
+    "npc": "Skyrim.esm:084551",
+    "stageBelow": 121,
+    "info": "ccffbsse001-imperialdragon.esl:000891",
+    "named": "GetIsID",
+    "others": [
+     {
+      "npc": "Skyrim.esm:0844B1",
+      "stageBelow": 221,
+      "name": "Legate Adventus Caesennius"
+     }
+    ],
+    "name": "Captain Yrsarald Thrice-Pierced",
+    "where": [
+     {
+      "ref": "Skyrim.esm:077E08",
+      "cell": "Skyrim.esm:01691F",
+      "world": "Windhelm"
+     }
+    ]
+   },
    "firstObjective": {
     "text": "Head to a major hold and await news from a courier",
     "filled": "Head to a major hold and await news from a courier",
     "namesWhoOrWhere": false
+   },
+   "namedGiver": {
+    "npc": "Skyrim.esm:084551",
+    "name": "Captain Yrsarald Thrice-Pierced",
+    "how": "dialogue",
+    "where": [
+     {
+      "ref": "Skyrim.esm:077E08",
+      "cell": "Skyrim.esm:01691F",
+      "world": "Windhelm"
+     }
+    ]
    }
+  },
+  {
+   "id": "cckrtsse001_altar.esl:000A90",
+   "edid": "ccKRTSSE001_QuestFortune",
+   "name": "Fortunate Son",
+   "people": [
+    {
+     "alias": "Kleppr",
+     "npc": "Kleppr",
+     "npcId": "Skyrim.esm:0133A3",
+     "where": [
+      {
+       "ref": "Skyrim.esm:0198EC",
+       "cell": "Skyrim.esm:016DFE",
+       "cellName": "Silver-Blood Inn",
+       "location": "Markarth"
+      }
+     ]
+    },
+    {
+     "alias": "Frabbi",
+     "npc": "Frabbi",
+     "npcId": "Skyrim.esm:013398",
+     "where": [
+      {
+       "ref": "Skyrim.esm:0198ED",
+       "cell": "Skyrim.esm:016DFE",
+       "cellName": "Silver-Blood Inn",
+       "location": "Markarth"
+      }
+     ]
+    },
+    {
+     "alias": "Hreinn",
+     "npc": "Hreinn",
+     "npcId": "Skyrim.esm:01339D",
+     "where": [
+      {
+       "ref": "Skyrim.esm:0198EF",
+       "cell": "Skyrim.esm:016DFE",
+       "cellName": "Silver-Blood Inn",
+       "location": "Markarth"
+      }
+     ]
+    },
+    {
+     "alias": "Hroki",
+     "npc": "Hroki",
+     "npcId": "Skyrim.esm:01339E",
+     "where": [
+      {
+       "ref": "Skyrim.esm:0198EE",
+       "cell": "Skyrim.esm:016DFE",
+       "cellName": "Silver-Blood Inn",
+       "location": "Markarth"
+      }
+     ]
+    },
+    {
+     "alias": "Ernanthil",
+     "npc": "Ernanthil",
+     "npcId": "cckrtsse001_altar.esl:000AB9",
+     "where": [
+      {
+       "ref": "cckrtsse001_altar.esl:000AC2",
+       "cell": "Skyrim.esm:016D72",
+       "cellName": "The Warrens",
+       "location": "The Warrens"
+      }
+     ]
+    },
+    {
+     "alias": "Courier01",
+     "npc": "Courier",
+     "npcId": "cckrtsse001_altar.esl:000ABF",
+     "where": [
+      {
+       "ref": "cckrtsse001_altar.esl:000AC1",
+       "cell": "Skyrim.esm:016D72",
+       "cellName": "The Warrens",
+       "location": "The Warrens"
+      }
+     ]
+    },
+    {
+     "alias": "Courier02",
+     "npc": "Courier",
+     "npcId": "cckrtsse001_altar.esl:000ADE",
+     "where": [
+      {
+       "ref": "cckrtsse001_altar.esl:000FF1",
+       "cell": "Skyrim.esm:016D72",
+       "cellName": "The Warrens",
+       "location": "The Warrens"
+      }
+     ]
+    }
+   ],
+   "giver": {
+    "npc": "Skyrim.esm:01339D",
+    "stageBelow": 21,
+    "info": "cckrtsse001_altar.esl:000A77",
+    "named": "GetIsID",
+    "others": [
+     {
+      "npc": "Skyrim.esm:0133A3",
+      "stageBelow": 21,
+      "name": "Kleppr"
+     },
+     {
+      "npc": "Skyrim.esm:01339E",
+      "stageBelow": 21,
+      "name": "Hroki"
+     },
+     {
+      "npc": "Skyrim.esm:013398",
+      "stageBelow": 21,
+      "name": "Frabbi"
+     }
+    ],
+    "name": "Hreinn",
+    "where": [
+     {
+      "ref": "Skyrim.esm:0198EF",
+      "cell": "Skyrim.esm:016DFE",
+      "cellName": "Silver-Blood Inn",
+      "location": "Markarth"
+     }
+    ]
+   },
+   "firstObjective": {
+    "text": "(Optional) Mix a bottle of Spiked Sujamma at a cooking station",
+    "filled": "(Optional) Mix a bottle of Spiked Sujamma at a cooking station",
+    "namesWhoOrWhere": true
+   },
+   "namedGiver": {
+    "npc": "Skyrim.esm:01339D",
+    "name": "Hreinn",
+    "how": "dialogue",
+    "where": [
+     {
+      "ref": "Skyrim.esm:0198EF",
+      "cell": "Skyrim.esm:016DFE",
+      "cellName": "Silver-Blood Inn",
+      "location": "Markarth"
+     }
+    ]
+   },
+   "rewards": [
+    {
+     "id": "Skyrim.esm:01BE1B",
+     "name": "Boots",
+     "type": "armour",
+     "via": "alias FarmClothesBackup3",
+     "kind": "alias"
+    },
+    {
+     "id": "Skyrim.esm:0209A5",
+     "name": "Stitched Boots",
+     "type": "armour",
+     "via": "alias FarmClothesBackup2000",
+     "kind": "alias"
+    },
+    {
+     "id": "Skyrim.esm:00000F",
+     "name": "Septim",
+     "type": "gold",
+     "via": "alias Gold001",
+     "kind": "alias"
+    },
+    {
+     "id": "cckrtsse001_altar.esl:000F02",
+     "name": "On the Bittercup",
+     "type": "book",
+     "via": "ccKRTSSE001_QuestFortu_05000A90.ccKRTSSE001_BittercupNote02",
+     "kind": "quest script",
+     "script": "ccKRTSSE001_QuestFortu_05000A90"
+    },
+    {
+     "id": "cckrtsse001_altar.esl:000A92",
+     "name": "Courier Perk",
+     "type": "perk",
+     "via": "ccKRTSSE001_QuestFortu_05000A90.ccKRTSSE001_CourierPerk",
+     "kind": "quest script",
+     "script": "ccKRTSSE001_QuestFortu_05000A90"
+    },
+    {
+     "id": "cckrtsse001_altar.esl:000CC2",
+     "name": "Hidden Pickpocket Perk",
+     "type": "perk",
+     "via": "ccKRTSSE001_QuestFortu_05000A90.ccKRTSSE001_PickpocketEnhancerPerk",
+     "kind": "quest script",
+     "script": "ccKRTSSE001_QuestFortu_05000A90"
+    },
+    {
+     "id": "cckrtsse001_altar.esl:000805",
+     "name": "Rogue's Job Offer",
+     "type": "book",
+     "via": "ccKRTSSE001_QuestFortu_05000A90.ccKRTSSE001_QuestNote03",
+     "kind": "quest script",
+     "script": "ccKRTSSE001_QuestFortu_05000A90"
+    },
+    {
+     "id": "cckrtsse001_altar.esl:000804",
+     "name": "Rogue's Instructions",
+     "type": "book",
+     "via": "ccKRTSSE001_QuestFortu_05000A90.ccKRTSSE001_QuestNote04",
+     "kind": "quest script",
+     "script": "ccKRTSSE001_QuestFortu_05000A90"
+    },
+    {
+     "id": "cckrtsse001_altar.esl:000A6A",
+     "name": "Rogue's Instructions",
+     "type": "book",
+     "via": "ccKRTSSE001_QuestFortu_05000A90.ccKRTSSE001_QuestNote04fem",
+     "kind": "quest script",
+     "script": "ccKRTSSE001_QuestFortu_05000A90"
+    },
+    {
+     "id": "cckrtsse001_altar.esl:000A67",
+     "name": "Cuinanthil's Family Seal",
+     "type": "armour",
+     "via": "ccKRTSSE001_QuestFortu_05000A90.ccKRTSSE001_RingSeal",
+     "kind": "quest script",
+     "script": "ccKRTSSE001_QuestFortu_05000A90"
+    },
+    {
+     "id": "cckrtsse001_altar.esl:00080D",
+     "name": "Soup Perk",
+     "type": "perk",
+     "via": "ccKRTSSE001_QuestFortu_05000A90.ccKRTSSE001_SoupPerk",
+     "kind": "quest script",
+     "script": "ccKRTSSE001_QuestFortu_05000A90"
+    },
+    {
+     "id": "Skyrim.esm:01BE1A",
+     "name": "Clothes",
+     "type": "armour",
+     "via": "ccKRTSSE001_QuestFortu_05000A90.ClothesFarmClothes01",
+     "kind": "quest script",
+     "script": "ccKRTSSE001_QuestFortu_05000A90"
+    }
+   ]
+  },
+  {
+   "id": "cckrtsse001_altar.esl:000A5E",
+   "edid": "ccKRTSSE001_QuestPower",
+   "name": "The Pit",
+   "people": [
+    {
+     "alias": "Sabrecat01",
+     "npc": "LvlSabreCatAll",
+     "npcId": "Skyrim.esm:0FE2D6",
+     "where": [
+      {
+       "ref": "cckrtsse001_altar.esl:000853",
+       "cell": "Update.esm:002FD5",
+       "cellName": "The Pit",
+       "location": "The Pit"
+      }
+     ]
+    },
+    {
+     "alias": "Sabrecat02",
+     "npc": "LvlSabreCatAll",
+     "npcId": "Skyrim.esm:0FE2D6",
+     "where": [
+      {
+       "ref": "cckrtsse001_altar.esl:00082B",
+       "cell": "Update.esm:002FD5",
+       "cellName": "The Pit",
+       "location": "The Pit"
+      }
+     ]
+    },
+    {
+     "alias": "Orc",
+     "npc": "Pit Fighter",
+     "npcId": "cckrtsse001_altar.esl:000809",
+     "where": [
+      {
+       "ref": "cckrtsse001_altar.esl:000852",
+       "cell": "Update.esm:002FD5",
+       "cellName": "The Pit",
+       "location": "The Pit"
+      }
+     ]
+    },
+    {
+     "alias": "Wolf",
+     "npc": "Wolf",
+     "npcId": "Skyrim.esm:023ABE",
+     "where": [
+      {
+       "ref": "cckrtsse001_altar.esl:00085C",
+       "cell": "Update.esm:002FD5",
+       "cellName": "The Pit",
+       "location": "The Pit"
+      }
+     ]
+    },
+    {
+     "alias": "Champion",
+     "npc": "Neski Skull-Sabre",
+     "npcId": "cckrtsse001_altar.esl:000817",
+     "where": [
+      {
+       "ref": "cckrtsse001_altar.esl:00083F",
+       "cell": "Update.esm:002FD5",
+       "cellName": "The Pit",
+       "location": "The Pit"
+      }
+     ]
+    },
+    {
+     "alias": "BanditArcher01",
+     "npc": "Pit Bandit",
+     "npcId": "cckrtsse001_altar.esl:000C2B",
+     "where": [
+      {
+       "ref": "cckrtsse001_altar.esl:000844",
+       "cell": "Update.esm:002FD5",
+       "cellName": "The Pit",
+       "location": "The Pit"
+      }
+     ]
+    },
+    {
+     "alias": "BanditArcher02",
+     "npc": "Pit Bandit",
+     "npcId": "cckrtsse001_altar.esl:000C2B",
+     "where": [
+      {
+       "ref": "cckrtsse001_altar.esl:00082C",
+       "cell": "Update.esm:002FD5",
+       "cellName": "The Pit",
+       "location": "The Pit"
+      }
+     ]
+    },
+    {
+     "alias": "BanditArcher03",
+     "npc": "Pit Bandit",
+     "npcId": "cckrtsse001_altar.esl:000C2B",
+     "where": [
+      {
+       "ref": "cckrtsse001_altar.esl:000856",
+       "cell": "Update.esm:002FD5",
+       "cellName": "The Pit",
+       "location": "The Pit"
+      }
+     ]
+    },
+    {
+     "alias": "BanditArcher04",
+     "npc": "Pit Bandit",
+     "npcId": "cckrtsse001_altar.esl:000C2B",
+     "where": [
+      {
+       "ref": "cckrtsse001_altar.esl:00082F",
+       "cell": "Update.esm:002FD5",
+       "cellName": "The Pit",
+       "location": "The Pit"
+      }
+     ]
+    },
+    {
+     "alias": "BanditArcher05",
+     "npc": "Pit Bandit",
+     "npcId": "cckrtsse001_altar.esl:000C2B",
+     "where": [
+      {
+       "ref": "cckrtsse001_altar.esl:00083C",
+       "cell": "Update.esm:002FD5",
+       "cellName": "The Pit",
+       "location": "The Pit"
+      }
+     ]
+    },
+    {
+     "alias": "BanditMelle",
+     "npc": "REQ_Bandit_Generic_Boss",
+     "npcId": "Skyrim.esm:03DF17",
+     "where": [
+      {
+       "ref": "cckrtsse001_altar.esl:00091B",
+       "cell": "Update.esm:002FD4",
+       "cellName": "Watchtower Barracks",
+       "location": "The Pit"
+      }
+     ]
+    },
+    {
+     "alias": "ArrowShooter01",
+     "npc": "REQ_Bandit_Generic_Missile",
+     "npcId": "Skyrim.esm:01E79E",
+     "where": [
+      {
+       "ref": "cckrtsse001_altar.esl:000D0A",
+       "cell": "Update.esm:002FD4",
+       "cellName": "Watchtower Barracks",
+       "location": "The Pit"
+      }
+     ]
+    },
+    {
+     "alias": "ArrowShooter02",
+     "npc": "REQ_Bandit_Generic_Missile",
+     "npcId": "Skyrim.esm:01E79E",
+     "where": [
+      {
+       "ref": "cckrtsse001_altar.esl:000D0D",
+       "cell": "Update.esm:002FD4",
+       "cellName": "Watchtower Barracks",
+       "location": "The Pit"
+      }
+     ]
+    },
+    {
+     "alias": "Drummer",
+     "npc": "Pit Bandit",
+     "npcId": "cckrtsse001_altar.esl:000985",
+     "where": [
+      {
+       "ref": "cckrtsse001_altar.esl:000833",
+       "cell": "Update.esm:002FD5",
+       "cellName": "The Pit",
+       "location": "The Pit"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Exit the dungeon",
+    "filled": "Exit the dungeon",
+    "namesWhoOrWhere": false
+   },
+   "rewards": [
+    {
+     "id": "cckrtsse001_altar.esl:000A0E",
+     "name": "No Pickpocket Perk",
+     "type": "perk",
+     "via": "ccKRTSSE001_QuestPower_05000A5E.ccKRTSSE001_PickpocketBlockerPerk",
+     "kind": "quest script",
+     "script": "ccKRTSSE001_QuestPower_05000A5E"
+    }
+   ]
   },
   {
    "id": "cckrtsse001_altar.esl:000D63",
@@ -7558,6 +12405,18 @@
      ]
     },
     {
+     "alias": "FerrymanBackupTo",
+     "npc": "Ysleif",
+     "npcId": "cckrtsse001_altar.esl:000FD1",
+     "where": [
+      {
+       "ref": "cckrtsse001_altar.esl:000FD7",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
      "alias": "FerrymanBackupFrom",
      "npc": "Ysleif",
      "npcId": "cckrtsse001_altar.esl:000FD1",
@@ -7570,12 +12429,48 @@
      ]
     }
    ],
+   "giver": {
+    "npc": "Skyrim.esm:013BA5",
+    "stageBelow": 150,
+    "info": "cckrtsse001_altar.esl:000F4C",
+    "named": "alias Danica",
+    "name": "Danica Pure-Spring",
+    "where": [
+     {
+      "ref": "Skyrim.esm:01A69F",
+      "cell": "Skyrim.esm:0165A7",
+      "cellName": "Temple of Kynareth",
+      "location": "Whiterun"
+     }
+    ]
+   },
    "firstObjective": {
     "text": "Find information at Dead Man's Drink",
     "filled": "Find information at Dead Man's Drink",
     "namesWhoOrWhere": true
    },
+   "namedGiver": {
+    "npc": "Skyrim.esm:013BA5",
+    "name": "Danica Pure-Spring",
+    "how": "dialogue",
+    "where": [
+     {
+      "ref": "Skyrim.esm:01A69F",
+      "cell": "Skyrim.esm:0165A7",
+      "cellName": "Temple of Kynareth",
+      "location": "Whiterun"
+     }
+    ]
+   },
    "rewards": [
+    {
+     "id": "cckrtsse001_altar.esl:00080D",
+     "name": "Soup Perk",
+     "type": "perk",
+     "via": "ccKRTSSE001_QF_01000D63.ccKRTSSE001_SoupPerk",
+     "kind": "quest script",
+     "script": "ccKRTSSE001_QF_01000D63"
+    },
     {
      "id": "cckrtsse001_altar.esl:000ECE",
      "name": "Rulnik's Dagger",
@@ -7601,10 +12496,26 @@
      "script": "ccKRTSSE001_QF_01000D63"
     },
     {
+     "id": "cckrtsse001_altar.esl:000805",
+     "name": "Rogue's Job Offer",
+     "type": "book",
+     "via": "ccKRTSSE001_QF_01000D63.ccKRTSSE001_QuestNote03",
+     "kind": "quest script",
+     "script": "ccKRTSSE001_QF_01000D63"
+    },
+    {
      "id": "cckrtsse001_altar.esl:000FD2",
      "name": "Ferryman's Ring",
      "type": "armour",
      "via": "ccKRTSSE001_QF_01000D63.ccKRTSSE001_FerrymanRing",
+     "kind": "quest script",
+     "script": "ccKRTSSE001_QF_01000D63"
+    },
+    {
+     "id": "cckrtsse001_altar.esl:000F02",
+     "name": "On the Bittercup",
+     "type": "book",
+     "via": "ccKRTSSE001_QF_01000D63.ccKRTSSE001_BittercupNote02",
      "kind": "quest script",
      "script": "ccKRTSSE001_QF_01000D63"
     }
@@ -7636,10 +12547,34 @@
    }
   },
   {
+   "id": "ccmtysse001-knightsofthenine.esl:000865",
+   "edid": "ccMTYSSE001_Quest",
+   "name": "The Pilgrim's Path",
+   "people": [],
+   "firstObjective": {
+    "text": "Pray at the shrines (<Global=ccMTYSSE001_CrusaderGlobalShrines>/9)",
+    "filled": "Pray at the shrines (<Global=ccMTYSSE001_CrusaderGlobalShrines>/9)",
+    "namesWhoOrWhere": true
+   }
+  },
+  {
    "id": "ccrmssse001-necrohouse.esl:000CC4",
    "edid": "ccRMSSSE001_Quest",
    "name": "Dreams of the Dead",
    "people": [
+    {
+     "alias": "Naara",
+     "npc": "Naara",
+     "npcId": "ccrmssse001-necrohouse.esl:000CCA",
+     "where": [
+      {
+       "ref": "ccrmssse001-necrohouse.esl:000CCB",
+       "cell": "Update.esm:002FD0",
+       "cellName": "Gallows Hall",
+       "location": "Gallows Hall"
+      }
+     ]
+    },
     {
      "alias": "Skel",
      "npc": "Skeleton Mage",
@@ -7648,7 +12583,21 @@
       {
        "ref": "ccrmssse001-necrohouse.esl:000CE6",
        "cell": "Update.esm:002FD0",
-       "cellName": "Gallows Hall"
+       "cellName": "Gallows Hall",
+       "location": "Gallows Hall"
+      }
+     ]
+    },
+    {
+     "alias": "Skeleton",
+     "npc": "Skeleton",
+     "npcId": "Skyrim.esm:0B9FD8",
+     "where": [
+      {
+       "ref": "ccrmssse001-necrohouse.esl:000A44",
+       "cell": "Update.esm:002FD0",
+       "cellName": "Gallows Hall",
+       "location": "Gallows Hall"
       }
      ]
     }
@@ -7699,8 +12648,260 @@
      "type": "book",
      "via": "alias Book04",
      "kind": "alias"
+    },
+    {
+     "id": "ccrmssse001-necrohouse.esl:000D08",
+     "name": "Fake Perk",
+     "type": "perk",
+     "via": "ccRMSSSE001_SleepSetStageScript.ccRMSSSE001_VaerminaSleepPerk",
+     "kind": "quest script",
+     "script": "ccRMSSSE001_SleepSetStageScript"
+    },
+    {
+     "id": "ccrmssse001-necrohouse.esl:000CEC",
+     "name": "Necromancer's Spell",
+     "type": "spell",
+     "via": "ccRMSSSE001_Quest_04000CC4.ccRMSSSE001_RaiseZombie",
+     "kind": "quest script",
+     "script": "ccRMSSSE001_Quest_04000CC4"
+    },
+    {
+     "id": "ccrmssse001-necrohouse.esl:000D02",
+     "name": "Fake Ability",
+     "type": "perk",
+     "via": "ccRMSSSE001_Quest_04000CC4.ccRMSSSE001_SpellAbilityPerk",
+     "kind": "quest script",
+     "script": "ccRMSSSE001_Quest_04000CC4"
     }
    ]
+  },
+  {
+   "id": "cctwbsse001-puzzledungeon.esm:0038DB",
+   "edid": "DLCDwarvenPuzzleDungeonCrownQuest",
+   "name": "The Dwarven Crown",
+   "people": [
+    {
+     "alias": "DLCDwarvenCrown_Elberro",
+     "npc": "Elberon",
+     "npcId": "cctwbsse001-puzzledungeon.esm:0008EE",
+     "where": [
+      {
+       "ref": "cctwbsse001-puzzledungeon.esm:001715",
+       "cell": "cctwbsse001-puzzledungeon.esm:001703",
+       "cellName": "Vardnknd Gallery",
+       "location": "Vardnknd"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Find the Mask of Autumn",
+    "filled": "Find the Mask of Autumn",
+    "namesWhoOrWhere": true
+   }
+  },
+  {
+   "id": "cctwbsse001-puzzledungeon.esm:0038DA",
+   "edid": "DLCDwarvenPuzzleDungeonHorseQuest",
+   "name": "The Dwarven Horse",
+   "people": [],
+   "firstObjective": {
+    "text": "Recover the head of the Dwarven Horse",
+    "filled": "Recover the head of the Dwarven Horse",
+    "namesWhoOrWhere": true
+   }
+  },
+  {
+   "id": "cctwbsse001-puzzledungeon.esm:0038D9",
+   "edid": "DLCDwarvenPuzzleDungeonQuest01",
+   "name": "Forgotten Seasons",
+   "people": [
+    {
+     "alias": "DLCDwarvenSkykillerRepairSpiderAlias",
+     "npc": "Repair Spider",
+     "npcId": "cctwbsse001-puzzledungeon.esm:0008E7",
+     "where": [
+      {
+       "ref": "cctwbsse001-puzzledungeon.esm:0026B3",
+       "cell": "cctwbsse001-puzzledungeon.esm:00268C",
+       "cellName": "Summer's Chords",
+       "location": "Summer"
+      }
+     ]
+    },
+    {
+     "alias": "DLCDwarvenPuzzleDungeonElberro",
+     "npc": "Elberon",
+     "npcId": "cctwbsse001-puzzledungeon.esm:0008EE",
+     "where": [
+      {
+       "ref": "cctwbsse001-puzzledungeon.esm:001715",
+       "cell": "cctwbsse001-puzzledungeon.esm:001703",
+       "cellName": "Vardnknd Gallery",
+       "location": "Vardnknd"
+      }
+     ]
+    },
+    {
+     "alias": "DLCDwarvenPuzzleDungeonWeatherWitch",
+     "npc": "The Sky Orchestrator",
+     "npcId": "cctwbsse001-puzzledungeon.esm:0008E5",
+     "where": [
+      {
+       "ref": "cctwbsse001-puzzledungeon.esm:000930",
+       "cell": "cctwbsse001-puzzledungeon.esm:000916",
+       "cellName": "Vardnknd Skykiller Gallery",
+       "location": "Vardnknd"
+      }
+     ]
+    },
+    {
+     "alias": "DLCDwarvenPuzzleDungeonNotesWinter",
+     "npc": "DLCDwarvenPuzzleDungeonMercenaryWinter",
+     "npcId": "cctwbsse001-puzzledungeon.esm:0008EB",
+     "where": [
+      {
+       "ref": "cctwbsse001-puzzledungeon.esm:001B9C",
+       "cell": "cctwbsse001-puzzledungeon.esm:001B73",
+       "cellName": "Winter's Chimes",
+       "location": "Winter"
+      }
+     ]
+    },
+    {
+     "alias": "DLCDwarvenPuzzleDungeonNotesSpring",
+     "npc": "DLCDwarvenPuzzleDungeonMercenarySpring",
+     "npcId": "cctwbsse001-puzzledungeon.esm:000903",
+     "where": [
+      {
+       "ref": "cctwbsse001-puzzledungeon.esm:00215F",
+       "cell": "cctwbsse001-puzzledungeon.esm:00215E",
+       "cellName": "Spring's Symphony",
+       "location": "Vardnknd"
+      }
+     ]
+    },
+    {
+     "alias": "DLCDwarvenPuzzleDungeonNotesAutumn",
+     "npc": "DLCDwarvenPuzzleDungeonMercenaryAutumn",
+     "npcId": "cctwbsse001-puzzledungeon.esm:000905",
+     "where": [
+      {
+       "ref": "cctwbsse001-puzzledungeon.esm:0030DD",
+       "cell": "cctwbsse001-puzzledungeon.esm:0030B5",
+       "cellName": "Autumn's Bells",
+       "location": "Vardnknd"
+      }
+     ]
+    },
+    {
+     "alias": "DLCDwarvenPuzzleDungeonNotesSummer",
+     "npc": "DLCDwarvenPuzzleDungeonMercenarySummer",
+     "npcId": "cctwbsse001-puzzledungeon.esm:0008E3",
+     "where": [
+      {
+       "ref": "cctwbsse001-puzzledungeon.esm:0026B2",
+       "cell": "cctwbsse001-puzzledungeon.esm:00268C",
+       "cellName": "Summer's Chords",
+       "location": "Summer"
+      }
+     ]
+    },
+    {
+     "alias": "DLCDwarvenPuzzleDungeonSpringSpriggan01",
+     "npc": "Blooming Spriggan",
+     "npcId": "cctwbsse001-puzzledungeon.esm:000901",
+     "where": [
+      {
+       "ref": "cctwbsse001-puzzledungeon.esm:002161",
+       "cell": "cctwbsse001-puzzledungeon.esm:00215E",
+       "cellName": "Spring's Symphony",
+       "location": "Vardnknd"
+      }
+     ]
+    },
+    {
+     "alias": "DLCDwarvenPuzzleDungeonSpringSpriggan02",
+     "npc": "Blooming Spriggan",
+     "npcId": "cctwbsse001-puzzledungeon.esm:000901",
+     "where": [
+      {
+       "ref": "cctwbsse001-puzzledungeon.esm:002165",
+       "cell": "cctwbsse001-puzzledungeon.esm:00215E",
+       "cellName": "Spring's Symphony",
+       "location": "Vardnknd"
+      }
+     ]
+    },
+    {
+     "alias": "DLCDwarvenPuzzleDungeonSpringSpriggan03",
+     "npc": "Blooming Spriggan",
+     "npcId": "cctwbsse001-puzzledungeon.esm:000901",
+     "where": [
+      {
+       "ref": "cctwbsse001-puzzledungeon.esm:00218D",
+       "cell": "cctwbsse001-puzzledungeon.esm:00215E",
+       "cellName": "Spring's Symphony",
+       "location": "Vardnknd"
+      }
+     ]
+    },
+    {
+     "alias": "DLCDwarvenPuzzleDungeonSpringSpriggan04",
+     "npc": "Blooming Spriggan Matron",
+     "npcId": "cctwbsse001-puzzledungeon.esm:0008FF",
+     "where": [
+      {
+       "ref": "cctwbsse001-puzzledungeon.esm:002169",
+       "cell": "cctwbsse001-puzzledungeon.esm:00215E",
+       "cellName": "Spring's Symphony",
+       "location": "Vardnknd"
+      }
+     ]
+    },
+    {
+     "alias": "DLCDwarvenPuzzleDungeonSpringSpriggan05",
+     "npc": "Blooming Spriggan",
+     "npcId": "cctwbsse001-puzzledungeon.esm:000901",
+     "where": [
+      {
+       "ref": "cctwbsse001-puzzledungeon.esm:002166",
+       "cell": "cctwbsse001-puzzledungeon.esm:00215E",
+       "cellName": "Spring's Symphony",
+       "location": "Vardnknd"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Find the entrance to the Dwarven ruin",
+    "filled": "Find the entrance to the Dwarven ruin",
+    "namesWhoOrWhere": true
+   }
+  },
+  {
+   "id": "ccvsvsse001-winter.esl:00082B",
+   "edid": "ccVSVSSE001_MainQuest",
+   "name": "Saturalia Preparation",
+   "people": [
+    {
+     "alias": "Merchant",
+     "npc": "Niklas Peryval",
+     "npcId": "ccvsvsse001-winter.esl:00080B",
+     "where": [
+      {
+       "ref": "ccvsvsse001-winter.esl:000826",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    }
+   ],
+   "firstObjective": {
+    "text": "Find the Saturalia merchant",
+    "filled": "Find the Saturalia merchant",
+    "namesWhoOrWhere": true
+   }
   },
   {
    "id": "ccvsvsse004-beafarmer.esl:000D28",
@@ -7737,6 +12938,66 @@
      ]
     },
     {
+     "alias": "GhostChild",
+     "npc": "Rin",
+     "npcId": "ccvsvsse004-beafarmer.esl:000855",
+     "where": [
+      {
+       "ref": "ccvsvsse004-beafarmer.esl:000B50",
+       "cell": "ccvsvsse004-beafarmer.esl:000B20",
+       "cellName": "Marker Storage Unit"
+      }
+     ]
+    },
+    {
+     "alias": "GhostHusband",
+     "npc": "Ghost",
+     "npcId": "ccvsvsse004-beafarmer.esl:000857",
+     "where": [
+      {
+       "ref": "ccvsvsse004-beafarmer.esl:000B68",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "GhostHusbandP",
+     "npc": "Ghost",
+     "npcId": "ccvsvsse004-beafarmer.esl:00085B",
+     "where": [
+      {
+       "ref": "ccvsvsse004-beafarmer.esl:000B4E",
+       "cell": "ccvsvsse004-beafarmer.esl:000B20",
+       "cellName": "Marker Storage Unit"
+      }
+     ]
+    },
+    {
+     "alias": "GhostWife",
+     "npc": "Ghost",
+     "npcId": "ccvsvsse004-beafarmer.esl:000856",
+     "where": [
+      {
+       "ref": "ccvsvsse004-beafarmer.esl:000D4D",
+       "cell": "ccvsvsse004-beafarmer.esl:000B20",
+       "cellName": "Marker Storage Unit"
+      }
+     ]
+    },
+    {
+     "alias": "GhostWifeP",
+     "npc": "Ghost",
+     "npcId": "ccvsvsse004-beafarmer.esl:00085C",
+     "where": [
+      {
+       "ref": "ccvsvsse004-beafarmer.esl:000B4F",
+       "cell": "ccvsvsse004-beafarmer.esl:000B20",
+       "cellName": "Marker Storage Unit"
+      }
+     ]
+    },
+    {
      "alias": "Proventus",
      "npc": "Proventus Avenicci",
      "npcId": "Skyrim.esm:013BBA",
@@ -7764,24 +13025,28 @@
     }
    ],
    "giver": {
-    "npc": "Skyrim.esm:013BBA",
-    "stageBelow": 211,
-    "info": "CC Farming - Tweaks and Enhancements.esp:000A11",
-    "named": "GetIsID",
+    "npc": "ccvsvsse004-beafarmer.esl:000855",
+    "stageBelow": 201,
+    "info": "CC Farming - Tweaks and Enhancements.esp:000AE8",
+    "named": "alias GhostChild",
     "others": [
+     {
+      "npc": "Skyrim.esm:013BBA",
+      "stageBelow": 211,
+      "name": "Proventus Avenicci"
+     },
      {
       "npc": "Skyrim.esm:01A6A2",
       "stageBelow": 211,
       "name": "Brill"
      }
     ],
-    "name": "Proventus Avenicci",
+    "name": "Rin",
     "where": [
      {
-      "ref": "Skyrim.esm:01A67D",
-      "cell": "Skyrim.esm:0165A3",
-      "cellName": "Dragonsreach",
-      "location": "Whiterun"
+      "ref": "ccvsvsse004-beafarmer.esl:000B50",
+      "cell": "ccvsvsse004-beafarmer.esl:000B20",
+      "cellName": "Marker Storage Unit"
      }
     ]
    },
@@ -7791,15 +13056,14 @@
     "namesWhoOrWhere": true
    },
    "namedGiver": {
-    "npc": "Skyrim.esm:013BBA",
-    "name": "Proventus Avenicci",
+    "npc": "ccvsvsse004-beafarmer.esl:000855",
+    "name": "Rin",
     "how": "dialogue",
     "where": [
      {
-      "ref": "Skyrim.esm:01A67D",
-      "cell": "Skyrim.esm:0165A3",
-      "cellName": "Dragonsreach",
-      "location": "Whiterun"
+      "ref": "ccvsvsse004-beafarmer.esl:000B50",
+      "cell": "ccvsvsse004-beafarmer.esl:000B20",
+      "cellName": "Marker Storage Unit"
      }
     ]
    },
@@ -7821,6 +13085,22 @@
      "script": "ccVSVSSE004_QF_MainQuest"
     }
    ]
+  },
+  {
+   "id": "ccvsvsse004-beafarmer.esl:000EB7",
+   "edid": "ccVSVSSE004_RestoreFarmQuest",
+   "name": "A Farmer's Life For Me",
+   "people": [
+    {
+     "alias": "FarmLocation",
+     "location": "Goldenhills Plantation"
+    }
+   ],
+   "firstObjective": {
+    "text": "Plant crops (<Global=VSVGLO_CropsPlanted>/<Global=VSVGLO_CropsPlantedGoal>)",
+    "filled": "Plant crops (<Global=VSVGLO_CropsPlanted>/<Global=VSVGLO_CropsPlantedGoal>)",
+    "namesWhoOrWhere": true
+   }
   },
   {
    "id": "Civil War Champions - Reduced Cut.esp:000800",
@@ -51703,6 +56983,157 @@
    ]
   },
   {
+   "id": "Skyrim.esm:0D7939",
+   "edid": "DA03Start",
+   "name": "Speak to Lod, Falkreath's blacksmith, about a dog he's looking for",
+   "people": [
+    {
+     "alias": "ImperialGateGuard1",
+     "npc": "LvlFalkreathHoldGuardImperialVoiceTypeMaleGuard",
+     "npcId": "Skyrim.esm:0EC6E7",
+     "where": [
+      {
+       "ref": "Skyrim.esm:055649",
+       "cell": "Skyrim.esm:000D74",
+       "location": "Falkreath",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "ImperialGateGuard2",
+     "npc": "LvlFalkreathHoldGuardImperialVoiceTypeMaleGuard",
+     "npcId": "Skyrim.esm:0EC6E7",
+     "where": [
+      {
+       "ref": "Skyrim.esm:05564A",
+       "cell": "Skyrim.esm:000D74",
+       "location": "Falkreath",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "SonsGateGuard1",
+     "npc": "LvlFalkreathHoldGuardSonsVoiceTypeMaleGuard",
+     "npcId": "Skyrim.esm:0EC6E8",
+     "where": [
+      {
+       "ref": "Skyrim.esm:055653",
+       "cell": "Skyrim.esm:000D74",
+       "location": "Falkreath",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "SonsGateGuard2",
+     "npc": "LvlFalkreathHoldGuardSonsVoiceTypeMaleGuard",
+     "npcId": "Skyrim.esm:0EC6E8",
+     "where": [
+      {
+       "ref": "Skyrim.esm:055654",
+       "cell": "Skyrim.esm:000D74",
+       "location": "Falkreath",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
+     "alias": "Lod",
+     "npc": "Lod",
+     "npcId": "Skyrim.esm:013650",
+     "where": [
+      {
+       "ref": "Skyrim.esm:03A19F",
+       "cell": "Skyrim.esm:013A73",
+       "cellName": "Lod's House",
+       "location": "Falkreath"
+      }
+     ]
+    }
+   ],
+   "giver": {
+    "npc": "Skyrim.esm:0EC6E7",
+    "stageBelow": 5,
+    "info": "Skyrim.esm:0E0D46",
+    "named": "alias ImperialGateGuard1",
+    "others": [
+     {
+      "npc": "Skyrim.esm:0EC6E8",
+      "stageBelow": 5,
+      "name": "LvlFalkreathHoldGuardSonsVoiceTypeMaleGuard"
+     },
+     {
+      "npc": "Skyrim.esm:013650",
+      "stageBelow": 6,
+      "name": "Lod"
+     }
+    ],
+    "name": "LvlFalkreathHoldGuardImperialVoiceTypeMaleGuard",
+    "where": [
+     {
+      "ref": "Skyrim.esm:05564A",
+      "cell": "Skyrim.esm:000D74",
+      "location": "Falkreath",
+      "world": "Skyrim"
+     },
+     {
+      "ref": "Skyrim.esm:055649",
+      "cell": "Skyrim.esm:000D74",
+      "location": "Falkreath",
+      "world": "Skyrim"
+     },
+     {
+      "ref": "COTN - Falkreath.esp:0FDD42",
+      "cell": "COTN - Falkreath.esp:11C34A",
+      "cellName": "Falkreath Watchtower",
+      "location": "Falkreath"
+     },
+     {
+      "ref": "COTN - Falkreath.esp:0FDFAB",
+      "cell": "Skyrim.esm:000D74",
+      "location": "Falkreath",
+      "world": "Skyrim"
+     },
+     {
+      "ref": "COTN - Falkreath.esp:1B43DA",
+      "cell": "Skyrim.esm:000D74",
+      "location": "Falkreath",
+      "world": "Skyrim"
+     }
+    ]
+   },
+   "firstObjective": {
+    "text": "Speak to Lod, Falkreath's blacksmith, about a dog he's looking for",
+    "filled": "Speak to Lod, Falkreath's blacksmith, about a dog he's looking for",
+    "namesWhoOrWhere": true
+   },
+   "namedGiver": {
+    "npc": "Skyrim.esm:013650",
+    "name": "Lod",
+    "how": "named",
+    "where": [
+     {
+      "ref": "Skyrim.esm:03A19F",
+      "cell": "Skyrim.esm:013A73",
+      "cellName": "Lod's House",
+      "location": "Falkreath"
+     }
+    ]
+   },
+   "rewards": [
+    {
+     "id": "Skyrim.esm:00000F",
+     "name": "Septim",
+     "type": "gold",
+     "via": "QF_DA03Start_000D7939.Gold001",
+     "kind": "fragment",
+     "script": "QF_DA03Start_000D7939"
+    }
+   ]
+  },
+  {
    "id": "Skyrim.esm:02D512",
    "edid": "DA04",
    "name": "Discerning the Transmundane",
@@ -53464,6 +58895,65 @@
      "via": "QF_DA14_0001BB9B.DA14SanguineRose",
      "kind": "fragment",
      "script": "QF_DA14_0001BB9B"
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:03FA17",
+   "edid": "DA14Start",
+   "name": "Participate in a drinking contest with Sam Guevenne",
+   "people": [
+    {
+     "alias": "DA14StartSamwell",
+     "npc": "Sam Guevenne",
+     "npcId": "Skyrim.esm:01BB9C",
+     "where": [
+      {
+       "ref": "Skyrim.esm:0A96A0",
+       "cell": "Skyrim.esm:016BDF",
+       "cellName": "The Bee and Barb",
+       "location": "Riften"
+      }
+     ]
+    }
+   ],
+   "giver": {
+    "npc": "Skyrim.esm:01BB9C",
+    "stageBelow": 20,
+    "info": "Skyrim.esm:0A95C5",
+    "named": "GetIsID",
+    "name": "Sam Guevenne",
+    "where": [
+     {
+      "ref": "Skyrim.esm:0A96A0",
+      "cell": "Skyrim.esm:016BDF",
+      "cellName": "The Bee and Barb",
+      "location": "Riften"
+     }
+    ]
+   },
+   "firstObjective": {
+    "text": "Participate in a drinking contest with Sam Guevenne",
+    "filled": "Participate in a drinking contest with Sam Guevenne",
+    "namesWhoOrWhere": true
+   },
+   "namedGiver": {
+    "npc": "Skyrim.esm:01BB9C",
+    "name": "Sam Guevenne",
+    "how": "named",
+    "where": [
+     {
+      "ref": "Skyrim.esm:0A96A0",
+      "cell": "Skyrim.esm:016BDF",
+      "cellName": "The Bee and Barb",
+      "location": "Riften"
+     }
+    ]
+   },
+   "starts": [
+    {
+     "node": "DA14QuestStartNode",
+     "event": "change location"
     }
    ]
   },
@@ -63683,7 +69173,7 @@
      "where": [
       {
        "ref": "Skyrim.esm:021EA6",
-       "cell": "Skyrim.esm:042247",
+       "cell": "Skyrim.esm:016BE0",
        "location": "Riften",
        "world": "Riften"
       }
@@ -63699,7 +69189,7 @@
     "where": [
      {
       "ref": "Skyrim.esm:021EA6",
-      "cell": "Skyrim.esm:042247",
+      "cell": "Skyrim.esm:016BE0",
       "location": "Riften",
       "world": "Riften"
      }
@@ -63717,7 +69207,7 @@
     "where": [
      {
       "ref": "Skyrim.esm:021EA6",
-      "cell": "Skyrim.esm:042247",
+      "cell": "Skyrim.esm:016BE0",
       "location": "Riften",
       "world": "Riften"
      }
@@ -70428,7 +75918,8 @@
       {
        "ref": "Skyrim.esm:06C878",
        "cell": "Skyrim.esm:03B698",
-       "cellName": "The Ratway"
+       "cellName": "The Ratway",
+       "location": "Riften Ratway"
       }
      ]
     },
@@ -70440,7 +75931,8 @@
       {
        "ref": "Skyrim.esm:06C87A",
        "cell": "Skyrim.esm:03B698",
-       "cellName": "The Ratway"
+       "cellName": "The Ratway",
+       "location": "Riften Ratway"
       }
      ]
     },
@@ -70452,7 +75944,8 @@
       {
        "ref": "Skyrim.esm:0A3E23",
        "cell": "Skyrim.esm:03B698",
-       "cellName": "The Ratway"
+       "cellName": "The Ratway",
+       "location": "Riften Ratway"
       }
      ]
     },
@@ -70464,7 +75957,8 @@
       {
        "ref": "Skyrim.esm:02241F",
        "cell": "Skyrim.esm:0A1BFD",
-       "cellName": "The Ratway Vaults"
+       "cellName": "The Ratway Vaults",
+       "location": "Riften Ratway"
       }
      ]
     },
@@ -70476,7 +75970,8 @@
       {
        "ref": "Skyrim.esm:02241E",
        "cell": "Skyrim.esm:0A1BFD",
-       "cellName": "The Ratway Vaults"
+       "cellName": "The Ratway Vaults",
+       "location": "Riften Ratway"
       }
      ]
     },
@@ -70488,7 +75983,8 @@
       {
        "ref": "Skyrim.esm:022416",
        "cell": "Skyrim.esm:0A1BFD",
-       "cellName": "The Ratway Vaults"
+       "cellName": "The Ratway Vaults",
+       "location": "Riften Ratway"
       }
      ]
     },
@@ -70500,7 +75996,8 @@
       {
        "ref": "Skyrim.esm:04BCD2",
        "cell": "Skyrim.esm:0A1BFD",
-       "cellName": "The Ratway Vaults"
+       "cellName": "The Ratway Vaults",
+       "location": "Riften Ratway"
       }
      ]
     },
@@ -70512,7 +76009,8 @@
       {
        "ref": "Skyrim.esm:04BCD3",
        "cell": "Skyrim.esm:0A1BFD",
-       "cellName": "The Ratway Vaults"
+       "cellName": "The Ratway Vaults",
+       "location": "Riften Ratway"
       }
      ]
     },
@@ -73213,6 +78711,76 @@
      "script": "QF_MS05DUPLICATE000_00053511"
     }
    ]
+  },
+  {
+   "id": "Skyrim.esm:042868",
+   "edid": "MS05Start",
+   "name": "Investigate the Bards College",
+   "people": [
+    {
+     "alias": "Viarmo",
+     "npc": "Viarmo",
+     "npcId": "Skyrim.esm:0132AD",
+     "where": [
+      {
+       "ref": "Skyrim.esm:0198CB",
+       "cell": "Skyrim.esm:016A0C",
+       "cellName": "Bards College",
+       "location": "Solitude"
+      }
+     ]
+    }
+   ],
+   "giver": {
+    "npc": "Skyrim.esm:013295",
+    "stageBelow": 10,
+    "info": "Skyrim.esm:0534F3",
+    "named": "GetIsID",
+    "others": [
+     {
+      "npc": "Skyrim.esm:01328F",
+      "stageBelow": 10,
+      "name": "Jorn"
+     },
+     {
+      "npc": "Skyrim.esm:01328A",
+      "stageBelow": 10,
+      "name": "Inge Six Fingers"
+     },
+     {
+      "npc": "Skyrim.esm:01329F",
+      "stageBelow": 10,
+      "name": "Pantea Ateia"
+     }
+    ],
+    "name": "Ataf",
+    "where": [
+     {
+      "ref": "Skyrim.esm:01F14D",
+      "cell": "Skyrim.esm:016A0C",
+      "cellName": "Bards College",
+      "location": "Solitude"
+     }
+    ]
+   },
+   "firstObjective": {
+    "text": "Investigate the Bards College",
+    "filled": "Investigate the Bards College",
+    "namesWhoOrWhere": true
+   },
+   "namedGiver": {
+    "npc": "Skyrim.esm:013295",
+    "name": "Ataf",
+    "how": "dialogue",
+    "where": [
+     {
+      "ref": "Skyrim.esm:01F14D",
+      "cell": "Skyrim.esm:016A0C",
+      "cellName": "Bards College",
+      "location": "Solitude"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:026C4D",
@@ -76176,7 +81744,7 @@
      "where": [
       {
        "ref": "Skyrim.esm:021EA6",
-       "cell": "Skyrim.esm:042247",
+       "cell": "Skyrim.esm:016BE0",
        "location": "Riften",
        "world": "Riften"
       }
@@ -81051,6 +86619,18 @@
    "name": "The Gift of Saturalia",
    "people": [
     {
+     "alias": "Niklas",
+     "npc": "Niklas Peryval",
+     "npcId": "ccvsvsse001-winter.esl:00080B",
+     "where": [
+      {
+       "ref": "ccvsvsse001-winter.esl:000826",
+       "cell": "Skyrim.esm:000D74",
+       "world": "Skyrim"
+      }
+     ]
+    },
+    {
      "alias": "Santus",
      "npc": "Santus",
      "npcId": "TheGiftofSaturalia.esp:00083C",
@@ -81076,10 +86656,36 @@
      ]
     }
    ],
+   "giver": {
+    "npc": "ccvsvsse001-winter.esl:00080B",
+    "stageBelow": 1,
+    "info": "TheGiftofSaturalia.esp:000810",
+    "named": "alias Niklas",
+    "name": "Niklas Peryval",
+    "where": [
+     {
+      "ref": "ccvsvsse001-winter.esl:000826",
+      "cell": "Skyrim.esm:000D74",
+      "world": "Skyrim"
+     }
+    ]
+   },
    "firstObjective": {
     "text": "Help Niklas with his Saturalia gifts",
     "filled": "Help Niklas with his Saturalia gifts",
     "namesWhoOrWhere": true
+   },
+   "namedGiver": {
+    "npc": "ccvsvsse001-winter.esl:00080B",
+    "name": "Niklas Peryval",
+    "how": "dialogue",
+    "where": [
+     {
+      "ref": "ccvsvsse001-winter.esl:000826",
+      "cell": "Skyrim.esm:000D74",
+      "world": "Skyrim"
+     }
+    ]
    }
   },
   {

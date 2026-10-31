@@ -469,7 +469,7 @@ class BuiltIndex(unittest.TestCase):
         self.assertIn("homes", self.by["Breezehome"]["namedBy"])
         self.assertIn("quests", self.by["Belethor's General Goods"]["namedBy"])
         # Nightgate Inn was missing because its location is tagged LocTypeHouse as well as LocTypeInn, and the inns rule ruled a "house" out.
-        self.assertIn("LocTypeHouse", self.by["Nightgate Inn"]["keywords"])
+        self.assertTrue({"LocTypeHouse", "LocTypeHabitationHasInn"} & set(self.by["Nightgate Inn"]["keywords"]))  # (its exterior's, now that the Creation Club's strings are read: WO-183 Part 7)
         self.assertEqual(self.by["Nightgate Inn"]["world"], "Tamriel")
         # the people in them are on the player's side
         self.assertTrue(all(p["actors"].get("hostile") is False for p in self.rows if p["type"] in pl.NOT_A_FIGHT and p.get("actors")))

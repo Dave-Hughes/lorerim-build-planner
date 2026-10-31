@@ -563,7 +563,7 @@ def main():
     from esp import ROOT, load_order, localized_strings, plugin_paths
     from recipes import plugin_folders
 
-    pp, lo = plugin_paths(), load_order()
+    pp, lo = plugin_paths(), load_order(cc=True)
     winners, editors = {}, {}
     for n in lo:
         p = pp.get(n.lower())

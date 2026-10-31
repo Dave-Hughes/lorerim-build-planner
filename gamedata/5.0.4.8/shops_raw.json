@@ -5550,7 +5550,9 @@
    "edid": "ccASVSSE001_AlchemistrFaction",
    "list": "VendorItemsApothecary",
    "kind": "apothecary",
+   "name": "Indoril Alchemist Faction",
    "cell": {
+    "name": "Ashfall's Tear",
     "edid": "ccASVSSE001Interior02",
     "interior": true
    }
@@ -5559,7 +5561,9 @@
    "edid": "ccASVSSE001_CaretakerFaction",
    "list": "VendorItemsMisc",
    "kind": "general goods",
+   "name": "Indoril Caretaker Faction",
    "cell": {
+    "name": "Ashfall's Tear",
     "edid": "ccASVSSE001Interior02",
     "interior": true
    }
@@ -5568,7 +5572,9 @@
    "edid": "ccASVSSE001_BlacksmithFaction",
    "list": "VendorItemsBlacksmith",
    "kind": "blacksmith",
+   "name": "Indoril Blacksmith Faction",
    "cell": {
+    "name": "Ashfall's Tear",
     "edid": "ccASVSSE001Interior02",
     "interior": true
    }
@@ -5577,6 +5583,7 @@
    "edid": "ccVSVSSE001_ServicesReindeerMerchant",
    "list": "VendorItemsMisc",
    "kind": "general goods",
+   "name": "Reindeer Merchant",
    "cell": {
     "world": "Tamriel"
    }
