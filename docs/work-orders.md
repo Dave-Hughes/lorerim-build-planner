@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-185  Dave's notes from using the app (Mac, PC for Part 4, 30 Oct 2026)
-Status: queued (Mac: Part 7's two boxes; PC: Part 6a and Part 7's data line pushed, notes below)
+Status: building (Mac: Part 7's two boxes; PC: Part 6a and Part 7's data line pushed, notes below)
 
 **Why.** Dave used staging on 30 Oct (18:35) and sent these. They are small, and each one is something a player meets in the first minutes. **This is the last order before launch that adds anything.** After it, the launch list is closed: these orders pass the reviewer, Dave tests once, and Bob moves production.
 
@@ -5156,7 +5156,7 @@ Jeff's notes on Part 4 (PC, 30 Oct). The status says Part 4 is the PC's, so I di
 ---
 
 ## WO-184  Players make it right: screenshots, I know this, Help fill the gaps, one review list (Mac, 30 Oct 2026)
-Status: queued (Mac: Part 10. Part 9 passes but for its boss line; the Tapps uploads and the signed-in walk pass)
+Status: building (Mac: Part 10)
 
 **Why.** Dave, 30 Oct: with playthroughs cut, double down on quests, places and people, and "accelerate the ideas for community confirmation of quest info, the admin review section, and of course the image collection work for locations and NPCs." These are the backlog's 23 Oct, 28 Oct and 28 Oct items, decided.
 
