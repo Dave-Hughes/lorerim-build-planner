@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-185  Dave's notes from using the app (Mac, PC for Part 4, 30 Oct 2026)
-Status: for Bob (Part 6b built; Part 6a is the PC's; Parts 1 to 3 pass; the staging upload is Bob's, signed in)
+Status: building (PC: Part 6a and Part 7's data line; Mac: Part 7. Parts 1 to 3 and 6b pass; the staging upload passes)
 
 **Why.** Dave used staging on 30 Oct (18:35) and sent these. They are small, and each one is something a player meets in the first minutes. **This is the last order before launch that adds anything.** After it, the launch list is closed: these orders pass the reviewer, Dave tests once, and Bob moves production.
 
@@ -5108,7 +5108,15 @@ The rest:
 **Part 6b (Mac)**
 - [x] **Moves never shown**: a person with `moves` and no Where to find section shows nothing. 10 of 31 in the sample: Neski, Ernanthil, Lynea, Rhiada, Gian, Herluin, Syndus, Vanryth, Kematu and Arnskar. Draw the After and During lines whatever else the person has.
 - [x] Abbot Cosmas has no place at all on a phone: the fact is `hidePhone` and he has no Where to find section. "Marukh's Underground Priory" links only "Marukh", to a person. Link the place as a whole, and show where to find someone on phones.
-- [ ] The staging upload (Part 1) is Bob's, signed in. Untick nothing.
+- [x] The staging upload (Part 1) is Bob's, signed in. Untick nothing. (Bob, 31 Oct, 00:10: passes; see Part 1.)
+
+### Part 7. The review of 6b (Bob's reviewer, 31 Oct, 08:00; Bob confirmed the place records)
+**6b passes.** All ten moves-only people have Where to find with their After or During line at 1440 and 390, the quests and places link, and Abbot Cosmas's place shows on a phone without the wrong link to Marukh.
+
+- [ ] **PC: Abbot Cosmas's place has no page.** His cell is "Marukh's Underground Priory"; the place record is Vigilant's "Holy Brothers of Marukh Priory" (`Vigilant.esm:3870E4`), typed Altar with no hold. Tie the cell to its location so the cell's name finds the page, and give the place its real kind and hold from the records.
+- [ ] **Mac: Neski's "The Pit" is plain text.** Two places share the name and `/places/the-pit` is the page that lists both; link that, as other shared names do.
+- [ ] **Mac: Not sure yet repeats what the page now says.** Neski's still lists "What changes where she is." under Not sure yet while Where to find shows "During The Pit: The Pit". When a person has `moves`, drop that line. Check the ten.
+- [ ] Then `for Bob`.
 
 ### Jeff's notes
 
@@ -5140,7 +5148,7 @@ Jeff's notes on Part 4 (PC, 30 Oct). The status says Part 4 is the PC's, so I di
 ---
 
 ## WO-184  Players make it right: screenshots, I know this, Help fill the gaps, one review list (Mac, 30 Oct 2026)
-Status: for Bob (Part 9 built, with the three after-upload faults; Bob: the signed-in walk and the Tapps uploads)
+Status: queued (Mac: Part 10. Part 9 passes but for its boss line; the Tapps uploads and the signed-in walk pass)
 
 **Why.** Dave, 30 Oct: with playthroughs cut, double down on quests, places and people, and "accelerate the ideas for community confirmation of quest info, the admin review section, and of course the image collection work for locations and NPCs." These are the backlog's 23 Oct, 28 Oct and 28 Oct items, decided.
 
@@ -5323,6 +5331,22 @@ The rest (Mac):
   - The dialog tells an admin "an admin looks at it before anyone else sees it", but an admin's own upload is live at once. For an admin say "It goes on the page at once, credited to your Discord name."
   - "Choose another" sits centred under the file name; line it up with the name.
 - [x] Then `for Bob`.
+
+### Part 10. The review of Part 9 (Bob's reviewer, 31 Oct, 08:00, signed out; Bob checked the after-upload box signed in as Tapps, and the ledes below with curl)
+**These pass:** a Map for people placed by cell (Laracin and 11 more at random), 44 px at 390, the scale bar clear of the credit, the towns' facts beside the frame (Who lives here at 825, 720 and 663 px on Riverwood, Whiterun and Dawnstar), the frame's + and − with the wheel still scrolling, no form signed out, the full screen at 390, "Sign in to add one" once, search suggestions lined up, the Danger fact. Signed in: a new upload on a page with none shows in the strip and the frame within seconds, no reload; the admin's sentence and "Choose another" are right.
+
+The rest (Mac):
+- [ ] **A generic boss is still said.** `isNamedPerson` returns true for any name with no person row, so creatures and ranks pass: "Its boss is Kagouti." (Saxhleel Camp), "Pirate." (Haknir's Shoal), "Troll." (Darkshade Copse), "Frost Troll." (Steepfall Burrow), "Ghost.", "Spellsword.", "First Mate.", "Silver Hand.", "Malevolent Necromancer.", "Northwatch Interrogator.", and "Warehouse Traps Reset Test Guy." (Warehouses). About 30 names. Say a boss only when the name has a person page of its own or is a named actor in the records (a unique actor with a full name: Captain Hargar). A name with no row is not a person. Add a test over every place's boss.
+- [ ] **At 390 the frame's controls cover pin names**: − over "Riverwood" (Bleak Falls Barrow), Full screen over "Igna's Basement" (Whiterun), the scale bar cuts "Nightcaller Temple" (Dawnstar). Place labels clear of the controls, as the full screen does.
+- [ ] **The frame's + and − are 34 px at 390**; make them 44. At the zoom limit, show the button as off.
+- [ ] **The frame's scale reads wrong after +**: the pins double apart and the label goes from 0.3 km to 0.2 km with the bar the same length. The bar or its number follows the zoom.
+- [ ] **Whiterun: a fold inside a fold.** "Who keeps what" opens six shops, then "and 7 more". One fold, all of them.
+- [ ] **Dawnstar: "Trainers and followers" reads "Followers"**, and its fold lists "Erandur, Gregor" with no "Followers:" label. Same shape as Whiterun's.
+- [ ] **"Thalmors and 1 more kind ›"** (Northwatch Keep): Thalmor is its own plural. Use the records' plural, or a list of words that don't take an s.
+- [ ] **After a delete, as admin**: deleting a place's only screenshot leaves the frame on an empty Screenshot view (it should go back to the Map, as a fresh page does), and adding one again without a reload shows nothing until the reload (it is saved).
+- [ ] Then `for Bob`.
+
+Bob's rulings on the reviewer's questions: the search list keeps the kind on every row as Dave asked (30 Oct), and the group headings stay. The data faults the reviewer saw (editor names as places, "???") are the PC's, in WO-183 Part 8.
 
 ### Jeff's notes
 
@@ -5575,6 +5599,8 @@ These hold:
   - Fort Sungard: Forsworn first.
   - Fort Kastav: warlocks and skeletons first.
   - Find who holds each before the war from the records (the bandits Joining the Legion sends you to kill are placed, or the quest fills them), show that first, and show the garrison as "After the war: Imperials or Stormcloaks, whichever side wins". Check all 11 (the camps too, which are only the war's).
+- [ ] **Editor names as public places** (Bob's reviewer, 31 Oct, 08:00; Bob confirmed in `places.json`). These have pages and pins: "MerchantLocations" (FalkreathShades.esp), "Bloodchill Cavern Location", "Shor's Hall Location", "Ash Ghoul Ambush Cell Location", "Attius Farm Location", "Iron Tusk Cave Location", "Fort Dunstad Blacksmith Home Location", "Markarth Mill Maintenance", and "Warehouses" (a test cell, with "Warehouse Traps Reset Test Guy" as its boss). Take the name the player sees (the map marker's, the cell's full name) and drop " Location"; a test or holding cell with no marker and no door from the world gets no page. Add a test that fails on an editor-style name ("Location" at the end, CamelCase, "Test", "Reset").
+- [ ] **"???" and "???????" are people** on Help fill the gaps and in the people index. A person with no name the player sees gets no page.
 - [ ] **The 13 quests in Dave's save with no page** (Wizard Duel, Meeting Katana, The Pilgrimage and the rest): **Bob's call**, a quest with a name the player sees in the journal gets a page, follower mods' quests included. Add them.
 - [ ] Then `for Bob`. Mac then renders Parts 6 to 8, and Bob runs the fresh sample.
 
