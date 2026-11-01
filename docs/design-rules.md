@@ -13,6 +13,7 @@ These rules come from Dave's review of those screens (9 Oct 2026). The LoreRim c
 5. **Use the game's words.** Don't coin terms ("capstone" became "Skill 100 perk"; "cap" became "max skill"). If players wouldn't say it, don't print it. Perk and trait descriptions are the game's own text, read from the records (10 Oct 2026), including the game's rank format "(1/3)" and its names (Destiny's "Endurance", not the wiki's "Acrobat").
 6. **Short verb buttons.** "Confirm", "Choose", "Remove", "Copy link".
 7. **Placeholders say what goes there**, in square brackets: [Discord name], [Perk description from the game files].
+8. **Say a count plainly.** "177 total enemies", never "177 in all", "and more", "the rest", or any other turn of phrase that makes the reader work out what was counted (Dave, 1 Nov: "Stop using dumb clever phrases like 'in all'"). An icon never stands for a word: a line that means the place has traps says "Traps", and what kind.
 
 ## Content
 
