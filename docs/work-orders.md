@@ -5158,7 +5158,7 @@ Jeff's notes on Part 4 (PC, 30 Oct). The status says Part 4 is the PC's, so I di
 ---
 
 ## WO-184  Players make it right: screenshots, I know this, Help fill the gaps, one review list (Mac, 30 Oct 2026)
-Status: for Bob (Part 10 built; Bob: the boss names, and the frame at 390)
+Status: for Bob (Part 10 built, under review. Dave, 1 Nov: the Screenshot or Map toggle is out, it isn't obvious there is one; the screenshot goes on top and the map below. Hold any more work on the page top until Dave's final feedback on the canvas, which Bob is putting every screen on as it is in the browser)
 
 **Why.** Dave, 30 Oct: with playthroughs cut, double down on quests, places and people, and "accelerate the ideas for community confirmation of quest info, the admin review section, and of course the image collection work for locations and NPCs." These are the backlog's 23 Oct, 28 Oct and 28 Oct items, decided.
 
