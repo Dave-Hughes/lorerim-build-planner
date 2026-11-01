@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-185  Dave's notes from using the app (Mac, PC for Part 4, 30 Oct 2026)
-Status: for Bob (Part 7 built: Neski's link and the repeated doubt; the PC's data line is pushed too)
+Status: queued (PC: Part 8. Parts 1 to 3, 6b and 7's page work pass; the staging upload passes; Dave's final feedback comes on the canvas)
 
 **Why.** Dave used staging on 30 Oct (18:35) and sent these. They are small, and each one is something a player meets in the first minutes. **This is the last order before launch that adds anything.** After it, the launch list is closed: these orders pass the reviewer, Dave tests once, and Bob moves production.
 
@@ -5118,6 +5118,24 @@ The rest:
 - [x] **Mac: Not sure yet repeats what the page now says.** Neski's still lists "What changes where she is." under Not sure yet while Where to find shows "During The Pit: The Pit". When a person has `moves`, drop that line. Check the ten.
 - [x] Then `for Bob`.
 
+### Part 8. The review of 6a and 7 (Bob's reviewer, 1 Nov, 10:30; Bob confirmed Esbern, Hadvar, Eilonwy, Shargam and the priory on staging)
+**Pass:** Greta's night (Addvar's House), named places only (Brelyna, Alva), Neski's The Pit link, the ten people's Not sure yet, the Cosmas link (it goes to `/places/holy-brothers-of-marukh-priory`, with no link to Marukh).
+
+**The cause of most of what fails (PC):** `people_moves.py` calls any window still open at the quest's finishing stage "After", even one that opens at stage 1. Bob's ruling: **"After" only when the window opens at the finishing stage or on completion. A window that opens partway through and never shuts is "From <quest>" ("From The Throat of the World: Sky Haven Temple"); one that opens at the first stage is "During".**
+
+- [ ] **Lines that are wrong against the records** (PC):
+  - Esbern and Delphine, "After The Throat of the World: Sky Haven Temple (UESP differs, maybe LoreRim)". The package is Skyrim.esm's `MQ*SandboxSkyHavenTemple` from stage 1, which is when UESP has them move. Records and UESP agree; the line and its mark are both wrong.
+  - Drovas Relvi, "After Reluctant Steward: Tel Mithryn Apothecary (UESP differs)". The records hold his Dragonborn.esm routine from stage 400 (apothecary 8 to 9 am, kitchen, tower, the Steward's House by default), which is UESP's routine. Say the Steward's House, with no mark.
+  - Babette, "After Hail Sithis!: Dawnstar Sanctuary (UESP differs)": the USSEP package opens at stage 60 of 200, so she is there during it, as UESP says. "During Death Incarnate: Dark Brotherhood Sanctuary" is her home, not a move; drop it, as Delphine's inn was dropped.
+  - Hadvar and Ralof: the day list says "once Message to Whiterun is under way" and the move line says "After Message to Whiterun" on the same page. The package is from stage 10 of 210: "From". And Hadvar reads "By day and at night: Helgen", taken from the opening scene's row.
+  - Illia: "During Repentance: Darklight Tower" is her home. Drop it.
+  - Eilonwy, "After With Love, Eilonwy, Part 2: Hall of Attainment": the package's cell is the Hall of Countenance, whose location record ("Dormitory") the planner has merged into the Hall of Attainment. UESP has two halls. Split them, and check everyone placed in the Hall of Countenance.
+  - Shargam: two After lines for one quest (Wyrmstooth Barrow from stage 70, never shut; Wyrmstooth Longhouse from 270). One line, the last.
+  - Kematu, "After In My Time Of Need: The Bannered Mare": the package holds only at stage 201 (handing Saadia over). Say the ending, or leave it out.
+- [ ] **Twenty people against UESP: 3 of 20 wrong or unsupported** (Eilonwy, Shargam, Kematu; seed 18506). Under 2 in 20 after the fix, with the list in the notes.
+- [ ] **Abbot Cosmas's place** (PC): `/places/holy-brothers-of-marukh-priory` says "A monastery. One person lives here." with the Where fact "Monastery". The record is Vigilant's, realm Coldharbour, 32 actors at levels 20 to 100, boss Abbot Cosmas at 100. "Monastery" is a reading of the name, not the record's kind, and it gives the page a town's layout. Take the kind, realm, danger and boss from the record, as Ultar's Charnel does ("A landmark in Coldharbour").
+- [ ] Then `for Bob`.
+
 ### Jeff's notes
 
 Jeff's notes on Part 7's two Mac boxes (Mac, 31 Oct). **The Pit** in a person's After and During lines is now linked as a whole place, as Abbot Cosmas's is: a name two places share goes to the page that lists both (`/places/the-pit`), and a name with no page is still read for the places it holds. **"What changes where she is" is no longer under Not sure yet** for a person who has `moves`: `personUnsure` (the one place the page, the doubt count and Help fill the gaps read) drops that field for them, whether the read flagged it or the person has no read. Neski, Ernanthil, Lynea, Rhiada, Gian, Herluin, Syndus, Vanryth, Kematu and Arnskar are checked by `e2e/wo184-10.spec.ts` (the last test). Part 7's data line (Abbot Cosmas's priory) is the PC's, below; the page of it shows with the fix there.
@@ -5158,7 +5176,7 @@ Jeff's notes on Part 4 (PC, 30 Oct). The status says Part 4 is the PC's, so I di
 ---
 
 ## WO-184  Players make it right: screenshots, I know this, Help fill the gaps, one review list (Mac, 30 Oct 2026)
-Status: for Bob (Part 10 built, under review. Dave, 1 Nov: the Screenshot or Map toggle is out, it isn't obvious there is one; the screenshot goes on top and the map below. Hold any more work on the page top until Dave's final feedback on the canvas, which Bob is putting every screen on as it is in the browser)
+Status: queued (Mac: Part 11, the two that still fail. Dave, 1 Nov: the Screenshot or Map toggle is out, it isn't obvious there is one; the screenshot goes on top and the map below. No more work on the page top until Dave's final feedback on the canvas, where every screen now sits as the browser shows it)
 
 **Why.** Dave, 30 Oct: with playthroughs cut, double down on quests, places and people, and "accelerate the ideas for community confirmation of quest info, the admin review section, and of course the image collection work for locations and NPCs." These are the backlog's 23 Oct, 28 Oct and 28 Oct items, decided.
 
@@ -5356,7 +5374,17 @@ The rest (Mac):
 - [x] **After a delete, as admin**: deleting a place's only screenshot leaves the frame on an empty Screenshot view (it should go back to the Map, as a fresh page does), and adding one again without a reload shows nothing until the reload (it is saved).
 - [x] Then `for Bob`.
 
-Bob's rulings on the reviewer's questions: the search list keeps the kind on every row as Dave asked (30 Oct), and the group headings stay. The data faults the reviewer saw (editor names as place### Jeff's notes
+Bob's rulings on the reviewer's questions: the search list keeps the kind on every row as Dave asked (30 Oct), and the group headings stay. The data faults the reviewer saw (editor names as places, "???") are the PC's, in WO-183 Part 8.
+
+### Part 11. The review of Part 10 (Bob's reviewer, 1 Nov, 10:30; Bob confirmed Fort Snowhawk and Wolfskull Cave on staging)
+**Pass:** + and − at 44 px and off at the limit, the scale follows the zoom (0.1 km to 50 m on the same bar), Whiterun's one fold, Dawnstar's followers, "Thalmor and 1 more kind". Saxhleel Camp, Haknir's Shoal, Darkshade Copse, Steepfall Burrow, Warehouses, Northwatch Keep and Fort Justice say no boss; Zulakaroth and Captain Hargar are still said.
+
+- [ ] **Two generic bosses are still said**: "Its boss is Fort Commander." (Fort Snowhawk, Fort Greenwall) and "Its boss is Ritual Master." (Wolfskull Cave). Neither word is in `KINDS`. And `wo184-10.test.ts` reads `p.afterTheWar`, which no place has; it lives at `actors.afterTheWar` on 38 places, so the test never saw a garrison's boss. Fix the test so it fails on these, then the words.
+  - Now left out though they are someone: Yngol's Shade, Kodlak's Werewolf Spirit, Gallant Specter of Emperor Gorieus, The King of Leeches, The Lost Paladin. Say them.
+- [ ] **At 390 the frame names only the place itself.** No control covers a name now because the frame draws none: at 1440 the same frames name 4 to 6 neighbours, the full screen at 390 names 7 to 9. And diamonds sit under the controls, so a tap hits the control (Riverwood's under − on Bleak Falls Barrow; Wintersand Manor under Full screen on Whiterun; Merryfair Farm under the Map switch on Riften). Keep the names, place them clear of the controls, and keep pins out from under the controls (pad the map's edge, or move the controls off the pins).
+- [ ] Then `for Bob`.
+
+### Jeff's notes
 
 **Mac, 31 Oct: Part 10.** Typecheck, lint (the two old warnings), `npm test` (970 passed, 7 expected fail), build and the full e2e (628 passed; six tests in the character, perk-tree and build-report specs timed out in the full run, which took 1.2 hours because the machine stalled, and pass alone). `e2e/wo184-10.spec.ts` is the part's own check (6 tests; the screenshot is `test-results/wo184-10-frame-map-390.png`); `wo184.spec.ts`'s admin test now deletes the only screenshot, expects the Map, and adds one again without a reload.
 - **A boss is someone** (`src/lib/people/someone.ts`, `isNamedPerson`). The cause was what you said: the records have no flag that tells a unique actor from a kind (Captain Hargar and Pirate are both `generic`, both "leveled"), and any name with no page passed. The name is now what decides: a boss is said when it has a word that is not a creature, a rank, a trade or a faction (Hargar, Gathrik, Krilqolaasdaan, Piquine), with a title in front (Captain, Warlord, King, Sir) or who they are after (the Drunk, of Order) allowed, and a creature or rank word anywhere else makes it a kind (Ghost Captain, Frostbite Spider, Imperial Soldier). A page of its own no longer makes a name someone: "Ghost" has one. Of the 242 names, 167 are said and 75 are not; I read both lists. **Unsaid, and you may want them said:** The King of Leeches, The Lost Paladin, Yngol's Shade, Kodlak's Werewolf Spirit, Butcher. **Said, and may be a kind:** Count Lead (a giant), Ritual Master. The vocabulary is `KINDS` and `TITLES` in that file; `wo184-10.test.ts` checks your list stays unsaid and Captain Hargar stays said, and the 242 count has a floor. A PC fix would be a `unique` flag on the boss from the record's own flag (`places.py`); then the names list goes.
