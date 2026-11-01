@@ -5376,6 +5376,12 @@ The rest (Mac):
 
 Bob's rulings on the reviewer's questions: the search list keeps the kind on every row as Dave asked (30 Oct), and the group headings stay. The data faults the reviewer saw (editor names as places, "???") are the PC's, in WO-183 Part 8.
 
+### Part 12. Dave's final feedback on the canvas (1 Nov; Bob adds each comment here as it comes, Mac builds the part when Dave says the feedback is in)
+Every screen sits on the canvas as the browser shows it (row 41 and on). Dave's comments, in his words and then the rule:
+- [ ] **"Locations should appear at top, with map under it. Same sized boxes for each."** (on a place page, 09:59). On a place and on a person: the screenshot box at the top, the map in a box of the same size straight under it, no Screenshot or Map toggle. The facts stay beside them; the thumbnails and the Add tile under the screenshot box; Full screen on each box.
+- [ ] **"Doesn't make sense to say danger level 6 to 20 but then show a level 40 boss. Let's combine Danger and Boss to one metric here."** (Bleak Falls Barrow's facts, 10:03). One fact, Danger, in place of Danger and The boss: the value is "Level 6 to 20, boss 40" when the boss is above the range, else "Level 6 to 24" alone; the line under it names the boss when it is someone ("Zulakaroth, Keeper of the Dragonstone", linked) and then "Draugr and 4 more kinds ›" to the Danger section. The assistant's `get_place` says it the same way ("Level 6 to 20, with a level 40 boss").
+- [ ] Then `for Bob`.
+
 ### Part 11. The review of Part 10 (Bob's reviewer, 1 Nov, 10:30; Bob confirmed Fort Snowhawk and Wolfskull Cave on staging)
 **Pass:** + and − at 44 px and off at the limit, the scale follows the zoom (0.1 km to 50 m on the same bar), Whiterun's one fold, Dawnstar's followers, "Thalmor and 1 more kind". Saxhleel Camp, Haknir's Shoal, Darkshade Copse, Steepfall Burrow, Warehouses, Northwatch Keep and Fort Justice say no boss; Zulakaroth and Captain Hargar are still said.
 
