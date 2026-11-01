@@ -5176,7 +5176,7 @@ Jeff's notes on Part 4 (PC, 30 Oct). The status says Part 4 is the PC's, so I di
 ---
 
 ## WO-184  Players make it right: screenshots, I know this, Help fill the gaps, one review list (Mac, 30 Oct 2026)
-Status: queued (Mac: Part 11, the two that still fail. Dave, 1 Nov: the Screenshot or Map toggle is out, it isn't obvious there is one; the screenshot goes on top and the map below. No more work on the page top until Dave's final feedback on the canvas, where every screen now sits as the browser shows it)
+Status: queued (Mac: Part 11, the two that still fail. Dave, 1 Nov, and on the canvas at 09:59: the Screenshot or Map toggle is out, it isn't obvious there is one; the screenshot goes on top and the map under it, in two boxes of the same size. No more work on the page top until Dave's final feedback on the canvas, where every screen now sits as the browser shows it)
 
 **Why.** Dave, 30 Oct: with playthroughs cut, double down on quests, places and people, and "accelerate the ideas for community confirmation of quest info, the admin review section, and of course the image collection work for locations and NPCs." These are the backlog's 23 Oct, 28 Oct and 28 Oct items, decided.
 
