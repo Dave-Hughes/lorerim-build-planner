@@ -5022,6 +5022,36 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-186  Two bills: builds that aren't needed, and a database that never sleeps (Mac, 6 Nov 2026)
+Status: queued (Mac)
+
+**Why.** Vercel billed Dave on 6 Nov: $33.58 for the account (the $20 Pro plan ahead, and $13.58 of usage for Oct 6 to Nov 5, of which build minutes were $8.54 for 6,716 minutes) and $17.86 for the Neon database (Sep 30 to Oct 31, of which compute was $17.80 for 168 compute-hours). The smallest Neon compute is 0.25 CU, so 168 compute-hours is one compute awake almost the whole month. Both are habits of ours, not the players': every push builds, including commits that change only `docs/`, and something keeps a database awake around the clock.
+
+### Part 1. A push that changes only docs doesn't build
+Vercel runs an "ignored build step" before each build; exit 0 means skip, exit 1 means build. Put it in `vercel.json` so it lives in the repo:
+
+```json
+{ "ignoreCommand": "git diff --quiet HEAD^ HEAD -- . ':(exclude)docs' ':(exclude)*.md'" }
+```
+
+A commit that touches only `docs/` or Markdown files skips the build; anything else builds as before. A skipped deploy leaves the staging and production addresses on the last built deployment, which is what we want.
+
+- [ ] `vercel.json` carries the command above (merged with whatever the file already holds). If the clone on Vercel is too shallow for `HEAD^` on some push, the command treats that as "build" (exit 1), never as "skip".
+- [ ] Pushed to staging in two commits: first one that changes only this file and a line in `docs/`, then one that changes only `docs/`. In Vercel's deployment list the second shows as skipped (Canceled, "ignored build step"); the first builds. Both links in the notes.
+- [ ] The preview address still serves the last built deployment after the skipped push.
+
+### Part 2. The database sleeps when nobody is using it
+The planner's three Neon branches (production, staging, dev) each have a compute that should suspend after 5 minutes of quiet. The bill says one compute's worth ran all month. Find out what keeps it awake, then set the suspend times.
+
+- [ ] In Vercel, Storage, the Neon database, each branch's compute shows its suspend time. Staging and dev: suspend after 5 minutes. Production: 5 minutes too (a cold start is under a second, and the planner has few players yet); write the choice in the notes.
+- [ ] What keeps a compute awake, found and named in the notes: look at `vercel.json` crons (there are none today), anything that opens the database on a timer (instrumentation, a keep-alive, the MCP door, a health check), and Neon's Monitoring page for each branch over the last 7 days (compute active time per hour tells which branch and when). If the cause is ours, stop it. If it is the e2e runs, say so; they end when the Jeffs stop.
+- [ ] After a day with nobody working: Neon's Monitoring page shows under 2 active hours for staging and dev. Screenshot in the notes.
+- [ ] Then `for Bob`. Bob checks the next Neon receipt (compute-hours under 40) and the next Vercel one (build minutes under 2,000).
+
+### Jeff's notes
+
+---
+
 ## WO-185  Dave's notes from using the app (Mac, PC for Part 4, 30 Oct 2026)
 Status: queued (PC: Part 8. Parts 1 to 3, 6b and 7's page work pass; the staging upload passes; Dave's final feedback comes on the canvas)
 
