@@ -36,6 +36,38 @@ const RULE_WORDS: Record<Run["rulesBroken"][number]["rule"], string> = {
   other: "Broke a rule",
 };
 
+/** The game's own totals a run file may carry, in the order they are shown, in the game's words. */
+const JOURNEY: [string, string][] = [
+  ["locationsDiscovered", "Locations discovered"],
+  ["dungeonsCleared", "Dungeons cleared"],
+  ["questsCompleted", "Quests completed"],
+  ["miscObjectivesCompleted", "Misc objectives completed"],
+  ["standingStonesFound", "Standing stones found"],
+  ["chestsLooted", "Chests looted"],
+  ["goldFound", "Gold found"],
+  ["mostGoldCarried", "Most gold carried"],
+  ["barters", "Barters"],
+  ["weaponsMade", "Weapons made"],
+  ["armorMade", "Armor made"],
+  ["potionsMixed", "Potions mixed"],
+  ["poisonsMixed", "Poisons mixed"],
+  ["ingredientsHarvested", "Ingredients harvested"],
+  ["foodEaten", "Food eaten"],
+  ["booksRead", "Books read"],
+  ["skillIncreases", "Skill increases"],
+  ["hoursSlept", "Hours slept"],
+  ["locksPicked", "Locks picked"],
+  ["sneakAttacks", "Sneak attacks"],
+  ["criticalStrikes", "Critical strikes"],
+  ["peopleKilled", "People killed"],
+  ["animalsKilled", "Animals killed"],
+  ["creaturesKilled", "Creatures killed"],
+  ["undeadKilled", "Undead killed"],
+  ["daedraKilled", "Daedra killed"],
+  ["automatonsKilled", "Automatons killed"],
+  ["dragonSoulsCollected", "Dragon souls collected"],
+];
+
 const n = (value: number) => value.toLocaleString("en-US");
 
 /** How many of one item were made, whichever way. */
@@ -43,11 +75,12 @@ const itemCount = (item: Run["made"]["items"][number]) => WAYS.reduce((sum, [key
 
 /**
  * One player's run, laid out: who on the wall at the top, the four counts, what was
- * made by each craft, the rules chosen, then the lists. `foot` is whatever the page puts last (the owner's Remove).
+ * made by each craft, the rules chosen, the game's own totals, then the lists. `foot` is whatever the page puts last (the owner's Remove).
  */
 export function RunSheet({ saved, foot }: { saved: SavedRun; foot?: React.ReactNode }) {
   const { run } = saved;
   const items = [...run.made.items].sort((a, b) => itemCount(b) - itemCount(a) || a.name.localeCompare(b.name));
+  const journey = JOURNEY.filter(([key]) => typeof run.stats?.[key] === "number");
   const kills = [...run.kills].sort((a, b) => b.count - a.count || a.kind.localeCompare(b.kind));
   return (
     <>
@@ -106,6 +139,20 @@ export function RunSheet({ saved, foot }: { saved: SavedRun; foot?: React.ReactN
                 </li>
               ))}
             </ul>
+          </section>
+        ) : null}
+
+        {journey.length ? (
+          <section className={styles.part}>
+            <h2 className={styles.title}>The journey</h2>
+            <dl className={styles.journey}>
+              {journey.map(([key, label]) => (
+                <div key={key}>
+                  <dd>{n(run.stats?.[key] ?? 0)}</dd>
+                  <dt>{label}</dt>
+                </div>
+              ))}
+            </dl>
           </section>
         ) : null}
 

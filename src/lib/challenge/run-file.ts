@@ -57,6 +57,8 @@ const runSchema = z.object({
     .max(20_000),
   kills: z.array(z.object({ kind: z.string().max(200), id: z.string().max(200), count })).max(5_000),
   consoleOpened: count,
+  /** The game's own totals for the character (places found, quests done, gold found...), from mod builds that write them. */
+  stats: z.record(z.string().max(40), count).optional(),
   plugins: z.object({ count, fingerprint: z.string().max(80) }),
 });
 

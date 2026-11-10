@@ -80,6 +80,11 @@ describe("the run file", () => {
     expect(readRunFile(sealRunFile({ ...run, mode: "easy" }))).toEqual({ ok: false, error: RUN_FILE_WORDS.shape });
   });
 
+  it("keeps the game's own totals when a run carries them", () => {
+    const read = readRunFile(sealRunFile({ ...run, stats: { locationsDiscovered: 41, questsCompleted: 7 } }));
+    expect(read.ok && read.run.stats).toEqual({ locationsDiscovered: 41, questsCompleted: 7 });
+  });
+
   it("refuses a run from the old warn-only mode", () => {
     expect(readRunFile(sealRunFile({ ...run, mode: "honor" }))).toEqual({ ok: false, error: RUN_FILE_WORDS.notChallenge });
   });
