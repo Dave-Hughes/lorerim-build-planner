@@ -31,39 +31,40 @@ const RULES: { icon: string; words: string; no?: boolean }[] = [
 
 const days = (n: number) => n.toFixed(n < 10 ? 1 : 0);
 
-function Top({ mode, icon, rows }: { mode: string; icon: string; rows: BoardRow[] }) {
+/** The rules the challenge leaves to the player, chosen when the character is made. */
+const YOURS: { icon: string; words: string }[] = [
+  { icon: "challenge-gem", words: "Looted gems" },
+  { icon: "challenge-soul-gem", words: "Looted soul gems" },
+  { icon: "quest-rewards", words: "Coin purse gems" },
+  { icon: "challenge-reward", words: "Quest rewards" },
+  { icon: "slot-backpack", words: "Starting items" },
+  { icon: "challenge-kills", words: "Others' kills" },
+];
+
+function Top({ rows }: { rows: BoardRow[] }) {
+  if (rows.length === 0) return <p className={styles.empty}>No runs yet. The first place is open.</p>;
   return (
-    <div className={styles.top}>
-      <h3 className={styles.topName}>
-        <Pixel name={icon} size={32} />
-        {mode}
-      </h3>
-      {rows.length === 0 ? (
-        <p className={styles.empty}>No runs yet. The first place is open.</p>
-      ) : (
-        <ol className={styles.topList}>
-          {rows.map((row, i) => (
-            <li key={row.id}>
-              <span className={styles.place}>{i + 1}</span>
-              <Link href={`/challenge/run/${row.id}`}>{row.characterName}</Link>
-              <span className={styles.topDays}>{days(row.days)} days</span>
-              <span className={row.rulesBroken === 0 ? styles.clean : styles.broke}>{row.rulesBroken === 0 ? "Clean" : `${row.rulesBroken} broken`}</span>
-            </li>
-          ))}
-        </ol>
-      )}
-    </div>
+    <ol className={styles.topList}>
+      {rows.map((row, i) => (
+        <li key={row.id}>
+          <span className={styles.place}>{i + 1}</span>
+          <Link href={`/challenge/run/${row.id}`}>{row.characterName}</Link>
+          <span className={styles.topDays}>{days(row.days)} days</span>
+          <span className={row.rulesBroken === 0 ? styles.clean : styles.broke}>{row.rulesBroken === 0 ? "Clean" : `${row.rulesBroken} broken`}</span>
+        </li>
+      ))}
+    </ol>
   );
 }
 
-/** The challenge's front page: the smithy, the rules as pictures, the two modes, how to start, and the top runs. */
+/** The challenge's front page: the smithy, the rules as pictures, the rules left to the player, how to start, and the top runs. */
 export default async function Challenge() {
   if (!challengeOn()) notFound();
   // A table that isn't there yet (a preview that hasn't run the migration) reads as an empty board, not an error.
-  const [oath, honor] = await Promise.all([boardRows("oath", 5).catch(() => []), boardRows("honor", 5).catch(() => [])]);
+  const top = await boardRows(5).catch(() => []);
   return (
     <>
-      <ChallengeHero title="Zenithar's Challenge" line={LINE}>
+      <ChallengeHero over="LoreRim's" title="Zenithar's Challenge" line={LINE}>
         {MOD_DOWNLOAD_URL ? (
           <a href={MOD_DOWNLOAD_URL} className="btn btn-primary btn-lg">
             Download
@@ -98,20 +99,16 @@ export default async function Challenge() {
         </section>
 
         <section className={styles.block}>
-          <h2 className={styles.title}>Choose how they are kept</h2>
-          <div className={styles.modes}>
-            <div className={`${styles.mode} ${styles.oath}`}>
-              <Pixel name="challenge-oath" size={128} />
-              <h3 className={styles.modeName}>Oath</h3>
-              <p>The game holds you to it. What you did not make cannot be used.</p>
-            </div>
-            <div className={`${styles.mode} ${styles.honor}`}>
-              <Pixel name="challenge-honor" size={128} />
-              <h3 className={styles.modeName}>Honor</h3>
-              <p>You hold yourself to it. Every broken rule is warned and counted.</p>
-            </div>
-          </div>
-          <p className={styles.note}>Chosen once, when your character is made.</p>
+          <h2 className={styles.title}>Six are up to you</h2>
+          <ul className={`${styles.rules} ${styles.six}`}>
+            {YOURS.map((rule) => (
+              <li key={rule.words}>
+                <Pixel name={rule.icon} size={64} />
+                <span>{rule.words}</span>
+              </li>
+            ))}
+          </ul>
+          <p className={styles.note}>Allow each or not when your character is made. The mod holds you to the rest: what you did not make cannot be used or sold.</p>
         </section>
 
         <section className={styles.block}>
@@ -127,7 +124,7 @@ export default async function Challenge() {
             <li>
               <Pixel name="challenge-oath" size={64} />
               <h3 className={styles.stepName}>Make a character</h3>
-              <p>After LoreRim&apos;s own setup, pick Oath or Honor and the rules that are up to you.</p>
+              <p>After LoreRim&apos;s own setup, take the challenge and pick the rules that are up to you.</p>
             </li>
             <li>
               <Pixel name="challenge-trophy" size={64} />
@@ -144,9 +141,8 @@ export default async function Challenge() {
 
         <section className={styles.block}>
           <h2 className={styles.title}>Top runs</h2>
-          <div className={styles.tops}>
-            <Top mode="Oath" icon="challenge-oath" rows={oath} />
-            <Top mode="Honor" icon="challenge-honor" rows={honor} />
+          <div className={styles.top}>
+            <Top rows={top} />
           </div>
           <p>
             <Link href="/challenge/leaderboard" className="btn">

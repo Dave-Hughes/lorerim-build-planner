@@ -42,23 +42,22 @@ const n = (value: number) => value.toLocaleString("en-US");
 const itemCount = (item: Run["made"]["items"][number]) => WAYS.reduce((sum, [key]) => sum + (typeof item[key] === "number" ? (item[key] as number) : 0), 0);
 
 /**
- * One player's run, laid out: who and how the rules were kept on the wall at the top, the four counts, what was
+ * One player's run, laid out: who on the wall at the top, the four counts, what was
  * made by each craft, the rules chosen, then the lists. `foot` is whatever the page puts last (the owner's Remove).
  */
 export function RunSheet({ saved, foot }: { saved: SavedRun; foot?: React.ReactNode }) {
   const { run } = saved;
-  const oath = saved.mode === "oath";
   const items = [...run.made.items].sort((a, b) => itemCount(b) - itemCount(a) || a.name.localeCompare(b.name));
   const kills = [...run.kills].sort((a, b) => b.count - a.count || a.kind.localeCompare(b.kind));
   return (
     <>
       <header className={styles.band}>
         <div className={`page ${styles.bandInner}`}>
-          <Pixel name={oath ? "challenge-oath" : "challenge-honor"} size={96} />
+          <Pixel name="deity-zenithar" size={96} />
           <div className={styles.bandWords}>
             <h1 className={styles.bandTitle}>{saved.characterName}</h1>
             <p className={styles.bandLine}>
-              {oath ? "Oath" : "Honor"}, {saved.race}, level {saved.level}, played by {saved.player}
+              {saved.race}, level {saved.level}, played by {saved.player}
             </p>
           </div>
         </div>

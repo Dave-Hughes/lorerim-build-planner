@@ -70,6 +70,7 @@ export const RUN_FILE_WORDS = {
   notRunFile: "That is not a run file. It is the .json file the mod writes next to your SKSE logs.",
   edited: "That file was changed after the mod wrote it, so it can't be taken.",
   shape: "That run file is from a version of the mod this page doesn't read yet.",
+  notChallenge: "That run was not played under the challenge, so it can't go on the leaderboard.",
 } as const;
 
 /**
@@ -98,6 +99,8 @@ export function readRunFile(text: string, key: string = sealKey()): RunFileResul
   }
   const run = runSchema.safeParse(parsed);
   if (!run.success) return { ok: false, error: RUN_FILE_WORDS.shape };
+  // Early builds of the mod had a warn-only mode, "honor". The challenge is the refusing one alone now.
+  if (run.data.mode !== "oath") return { ok: false, error: RUN_FILE_WORDS.notChallenge };
   return { ok: true, run: run.data, seal };
 }
 

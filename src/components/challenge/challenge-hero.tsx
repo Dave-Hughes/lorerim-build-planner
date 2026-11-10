@@ -8,7 +8,7 @@ const px = (name: string) => `/challenge/px/${name}.png`;
  * the anvil and the forge behind him, six frames of hammer and fire. It moves on CSS alone and stops for anyone who
  * asks for less motion.
  */
-export function ChallengeHero({ title, line, children }: { title: string; line: string; children?: React.ReactNode }) {
+export function ChallengeHero({ over, title, line, children }: { over?: string; title: string; line: string; children?: React.ReactNode }) {
   return (
     <section className={styles.hero} aria-label={title}>
       <img className={styles.layer} src={px("smithy-room")} alt="" />
@@ -18,7 +18,10 @@ export function ChallengeHero({ title, line, children }: { title: string; line: 
       ))}
       <span className={styles.shade} />
       <div className={styles.big}>
-        <h1 className={styles.heroTitle}>{title}</h1>
+        <h1 className={styles.heroTitle}>
+          {over ? <span className={styles.heroOver}>{over}</span> : null}
+          {title}
+        </h1>
         <p className={styles.heroLine}>{line}</p>
         {children ? <span className={styles.cta}>{children}</span> : null}
       </div>

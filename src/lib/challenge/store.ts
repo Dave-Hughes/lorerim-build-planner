@@ -46,13 +46,13 @@ const boardColumns = {
 type Raw = { daysPassedX100: number; player: string | null };
 const shape = <T extends Raw>({ daysPassedX100, player, ...rest }: T) => ({ ...rest, days: daysPassedX100 / 100, player: player ?? "A player" });
 
-/** The leaderboard for one mode: fewest rules broken first, then the most in-game days, then the newest upload. */
-export async function boardRows(mode: "oath" | "honor", limit = 100): Promise<BoardRow[]> {
+/** The leaderboard: fewest rules broken first, then the most in-game days, then the newest upload. */
+export async function boardRows(limit = 100): Promise<BoardRow[]> {
   const rows = await db()
     .select(boardColumns)
     .from(challengeRuns)
     .innerJoin(users, eq(users.id, challengeRuns.userId))
-    .where(eq(challengeRuns.mode, mode))
+    .where(eq(challengeRuns.mode, "oath"))
     .orderBy(asc(challengeRuns.rulesBroken), desc(challengeRuns.daysPassedX100), desc(challengeRuns.uploadedAt))
     .limit(limit);
   return rows.map(shape);

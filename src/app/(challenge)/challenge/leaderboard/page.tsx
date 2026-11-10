@@ -52,12 +52,12 @@ function Board({ rows }: { rows: BoardRow[] }) {
   );
 }
 
-/** The leaderboard: one table for each mode, cleanest runs first, then the longest lived. The upload sits above them. */
+/** The leaderboard: cleanest runs first, then the longest lived. The upload sits above the table. */
 export default async function Leaderboard() {
   if (!challengeOn()) notFound();
   const session = await auth().catch(() => null);
   // A table that isn't there yet (a preview that hasn't run the migration) reads as an empty board, not an error.
-  const [oath, honor] = await Promise.all([boardRows("oath").catch(() => []), boardRows("honor").catch(() => [])]);
+  const rows = await boardRows().catch(() => []);
   return (
     <>
       <header className={styles.band}>
@@ -87,19 +87,7 @@ export default async function Leaderboard() {
         </section>
 
         <section className={styles.list}>
-          <h2 className={styles.boardName}>
-            <Pixel name="challenge-oath" size={48} />
-            Oath
-          </h2>
-          <Board rows={oath} />
-        </section>
-
-        <section className={styles.list}>
-          <h2 className={styles.boardName}>
-            <Pixel name="challenge-honor" size={48} />
-            Honor
-          </h2>
-          <Board rows={honor} />
+          <Board rows={rows} />
         </section>
       </main>
     </>

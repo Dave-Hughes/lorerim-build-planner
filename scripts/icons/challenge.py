@@ -1,6 +1,6 @@
 """
-Pixel icons for the Zenithar's Challenge pages: the rules that have no icon elsewhere on the site, the two
-modes, and the leaderboard. Same craft rules as pixels.py (16x16, light from the top left, three tones a
+Pixel icons for the Zenithar's Challenge pages: the rules that have no icon elsewhere on the site, the rules
+left up to the player, and the leaderboard. Same craft rules as pixels.py (16x16, light from the top left, three tones a
 material, the shared outline). Each draw takes the Icon class so this file needs nothing from pixels.py.
 
 Written by pixels.py as public/icons/challenge-<slug>.svg.
@@ -54,20 +54,6 @@ def no_missive(Icon):
     return i.outline()
 
 
-def honor(Icon):
-    # A merchant's scales, level
-    i = Icon()
-    i.rect(7, 2, 8, 12, "b"); i.rect(7, 2, 7, 12, "Y")                                            # the post
-    i.rect(2, 3, 13, 3, "Y"); i.rect(2, 4, 13, 4, "b")                                            # the beam
-    i.disc(7.5, 1.6, 1.2, "y")                                                                    # the finial
-    for cx in (3, 12):
-        i.line(cx, 5, cx - 2, 9, "L"); i.line(cx, 5, cx + 2, 9, "L")                              # the chains
-        i.rect(cx - 2, 10, cx + 2, 10, "b"); i.rect(cx - 1, 11, cx + 1, 11, "B")                  # the pan
-        i.px(cx - 2, 10, "Y")
-    i.rect(4, 13, 11, 14, "B"); i.rect(4, 13, 11, 13, "b")                                        # the foot
-    return i.outline()
-
-
 def oath(Icon):
     # Two links of chain, closed
     i = Icon()
@@ -107,7 +93,56 @@ def hunt(Icon):
     return i.outline()
 
 
+def gem(Icon):
+    # A cut gem, point down
+    i = Icon()
+    i.poly([(4, 3), (11, 3), (14, 7), (8, 14), (7, 14), (1, 7)], "s")
+    i.recolor({"s"}, "e", lambda x, y: y <= 6 and x <= 8)                                         # the lit table
+    i.recolor({"s"}, "S", lambda x, y: x >= 9 and y >= 7)                                         # the far facets
+    i.line(2, 7, 13, 7, "S"); i.line(5, 4, 4, 7, "S"); i.line(10, 4, 11, 7, "S")                  # the girdle and crown cuts
+    i.line(5, 8, 7, 13, "e"); i.px(5, 4, "W"); i.px(6, 4, "W")                                    # a glint
+    return i.outline()
+
+
+def soul_gem(Icon):
+    # A soul gem: a tall crystal, empty
+    i = Icon()
+    i.poly([(7, 0), (8, 0), (11, 4), (11, 11), (8, 15), (7, 15), (4, 11), (4, 4)], "m")
+    i.recolor({"m"}, "c", lambda x, y: x <= 6 and y <= 9)
+    i.recolor({"m"}, "M", lambda x, y: x >= 9)
+    i.recolor({"m", "M"}, "N", lambda x, y: y >= 12 and x >= 8)
+    i.line(7, 1, 7, 14, "M"); i.line(5, 4, 10, 4, "M"); i.line(5, 11, 10, 11, "N")                # the edges of the cut
+    i.px(5, 5, "W"); i.px(5, 6, "W")
+    return i.outline()
+
+
+def reward(Icon):
+    # A sword held out hilt first, a ribbon on the grip
+    i = Icon()
+    i.line(4, 12, 13, 3, "w"); i.line(5, 12, 13, 4, "g"); i.px(14, 2, "W"); i.px(13, 2, "W"); i.px(14, 3, "w")   # the blade
+    i.line(2, 9, 7, 14, "b"); i.line(3, 9, 7, 13, "Y")                                            # the guard
+    i.line(1, 14, 3, 12, "B"); i.px(0, 15, "Y"); i.px(1, 15, "b")                                 # the grip and pommel
+    i.px(3, 14, "r"); i.px(4, 15, "r"); i.px(2, 13, "p"); i.px(5, 15, "q")                        # the ribbon
+    return i.outline()
+
+
+def kills(Icon):
+    # A stag's skull and antlers
+    i = Icon()
+    i.poly([(5, 8), (10, 8), (10, 11), (9, 14), (6, 14), (5, 11)], "w")                           # the skull
+    i.recolor({"w"}, "W", lambda x, y: x <= 6 and y <= 10)
+    i.recolor({"w"}, "g", lambda x, y: x >= 9 or y >= 13)
+    i.px(6, 10, "k"); i.px(9, 10, "k"); i.px(7, 13, "G"); i.px(8, 13, "G")                        # the eyes and nose
+    for s in (1, -1):                                                                             # the antlers
+        cx = 7.5 + s * 2.5
+        x0 = int(cx)
+        i.line(x0, 7, int(cx + s * 3), 3, "b"); i.line(int(cx + s * 3), 3, int(cx + s * 3), 1, "Y")
+        i.line(int(cx + s * 1), 5, int(cx + s * 1), 2, "Y"); i.line(int(cx + s * 3), 4, int(cx + s * 5), 3, "B")
+    return i.outline()
+
+
 CHALLENGE = {
     "Chop": chop, "Cook": cook, "No magic": no_magic, "No missive": no_missive,
-    "Honor": honor, "Oath": oath, "Trophy": trophy, "Hunt": hunt,
+    "Oath": oath, "Trophy": trophy, "Hunt": hunt,
+    "Gem": gem, "Soul gem": soul_gem, "Reward": reward, "Kills": kills,
 }

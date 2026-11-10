@@ -9,8 +9,8 @@ const run = {
   mod: "0.1.0.0",
   written: "2026-11-10T04:31:40Z",
   character: { name: "Test Smith", race: "Redguard", level: 29 },
-  mode: "honor",
-  modeChosen: false,
+  mode: "oath",
+  modeChosen: true,
   daysPassed: 54.71,
   made: {
     crafted: 1,
@@ -78,6 +78,10 @@ describe("the run file", () => {
   it("refuses a sealed file of a shape it doesn't know", () => {
     expect(readRunFile(sealRunFile({ ...run, format: 2 }))).toEqual({ ok: false, error: RUN_FILE_WORDS.shape });
     expect(readRunFile(sealRunFile({ ...run, mode: "easy" }))).toEqual({ ok: false, error: RUN_FILE_WORDS.shape });
+  });
+
+  it("refuses a run from the old warn-only mode", () => {
+    expect(readRunFile(sealRunFile({ ...run, mode: "honor" }))).toEqual({ ok: false, error: RUN_FILE_WORDS.notChallenge });
   });
 });
 
