@@ -17,6 +17,8 @@ export interface BoardRow {
   rulesBroken: number;
   kills: number;
   player: string;
+  /** The player's Discord picture, when they have one. */
+  image: string | null;
   handle: string | null;
   uploadedAt: Date;
 }
@@ -39,6 +41,7 @@ const boardColumns = {
   rulesBroken: challengeRuns.rulesBroken,
   kills: challengeRuns.kills,
   player: users.name,
+  image: users.image,
   handle: users.handle,
   uploadedAt: challengeRuns.uploadedAt,
 };

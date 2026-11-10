@@ -899,3 +899,14 @@
     font-size: 48px;
   }
 }
+
+/* A player's Discord picture beside their name. */
+.who {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  vertical-align: middle;
+}
+.bandLine .who {
+  margin-left: 0.5em;
+}

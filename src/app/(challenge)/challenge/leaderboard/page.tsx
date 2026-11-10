@@ -6,6 +6,7 @@ import { SignInButton } from "@/components/site-header";
 import { UploadForm } from "@/components/challenge/upload-form";
 import { challengeOn } from "@/lib/features";
 import { boardRows, type BoardRow } from "@/lib/challenge/store";
+import { Avatar } from "@/components/ui/avatar";
 import styles from "@/components/challenge/challenge.module.css";
 
 export const metadata: Metadata = { title: "Leaderboard | Zenithar's Challenge", description: "Runs of Zenithar's Challenge, uploaded by the players who made them." };
@@ -39,7 +40,12 @@ function Board({ rows }: { rows: BoardRow[] }) {
               <td>
                 <Link href={`/challenge/run/${row.id}`}>{row.characterName}</Link>
               </td>
-              <td>{row.player}</td>
+              <td>
+                <span className={styles.who}>
+                  <Avatar name={row.player} image={row.image} size={24} />
+                  {row.player}
+                </span>
+              </td>
               <td className={styles.n}>{row.level}</td>
               <td className={styles.n}>{days(row.days)}</td>
               <td className={styles.n}>{row.itemsMade.toLocaleString("en-US")}</td>

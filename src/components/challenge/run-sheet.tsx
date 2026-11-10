@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { SavedRun } from "@/lib/challenge/store";
 import type { Run, RunOptions } from "@/lib/challenge/run-file";
 import { formatDate } from "@/lib/format/date";
+import { Avatar } from "@/components/ui/avatar";
 import styles from "./challenge.module.css";
 
 /* eslint-disable @next/next/no-img-element */
@@ -92,7 +93,11 @@ export function RunSheet({ saved, foot }: { saved: SavedRun; foot?: React.ReactN
           <div className={styles.bandWords}>
             <h1 className={styles.bandTitle}>{saved.characterName}</h1>
             <p className={styles.bandLine}>
-              {saved.race}, level {saved.level}, played by {saved.player}
+              {saved.race}, level {saved.level}, played by
+              <span className={styles.who}>
+                <Avatar name={saved.player} image={saved.image} size={24} />
+                {saved.player}
+              </span>
             </p>
           </div>
         </div>
