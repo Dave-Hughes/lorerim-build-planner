@@ -81,6 +81,8 @@ export function RunSheet({ saved, foot }: { saved: SavedRun; foot?: React.ReactN
   const { run } = saved;
   const items = [...run.made.items].sort((a, b) => itemCount(b) - itemCount(a) || a.name.localeCompare(b.name));
   const journey = JOURNEY.filter(([key]) => typeof run.stats?.[key] === "number");
+  // The mod counts game units. A unit is 9/16 of an inch, so a mile is 112,640 of them.
+  const travelled = typeof run.distance === "number" ? (run.distance / 112_640).toFixed(1) : "";
   const kills = [...run.kills].sort((a, b) => b.count - a.count || a.kind.localeCompare(b.kind));
   return (
     <>
@@ -142,10 +144,22 @@ export function RunSheet({ saved, foot }: { saved: SavedRun; foot?: React.ReactN
           </section>
         ) : null}
 
-        {journey.length ? (
+        {journey.length || travelled ? (
           <section className={styles.part}>
             <h2 className={styles.title}>The journey</h2>
             <dl className={styles.journey}>
+              {travelled ? (
+                <div>
+                  <dd>{travelled}</dd>
+                  <dt>Miles travelled</dt>
+                </div>
+              ) : null}
+              {typeof run.deaths === "number" ? (
+                <div>
+                  <dd>{n(run.deaths)}</dd>
+                  <dt>Deaths</dt>
+                </div>
+              ) : null}
               {journey.map(([key, label]) => (
                 <div key={key}>
                   <dd>{n(run.stats?.[key] ?? 0)}</dd>

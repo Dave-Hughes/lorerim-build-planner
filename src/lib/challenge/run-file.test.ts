@@ -81,8 +81,9 @@ describe("the run file", () => {
   });
 
   it("keeps the game's own totals when a run carries them", () => {
-    const read = readRunFile(sealRunFile({ ...run, stats: { locationsDiscovered: 41, questsCompleted: 7 } }));
+    const read = readRunFile(sealRunFile({ ...run, deaths: 3, distance: 250000, stats: { locationsDiscovered: 41, questsCompleted: 7 } }));
     expect(read.ok && read.run.stats).toEqual({ locationsDiscovered: 41, questsCompleted: 7 });
+    expect(read.ok && [read.run.deaths, read.run.distance]).toEqual([3, 250000]);
   });
 
   it("refuses a run from the old warn-only mode", () => {
