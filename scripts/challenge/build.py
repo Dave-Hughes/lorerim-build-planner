@@ -387,6 +387,8 @@ base, mouth = room()
 save(base, 'smithy-room', 'courses')
 # Two courses of the wall on their own: a phone tiles them above the scene, so the room grows upward instead of being cropped.
 base.crop((0, 0, W, 14)).save(os.path.join(OUT, 'smithy-wall.png'), optimize=True)
+# The same two courses without the chimney (196 = fourteen bricks), for the strip at the top of the other pages.
+base.crop((0, 0, 196, 14)).save(os.path.join(OUT, 'smithy-bricks.png'), optimize=True)
 save(glow(mouth), 'smithy-glow', 'stretch')
 for i in range(6):
     save(frame(i, mouth), f'smithy-fg-{i}')

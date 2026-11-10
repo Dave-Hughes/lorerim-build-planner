@@ -11,10 +11,13 @@ import styles from "@/components/challenge/challenge.module.css";
 export const metadata: Metadata = { title: "Leaderboard | Zenithar's Challenge", description: "Runs of Zenithar's Challenge, uploaded by the players who made them." };
 export const dynamic = "force-dynamic";
 
+/* eslint-disable @next/next/no-img-element */
+const Pixel = ({ name, size }: { name: string; size: number }) => <img className={styles.pixel} src={`/icons/${name}.svg`} alt="" width={size} height={size} />;
+
 const days = (n: number) => n.toFixed(n < 10 ? 1 : 0);
 
 function Board({ rows }: { rows: BoardRow[] }) {
-  if (rows.length === 0) return <p>No runs yet.</p>;
+  if (rows.length === 0) return <p className={styles.empty}>No runs yet. The first place is open.</p>;
   return (
     <div className={styles.scroll}>
       <table className={styles.table}>
@@ -32,7 +35,7 @@ function Board({ rows }: { rows: BoardRow[] }) {
         <tbody>
           {rows.map((row, i) => (
             <tr key={row.id}>
-              <td className={styles.rank}>{i + 1}</td>
+              <td className={`${styles.rank} ${i === 0 ? styles.first1 : ""}`}>{i + 1}</td>
               <td>
                 <Link href={`/challenge/run/${row.id}`}>{row.characterName}</Link>
               </td>
@@ -56,33 +59,49 @@ export default async function Leaderboard() {
   // A table that isn't there yet (a preview that hasn't run the migration) reads as an empty board, not an error.
   const [oath, honor] = await Promise.all([boardRows("oath").catch(() => []), boardRows("honor").catch(() => [])]);
   return (
-    <main className={`page ${styles.main}`}>
-      <section className={styles.section}>
-        <h1 className={styles.runTitle}>Leaderboard</h1>
-        <p>Runs are ranked by the fewest rules broken, then by the most in-game days.</p>
-      </section>
+    <>
+      <header className={styles.band}>
+        <div className={`page ${styles.bandInner}`}>
+          <Pixel name="challenge-trophy" size={96} />
+          <div className={styles.bandWords}>
+            <h1 className={styles.bandTitle}>Leaderboard</h1>
+            <p className={styles.bandLine}>Fewest rules broken, then the most days lived</p>
+          </div>
+        </div>
+      </header>
+      <main className={`page ${styles.sheet}`}>
+        <section className={styles.add}>
+          <Pixel name="quest-chest" size={64} />
+          <div className={styles.addWords}>
+            <h2 className={styles.listName}>Add your run</h2>
+            {session?.user ? (
+              <>
+                <p className={styles.path}>Documents\My Games\Skyrim Special Edition\SKSE\ZenitharsChallenge\</p>
+                <UploadForm />
+              </>
+            ) : (
+              <p>The mod writes your run to a file on every save. Sign in to put it here.</p>
+            )}
+          </div>
+          {session?.user ? null : <SignInButton redirectTo="/challenge/leaderboard" className="btn btn-primary" />}
+        </section>
 
-      <section className={styles.section}>
-        <h2 className={styles.h2}>Add your run</h2>
-        {session?.user ? (
-          <>
-            <p className={styles.path}>Documents\My Games\Skyrim Special Edition\SKSE\ZenitharsChallenge\</p>
-            <UploadForm />
-          </>
-        ) : (
-          <SignInButton redirectTo="/challenge/leaderboard" className="btn btn-primary" />
-        )}
-      </section>
+        <section className={styles.list}>
+          <h2 className={styles.boardName}>
+            <Pixel name="challenge-oath" size={48} />
+            Oath
+          </h2>
+          <Board rows={oath} />
+        </section>
 
-      <section className={styles.section}>
-        <h2 className={styles.h2}>Oath</h2>
-        <Board rows={oath} />
-      </section>
-
-      <section className={styles.section}>
-        <h2 className={styles.h2}>Honor</h2>
-        <Board rows={honor} />
-      </section>
-    </main>
+        <section className={styles.list}>
+          <h2 className={styles.boardName}>
+            <Pixel name="challenge-honor" size={48} />
+            Honor
+          </h2>
+          <Board rows={honor} />
+        </section>
+      </main>
+    </>
   );
 }

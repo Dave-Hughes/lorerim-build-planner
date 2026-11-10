@@ -615,13 +615,273 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* On a phone the scene is cut to its right half, so the anvil and the forge both stay in view. */
+.nav {
+  row-gap: 8px;
+}
 @media (max-width: 699px) {
-  .layer {
-    object-position: 74% 100%;
-  }
   .nav {
     gap: 18px;
     font-size: 16px;
+  }
+}
+
+/* ---------- the leaderboard and a run ---------- */
+/* The top of both pages is a strip of the smithy's wall with the name on it. */
+.band {
+  background: #171c24 url("/challenge/px/smithy-bricks.png") left top / 588px auto repeat;
+  image-rendering: pixelated;
+  border-bottom: 4px solid #0b0f14;
+}
+.bandInner {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding-top: 44px;
+  padding-bottom: 44px;
+}
+.bandWords {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+.bandTitle {
+  margin: 0;
+  font-family: var(--font-pixel), var(--font-title);
+  font-weight: 400;
+  font-size: clamp(48px, 6vw, 88px);
+  line-height: 0.85;
+  color: #f4ead2;
+  text-shadow: 4px 4px 0 #0b0f14;
+  overflow-wrap: anywhere;
+}
+.bandLine {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: clamp(17px, 1.5vw, 22px);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ember-text);
+  text-shadow: 0 2px 0 #0b0f14;
+}
+.sheet {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding-top: 48px;
+  padding-bottom: 96px;
+}
+.sheet p {
+  margin: 0;
+}
+.sheet .scroll {
+  max-width: none;
+}
+.part {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.part .title {
+  font-size: clamp(34px, 3.6vw, 48px);
+}
+/* The four counts of a run. */
+.counts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border: 1px solid var(--rule);
+  background: var(--panel);
+}
+.counts li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 24px 28px;
+  border-left: 1px solid var(--rule);
+}
+.counts li:first-child {
+  border-left: 0;
+}
+.counts strong,
+.crafts strong {
+  font-family: var(--font-pixel), var(--font-title);
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 0.9;
+  font-variant-numeric: tabular-nums;
+}
+.counts span,
+.crafts span {
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 17px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+/* What was made, craft by craft. */
+.crafts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
+}
+.crafts li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 10px 20px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+}
+.crafts strong {
+  font-size: 48px;
+  margin-top: 6px;
+}
+.crafts li.none {
+  opacity: 0.45;
+}
+/* The six rules left to the player. */
+.chosen {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px 16px;
+}
+.chosen li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-left-width: 4px;
+  font-size: 18px;
+}
+.chosen b {
+  font-family: var(--font-title);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 16px;
+}
+.chosen li.yes {
+  border-left-color: var(--brass);
+}
+.chosen li.yes b {
+  color: var(--destiny-text);
+}
+.chosen li.off b {
+  color: var(--muted);
+}
+.lists {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px 40px;
+  align-items: start;
+}
+.lists > :first-child {
+  grid-column: 1 / -1;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 18px;
+}
+.listName,
+.boardName {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 26px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.boardName {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-pixel), var(--font-title);
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 0.9;
+  text-transform: none;
+  letter-spacing: 0;
+  color: #f4ead2;
+}
+.first1 {
+  color: var(--ember);
+  font-weight: 700;
+}
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+/* Add your run. */
+.add {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 28px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  font-size: 18px;
+  color: var(--soft);
+}
+.addWords {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+@media (max-width: 900px) {
+  .crafts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .counts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .counts li:nth-child(3) {
+    border-left: 0;
+  }
+  .counts li:nth-child(n + 3) {
+    border-top: 1px solid var(--rule);
+  }
+  .chosen,
+  .lists {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 620px) {
+  .bandInner {
+    gap: 16px;
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+  .bandInner > img {
+    width: 64px;
+    height: 64px;
+  }
+  .add {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .counts li {
+    padding: 18px 16px;
+  }
+  .counts strong {
+    font-size: 48px;
   }
 }
