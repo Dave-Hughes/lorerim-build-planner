@@ -17,13 +17,14 @@ const WAYS = [
   ["hunted", "Hunted", "challenge-hunt"],
 ] as const;
 
-const OPTIONS: [keyof RunOptions, string][] = [
-  ["lootGems", "Looted gems"],
-  ["lootSoulGems", "Looted soul gems"],
-  ["coinPurseGems", "Coin purse gems"],
-  ["questRewards", "Quest rewards"],
-  ["startingItems", "Starting items"],
-  ["othersKills", "Others' kills"],
+/** The six rules left to the player, each with the picture its card has in the game. */
+const OPTIONS: [keyof RunOptions, string, string][] = [
+  ["lootGems", "Looted gems", "looted-gems"],
+  ["lootSoulGems", "Looted soul gems", "looted-soul-gems"],
+  ["coinPurseGems", "Coin purse gems", "coin-purse-gems"],
+  ["questRewards", "Quest rewards", "quest-rewards"],
+  ["startingItems", "Starting items", "starting-items"],
+  ["othersKills", "Others' kills", "others-kills"],
 ];
 
 const RULE_WORDS: Record<Run["rulesBroken"][number]["rule"], string> = {
@@ -34,6 +35,7 @@ const RULE_WORDS: Record<Run["rulesBroken"][number]["rule"], string> = {
   magic: "Used magic",
   missive: "Took a missive",
   material: "Crafted with materials not gathered by the player",
+  console: "Added an item with the console",
   other: "Broke a rule",
 };
 
@@ -139,8 +141,9 @@ export function RunSheet({ saved, foot }: { saved: SavedRun; foot?: React.ReactN
           <section className={styles.part}>
             <h2 className={styles.title}>Rules chosen</h2>
             <ul className={styles.chosen}>
-              {OPTIONS.map(([key, label]) => (
+              {OPTIONS.map(([key, label, picture]) => (
                 <li key={key} className={run.options?.[key] ? styles.yes : styles.off}>
+                  <img src={`/challenge/cards/${picture}.jpg`} alt="" width={768} height={528} loading="lazy" />
                   <span>{label}</span>
                   <b>{run.options?.[key] ? "Allowed" : "Not allowed"}</b>
                 </li>

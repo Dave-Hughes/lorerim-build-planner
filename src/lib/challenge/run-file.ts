@@ -31,7 +31,7 @@ const made = z.object({
     .max(50_000),
 });
 
-export const RULES = ["gear", "food", "potion", "sale", "magic", "missive", "material", "other"] as const;
+export const RULES = ["gear", "food", "potion", "sale", "magic", "missive", "material", "console", "other"] as const;
 
 const runSchema = z.object({
   format: z.literal(1),

@@ -31,14 +31,14 @@ const RULES: { icon: string; words: string; no?: boolean }[] = [
 
 const days = (n: number) => n.toFixed(n < 10 ? 1 : 0);
 
-/** The rules the challenge leaves to the player, chosen when the character is made. */
+/** The rules the challenge leaves to the player, chosen when the character is made, with their cards' pictures from the game. */
 const YOURS: { icon: string; words: string }[] = [
-  { icon: "challenge-gem", words: "Looted gems" },
-  { icon: "challenge-soul-gem", words: "Looted soul gems" },
-  { icon: "quest-rewards", words: "Coin purse gems" },
-  { icon: "challenge-reward", words: "Quest rewards" },
-  { icon: "slot-backpack", words: "Starting items" },
-  { icon: "challenge-kills", words: "Others' kills" },
+  { icon: "looted-gems", words: "Looted gems" },
+  { icon: "looted-soul-gems", words: "Looted soul gems" },
+  { icon: "coin-purse-gems", words: "Coin purse gems" },
+  { icon: "quest-rewards", words: "Quest rewards" },
+  { icon: "starting-items", words: "Starting items" },
+  { icon: "others-kills", words: "Others' kills" },
 ];
 
 function Top({ rows }: { rows: BoardRow[] }) {
@@ -103,7 +103,7 @@ export default async function Challenge() {
           <ul className={`${styles.rules} ${styles.six}`}>
             {YOURS.map((rule) => (
               <li key={rule.words}>
-                <Pixel name={rule.icon} size={64} />
+                <img src={`/challenge/cards/${rule.icon}.jpg`} alt="" width={768} height={528} loading="lazy" />
                 <span>{rule.words}</span>
               </li>
             ))}
