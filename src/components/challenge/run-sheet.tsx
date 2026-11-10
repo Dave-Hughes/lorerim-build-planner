@@ -17,13 +17,14 @@ const WAYS = [
   ["hunted", "Hunted", "challenge-hunt"],
 ] as const;
 
-/** The six rules left to the player, each with its icon from the front page. */
+/** The rules left to the player, each with its icon from the front page. */
 const OPTIONS: [keyof RunOptions, string, string][] = [
   ["lootGems", "Looted gems", "challenge-gem"],
   ["lootSoulGems", "Looted soul gems", "challenge-soul-gem"],
   ["coinPurseGems", "Coin purse gems", "quest-rewards"],
   ["questRewards", "Quest rewards", "challenge-reward"],
-  ["startingItems", "Starting items", "slot-backpack"],
+  ["startingItems", "Starting gear", "slot-backpack"],
+  ["startingClothes", "Starting clothes", "slot-body"],
   ["othersKills", "Others' kills", "challenge-kills"],
 ];
 
@@ -141,10 +142,10 @@ export function RunSheet({ saved, foot }: { saved: SavedRun; foot?: React.ReactN
           <section className={styles.part}>
             <div className={styles.titleRow}>
               <h2 className={styles.title}>Rules chosen</h2>
-              <p className={styles.aside}>All six off is the challenge as written. Each one allowed makes the run easier, and is shown here.</p>
+              <p className={styles.aside}>All off is the challenge as written. Each one allowed makes the run easier, and is shown here.</p>
             </div>
             <ul className={styles.chosen}>
-              {OPTIONS.map(([key, label, picture]) => (
+              {OPTIONS.filter(([key]) => typeof run.options?.[key] === "boolean").map(([key, label, picture]) => (
                 <li key={key} className={run.options?.[key] ? styles.yes : styles.off}>
                   <Pixel name={picture} size={32} />
                   <span>{label}</span>

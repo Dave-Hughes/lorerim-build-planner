@@ -48,6 +48,8 @@ const runSchema = z.object({
       questRewards: z.boolean(),
       startingItems: z.boolean(),
       othersKills: z.boolean(),
+      /** Added when Starting Clothes became its own choice; older files do not carry it. */
+      startingClothes: z.boolean().optional(),
     })
     .optional(),
   daysPassed: z.number().min(0).max(1_000_000),
