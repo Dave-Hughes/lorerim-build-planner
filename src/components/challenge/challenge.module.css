@@ -915,3 +915,15 @@
 .bandLine .who {
   margin-left: 0.5em;
 }
+
+/* A section's title with one line of explanation beside it. */
+.titleRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 24px;
+}
+.aside {
+  font-size: 17px;
+  color: var(--muted);
+}

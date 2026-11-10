@@ -139,7 +139,10 @@ export function RunSheet({ saved, foot }: { saved: SavedRun; foot?: React.ReactN
 
         {run.options ? (
           <section className={styles.part}>
-            <h2 className={styles.title}>Rules chosen</h2>
+            <div className={styles.titleRow}>
+              <h2 className={styles.title}>Rules chosen</h2>
+              <p className={styles.aside}>All six off is the challenge as written. Each one allowed makes the run easier, and is shown here.</p>
+            </div>
             <ul className={styles.chosen}>
               {OPTIONS.map(([key, label, picture]) => (
                 <li key={key} className={run.options?.[key] ? styles.yes : styles.off}>
