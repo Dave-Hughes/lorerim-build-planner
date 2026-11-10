@@ -7,8 +7,8 @@
 export const BOT_PROTECTED: { path: string; method: "POST" }[] = [
   { path: "/", method: "POST" },
   // The pages. A bare section and everything under it.
-  ...["/signin", "/new", "/me", "/admin", "/invite", "/quests", "/people", "/places", "/gear", "/guide", "/characters", "/map", "/changes", "/search", "/playthroughs", "/help-fill-the-gaps", "/coming-soon", "/oauth/authorize"].map((path) => ({ path, method: "POST" as const })),
-  ...["/b", "/u", "/p", "/admin", "/invite", "/quests", "/people", "/places", "/gear", "/guide", "/playthroughs"].map((p) => ({ path: `${p}/*`, method: "POST" as const })),
+  ...["/signin", "/new", "/me", "/admin", "/invite", "/quests", "/people", "/places", "/gear", "/guide", "/characters", "/map", "/changes", "/search", "/playthroughs", "/help-fill-the-gaps", "/coming-soon", "/oauth/authorize", "/challenge"].map((path) => ({ path, method: "POST" as const })),
+  ...["/b", "/u", "/p", "/admin", "/invite", "/quests", "/people", "/places", "/gear", "/guide", "/playthroughs", "/challenge"].map((p) => ({ path: `${p}/*`, method: "POST" as const })),
   // The routes a page posts to.
   { path: "/api/covers", method: "POST" },
   { path: "/api/builds/*/images", method: "POST" },

@@ -1,0 +1,392 @@
+/* Zenithar's Challenge: its own header, the forge hero, and the three pages. Tokens: src/app/globals.css. */
+
+.frame {
+  background: var(--ground);
+}
+
+/* ---------- header and footer ---------- */
+.header {
+  background: #0b0f14;
+  border-bottom: 1px solid var(--rule);
+}
+.headerInner {
+  display: flex;
+  align-items: center;
+  gap: 16px 32px;
+  flex-wrap: wrap;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+.wordmark {
+  font-family: var(--font-pixel), var(--font-title);
+  font-size: 30px;
+  line-height: 1;
+  color: #f4ead2;
+  text-decoration: none;
+  text-shadow: 2px 2px 0 #0b0f14;
+}
+.nav {
+  display: flex;
+  gap: 24px;
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.nav a {
+  color: var(--text);
+  text-decoration: none;
+  text-shadow: 0 2px 0 #0b0f14;
+}
+.nav a:hover {
+  color: var(--ember);
+}
+.account {
+  margin-left: auto;
+}
+.signedIn {
+  color: var(--soft);
+  text-shadow: 0 2px 0 #0b0f14;
+}
+.footer {
+  margin-top: auto;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 14px;
+}
+.footerInner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 40px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+.footerInner p {
+  margin: 0;
+}
+
+/* ---------- hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: #0b0f14;
+}
+.layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% 100%;
+  image-rendering: pixelated;
+}
+@keyframes aurora {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+/* Six frames, one at a time: each shows for a sixth of the loop. */
+@keyframes forge {
+  0%,
+  16.6% {
+    opacity: 1;
+  }
+  16.7%,
+  100% {
+    opacity: 0;
+  }
+}
+.auroraB {
+  animation: aurora 9s ease-in-out infinite;
+}
+.starsB {
+  animation: twinkle 3.2s steps(2) infinite;
+}
+.forge {
+  opacity: 0;
+  animation: forge 1.2s steps(1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .auroraB,
+  .starsB,
+  .forge {
+    animation: none;
+  }
+  .forge.first {
+    opacity: 1;
+  }
+}
+/* The one fade the rules allow: it keeps the words readable over the picture. */
+.shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(11, 15, 20, 0.6) 0%, rgba(11, 15, 20, 0) 26%, rgba(11, 15, 20, 0) 70%, rgba(11, 15, 20, 0.92) 100%);
+}
+.big {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding: clamp(72px, 8vw, 130px) 24px max(250px, 20vw);
+  text-align: center;
+}
+.heroTitle {
+  margin: 0;
+  font-family: var(--font-pixel), var(--font-title);
+  font-weight: 400;
+  font-size: clamp(52px, 9.6vw, 140px);
+  line-height: 0.82;
+  color: #f4ead2;
+  text-shadow: 6px 6px 0 #0b0f14;
+}
+.heroLine {
+  margin: 0;
+  max-width: 760px;
+  font-size: clamp(17px, 1.6vw, 22px);
+  line-height: 1.45;
+  color: var(--text);
+  text-shadow: 0 2px 0 #0b0f14;
+}
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* ---------- the pages ---------- */
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding-top: 56px;
+  padding-bottom: 96px;
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.h2 {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: calc(34px * var(--title-scale));
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.h3 {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brass);
+}
+/* Words and the tables under them share one column, so a paragraph never breaks early beside a wider table. */
+.section p,
+.section ol,
+.section ul,
+.section table,
+.section dl,
+.upload {
+  margin: 0;
+  max-width: 920px;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--soft);
+}
+.section ol,
+.section ul {
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.section a {
+  color: var(--ember-text);
+}
+.section a:hover {
+  color: var(--ember);
+}
+.two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 920px;
+}
+@media (max-width: 760px) {
+  .two {
+    grid-template-columns: 1fr;
+  }
+}
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 24px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+}
+.panel p {
+  font-size: 17px;
+}
+.path {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-size: 15px;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+/* ---------- tables ---------- */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+.table th,
+.table td {
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--rule-soft);
+  vertical-align: baseline;
+}
+.table th {
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  border-bottom-color: var(--rule);
+}
+.table td.n,
+.table th.n {
+  text-align: right;
+}
+.table td a {
+  color: var(--text);
+  text-decoration: none;
+}
+.table td a:hover {
+  color: var(--ember);
+}
+.rank {
+  color: var(--muted);
+  width: 1%;
+}
+.clean {
+  color: var(--stamina);
+}
+.broke {
+  color: var(--health);
+}
+.scroll {
+  max-width: 920px;
+  overflow-x: auto;
+}
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border: 1px solid var(--rule-strong);
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--brass);
+}
+
+/* ---------- upload ---------- */
+.upload {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 14px 18px;
+}
+.file {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 15px;
+  color: var(--muted);
+}
+.file input {
+  padding: 9px 12px;
+  background: var(--sunk);
+  border: 1px solid var(--rule-strong);
+  color: var(--text);
+  font: inherit;
+}
+.error {
+  flex-basis: 100%;
+  margin: 0;
+  color: var(--health);
+}
+
+/* ---------- a run ---------- */
+.runHead {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.runTitle {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: calc(52px * var(--title-scale));
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.byline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  color: var(--muted);
+  font-size: 17px;
+}
+.facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 8px 28px;
+}
+.facts dt {
+  color: var(--muted);
+}
+.facts dd {
+  margin: 0;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+/* On a phone the scene is cut to its right half, so the anvil and the forge both stay in view. */
+@media (max-width: 699px) {
+  .layer {
+    object-position: 74% 100%;
+  }
+  .nav {
+    gap: 18px;
+    font-size: 16px;
+  }
+}

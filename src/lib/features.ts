@@ -1,5 +1,6 @@
 import "server-only";
 import { playthroughsOn } from "@/lib/playthroughs/gate";
+import { challengeOn } from "@/lib/challenge/gate";
 
 /**
  * Switches for parts held back from launch (WO-81), read from the environment so they come back
@@ -40,6 +41,9 @@ export const mcpOn = (env: Record<string, string | undefined> = process.env) => 
 
 /** Playthroughs (WO-111), held back from launch (WO-182): see src/lib/playthroughs/gate.ts. */
 export { playthroughsOn };
+
+/** Zenithar's Challenge: its page, the leaderboard and each run. See src/lib/challenge/gate.ts. */
+export { challengeOn };
 
 /**
  * Progress tracking (WO-181 Part 3): ticks and done marks on objectives, "x of y done", where she is in your game, her pin on the maps and the tools

@@ -16,6 +16,7 @@ import type { GuideDoc } from "@/lib/guide/doc";
 import type { Mod } from "@/lib/mods";
 import type { Decision, PlayerWay, Proposal, ReportFields, ReportKind } from "@/lib/quests/player-types";
 import type { BuildPlan } from "@/lib/rules/types";
+import type { Run } from "@/lib/challenge/run-file";
 import type { Answer, ChapterKind, Theme, Detect, DoneBy, ObjectiveKind, ObjectiveLink, ObjectiveStatus, Never, PassedBy, Reach, RouteStop, SnapshotSource } from "@/lib/playthroughs/types";
 
 /* ---------- Auth.js tables (shape required by @auth/drizzle-adapter) ---------- */
@@ -689,4 +690,43 @@ export const pageViews = pgTable(
     n: integer("n").notNull().default(0),
   },
   (t) => [primaryKey({ columns: [t.kind, t.key, t.day] }), index("page_view_day_idx").on(t.day)],
+);
+
+/* ---------- Zenithar's Challenge ---------- */
+
+/**
+ * A player's run of Zenithar's Challenge, taken from the sealed run file the mod writes (src/lib/challenge/run-file.ts).
+ * One row per player and character: a newer file for the same character replaces the older one. The columns beside
+ * `run` are copied out of it so the leaderboard sorts without opening every file.
+ */
+export const challengeRuns = pgTable(
+  "challenge_run",
+  {
+    /** Short id used in the run's address: /challenge/run/<id> */
+    id: text("id").primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    characterName: text("character_name").notNull(),
+    race: text("race").notNull(),
+    level: integer("level").notNull(),
+    mode: text("mode").$type<"oath" | "honor">().notNull(),
+    /** In-game days passed, times 100, so it sorts as a whole number. */
+    daysPassedX100: integer("days_passed_x100").notNull(),
+    itemsMade: integer("items_made").notNull(),
+    rulesBroken: integer("rules_broken").notNull(),
+    kills: integer("kills").notNull(),
+    consoleOpened: integer("console_opened").notNull(),
+    /** The whole run as the mod wrote it, already checked against its seal. */
+    run: jsonb("run").$type<Run>().notNull(),
+    seal: text("seal").notNull(),
+    /** When the mod wrote the file (its own clock). */
+    writtenAt: timestamp("written_at", { withTimezone: true }).notNull(),
+    uploadedAt: timestamp("uploaded_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    uniqueIndex("challenge_run_user_character_idx").on(t.userId, t.characterName),
+    /** The leaderboard: by mode, cleanest first, then longest lived. */
+    index("challenge_run_board_idx").on(t.mode, t.rulesBroken, t.daysPassedX100),
+  ],
 );

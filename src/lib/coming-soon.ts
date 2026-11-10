@@ -14,6 +14,8 @@ export function passesComingSoon(path: string): boolean {
   return (
     path === "/signin" ||
     path === "/coming-soon" ||
+    // Zenithar's Challenge stays open while the rest of the site is closed (Dave, 9 Nov). Its own switch turns it off.
+    /^\/challenge(\/|$)/.test(path) ||
     // An early-access invite (WO-96): its page is how an invited player gets in.
     path.startsWith("/invite/") ||
     // Sign-in for assistants (WO-109): the consent page, the token endpoints and the metadata.

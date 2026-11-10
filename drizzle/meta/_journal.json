@@ -225,6 +225,13 @@
       "when": 1793382793996,
       "tag": "0031_nappy_madame_hydra",
       "breakpoints": true
+    },
+    {
+      "idx": 32,
+      "version": "7",
+      "when": 1794287019115,
+      "tag": "0032_challenge_runs",
+      "breakpoints": true
     }
   ]
 }

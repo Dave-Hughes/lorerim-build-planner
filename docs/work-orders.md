@@ -8,6 +8,36 @@ Everything here sits under `docs/design-rules.md`. If an order seems to ask for 
 
 ---
 
+## WO-187  Zenithar's Challenge: its page, the leaderboard and a run's page (chat session, 9 Nov 2026)
+
+Status: for Dave. Built by the chat session at Dave's word ("go ahead and build the page", 9 Nov), on the branch `zenithar-challenge`, not on `staging`: it adds a table, and nothing was to reach a database while Dave was away. Merge to `staging` when he has looked.
+
+Why: the planner is shelved (6 Nov) and the site becomes the home of the Zenithar's Challenge mod (`Dave-Hughes/lorerim-custom-mods`, `zenithars-challenge/`). Plan: https://claude.ai/artifact/Hs74ak9wKytReuL7J9Y52s.
+
+What was built
+- `/challenge`: the forge hero (the night scene with a new foreground, `scripts/challenge/build.py`), title and line, what the challenge is, the rules, Oath and Honor, install, the run file.
+- `/challenge/leaderboard`: the upload (Discord sign-in, one file), and a table for each mode, fewest rules broken first, then most in-game days.
+- `/challenge/run/<id>`: one run: who, mode, the rules chosen, what was made, every broken rule in order, kills. Its player can remove it.
+- `src/lib/challenge/`: the switch (`FEATURE_CHALLENGE`; on in dev and on staging, off on production until set), the run file's check (the seal is HMAC-SHA-256 over the run's exact text, the key the mod ships with), the store and the actions.
+- `challenge_run` (migration `0032_challenge_runs.sql`, additive): one row per player and character; a later file replaces it, an earlier one is refused.
+- The challenge's addresses pass the coming soon page, so production can show them with everything else closed (`FEATURE_COMING_SOON=on`, `FEATURE_CHALLENGE=on`).
+- Its own header and footer (`src/app/(challenge)/layout.tsx`), so nothing links into the closed planner.
+
+Done when
+- [x] `npm run typecheck`, `npm run lint` and `npm test` pass (9 new tests on the run file and the switch; the BotID list covers the new pages).
+- [x] `/challenge` and `/challenge/leaderboard` render under `npm run dev` with no database (the board reads as empty), checked at 1440 and 390 wide.
+- [ ] `npm run build` and `npm run test:e2e`: not run. They need the dev database, which the chat session has no key for.
+- [ ] An upload, end to end, against a real database: sign in, upload a run file from the mod, see it on the board and on its page, remove it.
+- [ ] Dave fills `src/lib/challenge/links.ts`: the Discord thread, the challenge's author, and the download once the mod is released. Empty, those lines are left off the page.
+- [ ] Dave decides whether the planner's pages go behind the coming soon page on production (set `FEATURE_COMING_SOON=on`), and turns the challenge on there (`FEATURE_CHALLENGE=on`).
+
+Open
+- The hero is drawn by script in the site's pixel style. Dave asked for "something with Zenithar"; this is Tapps at an anvil by a forge. A different scene is a change to `scripts/challenge/build.py`.
+- The ranking (fewest rules broken, then most days) is the chat session's call.
+- A run's page shows the first 200 items, 500 broken rules and 100 kinds of kill.
+
+---
+
 ## WO-1  Cards choose on click, with a hover state
 
 Where: every card list in the creation flow and the setup page (`src/components/creation/wizard.tsx`): race, birthsign, traits, game mode, and any other `article.card`.
