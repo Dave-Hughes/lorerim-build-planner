@@ -277,16 +277,8 @@
 }
 .rules.six li {
   font-size: 18px;
-  padding: 0 0 16px;
+  padding: 24px 10px 20px;
   gap: 14px;
-}
-.rules.six img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.rules.six span {
-  padding: 0 10px;
 }
 @media (max-width: 1100px) {
   .rules.six {
@@ -742,54 +734,45 @@
 .crafts li.none {
   opacity: 0.45;
 }
-/* The six rules left to the player: each card's picture from the game, in colour when allowed. */
+/* The six rules left to the player. */
 .chosen {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px 16px;
 }
 .chosen li {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
   background: var(--panel);
   border: 1px solid var(--rule);
-  font-size: 17px;
-  line-height: 1.2;
-}
-.chosen img {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin-bottom: 8px;
-}
-.chosen span,
-.chosen b {
-  padding: 0 12px;
+  border-left-width: 4px;
+  font-size: 18px;
 }
 .chosen b {
-  padding-bottom: 12px;
+  margin-left: auto;
   font-family: var(--font-title);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-size: 15px;
+  font-size: 16px;
 }
 .chosen li.yes {
-  border-color: var(--brass);
+  border-left-color: var(--brass);
 }
 .chosen li.yes b {
   color: var(--destiny-text);
 }
-.chosen li.off img {
-  filter: grayscale(1) brightness(0.5);
-}
-.chosen li.off span,
-.chosen li.off b {
+.chosen li.off b,
+.chosen li.off span {
   color: var(--muted);
+}
+.chosen li.off img {
+  opacity: 0.4;
 }
 /* The game's own totals: number over label, as many across as fit. */
 .journey {
@@ -895,9 +878,7 @@
   .counts li:nth-child(n + 3) {
     border-top: 1px solid var(--rule);
   }
-  .chosen {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
+  .chosen,
   .lists {
     grid-template-columns: 1fr;
   }

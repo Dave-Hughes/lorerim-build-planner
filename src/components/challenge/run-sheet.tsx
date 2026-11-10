@@ -17,14 +17,14 @@ const WAYS = [
   ["hunted", "Hunted", "challenge-hunt"],
 ] as const;
 
-/** The six rules left to the player, each with the picture its card has in the game. */
+/** The six rules left to the player, each with its icon from the front page. */
 const OPTIONS: [keyof RunOptions, string, string][] = [
-  ["lootGems", "Looted gems", "looted-gems"],
-  ["lootSoulGems", "Looted soul gems", "looted-soul-gems"],
-  ["coinPurseGems", "Coin purse gems", "coin-purse-gems"],
-  ["questRewards", "Quest rewards", "quest-rewards"],
-  ["startingItems", "Starting items", "starting-items"],
-  ["othersKills", "Others' kills", "others-kills"],
+  ["lootGems", "Looted gems", "challenge-gem"],
+  ["lootSoulGems", "Looted soul gems", "challenge-soul-gem"],
+  ["coinPurseGems", "Coin purse gems", "quest-rewards"],
+  ["questRewards", "Quest rewards", "challenge-reward"],
+  ["startingItems", "Starting items", "slot-backpack"],
+  ["othersKills", "Others' kills", "challenge-kills"],
 ];
 
 const RULE_WORDS: Record<Run["rulesBroken"][number]["rule"], string> = {
@@ -143,7 +143,7 @@ export function RunSheet({ saved, foot }: { saved: SavedRun; foot?: React.ReactN
             <ul className={styles.chosen}>
               {OPTIONS.map(([key, label, picture]) => (
                 <li key={key} className={run.options?.[key] ? styles.yes : styles.off}>
-                  <img src={`/challenge/cards/${picture}.jpg`} alt="" width={768} height={528} loading="lazy" />
+                  <Pixel name={picture} size={32} />
                   <span>{label}</span>
                   <b>{run.options?.[key] ? "Allowed" : "Not allowed"}</b>
                 </li>
