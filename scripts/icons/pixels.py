@@ -2862,7 +2862,10 @@ WEAPONS = {name: (lambda f=f: f(Icon)) for name, f in _WEAPON_DRAWS.items()}
 from quests import QUESTS as _QUEST_DRAWS  # noqa: E402  (the Quests page's categories)
 
 QUESTS = {name: (lambda f=f: f(Icon)) for name, f in _QUEST_DRAWS.items()}
-SETS = {"": {**ICONS, **GUIDE}, "tab-": TABS, "attr-": ATTRIBUTES, "sign-": SIGNS, "race-": RACES, "mark-": MARKS, "slot-": SLOTS, "mode-": MODES, "tag-": TAGS, "deity-": DEITIES, "logo-": LOGO, "chapter-": CHAPTERS, "need-": NEEDS, "weapon-": WEAPONS, "quest-": QUESTS}
+from challenge import CHALLENGE as _CHALLENGE_DRAWS  # noqa: E402  (the Zenithar's Challenge pages)
+
+CHALLENGE = {name: (lambda f=f: f(Icon)) for name, f in _CHALLENGE_DRAWS.items()}
+SETS = {"": {**ICONS, **GUIDE}, "tab-": TABS, "attr-": ATTRIBUTES, "sign-": SIGNS, "race-": RACES, "mark-": MARKS, "slot-": SLOTS, "mode-": MODES, "tag-": TAGS, "deity-": DEITIES, "logo-": LOGO, "chapter-": CHAPTERS, "need-": NEEDS, "weapon-": WEAPONS, "quest-": QUESTS, "challenge-": CHALLENGE}
 
 
 def slug(name):

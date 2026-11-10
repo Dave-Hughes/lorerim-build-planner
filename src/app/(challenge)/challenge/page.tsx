@@ -3,30 +3,64 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ChallengeHero } from "@/components/challenge/challenge-hero";
 import { challengeOn } from "@/lib/features";
+import { boardRows, type BoardRow } from "@/lib/challenge/store";
 import { CHALLENGE_AUTHOR, CHALLENGE_THREAD_URL, MOD_DOWNLOAD_URL, MOD_SOURCE_URL } from "@/lib/challenge/links";
 import styles from "@/components/challenge/challenge.module.css";
 
-const LINE = "Craft everything you use. A LoreRim mod that keeps the rules of the challenge for you.";
+const LINE = "Craft everything you use.";
 
-export const metadata: Metadata = { title: "Zenithar's Challenge", description: LINE };
+export const metadata: Metadata = { title: "Zenithar's Challenge", description: "Craft everything you use. A LoreRim mod that keeps the rules of the challenge for you." };
+export const dynamic = "force-dynamic";
 
-/** The rules as the mod keeps them, one line each, in the order a player meets them. */
-const RULES = [
-  "Every weapon, piece of armor, shield and arrow you use is one you crafted.",
-  "All your ore comes from veins you mined, and all your firewood from blocks you chopped.",
-  "All your leather and meat comes from animals you hunted.",
-  "All the food you eat is food you cooked, and every potion is one you brewed.",
-  "You sell only what is your own.",
-  "No magic outside enchanting: no spells, scrolls or staves.",
-  "No missives.",
-  "Survival Mode stays on.",
+/* eslint-disable @next/next/no-img-element */
+const Pixel = ({ name, size }: { name: string; size: number }) => <img className={styles.pixel} src={`/icons/${name}.svg`} alt="" width={size} height={size} />;
+
+/** The rules, each as a picture and a few words. */
+const RULES: { icon: string; words: string; no?: boolean }[] = [
+  { icon: "smithing", words: "Forge your own gear" },
+  { icon: "weapon-pickaxe", words: "Mine your own ore" },
+  { icon: "challenge-chop", words: "Chop your own wood" },
+  { icon: "challenge-hunt", words: "Hunt your own hides and meat" },
+  { icon: "challenge-cook", words: "Cook your own food" },
+  { icon: "alchemy", words: "Brew your own potions" },
+  { icon: "deity-zenithar", words: "Sell only your own work" },
+  { icon: "need-cold", words: "Survival Mode on" },
+  { icon: "challenge-no-magic", words: "No spells, scrolls or staves", no: true },
+  { icon: "challenge-no-missive", words: "No missives", no: true },
 ];
 
-const MADE = ["Septims", "Alchemy ingredients", "Raw fruit and vegetables", "Glass", "Linen wraps", "Provisions", "A pickaxe and a woodcutter's axe, however you get them"];
+const days = (n: number) => n.toFixed(n < 10 ? 1 : 0);
 
-/** The challenge's front page: the forge, what the challenge is, what the mod does, and how to get it. */
-export default function Challenge() {
+function Top({ mode, icon, rows }: { mode: string; icon: string; rows: BoardRow[] }) {
+  return (
+    <div className={styles.top}>
+      <h3 className={styles.topName}>
+        <Pixel name={icon} size={32} />
+        {mode}
+      </h3>
+      {rows.length === 0 ? (
+        <p className={styles.empty}>No runs yet. The first place is open.</p>
+      ) : (
+        <ol className={styles.topList}>
+          {rows.map((row, i) => (
+            <li key={row.id}>
+              <span className={styles.place}>{i + 1}</span>
+              <Link href={`/challenge/run/${row.id}`}>{row.characterName}</Link>
+              <span className={styles.topDays}>{days(row.days)} days</span>
+              <span className={row.rulesBroken === 0 ? styles.clean : styles.broke}>{row.rulesBroken === 0 ? "Clean" : `${row.rulesBroken} broken`}</span>
+            </li>
+          ))}
+        </ol>
+      )}
+    </div>
+  );
+}
+
+/** The challenge's front page: the smithy, the rules as pictures, the two modes, how to start, and the top runs. */
+export default async function Challenge() {
   if (!challengeOn()) notFound();
+  // A table that isn't there yet (a preview that hasn't run the migration) reads as an empty board, not an error.
+  const [oath, honor] = await Promise.all([boardRows("oath", 5).catch(() => []), boardRows("honor", 5).catch(() => [])]);
   return (
     <>
       <ChallengeHero title="Zenithar's Challenge" line={LINE}>
@@ -39,77 +73,85 @@ export default function Challenge() {
           Leaderboard
         </Link>
       </ChallengeHero>
-      <main className={`page ${styles.main}`}>
-        <section className={styles.section}>
-          <h2 className={styles.h2}>The challenge</h2>
-          <p>
-            Zenithar&apos;s Challenge is a way to play LoreRim{CHALLENGE_AUTHOR ? `, written by ${CHALLENGE_AUTHOR} on the LoreRim Discord` : ", written on the LoreRim Discord"}. You make everything you
-            use, from ore you mined, wood you chopped and animals you hunted. Looting, buying and selling are cut down to a short list.
-          </p>
-          {CHALLENGE_THREAD_URL ? (
-            <p>
-              <a href={CHALLENGE_THREAD_URL} target="_blank" rel="noopener noreferrer">
-                Read the rules on Discord
-              </a>
-            </p>
-          ) : null}
-          <ol>
+      <main className={`page ${styles.front}`}>
+        <section className={styles.block}>
+          <h2 className={styles.title}>The rules</h2>
+          <ul className={styles.rules}>
             {RULES.map((rule) => (
-              <li key={rule}>{rule}</li>
-            ))}
-          </ol>
-          <h3 className={styles.h3}>Yours from any source</h3>
-          <ul>
-            {MADE.map((item) => (
-              <li key={item}>{item}</li>
+              <li key={rule.words} className={rule.no ? styles.no : undefined}>
+                <Pixel name={rule.icon} size={80} />
+                <span>{rule.words}</span>
+              </li>
             ))}
           </ul>
+          <p className={styles.note}>
+            Septims, ingredients, raw fruit and vegetables, glass, linen wraps and provisions are yours wherever you find them.
+            {CHALLENGE_THREAD_URL ? (
+              <>
+                {" "}
+                <a href={CHALLENGE_THREAD_URL} target="_blank" rel="noopener noreferrer">
+                  {CHALLENGE_AUTHOR ? `${CHALLENGE_AUTHOR}'s rules on Discord` : "The full rules on Discord"}
+                </a>
+              </>
+            ) : null}
+          </p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.h2}>The mod</h2>
-          <p>
-            The mod counts what you craft, cook, brew, mine, chop and hunt, and follows those items into chests and back. When your character is made you choose how the rules are kept. The
-            choice is made once and holds for the run.
-          </p>
-          <div className={styles.two}>
-            <div className={styles.panel}>
-              <h3 className={styles.h3}>Oath</h3>
-              <p>The game holds you to the rules. Gear, food and potions you did not make cannot be used, spells come back off, and a sale of something that is not yours is undone.</p>
+        <section className={styles.block}>
+          <h2 className={styles.title}>Choose how they are kept</h2>
+          <div className={styles.modes}>
+            <div className={`${styles.mode} ${styles.oath}`}>
+              <Pixel name="challenge-oath" size={128} />
+              <h3 className={styles.modeName}>Oath</h3>
+              <p>The game holds you to it. What you did not make cannot be used.</p>
             </div>
-            <div className={styles.panel}>
-              <h3 className={styles.h3}>Honor</h3>
-              <p>You hold yourself to the rules. Nothing is stopped. Each broken rule shows a warning and goes on your run&apos;s record.</p>
+            <div className={`${styles.mode} ${styles.honor}`}>
+              <Pixel name="challenge-honor" size={128} />
+              <h3 className={styles.modeName}>Honor</h3>
+              <p>You hold yourself to it. Every broken rule is warned and counted.</p>
             </div>
           </div>
-          <p>The rules the challenge leaves up to you are chosen at the same time: looted gems, looted soul gems, gems from coin purses, quest rewards, starting items, and animals you did not kill yourself.</p>
+          <p className={styles.note}>Chosen once, when your character is made.</p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.h2}>Install</h2>
-          {MOD_DOWNLOAD_URL ? (
-            <ol>
-              <li>
-                <a href={MOD_DOWNLOAD_URL}>Download the mod</a>.
-              </li>
-              <li>In Mod Organizer 2, install it from the archive and tick it in the left pane. It can sit anywhere in the list.</li>
-              <li>Start a new character. When LoreRim&apos;s own setup is over, the mod asks for Oath or Honor.</li>
-            </ol>
-          ) : (
-            <p>The mod is in testing. The download will be here when it is released.</p>
-          )}
-          <p>
-            It is one SKSE plugin with no ESP, made for LoreRim 5.0.4.8. LoreRim already has what it needs. LoreRim&apos;s rule applies: adding any mod to the list voids support from the LoreRim
-            team. <a href={MOD_SOURCE_URL}>The source is on GitHub</a>.
+        <section className={styles.block}>
+          <h2 className={styles.title}>Start a run</h2>
+          <ol className={styles.steps}>
+            <li>
+              <Pixel name="quest-chest" size={64} />
+              <h3 className={styles.stepName}>Get the mod</h3>
+              <p>
+                {MOD_DOWNLOAD_URL ? <a href={MOD_DOWNLOAD_URL}>Download it</a> : "In testing now. The download will be here."} Install it in Mod Organizer 2 and tick it. LoreRim 5.0.4.8.
+              </p>
+            </li>
+            <li>
+              <Pixel name="challenge-oath" size={64} />
+              <h3 className={styles.stepName}>Make a character</h3>
+              <p>After LoreRim&apos;s own setup, pick Oath or Honor and the rules that are up to you.</p>
+            </li>
+            <li>
+              <Pixel name="challenge-trophy" size={64} />
+              <h3 className={styles.stepName}>Upload your run</h3>
+              <p>
+                Every save writes your run to a file. Put it on the <Link href="/challenge/leaderboard">leaderboard</Link>.
+              </p>
+            </li>
+          </ol>
+          <p className={styles.note}>
+            One SKSE plugin, no ESP. Adding any mod to LoreRim voids support from the LoreRim team. <a href={MOD_SOURCE_URL}>Source on GitHub</a>
           </p>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.h2}>Your run</h2>
-          <p>Each time the game saves, the mod writes one small file for your character. It holds what you made, every broken rule, your kills and the rules you chose. Nothing is sent anywhere.</p>
-          <p className={styles.path}>Documents\My Games\Skyrim Special Edition\SKSE\ZenitharsChallenge\</p>
+        <section className={styles.block}>
+          <h2 className={styles.title}>Top runs</h2>
+          <div className={styles.tops}>
+            <Top mode="Oath" icon="challenge-oath" rows={oath} />
+            <Top mode="Honor" icon="challenge-honor" rows={honor} />
+          </div>
           <p>
-            Upload that file on the <Link href="/challenge/leaderboard">leaderboard</Link> to put your run there. The file is sealed, so one changed by hand is refused.
+            <Link href="/challenge/leaderboard" className="btn">
+              Whole leaderboard
+            </Link>
           </p>
         </section>
       </main>

@@ -1,27 +1,20 @@
-import { HERO } from "@/lib/coming-soon/art";
 import styles from "./challenge.module.css";
 
 /* eslint-disable @next/next/no-img-element */
 const px = (name: string) => `/challenge/px/${name}.png`;
 
 /**
- * The challenge's hero: the site's night scene (sky, stars, aurora, the land) with its own foreground, Tapps at an
- * anvil beside a forge, six frames (scripts/challenge/build.py). It moves on CSS alone and stops for anyone who
+ * The challenge's hero: a smithy of its own (scripts/challenge/build.py). Stone wall, Zenithar's banner, Tapps at
+ * the anvil and the forge behind him, six frames of hammer and fire. It moves on CSS alone and stops for anyone who
  * asks for less motion.
  */
 export function ChallengeHero({ title, line, children }: { title: string; line: string; children?: React.ReactNode }) {
-  const layer = (src: string, className = "") => <img key={src} className={`${styles.layer} ${className}`} src={src} alt="" />;
   return (
     <section className={styles.hero} aria-label={title}>
-      {layer(HERO.sky)}
-      {layer(HERO.stars[0])}
-      {layer(HERO.stars[1], styles.starsB)}
-      {layer(HERO.aurora[0])}
-      {layer(HERO.aurora[1], styles.auroraB)}
-      {HERO.landLayers.map((l) => layer(l.src))}
-      {layer(px("hero-glow"))}
+      <img className={styles.layer} src={px("smithy-room")} alt="" />
+      <img className={`${styles.layer} ${styles.glow}`} src={px("smithy-glow")} alt="" />
       {[0, 1, 2, 3, 4, 5].map((i) => (
-        <img key={i} className={`${styles.layer} ${styles.forge} ${i === 0 ? styles.first : ""}`} src={px(`hero-fg-${i}`)} alt="" style={{ animationDelay: `${i * 0.2 - 1.2}s` }} />
+        <img key={i} className={`${styles.layer} ${styles.forge} ${i === 0 ? styles.first : ""}`} src={px(`smithy-fg-${i}`)} alt="" style={{ animationDelay: `${i * 0.2 - 1.2}s` }} />
       ))}
       <span className={styles.shade} />
       <div className={styles.big}>
