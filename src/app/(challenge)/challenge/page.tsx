@@ -38,7 +38,6 @@ const YOURS: { icon: string; words: string }[] = [
   { icon: "quest-rewards", words: "Coin purse gems" },
   { icon: "challenge-reward", words: "Quest rewards" },
   { icon: "slot-backpack", words: "Starting gear" },
-  { icon: "slot-body", words: "Starting clothes" },
   { icon: "challenge-kills", words: "Others' kills" },
 ];
 
@@ -100,7 +99,7 @@ export default async function Challenge() {
         </section>
 
         <section className={styles.block}>
-          <h2 className={styles.title}>Seven are up to you</h2>
+          <h2 className={styles.title}>Six are up to you</h2>
           <ul className={`${styles.rules} ${styles.six}`}>
             {YOURS.map((rule) => (
               <li key={rule.words}>

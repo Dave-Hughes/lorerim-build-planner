@@ -48,7 +48,7 @@ const runSchema = z.object({
       questRewards: z.boolean(),
       startingItems: z.boolean(),
       othersKills: z.boolean(),
-      /** Added when Starting Clothes became its own choice; older files do not carry it. */
+      /** Written by one test build of the mod (10 Nov) and dropped again; read and ignored. */
       startingClothes: z.boolean().optional(),
     })
     .optional(),

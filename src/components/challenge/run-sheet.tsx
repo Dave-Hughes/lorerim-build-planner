@@ -24,7 +24,6 @@ const OPTIONS: [keyof RunOptions, string, string][] = [
   ["coinPurseGems", "Coin purse gems", "quest-rewards"],
   ["questRewards", "Quest rewards", "challenge-reward"],
   ["startingItems", "Starting gear", "slot-backpack"],
-  ["startingClothes", "Starting clothes", "slot-body"],
   ["othersKills", "Others' kills", "challenge-kills"],
 ];
 

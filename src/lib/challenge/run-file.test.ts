@@ -86,14 +86,6 @@ describe("the run file", () => {
     expect(read.ok && [read.run.deaths, read.run.distance]).toEqual([3, 250000]);
   });
 
-  it("reads the Starting Clothes choice, and a file from before it existed", () => {
-    const options = { lootGems: false, lootSoulGems: false, coinPurseGems: false, questRewards: false, startingItems: false, othersKills: false };
-    const withIt = readRunFile(sealRunFile({ ...run, options: { ...options, startingClothes: true } }));
-    expect(withIt.ok && withIt.run.options?.startingClothes).toBe(true);
-    const before = readRunFile(sealRunFile({ ...run, options }));
-    expect(before.ok && before.run.options?.startingClothes).toBeUndefined();
-  });
-
   it("refuses a run from the old warn-only mode", () => {
     expect(readRunFile(sealRunFile({ ...run, mode: "honor" }))).toEqual({ ok: false, error: RUN_FILE_WORDS.notChallenge });
   });
