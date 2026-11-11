@@ -30,11 +30,11 @@ const OPTIONS: [keyof RunOptions, string, string][] = [
 const RULE_WORDS: Record<Run["rulesBroken"][number]["rule"], string> = {
   gear: "Used gear not made by the player",
   food: "Ate food not cooked by the player",
-  potion: "Used a potion not brewed by the player",
+  potion: "Used a potion or poison not brewed by the player",
   sale: "Sold something not the player's own",
   magic: "Used magic",
   missive: "Took a missive",
-  material: "Crafted with materials not gathered by the player",
+  material: "Crafted with materials that were not the player's own",
   console: "Added an item with the console",
   other: "Broke a rule",
 };
@@ -87,6 +87,8 @@ export function RunSheet({ saved, foot }: { saved: SavedRun; foot?: React.ReactN
   // The mod counts game units. A unit is 9/16 of an inch, so a mile is 112,640 of them.
   const travelled = typeof run.distance === "number" ? (run.distance / 112_640).toFixed(1) : "";
   const kills = [...run.kills].sort((a, b) => b.count - a.count || a.kind.localeCompare(b.kind));
+  // A character made before the mod was installed, asked later (the mod's bAskOnLoad switch).
+  const joinedLate = run.taken?.character === "existing";
   return (
     <>
       <header className={styles.band}>
@@ -108,7 +110,7 @@ export function RunSheet({ saved, foot }: { saved: SavedRun; foot?: React.ReactN
         <ul className={styles.counts}>
           <li>
             <strong>{saved.days.toFixed(1)}</strong>
-            <span>In-game days</span>
+            <span>{joinedLate ? "In-game days since joining" : "In-game days"}</span>
           </li>
           <li>
             <strong>{n(saved.itemsMade)}</strong>
@@ -251,6 +253,7 @@ export function RunSheet({ saved, foot }: { saved: SavedRun; foot?: React.ReactN
         </div>
 
         <p className={styles.note}>
+          {joinedLate ? `This character took the challenge on day ${run.taken?.day.toFixed(1)} of its life and kept nothing it was carrying. Its in-game days are counted from that day. ` : ""}
           Console opened {saved.consoleOpened === 0 ? "never" : `${n(saved.consoleOpened)} times`}. {n(run.plugins.count)} plugins loaded. Written by the mod on {formatDate(saved.writtenAt)}.
         </p>
         <div className={styles.foot}>

@@ -2,7 +2,7 @@ import "server-only";
 import { and, asc, desc, eq } from "drizzle-orm";
 import { db, schema } from "@/db";
 import { newBuildId } from "@/lib/builds/ids";
-import { killTotal, madeTotal, type Run } from "./run-file";
+import { daysOnChallenge, killTotal, madeTotal, type Run } from "./run-file";
 
 const { challengeRuns, users } = schema;
 
@@ -95,7 +95,8 @@ export async function saveRun(userId: string, run: Run, seal: string): Promise<S
     race: run.character.race,
     level: run.character.level,
     mode: run.mode,
-    daysPassedX100: Math.round(run.daysPassed * 100),
+    // The column's name is older than the rule: it holds the days on the challenge, which the board ranks by.
+    daysPassedX100: Math.round(daysOnChallenge(run) * 100),
     itemsMade: madeTotal(run),
     rulesBroken: run.rulesBroken.length,
     kills: killTotal(run),

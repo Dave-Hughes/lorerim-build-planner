@@ -328,6 +328,98 @@
   line-height: 1.5;
   color: var(--soft);
 }
+/* Players ask: questions that open, one column for the questions and their answers. */
+.asks {
+  width: 100%;
+  max-width: 920px;
+  text-align: left;
+  border-top: 1px solid var(--rule);
+}
+.ask {
+  border-bottom: 1px solid var(--rule);
+  scroll-margin-top: calc(var(--sticky-top) + 16px);
+}
+.ask > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 18px 4px;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text);
+}
+.ask > summary::-webkit-details-marker {
+  display: none;
+}
+.ask > summary::before {
+  content: "\203A";
+  flex: none;
+  width: 14px;
+  font-size: 28px;
+  line-height: 0.8;
+  text-align: center;
+  color: var(--ember);
+  transition: transform 0.15s;
+}
+.ask[open] > summary::before {
+  transform: rotate(90deg);
+}
+.ask > summary:hover {
+  color: var(--ember-text);
+}
+.answer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 4px 22px 30px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--soft);
+}
+.sixList {
+  margin: 0;
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 8px 20px;
+}
+.sixList dt {
+  font-family: var(--font-title);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text);
+}
+.sixList dd {
+  margin: 0;
+}
+@media (max-width: 620px) {
+  .ask > summary {
+    font-size: 20px;
+    padding: 14px 0;
+  }
+  .answer {
+    padding: 0 0 18px 26px;
+    font-size: 17px;
+  }
+  .sixList {
+    grid-template-columns: 1fr;
+    gap: 2px 0;
+  }
+  .sixList dd {
+    margin-bottom: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ask > summary::before {
+    transition: none;
+  }
+}
 /* The top of the board. */
 .top {
   width: 100%;

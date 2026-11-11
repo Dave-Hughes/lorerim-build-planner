@@ -8,5 +8,5 @@ export const CHALLENGE_THREAD_URL = "https://discord.com/channels/62264706671942
 export const CHALLENGE_AUTHOR = "Great Mighty p1ss";
 /** The mod's download (its Nexus page or a release). Empty until the mod is released. */
 export const MOD_DOWNLOAD_URL = "";
-/** The mod's source. */
-export const MOD_SOURCE_URL = "https://github.com/Dave-Hughes/lorerim-custom-mods/tree/main/zenithars-challenge";
+/** The mod's source. On its own branch until it is released; then `tree/main/zenithars-challenge`. */
+export const MOD_SOURCE_URL = "https://github.com/Dave-Hughes/lorerim-custom-mods/tree/zenithar/ledger/zenithars-challenge";

@@ -41,6 +41,94 @@ const YOURS: { icon: string; words: string }[] = [
   { icon: "challenge-kills", words: "Others' kills" },
 ];
 
+/**
+ * Players ask: the questions a player has before a first run. Each answer says what the mod does, as built
+ * (checked against its source, 10 Nov 2026). New questions from the community are added here.
+ */
+const ASKS: { id: string; question: string; answer: React.ReactNode }[] = [
+  {
+    id: "free",
+    question: "What can I use that I did not make?",
+    answer: (
+      <>
+        <p>
+          Septims, ingredients, raw fruit and vegetables, flour, salt, glass, linen wraps, water and provisions, wherever you find them. A pickaxe and a woodcutter&apos;s axe, however you get
+          them. Books, keys, lockpicks and anything else the rules do not name.
+        </p>
+        <p>A new character also keeps the clothes it starts in, the food it has, and the food it picks up before it leaves its starting room.</p>
+        <p>
+          What must be your own: weapons, armor, shields, ammunition, clothing and jewelry; food and potions; ore, ingots, firewood and hides; gems and soul gems.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "loot",
+    question: "Can I still loot?",
+    answer: (
+      <>
+        <p>
+          Yes. You can pick up and carry anything. What is not yours shows a struck-through anvil and a red name in your inventory, in chests and in the loot window, so you can tell before you
+          take it.
+        </p>
+        <p>You cannot use it and you cannot sell it. Only what you made or gathered can be sold.</p>
+      </>
+    ),
+  },
+  {
+    id: "broken",
+    question: "What happens when I break a rule?",
+    answer: (
+      <>
+        <p>
+          Most rules cannot be broken. Gear that is not yours comes back off. Food and potions that are not yours are not eaten or drunk. A spell, scroll or staff leaves your hand. A sale of
+          something that is not yours is undone and the septims go back. Missive boards stay shut.
+        </p>
+        <p>
+          A few things the mod cannot stop. They are written to your run as a broken rule, with a line on screen when it happens: crafting or tempering with ore, ingots, firewood, hides or gems
+          you did not gather; melting down gear that is not yours; putting a poison you did not brew on a weapon from a hotkey; adding an item with the console.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "six",
+    question: "What do the six rules that are up to me change?",
+    answer: (
+      <>
+        <p>Each one you allow makes the run easier, and your run&apos;s page shows which you allowed. All six not allowed is the challenge as written.</p>
+        <dl className={styles.sixList}>
+          <dt>Looted gems</dt>
+          <dd>Gems you take from chests, bodies and shops are yours. Not allowed, only gems you mine are.</dd>
+          <dt>Looted soul gems</dt>
+          <dd>Soul gems you take from chests, bodies and shops are yours. Not allowed, only soul gems you make are.</dd>
+          <dt>Coin purse gems</dt>
+          <dd>A gem that comes out of a coin purse is yours.</dd>
+          <dt>Quest rewards</dt>
+          <dd>An item handed to you as a quest reward is yours. Not allowed, only the septims are.</dd>
+          <dt>Starting gear</dt>
+          <dd>The weapons, armor and jewelry your start gave you are yours. Not allowed, you leave them behind.</dd>
+          <dt>Others&apos; kills</dt>
+          <dd>Hides and meat from any dead animal count as hunted. Not allowed, only animals you killed count.</dd>
+        </dl>
+      </>
+    ),
+  },
+  {
+    id: "later",
+    question: "Can I take the challenge on a character I already have, or change my mind later?",
+    answer: (
+      <>
+        <p>The choice is made once and holds for that character. A new character is asked after LoreRim&apos;s own setup, and a standard playthrough is one of the two answers.</p>
+        <p>
+          A character made before you installed the mod is not asked. Setting bAskOnLoad to 1 in the mod&apos;s ini file asks it. That character keeps nothing it is carrying, and its days on the
+          leaderboard are counted from the day it joined.
+        </p>
+      </>
+    ),
+  },
+];
+
 function Top({ rows }: { rows: BoardRow[] }) {
   if (rows.length === 0) return <p className={styles.empty}>No runs yet. The first place is open.</p>;
   return (
@@ -86,7 +174,7 @@ export default async function Challenge() {
             ))}
           </ul>
           <p className={styles.note}>
-            Septims, ingredients, raw fruit and vegetables, glass, linen wraps and provisions are yours wherever you find them.
+            Septims, ingredients, raw fruit and vegetables, flour, salt, glass, linen wraps and provisions are yours wherever you find them.
             {CHALLENGE_THREAD_URL ? (
               <>
                 {" "}
@@ -135,8 +223,20 @@ export default async function Challenge() {
             </li>
           </ol>
           <p className={styles.note}>
-            One SKSE plugin, no ESP. Adding any mod to LoreRim voids support from the LoreRim team. <a href={MOD_SOURCE_URL}>Source on GitHub</a>
+            One SKSE plugin and one small ESP. Adding any mod to LoreRim voids support from the LoreRim team. <a href={MOD_SOURCE_URL}>Source on GitHub</a>
           </p>
+        </section>
+
+        <section className={styles.block}>
+          <h2 className={styles.title}>Players ask</h2>
+          <div className={styles.asks}>
+            {ASKS.map((ask) => (
+              <details key={ask.id} id={ask.id} className={styles.ask}>
+                <summary>{ask.question}</summary>
+                <div className={styles.answer}>{ask.answer}</div>
+              </details>
+            ))}
+          </div>
         </section>
 
         <section className={styles.block}>

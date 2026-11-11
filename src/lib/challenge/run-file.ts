@@ -53,6 +53,11 @@ const runSchema = z.object({
     })
     .optional(),
   daysPassed: z.number().min(0).max(1_000_000),
+  /**
+   * When the challenge was taken (in-game days passed), and whether by a new character or one that already had a
+   * past (the mod's bAskOnLoad switch). From mod builds of 11 Nov on; older files have none.
+   */
+  taken: z.object({ day: z.number().min(0).max(1_000_000), character: z.enum(["new", "existing"]) }).optional(),
   made,
   rulesBroken: z
     .array(z.object({ rule: z.enum(RULES), id: z.string().max(200), name: z.string().max(200), count: z.number().int(), day: z.number() }))
@@ -118,6 +123,11 @@ export function sealRunFile(run: unknown, key: string = sealKey()): string {
   return `{"run":${body},"seal":"${seal}"}\n`;
 }
 
+/**
+ * The in-game days a run has been on the challenge: days passed since the day it was taken. A new character takes it
+ * in its first hour, so this is its whole life; a character that joined late does not bring its earlier days with it.
+ */
+export const daysOnChallenge = (run: Pick<Run, "daysPassed" | "taken">) => Math.max(0, run.daysPassed - (run.taken?.day ?? 0));
 /** Everything a run made, across the six ways. */
 export const madeTotal = (run: Pick<Run, "made">) => run.made.crafted + run.made.cooked + run.made.brewed + run.made.mined + run.made.chopped + run.made.hunted;
 /** Every kill, across the kinds. */

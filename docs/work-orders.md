@@ -23,14 +23,18 @@ What was built
 - `challenge_run` (migration `0032_challenge_runs.sql`, additive): one row per player and character; a later file replaces it, an earlier one is refused.
 - The challenge's addresses pass the coming soon page, so production can show them with everything else closed (`FEATURE_COMING_SOON=on`, `FEATURE_CHALLENGE=on`).
 - Its own header and footer (`src/app/(challenge)/layout.tsx`), so nothing links into the closed planner.
+- Players ask (Dave, 10 Nov: "an FAQ would be killer"): five questions on `/challenge`, between Start a run and Top runs, each answer checked against the mod's source. What can I use that I did not make; can I still loot; what happens when I break a rule; what the six rules change; an existing character and changing your mind. New questions from the community are added to `ASKS` in the page.
+- After a read-through of the mod (10 Nov): flour and salt join the free list; "One SKSE plugin and one small ESP"; the source link points at the mod's branch until it is merged; a broken material rule reads "materials that were not the player's own" (it now covers gear melted down).
+- Days on the board are days on the challenge: a run file says when the challenge was taken (`taken.day`), and a character that joined late (`taken.character` is `existing`, the mod's `bAskOnLoad`) does not bring its earlier days. Its page says so. The column keeps its name, `days_passed_x100`; no migration.
 
 Done when
 - [x] `npm run typecheck`, `npm run lint` and `npm test` pass (9 new tests on the run file and the switch; the BotID list covers the new pages).
 - [x] `/challenge` and `/challenge/leaderboard` render under `npm run dev` with no database (the board reads as empty), checked at 1440 and 390 wide.
-- [ ] `npm run build` and `npm run test:e2e`: not run. They need the dev database, which the chat session has no key for.
+- [x] `npm run build` passes (10 Nov), and `/challenge` was looked at from the built site at 1440 and 390 wide with the questions open.
+- [ ] `npm run test:e2e`: not run. It needs the dev database, which the chat session has no key for.
 - [ ] An upload, end to end, against a real database: sign in, upload a run file from the mod, see it on the board and on its page, remove it.
 - [x] The Discord thread and the challenge's author are in `src/lib/challenge/links.ts` (Dave, 10 Nov).
-- [ ] The download link, once the mod is released. Empty, it is left off the page.
+- [ ] The download link, once the mod is released. Empty, it is left off the page. At the same time `MOD_SOURCE_URL` goes back to `tree/main/zenithars-challenge`.
 - [ ] Dave decides whether the planner's pages go behind the coming soon page on production (set `FEATURE_COMING_SOON=on`), and turns the challenge on there (`FEATURE_CHALLENGE=on`).
 
 Open

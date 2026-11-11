@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { challengeOn, isChallengePath } from "./gate";
-import { RUN_FILE_WORDS, killTotal, madeTotal, readRunFile, sealRunFile } from "./run-file";
+import { RUN_FILE_WORDS, daysOnChallenge, killTotal, madeTotal, readRunFile, sealRunFile } from "./run-file";
 import { passesComingSoon } from "@/lib/coming-soon";
 
 /** A run file exactly as the mod wrote it in play (9 Nov 2026, build b9b8612), with the character renamed and sealed again. */
@@ -49,6 +49,20 @@ describe("the run file", () => {
     // HMAC-SHA-256 of this exact text with the mod's built-in key, worked out outside this code (Python's hmac),
     // the same check the plugin's own Sha256.h was held to.
     expect(sealRunFile({ format: 1 })).toBe('{"run":{"format":1},"seal":"fa8ae20087e145efc1fdaf7d1f60841ce432bbb7c2ed3bffd3ae0f3ccccdea0a"}\n');
+  });
+
+  it("counts a run's days from the day the challenge was taken", () => {
+    // A file from before the mod wrote the day: the character's whole life counts, as it did.
+    expect(daysOnChallenge(run)).toBe(54.71);
+    // A new character takes it in its first hour.
+    const fresh = readRunFile(sealRunFile({ ...run, taken: { day: 0.02, character: "new" } }));
+    expect(fresh.ok && daysOnChallenge(fresh.run)).toBeCloseTo(54.69, 2);
+    // A character asked later does not bring its earlier days onto the board.
+    const late = readRunFile(sealRunFile({ ...run, taken: { day: 50, character: "existing" } }));
+    expect(late.ok && late.run.taken).toEqual({ day: 50, character: "existing" });
+    expect(late.ok && daysOnChallenge(late.run)).toBeCloseTo(4.71, 2);
+    // A day later than the file's own is a broken file, not a negative run.
+    expect(daysOnChallenge({ daysPassed: 3, taken: { day: 9, character: "existing" } })).toBe(0);
   });
 
   it("reads the rules a player chose", () => {
