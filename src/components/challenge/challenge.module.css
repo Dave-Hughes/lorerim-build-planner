@@ -382,6 +382,13 @@
   line-height: 1.5;
   color: var(--soft);
 }
+/* A picture from the game, shown at the size it was taken. */
+.shot {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+}
 .sixList {
   margin: 0;
   display: grid;

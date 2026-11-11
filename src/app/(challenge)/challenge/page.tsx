@@ -42,90 +42,64 @@ const YOURS: { icon: string; words: string }[] = [
 ];
 
 /**
- * Players ask: the questions a player has before a first run. Each answer says what the mod does, as built
- * (checked against its source, 10 Nov 2026). New questions from the community are added here.
+ * Players ask. Short answers in a player's words: nothing about files or settings, and a picture where one
+ * says it better (Dave, 10 Nov). New questions from the community are added here.
  */
 const ASKS: { id: string; question: string; answer: React.ReactNode }[] = [
-  {
-    id: "free",
-    question: "What can I use that I did not make?",
-    answer: (
-      <>
-        <p>
-          Septims, ingredients, raw fruit and vegetables, flour, salt, glass, linen wraps, water and provisions, wherever you find them. A pickaxe and a woodcutter&apos;s axe, however you get
-          them. Books, keys, lockpicks and anything else the rules do not name.
-        </p>
-        <p>A new character also keeps the clothes it starts in, the food it has, and the food it picks up before it leaves its starting room.</p>
-        <p>
-          What must be your own: weapons, armor, shields, ammunition, clothing and jewelry; food and potions; ore, ingots, firewood and hides; gems and soul gems.
-        </p>
-      </>
-    ),
-  },
   {
     id: "loot",
     question: "Can I still loot?",
     answer: (
       <>
-        <p>
-          Yes. You can pick up and carry anything. What is not yours shows a struck-through anvil and a red name in your inventory, in chests and in the loot window, so you can tell before you
-          take it.
-        </p>
-        <p>You cannot use it and you cannot sell it. Only what you made or gathered can be sold.</p>
+        <p>Yes. Take anything you like. You can&apos;t use or sell what you didn&apos;t make.</p>
+        <img className={styles.shot} src="/challenge/not-yours.webp" alt="A loot window. The key and the bottle are plain. The orcish armor and weapon are marked as not yours." width={552} height={438} />
+      </>
+    ),
+  },
+  {
+    id: "free",
+    question: "What can I use without making it?",
+    answer: (
+      <>
+        <p>Septims, ingredients, raw fruit and vegetables, flour, salt, water and provisions. A pickaxe and a woodcutter&apos;s axe. Books, keys and lockpicks.</p>
+        <p>Your starting clothes and your first food are yours too.</p>
       </>
     ),
   },
   {
     id: "broken",
-    question: "What happens when I break a rule?",
+    question: "What if I break a rule?",
     answer: (
       <>
-        <p>
-          Most rules cannot be broken. Gear that is not yours comes back off. Food and potions that are not yours are not eaten or drunk. A spell, scroll or staff leaves your hand. A sale of
-          something that is not yours is undone and the septims go back. Missive boards stay shut.
-        </p>
-        <p>
-          A few things the mod cannot stop. They are written to your run as a broken rule, with a line on screen when it happens: crafting or tempering with ore, ingots, firewood, hides or gems
-          you did not gather; melting down gear that is not yours; putting a poison you did not brew on a weapon from a hotkey; adding an item with the console.
-        </p>
+        <p>The game stops you. Gear comes back off, food isn&apos;t eaten and a sale is undone.</p>
+        <p>Crafting with ore, hides or gems you didn&apos;t gather still works. It shows on your run as a broken rule.</p>
       </>
     ),
   },
   {
     id: "six",
-    question: "What do the six rules that are up to me change?",
+    question: "What do the six optional rules do?",
     answer: (
-      <>
-        <p>Each one you allow makes the run easier, and your run&apos;s page shows which you allowed. All six not allowed is the challenge as written.</p>
-        <dl className={styles.sixList}>
-          <dt>Looted gems</dt>
-          <dd>Gems you take from chests, bodies and shops are yours. Not allowed, only gems you mine are.</dd>
-          <dt>Looted soul gems</dt>
-          <dd>Soul gems you take from chests, bodies and shops are yours. Not allowed, only soul gems you make are.</dd>
-          <dt>Coin purse gems</dt>
-          <dd>A gem that comes out of a coin purse is yours.</dd>
-          <dt>Quest rewards</dt>
-          <dd>An item handed to you as a quest reward is yours. Not allowed, only the septims are.</dd>
-          <dt>Starting gear</dt>
-          <dd>The weapons, armor and jewelry your start gave you are yours. Not allowed, you leave them behind.</dd>
-          <dt>Others&apos; kills</dt>
-          <dd>Hides and meat from any dead animal count as hunted. Not allowed, only animals you killed count.</dd>
-        </dl>
-      </>
+      <dl className={styles.sixList}>
+        <dt>Looted gems</dt>
+        <dd>Gems you find are yours.</dd>
+        <dt>Looted soul gems</dt>
+        <dd>Soul gems you find are yours.</dd>
+        <dt>Coin purse gems</dt>
+        <dd>Gems from coin purses are yours.</dd>
+        <dt>Quest rewards</dt>
+        <dd>Items you get as quest rewards are yours.</dd>
+        <dt>Starting gear</dt>
+        <dd>You keep the gear your start gives you.</dd>
+        <dt>Others&apos; kills</dt>
+        <dd>Hides and meat count from animals you didn&apos;t kill.</dd>
+      </dl>
     ),
   },
   {
-    id: "later",
-    question: "Can I take the challenge on a character I already have, or change my mind later?",
-    answer: (
-      <>
-        <p>The choice is made once and holds for that character. A new character is asked after LoreRim&apos;s own setup, and a standard playthrough is one of the two answers.</p>
-        <p>
-          A character made before you installed the mod is not asked. Setting bAskOnLoad to 1 in the mod&apos;s ini file asks it. That character keeps nothing it is carrying, and its days on the
-          leaderboard are counted from the day it joined.
-        </p>
-      </>
-    ),
+    id: "character",
+    question: "Can I use my current character?",
+    answer: <p>No. You choose on a new character, and you can&apos;t change it later.</p>,
   },
 ];
 

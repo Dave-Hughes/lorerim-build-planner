@@ -110,7 +110,7 @@ export function RunSheet({ saved, foot }: { saved: SavedRun; foot?: React.ReactN
         <ul className={styles.counts}>
           <li>
             <strong>{saved.days.toFixed(1)}</strong>
-            <span>{joinedLate ? "In-game days since joining" : "In-game days"}</span>
+            <span>{joinedLate ? "Days since joining" : "In-game days"}</span>
           </li>
           <li>
             <strong>{n(saved.itemsMade)}</strong>
@@ -253,7 +253,7 @@ export function RunSheet({ saved, foot }: { saved: SavedRun; foot?: React.ReactN
         </div>
 
         <p className={styles.note}>
-          {joinedLate ? `This character took the challenge on day ${run.taken?.day.toFixed(1)} of its life and kept nothing it was carrying. Its in-game days are counted from that day. ` : ""}
+          {joinedLate ? `Joined the challenge on day ${run.taken?.day.toFixed(1)}. Days are counted from then. ` : ""}
           Console opened {saved.consoleOpened === 0 ? "never" : `${n(saved.consoleOpened)} times`}. {n(run.plugins.count)} plugins loaded. Written by the mod on {formatDate(saved.writtenAt)}.
         </p>
         <div className={styles.foot}>
