@@ -61,7 +61,7 @@ const ASKS: { id: string; question: string; answer: React.ReactNode }[] = [
     question: "What can I use without making it?",
     answer: (
       <>
-        <p>Septims, ingredients, raw fruit and vegetables, flour, salt, water and provisions. A pickaxe and a woodcutter&apos;s axe. Books, keys and lockpicks.</p>
+        <p>Septims, ingredients, raw fruit and vegetables, flour, salt, water and provisions. A pickaxe, a woodcutter&apos;s axe and a fishing rod. Books, keys and lockpicks.</p>
         <p>Your starting clothes and your first food are yours too.</p>
       </>
     ),
